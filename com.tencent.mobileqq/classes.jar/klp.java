@@ -1,35 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.authorize.JsonConfig;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.common.offline.OfflineExpire.OfflineExpireCheckUpdate;
+import com.tencent.biz.webviewplugin.OfflineWebResManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.AppRuntime;
 
 public class klp
-  extends Handler
+  implements Runnable
 {
-  public klp(JsonConfig paramJsonConfig, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public klp(OfflineExpire.OfflineExpireCheckUpdate paramOfflineExpireCheckUpdate) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof AppInterface)) {
+      new OfflineWebResManager((AppInterface)localAppRuntime).a();
     }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("AuthorizeConfig", 2, "clear mJsApiWhiteList");
-      }
-      this.a.a.clear();
-    } while (!(paramMessage.obj instanceof ConcurrentHashMap));
-    if (QLog.isColorLevel()) {
-      QLog.i("AuthorizeConfig", 2, "update new mJsApiWhiteList!");
-    }
-    this.a.a.putAll((ConcurrentHashMap)paramMessage.obj);
   }
 }
 

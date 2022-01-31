@@ -78,12 +78,14 @@ final class PreDownloadConstants$2
     put(Integer.valueOf(10068), "doodle_msg");
     put(Integer.valueOf(10069), "qwallet_res");
     put(Integer.valueOf(10070), "av_redpacket");
+    put(Integer.valueOf(10074), "ar_worldcup");
     put(Integer.valueOf(10071), "readinjoy_viola");
+    put(Integer.valueOf(10073), "extend_friend");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.predownload.schedule.PreDownloadConstants.2
  * JD-Core Version:    0.7.0.1
  */

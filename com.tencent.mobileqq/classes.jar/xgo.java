@@ -1,29 +1,18 @@
-import android.os.Message;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.qwallet.red.QWRedConfig;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 
 public class xgo
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xgo(BannerManager paramBannerManager, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  public xgo(QWRedConfig paramQWRedConfig) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper close banner");
+    synchronized (QWRedConfig.access$000(this.a))
+    {
+      QWalletTools.a(this.a, QWRedConfig.access$100(this.a));
+      return;
     }
-    paramView = (QQAppInterface)BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).getAppRuntime();
-    this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.a();
-    UpgradeTIMWrapper.a(paramView, this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper);
-    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).obtainMessage(20).sendToTarget();
-    ReportController.b(paramView, "CliOper", "", "", "0X800865A", "0X800865A", 0, 0, "", "", "", "");
   }
 }
 

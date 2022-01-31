@@ -1,22 +1,24 @@
-import android.content.ContentValues;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 public class acqr
-  implements Runnable
+  extends FMObserver
 {
-  public acqr(FileManagerProxy paramFileManagerProxy, ContentValues paramContentValues, long paramLong) {}
+  public acqr(QfileFileAssistantActivity paramQfileFileAssistantActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean)
   {
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerProxy.a(FileManagerEntity.tableName(), this.jdField_a_of_type_AndroidContentContentValues, "nSessionId=?", new String[] { String.valueOf(this.jdField_a_of_type_Long) }, null);
+    if (QfileFileAssistantActivity.b(this.a)) {
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    this.a.runOnUiThread(new acqs(this, paramBoolean));
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    if (!QfileFileAssistantActivity.b(this.a)) {
+      FMToastUtil.a(paramString);
     }
   }
 }

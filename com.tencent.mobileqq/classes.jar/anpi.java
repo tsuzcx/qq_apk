@@ -1,53 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import dov.com.qq.im.capture.view.MusicProviderView;
+import dov.com.qq.im.capture.view.ProviderView.ProviderViewListener;
 
 public class anpi
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public anpi(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public anpi(MusicProviderView paramMusicProviderView, MusicItemInfo paramMusicItemInfo) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramMotionEvent.getAction();
-    paramMotionEvent.getX();
-    float f = paramMotionEvent.getY();
-    if (i == 0) {
-      this.a.jdField_b_of_type_AndroidWidgetButton.setText(null);
-    }
-    do
-    {
-      return false;
-      if (i == 2)
-      {
-        if (f < this.a.jdField_b_of_type_Int * -1)
-        {
-          this.a.a(false, false);
-          return true;
-        }
-        this.a.a(true, false);
-        return true;
-      }
-      if (i == 3)
-      {
-        this.a.a(false, true);
-        return false;
-      }
-    } while (i != 1);
-    if (f < this.a.jdField_b_of_type_Int * -1)
-    {
-      this.a.l = false;
-      this.a.a(false, true);
-    }
-    for (;;)
-    {
-      this.a.jdField_b_of_type_AndroidWidgetButton.setText(2131438145);
-      return false;
-      this.a.l = true;
-      this.a.a(true, true);
-    }
+    paramDialogInterface.dismiss();
+    MusicProviderView.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.jdField_a_of_type_DovComQqImCaptureViewProviderView$ProviderViewListener.ay_();
+    this.jdField_a_of_type_DovComQqImCaptureViewMusicProviderView.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo);
   }
 }
 

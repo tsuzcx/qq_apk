@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.PstnObserver;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.richmedia.subtitles.PacmanParcelItem;
 
-public class xvz
-  extends PstnObserver
+public final class xvz
+  implements Parcelable.Creator
 {
-  public xvz(PhoneContactSelectActivity paramPhoneContactSelectActivity) {}
-  
-  public void a(String paramString, int paramInt1, int paramInt2)
+  public PacmanParcelItem a(Parcel paramParcel)
   {
-    if (this.a.a != null)
-    {
-      this.a.app.removeObserver(this.a.a);
-      this.a.a = null;
-    }
-    this.a.finish();
+    return new PacmanParcelItem(paramParcel);
+  }
+  
+  public PacmanParcelItem[] a(int paramInt)
+  {
+    return new PacmanParcelItem[paramInt];
   }
 }
 

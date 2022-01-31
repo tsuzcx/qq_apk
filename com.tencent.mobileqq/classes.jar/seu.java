@@ -1,31 +1,36 @@
-import android.os.Message;
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
 class seu
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  seu(ses paramses, long paramLong) {}
+  seu(set paramset) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Ses.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager != null)
+    if (paramInt == 1)
     {
-      this.jdField_a_of_type_Ses.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a();
-      if (this.jdField_a_of_type_Ses.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Long) == 2)
-      {
-        Message localMessage = new Message();
-        localMessage.obj = Long.valueOf(this.jdField_a_of_type_Long);
-        this.jdField_a_of_type_Ses.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(32, localMessage);
-      }
-    }
-    else
-    {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.cancel();
       return;
     }
-    this.jdField_a_of_type_Ses.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(-1, null);
+    try
+    {
+      ForwardSdkShareOption.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop, true, "action_game_join_group", Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.c).longValue(), -1, this.a.jdField_a_of_type_JavaLangString);
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.cancel();
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.finish();
+      return;
+    }
+    catch (Exception paramDialogInterface)
+    {
+      for (;;)
+      {
+        QLog.e("Q.chatopttroop", 1, "showAlertDlg error = " + paramDialogInterface);
+      }
+    }
   }
 }
 

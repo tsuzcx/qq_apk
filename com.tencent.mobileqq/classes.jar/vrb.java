@@ -1,40 +1,19 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
 
-class vrb
-  implements WerewolvesHandler.Callback
+public class vrb
+  implements View.OnClickListener
 {
-  vrb(vra paramvra) {}
+  public vrb(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.werewolf.GameRoomChatPie", 2, "exitRoom: errorCode = " + paramInt);
-    }
-    if ((paramInt == 0) || (paramInt == 1285))
-    {
-      if ((this.a.a.d != null) && (this.a.a.d.isShowing())) {
-        this.a.a.d.dismiss();
-      }
-      new Intent().putExtra("isNeedFinish", true);
-      SharedPreUtils.l(this.a.a.a(), this.a.a.a.getCurrentAccountUin(), false);
-      GameRoomAVController.a().d();
-      this.a.a.W = true;
-      this.a.a.b(1);
-      return;
-    }
-    if ((this.a.a.d != null) && (this.a.a.d.isShowing())) {
-      this.a.a.d.dismiss();
-    }
-    QQToast.a(this.a.a.a(), 1, "退出游戏失败", 0).b(this.a.a.a());
+    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
+    this.a.a.setVisibility(8);
+    this.a.b.setVisibility(0);
   }
 }
 

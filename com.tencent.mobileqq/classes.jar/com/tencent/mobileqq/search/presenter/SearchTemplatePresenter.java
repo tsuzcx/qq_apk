@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.search.presenter;
 
-import ahgm;
-import ahgn;
-import ahgo;
-import ahgp;
-import ahgq;
-import ahgr;
-import ahgs;
-import ahgt;
-import ahgu;
+import ahuo;
+import ahup;
+import ahuq;
+import ahur;
+import ahus;
+import ahut;
+import ahuu;
+import ahuv;
+import ahuw;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -173,7 +173,7 @@ public class SearchTemplatePresenter
       {
         paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
         paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setText(paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateUniversalItem$ActionInfo.jdField_a_of_type_JavaLangCharSequence);
-        paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ahgp(this, localContext, paramNetSearchTemplateUniversalItem));
+        paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ahur(this, localContext, paramNetSearchTemplateUniversalItem));
       }
       for (;;)
       {
@@ -181,12 +181,12 @@ public class SearchTemplatePresenter
         if (!bool) {
           break;
         }
-        paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840930);
+        paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840967);
         paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#6991B8"));
         return i;
         paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
       }
-      paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840929);
+      paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130840966);
       paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetButton.setTextColor(Color.parseColor("#000000"));
       return i;
     }
@@ -248,14 +248,14 @@ public class SearchTemplatePresenter
           }
           SearchUtils.jdField_a_of_type_Long = localSongInfo2.jdField_a_of_type_Long;
           continue;
-          paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845364);
+          paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845492);
           continue;
           if (this.jdField_a_of_type_Long != SearchUtils.jdField_a_of_type_Long) {
             continue;
           }
-          paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845365);
+          paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845493);
           continue;
-          paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845363);
+          paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845491);
           continue;
           paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
           continue;
@@ -272,12 +272,12 @@ public class SearchTemplatePresenter
         if (this.jdField_a_of_type_Long != SearchUtils.jdField_a_of_type_Long) {
           continue;
         }
-        paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845366);
+        paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845494);
         if ((j == 0) || (i == 0) || (TextUtils.isEmpty(localSongInfo1.jdField_a_of_type_JavaLangString))) {
           continue;
         }
         paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new ahgq(this, paramNetSearchTemplateUniversalView, k, localContext, bool, localSongInfo1, paramNetSearchTemplateUniversalItem));
+        paramNetSearchTemplateUniversalView.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new ahus(this, paramNetSearchTemplateUniversalView, k, localContext, bool, localSongInfo1, paramNetSearchTemplateUniversalItem));
         return DisplayUtil.a(localContext, 39.0F) + 0;
         i = 0;
         continue;
@@ -797,8 +797,8 @@ public class SearchTemplatePresenter
     if (!TextUtils.isEmpty(paramNetSearchTemplateBannerTitleItem.i))
     {
       paramNetSearchTemplateBannerTitleView.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      a((Context)localObject, (SquareImageView)paramNetSearchTemplateBannerTitleView.jdField_a_of_type_AndroidWidgetImageView, paramNetSearchTemplateBannerTitleView.jdField_b_of_type_AndroidWidgetImageView, paramNetSearchTemplateBannerTitleView.jdField_b_of_type_AndroidWidgetTextView, paramNetSearchTemplateBannerTitleItem.jdField_a_of_type_Int, paramNetSearchTemplateBannerTitleItem.i, paramNetSearchTemplateBannerTitleItem.jdField_b_of_type_JavaLangString, ((Context)localObject).getResources().getDimensionPixelSize(2131559133));
-      i = ((Context)localObject).getResources().getDimensionPixelSize(2131559133);
+      a((Context)localObject, (SquareImageView)paramNetSearchTemplateBannerTitleView.jdField_a_of_type_AndroidWidgetImageView, paramNetSearchTemplateBannerTitleView.jdField_b_of_type_AndroidWidgetImageView, paramNetSearchTemplateBannerTitleView.jdField_b_of_type_AndroidWidgetTextView, paramNetSearchTemplateBannerTitleItem.jdField_a_of_type_Int, paramNetSearchTemplateBannerTitleItem.i, paramNetSearchTemplateBannerTitleItem.jdField_b_of_type_JavaLangString, ((Context)localObject).getResources().getDimensionPixelSize(2131559135));
+      i = ((Context)localObject).getResources().getDimensionPixelSize(2131559135);
       if ((paramNetSearchTemplateBannerTitleItem.jdField_a_of_type_Int == 6) || (paramNetSearchTemplateBannerTitleItem.jdField_a_of_type_Int == 8)) {
         i = DisplayUtil.a((Context)localObject, 100.0F);
       }
@@ -837,8 +837,8 @@ public class SearchTemplatePresenter
       paramNetSearchTemplateMovieView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       paramNetSearchTemplateMovieView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
       ((RelativeLayout.LayoutParams)localObject2).rightMargin = DisplayUtil.a((Context)localObject1, 10.0F);
-      a((Context)localObject1, (SquareImageView)paramNetSearchTemplateMovieView.jdField_a_of_type_AndroidWidgetImageView, paramNetSearchTemplateMovieView.jdField_b_of_type_AndroidWidgetImageView, paramNetSearchTemplateMovieView.jdField_a_of_type_AndroidWidgetTextView, paramNetSearchTemplateMovieItem.jdField_a_of_type_Int, paramNetSearchTemplateMovieItem.i, null, ((Context)localObject1).getResources().getDimensionPixelSize(2131559134));
-      paramNetSearchTemplateMovieView.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams().height = ((int)(((Context)localObject1).getResources().getDimensionPixelSize(2131559134) * 1.4F));
+      a((Context)localObject1, (SquareImageView)paramNetSearchTemplateMovieView.jdField_a_of_type_AndroidWidgetImageView, paramNetSearchTemplateMovieView.jdField_b_of_type_AndroidWidgetImageView, paramNetSearchTemplateMovieView.jdField_a_of_type_AndroidWidgetTextView, paramNetSearchTemplateMovieItem.jdField_a_of_type_Int, paramNetSearchTemplateMovieItem.i, null, ((Context)localObject1).getResources().getDimensionPixelSize(2131559136));
+      paramNetSearchTemplateMovieView.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams().height = ((int)(((Context)localObject1).getResources().getDimensionPixelSize(2131559136) * 1.4F));
       f1 = 0.0F;
       if (TextUtils.isEmpty(paramNetSearchTemplateMovieItem.jdField_b_of_type_JavaLangCharSequence)) {
         break label532;
@@ -856,7 +856,7 @@ public class SearchTemplatePresenter
     }
     label532:
     label544:
-    for (int i = ((Context)localObject1).getResources().getDimensionPixelSize(2131559134) + DisplayUtil.a((Context)localObject1, 10.0F);; i = 0)
+    for (int i = ((Context)localObject1).getResources().getDimensionPixelSize(2131559136) + DisplayUtil.a((Context)localObject1, 10.0F);; i = 0)
     {
       float f3 = ((Context)localObject1).getResources().getDisplayMetrics().widthPixels - DisplayUtil.a((Context)localObject1, 30.0F) - i;
       localObject2 = SearchUtils.a(paramNetSearchTemplateMovieView.jdField_b_of_type_AndroidWidgetTextView, f3 - f1 - f2, 1, paramNetSearchTemplateMovieItem.jdField_a_of_type_JavaLangCharSequence.toString(), paramNetSearchTemplateMovieItem.a(paramNetSearchTemplateMovieItem.jdField_a_of_type_JavaLangCharSequence), false);
@@ -870,7 +870,7 @@ public class SearchTemplatePresenter
       a(paramNetSearchTemplateMovieView.g, (CharSequence)localObject1, true);
       a(paramNetSearchTemplateMovieView.h, paramNetSearchTemplateMovieItem.e);
       paramNetSearchTemplateMovieView.jdField_a_of_type_AndroidWidgetButton.setText(paramNetSearchTemplateMovieItem.f);
-      paramNetSearchTemplateMovieView.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ahgn(this, paramNetSearchTemplateMovieItem));
+      paramNetSearchTemplateMovieView.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new ahup(this, paramNetSearchTemplateMovieItem));
       return;
       paramNetSearchTemplateMovieView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       paramNetSearchTemplateMovieView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -897,13 +897,13 @@ public class SearchTemplatePresenter
     if (TextUtils.isEmpty(paramNetSearchTemplateNormalItem.i))
     {
       paramNetSearchTemplateNormalView.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      ((LinearLayout.LayoutParams)localObject).leftMargin = localContext.getResources().getDimensionPixelSize(2131559138);
+      ((LinearLayout.LayoutParams)localObject).leftMargin = localContext.getResources().getDimensionPixelSize(2131559140);
       if ((localContext instanceof PublicAcntSearchActivity))
       {
-        ((LinearLayout.LayoutParams)localObject).topMargin = localContext.getResources().getDimensionPixelSize(2131559137);
-        ((LinearLayout.LayoutParams)localObject).bottomMargin = localContext.getResources().getDimensionPixelSize(2131559137);
+        ((LinearLayout.LayoutParams)localObject).topMargin = localContext.getResources().getDimensionPixelSize(2131559139);
+        ((LinearLayout.LayoutParams)localObject).bottomMargin = localContext.getResources().getDimensionPixelSize(2131559139);
       }
-      a(localContext, paramNetSearchTemplateNormalView.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView, paramNetSearchTemplateNormalView.jdField_a_of_type_AndroidWidgetImageView, paramNetSearchTemplateNormalView.jdField_a_of_type_AndroidWidgetTextView, paramNetSearchTemplateNormalItem.jdField_a_of_type_Int, paramNetSearchTemplateNormalItem.i, paramNetSearchTemplateNormalItem.l, localContext.getResources().getDimensionPixelSize(2131559133));
+      a(localContext, paramNetSearchTemplateNormalView.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView, paramNetSearchTemplateNormalView.jdField_a_of_type_AndroidWidgetImageView, paramNetSearchTemplateNormalView.jdField_a_of_type_AndroidWidgetTextView, paramNetSearchTemplateNormalItem.jdField_a_of_type_Int, paramNetSearchTemplateNormalItem.i, paramNetSearchTemplateNormalItem.l, localContext.getResources().getDimensionPixelSize(2131559135));
       localObject = (LinearLayout.LayoutParams)paramNetSearchTemplateNormalView.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
       localLayoutParams = (LinearLayout.LayoutParams)paramNetSearchTemplateNormalView.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
       if ((paramNetSearchTemplateNormalItem.jdField_a_of_type_Int != 6) && (paramNetSearchTemplateNormalItem.jdField_a_of_type_Int != 8) && (!paramNetSearchTemplateNormalItem.jdField_b_of_type_Boolean)) {
@@ -929,7 +929,7 @@ public class SearchTemplatePresenter
       paramNetSearchTemplateNormalView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
       paramNetSearchTemplateNormalView.jdField_b_of_type_AndroidWidgetTextView.setSingleLine(true);
       n = a(paramNetSearchTemplateNormalView.jdField_b_of_type_AndroidWidgetTextView, paramNetSearchTemplateNormalView.jdField_c_of_type_AndroidWidgetTextView, paramNetSearchTemplateNormalItem.jdField_a_of_type_JavaLangCharSequence);
-      int k = localContext.getResources().getDimensionPixelSize(2131559133);
+      int k = localContext.getResources().getDimensionPixelSize(2131559135);
       if ((paramNetSearchTemplateNormalItem.jdField_a_of_type_Int == 6) || (paramNetSearchTemplateNormalItem.jdField_a_of_type_Int == 7) || (paramNetSearchTemplateNormalItem.jdField_a_of_type_Int == 8)) {
         k = DisplayUtil.a(localContext, 100.0F);
       }
@@ -988,7 +988,7 @@ public class SearchTemplatePresenter
             paramNetSearchTemplateNormalView.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
             return;
             paramNetSearchTemplateNormalView.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-            ((LinearLayout.LayoutParams)localObject).leftMargin = localContext.getResources().getDimensionPixelSize(2131559139);
+            ((LinearLayout.LayoutParams)localObject).leftMargin = localContext.getResources().getDimensionPixelSize(2131559141);
             break;
             if (((localContext instanceof PublicAcntSearchActivity)) && (paramNetSearchTemplateNormalItem.jdField_a_of_type_Int == 5))
             {
@@ -1074,7 +1074,7 @@ public class SearchTemplatePresenter
       for (;;)
       {
         paramNetSearchTemplateSubItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundDrawable(a(paramNetSearchTemplateSubItem.jdField_a_of_type_JavaLangString));
-        paramNetSearchTemplateSubItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new ahgo(this, paramNetSearchTemplateSubItem, paramNetSearchTemplateSubItemView));
+        paramNetSearchTemplateSubItemView.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new ahuq(this, paramNetSearchTemplateSubItem, paramNetSearchTemplateSubItemView));
         return;
         ((RelativeLayout.LayoutParams)localObject).addRule(14, 0);
         ((RelativeLayout.LayoutParams)localObject).addRule(5);
@@ -1165,12 +1165,12 @@ public class SearchTemplatePresenter
     Object localObject4;
     for (;;)
     {
-      localObject2 = (LinearLayout)((View)localObject2).findViewById(2131366309);
+      localObject2 = (LinearLayout)((View)localObject2).findViewById(2131366336);
       localObject3 = new ArrayList();
       i = 0;
       while (i < ((LinearLayout)localObject2).getChildCount())
       {
-        localObject4 = ((LinearLayout)localObject2).getChildAt(i).findViewById(2131366353);
+        localObject4 = ((LinearLayout)localObject2).getChildAt(i).findViewById(2131366380);
         if ((localObject4 instanceof SquareImageView)) {
           ((List)localObject3).add((SquareImageView)localObject4);
         }
@@ -1212,7 +1212,7 @@ public class SearchTemplatePresenter
         ((URLDrawable)localObject2).restartDownload();
       }
       paramNetSearchTemplateUpdatesView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      i = ((Context)localObject1).getResources().getDimensionPixelSize(2131559133);
+      i = ((Context)localObject1).getResources().getDimensionPixelSize(2131559135);
       if ((paramNetSearchTemplateUpdatesItem.jdField_a_of_type_Int == 6) || (paramNetSearchTemplateUpdatesItem.jdField_a_of_type_Int == 8)) {
         i = DisplayUtil.a((Context)localObject1, 100.0F);
       }
@@ -1243,8 +1243,8 @@ public class SearchTemplatePresenter
       }
       localObject1 = paramNetSearchTemplateUpdatesView.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView;
       ((SquareImageView)localObject1).setImageScale((float)(1.0D / paramNetSearchTemplateUpdatesItem.jdField_a_of_type_Double), 0.0F);
-      f1 = ((Resources)localObject2).getDimension(2131559140);
-      float f2 = ((Resources)localObject2).getDimension(2131559140);
+      f1 = ((Resources)localObject2).getDimension(2131559142);
+      float f2 = ((Resources)localObject2).getDimension(2131559142);
       i = DisplayUtil.a(paramNetSearchTemplateUpdatesView.a().getContext(), 2.0F);
       j = paramNetSearchTemplateUpdatesView.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount();
       i = (int)(jdField_a_of_type_Int - f1 - f2 - (j - 1) * i) / j;
@@ -1289,8 +1289,8 @@ public class SearchTemplatePresenter
         {
           localObject2 = paramNetSearchTemplateUpdatesView.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
           ((View)localObject2).setVisibility(0);
-          localObject1 = (SquareImageView)((View)localObject2).findViewById(2131366353);
-          localObject2 = (ImageView)((View)localObject2).findViewById(2131366315);
+          localObject1 = (SquareImageView)((View)localObject2).findViewById(2131366380);
+          localObject2 = (ImageView)((View)localObject2).findViewById(2131366342);
           ((SquareImageView)localObject1).setImageScale((float)(1.0D / paramNetSearchTemplateUpdatesItem.jdField_a_of_type_Double), 0.0F);
           localObject3 = (ImageItem)paramNetSearchTemplateUpdatesItem.jdField_a_of_type_JavaUtilList.get(i);
           localObject4 = ((ImageItem)localObject3).jdField_a_of_type_JavaLangString;
@@ -1370,7 +1370,7 @@ public class SearchTemplatePresenter
     {
       paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
       paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetButton.setText(paramNetSearchTemplateUniversalItem.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateUniversalItem$ActionInfo.jdField_a_of_type_JavaLangCharSequence);
-      paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new ahgr(this, localContext, paramNetSearchTemplateUniversalItem));
+      paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(new ahut(this, localContext, paramNetSearchTemplateUniversalItem));
       return;
     }
     paramNetSearchTemplateUniversalView.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
@@ -1389,17 +1389,17 @@ public class SearchTemplatePresenter
       a(paramSquareImageView, paramImageView, paramTextView, paramInt2, (int)(paramInt2 * 1.4F), false, paramString1, null, 0, false);
       return;
     case 3: 
-      a(paramSquareImageView, paramImageView, paramTextView, paramInt2, paramInt2, false, paramString1, null, 2130840361, false);
+      a(paramSquareImageView, paramImageView, paramTextView, paramInt2, paramInt2, false, paramString1, null, 2130840367, false);
       return;
     case 4: 
-      a(paramSquareImageView, paramImageView, paramTextView, paramInt2, paramInt2, false, paramString1, null, 2130840361, false);
+      a(paramSquareImageView, paramImageView, paramTextView, paramInt2, paramInt2, false, paramString1, null, 2130840367, false);
       return;
     case 5: 
       a(paramSquareImageView, paramImageView, paramTextView, paramInt2, paramInt2, false, paramString1, null, 0, true);
       return;
     case 6: 
       paramInt1 = DisplayUtil.a(paramContext, 62.0F);
-      a(paramSquareImageView, paramImageView, paramTextView, DisplayUtil.a(paramContext, 100.0F), paramInt1, false, paramString1, null, 2130840361, false);
+      a(paramSquareImageView, paramImageView, paramTextView, DisplayUtil.a(paramContext, 100.0F), paramInt1, false, paramString1, null, 2130840367, false);
       return;
     case 7: 
       a(paramSquareImageView, paramImageView, paramTextView, DisplayUtil.a(paramContext, 100.0F), DisplayUtil.a(paramContext, 62.0F), false, paramString1, paramString2, 0, false);
@@ -1643,7 +1643,7 @@ public class SearchTemplatePresenter
   protected void b(NetSearchTemplateBaseItem paramNetSearchTemplateBaseItem, NetSearchTemplateBaseView paramNetSearchTemplateBaseView)
   {
     if (paramNetSearchTemplateBaseView.a() != null) {
-      paramNetSearchTemplateBaseView.a().setOnClickListener(new ahgm(this, paramNetSearchTemplateBaseItem));
+      paramNetSearchTemplateBaseView.a().setOnClickListener(new ahuo(this, paramNetSearchTemplateBaseItem));
     }
   }
   
@@ -1674,7 +1674,7 @@ public class SearchTemplatePresenter
     Resources localResources = localImageView.getContext().getResources();
     if (paramInt == 1)
     {
-      localImageView.post(new ahgs(this, bool, localImageView));
+      localImageView.post(new ahuu(this, bool, localImageView));
       return;
     }
     if (paramInt == 2)
@@ -1682,13 +1682,13 @@ public class SearchTemplatePresenter
       localImageView.getContext();
       ((Integer)localImageView.getTag()).intValue();
       SearchUtils.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-      localImageView.post(new ahgt(this, localImageView, bool));
-      localImageView.setContentDescription(localResources.getString(2131437002));
+      localImageView.post(new ahuv(this, localImageView, bool));
+      localImageView.setContentDescription(localResources.getString(2131437019));
       this.jdField_a_of_type_ComTencentMobileqqSearchAdapterGroupSearchAdapter.notifyDataSetChanged();
       return;
     }
-    localImageView.post(new ahgu(this, localImageView, bool));
-    localImageView.setContentDescription(localResources.getString(2131437001));
+    localImageView.post(new ahuw(this, localImageView, bool));
+    localImageView.setContentDescription(localResources.getString(2131437018));
   }
 }
 

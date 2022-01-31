@@ -1,32 +1,17 @@
-import com.tencent.mobileqq.armap.ipc.ArMapIPC;
-import com.tencent.mobileqq.armap.ipc.IPCConstants;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCResult;
-import eipc.EIPClientConnectListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.widget.ActionSheet;
 
-public class aays
-  implements EIPClientConnectListener
+class aays
+  implements DialogInterface.OnDismissListener
 {
-  public aays(ArMapIPC paramArMapIPC) {}
+  aays(aayr paramaayr, ActionSheet paramActionSheet) {}
   
-  public void connectFailed()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPC", 2, "connectFailed ");
-    }
-    this.a.a = false;
-    this.a.a(IPCConstants.b, EIPCResult.createResult(-102, null));
-  }
-  
-  public void connectSuccess(EIPCConnection paramEIPCConnection)
-  {
-    paramEIPCConnection = paramEIPCConnection.procName;
-    if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPC", 2, "connectSuccess " + paramEIPCConnection);
-    }
-    this.a.a = true;
-    this.a.a(IPCConstants.b, EIPCResult.createResult(0, null));
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    ArkAppCenter.b("ArkApp.DebugOnlineActivity", String.format("ClearData actionsheet is closed", new Object[0]));
   }
 }
 

@@ -1,21 +1,17 @@
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.activity.RecommendTroopAdapter;
 
 public class aiut
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aiut(ReciteRecordLayout paramReciteRecordLayout, String paramString, double paramDouble) {}
+  public aiut(RecommendTroopAdapter paramRecommendTroopAdapter) {}
   
-  public void run()
-  {
-    if (ReciteRecordLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout) != null) {
-      ReciteRecordLayout.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Double);
-    }
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiut
  * JD-Core Version:    0.7.0.1
  */

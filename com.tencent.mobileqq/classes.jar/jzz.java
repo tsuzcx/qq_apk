@@ -1,95 +1,43 @@
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout;
-import android.widget.ImageButton;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
+import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.av.ui.QavPanel;
+import android.widget.TextView;
+import com.tencent.av.ui.QavVideoRecordUICtrl;
 
 public class jzz
-  implements Animation.AnimationListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public jzz(QavPanel paramQavPanel) {}
+  public jzz(QavVideoRecordUICtrl paramQavVideoRecordUICtrl, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.d.clearAnimation();
-    this.a.e.clearAnimation();
-    this.a.f.clearAnimation();
-    this.a.g.clearAnimation();
-    this.a.jdField_a_of_type_AndroidWidgetFrameLayout.clearAnimation();
-    this.a.jdField_b_of_type_AndroidWidgetFrameLayout.clearAnimation();
-    paramAnimation = this.a.getResources().getDisplayMetrics();
-    int j = (int)(paramAnimation.widthPixels * QavPanel.a());
-    int i = (int)(paramAnimation.widthPixels * QavPanel.b());
-    if (i > this.a.a() * 2 / 5) {
-      i = this.a.a() * 2 / 5;
-    }
-    for (;;)
+    float f1 = paramValueAnimator.getAnimatedFraction();
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    QavVideoRecordUICtrl.a(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setMargins((int)((1.0F - f1) * this.jdField_a_of_type_Int), 0, 0, 0);
+    QavVideoRecordUICtrl.a(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setLayoutParams(QavVideoRecordUICtrl.a(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl));
+    QavVideoRecordUICtrl.b(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setMargins(this.b - (int)(this.jdField_a_of_type_Int * f1), 0, 0, 0);
+    QavVideoRecordUICtrl.a(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setLayoutParams(QavVideoRecordUICtrl.b(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl));
+    float f2;
+    if (i <= 220)
     {
-      RelativeLayout.LayoutParams localLayoutParams;
-      if (this.a.jdField_b_of_type_Boolean)
-      {
-        k = (int)(paramAnimation.widthPixels * QavPanel.c());
-        QavPanel.a(this.a, 2131365374, j, k);
-        if (this.a.a(2131365370) == 0) {
-          QavPanel.a(this.a, 2131365370, j + 10, k - 5);
-        }
-        for (;;)
-        {
-          k = (int)(paramAnimation.widthPixels * QavPanel.d());
-          QavPanel.a(this.a, 2131365376, j, k);
-          QavPanel.a(this.a, 2131365378, j, k);
-          QavPanel.a(this.a, 2131365380, j, k);
-          if (this.a.jdField_a_of_type_AndroidWidgetImageButton != null)
-          {
-            k = (int)(paramAnimation.widthPixels * QavPanel.e());
-            localLayoutParams = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetImageButton.getLayoutParams();
-            localLayoutParams.width = i;
-            localLayoutParams.height = i;
-            localLayoutParams.leftMargin = k;
-            this.a.jdField_a_of_type_AndroidWidgetImageButton.setLayoutParams(localLayoutParams);
-          }
-          i = (int)(paramAnimation.widthPixels * QavPanel.e());
-          k = (int)(paramAnimation.widthPixels * QavPanel.b());
-          QavPanel.a(this.a, 2131365372, j, i * 2 + k - 5);
-          return;
-          QavPanel.a(this.a, 2131365368, j + 10, k - 5);
-        }
-      }
-      int k = (int)(paramAnimation.widthPixels * QavPanel.f());
-      QavPanel.a(this.a, 2131365374, j, k);
-      if (this.a.a(2131365370) == 0) {
-        QavPanel.a(this.a, 2131365370, j + 10, k - 5);
-      }
-      for (;;)
-      {
-        k = (int)(paramAnimation.widthPixels * QavPanel.g());
-        QavPanel.a(this.a, 2131365376, j, k);
-        QavPanel.a(this.a, 2131365378, j, k);
-        QavPanel.a(this.a, 2131365380, j, k);
-        if (this.a.jdField_a_of_type_AndroidWidgetImageButton != null)
-        {
-          k = (int)(paramAnimation.widthPixels * QavPanel.h());
-          localLayoutParams = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetImageButton.getLayoutParams();
-          localLayoutParams.width = i;
-          localLayoutParams.height = i;
-          localLayoutParams.leftMargin = k;
-          this.a.jdField_a_of_type_AndroidWidgetImageButton.setLayoutParams(localLayoutParams);
-        }
-        i = (int)(paramAnimation.widthPixels * QavPanel.h());
-        k = (int)(paramAnimation.widthPixels * QavPanel.b());
-        QavPanel.a(this.a, 2131365372, j, i * 2 + k - 5);
-        return;
-        QavPanel.a(this.a, 2131365368, j + 10, k - 5);
-      }
+      f2 = i / 220.0F;
+      QavVideoRecordUICtrl.a(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setAlpha(f2);
     }
+    QavVideoRecordUICtrl.c(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setMargins(this.c + (int)(this.d * f1), 0, 0, 0);
+    QavVideoRecordUICtrl.b(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setLayoutParams(QavVideoRecordUICtrl.c(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl));
+    if (i <= 160)
+    {
+      f2 = i / 100.0F;
+      QavVideoRecordUICtrl.b(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setAlpha(f2);
+    }
+    QavVideoRecordUICtrl.d(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setMargins((int)((this.e + 0) * f1) + 0, 0, 0, 0);
+    QavVideoRecordUICtrl.d(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).width = (this.f - (int)((this.f - this.g) * f1));
+    QavVideoRecordUICtrl.c(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setLayoutParams(QavVideoRecordUICtrl.d(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl));
+    QavVideoRecordUICtrl.d(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).setAlpha(1.0F - f1);
+    QavVideoRecordUICtrl.b(this.jdField_a_of_type_ComTencentAvUiQavVideoRecordUICtrl).requestLayout();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

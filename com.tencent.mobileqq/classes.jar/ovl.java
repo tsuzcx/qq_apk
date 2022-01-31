@@ -1,40 +1,78 @@
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.biz.troop.VideoCombineHelper.CombineParams;
-import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
+import android.os.Handler;
+import android.os.Message;
+import android.widget.FrameLayout;
+import com.tencent.biz.tribe.TribeVideoPlugin;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
-class ovl
-  implements VideoCombineHelper.Callback
+public class ovl
+  extends Handler
 {
-  ovl(ovk paramovk, VideoCombineHelper.CombineParams paramCombineParams) {}
+  private WeakReference a;
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public ovl(TribeVideoPlugin paramTribeVideoPlugin)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "combineVideos end! isSuccess:" + paramBoolean + " path = " + paramString1);
-    }
-    File localFile = new File(paramString1);
-    if ((paramBoolean) && (localFile.exists()))
+    this.a = new WeakReference(paramTribeVideoPlugin);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    TribeVideoPlugin localTribeVideoPlugin = (TribeVideoPlugin)this.a.get();
+    Object localObject = paramMessage.obj;
+    if ((localTribeVideoPlugin == null) || (localObject == null) || (!(localObject instanceof String))) {}
+    do
     {
-      if (this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.a)
+      do
       {
-        this.jdField_a_of_type_Ovk.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this.jdField_a_of_type_Ovk);
+        do
+        {
+          do
+          {
+            do
+            {
+              return;
+              switch (paramMessage.what)
+              {
+              default: 
+                return;
+              case 1: 
+                TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, true);
+                return;
+              case 2: 
+                TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, false);
+                return;
+              case 3: 
+                paramMessage = (ovo)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+              }
+            } while ((paramMessage == null) || (ovo.c(paramMessage)));
+            if (QLog.isColorLevel()) {
+              QLog.d("TribeVideoPlugin", 2, "sdk player is not prepared");
+            }
+            TribeVideoPlugin.a(localTribeVideoPlugin, (String)localObject, 5);
+            ovo.b(paramMessage, true);
+            return;
+            paramMessage = (ovo)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+          } while (paramMessage == null);
+          if ((TribeVideoPlugin.a(localTribeVideoPlugin) == 0) && (!TribeVideoPlugin.a(localTribeVideoPlugin)))
+          {
+            QLog.d("TribeVideoPlugin", 2, "MSG_SHOW_PLAYER_LAYOUT plugin.mPlayMode == PARAM_RESULT_PLAY_FRONT videoWrapper.mPlayerID = " + ovo.a(paramMessage));
+            TribeVideoPlugin.a(localTribeVideoPlugin).bringToFront();
+            TribeVideoPlugin.a(localTribeVideoPlugin, true);
+          }
+          TribeVideoPlugin.a(localTribeVideoPlugin, ovo.a(paramMessage), 1);
+          return;
+          paramMessage = (ovo)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+        } while (paramMessage == null);
+        TribeVideoPlugin.a(localTribeVideoPlugin, paramMessage);
         return;
-      }
-      if (this.jdField_a_of_type_Ovk.jdField_a_of_type_JavaLangString != null)
-      {
-        l = System.currentTimeMillis();
-        this.jdField_a_of_type_Ovk.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a(paramString1, this.jdField_a_of_type_Ovk.jdField_a_of_type_JavaLangString, new ovm(this, l));
-        return;
-      }
-      long l = System.currentTimeMillis();
-      this.jdField_a_of_type_Ovk.a(localFile, this.jdField_a_of_type_Ovk.b, new ovo(this, l));
+        paramMessage = (ovo)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+      } while (paramMessage == null);
+      TribeVideoPlugin.b(localTribeVideoPlugin, paramMessage);
       return;
-    }
-    this.jdField_a_of_type_Ovk.d = paramString2;
-    this.jdField_a_of_type_Ovk.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_Ovk);
+      paramMessage = (ovo)TribeVideoPlugin.a(localTribeVideoPlugin).get((String)localObject);
+    } while (paramMessage == null);
+    TribeVideoPlugin.c(localTribeVideoPlugin, paramMessage);
   }
 }
 

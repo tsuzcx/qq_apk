@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.shortvideo.util;
 
 import android.content.Context;
-import com.tencent.mobileqq.qmcf.QmcfManager;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -32,14 +31,6 @@ public class PtvFilterSoLoad$SVFilterSoLoadStatus
   private static String a(String paramString)
   {
     return "lib" + paramString + ".so";
-  }
-  
-  public static boolean a()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("SVAF_SoLoad", 2, String.format("isLoadArtFilterSuccess, status=[%S]", new Object[] { Integer.valueOf(jdField_a_of_type_Int) }));
-    }
-    return jdField_a_of_type_Int == 0;
   }
   
   public static boolean a(Context paramContext)
@@ -99,6 +90,11 @@ public class PtvFilterSoLoad$SVFilterSoLoadStatus
     return bool2;
   }
   
+  private static boolean b()
+  {
+    return SoLoader.d();
+  }
+  
   public static boolean b(Context arg0)
   {
     String str = PtvFilterSoLoad.c(???);
@@ -111,58 +107,6 @@ public class PtvFilterSoLoad$SVFilterSoLoadStatus
       }
       return bool1;
     }
-  }
-  
-  private static boolean c()
-  {
-    return SoLoader.c();
-  }
-  
-  public static boolean c(Context paramContext)
-  {
-    boolean bool1;
-    if (a()) {
-      bool1 = true;
-    }
-    boolean bool2;
-    do
-    {
-      return bool1;
-      paramContext = PtvFilterSoLoad.c(paramContext);
-      if (jdField_a_of_type_Int != 0)
-      {
-        jdField_a_of_type_Int = PtvFilterSoLoad.a(paramContext + "libQMCF.so");
-        if (FileUtils.a(paramContext + jdField_b_of_type_ArrayOfJavaLangString[2]))
-        {
-          int i = 0;
-          while (i < jdField_b_of_type_ArrayOfJavaLangString.length)
-          {
-            if (jdField_b_of_type_ArrayOfInt[i] != 0) {
-              jdField_b_of_type_ArrayOfInt[i] = PtvFilterSoLoad.a(paramContext + jdField_b_of_type_ArrayOfJavaLangString[i]);
-            }
-            i += 1;
-          }
-          int[] arrayOfInt = jdField_b_of_type_ArrayOfInt;
-          int k = arrayOfInt.length;
-          i = 0;
-          int j = 1;
-          while (i < k)
-          {
-            if (arrayOfInt[i] != 0) {
-              j = 0;
-            }
-            i += 1;
-          }
-          if (j != 0) {
-            QmcfManager.a = true;
-          }
-        }
-      }
-      bool2 = a();
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.i("SVAF_SoLoad", 2, String.format("loadArtFilterSo, bSuc[%s], soPath[%s], snpeSupport[%s]", new Object[] { Boolean.valueOf(bool2), paramContext, Boolean.valueOf(QmcfManager.a) }));
-    return bool2;
   }
 }
 

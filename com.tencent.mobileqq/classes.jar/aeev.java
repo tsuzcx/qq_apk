@@ -1,26 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.model.BasePlayListDataModel;
-import com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.managers.CUOpenCardGuideMng.CUOpenCardClickableSpan;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class aeev
-  implements View.OnClickListener
+public class aeev
+  implements Runnable
 {
-  aeev(aeeu paramaeeu) {}
+  public aeev(CUOpenCardGuideMng.CUOpenCardClickableSpan paramCUOpenCardClickableSpan) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowModelBasePlayListDataModel.a();
-    this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_ComTencentMobileqqNearbyNowViewQQStoryVideoPlayerErrorView.setVisibility(8);
-    this.a.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    String str;
+    if (this.a.a == 1) {
+      str = "0X8008124";
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(str)) {
+        ReportController.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+      }
+      return;
+      if (this.a.a == 2) {
+        str = "0X8008126";
+      } else if ((this.a.a == 3) || (this.a.a == 4)) {
+        str = "0X800813E";
+      } else {
+        str = null;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeev
  * JD-Core Version:    0.7.0.1
  */

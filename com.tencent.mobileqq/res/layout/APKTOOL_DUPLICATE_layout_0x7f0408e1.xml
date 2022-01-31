@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#e5000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqstory.view.widget.LeftTabBarView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27d0" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" />
-    <View android:background="#55ffffff" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a27d0" />
-    <com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a21fa" android:padding="4.0dip" android:layout_width="26.0dip" android:layout_height="26.0dip" android:layout_marginTop="28.0dip" android:layout_marginRight="11.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216f5" android:layout_alignParentRight="true" />
-    <android.support.v4.view.ViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03e2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a27d0" />
-</RelativeLayout>
+    <TextView android:textSize="12.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0546" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1552" android:background="#fff1f1f1" android:paddingLeft="4.0dip" android:paddingTop="2.5dip" android:paddingRight="4.0dip" android:paddingBottom="2.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip" android:text="\#夏日海滩" />
+</LinearLayout>

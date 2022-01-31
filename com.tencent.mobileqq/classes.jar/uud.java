@@ -1,21 +1,23 @@
-import android.graphics.drawable.ColorDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.item.ArkAppBabyQNoResultBuilder;
+import com.tencent.mobileqq.ark.ArkAppDataReport;
 
-class uud
-  implements Runnable
+public class uud
+  implements View.OnClickListener
 {
-  uud(uuc paramuuc) {}
+  public uud(ArkAppBabyQNoResultBuilder paramArkAppBabyQNoResultBuilder, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(-16777216);
-    URLDrawable.getDrawable(new File(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath), localURLDrawableOptions);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.b();
+    if ((paramView instanceof TextView))
+    {
+      paramView = ((TextView)paramView).getText();
+      ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "@babyQ " + paramView);
+      ArkAppDataReport.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int + 1);
+    }
   }
 }
 

@@ -1,26 +1,40 @@
-import com.tencent.av.ui.GLVideoView;
-import com.tencent.av.ui.VideoLayerUI;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.av.ui.VoiceChangeChooseDialog;
 
 public class kco
-  implements Runnable
+  extends BroadcastReceiver
 {
-  long jdField_a_of_type_Long = 0L;
+  public kco(VoiceChangeChooseDialog paramVoiceChangeChooseDialog) {}
   
-  public kco(VideoLayerUI paramVideoLayerUI, long paramLong, GLVideoView paramGLVideoView, float paramFloat) {}
-  
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    long l = this.jdField_a_of_type_Long;
-    this.jdField_a_of_type_Long = (1L + l);
-    if (l < this.b)
+    boolean bool = true;
+    paramContext = paramIntent.getAction();
+    if ((paramContext != null) && (paramContext.equals("android.intent.action.HEADSET_PLUG")) && (paramIntent.hasExtra("state")))
     {
-      this.jdField_a_of_type_ComTencentAvUiGLVideoView.a(this.jdField_a_of_type_Float, VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI), VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI));
-      this.jdField_a_of_type_ComTencentAvUiGLVideoView.a(this, 10L);
-      return;
+      int i = paramIntent.getIntExtra("state", 0);
+      paramContext = this.a;
+      if (i != 1) {
+        break label114;
+      }
     }
-    this.jdField_a_of_type_ComTencentAvUiGLVideoView.a(0, 0, true);
-    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, -1);
-    VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, -1);
+    for (;;)
+    {
+      paramContext.jdField_a_of_type_Boolean = bool;
+      if ((this.a.jdField_a_of_type_Boolean) && (VoiceChangeChooseDialog.a(this.a) == 2))
+      {
+        this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131429604);
+        VoiceChangeChooseDialog.a(this.a, 0);
+      }
+      return;
+      label114:
+      bool = false;
+    }
   }
 }
 

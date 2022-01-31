@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
-import mlu;
+import mne;
 
 public class WebFastBannerAdCreator
   implements ItemCreator
@@ -16,7 +16,7 @@ public class WebFastBannerAdCreator
   
   public BaseItemViewHolder a(Context paramContext, BaseData paramBaseData, ViewGroup paramViewGroup)
   {
-    return new mlu(LayoutInflater.from(paramContext).inflate(2130969601, paramViewGroup, false), paramBaseData);
+    return new mne(LayoutInflater.from(paramContext).inflate(2130969609, paramViewGroup, false), paramBaseData);
   }
   
   public boolean a(BaseData paramBaseData)

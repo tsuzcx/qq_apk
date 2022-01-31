@@ -1,19 +1,20 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.readinjoy.ReadInJoyObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class sxj
-  extends ClickableSpan
+  extends ReadInJoyObserver
 {
-  private sxj(LoginInfoActivity paramLoginInfoActivity) {}
+  public sxj(Leba paramLeba) {}
   
-  public void onClick(View paramView) {}
-  
-  public void updateDrawState(TextPaint paramTextPaint)
+  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    paramTextPaint.setColor(paramTextPaint.linkColor);
-    paramTextPaint.setUnderlineText(false);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.lebatab.leba", 2, "onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x1) != 0)) {
+      this.a.a(new sxk(this));
+    }
   }
 }
 

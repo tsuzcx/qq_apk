@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragmentAllWaite;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditImportVideoPlayer;
+import java.util.Map;
 
-public class anvu
+class anvu
   implements Runnable
 {
-  public anvu(CaptureQmcfSoDownloadFragmentAllWaite paramCaptureQmcfSoDownloadFragmentAllWaite) {}
+  anvu(anvt paramanvt, Map paramMap) {}
   
   public void run()
   {
-    GestureMgr.a().b();
+    this.jdField_a_of_type_Anvt.a.a.a(this.jdField_a_of_type_JavaUtilMap);
   }
 }
 

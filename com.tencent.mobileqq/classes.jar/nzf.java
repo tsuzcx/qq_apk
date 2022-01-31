@@ -1,21 +1,33 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.MessageNotifySegment;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.response.GetLocationResponse;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher.Response;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.common.AddressHelper.AddressCallBack;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import java.util.ArrayList;
 
 public class nzf
-  implements Runnable
+  implements AddressHelper.AddressCallBack
 {
-  public nzf(MessageNotifySegment paramMessageNotifySegment, ImageView paramImageView, Drawable paramDrawable) {}
+  public nzf(LocalVideoPusher paramLocalVideoPusher, ArrayList paramArrayList, LocalMediaInfo paramLocalMediaInfo) {}
   
-  public void run()
+  public void a(ErrorMessage paramErrorMessage)
   {
-    UserManager localUserManager = (UserManager)SuperManager.a(2);
-    String str = localUserManager.b(Long.toString(MessageNotifySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentMessageNotifySegment)), true);
-    ThreadManager.getUIHandler().post(new nzg(this, str, localUserManager));
+    paramErrorMessage = new LocalVideoPusher.Response();
+    paramErrorMessage.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    paramErrorMessage = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.b.obtainMessage(2, paramErrorMessage);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.b.sendMessage(paramErrorMessage);
+  }
+  
+  public void a(GetLocationResponse paramGetLocationResponse)
+  {
+    LocalVideoPusher.Response localResponse = new LocalVideoPusher.Response();
+    localResponse.jdField_a_of_type_JavaUtilArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    localResponse.b = (paramGetLocationResponse.d + paramGetLocationResponse.e);
+    localResponse.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo.addedDate);
+    paramGetLocationResponse = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.b.obtainMessage(2, localResponse);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistLocalVideoPusher.b.sendMessage(paramGetLocationResponse);
   }
 }
 

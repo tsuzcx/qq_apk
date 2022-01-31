@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.now.location;
 
-import aefh;
-import aegb;
+import aesn;
+import aeth;
 import android.util.JsonReader;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.util.LogUtil;
@@ -65,21 +65,21 @@ public class LocationHelper
     return null;
   }
   
-  public static void a(double paramDouble1, double paramDouble2, aegb paramaegb)
+  public static void a(double paramDouble1, double paramDouble2, aeth paramaeth)
   {
     String str = String.format("http://apis.map.qq.com/ws/geocoder/v1/?location=%s&key=HPYBZ-EZUKU-RYOVB-4HVZR-KQHXO-4AB6C&get_poi=0", new Object[] { paramDouble1 + "," + paramDouble2 });
     LogUtil.i("LocationHelper", "getCityByLatLng: url:" + str);
     try
     {
       URL localURL = new URL(str);
-      ThreadManager.getSubThreadHandler().post(new aefh(localURL, paramaegb));
+      ThreadManager.getSubThreadHandler().post(new aesn(localURL, paramaeth));
       return;
     }
     catch (MalformedURLException localMalformedURLException)
     {
       localMalformedURLException.printStackTrace();
       LogUtil.e("LocationHelper", "getCityByLatLng: url convert error!" + str);
-      paramaegb.a();
+      paramaeth.a();
     }
   }
   

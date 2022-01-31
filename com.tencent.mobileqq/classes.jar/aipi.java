@@ -1,18 +1,26 @@
-import com.tencent.mobileqq.troop.data.TroopCreateLogic;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.transfile.FileAssistantDownloader;
+import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
+import java.net.URL;
 
-class aipi
-  implements Runnable
+public class aipi
+  implements BitmapDecoder
 {
-  aipi(aipg paramaipg) {}
+  public aipi(FileAssistantDownloader paramFileAssistantDownloader) {}
   
-  public void run()
+  public Bitmap a(URL paramURL)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback, this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.b);
+    paramURL = this.a.a(paramURL);
+    if (paramURL == null) {
+      return null;
+    }
+    return ShortVideoUtils.a(null, paramURL.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aipi
  * JD-Core Version:    0.7.0.1
  */

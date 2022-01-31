@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.util;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import mtq;
+import mux;
 
 public class ProfileParams$CurLoginUsr
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new mtq();
+  public static final Parcelable.Creator CREATOR = new mux();
   public final String a;
   public final String b;
   

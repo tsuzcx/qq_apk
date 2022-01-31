@@ -1,22 +1,15 @@
-import android.os.HandlerThread;
-import android.os.Looper;
-import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class ydd
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ydd(VipSpecialCareHandler paramVipSpecialCareHandler) {}
+  public ydd(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    VipSpecialCareHandler.a(this.a, ThreadManager.newFreeHandlerThread("special-timer", 0));
-    VipSpecialCareHandler.a(this.a).start();
-    Looper localLooper = VipSpecialCareHandler.a(this.a).getLooper();
-    if (localLooper == null) {
-      return;
-    }
-    VipSpecialCareHandler.a(this.a, new yde(this, localLooper));
+    this.a.s();
   }
 }
 

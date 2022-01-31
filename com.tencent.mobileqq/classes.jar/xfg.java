@@ -1,27 +1,19 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import cooperation.qqdataline.QQProxyForDataline;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
 
-public class xfg
-  implements View.OnClickListener
+public final class xfg
+  implements Runnable
 {
-  public xfg(BannerManager paramBannerManager) {}
+  public xfg(MessageRecord paramMessageRecord) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
+    QQAppInterface localQQAppInterface = QWalletTools.a();
+    if ((localQQAppInterface != null) && (this.a != null)) {
+      localQQAppInterface.a().a(this.a.frienduin, this.a.istroop, this.a.uniseq, "extStr", this.a.extStr);
     }
-    paramView = new Bundle();
-    paramView.putBoolean("string_from", false);
-    paramView.putBoolean("string_uin", true);
-    paramView.putLong("device_din", 0L);
-    paramView.putInt("sTitleID", 0);
-    QQProxyForDataline.a(BannerManager.a(this.a), paramView, "com.qqdataline.activity.LiteWifiphotoActivity");
   }
 }
 

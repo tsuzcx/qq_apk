@@ -1,58 +1,40 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.widget.TextView;
-import com.tencent.av.utils.TroopMemberUtil;
-import com.tencent.biz.troopgift.TroopGiftAioPanelData;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.biz.troopgift.TroopGiftPanel.OnGetGiveGiftCallback;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import com.tencent.biz.troop.VideoCombineHelper;
+import com.tencent.biz.troop.VideoCombineHelper.Callback;
+import com.tencent.biz.troop.VideoCombineHelper.CombineParams;
+import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.List;
+import java.io.File;
 
-public class oxf
-  extends TroopGiftCallback
+class oxf
+  implements VideoCombineHelper.Callback
 {
-  public oxf(TroopGiftPanel paramTroopGiftPanel, TroopGiftPanel.OnGetGiveGiftCallback paramOnGetGiveGiftCallback) {}
+  oxf(oxe paramoxe, VideoCombineHelper.CombineParams paramCombineParams) {}
   
-  public void a(int paramInt1, int paramInt2, String paramString, List paramList)
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("TroopGiftPanel", 2, "onGetStockResult count = " + paramInt1);
+      QLog.d(".troop.VideoCombineHelper", 2, "combineVideos end! isSuccess:" + paramBoolean + " path = " + paramString1);
     }
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.c = (paramInt1 + paramInt2);
-    if (Looper.getMainLooper().getThread() == Thread.currentThread())
+    File localFile = new File(paramString1);
+    if ((paramBoolean) && (localFile.exists()))
     {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_b_of_type_AndroidWidgetTextView.setText(paramInt1 + "");
-      if (paramInt2 > 0)
+      if (this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$CombineParams.a)
       {
-        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d.setText("+" + paramInt2);
-        this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d.setVisibility(0);
+        this.jdField_a_of_type_Oxe.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this.jdField_a_of_type_Oxe);
+        return;
       }
-    }
-    while (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$OnGetGiveGiftCallback != null)
-    {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$OnGetGiveGiftCallback.a(paramList);
+      if (this.jdField_a_of_type_Oxe.jdField_a_of_type_JavaLangString != null)
+      {
+        l = System.currentTimeMillis();
+        this.jdField_a_of_type_Oxe.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a(paramString1, this.jdField_a_of_type_Oxe.jdField_a_of_type_JavaLangString, new oxg(this, l));
+        return;
+      }
+      long l = System.currentTimeMillis();
+      this.jdField_a_of_type_Oxe.a(localFile, this.jdField_a_of_type_Oxe.b, new oxi(this, l));
       return;
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d.setText("");
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.d.setVisibility(8);
-      continue;
-      new Handler(Looper.getMainLooper()).post(new oxg(this, paramInt1));
     }
-    this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData.a(paramList);
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGiftPanel", 2, "onGetStockResult() onError errorCode = " + paramInt + ", errorMsg = " + paramString);
-    }
-    if (this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$OnGetGiveGiftCallback != null) {
-      this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel$OnGetGiveGiftCallback.a(paramInt);
-    }
-    ReportController.b(null, "dc00899", "Grp_flower", "", "video_mall", "fail_expbean", 0, 0, this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a(), "", this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_b_of_type_JavaLangString, "" + TroopMemberUtil.a((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get(), ((AppInterface)this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.jdField_a_of_type_JavaLangRefWeakReference.get()).getCurrentAccountUin(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a()));
+    this.jdField_a_of_type_Oxe.d = paramString2;
+    this.jdField_a_of_type_Oxe.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.a(this.jdField_a_of_type_Oxe);
   }
 }
 

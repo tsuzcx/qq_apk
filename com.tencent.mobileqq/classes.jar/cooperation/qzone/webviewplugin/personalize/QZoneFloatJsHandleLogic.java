@@ -35,7 +35,7 @@ public class QZoneFloatJsHandleLogic
       do
       {
         return;
-        localFrameLayout = (FrameLayout)paramPluginRuntime.a().findViewById(2131362556);
+        localFrameLayout = (FrameLayout)paramPluginRuntime.a().findViewById(2131362573);
         if ((jdField_a_of_type_AndroidViewSurfaceView != null) && (jdField_a_of_type_AndroidViewSurfaceView.getParent() == localFrameLayout))
         {
           QZoneHelper.b(paramPluginRuntime.a(), jdField_a_of_type_AndroidViewSurfaceView);
@@ -61,7 +61,7 @@ public class QZoneFloatJsHandleLogic
         return;
         paramPluginRuntime = paramPluginRuntime.a();
       } while (paramPluginRuntime == null);
-      paramVarArgs = (FrameLayout)paramPluginRuntime.findViewById(2131362556);
+      paramVarArgs = (FrameLayout)paramPluginRuntime.findViewById(2131362573);
       if ((paramVarArgs != null) && (jdField_a_of_type_AndroidViewSurfaceView != null)) {
         paramVarArgs.removeView(jdField_a_of_type_AndroidViewSurfaceView);
       }

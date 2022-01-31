@@ -1,25 +1,17 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.CommentManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader;
-import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader.GetFeedCommentEvent;
-import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView.OnHorizontalScrollListener;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller;
 
 public class nsr
-  extends SimpleJob
+  implements StoryPickerHorizontalListView.OnHorizontalScrollListener
 {
-  public nsr(CommentListPageLoader paramCommentListPageLoader, CommentListPageLoader.GetFeedCommentEvent paramGetFeedCommentEvent, boolean paramBoolean) {}
+  public nsr(StoryPickerFragment paramStoryPickerFragment) {}
   
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader.b();
-    ((CommentManager)SuperManager.a(17)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader$GetFeedCommentEvent.a, CommentListPageLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader).a, CommentListPageLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader).a(), this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader.a("Q.qqstory.detail:CommentListPageLoader");
-    return null;
+    if (this.a.a != null) {
+      this.a.a.a(paramString);
+    }
   }
 }
 

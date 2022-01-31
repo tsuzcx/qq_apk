@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2623" android:layout_width="fill_parent" android:layout_height="240.0dip"
+<LinearLayout android:orientation="vertical" android:id="@id/root" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c62" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginTop="55.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021728" android:scaleType="centerInside" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057b" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c63" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b128f" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1c62" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a239c" android:background="@drawable/skin_searchbar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <include android:clickable="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0407e6" />
+    </LinearLayout>
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2502" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

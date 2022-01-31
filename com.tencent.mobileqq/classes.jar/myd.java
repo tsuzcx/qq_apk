@@ -1,21 +1,21 @@
-import android.support.v4.util.LruCache;
-import com.tencent.biz.qqstory.base.Copyable;
-import com.tencent.biz.qqstory.base.OneObjectCacheList;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import android.view.Window;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.util.VersionUtils;
 
 public class myd
-  extends LruCache
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public myd(OneObjectCacheList paramOneObjectCacheList, int paramInt)
-  {
-    super(paramInt);
-  }
+  public myd(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
-  protected void a(boolean paramBoolean, Object paramObject, Copyable paramCopyable1, Copyable paramCopyable2)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    this.a.a.put(paramObject, new WeakReference(paramCopyable1));
-    this.a.a();
+    if (paramInt == 4102) {}
+    while (!VersionUtils.e()) {
+      return;
+    }
+    this.a.getWindow().getDecorView().setSystemUiVisibility(4102);
   }
 }
 

@@ -1,17 +1,16 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 
 public class kwn
-  implements Runnable
+  implements View.OnClickListener
 {
-  public kwn(CustomWebView paramCustomWebView) {}
+  public kwn(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CustomWebView", 2, "webview real destroy now");
-    }
-    this.a.b();
+    ReadInJoyNativeAdFragment.a(this.a).dismiss();
   }
 }
 

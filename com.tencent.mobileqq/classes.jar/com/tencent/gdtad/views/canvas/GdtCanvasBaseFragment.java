@@ -13,7 +13,7 @@ import com.tencent.gdtad.views.canvas.framework.GdtCanvasView;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 
-public class GdtCanvasBaseFragment
+public abstract class GdtCanvasBaseFragment
   extends PublicBaseFragment
 {
   private GdtCanvasView a;
@@ -115,7 +115,7 @@ public class GdtCanvasBaseFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.GdtCanvasBaseFragment
  * JD-Core Version:    0.7.0.1
  */

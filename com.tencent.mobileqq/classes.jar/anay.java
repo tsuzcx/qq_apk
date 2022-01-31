@@ -1,23 +1,33 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.tencent.biz.qqstory.takevideo.EditLocalPhotoSource;
+import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.view.Window;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public final class anay
-  implements Parcelable.Creator
+  implements Runnable
 {
-  public EditLocalPhotoSource a(Parcel paramParcel)
-  {
-    return new EditLocalPhotoSource(paramParcel);
-  }
+  public anay(String paramString1, String paramString2) {}
   
-  public EditLocalPhotoSource[] a(int paramInt)
+  public void run()
   {
-    return new EditLocalPhotoSource[paramInt];
+    Object localObject = new AlertDialog.Builder(BaseApplication.getContext());
+    ((AlertDialog.Builder)localObject).setMessage(this.a).setTitle(this.b);
+    localObject = ((AlertDialog.Builder)localObject).create();
+    ((AlertDialog)localObject).getWindow().setType(2003);
+    try
+    {
+      ((AlertDialog)localObject).show();
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anay
  * JD-Core Version:    0.7.0.1
  */

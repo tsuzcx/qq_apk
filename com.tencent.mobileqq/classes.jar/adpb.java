@@ -1,92 +1,43 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.log.VipWebViewReportLog;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Set;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.app.AppRuntime;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import com.tencent.mobileqq.hiboom.HiBoomFontDrawer;
+import com.tencent.mobileqq.hiboom.HiBoomTextView;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class adpb
   implements Runnable
 {
+  public adpb(HiBoomFontDrawer paramHiBoomFontDrawer) {}
+  
   public void run()
   {
-    long l = System.currentTimeMillis();
-    QLog.d("WebCoreDump", 1, "-->start load config at " + l);
-    Object localObject1;
-    if (VipWebViewReportLog.a() == null)
+    if (this.a.a == null) {
+      return;
+    }
+    int i = 0;
+    label13:
+    HiBoomTextView localHiBoomTextView;
+    if (i < this.a.a.size())
     {
-      localObject1 = "";
-      localObject1 = new File(VipWebViewReportLog.jdField_b_of_type_JavaLangString + (String)localObject1 + "config.json");
-      if (!((File)localObject1).exists()) {
-        break label391;
+      localHiBoomTextView = (HiBoomTextView)((WeakReference)this.a.a.get(i)).get();
+      if ((localHiBoomTextView != null) && (localHiBoomTextView.a == this.a.b)) {
+        break label89;
       }
-      QLog.d("WebCoreDump", 1, "-->config file exist");
-      VipWebViewReportLog.jdField_a_of_type_Int = 0;
-      VipWebViewReportLog.a(VipWebViewReportLog.a());
+      this.a.a.remove(i);
+      i -= 1;
     }
     for (;;)
     {
-      try
-      {
-        localObject1 = FileUtils.a((File)localObject1);
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          localObject1 = new JSONObject((String)localObject1);
-          VipWebViewReportLog.jdField_a_of_type_Boolean = ((JSONObject)localObject1).optBoolean("js_report", true);
-          VipWebViewReportLog.jdField_b_of_type_Boolean = ((JSONObject)localObject1).optBoolean("url_check", true);
-          if (!((JSONObject)localObject1).has("url_list")) {
-            continue;
-          }
-          JSONArray localJSONArray = ((JSONObject)localObject1).getJSONArray("url_list");
-          int j = localJSONArray.length();
-          int i = 0;
-          if (i < j)
-          {
-            VipWebViewReportLog.jdField_a_of_type_JavaUtilSet.add(localJSONArray.getString(i));
-            i += 1;
-            continue;
-            localObject1 = VipWebViewReportLog.a().getAccount();
-            break;
-          }
-          QLog.d("WebCoreDump", 1, "-->url white list:" + VipWebViewReportLog.jdField_a_of_type_JavaUtilSet);
-          if ((VipWebViewReportLog.jdField_b_of_type_Boolean) && (!((JSONObject)localObject1).has("url_list"))) {
-            continue;
-          }
-          VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
-        }
-      }
-      catch (Exception localException)
-      {
-        VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-        QLog.d("WebCoreDump", 1, "-->read config file err:" + localException.toString());
-        VipWebViewReportLog.b();
-        continue;
-        VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-        continue;
-      }
-      finally
-      {
-        VipWebViewReportLog.b();
-      }
-      QLog.d("WebCoreDump", 1, "parse config cost=" + (System.currentTimeMillis() - l));
-      return;
-      QLog.d("WebCoreDump", 1, "-->No url white list in config!" + ((JSONObject)localObject1).toString());
-      continue;
-      label391:
-      VipWebViewReportLog.a(VipWebViewReportLog.a());
-      VipWebViewReportLog.b();
-      QLog.d("WebCoreDump", 1, "-->config file not exist: " + localObject2.getPath());
-      VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+      i += 1;
+      break label13;
+      break;
+      label89:
+      localHiBoomTextView.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpb
  * JD-Core Version:    0.7.0.1
  */

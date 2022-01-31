@@ -1,38 +1,71 @@
-import android.os.Build;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.startup.step.UpdateArkSo;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.arcard.ARCardPageProcess;
+import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
 import com.tencent.qphone.base.util.QLog;
 
-public final class aamq
+public class aamq
   implements Runnable
 {
+  public aamq(ARGreetingCardListManager paramARGreetingCardListManager) {}
+  
   public void run()
   {
-    if ((!ArkAppCenter.b) && (ArkAppCenter.c))
+    try
     {
-      long l1 = System.currentTimeMillis();
-      UpdateArkSo.a(BaseApplicationImpl.getContext(), "png-armeabi-v7a");
-      ArkAppCenter.b = UpdateArkSo.b(BaseApplicationImpl.getContext(), "ark-armeabi-v7a");
-      long l2 = System.currentTimeMillis();
-      QLog.d("ArkApp", 1, "load libark.so for ARMv7!, loaded=" + Boolean.toString(ArkAppCenter.b) + ", time=" + (l2 - l1));
-    }
-    if (ArkAppCenter.d()) {
+      LayoutInflater.from(ARGreetingCardListManager.a(this.a)).inflate(2130968698, ARGreetingCardListManager.a(this.a));
+      ARGreetingCardListManager.a(this.a).setOnTouchListener(new aamr(this));
+      ViewParent localViewParent = ARGreetingCardListManager.a(this.a).getParent();
+      if ((localViewParent instanceof ViewGroup))
+      {
+        ARGreetingCardListManager.a(this.a, (ViewGroup)((ViewGroup)localViewParent).findViewById(2131362594));
+        if (ARGreetingCardListManager.b(this.a) != null) {
+          ARGreetingCardListManager.b(this.a).setVisibility(4);
+        }
+      }
+      ARGreetingCardListManager.a(this.a, (ImageView)ARGreetingCardListManager.a(this.a).findViewById(2131363261));
+      ARGreetingCardListManager.a(this.a, (TextView)ARGreetingCardListManager.a(this.a).findViewById(2131363262));
+      ARGreetingCardListManager.b(this.a, (TextView)ARGreetingCardListManager.a(this.a).findViewById(2131363263));
+      ARGreetingCardListManager.a(this.a, (Button)ARGreetingCardListManager.a(this.a).findViewById(2131363264));
+      ARGreetingCardListManager.a(this.a).setOnClickListener(this.a);
+      ARGreetingCardListManager.a(this.a).setOnTouchListener(ARGreetingCardListManager.a(this.a));
+      ARGreetingCardListManager.c(this.a, (TextView)ARGreetingCardListManager.a(this.a).findViewById(2131363265));
+      ARGreetingCardListManager.a(this.a).setOnClickListener(this.a);
+      ARGreetingCardListManager.a(this.a).setOnTouchListener(ARGreetingCardListManager.a(this.a));
+      ARGreetingCardListManager.a(this.a, (ARCardPageProcess)ARGreetingCardListManager.a(this.a).findViewById(2131363267));
+      ARGreetingCardListManager.a(this.a).a(ARGreetingCardListManager.a(this.a), 0);
+      ARGreetingCardListManager.b(this.a, (Button)ARGreetingCardListManager.a(this.a).findViewById(2131363268));
+      ARGreetingCardListManager.b(this.a).setOnClickListener(this.a);
+      ARGreetingCardListManager.c(this.a, (Button)ARGreetingCardListManager.a(this.a).findViewById(2131363270));
+      ARGreetingCardListManager.c(this.a).setOnClickListener(this.a);
+      ARGreetingCardListManager.d(this.a, (Button)ARGreetingCardListManager.a(this.a).findViewById(2131363269));
+      ARGreetingCardListManager.d(this.a).setOnClickListener(this.a);
+      ARGreetingCardListManager.a(this.a, ARGreetingCardListManager.a(this.a).findViewById(2131363266));
+      ARGreetingCardListManager.a(this.a).setOnClickListener(this.a);
+      ARGreetingCardListManager.a(this.a).setOnTouchListener(ARGreetingCardListManager.a(this.a));
+      ARGreetingCardListManager.a(this.a).setVisibility(4);
+      ARGreetingCardListManager.c(this.a);
+      ARGreetingCardListManager.d(this.a);
+      ARGreetingCardListManager.a(this.a).setVisibility(4);
+      ARGreetingCardListManager.b(this.a).setVisibility(8);
+      ARGreetingCardListManager.c(this.a).setVisibility(8);
+      ARGreetingCardListManager.d(this.a).setVisibility(8);
       return;
     }
-    ArkAppCenter.a(true);
-    if (ArkAppCenter.b)
+    catch (Exception localException)
     {
-      ReportController.b(null, "CliOper", "", "", "0X8006365", "ark.lib.load.success", 0, 0, "0", "0", Build.CPU_ABI, Build.CPU_ABI2);
-      return;
+      QLog.d("ARGreetingCardListManager", 1, "initCardListUI fail.", localException);
     }
-    ReportController.b(null, "CliOper", "", "", "0X8006365", "ark.lib.load.fail", 1, 1, "1", "1", Build.CPU_ABI, Build.CPU_ABI2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aamq
  * JD-Core Version:    0.7.0.1
  */

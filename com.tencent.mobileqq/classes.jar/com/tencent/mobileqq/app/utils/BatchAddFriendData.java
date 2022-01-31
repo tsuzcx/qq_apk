@@ -48,8 +48,8 @@ import java.util.Random;
 import tencent.im.oidb.cmd0x777.cmd0x777.AddFrdInfo;
 import tencent.im.oidb.cmd0x777.cmd0x777.ReqBody;
 import tencent.im.oidb.cmd0x777.cmd0x777.RspBody;
-import zto;
-import ztp;
+import zwu;
+import zwv;
 
 public class BatchAddFriendData
 {
@@ -83,7 +83,7 @@ public class BatchAddFriendData
         paramContext.startActivity(localIntent);
         ((Activity)paramContext).overridePendingTransition(2131034132, 2131034133);
       }
-      ThreadManager.post(new zto(paramQQAppInterface, paramString1), 8, null, true);
+      ThreadManager.post(new zwu(paramQQAppInterface, paramString1), 8, null, true);
     } while (!QLog.isDevelopLevel());
     QLog.d("BatchAddFriendData", 4, String.format(Locale.getDefault(), "onBAFTipClick troopUin: %s", new Object[] { paramString1 }));
   }
@@ -208,7 +208,7 @@ public class BatchAddFriendData
         for (;;)
         {
           paramList = DialogUtil.a(paramActivity, String.format(Locale.getDefault(), "%s需要通过回答问题进行验证，请单独添加。", new Object[] { paramList }), 0, 0, null, null);
-          paramList.setPositiveButton(2131432999, new ztp());
+          paramList.setPositiveButton(2131433016, new zwv());
           if ((paramActivity != null) && (!paramActivity.isFinishing())) {
             paramList.show();
           }

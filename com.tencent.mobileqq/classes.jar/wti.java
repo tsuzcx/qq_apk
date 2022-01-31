@@ -1,30 +1,15 @@
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.activity.photo.MimeHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
 
-public final class wti
-  extends MediaFileFilter
+public class wti
+  implements DialogInterface.OnClickListener
 {
-  public boolean a()
-  {
-    return true;
-  }
+  public wti(BindNumberActivity paramBindNumberActivity) {}
   
-  public boolean a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    String[] arrayOfString = MimeHelper.a(paramString);
-    if (arrayOfString != null)
-    {
-      if (("image".equals(arrayOfString[0])) && (MimeHelper.a(arrayOfString[1])) && (!arrayOfString[1].equals("gif"))) {}
-      while (("video".equals(arrayOfString[0])) && ("video/mp4".equals(paramString))) {
-        return false;
-      }
-    }
-    return true;
-  }
-  
-  public boolean b()
-  {
-    return true;
+    paramDialogInterface.dismiss();
   }
 }
 

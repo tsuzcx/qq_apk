@@ -129,7 +129,7 @@ public class FriendDataManager
       this.jdField_a_of_type_JavaUtilList.clear();
       this.jdField_b_of_type_JavaUtilList.clear();
       this.c.clear();
-      str2 = CommonDataAdapter.a().a().getResources().getString(2131428604);
+      str2 = CommonDataAdapter.a().a().getResources().getString(2131428610);
       localIterator1 = paramList.iterator();
     }
     for (;;)

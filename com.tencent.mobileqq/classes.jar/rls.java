@@ -1,42 +1,64 @@
-import android.content.res.Resources;
-import android.graphics.Rect;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.Window;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import android.widget.CompoundButton;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.Switch;
 
 public class rls
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  extends CardObserver
 {
-  public rls(AutoRemarkActivity paramAutoRemarkActivity) {}
+  public rls(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onGlobalLayout()
+  protected void a(boolean paramBoolean)
   {
-    Object localObject = new Rect();
-    this.a.getWindow().getDecorView().getWindowVisibleDisplayFrame((Rect)localObject);
-    DisplayMetrics localDisplayMetrics = this.a.getResources().getDisplayMetrics();
-    int i = Math.max(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels);
-    if (i - (((Rect)localObject).bottom - ((Rect)localObject).top) > i / 3)
+    int i = 1;
+    boolean bool = false;
+    if (!paramBoolean)
     {
-      i = 1;
-      localObject = this.a.getCurrentFocus();
-      if (i != 0) {
-        break label101;
+      QQToast.a(this.a.app.getApp(), 1, this.a.getString(2131436066), 3000).b(this.a.getTitleBarHeight());
+      localObject1 = this.a;
+      localObject2 = AssistantSettingActivity.a(this.a).a();
+      paramBoolean = bool;
+      if (!AssistantSettingActivity.a(this.a).a().isChecked()) {
+        paramBoolean = true;
       }
-      if ((localObject != null) && ((localObject instanceof EditText))) {
-        ((EditText)localObject).setCursorVisible(false);
+      AssistantSettingActivity.a((AssistantSettingActivity)localObject1, (CompoundButton)localObject2, paramBoolean);
+      if (QLog.isColorLevel()) {
+        QLog.d("IphoneTitleBarActivity", 2, "AssistantSettingActivity onSetMedal failed");
       }
-    }
-    label101:
-    while ((localObject == null) || (!(localObject instanceof EditText)))
-    {
       return;
-      i = 0;
-      break;
     }
-    ((EditText)localObject).setCursorVisible(true);
+    Object localObject1 = ((FriendsManager)this.a.app.getManager(50)).b(this.a.app.getCurrentAccountUin());
+    if (!this.a.isFinishing())
+    {
+      localObject2 = this.a;
+      Switch localSwitch = AssistantSettingActivity.a(this.a).a();
+      if (((Card)localObject1).medalSwitchDisable) {
+        break label260;
+      }
+      paramBoolean = true;
+      AssistantSettingActivity.a((AssistantSettingActivity)localObject2, localSwitch, paramBoolean);
+      if (QLog.isColorLevel()) {
+        QLog.d("IphoneTitleBarActivity", 2, "AssistantSettingActivity onSetMedal medalSwitchDisable= " + ((Card)localObject1).medalSwitchDisable);
+      }
+    }
+    Object localObject2 = this.a.app;
+    if (((Card)localObject1).medalSwitchDisable) {}
+    for (;;)
+    {
+      ReportController.b((QQAppInterface)localObject2, "dc00898", "", "", "0X80073A0", "0X80073A0", i, 0, "", "", "", "");
+      return;
+      label260:
+      paramBoolean = false;
+      break;
+      i = 0;
+    }
   }
 }
 

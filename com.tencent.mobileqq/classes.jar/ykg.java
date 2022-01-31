@@ -1,39 +1,29 @@
-import android.util.Log;
-import com.tencent.mobileqq.apollo.GLTextureView;
-import com.tencent.mobileqq.apollo.GLTextureView.EGLContextFactory;
-import javax.microedition.khronos.egl.EGL10;
-import javax.microedition.khronos.egl.EGLConfig;
-import javax.microedition.khronos.egl.EGLContext;
-import javax.microedition.khronos.egl.EGLDisplay;
+import com.tencent.mobileqq.DrawerPushItem;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import java.util.List;
 
 public class ykg
-  implements GLTextureView.EGLContextFactory
+  implements Runnable
 {
-  private int jdField_a_of_type_Int = 12440;
+  public ykg(ApolloManager paramApolloManager, DrawerPushItem paramDrawerPushItem) {}
   
-  private ykg(GLTextureView paramGLTextureView) {}
-  
-  public EGLContext a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig)
+  public void run()
   {
-    int[] arrayOfInt = new int[3];
-    arrayOfInt[0] = this.jdField_a_of_type_Int;
-    arrayOfInt[1] = GLTextureView.access$200(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView);
-    arrayOfInt[2] = 12344;
-    EGLContext localEGLContext = EGL10.EGL_NO_CONTEXT;
-    if (GLTextureView.access$200(this.jdField_a_of_type_ComTencentMobileqqApolloGLTextureView) != 0) {}
-    for (;;)
-    {
-      return paramEGL10.eglCreateContext(paramEGLDisplay, paramEGLConfig, localEGLContext, arrayOfInt);
-      arrayOfInt = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem == null) {
+      return;
     }
-  }
-  
-  public void a(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLContext paramEGLContext)
-  {
-    if (!paramEGL10.eglDestroyContext(paramEGLDisplay, paramEGLContext))
+    synchronized (ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager))
     {
-      Log.e("DefaultContextFactory", "display:" + paramEGLDisplay + " context: " + paramEGLContext);
-      yki.a("eglDestroyContex", paramEGL10.eglGetError());
+      if ((ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager) != null) && (this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem != null) && (ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager).contains(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem))) {
+        ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager).remove(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem);
+      }
+      if (ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager) != null)
+      {
+        ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager).b(this.jdField_a_of_type_ComTencentMobileqqDrawerPushItem);
+        ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager).a();
+      }
+      return;
     }
   }
 }

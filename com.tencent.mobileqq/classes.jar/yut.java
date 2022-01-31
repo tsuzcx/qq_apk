@@ -1,21 +1,23 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
+import com.tencent.qphone.base.util.QLog;
+import java.net.HttpURLConnection;
 
 class yut
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  yut(yus paramyus) {}
+  yut(yus paramyus, HttpURLConnection paramHttpURLConnection) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.setVisibility(8);
-    this.a.a.postDelayed(new yuu(this), 300L);
+    try
+    {
+      this.jdField_a_of_type_JavaNetHttpURLConnection.disconnect();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("apollo_client_ApolloUrlInterceptor", 2, "disconnect error:" + localThrowable.getMessage());
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

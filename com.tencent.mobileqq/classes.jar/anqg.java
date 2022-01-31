@@ -1,21 +1,25 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.poi.LbsPackObserver;
-import dov.com.tencent.mobileqq.activity.richmedia.LBSDetetor;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
+import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView;
+import dov.com.qq.im.capture.view.VideoSegmentPickerProviderView.VideoSegmentPickerListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
+import java.lang.ref.WeakReference;
 
 public class anqg
-  extends LbsPackObserver
+  implements View.OnClickListener
 {
-  private anqg(LBSDetetor paramLBSDetetor) {}
+  public anqg(VideoSegmentPickerProviderView paramVideoSegmentPickerProviderView) {}
   
-  public void a(int paramInt, boolean paramBoolean, ArrayList paramArrayList)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "onGetLBSTemplateIds:" + paramBoolean + " req:" + paramInt);
-    }
-    if ((LBSDetetor.a(this.a) != null) && (LBSDetetor.a(this.a).hasMessages(paramInt))) {
-      LBSDetetor.a(this.a, paramBoolean, paramArrayList, paramInt);
+    VideoSegmentPickerProviderView.a(this.a).a.a();
+    if (VideoSegmentPickerProviderView.a(this.a) != null)
+    {
+      paramView = (VideoSegmentPickerProviderView.VideoSegmentPickerListener)VideoSegmentPickerProviderView.a(this.a).get();
+      if (paramView != null) {
+        paramView.a(0L, 0L);
+      }
     }
   }
 }

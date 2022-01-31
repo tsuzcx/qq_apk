@@ -1,23 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.nearby.ipc.NearbyProxyObserver;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.s2c.msgtype0x210.submsgtype0x27.SubMsgType0x27.AppointmentNotify;
 
 public class aemx
-  implements View.OnTouchListener
+  extends NearbyProxyObserver
 {
-  public aemx(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public aemx(NearbyProxy paramNearbyProxy, SubMsgType0x27.AppointmentNotify paramAppointmentNotify) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected void a()
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131370440).setAlpha(0.5F);
+    if (QLog.isColorLevel()) {
+      NearbyUtils.a("hasOnLinePush", new Object[] { "onNearbyProcStart" });
     }
-    for (;;)
-    {
-      return false;
-      this.a.a.findViewById(2131370440).setAlpha(1.0F);
-    }
+    NearbyProxy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy, 4101, new Object[] { this.jdField_a_of_type_TencentImS2cMsgtype0x210Submsgtype0x27SubMsgType0x27$AppointmentNotify.toByteArray() });
   }
 }
 

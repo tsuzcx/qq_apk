@@ -25,13 +25,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Method;
 import java.util.Iterator;
 import java.util.List;
-import jhf;
-import jhg;
+import jgq;
+import jgr;
 
 public class AndroidCamera
 {
   public static int a;
-  static jhg jdField_a_of_type_Jhg = new jhg();
+  static jgr jdField_a_of_type_Jgr = new jgr();
   public static boolean a;
   static int jdField_b_of_type_Int = 15000;
   private static boolean jdField_f_of_type_Boolean;
@@ -39,7 +39,7 @@ public class AndroidCamera
   public static int l = 480;
   public static int m = 17;
   public Context a;
-  private Camera.PreviewCallback jdField_a_of_type_AndroidHardwareCamera$PreviewCallback = new jhf(this);
+  private Camera.PreviewCallback jdField_a_of_type_AndroidHardwareCamera$PreviewCallback = new jgq(this);
   public Camera a;
   Display jdField_a_of_type_AndroidViewDisplay;
   public AndroidCamera.CameraPreviewCallback a;
@@ -76,8 +76,8 @@ public class AndroidCamera
     this.jdField_e_of_type_Int = DeviceInfoUtil.a();
     this.jdField_a_of_type_JavaLangString = Build.MODEL;
     this.jdField_b_of_type_JavaLangString = Build.MANUFACTURER;
-    jdField_a_of_type_Jhg.jdField_b_of_type_Int = -1;
-    jdField_a_of_type_Jhg.jdField_c_of_type_Int = -1;
+    jdField_a_of_type_Jgr.jdField_b_of_type_Int = -1;
+    jdField_a_of_type_Jgr.jdField_c_of_type_Int = -1;
     AVLog.c("AndroidCamera", "Device_Tag = " + this.jdField_b_of_type_JavaLangString + ": " + this.jdField_a_of_type_JavaLangString);
     AVLog.c("AndroidCamera", "Rom_Tag = " + Build.VERSION.INCREMENTAL);
   }
@@ -556,9 +556,9 @@ public class AndroidCamera
     return b();
   }
   
-  protected jhg a(int paramInt, Camera paramCamera)
+  protected jgr a(int paramInt, Camera paramCamera)
   {
-    paramCamera = new jhg();
+    paramCamera = new jgr();
     try
     {
       Camera.CameraInfo localCameraInfo = new Camera.CameraInfo();
@@ -607,7 +607,7 @@ public class AndroidCamera
     for (;;)
     {
       return;
-      synchronized (jdField_a_of_type_Jhg)
+      synchronized (jdField_a_of_type_Jgr)
       {
         a(this.jdField_f_of_type_Int, this.jdField_a_of_type_AndroidHardwareCamera);
       }
@@ -658,7 +658,7 @@ public class AndroidCamera
     for (;;)
     {
       return;
-      synchronized (jdField_a_of_type_Jhg)
+      synchronized (jdField_a_of_type_Jgr)
       {
         a(this.jdField_f_of_type_Int, this.jdField_a_of_type_AndroidHardwareCamera);
       }
@@ -757,14 +757,14 @@ public class AndroidCamera
   
   protected boolean a(int paramInt, Camera paramCamera)
   {
-    jhg localjhg = a(paramInt, paramCamera);
-    AVLog.c("AndroidCamera", "getCameraDisplayOrientation orientation:" + localjhg.jdField_b_of_type_Int + ",rotation:" + localjhg.jdField_c_of_type_Int);
+    jgr localjgr = a(paramInt, paramCamera);
+    AVLog.c("AndroidCamera", "getCameraDisplayOrientation orientation:" + localjgr.jdField_b_of_type_Int + ",rotation:" + localjgr.jdField_c_of_type_Int);
     this.h = b();
     this.g = c();
-    if (localjhg.jdField_a_of_type_Int == 1)
+    if (localjgr.jdField_a_of_type_Int == 1)
     {
       paramInt = (360 - (d() + e()) % 360) % 360;
-      if (localjhg.jdField_a_of_type_Int != 1) {
+      if (localjgr.jdField_a_of_type_Int != 1) {
         break label166;
       }
     }
@@ -772,8 +772,8 @@ public class AndroidCamera
     for (paramInt = (paramInt + a(this.jdField_e_of_type_Boolean)) % 360;; paramInt = (paramInt + b(this.jdField_e_of_type_Boolean)) % 360)
     {
       a(paramCamera, paramInt);
-      jdField_a_of_type_Jhg.jdField_a_of_type_Int = localjhg.jdField_a_of_type_Int;
-      jdField_a_of_type_Jhg.jdField_b_of_type_Int = localjhg.jdField_b_of_type_Int;
+      jdField_a_of_type_Jgr.jdField_a_of_type_Int = localjgr.jdField_a_of_type_Int;
+      jdField_a_of_type_Jgr.jdField_b_of_type_Int = localjgr.jdField_b_of_type_Int;
       return true;
       paramInt = (d() - e() + 360) % 360;
       break;
@@ -1185,7 +1185,7 @@ public class AndroidCamera
   
   public void b(int paramInt)
   {
-    jdField_a_of_type_Jhg.jdField_c_of_type_Int = ((this.h + paramInt) % 360);
+    jdField_a_of_type_Jgr.jdField_c_of_type_Int = ((this.h + paramInt) % 360);
   }
   
   protected boolean b()
@@ -1341,7 +1341,7 @@ public class AndroidCamera
   
   public int d()
   {
-    if (jdField_a_of_type_Jhg.jdField_b_of_type_Int == -1)
+    if (jdField_a_of_type_Jgr.jdField_b_of_type_Int == -1)
     {
       if (this.jdField_c_of_type_Int == 1) {
         return 270;
@@ -1350,7 +1350,7 @@ public class AndroidCamera
         return 90;
       }
     }
-    return jdField_a_of_type_Jhg.jdField_b_of_type_Int;
+    return jdField_a_of_type_Jgr.jdField_b_of_type_Int;
   }
   
   public boolean d()
@@ -1364,10 +1364,10 @@ public class AndroidCamera
   
   public int e()
   {
-    if (jdField_a_of_type_Jhg.jdField_c_of_type_Int == -1) {
+    if (jdField_a_of_type_Jgr.jdField_c_of_type_Int == -1) {
       return 0;
     }
-    return jdField_a_of_type_Jhg.jdField_c_of_type_Int;
+    return jdField_a_of_type_Jgr.jdField_c_of_type_Int;
   }
   
   public boolean e()

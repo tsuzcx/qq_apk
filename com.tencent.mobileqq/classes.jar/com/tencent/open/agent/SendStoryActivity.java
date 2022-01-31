@@ -1,6 +1,6 @@
 package com.tencent.open.agent;
 
-import akmx;
+import alcn;
 import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -91,27 +91,27 @@ public class SendStoryActivity
   @TargetApi(14)
   protected void a()
   {
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131365786));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131365813));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setFitsSystemWindows(true);
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setPadding(0, ImmersiveUtils.a(this), 0, 0);
     }
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131362577);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363363));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363227));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363455));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363410));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131362594);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363381));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363245));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363473));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363428));
     this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText = ((CursorEditText)super.findViewById(2131365791));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365789));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131365792));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365787));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365793));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365794));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365795));
+    this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText = ((CursorEditText)super.findViewById(2131365818));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365816));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131365819));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365814));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365820));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131365821));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131365822));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_ArrayOfAndroidTextInputFilter = new InputFilter[] { new SendStoryActivity.CustomLengthInputFilter(this, this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText, 80) };
     this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText.setFilters(this.jdField_a_of_type_ArrayOfAndroidTextInputFilter);
@@ -205,7 +205,7 @@ public class SendStoryActivity
       int i = paramJSONObject.getInt("ret");
       String str = paramJSONObject.getString("msg");
       if (i == 0) {
-        Toast.makeText(getApplicationContext(), 2131428654, 0).show();
+        Toast.makeText(getApplicationContext(), 2131428660, 0).show();
       }
       Intent localIntent = new Intent();
       localIntent.putExtra("key_error_code", i);
@@ -495,7 +495,7 @@ public class SendStoryActivity
     Object localObject1 = new StringBuilder();
     Object localObject2 = this.jdField_a_of_type_ComTencentOpenWidgetCursorEditText.getEditableText();
     Object localObject3 = (Friend[])((Editable)localObject2).getSpans(0, ((Editable)localObject2).length(), Friend.class);
-    Arrays.sort((Object[])localObject3, new akmx(this, (Editable)localObject2));
+    Arrays.sort((Object[])localObject3, new alcn(this, (Editable)localObject2));
     HashSet localHashSet = new HashSet();
     int m = localObject3.length;
     int i = 0;
@@ -522,7 +522,7 @@ public class SendStoryActivity
     }
     if (localHashSet.size() > 10)
     {
-      Toast.makeText(getApplicationContext(), super.getString(2131428655, new Object[] { Integer.valueOf(10) }), 0).show();
+      Toast.makeText(getApplicationContext(), super.getString(2131428661, new Object[] { Integer.valueOf(10) }), 0).show();
       return;
     }
     paramView = new Bundle(this.jdField_a_of_type_AndroidOsBundle);
@@ -531,7 +531,7 @@ public class SendStoryActivity
     paramView.putString("description", ((StringBuilder)localObject1).toString());
     paramView.putString("appid_for_getting_config", this.jdField_a_of_type_JavaLangString);
     paramView.putString("agentversion", CommonDataAdapter.a().e());
-    this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getString(2131428651), true);
+    this.jdField_a_of_type_AndroidAppProgressDialog = ProgressDialog.show(this, "", super.getString(2131428657), true);
     this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
     new HttpCgiAsyncTask(this.h, "POST", this).a(paramView);
   }
@@ -540,8 +540,8 @@ public class SendStoryActivity
   {
     super.requestWindowFeature(1);
     super.onCreate(paramBundle);
-    super.setTheme(2131624736);
-    super.setContentView(2130969262);
+    super.setTheme(2131624738);
+    super.setContentView(2130969263);
     a();
     a();
     StaticAnalyz.a("100", "ANDROIDQQ.SENDSTORY.FS", this.jdField_a_of_type_JavaLangString);
@@ -552,10 +552,10 @@ public class SendStoryActivity
     super.onStart();
     this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(4);
     this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_e_of_type_AndroidWidgetTextView.setText(2131432998);
+    this.jdField_e_of_type_AndroidWidgetTextView.setText(2131433015);
     this.jdField_f_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_f_of_type_AndroidWidgetTextView.setText(2131428648);
-    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131428646);
+    this.jdField_f_of_type_AndroidWidgetTextView.setText(2131428654);
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(2131428652);
     this.jdField_e_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_f_of_type_AndroidWidgetTextView.setOnClickListener(this);
   }

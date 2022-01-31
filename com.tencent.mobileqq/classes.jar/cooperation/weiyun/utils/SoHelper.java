@@ -1,7 +1,7 @@
 package cooperation.weiyun.utils;
 
-import amsb;
 import android.content.Context;
+import anig;
 import cooperation.weiyun.sdk.download.WyDownloader;
 import java.io.File;
 
@@ -330,7 +330,7 @@ public class SoHelper
     String str2 = WeiyunPathUtil.b(123L);
     String str1 = str2 + "weiyunLibrary.zip";
     str2 = str2 + "sizeLibrary.txt";
-    WyDownloader.a().a("http://dldir1.qq.com/weiyun/android/qq/weiyunLibrary1002.zip", str1, "SoHelper", new amsb(str2, str1, paramSoListener, paramContext, localFile1, localFile2));
+    WyDownloader.a().a("http://dldir1.qq.com/weiyun/android/qq/weiyunLibrary1002.zip", str1, "SoHelper", new anig(str2, str1, paramSoListener, paramContext, localFile1, localFile2));
   }
   
   public static void a(File paramFile, String paramString)

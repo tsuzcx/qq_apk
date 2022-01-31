@@ -1,21 +1,40 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import android.view.Window;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import android.app.Activity;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.ImageUtil;
+import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
+import java.io.File;
 
 public class mai
-  implements DialogInterface.OnShowListener
+  implements Runnable
 {
-  public mai(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  public mai(TopicShareHelper paramTopicShareHelper, String paramString1, String paramString2, String paramString3, ApplicationInfo paramApplicationInfo, Activity paramActivity) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "mDisLikeActionSheet onShow() on VideoFeedsPlayActivity");
+      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "shareMsgToSina download image:" + this.jdField_a_of_type_JavaLangString);
     }
-    VideoFeedsAdapter.b(this.a).getWindow().clearFlags(8);
+    String str = ImageUtil.a(TopicShareHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoTopicShareHelper), this.jdField_a_of_type_JavaLangString, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "shareMsgToSina path:" + str);
+    }
+    Intent localIntent = new Intent("android.intent.action.SEND");
+    localIntent.setFlags(268435456);
+    localIntent.setType("image/*");
+    localIntent.putExtra("android.intent.extra.TEXT", this.b + this.c);
+    if (!TextUtils.isEmpty(str)) {
+      localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(str)));
+    }
+    localIntent.setPackage(this.jdField_a_of_type_AndroidContentPmApplicationInfo.packageName);
+    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new maj(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "shareMsgToSina start weibo!");
+    }
   }
 }
 

@@ -28,8 +28,8 @@ import java.util.Collections;
 import java.util.Locale;
 import java.util.concurrent.TimeoutException;
 import junit.framework.Assert;
-import oji;
-import ojj;
+import oks;
+import okt;
 
 @TargetApi(16)
 public class MediaCodecThumbnailGenerator$CodecHandler
@@ -170,7 +170,7 @@ public class MediaCodecThumbnailGenerator$CodecHandler
     localThumbnailResult.jdField_a_of_type_JavaUtilList = Collections.unmodifiableList(paramThumbnailTaskContext.jdField_a_of_type_JavaUtilArrayList);
     localThumbnailResult.b = Collections.unmodifiableList(paramThumbnailTaskContext.jdField_b_of_type_JavaUtilArrayList);
     localThumbnailResult.jdField_a_of_type_Int = paramThumbnailTaskContext.jdField_a_of_type_Int;
-    this.a.a.post(new oji(this, paramThumbnailTaskContext, bool, localThumbnailResult));
+    this.a.a.post(new oks(this, paramThumbnailTaskContext, bool, localThumbnailResult));
   }
   
   private void a(MediaCodecThumbnailGenerator.ThumbnailTaskContext paramThumbnailTaskContext, boolean paramBoolean)
@@ -263,7 +263,7 @@ public class MediaCodecThumbnailGenerator$CodecHandler
               }
               localArrayList1.add(localThumbnailProgress.jdField_a_of_type_JavaLangString);
               localArrayList2.add(localObject1);
-              this.a.a.post(new ojj(this, paramThumbnailTaskContext, localThumbnailProgress));
+              this.a.a.post(new okt(this, paramThumbnailTaskContext, localThumbnailProgress));
               paramThumbnailTaskContext.d += 1;
               obtainMessage(2, paramThumbnailTaskContext).sendToTarget();
               return;

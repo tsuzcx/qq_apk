@@ -1,28 +1,14 @@
-import com.tencent.av.random.RandomWebProtocol;
-import org.json.JSONObject;
+import com.tencent.av.redpacket.ui.RedPacketGameScore;
 
 public class jln
-  extends jlk
+  implements Runnable
 {
-  public boolean a;
-  public String b;
-  public String c;
-  public int f = -1;
-  public int g = -1;
+  public jln(RedPacketGameScore paramRedPacketGameScore) {}
   
-  jln(RandomWebProtocol paramRandomWebProtocol) {}
-  
-  void a(String paramString)
+  public void run()
   {
-    super.a(paramString);
-    if ((2 == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_OrgJsonJSONObject != null))
-    {
-      this.f = this.jdField_a_of_type_OrgJsonJSONObject.optInt("ismask", -1);
-      this.b = this.jdField_a_of_type_OrgJsonJSONObject.optString("groupids");
-      this.g = this.jdField_a_of_type_OrgJsonJSONObject.optInt("businessid", -1);
-      this.c = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("roomowner"));
-      this.jdField_a_of_type_Boolean = this.jdField_a_of_type_OrgJsonJSONObject.optBoolean("ownerenable", true);
-    }
+    this.a.b = System.currentTimeMillis();
+    this.a.a = true;
   }
 }
 

@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
 
-public class acoj
-  extends acnx
+class acoj
+  implements Runnable
 {
-  public acoj(OnlineFileSessionWorker paramOnlineFileSessionWorker)
-  {
-    super(paramOnlineFileSessionWorker);
-  }
+  acoj(acoi paramacoi) {}
   
-  protected String a()
+  public void run()
   {
-    return "StateSaveToWeiYunByPC";
+    UniformDownloadActivity.b(this.a.a).setVisibility(4);
+    this.a.a.finish();
   }
 }
 

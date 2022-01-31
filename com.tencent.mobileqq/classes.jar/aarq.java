@@ -1,25 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView.Callback;
+import com.tencent.mobileqq.ark.ArkAiAppPanel;
+import java.util.ArrayList;
 
 public class aarq
-  implements View.OnClickListener
+  implements ArkAppView.Callback
 {
-  public aarq(ArkIDESettingFragment paramArkIDESettingFragment) {}
+  public aarq(ArkAiAppPanel paramArkAiAppPanel) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = (ActionSheet)ActionSheetHelper.a(BaseActivity.sTopActivity, null);
-    paramView.a(BaseActivity.sTopActivity.getString(2131438821));
-    paramView.a(2131438823, 3);
-    paramView.c(2131438824);
-    paramView.setOnDismissListener(new aarr(this, paramView));
-    paramView.a(new aars(this, paramView));
-    if (!paramView.isShowing()) {
-      paramView.show();
+    boolean bool = ((ArkAioContainerWrapper)ArkAiAppPanel.a(this.a).get(ArkAiAppPanel.a(this.a))).checkShare();
+    if (bool != ArkAiAppPanel.a(this.a))
+    {
+      ArkAiAppPanel.a(this.a, bool);
+      ArkAiAppPanel.a(this.a, ArkAiAppPanel.a(this.a));
     }
   }
 }

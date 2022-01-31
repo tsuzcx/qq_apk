@@ -1,14 +1,15 @@
-import com.tencent.av.smallscreen.SmallScreenDialogActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.av.smallscreen.SmallScreenService;
 
 public class joq
   implements Runnable
 {
-  public joq(SmallScreenDialogActivity paramSmallScreenDialogActivity, QQCustomDialog paramQQCustomDialog) {}
+  public joq(SmallScreenService paramSmallScreenService) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenDialogActivity.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog);
+    if (SmallScreenService.g) {
+      this.a.b(2);
+    }
   }
 }
 

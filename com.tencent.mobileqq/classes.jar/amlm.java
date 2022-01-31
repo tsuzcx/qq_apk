@@ -1,19 +1,38 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.QzoneGiftFullScreenViewController.GiftFullScreenPlayListener;
-import cooperation.qzone.webviewplugin.QZonePassivePraiseJsPlugin;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.jtcode.JtcodePluginInstallActivity;
+import cooperation.plugin.IPluginManager;
+import mqq.os.MqqHandler;
 
 public class amlm
-  implements QzoneGiftFullScreenViewController.GiftFullScreenPlayListener
+  implements Runnable
 {
-  public amlm(QZonePassivePraiseJsPlugin paramQZonePassivePraiseJsPlugin, String paramString) {}
+  public amlm(JtcodePluginInstallActivity paramJtcodePluginInstallActivity) {}
   
-  public void a()
+  public void run()
   {
-    if (this.jdField_a_of_type_CooperationQzoneWebviewpluginQZonePassivePraiseJsPlugin.a != null)
+    long l1 = System.currentTimeMillis();
+    if ((JtcodePluginInstallActivity.a(this.a).a("wlx_jtcode.apk") == null) || (!JtcodePluginInstallActivity.a(this.a).isReady()))
     {
-      String str = "window." + this.jdField_a_of_type_JavaLangString + "({playAnimationFinish:1})";
-      this.jdField_a_of_type_CooperationQzoneWebviewpluginQZonePassivePraiseJsPlugin.a.callJs(str);
+      if (QLog.isDevelopLevel()) {
+        QLog.e("JtcodePluginInstallActivity", 4, "mPluginManager.queryPlugin->pluginInfo is null");
+      }
+      if (!JtcodePluginInstallActivity.a(this.a))
+      {
+        ThreadManager.getSubThreadHandler().postDelayed(this, 3000L);
+        JtcodePluginInstallActivity.a(this.a, true);
+        return;
+      }
+      QQToast.a(this.a.getApplicationContext(), 2131438295, 0);
+      JtcodePluginInstallActivity.a(this.a, false);
+      this.a.finish();
+      return;
     }
+    long l2 = System.currentTimeMillis();
+    JtcodePluginInstallActivity.a(this.a).append(" ==step4:initPluginManager queryPlugin cost=" + (l2 - l1) + ";start time=" + l1);
+    ThreadManager.getUIHandler().post(new amln(this));
+    JtcodePluginInstallActivity.a(this.a).append(" ==step5:initPluginManager UIHandler().post cost=" + (System.currentTimeMillis() - l2));
   }
 }
 

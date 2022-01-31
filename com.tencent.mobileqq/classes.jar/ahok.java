@@ -1,17 +1,20 @@
-import com.tencent.mobileqq.shortvideo.mediadevice.DispatchThread;
+import com.tencent.mobileqq.richmedia.mediacodec.decoder.flow.Mp4FlowReEncoder;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ahok
   implements Runnable
 {
-  public ahok(DispatchThread paramDispatchThread) {}
+  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  
+  public ahok(Mp4FlowReEncoder paramMp4FlowReEncoder, List paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+  }
   
   public void run()
   {
-    synchronized (this.a)
-    {
-      this.a.notifyAll();
-      return;
-    }
+    Mp4FlowReEncoder.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowMp4FlowReEncoder, this.jdField_a_of_type_JavaUtilList);
   }
 }
 

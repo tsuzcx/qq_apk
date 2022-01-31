@@ -1,27 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ark.ArkAiInfo;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppViewByIntentCallback;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.ArkPassiveSearchInfo;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IPassiveSearchIntentByServerHandler;
-import java.util.ArrayList;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.qphone.base.util.QLog;
 
-class aapu
-  implements ArkLocalAppMgr.IGetAppViewByIntentCallback
+public class aapu
+  implements Runnable
 {
-  aapu(aapt paramaapt, ArkAiInfo paramArkAiInfo, ArkMessageServerLogic.ArkPassiveSearchInfo paramArkPassiveSearchInfo, int paramInt1, int paramInt2) {}
+  public aapu(ArkAppModuleReg.ModuleQQ paramModuleQQ, String paramString) {}
   
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public void run()
   {
-    if ((!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString4)))
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if ((localBaseActivity instanceof FragmentActivity))
     {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.d = paramString3;
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.b = paramString4;
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.e = ArkAppCenter.b(paramString3);
-      this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$ArkPassiveSearchInfo.a.add(this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo);
-    }
-    if ((this.jdField_a_of_type_Int == this.b - 1) && (this.jdField_a_of_type_Aapt.a.a.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IPassiveSearchIntentByServerHandler != null)) {
-      this.jdField_a_of_type_Aapt.a.a.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IPassiveSearchIntentByServerHandler.a(this.jdField_a_of_type_Aapt.a.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aapt.a.a.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$ArkPassiveSearchInfo);
+      Bundle localBundle = new Bundle();
+      localBundle.putString("forward_text", this.jdField_a_of_type_JavaLangString);
+      Intent localIntent = new Intent();
+      localIntent.putExtras(localBundle);
+      localIntent.putExtra("direct_send_if_dataline_forward", true);
+      ForwardBaseOption.a(localBaseActivity, localIntent, 21);
+      if (QLog.isColorLevel()) {
+        QLog.i("ArkApp", 1, "QQ.SendMessage text success.");
+      }
     }
   }
 }

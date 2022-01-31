@@ -1,18 +1,17 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.armap.config.ARMapConfig.WealthGodActTime;
+import android.os.Handler;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public final class aaxw
-  implements Parcelable.Creator
+public class aaxw
+  implements ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler
 {
-  public ARMapConfig.WealthGodActTime a(Parcel paramParcel)
-  {
-    return new ARMapConfig.WealthGodActTime(paramParcel);
-  }
+  public aaxw(ArkRecommendLogic paramArkRecommendLogic, WeakReference paramWeakReference1, WeakReference paramWeakReference2) {}
   
-  public ARMapConfig.WealthGodActTime[] a(int paramInt)
+  public void a(String paramString, Object paramObject, ArrayList paramArrayList)
   {
-    return new ARMapConfig.WealthGodActTime[paramInt];
+    ArkRecommendLogic.a().post(new aaxx(this, paramArrayList));
   }
 }
 

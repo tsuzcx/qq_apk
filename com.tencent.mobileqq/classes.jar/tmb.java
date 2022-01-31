@@ -1,14 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.vas.VipGrayConfigHelper.VipGrayConfigListener;
+import com.tencent.qphone.base.util.QLog;
 
-class tmb
-  implements DialogInterface.OnClickListener
+public class tmb
+  implements VipGrayConfigHelper.VipGrayConfigListener
 {
-  tmb(tma paramtma) {}
+  public tmb(QQSettingMe paramQQSettingMe) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a()
   {
-    paramDialogInterface.dismiss();
+    if (this.a.a != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QQSettingRedesign", 2, "enterWordListener");
+      }
+      this.a.b(this.a.a.getAccount());
+    }
   }
 }
 

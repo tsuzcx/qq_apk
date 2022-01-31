@@ -1,12 +1,34 @@
-import com.tencent.mobileqq.ark.ArkActionAppMgr.IGetAppNameByActionCallback;
+import android.content.res.Resources;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import java.util.Iterator;
+import mqq.os.MqqHandler;
 
-public class aakf
+public final class aakf
+  implements Runnable
 {
-  public ArkActionAppMgr.IGetAppNameByActionCallback a;
-  public Object a;
-  public String a;
-  public boolean a;
-  public String b;
+  public aakf(ArrayList paramArrayList1, Resources paramResources, aakm paramaakm, ArrayList paramArrayList2) {}
+  
+  public void run()
+  {
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
+    {
+      aakq localaakq = (aakq)localIterator.next();
+      if (localaakq.a(this.jdField_a_of_type_AndroidContentResResources))
+      {
+        localArrayList1.add(localaakq);
+      }
+      else
+      {
+        localaakq.c();
+        localArrayList2.add(localaakq);
+      }
+    }
+    ThreadManager.getUIHandler().post(new aakg(this, localArrayList1, localArrayList2));
+  }
 }
 
 

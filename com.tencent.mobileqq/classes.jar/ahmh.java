@@ -1,20 +1,19 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoyManager;
+import com.tencent.mobileqq.richmedia.capture.view.FilterProviderView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class ahmh
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public ahmh(GLLittleBoyManager paramGLLittleBoyManager) {}
+  public ahmh(FilterProviderView paramFilterProviderView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    GLLittleBoyManager.a(this.a, paramAnimation);
+    FilterProviderView.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("FilterProviderView", 2, "FilterProviderView onCaptureVideoFilterRefresh size=" + this.a.a.size());
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

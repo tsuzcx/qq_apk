@@ -1,48 +1,21 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.widget.XListView;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class wgf
-  extends Handler
+  implements Runnable
 {
-  public WeakReference a;
+  public wgf(ChatHistoryBubbleListForTroopFragment paramChatHistoryBubbleListForTroopFragment, int paramInt) {}
   
-  public wgf(TroopView paramTroopView)
+  public void run()
   {
-    this.a = new WeakReference(paramTroopView);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    TroopView localTroopView = (TroopView)this.a.get();
-    if (localTroopView == null) {}
-    do
-    {
-      return;
-      super.handleMessage(paramMessage);
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 0: 
-        TroopView.a(localTroopView).springBackOverScrollHeaderView();
-        return;
-      case 1: 
-        TroopView.a(localTroopView).springBackOverScrollHeaderView();
-        TroopView.a(localTroopView, 1, 2131434332);
-        return;
-      }
-    } while ((!TroopView.a(localTroopView)) || (TroopView.b(localTroopView)));
-    TroopView.f(localTroopView, true);
-    TroopView.a(localTroopView, false);
-    return;
-    TroopView.a(localTroopView, true);
-    return;
-    TroopView.b(localTroopView);
-    return;
-    TroopView.c(localTroopView);
+    List localList = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.jdField_a_of_type_JavaLangString, 1, this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.b, 20);
+    if (localList != null) {
+      ThreadManager.getUIHandler().post(new wgg(this, localList));
+    }
   }
 }
 

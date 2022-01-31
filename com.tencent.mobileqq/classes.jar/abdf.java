@@ -1,25 +1,23 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.avatar.dynamicavatar.SelectCoverActivity;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.armap.SdCardImageAnimView;
+import com.tencent.qphone.base.util.QLog;
 
-public class abdf
-  extends AnimatorListenerAdapter
+class abdf
+  implements Runnable
 {
-  public abdf(SelectCoverActivity paramSelectCoverActivity) {}
+  abdf(abde paramabde, Bitmap paramBitmap) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    this.a.a = null;
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    this.a.a = null;
+    if (QLog.isColorLevel()) {
+      QLog.i("SdCardImageAnimView", 2, "defaultImgRunnable set image bitmap");
+    }
+    this.jdField_a_of_type_Abde.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abdf
  * JD-Core Version:    0.7.0.1
  */

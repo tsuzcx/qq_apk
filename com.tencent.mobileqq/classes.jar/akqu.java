@@ -1,61 +1,42 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadApi;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.DownloadQueryListener;
-import java.util.ArrayList;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
+import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
 
-public final class akqu
+class akqu
   implements Runnable
 {
-  public akqu(List paramList, DownloadQueryListener paramDownloadQueryListener) {}
+  akqu(akqt paramakqt, int paramInt) {}
   
   public void run()
   {
-    LogUtility.a(DownloadApi.a, "getQueryDownloadAction enter");
-    DownloadManager.a().a();
-    for (;;)
+    int i = 0;
+    if (this.jdField_a_of_type_Int == 202)
     {
-      int i;
-      try
+      localObject = new String[2];
+      localObject[0] = "https://qc.vip.qq.com/";
+      localObject[1] = "http://m.gamecenter.qq.com";
+      int j = localObject.length;
+      while (i < j)
       {
-        ArrayList localArrayList = new ArrayList();
-        int j = this.jdField_a_of_type_JavaUtilList.size();
-        i = 0;
-        if (i < j)
-        {
-          DownloadInfo localDownloadInfo = (DownloadInfo)this.jdField_a_of_type_JavaUtilList.get(i);
-          if (DownloadManager.a().a(localDownloadInfo))
-          {
-            LogUtility.a(DownloadApi.a, "refreshDownloadInfo true " + localDownloadInfo);
-            localArrayList.add(localDownloadInfo);
-          }
+        String str = localObject[i];
+        SwiftBrowserCookieMonster localSwiftBrowserCookieMonster = SwiftBrowserCookieMonster.a(str);
+        if (localSwiftBrowserCookieMonster != null) {
+          localSwiftBrowserCookieMonster.a(str, null, null, null);
         }
-        else
-        {
-          if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener != null) {
-            this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.b_(localArrayList);
-          }
-          return;
-        }
+        i += 1;
       }
-      catch (Exception localException)
-      {
-        LogUtility.c(DownloadApi.a, "Exception>>>", localException);
-        if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener == null) {
-          continue;
-        }
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(-1, localException.getMessage());
-        return;
-      }
-      i += 1;
     }
+    Object localObject = SwiftBrowserCookieMonster.a("http://zb.vip.qq.com/");
+    if (localObject != null) {
+      ((SwiftBrowserCookieMonster)localObject).a("http://zb.vip.qq.com/", null, null, null);
+    }
+    this.jdField_a_of_type_Akqt.jdField_a_of_type_AndroidOsBundle.putBoolean("_should_set_cookie_", true);
+    this.jdField_a_of_type_Akqt.jdField_a_of_type_ComTencentMobileqqWebviewSwiftUtilsSwiftWebAccelerator.a(this.jdField_a_of_type_Akqt.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akqu
  * JD-Core Version:    0.7.0.1
  */

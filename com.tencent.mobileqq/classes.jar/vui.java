@@ -1,37 +1,24 @@
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
 public class vui
-  implements Runnable
+  implements WerewolvesHandler.Callback
 {
-  public vui(PublicAccountChatPie paramPublicAccountChatPie, AccountDetail paramAccountDetail) {}
+  public vui(GameRoomChatPie paramGameRoomChatPie) {}
   
-  public void run()
+  public void a(int paramInt, oidb_0x8ed.RspBody paramRspBody)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "updateUnfollowInfo");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.V)
+    if ((paramInt == 0) && (this.a.X))
     {
-      int i = PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.accountFlag);
-      if ((i == -3) || (i == -4)) {
-        PublicAccountManager.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.uin);
-      }
+      QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, 2, "已成功退出游戏房间", 0).a();
+      SharedPreUtils.l(this.a.a(), this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomAVController.a(this.a.jdField_a_of_type_AndroidContentContext);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqAppPublicAccountHandler.b(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
-    }
-    PublicAccountChatPie.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
-    PublicAccountChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie).post(new vuj(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1008);
   }
 }
 

@@ -1,17 +1,15 @@
-import android.widget.TextView;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.fragment.CaptureQmcfSoDownloadFragment;
+import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload;
+import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload.Listener;
 
 public class anvq
   implements Runnable
 {
-  public anvq(CaptureQmcfSoDownloadFragment paramCaptureQmcfSoDownloadFragment, String paramString) {}
+  public anvq(EditWebVideoHallowenUpload paramEditWebVideoHallowenUpload) {}
   
   public void run()
   {
-    CaptureQmcfSoDownloadFragment.a(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureFragmentCaptureQmcfSoDownloadFragment).setText(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureQmcfSoDownloadFragment", 2, "setTipsTextData: textData=" + this.jdField_a_of_type_JavaLangString);
+    if (EditWebVideoHallowenUpload.a(this.a) != null) {
+      EditWebVideoHallowenUpload.a(this.a).a();
     }
   }
 }

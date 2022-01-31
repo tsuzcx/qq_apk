@@ -1,33 +1,47 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import dov.com.tencent.mobileqq.shortvideo.util.storage.StorageManager;
-import dov.com.tencent.mobileqq.shortvideo.util.storage.StorageManager.OnSdCardChangedListener;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.NormalFacePackage;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class aoal
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public aoal(StorageManager paramStorageManager) {}
+  public aoal(FaceListPage paramFaceListPage) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (paramIntent.getAction() == null) {}
-    do
+    boolean bool2 = true;
+    Object localObject = FaceListPage.a(this.a);
+    if (localObject == null) {}
+    while (!(localObject instanceof NormalFacePackage)) {
+      return;
+    }
+    NormalFacePackage localNormalFacePackage = (NormalFacePackage)localObject;
+    if ((localNormalFacePackage.a != null) && (!localNormalFacePackage.a.isEmpty())) {
+      SLog.b("FaceListPage", "FaceUriList is not empty,load bitmap directly.");
+    }
+    for (boolean bool1 = true;; bool1 = false)
     {
-      do
+      if ((!bool1) && (!TextUtils.isEmpty(localNormalFacePackage.g)))
       {
-        return;
-        paramContext = this.a.jdField_a_of_type_JavaLangString;
-        this.a.c();
-      } while ((this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoUtilStorageStorageManager$OnSdCardChangedListener == null) || (paramContext.equals(this.a.jdField_a_of_type_JavaLangString)));
-      if (paramIntent.getAction().equals("android.intent.action.MEDIA_UNMOUNTED"))
-      {
-        this.a.b();
-        this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoUtilStorageStorageManager$OnSdCardChangedListener.a(0, this.a.jdField_a_of_type_JavaLangString);
-        return;
+        SLog.b("FaceListPage", "FacePkgPath is not empty,try to load uriList from it.");
+        localObject = localNormalFacePackage.a();
+        if ((localObject != null) && (!((List)localObject).isEmpty())) {
+          bool1 = bool2;
+        }
       }
-    } while (!paramIntent.getAction().equals("android.intent.action.MEDIA_MOUNTED"));
-    this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoUtilStorageStorageManager$OnSdCardChangedListener.a(1, this.a.jdField_a_of_type_JavaLangString);
+      for (;;)
+      {
+        ThreadManager.getUIHandler().post(new aoam(this, localNormalFacePackage, (List)localObject, bool1));
+        return;
+        bool1 = false;
+        continue;
+        localObject = null;
+      }
+    }
   }
 }
 

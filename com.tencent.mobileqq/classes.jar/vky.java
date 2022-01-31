@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
+import com.immersion.stickersampleapp.HapticManager;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
 public class vky
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public vky(AIOImageListScene paramAIOImageListScene) {}
+  public vky(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    AIOImageListScene.a(this.a, null);
+    HapticManager.a().a();
   }
 }
 

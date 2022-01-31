@@ -5,12 +5,12 @@ import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import java.io.File;
-import ocb;
+import odt;
 
 public class EditTakePhotoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator CREATOR = new ocb();
+  public static final Parcelable.Creator CREATOR = new odt();
   public final double a;
   public final int a;
   @NonNull

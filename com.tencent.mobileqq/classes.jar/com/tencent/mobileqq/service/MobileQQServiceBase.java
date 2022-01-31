@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.service;
 
-import ahja;
+import ahxc;
 import android.os.Bundle;
 import android.os.Looper;
 import com.qq.jce.wup.UniPacket;
@@ -425,7 +425,7 @@ public abstract class MobileQQServiceBase
   
   public void b(ToServiceMsg paramToServiceMsg, ActionListener paramActionListener, Class paramClass)
   {
-    paramToServiceMsg = new ahja(this, paramToServiceMsg, paramActionListener, paramClass);
+    paramToServiceMsg = new ahxc(this, paramToServiceMsg, paramActionListener, paramClass);
     if (Thread.currentThread() == Looper.getMainLooper().getThread())
     {
       ThreadManager.post(paramToServiceMsg, 10, null, false);

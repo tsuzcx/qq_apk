@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.script.SpriteBackgroundManager;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 
 public class yot
   implements Runnable
 {
-  public yot(SpriteBackgroundManager paramSpriteBackgroundManager, ApolloTextureView paramApolloTextureView, int paramInt) {}
+  public yot(ApolloCmdChannel paramApolloCmdChannel, long paramLong, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.setVisibility(this.jdField_a_of_type_Int);
+    ApolloCmdChannel.access$400(this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
   }
 }
 

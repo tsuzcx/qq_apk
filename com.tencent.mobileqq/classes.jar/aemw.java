@@ -1,31 +1,19 @@
-import android.content.Context;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.ReportCallback;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.nearby.ipc.NearbyProxyObserver;
+import com.tencent.qphone.base.util.QLog;
 
-class aemw
-  implements NearbyMomentProtocol.ReportCallback
+public class aemw
+  extends NearbyProxyObserver
 {
-  aemw(aemv paramaemv) {}
+  public aemw(NearbyProxy paramNearbyProxy, int paramInt) {}
   
-  public void a(boolean paramBoolean)
+  protected void a()
   {
-    Context localContext = this.a.a;
-    int i;
-    if (paramBoolean)
-    {
-      i = 2;
-      if (!paramBoolean) {
-        break label40;
-      }
+    if (QLog.isColorLevel()) {
+      NearbyUtils.a("realHasUnreadMsg", new Object[] { "onNearbyProcStart" });
     }
-    label40:
-    for (String str = "举报成功";; str = "举报失败")
-    {
-      QQToast.a(localContext, i, str, 0).a();
-      return;
-      i = 1;
-      break;
-    }
+    NearbyProxy.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy, 4100, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
   }
 }
 

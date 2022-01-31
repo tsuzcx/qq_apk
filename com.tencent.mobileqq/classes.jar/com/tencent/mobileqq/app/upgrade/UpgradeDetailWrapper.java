@@ -13,12 +13,12 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayInputStream;
 import org.xmlpull.v1.XmlPullParser;
 import protocol.KQQConfig.UpgradeInfo;
-import zti;
+import zwo;
 
 public class UpgradeDetailWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new zti();
+  public static final Parcelable.Creator CREATOR = new zwo();
   static String a;
   public int a;
   public ApkUpdateDetail a;

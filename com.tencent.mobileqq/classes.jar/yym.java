@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.app.ConfigHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.JumpFilterHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
 
 public class yym
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public yym(ConfigHandler paramConfigHandler) {}
+  public yym(ApolloPanel paramApolloPanel) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    JumpFilterHelper.a().a(this.a.b.getApplication());
+    this.a.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yym
  * JD-Core Version:    0.7.0.1
  */

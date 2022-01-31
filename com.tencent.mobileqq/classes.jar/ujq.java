@@ -1,23 +1,15 @@
-import com.tencent.mobileqq.activity.aio.PokePanel;
-import com.tencent.mobileqq.activity.aio.PokePanelAdapter;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.aio.AppGuideTipsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.PackageUtil;
 
-class ujq
+public class ujq
   implements Runnable
 {
-  ujq(ujp paramujp) {}
+  public ujq(AppGuideTipsManager paramAppGuideTipsManager) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.PokePanel", 2, "[pokepanel]update UI start");
-    }
-    ArrayList localArrayList = this.a.jdField_a_of_type_JavaUtilArrayList;
-    PokePanel.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPokePanel).a(localArrayList);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.PokePanel", 2, "[pokepanel]update UI end");
-    }
+    AppGuideTipsManager.b(this.a, PackageUtil.a(AppGuideTipsManager.a(this.a).getApp(), "com.tencent.tim"));
   }
 }
 

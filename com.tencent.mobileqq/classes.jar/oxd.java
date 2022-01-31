@@ -1,18 +1,18 @@
-import android.content.Context;
-import android.widget.RadioButton;
-import com.tencent.biz.troopgift.RadioButtonIndicator;
+import com.tencent.biz.troop.VideoCombineHelper;
+import com.tencent.biz.troop.VideoCombineHelper.Task;
+import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
 
 public class oxd
-  extends RadioButton
+  extends VideoCombineHelper.Task
 {
-  public oxd(RadioButtonIndicator paramRadioButtonIndicator, Context paramContext)
+  public oxd(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.TaskListener paramTaskListener, String paramString)
   {
-    super(paramContext);
+    super(paramVideoCombineHelper, paramTaskListener, paramString);
   }
   
-  public boolean performClick()
+  public void a()
   {
-    return true;
+    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$TaskListener.b(this);
   }
 }
 

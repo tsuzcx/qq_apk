@@ -1,19 +1,18 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.widget.QQProgressNotifier;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
 
 public class ubk
   implements View.OnClickListener
 {
-  public ubk(TroopTransferActivity paramTroopTransferActivity) {}
+  public ubk(TroopMemberListActivity paramTroopMemberListActivity, Dialog paramDialog) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    this.a.finish();
   }
 }
 

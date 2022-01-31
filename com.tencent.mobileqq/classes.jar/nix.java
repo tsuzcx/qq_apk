@@ -1,18 +1,11 @@
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
 
-class nix
+public class nix
   implements Runnable
 {
-  nix(niw paramniw, String paramString) {}
+  public nix(VideoPlayModeBase paramVideoPlayModeBase) {}
   
-  public void run()
-  {
-    PlayModeUtils.a(this.jdField_a_of_type_Niw.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a.a, this.jdField_a_of_type_Niw.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder, this.jdField_a_of_type_Niw.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_JavaLangString);
-    PlayModeUtils.a(this.jdField_a_of_type_Niw.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a.a, this.jdField_a_of_type_Niw.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder, this.jdField_a_of_type_Niw.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.a(this.jdField_a_of_type_Niw.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.c), this.jdField_a_of_type_Niw.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-  }
+  public void run() {}
 }
 
 

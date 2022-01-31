@@ -1,18 +1,34 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ForceLogoutActivity;
-import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.DiscussionHandler.ReqDiscussInfo;
+import com.tencent.mobileqq.app.DiscussionManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class skn
-  implements View.OnClickListener
+  implements Runnable
 {
-  public skn(ForceLogoutActivity paramForceLogoutActivity) {}
+  public skn(DiscussionInfoCardActivity paramDiscussionInfoCardActivity, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.finish();
-    this.a.startActivity(new Intent(this.a, LoginActivity.class).addFlags(67108864));
+    ArrayList localArrayList = DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).a(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity));
+    this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a(localArrayList);
+    if (this.jdField_a_of_type_Boolean) {}
+    try
+    {
+      DiscussionHandler.ReqDiscussInfo localReqDiscussInfo = new DiscussionHandler.ReqDiscussInfo();
+      localReqDiscussInfo.a = String.valueOf(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity));
+      localReqDiscussInfo.b = localArrayList.size();
+      DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity).a(localReqDiscussInfo);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("DiscussionInfoCardActivity", 2, "initDiscussionView getDiscussInfo error disUin=" + DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), localException);
+    }
   }
 }
 

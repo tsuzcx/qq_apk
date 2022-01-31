@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import jlw;
+import jlh;
 
 public class SoundPoolHelper
 {
@@ -62,7 +62,7 @@ public class SoundPoolHelper
       if (this.jdField_a_of_type_AndroidMediaSoundPool == null)
       {
         this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(this.jdField_a_of_type_JavaUtilList.size(), this.jdField_a_of_type_Int, 0);
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new jlw(this, paramOnLoadFinishListener));
+        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new jlh(this, paramOnLoadFinishListener));
       }
       paramOnLoadFinishListener = this.jdField_a_of_type_JavaUtilList.iterator();
       while (paramOnLoadFinishListener.hasNext())

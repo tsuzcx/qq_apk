@@ -1,27 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.av.utils.QAVNotification;
+import com.tencent.av.utils.TipsManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class khc
+  implements Runnable
 {
-  public int a;
-  public Bitmap a;
-  public String a;
-  public boolean a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
+  public khc(TipsManager paramTipsManager) {}
   
-  public khc(QAVNotification paramQAVNotification, String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-    this.jdField_c_of_type_JavaLangString = paramString3;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_c_of_type_Int = paramInt3;
+    if (QLog.isColorLevel()) {
+      QLog.d("TipsManager", 2, "hideTipsRunnable, mPreviosState[" + this.a.b + "]");
+    }
+    this.a.a();
+    if (this.a.b) {
+      this.a.e();
+    }
   }
 }
 

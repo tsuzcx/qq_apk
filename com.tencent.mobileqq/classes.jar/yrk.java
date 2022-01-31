@@ -1,26 +1,44 @@
-import com.tencent.mobileqq.apollo.store.webview.ApolloUrlInterceptor;
-import com.tencent.mobileqq.apollo.store.webview.ApolloWebStatistics;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
 
 public class yrk
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public yrk(ApolloUrlInterceptor paramApolloUrlInterceptor) {}
+  public yrk(CmGameLauncher paramCmGameLauncher) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloUrlInterceptor", 2, "runSonicFlow in AsyncThread start!");
-    }
-    ApolloWebStatistics localApolloWebStatistics = ApolloUrlInterceptor.a(this.a);
-    long l = System.currentTimeMillis();
-    localApolloWebStatistics.g = l;
-    ApolloUrlInterceptor.a(this.a);
-    ApolloUrlInterceptor.b(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("apollo_client_ApolloUrlInterceptor", 2, "runSonicFlow use:" + (System.currentTimeMillis() - l));
-    }
-    ApolloUrlInterceptor.a(this.a).h = System.currentTimeMillis();
+    if (CmGameLauncher.a(this.a) == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (!"android.intent.action.SCREEN_ON".equals(paramIntent.getAction())) {
+            break;
+          }
+          if (CmGameLauncher.a(this.a))
+          {
+            CmGameLauncher.a(this.a).queueEvent(CmGameLauncher.a(this.a));
+            return;
+          }
+        } while (CmGameLauncher.a(this.a) == null);
+        CmGameLauncher.a(this.a).onResume();
+        return;
+      } while (!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()));
+      if (!CmGameLauncher.a(this.a)) {
+        break;
+      }
+    } while (CmGameLauncher.a(this.a) == null);
+    CmGameLauncher.a(this.a).queueEvent(CmGameLauncher.b(this.a));
+    return;
+    CmGameLauncher.a(this.a).setPreserveEGLContextOnPause(true);
+    CmGameLauncher.a(this.a).onPause();
   }
 }
 

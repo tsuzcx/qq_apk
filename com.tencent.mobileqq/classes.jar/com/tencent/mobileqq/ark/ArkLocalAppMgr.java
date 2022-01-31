@@ -1,38 +1,38 @@
 package com.tencent.mobileqq.ark;
 
-import aann;
-import aano;
-import aanq;
-import aanr;
-import aans;
-import aanu;
-import aanv;
-import aanw;
-import aanx;
-import aany;
-import aaob;
-import aaoc;
-import aaod;
-import aaoe;
-import aaof;
-import aaog;
-import aaoh;
-import aaok;
-import aaom;
-import aaoo;
-import aaop;
-import aaor;
-import aaos;
-import aaot;
-import aaou;
-import aaov;
-import aaow;
-import aaox;
-import aaoz;
-import aapa;
-import aapb;
-import aapc;
-import aapd;
+import aauo;
+import aaup;
+import aaur;
+import aaus;
+import aaut;
+import aauv;
+import aauw;
+import aaux;
+import aauy;
+import aauz;
+import aavc;
+import aavd;
+import aave;
+import aavf;
+import aavg;
+import aavh;
+import aavi;
+import aavl;
+import aavn;
+import aavp;
+import aavq;
+import aavs;
+import aavt;
+import aavu;
+import aavv;
+import aavw;
+import aavx;
+import aavy;
+import aawa;
+import aawb;
+import aawc;
+import aawd;
+import aawe;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -95,7 +95,7 @@ public class ArkLocalAppMgr
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
     i();
     a(10000);
-    ThreadManager.post(new aann(this), 5, null, true);
+    ThreadManager.post(new aauo(this), 5, null, true);
   }
   
   private static int a(int paramInt, long paramLong)
@@ -331,25 +331,25 @@ public class ArkLocalAppMgr
     case 4: 
     default: 
       if (paramInt > 0) {
-        return localBaseApplication.getString(2131436157);
+        return localBaseApplication.getString(2131436174);
       }
       break;
     case 0: 
-      return localBaseApplication.getString(2131436150);
+      return localBaseApplication.getString(2131436167);
     case 5: 
-      return localBaseApplication.getString(2131436151);
+      return localBaseApplication.getString(2131436168);
     case 6: 
-      return localBaseApplication.getString(2131436152);
+      return localBaseApplication.getString(2131436169);
     case 7: 
-      return localBaseApplication.getString(2131436153);
+      return localBaseApplication.getString(2131436170);
     case -1: 
-      return localBaseApplication.getString(2131436156);
+      return localBaseApplication.getString(2131436173);
     case -2: 
-      return localBaseApplication.getString(2131436155);
+      return localBaseApplication.getString(2131436172);
     case -3: 
-      return localBaseApplication.getString(2131436154);
+      return localBaseApplication.getString(2131436171);
     }
-    return localBaseApplication.getString(2131436158);
+    return localBaseApplication.getString(2131436175);
   }
   
   public static String a(String paramString)
@@ -583,7 +583,7 @@ public class ArkLocalAppMgr
           bool1 = true;
           AssertUtil.a(bool1);
           paramUpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo = null;
-          this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new aaoo(this, paramUpdateAppByNameTask));
+          this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new aavp(this, paramUpdateAppByNameTask));
           return;
         }
       }
@@ -614,7 +614,7 @@ public class ArkLocalAppMgr
     }
   }
   
-  private void a(aaov arg1)
+  private void a(aavw arg1)
   {
     if ((!jdField_a_of_type_Boolean) && (???.jdField_a_of_type_Boolean != true)) {
       throw new AssertionError();
@@ -630,11 +630,11 @@ public class ArkLocalAppMgr
         if (this.jdField_c_of_type_JavaUtilArrayList.isEmpty()) {
           break label177;
         }
-        aaov localaaov = (aaov)this.jdField_c_of_type_JavaUtilArrayList.get(0);
-        if (localaaov.jdField_a_of_type_Boolean) {
+        aavw localaavw = (aavw)this.jdField_c_of_type_JavaUtilArrayList.get(0);
+        if (localaavw.jdField_a_of_type_Boolean) {
           break label180;
         }
-        if ((!jdField_a_of_type_Boolean) && (localaaov.jdField_a_of_type_JavaUtilSet.isEmpty())) {
+        if ((!jdField_a_of_type_Boolean) && (localaavw.jdField_a_of_type_JavaUtilSet.isEmpty())) {
           throw new AssertionError();
         }
       }
@@ -643,84 +643,84 @@ public class ArkLocalAppMgr
       return;
       label180:
       this.jdField_c_of_type_JavaUtilArrayList.remove(localObject);
-      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new aaoe(this, localObject));
+      this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.post(new aavf(this, localObject));
     }
   }
   
-  private void a(aaov paramaaov, int paramInt, String paramString1, String paramString2, String paramString3)
+  private void a(aavw paramaavw, int paramInt, String paramString1, String paramString2, String paramString3)
   {
     if ((!jdField_a_of_type_Boolean) && (TextUtils.isEmpty(paramString3))) {
       throw new AssertionError();
     }
-    ThreadManager.post(new aaod(this, paramInt, paramString2, paramString1, paramaaov, paramString3), 5, null, true);
+    ThreadManager.post(new aave(this, paramInt, paramString2, paramString1, paramaavw, paramString3), 5, null, true);
   }
   
-  private void a(aaow paramaaow)
+  private void a(aavx paramaavx)
   {
-    if (paramaaow.jdField_a_of_type_Int != 0) {
-      paramaaow.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo = null;
+    if (paramaavx.jdField_a_of_type_Int != 0) {
+      paramaavx.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo = null;
     }
-    if ((paramaaow.jdField_a_of_type_Int == 0) && ((paramaaow.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo == null) || (paramaaow.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo.jdField_a_of_type_JavaLangString == null)))
+    if ((paramaavx.jdField_a_of_type_Int == 0) && ((paramaavx.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo == null) || (paramaavx.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo.jdField_a_of_type_JavaLangString == null)))
     {
       AssertUtil.a(false);
-      paramaaow.jdField_a_of_type_Int = -1;
-      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("notifyGetAppPathByNameTaskResult, retCode is success but task.appPathInfo.path==NULL, retCode=%d, app-name=%s", new Object[] { Integer.valueOf(paramaaow.jdField_a_of_type_Int), paramaaow.jdField_b_of_type_JavaLangString }));
+      paramaavx.jdField_a_of_type_Int = -1;
+      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("notifyGetAppPathByNameTaskResult, retCode is success but task.appPathInfo.path==NULL, retCode=%d, app-name=%s", new Object[] { Integer.valueOf(paramaavx.jdField_a_of_type_Int), paramaavx.jdField_b_of_type_JavaLangString }));
     }
-    ArkAppDataReport.a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramaaow.jdField_b_of_type_JavaLangString, paramaaow.jdField_a_of_type_Int, System.currentTimeMillis() - paramaaow.jdField_a_of_type_Long, NetworkUtil.b(BaseApplication.getContext()));
-    ArkLocalAppMgr.IGetAppPathByNameCallback localIGetAppPathByNameCallback = paramaaow.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByNameCallback;
+    ArkAppDataReport.a((QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramaavx.jdField_b_of_type_JavaLangString, paramaavx.jdField_a_of_type_Int, System.currentTimeMillis() - paramaavx.jdField_a_of_type_Long, NetworkUtil.b(BaseApplication.getContext()));
+    ArkLocalAppMgr.IGetAppPathByNameCallback localIGetAppPathByNameCallback = paramaavx.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByNameCallback;
     if (localIGetAppPathByNameCallback != null)
     {
-      if ((paramaaow.jdField_a_of_type_JavaLangString == null) || (paramaaow.jdField_a_of_type_JavaLangString.length() == 0)) {
-        paramaaow.jdField_a_of_type_JavaLangString = a(paramaaow.jdField_a_of_type_Int);
+      if ((paramaavx.jdField_a_of_type_JavaLangString == null) || (paramaavx.jdField_a_of_type_JavaLangString.length() == 0)) {
+        paramaavx.jdField_a_of_type_JavaLangString = a(paramaavx.jdField_a_of_type_Int);
       }
-      localIGetAppPathByNameCallback.a(paramaaow.jdField_a_of_type_Int, paramaaow.jdField_a_of_type_JavaLangString, paramaaow.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo, paramaaow.jdField_a_of_type_JavaLangObject);
+      localIGetAppPathByNameCallback.a(paramaavx.jdField_a_of_type_Int, paramaavx.jdField_a_of_type_JavaLangString, paramaavx.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo, paramaavx.jdField_a_of_type_JavaLangObject);
     }
   }
   
-  private void a(aaoz arg1)
+  private void a(aawa arg1)
   {
     ???.jdField_a_of_type_Boolean = true;
     Object localObject1 = new ArrayList();
     synchronized (this.d)
     {
-      aaoz localaaoz;
+      aawa localaawa;
       if (this.d.size() > 0)
       {
-        localaaoz = (aaoz)this.d.get(0);
-        if (localaaoz.jdField_a_of_type_Boolean) {}
+        localaawa = (aawa)this.d.get(0);
+        if (localaawa.jdField_a_of_type_Boolean) {}
       }
       else
       {
         ??? = ((ArrayList)localObject1).iterator();
         while (???.hasNext())
         {
-          localObject1 = (aaoz)???.next();
-          ((aaoz)localObject1).jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppViewByIntentCallback.a(((aaoz)localObject1).jdField_a_of_type_JavaLangString, ((aaoz)localObject1).jdField_b_of_type_JavaLangString, ((aaoz)localObject1).d, ((aaoz)localObject1).e, ((aaoz)localObject1).c);
+          localObject1 = (aawa)???.next();
+          ((aawa)localObject1).jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppViewByIntentCallback.a(((aawa)localObject1).jdField_a_of_type_JavaLangString, ((aawa)localObject1).jdField_b_of_type_JavaLangString, ((aawa)localObject1).d, ((aawa)localObject1).e, ((aawa)localObject1).c);
         }
       }
-      ((ArrayList)localObject1).add(localaaoz);
+      ((ArrayList)localObject1).add(localaawa);
       this.d.remove(0);
     }
   }
   
-  private void a(aapa paramaapa)
+  private void a(aawb paramaawb)
   {
-    aaot localaaot = new aaot(null);
-    localaaot.jdField_a_of_type_Boolean = false;
-    ThreadManager.post(new aaop(this, localaaot, paramaapa), 5, null, true);
+    aavu localaavu = new aavu(null);
+    localaavu.jdField_a_of_type_Boolean = false;
+    ThreadManager.post(new aavq(this, localaavu, paramaawb), 5, null, true);
   }
   
-  private void a(aapb paramaapb)
+  private void a(aawc paramaawc)
   {
-    ThreadManager.post(new aanw(this, new aaou(null), paramaapb), 5, null, true);
+    ThreadManager.post(new aaux(this, new aavv(null), paramaawc), 5, null, true);
   }
   
-  private void a(aapd paramaapd)
+  private void a(aawe paramaawe)
   {
-    if ((paramaapd == null) || (paramaapd.jdField_a_of_type_JavaUtilArrayList == null) || (paramaapd.jdField_a_of_type_JavaUtilArrayList.size() == 0) || (!ArkAppCenter.b())) {
+    if ((paramaawe == null) || (paramaawe.jdField_a_of_type_JavaUtilArrayList == null) || (paramaawe.jdField_a_of_type_JavaUtilArrayList.size() == 0) || (!ArkAppCenter.b())) {
       return;
     }
-    a(paramaapd.jdField_a_of_type_JavaUtilArrayList, paramaapd, new aanu(this));
+    a(paramaawe.jdField_a_of_type_JavaUtilArrayList, paramaawe, new aauv(this));
   }
   
   private void a(ArkAppCGI.QueryAppInfoByAppNameBatchResult paramQueryAppInfoByAppNameBatchResult, HashMap paramHashMap)
@@ -790,7 +790,7 @@ public class ArkLocalAppMgr
           SharedPreferences.Editor localEditor = BaseApplication.getContext().getSharedPreferences("ArkLocalAppUpdateTime", 0).edit();
           localEditor.putString(str + "_sign", Base64.encodeToString(localQueryAppInfoResult.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDownloadInfo.jdField_a_of_type_ArrayOfByte, 0));
           localEditor.commit();
-          localArkAppCGI.a(localQueryAppInfoResult.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDownloadInfo.jdField_a_of_type_JavaLangString, localQueryAppInfoResult.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDownloadInfo.jdField_a_of_type_ArrayOfByte, localUpdateAppByNameTask, new aaom(this));
+          localArkAppCGI.a(localQueryAppInfoResult.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDownloadInfo.jdField_a_of_type_JavaLangString, localQueryAppInfoResult.jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDownloadInfo.jdField_a_of_type_ArrayOfByte, localUpdateAppByNameTask, new aavn(this));
         }
       }
       else
@@ -806,7 +806,7 @@ public class ArkLocalAppMgr
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    ThreadManager.post(new aaog(paramString), 5, null, false);
+    ThreadManager.post(new aavh(paramString), 5, null, false);
   }
   
   private void a(String paramString, int paramInt)
@@ -817,7 +817,7 @@ public class ArkLocalAppMgr
     synchronized (this.jdField_c_of_type_JavaUtilHashMap)
     {
       long l = System.currentTimeMillis();
-      this.jdField_c_of_type_JavaUtilHashMap.put(paramString, new aaos(l, paramInt));
+      this.jdField_c_of_type_JavaUtilHashMap.put(paramString, new aavt(l, paramInt));
       a(paramString, l);
       b(paramString, paramInt);
       return;
@@ -892,11 +892,11 @@ public class ArkLocalAppMgr
     //   64: invokevirtual 305	java/io/File:exists	()Z
     //   67: ifeq -40 -> 27
     //   70: aload_0
-    //   71: new 712	aaoj
+    //   71: new 712	aavk
     //   74: dup
     //   75: aload_1
     //   76: iload_2
-    //   77: invokespecial 714	aaoj:<init>	(Ljava/lang/String;Z)V
+    //   77: invokespecial 714	aavk:<init>	(Ljava/lang/String;Z)V
     //   80: invokevirtual 718	java/io/File:listFiles	(Ljava/io/FileFilter;)[Ljava/io/File;
     //   83: pop
     //   84: goto -57 -> 27
@@ -951,7 +951,7 @@ public class ArkLocalAppMgr
     }
   }
   
-  private void a(ArrayList paramArrayList, Object paramObject, aapc paramaapc)
+  private void a(ArrayList paramArrayList, Object paramObject, aawd paramaawd)
   {
     if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
       return;
@@ -962,7 +962,7 @@ public class ArkLocalAppMgr
       ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("updateAppByName, app=null", new Object[0]));
       return;
     }
-    ThreadManager.post(new aaok(this, paramArrayList, paramObject, paramaapc, localQQAppInterface), 5, null, true);
+    ThreadManager.post(new aavl(this, paramArrayList, paramObject, paramaawd, localQQAppInterface), 5, null, true);
   }
   
   private void a(boolean paramBoolean, byte[] paramArrayOfByte, ArkLocalAppMgr.UpdateAppByNameTask paramUpdateAppByNameTask)
@@ -1461,7 +1461,7 @@ public class ArkLocalAppMgr
     Object localObject = a(paramString1, paramString2);
     if ((localObject != null) && ((paramString2 == null) || (b(((ArkLocalAppMgr.AppPathInfo)localObject).jdField_a_of_type_ComTencentMobileqqArkArkAppInfo$AppDesc.jdField_b_of_type_JavaLangString, paramString2) >= 0)))
     {
-      paramString1 = new aaow();
+      paramString1 = new aavx();
       paramString1.jdField_a_of_type_Int = 0;
       paramString1.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo = ((ArkLocalAppMgr.AppPathInfo)localObject);
       paramString1.jdField_a_of_type_JavaLangObject = paramObject;
@@ -1471,22 +1471,22 @@ public class ArkLocalAppMgr
       return;
     }
     ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("getAppPathByName, app not found at local, update app, app-name=%s, min-ver=%s", new Object[] { paramString1, paramString2 }));
-    localObject = new aaow();
-    ((aaow)localObject).jdField_a_of_type_Int = -1;
-    ((aaow)localObject).jdField_b_of_type_JavaLangString = paramString1;
-    ((aaow)localObject).c = paramString2;
-    ((aaow)localObject).jdField_a_of_type_JavaLangObject = paramObject;
-    ((aaow)localObject).jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByNameCallback = paramIGetAppPathByNameCallback;
-    ((aaow)localObject).jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo = null;
-    ((aaow)localObject).jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(a(), this);
+    localObject = new aavx();
+    ((aavx)localObject).jdField_a_of_type_Int = -1;
+    ((aavx)localObject).jdField_b_of_type_JavaLangString = paramString1;
+    ((aavx)localObject).c = paramString2;
+    ((aavx)localObject).jdField_a_of_type_JavaLangObject = paramObject;
+    ((aavx)localObject).jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByNameCallback = paramIGetAppPathByNameCallback;
+    ((aavx)localObject).jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo = null;
+    ((aavx)localObject).jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(a(), this);
     paramString2 = new ArrayList();
     paramString2.add(paramString1);
-    a(paramString2, localObject, new aaoh(this));
+    a(paramString2, localObject, new aavi(this));
   }
   
   private static String[] b()
   {
-    File[] arrayOfFile = new File(ArkAppCenter.d()).listFiles(new aanx());
+    File[] arrayOfFile = new File(ArkAppCenter.d()).listFiles(new aauy());
     if ((arrayOfFile == null) || (arrayOfFile.length == 0)) {
       return null;
     }
@@ -1507,7 +1507,7 @@ public class ArkLocalAppMgr
     if (!((String)localObject2).endsWith("/")) {
       localObject1 = ((String)localObject2).concat("/");
     }
-    File[] arrayOfFile = new File((String)localObject1).listFiles(new aanv());
+    File[] arrayOfFile = new File((String)localObject1).listFiles(new aauw());
     if (arrayOfFile == null) {
       localObject2 = null;
     }
@@ -1632,11 +1632,11 @@ public class ArkLocalAppMgr
     long l3;
     synchronized (this.jdField_c_of_type_JavaUtilHashMap)
     {
-      Object localObject = (aaos)this.jdField_c_of_type_JavaUtilHashMap.get(paramString);
+      Object localObject = (aavt)this.jdField_c_of_type_JavaUtilHashMap.get(paramString);
       if (localObject != null)
       {
-        l1 = ((aaos)localObject).jdField_a_of_type_Long;
-        i = ((aaos)localObject).jdField_a_of_type_Int;
+        l1 = ((aavt)localObject).jdField_a_of_type_Long;
+        i = ((aavt)localObject).jdField_a_of_type_Int;
         i = a(i, l2);
         l3 = (System.currentTimeMillis() - l1) / 60000L;
         if (l3 > i)
@@ -1650,7 +1650,7 @@ public class ArkLocalAppMgr
         localObject = BaseApplication.getContext();
         l1 = ((Context)localObject).getSharedPreferences("ArkAppUpdateRecord", 0).getLong(paramString, 0L);
         i = ((Context)localObject).getSharedPreferences("ArkAppUpdatePeriod", 0).getInt(paramString, 1380);
-        this.jdField_c_of_type_JavaUtilHashMap.put(paramString, new aaos(l1, i));
+        this.jdField_c_of_type_JavaUtilHashMap.put(paramString, new aavt(l1, i));
       }
     }
     ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("isAppNeedUpdate, need-update=false, app=%s, last-update=%d, delta=%d, update-period=%d, last-use-time=%d", new Object[] { paramString, Long.valueOf(l1), Long.valueOf(l3), Integer.valueOf(i), Long.valueOf(l2) }));
@@ -1675,12 +1675,12 @@ public class ArkLocalAppMgr
       return;
     }
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    a(new aanq(this));
+    a(new aaur(this));
   }
   
   private void i()
   {
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(new aans(this), 10000L);
+    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(new aaut(this), 10000L);
   }
   
   private void j()
@@ -1743,26 +1743,26 @@ public class ArkLocalAppMgr
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(new aanr(this), paramInt);
+    this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.postDelayed(new aaus(this), paramInt);
   }
   
   public void a(String paramString1, String paramString2, int paramInt, ArkLocalAppMgr.IGetAppViewByIntentCallback arg4)
   {
-    aaoz localaaoz = new aaoz(null);
-    localaaoz.jdField_a_of_type_JavaLangString = paramString1;
-    localaaoz.jdField_b_of_type_JavaLangString = paramString2;
-    localaaoz.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppViewByIntentCallback = ???;
+    aawa localaawa = new aawa(null);
+    localaawa.jdField_a_of_type_JavaLangString = paramString1;
+    localaawa.jdField_b_of_type_JavaLangString = paramString2;
+    localaawa.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppViewByIntentCallback = ???;
     synchronized (this.d)
     {
-      this.d.add(localaaoz);
-      a(paramString1, "0.0.0.0", null, new aaof(this, paramString2, paramInt, localaaoz));
+      this.d.add(localaawa);
+      a(paramString1, "0.0.0.0", null, new aavg(this, paramString2, paramInt, localaawa));
       return;
     }
   }
   
   public void a(String paramString1, String paramString2, ArkLocalAppMgr.IGetLocalAppPath paramIGetLocalAppPath)
   {
-    ThreadManager.post(new aaox(this, paramString1, paramString2, paramIGetLocalAppPath), 8, null, true);
+    ThreadManager.post(new aavy(this, paramString1, paramString2, paramIGetLocalAppPath), 8, null, true);
   }
   
   public void a(String paramString1, String paramString2, Object paramObject, ArkLocalAppMgr.IGetAppPathByNameCallback paramIGetAppPathByNameCallback)
@@ -1772,7 +1772,7 @@ public class ArkLocalAppMgr
       if (!jdField_a_of_type_Boolean) {
         throw new AssertionError();
       }
-      paramString1 = new aaow();
+      paramString1 = new aavx();
       paramString1.jdField_a_of_type_Int = -1;
       paramString1.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo = null;
       paramString1.jdField_a_of_type_JavaLangObject = paramObject;
@@ -1781,7 +1781,7 @@ public class ArkLocalAppMgr
       paramString1.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(1916, paramString1).sendToTarget();
       return;
     }
-    ThreadManager.post(new aaoc(this, paramString1, paramString2, paramObject, paramIGetAppPathByNameCallback), 5, null, true);
+    ThreadManager.post(new aavd(this, paramString1, paramString2, paramObject, paramIGetAppPathByNameCallback), 5, null, true);
   }
   
   public boolean a(String paramString1, String paramString2, int paramInt, ArrayList arg4, ArrayList paramArrayList2, Object paramObject, ArkLocalAppMgr.IGetAppPathByActionCallback paramIGetAppPathByActionCallback)
@@ -1793,27 +1793,27 @@ public class ArkLocalAppMgr
     if (localQQAppInterface == null) {
       return false;
     }
-    aaov localaaov = new aaov(null);
-    localaaov.jdField_a_of_type_Boolean = false;
-    localaaov.jdField_a_of_type_JavaLangString = paramString1;
-    localaaov.jdField_b_of_type_JavaLangString = paramString2;
-    localaaov.jdField_a_of_type_Int = paramInt;
-    localaaov.jdField_a_of_type_JavaLangObject = paramObject;
-    localaaov.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByActionCallback = paramIGetAppPathByActionCallback;
+    aavw localaavw = new aavw(null);
+    localaavw.jdField_a_of_type_Boolean = false;
+    localaavw.jdField_a_of_type_JavaLangString = paramString1;
+    localaavw.jdField_b_of_type_JavaLangString = paramString2;
+    localaavw.jdField_a_of_type_Int = paramInt;
+    localaavw.jdField_a_of_type_JavaLangObject = paramObject;
+    localaavw.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByActionCallback = paramIGetAppPathByActionCallback;
     if (??? != null) {
-      localaaov.jdField_a_of_type_JavaUtilArrayList.addAll(???);
+      localaavw.jdField_a_of_type_JavaUtilArrayList.addAll(???);
     }
     if (paramArrayList2 != null) {
-      localaaov.jdField_b_of_type_JavaUtilArrayList.addAll(paramArrayList2);
+      localaavw.jdField_b_of_type_JavaUtilArrayList.addAll(paramArrayList2);
     }
     synchronized (this.jdField_c_of_type_JavaUtilArrayList)
     {
-      this.jdField_c_of_type_JavaUtilArrayList.add(localaaov);
-      if (!((ArkAppCenter)localQQAppInterface.getManager(120)).a().a(localaaov.jdField_a_of_type_JavaLangString, localaaov.jdField_b_of_type_JavaLangString, null, new aany(this, localaaov)))
+      this.jdField_c_of_type_JavaUtilArrayList.add(localaavw);
+      if (!((ArkAppCenter)localQQAppInterface.getManager(120)).a().a(localaavw.jdField_a_of_type_JavaLangString, localaavw.jdField_b_of_type_JavaLangString, null, new aauz(this, localaavw)))
       {
         ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("getAppPathByAction, getAppNameByAction fail, action=%s.%s.", new Object[] { paramString1, paramString2 }));
-        localaaov.jdField_a_of_type_Boolean = true;
-        ThreadManager.post(new aaob(this, localaaov), 5, null, true);
+        localaavw.jdField_a_of_type_Boolean = true;
+        ThreadManager.post(new aavc(this, localaavw), 5, null, true);
         return true;
       }
     }
@@ -1822,7 +1822,7 @@ public class ArkLocalAppMgr
   
   public void b()
   {
-    a(new aaor(this));
+    a(new aavs(this));
   }
   
   public void b(String paramString1, String paramString2)
@@ -1842,7 +1842,7 @@ public class ArkLocalAppMgr
       ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("_updatePredownloadAppList, app=null", new Object[0]));
       return;
     }
-    ThreadManager.post(new aano(this, localQQAppInterface), 5, null, true);
+    ThreadManager.post(new aaup(this, localQQAppInterface), 5, null, true);
   }
   
   public void e()
@@ -1863,7 +1863,7 @@ public class ArkLocalAppMgr
   {
     if (paramMessage.what == 1916)
     {
-      a((aaow)paramMessage.obj);
+      a((aavx)paramMessage.obj);
       return true;
     }
     if (paramMessage.what == 1917)

@@ -1,17 +1,18 @@
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+
 public class agfu
+  implements Runnable
 {
-  public String a;
-  public String b;
+  public agfu(ScanTorchActivity paramScanTorchActivity) {}
   
-  public agfu(String paramString1, String paramString2)
+  public void run()
   {
-    this.a = paramString1;
-    this.b = paramString2;
+    ScanTorchActivity.a(this.a, "onAREnableModelRender.1", true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agfu
  * JD-Core Version:    0.7.0.1
  */

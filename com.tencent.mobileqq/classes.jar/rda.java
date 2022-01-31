@@ -1,31 +1,40 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
+import com.tencent.qphone.base.util.QLog;
 
 public class rda
-  implements View.OnClickListener
+  implements Runnable
 {
-  public rda(AccountManageActivity paramAccountManageActivity) {}
+  public rda(LiteTransferWrapper paramLiteTransferWrapper, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "Quit", "Setting_Quit", 0, 0, "2", "", "", "");
-    if (SettingCloneUtil.readValue(this.a.app.getApplication(), this.a.app.getAccount(), null, "pcactive_config", false)) {
-      this.a.app.startPCActivePolling(this.a.app.getAccount(), "logout");
+    try
+    {
+      if (LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L)
+      {
+        QLog.i("dataline.LiteTTransferWrapper", 1, "destryOperator mLiteTransferOperator:" + LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) + " threadId:" + Thread.currentThread().getId());
+        long l = LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper);
+        LiteTransferWrapper.access$202(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, 0L);
+        this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.destryOperator(l, this.jdField_a_of_type_Boolean);
+      }
+      LiteTransferWrapper.access$002(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, null);
+      LiteTransferWrapper.access$102(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper, null);
+      return;
     }
-    AccountManageActivity.a(this.a.getActivity(), this.a.app);
-    if ((this.a.b != null) && (this.a.b.isShowing())) {
-      this.a.b.dismiss();
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("dataline.LiteTTransferWrapper", 2, "cannot endLiteTransfer, load litetranfer library error?" + QLog.getStackTraceString(localUnsatisfiedLinkError));
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     rda
  * JD-Core Version:    0.7.0.1
  */

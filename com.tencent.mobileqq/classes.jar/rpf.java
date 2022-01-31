@@ -1,25 +1,54 @@
-import android.text.TextUtils;
+import android.support.v4.app.FragmentActivity;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class rpf
+class rpf
   implements Runnable
 {
-  public rpf(BaseChatPie paramBaseChatPie) {}
+  rpf(rpc paramrpc) {}
   
   public void run()
   {
-    MessageRecord localMessageRecord = ChatActivityFacade.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-    if ((localMessageRecord != null) && (!TextUtils.isEmpty(localMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"))))
+    try
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(localMessageRecord.getExtInfoFromExtStr("guide_msg_cookie"));
-      if (QLog.isColorLevel()) {
-        QLog.i("BabyQReportCookie", 2, "now enter the aio!!!");
+      FragmentActivity localFragmentActivity = this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+      Object localObject;
+      String str;
+      if (BaseChatPie.j(this.a.a) > 0)
+      {
+        localObject = "发送到 " + this.a.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d;
+        if (BaseChatPie.j(this.a.a) <= 0) {
+          break label186;
+        }
+        str = "Crash count: " + BaseChatPie.j(this.a.a) + "\n" + "CrashInfoSummary.txt";
+        label109:
+        if (BaseChatPie.j(this.a.a) <= 0) {
+          break label191;
+        }
       }
+      label186:
+      label191:
+      for (int i = 2131433631;; i = 2131433016)
+      {
+        localObject = DialogUtil.b(localFragmentActivity, 230, (String)localObject, str, 2131433015, i, new rpg(this), new rph(this));
+        ((QQCustomDialog)localObject).adjustTitle();
+        if (this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) {
+          return;
+        }
+        ((QQCustomDialog)localObject).show();
+        return;
+        localObject = "0 Crash";
+        break;
+        str = null;
+        break label109;
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }

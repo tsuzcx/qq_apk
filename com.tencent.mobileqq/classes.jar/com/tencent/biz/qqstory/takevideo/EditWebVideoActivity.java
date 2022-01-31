@@ -18,7 +18,7 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MqqWeakReferenceHandler;
 import java.io.File;
-import ofe;
+import ogx;
 
 public class EditWebVideoActivity
   extends EditVideoActivity
@@ -26,7 +26,7 @@ public class EditWebVideoActivity
 {
   private int jdField_a_of_type_Int;
   private ProgressDialog jdField_a_of_type_AndroidAppProgressDialog;
-  private EncodeVideoTask.ResultListener jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask$ResultListener = new ofe(this);
+  private EncodeVideoTask.ResultListener jdField_a_of_type_ComTencentMobileqqActivityShortvideoEncodeVideoTask$ResultListener = new ogx(this);
   private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
   private String jdField_a_of_type_JavaLangString;
   private byte[] jdField_a_of_type_ArrayOfByte;
@@ -95,7 +95,7 @@ public class EditWebVideoActivity
     }
     if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_b_of_type_JavaLangString == null))
     {
-      QQToast.a(this, 2131435607, 0).a();
+      QQToast.a(this, 2131435624, 0).a();
       c();
       return;
     }
@@ -103,13 +103,13 @@ public class EditWebVideoActivity
     File localFile2 = new File(this.jdField_b_of_type_JavaLangString);
     if ((!localFile1.exists()) || (!localFile2.exists()))
     {
-      QQToast.a(this, 2131435607, 0).a();
+      QQToast.a(this, 2131435624, 0).a();
       c();
       return;
     }
     if ((!localFile1.isFile()) || (!localFile2.isFile()))
     {
-      QQToast.a(this, 2131435608, 0).a();
+      QQToast.a(this, 2131435625, 0).a();
       c();
       return;
     }
@@ -119,7 +119,7 @@ public class EditWebVideoActivity
       return;
     }
     c();
-    QQToast.a(this, 1, 2131435289, 0).a();
+    QQToast.a(this, 1, 2131435306, 0).a();
   }
   
   public void c()
@@ -162,11 +162,11 @@ public class EditWebVideoActivity
           continue;
         }
         c();
-        localTextView = (TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363381);
+        localTextView = (TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399);
         if (!StringUtil.a(paramString)) {
           continue;
         }
-        localTextView.setText(2131434297);
+        localTextView.setText(2131434314);
       }
       catch (Throwable paramString)
       {
@@ -184,10 +184,10 @@ public class EditWebVideoActivity
       }
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
       return;
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131624515);
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this, 2131624516);
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(false);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969181);
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
     }
   }
   
@@ -218,7 +218,7 @@ public class EditWebVideoActivity
       return false;
     case 1003: 
       c();
-      QQToast.a(this, 1, 2131435286, 0).a();
+      QQToast.a(this, 1, 2131435303, 0).a();
       finish();
       return true;
     case 1001: 

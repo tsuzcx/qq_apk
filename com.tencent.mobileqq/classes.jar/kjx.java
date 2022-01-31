@@ -1,34 +1,10 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.widget.QQMapView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class kjx
-  implements Animation.AnimationListener
+public final class kjx
+  implements DialogInterface.OnClickListener
 {
-  public kjx(PoiMapActivity paramPoiMapActivity) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    paramAnimation = PoiMapActivity.m(this.a).getLayoutParams();
-    paramAnimation.height = (this.a.o + this.a.p);
-    PoiMapActivity.n(this.a).setLayoutParams(paramAnimation);
-    paramAnimation = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
-    paramAnimation.bottomMargin = (-this.a.p);
-    this.a.b.setLayoutParams(paramAnimation);
-    this.a.a((this.a.o + this.a.p - PoiMapActivity.h(this.a) - this.a.s) / 2, false);
-    if (this.a.e != null) {
-      this.a.e.setVisibility(0);
-    }
-    PoiMapActivity.d(this.a).clearAnimation();
-    this.a.a = false;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

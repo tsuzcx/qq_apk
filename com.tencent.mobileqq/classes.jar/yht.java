@@ -1,62 +1,132 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.graphics.Rect;
-import android.view.View;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import android.text.TextUtils;
+import com.tencent.mobileqq.adapter.NewFriendMoreSysMsgAdapter;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QIMNewFriendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.data.PhoneContactAdd;
+import com.tencent.mobileqq.newfriend.FriendSystemMessage;
+import com.tencent.mobileqq.newfriend.PhoneContactAddMessage;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.immersive.ImmersiveUtils;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.concurrent.ConcurrentHashMap;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
+import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
-public final class yht
-  implements ViewTreeObserver.OnGlobalLayoutListener
+public class yht
+  implements Runnable
 {
-  public yht(ApolloRender paramApolloRender, View paramView) {}
+  public yht(NewFriendMoreSysMsgAdapter paramNewFriendMoreSysMsgAdapter, boolean paramBoolean) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow == null) || (!this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mShowEditWindow)) {
-      QLog.e("rogersxiao", 2, "render.mEditWindow return");
-    }
-    do
+    long l;
+    ArrayList localArrayList;
+    MessageForSystemMsg localMessageForSystemMsg;
+    synchronized (this.jdField_a_of_type_ComTencentMobileqqAdapterNewFriendMoreSysMsgAdapter.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
     {
-      return;
-      localObject = new Rect();
-      this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame((Rect)localObject);
-      i = (int)DeviceInfoUtil.m();
-      int j = ((Rect)localObject).bottom;
-      int k = ((Rect)localObject).top;
-      ImmersiveUtils.a(this.jdField_a_of_type_AndroidViewView.getContext());
-      if (i - (j - k) >= 200) {
-        break;
+      this.jdField_a_of_type_ComTencentMobileqqAdapterNewFriendMoreSysMsgAdapter.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+      l = FriendSystemMsgController.a().a(this.jdField_a_of_type_ComTencentMobileqqAdapterNewFriendMoreSysMsgAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      List localList = this.jdField_a_of_type_ComTencentMobileqqAdapterNewFriendMoreSysMsgAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(AppConstants.K, 0, l);
+      localArrayList = new ArrayList(localList.size());
+      if ((localList == null) || (localList.size() <= 0)) {
+        break label447;
       }
-    } while (!ApolloRender.sIsKeyBoardShow);
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.dismiss();
-    ApolloRender.sIsKeyBoardDissmiss = true;
-    return;
-    int i = ((Rect)localObject).bottom - this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight();
-    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("apollo_sp", 0);
-    if (((SharedPreferences)localObject).getInt("sp_key_apollo_keyboard_height", 0) != i)
-    {
-      ((SharedPreferences)localObject).edit().putInt("sp_key_apollo_keyboard_height", i).commit();
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView.getRootView(), 0, 0, i);
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.update(0, i, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight());
-      ApolloRender.sIsKeyBoardDissmiss = false;
+      int i = localList.size() - 1;
+      if (i < 0) {
+        break label447;
+      }
+      ??? = (MessageRecord)localList.get(i);
+      if ((??? instanceof MessageForSystemMsg))
+      {
+        localMessageForSystemMsg = (MessageForSystemMsg)???;
+        if (localMessageForSystemMsg.structMsg == null) {
+          localMessageForSystemMsg.parse();
+        }
+        if ((localMessageForSystemMsg.structMsg.msg.sub_type.get() != 13) || (!NewFriendMoreSysMsgAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterNewFriendMoreSysMsgAdapter).b(String.valueOf(localMessageForSystemMsg.structMsg.req_uin.get())))) {}
+      }
+      else
+      {
+        i -= 1;
+      }
     }
-    if (ApolloRender.sIsKeyBoardDissmiss)
+    String str;
+    Object localObject3;
+    if ((localMessageForSystemMsg.structMsg.msg.uint32_source_flag.get() & 0x8) == 8)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView.getRootView(), 0, 0, i);
-      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.update(0, i, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight());
-      ApolloRender.sIsKeyBoardDissmiss = false;
+      ??? = "";
+      str = localMessageForSystemMsg.structMsg.msg.msg_source.get();
+      l = localMessageForSystemMsg.structMsg.msg.uint64_discuss_uin.get();
+      if (l != 0L)
+      {
+        ??? = ContactUtils.c(this.jdField_a_of_type_ComTencentMobileqqAdapterNewFriendMoreSysMsgAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l));
+        if (TextUtils.isEmpty((CharSequence)???))
+        {
+          localObject3 = (DiscussionHandler)this.jdField_a_of_type_ComTencentMobileqqAdapterNewFriendMoreSysMsgAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(6);
+          if (localObject3 != null) {
+            ((DiscussionHandler)localObject3).a(l);
+          }
+        }
+      }
     }
-    ApolloRender.sIsKeyBoardShow = true;
+    for (;;)
+    {
+      try
+      {
+        ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_ComTencentMobileqqAdapterNewFriendMoreSysMsgAdapter.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+        if (??? != null) {
+          continue;
+        }
+        localObject3 = "";
+        localConcurrentHashMap.put(Long.valueOf(l), localObject3);
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("addFriendTag", 2, String.format(Locale.getDefault(), "NewFriendMoreSysMsgAdapter source_flag: %d  discussUin: %d mDiscussName: %s msg_source: %s", new Object[] { Integer.valueOf(localMessageForSystemMsg.structMsg.msg.uint32_source_flag.get()), Long.valueOf(l), ???, str }));
+      }
+      localArrayList.add(new FriendSystemMessage(localMessageForSystemMsg));
+      break;
+      localObject3 = ???;
+    }
+    label447:
+    ??? = NewFriendMoreSysMsgAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterNewFriendMoreSysMsgAdapter).a(true);
+    if (((ArrayList)???).size() > 0) {
+      localArrayList.addAll((Collection)???);
+    }
+    ??? = NewFriendMoreSysMsgAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterNewFriendMoreSysMsgAdapter).c();
+    if ((??? != null) && (!((ArrayList)???).isEmpty()))
+    {
+      ??? = ((ArrayList)((ArrayList)???).clone()).iterator();
+      while (((Iterator)???).hasNext()) {
+        localArrayList.add(new PhoneContactAddMessage((PhoneContactAdd)((Iterator)???).next()));
+      }
+    }
+    Collections.sort(localArrayList, NewFriendMoreSysMsgAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterNewFriendMoreSysMsgAdapter));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterNewFriendMoreSysMsgAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new yhu(this, localArrayList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yht
  * JD-Core Version:    0.7.0.1
  */

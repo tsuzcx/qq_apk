@@ -1,25 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.FetchCommentObserver;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 
 public class lke
-  implements ArticleCommentModule.FetchCommentObserver
 {
+  public ImageView a;
+  public LinearLayout a;
+  public RelativeLayout a;
+  public TextView a;
+  public ReadInJoyHeadImageView a;
+  public ReadInJoyNickNameTextView a;
+  public ImageView b;
+  public TextView b;
+  public TextView c;
+  public TextView d;
+  public TextView e;
+  public TextView f;
+  public TextView g;
+  
   public lke(ReadInJoySecondCommentListAdapter paramReadInJoySecondCommentListAdapter) {}
-  
-  public void a(ArticleInfo paramArticleInfo)
-  {
-    ReadInJoySecondCommentListAdapter.a(this.a).a = true;
-    this.a.notifyDataSetChanged();
-  }
-  
-  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoySecondCommentListAdapter", 2, "fetch second level comment failed ,err code =" + paramInt + "err msg =" + paramString);
-    }
-  }
 }
 
 

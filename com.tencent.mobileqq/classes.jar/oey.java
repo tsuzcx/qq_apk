@@ -1,21 +1,19 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoSave;
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
 public class oey
-  implements ProgressPieDrawable.OnProgressListener
+  implements DialogInterface.OnDismissListener
 {
-  public oey(EditVideoSave paramEditVideoSave) {}
+  public oey(EditVideoGuide paramEditVideoGuide) {}
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditVideoSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
-    }
+    this.a.jdField_a_of_type_Int = 3;
+    this.a.b = 3;
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(14);
   }
-  
-  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
 }
 
 

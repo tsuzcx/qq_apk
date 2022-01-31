@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils.kapalaiadapter;
 
-import ajsv;
+import akhc;
 import android.annotation.TargetApi;
 import android.app.Notification;
 import android.app.Notification.Builder;
@@ -19,7 +19,7 @@ public class KapalaiAdapterUtil
   
   public static KapalaiAdapterUtil a()
   {
-    return ajsv.a;
+    return akhc.a;
   }
   
   public int a()

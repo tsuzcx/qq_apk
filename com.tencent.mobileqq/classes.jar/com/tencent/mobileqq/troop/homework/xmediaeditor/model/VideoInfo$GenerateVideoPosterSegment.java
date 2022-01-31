@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.model;
 
-import aiwh;
+import ajkl;
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
 import android.media.ThumbnailUtils;
@@ -36,44 +36,44 @@ public class VideoInfo$GenerateVideoPosterSegment
     }
     String str2 = ImageInfo.b();
     MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    Object localObject5 = null;
-    Bitmap localBitmap1 = null;
     String str1 = null;
+    Object localObject4 = null;
+    Bitmap localBitmap2 = null;
+    Bitmap localBitmap1 = localBitmap2;
     Object localObject3 = str1;
-    Object localObject4 = localObject5;
-    Object localObject1 = localBitmap1;
+    Object localObject1 = localObject4;
     for (;;)
     {
       try
       {
         localMediaMetadataRetriever.setDataSource(paramVideoInfo.f);
+        localBitmap1 = localBitmap2;
         localObject3 = str1;
-        localObject4 = localObject5;
-        localObject1 = localBitmap1;
-        localBitmap2 = localMediaMetadataRetriever.getFrameAtTime(-1L);
-        if (localBitmap2 == null)
+        localObject1 = localObject4;
+        localBitmap3 = localMediaMetadataRetriever.getFrameAtTime(-1L);
+        if (localBitmap3 == null)
         {
+          localBitmap1 = localBitmap2;
           localObject3 = str1;
-          localObject4 = localObject5;
-          localObject1 = localBitmap1;
+          localObject1 = localObject4;
           notifyError(new Error("-201"));
         }
       }
       catch (Exception paramJobContext)
       {
-        Bitmap localBitmap2;
+        Bitmap localBitmap3;
         int[] arrayOfInt;
-        localObject1 = localObject3;
+        localObject1 = localBitmap1;
         QLog.e("GenerateVideoPosterSegment", 1, "error retrieve video info" + paramJobContext.getMessage());
-        localObject1 = localObject3;
+        localObject1 = localBitmap1;
         notifyError(new Error("-201"));
         try
         {
           localMediaMetadataRetriever.release();
-          if (localObject3 == null) {
+          if (localBitmap1 == null) {
             continue;
           }
-          ((Bitmap)localObject3).recycle();
+          localBitmap1.recycle();
           return;
         }
         catch (RuntimeException paramJobContext)
@@ -83,26 +83,26 @@ public class VideoInfo$GenerateVideoPosterSegment
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
-        localObject2 = localObject4;
+        localObject2 = localObject3;
         QLog.e("GenerateVideoPosterSegment", 1, "GenerateVideoPosterSegment error. OutOfMemoryError");
-        localObject2 = localObject4;
+        localObject2 = localObject3;
         URLDrawable.clearMemoryCache();
-        localObject2 = localObject4;
+        localObject2 = localObject3;
         System.gc();
-        localObject2 = localObject4;
+        localObject2 = localObject3;
         if (!this.jdField_a_of_type_Boolean)
         {
-          localObject2 = localObject4;
+          localObject2 = localObject3;
           this.jdField_a_of_type_Boolean = true;
-          localObject2 = localObject4;
+          localObject2 = localObject3;
           a(paramJobContext, paramVideoInfo);
           try
           {
             localMediaMetadataRetriever.release();
-            if (localObject4 == null) {
+            if (localObject3 == null) {
               continue;
             }
-            ((Bitmap)localObject4).recycle();
+            ((Bitmap)localObject3).recycle();
             return;
           }
           catch (RuntimeException paramJobContext)
@@ -110,7 +110,7 @@ public class VideoInfo$GenerateVideoPosterSegment
             return;
           }
         }
-        localObject2 = localObject4;
+        localObject2 = localObject3;
         notifyError(new Error("-1"));
         continue;
       }
@@ -138,75 +138,75 @@ public class VideoInfo$GenerateVideoPosterSegment
         return;
       }
       catch (RuntimeException paramJobContext) {}
+      localBitmap1 = localBitmap2;
       localObject3 = str1;
-      localObject4 = localObject5;
-      localObject1 = localBitmap1;
+      localObject1 = localObject4;
       arrayOfInt = ImageItem.a(this.jdField_a_of_type_Int, 200, 300, paramVideoInfo.jdField_a_of_type_Int, paramVideoInfo.b);
+      localBitmap1 = localBitmap2;
       localObject3 = str1;
-      localObject4 = localObject5;
-      localObject1 = localBitmap1;
-      localBitmap1 = ThumbnailUtils.extractThumbnail(localBitmap2, arrayOfInt[0], arrayOfInt[1]);
-      if (localBitmap1 == null)
+      localObject1 = localObject4;
+      localBitmap2 = ThumbnailUtils.extractThumbnail(localBitmap3, arrayOfInt[0], arrayOfInt[1]);
+      if (localBitmap2 == null)
       {
-        localObject3 = localBitmap1;
-        localObject4 = localBitmap1;
-        localObject1 = localBitmap1;
+        localBitmap1 = localBitmap2;
+        localObject3 = localBitmap2;
+        localObject1 = localBitmap2;
         notifyError(new Error("-201"));
         try
         {
           localMediaMetadataRetriever.release();
-          if (localBitmap1 == null) {
+          if (localBitmap2 == null) {
             continue;
           }
-          localBitmap1.recycle();
+          localBitmap2.recycle();
           return;
         }
         catch (RuntimeException paramJobContext) {}
       }
       else
       {
-        localObject3 = localBitmap1;
-        localObject4 = localBitmap1;
-        localObject1 = localBitmap1;
+        localBitmap1 = localBitmap2;
+        localObject3 = localBitmap2;
+        localObject1 = localBitmap2;
         str1 = str2 + "videoThumb_" + System.currentTimeMillis() + ".jpg";
-        localObject3 = localBitmap1;
-        localObject4 = localBitmap1;
-        localObject1 = localBitmap1;
-        ImageUtil.a(localBitmap1, new File(str1));
-        localObject3 = localBitmap1;
-        localObject4 = localBitmap1;
-        localObject1 = localBitmap1;
+        localBitmap1 = localBitmap2;
+        localObject3 = localBitmap2;
+        localObject1 = localBitmap2;
+        ImageUtil.a(localBitmap2, new File(str1));
+        localBitmap1 = localBitmap2;
+        localObject3 = localBitmap2;
+        localObject1 = localBitmap2;
         paramVideoInfo.c = str1;
-        localObject3 = localBitmap1;
-        localObject4 = localBitmap1;
-        localObject1 = localBitmap1;
-        ThreadManager.getUIHandler().post(new aiwh(this, paramVideoInfo, str1));
-        localObject3 = localBitmap1;
-        localObject4 = localBitmap1;
-        localObject1 = localBitmap1;
+        localBitmap1 = localBitmap2;
+        localObject3 = localBitmap2;
+        localObject1 = localBitmap2;
+        ThreadManager.getUIHandler().post(new ajkl(this, paramVideoInfo, str1));
+        localBitmap1 = localBitmap2;
+        localObject3 = localBitmap2;
+        localObject1 = localBitmap2;
         if (!isCanceled())
         {
-          localObject3 = localBitmap1;
-          localObject4 = localBitmap1;
-          localObject1 = localBitmap1;
+          localBitmap1 = localBitmap2;
+          localObject3 = localBitmap2;
+          localObject1 = localBitmap2;
           if (QLog.isColorLevel())
           {
-            localObject3 = localBitmap1;
-            localObject4 = localBitmap1;
-            localObject1 = localBitmap1;
+            localBitmap1 = localBitmap2;
+            localObject3 = localBitmap2;
+            localObject1 = localBitmap2;
             QLog.d("GenerateVideoPosterSegment", 2, new Object[] { "GenerateVideoPosterSegment notifyResult. info status=", Integer.valueOf(paramVideoInfo.g) });
           }
-          localObject3 = localBitmap1;
-          localObject4 = localBitmap1;
-          localObject1 = localBitmap1;
+          localBitmap1 = localBitmap2;
+          localObject3 = localBitmap2;
+          localObject1 = localBitmap2;
           notifyResult(paramVideoInfo);
         }
         try
         {
           localMediaMetadataRetriever.release();
-          if (localBitmap1 != null)
+          if (localBitmap2 != null)
           {
-            localBitmap1.recycle();
+            localBitmap2.recycle();
             return;
           }
         }
@@ -222,7 +222,7 @@ public class VideoInfo$GenerateVideoPosterSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo.GenerateVideoPosterSegment
  * JD-Core Version:    0.7.0.1
  */

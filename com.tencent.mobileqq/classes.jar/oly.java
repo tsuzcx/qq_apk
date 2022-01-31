@@ -1,12 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
 
 class oly
-  implements View.OnClickListener
+  implements Runnable
 {
   oly(olx paramolx) {}
   
-  public void onClick(View paramView) {}
+  public void run()
+  {
+    EditVideoTagPresenter.a(EditVideoTagPresenter.a(this.a.a), EditVideoTagPresenter.a(this.a.a));
+  }
 }
 
 

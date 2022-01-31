@@ -401,11 +401,11 @@ public class SVIPHandler
     //   126: astore_3
     //   127: iload_2
     //   128: ifeq +26 -> 154
-    //   131: new 434	zjk
+    //   131: new 434	zmq
     //   134: dup
     //   135: aload_0
     //   136: aload_3
-    //   137: invokespecial 437	zjk:<init>	(Lcom/tencent/mobileqq/app/SVIPHandler;Ljava/lang/String;)V
+    //   137: invokespecial 437	zmq:<init>	(Lcom/tencent/mobileqq/app/SVIPHandler;Ljava/lang/String;)V
     //   140: iconst_5
     //   141: aconst_null
     //   142: iconst_0
@@ -520,7 +520,7 @@ public class SVIPHandler
     localTFontSsoReq.u64_seq.set(((Random)localObject).nextInt(1000));
     localTFontSsoReq.i32_implat.set(109);
     localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
-    localTFontSsoReq.str_mqqver.set("7.6.0.3525");
+    localTFontSsoReq.str_mqqver.set("7.6.3.3560");
     localObject = new VipFontUpdate.TDiyFontReq();
     Iterator localIterator = paramMap.keySet().iterator();
     while (localIterator.hasNext())
@@ -569,7 +569,7 @@ public class SVIPHandler
     localTFontSsoReq.u64_seq.set(((Random)localObject1).nextInt(1000));
     localTFontSsoReq.i32_implat.set(109);
     localTFontSsoReq.str_osver.set(String.valueOf(Build.VERSION.SDK_INT));
-    localTFontSsoReq.str_mqqver.set("7.6.0.3525");
+    localTFontSsoReq.str_mqqver.set("7.6.3.3560");
     localObject1 = new VipFontUpdate.TFontFreshReq();
     ((VipFontUpdate.TFontFreshReq)localObject1).i32_local_font_id.set(a());
     localTFontSsoReq.st_fresh_req.set((MessageMicro)localObject1);
@@ -680,11 +680,11 @@ public class SVIPHandler
     //   88: astore_3
     //   89: iload_2
     //   90: ifeq +26 -> 116
-    //   93: new 721	zjm
+    //   93: new 721	zms
     //   96: dup
     //   97: aload_0
     //   98: aload_3
-    //   99: invokespecial 722	zjm:<init>	(Lcom/tencent/mobileqq/app/SVIPHandler;Ljava/lang/String;)V
+    //   99: invokespecial 722	zms:<init>	(Lcom/tencent/mobileqq/app/SVIPHandler;Ljava/lang/String;)V
     //   102: iconst_5
     //   103: aconst_null
     //   104: iconst_0

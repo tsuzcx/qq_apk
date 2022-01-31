@@ -44,13 +44,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
-import pvx;
+import pxr;
 
 public class DeviceFileHandler
   extends RouterHandler
   implements INetEngine.INetEngineListener
 {
-  Handler jdField_a_of_type_AndroidOsHandler = new pvx(this, Looper.getMainLooper());
+  Handler jdField_a_of_type_AndroidOsHandler = new pxr(this, Looper.getMainLooper());
   private DeviceFileHandler.DeviceNotifyReceiver jdField_a_of_type_ComTencentDeviceFileDeviceFileHandler$DeviceNotifyReceiver;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
   protected HashMap a;

@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qzone.QZoneVideoDownloadActivity;
+import com.tencent.widget.HorizontalListView;
 
 public class amci
-  implements Runnable
 {
-  public amci(QZoneVideoDownloadActivity paramQZoneVideoDownloadActivity) {}
+  private int a;
   
-  public void run()
+  private amci(HorizontalListView paramHorizontalListView) {}
+  
+  public void a()
   {
-    QQToast.a(this.a.getApplicationContext(), "网络已断,请连接网络后继续下载", 1).a();
+    this.a = HorizontalListView.c(this.b);
+  }
+  
+  public boolean a()
+  {
+    return (this.b.hasWindowFocus()) && (HorizontalListView.d(this.b) == this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amci
  * JD-Core Version:    0.7.0.1
  */

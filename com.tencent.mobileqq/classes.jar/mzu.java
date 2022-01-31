@@ -1,19 +1,40 @@
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.meta.ImageFileObject;
-import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject;
-import com.tencent.biz.qqstory.base.videoupload.meta.UploadObject.UploadFinishListener;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoTaskInfo;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoUploadTask;
+import com.tencent.biz.qqstory.base.VideoServerInfoManager;
+import com.tencent.biz.qqstory.base.VideoServerInfoManager.ServerInfo;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.network.request.RefreshVideoFileKeyRequest;
+import com.tencent.biz.qqstory.network.response.RefreshVideoFileKeyResponse;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class mzu
-  implements UploadObject.UploadFinishListener
+  implements CmdTaskManger.CommandCallback
 {
-  public mzu(StoryVideoUploadTask paramStoryVideoUploadTask, StoryVideoTaskInfo paramStoryVideoTaskInfo) {}
+  public mzu(VideoServerInfoManager paramVideoServerInfoManager) {}
   
-  public void a(UploadObject paramUploadObject)
+  public void a(RefreshVideoFileKeyRequest arg1, RefreshVideoFileKeyResponse paramRefreshVideoFileKeyResponse, ErrorMessage paramErrorMessage)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo.l = ((ImageFileObject)paramUploadObject).b;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoUploadTask.a(1, new ErrorMessage());
+    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+    if (paramErrorMessage.isSuccess()) {}
+    for (;;)
+    {
+      synchronized (this.a.jdField_b_of_type_JavaLangObject)
+      {
+        this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager$ServerInfo = paramRefreshVideoFileKeyResponse.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager$ServerInfo;
+        this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager$ServerInfo.a();
+        SLog.b("Q.qqstory.publish:VideoServerInfoManager", "get server inf %s", this.a.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager$ServerInfo);
+        this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      }
+      synchronized (this.a.jdField_a_of_type_JavaLangObject)
+      {
+        this.a.jdField_a_of_type_JavaLangObject.notifyAll();
+        return;
+        paramRefreshVideoFileKeyResponse = finally;
+        throw paramRefreshVideoFileKeyResponse;
+        SLog.b("Q.qqstory.publish:VideoServerInfoManager", "get server info:%s", paramErrorMessage);
+      }
+    }
   }
 }
 

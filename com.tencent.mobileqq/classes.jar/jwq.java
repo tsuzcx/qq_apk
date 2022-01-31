@@ -1,21 +1,23 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import com.tencent.av.ui.ControlUIObserver;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4NewGroupChat;
+import com.tencent.mobileqq.utils.QAVGroupConfig.GroupInviteFlag;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
 
 public class jwq
-  implements Runnable
+  extends ControlUIObserver
 {
-  public jwq(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion, long paramLong) {}
+  public jwq(MultiVideoCtrlLayerUI4NewGroupChat paramMultiVideoCtrlLayerUI4NewGroupChat) {}
   
-  public void run()
+  protected void a(QAVGroupConfig.GroupInviteFlag paramGroupInviteFlag)
   {
-    if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.jdField_a_of_type_Boolean) {
-      return;
+    if ((QLog.isDevelopLevel()) || (this.a.b != paramGroupInviteFlag.a)) {
+      QLog.w(this.a.c, 1, "onGroupInviteFlagChanged, mEnableInvite[" + this.a.b + "->" + paramGroupInviteFlag.a + "]");
     }
-    String str = this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.jdField_a_of_type_ComTencentAvVideoController.a(String.valueOf(this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.b), this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.d);
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.jdField_a_of_type_JavaUtilMap.put(String.valueOf(this.jdField_a_of_type_Long), str);
-    QLog.d(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.c, 1, "refreshUI --> user name mark name=" + str + ", mApp.getCurrentAccountUin()=" + String.valueOf(this.jdField_a_of_type_Long) + ", mMapNickNameCache.size()=" + this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUI4Discussion.jdField_a_of_type_JavaUtilMap.size());
+    if (this.a.b != paramGroupInviteFlag.a)
+    {
+      this.a.b = paramGroupInviteFlag.a;
+      this.a.t_();
+    }
   }
 }
 

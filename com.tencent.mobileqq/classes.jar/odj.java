@@ -1,18 +1,18 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.Button;
+import com.tencent.biz.qqstory.takevideo.EditPicQzonePublishActivity;
 
 public class odj
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  private odj(EditVideoGuide paramEditVideoGuide) {}
+  public odj(EditPicQzonePublishActivity paramEditPicQzonePublishActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.compareAndSet(true, false))
-    {
-      this.a.a(false);
-      this.a.e();
-    }
+    paramDialogInterface.dismiss();
+    EditPicQzonePublishActivity.a(this.a, false);
+    EditPicQzonePublishActivity.a(this.a).setSelected(false);
   }
 }
 

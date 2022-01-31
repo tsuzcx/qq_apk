@@ -1,27 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem;
-import mqq.os.MqqHandler;
+import com.tencent.widget.ActionSheet;
 
-public class aiwz
-  implements View.OnClickListener
+class aiwz
+  implements Runnable
 {
-  public aiwz(TextItem paramTextItem) {}
+  aiwz(aiwy paramaiwy) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!paramView.hasFocus())
-    {
-      paramView.setFocusable(true);
-      paramView.setFocusableInTouchMode(true);
-      ThreadManager.getUIHandler().post(new aixa(this, paramView));
-    }
+    this.a.a.b(2131435874);
+    this.a.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiwz
  * JD-Core Version:    0.7.0.1
  */

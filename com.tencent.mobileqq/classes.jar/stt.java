@@ -1,21 +1,15 @@
 import android.view.View;
-import android.widget.FrameLayout.LayoutParams;
-import android.widget.ImageView;
-import android.widget.ImageView.ScaleType;
-import android.widget.ViewSwitcher.ViewFactory;
-import com.tencent.mobileqq.activity.Leba;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
 
 public class stt
-  implements ViewSwitcher.ViewFactory
+  implements View.OnClickListener
 {
-  public stt(Leba paramLeba) {}
+  public stt(GesturePWDCreateActivity paramGesturePWDCreateActivity) {}
   
-  public View makeView()
+  public void onClick(View paramView)
   {
-    ImageView localImageView = new ImageView(this.a.a());
-    localImageView.setLayoutParams(new FrameLayout.LayoutParams(-1, -1));
-    localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
-    return localImageView;
+    this.a.finish();
   }
 }
 

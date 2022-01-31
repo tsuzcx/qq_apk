@@ -1,24 +1,22 @@
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.arcard.ARCardShareHelper;
 
 public class aamm
-  extends aamh
+  implements DialogInterface.OnDismissListener
 {
-  public boolean a;
-  public long b;
-  public long c;
-  public final ArrayList c = new ArrayList();
-  public String d;
-  public final ArrayList d = new ArrayList();
-  public String e;
+  public aamm(ARCardShareHelper paramARCardShareHelper, DialogInterface.OnDismissListener paramOnDismissListener) {}
   
-  private aamm()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    super(null);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener.onDismiss(paramDialogInterface);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aamm
  * JD-Core Version:    0.7.0.1
  */

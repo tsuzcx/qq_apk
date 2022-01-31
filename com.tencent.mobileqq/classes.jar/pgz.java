@@ -1,18 +1,21 @@
-import android.net.Uri;
-import android.view.animation.Animation;
-import com.tencent.component.media.image.view.ExtendImageView;
+import com.tencent.component.media.ImageManagerEnv;
+import com.tencent.component.media.image.ImageManager;
+import com.tencent.component.media.image.PoolParams;
+import com.tencent.component.media.image.PoolParams.BucketParams;
 
 public class pgz
-  implements Runnable
+  implements PoolParams
 {
-  public pgz(ExtendImageView paramExtendImageView, Uri paramUri, Animation paramAnimation) {}
+  public pgz(ImageManager paramImageManager) {}
   
-  public void run()
+  public PoolParams.BucketParams getBucketParams(int paramInt)
   {
-    ExtendImageView.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewExtendImageView, this.jdField_a_of_type_AndroidNetUri);
-    if (this.jdField_a_of_type_AndroidViewAnimationAnimation != null) {
-      ExtendImageView.a(this.jdField_a_of_type_ComTencentComponentMediaImageViewExtendImageView, this.jdField_a_of_type_AndroidViewAnimationAnimation, null);
-    }
+    return new PoolParams.BucketParams(16384, ImageManagerEnv.g().getDecodeThreadNum(ImageManager.a()) + 2);
+  }
+  
+  public int getBucketPoolSize()
+  {
+    return 1;
   }
 }
 

@@ -1,30 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.nearby.now.send.uploader.ImageUploader;
+import com.tencent.mobileqq.nearby.now.send.uploader.ImageUploader.OnResultListener;
 
 public class aevv
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aevv(NearbyProfileFragment paramNearbyProfileFragment) {}
+  public aevv(ImageUploader paramImageUploader, ImageUploader.OnResultListener paramOnResultListener, int paramInt, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a(false);
-    if (this.a.a.app != null)
-    {
-      if ((NearbyProfileFragment.a(this.a).iIsGodFlag != 1) || (NearbyProfileFragment.a(this.a).gender != 0)) {
-        break label82;
-      }
-      ReportController.b(this.a.a.app, "CliOper", "", "", "0X800528A", "0X800528A", 0, 0, "", "", "", "");
-    }
-    label82:
-    while ((NearbyProfileFragment.a(this.a).iIsGodFlag != 1) || (NearbyProfileFragment.a(this.a).gender != 1)) {
-      return;
-    }
-    ReportController.b(this.a.a.app, "CliOper", "", "", "0X800528B", "0X800528B", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageUploader$OnResultListener.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

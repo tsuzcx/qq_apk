@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.facetoface;
 
-import acbq;
-import acbr;
-import acbs;
+import acln;
+import aclo;
+import aclp;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -28,10 +28,10 @@ import java.util.HashMap;
 public class Face2FaceFriendBubbleView
   extends FrameLayout
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131364581, 2131364585 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131364605, 2131364609 };
   private int jdField_a_of_type_Int = 1;
   private View jdField_a_of_type_AndroidViewView;
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new acbq(this);
+  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new acln(this);
   private Animation jdField_a_of_type_AndroidViewAnimationAnimation;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -40,7 +40,7 @@ public class Face2FaceFriendBubbleView
   private String jdField_a_of_type_JavaLangString;
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   private int jdField_b_of_type_Int;
-  private Animation.AnimationListener jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = new acbr(this);
+  private Animation.AnimationListener jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = new aclo(this);
   private Animation jdField_b_of_type_AndroidViewAnimationAnimation;
   private ImageView jdField_b_of_type_AndroidWidgetImageView;
   private String jdField_b_of_type_JavaLangString = "";
@@ -57,13 +57,13 @@ public class Face2FaceFriendBubbleView
   {
     super(paramContext, paramAttributeSet, 0);
     ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130968989, this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131364579));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364582));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364586));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131364581);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364583));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131364584));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364587));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131364603));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364606));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364610));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131364605);
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364607));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131364608));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364611));
     this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription("");
     this.jdField_a_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(paramContext, 2131034164);
     this.jdField_b_of_type_AndroidViewAnimationAnimation = AnimationUtils.loadAnimation(paramContext, 2131034163);
@@ -111,7 +111,7 @@ public class Face2FaceFriendBubbleView
         if (k == 0)
         {
           Animation localAnimation = AnimationUtils.loadAnimation(BaseApplicationImpl.getContext(), 2131034161);
-          localAnimation.setAnimationListener(new acbs(this, 1, localView));
+          localAnimation.setAnimationListener(new aclp(this, 1, localView));
           localView.startAnimation(localAnimation);
         }
         i += 1;
@@ -187,8 +187,8 @@ public class Face2FaceFriendBubbleView
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
       if (this.jdField_b_of_type_Int < 1)
       {
-        this.jdField_c_of_type_Int = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131559087);
-        this.jdField_b_of_type_Int = BaseApplicationImpl.getContext().getResources().getDrawable(2130839074).getIntrinsicWidth();
+        this.jdField_c_of_type_Int = BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131559089);
+        this.jdField_b_of_type_Int = BaseApplicationImpl.getContext().getResources().getDrawable(2130839078).getIntrinsicWidth();
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setLines(2);
       this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(this.jdField_c_of_type_Int - this.jdField_b_of_type_Int);
@@ -258,7 +258,7 @@ public class Face2FaceFriendBubbleView
       if ((((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(localView)).intValue() == 0) && (localView.getVisibility() == 4))
       {
         Animation localAnimation = AnimationUtils.loadAnimation(BaseApplicationImpl.getContext(), 2131034162);
-        localAnimation.setAnimationListener(new acbs(this, 0, localView));
+        localAnimation.setAnimationListener(new aclp(this, 0, localView));
         localView.startAnimation(localAnimation);
       }
       i += 1;
@@ -333,21 +333,21 @@ public class Face2FaceFriendBubbleView
     case 2: 
       this.d = paramInt;
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130839055);
+      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130839059);
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       return;
     case 3: 
       this.d = paramInt;
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130839056);
+      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130839060);
       this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       return;
     }
     this.d = paramInt;
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130839057);
+    this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130839061);
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
   }

@@ -77,25 +77,25 @@ import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import org.json.JSONException;
 import org.json.JSONObject;
-import trx;
-import try;
-import trz;
-import tsa;
-import tsb;
-import tsc;
-import tsd;
-import tse;
-import tsf;
-import tsg;
+import tux;
+import tuy;
+import tuz;
+import tva;
+import tvb;
+import tvc;
+import tvd;
+import tve;
+import tvf;
+import tvg;
 
 public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   extends WebViewFragment
 {
   public int a;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new trx(this);
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new tux(this);
   Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
-  ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new tsg(this);
+  ViewTreeObserver.OnGlobalLayoutListener jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener = new tvg(this);
   public Button a;
   public EditText a;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -108,7 +108,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   String jdField_a_of_type_JavaLangString = "";
   public boolean a;
   public int b;
-  Handler.Callback jdField_b_of_type_AndroidOsHandler$Callback = new trz(this);
+  Handler.Callback jdField_b_of_type_AndroidOsHandler$Callback = new tuz(this);
   ImageView jdField_b_of_type_AndroidWidgetImageView;
   public String b;
   public boolean b;
@@ -139,7 +139,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   
   private void E()
   {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new tsb(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new tvb(this);
   }
   
   private void F()
@@ -159,10 +159,10 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   private void G()
   {
     Object localObject = a();
-    ColorStateList localColorStateList = getResources().getColorStateList(2131494204);
+    ColorStateList localColorStateList = getResources().getColorStateList(2131494211);
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setTextColor(localColorStateList);
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setTextColor(localColorStateList);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130839138);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130839142);
     if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportCover == null) || (!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportCover.a())) {
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(Color.parseColor("#f6f7f9"));
     }
@@ -170,11 +170,11 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setTextColor(Color.parseColor("#333333"));
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setMaxEms(13);
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.getLayoutParams().height = -2;
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363451));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363469));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#777777"));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(12.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setMaxEms(13);
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363457));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363475));
     this.jdField_d_of_type_Int = ((Intent)localObject).getIntExtra("key_team_work_pad_list_type", -1);
     boolean bool;
     if ((((Intent)localObject).getBooleanExtra("temp_preview_from_qq", false)) && (b() != null) && (b().contains("preview=1")))
@@ -224,7 +224,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setText("关闭");
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundDrawable(null);
     this.n = 1;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setOnClickListener(new tsd(this));
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setOnClickListener(new tvd(this));
     return;
     label548:
     if (((Intent)localObject).getBooleanExtra("temp_preview_from_qq", false))
@@ -262,7 +262,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
         break;
       }
     }
-    for (Object localObject1 = getResources().getString(2131439129);; localObject1 = (String)localObject1 + "\n" + (String)localObject2)
+    for (Object localObject1 = getResources().getString(2131439157);; localObject1 = (String)localObject1 + "\n" + (String)localObject2)
     {
       localObject2 = new Intent(getActivity(), DialogActivity.class);
       ((Intent)localObject2).addFlags(268435456);
@@ -302,8 +302,8 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setOnClickListener(null);
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130839138);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setText(2131432397);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130839142);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setText(2131432414);
     this.n = 2;
     i();
     l();
@@ -349,24 +349,24 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       }
     }
     if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b = ((ViewGroup)super.getActivity().findViewById(2131363436));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b = ((ViewGroup)super.getActivity().findViewById(2131363454));
     }
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-    LayoutInflater.from(super.getActivity()).inflate(2130971587, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b);
+    LayoutInflater.from(super.getActivity()).inflate(2130971635, this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString = AppConstants.R;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int = 7119;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.getActivity().findViewById(2131375043));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.getActivity().findViewById(2131375044));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.getActivity().findViewById(2131375229));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.getActivity().findViewById(2131375230));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.getActivity().findViewById(2131375045));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.getActivity().findViewById(2131375231));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.getActivity().findViewById(2131375046));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)super.getActivity().findViewById(2131375232));
     this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout = ((InputLinearLayout)super.getActivity().findViewById(2131375047));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.getActivity().findViewById(2131375049));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout = ((InputLinearLayout)super.getActivity().findViewById(2131375233));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)super.getActivity().findViewById(2131375235));
     this.jdField_a_of_type_AndroidWidgetEditText.setImeOptions(1);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new tsa(this));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.getActivity().findViewById(2131375050));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new tva(this));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.getActivity().findViewById(2131375236));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     if (this.jdField_a_of_type_Int == 1)
     {
@@ -557,7 +557,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       Drawable localDrawable;
       if ((!paramBoolean) || (paramInt == 0)) {
         if (!paramBoolean) {
-          localDrawable = getResources().getDrawable(2130846026);
+          localDrawable = getResources().getDrawable(2130846154);
         }
       }
       while (localDrawable != null)
@@ -567,7 +567,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
         return;
         if (paramInt == 0)
         {
-          localDrawable = getResources().getDrawable(2130846025);
+          localDrawable = getResources().getDrawable(2130846153);
           continue;
           this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
         }
@@ -658,16 +658,16 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       ImageUtil.a(super.getActivity(), paramIntent);
       if (!FileUtils.e(paramIntent))
       {
-        QQToast.a(super.getActivity(), super.getString(2131434487), 0).b(b());
+        QQToast.a(super.getActivity(), super.getString(2131434504), 0).b(b());
         return;
       }
       if (!new File(paramIntent).exists()) {
-        QQToast.a(super.getActivity(), getString(2131434488), 0).b(b());
+        QQToast.a(super.getActivity(), getString(2131434505), 0).b(b());
       }
     }
     else
     {
-      QQToast.a(super.getActivity(), getString(2131434488), 0).b(b());
+      QQToast.a(super.getActivity(), getString(2131434505), 0).b(b());
       return;
     }
     localObject = new Intent();
@@ -689,7 +689,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   public void b(String paramString)
   {
     a(17);
-    ThreadManager.executeOnNetWorkThread(new tse(this, paramString));
+    ThreadManager.executeOnNetWorkThread(new tve(this, paramString));
   }
   
   public void b(ArrayList paramArrayList)
@@ -788,7 +788,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   {
     int i = super.e(paramBundle);
     if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131433681));
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getString(2131433698));
     }
     if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView != null) {
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -845,16 +845,16 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       this.t = bool1;
       if (this.t)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setText(getResources().getString(2131439126));
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setText(getResources().getString(2131439154));
         return;
       }
       if (this.jdField_a_of_type_Int == 2)
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setText(2131439125);
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setText(2131439153);
         return;
       }
     } while (this.jdField_a_of_type_Int != 1);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setText(2131439124);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.b.setText(2131439152);
   }
   
   void j()
@@ -937,8 +937,8 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   
   public void l()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846027);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new tsc(this));
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846155);
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new tvc(this));
   }
   
   public void m()
@@ -947,11 +947,11 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     {
       this.jdField_d_of_type_AndroidWidgetImageView.setVisibility(0);
       Object localObject = new StateListDrawable();
-      Drawable localDrawable = getResources().getDrawable(2130846133);
+      Drawable localDrawable = getResources().getDrawable(2130846261);
       ((StateListDrawable)localObject).addState(new int[] { 16842919 }, localDrawable);
-      localDrawable = getResources().getDrawable(2130846132);
+      localDrawable = getResources().getDrawable(2130846260);
       ((StateListDrawable)localObject).addState(new int[] { 16842910 }, localDrawable);
-      localDrawable = getResources().getDrawable(2130846133);
+      localDrawable = getResources().getDrawable(2130846261);
       ((StateListDrawable)localObject).addState(new int[0], localDrawable);
       this.jdField_d_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
       this.jdField_d_of_type_AndroidWidgetImageView.setClickable(true);
@@ -961,7 +961,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       localObject = (SwiftBrowserShareMenuHandler)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider.a(4);
       ((SwiftBrowserShareMenuHandler)localObject).a(true);
       ((SwiftBrowserShareMenuHandler)localObject).jdField_b_of_type_Boolean = true;
-      this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new tsf(this));
+      this.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(new tvf(this));
     }
   }
   
@@ -989,7 +989,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() != 2131363227) {
+    if (paramView.getId() != 2131363245) {
       super.onClick(paramView);
     }
     int i = paramView.getId();
@@ -1006,11 +1006,11 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
       {
         a(15);
         paramView = (ActionSheet)ActionSheetHelper.a(getActivity(), null);
-        paramView.a(getResources().getString(2131439128));
-        paramView.a(getResources().getString(2131439130), 5);
-        paramView.a(getResources().getString(2131439131), 5);
-        paramView.c(2131432998);
-        paramView.a(new try(this, paramView));
+        paramView.a(getResources().getString(2131439156));
+        paramView.a(getResources().getString(2131439158), 5);
+        paramView.a(getResources().getString(2131439159), 5);
+        paramView.c(2131433015);
+        paramView.a(new tuy(this, paramView));
         paramView.show();
         return;
       }
@@ -1144,7 +1144,7 @@ public class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment
     Object localObject2 = new File(AppConstants.aJ + "photo/");
     if ((!((File)localObject2).exists()) && (!((File)localObject2).mkdirs()))
     {
-      QQToast.a((Context)localObject1, 2131434753, 0).a();
+      QQToast.a((Context)localObject1, 2131434770, 0).a();
       return;
     }
     localObject2 = AppConstants.aJ + "photo/" + System.currentTimeMillis() + ".jpg";

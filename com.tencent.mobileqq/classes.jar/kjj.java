@@ -1,17 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.JoinGroupHandler;
-import com.tencent.biz.JoinGroupHandler.IJoinGroupCB;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.PoiMapActivity;
 
 public class kjj
-  implements DialogInterface.OnDismissListener
+  implements View.OnTouchListener
 {
-  public kjj(JoinGroupHandler paramJoinGroupHandler) {}
+  public kjj(PoiMapActivity paramPoiMapActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.jdField_a_of_type_ComTencentBizJoinGroupHandler$IJoinGroupCB.c();
-    this.a.jdField_a_of_type_Long = 0L;
+    if (this.a.a != null) {
+      this.a.a.onTouchEvent(paramMotionEvent);
+    }
+    return false;
   }
 }
 

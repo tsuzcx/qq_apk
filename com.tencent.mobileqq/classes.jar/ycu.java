@@ -1,17 +1,12 @@
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
 
-public class ycu
-  implements Runnable
+public abstract interface ycu
 {
-  public ycu(SpecailCareListActivity paramSpecailCareListActivity) {}
+  public abstract void a(int paramInt);
   
-  public void run()
-  {
-    if (this.a.a(2)) {
-      this.a.runOnUiThread(new ycv(this));
-    }
-    this.a.a(2, true);
-  }
+  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
+  
+  public abstract void b(PublishVideoEntry paramPublishVideoEntry, String paramString);
 }
 
 

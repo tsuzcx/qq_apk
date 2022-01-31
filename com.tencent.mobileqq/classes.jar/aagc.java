@@ -1,37 +1,45 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.StoryVideoExtRsp;
-import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.UploadPicExtInfo;
-import com.tencent.mobileqq.arcard.ARRelationShipFileUpload.ARRelationShipFileUploadCallBack;
-import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.av.avgesture.AVGestureWrapper;
+import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import com.tencent.qphone.base.util.QLog;
 
-class aagc
-  implements ARRelationShipFileUpload.ARRelationShipFileUploadCallBack
+public class aagc
+  implements Runnable
 {
-  aagc(aagb paramaagb) {}
+  public aagc(AREngine paramAREngine) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    this.a.a.a(2, paramInt);
+    if ((AREngine.e(this.a)) && (AREngine.e(this.a) == 2)) {
+      if (AREngine.a(this.a) != null) {
+        AREngine.b(this.a, 5);
+      }
+    }
+    try
+    {
+      AVGestureWrapper.clearCache();
+      ARWorldCupGameLogicManager.a().e();
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        QLog.i("AREngine_AREngine", 2, "AVGestureWrapper.clearCache failed. UnsatisfiedLinkError. err = " + localUnsatisfiedLinkError.getMessage());
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.i("AREngine_AREngine", 2, "AVGestureWrapper.clearCache failed. err = " + localException.getMessage());
+      }
+    }
   }
-  
-  public void a(String paramString)
-  {
-    ARVideoPreviewActivity.a(this.a.a).post(new aagd(this));
-  }
-  
-  public void a(String paramString, ARRelationShipUploadRusult.StoryVideoExtRsp paramStoryVideoExtRsp)
-  {
-    paramString = paramStoryVideoExtRsp.bytes_cdn_url.get().toStringUtf8();
-    this.a.a.a(2, paramString);
-  }
-  
-  public void a(String paramString, ARRelationShipUploadRusult.UploadPicExtInfo paramUploadPicExtInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aagc
  * JD-Core Version:    0.7.0.1
  */

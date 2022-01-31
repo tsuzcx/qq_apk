@@ -47,7 +47,7 @@ public class ShortVideoCaptureController
     for (ShortVideoCaptureController.CaptureProcessObserver localCaptureProcessObserver = (ShortVideoCaptureController.CaptureProcessObserver)b.get();; localCaptureProcessObserver = null)
     {
       if (localCaptureProcessObserver != null) {
-        localCaptureProcessObserver.d(paramString);
+        localCaptureProcessObserver.c(paramString);
       }
       return;
     }

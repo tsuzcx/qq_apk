@@ -1,15 +1,26 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import android.app.Activity;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
-class leb
-  implements Runnable
+public class leb
+  implements View.OnClickListener
 {
-  leb(lea paramlea) {}
+  public leb(ReadInJoySelfActivity paramReadInJoySelfActivity, String paramString1, String paramString2) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((ReadInJoyNewFeedsActivity.a(this.a.a) == 0) && (ReadInJoyNewFeedsActivity.a(this.a.a) != null) && (ReadInJoyNewFeedsActivity.a(this.a.a).mChannelCoverId == 0) && (!this.a.a.a(0))) {
-      this.a.a.c(true);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      paramView = new Intent(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoySelfActivity.getActivity(), QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoySelfActivity.getActivity().startActivity(paramView);
+      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80092FF", "0X80092FF", 0, 0, "", "", "", ReadInJoyUtils.b(this.b), false);
     }
   }
 }

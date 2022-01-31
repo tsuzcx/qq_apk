@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.video;
 
-import ajwi;
+import akkp;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -23,7 +23,7 @@ public class VipVideoApiPlugin
   public VipVideoApiPlugin()
   {
     this.jdField_a_of_type_JavaLangString = "VideoApiPlugin";
-    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new ajwi(this);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmClient$onRemoteRespObserver = new akkp(this);
     this.mPluginNameSpace = "video";
   }
   
@@ -132,7 +132,7 @@ public class VipVideoApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.video.VipVideoApiPlugin
  * JD-Core Version:    0.7.0.1
  */

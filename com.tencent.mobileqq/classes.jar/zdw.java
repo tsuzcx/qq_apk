@@ -1,29 +1,13 @@
-import com.tencent.qphone.base.remote.FromServiceMsg;
-import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.mobileqq.app.FriendListHandler;
 
 public class zdw
+  implements Runnable
 {
-  public int a;
-  public FromServiceMsg a;
-  public ToServiceMsg a;
-  public Object a;
-  public boolean a;
+  public zdw(FriendListHandler paramFriendListHandler, int paramInt1, String paramString, int paramInt2, byte paramByte1, byte paramByte2, boolean paramBoolean) {}
   
-  public zdw(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-  }
-  
-  public zdw(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg = paramToServiceMsg;
-    this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg = paramFromServiceMsg;
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.jdField_a_of_type_Boolean = paramBoolean;
+    FriendListHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Byte, this.jdField_b_of_type_Byte, this.jdField_a_of_type_Boolean);
   }
 }
 

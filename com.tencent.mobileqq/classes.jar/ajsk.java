@@ -1,38 +1,29 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Bitmap;
+import android.util.Pair;
+import android.widget.ImageView;
+import com.tencent.mobileqq.troop.widget.HotChatPostItemView;
 
-public final class ajsk
-  implements Handler.Callback
+class ajsk
+  implements Runnable
 {
-  public boolean handleMessage(Message paramMessage)
+  ajsk(ajsj paramajsj, Pair paramPair) {}
+  
+  public void run()
   {
-    QQAppInterface localQQAppInterface;
-    if ((BaseApplicationImpl.getApplication().waitAppRuntime(null) instanceof QQAppInterface))
+    if ((this.jdField_a_of_type_Ajsj.a.jdField_a_of_type_AndroidWidgetImageView.getTag() instanceof String))
     {
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().waitAppRuntime(null);
-      switch (paramMessage.what)
+      String str = (String)this.jdField_a_of_type_Ajsj.a.jdField_a_of_type_AndroidWidgetImageView.getTag();
+      if ((this.jdField_a_of_type_AndroidUtilPair != null) && (str.endsWith(this.jdField_a_of_type_Ajsj.a.jdField_a_of_type_JavaLangString)))
       {
+        this.jdField_a_of_type_Ajsj.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap((Bitmap)this.jdField_a_of_type_AndroidUtilPair.first);
+        HotChatPostItemView.a(this.jdField_a_of_type_Ajsj.a.jdField_a_of_type_JavaLangString, (Bitmap)this.jdField_a_of_type_AndroidUtilPair.first);
       }
-    }
-    for (;;)
-    {
-      return true;
-      QQToast.a(localQQAppInterface.getApplication(), "个性化缓存清除完毕", 0).a();
-      continue;
-      QQToast.a(localQQAppInterface.getApplication(), "个性化素材检查流程异常，请检查是否扫描正确二维码", 0).a();
-      continue;
-      QQToast.a(localQQAppInterface.getApplication(), "配置文件下载失败", 0).a();
-      continue;
-      QQToast.a(localQQAppInterface.getApplication(), "个性化缓存清除开始", 0).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajsk
  * JD-Core Version:    0.7.0.1
  */

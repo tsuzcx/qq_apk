@@ -20,8 +20,8 @@ import com.tencent.mobileqq.util.FaceDecoder;
 import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.ArrayList;
 import java.util.List;
-import luj;
-import luk;
+import lus;
+import lut;
 
 public class FeedItemCellTypeTopicMulti
   extends FeedItemCell
@@ -44,19 +44,19 @@ public class FeedItemCellTypeTopicMulti
     LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
     localLinearLayout.setOrientation(1);
     localLinearLayout.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    localLinearLayout.setOnClickListener(new luj(this));
+    localLinearLayout.setOnClickListener(new lus(this));
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() >= 2))
     {
-      RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969615, localLinearLayout, false);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localRelativeLayout.findViewById(2131363360));
-      this.b = ((TextView)localRelativeLayout.findViewById(2131362697));
+      RelativeLayout localRelativeLayout = (RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969623, localLinearLayout, false);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localRelativeLayout.findViewById(2131363378));
+      this.b = ((TextView)localRelativeLayout.findViewById(2131362715));
       Object localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics();
       if (localObject != null)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(((DisplayMetrics)localObject).widthPixels / 2);
         this.b.setMaxWidth(((DisplayMetrics)localObject).widthPixels / 4);
       }
-      localObject = (LinearLayout)localRelativeLayout.findViewById(2131367166);
+      localObject = (LinearLayout)localRelativeLayout.findViewById(2131367214);
       int i = 0;
       while (i < 2)
       {
@@ -140,7 +140,7 @@ public class FeedItemCellTypeTopicMulti
         this.jdField_a_of_type_AndroidWidgetTextView.setText("");
         break label78;
         label251:
-        this.b.setOnClickListener(new luk(this, localArticleInfo, localTopicRecommendFeedsInfo));
+        this.b.setOnClickListener(new lut(this, localArticleInfo, localTopicRecommendFeedsInfo));
         continue;
         this.b.setVisibility(8);
       }

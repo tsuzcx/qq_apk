@@ -1,13 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
 public class antw
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public antw(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public antw(EditVideoGuide paramEditVideoGuide) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.j();
+    this.a.a.a(0);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

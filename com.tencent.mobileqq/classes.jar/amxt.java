@@ -1,23 +1,14 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.text.DynamicTextItem.TextMap;
+import cooperation.qzone.plugin.PluginRecord;
 
-public final class amxt
-  implements Parcelable.Creator
+public abstract interface amxt
 {
-  public DynamicTextItem.TextMap a(Parcel paramParcel)
-  {
-    return new DynamicTextItem.TextMap(paramParcel);
-  }
+  public abstract void b(boolean paramBoolean, PluginRecord paramPluginRecord);
   
-  public DynamicTextItem.TextMap[] a(int paramInt)
-  {
-    return new DynamicTextItem.TextMap[paramInt];
-  }
+  public abstract void e(PluginRecord paramPluginRecord);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amxt
  * JD-Core Version:    0.7.0.1
  */

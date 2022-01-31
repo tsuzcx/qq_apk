@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.view.View;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbListAdapter;
 
-class xcl
-  implements Runnable
+public class xcl
+  extends RecyclerView.ViewHolder
 {
-  xcl(xck paramxck) {}
+  public xcm a;
   
-  public void run()
+  public xcl(TroopUnAccalimedRedPacketList.HbListAdapter paramHbListAdapter, View paramView)
   {
-    PreloadManager.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, this.a.jdField_a_of_type_Boolean);
+    super(paramView);
+    this.jdField_a_of_type_Xcm = ((xcm)paramView);
   }
 }
 

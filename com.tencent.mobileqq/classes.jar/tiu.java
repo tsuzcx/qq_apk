@@ -1,4 +1,5 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.ptt.TouchProxyRelativeLayout;
 
 class tiu
   implements Runnable
@@ -7,7 +8,8 @@ class tiu
   
   public void run()
   {
-    this.a.a.p();
+    QQLSActivity.a(this.a.a).removeView(QQLSActivity.a(this.a.a));
+    QQLSActivity.a(this.a.a, null);
   }
 }
 

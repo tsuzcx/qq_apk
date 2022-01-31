@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import dov.com.tencent.biz.qqstory.takevideo.EditDoodleExport;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
 public class antx
-  implements FMDialogUtil.FMDialogInterface
+  implements Runnable
 {
-  public antx(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public antx(EditVideoGuide paramEditVideoGuide) {}
   
-  public void a()
+  public void run()
   {
-    ShortVideoPreviewActivity.b(this.a);
-    this.a.setResult(-1);
+    EditDoodleExport localEditDoodleExport = (EditDoodleExport)this.a.a(EditDoodleExport.class);
+    if (localEditDoodleExport != null) {
+      localEditDoodleExport.c();
+    }
   }
-  
-  public void b() {}
 }
 
 

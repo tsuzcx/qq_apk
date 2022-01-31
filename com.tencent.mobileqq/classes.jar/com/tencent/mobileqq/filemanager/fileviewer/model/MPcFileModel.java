@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.filemanager.fileviewer.model;
 
-import acth;
-import acti;
-import actj;
-import actk;
-import actl;
-import actm;
-import actn;
+import adde;
+import addf;
+import addg;
+import addh;
+import addi;
+import addj;
+import addk;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -46,7 +46,7 @@ public class MPcFileModel
   private long jdField_a_of_type_Long;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   View jdField_a_of_type_AndroidViewView = null;
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new actm(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new addj(this);
   private MPFileFailedView jdField_a_of_type_ComTencentMobileqqFilemanagerActivityMPFileFailedView;
   private MPFileVerifyPwdView jdField_a_of_type_ComTencentMobileqqFilemanagerActivityMPFileVerifyPwdView;
   private INetEventHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler;
@@ -102,7 +102,7 @@ public class MPcFileModel
     m();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityMPFileFailedView = new MPFileFailedView(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityMPFileFailedView.b();
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityMPFileFailedView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), new actj(this), paramInt, this.jdField_b_of_type_Int);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityMPFileFailedView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), new addg(this), paramInt, this.jdField_b_of_type_Int);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().removeAllViews();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().addView(this.jdField_a_of_type_AndroidViewView);
@@ -138,7 +138,7 @@ public class MPcFileModel
   public IDownloadController a()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController == null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController = new actn(this);
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController = new addk(this);
     }
     return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerControllerIDownloadController;
   }
@@ -197,12 +197,12 @@ public class MPcFileModel
       }
       if (this.jdField_c_of_type_Int >= 3)
       {
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog = new QQCustomSingleButtonDialog(this.jdField_a_of_type_AndroidAppActivity, 2131624515);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog = new QQCustomSingleButtonDialog(this.jdField_a_of_type_AndroidAppActivity, 2131624516);
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.setContentView(2130968853);
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.setTitle(2131427663);
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a(2131427664);
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a(0, 0, null);
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a(2131427501, new actl(this));
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.a(2131427501, new addi(this));
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomSingleButtonDialog.show();
       }
       if ((paramBoolean) && (this.jdField_c_of_type_Int < 3)) {
@@ -230,7 +230,7 @@ public class MPcFileModel
   {
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new acth(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adde(this);
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("com.dataline.mpfile.download_progress");
       localIntentFilter.addAction("com.dataline.mpfile.download_completed");
@@ -239,7 +239,7 @@ public class MPcFileModel
       localIntentFilter.setPriority(200);
       this.jdField_a_of_type_AndroidAppActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     }
-    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler = new acti(this);
+    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler = new addf(this);
     AppNetConnInfo.registerNetChangeReceiver(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetEventHandler);
   }
   
@@ -264,7 +264,7 @@ public class MPcFileModel
   {
     n();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityMPFileVerifyPwdView = new MPFileVerifyPwdView(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityMPFileVerifyPwdView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), new actk(this));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityMPFileVerifyPwdView.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a(), new addh(this));
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityMPFileVerifyPwdView.b();
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().setVisibility(0);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a().removeAllViews();

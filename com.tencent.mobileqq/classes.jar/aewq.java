@@ -1,49 +1,16 @@
-import android.content.Context;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.profilecard.moment.BaseMomentItemBuilder;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.ReportCallback;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadListener;
 
-class aewq
-  implements NearbyMomentManager.ReportCallback
+public class aewq
+  implements Runnable
 {
-  aewq(aewp paramaewp, String paramString) {}
+  public aewq(VideoFeedsUploader paramVideoFeedsUploader, VideoFeedsUploader.UploadInfo paramUploadInfo, int paramInt) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    Object localObject;
-    int i;
-    if (paramBoolean)
-    {
-      localObject = new NowVideoReporter().h("data_card").i("feed_inform_suc").d("2").a(this.jdField_a_of_type_Aewp.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a(this.jdField_a_of_type_Aewp.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder)).b(this.jdField_a_of_type_JavaLangString).c(String.valueOf(this.jdField_a_of_type_Aewp.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a(this.jdField_a_of_type_Aewp.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder)));
-      if (this.jdField_a_of_type_Aewp.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_Boolean)
-      {
-        str = "1";
-        ((NowVideoReporter)localObject).e(str).b(this.jdField_a_of_type_Aewp.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      }
-    }
-    else
-    {
-      localObject = this.jdField_a_of_type_Aewp.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_AndroidContentContext;
-      if (!paramBoolean) {
-        break label157;
-      }
-      i = 2;
-      label131:
-      if (!paramBoolean) {
-        break label162;
-      }
-    }
-    label157:
-    label162:
-    for (String str = "举报成功";; str = "举报失败")
-    {
-      QQToast.a((Context)localObject, i, str, 0).a();
-      return;
-      str = "2";
-      break;
-      i = 1;
-      break label131;
+    if (VideoFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader) != null) {
+      VideoFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader).a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo, this.jdField_a_of_type_Int);
     }
   }
 }

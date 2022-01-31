@@ -24,20 +24,20 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
-import jkq;
-import jkr;
-import jks;
-import jku;
+import jkb;
+import jkc;
+import jkd;
+import jkf;
+import jkg;
+import jkh;
+import jkj;
+import jkk;
+import jkl;
+import jkm;
+import jkn;
 import jkv;
 import jkw;
 import jky;
-import jkz;
-import jla;
-import jlb;
-import jlc;
-import jlk;
-import jll;
-import jln;
 
 public class RandomController
 {
@@ -48,15 +48,15 @@ public class RandomController
   private VideoController jdField_a_of_type_ComTencentAvVideoController;
   public SessionInfo a;
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
-  private RandomWebProtocol.OnRequestListener jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$OnRequestListener = new jkq(this);
+  private RandomWebProtocol.OnRequestListener jdField_a_of_type_ComTencentAvRandomRandomWebProtocol$OnRequestListener = new jkb(this);
   private RandomWebProtocol jdField_a_of_type_ComTencentAvRandomRandomWebProtocol;
-  private NearbyPeopleProfileHelper.INearbyPeopleProfileCallBack jdField_a_of_type_ComTencentAvUtilsNearbyPeopleProfileHelper$INearbyPeopleProfileCallBack = new jks(this);
+  private NearbyPeopleProfileHelper.INearbyPeopleProfileCallBack jdField_a_of_type_ComTencentAvUtilsNearbyPeopleProfileHelper$INearbyPeopleProfileCallBack = new jkd(this);
   private NearbyPeopleProfileHelper jdField_a_of_type_ComTencentAvUtilsNearbyPeopleProfileHelper;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new jku(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new jkf(this);
   public String a;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private jlc jdField_a_of_type_Jlc = new jlc(this, null);
+  private jkn jdField_a_of_type_Jkn = new jkn(this, null);
   public boolean a;
   private byte[] jdField_a_of_type_ArrayOfByte;
   private long[] jdField_a_of_type_ArrayOfLong;
@@ -69,11 +69,11 @@ public class RandomController
   public String c;
   public boolean c;
   private int jdField_d_of_type_Int;
-  private Runnable jdField_d_of_type_JavaLangRunnable = new jky(this);
+  private Runnable jdField_d_of_type_JavaLangRunnable = new jkj(this);
   public String d;
   private boolean jdField_d_of_type_Boolean;
   private int jdField_e_of_type_Int = -1;
-  private Runnable jdField_e_of_type_JavaLangRunnable = new jkz(this);
+  private Runnable jdField_e_of_type_JavaLangRunnable = new jkk(this);
   public String e;
   private boolean jdField_e_of_type_Boolean;
   private int jdField_f_of_type_Int;
@@ -95,8 +95,8 @@ public class RandomController
     this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_Int = -1;
     this.jdField_c_of_type_Int = -1;
-    this.jdField_b_of_type_JavaLangRunnable = new jkv(this);
-    this.jdField_c_of_type_JavaLangRunnable = new jkw(this);
+    this.jdField_b_of_type_JavaLangRunnable = new jkg(this);
+    this.jdField_c_of_type_JavaLangRunnable = new jkh(this);
   }
   
   private int a()
@@ -188,7 +188,7 @@ public class RandomController
   
   private String a(int paramInt)
   {
-    String str2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getResources().getString(2131429366);
+    String str2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getResources().getString(2131429372);
     int n = paramInt / 86400;
     int i1 = paramInt % 86400 / 3600;
     int m = paramInt % 3600 / 60;
@@ -273,11 +273,11 @@ public class RandomController
     this.jdField_b_of_type_Boolean = false;
   }
   
-  private void a(jlk paramjlk)
+  private void a(jkv paramjkv)
   {
     Object localObject1 = null;
     this.jdField_c_of_type_Int = 1011;
-    if ((paramjlk instanceof jll)) {
+    if ((paramjkv instanceof jkw)) {
       if (this.jdField_a_of_type_Boolean) {
         if (QLog.isColorLevel()) {
           QLog.w("RandomController", 2, "[1v1] processWebProtocol RspDouble discard this push");
@@ -288,8 +288,8 @@ public class RandomController
     {
       return;
       this.jdField_a_of_type_Boolean = true;
-      Object localObject2 = (jll)paramjlk;
-      a(((jll)localObject2).jdField_b_of_type_JavaLangString, ((jll)localObject2).jdField_c_of_type_JavaLangString, ((jll)localObject2).jdField_a_of_type_ArrayOfByte, ((jll)localObject2).jdField_e_of_type_JavaLangString, ((jll)localObject2).jdField_a_of_type_AndroidGraphicsBitmap, ((jll)localObject2).jdField_d_of_type_JavaLangString, ((jll)localObject2).jdField_f_of_type_Int);
+      Object localObject2 = (jkw)paramjkv;
+      a(((jkw)localObject2).jdField_b_of_type_JavaLangString, ((jkw)localObject2).jdField_c_of_type_JavaLangString, ((jkw)localObject2).jdField_a_of_type_ArrayOfByte, ((jkw)localObject2).jdField_e_of_type_JavaLangString, ((jkw)localObject2).jdField_a_of_type_AndroidGraphicsBitmap, ((jkw)localObject2).jdField_d_of_type_JavaLangString, ((jkw)localObject2).jdField_f_of_type_Int);
       this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_d_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString);
       do
       {
@@ -312,7 +312,7 @@ public class RandomController
           this.jdField_a_of_type_ComTencentAvVideoController.b(221);
         }
         if ((this.jdField_h_of_type_JavaLangString != null) && (!TextUtils.isEmpty(this.jdField_h_of_type_JavaLangString))) {
-          this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_a_of_type_ComTencentAvAppSessionInfo$Anychat_Info.jdField_e_of_type_JavaLangString = (this.jdField_a_of_type_ComTencentAvVideoController.a().getResources().getString(2131429344) + this.jdField_h_of_type_JavaLangString);
+          this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_a_of_type_ComTencentAvAppSessionInfo$Anychat_Info.jdField_e_of_type_JavaLangString = (this.jdField_a_of_type_ComTencentAvVideoController.a().getResources().getString(2131429350) + this.jdField_h_of_type_JavaLangString);
         }
         if (this.jdField_f_of_type_Int != 1) {
           break label979;
@@ -325,19 +325,19 @@ public class RandomController
         }
         QLog.d("RandomController", 2, "uin is empty");
         return;
-      } while (!(paramjlk instanceof jln));
-      localObject2 = (jln)paramjlk;
+      } while (!(paramjkv instanceof jky));
+      localObject2 = (jky)paramjkv;
       if (QLog.isColorLevel()) {
         QLog.d("RandomController", 2, "processWebProtocol RspMulti [random room owner]");
       }
-      if (((jln)localObject2).jdField_f_of_type_Int > 0) {
+      if (((jky)localObject2).jdField_f_of_type_Int > 0) {
         this.jdField_b_of_type_Boolean = true;
       }
       for (;;)
       {
-        this.jdField_e_of_type_Int = ((jln)localObject2).jdField_g_of_type_Int;
-        this.jdField_g_of_type_JavaLangString = ((jln)localObject2).jdField_c_of_type_JavaLangString;
-        this.jdField_h_of_type_Boolean = ((jln)localObject2).jdField_a_of_type_Boolean;
+        this.jdField_e_of_type_Int = ((jky)localObject2).jdField_g_of_type_Int;
+        this.jdField_g_of_type_JavaLangString = ((jky)localObject2).jdField_c_of_type_JavaLangString;
+        this.jdField_h_of_type_Boolean = ((jky)localObject2).jdField_a_of_type_Boolean;
         if ((TextUtils.isEmpty(this.jdField_g_of_type_JavaLangString)) && (this.jdField_h_of_type_Boolean)) {
           this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_b_of_type_JavaLangRunnable, 7000L);
         }
@@ -349,7 +349,7 @@ public class RandomController
         }
         QLog.d("RandomController", 2, "[random room owner] processWebProtocol RspMulti mRoomOwnerUin = " + this.jdField_g_of_type_JavaLangString + ",mRoomOwnerEnable = " + this.jdField_h_of_type_Boolean);
         break;
-        if (((jln)localObject2).jdField_f_of_type_Int == 0) {
+        if (((jky)localObject2).jdField_f_of_type_Int == 0) {
           this.jdField_b_of_type_Boolean = false;
         }
       }
@@ -368,9 +368,9 @@ public class RandomController
       }
       try
       {
-        paramjlk = BitmapTools.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2);
-        if (paramjlk != null) {
-          this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_a_of_type_ComTencentAvAppSessionInfo$Anychat_Info.jdField_a_of_type_AndroidGraphicsBitmap = paramjlk;
+        paramjkv = BitmapTools.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth() / 2);
+        if (paramjkv != null) {
+          this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_a_of_type_ComTencentAvAppSessionInfo$Anychat_Info.jdField_a_of_type_AndroidGraphicsBitmap = paramjkv;
         }
         this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_d_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
         this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_a_of_type_ComTencentAvAppSessionInfo$Anychat_Info.jdField_b_of_type_JavaLangString = this.jdField_e_of_type_JavaLangString;
@@ -390,18 +390,18 @@ public class RandomController
             this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
           }
           PopupDialog.a();
-          paramjlk = this.jdField_a_of_type_JavaUtilList.iterator();
-          while (paramjlk.hasNext()) {
-            ((RandomController.RandomListener)paramjlk.next()).a();
+          paramjkv = this.jdField_a_of_type_JavaUtilList.iterator();
+          while (paramjkv.hasNext()) {
+            ((RandomController.RandomListener)paramjkv.next()).a();
           }
           bool = false;
           break label592;
           label943:
           a(this.jdField_d_of_type_JavaLangString);
-          paramjlk = a(this.jdField_d_of_type_JavaLangString, false);
-          if (paramjlk != null)
+          paramjkv = a(this.jdField_d_of_type_JavaLangString, false);
+          if (paramjkv != null)
           {
-            this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_a_of_type_ComTencentAvAppSessionInfo$Anychat_Info.jdField_a_of_type_AndroidGraphicsBitmap = paramjlk;
+            this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_a_of_type_ComTencentAvAppSessionInfo$Anychat_Info.jdField_a_of_type_AndroidGraphicsBitmap = paramjkv;
             continue;
             label979:
             if (this.jdField_f_of_type_Int == 2)
@@ -409,22 +409,22 @@ public class RandomController
               this.jdField_h_of_type_Int = 3;
               this.jdField_d_of_type_Int = 7;
               this.k = 0;
-              if (!(paramjlk instanceof jln)) {
+              if (!(paramjkv instanceof jky)) {
                 break label1325;
               }
-              paramjlk = ((jln)paramjlk).jdField_b_of_type_JavaLangString;
-              if ((paramjlk == null) || (paramjlk.equals(""))) {
+              paramjkv = ((jky)paramjkv).jdField_b_of_type_JavaLangString;
+              if ((paramjkv == null) || (paramjkv.equals(""))) {
                 break;
               }
-              paramjlk = paramjlk.split(",");
-              this.jdField_a_of_type_ArrayOfLong = new long[paramjlk.length];
+              paramjkv = paramjkv.split(",");
+              this.jdField_a_of_type_ArrayOfLong = new long[paramjkv.length];
               int m = 0;
               for (;;)
               {
-                if (m < paramjlk.length) {
+                if (m < paramjkv.length) {
                   try
                   {
-                    this.jdField_a_of_type_ArrayOfLong[m] = Long.parseLong(paramjlk[m].trim());
+                    this.jdField_a_of_type_ArrayOfLong[m] = Long.parseLong(paramjkv[m].trim());
                     m += 1;
                   }
                   catch (NumberFormatException localNumberFormatException)
@@ -471,27 +471,27 @@ public class RandomController
         a(false);
         return;
       }
-      catch (OutOfMemoryError paramjlk)
+      catch (OutOfMemoryError paramjkv)
       {
         for (;;)
         {
-          paramjlk = localNumberFormatException;
+          paramjkv = localNumberFormatException;
         }
       }
-      catch (Exception paramjlk)
+      catch (Exception paramjkv)
       {
         for (;;)
         {
-          paramjlk = localNumberFormatException;
+          paramjkv = localNumberFormatException;
           continue;
           label1325:
-          paramjlk = null;
+          paramjkv = null;
         }
       }
     }
   }
   
-  private void b(jlk paramjlk)
+  private void b(jkv paramjkv)
   {
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     if (this.jdField_a_of_type_Int == -3) {
@@ -513,8 +513,8 @@ public class RandomController
       }
     }
     Object localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getApplicationContext();
-    this.jdField_i_of_type_Int = paramjlk.jdField_e_of_type_Int;
-    PopupDialog.b((Context)localObject, 230, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getResources().getString(2131429365), a(this.jdField_i_of_type_Int), 2131428668, 0, null, new jla(this));
+    this.jdField_i_of_type_Int = paramjkv.jdField_e_of_type_Int;
+    PopupDialog.b((Context)localObject, 230, this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getResources().getString(2131429371), a(this.jdField_i_of_type_Int), 2131428674, 0, null, new jkl(this));
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_d_of_type_JavaLangRunnable, 60000L);
     this.jdField_i_of_type_Int -= 60;
   }
@@ -552,7 +552,7 @@ public class RandomController
       while (!this.jdField_a_of_type_ComTencentAvAppSessionInfo.f())
       {
         Context localContext = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getApplicationContext();
-        PopupDialog.b(localContext, 230, null, localContext.getString(2131429361), 2131428669, 2131429313, new jlb(this), new jkr(this));
+        PopupDialog.b(localContext, 230, null, localContext.getString(2131429367), 2131428675, 2131429319, new jkm(this), new jkc(this));
         this.jdField_i_of_type_Boolean = true;
         return;
         if (this.jdField_f_of_type_Int == 2) {
@@ -774,7 +774,7 @@ public class RandomController
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_e_of_type_JavaLangRunnable);
       if (this.jdField_f_of_type_Int == 1)
       {
-        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_Jlc);
+        this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.jdField_a_of_type_Jkn);
         localObject = this.jdField_a_of_type_ComTencentAvAppSessionInfo.jdField_c_of_type_JavaLangString;
         if ((this.jdField_d_of_type_JavaLangString != null) && (this.jdField_d_of_type_JavaLangString.equals(localObject)))
         {

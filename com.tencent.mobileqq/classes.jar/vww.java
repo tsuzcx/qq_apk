@@ -1,19 +1,18 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipBar;
-import com.tencent.mobileqq.troop.data.TroopAioTips;
+import android.view.View;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 class vww
   implements Runnable
 {
-  vww(vwq paramvwq) {}
+  vww(vwv paramvwv) {}
   
   public void run()
   {
-    if (this.a.a.a != null)
-    {
-      this.a.a.a.a().a(true);
-      this.a.a.a.a().a(0L);
+    if (this.a.a.o != null) {
+      this.a.a.o.clearAnimation();
     }
+    PublicAccountChatPie.b(this.a.a).removeView(this.a.a.o);
   }
 }
 

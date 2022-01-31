@@ -3,17 +3,37 @@ package com.tencent.biz.pubaccount.util;
 import android.content.Context;
 import com.tencent.biz.pubaccount.readinjoy.common.GalleryReportedUtils;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.KandianRedDotInfo.RedPntInfoForReport;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.Pair;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import mqq.app.AppRuntime;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
 public class ReadinjoyReportUtils
 {
+  public static long a;
+  public static String a;
+  public static Map a;
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = "";
+    jdField_a_of_type_JavaUtilMap = new HashMap();
+  }
+  
   public static int a()
   {
     switch ()
@@ -24,6 +44,28 @@ public class ReadinjoyReportUtils
       return 4;
     }
     return 3;
+  }
+  
+  public static int a(BaseArticleInfo paramBaseArticleInfo)
+  {
+    int j = 0;
+    int i = j;
+    if ((paramBaseArticleInfo instanceof ArticleInfo))
+    {
+      i = j;
+      if (!ReadInJoyBaseAdapter.o((ArticleInfo)paramBaseArticleInfo)) {
+        i = 1;
+      }
+    }
+    return i;
+  }
+  
+  public static Pair a(long paramLong)
+  {
+    if (jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
+      return (Pair)jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong));
+    }
+    return null;
   }
   
   private static String a(int paramInt)
@@ -40,21 +82,21 @@ public class ReadinjoyReportUtils
     return "FromDTTab";
   }
   
-  public static String a(Context paramContext, int paramInt1, int paramInt2, int paramInt3, String paramString, int paramInt4)
+  public static String a(Context paramContext, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
     String str = "";
     try
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("network ", GalleryReportedUtils.a(paramContext));
-      localJSONObject.put("version ", "7.6.0");
+      localJSONObject.put("version ", "7.6.3");
       localJSONObject.put("os", "1");
       localJSONObject.put("ads_source ", paramInt1);
-      localJSONObject.put("ads_jump", paramInt2);
-      localJSONObject.put("card_pos ", paramInt3);
+      localJSONObject.put("card_pos ", paramInt2);
       localJSONObject.put("os", "1");
       localJSONObject.put("rowkey", paramString);
-      localJSONObject.put("feeds_type", paramInt4);
+      localJSONObject.put("feeds_type", paramInt3);
+      localJSONObject.put("is_ugc_as_pgc", paramInt4);
       paramContext = localJSONObject.toString();
       return paramContext;
     }
@@ -69,7 +111,7 @@ public class ReadinjoyReportUtils
     return "";
   }
   
-  public static String a(Context paramContext, long paramLong, int paramInt1, int paramInt2, String paramString1, String paramString2)
+  public static String a(Context paramContext, long paramLong1, long paramLong2, int paramInt1, int paramInt2, String paramString1, String paramString2, int paramInt3)
   {
     String str = "";
     try
@@ -77,14 +119,22 @@ public class ReadinjoyReportUtils
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("network ", GalleryReportedUtils.a(paramContext));
       localJSONObject.put("channel_id", paramInt2);
-      localJSONObject.put("version ", "7.6.0");
+      localJSONObject.put("version ", "7.6.3");
       localJSONObject.put("os", "1");
       localJSONObject.put("vid", paramString2);
       localJSONObject.put("rowkey", paramString1);
-      localJSONObject.put("algorithm_id", paramLong);
+      localJSONObject.put("algorithm_id", paramLong2);
       localJSONObject.put("feeds_type", paramInt1);
+      localJSONObject.put("star_logo", "0");
+      localJSONObject.put("is_ugc_as_pgc", paramInt3);
+      localJSONObject.put("r_session_id", jdField_a_of_type_JavaLangString);
+      paramContext = a(paramLong1);
+      if (paramContext != null)
+      {
+        localJSONObject.put("r_session_position", paramContext.first);
+        localJSONObject.put("r_session_ispush", paramContext.second);
+      }
       paramContext = localJSONObject.toString();
-      return paramContext;
     }
     catch (Exception paramString1)
     {
@@ -94,6 +144,7 @@ public class ReadinjoyReportUtils
       } while (!QLog.isColorLevel());
       QLog.d("ReadinjoyReportUtils", 2, "getSmallVideoWrapperPolymericR5Str:" + paramString1.toString());
     }
+    return paramContext;
     return "";
   }
   
@@ -181,7 +232,7 @@ public class ReadinjoyReportUtils
       localObject1 = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(3);
       ((oidb_cmd0x80a.AttributeList)localObject1).att_name.set("Time");
-      ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(String.valueOf(paramLong));
+      ((oidb_cmd0x80a.AttributeList)localObject1).att_value.set(String.valueOf(ReadinjoySPEventReport.a(paramLong)));
       localArrayList.add(localObject1);
       localObject1 = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject1).att_id.set(4);
@@ -233,7 +284,7 @@ public class ReadinjoyReportUtils
       localObject = new oidb_cmd0x80a.AttributeList();
       ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(3);
       ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("Time");
-      ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(String.valueOf(paramLong));
+      ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(String.valueOf(ReadinjoySPEventReport.a(paramLong)));
       ArrayList localArrayList = new ArrayList();
       localArrayList.add(localAttributeList1);
       localArrayList.add(localAttributeList2);
@@ -244,6 +295,54 @@ public class ReadinjoyReportUtils
       }
       return;
       i = 0;
+    }
+  }
+  
+  public static void a(List paramList1, List paramList2, boolean paramBoolean)
+  {
+    if ((paramList1 == null) || (paramList2 == null)) {
+      return;
+    }
+    paramList1 = paramList1.iterator();
+    label16:
+    Map localMap;
+    long l2;
+    long l3;
+    while (paramList1.hasNext())
+    {
+      ArticleInfo localArticleInfo = (ArticleInfo)paramList1.next();
+      if (paramList2.contains(Long.valueOf(localArticleInfo.mRecommendSeq)))
+      {
+        localMap = jdField_a_of_type_JavaUtilMap;
+        l2 = localArticleInfo.mArticleID;
+        l3 = jdField_a_of_type_Long;
+        jdField_a_of_type_Long = l3 + 1L;
+        if (!paramBoolean) {
+          break label115;
+        }
+      }
+    }
+    label115:
+    for (long l1 = 1L;; l1 = 0L)
+    {
+      localMap.put(Long.valueOf(l2), new Pair(Long.valueOf(l3), Long.valueOf(l1)));
+      break label16;
+      break;
+    }
+  }
+  
+  public static void a(AppRuntime paramAppRuntime)
+  {
+    long l1 = 0L;
+    jdField_a_of_type_Long = 0L;
+    jdField_a_of_type_JavaUtilMap.clear();
+    if (paramAppRuntime == null) {}
+    for (;;)
+    {
+      long l2 = System.currentTimeMillis();
+      jdField_a_of_type_JavaLangString = String.valueOf(l1) + "_" + String.valueOf(l2);
+      return;
+      l1 = paramAppRuntime.getLongAccountUin();
     }
   }
 }

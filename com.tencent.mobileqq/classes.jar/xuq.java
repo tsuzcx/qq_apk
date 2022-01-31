@@ -1,33 +1,22 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader.P2VEffectDownloadListener;
+import cooperation.qzone.util.QZLog;
 
 public class xuq
-  implements INetInfoHandler
+  implements P2VEffectLoader.P2VEffectDownloadListener
 {
-  public xuq(LbsFilterStatusManager paramLbsFilterStatusManager) {}
+  public xuq(P2VEffectLoader paramP2VEffectLoader, P2VEffectLoader.P2VEffectDownloadListener paramP2VEffectDownloadListener) {}
   
-  public void onNetMobile2None() {}
-  
-  public void onNetMobile2Wifi(String paramString)
+  public void a(boolean paramBoolean)
   {
-    long l = Thread.currentThread().getId();
-    if (LbsFilterStatusManager.a(this.a) == l) {
-      LbsFilterStatusManager.a(this.a);
-    }
-    while (LbsFilterStatusManager.a(this.a) == null) {
+    if (paramBoolean)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader$P2VEffectDownloadListener);
       return;
     }
-    LbsFilterStatusManager.a(this.a).post(new xur(this));
+    QZLog.e("P2VEffectLoader", 1, new Object[] { "downLoadP2VJarAndMaterialModule - downLoadP2VJarModule failed" });
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader$P2VEffectDownloadListener.a(false);
   }
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None() {}
 }
 
 

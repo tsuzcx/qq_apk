@@ -1,41 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule;
 
 public class lqz
+  implements Runnable
 {
-  private long jdField_a_of_type_Long;
-  Object jdField_a_of_type_JavaLangObject;
-  public boolean a;
-  private long b;
+  public lqz(ChannelInfoModule paramChannelInfoModule, int paramInt) {}
   
-  public lqz(FastWebModule paramFastWebModule, Object paramObject)
+  public void run()
   {
-    this(paramFastWebModule, paramObject, 600000L);
-    if (paramObject == null) {
-      this.jdField_a_of_type_Boolean = true;
-    }
-  }
-  
-  public lqz(FastWebModule paramFastWebModule, Object paramObject, long paramLong)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.b = System.currentTimeMillis();
-    this.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public Object a()
-  {
-    return this.jdField_a_of_type_JavaLangObject;
-  }
-  
-  public void a(Object paramObject)
-  {
-    this.jdField_a_of_type_JavaLangObject = paramObject;
-    this.b = System.currentTimeMillis();
-  }
-  
-  public boolean a()
-  {
-    return System.currentTimeMillis() - this.b >= this.jdField_a_of_type_Long;
+    ReadInJoyLogicEngineEventDispatcher.a().d(this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,27 +1,25 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.utils.SharedPreUtils;
+import mqq.os.MqqHandler;
 
-public class vtk
+class vtk
   implements Runnable
 {
-  public vtk(NearbyChatPie paramNearbyChatPie, String paramString) {}
+  vtk(vtj paramvtj) {}
   
   public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildNearbyChatPie.f, 4, "0X80052C5, " + this.jdField_a_of_type_JavaLangString);
-    }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildNearbyChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80052C5", "0X80052C5", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildNearbyChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "", this.jdField_a_of_type_JavaLangString, "");
-    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildNearbyChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildNearbyChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1001) {}
-    for (String str = "0";; str = "1")
-    {
-      ReportController.b(localQQAppInterface, "dc00899", "grp_lbs", "", "tmp_grey", "clk_send", 0, 0, str, "", "", "");
-      return;
-    }
+    Message localMessage = FriendChatPie.a(this.a.a).obtainMessage(42);
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("showRedDot", false);
+    localMessage.setData(localBundle);
+    FriendChatPie.b(this.a.a).sendMessage(localMessage);
+    SharedPreUtils.b(this.a.a.a.getCurrentAccountUin()).edit().putBoolean("aio_jump_lightalk_red_dot", false).commit();
   }
 }
 

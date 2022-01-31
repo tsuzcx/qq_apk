@@ -15,8 +15,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.concurrent.atomic.AtomicBoolean;
-import wtk;
-import wtl;
+import wwp;
+import wwq;
 
 public class MediaScanner
 {
@@ -517,7 +517,7 @@ public class MediaScanner
   public void a(MediaScanner.OnMediaInfoScannerListener paramOnMediaInfoScannerListener, LocalMediaInfo paramLocalMediaInfo)
   {
     paramOnMediaInfoScannerListener = new WeakReference(paramOnMediaInfoScannerListener);
-    paramOnMediaInfoScannerListener = new wtl(this, new WeakReference(paramLocalMediaInfo), paramOnMediaInfoScannerListener);
+    paramOnMediaInfoScannerListener = new wwq(this, new WeakReference(paramLocalMediaInfo), paramOnMediaInfoScannerListener);
     if (Looper.getMainLooper() == Looper.myLooper())
     {
       ThreadManager.post(paramOnMediaInfoScannerListener, 5, null, true);
@@ -530,7 +530,7 @@ public class MediaScanner
   public void a(MediaScanner.OnMediaScannerListener paramOnMediaScannerListener, LocalMediaInfo paramLocalMediaInfo, int paramInt)
   {
     paramOnMediaScannerListener = new WeakReference(paramOnMediaScannerListener);
-    ThreadManager.post(new wtk(this, new WeakReference(paramLocalMediaInfo), paramOnMediaScannerListener, paramInt), 5, null, true);
+    ThreadManager.post(new wwp(this, new WeakReference(paramLocalMediaInfo), paramOnMediaScannerListener, paramInt), 5, null, true);
   }
 }
 

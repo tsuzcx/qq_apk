@@ -1,21 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.SigCommentListActivity;
 
 public class tsq
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public tsq(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
+  public tsq(SigCommentListActivity paramSigCommentListActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    switch (paramCompoundButton.getId())
-    {
-    default: 
-      return;
-    }
-    TroopAssistantManager.a().a(this.a.app, paramBoolean);
+    this.a.a(true, true);
   }
 }
 

@@ -1,46 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.mobileqq.troop.utils.TroopBarUtils;
-import com.tencent.mobileqq.troop.widget.PublishItemContainer;
-import java.util.ArrayList;
+import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder;
+import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.OnBuiltListener;
+import com.tencent.mobileqq.surfaceviewaction.gl.Layer;
 
-public class aikz
-  extends BroadcastReceiver
+class aikz
+  implements Runnable
 {
-  public aikz(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  aikz(aiky paramaiky, String paramString) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    paramContext = paramIntent.getAction();
-    if ("key_photo_delete_action".equals(paramContext))
-    {
-      int i = paramIntent.getIntExtra("key_photo_delete_position", -1);
-      if ((i >= 0) && (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())) {
-        this.a.jdField_a_of_type_JavaUtilArrayList.remove(i);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (!"key_audio_delete_action".equals(paramContext)) {
-          break;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataAudioInfo = null;
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
-      } while (!this.a.k);
-      TroopBarUtils.a(this.a.m, this.a.n, "del_record", this.a.o, "", "", "");
-      return;
-    } while (!"key_photo_add_action".equals(paramContext));
-    this.a.g();
+    Layer localLayer = SceneBuilder.a(this.jdField_a_of_type_Aiky.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder, this.jdField_a_of_type_Aiky.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Aiky.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$OnBuiltListener.a(localLayer);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aikz
  * JD-Core Version:    0.7.0.1
  */

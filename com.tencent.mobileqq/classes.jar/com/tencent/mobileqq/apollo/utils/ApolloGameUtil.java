@@ -95,13 +95,13 @@ import mqq.app.NewIntent;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import ytf;
-import ytg;
-import yti;
-import ytj;
-import ytk;
-import ytl;
-import ytm;
+import ywl;
+import ywm;
+import ywo;
+import ywp;
+import ywq;
+import ywr;
+import yws;
 
 public class ApolloGameUtil
 {
@@ -206,7 +206,7 @@ public class ApolloGameUtil
     if (a(paramChatMessage.msgType))
     {
       paramQQAppInterface = paramQQAppInterface.a(paramChatMessage.gameId);
-      if ((ApolloManager.c("gameSwitch") != 1) || ((paramQQAppInterface != null) && (!ApolloConfigUtils.a("7.6.0", paramQQAppInterface.minVer, paramQQAppInterface.maxVer))))
+      if ((ApolloManager.c("gameSwitch") != 1) || ((paramQQAppInterface != null) && (!ApolloConfigUtils.a("7.6.3", paramQQAppInterface.minVer, paramQQAppInterface.maxVer))))
       {
         if (QLog.isColorLevel()) {
           QLog.d("ApolloGameUtil", 2, "play apollo game msg but switch is 0 or version is incorrect");
@@ -740,7 +740,7 @@ public class ApolloGameUtil
     if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
       return;
     }
-    ThreadManager.post(new ytj(paramString, paramQQAppInterface, paramLong), 5, null, true);
+    ThreadManager.post(new ywp(paramString, paramQQAppInterface, paramLong), 5, null, true);
   }
   
   public static void a(Activity paramActivity, QQAppInterface paramQQAppInterface, String paramString)
@@ -770,7 +770,7 @@ public class ApolloGameUtil
   
   public static void a(Context paramContext, int paramInt, String paramString1, String paramString2)
   {
-    ThreadManager.post(new ytm(paramContext, paramString1, paramString2, paramInt), 5, null, true);
+    ThreadManager.post(new yws(paramContext, paramString1, paramString2, paramInt), 5, null, true);
   }
   
   public static void a(Context paramContext, CmGameStartChecker.StartCheckParam paramStartCheckParam)
@@ -857,7 +857,7 @@ public class ApolloGameUtil
             localObject1 = "?";
           }
           localObject1 = (String)localObject2 + (String)localObject1 + "apollo_bk" + "=1";
-          ApolloFragmentManager.a().a(paramFragmentActivity, 2131362800);
+          ApolloFragmentManager.a().a(paramFragmentActivity, 2131362818);
           paramFragmentActivity = new Intent();
           paramFragmentActivity.putExtra("url", (String)localObject1);
           if ((paramApolloFragment != null) && (paramApolloFragment.isAdded()) && ((paramApolloFragment instanceof ApolloWebViewFragment)))
@@ -946,7 +946,7 @@ public class ApolloGameUtil
           Object localObject = new WebSSOAgent.UniSsoServerReqComm();
           ((WebSSOAgent.UniSsoServerReqComm)localObject).platform.set(109L);
           ((WebSSOAgent.UniSsoServerReqComm)localObject).osver.set(Build.VERSION.RELEASE);
-          ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.0");
+          ((WebSSOAgent.UniSsoServerReqComm)localObject).mqqver.set("7.6.3");
           WebSSOAgent.UniSsoServerReq localUniSsoServerReq = new WebSSOAgent.UniSsoServerReq();
           localUniSsoServerReq.comm.set((MessageMicro)localObject);
           localObject = new JSONObject();
@@ -960,7 +960,7 @@ public class ApolloGameUtil
           ((NewIntent)localObject).putExtra("extra_cmd", "apollo_red_dot.get_reddot_info");
           ((NewIntent)localObject).putExtra("extra_data", localUniSsoServerReq.toByteArray());
           ((NewIntent)localObject).putExtra("extra_callbackid", MagnifierSDK.a);
-          ((NewIntent)localObject).setObserver(new ytg(localSharedPreferences, paramAppInterface));
+          ((NewIntent)localObject).setObserver(new ywm(localSharedPreferences, paramAppInterface));
           paramAppInterface.startServlet((NewIntent)localObject);
           if (QLog.isColorLevel())
           {
@@ -1277,7 +1277,7 @@ public class ApolloGameUtil
   public static void a(QQAppInterface paramQQAppInterface, ApolloGameRankData paramApolloGameRankData)
   {
     if ((paramQQAppInterface != null) && (paramApolloGameRankData != null)) {
-      ThreadManager.post(new ytl(paramQQAppInterface, paramApolloGameRankData), 8, null, false);
+      ThreadManager.post(new ywr(paramQQAppInterface, paramApolloGameRankData), 8, null, false);
     }
   }
   
@@ -1345,7 +1345,7 @@ public class ApolloGameUtil
     if (paramWeakReference2 != null) {
       paramWeakReference2.a(paramMessageForApollo);
     }
-    ThreadManager.getUIHandler().post(new ytf(paramWeakReference1, paramMessageForApollo, paramBundle, paramQQAppInterface));
+    ThreadManager.getUIHandler().post(new ywl(paramWeakReference1, paramMessageForApollo, paramBundle, paramQQAppInterface));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -1355,14 +1355,14 @@ public class ApolloGameUtil
       QLog.e("ApolloGameUtil", 1, "[updateRankInfo] app is null");
       return;
     }
-    ThreadManager.post(new ytk(paramQQAppInterface, paramString), 5, null, false);
+    ThreadManager.post(new ywq(paramQQAppInterface, paramString), 5, null, false);
   }
   
   public static void a(EntityManager paramEntityManager)
   {
     if (paramEntityManager != null)
     {
-      ThreadManager.post(new yti(paramEntityManager), 5, null, true);
+      ThreadManager.post(new ywo(paramEntityManager), 5, null, true);
       return;
     }
     QLog.e("ApolloGameUtil", 1, "[loadCache] em is null out ");
@@ -1466,7 +1466,7 @@ public class ApolloGameUtil
     if (paramQQAppInterface == null) {
       return false;
     }
-    if (!ApolloConfigUtils.a("7.6.0", paramQQAppInterface.minVer, paramQQAppInterface.maxVer)) {
+    if (!ApolloConfigUtils.a("7.6.3", paramQQAppInterface.minVer, paramQQAppInterface.maxVer)) {
       return false;
     }
     boolean bool1;

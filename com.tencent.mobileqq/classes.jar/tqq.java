@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
 
-public class tqq
-  implements DialogInterface.OnClickListener
+class tqq
+  implements Runnable
 {
-  public tqq(SplashActivity paramSplashActivity) {}
+  tqq(tqp paramtqp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    RegisterVerifyCodeActivity.a(this.a.a.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tqq
  * JD-Core Version:    0.7.0.1
  */

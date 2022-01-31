@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.BaseChatPie;
 
-class rrw
+public class rrw
   implements Runnable
 {
-  rrw(rrv paramrrv) {}
+  public rrw(BaseChatPie paramBaseChatPie) {}
   
   public void run()
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+    this.a.h(2131230731);
   }
 }
 

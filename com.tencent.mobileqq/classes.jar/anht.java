@@ -1,29 +1,35 @@
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import java.util.HashMap;
 
-public class anht
-  implements View.OnSystemUiVisibilityChangeListener
+public final class anht
+  implements INetEngine.IBreakDownFix
 {
-  public anht(EditTextDialog paramEditTextDialog) {}
-  
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void a(NetReq paramNetReq, NetResp paramNetResp)
   {
-    if ((paramInt & 0x4) == 0)
+    if ((paramNetReq == null) || (paramNetResp == null)) {}
+    do
     {
-      SLog.b("EditTextDialog", "onStatusBarShow");
-      this.a.getWindow().getDecorView().removeCallbacks(EditTextDialog.a(this.a));
-      this.a.getWindow().getDecorView().postDelayed(EditTextDialog.a(this.a), 1500L);
-      return;
-    }
-    SLog.b("EditTextDialog", "onStatusBarHide");
+      do
+      {
+        return;
+      } while (!(paramNetReq instanceof HttpNetReq));
+      paramNetReq = (HttpNetReq)paramNetReq;
+      paramNetReq.jdField_a_of_type_Long += paramNetResp.c;
+      paramNetResp.c = 0L;
+      paramNetResp = "bytes=" + paramNetReq.jdField_a_of_type_Long + "-";
+      paramNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetResp);
+      paramNetResp = paramNetReq.jdField_a_of_type_JavaLangString;
+    } while (!paramNetResp.contains("range="));
+    paramNetResp = paramNetResp.substring(0, paramNetResp.lastIndexOf("range="));
+    paramNetReq.jdField_a_of_type_JavaLangString = (paramNetResp + "range=" + paramNetReq.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anht
  * JD-Core Version:    0.7.0.1
  */

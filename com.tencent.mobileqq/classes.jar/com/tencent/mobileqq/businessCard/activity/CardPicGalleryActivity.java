@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.businessCard.activity;
 
-import abgr;
-import abgs;
-import abgt;
-import abgu;
-import abgv;
-import abgw;
-import abgx;
+import abns;
+import abnt;
+import abnu;
+import abnv;
+import abnw;
+import abnx;
+import abny;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -55,7 +55,7 @@ public class CardPicGalleryActivity
   long jdField_a_of_type_Long;
   public Drawable a;
   ViewGroup jdField_a_of_type_AndroidViewViewGroup;
-  BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new abgx(this);
+  BaseAdapter jdField_a_of_type_AndroidWidgetBaseAdapter = new abny(this);
   public ImageView a;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   Gallery jdField_a_of_type_ComTencentWidgetGallery;
@@ -74,7 +74,7 @@ public class CardPicGalleryActivity
   
   private void b(URLDrawable paramURLDrawable, String paramString)
   {
-    new abgw(this, paramURLDrawable, paramString).execute(new Void[0]);
+    new abnx(this, paramURLDrawable, paramString).execute(new Void[0]);
   }
   
   String a(URLDrawable paramURLDrawable)
@@ -104,13 +104,13 @@ public class CardPicGalleryActivity
           } while (this.jdField_a_of_type_ComTencentWidgetGallery == null);
           localObject = this.jdField_a_of_type_ComTencentWidgetGallery.getSelectedView();
         } while (localObject == null);
-        localObject = ((ImageView)((View)localObject).findViewById(2131369792)).getDrawable();
+        localObject = ((ImageView)((View)localObject).findViewById(2131369869)).getDrawable();
       } while ((localObject == null) || (!(localObject instanceof URLDrawable)));
       localObject = (URLDrawable)localObject;
     } while ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) && (((URLDrawable)localObject).getStatus() != 1));
     ActionSheet localActionSheet = ActionSheet.a(this);
     a(localActionSheet);
-    localActionSheet.a(new abgt(this, (URLDrawable)localObject, localActionSheet));
+    localActionSheet.a(new abnu(this, (URLDrawable)localObject, localActionSheet));
     localActionSheet.show();
   }
   
@@ -141,7 +141,7 @@ public class CardPicGalleryActivity
       if (QLog.isColorLevel()) {
         QLog.e("qqBaseActivity", 2, "", paramURLDrawable);
       }
-      QQToast.a(this, getString(2131434482), 0).a();
+      QQToast.a(this, getString(2131434499), 0).a();
     }
   }
   
@@ -167,19 +167,19 @@ public class CardPicGalleryActivity
     default: 
       return;
     case 1: 
-      paramActionSheet.b(2131437088);
-      paramActionSheet.b(2131437083);
-      paramActionSheet.b(2131437064);
+      paramActionSheet.b(2131437105);
+      paramActionSheet.b(2131437100);
+      paramActionSheet.b(2131437081);
       if (this.jdField_b_of_type_Boolean) {
-        paramActionSheet.a(2131437081, 3);
+        paramActionSheet.a(2131437098, 3);
       }
-      paramActionSheet.c(2131432998);
+      paramActionSheet.c(2131433015);
       return;
     }
-    paramActionSheet.b(2131435854);
-    paramActionSheet.b(2131435860);
-    paramActionSheet.b(2131435858);
-    paramActionSheet.c(2131432998);
+    paramActionSheet.b(2131435871);
+    paramActionSheet.b(2131435877);
+    paramActionSheet.b(2131435875);
+    paramActionSheet.c(2131433015);
   }
   
   protected void b(int paramInt, URLDrawable paramURLDrawable)
@@ -227,12 +227,12 @@ public class CardPicGalleryActivity
         }
         catch (IOException paramURLDrawable)
         {
-          QQToast.a(this, getString(2131434566), 0).a();
+          QQToast.a(this, getString(2131434583), 0).a();
           return;
         }
       }
     }
-    DialogUtil.a(this, 230).setTitle(getString(2131434569)).setMessage(getString(2131434571)).setPositiveButton(getString(2131434570), new abgv(this, paramURLDrawable, str)).setNegativeButton(getString(2131432995), new abgu(this)).show();
+    DialogUtil.a(this, 230).setTitle(getString(2131434586)).setMessage(getString(2131434588)).setPositiveButton(getString(2131434587), new abnw(this, paramURLDrawable, str)).setNegativeButton(getString(2131433012), new abnv(this)).show();
   }
   
   protected void c(int paramInt, URLDrawable paramURLDrawable)
@@ -274,37 +274,37 @@ public class CardPicGalleryActivity
   {
     this.mNeedStatusTrans = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970240);
+    super.setContentView(2130970256);
     paramBundle = getIntent();
     this.jdField_a_of_type_JavaUtilArrayList = paramBundle.getStringArrayListExtra("business_card_pics");
     this.jdField_a_of_type_Boolean = paramBundle.getBooleanExtra("is_edit_mode", false);
     this.c = paramBundle.getIntExtra("extra_mode", 1);
     this.jdField_a_of_type_Int = paramBundle.getIntExtra("extra_default", 0);
     this.jdField_b_of_type_Boolean = paramBundle.getBooleanExtra("is_from_profile", false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368022));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368089));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131364774));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369052));
+    this.jdField_a_of_type_ComTencentWidgetGallery = ((Gallery)findViewById(2131364796));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369118));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     if ((this.c == 1) && (!this.jdField_a_of_type_Boolean)) {
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
     this.jdField_a_of_type_ComTencentWidgetGallery.setSpacing(getResources().getDimensionPixelSize(2131558524));
     this.jdField_a_of_type_ComTencentWidgetGallery.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
-    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new abgr(this));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)super.findViewById(2131369790));
+    this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemSelectedListener(new abns(this));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)super.findViewById(2131369867));
     if (this.c == 2)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new abgs(this));
+      this.jdField_a_of_type_ComTencentWidgetGallery.setOnItemClickListener(new abnt(this));
       this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
       paramBundle = BaseApplicationImpl.getApplication().getSharedPreferences("profile_sp", 0);
       this.jdField_a_of_type_Long = paramBundle.getLong("recommend_id", 0L);
       this.jdField_a_of_type_JavaLangString = paramBundle.getString("recommend_url", "");
       this.jdField_b_of_type_JavaLangString = paramBundle.getString("recommend_desc", "");
-      paramBundle = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369791);
-      Object localObject = (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364640);
-      Drawable localDrawable = getResources().getDrawable(2130839128);
+      paramBundle = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131369868);
+      Object localObject = (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364664);
+      Drawable localDrawable = getResources().getDrawable(2130839132);
       if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)))
       {
         paramBundle.setText(this.jdField_b_of_type_JavaLangString);

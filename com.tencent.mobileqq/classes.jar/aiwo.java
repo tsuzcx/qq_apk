@@ -1,19 +1,24 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
-import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
-public class aiwo
-  implements Runnable
+class aiwo
+  implements AdapterView.OnItemLongClickListener
 {
-  public aiwo(AudioItem paramAudioItem, TroopHomeworkHelper.UploadFileTask paramUploadFileTask) {}
+  aiwo(aiwl paramaiwl) {}
   
-  public void run()
+  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a();
+    if ((this.a.a.a.e) || (this.a.a.a.d)) {
+      TroopAvatarWallPreviewActivity.c(this.a.a.a);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiwo
  * JD-Core Version:    0.7.0.1
  */

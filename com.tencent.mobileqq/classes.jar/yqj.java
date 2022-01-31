@@ -1,47 +1,59 @@
-import com.tencent.mobileqq.apollo.ApolloRenderInterfaceImpl;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.OnApolloViewListener;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsPresenter;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
-import com.tencent.mobileqq.app.FontSettingManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.SoftReference;
+import android.text.TextUtils;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVRoomMulti;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
+import com.tencent.mobileqq.apollo.process.data.CmGameOpenIdFinder;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager;
+import java.util.ArrayList;
+import org.json.JSONArray;
 
 public class yqj
-  implements OnApolloViewListener
+  implements Runnable
 {
-  private SoftReference a;
+  public yqj(CmGameAvHandler paramCmGameAvHandler, JSONArray paramJSONArray) {}
   
-  public yqj(ApolloGuestsStateActivity paramApolloGuestsStateActivity)
+  public void run()
   {
-    this.a = new SoftReference(paramApolloGuestsStateActivity);
-  }
-  
-  public void onNotifyLongTouch(String paramString) {}
-  
-  public void onNotifyStatusChanged(int paramInt, String paramString) {}
-  
-  public void onSurfaceReady(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloGuestsStateActivity", 2, "apollo view is Ready.");
+    if (this.jdField_a_of_type_OrgJsonJSONArray.length() <= 0)
+    {
+      CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler).clear();
+      AVManager.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new yqk(this));
     }
-    ApolloGuestsStateActivity localApolloGuestsStateActivity = (ApolloGuestsStateActivity)this.a.get();
-    if ((localApolloGuestsStateActivity == null) || (localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView == null) || (ApolloGuestsStateActivity.a(localApolloGuestsStateActivity) == null)) {
+    for (;;)
+    {
       return;
+      CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler).clear();
+      String[] arrayOfString = new String[this.jdField_a_of_type_OrgJsonJSONArray.length()];
+      String str3 = CmGameUtil.a().getCurrentAccountUin();
+      int i = 0;
+      while (i < this.jdField_a_of_type_OrgJsonJSONArray.length())
+      {
+        try
+        {
+          CmGameOpenIdFinder localCmGameOpenIdFinder = CmGameUtil.a(CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler));
+          if (localCmGameOpenIdFinder != null)
+          {
+            String str2 = localCmGameOpenIdFinder.c(this.jdField_a_of_type_OrgJsonJSONArray.get(i).toString());
+            String str1 = str2;
+            if (TextUtils.isEmpty(str2)) {
+              str1 = localCmGameOpenIdFinder.a(this.jdField_a_of_type_OrgJsonJSONArray.get(i).toString());
+            }
+            arrayOfString[i] = str1;
+            CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler).add(str1);
+            CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler, arrayOfString, str3);
+          }
+        }
+        catch (Exception localException)
+        {
+          label175:
+          break label175;
+        }
+        i += 1;
+      }
     }
-    float f3 = FontSettingManager.a() / 16.0F;
-    float f2 = localApolloGuestsStateActivity.c;
-    float f1 = f2;
-    if (0.0F != f3) {
-      f1 = f2 / f3;
-    }
-    localApolloGuestsStateActivity.jdField_a_of_type_Float = (paramInt1 / 2 / f1);
-    if (localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl() != null) {
-      localApolloGuestsStateActivity.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.getRenderImpl().a();
-    }
-    ApolloGuestsStateActivity.a(localApolloGuestsStateActivity).c();
-    localApolloGuestsStateActivity.b = paramInt1;
   }
 }
 

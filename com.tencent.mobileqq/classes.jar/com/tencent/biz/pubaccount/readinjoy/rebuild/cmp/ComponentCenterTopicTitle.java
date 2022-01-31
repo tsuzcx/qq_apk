@@ -40,9 +40,9 @@ public class ComponentCenterTopicTitle
   
   public void a(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2130969587, this, true);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367011));
-    this.b = ((TextView)findViewById(2131363561));
+    LayoutInflater.from(paramContext).inflate(2130969594, this, true);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367055));
+    this.b = ((TextView)findViewById(2131363579));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)

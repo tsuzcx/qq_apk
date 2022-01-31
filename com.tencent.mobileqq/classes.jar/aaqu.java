@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.ark.ArkAiDictMgr;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic;
+import com.tencent.mobileqq.ark.ArkActionAppMgr;
+import com.tencent.mobileqq.ark.ArkAppInfo.Context;
+import java.util.Comparator;
 
-public final class aaqu
-  implements Runnable
+public class aaqu
+  implements Comparator
 {
-  public void run()
+  public aaqu(ArkActionAppMgr paramArkActionAppMgr) {}
+  
+  public int a(ArkAppInfo.Context paramContext1, ArkAppInfo.Context paramContext2)
   {
-    ArkAiDictMgr.a();
-    ArkMessageServerLogic.a();
+    int i = paramContext1.a.compareTo(paramContext2.a);
+    if (i != 0) {
+      return i;
+    }
+    return paramContext1.b.compareTo(paramContext2.b);
   }
 }
 

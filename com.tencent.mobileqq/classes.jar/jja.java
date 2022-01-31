@@ -1,28 +1,24 @@
+import com.tencent.av.SessionMgr;
 import com.tencent.av.VideoController;
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.ui.QavPanel.SlideAcceptListener;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.guild.GuildMultiActivity;
 
 public class jja
-  implements QavPanel.SlideAcceptListener
+  implements Runnable
 {
-  public jja(GaInviteLockActivity paramGaInviteLockActivity) {}
+  public jja(GuildMultiActivity paramGuildMultiActivity) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean)
+    if (this.a.a != null)
     {
-      if ((!this.a.a.e) && (!this.a.a.l())) {
-        break label62;
+      SessionInfo localSessionInfo = SessionMgr.a().a(this.a.e);
+      if (localSessionInfo != null)
+      {
+        localSessionInfo.a.f = true;
+        if (this.a.a.h() == 1) {}
+        GuildMultiActivity.a(this.a, true);
       }
-      this.a.f();
-    }
-    for (;;)
-    {
-      ReportController.b(null, "CliOper", "", "", "0X800420E", "0X800420E", 0, 0, "", "", "", "");
-      return;
-      label62:
-      this.a.d();
     }
   }
 }

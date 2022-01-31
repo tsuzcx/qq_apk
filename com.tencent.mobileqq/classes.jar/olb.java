@@ -1,23 +1,25 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo2.StoryMultiFragmentPart;
+import android.os.Handler;
+import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
+import com.tencent.biz.qqstory.model.DataProvider.DataUpdateListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
 public class olb
-  implements Animation.AnimationListener
+  implements DataProvider.DataUpdateListener
 {
-  public olb(StoryMultiFragmentPart paramStoryMultiFragmentPart) {}
+  public olb(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean, AddressDataProvider.AddressInfo paramAddressInfo)
   {
-    if (StoryMultiFragmentPart.b(this.a) != null) {
-      StoryMultiFragmentPart.b(this.a).setVisibility(4);
+    SLog.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate.");
+    if ((paramBoolean) && (paramAddressInfo != null))
+    {
+      SLog.a("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate success, address=%s", paramAddressInfo);
+      this.a.a.post(new olc(this, paramAddressInfo));
+      return;
     }
+    SLog.e("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate failed.");
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

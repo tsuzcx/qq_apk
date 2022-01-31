@@ -252,7 +252,7 @@ public class ForwardH5HongBaoOption
   {
     if (!NetworkUtil.d(BaseApplication.getContext()))
     {
-      QQToast.a(BaseApplicationImpl.sApplication, 2131433196, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(BaseApplicationImpl.sApplication, 2131433213, 0).b(this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
       return true;
     }
     for (;;)

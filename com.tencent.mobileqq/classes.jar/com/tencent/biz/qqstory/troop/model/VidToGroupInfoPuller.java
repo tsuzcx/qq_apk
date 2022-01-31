@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
-import omh;
-import omi;
+import oob;
+import ooc;
 
 public class VidToGroupInfoPuller
   implements IEventReceiver
@@ -83,7 +83,7 @@ public class VidToGroupInfoPuller
       return;
     }
     this.jdField_a_of_type_Int = 1;
-    Bosses.get().postJob(new omh(this));
+    Bosses.get().postJob(new oob(this));
   }
   
   public boolean a()
@@ -169,7 +169,7 @@ public class VidToGroupInfoPuller
   {
     this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller = a(this.jdField_a_of_type_JavaUtilList);
     this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a("Q.qqstory.net:VidToGroupInfoPuller");
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a(new omi(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a(new ooc(this));
     this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.b();
   }
   

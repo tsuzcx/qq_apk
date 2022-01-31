@@ -1,33 +1,21 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
+import cooperation.qzone.share.QZoneShareActivity;
 
-public final class amzf
-  implements ValueAnimator.AnimatorUpdateListener
+public class amzf
+  implements Runnable
 {
-  public float a;
-  final View a;
+  public amzf(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public amzf(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_Float = 1.0F;
-    this.jdField_a_of_type_AndroidViewView = paramView;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.jdField_a_of_type_Float = f;
-    this.jdField_a_of_type_AndroidViewView.invalidate();
-    if (QLog.isColorLevel()) {
-      QLog.d("PressScaleAnimDelegate ", 2, "do scale animtion, scale=" + f);
-    }
+    QQToast.a(this.a, this.a.a.msg.get(), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzf
  * JD-Core Version:    0.7.0.1
  */

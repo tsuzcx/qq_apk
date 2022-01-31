@@ -23,10 +23,10 @@ import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import zbi;
-import zdc;
-import zdd;
-import zde;
+import zeo;
+import zgi;
+import zgj;
+import zgk;
 
 public class MemoryManager
 {
@@ -41,7 +41,7 @@ public class MemoryManager
   private MemoryManager.IReportListener jdField_a_of_type_ComTencentMobileqqAppMemoryManager$IReportListener;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(0);
-  private zdd jdField_a_of_type_Zdd;
+  private zgj jdField_a_of_type_Zgj;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
@@ -143,14 +143,14 @@ public class MemoryManager
     finally {}
   }
   
-  private zdd a()
+  private zgj a()
   {
-    if (this.jdField_a_of_type_Zdd == null)
+    if (this.jdField_a_of_type_Zgj == null)
     {
-      this.jdField_a_of_type_Zdd = new zdd();
-      this.jdField_a_of_type_Zdd.a();
+      this.jdField_a_of_type_Zgj = new zgj();
+      this.jdField_a_of_type_Zgj.a();
     }
-    return this.jdField_a_of_type_Zdd;
+    return this.jdField_a_of_type_Zgj;
   }
   
   public float a()
@@ -377,11 +377,11 @@ public class MemoryManager
   {
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      zdd localzdd = a();
-      localzdd.jdField_a_of_type_Long += paramLong2;
-      localzdd.jdField_b_of_type_Long += paramLong1;
-      localzdd.jdField_a_of_type_Int += 1;
-      localzdd.c();
+      zgj localzgj = a();
+      localzgj.jdField_a_of_type_Long += paramLong2;
+      localzgj.jdField_b_of_type_Long += paramLong1;
+      localzgj.jdField_a_of_type_Int += 1;
+      localzgj.c();
       return;
     }
   }
@@ -392,7 +392,7 @@ public class MemoryManager
     while (!MemoryConfigs.a().jdField_a_of_type_Boolean) {
       return;
     }
-    paramQQAppInterface.a(new zdc(paramQQAppInterface, paramContext, 2));
+    paramQQAppInterface.a(new zgi(paramQQAppInterface, paramContext, 2));
   }
   
   public void a(MemoryManager.IReportListener paramIReportListener)
@@ -489,11 +489,11 @@ public class MemoryManager
   {
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      zdd localzdd = a();
-      localzdd.jdField_c_of_type_Long += paramLong2;
-      localzdd.jdField_d_of_type_Long += paramLong1;
-      localzdd.jdField_b_of_type_Int += 1;
-      localzdd.c();
+      zgj localzgj = a();
+      localzgj.jdField_c_of_type_Long += paramLong2;
+      localzgj.jdField_d_of_type_Long += paramLong1;
+      localzgj.jdField_b_of_type_Int += 1;
+      localzgj.c();
       return;
     }
   }
@@ -501,23 +501,23 @@ public class MemoryManager
   protected void b(String paramString)
   {
     Object localObject1 = (ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity");
-    zde localzde1;
+    zgk localzgk1;
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("LITE_GUARD") == null)
     {
-      localzde1 = new zde();
-      localzde1.a("LITE_GUARD");
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("LITE_GUARD", localzde1);
+      localzgk1 = new zgk();
+      localzgk1.a("LITE_GUARD");
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("LITE_GUARD", localzgk1);
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("BG_GUARD") == null)
     {
-      localzde1 = new zde();
-      localzde1.a("BG_GUARD");
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("BG_GUARD", localzde1);
+      localzgk1 = new zgk();
+      localzgk1.a("BG_GUARD");
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("BG_GUARD", localzgk1);
     }
     if ("LITE_GUARD".equals(paramString))
     {
-      localzde1 = (zde)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("LITE_GUARD");
-      if (localzde1 != null) {
+      localzgk1 = (zgk)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("LITE_GUARD");
+      if (localzgk1 != null) {
         break label173;
       }
       if (QLog.isColorLevel()) {
@@ -529,7 +529,7 @@ public class MemoryManager
     label212:
     Object localObject2;
     label519:
-    zde localzde2;
+    zgk localzgk2;
     HashMap localHashMap;
     for (;;)
     {
@@ -537,7 +537,7 @@ public class MemoryManager
       if (!"BG_GUARD".equals(paramString)) {
         break label1437;
       }
-      localzde1 = (zde)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("BG_GUARD");
+      localzgk1 = (zgk)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get("BG_GUARD");
       break;
       l3 = DeviceInfoUtil.f();
       long l4 = a(Process.myPid());
@@ -564,16 +564,16 @@ public class MemoryManager
         }
         if ((l3 >= 0L) && (l4 >= 0L) && (l2 >= 0L))
         {
-          localzde1.jdField_a_of_type_Long += l3;
-          localzde1.jdField_b_of_type_Long += l2;
-          localzde1.jdField_c_of_type_Long += l4;
-          localzde1.jdField_a_of_type_Int += 1;
+          localzgk1.jdField_a_of_type_Long += l3;
+          localzgk1.jdField_b_of_type_Long += l2;
+          localzgk1.jdField_c_of_type_Long += l4;
+          localzgk1.jdField_a_of_type_Int += 1;
           localObject1 = BaseApplicationImpl.sImageCache;
-          localzde1.jdField_d_of_type_Long += ((MQLruCache)localObject1).maxSize();
-          localzde1.jdField_e_of_type_Long += ((MQLruCache)localObject1).size();
-          localzde1.jdField_c_of_type_Int += ((MQLruCache)localObject1).hitCount();
-          m = localzde1.jdField_b_of_type_Int;
-          localzde1.jdField_b_of_type_Int = (((MQLruCache)localObject1).missCount() + m);
+          localzgk1.jdField_d_of_type_Long += ((MQLruCache)localObject1).maxSize();
+          localzgk1.jdField_e_of_type_Long += ((MQLruCache)localObject1).size();
+          localzgk1.jdField_c_of_type_Int += ((MQLruCache)localObject1).hitCount();
+          m = localzgk1.jdField_b_of_type_Int;
+          localzgk1.jdField_b_of_type_Int = (((MQLruCache)localObject1).missCount() + m);
           l3 = System.currentTimeMillis();
           localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("MemoryManagerMemoryStat", 0);
           l2 = ((SharedPreferences)localObject2).getLong("StateMemoryLastTime", 0L);
@@ -593,12 +593,12 @@ public class MemoryManager
               break label1218;
             }
             localObject1 = (Map.Entry)((Iterator)localObject3).next();
-            localzde2 = (zde)((Map.Entry)localObject1).getValue();
-            m = localzde2.jdField_a_of_type_Int;
+            localzgk2 = (zgk)((Map.Entry)localObject1).getValue();
+            m = localzgk2.jdField_a_of_type_Int;
             if (m > 0) {
               break;
             }
-            localzde2.a();
+            localzgk2.a();
           }
           if (!QLog.isColorLevel()) {}
         }
@@ -608,8 +608,8 @@ public class MemoryManager
         if (QLog.isColorLevel()) {
           QLog.d("Q.Memory.MemoryManager", 2, "reportMemoryInfo exception", paramString);
         }
-        localzde1.a();
-        localzde1.b();
+        localzgk1.a();
+        localzgk1.b();
         return;
         localHashMap = new HashMap();
         localObject1 = (String)((Map.Entry)localObject1).getKey();
@@ -634,46 +634,46 @@ public class MemoryManager
       throw new IllegalStateException("sysClassMemory illegal");
     }
     localHashMap.put("sysClassMemory", String.valueOf(l1));
-    l1 = localzde2.jdField_a_of_type_Long / (m * 1024);
+    l1 = localzgk2.jdField_a_of_type_Long / (m * 1024);
     if (l1 <= 0L) {
       throw new IllegalStateException("sysAvailableMemory illegal");
     }
     localHashMap.put("sysAvailableMemory", String.valueOf(l1));
-    l1 = localzde2.jdField_b_of_type_Long / (m * 1024);
+    l1 = localzgk2.jdField_b_of_type_Long / (m * 1024);
     if (l1 < 0L) {
       throw new IllegalStateException("qqOtherUsedMemory illegal");
     }
     localHashMap.put("qqOtherUsedMemory", String.valueOf(l1));
-    l1 = localzde2.jdField_c_of_type_Long / (m * 1024);
+    l1 = localzgk2.jdField_c_of_type_Long / (m * 1024);
     if (l1 <= 0L) {
       throw new IllegalStateException("qqUsedMemory illegal");
     }
     localHashMap.put("qqUsedMemory", String.valueOf(l1));
-    l1 = localzde2.jdField_d_of_type_Long / (m * 1024);
+    l1 = localzgk2.jdField_d_of_type_Long / (m * 1024);
     if (l1 < 0L) {
       throw new IllegalStateException("imageCacheMax illegal");
     }
     localHashMap.put("imageCacheMax", String.valueOf(l1));
-    l1 = localzde2.jdField_e_of_type_Long / (m * 1024);
+    l1 = localzgk2.jdField_e_of_type_Long / (m * 1024);
     if (l1 < 0L) {
       throw new IllegalStateException("imageCacheUsed illegal");
     }
     localHashMap.put("imageCacheUsed", String.valueOf(l1));
-    l1 = localzde2.jdField_c_of_type_Int / m;
+    l1 = localzgk2.jdField_c_of_type_Int / m;
     if (l1 < 0L) {
       throw new IllegalStateException("imageHitCount illegal");
     }
     localHashMap.put("imageHitCount", String.valueOf(l1));
-    if (localzde2.jdField_c_of_type_Int + localzde2.jdField_b_of_type_Int != 0)
+    if (localzgk2.jdField_c_of_type_Int + localzgk2.jdField_b_of_type_Int != 0)
     {
-      m = localzde2.jdField_c_of_type_Int * 100 / (localzde2.jdField_c_of_type_Int + localzde2.jdField_b_of_type_Int);
+      m = localzgk2.jdField_c_of_type_Int * 100 / (localzgk2.jdField_c_of_type_Int + localzgk2.jdField_b_of_type_Int);
       label1047:
       l1 = m;
       if (l1 < 0L) {
         throw new IllegalStateException("imageHitRate illegal");
       }
       localHashMap.put("imageHitRate", String.valueOf(l1));
-      localHashMap.put("guardConfigId", zbi.a().a());
+      localHashMap.put("guardConfigId", zeo.a().a());
       localHashMap.put("memoryConfigId", MemoryConfigs.a().jdField_a_of_type_JavaLangString);
       localHashMap.put("osVersion", Build.VERSION.RELEASE);
       localHashMap.put("resolution", DeviceInfoUtil.m());
@@ -696,8 +696,8 @@ public class MemoryManager
     {
       localHashMap.put("enable_heap_sucide", String.valueOf(m));
       StatisticCollector.a(BaseApplicationImpl.getApplication()).a(null, "actMemory", true, 0L, 0L, localHashMap, null);
-      localzde2.a();
-      localzde2.b();
+      localzgk2.a();
+      localzgk2.b();
       break label519;
       label1218:
       ((SharedPreferences)localObject2).edit().putLong("StateMemoryLastTime", l3).commit();
@@ -705,13 +705,13 @@ public class MemoryManager
       if (QLog.isColorLevel())
       {
         localObject1 = new StringBuilder();
-        ((StringBuilder)localObject1).append("reportMemoryInfo, start mode =").append(paramString).append("sysTotalMemory=").append(DeviceInfoUtil.e()).append(",statCount=").append(localzde1.jdField_a_of_type_Int).append(",sysClassMemory=").append(DeviceInfoUtil.g()).append(",sysAvailableMemory=").append(localzde1.jdField_a_of_type_Long).append(",qqOtherUsedMemory=").append(localzde1.jdField_b_of_type_Long).append(",qqUsedMemory=").append(localzde1.jdField_c_of_type_Long).append(",imageCacheMax=").append(localzde1.jdField_d_of_type_Long).append(",imageCacheUsed=").append(localzde1.jdField_e_of_type_Long).append(",imageHitCount=").append(localzde1.jdField_c_of_type_Int).append(",imageHitTotal=").append(localzde1.jdField_c_of_type_Int + localzde1.jdField_b_of_type_Int).append("\n");
+        ((StringBuilder)localObject1).append("reportMemoryInfo, start mode =").append(paramString).append("sysTotalMemory=").append(DeviceInfoUtil.e()).append(",statCount=").append(localzgk1.jdField_a_of_type_Int).append(",sysClassMemory=").append(DeviceInfoUtil.g()).append(",sysAvailableMemory=").append(localzgk1.jdField_a_of_type_Long).append(",qqOtherUsedMemory=").append(localzgk1.jdField_b_of_type_Long).append(",qqUsedMemory=").append(localzgk1.jdField_c_of_type_Long).append(",imageCacheMax=").append(localzgk1.jdField_d_of_type_Long).append(",imageCacheUsed=").append(localzgk1.jdField_e_of_type_Long).append(",imageHitCount=").append(localzgk1.jdField_c_of_type_Int).append(",imageHitTotal=").append(localzgk1.jdField_c_of_type_Int + localzgk1.jdField_b_of_type_Int).append("\n");
         QLog.d("Q.Memory.MemoryManager", 2, ((StringBuilder)localObject1).toString());
       }
-      localzde1.b();
+      localzgk1.b();
       return;
       break label1443;
-      localzde1 = null;
+      localzgk1 = null;
       break;
       break label212;
       m = 0;
@@ -730,16 +730,16 @@ public class MemoryManager
   {
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      localzdd = a();
+      localzgj = a();
       l1 = System.currentTimeMillis();
-      long l2 = localzdd.jdField_e_of_type_Long;
+      long l2 = localzgj.jdField_e_of_type_Long;
       if (l1 - l2 > 86400000L) {}
       for (;;)
       {
         try
         {
-          m = localzdd.jdField_a_of_type_Int;
-          n = localzdd.jdField_b_of_type_Int;
+          m = localzgj.jdField_a_of_type_Int;
+          n = localzgj.jdField_b_of_type_Int;
           HashMap localHashMap = new HashMap();
           localHashMap.put("sysTotalMemory", String.valueOf(DeviceInfoUtil.e() / 1024L));
           if (m != 0) {
@@ -766,7 +766,7 @@ public class MemoryManager
           localHashMap.put("clearCount", String.valueOf(n));
           StatisticCollector.a(BaseApplicationImpl.getApplication()).a(null, "LowMemoryStat", true, 0L, 0L, localHashMap, null);
           if (QLog.isColorLevel()) {
-            QLog.d("Q.Memory.MemoryManager", 2, "reportLowMemory, sysTotalMemory=" + String.valueOf(DeviceInfoUtil.e() / 1024L) + ", lowWarningMemory=" + localzdd.jdField_b_of_type_Long + ", lowRemainMemory=" + localzdd.jdField_a_of_type_Long + ", lowMemoryCount=" + m + ", clearWarningMemory=" + localzdd.jdField_d_of_type_Long + ", clearRemainMemory=" + localzdd.jdField_c_of_type_Long + ",clearCount=" + n);
+            QLog.d("Q.Memory.MemoryManager", 2, "reportLowMemory, sysTotalMemory=" + String.valueOf(DeviceInfoUtil.e() / 1024L) + ", lowWarningMemory=" + localzgj.jdField_b_of_type_Long + ", lowRemainMemory=" + localzgj.jdField_a_of_type_Long + ", lowMemoryCount=" + m + ", clearWarningMemory=" + localzgj.jdField_d_of_type_Long + ", clearRemainMemory=" + localzgj.jdField_c_of_type_Long + ",clearCount=" + n);
           }
         }
         catch (Exception localException)
@@ -778,26 +778,26 @@ public class MemoryManager
             continue;
           }
           QLog.d("Q.Memory.MemoryManager", 2, "reportMemoryInfo exception", localException);
-          localzdd.b();
-          localzdd.jdField_e_of_type_Long = l1;
+          localzgj.b();
+          localzgj.jdField_e_of_type_Long = l1;
           continue;
           localObject1 = finally;
           throw localObject1;
         }
         finally
         {
-          localzdd.b();
-          localzdd.jdField_e_of_type_Long = l1;
+          localzgj.b();
+          localzgj.jdField_e_of_type_Long = l1;
         }
-        localzdd.c();
+        localzgj.c();
         return;
-        str = String.valueOf(localzdd.jdField_b_of_type_Long / (m * 1024));
+        str = String.valueOf(localzgj.jdField_b_of_type_Long / (m * 1024));
         continue;
-        str = String.valueOf(localzdd.jdField_a_of_type_Long / (m * 1024));
+        str = String.valueOf(localzgj.jdField_a_of_type_Long / (m * 1024));
         continue;
-        str = String.valueOf(localzdd.jdField_d_of_type_Long / (n * 1024));
+        str = String.valueOf(localzgj.jdField_d_of_type_Long / (n * 1024));
       }
-      l2 = localzdd.jdField_c_of_type_Long / (n * 1024);
+      l2 = localzgj.jdField_c_of_type_Long / (n * 1024);
       str = String.valueOf(l2);
     }
   }

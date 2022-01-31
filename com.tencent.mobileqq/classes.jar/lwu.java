@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemSingle;
 
 public class lwu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public lwu(ReadInJoySkinManager paramReadInJoySkinManager, int paramInt, String paramString) {}
+  public lwu(ComponentTopicItemSingle paramComponentTopicItemSingle) {}
   
-  public void run()
-  {
-    ReadInJoySkinManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoySkinManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-  }
+  public void onClick(View paramView) {}
 }
 
 

@@ -1,20 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager.FavEmotionDataInPanelCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-public final class smw
-  implements DialogInterface.OnClickListener
+public class smw
+  implements FavroamingDBManager.FavEmotionDataInPanelCallback
 {
-  public smw(QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, ProfileCardInfo paramProfileCardInfo) {}
+  public smw(FavEmosmManageActivity paramFavEmosmManageActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(List paramList)
   {
-    FriendProfileCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-    if (paramDialogInterface != null) {
-      paramDialogInterface.dismiss();
+    Object localObject = paramList;
+    if (paramList == null) {
+      localObject = new ArrayList();
+    }
+    try
+    {
+      Collections.reverse((List)localObject);
+      ((List)localObject).add(0, new EmoticonInfo());
+      if (this.a.a != null) {
+        this.a.a.obtainMessage(206, localObject).sendToTarget();
+      }
+      return;
+    }
+    catch (UnsupportedOperationException paramList)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FavEmoRoamingHandler", 2, paramList.getMessage());
+        }
+      }
     }
   }
 }

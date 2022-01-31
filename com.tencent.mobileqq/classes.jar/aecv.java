@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.nearby.business.NearbyCardObserver;
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import java.util.ArrayList;
+import android.util.Log;
+import com.tencent.mobileqq.lyric.widget.LyricViewController;
+import com.tencent.mobileqq.lyric.widget.LyricViewScroll.LyricViewScrollListener;
 
 public class aecv
-  extends NearbyCardObserver
+  implements LyricViewScroll.LyricViewScrollListener
 {
-  public aecv(NearbyGuideActivity paramNearbyGuideActivity) {}
+  public aecv(LyricViewController paramLyricViewController) {}
   
-  protected void a(boolean paramBoolean, ArrayList paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(int paramInt)
   {
-    this.a.runOnUiThread(new aecw(this, paramBoolean, paramInt1, paramArrayList));
+    this.a.a = true;
+    this.a.c(paramInt);
   }
   
-  protected void b(boolean paramBoolean, ArrayList paramArrayList, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void b(int paramInt)
   {
-    this.a.runOnUiThread(new aecx(this, paramBoolean, paramInt1, paramArrayList));
+    Log.d("ModuleController", "onScrollStop -> top:" + paramInt);
+    this.a.b(paramInt);
   }
 }
 

@@ -1,15 +1,52 @@
-import android.view.View;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.newshare.callback.OnSimpleShareListener;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.biz.qqstory.storyHome.memory.controller.QQStoryMemoriesPresenter;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
-public class nwp
-  implements BubblePopupWindow.OnDismissListener
+class nwp
+  extends OnSimpleShareListener
 {
-  public nwp(StoryMessageListActivity paramStoryMessageListActivity, View paramView) {}
+  nwp(nwn paramnwn) {}
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView.setSelected(false);
+    super.a();
+    StoryMemoriesFragment.a(this.a.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    boolean bool = QQStoryContext.a().b(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
+    int i;
+    int j;
+    String str1;
+    if (StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isVip)
+    {
+      i = 1;
+      j = StoryMemoriesFragment.a(StoryMemoriesFragment.a(this.a.a).jdField_a_of_type_Int);
+      if (!bool) {
+        break label124;
+      }
+      str1 = "1";
+      label76:
+      if (i != 1) {
+        break label131;
+      }
+    }
+    label131:
+    for (String str2 = "1";; str2 = "2")
+    {
+      StoryReportor.a("memory", "share_suc", j, paramInt, new String[] { str1, str2, "", "" });
+      return;
+      i = 0;
+      break;
+      label124:
+      str1 = "2";
+      break label76;
+    }
   }
 }
 

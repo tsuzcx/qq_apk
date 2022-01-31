@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.tribe.videoupload;
 
-import aifa;
+import aitd;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
@@ -25,7 +25,7 @@ public class TribeVideoUploadTask
     super(paramTribeVideoTaskInfo);
     paramTribeVideoTaskInfo.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
     TribeVideoFileObject localTribeVideoFileObject = new TribeVideoFileObject(paramTribeVideoTaskInfo.jdField_a_of_type_JavaLangString);
-    localTribeVideoFileObject.a(new aifa(this, paramTribeVideoTaskInfo));
+    localTribeVideoFileObject.a(new aitd(this, paramTribeVideoTaskInfo));
     paramTribeVideoTaskInfo.jdField_a_of_type_JavaUtilList.add(localTribeVideoFileObject);
     this.jdField_a_of_type_AndroidOsHandler = paramHandler;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBaseActivity);
@@ -38,7 +38,7 @@ public class TribeVideoUploadTask
     for (Object localObject = null; (localObject == null) || (((BaseActivity)localObject).isFinishing()); localObject = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("TribeVideoUploadTask", 2, "TribeVideoUploadTask finish but activity is null!");
+        QLog.d("tribe_publish_VideoUploadTask", 2, "TribeVideoUploadTask finish but activity is null!");
       }
       return;
     }
@@ -51,17 +51,17 @@ public class TribeVideoUploadTask
   
   public void a(BasePublishTask paramBasePublishTask, ErrorMessage paramErrorMessage)
   {
-    QLog.i("tribe_publish_TribeVideoUploadTask", 1, "upload finish status:" + paramBasePublishTask.a().a);
+    QLog.i("tribe_publish_tribe_publish_VideoUploadTask", 1, "upload finish status:" + paramBasePublishTask.a().a);
     paramBasePublishTask = (TribeVideoTaskInfo)paramBasePublishTask.a();
     if (paramBasePublishTask.b())
     {
-      QLog.i("tribe_publish_TribeVideoUploadTask", 1, "uploadVideo succ " + paramBasePublishTask.c);
+      QLog.i("tribe_publish_tribe_publish_VideoUploadTask", 1, "uploadVideo succ " + paramBasePublishTask.c);
       a(1011, paramBasePublishTask);
     }
     while (!paramBasePublishTask.a()) {
       return;
     }
-    QLog.i("tribe_publish_TribeVideoUploadTask", 1, "uploadVideo failed:" + paramBasePublishTask.toString());
+    QLog.i("tribe_publish_tribe_publish_VideoUploadTask", 1, "uploadVideo failed:" + paramBasePublishTask.toString() + " error:" + paramErrorMessage);
     a(1010, paramBasePublishTask);
   }
   
@@ -72,7 +72,7 @@ public class TribeVideoUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.tribe.videoupload.TribeVideoUploadTask
  * JD-Core Version:    0.7.0.1
  */

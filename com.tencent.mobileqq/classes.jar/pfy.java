@@ -1,15 +1,25 @@
-import com.tencent.component.media.image.ImageKey;
-import com.tencent.component.media.image.ImageLoader.ImageLoadListener;
-import com.tencent.component.media.image.UICallbackTask;
+import android.util.Log;
+import com.tencent.component.media.gif.NewGifDecoder;
+import com.tencent.component.media.gif.NewGifDrawable;
+import com.tencent.component.media.utils.ImageManagerLog;
 
 public class pfy
   implements Runnable
 {
-  public pfy(UICallbackTask paramUICallbackTask, ImageKey paramImageKey, float paramFloat) {}
+  private pfy(NewGifDrawable paramNewGifDrawable) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.listener.onImageProgress(UICallbackTask.a(this.jdField_a_of_type_ComTencentComponentMediaImageUICallbackTask, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey), this.jdField_a_of_type_Float, this.jdField_a_of_type_ComTencentComponentMediaImageImageKey.options);
+    NewGifDrawable.a(this.a);
+    try
+    {
+      this.a.a.stop();
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      ImageManagerLog.e("NewGifDrawable", Log.getStackTraceString(localThrowable));
+    }
   }
 }
 

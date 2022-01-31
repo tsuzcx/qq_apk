@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView;
+import android.view.View;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.troop.homework.entry.ui.view.InputMethodGuard;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor.IFocusChangeListener;
 
 public class ajhh
-  implements FrameSprite.OnFrameEndListener
+  implements XMediaEditor.IFocusChangeListener
 {
-  public ajhh(TroopGiftToAllSurfaceView paramTroopGiftToAllSurfaceView, FrameSprite.OnFrameEndListener paramOnFrameEndListener) {}
+  public ajhh(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void a()
+  public void a(View paramView, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlFrameSprite$OnFrameEndListener.a();
+    if (paramBoolean) {
+      PublishHomeWorkFragment.a(this.a, PublishHomeWorkFragment.a(this.a).a());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajhh
  * JD-Core Version:    0.7.0.1
  */

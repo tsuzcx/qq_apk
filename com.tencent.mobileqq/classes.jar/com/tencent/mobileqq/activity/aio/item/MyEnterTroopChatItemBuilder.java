@@ -16,7 +16,7 @@ import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForMyEnterTroop;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import uza;
+import vcc;
 
 public class MyEnterTroopChatItemBuilder
   extends AbstractChatItemBuilder
@@ -28,19 +28,19 @@ public class MyEnterTroopChatItemBuilder
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramLinearLayout = (uza)paramViewHolder;
+    paramLinearLayout = (vcc)paramViewHolder;
     paramViewHolder = paramView;
     if (paramView == null)
     {
       paramViewHolder = LayoutInflater.from(this.a).inflate(2130968785, null);
-      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131363766));
+      paramLinearLayout.b = ((TextView)paramViewHolder.findViewById(2131363789));
     }
     paramLinearLayout.b.setMovementMethod(null);
     paramLinearLayout.b.setGravity(17);
     if ((paramMessageRecord instanceof MessageForMyEnterTroop))
     {
       paramMessageRecord = (MessageForMyEnterTroop)paramMessageRecord;
-      paramMessageRecord = this.a.getString(2131429680);
+      paramMessageRecord = this.a.getString(2131429686);
       paramLinearLayout.b.setText(paramMessageRecord);
       paramView = this.a.getResources().getColorStateList(2131492894);
       if (paramView != null) {
@@ -53,7 +53,7 @@ public class MyEnterTroopChatItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new uza(this);
+    return new vcc(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

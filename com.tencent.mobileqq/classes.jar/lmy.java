@@ -1,47 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.readinjoy.struct.Kandian210Msg0xeeInfo.NotifyInfo;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
+import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class lmy
   implements Runnable
 {
-  public lmy(ReadinjoySPEventReport paramReadinjoySPEventReport, Kandian210Msg0xeeInfo.NotifyInfo paramNotifyInfo, int paramInt) {}
+  public lmy(WeishiManager paramWeishiManager, QQMessageFacade paramQQMessageFacade, String paramString, long paramLong) {}
   
   public void run()
   {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = new oidb_cmd0x80a.AttributeList();
-    ((oidb_cmd0x80a.AttributeList)localObject).att_id.set(1);
-    ((oidb_cmd0x80a.AttributeList)localObject).att_name.set("FolderStatus");
-    ((oidb_cmd0x80a.AttributeList)localObject).att_value.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo$NotifyInfo.folderStatus + "");
-    oidb_cmd0x80a.AttributeList localAttributeList1 = new oidb_cmd0x80a.AttributeList();
-    localAttributeList1.att_id.set(2);
-    localAttributeList1.att_name.set("StrategyID");
-    localAttributeList1.att_value.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo$NotifyInfo.strategyID + "");
-    oidb_cmd0x80a.AttributeList localAttributeList2 = new oidb_cmd0x80a.AttributeList();
-    localAttributeList2.att_id.set(3);
-    localAttributeList2.att_name.set("AlgorithmID");
-    localAttributeList2.att_value.set(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandian210Msg0xeeInfo$NotifyInfo.algorithmID + "");
-    localArrayList.add(localObject);
-    localArrayList.add(localAttributeList1);
-    localArrayList.add(localAttributeList2);
-    int i;
-    switch (this.jdField_a_of_type_Int)
+    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b(AppConstants.aH, 1008);
+    if (localMessageRecord != null) {}
+    for (localMessageRecord = WeishiManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineWeishiManager, localMessageRecord, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);; localMessageRecord = WeishiManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineWeishiManager, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long))
     {
-    default: 
+      if (localMessageRecord != null) {
+        this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a(localMessageRecord, WeishiManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineWeishiManager).c());
+      }
       return;
-    case 2: 
-      i = 17;
-    }
-    for (localObject = "AppInPushClick";; localObject = "AppInPushExposure")
-    {
-      PublicAccountUtil.a(i, (String)localObject, localArrayList);
-      return;
-      i = 16;
     }
   }
 }

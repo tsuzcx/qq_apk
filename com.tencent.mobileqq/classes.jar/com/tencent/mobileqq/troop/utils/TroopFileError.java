@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajaf;
-import ajag;
+import ajoj;
+import ajok;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -36,8 +36,8 @@ public class TroopFileError
   
   private static void a(Context paramContext, long paramLong)
   {
-    ajag localajag = new ajag(paramLong);
-    DialogUtil.b(paramContext, 230, paramContext.getResources().getString(2131429805), paramContext.getResources().getString(2131429806), 2131429739, 2131429740, localajag, localajag).show();
+    ajok localajok = new ajok(paramLong);
+    DialogUtil.b(paramContext, 230, paramContext.getResources().getString(2131429811), paramContext.getResources().getString(2131429812), 2131429745, 2131429746, localajok, localajok).show();
   }
   
   public static void a(Context paramContext, String paramString)
@@ -56,7 +56,7 @@ public class TroopFileError
       i = paramContext.getResources().getDimensionPixelSize(2131558448);
       if (Looper.getMainLooper() != Looper.myLooper())
       {
-        new Handler(Looper.getMainLooper()).post(new ajaf(paramContext, paramInt, paramString, i));
+        new Handler(Looper.getMainLooper()).post(new ajoj(paramContext, paramInt, paramString, i));
         return;
       }
     }
@@ -153,124 +153,124 @@ public class TroopFileError
     {
       a(paramQQAppInterface, paramContext, str, i);
       return;
-      str = a(paramQQAppInterface, 2131429781);
+      str = a(paramQQAppInterface, 2131429787);
       i = 0;
       continue;
-      str = a(paramQQAppInterface, 2131429782);
+      str = a(paramQQAppInterface, 2131429788);
       i = 0;
       continue;
       a(paramContext, paramLong);
       str = null;
       i = 0;
       continue;
-      str = a(paramQQAppInterface, 2131429783, new Object[] { str });
+      str = a(paramQQAppInterface, 2131429789, new Object[] { str });
       i = 0;
       continue;
-      str = a(paramQQAppInterface, 2131429785, new Object[] { str });
+      str = a(paramQQAppInterface, 2131429791, new Object[] { str });
       i = 0;
       continue;
-      str = a(paramQQAppInterface, 2131429786);
+      str = a(paramQQAppInterface, 2131429792);
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131429793);
+      i = 1;
+      continue;
+      str = a(paramQQAppInterface, 2131429797);
+      i = 2;
+      continue;
+      str = a(paramQQAppInterface, 2131429794, new Object[] { str });
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131429795);
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131429796);
+      i = 1;
+      continue;
+      str = a(paramQQAppInterface, 2131429810);
+      i = 1;
+      continue;
+      str = a(paramQQAppInterface, 2131429823);
+      ReportController.b(paramQQAppInterface, "P_CliOper", "Grp_files", "", "power", "nopower_upload", 0, 0, String.format("%d", new Object[] { Long.valueOf(paramLong) }), "2", "", "");
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131429798, new Object[] { str });
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131429799, new Object[] { str });
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131429800, new Object[] { str });
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131429801, new Object[] { str });
+      i = 0;
+      continue;
+      str = a(paramQQAppInterface, 2131429802, new Object[] { str });
       i = 0;
       continue;
       str = a(paramQQAppInterface, 2131429787);
       i = 1;
       continue;
-      str = a(paramQQAppInterface, 2131429791);
-      i = 2;
+      str = a(paramQQAppInterface, 2131429723);
+      i = 1;
       continue;
-      str = a(paramQQAppInterface, 2131429788, new Object[] { str });
+      str = a(paramQQAppInterface, 2131429724);
       i = 0;
       continue;
-      str = a(paramQQAppInterface, 2131429789);
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131429790);
+      str = a(paramQQAppInterface, 2131429803);
       i = 1;
       continue;
       str = a(paramQQAppInterface, 2131429804);
       i = 1;
       continue;
-      str = a(paramQQAppInterface, 2131429817);
-      ReportController.b(paramQQAppInterface, "P_CliOper", "Grp_files", "", "power", "nopower_upload", 0, 0, String.format("%d", new Object[] { Long.valueOf(paramLong) }), "2", "", "");
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131429792, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131429793, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131429794, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131429795, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131429796, new Object[] { str });
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131429781);
+      str = a(paramQQAppInterface, 2131429805, new Object[] { str });
       i = 1;
       continue;
-      str = a(paramQQAppInterface, 2131429717);
+      str = a(paramQQAppInterface, 2131429806, new Object[] { str });
       i = 1;
       continue;
-      str = a(paramQQAppInterface, 2131429718);
-      i = 0;
-      continue;
-      str = a(paramQQAppInterface, 2131429797);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131429798);
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131429799, new Object[] { str });
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131429800, new Object[] { str });
-      i = 1;
-      continue;
-      str = a(paramQQAppInterface, 2131429801, new Object[] { str });
+      str = a(paramQQAppInterface, 2131429807, new Object[] { str });
       i = 0;
       continue;
       if (TroopFileInfo.FileStatus.a(paramSimpleErrorInfo.jdField_b_of_type_Int))
       {
-        str = a(paramQQAppInterface, 2131429802, new Object[] { str });
+        str = a(paramQQAppInterface, 2131429808, new Object[] { str });
         i = 1;
       }
       else
       {
-        str = a(paramQQAppInterface, 2131429803, new Object[] { str });
+        str = a(paramQQAppInterface, 2131429809, new Object[] { str });
         i = 1;
-        continue;
-        str = a(paramQQAppInterface, 2131429804);
-        i = 1;
-        continue;
-        str = a(paramQQAppInterface, 2131429809);
-        i = 0;
         continue;
         str = a(paramQQAppInterface, 2131429810);
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131429811);
-        i = 2;
-        continue;
-        str = a(paramQQAppInterface, 2131429812);
         i = 1;
-        continue;
-        str = paramSimpleErrorInfo.jdField_b_of_type_JavaLangString;
-        i = 0;
-        continue;
-        str = a(paramQQAppInterface, 2131429813);
-        i = 1;
-        continue;
-        str = a(paramQQAppInterface, 2131429814);
-        i = 0;
         continue;
         str = a(paramQQAppInterface, 2131429815);
         i = 0;
         continue;
         str = a(paramQQAppInterface, 2131429816);
+        i = 0;
+        continue;
+        str = a(paramQQAppInterface, 2131429817);
+        i = 2;
+        continue;
+        str = a(paramQQAppInterface, 2131429818);
+        i = 1;
+        continue;
+        str = paramSimpleErrorInfo.jdField_b_of_type_JavaLangString;
+        i = 0;
+        continue;
+        str = a(paramQQAppInterface, 2131429819);
+        i = 1;
+        continue;
+        str = a(paramQQAppInterface, 2131429820);
+        i = 0;
+        continue;
+        str = a(paramQQAppInterface, 2131429821);
+        i = 0;
+        continue;
+        str = a(paramQQAppInterface, 2131429822);
         i = 1;
         continue;
         if (!TextUtils.isEmpty(paramSimpleErrorInfo.jdField_b_of_type_JavaLangString))
@@ -280,13 +280,13 @@ public class TroopFileError
         }
         else
         {
-          str = a(paramQQAppInterface, 2131429818);
+          str = a(paramQQAppInterface, 2131429824);
           i = 0;
           continue;
-          str = a(paramQQAppInterface, 2131429819);
+          str = a(paramQQAppInterface, 2131429825);
           i = 2;
           continue;
-          str = a(paramQQAppInterface, 2131429820);
+          str = a(paramQQAppInterface, 2131429826);
           i = 0;
         }
       }
@@ -304,7 +304,7 @@ public class TroopFileError
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileError
  * JD-Core Version:    0.7.0.1
  */

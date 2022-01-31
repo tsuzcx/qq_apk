@@ -73,7 +73,7 @@ public class GLFrameImage
     }
   }
   
-  public static void ai_()
+  public static void ak_()
   {
     Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
     while (localIterator.hasNext())

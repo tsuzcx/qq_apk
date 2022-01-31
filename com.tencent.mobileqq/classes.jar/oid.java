@@ -1,17 +1,14 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController.DoodleOpListener;
+import com.tencent.biz.qqstory.takevideo.dancemachine.VideoSharer;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class oid
-  implements DoodleOpController.DoodleOpListener
+class oid
+  implements Runnable
 {
-  public oid(DoodleLayout paramDoodleLayout) {}
+  oid(oic paramoic) {}
   
-  public void a()
+  public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.e();
-    }
+    QQToast.a(this.a.a.a.a, 1, "分享失败", 0).a();
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.model;
 
-import advn;
+import aeit;
 import com.tencent.mobileqq.app.ThreadManager;
 
 public class QueryTask
@@ -16,12 +16,12 @@ public class QueryTask
   
   public void a(Object paramObject)
   {
-    ThreadManager.post(new advn(this, paramObject), 5, null, true);
+    ThreadManager.post(new aeit(this, paramObject), 5, null, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.model.QueryTask
  * JD-Core Version:    0.7.0.1
  */

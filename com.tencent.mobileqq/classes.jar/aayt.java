@@ -1,33 +1,21 @@
-import com.tencent.mobileqq.armap.ipc.ArMapIPC;
-import com.tencent.mobileqq.armap.ipc.IPCConstants;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
-import eipc.EIPCResult;
+import android.view.View;
+import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class aayt
-  implements EIPCOnGetConnectionListener
+class aayt
+  implements ActionSheet.OnButtonClickListener
 {
-  public aayt(ArMapIPC paramArMapIPC) {}
+  aayt(aayr paramaayr, ActionSheet paramActionSheet) {}
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramEIPCConnection = paramEIPCConnection.procName;
-    this.a.a = true;
-    if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPC", 2, "onConnectBind " + paramEIPCConnection);
-    }
-    this.a.a(IPCConstants.c, EIPCResult.createResult(0, null));
-  }
-  
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    paramEIPCConnection = paramEIPCConnection.procName;
-    this.a.a = false;
-    if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPC", 2, "onConnectUnbind " + paramEIPCConnection);
-    }
-    this.a.a(IPCConstants.c, EIPCResult.createResult(0, null));
+    this.jdField_a_of_type_Aayr.a.f();
+    this.jdField_a_of_type_Aayr.a.g();
+    this.jdField_a_of_type_Aayr.a.h();
+    this.jdField_a_of_type_Aayr.a.i();
+    this.jdField_a_of_type_Aayr.a.b("本地所有数据已删除成功");
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 

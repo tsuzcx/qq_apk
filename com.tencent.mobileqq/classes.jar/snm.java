@@ -1,26 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class snm
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public snm(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public snm(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.f == 1) {
-      VipUtils.a(this.a, 1, ProfileCardUtil.a(3));
-    }
-    for (;;)
+    if (this.a.app != null)
     {
-      this.a.L();
-      return;
-      if (this.a.f == 2) {
-        VipUtils.b(this.a, 1, ProfileCardUtil.a(6));
-      }
+      paramView = new Intent();
+      paramView.putExtras(this.a.getIntent().getExtras());
+      paramView.putExtra("extra_choose_friend_uin", this.a.app.getAccount());
+      paramView.putExtra("extra_choose_friend_name", this.a.app.getCurrentNickname());
+      this.a.setResult(-1, paramView);
+      this.a.finish();
     }
   }
 }

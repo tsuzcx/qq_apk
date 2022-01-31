@@ -1,5 +1,4 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
-import mqq.util.WeakReference;
+import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipViewManager;
 
 class uon
   implements Runnable
@@ -8,13 +7,7 @@ class uon
   
   public void run()
   {
-    if (DoodleMsgView.a(this.a.a) != null)
-    {
-      uor localuor = (uor)DoodleMsgView.a(this.a.a).get();
-      if (localuor != null) {
-        localuor.g();
-      }
-    }
+    this.a.a.e();
   }
 }
 

@@ -1,17 +1,24 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
-import com.tencent.common.app.AppInterface;
-import mqq.app.MobileQQ;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentTopicItemMulti;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo.TopicRecommendInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class lwr
-  extends CommonSkinRes
+  implements View.OnClickListener
 {
-  public lwr(ReadInJoySkinManager paramReadInJoySkinManager, AppInterface paramAppInterface) {}
+  public lwr(ComponentTopicItemMulti paramComponentTopicItemMulti) {}
   
-  public Drawable a()
+  public void onClick(View paramView)
   {
-    return a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getResources(), null, "readinjoy_tab_mine_selected");
+    ReadInJoyUtils.a = ComponentTopicItemMulti.a(this.a);
+    ReadInJoyUtils.a(this.a.getContext(), this.a.a.b);
+    paramView = ReadInJoyUtils.a(ComponentTopicItemMulti.a(this.a).mAlgorithmID, ReadInJoyUtils.a(ComponentTopicItemMulti.a(this.a)), ComponentTopicItemMulti.a(this.a), 0, 0, NetworkUtil.h(this.a.getContext()), ComponentTopicItemMulti.a(this.a).mSubscribeID, null, ComponentTopicItemMulti.a(this.a).innerUniqueID, null, ComponentTopicItemMulti.a(this.a));
+    PublicAccountReportUtils.a(null, ComponentTopicItemMulti.a(this.a).mSubscribeID, "0X8007625", "0X8007625", 0, 0, ComponentTopicItemMulti.a(this.a).mFeedId + "", String.valueOf(this.a.a.a), String.valueOf(ComponentTopicItemMulti.a(this.a).mAlgorithmID), paramView, false);
+    ReadInJoyUtils.a(ComponentTopicItemMulti.a(this.a), ComponentTopicItemMulti.a(this.a));
   }
 }
 

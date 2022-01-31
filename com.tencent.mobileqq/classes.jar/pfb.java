@@ -1,18 +1,20 @@
-import com.tencent.component.media.image.ImageManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.galleryactivity.AbstractImageListScene;
 
 public class pfb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public pfb(ImageManager paramImageManager) {}
+  public pfb(AbstractImageListScene paramAbstractImageListScene) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ImageManager.post(new pfc(this), false);
+    this.a.j();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pfb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
+import com.tencent.mobileqq.ar.ARRecord.ARRecordReport;
 import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashMap;
 
-public final class zxy
+public class zxy
   implements Runnable
 {
-  public zxy(String paramString, byte paramByte, SharedPreferences paramSharedPreferences) {}
+  public zxy(ARRecordReport paramARRecordReport, int paramInt) {}
   
   public void run()
   {
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("param_soLoaderName", this.jdField_a_of_type_JavaLangString);
-    ((HashMap)localObject).put("param_FailCode", String.valueOf(this.jdField_a_of_type_Byte));
-    StatisticCollector localStatisticCollector = StatisticCollector.a(BaseApplication.getContext());
-    if (this.jdField_a_of_type_Byte == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localStatisticCollector.a(null, "AREnable", bool, 0L, 0L, (HashMap)localObject, null);
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      ((SharedPreferences.Editor)localObject).putInt("ar_native_so_load_result" + this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Byte);
-      SharedPreUtils.a((SharedPreferences.Editor)localObject);
-      return;
-    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_Int));
+    StatisticCollector.a(BaseApplication.getContext()).a("", "ar_record_record_fail", true, 0L, 0L, localHashMap, "");
   }
 }
 

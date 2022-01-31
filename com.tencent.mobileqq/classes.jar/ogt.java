@@ -1,14 +1,16 @@
-import com.tencent.biz.qqstory.takevideo.dancemachine.VideoSharer;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoSyncStoryGuide;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-class ogt
-  implements Runnable
+public class ogt
+  implements DialogInterface.OnClickListener
 {
-  ogt(ogs paramogs) {}
+  public ogt(EditVideoSyncStoryGuide paramEditVideoSyncStoryGuide, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QQToast.a(this.a.a.a.a, 1, "分享失败", 0).a();
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

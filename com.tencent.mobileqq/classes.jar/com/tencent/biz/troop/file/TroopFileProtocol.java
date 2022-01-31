@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.UUID;
 import org.json.JSONException;
 import org.json.JSONObject;
-import owt;
+import oyn;
 import tencent.im.cs.cmd0x383.cmd0x383.ApplyCopyToReqBody;
 import tencent.im.cs.cmd0x383.cmd0x383.ReqBody;
 import tencent.im.cs.group_file_common.group_file_common.FeedsInfo;
@@ -405,7 +405,7 @@ public class TroopFileProtocol
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5, FileManagerEntity paramFileManagerEntity, TroopFileProtocol.OnGetZipFileList paramOnGetZipFileList)
   {
-    paramString1 = new HttpWebCgiAsyncTask2("http://" + paramString1 + ":" + paramString2 + "/ftn_compress_list/rkey=" + paramString3 + "&filetype=" + paramInt + "&path=" + URLUtil.a(paramString4) + "&", "GET", new owt(new ArrayList(), paramString4, paramFileManagerEntity, paramQQAppInterface, paramInt, paramOnGetZipFileList), 1000, null);
+    paramString1 = new HttpWebCgiAsyncTask2("http://" + paramString1 + ":" + paramString2 + "/ftn_compress_list/rkey=" + paramString3 + "&filetype=" + paramInt + "&path=" + URLUtil.a(paramString4) + "&", "GET", new oyn(new ArrayList(), paramString4, paramFileManagerEntity, paramQQAppInterface, paramInt, paramOnGetZipFileList), 1000, null);
     paramString2 = new Bundle();
     paramString2.putString("version", DeviceInfoUtil.d());
     paramString2.putString("Cookie", paramString5);

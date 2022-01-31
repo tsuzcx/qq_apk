@@ -1,24 +1,15 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import com.tencent.mobileqq.shortvideo.ptvfilter.FilterProcessRender;
 
 public class xxh
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xxh(SelectMemberActivity paramSelectMemberActivity) {}
+  public xxh(CameraFilterGLView paramCameraFilterGLView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.f == 27)
-    {
-      this.a.a.putParcelableArrayListExtra("result_set", this.a.i);
-      ((InputMethodManager)this.a.getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindow().peekDecorView().getWindowToken(), 0);
-      this.a.setResult(-1, this.a.a);
-    }
-    this.a.finish();
+    this.a.a.a();
+    this.a.a.f();
   }
 }
 

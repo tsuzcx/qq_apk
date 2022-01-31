@@ -11,7 +11,7 @@ import android.widget.GridView;
 import android.widget.ListAdapter;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.ArrayList;
-import oxc;
+import oyw;
 
 public class GridListViewPager
   extends absMultiViewPager
@@ -53,23 +53,23 @@ public class GridListViewPager
   
   public View a(int paramInt, ArrayList paramArrayList)
   {
-    oxc localoxc = new oxc(this, getContext());
-    localoxc.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
-    localoxc.setVerticalSpacing(0);
-    localoxc.setHorizontalSpacing(10);
-    localoxc.setColumnWidth(this.jdField_a_of_type_Int / this.b - 40);
-    localoxc.setNumColumns(this.b);
+    oyw localoyw = new oyw(this, getContext());
+    localoyw.setLayoutParams(new ViewGroup.LayoutParams(-1, -2));
+    localoyw.setVerticalSpacing(0);
+    localoyw.setHorizontalSpacing(10);
+    localoyw.setColumnWidth(this.jdField_a_of_type_Int / this.b - 40);
+    localoyw.setNumColumns(this.b);
     Object localObject = getContext().getResources();
-    localoxc.setPadding(AIOUtils.a(5.0F, (Resources)localObject), AIOUtils.a(1.0F, (Resources)localObject), AIOUtils.a(5.0F, (Resources)localObject), AIOUtils.a(1.0F, (Resources)localObject));
-    localoxc.setGravity(1);
-    localoxc.setSelector(new ColorDrawable(0));
+    localoyw.setPadding(AIOUtils.a(5.0F, (Resources)localObject), AIOUtils.a(1.0F, (Resources)localObject), AIOUtils.a(5.0F, (Resources)localObject), AIOUtils.a(1.0F, (Resources)localObject));
+    localoyw.setGravity(1);
+    localoyw.setSelector(new ColorDrawable(0));
     localObject = new GridListAdapter(getContext(), this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel);
     ((GridListAdapter)localObject).a(paramArrayList);
     ((GridListAdapter)localObject).a(this.jdField_a_of_type_JavaLangString);
-    localoxc.setAdapter((ListAdapter)localObject);
-    localoxc.setOnItemClickListener(this);
+    localoyw.setAdapter((ListAdapter)localObject);
+    localoyw.setOnItemClickListener(this);
     ((GridListAdapter)localObject).notifyDataSetChanged();
-    return localoxc;
+    return localoyw;
   }
   
   public ArrayList a(int paramInt)

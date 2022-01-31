@@ -1,18 +1,12 @@
-import com.tencent.mobileqq.app.GroupIconHelper;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
-
 public class zbe
-  implements Runnable
 {
-  public zbe(GroupIconHelper paramGroupIconHelper) {}
+  public long a;
+  public String a;
   
-  public void run()
+  public zbe(String paramString, long paramLong)
   {
-    long l = DeviceInfoUtil.a();
-    int i = DeviceInfoUtil.b();
-    if ((l != 0L) && (l < 1024L) && (i <= 1)) {
-      GroupIconHelper.a(true);
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

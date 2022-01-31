@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsDisAdapter;
+import com.tencent.mobileqq.activity.contacts.fragment.DiscussionFragment;
 
 public class wng
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public wng(MainAssistObserver paramMainAssistObserver) {}
+  public wng(DiscussionFragment paramDiscussionFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.b.dismiss();
+    this.a.a.notifyDataSetChanged();
   }
 }
 

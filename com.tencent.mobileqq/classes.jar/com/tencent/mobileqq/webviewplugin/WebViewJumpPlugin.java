@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webviewplugin;
 
-import akdm;
+import akrt;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -89,7 +89,7 @@ public class WebViewJumpPlugin
       if ((paramString.startsWith("mqqapi://armap_entry/map?src_type=web&version=1&from_type=0&service_id=1")) || (paramString.startsWith("mqqapi://personal_tag/tag_list"))) {}
       for (int i = 1; i != 0; i = 0)
       {
-        new Handler().postDelayed(new akdm(this), 2000L);
+        new Handler().postDelayed(new akrt(this), 2000L);
         return;
       }
     }
@@ -163,7 +163,7 @@ public class WebViewJumpPlugin
             if (!(this.mRuntime.a() instanceof IphoneTitleBarActivity)) {
               break label178;
             }
-            ((IphoneTitleBarActivity)this.mRuntime.a()).setLeftViewName(2131433281);
+            ((IphoneTitleBarActivity)this.mRuntime.a()).setLeftViewName(2131433298);
           }
           while ((this.mRuntime != null) && (this.mRuntime.a() != null) && (this.mRuntime.a().canGoBack()))
           {
@@ -174,7 +174,7 @@ public class WebViewJumpPlugin
             {
               paramString = this.mRuntime.a();
               if ((paramString != null) && (paramString.a.a != null)) {
-                paramString.a.a.setText(2131433281);
+                paramString.a.a.setText(2131433298);
               }
             }
           }
@@ -183,13 +183,13 @@ public class WebViewJumpPlugin
       else if ((paramLong == 8589934594L) && (!TextUtils.isEmpty(paramString)) && ((paramString.contains("chatplay/hall")) || (paramString.contains("avwithstranger/avchathall")) || (paramString.contains("chatplay/avchathall"))) && (paramString.endsWith("#child")) && (paramString.contains("adtag=client.tab")) && (this.mRuntime != null) && (this.mRuntime.a() != null)) {
         if ((this.mRuntime.a() instanceof IphoneTitleBarActivity))
         {
-          ((IphoneTitleBarActivity)this.mRuntime.a()).setLeftViewName(2131433681);
+          ((IphoneTitleBarActivity)this.mRuntime.a()).setLeftViewName(2131433698);
         }
         else if ((this.mRuntime.a() instanceof SwiftWebViewFragmentSupporter))
         {
           paramString = this.mRuntime.a();
           if ((paramString != null) && (paramString.a.a != null)) {
-            paramString.a.a.setText(2131433681);
+            paramString.a.a.setText(2131433698);
           }
         }
       }
@@ -543,10 +543,10 @@ public class WebViewJumpPlugin
     //   678: new 111	android/os/Handler
     //   681: dup
     //   682: invokespecial 112	android/os/Handler:<init>	()V
-    //   685: new 389	akdj
+    //   685: new 389	akrq
     //   688: dup
     //   689: aload_0
-    //   690: invokespecial 390	akdj:<init>	(Lcom/tencent/mobileqq/webviewplugin/WebViewJumpPlugin;)V
+    //   690: invokespecial 390	akrq:<init>	(Lcom/tencent/mobileqq/webviewplugin/WebViewJumpPlugin;)V
     //   693: ldc2_w 118
     //   696: invokevirtual 123	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   699: pop
@@ -600,10 +600,10 @@ public class WebViewJumpPlugin
     //   795: new 111	android/os/Handler
     //   798: dup
     //   799: invokespecial 112	android/os/Handler:<init>	()V
-    //   802: new 402	akdk
+    //   802: new 402	akrr
     //   805: dup
     //   806: aload_0
-    //   807: invokespecial 403	akdk:<init>	(Lcom/tencent/mobileqq/webviewplugin/WebViewJumpPlugin;)V
+    //   807: invokespecial 403	akrr:<init>	(Lcom/tencent/mobileqq/webviewplugin/WebViewJumpPlugin;)V
     //   810: ldc2_w 118
     //   813: invokevirtual 123	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   816: pop
@@ -989,10 +989,10 @@ public class WebViewJumpPlugin
     //   1614: new 111	android/os/Handler
     //   1617: dup
     //   1618: invokespecial 112	android/os/Handler:<init>	()V
-    //   1621: new 533	akdl
+    //   1621: new 533	akrs
     //   1624: dup
     //   1625: aload_0
-    //   1626: invokespecial 534	akdl:<init>	(Lcom/tencent/mobileqq/webviewplugin/WebViewJumpPlugin;)V
+    //   1626: invokespecial 534	akrs:<init>	(Lcom/tencent/mobileqq/webviewplugin/WebViewJumpPlugin;)V
     //   1629: ldc2_w 118
     //   1632: invokevirtual 123	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   1635: pop
@@ -1124,7 +1124,7 @@ public class WebViewJumpPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -24,7 +24,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import mhr;
+import miy;
 
 public class ReadInJoyNavigationAdapter
   extends BaseAdapter
@@ -114,10 +114,10 @@ public class ReadInJoyNavigationAdapter
     Object localObject;
     if (paramView == null)
     {
-      localObject = new mhr(this, null);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969629, paramViewGroup, false);
-      ((mhr)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131362823);
-      ((mhr)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367202));
+      localObject = new miy(this, null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969637, paramViewGroup, false);
+      ((miy)localObject).jdField_a_of_type_AndroidViewView = paramView.findViewById(2131362841);
+      ((miy)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367250));
       paramView.setTag(localObject);
       paramViewGroup = (ViewGroup)localObject;
       localObject = (ChannelCoverInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
@@ -153,7 +153,7 @@ public class ReadInJoyNavigationAdapter
         paramViewGroup.jdField_a_of_type_AndroidViewView.setTag(localObject);
         paramViewGroup.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
         return paramView;
-        paramViewGroup = (mhr)paramView.getTag();
+        paramViewGroup = (miy)paramView.getTag();
         break;
         paramViewGroup.jdField_a_of_type_AndroidViewView.setPadding(ViewUtils.a(8.0F), 0, ViewUtils.a(8.0F), 0);
         paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);

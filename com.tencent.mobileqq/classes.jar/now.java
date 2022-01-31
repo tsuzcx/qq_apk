@@ -1,42 +1,21 @@
-import android.media.MediaCodec;
-import android.media.MediaFormat;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaExtractor;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playvideo.model.MyVideoSharePlayingListSync;
+import java.util.Comparator;
 
 public class now
-  extends nox
+  implements Comparator
 {
-  private nor a;
+  public now(MyVideoSharePlayingListSync paramMyVideoSharePlayingListSync) {}
   
-  public now(MediaExtractor paramMediaExtractor, boolean paramBoolean, int paramInt, noz paramnoz, nor paramnor)
+  public int a(StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2)
   {
-    super(paramMediaExtractor, paramBoolean, paramInt, paramnoz);
-    this.a = paramnor;
-    a();
-  }
-  
-  protected void a(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
-  {
-    super.a(paramMediaCodec, paramMediaFormat);
-    this.a.a(paramMediaFormat);
-  }
-  
-  protected void a(MediaFormat paramMediaFormat)
-  {
-    this.a.a(paramMediaFormat);
-  }
-  
-  public void a(noy paramnoy, long paramLong)
-  {
-    this.a.a(paramnoy.jdField_a_of_type_JavaNioByteBuffer, paramnoy.jdField_a_of_type_Long);
-    b(paramnoy);
-  }
-  
-  protected boolean a()
-  {
-    if (!c()) {
-      return this.a.a() < 200000L;
+    if (paramStoryVideoItem1.mCreateTime > paramStoryVideoItem2.mCreateTime) {
+      return 1;
     }
-    return super.a();
+    if (paramStoryVideoItem1.mCreateTime < paramStoryVideoItem2.mCreateTime) {
+      return -1;
+    }
+    return 0;
   }
 }
 

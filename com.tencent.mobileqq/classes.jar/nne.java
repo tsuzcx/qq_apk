@@ -1,31 +1,23 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.VideoServerInfoManager;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr;
-import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
-import com.tencent.util.URLUtil;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
+import com.tencent.biz.qqstory.playmode.util.ShareGroupVideoDataProvider;
+import java.util.ArrayList;
 
-public final class nne
-  extends SimpleJob
+public class nne
+  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
 {
-  public nne(VideoServerInfoManager paramVideoServerInfoManager, String[] paramArrayOfString, int paramInt, TVKPreloader.PreloadItem paramPreloadItem, TVK_ICacheMgr paramTVK_ICacheMgr, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
+  public nne(ShareGroupVideoDataProvider paramShareGroupVideoDataProvider, BatchGetVideoInfo paramBatchGetVideoInfo, String paramString) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a()
   {
-    paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager.a();
-    SLog.a("Q.qqstory.player.TVKPreloader", "get url key:%s", paramJobContext);
-    if (!TextUtils.isEmpty(paramJobContext)) {
-      this.jdField_a_of_type_ArrayOfJavaLangString[0] = URLUtil.a(this.jdField_a_of_type_ArrayOfJavaLangString[0], "authkey", paramJobContext);
-    }
-    SLog.d("Q.qqstory.player.TVKPreloader", "preloadVideo 1 TVK start pre-load video, preload duration : %d, item : %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem });
-    TVKPreloader.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, this.jdField_a_of_type_ArrayOfJavaLangString[0], this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem);
-    return null;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilShareGroupVideoDataProvider.a(this.jdField_a_of_type_JavaLangString, false, null);
+  }
+  
+  public void a(ArrayList paramArrayList)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilShareGroupVideoDataProvider.a(this.jdField_a_of_type_JavaLangString, true, paramArrayList);
   }
 }
 

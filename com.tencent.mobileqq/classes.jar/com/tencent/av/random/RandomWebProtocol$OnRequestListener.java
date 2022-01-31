@@ -1,10 +1,10 @@
 package com.tencent.av.random;
 
-import jlk;
+import jkv;
 
 public abstract interface RandomWebProtocol$OnRequestListener
 {
-  public abstract void a(int paramInt, jlk paramjlk);
+  public abstract void a(int paramInt, jkv paramjkv);
 }
 
 

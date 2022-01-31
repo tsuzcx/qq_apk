@@ -1,20 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.widget.stageview.StageMemberView;
+import android.app.Dialog;
+import android.view.View;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.biz.PoiMapActivity.POI;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.List;
 
-class kiz
-  implements Animation.AnimationListener
+public class kiz
+  implements AdapterView.OnItemClickListener
 {
-  kiz(kiy paramkiy) {}
+  public kiz(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.a.a.b(true);
+    if (QLog.isColorLevel()) {
+      QLog.i("PoiMapActivity", 2, "setOnItemClickListener" + paramInt);
+    }
+    paramAdapterView = (PoiMapActivity.POI)this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.get(paramInt);
+    if (paramAdapterView != null)
+    {
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.h = true;
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a(paramAdapterView);
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_result", "", "", "", "");
+    }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

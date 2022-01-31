@@ -1,25 +1,15 @@
 import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.smallscreen.SmallScreenDoubleVideoControlUI;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.smallscreen.SmallScreenService;
 
 public class jor
   implements Runnable
 {
-  public jor(SmallScreenDoubleVideoControlUI paramSmallScreenDoubleVideoControlUI) {}
+  public jor(SmallScreenService paramSmallScreenService) {}
   
   public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null))
-    {
-      SessionInfo localSessionInfo = this.a.jdField_a_of_type_ComTencentAvVideoController.a();
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a(localSessionInfo.c, 0);
-      this.a.jdField_a_of_type_ComTencentAvVideoController.b(225);
-      this.a.jdField_a_of_type_ComTencentAvVideoController.c(localSessionInfo.c, 9);
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(28), localSessionInfo.c, Boolean.valueOf(true) });
-      QLog.d("SmallScreenDoubleVideoControlUI", 1, "exit when onCreate fail");
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.b(1008);
+    if ((this.a.a != null) && (!this.a.a.n())) {
+      this.a.f();
     }
   }
 }

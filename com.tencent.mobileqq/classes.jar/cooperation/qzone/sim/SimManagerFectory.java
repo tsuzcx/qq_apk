@@ -1,16 +1,16 @@
 package cooperation.qzone.sim;
 
-import amjx;
-import amjy;
+import anac;
+import anad;
 
 public class SimManagerFectory
 {
   public static SimManager a(String paramString, int paramInt)
   {
     if (paramInt >= 24) {
-      return new amjy();
+      return new anad();
     }
-    return new amjx();
+    return new anac();
   }
 }
 

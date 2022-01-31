@@ -1,12 +1,15 @@
-import com.tencent.mobileqq.data.MessageRecord;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoForwardInfo;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoUploadInfo;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
-public abstract interface anyy
+public class anyy
+  implements Runnable
 {
-  public abstract MessageRecord a(ShortVideoForwardInfo paramShortVideoForwardInfo);
+  public anyy(DoodleLayout paramDoodleLayout, FaceLayer.FaceItem paramFaceItem) {}
   
-  public abstract MessageRecord a(ShortVideoUploadInfo paramShortVideoUploadInfo);
+  public void run()
+  {
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.b(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerFaceLayer$FaceItem);
+  }
 }
 
 

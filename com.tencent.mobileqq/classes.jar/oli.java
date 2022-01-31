@@ -1,40 +1,33 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SVIPHandler;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForTroopStory;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.publish.GenerateVideoManifestSegment;
+import com.tencent.maxvideo.mediadevice.AVCodec;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class oli
   implements Runnable
 {
-  public oli(TroopStoryForwardTask paramTroopStoryForwardTask) {}
+  public oli(GenerateVideoManifestSegment paramGenerateVideoManifestSegment, RMVideoStateMgr paramRMVideoStateMgr) {}
   
   public void run()
   {
-    MessageForTroopStory localMessageForTroopStory = (MessageForTroopStory)MessageRecordFactory.a(-2057);
-    MessageRecordFactory.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForTroopStory, this.a.k, this.a.l, this.a.jdField_d_of_type_Int);
-    localMessageForTroopStory.uid = Long.valueOf(this.a.jdField_b_of_type_JavaLangString).longValue();
-    localMessageForTroopStory.unionId = this.a.jdField_c_of_type_JavaLangString;
-    localMessageForTroopStory.md5 = this.a.jdField_d_of_type_JavaLangString;
-    localMessageForTroopStory.thumbUrl = this.a.e;
-    localMessageForTroopStory.doodleUrl = this.a.f;
-    localMessageForTroopStory.videoWidth = this.a.jdField_a_of_type_Int;
-    localMessageForTroopStory.videoHeight = this.a.jdField_b_of_type_Int;
-    localMessageForTroopStory.sourceName = this.a.g;
-    localMessageForTroopStory.sourceActionType = this.a.h;
-    localMessageForTroopStory.sourceActionData = this.a.i;
-    localMessageForTroopStory.compatibleText = this.a.j;
-    localMessageForTroopStory.ctrVersion = this.a.jdField_c_of_type_Int;
-    localMessageForTroopStory.msg = "[小视频]";
-    localMessageForTroopStory.serial();
-    this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory = localMessageForTroopStory;
-    ((SVIPHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).a(localMessageForTroopStory);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageForTroopStory, 0);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageForTroopStory, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    try
+    {
+      SLog.a("Q.qqstory.publish.edit.GenerateVideoManifestSegment", "Async, mVideoFileDir:%s, before call AVideoCodec.recordSubmit()", this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString);
+      RecordManager.a().a().recordSubmit();
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      SLog.e("Q.qqstory.publish.edit.GenerateVideoManifestSegment", "Async, mVideoFileDir:%s, call AVideoCodec.recordSubmit() error = %s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString, localUnsatisfiedLinkError });
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+        this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.notifyAll();
+        return;
+      }
+    }
   }
 }
 

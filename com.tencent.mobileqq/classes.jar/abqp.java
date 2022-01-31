@@ -1,25 +1,52 @@
-import com.tencent.mobileqq.app.HotChatHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.dating.NearbyTransitActivity;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import com.tencent.av.service.LBSInfo;
+import com.tencent.mobileqq.app.ConditionSearchManager;
+import com.tencent.mobileqq.app.LBSObserver;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import com.tencent.qphone.base.util.QLog;
 
 public class abqp
-  implements Runnable
+  extends LBSObserver
 {
-  public abqp(NearbyTransitActivity paramNearbyTransitActivity, Common.WifiPOIInfo paramWifiPOIInfo) {}
+  public abqp(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
   {
-    boolean bool = true;
-    HotChatHandler localHotChatHandler = (HotChatHandler)this.jdField_a_of_type_ComTencentMobileqqDatingNearbyTransitActivity.app.a(35);
-    Common.WifiPOIInfo localWifiPOIInfo = this.jdField_a_of_type_TencentImOidbHotchatCommon$WifiPOIInfo;
-    if (this.jdField_a_of_type_TencentImOidbHotchatCommon$WifiPOIInfo.uint32_wifi_poi_type.get() == 1) {}
-    for (;;)
+    Object localObject = null;
+    if (paramBoolean) {
+      localObject = paramLBSInfo.a();
+    }
+    if (localObject != null)
     {
-      localHotChatHandler.a(localWifiPOIInfo, bool, 4, NearbyTransitActivity.c(this.jdField_a_of_type_ComTencentMobileqqDatingNearbyTransitActivity));
-      return;
-      bool = false;
+      paramLBSInfo = (LBSInfo)localObject;
+      if (localObject.length == 4) {}
+    }
+    else
+    {
+      paramLBSInfo = new String[4];
+      paramLBSInfo[0] = "-1";
+      paramLBSInfo[1] = "-1";
+      paramLBSInfo[2] = "-1";
+      paramLBSInfo[3] = "-1";
+    }
+    if (!"-1".equals(paramLBSInfo[0]))
+    {
+      paramLBSInfo[3] = "0";
+      this.a.a.a(paramLBSInfo);
+      if (this.a.jdField_b_of_type_Boolean)
+      {
+        localObject = this.a.a.b(paramLBSInfo);
+        this.a.a.a(0, (String)localObject);
+        this.a.a.b(paramLBSInfo);
+        this.a.jdField_b_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText(this.a.a.c((String)localObject));
+      }
+      ConditionSearchFriendActivity.a(this.a, 1);
+      ConditionSearchFriendActivity.a(this.a);
+      this.a.c = true;
+      this.a.d = false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ConditionSearchFriendActivity", 2, "onGetUserLocation|isSuccess : " + paramBoolean + ", mIsFirstReqLocation : " + this.a.jdField_b_of_type_Boolean + ", locationCodes[0] : " + paramLBSInfo[0]);
     }
   }
 }

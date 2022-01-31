@@ -1,20 +1,29 @@
-import android.os.Handler;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoMusic;
-import java.util.TimerTask;
+import com.tencent.biz.ui.TouchWebView;
+import cooperation.qzone.webviewwrapper.IWebviewListener;
+import cooperation.qzone.webviewwrapper.QzoneWebViewBaseBuilder.WebviewStatusListener;
+import cooperation.qzone.webviewwrapper.WebviewWrapper;
 
 public class anea
-  extends TimerTask
+  implements QzoneWebViewBaseBuilder.WebviewStatusListener
 {
-  private anea(EditVideoMusic paramEditVideoMusic) {}
+  public anea(WebviewWrapper paramWebviewWrapper, IWebviewListener paramIWebviewListener) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a.sendEmptyMessage(1001);
+    if (WebviewWrapper.a(this.jdField_a_of_type_CooperationQzoneWebviewwrapperWebviewWrapper) == null) {}
+    do
+    {
+      return;
+      if (WebviewWrapper.a(this.jdField_a_of_type_CooperationQzoneWebviewwrapperWebviewWrapper).getVisibility() != 0) {
+        WebviewWrapper.a(this.jdField_a_of_type_CooperationQzoneWebviewwrapperWebviewWrapper).setVisibility(0);
+      }
+    } while (this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener == null);
+    this.jdField_a_of_type_CooperationQzoneWebviewwrapperIWebviewListener.onPageFinished();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anea
  * JD-Core Version:    0.7.0.1
  */

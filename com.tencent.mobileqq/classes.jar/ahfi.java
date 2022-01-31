@@ -1,36 +1,20 @@
-import android.view.ViewGroup;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.fms.FullMessageSearchResult.SearchResultItem;
-import com.tencent.mobileqq.search.adapter.BaseMvpMessageAdapter;
-import com.tencent.mobileqq.search.fragment.MessageSearchDetailFragment;
-import com.tencent.mobileqq.search.presenter.IPresenter;
-import com.tencent.mobileqq.search.presenter.SearchResultPresenter;
-import com.tencent.mobileqq.search.view.IView;
-import com.tencent.mobileqq.search.view.SearchResultView;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.widget.ListView;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.receipt.ReceiptMsgManager;
 
 public class ahfi
-  extends BaseMvpMessageAdapter
+  implements Runnable
 {
-  public ahfi(MessageSearchDetailFragment paramMessageSearchDetailFragment, ListView paramListView, FaceDecoder paramFaceDecoder, FullMessageSearchResult.SearchResultItem paramSearchResultItem, String paramString, QQAppInterface paramQQAppInterface)
-  {
-    super(paramListView, paramFaceDecoder, paramSearchResultItem, paramString, paramQQAppInterface);
-  }
+  public ahfi(ReceiptMsgManager paramReceiptMsgManager, QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord) {}
   
-  protected IPresenter a(int paramInt)
+  public void run()
   {
-    return new SearchResultPresenter(MessageSearchDetailFragment.a(this.a));
-  }
-  
-  protected IView a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new SearchResultView(paramViewGroup, 2130971494);
+    ReceiptMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahfi
  * JD-Core Version:    0.7.0.1
  */

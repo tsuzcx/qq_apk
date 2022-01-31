@@ -1,7 +1,7 @@
 package com.tencent.widget.calloutpopupwindow;
 
-import alov;
-import alow;
+import amel;
+import amem;
 import android.content.Context;
 import android.graphics.Matrix;
 import android.graphics.Rect;
@@ -24,7 +24,7 @@ public class CalloutPopupWindow
 {
   private int jdField_a_of_type_Int;
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private Handler jdField_a_of_type_AndroidOsHandler = new alow();
+  private Handler jdField_a_of_type_AndroidOsHandler = new amem();
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
@@ -240,7 +240,7 @@ public class CalloutPopupWindow
   {
     if ((paramView.getWidth() == 0) && (paramView.getVisibility() == 0))
     {
-      this.jdField_a_of_type_AndroidOsHandler.post(new alov(this, paramView, paramInt1, paramInt2));
+      this.jdField_a_of_type_AndroidOsHandler.post(new amel(this, paramView, paramInt1, paramInt2));
       return;
     }
     c(paramView, paramInt1, paramInt2);
@@ -481,7 +481,7 @@ public class CalloutPopupWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.calloutpopupwindow.CalloutPopupWindow
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,38 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.DBUtils;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 public class sbh
-  implements Runnable
+  extends AccountObserver
 {
-  public sbh(ChatSettingForTroop paramChatSettingForTroop) {}
+  public sbh(ChatHistoryForC2C paramChatHistoryForC2C, boolean paramBoolean) {}
   
-  public void run()
+  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
   {
-    TroopMemberInfo localTroopMemberInfo = DBUtils.a().a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.app.getCurrentAccountUin());
-    if (localTroopMemberInfo != null)
+    boolean bool2 = false;
+    if (QLog.isColorLevel())
     {
-      String str = localTroopMemberInfo.troopnick;
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopCard = localTroopMemberInfo.troopnick;
+      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
+      if (paramString2 != null) {
+        break label93;
+      }
     }
-    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(6);
+    label93:
+    for (int i = 0;; i = paramString2.length())
+    {
+      QLog.d("ChatHistoryForC2C", 2, i);
+      boolean bool1 = bool2;
+      if (paramBoolean)
+      {
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(paramString2)) {
+          bool1 = true;
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.runOnUiThread(new sbi(this, bool1));
+      return;
+    }
   }
 }
 

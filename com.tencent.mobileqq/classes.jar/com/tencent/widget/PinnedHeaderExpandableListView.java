@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import alnk;
+import amda;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.util.AttributeSet;
@@ -233,7 +233,7 @@ public class PinnedHeaderExpandableListView
       {
         this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(i, this, false);
         if (this.jdField_a_of_type_AndroidViewView != null) {
-          this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new alnk(this));
+          this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new amda(this));
         }
         requestLayout();
       }
@@ -263,7 +263,7 @@ public class PinnedHeaderExpandableListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.PinnedHeaderExpandableListView
  * JD-Core Version:    0.7.0.1
  */

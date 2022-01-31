@@ -34,7 +34,7 @@ public class CardView
     if (paramInt1 < super.getChildCount())
     {
       View localView = super.getChildAt(paramInt1);
-      if (localView.getId() == 2131365707) {
+      if (localView.getId() == 2131365734) {
         localView.layout(0, 0, getWidth(), getHeight());
       }
       for (;;)
@@ -51,7 +51,7 @@ public class CardView
   protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    float f1 = getContext().getResources().getDimension(2131559711);
+    float f1 = getContext().getResources().getDimension(2131559729);
     f1 = this.a - f1 * 2.0F;
     float f2 = f1 / a();
     super.setMeasuredDimension((int)f1, (int)f2);

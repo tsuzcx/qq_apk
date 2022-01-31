@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import aews;
-import aewu;
-import aewv;
-import aewx;
-import aewz;
+import afjy;
+import afka;
+import afkb;
+import afkd;
+import afkf;
 import android.graphics.drawable.ColorDrawable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -44,8 +44,8 @@ public class NearbyMomentFailedAdapter
   extends BaseAdapter
   implements View.OnClickListener
 {
-  private static ImageFeedsUploader.UploadListener jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$UploadListener = new aewx();
-  private static VideoFeedsUploader.UploadListener jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadListener = new aewv();
+  private static ImageFeedsUploader.UploadListener jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$UploadListener = new afkd();
+  private static VideoFeedsUploader.UploadListener jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadListener = new afkb();
   private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(-1644826);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -146,17 +146,17 @@ public class NearbyMomentFailedAdapter
     View localView = paramView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969122, paramViewGroup, false);
-      paramView = new aewz(this);
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365246));
-      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131365250);
-      paramView.c = localView.findViewById(2131365248);
-      paramView.b = localView.findViewById(2131365247);
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130969121, paramViewGroup, false);
+      paramView = new afkf(this);
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365268));
+      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131365272);
+      paramView.c = localView.findViewById(2131365270);
+      paramView.b = localView.findViewById(2131365269);
       paramView.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
       paramView.c.setOnClickListener(this);
       localView.setTag(paramView);
     }
-    paramView = (aewz)localView.getTag();
+    paramView = (afkf)localView.getTag();
     paramViewGroup = (PublishableMomentInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     paramView.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataPublishableMomentInfo = paramViewGroup;
     if ((paramViewGroup instanceof ShortVideoMomentFeedInfo)) {
@@ -184,13 +184,13 @@ public class NearbyMomentFailedAdapter
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    PublishableMomentInfo localPublishableMomentInfo = ((aewz)NearbyMomentUtils.a(paramView)).jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataPublishableMomentInfo;
+    PublishableMomentInfo localPublishableMomentInfo = ((afkf)NearbyMomentUtils.a(paramView)).jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataPublishableMomentInfo;
     switch (i)
     {
-    case 2131365249: 
+    case 2131365271: 
     default: 
       return;
-    case 2131365250: 
+    case 2131365272: 
       if (!NetworkUtil.g(paramView.getContext()))
       {
         QQToast.a(paramView.getContext(), 1, "当前网络不可用，请检查你的网络设置", 0).a();
@@ -207,7 +207,7 @@ public class NearbyMomentFailedAdapter
         ImageFeedsUploader.a(localPublishableMomentInfo.a, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$UploadListener);
       }
     }
-    DialogUtil.a(paramView.getContext(), 230).setTitle("你确定要删除该动态吗？").setNegativeButton(2131432998, new aewu(this, localPublishableMomentInfo)).setPositiveButton(2131434024, new aews(this, localPublishableMomentInfo)).show();
+    DialogUtil.a(paramView.getContext(), 230).setTitle("你确定要删除该动态吗？").setNegativeButton(2131433015, new afka(this, localPublishableMomentInfo)).setPositiveButton(2131434041, new afjy(this, localPublishableMomentInfo)).show();
   }
 }
 

@@ -1,44 +1,51 @@
-import android.view.View;
-import com.tencent.image.Utils;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.Holder;
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.IBinder;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.utils.TroopBarUtils;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class vco
-  implements ActionSheet.OnButtonClickListener
+  implements IAIOImageProviderCallBack
 {
-  public vco(ShortVideoItemBuilder paramShortVideoItemBuilder, MessageForShortVideo paramMessageForShortVideo, ShortVideoItemBuilder.Holder paramHolder, ActionSheet paramActionSheet) {}
+  public vco(PicItemBuilder paramPicItemBuilder, AIOImageData paramAIOImageData, MessageForPic paramMessageForPic) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean) {}
+  
+  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
   {
-    switch (paramInt)
+    if ((paramLong == this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.g) && (paramInt1 == this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.f) && (1 == paramInt3))
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder, 10, false);
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder);
+      if (QLog.isColorLevel()) {
+        QLog.i("zivonchen", 2, "downloadImage id = " + paramLong + ", subId = " + paramInt1 + ", type = " + paramInt2 + ", result = " + paramInt3 + ", resultStr = " + paramString + ", isPart = " + paramBoolean);
       }
-      else if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 1)
+      TroopTopicMgr localTroopTopicMgr = (TroopTopicMgr)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(97);
+      if ((localTroopTopicMgr != null) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)))
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5 == null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1005))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder, true);
-          Utils.executeAsyncTaskOnSerialExcuter(new vcr(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo), new Void[0]);
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder, 10, false);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder);
+        TroopBarUtils.a.clear();
+        localTroopTopicMgr.a(((FragmentActivity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_AndroidContentContext).getChatFragment().a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, paramString, 4);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Grp_talk", "", "pub_talk", "Clk_bubble", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "2", "", "");
+        if (QLog.isColorLevel()) {
+          QLog.d("IAIOImageProviderCallBack", 2, "image has new downloaded!");
         }
       }
     }
+  }
+  
+  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt) {}
+  
+  public IBinder asBinder()
+  {
+    return null;
   }
 }
 

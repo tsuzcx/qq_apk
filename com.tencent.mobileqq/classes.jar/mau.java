@@ -1,31 +1,12 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public final class mau
-  implements URLDrawable.URLDrawableListener
+class mau
+  implements DialogInterface.OnClickListener
 {
-  public mau(int paramInt) {}
+  mau(mas parammas) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable.getCurrDrawable().mutate().setAlpha(this.a);
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    paramURLDrawable.getCurrDrawable().mutate().setAlpha(this.a);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
-  {
-    paramURLDrawable.getCurrDrawable().mutate().setAlpha(this.a);
-  }
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    paramURLDrawable.getCurrDrawable().mutate().setAlpha(this.a);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

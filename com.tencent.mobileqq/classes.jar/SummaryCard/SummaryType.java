@@ -29,6 +29,7 @@ public final class SummaryType
   public static final int _SummaryStranger_Encounter = 6;
   public static final int _SummaryStranger_Encounter_Encrypt = 37;
   public static final int _SummaryStranger_Encounter_TinyId = 41;
+  public static final int _SummaryStranger_ExtendCard = 53;
   public static final int _SummaryStranger_FavoriteList = 47;
   public static final int _SummaryStranger_GroupMember = 5;
   public static final int _SummaryStranger_InterestTribe = 51;
@@ -59,11 +60,11 @@ public final class SummaryType
   public static final int _SummaryStranger_TimeGate = 29;
   public static final int _SummaryStranger_Unidirectional = 36;
   public static final int _SummaryStranger_WEB = 22;
-  public static final int _SummaryTypeCount = 53;
+  public static final int _SummaryTypeCount = 54;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aad.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     SummaryCard.SummaryType
  * JD-Core Version:    0.7.0.1
  */

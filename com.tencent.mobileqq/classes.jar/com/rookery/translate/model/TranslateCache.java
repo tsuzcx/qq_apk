@@ -2,7 +2,7 @@ package com.rookery.translate.model;
 
 import android.content.Context;
 import com.tencent.mobileqq.app.ThreadManager;
-import jdd;
+import jco;
 
 public class TranslateCache
 {
@@ -106,14 +106,14 @@ public class TranslateCache
   public static TransDiskCache b(Context paramContext)
   {
     if (jdField_a_of_type_ComRookeryTranslateModelTransDiskCache == null) {
-      ThreadManager.post(new jdd(paramContext), 5, null, true);
+      ThreadManager.post(new jco(paramContext), 5, null, true);
     }
     return jdField_a_of_type_ComRookeryTranslateModelTransDiskCache;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.rookery.translate.model.TranslateCache
  * JD-Core Version:    0.7.0.1
  */

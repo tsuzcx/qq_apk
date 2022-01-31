@@ -1,50 +1,58 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.richmedia.subtitles.AudioTranslator;
-import com.tencent.mobileqq.richmedia.conn.HostInfo;
-import com.tencent.mobileqq.richmedia.server.PeakAudioTransHandler;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.graphics.Bitmap;
+import android.support.annotation.NonNull;
+import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
 
 public class xsf
   implements Runnable
 {
-  public xsf(AudioTranslator paramAudioTranslator, int paramInt) {}
+  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  Bitmap b;
+  
+  public xsf(NewFlowCameraActivity paramNewFlowCameraActivity, @NonNull Bitmap paramBitmap1, @NonNull Bitmap paramBitmap2)
+  {
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap1;
+    this.b = paramBitmap2;
+  }
+  
+  private void a()
+  {
+    if ((NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity) == null) || (NewFlowCameraActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity) == null) || (NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity) == null))
+    {
+      SLog.e("PTV.NewFlowCameraActivity", "RunnableUpdateThumb error. mFragmentAnimThumbView == null or mFragmentThumbView == null or mFragmentNumView == null.");
+      return;
+    }
+    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).setVisibility(0);
+    NewFlowCameraActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity).setVisibility(8);
+    int i = ScreenUtil.a;
+    int j = ScreenUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getApplicationContext());
+    int k = AIOUtils.a(47.0F, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getResources());
+    int m = AIOUtils.a(75.0F, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getResources());
+    int n = AIOUtils.a(12.0F, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getResources());
+    int i1 = AIOUtils.a(20.0F, this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getResources());
+    SLog.c("PTV.NewFlowCameraActivity", "startScaleAnim. sWidth:" + i + " sHeight:" + j + " dWidth:" + k + " dHeight:" + m + " sMarginLeft:" + 0 + " sMarginBottom:" + 0 + " dMarginLeft:" + n + " dMarginBottom:" + i1);
+    ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
+    localValueAnimator.setDuration(300L);
+    localValueAnimator.setInterpolator(new LinearInterpolator());
+    localValueAnimator.addUpdateListener(new xsg(this, k, i, m, j, n, i1));
+    localValueAnimator.addListener(new xsh(this));
+    localValueAnimator.start();
+  }
   
   public void run()
   {
-    int i = 0;
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesAudioTranslator)
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.k)
     {
-      long l;
-      if (AudioTranslator.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesAudioTranslator) != null)
-      {
-        l = System.currentTimeMillis();
-        if (l - AudioTranslator.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesAudioTranslator).b >= this.jdField_a_of_type_Int) {
-          break label69;
-        }
-      }
-      label69:
-      String str1;
-      do
-      {
-        AudioTranslator.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesAudioTranslator, AudioTranslator.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesAudioTranslator), true, this.jdField_a_of_type_Int);
-        return;
-        AudioTranslator.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesAudioTranslator).b = l;
-        str1 = "";
-        if (AudioTranslator.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesAudioTranslator).jdField_a_of_type_Long != -1L) {
-          str1 = String.valueOf(AudioTranslator.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesAudioTranslator).jdField_a_of_type_Long);
-        }
-        PeakAudioTransHandler localPeakAudioTransHandler = (PeakAudioTransHandler)QQStoryContext.a().getBusinessHandler(0);
-        String str2 = "";
-        if (AudioTranslator.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesAudioTranslator).jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo != null)
-        {
-          str2 = AudioTranslator.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesAudioTranslator).jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo.jdField_a_of_type_JavaLangString;
-          i = AudioTranslator.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesAudioTranslator).jdField_a_of_type_ComTencentMobileqqRichmediaConnHostInfo.jdField_a_of_type_Int;
-        }
-        localPeakAudioTransHandler.a(str1, "TransInfo.HeartBeat", str2, i, null, 0, 0, false, 2);
-      } while (!QLog.isColorLevel());
-      QLog.d(AudioTranslator.a(), 2, "send heartbeat. sessionid:" + str1 + "，nDuration =" + this.jdField_a_of_type_Int);
+      SLog.e("PTV.NewFlowCameraActivity", "RunnableUpdateThumb error. enableMultiFragment = %s.", new Object[] { Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.k) });
+      return;
     }
+    a();
   }
 }
 

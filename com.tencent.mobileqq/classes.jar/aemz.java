@@ -1,23 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.common.app.AppInterface;
 
-public class aemz
-  implements View.OnTouchListener
+public final class aemz
+  implements Runnable
 {
-  public aemz(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public aemz(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131370446).setAlpha(0.5F);
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a.findViewById(2131370446).setAlpha(1.0F);
-    }
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, this.d, this.e);
   }
 }
 

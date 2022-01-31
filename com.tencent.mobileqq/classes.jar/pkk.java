@@ -1,18 +1,21 @@
-import com.tencent.ctsz.m;
+import com.tencent.component.network.module.common.NetworkStatus;
+import com.tencent.component.network.utils.thread.ThreadPool.Job;
+import com.tencent.component.network.utils.thread.ThreadPool.JobContext;
 
-public class pkk
-  extends Thread
+class pkk
+  implements ThreadPool.Job
 {
-  public pkk(m paramm) {}
+  pkk(pkj parampkj) {}
   
-  public void run()
+  public Object run(ThreadPool.JobContext paramJobContext)
   {
-    m.a(this.a);
+    NetworkStatus.a(this.a.a);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     pkk
  * JD-Core Version:    0.7.0.1
  */

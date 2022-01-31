@@ -1,26 +1,51 @@
-import com.tencent.mobileqq.search.model.GroupSearchModelPublicAcnt;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
-import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
-import com.tencent.mobileqq.search.searchengine.ISearchEngine;
-import java.util.List;
+import com.tencent.av.AVLog;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.SkinColorFilterDesc;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.IOException;
 
 public class ahhq
-  extends GroupSearchEngine.SearchEngineEntity
+  implements INetEngine.INetEngineListener
 {
-  public ahhq(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
-  {
-    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
-  }
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
   
-  public ISearchResultGroupModel a(List paramList, String paramString)
+  public void a(NetResp paramNetResp)
   {
-    return new GroupSearchModelPublicAcnt(paramList, paramString, GroupSearchEngine.a(this.a));
+    Object localObject = (CaptureVideoFilterManager.SkinColorFilterDesc)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
+    AVLog.c("CaptureVideoFilterManager", "download file call back. file = " + ((CaptureVideoFilterManager.SkinColorFilterDesc)localObject).a);
+    if (paramNetResp.jdField_a_of_type_Int != 0)
+    {
+      AVLog.c("CaptureVideoFilterManager", "download file faild. errcode = " + paramNetResp.b);
+      return;
+    }
+    if (!((CaptureVideoFilterManager.SkinColorFilterDesc)localObject).b.equalsIgnoreCase(SecUtil.getFileMd5(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c)))
+    {
+      AVLog.c("CaptureVideoFilterManager", "download file faild : md5 is not match.");
+      FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
+      return;
+    }
+    AVLog.c("CaptureVideoFilterManager", "download file successed.");
+    try
+    {
+      localObject = CaptureVideoFilterManager.a();
+      FileUtils.a(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c, (String)localObject, false);
+      FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
+      return;
+    }
+    catch (IOException paramNetResp)
+    {
+      paramNetResp.printStackTrace();
+      AVLog.c("CaptureVideoFilterManager", "BEAUTY_ZIP unzip file faild.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahhq
  * JD-Core Version:    0.7.0.1
  */

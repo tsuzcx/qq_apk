@@ -1,21 +1,34 @@
-import android.view.View;
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import android.view.Window;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.util.VersionUtils;
+import android.app.Activity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.pubaccount.util.SwipeBackLayout;
+import com.tencent.qphone.base.util.QLog;
 
 public class mww
-  implements View.OnSystemUiVisibilityChangeListener
+  extends Handler
 {
-  public mww(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public mww(SwipeBackLayout paramSwipeBackLayout) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt == 4102) {}
-    while (!VersionUtils.e()) {
-      return;
+    switch (paramMessage.what)
+    {
+    default: 
+      super.handleMessage(paramMessage);
     }
-    this.a.getWindow().getDecorView().setSystemUiVisibility(4102);
+    do
+    {
+      do
+      {
+        return;
+      } while (SwipeBackLayout.a(this.a));
+      SwipeBackLayout.a(this.a, true);
+    } while (!(SwipeBackLayout.a(this.a) instanceof Activity));
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_SwipeBackLayout", 2, "SwipeBackLayout finish()");
+    }
+    SwipeBackLayout.b(this.a, true);
+    ((Activity)SwipeBackLayout.a(this.a)).finish();
   }
 }
 

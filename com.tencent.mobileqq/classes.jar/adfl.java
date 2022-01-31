@@ -1,18 +1,15 @@
-import android.support.v4.util.LruCache;
-import com.tencent.mobileqq.hotchat.PttShowRoomMng;
-import com.tencent.mobileqq.hotchat.PttShowRoomMng.Guest;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
 
-public class adfl
-  extends LruCache
+class adfl
+  implements Runnable
 {
-  public adfl(PttShowRoomMng paramPttShowRoomMng, int paramInt)
-  {
-    super(paramInt);
-  }
+  adfl(adfk paramadfk) {}
   
-  protected int a(String paramString, PttShowRoomMng.Guest paramGuest)
+  public void run()
   {
-    return 1;
+    this.a.a.a.b(false);
+    this.a.a.a.f(true);
   }
 }
 

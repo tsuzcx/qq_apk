@@ -1,24 +1,14 @@
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qqavopensdk.AVEngineEventHandler;
-import com.tencent.qqavopensdk.PBuffer.SSOTunnelEvent.CsCmdCallback;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.script.SpriteBackgroundManager;
 
 public class yrz
-  implements SSOTunnelEvent.CsCmdCallback
+  implements Runnable
 {
-  public yrz(AVEngineWalper paramAVEngineWalper, String paramString, boolean paramBoolean1, boolean paramBoolean2) {}
+  public yrz(SpriteBackgroundManager paramSpriteBackgroundManager, ApolloTextureView paramApolloTextureView, int paramInt) {}
   
-  public void a(int paramInt, String paramString)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkAVEngineWalper.a.b(1, "ctrl Params download failed!!!!");
-    }
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    ThreadManager.getUIHandler().post(new ysa(this, paramArrayOfByte));
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.setVisibility(this.jdField_a_of_type_Int);
   }
 }
 

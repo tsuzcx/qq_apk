@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.flashchat;
 
-import adab;
+import adjy;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.RecyclerView.Adapter;
@@ -25,15 +25,15 @@ public class FlashChatTextEffectView$FlashChatAdapter
     this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener = paramOnHolderItemClickListener;
   }
   
-  public adab a(ViewGroup paramViewGroup, int paramInt)
+  public adjy a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new adab(LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView.getContext()).inflate(2130970310, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener, this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView.jdField_a_of_type_Int);
+    return new adjy(LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView.getContext()).inflate(2130970339, paramViewGroup, false), this.jdField_a_of_type_ComTencentMobileqqFlashchatOnHolderItemClickListener, this.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatTextEffectView.jdField_a_of_type_Int);
   }
   
-  public void a(adab paramadab, int paramInt)
+  public void a(adjy paramadjy, int paramInt)
   {
     FlashChatPanel.PluginData localPluginData = (FlashChatPanel.PluginData)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    Object localObject = (ViewGroup.MarginLayoutParams)paramadab.itemView.getLayoutParams();
+    Object localObject = (ViewGroup.MarginLayoutParams)paramadjy.itemView.getLayoutParams();
     ((ViewGroup.MarginLayoutParams)localObject).height = FlashChatPanel.f;
     ((ViewGroup.MarginLayoutParams)localObject).width = FlashChatPanel.e;
     if (paramInt % 3 == 0)
@@ -48,15 +48,15 @@ public class FlashChatTextEffectView$FlashChatAdapter
         ((ViewGroup.MarginLayoutParams)localObject).topMargin = 0;
         ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = FlashChatPanel.g;
         label82:
-        paramadab.itemView.setBackgroundDrawable(new ColorDrawable(0));
-        paramadab.itemView.setContentDescription("已选定 文字特效 " + localPluginData.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.jdField_b_of_type_JavaLangString);
+        paramadjy.itemView.setBackgroundDrawable(new ColorDrawable(0));
+        paramadjy.itemView.setContentDescription("已选定 文字特效 " + localPluginData.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.jdField_b_of_type_JavaLangString);
         if (localPluginData.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.f == null) {}
       }
       try
       {
-        paramadab.itemView.setBackgroundDrawable(new ColorDrawable(Color.parseColor(localPluginData.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.f)));
-        paramadab.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-        paramadab.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        paramadjy.itemView.setBackgroundDrawable(new ColorDrawable(Color.parseColor(localPluginData.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.f)));
+        paramadjy.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+        paramadjy.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
         if ((localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof URLDrawable))
         {
           localObject = (URLDrawable)localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
@@ -64,18 +64,18 @@ public class FlashChatTextEffectView$FlashChatAdapter
             ((URLDrawable)localObject).restartDownload();
           }
         }
-        paramadab.jdField_a_of_type_AndroidWidgetTextView.setText(localPluginData.jdField_a_of_type_JavaLangString);
+        paramadjy.jdField_a_of_type_AndroidWidgetTextView.setText(localPluginData.jdField_a_of_type_JavaLangString);
         if (localPluginData.jdField_a_of_type_Boolean)
         {
-          paramadab.c.setVisibility(0);
+          paramadjy.c.setVisibility(0);
           switch (localPluginData.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem.jdField_b_of_type_Int)
           {
           default: 
-            paramadab.d.setImageDrawable(null);
-            paramadab.jdField_a_of_type_Int = localPluginData.jdField_a_of_type_Int;
-            paramadab.jdField_b_of_type_Int = localPluginData.jdField_b_of_type_Int;
-            paramadab.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem = localPluginData.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem;
-            paramadab.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatPanel$PluginData = localPluginData;
+            paramadjy.d.setImageDrawable(null);
+            paramadjy.jdField_a_of_type_Int = localPluginData.jdField_a_of_type_Int;
+            paramadjy.jdField_b_of_type_Int = localPluginData.jdField_b_of_type_Int;
+            paramadjy.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem = localPluginData.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatItem;
+            paramadjy.jdField_a_of_type_ComTencentMobileqqFlashchatFlashChatPanel$PluginData = localPluginData;
             return;
             if (paramInt % 3 == 2)
             {
@@ -103,11 +103,11 @@ public class FlashChatTextEffectView$FlashChatAdapter
         {
           localException.printStackTrace();
           continue;
-          paramadab.c.setVisibility(8);
+          paramadjy.c.setVisibility(8);
           continue;
-          paramadab.d.setImageResource(2130842434);
+          paramadjy.d.setImageResource(2130842526);
           continue;
-          paramadab.d.setImageResource(2130842438);
+          paramadjy.d.setImageResource(2130842530);
         }
       }
     }
@@ -131,7 +131,7 @@ public class FlashChatTextEffectView$FlashChatAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatTextEffectView.FlashChatAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -11,8 +11,8 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.mobileqq.widget.RedDotTextView;
 import com.tencent.qphone.base.util.QLog;
-import mfh;
-import mfi;
+import mgm;
+import mgn;
 
 public class BaseTabbar$TabHolder
 {
@@ -78,7 +78,7 @@ public class BaseTabbar$TabHolder
       localAnimatorSet.play(localObjectAnimator1).with(localObjectAnimator2);
       localAnimatorSet.play(localObjectAnimator2).before((Animator)localObject);
       localAnimatorSet.play((Animator)localObject).with(localObjectAnimator3);
-      localAnimatorSet.addListener(new mfh(this, paramBoolean));
+      localAnimatorSet.addListener(new mgm(this, paramBoolean));
       localAnimatorSet.start();
       return;
     }
@@ -88,7 +88,7 @@ public class BaseTabbar$TabHolder
     ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.b, "rotation", new float[] { -30.0F, 0.0F }).setDuration(500L);
     Object localObject = new AnimatorSet();
     ((AnimatorSet)localObject).play(localObjectAnimator2).with(localObjectAnimator1);
-    ((AnimatorSet)localObject).addListener(new mfi(this));
+    ((AnimatorSet)localObject).addListener(new mgn(this));
     ((AnimatorSet)localObject).start();
   }
   

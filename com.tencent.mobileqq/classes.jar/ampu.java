@@ -1,23 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
-import cooperation.troop_homework.jsp.TroopHWJsPlugin.UploadMediaEntry;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qqfav.widget.QfavJumpActivity;
 
 public class ampu
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public ampu(TroopHWJsPlugin.UploadMediaEntry paramUploadMediaEntry) {}
+  public ampu(QfavJumpActivity paramQfavJumpActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopHWJsPlugin", 2, "start upload!id = " + this.a.jdField_a_of_type_Int + " type = " + this.a.b);
+    if (QfavJumpActivity.a(this.a))
+    {
+      QfavJumpActivity.a(this.a, false);
+      this.a.finish();
     }
-    this.a.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ampu
  * JD-Core Version:    0.7.0.1
  */

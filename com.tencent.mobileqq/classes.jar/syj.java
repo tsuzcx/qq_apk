@@ -1,39 +1,47 @@
-import android.content.SharedPreferences;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter.CornerListItemHolder;
+import com.tencent.mobileqq.config.struct.LebaViewItem;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.fpsreport.FPSXListView;
 
-public class syj
+class syj
   implements Runnable
 {
-  public syj(MainFragment paramMainFragment, int paramInt) {}
+  syj(syi paramsyi, String paramString, Bitmap paramBitmap, boolean paramBoolean) {}
   
   public void run()
   {
-    String str2 = MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment);
-    if (("消息".equals(str2)) || ("联系人".equals(str2))) {
-      if (!"消息".equals(str2)) {
-        break label197;
-      }
-    }
-    label197:
-    for (String str1 = "Msg_tab";; str1 = "Contacts_tab")
+    if (this.jdField_a_of_type_Syi.a.a == null) {}
+    Object localObject;
+    do
     {
-      ReportController.b(MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment), "CliOper", "", "", str1, str1, 0, 0, "", "", "", "");
-      if ((MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment) != null) && (MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).getBoolean("theme_voice_setting_" + MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).getCurrentAccountUin(), true))) {
-        MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment).b(this.jdField_a_of_type_Int + 1);
-      }
-      if ((str2 != null) && (AppSetting.b))
+      do
       {
-        MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, "消息", str2);
-        MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, "联系人", str2);
-        MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, "动态", str2);
-        MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, "电话", str2);
-        MainFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityMainFragment, "NOW", str2);
-      }
-      return;
-    }
+        return;
+        int j = this.jdField_a_of_type_Syi.a.a.getChildCount();
+        int i = 0;
+        if (i < j)
+        {
+          localObject = this.jdField_a_of_type_Syi.a.a.getChildAt(i);
+          LebaListViewAdapter.CornerListItemHolder localCornerListItemHolder = (LebaListViewAdapter.CornerListItemHolder)((View)localObject).getTag();
+          if ((localCornerListItemHolder == null) || (localCornerListItemHolder.a == null) || (localCornerListItemHolder.a.a == null) || (!this.jdField_a_of_type_JavaLangString.equals(localCornerListItemHolder.a.a.strPkgName))) {}
+          for (;;)
+          {
+            i += 1;
+            break;
+            localObject = (ImageView)((View)localObject).findViewById(2131364331);
+            if ((localObject != null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null)) {
+              ((ImageView)localObject).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+            }
+          }
+        }
+      } while (this.jdField_a_of_type_Boolean);
+      localObject = this.jdField_a_of_type_Syi.a.a.findViewWithTag(this.jdField_a_of_type_JavaLangString);
+    } while ((localObject == null) || (!(localObject instanceof ImageView)) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null));
+    ((ImageView)localObject).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

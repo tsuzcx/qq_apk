@@ -1,19 +1,27 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
+import android.text.InputFilter;
+import android.text.Spanned;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
 
-class aitx
-  implements Runnable
+public class aitx
+  implements InputFilter
 {
-  aitx(aitw paramaitw, Bitmap paramBitmap) {}
+  public aitx(AbsPublishActivity paramAbsPublishActivity) {}
   
-  public void run()
+  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Aitw.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (paramCharSequence != null)
+    {
+      paramCharSequence = paramCharSequence.toString();
+      if (paramCharSequence.contains("\n")) {
+        return paramCharSequence.replaceAll("\n", "");
+      }
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aitx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,26 @@
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import android.widget.ImageView;
+import android.view.View;
 import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.biz.PoiMapActivity.PoiTab;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class kjt
-  implements ViewTreeObserver.OnPreDrawListener
+  implements AdapterView.OnItemClickListener
 {
-  public kjt(PoiMapActivity paramPoiMapActivity) {}
+  public kjt(PoiMapActivity.PoiTab paramPoiTab, PoiMapActivity paramPoiMapActivity) {}
   
-  public boolean onPreDraw()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    this.a.o = PoiMapActivity.e(this.a).getMeasuredHeight();
-    PoiMapActivity.a(this.a, PoiMapActivity.a(this.a).getMeasuredHeight());
-    if ((this.a.o > 0) && (PoiMapActivity.a(this.a) > 0))
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.a(paramInt, true);
+    int i = this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.jdField_a_of_type_ComTencentBizPoiMapActivity.a.length;
+    paramInt = 0;
+    while (paramInt < i)
     {
-      this.a.a((this.a.o - PoiMapActivity.b(this.a)) / 2 + this.a.t, false);
-      PoiMapActivity.f(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
-      PoiMapActivity.b(this.a).getViewTreeObserver().removeOnPreDrawListener(this);
+      if (this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.e != paramInt) {
+        this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.jdField_a_of_type_ComTencentBizPoiMapActivity.a[paramInt].a(-1, false);
+      }
+      paramInt += 1;
     }
-    return true;
   }
 }
 

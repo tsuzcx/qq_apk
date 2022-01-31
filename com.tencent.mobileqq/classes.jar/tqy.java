@@ -1,21 +1,29 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SubAccountBindActivity;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.ScoreQAVFragment;
+import com.tencent.mobileqq.activity.ScoreQAVFragment.OnItemClickListener;
+import java.util.ArrayList;
 
-class tqy
-  implements Runnable
+public class tqy
+  implements ScoreQAVFragment.OnItemClickListener
 {
-  tqy(tqx paramtqx) {}
+  public tqy(ScoreQAVFragment paramScoreQAVFragment) {}
   
-  public void run()
+  public void a(View paramView, int paramInt)
   {
-    this.a.jdField_a_of_type_Tqw.a.c();
-    this.a.jdField_a_of_type_Tqw.a.b(this.a.jdField_a_of_type_Tqw.a.getString(2131436339));
-    Intent localIntent = new Intent(this.a.jdField_a_of_type_Tqw.a, SubLoginActivity.class);
-    localIntent.putExtra("subuin", this.a.jdField_a_of_type_ComTencentQphoneBaseRemoteSimpleAccount.getUin());
-    localIntent.putExtra("fromWhere", this.a.jdField_a_of_type_Tqw.a.b);
-    this.a.jdField_a_of_type_Tqw.a.startActivity(localIntent);
+    paramView = (Button)paramView.findViewById(2131366251);
+    if (paramView.isSelected())
+    {
+      paramView.setSelected(false);
+      this.a.a(paramInt);
+      if (this.a.a.size() != 0) {}
+    }
+    do
+    {
+      return;
+      paramView.setSelected(true);
+      this.a.a.add(Integer.valueOf(paramInt));
+    } while (this.a.a.size() <= 0);
   }
 }
 

@@ -1,26 +1,23 @@
-import android.text.TextUtils;
-import android.view.KeyEvent;
+import android.app.Dialog;
 import android.view.View;
-import android.view.View.OnKeyListener;
-import android.widget.TextView;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
 import com.tencent.biz.PoiMapActivity;
 
 public class kjp
-  implements View.OnKeyListener
+  implements View.OnClickListener
 {
-  public kjp(PoiMapActivity paramPoiMapActivity) {}
+  public kjp(PoiMapActivity paramPoiMapActivity, Dialog paramDialog) {}
   
-  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    if ((66 == paramInt) && (paramKeyEvent.getAction() == 0))
-    {
-      paramView = ((TextView)paramView).getText().toString();
-      if (!TextUtils.isEmpty(paramView)) {
-        this.a.a(paramView);
-      }
-      return true;
+    this.jdField_a_of_type_AndroidAppDialog.cancel();
+    String str = this.jdField_a_of_type_ComTencentBizPoiMapActivity.a.getText().toString();
+    paramView = str;
+    if (str == null) {
+      paramView = "";
     }
-    return false;
+    this.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "click_sch_cancel", paramView, "", "", "");
   }
 }
 

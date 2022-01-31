@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.utils.DBUtils;
 
-class scw
+public class scw
   implements Runnable
 {
-  scw(scv paramscv, boolean paramBoolean1, boolean paramBoolean2) {}
+  public scw(ChatSettingForTroop paramChatSettingForTroop) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Scv.a.a.a.a(15, 2);
-      this.jdField_a_of_type_Scv.a.a.a.a(15, null);
-    }
-    while (!this.b) {
-      return;
-    }
-    this.jdField_a_of_type_Scv.a.a.a.a(15, 0);
-    this.jdField_a_of_type_Scv.a.a.a.a(15, null);
+    int i = DBUtils.a(this.a.app.getCurrentAccountUin(), "troop_game_feed", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+    Message localMessage = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(20);
+    localMessage.arg1 = i;
+    localMessage.sendToTarget();
   }
 }
 

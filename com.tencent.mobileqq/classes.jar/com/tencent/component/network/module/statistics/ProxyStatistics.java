@@ -8,8 +8,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import piv;
-import piw;
+import pkp;
+import pkq;
 
 public class ProxyStatistics
 {
@@ -18,7 +18,7 @@ public class ProxyStatistics
   
   public static ProxyStatistics a()
   {
-    return piv.a;
+    return pkp.a;
   }
   
   private void a(List paramList, String paramString)
@@ -29,35 +29,35 @@ public class ProxyStatistics
     }
     for (;;)
     {
-      piw localpiw;
+      pkq localpkq;
       int i;
       int k;
       int j;
       synchronized (this.b)
       {
-        localpiw = (piw)this.b.get(paramString);
-        if (localpiw != null) {
+        localpkq = (pkq)this.b.get(paramString);
+        if (localpkq != null) {
           break label223;
         }
-        localpiw = new piw();
-        this.b.put(paramString, localpiw);
-        paramString = localpiw;
+        localpkq = new pkq();
+        this.b.put(paramString, localpkq);
+        paramString = localpkq;
         paramList = paramList.iterator();
         i = 0;
         k = 0;
         j = 0;
         if (paramList.hasNext())
         {
-          localpiw = (piw)paramList.next();
-          if (localpiw == null) {
+          localpkq = (pkq)paramList.next();
+          if (localpkq == null) {
             continue;
           }
           int m = j + 1;
           j = k;
-          if (localpiw.a) {
+          if (localpkq.a) {
             j = k + 1;
           }
-          if (!localpiw.b) {
+          if (!localpkq.b) {
             break label220;
           }
           i += 1;
@@ -87,7 +87,7 @@ public class ProxyStatistics
       label220:
       continue;
       label223:
-      paramString = localpiw;
+      paramString = localpkq;
     }
   }
   
@@ -96,9 +96,9 @@ public class ProxyStatistics
     if (!NetworkUtils.isMobileConnected(paramContext)) {
       return;
     }
-    piw localpiw = new piw();
-    localpiw.a = paramBoolean1;
-    localpiw.b = paramBoolean2;
+    pkq localpkq = new pkq();
+    localpkq.a = paramBoolean1;
+    localpkq.b = paramBoolean2;
     synchronized (this.a)
     {
       String str = NetworkManager.getApnValue();
@@ -109,7 +109,7 @@ public class ProxyStatistics
         paramContext = new FixedLinkedList(3, false);
         this.a.put(str, paramContext);
       }
-      paramContext.add(0, localpiw);
+      paramContext.add(0, localpkq);
       a(paramContext, str);
       return;
     }
@@ -120,14 +120,14 @@ public class ProxyStatistics
     String str = NetworkManager.getApnValue();
     synchronized (this.b)
     {
-      piw localpiw2 = (piw)this.b.get(str);
-      piw localpiw1 = localpiw2;
-      if (localpiw2 == null)
+      pkq localpkq2 = (pkq)this.b.get(str);
+      pkq localpkq1 = localpkq2;
+      if (localpkq2 == null)
       {
-        localpiw1 = new piw();
-        this.b.put(str, localpiw1);
+        localpkq1 = new pkq();
+        this.b.put(str, localpkq1);
       }
-      return localpiw1.a;
+      return localpkq1.a;
     }
   }
   
@@ -136,14 +136,14 @@ public class ProxyStatistics
     String str = NetworkManager.getApnValue();
     synchronized (this.b)
     {
-      piw localpiw2 = (piw)this.b.get(str);
-      piw localpiw1 = localpiw2;
-      if (localpiw2 == null)
+      pkq localpkq2 = (pkq)this.b.get(str);
+      pkq localpkq1 = localpkq2;
+      if (localpkq2 == null)
       {
-        localpiw1 = new piw();
-        this.b.put(str, localpiw1);
+        localpkq1 = new pkq();
+        this.b.put(str, localpkq1);
       }
-      return localpiw1.b;
+      return localpkq1.b;
     }
   }
 }

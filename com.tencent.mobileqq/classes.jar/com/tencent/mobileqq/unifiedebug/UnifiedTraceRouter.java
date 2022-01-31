@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.unifiedebug;
 
-import ajkf;
+import ajyj;
 import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
@@ -83,7 +83,7 @@ public class UnifiedTraceRouter
   
   public void a(long paramLong, String paramString, Map paramMap)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ajkf(this, paramString, paramLong, paramMap));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ajyj(this, paramString, paramLong, paramMap));
   }
   
   public String b(String paramString)
@@ -155,7 +155,7 @@ public class UnifiedTraceRouter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.unifiedebug.UnifiedTraceRouter
  * JD-Core Version:    0.7.0.1
  */

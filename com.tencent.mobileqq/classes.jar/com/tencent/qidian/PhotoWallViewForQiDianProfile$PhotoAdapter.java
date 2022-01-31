@@ -1,6 +1,6 @@
 package com.tencent.qidian;
 
-import akvw;
+import allm;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -87,33 +87,33 @@ public class PhotoWallViewForQiDianProfile$PhotoAdapter
           if (paramView != null) {
             break label354;
           }
-          localObject2 = new akvw(this);
-          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969183, null);
+          localObject2 = new allm(this);
+          paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969182, null);
           paramView.setLayoutParams(new AbsListView.LayoutParams(this.jdField_a_of_type_ComTencentQidianPhotoWallViewForQiDianProfile.a, this.jdField_a_of_type_ComTencentQidianPhotoWallViewForQiDianProfile.b));
-          ((akvw)localObject2).jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131365511));
-          ((akvw)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365512));
-          ((akvw)localObject2).jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
-          ((akvw)localObject2).jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-          ((akvw)localObject2).jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
-          ((akvw)localObject2).jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
+          ((allm)localObject2).jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131365533));
+          ((allm)localObject2).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365534));
+          ((allm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
+          ((allm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
+          ((allm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
+          ((allm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setMaxLines(2);
           localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
-          ((akvw)localObject2).jdField_a_of_type_AndroidWidgetTextView.setLineSpacing(AIOUtils.a(2.5F, localResources), 1.0F);
-          ((akvw)localObject2).jdField_a_of_type_AndroidWidgetTextView.setGravity(80);
-          ((akvw)localObject2).jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
-          ((akvw)localObject2).jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130839688);
+          ((allm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setLineSpacing(AIOUtils.a(2.5F, localResources), 1.0F);
+          ((allm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setGravity(80);
+          ((allm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.END);
+          ((allm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130839694);
           i = AIOUtils.a(11.0F, localResources);
           j = AIOUtils.a(14.0F, localResources);
-          ((akvw)localObject2).jdField_a_of_type_AndroidWidgetTextView.setPadding(j, 0, j, i);
+          ((allm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setPadding(j, 0, j, i);
           paramView.setTag(localObject2);
-          ((akvw)localObject2).jdField_a_of_type_ComTencentImageURLImageView.setTag(new DataTag(25, Integer.valueOf(paramInt)));
+          ((allm)localObject2).jdField_a_of_type_ComTencentImageURLImageView.setTag(new DataTag(25, Integer.valueOf(paramInt)));
           if (!TextUtils.isEmpty(localViewGroup)) {
             break label366;
           }
-          ((akvw)localObject2).jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130845965);
+          ((allm)localObject2).jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130846093);
           if (!TextUtils.isEmpty(paramViewGroup))
           {
-            ((akvw)localObject2).jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-            ((akvw)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup);
+            ((allm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+            ((allm)localObject2).jdField_a_of_type_AndroidWidgetTextView.setText(paramViewGroup);
           }
           return paramView;
         }
@@ -135,11 +135,11 @@ public class PhotoWallViewForQiDianProfile$PhotoAdapter
       paramViewGroup = (ViewGroup)localObject2;
       continue;
       label354:
-      localObject2 = (akvw)paramView.getTag();
+      localObject2 = (allm)paramView.getTag();
       continue;
       label366:
       localObject1 = URLDrawable.getDrawable((String)localObject1);
-      ((akvw)localObject2).jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
+      ((allm)localObject2).jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject1);
     }
   }
 }

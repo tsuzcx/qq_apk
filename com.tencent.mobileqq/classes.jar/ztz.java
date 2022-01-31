@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.ar.ARGlobalConfigManager;
+import com.tencent.mobileqq.app.message.SubAccountMessageProcessor;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Comparator;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
 
 public class ztz
-  implements Runnable
+  implements Comparator
 {
-  public ztz(ARGlobalConfigManager paramARGlobalConfigManager) {}
+  public ztz(SubAccountMessageProcessor paramSubAccountMessageProcessor) {}
   
-  public void run()
+  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
   {
-    this.a.a();
-    this.a.a();
+    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ztz
  * JD-Core Version:    0.7.0.1
  */

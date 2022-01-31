@@ -1,42 +1,26 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.adapter.HotChatPostListAdapter;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class yhk
-  implements Runnable
+  implements View.OnClickListener
 {
-  public yhk(ApolloManager paramApolloManager, SessionInfo paramSessionInfo) {}
+  public yhk(HotChatPostListAdapter paramHotChatPostListAdapter, String paramString1, String paramString2) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a != null)) {
-        ApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, "C2CAIO");
-      }
-      for (;;)
-      {
-        ApolloMsgPlayController.a().a(this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-        return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a != null)) {
-          ((ApolloManager)this.jdField_a_of_type_ComTencentMobileqqApolloApolloManager.a.getManager(152)).f();
-        }
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("ApolloManager", 2, "doAfterOpenAIO error", localException);
-      }
-    }
+    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter.a, QQBrowserActivity.class).putExtra("url", String.format("https://buluo.qq.com/mobile/detail.html?bid=%s&pid=%s&_wv=1027&webview=1&from=reliao", new Object[] { this.jdField_a_of_type_JavaLangString, this.b }));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter.a.startActivity(paramView);
+    ReportController.b(null, "dc00899", "grp_lbs", "", "hot_room", "clk_tribe_post", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yhk
  * JD-Core Version:    0.7.0.1
  */

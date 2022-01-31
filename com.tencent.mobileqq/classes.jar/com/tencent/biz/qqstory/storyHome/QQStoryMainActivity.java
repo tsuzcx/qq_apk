@@ -9,7 +9,7 @@ import com.tencent.biz.qqstory.support.logging.QQStoryLoggingDelegate;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.widget.navbar.NavBarCommon;
 import java.util.Map;
-import nrz;
+import ntm;
 
 public class QQStoryMainActivity
   extends QQStoryBaseActivity
@@ -20,13 +20,13 @@ public class QQStoryMainActivity
   
   public QQStoryMainActivity()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController = new QQStoryMainController(new nrz(this), QQStoryMainController.c);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController = new QQStoryMainController(new ntm(this), QQStoryMainController.c);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.a(this);
   }
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)findViewById(2131363226));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon = ((NavBarCommon)findViewById(2131363244));
     this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarCommon.setOnItemSelectListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.a);
     c("日迹");
   }
@@ -67,7 +67,7 @@ public class QQStoryMainActivity
     this.mUseOptimizMode = true;
     jdField_a_of_type_Long = System.currentTimeMillis();
     super.doOnCreate(paramBundle);
-    setContentView(2130970715);
+    setContentView(2130970763);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.a(paramBundle);
     a();
     int i = ((Integer)((StoryConfigManager)SuperManager.a(10)).b("string_story_global_log_level", Integer.valueOf(-1))).intValue();

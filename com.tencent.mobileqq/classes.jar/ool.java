@@ -1,17 +1,19 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.view.StoryImageDialog;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.OnWidgetElementClickListener;
+import com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetElement;
 
 public class ool
   implements View.OnClickListener
 {
-  public ool(StoryImageDialog paramStoryImageDialog) {}
+  public ool(PollWidgetUtils.WidgetElement paramWidgetElement) {}
   
   public void onClick(View paramView)
   {
-    StoryReportor.a("home_page", "guide_close", 0, 0, new String[0]);
-    this.a.dismiss();
+    paramView = this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$OnWidgetElementClickListener;
+    if (paramView != null) {
+      paramView.a(this.a.jdField_a_of_type_ComTencentBizQqstoryUtilsPollWidgetUtils$WidgetWrapper, this.a);
+    }
   }
 }
 

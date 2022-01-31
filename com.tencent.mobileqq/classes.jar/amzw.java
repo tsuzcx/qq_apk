@@ -1,21 +1,20 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.qq.im.capture.view.QIMSlidingTabView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
+import cooperation.qzone.share.WXShareFromQZHelper;
 
 public class amzw
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public amzw(QIMSlidingTabView paramQIMSlidingTabView) {}
+  public amzw(WXShareFromQZHelper paramWXShareFromQZHelper) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    QIMSlidingTabView.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
-    this.a.invalidate();
+    QQToast.a(BaseApplication.getContext(), 2131432726, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzw
  * JD-Core Version:    0.7.0.1
  */

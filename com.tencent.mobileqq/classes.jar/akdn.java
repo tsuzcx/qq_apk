@@ -1,21 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.werewolves.HalfScreenBrowserActivity;
+import com.tencent.mobileqq.utils.NewUpgradeDialog;
+import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener;
 
 public class akdn
-  implements View.OnClickListener
+  implements Runnable
 {
-  public akdn(HalfScreenBrowserActivity paramHalfScreenBrowserActivity) {}
+  public akdn(NewUpgradeDialog.YYBDownloadListener paramYYBDownloadListener) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    NewUpgradeDialog.d(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akdn
  * JD-Core Version:    0.7.0.1
  */

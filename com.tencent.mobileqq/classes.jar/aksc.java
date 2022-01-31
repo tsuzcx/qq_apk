@@ -1,38 +1,43 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.ControlPolicyUtil;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
-import com.tencent.tmassistantsdk.internal.logreport.OuterCallReportModel;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x8ed.oidb_0x8ed.RspBody;
 
-public final class aksc
-  implements Runnable
+public class aksc
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public void run()
+  public aksc(WerewolvesHandler paramWerewolvesHandler, WerewolvesHandler.Callback paramCallback) {}
+  
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    long l = System.currentTimeMillis();
-    if (MyAppApi.h())
+    if (this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler$Callback != null)
     {
-      if (TMAssistantCallYYB_V2.getInstance().getIPCInterface() != null) {
-        break label70;
-      }
-      LogUtility.b("TAMST_WAKE", "getIPCInterface() == null");
-      OuterCallReportModel localOuterCallReportModel = MyAppApi.a();
-      MyAppApi.a(localOuterCallReportModel);
-      MyAppApi.b(localOuterCallReportModel);
-      ControlPolicyUtil.b();
+      paramBundle = new oidb_0x8ed.RspBody();
+      if (paramArrayOfByte == null) {}
     }
-    for (;;)
+    try
     {
-      LogUtility.c("TAMST_WAKE", "costTime = " + (System.currentTimeMillis() - l));
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler$Callback.a(paramInt, paramBundle);
       return;
-      label70:
-      LogUtility.b("TAMST_WAKE", "don't need tmast wake");
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("WerewolvesHandler", 2, paramArrayOfByte.getMessage());
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aksc
  * JD-Core Version:    0.7.0.1
  */

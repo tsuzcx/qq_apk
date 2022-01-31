@@ -1,17 +1,17 @@
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.av.ui.redbag.GetRedBag;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.av.smallscreen.SmallScreenDoubleVideoControlUI;
+import com.tencent.qphone.base.util.QLog;
 
-class jod
+public class jod
   implements Runnable
 {
-  jod(jnz paramjnz, Bundle paramBundle, ResultReceiver paramResultReceiver) {}
+  public jod(SmallScreenDoubleVideoControlUI paramSmallScreenDoubleVideoControlUI) {}
   
   public void run()
   {
-    GetRedBag.a((QQAppInterface)this.jdField_a_of_type_Jnz.a.a(), this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_AndroidOsResultReceiver);
+    if (QLog.isColorLevel()) {
+      QLog.d("SmallScreenDoubleVideoControlUI", 2, "2s has past, startTimer now!");
+    }
+    this.a.v();
   }
 }
 

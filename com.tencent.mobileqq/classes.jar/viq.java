@@ -1,13 +1,13 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.VideoVipItemBuilder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.TextItemBuilder;
 
 public class viq
-  extends AbstractChatItemBuilder.ViewHolder
+  implements DialogInterface.OnClickListener
 {
-  public TextView b;
+  public viq(TextItemBuilder paramTextItemBuilder) {}
   
-  public viq(VideoVipItemBuilder paramVideoVipItemBuilder) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

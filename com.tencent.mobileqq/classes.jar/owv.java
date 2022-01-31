@@ -1,32 +1,14 @@
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.biz.troop.VideoCombineHelper;
+import com.tencent.biz.troop.VideoCombineHelper.Callback;
 
-public final class owv
-  implements WXShareHelper.WXShareListener
+public class owv
+  implements Runnable
 {
-  public owv(String paramString) {}
+  public owv(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.Callback paramCallback, long paramLong, String paramString) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void run()
   {
-    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131435286);
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      QRUtils.a(2, 2131435285);
-    }
+    new oxm(this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper, new oww(this), this.jdField_a_of_type_JavaLangString).a();
   }
 }
 

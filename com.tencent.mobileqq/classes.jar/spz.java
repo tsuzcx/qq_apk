@@ -1,14 +1,52 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.util.WeakReferenceHandler;
 
 public class spz
   implements Runnable
 {
-  public spz(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, Card paramCard) {}
+  public spz(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.b(this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    int j = 0;
+    Object localObject = (FriendsManager)this.a.app.getManager(50);
+    if (localObject == null)
+    {
+      localObject = null;
+      if (localObject != null) {
+        break label164;
+      }
+      localObject = new Card();
+    }
+    label164:
+    for (int i = 1;; i = 0)
+    {
+      ((Card)localObject).feedPreviewTime = System.currentTimeMillis();
+      ((Card)localObject).strQzoneFeedsDesc = "";
+      Message localMessage = Message.obtain();
+      localMessage.obj = localObject;
+      if (i != 0) {}
+      for (localMessage.what = 6;; localMessage.what = 5)
+      {
+        if (this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler != null) {
+          this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage(localMessage);
+        }
+        i = j;
+        if (this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a != null) {
+          i = this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.h;
+        }
+        this.a.e(i);
+        return;
+        localObject = ((FriendsManager)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
+        break;
+      }
+    }
   }
 }
 

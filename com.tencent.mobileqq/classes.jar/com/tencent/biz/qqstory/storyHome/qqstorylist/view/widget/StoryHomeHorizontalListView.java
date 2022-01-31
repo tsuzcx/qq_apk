@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.ViewParent;
+import android.widget.ListAdapter;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
 import com.tencent.mobileqq.util.DisplayUtil;
@@ -13,7 +14,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import com.tencent.widget.HorizontalListView.OnItemScrollEventListener;
 import com.tencent.widget.TraceUtils;
-import oae;
+import obw;
 
 public class StoryHomeHorizontalListView
   extends HorizontalListView
@@ -50,8 +51,26 @@ public class StoryHomeHorizontalListView
   {
     this.jdField_b_of_type_Int = paramContext.getResources().getDisplayMetrics().widthPixels;
     this.c = DisplayUtil.a(paramContext, 147.0F);
-    super.setOnItemScollEventListener(new oae(this));
+    super.setOnItemScollEventListener(new obw(this));
     setOverScrollMode(1);
+  }
+  
+  public void a()
+  {
+    if (!this.h) {}
+    int i;
+    int j;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_g_of_type_Boolean);
+      i = getLastVisiblePosition();
+      j = a().getCount();
+      SLog.a("HorizontalListView", "on item scroll last:%d, count:%d", Integer.valueOf(i), Integer.valueOf(j));
+    } while ((j - i >= this.jdField_a_of_type_Int) || (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener == null) || (!this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetLoadingMoreHelper$OnLoadMoreListener.a(false)));
+    this.jdField_g_of_type_Boolean = true;
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
@@ -116,7 +135,7 @@ public class StoryHomeHorizontalListView
     {
       this.f = false;
       if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnOverScrollRightListener != null) && (this.e)) {
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnOverScrollRightListener.C_();
+        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnOverScrollRightListener.H_();
       }
     }
     for (;;)
@@ -126,7 +145,7 @@ public class StoryHomeHorizontalListView
       {
         this.f = false;
         if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnOverScrollRightListener != null) && (this.e)) {
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnOverScrollRightListener.D_();
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView$OnOverScrollRightListener.I_();
         }
       }
     }

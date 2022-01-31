@@ -1,15 +1,28 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class ssv
-  implements Runnable
+public class ssv
+  implements ActionSheet.OnButtonClickListener
 {
-  ssv(ssu paramssu, Bitmap paramBitmap) {}
+  public ssv(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_Ssu.a.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, true);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a("0X80081E5", 2);
+      continue;
+      FriendProfileMoreInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity, false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileMoreInfoActivity.a("0X80081E5", 3);
+    }
   }
 }
 

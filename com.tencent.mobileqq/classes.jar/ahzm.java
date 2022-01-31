@@ -1,26 +1,32 @@
-import android.text.Spannable;
-import android.text.Spannable.Factory;
-import com.tencent.mobileqq.text.QQText;
+import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo;
+import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
+import com.tencent.mobileqq.shortvideo.ShortVideoReq;
+import java.util.Iterator;
+import java.util.concurrent.PriorityBlockingQueue;
 
-public final class ahzm
-  extends Spannable.Factory
+public class ahzm
+  implements Runnable
 {
-  public Spannable newSpannable(CharSequence paramCharSequence)
+  public ahzm(ShortVideoPreDownloader paramShortVideoPreDownloader) {}
+  
+  public void run()
   {
-    if ((!QQText.b) && ((paramCharSequence instanceof QQText))) {
-      try
-      {
-        QQText localQQText = (QQText)((QQText)paramCharSequence).clone();
-        return localQQText;
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.iterator();
+    while (localIterator.hasNext())
+    {
+      ShortVideoReq localShortVideoReq = (ShortVideoReq)localIterator.next();
+      ShortVideoBusiManager.a(localShortVideoReq, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (localShortVideoReq.a != null) {
+        ShortVideoPreDownloader.a("consumeAllThumbsInPendingQueue", "consume thumb, uniseq=" + localShortVideoReq.a.a);
       }
-      catch (CloneNotSupportedException localCloneNotSupportedException) {}
     }
-    return super.newSpannable(paramCharSequence);
+    this.a.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahzm
  * JD-Core Version:    0.7.0.1
  */

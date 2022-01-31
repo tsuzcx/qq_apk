@@ -1,21 +1,20 @@
-import java.util.TimerTask;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.qwallet.fragment.CommonHbFragment;
+import com.tencent.mobileqq.activity.qwallet.widget.ViewTransformer.ViewTransformerListener;
 
-public abstract class xcx
-  extends TimerTask
+public class xcx
+  implements ViewTransformer.ViewTransformerListener
 {
-  private boolean a;
+  public xcx(CommonHbFragment paramCommonHbFragment, EditText paramEditText, RelativeLayout paramRelativeLayout) {}
   
-  public abstract void a();
-  
-  public boolean a()
+  public void OnTransferFinished()
   {
-    return this.a;
-  }
-  
-  public void run()
-  {
-    a();
-    this.a = true;
+    if (this.jdField_a_of_type_AndroidWidgetEditText != null) {
+      this.jdField_a_of_type_AndroidWidgetEditText.clearFocus();
+    }
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {}
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletFragmentCommonHbFragment.a = false;
   }
 }
 

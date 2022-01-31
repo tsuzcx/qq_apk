@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby.now.send;
 
-import aegx;
-import aegy;
-import aegz;
+import aeud;
+import aeue;
+import aeuf;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
@@ -252,8 +252,8 @@ public class PublishManager
       ((NowVideoReporter)localObject).a(i).d(this.jdField_b_of_type_JavaLangString).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       localObject = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230);
       ((QQCustomDialog)localObject).setTitle("确认退出此次编辑?");
-      ((QQCustomDialog)localObject).setPositiveButton("确定", new aegy(this));
-      ((QQCustomDialog)localObject).setNegativeButton("取消", new aegz(this));
+      ((QQCustomDialog)localObject).setPositiveButton("确定", new aeue(this));
+      ((QQCustomDialog)localObject).setNegativeButton("取消", new aeuf(this));
       ((QQCustomDialog)localObject).show();
       return true;
     }
@@ -356,17 +356,17 @@ public class PublishManager
     if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi == null) {
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi.a().findViewById(2131370459));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi.a().findViewById(2131370600));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi.a().findViewById(2131370460));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi.a().findViewById(2131370601));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi.a().findViewById(2131370462));
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStartLiveTopicLabelListView = ((StartLiveTopicLabelListView)this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi.a().findViewById(2131370466));
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStartLiveTopicLabelListView.setItemResId(2130842726);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi.a().findViewById(2131370603));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStartLiveTopicLabelListView = ((StartLiveTopicLabelListView)this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi.a().findViewById(2131370607));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStartLiveTopicLabelListView.setItemResId(2130842825);
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStartLiveTopicLabelListView.setItemTextColor(-5288197);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStartLiveTopicLabelListView.setItemAddLabelResId(2130842724);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStartLiveTopicLabelListView.setItemAddLabelResId(2130842823);
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStartLiveTopicLabelListView.setItemAddLabelTextColor(-8947849);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStartLiveTopicLabelListView.a(new aegx(this));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetStartLiveTopicLabelListView.a(new aeud(this));
     if ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi.a().getIntent().hasExtra("topic")) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi.a().getIntent().getStringExtra("topic")))) {
       b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi.a().getIntent().getStringExtra("topic"));
     }
@@ -397,10 +397,10 @@ public class PublishManager
   {
     int j = 2;
     int i = paramView.getId();
-    if (i == 2131370459) {
+    if (i == 2131370600) {
       b();
     }
-    while ((i == 2131370464) || (i == 2131370465) || (i != 2131370460)) {
+    while ((i == 2131370605) || (i == 2131370606) || (i != 2131370601)) {
       return;
     }
     paramView = new NowVideoReporter().h("video_public").i("clk_public");

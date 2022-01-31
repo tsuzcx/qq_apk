@@ -1,27 +1,8 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
 
 public class tjp
-  extends BroadcastReceiver
 {
-  public tjp(QQSettingMe paramQQSettingMe) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: intent=" + paramIntent.toString());
-    }
-    if ((paramIntent != null) && (paramIntent.getBooleanExtra("key_pay_action_result", false)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "UpdateVipInfoReceiver: need update ");
-      }
-      this.a.z();
-    }
-  }
+  public TextView a;
 }
 
 

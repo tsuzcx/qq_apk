@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c03ff" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center_vertical" android:layout_gravity="left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d83" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021b99" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="#ffaaaaaa" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d5d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="7.5dip" android:layout_marginBottom="3.0dip" android:text="主人开启评论审核，仅通过审核的评论才可见" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021b2e" android:drawablePadding="3.0dip" android:layout_alignParentLeft="true" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center|left" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d84" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" />
+    <LinearLayout android:gravity="center|left" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d85" android:paddingLeft="10.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d08c4" android:textColor="#ffffffff" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d86" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+    </LinearLayout>
+    <ImageView android:layout_gravity="center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2d87" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021b9b" />
 </LinearLayout>

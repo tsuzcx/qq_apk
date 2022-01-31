@@ -1,69 +1,73 @@
-import android.content.Context;
-import android.content.res.Resources;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.av.widget.ShareActionSheetBuilder;
+import com.tencent.common.config.AppSetting;
+import mqq.app.BaseActivity;
 
 public class khz
-  extends RelativeLayout
+  extends BaseAdapter
 {
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private ImageView b;
+  private khz(ShareActionSheetBuilder paramShareActionSheetBuilder) {}
   
-  public khz(Context paramContext, int paramInt, CharSequence paramCharSequence)
+  public int getCount()
   {
-    super(paramContext);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(paramContext.getResources().getDimensionPixelSize(2131559105), 0, 0, 0);
-    localLayoutParams.addRule(15, -1);
-    localLayoutParams.addRule(9, -1);
-    this.b = new ImageView(paramContext);
-    this.b.setImageResource(paramInt);
-    this.b.setLayoutParams(localLayoutParams);
-    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.setMargins(0, 0, paramContext.getResources().getDimensionPixelSize(2131559105), 0);
-    localLayoutParams.addRule(15, -1);
-    localLayoutParams.addRule(11, -1);
-    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840327);
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-    localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    localLayoutParams.addRule(15, -1);
-    localLayoutParams.addRule(14, -1);
-    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
-    this.jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(localLayoutParams);
-    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, paramContext.getResources().getDimension(2131558405));
-    addView(this.b);
-    addView(this.jdField_a_of_type_AndroidWidgetTextView);
-    addView(this.jdField_a_of_type_AndroidWidgetImageView);
-    setBackgroundResource(2130837528);
-    setId(2131362792);
-    setMinimumHeight(paramContext.getResources().getDimensionPixelSize(2131558527));
+    return 5;
   }
   
-  public void a(int paramInt)
+  public Object getItem(int paramInt)
   {
-    this.b.setImageResource(paramInt);
+    return null;
   }
   
-  public void a(CharSequence paramCharSequence)
+  public long getItemId(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramCharSequence);
+    return 0L;
   }
   
-  public void a(boolean paramBoolean)
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 4)
+    paramViewGroup = paramView;
+    if (paramView == null) {
+      paramViewGroup = LayoutInflater.from(ShareActionSheetBuilder.a(this.a)).inflate(2130971668, null);
+    }
+    int i;
+    int j;
+    switch (paramInt)
     {
-      localImageView.setVisibility(i);
-      return;
+    default: 
+      i = 2131435309;
+      j = 2130838332;
+      paramInt = 2131435333;
+    }
+    for (;;)
+    {
+      paramView = (ImageView)paramViewGroup.findViewById(2131366751);
+      TextView localTextView = (TextView)paramViewGroup.findViewById(2131364316);
+      paramView.setImageResource(j);
+      localTextView.setText(i);
+      if (AppSetting.b) {
+        paramViewGroup.setContentDescription(ShareActionSheetBuilder.a(this.a).getString(paramInt));
+      }
+      return paramViewGroup;
+      i = 2131435301;
+      j = 2130838336;
+      paramInt = 2131435331;
+      continue;
+      i = 2131435308;
+      j = 2130838337;
+      paramInt = 2131435332;
+      continue;
+      i = 2131435299;
+      j = 2130838340;
+      paramInt = 2131435330;
+      continue;
+      i = 2131435298;
+      j = 2130838334;
+      paramInt = 2131435329;
     }
   }
 }

@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.view.DragSortAdapter;
 
 class smq
   implements Runnable
 {
-  smq(smp paramsmp) {}
+  smq(smo paramsmo, EmoticonPackage paramEmoticonPackage, int paramInt) {}
   
   public void run()
   {
-    ReportController.b(this.a.a.a.app, "CliOper", "", "", "P_prof", "Prof_copy", ProfileActivity.a(this.a.a.a.a.a.h), 0, Integer.toString(ProfileActivity.a(this.a.a.a.a.a)), "", "", "");
+    this.jdField_a_of_type_Smo.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a(this.jdField_a_of_type_Smo.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView, this.jdField_a_of_type_ComTencentMobileqqDataEmoticonPackage, this.jdField_a_of_type_Int);
   }
 }
 

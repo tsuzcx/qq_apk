@@ -1,26 +1,16 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
-import com.tencent.biz.pubaccount.Advertisement.data.VideoDownloadItem;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
 
-class kty
-  implements View.OnClickListener
+public class kty
+  implements Runnable
 {
-  kty(ktv paramktv) {}
+  public kty(VideoCoverFragment paramVideoCoverFragment) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PublicAccountAdvertisementActivity", 2, "action cancel");
-    }
-    ReportController.b(null, "dc00898", "", PublicAccountAdvertisementActivity.a(this.a.a).a.a, "0X80090FD", "0X80090FD", 0, 0, PublicAccountAdvertisementActivity.a(this.a.a).a.c, "", "", "");
-    if ((PublicAccountAdvertisementActivity.a(this.a.a) != null) && (PublicAccountAdvertisementActivity.a(this.a.a).isShowing())) {
-      PublicAccountAdvertisementActivity.a(this.a.a).dismiss();
-    }
+    VideoCoverFragment.a(this.a).setVisibility(4);
+    VideoCoverFragment.a(this.a).setVisibility(4);
   }
 }
 

@@ -1,16 +1,15 @@
-import com.tencent.biz.qrcode.CodeMaskManager;
-import org.json.JSONArray;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tencent.biz.qqstory.view.segment.SegmentManager;
+import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
 
-class oqm
-  implements Runnable
+public class oqm
+  implements QQStoryPullToRefreshListView.PullToRefreshListener
 {
-  oqm(oql paramoql, JSONArray paramJSONArray) {}
+  public oqm(SegmentList paramSegmentList) {}
   
-  public void run()
+  public void a()
   {
-    if (!this.jdField_a_of_type_Oql.a.a) {
-      CodeMaskManager.a(this.jdField_a_of_type_Oql.a, this.jdField_a_of_type_OrgJsonJSONArray);
-    }
+    this.a.a.a(false);
   }
 }
 

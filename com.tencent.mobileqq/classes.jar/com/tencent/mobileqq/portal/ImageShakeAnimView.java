@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.portal;
 
-import afym;
+import agmo;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -68,7 +68,7 @@ public class ImageShakeAnimView
     if (this.jdField_a_of_type_Boolean)
     {
       f = 720.0F;
-      localValueAnimation = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(f), new afym(this));
+      localValueAnimation = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(f), new agmo(this));
       if (this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation != null) {
         this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.cancel();
       }
@@ -131,7 +131,7 @@ public class ImageShakeAnimView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ImageShakeAnimView
  * JD-Core Version:    0.7.0.1
  */

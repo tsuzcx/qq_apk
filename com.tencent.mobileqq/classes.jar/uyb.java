@@ -1,16 +1,27 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.activity.aio.PokePanel.PokeData;
+import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
-public final class uyb
+public class uyb
   implements Runnable
 {
-  public uyb(int paramInt, Context paramContext, QQAppInterface paramQQAppInterface, Emoticon paramEmoticon, String paramString) {}
+  public uyb(GivingHeartItemBuilder paramGivingHeartItemBuilder) {}
   
   public void run()
   {
-    MarketFaceItemBuilder.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_AndroidContentContext.getString(2131433248), this.jdField_a_of_type_JavaLangString);
+    Object localObject = PokeItemHelper.a(this.a.b, GivingHeartItemBuilder.a(this.a));
+    if (((ArrayList)localObject).size() > 0)
+    {
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        PokePanel.PokeData localPokeData = (PokePanel.PokeData)((Iterator)localObject).next();
+        GivingHeartItemBuilder.a(this.a).put(Integer.valueOf(localPokeData.b), Integer.valueOf(localPokeData.c));
+      }
+    }
   }
 }
 

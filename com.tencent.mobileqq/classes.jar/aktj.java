@@ -1,37 +1,46 @@
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.UpdateManager;
-import java.io.File;
+import android.content.Context;
+import android.text.Selection;
+import android.text.Spannable;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
+import com.tencent.mobileqq.widget.ContainerView.SelectableTextView;
 
 public class aktj
-  implements Runnable
+  implements View.OnLongClickListener
 {
-  public aktj(UpdateManager paramUpdateManager, String paramString, DownloadInfo paramDownloadInfo) {}
+  public aktj(ContainerView.SelectableTextView paramSelectableTextView) {}
   
-  public void run()
+  public boolean onLongClick(View paramView)
   {
-    try
+    if (this.a.getSelectionEnd() - this.a.getSelectionStart() > 0)
     {
-      File localFile = new File(this.jdField_a_of_type_JavaLangString);
-      if (localFile.exists())
-      {
-        long l = localFile.length();
-        DownloadManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo, l);
-        return;
-      }
-      LogUtility.c(UpdateManager.jdField_a_of_type_JavaLangString, "patchNewApk report file not exists");
-      return;
+      this.a.onTextContextMenuItem(16908321);
+      Toast.makeText(this.a.getContext(), "已经复制到剪贴板", 0).show();
     }
-    catch (Exception localException)
+    for (;;)
     {
-      LogUtility.c(UpdateManager.jdField_a_of_type_JavaLangString, "patchNewApk report>>>", localException);
+      return true;
+      try
+      {
+        Selection.setSelection((Spannable)this.a.getText(), Math.max(ContainerView.SelectableTextView.a(this.a) - 50, 0), Math.min(ContainerView.SelectableTextView.a(this.a) + 50, this.a.getText().length()));
+        this.a.onTextContextMenuItem(16908328);
+        ((InputMethodManager)this.a.getContext().getSystemService("input_method")).hideSoftInputFromWindow(this.a.getWindowToken(), 0);
+      }
+      catch (Exception paramView)
+      {
+        for (;;)
+        {
+          Selection.setSelection((Spannable)this.a.getText(), ContainerView.SelectableTextView.a(this.a), ContainerView.SelectableTextView.a(this.a));
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aktj
  * JD-Core Version:    0.7.0.1
  */

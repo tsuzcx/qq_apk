@@ -1,65 +1,18 @@
-import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter;
-import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter.IPtvTemplateItemCallback;
-import com.tencent.mobileqq.richmedia.capture.data.TemplateGroupItem;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureReportUtil;
-import com.tencent.mobileqq.richmedia.capture.view.ProviderView.ProviderViewListener;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import com.tencent.mobileqq.profile.view.helper.HeartRiseLayerDrawable;
 
 public class agss
-  implements PtvTemplateAdapter.IPtvTemplateItemCallback
+  implements Runnable
 {
-  public agss(PtvTemplateAdapter paramPtvTemplateAdapter) {}
+  public agss(HeartRiseLayerDrawable paramHeartRiseLayerDrawable, int paramInt1, int paramInt2, int paramInt3) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager", 2, "PtvTemplateAdapter onItemClicked position: " + paramInt);
-    }
-    if ((paramInt < 0) || (paramInt >= this.a.a.size())) {}
-    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo;
-    do
-    {
-      return;
-      localPtvTemplateInfo = (PtvTemplateManager.PtvTemplateInfo)this.a.a.get(paramInt);
-      if (!localPtvTemplateInfo.advertisement) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("CapturePtvTemplateManager", 2, "info.advertisement is ture onItemClicked name: " + localPtvTemplateInfo.name);
-      }
-    } while (PtvTemplateAdapter.a(this.a) == null);
-    PtvTemplateAdapter.a(this.a).a(localPtvTemplateInfo);
-    return;
-    this.a.a(paramInt);
-    CaptureReportUtil.jdField_b_of_type_JavaLangString = PtvTemplateAdapter.a(this.a).a + "";
-    CaptureReportUtil.c = localPtvTemplateInfo.id;
-    CaptureReportUtil.a = localPtvTemplateInfo.hasGesture();
-    boolean bool;
-    if (localPtvTemplateInfo.kind == 3)
-    {
-      bool = true;
-      CaptureReportUtil.jdField_b_of_type_Boolean = bool;
-      if (CameraControl.a().a != 1) {
-        break label228;
-      }
-    }
-    label228:
-    for (paramInt = i;; paramInt = 2)
-    {
-      CaptureReportUtil.f(paramInt);
-      return;
-      bool = false;
-      break;
-    }
+    ((agst)this.jdField_a_of_type_ComTencentMobileqqProfileViewHelperHeartRiseLayerDrawable.getDrawable(this.jdField_a_of_type_Int)).a(this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agss
  * JD-Core Version:    0.7.0.1
  */

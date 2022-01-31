@@ -1,47 +1,15 @@
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.apollo.utils.ApolloGameRscVerify;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import org.json.JSONObject;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
 public class ytb
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ytb(ApolloGameRscVerify paramApolloGameRscVerify) {}
+  public ytb(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      long l = System.currentTimeMillis();
-      if (!ApolloGameRscVerify.a(this.a)) {
-        return;
-      }
-      if (ApolloGameRscVerify.a(this.a) != null)
-      {
-        Iterator localIterator = ApolloGameRscVerify.a(this.a).keys();
-        StringBuilder localStringBuilder = new StringBuilder(200);
-        Object localObject;
-        do
-        {
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          localObject = this.a;
-          ((ApolloGameRscVerify)localObject).jdField_a_of_type_Int += 1;
-          localObject = (String)localIterator.next();
-          localStringBuilder.delete(0, localStringBuilder.length());
-          localStringBuilder.append(ApolloConstant.a);
-          localStringBuilder.append("/game/").append(ApolloGameRscVerify.a(this.a)).append("/").append((String)localObject);
-        } while (this.a.a(localStringBuilder.toString(), (String)localObject));
-        this.a.jdField_a_of_type_Long = (System.currentTimeMillis() - l);
-        return;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("cmgame_process.ApolloGameRscVerify", 1, localThrowable, new Object[0]);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,25 +1,37 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
-import com.tencent.image.URLDrawableHandler;
+import com.tencent.biz.pubaccount.VideoAdInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyAdVideoReportData;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoInfo;
+import java.util.Set;
 
 public class mpk
-  implements URLDrawableHandler
+  implements Runnable
 {
-  public mpk(RunningJob paramRunningJob) {}
+  public mpk(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
   
-  public void doCancel() {}
-  
-  public boolean isCancelled()
+  public void run()
   {
-    return false;
+    if ((FastWebVideoFeedsPlayManager.a(this.a) != null) && (FastWebVideoFeedsPlayManager.a(this.a).c() == 2))
+    {
+      this.a.a(4);
+      FastWebVideoFeedsPlayManager.a(this.a, 8);
+      FastWebVideoFeedsPlayManager.a(this.a).d();
+      if (FastWebVideoFeedsPlayManager.c(this.a))
+      {
+        String str = FastWebVideoFeedsPlayManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoInfo.a.h;
+        if (FastWebVideoFeedsPlayManager.a(this.a).contains(str)) {
+          break label125;
+        }
+        FastWebVideoFeedsPlayManager.a(this.a).add(str);
+        FastWebVideoFeedsPlayManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.f = ReadinjoyAdVideoReportData.a;
+      }
+    }
+    return;
+    label125:
+    FastWebVideoFeedsPlayManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.f = ReadinjoyAdVideoReportData.c;
   }
-  
-  public void onFileDownloadFailed(int paramInt) {}
-  
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong) {}
-  
-  public void publishProgress(int paramInt) {}
 }
 
 

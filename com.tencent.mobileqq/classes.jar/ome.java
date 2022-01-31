@@ -1,18 +1,22 @@
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller;
-import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
-import com.tencent.biz.qqstory.troop.model.TroopStoryAIOVideoListSynchronizer;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout.OnUndoViewClickListener;
 
 public class ome
-  implements BatchHandlerListPuller.IPullResultCallback
+  implements View.OnClickListener
 {
-  public ome(TroopStoryAIOVideoListSynchronizer paramTroopStoryAIOVideoListSynchronizer, BatchHandlerListPuller paramBatchHandlerListPuller) {}
+  public ome(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopStoryAIOVideoListSynchronizer.a.set(false);
-    this.jdField_a_of_type_ComTencentBizQqstoryTroopModelTroopStoryAIOVideoListSynchronizer.c();
+    SLog.b("SelectColorLayout", "onUndoClick: undoTypeEnable=" + this.a.jdField_a_of_type_Boolean);
+    if (HorizontalSelectColorLayout.a(this.a) > System.currentTimeMillis()) {}
+    while ((!this.a.jdField_a_of_type_Boolean) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout$OnUndoViewClickListener == null)) {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout$OnUndoViewClickListener.a();
   }
 }
 

@@ -1,23 +1,13 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoHelper;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.QQStoryNetReqUtils.RequestCallBack;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView;
 
 public class nsm
-  implements QQStoryNetReqUtils.RequestCallBack
+  implements Runnable
 {
-  public nsm(QQStoryTakeVideoHelper paramQQStoryTakeVideoHelper, StoryConfigManager paramStoryConfigManager) {}
+  public nsm(MyMemoriesListView paramMyMemoriesListView) {}
   
-  public void a(ErrorMessage paramErrorMessage)
+  public void run()
   {
-    SLog.e("QQStoryTakeVideoHelper", "get vip error.");
-  }
-  
-  public void a(Integer paramInteger)
-  {
-    SLog.b("QQStoryTakeVideoHelper", "get vip competed, vip:" + paramInteger);
-    this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_i_am_vip", paramInteger);
+    this.a.springBackOverScrollHeaderView();
   }
 }
 

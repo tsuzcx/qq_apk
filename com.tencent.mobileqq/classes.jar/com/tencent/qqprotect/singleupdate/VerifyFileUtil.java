@@ -1,6 +1,6 @@
 package com.tencent.qqprotect.singleupdate;
 
-import alir;
+import alyh;
 import android.util.Base64;
 import java.io.DataInputStream;
 import java.io.IOException;
@@ -11,19 +11,19 @@ import java.security.spec.X509EncodedKeySpec;
 
 public class VerifyFileUtil
 {
-  public static alir a(DataInputStream paramDataInputStream)
+  public static alyh a(DataInputStream paramDataInputStream)
   {
-    alir localalir = new alir(null);
+    alyh localalyh = new alyh(null);
     try
     {
-      localalir.jdField_a_of_type_Int = paramDataInputStream.readInt();
-      localalir.b = paramDataInputStream.readInt();
-      localalir.c = paramDataInputStream.readInt();
-      if ((localalir.c > 0) && (localalir.c <= 256))
+      localalyh.jdField_a_of_type_Int = paramDataInputStream.readInt();
+      localalyh.b = paramDataInputStream.readInt();
+      localalyh.c = paramDataInputStream.readInt();
+      if ((localalyh.c > 0) && (localalyh.c <= 256))
       {
-        localalir.jdField_a_of_type_ArrayOfByte = new byte[localalir.c];
-        paramDataInputStream.read(localalir.jdField_a_of_type_ArrayOfByte);
-        return localalir;
+        localalyh.jdField_a_of_type_ArrayOfByte = new byte[localalyh.c];
+        paramDataInputStream.read(localalyh.jdField_a_of_type_ArrayOfByte);
+        return localalyh;
       }
     }
     catch (IOException paramDataInputStream)
@@ -147,7 +147,7 @@ public class VerifyFileUtil
     //   95: invokevirtual 123	java/io/DataInputStream:skipBytes	(I)I
     //   98: pop
     //   99: aload 6
-    //   101: invokestatic 125	com/tencent/qqprotect/singleupdate/VerifyFileUtil:a	(Ljava/io/DataInputStream;)Lalir;
+    //   101: invokestatic 125	com/tencent/qqprotect/singleupdate/VerifyFileUtil:a	(Ljava/io/DataInputStream;)Lalyh;
     //   104: astore 8
     //   106: aload 8
     //   108: ifnonnull +40 -> 148
@@ -171,7 +171,7 @@ public class VerifyFileUtil
     //   142: invokevirtual 43	java/io/IOException:printStackTrace	()V
     //   145: goto -24 -> 121
     //   148: aload 8
-    //   150: getfield 27	alir:jdField_a_of_type_Int	I
+    //   150: getfield 27	alyh:jdField_a_of_type_Int	I
     //   153: istore_3
     //   154: iload_3
     //   155: ldc 126
@@ -196,10 +196,10 @@ public class VerifyFileUtil
     //   191: invokevirtual 43	java/io/IOException:printStackTrace	()V
     //   194: goto -24 -> 170
     //   197: aload 8
-    //   199: getfield 30	alir:b	I
+    //   199: getfield 30	alyh:b	I
     //   202: ifle +15 -> 217
     //   205: aload 8
-    //   207: getfield 30	alir:b	I
+    //   207: getfield 30	alyh:b	I
     //   210: istore_3
     //   211: iload_3
     //   212: ldc 127
@@ -224,7 +224,7 @@ public class VerifyFileUtil
     //   248: invokevirtual 43	java/io/IOException:printStackTrace	()V
     //   251: goto -24 -> 227
     //   254: aload 8
-    //   256: getfield 30	alir:b	I
+    //   256: getfield 30	alyh:b	I
     //   259: istore_3
     //   260: iload_2
     //   261: iload_3
@@ -282,9 +282,9 @@ public class VerifyFileUtil
     //   363: astore_0
     //   364: aload_0
     //   365: aload 8
-    //   367: getfield 30	alir:b	I
+    //   367: getfield 30	alyh:b	I
     //   370: aload 8
-    //   372: getfield 36	alir:jdField_a_of_type_ArrayOfByte	[B
+    //   372: getfield 36	alyh:jdField_a_of_type_ArrayOfByte	[B
     //   375: aload_1
     //   376: invokestatic 131	com/tencent/qqprotect/singleupdate/VerifyFileUtil:a	(Ljava/io/DataInputStream;I[BLjava/security/PublicKey;)Z
     //   379: istore 4
@@ -408,7 +408,7 @@ public class VerifyFileUtil
     //   529	8	7	localObject5	Object
     //   542	8	7	localIOException3	IOException
     //   556	6	7	localIOException4	IOException
-    //   4	423	8	localalir	alir
+    //   4	423	8	localalyh	alyh
     // Exception table:
     //   from	to	target	type
     //   63	71	71	java/io/IOException

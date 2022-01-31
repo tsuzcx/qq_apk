@@ -1,32 +1,34 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class wgs
-  extends Handler
+  implements AdapterView.OnItemClickListener
 {
-  public wgs(SystemMsgListView paramSystemMsgListView) {}
+  public wgs(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    switch (paramMessage.what)
+    if (this.a.jdField_a_of_type_Wgy != null)
     {
-    default: 
-    case 1012: 
-      do
-      {
-        return;
-      } while (SystemMsgListView.a(this.a) == null);
-      this.a.i();
-      SystemMsgListView.a(this.a).notifyDataSetChanged();
-      return;
+      paramAdapterView = this.a.getActivity();
+      if (paramAdapterView != null) {
+        break label23;
+      }
     }
-    paramMessage = SystemMsgListView.a(this.a).getResources().getString(2131433161);
-    QQToast.a(SystemMsgListView.a(this.a), 1, paramMessage, 0).b(this.a.a());
+    label23:
+    do
+    {
+      return;
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Grp_chatRecord", "", "chatRecor_mber", "res_clk", 0, 0, this.a.b, "", "", "");
+      paramView = ((wgx)this.a.jdField_a_of_type_Wgy.getItem(paramInt)).a;
+      ChatHistoryBubbleListForTroopFragment.a(paramAdapterView, this.a.b, paramView, 100, 1);
+    } while (!QLog.isColorLevel());
+    QLog.i(TroopMemberHistoryFragment.jdField_a_of_type_JavaLangString, 2, "onItemClick, message = " + paramView);
   }
 }
 

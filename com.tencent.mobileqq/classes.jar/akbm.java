@@ -1,37 +1,21 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class akbm
-  implements TroopMemberApiClient.Callback
+public final class akbm
+  implements Runnable
 {
-  public akbm(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
+  public akbm(String paramString) {}
   
-  public void a(Bundle paramBundle)
+  public void run()
   {
-    int i = paramBundle.getInt("readinjoy_to_wx_config");
-    if (QLog.isColorLevel()) {
-      QLog.d("SwiftBrowserScreenShotHandler", 2, "config = " + i);
-    }
-    if (i == 0) {
-      WxShareHelperFromReadInjoy.a().a(this.a.g, this.a.b, 0, false);
-    }
-    for (;;)
-    {
-      this.a.b.recycle();
-      this.a.b = null;
-      return;
-      WXShareHelper.a().a(this.a.g, this.a.b, 0, false);
-    }
+    QQToast localQQToast = QQToast.a(BaseApplicationImpl.getContext(), "debug:" + this.a, 1);
+    localQQToast.a();
+    localQQToast.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akbm
  * JD-Core Version:    0.7.0.1
  */

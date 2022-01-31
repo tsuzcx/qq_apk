@@ -1,13 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class vqr
-  implements DialogInterface.OnClickListener
+class vqr
+  implements Runnable
 {
-  public vqr(GameRoomChatPie paramGameRoomChatPie) {}
+  vqr(vqn paramvqn, String paramString1, String paramString2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    ((ArkAppCenter)this.jdField_a_of_type_Vqn.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(120)).a().b(this.jdField_a_of_type_JavaLangString, this.b);
+    QQToast.a(this.jdField_a_of_type_Vqn.a.a.jdField_a_of_type_AndroidContentContext, "应用创建成功...", 0).a();
+  }
 }
 
 

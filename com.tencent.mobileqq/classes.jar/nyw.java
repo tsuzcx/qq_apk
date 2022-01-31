@@ -1,39 +1,40 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.biz.qqstory.base.QQStoryObserver;
+import com.tencent.biz.qqstory.model.CommentManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class nyw
-  implements INetInfoHandler
+  extends QQStoryObserver
 {
-  public nyw(FeedSegment paramFeedSegment) {}
+  public nyw(HomeFeedPresenter paramHomeFeedPresenter) {}
   
-  public void onNetMobile2None()
+  public void a(StoryPushMsg paramStoryPushMsg)
   {
-    FeedSegment.b(this.a, FeedSegment.a(3));
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    FeedSegment.b(this.a, FeedSegment.a(1));
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    FeedSegment.b(this.a, FeedSegment.a(2));
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    FeedSegment.b(this.a, FeedSegment.a(1));
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    FeedSegment.b(this.a, FeedSegment.a(2));
-  }
-  
-  public void onNetWifi2None()
-  {
-    FeedSegment.b(this.a, FeedSegment.a(3));
+    if ((paramStoryPushMsg.a == 15) || (paramStoryPushMsg.a == 19))
+    {
+      SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new comment push: %s", new Object[] { paramStoryPushMsg });
+      this.a.a(paramStoryPushMsg.d);
+    }
+    do
+    {
+      return;
+      if ((paramStoryPushMsg.a == 14) || (paramStoryPushMsg.a == 18))
+      {
+        SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive new like push: %s", new Object[] { paramStoryPushMsg });
+        this.a.b(paramStoryPushMsg.d);
+        return;
+      }
+      if (paramStoryPushMsg.a == 17)
+      {
+        SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete comment push: %s", new Object[] { paramStoryPushMsg });
+        ((CommentManager)SuperManager.a(17)).a(paramStoryPushMsg.d, paramStoryPushMsg.c);
+        return;
+      }
+    } while (paramStoryPushMsg.a != 16);
+    SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "!!!Receive delete like push: %s", new Object[] { paramStoryPushMsg });
+    this.a.b(paramStoryPushMsg.d);
   }
 }
 

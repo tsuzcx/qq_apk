@@ -1,35 +1,22 @@
-import android.os.Bundle;
-import com.tencent.biz.huanjiplugin.HuanjiPluginStartListener;
-import com.tencent.biz.troop.TroopMemberApiService;
+import android.app.Dialog;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.SpannableString;
+import com.tencent.biz.qrcode.ipc.VoiceScan;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
-class oux
-  implements HuanjiPluginStartListener
+public class oux
+  implements Runnable
 {
-  oux(ouo paramouo, Bundle paramBundle, int paramInt) {}
+  public oux(VoiceScan paramVoiceScan) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidOsBundle.putInt("state", paramInt2);
-    this.jdField_a_of_type_AndroidOsBundle.putInt("percentage", paramInt3);
-    this.jdField_a_of_type_AndroidOsBundle.putLong("errCode", 0L);
-    if ((paramInt2 == 6) && (this.jdField_a_of_type_Int == 2)) {
-      this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Ouo.a.a(80, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      if ((paramInt2 == 4) && (this.jdField_a_of_type_Int == 1)) {
-        this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
-      }
-    }
-  }
-  
-  public void a(int paramInt, String paramString)
-  {
-    this.jdField_a_of_type_AndroidOsBundle.putLong("errCode", paramInt);
-    this.jdField_a_of_type_AndroidOsBundle.putBoolean("actionFinish", true);
-    this.jdField_a_of_type_Ouo.a.a(80, this.jdField_a_of_type_AndroidOsBundle);
+    SpannableString localSpannableString = new SpannableString(VoiceScan.a(this.a).getString(2131433410));
+    localSpannableString.setSpan(new StatableSpanTextView.StatableForegroundColorSpan(VoiceScan.a(this.a).getResources().getColor(2131493062), VoiceScan.a(this.a).getResources().getColor(2131493063)), localSpannableString.length() - 7, localSpannableString.length() - 1, 33);
+    VoiceScan.a(this.a, DialogUtil.a(VoiceScan.a(this.a), VoiceScan.a(this.a).getString(2131433409), localSpannableString, 0, 2131433697, null, null, new ouy(this)));
+    VoiceScan.a(this.a).show();
   }
 }
 

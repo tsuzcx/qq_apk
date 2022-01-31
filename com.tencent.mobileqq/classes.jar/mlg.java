@@ -1,15 +1,13 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
 
 public class mlg
-  implements MessageQueue.IdleHandler
+  implements Runnable
 {
-  public mlg(FastWebActivity paramFastWebActivity) {}
+  public mlg(AppInPushNotification paramAppInPushNotification, boolean paramBoolean) {}
   
-  public boolean queueIdle()
+  public void run()
   {
-    FastWebActivity.a(this.a, FastWebActivity.a(this.a));
-    return false;
+    AppInPushNotification.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushAppInPushNotification, this.jdField_a_of_type_Boolean);
   }
 }
 

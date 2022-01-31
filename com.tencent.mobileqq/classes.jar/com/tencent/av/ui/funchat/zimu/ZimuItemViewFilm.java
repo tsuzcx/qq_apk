@@ -16,13 +16,13 @@ import com.tencent.av.AVLog;
 import com.tencent.av.business.handler.SentenceInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import kdz;
+import kdk;
 
 public class ZimuItemViewFilm
   extends ZimuItemView
 {
   private long jdField_a_of_type_Long;
-  Handler jdField_a_of_type_AndroidOsHandler = new kdz(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new kdk(this);
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
   private Canvas jdField_b_of_type_AndroidGraphicsCanvas = new Canvas();
   Paint jdField_b_of_type_AndroidGraphicsPaint = new Paint(2);
@@ -41,7 +41,7 @@ public class ZimuItemViewFilm
   public ZimuItemViewFilm(Context paramContext, WeakReference paramWeakReference, int paramInt1, int paramInt2, float paramFloat)
   {
     super(paramContext, paramWeakReference, paramInt1, paramInt2, paramFloat);
-    this.m = ((int)paramContext.getResources().getDimension(2131560061));
+    this.m = ((int)paramContext.getResources().getDimension(2131560079));
     this.l = (this.g - this.m * 2);
     this.i = (this.g / 6);
   }
@@ -276,7 +276,7 @@ public class ZimuItemViewFilm
   
   public int d()
   {
-    return (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131560059);
+    return (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131560077);
   }
   
   Bitmap d()

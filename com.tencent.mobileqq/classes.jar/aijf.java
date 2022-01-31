@@ -1,31 +1,24 @@
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.tribe.view.TribeTitlePrefixPanelView.TitlePrefixItem;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout28;
+import com.tencent.mobileqq.widget.BubbleImageView;
 
 public class aijf
-  implements TextWatcher
 {
-  public aijf(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public ImageView a;
+  public TextView a;
+  public BubbleImageView a;
+  public String a;
+  public ImageView b;
+  public TextView b;
+  public String b;
+  public String c;
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((!TextUtils.isEmpty(this.a.a.b)) && (paramInt1 > 0) && (paramInt1 < this.a.a.b.length() + this.a.a.c.length() + this.a.a.a.length() + this.a.K.length()) && (paramInt2 > paramInt3))
-    {
-      this.a.e(false);
-      return;
-    }
-    TroopBarPublishActivity.b(this.a);
-  }
+  public aijf(StructMsgItemLayout28 paramStructMsgItemLayout28) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aijf
  * JD-Core Version:    0.7.0.1
  */

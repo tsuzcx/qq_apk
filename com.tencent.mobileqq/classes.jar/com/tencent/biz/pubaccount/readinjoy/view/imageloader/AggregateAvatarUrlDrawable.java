@@ -12,6 +12,10 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.IntRange;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule.RefreshUserInfoCallBack;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
@@ -21,16 +25,25 @@ import com.tencent.qphone.base.util.QLog;
 
 public class AggregateAvatarUrlDrawable
   extends Drawable
-  implements URLDrawable.URLDrawableListener
+  implements ReadInJoyUserInfoModule.RefreshUserInfoCallBack, URLDrawable.URLDrawableListener
 {
-  private final Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  private final Paint jdField_a_of_type_AndroidGraphicsPaint;
-  private final Rect jdField_a_of_type_AndroidGraphicsRect;
-  private final RectF jdField_a_of_type_AndroidGraphicsRectF;
+  private static String jdField_a_of_type_JavaLangString = "AggregateAvatarUrlDrawable";
+  private int jdField_a_of_type_Int;
+  private long jdField_a_of_type_Long;
+  private Resources jdField_a_of_type_AndroidContentResResources;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private Rect jdField_a_of_type_AndroidGraphicsRect;
+  private RectF jdField_a_of_type_AndroidGraphicsRectF;
   private URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private final Bitmap b;
+  private Bitmap b;
   
   public AggregateAvatarUrlDrawable(Bitmap paramBitmap, String paramString, int paramInt, Resources paramResources)
+  {
+    a(paramBitmap, paramString, paramInt, paramResources);
+  }
+  
+  private void a(Bitmap paramBitmap, String paramString, int paramInt, Resources paramResources)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mRequestWidth = Math.round(paramInt * 0.48F);
@@ -44,10 +57,23 @@ public class AggregateAvatarUrlDrawable
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-    this.b = PuzzleAvatarUtil.a(paramBitmap, BitmapFactory.decodeResource(paramResources, 2130842320), 0.0F, 1.0F);
+    this.b = PuzzleAvatarUtil.a(paramBitmap, BitmapFactory.decodeResource(paramResources, 2130842367), 0.0F, 1.0F);
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect(0, 0, this.b.getWidth(), this.b.getHeight());
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, paramInt * 0.75F, paramInt * 0.75F);
     this.jdField_a_of_type_ComTencentImageURLDrawable.setBounds(new Rect(Math.round(paramInt * 0.52F), Math.round(paramInt * 0.52F), paramInt, paramInt));
+  }
+  
+  public void a(String paramString, ReadInJoyUserInfo paramReadInJoyUserInfo)
+  {
+    if ((!TextUtils.equals(paramString, String.valueOf(this.jdField_a_of_type_Long))) || (paramReadInJoyUserInfo == null)) {
+      return;
+    }
+    a(this.jdField_a_of_type_AndroidGraphicsBitmap, ReadInJoyUserInfoModule.a(paramReadInJoyUserInfo), this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidContentResResources);
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "onLoadUserInfoFailed");
   }
   
   public void draw(@NonNull Canvas paramCanvas)
@@ -69,19 +95,19 @@ public class AggregateAvatarUrlDrawable
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    QLog.d("AggregateAvatarUrlDrawable", 2, "onLoadCanceled");
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "onLoadCanceled");
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    QLog.d("AggregateAvatarUrlDrawable", 2, "onLoadFailed");
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "onLoadFailed");
   }
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    QLog.d("AggregateAvatarUrlDrawable", 2, "onLoadSuccessed");
+    QLog.d(jdField_a_of_type_JavaLangString, 2, "onLoadSuccessed");
     invalidateSelf();
   }
   

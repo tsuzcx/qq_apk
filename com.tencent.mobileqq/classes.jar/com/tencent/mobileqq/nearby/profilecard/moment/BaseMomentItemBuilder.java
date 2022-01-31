@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import aewj;
-import aewk;
-import aewl;
-import aewo;
-import aewp;
+import afjp;
+import afjq;
+import afjr;
+import afju;
+import afjv;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -88,8 +88,8 @@ public abstract class BaseMomentItemBuilder
       localActionSheet.a(str, 1);
       i += 1;
     }
-    localActionSheet.c(2131432998);
-    localActionSheet.a(new aewp(this, paramMomentViewHolder, arrayOfString, paramString, localActionSheet));
+    localActionSheet.c(2131433015);
+    localActionSheet.a(new afjv(this, paramMomentViewHolder, arrayOfString, paramString, localActionSheet));
     localActionSheet.show();
   }
   
@@ -107,7 +107,7 @@ public abstract class BaseMomentItemBuilder
   private void g(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     MomentFeedInfo localMomentFeedInfo = paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo;
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle("确定删除该动态？").setNegativeButton(2131432998, new aewo(this, paramMomentViewHolder)).setPositiveButton(2131434024, new aewl(this, paramMomentViewHolder, localMomentFeedInfo)).show();
+    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setTitle("确定删除该动态？").setNegativeButton(2131433015, new afju(this, paramMomentViewHolder)).setPositiveButton(2131434041, new afjr(this, paramMomentViewHolder, localMomentFeedInfo)).show();
   }
   
   private void h(BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
@@ -171,38 +171,38 @@ public abstract class BaseMomentItemBuilder
     {
       return paramMomentFeedInfo;
       localMomentViewHolder.jdField_a_of_type_AndroidViewView = ((View)localObject);
-      paramView = LayoutInflater.from(paramContext).inflate(2130970439, (ViewGroup)localObject, false);
+      paramView = LayoutInflater.from(paramContext).inflate(2130970480, (ViewGroup)localObject, false);
       LinearLayout.LayoutParams localLayoutParams1 = new LinearLayout.LayoutParams(-1, -2);
       localLayoutParams1.topMargin = UIUtils.a(paramContext, 20.0F);
       localLayoutParams1.leftMargin = UIUtils.a(paramContext, 16.0F);
       localLayoutParams1.bottomMargin = UIUtils.a(paramContext, 12.0F);
       localLayoutParams1.rightMargin = UIUtils.a(paramContext, 6.0F);
-      localMomentViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364277));
-      localMomentViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363531));
-      localMomentViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370702));
-      localMomentViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370703));
-      localMomentViewHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370704));
-      localMomentViewHolder.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370705));
-      View localView1 = LayoutInflater.from(paramContext).inflate(2130970434, (ViewGroup)localObject, false);
+      localMomentViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364301));
+      localMomentViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363549));
+      localMomentViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370842));
+      localMomentViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370843));
+      localMomentViewHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131370844));
+      localMomentViewHolder.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131370845));
+      View localView1 = LayoutInflater.from(paramContext).inflate(2130970475, (ViewGroup)localObject, false);
       LinearLayout.LayoutParams localLayoutParams2 = new LinearLayout.LayoutParams(-1, -2);
       localLayoutParams2.leftMargin = UIUtils.a(paramContext, 66.0F);
       localLayoutParams2.rightMargin = UIUtils.a(paramContext, 6.0F);
-      localMomentViewHolder.i = ((TextView)localView1.findViewById(2131370686));
-      localMomentViewHolder.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView1.findViewById(2131363537));
-      localMomentViewHolder.jdField_e_of_type_AndroidWidgetTextView = ((TextView)localView1.findViewById(2131370687));
-      localMomentViewHolder.jdField_c_of_type_AndroidViewView = localView1.findViewById(2131370688);
-      localMomentViewHolder.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)localView1.findViewById(2131370689));
+      localMomentViewHolder.i = ((TextView)localView1.findViewById(2131370826));
+      localMomentViewHolder.jdField_d_of_type_AndroidWidgetTextView = ((TextView)localView1.findViewById(2131363555));
+      localMomentViewHolder.jdField_e_of_type_AndroidWidgetTextView = ((TextView)localView1.findViewById(2131370827));
+      localMomentViewHolder.jdField_c_of_type_AndroidViewView = localView1.findViewById(2131370828);
+      localMomentViewHolder.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)localView1.findViewById(2131370829));
       localMomentViewHolder.jdField_d_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      localMomentViewHolder.f = ((TextView)localView1.findViewById(2131370690));
-      localMomentViewHolder.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)localView1.findViewById(2131370691));
+      localMomentViewHolder.f = ((TextView)localView1.findViewById(2131370830));
+      localMomentViewHolder.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)localView1.findViewById(2131370831));
       localMomentViewHolder.jdField_e_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      localMomentViewHolder.g = ((TextView)localView1.findViewById(2131368411));
-      localMomentViewHolder.jdField_a_of_type_AndroidWidgetListView = ((ListView)localView1.findViewById(2131370693));
+      localMomentViewHolder.g = ((TextView)localView1.findViewById(2131368478));
+      localMomentViewHolder.jdField_a_of_type_AndroidWidgetListView = ((ListView)localView1.findViewById(2131370833));
       localMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentCommentsAdapter = new CommentsAdapter();
       localMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentCommentsAdapter.a(this);
       localMomentViewHolder.jdField_a_of_type_AndroidWidgetListView.setAdapter(localMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentCommentsAdapter);
-      localMomentViewHolder.h = ((TextView)localView1.findViewById(2131370694));
-      localMomentViewHolder.jdField_d_of_type_AndroidViewView = localView1.findViewById(2131370692);
+      localMomentViewHolder.h = ((TextView)localView1.findViewById(2131370834));
+      localMomentViewHolder.jdField_d_of_type_AndroidViewView = localView1.findViewById(2131370832);
       localMomentViewHolder.h.setOnClickListener(this);
       ((LinearLayout)localObject).addView(paramView, localLayoutParams1);
       View localView2 = a((ViewGroup)localObject, localMomentViewHolder);
@@ -216,7 +216,7 @@ public abstract class BaseMomentItemBuilder
         paramView.leftMargin = UIUtils.a(paramContext, 66.0F);
         paramView.rightMargin = UIUtils.a(paramContext, 6.0F);
         ((LinearLayout)localObject).addView(localView2);
-        localView2.setId(2131362461);
+        localView2.setId(2131362465);
         localMomentViewHolder.jdField_b_of_type_AndroidViewView = localView2;
         localView2.setOnClickListener(this);
       }
@@ -286,7 +286,7 @@ public abstract class BaseMomentItemBuilder
       paramMomentViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
       if (this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.gender == 0)
       {
-        paramMomentViewHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842756);
+        paramMomentViewHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842855);
         paramMomentViewHolder.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
         if (this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.age == 0) {
           break label998;
@@ -345,7 +345,7 @@ public abstract class BaseMomentItemBuilder
       if (!paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.jdField_a_of_type_Boolean) {
         break label1046;
       }
-      paramMomentViewHolder.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130842760);
+      paramMomentViewHolder.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130842859);
       paramMomentViewHolder.f.setTextColor(-52924);
       label495:
       paramMomentViewHolder.f.setText(String.valueOf(paramMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.jdField_f_of_type_Int));
@@ -410,7 +410,7 @@ public abstract class BaseMomentItemBuilder
       return;
       if (this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.gender == 1)
       {
-        paramMomentViewHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842763);
+        paramMomentViewHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130842862);
         break;
       }
       paramMomentViewHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -428,7 +428,7 @@ public abstract class BaseMomentItemBuilder
       paramMomentViewHolder.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
       break label449;
       label1046:
-      paramMomentViewHolder.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130842761);
+      paramMomentViewHolder.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130842860);
       paramMomentViewHolder.f.setTextColor(-4473925);
       break label495;
       label1069:
@@ -510,16 +510,16 @@ public abstract class BaseMomentItemBuilder
         break;
       }
       localObject = ActionSheet.a(this.jdField_a_of_type_AndroidContentContext);
-      ((ActionSheet)localObject).a(2131434024, 1);
-      ((ActionSheet)localObject).c(2131432998);
-      ((ActionSheet)localObject).a(new aewj(this, paramMomentViewHolder, localMomentFeedInfo, (ActionSheet)localObject));
+      ((ActionSheet)localObject).a(2131434041, 1);
+      ((ActionSheet)localObject).c(2131433015);
+      ((ActionSheet)localObject).a(new afjp(this, paramMomentViewHolder, localMomentFeedInfo, (ActionSheet)localObject));
       ((ActionSheet)localObject).show();
       return;
     }
     localObject = ActionSheet.a(this.jdField_a_of_type_AndroidContentContext);
-    ((ActionSheet)localObject).a(2131432509, 1);
-    ((ActionSheet)localObject).c(2131432998);
-    ((ActionSheet)localObject).a(new aewk(this, paramMomentViewHolder, localMomentFeedInfo, (ActionSheet)localObject));
+    ((ActionSheet)localObject).a(2131432526, 1);
+    ((ActionSheet)localObject).c(2131433015);
+    ((ActionSheet)localObject).a(new afjq(this, paramMomentViewHolder, localMomentFeedInfo, (ActionSheet)localObject));
     ((ActionSheet)localObject).show();
   }
   
@@ -585,21 +585,21 @@ public abstract class BaseMomentItemBuilder
     {
     default: 
       return;
-    case 2131362461: 
+    case 2131362465: 
       d(localMomentViewHolder);
       return;
-    case 2131370705: 
+    case 2131370845: 
       b(localMomentViewHolder);
       return;
-    case 2131370689: 
+    case 2131370829: 
       h(localMomentViewHolder);
       return;
-    case 2131370694: 
+    case 2131370834: 
       localNowVideoReporter = new NowVideoReporter().h("data_card").i("feed_com_clk").d("2").a(a(localMomentViewHolder)).b(localMomentViewHolder.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentDataMomentFeedInfo.c).c(String.valueOf(a(localMomentViewHolder)));
       if (!this.jdField_a_of_type_Boolean) {
         break;
       }
-    case 2131370691: 
+    case 2131370831: 
       for (paramView = "1";; paramView = "2")
       {
         localNowVideoReporter.e(paramView).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);

@@ -1,23 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.widget.StoryNewGuideDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class aenz
-  implements View.OnTouchListener
+  implements DialogInterface.OnClickListener
 {
-  public aenz(StoryNewGuideDialog paramStoryNewGuideDialog) {}
+  public aenz(GameRoomInviteActivity paramGameRoomInviteActivity, QQCustomDialog paramQQCustomDialog) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.dismiss();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 

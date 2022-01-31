@@ -1,37 +1,53 @@
-import android.view.SurfaceHolder;
-import android.view.SurfaceHolder.Callback;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.video.IMediaPlayer;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.phone.BaseActivityView.IPhoneContext;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class wva
-  implements SurfaceHolder.Callback
+  implements BaseActivityView.IPhoneContext
 {
-  public wva(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public wva(PhoneFrameActivity paramPhoneFrameActivity) {}
   
-  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
+  public View a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "surfaceCreated ");
-    }
-    if ((this.a.q == 1) && (this.a.p > 0))
-    {
-      this.a.a(this.a.p);
-      this.a.p = 0;
-      this.a.q = 0;
-    }
+    return this.a.jdField_a_of_type_AndroidViewView;
   }
   
-  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  public ImageView a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PhotoPreviewActivity", 2, "surfaceDestroyed ");
-    }
-    if (this.a.a != null) {
-      this.a.a.c();
-    }
+    return this.a.jdField_a_of_type_AndroidWidgetImageView;
+  }
+  
+  public TextView a()
+  {
+    return this.a.leftView;
+  }
+  
+  public QQAppInterface a()
+  {
+    return this.a.app;
+  }
+  
+  public View b()
+  {
+    return this.a.b;
+  }
+  
+  public TextView b()
+  {
+    return this.a.rightViewText;
+  }
+  
+  public TextView c()
+  {
+    return this.a.centerView;
+  }
+  
+  public TextView d()
+  {
+    return this.a.jdField_a_of_type_AndroidWidgetTextView;
   }
 }
 

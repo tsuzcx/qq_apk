@@ -1,36 +1,27 @@
-import com.tencent.av.random.RandomWebProtocol;
-import org.json.JSONObject;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.av.redpacket.SoundPoolHelper;
+import com.tencent.av.redpacket.SoundPoolHelper.OnLoadFinishListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashSet;
 
 public class jlh
-  extends jlf
+  implements SoundPool.OnLoadCompleteListener
 {
-  boolean jdField_b_of_type_Boolean;
-  int c;
+  public jlh(SoundPoolHelper paramSoundPoolHelper, SoundPoolHelper.OnLoadFinishListener paramOnLoadFinishListener) {}
   
-  public jlh(RandomWebProtocol paramRandomWebProtocol, jlf paramjlf, String paramString, boolean paramBoolean, int paramInt)
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    super(paramRandomWebProtocol, paramjlf);
-    this.a = 2;
-    this.c = paramString;
-    this.jdField_b_of_type_Boolean = paramBoolean;
-    this.c = paramInt;
-    this.d = "[m] RequestMulti";
-  }
-  
-  String a()
-  {
-    this.a = null;
-    try
-    {
-      this.a = new JSONObject().put("session_type", this.c);
-      return super.a();
+    paramSoundPool = this.jdField_a_of_type_ComTencentAvRedpacketSoundPoolHelper;
+    paramSoundPool.c += 1;
+    if (QLog.isColorLevel()) {
+      QLog.d("SoundPoolHelper", 2, "loadMusic onLoadComplete,sampleId = " + paramInt1 + ",status = " + paramInt2 + ",loadedCount = " + this.jdField_a_of_type_ComTencentAvRedpacketSoundPoolHelper.c + ",musicCount = " + this.jdField_a_of_type_ComTencentAvRedpacketSoundPoolHelper.b);
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+    if (paramInt2 == 0) {
+      this.jdField_a_of_type_ComTencentAvRedpacketSoundPoolHelper.a.add(Integer.valueOf(paramInt1));
+    }
+    if (this.jdField_a_of_type_ComTencentAvRedpacketSoundPoolHelper.c == this.jdField_a_of_type_ComTencentAvRedpacketSoundPoolHelper.b) {
+      this.jdField_a_of_type_ComTencentAvRedpacketSoundPoolHelper$OnLoadFinishListener.a();
     }
   }
 }

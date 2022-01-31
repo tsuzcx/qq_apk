@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
-import amlw;
-import amlx;
+import ancb;
+import ancc;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -207,9 +207,9 @@ public class QZoneWebViewJsHandleLogic
   public static void a(Context paramContext, WebViewPlugin.PluginRuntime paramPluginRuntime)
   {
     paramPluginRuntime = DialogUtil.a(paramContext, 0);
-    paramPluginRuntime.setMessage(paramContext.getString(2131434590));
-    paramPluginRuntime.setPositiveButton(paramContext.getString(2131434592), new amlw(paramContext));
-    paramPluginRuntime.setNegativeButton(paramContext.getString(2131435869), new amlx(paramPluginRuntime));
+    paramPluginRuntime.setMessage(paramContext.getString(2131434607));
+    paramPluginRuntime.setPositiveButton(paramContext.getString(2131434609), new ancb(paramContext));
+    paramPluginRuntime.setNegativeButton(paramContext.getString(2131435886), new ancc(paramPluginRuntime));
     try
     {
       if (!paramPluginRuntime.isShowing()) {
@@ -556,7 +556,7 @@ public class QZoneWebViewJsHandleLogic
       localIntent.putExtra("injectrecommend", true);
       localIntent.setData(Uri.parse(paramString));
       localIntent.addFlags(268435456);
-      localIntent.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131432859));
+      localIntent.putExtra("source_name", BaseApplicationImpl.getContext().getString(2131432876));
       paramContext.startActivity(localIntent);
     } while (!QLog.isColorLevel());
     QLog.d("handleurl", 2, "jump to browser: " + paramString);
@@ -743,7 +743,7 @@ public class QZoneWebViewJsHandleLogic
           if ((paramVarArgs != null) && (paramVarArgs.length() > 0) && (localJSONArray != null) && (localJSONArray.length() == paramVarArgs.length()))
           {
             if ((((JSONObject)localObject).has("toast")) && (((JSONObject)localObject).getBoolean("toast"))) {
-              QQToast.a(paramPluginRuntime.a(), 2, 2131437235, 0).a();
+              QQToast.a(paramPluginRuntime.a(), 2, 2131437252, 0).a();
             }
             localObject = new long[paramVarArgs.length()];
             long[] arrayOfLong = new long[localJSONArray.length()];

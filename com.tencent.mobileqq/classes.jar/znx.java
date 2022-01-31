@@ -1,48 +1,27 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.automator.step.GetTroopAssisMsg;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.ThreadRegulator;
+import com.tencent.mobileqq.app.ThreadRegulator.CpuBusyness;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MsgAutoMonitorUtil;
+import mqq.os.MqqHandler;
 
 public class znx
-  extends MessageObserver
+  extends MqqHandler
 {
-  private znx(GetTroopAssisMsg paramGetTroopAssisMsg) {}
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2)
+  public znx(ThreadRegulator paramThreadRegulator, Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "onGetAllProxyMsgFin:" + paramBoolean + ", timeoutFlag=" + paramLong1 + ", type=" + paramLong2);
-    }
-    if (paramLong2 == 1L) {
-      if ((!paramBoolean) || (paramLong1 == 8L) || (paramLong1 == 4L)) {
-        break label95;
-      }
-    }
-    label95:
-    for (int i = 1; i == 0; i = 0)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    paramMessage = (ThreadRegulator.CpuBusyness)paramMessage.obj;
+    if (paramMessage != null)
     {
-      this.a.a(6);
-      return;
-    }
-    this.a.a(7);
-  }
-  
-  protected void a(boolean paramBoolean, String[] paramArrayOfString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "on GetTroopMsg Fin:" + paramBoolean);
-    }
-    MsgAutoMonitorUtil.a().h();
-    this.a.a(7);
-  }
-  
-  protected void f(boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "on RegisterProxy Fin:" + paramBoolean);
-    }
-    if (!paramBoolean) {
-      this.a.a(6);
+      if (QLog.isColorLevel()) {
+        QLog.d("ThreadManager.Regulaotr", 2, paramMessage.jdField_a_of_type_Int + " cost " + (paramMessage.b - paramMessage.jdField_a_of_type_Long) + ", paused " + paramMessage.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+      }
+      paramMessage.recycle();
     }
   }
 }

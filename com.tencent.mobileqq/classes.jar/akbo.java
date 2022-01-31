@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
 
-public class akbo
-  implements Runnable
+public final class akbo
+  implements MediaPlayer.OnCompletionListener
 {
-  public akbo(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
-  
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    this.a.f();
+    paramMediaPlayer.release();
+    com.tencent.mobileqq.utils.AudioUtil.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akbo
  * JD-Core Version:    0.7.0.1
  */

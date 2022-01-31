@@ -18,6 +18,7 @@ import com.tencent.biz.qqstory.network.pb.qqstory_struct.Address;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.DiscoveryShareGroupVideoInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedVideoInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.GroupStoryInfo;
+import com.tencent.biz.qqstory.network.pb.qqstory_struct.MultiRecommendItem;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.QimVideoInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.ShareGroupVideoInfo;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.StoryVideoBasicInfo;
@@ -75,6 +76,8 @@ public class StoryVideoItem
   public static final int PLAYABLE_NO_NOT_SUPPORT_STREAM = 4;
   public static final int PLAYABLE_YES_HAS_LOCAL_VIDEO_FILE = 3;
   public static final int PLAYABLE_YES_USE_TVK_SUPPORT_STREAM = 2;
+  public static final int PLAYER_SCALE_TYPE_CENTERCROP = 0;
+  public static final int PLAYER_SCALE_TYPE_CENTERINSIDE = 1;
   public static final int STORY_TYPE_QQSTORY = 1;
   public static final int STORY_TYPE_SHAREGROUP = 3;
   public static final int STORY_TYPE_TROOPSTORY = 2;
@@ -132,6 +135,7 @@ public class StoryVideoItem
   public QimVideoInfoItem mQimVideoInfoItem;
   public int mRateResult = -1;
   public CopyOnWriteArrayList mRateUsers = new CopyOnWriteArrayList();
+  public String mRecommendWording;
   public int mRetryUploadTimes;
   public int mSourceType = -1;
   public int mStoryType = 1;
@@ -163,6 +167,8 @@ public class StoryVideoItem
   public int mVideoWidth = -1;
   public int mViewCount = -1;
   public long mViewTotalTime = -1L;
+  public String mWsSchema = "";
+  public int playerScaleType = -1;
   public int preloadPriority = 1;
   public String shareGroupId;
   public String sourceVid;
@@ -238,6 +244,9 @@ public class StoryVideoItem
         this.shareGroupId = paramStoryVideoEntry.shareGroupId;
         this.sourceVid = paramStoryVideoEntry.sourceVid;
         this.mAttachedFeedId = paramStoryVideoEntry.attachedFeedId;
+        if (paramStoryVideoEntry.recommendWording != null) {
+          this.mRecommendWording = paramStoryVideoEntry.recommendWording;
+        }
         this.mVideoSource = paramStoryVideoEntry.mVideoSource;
         this.mVideoIndex = paramStoryVideoEntry.mVideoIndex;
         this.mInteractStatus = paramStoryVideoEntry.mInteractStatus;
@@ -330,6 +339,8 @@ public class StoryVideoItem
             catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException3) {}
           }
           this.mSourceType = paramStoryVideoEntry.mSourceType;
+          this.playerScaleType = paramStoryVideoEntry.playerScaleType;
+          this.mWsSchema = paramStoryVideoEntry.wsSchema;
         }
       }
     }
@@ -675,6 +686,12 @@ public class StoryVideoItem
       if (paramStoryVideoFullInfo.qim_video_info.has()) {
         this.mQimVideoInfoItem = new QimVideoInfoItem((qqstory_struct.QimVideoInfo)paramStoryVideoFullInfo.qim_video_info.get());
       }
+      if (paramStoryVideoFullInfo.player_scale_type.has()) {
+        this.playerScaleType = paramStoryVideoFullInfo.player_scale_type.get();
+      }
+      if (paramStoryVideoFullInfo.ws_schema.has()) {
+        this.mWsSchema = paramStoryVideoFullInfo.ws_schema.get().toStringUtf8();
+      }
       return;
       this.mTempVideoUrl = paramStoryVideoFullInfo.video_url.get().toStringUtf8();
       this.mTempThumbUrl = paramStoryVideoFullInfo.video_cover.get().toStringUtf8();
@@ -749,6 +766,37 @@ public class StoryVideoItem
     this.mAddTime = paramGroupStoryInfo.vid_time.get();
     this.mVideoMd5 = paramGroupStoryInfo.story_id.get().toStringUtf8();
     this.mVideoSource = paramGroupStoryInfo.video_source.get();
+  }
+  
+  public void convertFrom(String paramString, qqstory_struct.MultiRecommendItem paramMultiRecommendItem)
+  {
+    if (paramMultiRecommendItem.feed_id.has()) {}
+    for (String str1 = paramMultiRecommendItem.feed_id.get().toStringUtf8();; str1 = "")
+    {
+      Object localObject = "";
+      if (paramMultiRecommendItem.rcmd_wording.has())
+      {
+        String str2 = paramMultiRecommendItem.rcmd_wording.get();
+        localObject = str2;
+        if (str2 == null) {
+          localObject = "";
+        }
+      }
+      for (;;)
+      {
+        if (paramMultiRecommendItem.feed_video_info_list.has())
+        {
+          paramMultiRecommendItem = paramMultiRecommendItem.feed_video_info_list.get();
+          if (!paramMultiRecommendItem.isEmpty())
+          {
+            convertFrom(paramString, (qqstory_struct.FeedVideoInfo)paramMultiRecommendItem.get(0));
+            this.mAttachedFeedId = str1;
+            this.mRecommendWording = ((String)localObject);
+          }
+        }
+        return;
+      }
+    }
   }
   
   public void convertFrom(String paramString, qqstory_struct.ShareGroupVideoInfo paramShareGroupVideoInfo)
@@ -1079,6 +1127,15 @@ public class StoryVideoItem
     if (paramObject.mSourceType != -1) {
       this.mSourceType = paramObject.mSourceType;
     }
+    if (paramObject.playerScaleType != -1) {
+      this.playerScaleType = paramObject.playerScaleType;
+    }
+    if (paramObject.mRecommendWording != null) {
+      this.mRecommendWording = paramObject.mRecommendWording;
+    }
+    if (TextUtils.isEmpty(paramObject.mWsSchema)) {
+      this.mWsSchema = paramObject.mWsSchema;
+    }
   }
   
   public StoryVideoEntry cover2StoryEntry()
@@ -1153,6 +1210,7 @@ public class StoryVideoItem
     localStoryVideoEntry.mVideoSource = this.mVideoSource;
     localStoryVideoEntry.mVideoIndex = this.mVideoIndex;
     localStoryVideoEntry.mInteractStatus = this.mInteractStatus;
+    localStoryVideoEntry.recommendWording = this.mRecommendWording;
     if (this.mTagInfoBase != null)
     {
       localObject = new qqstory_struct.TagInfoBase();
@@ -1207,7 +1265,35 @@ public class StoryVideoItem
       localStoryVideoEntry.mQimBytes = this.mQimVideoInfoItem.a();
     }
     localStoryVideoEntry.mSourceType = this.mSourceType;
+    localStoryVideoEntry.playerScaleType = this.playerScaleType;
+    localStoryVideoEntry.wsSchema = this.mWsSchema;
     return localStoryVideoEntry;
+  }
+  
+  public qqstory_struct.FeedVideoInfo covertToPBFeedVideoInfo(String paramString)
+  {
+    qqstory_struct.FeedVideoInfo localFeedVideoInfo = new qqstory_struct.FeedVideoInfo();
+    localFeedVideoInfo.vid.set(ByteStringMicro.copyFromUtf8(this.mVid));
+    localFeedVideoInfo.time.set(this.mCreateTime / 1000L);
+    if (this.mTagInfoBase != null) {
+      localFeedVideoInfo.video_tag.set(this.mTagInfoBase.a());
+    }
+    localFeedVideoInfo.video_cover.set(ByteStringMicro.copyFromUtf8(this.mVideoThumbnailUrl));
+    localFeedVideoInfo.video_attr.set(ByteStringMicro.copyFromUtf8(convertToVideoAttr(this, paramString)));
+    return localFeedVideoInfo;
+  }
+  
+  public qqstory_struct.MultiRecommendItem covertToPBMultiRecommendItem(String paramString)
+  {
+    qqstory_struct.MultiRecommendItem localMultiRecommendItem = new qqstory_struct.MultiRecommendItem();
+    if (!TextUtils.isEmpty(this.mAttachedFeedId)) {
+      localMultiRecommendItem.feed_id.set(ByteStringMicro.copyFromUtf8(this.mAttachedFeedId));
+    }
+    if (this.mRecommendWording != null) {
+      localMultiRecommendItem.rcmd_wording.set(this.mRecommendWording);
+    }
+    localMultiRecommendItem.feed_video_info_list.add(covertToPBFeedVideoInfo(paramString));
+    return localMultiRecommendItem;
   }
   
   public boolean equals(Object paramObject)
@@ -1322,6 +1408,11 @@ public class StoryVideoItem
   public int hashCode()
   {
     return this.mVid.hashCode();
+  }
+  
+  public boolean isBasicInfoOK()
+  {
+    return (!TextUtils.isEmpty(this.mVideoUrl)) || (!TextUtils.isEmpty(this.mTempVideoUrl)) || (isFakeVid(this.mVid));
   }
   
   public boolean isCancel()

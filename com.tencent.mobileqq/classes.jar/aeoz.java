@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.redtouch.LocalRedTouchManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
 
 public class aeoz
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public aeoz(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public aeoz(GameRoomTransActivity paramGameRoomTransActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((this.a.a.a != null) && (this.a.a.a.equals(this.a.app.getCurrentAccountUin()))) {
-      ((LocalRedTouchManager)this.a.app.getManager(159)).a(false);
-    }
+    this.a.finish();
   }
 }
 

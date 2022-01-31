@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import com.tencent.mobileqq.nearby.now.view.logic.VideoInfoListenerImpl;
 
 public class aesc
-  implements Runnable
+  implements URLDrawable.URLDrawableListener
 {
-  public aesc(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public aesc(StoryPlayController paramStoryPlayController, VideoInfoListenerImpl paramVideoInfoListenerImpl) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    EntityManager localEntityManager = this.a.a.app.getEntityManagerFactory().createEntityManager();
-    if (localEntityManager != null)
-    {
-      localEntityManager.a(NearbyProfileDisplayTribePanel.a(this.a));
-      localEntityManager.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewLogicVideoInfoListenerImpl != null) {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewLogicVideoInfoListenerImpl.a(paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight(), true);
     }
   }
 }

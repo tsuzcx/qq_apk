@@ -1,23 +1,24 @@
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.weiyun.utils.PreferenceUtils;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.app.AppRuntime;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.LbsDataV2.WifiInfo;
 
 public final class amrl
-  implements Runnable
+  implements Parcelable.Creator
 {
-  public amrl(Context paramContext) {}
-  
-  public void run()
+  public LbsDataV2.WifiInfo a(Parcel paramParcel)
   {
-    long l = BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin();
-    boolean bool1 = PreferenceUtils.a(this.a, String.valueOf(l), "key_pwd_queried", false);
-    boolean bool2 = PreferenceUtils.a(this.a, String.valueOf(l), "key_pwd_has", false);
-    boolean bool3 = PreferenceUtils.a(this.a, String.valueOf(l), "key_pwd_verified", false);
-    cooperation.weiyun.sdk.api.WeiyunApi.a()[0].set(bool1);
-    cooperation.weiyun.sdk.api.WeiyunApi.a()[1].set(bool2);
-    cooperation.weiyun.sdk.api.WeiyunApi.a()[2].set(bool3);
+    LbsDataV2.WifiInfo localWifiInfo = new LbsDataV2.WifiInfo();
+    if (paramParcel != null)
+    {
+      localWifiInfo.mac = paramParcel.readString();
+      localWifiInfo.rssi = paramParcel.readInt();
+    }
+    return localWifiInfo;
+  }
+  
+  public LbsDataV2.WifiInfo[] a(int paramInt)
+  {
+    return null;
   }
 }
 

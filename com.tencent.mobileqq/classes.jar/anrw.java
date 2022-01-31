@@ -1,14 +1,15 @@
-import dov.com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import dov.com.qq.im.capture.poi.FacePoiSearchUI;
+import dov.com.qq.im.capture.poi.FacePoiSearchUI.FacePoiSearchUIListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
 
 public class anrw
-  implements Runnable
+  implements FacePoiSearchUI.FacePoiSearchUIListener
 {
-  public anrw(CameraGLSurfaceView paramCameraGLSurfaceView) {}
+  public anrw(EditProviderPart paramEditProviderPart) {}
   
-  public void run()
+  public void aD_()
   {
-    CameraGLSurfaceView.a(this.a).sendFirstFrameMsg();
+    EditProviderPart.a(this.a).e();
   }
 }
 

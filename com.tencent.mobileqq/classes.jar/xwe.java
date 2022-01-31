@@ -1,16 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
+import com.tencent.mobileqq.activity.richmedia.subtitles.RDBaseDataManager;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
 
-class xwe
-  implements DialogInterface.OnClickListener
+public class xwe
+  implements Runnable
 {
-  xwe(xwa paramxwa) {}
+  public xwe(RDBaseDataManager paramRDBaseDataManager, xvw paramxvw, int paramInt, NetResp paramNetResp) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.setResult(0, this.a.a.a);
-    this.a.a.finish();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesRDBaseDataManager.a(this.jdField_a_of_type_Xvw.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqTransfileNetResp.a.c, this.jdField_a_of_type_Xvw.b);
   }
 }
 

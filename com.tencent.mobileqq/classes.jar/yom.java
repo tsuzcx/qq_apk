@@ -1,29 +1,29 @@
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.apollo.ai.ApolloAIPresenter;
+import com.tencent.mobileqq.apollo.ai.IApolloAIView;
+import com.tencent.mobileqq.vas.VasExtensionObserver;
+import com.tencent.qphone.base.util.QLog;
 
-public final class yom
-  implements EIPCResultCallback
+public class yom
+  extends VasExtensionObserver
 {
-  public yom(String paramString, long paramLong) {}
+  public yom(ApolloAIPresenter paramApolloAIPresenter) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  protected void g(boolean paramBoolean, Object paramObject)
   {
-    paramEIPCResult = paramEIPCResult.data;
-    int i = paramEIPCResult.getInt("type");
-    if (i == 1)
+    if ((!paramBoolean) && (ApolloAIPresenter.a(this.a) != null))
     {
-      paramEIPCResult = paramEIPCResult.getString("nickName");
-      CmGameUtil.a().callbackGetNick(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
+      ApolloAIPresenter.a(this.a).i();
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloAIPresenter", 2, "send msg to ai fail");
+      }
     }
-    while (i != 2) {
-      return;
+  }
+  
+  protected void h(boolean paramBoolean, Object paramObject)
+  {
+    if (ApolloAIPresenter.a(this.a) != null) {
+      ApolloAIPresenter.a(this.a).b(paramBoolean);
     }
-    paramEIPCResult = (Bitmap)paramEIPCResult.getParcelable("head");
-    CmGameUtil.a().callbackGetHead(paramEIPCResult, this.jdField_a_of_type_JavaLangString, i, this.jdField_a_of_type_Long);
   }
 }
 

@@ -1,56 +1,23 @@
-import com.tencent.av.AVLog;
-import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.MagicPlayListener;
-import com.tencent.av.business.manager.magicface.MagicfacePlayer;
-import com.tencent.mobileqq.magicface.service.SoundPoolUtil;
+import com.tencent.av.business.manager.report.VideoNodeReporter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class jgm
-  implements MagicfaceBaseDecoder.MagicPlayListener
+  implements Runnable
 {
-  public jgm(MagicfacePlayer paramMagicfacePlayer) {}
+  public jgm(VideoNodeReporter paramVideoNodeReporter, String paramString) {}
   
-  public void a(String paramString)
+  public void run()
   {
-    AVLog.c("AVMagicfacePlayer", "play video begin." + paramString);
-    if (this.a.jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener != null) {
-      this.a.jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener.a(paramString);
-    }
-  }
-  
-  public void a(String arg1, int paramInt)
-  {
-    AVLog.c("AVMagicfacePlayer", "play video end." + ??? + "|" + paramInt);
-    if (this.a.jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener != null) {
-      this.a.jdField_b_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener.a(???, paramInt);
-    }
-    if (MagicfacePlayer.a(this.a) != null)
+    QLog.d("VideoNodeReporter", 1, "updateCrashType ,crashType = " + this.jdField_a_of_type_JavaLangString);
+    if (this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter.a.size() > 0)
     {
-      MagicfacePlayer.a(this.a).a();
-      MagicfacePlayer.a(this.a, null);
-    }
-    synchronized (this.a)
-    {
-      if ((this.a.jdField_b_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData != null)) {
-        this.a.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceData, this.a.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicfaceRenderListener, this.a.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder$MagicPlayListener);
+      Iterator localIterator = this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter.a.iterator();
+      while (localIterator.hasNext()) {
+        ((jgo)localIterator.next()).d = this.jdField_a_of_type_JavaLangString;
       }
-      return;
     }
-  }
-  
-  public void b(String paramString)
-  {
-    AVLog.c("AVMagicfacePlayer", "play audio end.");
-    this.a.a(this.a.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void b(String paramString, boolean paramBoolean)
-  {
-    AVLog.c("AVMagicfacePlayer", "play audio begin.");
-    if (paramBoolean)
-    {
-      this.a.a(this.a.jdField_a_of_type_JavaLangString, 100);
-      return;
-    }
-    this.a.a(this.a.jdField_a_of_type_JavaLangString, 1);
   }
 }
 

@@ -1,55 +1,42 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.AppProtocolObserver;
-import com.tencent.mobileqq.nearby.FaceScoreCallBack;
-import com.tencent.mobileqq.nearby.NearbyFaceScoreManager;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.leba.LebaFeedsAdapter;
+import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.oidb.oidb_0x8da.oidb_0x8da.RspBody;
-import tencent.im.oidb.oidb_0x8da.oidb_0x8da.TinyInfo;
 
 public class adyo
-  extends ProtoUtils.AppProtocolObserver
+  extends BroadcastReceiver
 {
-  public adyo(NearbyFaceScoreManager paramNearbyFaceScoreManager, FaceScoreCallBack paramFaceScoreCallBack) {}
+  public adyo(LebaFeedsAdapter paramLebaFeedsAdapter) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
-    for (;;)
-    {
-      try
-      {
-        paramBundle = new oidb_0x8da.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = paramBundle.rpt_msg_tiny_info.get().iterator();
-        if (paramArrayOfByte.hasNext())
-        {
-          paramBundle = (oidb_0x8da.TinyInfo)paramArrayOfByte.next();
-          if (paramBundle.uint32_result.get() == 0) {
-            this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(paramBundle.uint64_uin.get(), paramBundle.uint64_tinyid.get());
-          }
-        }
-        else
-        {
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
-      QLog.e("Q..troop.faceScore", 2, "getTinyIdByUin oidb_0x8da onResult  uin=" + paramBundle.uint64_uin.get() + " tinyid=" + paramBundle.uint64_tinyid.get() + " result=" + paramBundle.uint32_result.get());
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.i("Leba2018.LebaFeedsAdapter", 2, "Broadcast onReceive " + paramContext);
     }
+    if ("mqq.intent.action.QQ_BACKGROUND".equals(paramContext)) {
+      LebaFeedsAdapter.b(this.a, false);
+    }
+    do
+    {
+      do
+      {
+        return;
+        if (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+          break;
+        }
+      } while (LebaFeedsAdapter.a(this.a) == null);
+      LebaFeedsAdapter.a(this.a).d(true);
+      return;
+    } while ((!"tencent.av.v2q.StopVideoChat".equals(paramContext)) || (LebaFeedsAdapter.a(this.a) == null));
+    LebaFeedsAdapter.a(this.a).d(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adyo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,37 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.BaseResponse;
 import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.network.request.GetBlackStatusRequest;
-import com.tencent.biz.qqstory.network.response.GetBlackListStatusResponse;
+import com.tencent.biz.qqstory.channel.NetworkRequest;
+import com.tencent.biz.qqstory.channel.NetworkRequest.IProtocolListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class nbk
-  implements CmdTaskManger.CommandCallback
+  implements NetworkRequest.IProtocolListener
 {
-  public nbk(StoryConfigManager paramStoryConfigManager, long paramLong) {}
+  protected final long a;
+  public CmdTaskManger.CommandCallback a;
+  public NetworkRequest a;
   
-  public void a(@NonNull GetBlackStatusRequest paramGetBlackStatusRequest, @Nullable GetBlackListStatusResponse paramGetBlackListStatusResponse, @NonNull ErrorMessage paramErrorMessage)
+  public nbk(NetworkRequest paramNetworkRequest)
   {
-    if (paramGetBlackListStatusResponse != null)
+    this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest = paramNetworkRequest;
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+  }
+  
+  private void b(int paramInt, String paramString, BaseResponse paramBaseResponse)
+  {
+    CmdTaskManger.CommandCallback localCommandCallback = this.jdField_a_of_type_ComTencentBizQqstoryChannelCmdTaskManger$CommandCallback;
+    if (localCommandCallback != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_black_status", Integer.valueOf(paramGetBlackListStatusResponse.b));
-      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_black_status_update_interval", Integer.valueOf(paramGetBlackListStatusResponse.c));
-      this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("qqstory_black_status_last_update_time", Integer.valueOf((int)this.jdField_a_of_type_Long));
+      localCommandCallback.a(this.jdField_a_of_type_ComTencentBizQqstoryChannelNetworkRequest, paramBaseResponse, new ErrorMessage(paramInt, paramString));
+      return;
     }
+    SLog.d("Q.qqstory.net:CmdTaskManager", "cmd callback is null");
+  }
+  
+  public void a(int paramInt, String paramString, BaseResponse paramBaseResponse)
+  {
+    b(paramInt, paramString, paramBaseResponse);
   }
 }
 

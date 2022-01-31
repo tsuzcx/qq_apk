@@ -1,22 +1,38 @@
-import android.view.animation.OvershootInterpolator;
-import com.tencent.mobileqq.armap.ARMapOpenRedPackDialog;
-import com.tencent.mobileqq.portal.SanHuaView;
+import android.text.TextUtils;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import java.util.Iterator;
+import java.util.Set;
 
-public class aava
-  extends OvershootInterpolator
+class aava
+  implements Runnable
 {
-  private boolean jdField_a_of_type_Boolean;
+  aava(aauz paramaauz, Set paramSet) {}
   
-  public aava(ARMapOpenRedPackDialog paramARMapOpenRedPackDialog) {}
-  
-  public float getInterpolation(float paramFloat)
+  public void run()
   {
-    if ((!this.jdField_a_of_type_Boolean) && (paramFloat > 0.7D))
+    this.jdField_a_of_type_Aauz.jdField_a_of_type_Aavw.jdField_a_of_type_JavaUtilSet.addAll(this.jdField_a_of_type_JavaUtilSet);
+    if (this.jdField_a_of_type_Aauz.jdField_a_of_type_Aavw.jdField_a_of_type_JavaUtilSet.isEmpty())
     {
-      this.jdField_a_of_type_Boolean = true;
-      ARMapOpenRedPackDialog.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapOpenRedPackDialog).a();
+      ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("getAppPathByAction, no app name found, task complete, action=%s.%s", new Object[] { this.jdField_a_of_type_Aauz.jdField_a_of_type_Aavw.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aauz.jdField_a_of_type_Aavw.b }));
+      this.jdField_a_of_type_Aauz.jdField_a_of_type_Aavw.jdField_a_of_type_Boolean = true;
+      ArkLocalAppMgr.a(this.jdField_a_of_type_Aauz.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Aauz.jdField_a_of_type_Aavw);
     }
-    return (float)(1.0D - Math.pow(2.718281828459045D, 5.0F * -paramFloat) * Math.cos(8.0F * paramFloat));
+    for (;;)
+    {
+      return;
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
+      while (localIterator.hasNext())
+      {
+        String str1 = (String)localIterator.next();
+        String str2 = this.jdField_a_of_type_Aauz.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr.a(str1, "0.0.0.0");
+        if (!TextUtils.isEmpty(str2)) {
+          ArkLocalAppMgr.a(this.jdField_a_of_type_Aauz.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Aauz.jdField_a_of_type_Aavw, 0, "Found on Local", str2, str1);
+        } else {
+          this.jdField_a_of_type_Aauz.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr.a(str1, "0.0.0.0", null, new aavb(this, str1));
+        }
+      }
+    }
   }
 }
 

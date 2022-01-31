@@ -1,24 +1,32 @@
-import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
 import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationGridview.NaviMaskTouchListener;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class ldz
-  implements Runnable
+  implements ReadInJoyNavigationGridview.NaviMaskTouchListener
 {
-  public ldz(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, int paramInt) {}
+  private WeakReference a;
   
-  public void run()
+  public ldz(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity)
   {
-    if (this.jdField_a_of_type_Int <= 0)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.setText(2131433280);
+    this.a = new WeakReference(paramReadInJoyNewBaseActivity);
+  }
+  
+  public void a()
+  {
+    ReadInJoyNewFeedsActivity localReadInJoyNewFeedsActivity = (ReadInJoyNewFeedsActivity)this.a.get();
+    if (localReadInJoyNewFeedsActivity == null) {
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyNewFeedsActivity", 2, "NaviMaskTouchListenerImpl. activity has destoryed");
+      }
+    }
+    while ((ReadInJoyNewFeedsActivity.a(localReadInJoyNewFeedsActivity) != 0) || (localReadInJoyNewFeedsActivity.a == null)) {
       return;
     }
-    if (this.jdField_a_of_type_Int > 99)
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.setText(String.format("%s(%d+)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.getString(2131433280), Integer.valueOf(99) }));
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.getString(2131433280), Integer.valueOf(this.jdField_a_of_type_Int) }));
+    localReadInJoyNewFeedsActivity.a.a(null);
   }
 }
 

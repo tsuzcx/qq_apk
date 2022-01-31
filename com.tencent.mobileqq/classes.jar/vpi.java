@@ -1,23 +1,22 @@
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class vpi
+public class vpi
   implements DialogInterface.OnClickListener
 {
-  vpi(vph paramvph, Context paramContext) {}
+  public vpi(PhotoListPanel paramPhotoListPanel, LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean, String paramString1, String paramString2, String paramString3) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = AIOUtils.a(new Intent(this.jdField_a_of_type_AndroidContentContext, SplashActivity.class), null);
-    paramDialogInterface.putExtra("uin", this.jdField_a_of_type_Vph.a.a.a);
-    paramDialogInterface.putExtra("uintype", 3000);
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, this.jdField_a_of_type_Boolean);
+      com.tencent.mobileqq.shortvideo.ShortVideoBusiManager.b = System.currentTimeMillis();
+    }
+    ReportController.b(null, "CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, "", "");
   }
 }
 

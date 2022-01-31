@@ -1,40 +1,17 @@
-import android.content.IntentFilter;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
 
-public class mph
+class mph
   implements Runnable
 {
-  public mph(ReadInJoyGlobalReporter paramReadInJoyGlobalReporter) {}
+  mph(mpg parammpg, VideoPlayerWrapper paramVideoPlayerWrapper) {}
   
   public void run()
   {
-    try
-    {
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.USER_PRESENT");
-      if (ReadInJoyGlobalReporter.b(this.a) == 0)
-      {
-        BaseApplicationImpl.getContext().registerReceiver(this.a.a, localIntentFilter);
-        ReadInJoyGlobalReporter.a(this.a, 1);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyGlobalReporter", 2, "registerScreenListener");
-      }
-      return;
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayerWrapper.h();
     }
-    catch (Exception localException)
-    {
-      do
-      {
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.e("ReadInJoyGlobalReporter", 2, "registerScreenListener:" + localException.toString());
-    }
+    FastWebVideoFeedsPlayManager.b(this.jdField_a_of_type_Mpg.a);
   }
 }
 

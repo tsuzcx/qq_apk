@@ -39,16 +39,16 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicLong;
 import mqq.app.AppRuntime;
 import mqq.app.Foreground;
-import ywu;
-import ywv;
-import yzx;
-import yzy;
-import zbi;
-import zbj;
-import zbk;
-import zcu;
-import zcv;
-import zgg;
+import zaa;
+import zab;
+import zdd;
+import zde;
+import zeo;
+import zep;
+import zeq;
+import zga;
+import zgb;
+import zjm;
 
 public class GuardManager
   extends BroadcastReceiver
@@ -70,8 +70,8 @@ public class GuardManager
   private Handler jdField_a_of_type_AndroidOsHandler;
   public volatile String a;
   Random jdField_a_of_type_JavaUtilRandom;
-  private zbk jdField_a_of_type_Zbk;
-  zbk[] jdField_a_of_type_ArrayOfZbk = new zbk[9];
+  private zeq jdField_a_of_type_Zeq;
+  zeq[] jdField_a_of_type_ArrayOfZeq = new zeq[9];
   public long[][] a;
   public int b;
   long b;
@@ -145,7 +145,7 @@ public class GuardManager
           localHashMap.put("countLevel_1", str1);
           localHashMap.put("countLevel_2", str2);
           localHashMap.put("countLevel_3", str3);
-          StatisticCollector.a(BaseApplicationImpl.getApplication()).a(localQQAppInterface.c(), "maxThreadManagerJobWait", true, i, 1L, null, "", false);
+          StatisticCollector.a(BaseApplicationImpl.getApplication()).a(localQQAppInterface.c(), "maxThreadManagerJobWait", true, i, 1L, localHashMap, "", false);
           return;
         }
       }
@@ -158,38 +158,38 @@ public class GuardManager
     }
   }
   
-  zbk a(int paramInt)
+  zeq a(int paramInt)
   {
-    zbk localzbk = this.jdField_a_of_type_ArrayOfZbk[paramInt];
-    Object localObject = localzbk;
-    if (localzbk == null) {
+    zeq localzeq = this.jdField_a_of_type_ArrayOfZeq[paramInt];
+    Object localObject = localzeq;
+    if (localzeq == null) {
       switch (paramInt)
       {
       default: 
         throw new RuntimeException("WTF");
       case 2: 
-        localObject = new yzx();
+        localObject = new zdd();
       }
     }
     for (;;)
     {
-      ((zbk)localObject).jdField_a_of_type_ComTencentMobileqqAppGuardManager = this;
-      ((zbk)localObject).jdField_a_of_type_Int = paramInt;
-      this.jdField_a_of_type_ArrayOfZbk[paramInt] = localObject;
+      ((zeq)localObject).jdField_a_of_type_ComTencentMobileqqAppGuardManager = this;
+      ((zeq)localObject).jdField_a_of_type_Int = paramInt;
+      this.jdField_a_of_type_ArrayOfZeq[paramInt] = localObject;
       return localObject;
-      localObject = new yzy();
+      localObject = new zde();
       continue;
-      localObject = new ywu();
+      localObject = new zaa();
       continue;
-      localObject = new ywv();
+      localObject = new zab();
       continue;
-      localObject = new zcv();
+      localObject = new zgb();
       continue;
-      localObject = new zbk();
+      localObject = new zeq();
       continue;
-      localObject = new zcu();
+      localObject = new zga();
       continue;
-      localObject = new zgg();
+      localObject = new zjm();
     }
   }
   
@@ -273,7 +273,7 @@ public class GuardManager
     if (Looper.myLooper() == ThreadManager.getFileThreadLooper())
     {
       if (QLog.isColorLevel()) {
-        QLog.d("GuardManager", 2, "nextState: " + zbk.jdField_a_of_type_ArrayOfJavaLangString[this.f] + ", " + zbk.jdField_a_of_type_ArrayOfJavaLangString[paramInt] + ", " + paramObject);
+        QLog.d("GuardManager", 2, "nextState: " + zeq.jdField_a_of_type_ArrayOfJavaLangString[this.f] + ", " + zeq.jdField_a_of_type_ArrayOfJavaLangString[paramInt] + ", " + paramObject);
       }
       if (this.f == 8) {
         return;
@@ -282,15 +282,15 @@ public class GuardManager
       {
         Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3, this.f, paramInt);
         this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 1000L);
-        this.jdField_a_of_type_Zbk = a(paramInt);
+        this.jdField_a_of_type_Zeq = a(paramInt);
         this.f = paramInt;
       }
       for (;;)
       {
-        this.jdField_a_of_type_Zbk.a(5, paramObject);
+        this.jdField_a_of_type_Zeq.a(5, paramObject);
         return;
         if (paramInt == 0) {
-          this.jdField_a_of_type_Zbk = a(paramInt);
+          this.jdField_a_of_type_Zeq = a(paramInt);
         }
       }
     }
@@ -307,22 +307,27 @@ public class GuardManager
   public void a(String paramString, HashMap paramHashMap)
   {
     StatisticCollector localStatisticCollector = StatisticCollector.a(BaseApplication.getContext());
-    paramHashMap.put("config", zbi.a().jdField_a_of_type_JavaLangString);
+    paramHashMap.put("config", zeo.a().jdField_a_of_type_JavaLangString);
     localStatisticCollector.a("", paramString, true, 0L, 0L, paramHashMap, "");
   }
   
   public void a(boolean paramBoolean)
   {
     if (this.jdField_a_of_type_Long == 0L) {}
-    long l;
+    long l1;
     int i;
     do
     {
       return;
-      l = SystemClock.uptimeMillis();
-      i = (int)((l - this.jdField_a_of_type_Long) / 1000L);
+      l1 = SystemClock.uptimeMillis();
+      long l2 = l1 - this.jdField_a_of_type_Long;
+      int j = (int)(l2 / 1000L);
+      i = j;
+      if (l2 % 1000L >= 500L) {
+        i = j + 1;
+      }
       if (QLog.isColorLevel()) {
-        QLog.d("GuardManager", 2, "reportForeground(" + paramBoolean + "):[" + this.jdField_a_of_type_Long + " - " + l + " = " + i + "]");
+        QLog.d("GuardManager", 2, "reportForeground(" + paramBoolean + "):[" + this.jdField_a_of_type_Long + " - " + l1 + " = " + i + "]");
       }
       if (i > 0)
       {
@@ -334,7 +339,7 @@ public class GuardManager
         break;
       }
     } while (i <= 0);
-    this.jdField_a_of_type_Long = l;
+    this.jdField_a_of_type_Long = l1;
     return;
     this.jdField_a_of_type_Long = 0L;
   }
@@ -502,7 +507,7 @@ public class GuardManager
     localHashMap.put("qqUsedMemory", String.valueOf(l / 1024L));
     localHashMap.put("resumeCount", String.valueOf(k * 1.0D / 15.0D));
     localHashMap.put("msgCount", String.valueOf(j * 1.0D / 15.0D));
-    localHashMap.put("activeLevel", String.valueOf(zbi.a().a(this.jdField_a_of_type_Array2dOfLong, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int)));
+    localHashMap.put("activeLevel", String.valueOf(zeo.a().a(this.jdField_a_of_type_Array2dOfLong, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int)));
     if (paramBoolean) {}
     for (String str = "actLiteActive";; str = "actFullActive")
     {
@@ -513,11 +518,11 @@ public class GuardManager
   
   public void d(boolean paramBoolean)
   {
-    zbi localzbi = zbi.a();
+    zeo localzeo = zeo.a();
     AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    int i = localzbi.jdField_a_of_type_Int;
-    long l = localzbi.jdField_b_of_type_Int | i << 8;
-    int j = zbi.a().jdField_c_of_type_Int;
+    int i = localzeo.jdField_a_of_type_Int;
+    long l = localzeo.jdField_b_of_type_Int | i << 8;
+    int j = zeo.a().jdField_c_of_type_Int;
     if (paramBoolean) {}
     for (i = 1;; i = 0)
     {
@@ -580,7 +585,7 @@ public class GuardManager
           a((QQAppInterface)localObject1);
           if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
           {
-            this.jdField_a_of_type_AndroidContentBroadcastReceiver = new zbj(this);
+            this.jdField_a_of_type_AndroidContentBroadcastReceiver = new zep(this);
             localObject2 = new IntentFilter();
             ((IntentFilter)localObject2).addAction("android.intent.action.SCREEN_OFF");
             ((IntentFilter)localObject2).addAction("android.intent.action.SCREEN_ON");
@@ -613,8 +618,8 @@ public class GuardManager
               continue;
             }
             localObject1 = new HashMap();
-            ((HashMap)localObject1).put("before", zbk.jdField_a_of_type_ArrayOfJavaLangString[paramMessage.arg1]);
-            ((HashMap)localObject1).put("after", zbk.jdField_a_of_type_ArrayOfJavaLangString[paramMessage.arg2]);
+            ((HashMap)localObject1).put("before", zeq.jdField_a_of_type_ArrayOfJavaLangString[paramMessage.arg1]);
+            ((HashMap)localObject1).put("after", zeq.jdField_a_of_type_ArrayOfJavaLangString[paramMessage.arg2]);
             a("GM_guardChangeS", (HashMap)localObject1);
             return true;
           }
@@ -626,10 +631,10 @@ public class GuardManager
           if (paramMessage.arg1 < 3) {
             a(i);
           }
-          this.jdField_a_of_type_Zbk.a(i, paramMessage.obj);
+          this.jdField_a_of_type_Zeq.a(i, paramMessage.obj);
           return true;
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(5, 12000L);
-          this.jdField_a_of_type_Zbk.a();
+          this.jdField_a_of_type_Zeq.a();
           return true;
           if (!b()) {
             continue;

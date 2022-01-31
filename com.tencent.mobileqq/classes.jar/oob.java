@@ -1,23 +1,18 @@
-import android.database.DataSetObserver;
-import android.support.v4.view.PagerAdapter;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.troop.model.VidToGroupInfoPuller;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class oob
-  extends DataSetObserver
+  extends SimpleJob
 {
-  public oob(EmptySupportViewPager paramEmptySupportViewPager) {}
+  public oob(VidToGroupInfoPuller paramVidToGroupInfoPuller) {}
   
-  public void onChanged()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    PagerAdapter localPagerAdapter = this.a.getAdapter();
-    if ((localPagerAdapter != null) && (localPagerAdapter.getCount() > 0))
-    {
-      this.a.a(8);
-      EmptySupportViewPager.a(this.a, 0);
-      return;
-    }
-    this.a.a(0);
-    EmptySupportViewPager.b(this.a, 8);
+    this.a.b();
+    return null;
   }
 }
 

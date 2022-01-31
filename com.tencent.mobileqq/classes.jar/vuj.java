@@ -1,18 +1,16 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
 
-class vuj
-  implements Runnable
+public class vuj
+  implements DialogInterface.OnClickListener
 {
-  vuj(vui paramvui) {}
+  public vuj(GameRoomChatPie paramGameRoomChatPie) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Intent localIntent = new Intent();
-    localIntent.putExtra("isNeedFinish", true);
-    this.a.a.a.setResult(-1, localIntent);
-    this.a.a.A();
+    this.a.V = true;
+    GameRoomChatPie.a(this.a, false);
   }
 }
 

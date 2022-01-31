@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import aech;
-import aeci;
-import aecj;
-import aeck;
+import aepn;
+import aepo;
+import aepp;
+import aepq;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -30,7 +30,7 @@ public class WerewolvesDataManager
     this.jdField_a_of_type_JavaLangObject = new Object();
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    ThreadManager.post(new aech(this, paramQQAppInterface), 5, null, false);
+    ThreadManager.post(new aepn(this, paramQQAppInterface), 5, null, false);
   }
   
   public List a()
@@ -54,7 +54,7 @@ public class WerewolvesDataManager
   
   public void a(RecentInviteUser paramRecentInviteUser)
   {
-    ThreadManager.post(new aecj(this, paramRecentInviteUser), 5, null, false);
+    ThreadManager.post(new aepp(this, paramRecentInviteUser), 5, null, false);
   }
   
   public void a(String paramString1, int paramInt, String paramString2)
@@ -84,9 +84,9 @@ public class WerewolvesDataManager
     }
   }
   
-  public void a(String paramString1, String paramString2, ArrayList paramArrayList, aeck paramaeck)
+  public void a(String paramString1, String paramString2, ArrayList paramArrayList, aepq paramaepq)
   {
-    ThreadManager.post(new aeci(this, paramString1, paramString2, paramArrayList, paramaeck), 8, null, true);
+    ThreadManager.post(new aepo(this, paramString1, paramString2, paramArrayList, paramaepq), 8, null, true);
   }
   
   public boolean a(String paramString1, int paramInt, String paramString2)

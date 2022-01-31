@@ -9,7 +9,7 @@ import com.tencent.widget.ListView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.app.MainService;
-import ukq;
+import unq;
 
 @TargetApi(11)
 public class FloorJumperSet
@@ -19,7 +19,7 @@ public class FloorJumperSet
   static final long jdField_a_of_type_Long;
   public static final int b;
   public ArrayList a;
-  ukq jdField_a_of_type_Ukq;
+  unq jdField_a_of_type_Unq;
   private long b;
   
   static
@@ -124,11 +124,11 @@ public class FloorJumperSet
             localFloorJumper.a(paramVarArgs);
           }
         }
-        if (this.jdField_a_of_type_Ukq == null)
+        if (this.jdField_a_of_type_Unq == null)
         {
-          this.jdField_a_of_type_Ukq = new ukq(this, null);
+          this.jdField_a_of_type_Unq = new unq(this, null);
           if (this.jdField_b_of_type_Long == 0L) {
-            this.jdField_a_of_type_ComTencentWidgetListView.postDelayed(this.jdField_a_of_type_Ukq, jdField_a_of_type_Long);
+            this.jdField_a_of_type_ComTencentWidgetListView.postDelayed(this.jdField_a_of_type_Unq, jdField_a_of_type_Long);
           }
         }
         return true;
@@ -157,9 +157,9 @@ public class FloorJumperSet
         localIterator.remove();
       }
     }
-    if ((i != 0) && (this.jdField_a_of_type_Ukq != null))
+    if ((i != 0) && (this.jdField_a_of_type_Unq != null))
     {
-      this.jdField_a_of_type_ComTencentWidgetListView.post(this.jdField_a_of_type_Ukq);
+      this.jdField_a_of_type_ComTencentWidgetListView.post(this.jdField_a_of_type_Unq);
       return;
     }
     d();
@@ -167,10 +167,10 @@ public class FloorJumperSet
   
   protected void c()
   {
-    if (this.jdField_a_of_type_Ukq != null)
+    if (this.jdField_a_of_type_Unq != null)
     {
-      this.jdField_a_of_type_ComTencentWidgetListView.removeCallbacks(this.jdField_a_of_type_Ukq);
-      this.jdField_a_of_type_Ukq = null;
+      this.jdField_a_of_type_ComTencentWidgetListView.removeCallbacks(this.jdField_a_of_type_Unq);
+      this.jdField_a_of_type_Unq = null;
     }
   }
 }

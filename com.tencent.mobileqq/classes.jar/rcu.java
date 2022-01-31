@@ -1,28 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AboutActivity;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
+import com.tencent.litetransfersdk.MsgCSBody;
 
 public class rcu
-  implements View.OnClickListener
+  implements Runnable
 {
-  public rcu(AboutActivity paramAboutActivity) {}
+  public rcu(LiteTransferWrapper paramLiteTransferWrapper, MsgCSBody paramMsgCSBody) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((AboutActivity.a(this.a) != null) && (AboutActivity.a(this.a).a != null))
-    {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8004DB2", "0X8004DB2", 0, 0, "", "", UpgradeController.a(), "");
-      UpgradeDetailActivity.a(this.a, UpgradeController.a().a(), false, false, true);
+    if (LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L) {
+      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.PbMsgReciveToJNI(LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_ComTencentLitetransfersdkMsgCSBody);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     rcu
  * JD-Core Version:    0.7.0.1
  */

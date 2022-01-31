@@ -1,24 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout.OnReciteListener;
+import com.tencent.mobileqq.troop.activity.TroopAdminList;
+import com.tencent.mobileqq.troop.activity.TroopAdminList.AdminListAdapter;
+import com.tencent.widget.XListView;
 
-public class aiuz
-  implements DialogInterface.OnClickListener
+class aiuz
+  implements Runnable
 {
-  public aiuz(ReciteRecordLayout paramReciteRecordLayout) {}
+  aiuz(aiuy paramaiuy) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a(this.a.a);
-    if (ReciteRecordLayout.a(this.a) != null) {
-      ReciteRecordLayout.a(this.a).e();
-    }
+    this.a.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList$AdminListAdapter = new TroopAdminList.AdminListAdapter(this.a.a, this.a.a);
+    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList$AdminListAdapter);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiuz
  * JD-Core Version:    0.7.0.1
  */

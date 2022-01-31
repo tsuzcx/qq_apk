@@ -1,21 +1,25 @@
-import android.os.Bundle;
-import com.tencent.gdtad.net.GdtAdObserver;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.util.JSONUtils;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout.ArkSearchReportCallback;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAppHandler;
+import com.tencent.mobileqq.data.ArkBabyqCardInfo;
+import com.tencent.mobileqq.data.MessageForArkBabyqReply;
+import java.lang.ref.WeakReference;
 
 public class abtt
-  extends GdtAdObserver
+  implements ArkAppRootLayout.ArkSearchReportCallback
 {
-  public abtt(MessengerService paramMessengerService) {}
+  public abtt(ArkBabyqCardInfo paramArkBabyqCardInfo) {}
   
-  public void a(Object paramObject)
+  public void a()
   {
-    if (this.a.a != null)
+    if ((this.a.mBabyQReplyMsg != null) && (this.a.mBabyQReplyMsg.get() != null))
     {
-      this.a.a.putString("data", JSONUtils.a(paramObject).toString());
-      this.a.a(this.a.a);
-      this.a.a = null;
+      MessageForArkBabyqReply localMessageForArkBabyqReply = (MessageForArkBabyqReply)this.a.mBabyQReplyMsg.get();
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
+      if (localQQAppInterface != null) {
+        ((ArkAppHandler)localQQAppInterface.a(95)).a(localMessageForArkBabyqReply.arkSearchType, 0, 2, this.a.extra, localMessageForArkBabyqReply.arkMsgId, this.a.appName, this.a.appView, null, 0, 0);
+      }
     }
   }
 }

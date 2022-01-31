@@ -1,38 +1,46 @@
-import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.leba.QZoneEntryController;
+import com.tencent.mobileqq.leba.header.LebaGridShowManager;
+import com.tencent.mobileqq.leba.model.LebaGridItemInfo;
+import com.tencent.mobileqq.leba.model.PluginInfo;
+import com.tencent.mobileqq.leba.model.pluginactions.PluginAction;
+import com.tencent.mobileqq.leba.model.pluginactions.QzonePluginAction;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import com.tencent.qphone.base.util.QLog;
 
 public class aeau
-  implements WerewolvesHandler.Callback
+  implements View.OnClickListener
 {
-  public aeau(GameRoomInviteActivity paramGameRoomInviteActivity, String paramString1, String paramString2) {}
+  public aeau(QZoneEntryController paramQZoneEntryController) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void onClick(View paramView)
   {
-    GameRoomInviteActivity localGameRoomInviteActivity;
-    if ((paramInt == 0) && (paramRspBody.string_invite_id.has()) && (!TextUtils.isEmpty(paramRspBody.string_invite_id.get().toStringUtf8())))
-    {
-      localGameRoomInviteActivity = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity;
-      if ((paramRspBody.uint64_leader_uin.has()) && (paramRspBody.uint64_leader_uin.get() != this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomInviteActivity.app.getLongAccountUin())) {
-        break label94;
-      }
+    QZoneEntryController.c(this.a);
+    paramView = LebaGridShowManager.a().a(10000);
+    QzonePluginAction localQzonePluginAction = new QzonePluginAction(this.a.jdField_a_of_type_AndroidContentContext);
+    if (paramView == null) {
+      QLog.i("UndealCount.QZoneEntryController", 1, "user clicked qzone feed entry. lebaGridItemInfo is null");
     }
-    label94:
-    for (boolean bool = true;; bool = false)
+    for (;;)
     {
-      localGameRoomInviteActivity.a(bool, paramRspBody.string_invite_id.get().toStringUtf8(), this.jdField_a_of_type_JavaLangString, this.b);
+      localQzonePluginAction.c(paramView);
+      paramView = (QZoneManagerImp)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(9);
+      if (QZoneEntryController.a(this.a) == 4) {
+        ThreadManager.post(new aeav(this, paramView), 5, null, false);
+      }
+      QZoneEntryController.a(this.a, true);
+      paramView.a(true);
       return;
+      QLog.i("UndealCount.QZoneEntryController", 1, "user clicked qzone feed entry. hasNew:" + localQzonePluginAction.a(paramView.a.isNew, paramView.a.pluginId));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeau
  * JD-Core Version:    0.7.0.1
  */

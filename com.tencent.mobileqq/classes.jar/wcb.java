@@ -1,60 +1,16 @@
-import com.tencent.mobileqq.activity.bless.BlessResultActivity;
-import com.tencent.mobileqq.activity.bless.BlessResultActivity.VideoInfo;
-import com.tencent.mobileqq.troop.data.TroopBarShortVideoUploadUtil.OnUploadVideoListener;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.MqqWeakReferenceHandler;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.stickerbubble.PEItemData;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
 
 public class wcb
-  implements TroopBarShortVideoUploadUtil.OnUploadVideoListener
+  implements Runnable
 {
-  public wcb(BlessResultActivity paramBlessResultActivity) {}
+  public wcb(StickerBubbleListView paramStickerBubbleListView, PEItemData paramPEItemData, int paramInt) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadSuccess!");
-    }
-    this.a.jdField_a_of_type_Boolean = true;
-    this.a.g = this.a.b(this.a.d);
-    if (this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.hasMessages(1003)) {
-      this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1003);
-    }
-    this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1001);
-  }
-  
-  public void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadFail!");
-    }
-    if (this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.hasMessages(1003)) {
-      this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(1003);
-    }
-    this.a.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendEmptyMessage(1003);
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStart!");
-    }
-  }
-  
-  public void b(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadStop!");
-    }
-  }
-  
-  public void c(long paramLong)
-  {
-    long l = FileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessResultActivity$VideoInfo.a);
-    int i = (int)(100L * paramLong / l);
-    if (QLog.isColorLevel()) {
-      QLog.d("BlessResultActivity", 2, "OnUploadVideoListener onUploadProcess! rawLen = " + l + ",offset = " + paramLong + ",process = " + i);
-    }
+    ChatActivityFacade.a(StickerBubbleListView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleListView).a(), StickerBubbleListView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleListView).a(), StickerBubbleListView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleListView).a, this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubblePEItemData.jdField_a_of_type_Int, this.jdField_a_of_type_Int, "test");
   }
 }
 

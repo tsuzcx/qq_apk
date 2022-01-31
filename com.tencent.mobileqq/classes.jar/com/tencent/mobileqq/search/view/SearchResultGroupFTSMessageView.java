@@ -14,12 +14,12 @@ public class SearchResultGroupFTSMessageView
   
   public SearchResultGroupFTSMessageView(ViewGroup paramViewGroup)
   {
-    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130971480, paramViewGroup, false);
-    this.c = ((TextView)this.b.findViewById(2131362697));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131374829));
+    this.b = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130971528, paramViewGroup, false);
+    this.c = ((TextView)this.b.findViewById(2131362715));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.b.findViewById(2131375015));
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131374138);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369846));
+    this.jdField_a_of_type_AndroidViewView = this.b.findViewById(2131374319);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369923));
   }
   
   public LinearLayout a()

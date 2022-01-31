@@ -1,40 +1,32 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
-import cooperation.qzone.report.lp.LpReportManager;
-import cooperation.qzone.util.QZLog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 
 public class soc
-  implements Runnable
+  implements View.OnClickListener
 {
-  public soc(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public soc(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      if (!TextUtils.isEmpty(this.a.a.a.a))
-      {
-        Object localObject = this.a.a.a.a;
-        if (this.a.a.a.a.startsWith("+")) {
-          localObject = this.a.a.a.a.substring(1);
-        }
-        localObject = new LpReportInfo_pf00064(699, 1, Long.valueOf((String)localObject).longValue());
-        LpReportManager.getInstance().reportToPF00064((LpReportInfo_pf00064)localObject, false, false);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QZLog.e("QzoneReport", "LpReportInfoProfile", localException);
-    }
+    paramView = this.a.getIntent().getExtras();
+    paramView.putString("uin", AppConstants.az);
+    paramView.putInt("uintype", -1);
+    paramView.putString("uinname", "日迹");
+    this.a.a.a(ForwardAbility.ForwardAbilityType.m.intValue(), paramView);
+    StoryReportor.a("plus_shoot", "clk_option", 0, 0, new String[] { "", "", "", "" });
+    StoryReportor.a("plus_shoot", "exp_tip", 0, 0, new String[] { "", "", "", "" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     soc
  * JD-Core Version:    0.7.0.1
  */

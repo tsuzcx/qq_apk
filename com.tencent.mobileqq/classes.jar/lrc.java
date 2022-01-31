@@ -1,25 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.readinjoy.model.FollowCoverInfoModule;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
+import com.tencent.commonsdk.cache.QQLruCache;
+import java.util.List;
 
 public class lrc
-  implements Runnable
+  extends QQLruCache
 {
-  public lrc(FollowCoverInfoModule paramFollowCoverInfoModule) {}
-  
-  public void run()
+  public lrc(FastWebModule paramFastWebModule, int paramInt1, int paramInt2, int paramInt3)
   {
-    Object localObject = ReadInJoyHelper.a(FollowCoverInfoModule.a(this.a), true, false);
-    if (localObject != null)
-    {
-      localObject = ((SharedPreferences)localObject).edit();
-      if (localObject != null)
-      {
-        ((SharedPreferences.Editor)localObject).remove("follow_tab_topic_update_info_exposure");
-        ReadInJoyHelper.a((SharedPreferences.Editor)localObject, true);
-      }
-    }
+    super(paramInt1, paramInt2, paramInt3);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, List paramList1, List paramList2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramList1, paramList2);
   }
 }
 

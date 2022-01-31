@@ -1,15 +1,15 @@
-import com.tencent.biz.qqstory.takevideo.EditJumpToPtu;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryFeatureDataStep;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import com.tencent.biz.qqstory.utils.UncheckedCallable;
 
 public class obe
-  implements Runnable
+  implements UncheckedCallable
 {
-  public obe(EditJumpToPtu paramEditJumpToPtu, String paramString) {}
+  public obe(NewMyStorySegment paramNewMyStorySegment) {}
   
-  public void run()
+  public GetMyStoryFeatureDataStep a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditJumpToPtu.a(this.jdField_a_of_type_JavaLangString);
-    FileUtils.d(this.jdField_a_of_type_JavaLangString);
+    return new GetMyStoryFeatureDataStep();
   }
 }
 

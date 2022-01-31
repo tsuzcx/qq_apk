@@ -1,35 +1,45 @@
-import android.util.Pair;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.app.MessageRoamManager;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.Calendar;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQProfileItem;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
 public class zec
-  implements Runnable
+  extends AccountObserver
 {
-  public zec(MessageRoamManager paramMessageRoamManager, int paramInt) {}
+  public zec(FriendsManager paramFriendsManager) {}
   
-  public void run()
+  public void onExchangeUin(String paramString1, String paramString2, String paramString3)
   {
-    Object localObject = Calendar.getInstance();
-    int j = this.jdField_a_of_type_Int;
-    int i = 8;
-    while (j < this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaUtilList.size())
-    {
-      ((Calendar)localObject).setTimeInMillis(((Long)this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaUtilList.get(j)).longValue());
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a((Calendar)localObject);
-      Pair localPair = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a((Calendar)((Calendar)localObject).clone());
-      int k = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_JavaLangString, ((Long)localPair.first).longValue(), ((Long)localPair.second).longValue());
-      if (i - k <= 0) {
-        break;
-      }
-      j += 1;
-      i -= k;
+    ThreadManager.executeOnSubThread(new zed(this, paramString2, paramString1));
+  }
+  
+  public void onlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, long paramLong, boolean paramBoolean3)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.contacttab.friend", 2, "onlineStatusChanged isSuccess=" + paramBoolean1 + ",curStatus=" + paramStatus.toString() + ",isFriendListChang=" + paramBoolean2 + ",timeStamp=" + paramLong + ",isGatherListChange=" + paramBoolean3);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(ChatHistoryForC2C.class);
-    ((MqqHandler)localObject).sendMessageDelayed(((MqqHandler)localObject).obtainMessage(0), 0L);
+    if (paramStatus == AppRuntime.Status.online) {
+      FriendsManager.a(this.a).a(11L, false);
+    }
+    for (;;)
+    {
+      FriendsManager.a(this.a).a.a(paramBoolean2, paramLong, paramBoolean3);
+      if (!paramBoolean2)
+      {
+        paramStatus = new QQProfileItem(FriendsManager.a(this.a));
+        FriendsManager.a(this.a).a.a(101, paramStatus);
+      }
+      return;
+      if (paramStatus == AppRuntime.Status.away) {
+        FriendsManager.a(this.a).a(31L, false);
+      } else if (paramStatus == AppRuntime.Status.invisiable) {
+        FriendsManager.a(this.a).a(41L, false);
+      }
+    }
   }
 }
 

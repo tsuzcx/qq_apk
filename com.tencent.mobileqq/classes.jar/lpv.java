@@ -1,14 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ArticleInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import java.util.List;
 
-public class lpv
+class lpv
   implements Runnable
 {
-  public lpv(ArticleInfoModule paramArticleInfoModule, ArticleInfo paramArticleInfo) {}
+  lpv(lpu paramlpu, List paramList1, List paramList2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+    ReadInJoyLogicEngineEventDispatcher.a().c(0, this.jdField_a_of_type_JavaUtilList);
+    ReadInJoyLogicEngineEventDispatcher.a().c(70, this.b);
   }
 }
 

@@ -1,16 +1,29 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import android.database.Cursor;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.qcall.QCallProxy;
+import com.tencent.mobileqq.utils.SecurityUtile;
 
 public class agvj
-  extends AnimatorListenerAdapter
+  implements Runnable
 {
-  public agvj(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public agvj(QCallProxy paramQCallProxy, String paramString) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public void run()
   {
-    EffectsCameraCaptureFragment.a(this.a).setVisibility(0);
+    Cursor localCursor = QCallProxy.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallProxy, this.jdField_a_of_type_JavaLangString);
+    if (localCursor != null)
+    {
+      int i = localCursor.getColumnIndex("name");
+      while (localCursor.moveToNext())
+      {
+        String str = SecurityUtile.a(localCursor.getString(i));
+        int j = QCallProxy.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallProxy, str);
+        if (j != -1) {
+          QCallProxy.a(this.jdField_a_of_type_ComTencentMobileqqQcallQCallProxy).a(this.jdField_a_of_type_JavaLangString, j, str, null, null, 2, null);
+        }
+      }
+      localCursor.close();
+    }
   }
 }
 

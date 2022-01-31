@@ -1,50 +1,21 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
-import dov.com.tencent.biz.qqstory.takevideo.EditInteractExport;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.LayerEventListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import dov.com.qq.im.QIMCameraCaptureUnit;
 
-public class anin
-  implements VoteLayer.LayerEventListener
+class anin
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public anin(DoodleLayout paramDoodleLayout) {}
+  anin(anim paramanim) {}
   
-  public void a()
+  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    SLog.b("DoodleLayout", "deleteInteractPaster.");
-    if (DoodleLayout.a(this.a) != null)
+    if (!paramBoolean)
     {
-      EditInteractExport localEditInteractExport = (EditInteractExport)DoodleLayout.a(this.a).a(EditInteractExport.class);
-      if (localEditInteractExport != null) {
-        localEditInteractExport.b();
-      }
+      this.a.a.a(101);
+      return;
     }
-  }
-  
-  public boolean a(VoteLayer.VoteItem paramVoteItem)
-  {
-    boolean bool = false;
-    if (this.a.a != null)
-    {
-      this.a.a.setVisibility(0);
-      if (this.a.a.a.b()) {
-        this.a.a.a.a().j = false;
-      }
-      this.a.a.a.a(paramVoteItem);
-      paramVoteItem.j = true;
-      paramVoteItem = paramVoteItem.a;
-      if (!this.a.a.a()) {
-        bool = true;
-      }
-      paramVoteItem.a(bool);
-      this.a.a.requestLayout();
-      return true;
-    }
-    return false;
+    QIMCameraCaptureUnit.b(this.a.a, false);
+    this.a.a.a(this.a.a.a, paramLocalMediaInfo);
   }
 }
 

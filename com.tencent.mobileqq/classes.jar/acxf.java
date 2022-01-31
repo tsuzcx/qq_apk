@@ -1,20 +1,26 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import java.util.TimerTask;
 
-public final class acxf
-  implements Runnable
+class acxf
+  extends TimerTask
 {
-  public acxf(int paramInt1, String paramString, int paramInt2) {}
+  acxf(acxe paramacxe) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b).b(FMToastUtil.a());
+    if (acxe.a(this.a) == null) {
+      return;
+    }
+    Message localMessage = new Message();
+    localMessage.what = 1;
+    this.a.a.a.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acxf
  * JD-Core Version:    0.7.0.1
  */

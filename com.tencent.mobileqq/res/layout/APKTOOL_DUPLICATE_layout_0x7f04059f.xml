@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b2e" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022031" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b54" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b2f" android:layout_width="fill_parent" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020fe5" android:scaleType="fitXY" android:adjustViewBounds="true" />
+    <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04e9" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206bf" android:indeterminateBehavior="repeat" android:layout_alignParentTop="true" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d34" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020793" android:layout_centerInParent="true" />
+        <TextView android:textSize="16.0dip" android:textStyle="bold" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057d" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09d0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b19d1" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    </LinearLayout>
 </LinearLayout>

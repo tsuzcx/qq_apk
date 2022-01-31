@@ -89,21 +89,21 @@ public class ContactSearchModelTool
           return;
           this.c = BaseApplicationImpl.sApplication.getString(2131427485);
           continue;
-          this.c = BaseApplicationImpl.sApplication.getString(2131437217);
+          this.c = BaseApplicationImpl.sApplication.getString(2131437234);
           continue;
-          this.c = BaseApplicationImpl.sApplication.getString(2131435169);
+          this.c = BaseApplicationImpl.sApplication.getString(2131435186);
           continue;
-          this.c = BaseApplicationImpl.sApplication.getString(2131437918);
+          this.c = BaseApplicationImpl.sApplication.getString(2131437935);
           continue;
           this.c = PublicAccountConfigUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
           continue;
           this.c = ServiceAccountFolderManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
           continue;
-          this.c = BaseApplicationImpl.sApplication.getString(2131434007);
+          this.c = BaseApplicationImpl.sApplication.getString(2131434024);
           continue;
-          this.c = BaseApplicationImpl.sApplication.getString(2131434008);
+          this.c = BaseApplicationImpl.sApplication.getString(2131434025);
         }
-        this.c = BaseApplicationImpl.sApplication.getString(2131436380);
+        this.c = BaseApplicationImpl.sApplication.getString(2131436397);
       } while (AppConstants.w.equals(this.jdField_a_of_type_JavaLangString));
       localObject1 = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50);
       if (localObject1 == null) {
@@ -135,11 +135,11 @@ public class ContactSearchModelTool
         this.c = (this.c + "(" + (String)localObject2 + ")");
         break;
       }
-      this.c = BaseApplicationImpl.sApplication.getString(2131433259);
+      this.c = BaseApplicationImpl.sApplication.getString(2131433276);
       break;
-      this.c = BaseApplicationImpl.sApplication.getString(2131438232);
+      this.c = BaseApplicationImpl.sApplication.getString(2131438250);
       break;
-      this.c = BaseApplicationImpl.sApplication.getString(2131433298);
+      this.c = BaseApplicationImpl.sApplication.getString(2131433315);
       break;
       if (!TextUtils.equals(this.jdField_a_of_type_JavaLangString, AppConstants.ar)) {
         break;
@@ -173,14 +173,14 @@ public class ContactSearchModelTool
     }
     if ((ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) && (this.jdField_a_of_type_Int == 7220))
     {
-      l = SearchUtils.b(paramString, String.format(BaseApplicationImpl.sApplication.getString(2131433539), new Object[] { PublicAccountConfigUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()), PublicAccountConfigUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()), PublicAccountConfigUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()) }), IContactSearchable.p);
+      l = SearchUtils.b(paramString, String.format(BaseApplicationImpl.sApplication.getString(2131433556), new Object[] { PublicAccountConfigUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()), PublicAccountConfigUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()), PublicAccountConfigUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()) }), IContactSearchable.p);
       if (l > this.jdField_b_of_type_Long) {
         this.jdField_b_of_type_Long = l;
       }
     }
     if (this.jdField_a_of_type_Int == 9002)
     {
-      l = SearchUtils.b(paramString, BaseApplicationImpl.sApplication.getString(2131437215), IContactSearchable.p);
+      l = SearchUtils.b(paramString, BaseApplicationImpl.sApplication.getString(2131437232), IContactSearchable.p);
       if (l > this.jdField_b_of_type_Long) {
         this.jdField_b_of_type_Long = l;
       }
@@ -346,9 +346,9 @@ public class ContactSearchModelTool
     default: 
       return null;
     case 9002: 
-      return SearchUtils.a(BaseApplicationImpl.sApplication.getString(2131437215), this.jdField_b_of_type_JavaLangString, 255);
+      return SearchUtils.a(BaseApplicationImpl.sApplication.getString(2131437232), this.jdField_b_of_type_JavaLangString, 255);
     }
-    return SearchUtils.a(String.format(BaseApplicationImpl.sApplication.getString(2131433539), new Object[] { PublicAccountConfigUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()), PublicAccountConfigUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()), PublicAccountConfigUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()) }), this.jdField_b_of_type_JavaLangString, 255);
+    return SearchUtils.a(String.format(BaseApplicationImpl.sApplication.getString(2131433556), new Object[] { PublicAccountConfigUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()), PublicAccountConfigUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()), PublicAccountConfigUtil.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext()) }), this.jdField_b_of_type_JavaLangString, 255);
   }
   
   public String c()

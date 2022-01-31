@@ -50,7 +50,7 @@ public class ShareGroupViewHolder
       str = "圈子";
       this.jdField_a_of_type_AndroidWidgetTextView.setText(str);
       localObject = (ShareGroupIconManager)SuperManager.a(24);
-      i = this.jdField_a_of_type_AndroidWidgetImageView.getContext().getResources().getDimensionPixelSize(2131560127);
+      i = this.jdField_a_of_type_AndroidWidgetImageView.getContext().getResources().getDimensionPixelSize(2131560145);
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
       if (localLayoutParams != null) {
         break label113;

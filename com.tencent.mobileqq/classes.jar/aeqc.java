@@ -1,22 +1,14 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import java.util.ArrayList;
 
-public class aeqc
-  implements Handler.Callback
+class aeqc
+  implements Runnable
 {
-  public aeqc(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  aeqc(aeqb paramaeqb, boolean paramBoolean, int paramInt, ArrayList paramArrayList) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      NearbyProfileDisplayPanel.a(this.a);
-    }
+    this.jdField_a_of_type_Aeqb.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
   }
 }
 

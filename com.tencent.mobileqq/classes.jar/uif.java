@@ -1,44 +1,19 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.HBCustomizeStrategy;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.BaseRedPkgElem;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.VoiceResElem;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class uif
-  implements CustomizeStrategyFactory.HBCustomizeStrategy
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  QWalletConfigManager jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager = null;
-  PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public uif(VisitorsActivity paramVisitorsActivity) {}
   
-  public uif(QQAppInterface paramQQAppInterface)
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(150));
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager = ((QWalletConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(244));
-    }
-  }
-  
-  public void a() {}
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    ThreadManager.post(new uig(this, paramRedPacketInfo), 5, null, true);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, BaseRedPkgElem paramBaseRedPkgElem)
-  {
-    if ((paramRedPacketInfo != null) && ((paramBaseRedPkgElem instanceof VoiceResElem)))
-    {
-      paramBaseRedPkgElem = (VoiceResElem)paramBaseRedPkgElem;
-      paramRedPacketInfo.icon = paramBaseRedPkgElem.a;
-      paramRedPacketInfo.resPath = paramBaseRedPkgElem.b;
-    }
+    this.a.b.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    int[] arrayOfInt = new int[2];
+    this.a.b.getLocationOnScreen(arrayOfInt);
+    this.a.i = arrayOfInt[1];
   }
 }
 

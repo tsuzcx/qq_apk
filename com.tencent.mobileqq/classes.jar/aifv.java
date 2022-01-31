@@ -1,25 +1,20 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.troop.activity.AudioRecordFragment;
+import com.tencent.mobileqq.statistics.FDStatsTree;
+import com.tencent.mobileqq.statistics.FDStatsTree.ResultObj;
+import java.util.Comparator;
 
 public class aifv
-  implements Animation.AnimationListener
+  implements Comparator
 {
-  public aifv(AudioRecordFragment paramAudioRecordFragment) {}
+  public aifv(FDStatsTree paramFDStatsTree) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public int a(FDStatsTree.ResultObj paramResultObj1, FDStatsTree.ResultObj paramResultObj2)
   {
-    this.a.b.setBackgroundColor(1291845632);
+    return paramResultObj2.a - paramResultObj1.a;
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aifv
  * JD-Core Version:    0.7.0.1
  */

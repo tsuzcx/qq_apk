@@ -1,30 +1,17 @@
-import com.tencent.mobileqq.hitrate.PreloadProcHitSession;
-import com.tencent.mobileqq.webprocess.WebProcessManager.WebProcessStartListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class sop
-  implements WebProcessManager.WebProcessStartListener
+class sop
+  implements Runnable
 {
-  private WeakReference a;
+  sop(sol paramsol, CardHandler paramCardHandler, String paramString) {}
   
-  public sop(PreloadProcHitSession paramPreloadProcHitSession)
+  public void run()
   {
-    this.a = new WeakReference(paramPreloadProcHitSession);
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      PreloadProcHitSession localPreloadProcHitSession = (PreloadProcHitSession)this.a.get();
-      if (localPreloadProcHitSession != null) {
-        localPreloadProcHitSession.a();
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendProfileCardActivity", 2, "check friend's profile and preload web-process!");
-      }
-    }
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_Sol.a, 230, "上传失败", "部分照片上传失败，是否重试上传？", new soq(this), new sor(this));
+    localQQCustomDialog.setCancelable(false);
+    localQQCustomDialog.show();
   }
 }
 

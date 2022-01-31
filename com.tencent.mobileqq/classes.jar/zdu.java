@@ -1,8 +1,25 @@
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.FriendListHandler;
+import mqq.os.MqqHandler;
+
 public class zdu
+  extends MqqHandler
 {
-  public int a;
-  public long a;
-  public short a;
+  public zdu(FriendListHandler paramFriendListHandler, Looper paramLooper)
+  {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    FriendListHandler.a(this.a);
+  }
 }
 
 

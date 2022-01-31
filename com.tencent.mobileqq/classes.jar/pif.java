@@ -1,18 +1,29 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.component.network.downloader.impl.strategy.QzoneResumeTransfer.CacheFileAttribute;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import com.tencent.component.media.image.drawable.DrawableContainer;
+import com.tencent.component.media.image.drawable.SpecifiedDrawable;
 
-public final class pif
-  implements Parcelable.Creator
+public class pif
+  extends phv
 {
-  public QzoneResumeTransfer.CacheFileAttribute a(Parcel paramParcel)
+  public int b;
+  public int c;
+  
+  public pif(Drawable paramDrawable, DrawableContainer paramDrawableContainer)
   {
-    return new QzoneResumeTransfer.CacheFileAttribute(paramParcel);
+    super(paramDrawable, paramDrawableContainer);
   }
   
-  public QzoneResumeTransfer.CacheFileAttribute[] a(int paramInt)
+  public pif(pif parampif, DrawableContainer paramDrawableContainer, Resources paramResources)
   {
-    return new QzoneResumeTransfer.CacheFileAttribute[paramInt];
+    super(parampif, paramDrawableContainer, paramResources);
+    this.b = parampif.b;
+    this.c = parampif.c;
+  }
+  
+  public Drawable newDrawable()
+  {
+    return new SpecifiedDrawable(this, null, null);
   }
 }
 

@@ -22,6 +22,7 @@ import com.tencent.mobileqq.dating.DatingUtil;
 import com.tencent.mobileqq.doutu.DoutuUtils;
 import com.tencent.mobileqq.hotpic.HotPicHelper;
 import com.tencent.mobileqq.pic.compress.CompressOperator;
+import com.tencent.mobileqq.service.message.MessageConstants;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.statistics.GeneralConfigUtils;
 import com.tencent.mobileqq.transfile.AbsDownloader;
@@ -257,6 +258,8 @@ public class AioPicOperator
         localMessageForPic.fileSizeFlag = 1;
       }
       boolean bool;
+      label229:
+      Object localObject;
       if (paramPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo$RetryInfo != null)
       {
         bool = true;
@@ -270,13 +273,12 @@ public class AioPicOperator
         Logger.a(this.b, this.jdField_a_of_type_JavaLangString, "bindUrlKeyAndUniseq", localMessageForPic.localUUID + "|" + localMessageForPic.uniseq);
         localMessageForPic.md5 = a(localMessageForPic.path);
         if (!GeneralConfigUtils.a()) {
-          break label780;
+          break label816;
         }
         localMessageForPic.bigThumbMsgUrl = paramPicUploadInfo.jdField_h_of_type_JavaLangString;
-        label229:
         localMessageForPic.thumbWidth = paramPicUploadInfo.jdField_e_of_type_Int;
         localMessageForPic.thumbHeight = paramPicUploadInfo.f;
-        Object localObject = new File(paramPicUploadInfo.jdField_g_of_type_JavaLangString);
+        localObject = new File(paramPicUploadInfo.jdField_g_of_type_JavaLangString);
         if (((File)localObject).exists())
         {
           if (GifDrawable.isGifFile((File)localObject)) {
@@ -300,6 +302,14 @@ public class AioPicOperator
         localMessageForPic.extLong = paramPicUploadInfo.jdField_i_of_type_Int;
         localMessageForPic.extStr = paramPicUploadInfo.jdField_i_of_type_JavaLangString;
         localMessageForPic.msgVia = paramPicUploadInfo.n;
+        localMessageForPic.sync2Story = paramPicUploadInfo.jdField_g_of_type_Boolean;
+        String str = MessageConstants.n;
+        if (!localMessageForPic.sync2Story) {
+          break label828;
+        }
+        localObject = "1";
+        label507:
+        localMessageForPic.saveExtInfoToExtStr(str, (String)localObject);
         ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForPic, paramPicUploadInfo.c, paramPicUploadInfo.jdField_b_of_type_Int, paramPicUploadInfo.o);
         if (paramPicUploadInfo.jdField_b_of_type_Int == 0) {
           ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageForPic, paramPicUploadInfo.c);
@@ -322,7 +332,7 @@ public class AioPicOperator
         localMessageForPic.imageType = PeakUtils.a(paramPicUploadInfo.jdField_g_of_type_JavaLangString);
         localObject = paramPicUploadInfo.jdField_a_of_type_JavaUtilArrayList;
         if ((localObject == null) || (((ArrayList)localObject).isEmpty())) {
-          break label792;
+          break label836;
         }
         a(paramPicUploadInfo, localMessageForPic);
         localMessageForPic.imageType = 1003;
@@ -338,10 +348,13 @@ public class AioPicOperator
         return localMessageForPic;
         bool = false;
         break;
-        label780:
+        label816:
         localMessageForPic.thumbMsgUrl = paramPicUploadInfo.jdField_h_of_type_JavaLangString;
         break label229;
-        label792:
+        label828:
+        localObject = "0";
+        break label507;
+        label836:
         if (QLog.isColorLevel()) {
           QLog.d("peak_pgjpeg", 2, "Slice infos is null");
         }
@@ -570,6 +583,7 @@ public class AioPicOperator
       String str2 = paramIntent.getStringExtra("PhotoConst.PHOTO_SEND_PATH");
       int m = paramIntent.getIntExtra("entrance", 0);
       int n = paramIntent.getIntExtra("key_confess_topicid", 0);
+      boolean bool = paramIntent.getBooleanExtra("video_sync_to_story", false);
       PicUploadInfo.Builder localBuilder = new PicUploadInfo.Builder();
       localBuilder.d((String)localObject);
       localBuilder.a(str2);
@@ -579,6 +593,7 @@ public class AioPicOperator
       localBuilder.f(j);
       localBuilder.l(n);
       localBuilder.k(m);
+      localBuilder.a(bool);
       localObject = localBuilder.a();
       HotPicHelper.a((PicUploadInfo)localObject, paramIntent, k);
       DoutuUtils.a(paramIntent, (PicUploadInfo)localObject);

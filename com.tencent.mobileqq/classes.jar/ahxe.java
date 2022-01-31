@@ -1,12 +1,23 @@
-import android.view.MotionEvent;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.service.friendlist.remote.FriendGroupListInfo;
 
-public abstract interface ahxe
+public final class ahxe
+  implements Parcelable.Creator
 {
-  public abstract boolean a(MotionEvent paramMotionEvent, int paramInt1, int paramInt2);
+  public FriendGroupListInfo a(Parcel paramParcel)
+  {
+    return new FriendGroupListInfo(paramParcel);
+  }
+  
+  public FriendGroupListInfo[] a(int paramInt)
+  {
+    return new FriendGroupListInfo[paramInt];
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahxe
  * JD-Core Version:    0.7.0.1
  */

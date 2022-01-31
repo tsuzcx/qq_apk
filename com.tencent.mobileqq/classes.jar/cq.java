@@ -15,7 +15,7 @@ public class cq
   
   public void onClick(View paramView)
   {
-    paramView = (TextView)paramView.findViewById(2131365534);
+    paramView = (TextView)paramView.findViewById(2131365556);
     cp localcp;
     if (paramView != null)
     {

@@ -82,7 +82,7 @@ public class ComponentContentUgcImage
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969690, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969704, this, true);
   }
   
   public void a()
@@ -97,8 +97,8 @@ public class ComponentContentUgcImage
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367470));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367471));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView = ((KandianUrlImageView)paramView.findViewById(2131367538));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367539));
   }
   
   public void a(FeedItemCell.CellListener paramCellListener)
@@ -132,7 +132,7 @@ public class ComponentContentUgcImage
         paramObject = str.replaceFirst("https", "http");
       }
     }
-    ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, ReadInJoyUtils.b(paramObject), getContext());
+    ReadInJoyDisplayUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView, ReadInJoyUtils.a(paramObject), getContext());
   }
   
   public void b()
@@ -171,7 +171,7 @@ public class ComponentContentUgcImage
         ((ViewGroup.LayoutParams)localObject).width = m;
         ((ViewGroup.LayoutParams)localObject).height = k;
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getText(2131428494));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getText(2131428500));
       }
     }
     for (;;)
@@ -179,7 +179,7 @@ public class ComponentContentUgcImage
       if (i != 0)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131428496);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131428502);
       }
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewKandianUrlImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
@@ -222,7 +222,7 @@ public class ComponentContentUgcImage
         ((ViewGroup.LayoutParams)localObject).width = k;
         ((ViewGroup.LayoutParams)localObject).height = m;
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getText(2131428494));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(getResources().getText(2131428500));
       }
     }
   }

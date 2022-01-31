@@ -1,58 +1,145 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.os.RemoteException;
+import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.SearchUtil;
-import com.tencent.mobileqq.search.SearchUtil.ObjectItemInfo;
-import com.tencent.mobileqq.search.model.NetSearchTemplateUniversalItem;
-import com.tencent.mobileqq.search.model.NetSearchTemplateUniversalItem.ActionInfo;
-import com.tencent.mobileqq.search.presenter.SearchTemplatePresenter;
-import com.tencent.mobileqq.search.report.ReportModelDC02528;
-import com.tencent.mobileqq.search.report.UniteSearchReportController;
-import com.tencent.mobileqq.search.util.SearchUtils;
+import com.tencent.mobileqq.pic.PicBusiManager;
+import com.tencent.mobileqq.richmedia.ICallBack;
+import com.tencent.mobileqq.richmedia.ICallBack.Stub;
+import com.tencent.mobileqq.richmedia.LOG;
+import com.tencent.mobileqq.richmedia.RichmediaService;
+import com.tencent.mobileqq.richmedia.VideoSendTaskManager;
+import com.tencent.mobileqq.transfile.ShortVideoPresendStats;
+import com.tencent.mobileqq.transfile.ShortVideoUploadABTest;
+import com.tencent.mobileqq.transfile.VideoSliceInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.util.BinderWarpper;
+import java.lang.ref.WeakReference;
 
 public class ahgp
-  implements View.OnClickListener
+  extends Handler
 {
-  public ahgp(SearchTemplatePresenter paramSearchTemplatePresenter, Context paramContext, NetSearchTemplateUniversalItem paramNetSearchTemplateUniversalItem) {}
+  final WeakReference a;
   
-  public void onClick(View paramView)
+  public ahgp(Looper paramLooper, RichmediaService paramRichmediaService)
   {
-    paramView = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    SearchUtils.a(paramView, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateUniversalItem.a.jdField_a_of_type_JavaLangString);
-    SearchUtil.ObjectItemInfo localObjectItemInfo;
-    JSONObject localJSONObject;
-    if (SearchUtil.c.containsKey(this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateUniversalItem))
-    {
-      localObjectItemInfo = (SearchUtil.ObjectItemInfo)SearchUtil.c.get(this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateUniversalItem);
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("project", UniteSearchReportController.a());
-      localJSONObject.put("event_src", "client");
-      localJSONObject.put("obj_lct", localObjectItemInfo.jdField_a_of_type_Int);
-      localJSONObject.put("get_src", "web");
-      UniteSearchReportController.a(null, new ReportModelDC02528().module("all_result").action("clk_item").obj1(localObjectItemInfo.jdField_a_of_type_Long + "").obj2(localObjectItemInfo.b).ver1(localObjectItemInfo.jdField_a_of_type_JavaLangString).ver2(UniteSearchReportController.a(this.jdField_a_of_type_ComTencentMobileqqSearchModelNetSearchTemplateUniversalItem.b)).ver7(localJSONObject.toString()).session_id(paramView.getCurrentAccountUin() + SearchUtil.jdField_a_of_type_Long));
+    super(paramLooper);
+    this.a = new WeakReference(paramRichmediaService);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = false;
+    Object localObject1 = (RichmediaService)this.a.get();
+    if (localObject1 == null) {
       return;
     }
-    catch (JSONException localJSONException)
+    Bundle localBundle = paramMessage.getData();
+    if (localBundle != null) {
+      localBundle.setClassLoader(getClass().getClassLoader());
+    }
+    for (int i = localBundle.getInt("msg_sub_cmd");; i = 0)
     {
-      for (;;)
+      switch (paramMessage.what)
       {
-        QLog.e("Q.uniteSearch.SearchTemplatePresenter", 2, "e = " + localJSONException);
       }
+      while ((localBundle != null) && (paramMessage.what >= 100) && (paramMessage.what <= 106) && (QQAppInterface.class.isInstance(RichmediaService.b((RichmediaService)localObject1))))
+      {
+        Object localObject2 = localBundle.getString("vidoe_record_uniseq");
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          break label332;
+        }
+        throw new IllegalArgumentException("VideoData id is " + (String)localObject2 + ", msg is " + paramMessage.what);
+        LOG.a("RichmediaService", "handleMessage MSG_C2S_REGISTER_CLIENT");
+        ((RichmediaService)localObject1).b = paramMessage.replyTo;
+        if (localBundle != null)
+        {
+          localObject2 = (BinderWarpper)localBundle.getParcelable("ICallBack_BinderWrapper");
+          if (localObject2 != null)
+          {
+            ((RichmediaService)localObject1).a = ICallBack.Stub.a(((BinderWarpper)localObject2).a);
+            localObject2 = new Bundle();
+            int[] arrayOfInt = PicBusiManager.a((QQAppInterface)RichmediaService.a((RichmediaService)localObject1));
+            try
+            {
+              ((Bundle)localObject2).putIntArray("key_compress_config", arrayOfInt);
+              ((RichmediaService)localObject1).a.a(6, (Bundle)localObject2);
+            }
+            catch (RemoteException localRemoteException)
+            {
+              LOG.a("RichmediaService", "ICALLBACK_CMD_INIT_COMPRESS_CONFIG remote error:" + localRemoteException);
+              localRemoteException.printStackTrace();
+            }
+            continue;
+            LOG.a("RichmediaService", "handleMessage MSG_C2S_UNREGISTER_CLIENT");
+            ((RichmediaService)localObject1).b = null;
+            ((RichmediaService)localObject1).a = null;
+          }
+        }
+      }
+      break;
+      label332:
+      localObject1 = (QQAppInterface)RichmediaService.c((RichmediaService)localObject1);
+      switch (paramMessage.what)
+      {
+      default: 
+        super.handleMessage(paramMessage);
+        return;
+      case 100: 
+        paramMessage = new VideoSliceInfo();
+        paramMessage.jdField_a_of_type_JavaLangString = localBundle.getString("video_slice_path");
+        paramMessage.jdField_a_of_type_Int = localBundle.getInt("video_slice_index");
+        paramMessage.jdField_c_of_type_Int = localBundle.getInt("video_slice_width");
+        paramMessage.d = localBundle.getInt("video_slice_height");
+        VideoSendTaskManager.a().a((QQAppInterface)localObject1, localRemoteException, paramMessage);
+        return;
+      case 102: 
+        paramMessage = new VideoSliceInfo();
+        paramMessage.jdField_a_of_type_Boolean = true;
+        VideoSendTaskManager.a().a((QQAppInterface)localObject1, localRemoteException, paramMessage);
+        return;
+      case 103: 
+        VideoSendTaskManager.a().b((QQAppInterface)localObject1, localRemoteException, localBundle);
+        return;
+      case 104: 
+        VideoSendTaskManager.a().a((QQAppInterface)localObject1, localRemoteException, localBundle);
+        return;
+      case 101: 
+        if (i == 2) {
+          bool = true;
+        }
+        i = localBundle.getInt("roll_back_reason");
+        VideoSendTaskManager.a().a((QQAppInterface)localObject1, localRemoteException, bool, i);
+        return;
+      case 105: 
+        VideoSendTaskManager.a().a((QQAppInterface)localObject1, localRemoteException);
+        paramMessage = new VideoSliceInfo();
+        paramMessage.b = true;
+        paramMessage.jdField_c_of_type_Boolean = localBundle.getBoolean("video_full_slice_sync_to_story", false);
+        if (QLog.isColorLevel()) {
+          QLog.d("PTV", 2, "clickSend si.mVideoSyncStory = " + paramMessage.jdField_c_of_type_Boolean);
+        }
+        VideoSendTaskManager.a().a((QQAppInterface)localObject1, localRemoteException, paramMessage);
+        return;
+      }
+      paramMessage = localBundle.getString("vidoe_record_uniseq");
+      i = localBundle.getInt("ab_test_video_duration");
+      long l1 = localBundle.getLong("ab_test_send_btn_click_time");
+      long l2 = localBundle.getLong("video_record_touch_up_time");
+      int j = localBundle.getInt("video_record_touch_up_times");
+      if (ShortVideoUploadABTest.a()) {
+        ShortVideoUploadABTest.a((QQAppInterface)localObject1, Long.valueOf(paramMessage).longValue(), l1, i);
+      }
+      ShortVideoPresendStats.a((QQAppInterface)localObject1, Long.valueOf(paramMessage).longValue(), l1, i, l2, j);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahgp
  * JD-Core Version:    0.7.0.1
  */

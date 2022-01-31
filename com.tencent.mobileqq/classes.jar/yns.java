@@ -1,14 +1,9 @@
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
+import com.tencent.mobileqq.apollo.GLTextureView;
 
 public class yns
-  implements Runnable
+  extends ynl
 {
-  public yns(CmGameAvHandler paramCmGameAvHandler) {}
-  
-  public void run()
-  {
-    CmGameAvHandler.a(this.a, false);
-  }
+  public yns(GLTextureView paramGLTextureView, boolean paramBoolean) {}
 }
 
 

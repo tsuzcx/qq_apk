@@ -1,19 +1,19 @@
 import android.view.animation.Animation;
 import android.view.animation.Animation.AnimationListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleBtnOperationHelper;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
+import android.widget.TextView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
-class anjj
+public class anjj
   implements Animation.AnimationListener
 {
-  anjj(anjh paramanjh) {}
+  public anjj(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
-    if (this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleBtnOperationHelper != null) {
-      this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleBtnOperationHelper.a(null);
+    if (QIMEffectCameraCaptureUnit.e(this.a) != null)
+    {
+      QIMEffectCameraCaptureUnit.e(this.a).clearAnimation();
+      QIMEffectCameraCaptureUnit.e(this.a).setVisibility(8);
     }
   }
   

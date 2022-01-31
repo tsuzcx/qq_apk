@@ -1,23 +1,13 @@
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.QQLSActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
 public class tft
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public tft(QQLSActivity paramQQLSActivity) {}
+  public tft(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    if (QQLSActivity.a(this.a) != null) {
-      QQLSActivity.a(this.a).post(new tfu(this));
-    }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onClick(View paramView) {}
 }
 
 

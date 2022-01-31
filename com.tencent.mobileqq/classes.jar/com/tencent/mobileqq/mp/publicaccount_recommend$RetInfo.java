@@ -17,7 +17,7 @@ public final class publicaccount_recommend$RetInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.mp.publicaccount_recommend.RetInfo
  * JD-Core Version:    0.7.0.1
  */

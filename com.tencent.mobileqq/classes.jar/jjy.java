@@ -1,12 +1,14 @@
-import com.tencent.av.guild.GuildMultiActivity;
+import com.tencent.av.opengl.ui.GLRootView;
 
 public class jjy
+  implements Runnable
 {
-  public int a;
-  public long a;
-  public boolean a;
+  public jjy(GLRootView paramGLRootView) {}
   
-  public jjy(GuildMultiActivity paramGuildMultiActivity) {}
+  public void run()
+  {
+    GLRootView.a(this.a);
+  }
 }
 
 

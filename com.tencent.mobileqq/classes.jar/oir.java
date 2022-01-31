@@ -1,26 +1,23 @@
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleTextureView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.PersonalityOperator;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.model.lbs.BasicLocation;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
 
 public class oir
-  implements Runnable
+  implements LbsManager.LbsUpdateListener
 {
-  public oir(DoodleTextureView paramDoodleTextureView) {}
+  public oir(DoodleEmojiManager paramDoodleEmojiManager, DoodleEmojiManager.POIPostersRequestCallback paramPOIPostersRequestCallback) {}
   
-  public void run()
+  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
   {
-    if (this.a.a != null)
+    SLog.b("DoodleEmojiManager", "requestPoiFaces onLbsUpdate.");
+    if ((paramBoolean) && (paramBasicLocation != null))
     {
-      this.a.a.g();
-      PersonalityOperator localPersonalityOperator = (PersonalityOperator)this.a.a.a(102);
-      if (localPersonalityOperator != null) {
-        localPersonalityOperator.b();
-      }
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager.a(paramBasicLocation.b, paramBasicLocation.a, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiManager$POIPostersRequestCallback);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DoodleTextureView", 2, "onDestroy end");
-    }
+    SLog.e("DoodleEmojiManager", "onLbsUpdate failed.");
   }
 }
 

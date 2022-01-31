@@ -1,66 +1,47 @@
-import android.graphics.Matrix;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView.DisplayRuleDef;
+import android.content.DialogInterface.OnClickListener;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
+import java.util.ArrayList;
 
-public final class akfh
-  implements AnyScaleTypeImageView.DisplayRuleDef
+public class akfh
+  implements View.OnClickListener
 {
-  public Matrix a(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public akfh(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose, DialogInterface.OnClickListener paramOnClickListener) {}
+  
+  public void onClick(View paramView)
   {
-    float f1 = 0.0F;
-    Matrix localMatrix = new Matrix();
-    if (paramDrawable == null) {
-      return localMatrix;
-    }
-    int i = paramDrawable.getIntrinsicWidth();
-    int j = paramDrawable.getIntrinsicHeight();
-    if (i == j)
-    {
-      f1 = paramInt2 / j;
-      localMatrix.setScale(f1, f1);
-      return localMatrix;
-    }
-    float f2;
-    if ((i <= paramInt1) || (j <= paramInt2))
-    {
-      f2 = paramInt1 - i;
-      f1 = paramInt2 - j;
-      if (f1 < 0.0F) {}
-      for (f1 *= 0.1F;; f1 *= 0.5F)
-      {
-        localMatrix.postTranslate((int)(f2 * 0.5F + 0.5F), (int)(f1 + 0.5F));
-        break;
-      }
-    }
-    float f3;
-    if (i * paramInt2 > paramInt1 * j)
-    {
-      f3 = paramInt2 / j;
-      f2 = (paramInt1 - i * f3) * 0.5F;
-    }
+    paramView = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.getInputValue();
+    if (TextUtils.isEmpty(paramView)) {}
     for (;;)
     {
-      localMatrix.setScale(f3, f3);
-      localMatrix.postTranslate((int)(f2 + 0.5F), (int)(f1 + 0.5F));
-      break;
-      f3 = paramInt1 / i;
-      f1 = (paramInt2 - j) * f3;
-      if (f1 < 0.0F)
+      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null)
       {
-        f2 = 0.0F;
-        f1 *= 0.1F;
+        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose, 1);
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a();
       }
-      else
+      try
       {
-        f2 = 0.0F;
-        f1 *= 0.5F;
+        if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.isShowing()) {
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.dismiss();
+        }
+        return;
+      }
+      catch (Exception paramView) {}
+      if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.size() > 0))
+      {
+        int i = 0;
+        while ((i < this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.size()) && (!paramView.equals(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihInputAndChoose.a.get(i)))) {
+          i += 1;
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akfh
  * JD-Core Version:    0.7.0.1
  */

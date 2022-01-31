@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
-import nmj;
+import nnv;
 
 public class QQStoryWarningActivity
   extends QQStoryBaseActivity
@@ -19,7 +19,7 @@ public class QQStoryWarningActivity
     super.setContentViewNoTitle(paramBundle);
     paramBundle.a(0);
     paramBundle.setCloseViewVisibility(true);
-    paramBundle.setOnCloseClickListener(new nmj(this));
+    paramBundle.setOnCloseClickListener(new nnv(this));
     String str = super.getIntent().getExtras().getString("tipsResource");
     if (TextUtils.isEmpty(str))
     {

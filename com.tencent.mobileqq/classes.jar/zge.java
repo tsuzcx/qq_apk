@@ -1,21 +1,13 @@
-import com.tencent.mobileqq.app.PhoneUnityBannerData;
-import com.tencent.mobileqq.app.PhoneUnityManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SecSvcHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.MayknowRecommendManager;
 
 public class zge
   implements Runnable
 {
-  public zge(PhoneUnityManager paramPhoneUnityManager) {}
+  public zge(MayknowRecommendManager paramMayknowRecommendManager) {}
   
   public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("MobileUnityManager", 4, "load phone local data");
-    }
-    PhoneUnityBannerData localPhoneUnityBannerData = this.a.a();
-    ((SecSvcHandler)this.a.a.a(34)).a(9, true, localPhoneUnityBannerData);
+    MayknowRecommendManager.a(this.a);
   }
 }
 

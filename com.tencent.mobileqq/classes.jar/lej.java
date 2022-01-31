@@ -1,14 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class lej
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public lej(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, int paramInt) {}
+  public lej(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    ReadInJoyNewFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity).a(0, false, this.jdField_a_of_type_Int);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadInJoySettingActivity.a(this.a).cancel();
+      return;
+      ReadInJoySettingActivity.a(this.a, false);
+      ReadInJoySettingActivity.b(this.a, ReadInJoySettingActivity.a(this.a));
+    }
   }
 }
 

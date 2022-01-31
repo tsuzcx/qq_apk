@@ -2,9 +2,9 @@ package com.tencent.mobileqq.ar;
 
 public abstract interface ARScanFragment$ARScanFragmentCallback
 {
-  public abstract void a(int paramInt);
-  
   public abstract void b(int paramInt);
+  
+  public abstract void c(int paramInt);
 }
 
 

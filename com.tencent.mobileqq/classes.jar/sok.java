@@ -1,16 +1,14 @@
 import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
 
 class sok
   implements Runnable
 {
-  sok(soj paramsoj) {}
+  sok(soi paramsoi) {}
   
   public void run()
   {
-    this.a.a.a.a.removeAnimatorListener(this.a);
-    this.a.a.a.a.removeUpdateListener(this.a);
+    this.a.a.a(this.a.a.a.a, true);
   }
 }
 

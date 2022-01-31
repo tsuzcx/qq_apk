@@ -10,7 +10,7 @@ import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.QQTranslucentBrowserActivity;
 import com.tencent.qphone.base.util.QLog;
-import oau;
+import ocm;
 
 public class DanceMachineQQBrowserActivity
   extends QQTranslucentBrowserActivity
@@ -81,7 +81,7 @@ public class DanceMachineQQBrowserActivity
   protected void doOnResume()
   {
     getWindow().getDecorView().setSystemUiVisibility(2);
-    getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new oau(this));
+    getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new ocm(this));
   }
   
   public void finish()

@@ -1,21 +1,21 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 
-public class ajnb
+class ajnb
   implements Runnable
 {
-  public ajnb(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil, String paramString) {}
+  ajnb(ajna paramajna) {}
   
   public void run()
   {
-    if (!AntiFraudConfigFileUtil.a(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil).containsKey(this.jdField_a_of_type_JavaLangString)) {
-      AntiFraudConfigFileUtil.a(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil, this.jdField_a_of_type_JavaLangString);
+    if (this.a.a.a == 3) {
+      this.a.a.a = 1;
     }
+    this.a.a.g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajnb
  * JD-Core Version:    0.7.0.1
  */

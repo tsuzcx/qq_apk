@@ -1,25 +1,27 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.NewFriendManager;
-import java.util.HashSet;
-import java.util.Iterator;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.HotChatHandler;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class zew
-  implements Runnable
+  implements WerewolvesHandler.Callback
 {
-  public zew(NewFriendManager paramNewFriendManager) {}
+  public zew(HotChatHandler paramHotChatHandler) {}
   
-  public void run()
+  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    Iterator localIterator = NewFriendManager.a(this.a).iterator();
-    while (localIterator.hasNext())
+    if (paramInt == 0)
     {
-      localStringBuilder.append((String)localIterator.next());
-      localStringBuilder.append("#");
+      paramRspBody = paramRspBody.string_invite_id.get().toStringUtf8();
+      if (!TextUtils.isEmpty(paramRspBody))
+      {
+        com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity.a = paramRspBody;
+        GameRoomAVController.a().a(0, paramRspBody, 0L, null);
+      }
     }
-    BaseApplicationImpl.getApplication().getSharedPreferences("new_friend", 0).edit().putString("new_friend_list", localStringBuilder.toString()).commit();
   }
 }
 

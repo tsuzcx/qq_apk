@@ -1,60 +1,36 @@
-import android.os.Handler;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.app.VideoObserver;
-import com.tencent.av.smallscreen.SmallScreenActivityPlugin;
-import com.tencent.av.ui.MultiIncomingCallUICtr;
-import com.tencent.av.ui.VideoInviteFloatBar;
-import com.tencent.av.utils.TraeHelper;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.av.ui.MultiMembersUI.Holder;
+import com.tencent.av.ui.MultiMembersVideoUI;
+import com.tencent.av.utils.MultiVideoMembersClickListener;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class jvw
-  extends VideoObserver
+  implements AdapterView.OnItemClickListener
 {
-  public jvw(MultiIncomingCallUICtr paramMultiIncomingCallUICtr) {}
+  public jvw(MultiMembersVideoUI paramMultiMembersVideoUI) {}
   
-  protected void a(int paramInt, String paramString)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    super.a(paramInt, paramString);
-    if ((this.a.jdField_c_of_type_JavaLangString != null) && (this.a.jdField_c_of_type_JavaLangString.equals(paramString)))
+    if (this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener == null) {}
+    do
     {
-      this.a.a(paramInt);
-      this.a.a();
+      return;
+      paramAdapterView = (MultiMembersUI.Holder)paramView.getTag();
+      if (paramAdapterView != null) {
+        break;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("MultiMembersVideoUI", 2, "onItemClick-->holder is null");
+    return;
+    if ((this.a.jdField_a_of_type_JavaUtilArrayList.size() > 18) && ((this.a.jdField_a_of_type_Int == 1) || (this.a.jdField_a_of_type_Int == 2)))
+    {
+      this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener.a(paramAdapterView.jdField_a_of_type_Long, paramAdapterView.jdField_a_of_type_Int, paramInt, true);
+      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiIncomingCallUICtr", 2, "onClose, reason:" + paramInt + ", peerUin:" + paramString + ", mPeerUin:" + this.a.jdField_c_of_type_JavaLangString);
-    }
-  }
-  
-  protected void a(String paramString, boolean paramBoolean)
-  {
-    super.a(paramString, paramBoolean);
-    if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null) {
-      this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.a();
-    }
-    this.a.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiIncomingCallUICtr", 2, "onDestroyUI, peerUin:" + paramString + ", isQuit:" + paramBoolean + ", mPeerUin:" + this.a.jdField_c_of_type_JavaLangString);
-    }
-  }
-  
-  protected void c()
-  {
-    super.c();
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiIncomingCallUICtr", 1, "onConnected");
-    }
-    this.a.jdField_a_of_type_ComTencentAvVideoController.g();
-    SmallScreenActivityPlugin.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(false);
-    if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null) {
-      this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.c();
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.d == 1) {
-      this.a.f = "DEVICE_SPEAKERPHONE;DEVICE_EARPHONE;DEVICE_BLUETOOTHHEADSET;DEVICE_WIREDHEADSET;";
-    }
-    TraeHelper.a().a(this.a.f);
-    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_c_of_type_JavaLangRunnable, 1000L);
+    this.a.jdField_a_of_type_ComTencentAvUtilsMultiVideoMembersClickListener.a(paramAdapterView.jdField_a_of_type_Long, paramAdapterView.jdField_a_of_type_Int, paramInt, false);
   }
 }
 

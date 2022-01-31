@@ -1,78 +1,17 @@
-import android.content.ContentResolver;
-import android.content.ContentValues;
-import android.net.Uri;
-import android.net.Uri.Builder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.readinjoy.ReadInJoyManager;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.readinjoy.content.ReadInJoyDataProvider;
-import cooperation.readinjoy.storage.ReadInJoyFeedsMsgRecord;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.app.message.C2CMessageProcessor;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import java.util.Comparator;
+import msf.msgcomm.msg_comm.Msg;
+import msf.msgcomm.msg_comm.MsgHead;
 
 public class zst
-  implements Runnable
+  implements Comparator
 {
-  public zst(ReadInJoyManager paramReadInJoyManager, List paramList) {}
+  public zst(C2CMessageProcessor paramC2CMessageProcessor) {}
   
-  public void run()
+  public int a(msg_comm.Msg paramMsg1, msg_comm.Msg paramMsg2)
   {
-    Object localObject1 = ReadInJoyDataProvider.c.buildUpon();
-    ((Uri.Builder)localObject1).appendQueryParameter("uin", ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager).getAccount());
-    localObject1 = ((Uri.Builder)localObject1).build();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    label495:
-    while (localIterator.hasNext())
-    {
-      ReadInJoyFeedsMsgRecord localReadInJoyFeedsMsgRecord = (ReadInJoyFeedsMsgRecord)localIterator.next();
-      Object localObject2 = new HashSet(ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager).keySet()).iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        int i = ((Integer)((Iterator)localObject2).next()).intValue();
-        int j = (int)NetConnInfoCenter.getServerTime();
-        if ((i < j) && (j - i > 300)) {
-          ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager).remove(Integer.valueOf(i));
-        }
-      }
-      if (!ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager).containsValue(Integer.valueOf(localReadInJoyFeedsMsgRecord.jdField_b_of_type_Int)))
-      {
-        ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager).put(Integer.valueOf(localReadInJoyFeedsMsgRecord.a), Integer.valueOf(localReadInJoyFeedsMsgRecord.jdField_b_of_type_Int));
-        long l = ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager);
-        if ((localReadInJoyFeedsMsgRecord.c == 10) || (localReadInJoyFeedsMsgRecord.c == 11) || (localReadInJoyFeedsMsgRecord.c == 12) || (localReadInJoyFeedsMsgRecord.c == 999999)) {
-          if (ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager, (Uri)localObject1, localReadInJoyFeedsMsgRecord, l)) {
-            ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager);
-          }
-        }
-        for (;;)
-        {
-          if (localReadInJoyFeedsMsgRecord.c == 999999) {
-            break label495;
-          }
-          break;
-          ContentValues localContentValues;
-          if (localReadInJoyFeedsMsgRecord.c == 14)
-          {
-            localObject2 = String.format("%s = '%s' and %s = %d", new Object[] { "commentID", localReadInJoyFeedsMsgRecord.jdField_b_of_type_JavaLangString, "notifyType", Integer.valueOf(11) });
-            localContentValues = new ContentValues();
-            localContentValues.put("isDelete", Integer.valueOf(1));
-            ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager).getApp().getContentResolver().update((Uri)localObject1, localContentValues, (String)localObject2, null);
-            ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager, (Uri)localObject1, localReadInJoyFeedsMsgRecord, l);
-          }
-          else if (localReadInJoyFeedsMsgRecord.c == 13)
-          {
-            localObject2 = String.format("%s = %s and %s = %d", new Object[] { "feedsID", Long.toString(localReadInJoyFeedsMsgRecord.jdField_b_of_type_Long), "notifyType", Integer.valueOf(10) });
-            localContentValues = new ContentValues();
-            localContentValues.put("isDelete", Integer.valueOf(1));
-            ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager).getApp().getContentResolver().update((Uri)localObject1, localContentValues, (String)localObject2, null);
-            ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager, (Uri)localObject1, localReadInJoyFeedsMsgRecord, l);
-          }
-        }
-      }
-    }
-    ReadInJoyManager.a(this.jdField_a_of_type_ComTencentMobileqqAppReadinjoyReadInJoyManager).getApp().getContentResolver().notifyChange(ReadInJoyDataProvider.c, null);
+    return ((msg_comm.MsgHead)paramMsg1.msg_head.get()).msg_time.get() - ((msg_comm.MsgHead)paramMsg2.msg_head.get()).msg_time.get();
   }
 }
 

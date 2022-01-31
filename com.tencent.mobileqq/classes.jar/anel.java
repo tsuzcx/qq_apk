@@ -1,18 +1,21 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import cooperation.smartdevice.SmartDevicePluginLoader;
 
-class anel
-  implements Runnable
+public class anel
+  implements DialogInterface.OnShowListener
 {
-  anel(anek paramanek) {}
+  public anel(SmartDevicePluginLoader paramSmartDevicePluginLoader, QQProgressDialog paramQQProgressDialog) {}
   
-  public void run()
+  public void onShow(DialogInterface paramDialogInterface)
   {
-    this.a.a.at_();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.hide();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anel
  * JD-Core Version:    0.7.0.1
  */

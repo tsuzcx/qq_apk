@@ -1,14 +1,58 @@
-import com.tencent.mobileqq.activity.fling.TopGestureLayout;
-import com.tencent.mobileqq.emoticonview.StickerGestureDetector;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vas.VasReportUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class abzz
-  implements Runnable
+public class abzz
+  extends TransProcessorHandler
 {
-  abzz(abzy paramabzy) {}
-  
-  public void run()
+  public abzz(FavroamingManager paramFavroamingManager, Looper paramLooper)
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout.removeView(this.a.a.jdField_a_of_type_ComTencentMobileqqEmoticonEmojiStickerManager$StickerFrameLayout);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((localFileMsg == null) || (localFileMsg.c != 9)) {}
+    do
+    {
+      return;
+      switch (paramMessage.what)
+      {
+      case 1002: 
+      default: 
+        return;
+      case 1001: 
+        if (QLog.isColorLevel()) {
+          QLog.d("FavroamingManager", 2, "start uploadFace favEmoticon");
+        }
+        break;
+      }
+    } while (FavroamingManager.b().incrementAndGet() < FavroamingManager.b());
+    FavroamingManager.a(this.a);
+    return;
+    if (QLog.isColorLevel()) {
+      QLog.d("FavroamingManager", 2, "finish uploadFace favEmoticon resId=" + localFileMsg.g);
+    }
+    ThreadManager.post(new acaa(this, localFileMsg), 5, null, false);
+    return;
+    QLog.i("FavroamingManager", 1, "upload fav error:" + localFileMsg.g);
+    if (this.a.a != null) {}
+    for (int i = NetworkUtil.b(this.a.a.getApplication());; i = -1)
+    {
+      VasReportUtils.a("emotionType", "emotionActionFav", "4", "", "", i + "", localFileMsg.g, "", "", "");
+      return;
+      QLog.i("FavroamingManager", 1, "upload fav cancel:" + localFileMsg.g);
+      return;
+    }
   }
 }
 

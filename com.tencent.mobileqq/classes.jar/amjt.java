@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.share.WXShareFromQZHelper;
+import android.text.TextUtils;
+import cooperation.comic.jsp.QQComicJsCallback;
+import cooperation.comic.jsp.QQComicJsPlugin;
 
 public class amjt
-  implements Runnable
+  implements QQComicJsCallback
 {
-  public amjt(WXShareFromQZHelper paramWXShareFromQZHelper) {}
+  public amjt(QQComicJsPlugin paramQQComicJsPlugin) {}
   
-  public void run()
+  public void a(String paramString1, String paramString2)
   {
-    QQToast.a(BaseApplication.getContext(), 2131432709, 0).a();
+    if (!TextUtils.isEmpty(paramString1)) {
+      QQComicJsPlugin.a(this.a, paramString1, new String[] { paramString2 });
+    }
   }
 }
 

@@ -6,9 +6,9 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.os.Build.VERSION;
 import android.os.Handler;
-import anqf;
-import anqg;
-import anqh;
+import aogk;
+import aogl;
+import aogm;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.soso.SosoInterface;
@@ -21,8 +21,8 @@ import mqq.app.NewIntent;
 public class LBSDetetor
 {
   private static LBSDetetor jdField_a_of_type_DovComTencentMobileqqActivityRichmediaLBSDetetor;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new anqf(this));
-  private anqg jdField_a_of_type_Anqg = new anqg(this, null);
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new aogk(this));
+  private aogl jdField_a_of_type_Aogl = new aogl(this, null);
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private LBSDetetor.LBSTemplateListener jdField_a_of_type_DovComTencentMobileqqActivityRichmediaLBSDetetor$LBSTemplateListener;
   
@@ -30,7 +30,7 @@ public class LBSDetetor
   {
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Anqg);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Aogl);
     }
   }
   
@@ -109,7 +109,7 @@ public class LBSDetetor
       if (QLog.isColorLevel()) {
         QLog.d("LBSDetetor", 2, "destroy");
       }
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Anqg);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Aogl);
       this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
     }
     this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaLBSDetetor$LBSTemplateListener = null;
@@ -166,7 +166,7 @@ public class LBSDetetor
         if (bool2)
         {
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(paramInt, 30000L);
-          SosoInterface.a(new anqh(this, 0, true, true, 30000L, false, false, "NewFlowCameraActivity", paramInt));
+          SosoInterface.a(new aogm(this, 0, true, true, 30000L, false, false, "NewFlowCameraActivity", paramInt));
         }
         if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaLBSDetetor$LBSTemplateListener != null) {
           this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaLBSDetetor$LBSTemplateListener.a(paramInt, bool2);

@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.webview.swift.WebViewWrapper;
-import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.util.FaceDecoderImpl;
+import com.tencent.mobileqq.util.FaceInfo;
+import com.tencent.mobileqq.util.IdleUpdater;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ajzq
-  extends ajzs
+  extends IdleUpdater
 {
-  public ajzq(WebViewWrapper paramWebViewWrapper)
-  {
-    super(paramWebViewWrapper);
-  }
+  public ajzq(FaceDecoderImpl paramFaceDecoderImpl, FaceInfo paramFaceInfo) {}
   
-  public WebResourceResponse shouldInterceptRequest(WebView paramWebView, String paramString)
+  public void a()
   {
-    return a(paramWebView, paramString);
+    this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoderImpl.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b, false, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Int, true, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Byte, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.c, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.d, this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_Boolean);
+    FaceDecoderImpl.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoderImpl).remove(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ajzq
  * JD-Core Version:    0.7.0.1
  */

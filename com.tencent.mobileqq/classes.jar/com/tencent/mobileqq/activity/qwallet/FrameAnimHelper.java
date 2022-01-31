@@ -7,7 +7,7 @@ import com.tencent.mobileqq.widget.AnimationView;
 import com.tencent.mobileqq.widget.AnimationView.AnimationInfo;
 import com.tencent.mobileqq.widget.AnimationView.MyAnimationListener;
 import com.tencent.qphone.base.util.QLog;
-import wvy;
+import wzd;
 
 public class FrameAnimHelper
 {
@@ -75,11 +75,11 @@ public class FrameAnimHelper
     if (QLog.isColorLevel()) {
       QLog.i("FrameAnimHelper", 2, "task in thread runs isFolder = " + paramBoolean);
     }
-    wvy localwvy = new wvy(this, null);
+    wzd localwzd = new wzd(this, null);
     if (paramBoolean) {}
     for (String str = "0";; str = "1")
     {
-      localwvy.execute(new String[] { paramString, str });
+      localwzd.execute(new String[] { paramString, str });
       return;
     }
   }

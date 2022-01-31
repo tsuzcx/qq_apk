@@ -1,21 +1,22 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomUtils;
+import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
 
-public final class aebz
-  implements DialogInterface.OnClickListener
+public class aebz
+  implements Runnable
 {
-  public aebz(Activity paramActivity) {}
+  public aebz(LightReplyMenuManager paramLightReplyMenuManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    GameRoomUtils.a(this.a, 10);
+    if (this.a.a != null)
+    {
+      LightReplyMenuManager.b(this.a, this.a.a);
+      this.a.e();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aebz
  * JD-Core Version:    0.7.0.1
  */

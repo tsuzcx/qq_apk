@@ -1,19 +1,15 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.OnMsgTabNodeListLoadListener;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.qqstory.database.StoryEntry;
+import com.tencent.biz.qqstory.model.StoryManager;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 public class ncw
   implements Runnable
 {
-  public ncw(MsgTabNodeListLoader paramMsgTabNodeListLoader, boolean paramBoolean) {}
+  public ncw(StoryManager paramStoryManager, EntityManager paramEntityManager, StoryEntry paramStoryEntry, String paramString, int paramInt) {}
   
   public void run()
   {
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.c.iterator();
-    while (localIterator.hasNext()) {
-      ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)localIterator.next()).b(this.jdField_a_of_type_Boolean);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseStoryEntry, StoryEntry.getUidSelectionNoArg(), new String[] { String.valueOf(this.jdField_a_of_type_JavaLangString), String.valueOf(this.jdField_a_of_type_Int) });
   }
 }
 

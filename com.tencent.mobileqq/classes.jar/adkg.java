@@ -1,30 +1,24 @@
-import android.content.Intent;
-import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
-import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
-import com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher.HuayangPluginLauncherListener;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class adkg
-  implements HuayangPluginLauncher.HuayangPluginLauncherListener
+  implements Runnable
 {
-  public adkg(HuayangLoadbackgroudActivity paramHuayangLoadbackgroudActivity) {}
+  public adkg(ForwardBaseOption paramForwardBaseOption, Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    Intent localIntent = new Intent(HuayangJsPlugin.d(HuayangLoadbackgroudActivity.a(this.a)));
-    localIntent.putExtra("key_state", 4);
-    localIntent.putExtra("key_progress", paramInt);
-    localIntent.putExtra("key_totalSize", 100L);
-    this.a.sendBroadcast(localIntent);
-  }
-  
-  public void a(boolean paramBoolean, Throwable paramThrowable)
-  {
-    this.a.finish();
+    if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a.isShowing())
+    {
+      this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a.setPreviewImage(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.b);
+      this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.o();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adkg
  * JD-Core Version:    0.7.0.1
  */

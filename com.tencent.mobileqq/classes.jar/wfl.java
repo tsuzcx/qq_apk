@@ -1,18 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.content.res.Resources;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class wfl
-  implements View.OnClickListener
+class wfl
+  implements Runnable
 {
-  public wfl(SearchBaseActivity paramSearchBaseActivity) {}
+  wfl(wfk paramwfk) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.jdField_a_of_type_AndroidWidgetEditText.setText("");
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.d();
+    QQToast.a(this.a.a, "对不起，视频处理异常...", 0).b(this.a.a.getResources().getDimensionPixelSize(2131558448));
   }
 }
 

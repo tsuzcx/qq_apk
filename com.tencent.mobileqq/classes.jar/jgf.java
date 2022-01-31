@@ -1,46 +1,15 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.av.AVLog;
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
+import com.tencent.av.business.manager.pendant.EffectPendantTools;
+import com.tencent.ttpic.util.Coffee;
+import com.tencent.ttpic.util.DecryptListener;
 
 public class jgf
-  extends Handler
+  implements DecryptListener
 {
-  public jgf(MagicFaceDataEntity paramMagicFaceDataEntity, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public jgf(EffectPendantTools paramEffectPendantTools) {}
   
-  public void handleMessage(Message paramMessage)
+  public byte[] decrypt(byte[] paramArrayOfByte)
   {
-    AVLog.c("MagicFaceDataEntity", "MagicFaceDataEntity handleMessage A: " + this.a.a + "|" + paramMessage.what);
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-          } while (this.a.a != 1);
-          MagicFaceDataEntity.a(this.a, (Object[])paramMessage.obj);
-          return;
-        } while (this.a.a != 0);
-        this.a.a = 1;
-        this.a.c();
-        return;
-      } while (this.a.a != 1);
-      this.a.a = 0;
-      this.a.d();
-      return;
-    } while (this.a.a != 1);
-    paramMessage = (Integer)paramMessage.obj;
-    this.a.a(paramMessage.intValue());
+    return Coffee.drink(paramArrayOfByte);
   }
 }
 

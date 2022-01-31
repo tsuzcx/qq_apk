@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import akje;
+import akxn;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
@@ -14,11 +14,11 @@ import com.tencent.theme.SkinnableBitmapDrawable;
 public class XfermodeDrawable
   extends DrawableContainer
 {
-  private akje a;
+  private akxn a;
   
-  private XfermodeDrawable(akje paramakje, Resources paramResources)
+  private XfermodeDrawable(akxn paramakxn, Resources paramResources)
   {
-    this.a = paramakje;
+    this.a = paramakxn;
     a(this.a);
   }
   
@@ -59,7 +59,7 @@ public class XfermodeDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.XfermodeDrawable
  * JD-Core Version:    0.7.0.1
  */

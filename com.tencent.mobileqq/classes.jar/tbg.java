@@ -1,33 +1,57 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.CardHandler;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.view.View;
+import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.multimsg.MultiMsgManager;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
+import java.util.HashMap;
 
 public class tbg
-  implements CompoundButton.OnCheckedChangeListener
+  implements Runnable
 {
-  public tbg(NotifyPushSettingActivity paramNotifyPushSettingActivity, CardHandler paramCardHandler) {}
+  public tbg(MainFragment paramMainFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    if ((NetworkUtil.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.getApplicationContext())) && (NotifyPushSettingActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppCardHandler.c(paramBoolean);
+    if (this.a.getActivity() == null) {
       return;
     }
-    NotifyPushSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, false);
-    paramCompoundButton = NotifyPushSettingActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity);
-    if (!NotifyPushSettingActivity.h(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity).a()) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    MainFragment.a(this.a, PreferenceManager.getDefaultSharedPreferences(MainFragment.a(this.a).getApp()));
+    if (MainFragment.a(this.a).getBoolean("theme_voice_setting_" + MainFragment.a(this.a).getCurrentAccountUin(), true))
     {
-      paramCompoundButton.setChecked(paramBoolean);
-      NotifyPushSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, true);
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity, this.jdField_a_of_type_ComTencentMobileqqActivityNotifyPushSettingActivity.app.getApplication().getString(2131437513), 0).b(5);
+      Object localObject = ThemeUtil.getUserCurrentThemeId(MainFragment.a(this.a));
+      localObject = ThemeUtil.getThemeInfo(this.a.getActivity(), (String)localObject);
+      if ((localObject == null) || (!((ThemeUtil.ThemeInfo)localObject).status.equals("5")) || (!((ThemeUtil.ThemeInfo)localObject).isVoiceTheme)) {}
+    }
+    for (boolean bool = false;; bool = true)
+    {
+      if (MainFragment.a(this.a) != null)
+      {
+        if (MainFragment.a(this.a).get("消息") != null) {
+          ((View)MainFragment.a(this.a).get("消息")).setSoundEffectsEnabled(bool);
+        }
+        if (MainFragment.a(this.a).get("联系人") != null) {
+          ((View)MainFragment.a(this.a).get("联系人")).setSoundEffectsEnabled(bool);
+        }
+        if (MainFragment.a(this.a).get("动态") != null) {
+          ((View)MainFragment.a(this.a).get("动态")).setSoundEffectsEnabled(bool);
+        }
+        if (MainFragment.a(this.a).get("电话") != null) {
+          ((View)MainFragment.a(this.a).get("电话")).setSoundEffectsEnabled(bool);
+        }
+        if (MainFragment.a(this.a).get("NOW") != null) {
+          ((View)MainFragment.a(this.a).get("NOW")).setSoundEffectsEnabled(bool);
+        }
+        if (MainFragment.a(this.a).get("看点") != null) {
+          ((View)MainFragment.a(this.a).get("看点")).setSoundEffectsEnabled(bool);
+        }
+      }
+      if (MultiMsgManager.a().a()) {
+        break;
+      }
+      MultiMsgManager.a().a(MainFragment.a(this.a));
       return;
     }
   }

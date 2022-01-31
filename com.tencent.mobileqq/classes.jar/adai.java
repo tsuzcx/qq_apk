@@ -1,29 +1,29 @@
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.pic.PicResult;
-import com.tencent.mobileqq.pic.UiCallBack.DownAdapter;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
+import com.tencent.weiyun.transmission.WeiyunTransmissionGlobal;
+import com.tencent.weiyun.transmission.upload.UploadManager;
+import cooperation.weiyun.TransmissionHelper;
+import cooperation.weiyun.utils.SoHelper.SoListener;
 
-class adai
-  extends UiCallBack.DownAdapter
+public class adai
+  implements SoHelper.SoListener
 {
-  adai(adah paramadah, MessageForPic paramMessageForPic) {}
+  public adai(WeiYunLogicCenter paramWeiYunLogicCenter) {}
   
-  public void a(int paramInt, PicResult paramPicResult)
+  public void a(long paramLong, float paramFloat) {}
+  
+  public void a(String paramString)
   {
-    this.jdField_a_of_type_Adah.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a.setProgressBarVisibility(8);
-    paramPicResult = AbsDownloader.d(URLDrawableHelper.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic, 1, null).toString().toString());
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardBaseOption", 2, "DownloadBigPic finish");
-    }
-    ForwardBaseOption.a(this.jdField_a_of_type_Adah.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption, paramPicResult, this.jdField_a_of_type_Adah.jdField_a_of_type_JavaLangString);
+    WeiYunLogicCenter.b(this.a, false);
   }
   
-  public void a(int paramInt, boolean paramBoolean) {}
+  public void a(String paramString1, String paramString2)
+  {
+    WeiYunLogicCenter.a(this.a, true);
+    WeiYunLogicCenter.b(this.a, false);
+    TransmissionHelper.a(WeiYunLogicCenter.a(this.a).getApplication(), true);
+    WeiyunTransmissionGlobal.getInstance().getUploadManager().loadLibFromPath(paramString1);
+  }
 }
 
 

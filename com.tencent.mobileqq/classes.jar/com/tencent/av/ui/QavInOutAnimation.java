@@ -13,9 +13,9 @@ import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
 import com.tencent.av.utils.UITools;
 import java.lang.ref.SoftReference;
-import jzt;
-import jzu;
-import jzv;
+import jze;
+import jzf;
+import jzg;
 
 public class QavInOutAnimation
 {
@@ -92,7 +92,7 @@ public class QavInOutAnimation
     this.h.setInterpolator(paramQavPanel);
     paramInt = UITools.a(paramContext);
     if (paramInt <= 320) {
-      paramInt = paramContext.getResources().getDimensionPixelSize(2131560015) + paramContext.getResources().getDimensionPixelSize(2131560018);
+      paramInt = paramContext.getResources().getDimensionPixelSize(2131560033) + paramContext.getResources().getDimensionPixelSize(2131560036);
     }
     for (;;)
     {
@@ -118,14 +118,14 @@ public class QavInOutAnimation
       this.jdField_g_of_type_AndroidViewAnimationAnimation.setDuration(620);
       this.m = new AlphaAnimation(0.0F, 0.0F);
       this.m.setDuration(620);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new jzt(this);
-      this.jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = new jzu(this);
-      this.jdField_c_of_type_AndroidViewAnimationAnimation$AnimationListener = new jzv(this);
+      this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new jze(this);
+      this.jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = new jzf(this);
+      this.jdField_c_of_type_AndroidViewAnimationAnimation$AnimationListener = new jzg(this);
       return;
       if (paramInt <= 480) {
-        paramInt = paramContext.getResources().getDimensionPixelSize(2131560014) + paramContext.getResources().getDimensionPixelSize(2131560017);
+        paramInt = paramContext.getResources().getDimensionPixelSize(2131560032) + paramContext.getResources().getDimensionPixelSize(2131560035);
       } else {
-        paramInt = paramContext.getResources().getDimensionPixelSize(2131560013) + paramContext.getResources().getDimensionPixelSize(2131560016);
+        paramInt = paramContext.getResources().getDimensionPixelSize(2131560031) + paramContext.getResources().getDimensionPixelSize(2131560034);
       }
     }
   }

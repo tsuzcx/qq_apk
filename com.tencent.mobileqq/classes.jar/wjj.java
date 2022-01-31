@@ -1,59 +1,112 @@
-import com.tencent.mobileqq.activity.contacts.base.CardViewController;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.biz.addContactTroopView.BaseTroopCardView;
+import com.tencent.biz.addContactTroopView.TroopCardGroup;
+import com.tencent.biz.addContactTroopView.TroopCardSameCity;
+import com.tencent.biz.addContactTroopView.TroopCardXingquBuluo;
+import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
+import com.tencent.mobileqq.pb.PBEnumField;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.troop_search_searchtab.searchtab.Card;
 
 public class wjj
-  extends FriendListObserver
+  extends BaseAdapter
 {
-  public wjj(CardViewController paramCardViewController) {}
+  public List a;
+  private List b;
   
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  private wjj(TroopView paramTroopView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "onCancelMayKnowRecommend isCancelRemote =" + CardViewController.a(this.a) + "， isSuccess = " + paramBoolean + ", mState = " + CardViewController.a(this.a));
-    }
-    if (paramBoolean)
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      if (CardViewController.a(this.a))
+      BaseTroopCardView localBaseTroopCardView = (BaseTroopCardView)localIterator.next();
+      try
       {
-        CardViewController.a(this.a);
-        int i = CardViewController.b(this.a);
-        if (QLog.isColorLevel()) {
-          QLog.d("CardViewController", 2, "onCancelMayKnowRecommend increaseIgnore times now = " + i);
-        }
-        CardViewController.a(this.a, paramString, null);
-        CardViewController.a(this.a, false);
+        localBaseTroopCardView.e();
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
       }
     }
-    else {
-      return;
-    }
-    CardViewController.b(this.a);
+    this.jdField_a_of_type_JavaUtilList.clear();
   }
   
-  protected void onGetMayKnowRecommend(boolean paramBoolean)
+  public void a(List paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "onGetMayKnowRecommend isSuccess = " + paramBoolean + ", isRefreshingRemote =" + CardViewController.b(this.a) + ", waitingAccountChangeToRefresh =" + CardViewController.c(this.a));
-    }
-    if (CardViewController.b(this.a)) {
-      CardViewController.c(this.a);
-    }
-    while ((!paramBoolean) || (!CardViewController.c(this.a))) {
-      return;
-    }
-    CardViewController.b(this.a, false);
-    CardViewController.a(this.a, false, false);
+    this.b = paramList;
   }
   
-  protected void onMayknowStateChanged(boolean paramBoolean)
+  public int getCount()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "onMayknowStateChanged isSuccess = " + paramBoolean + ", waitingAccountChangeToRefresh =" + CardViewController.c(this.a));
+    if (this.b != null) {
+      return this.b.size();
     }
-    if (paramBoolean) {
-      CardViewController.a(this.a, false, true);
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public int getItemViewType(int paramInt)
+  {
+    return ((searchtab.Card)this.b.get(paramInt)).type.get() - 1;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (searchtab.Card)this.b.get(paramInt);
+    if (paramView == null) {
+      if (1 == paramViewGroup.type.get())
+      {
+        paramView = new TroopCardGroup(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView.a);
+        paramView.a();
+      }
     }
+    for (;;)
+    {
+      try
+      {
+        this.jdField_a_of_type_JavaUtilList.add((BaseTroopCardView)paramView);
+        ((BaseTroopCardView)paramView).a(paramViewGroup);
+        return paramView;
+        if (2 == paramViewGroup.type.get())
+        {
+          paramView = new TroopCardSameCity(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView.a);
+          paramView.a();
+        }
+        else
+        {
+          paramView = new TroopCardXingquBuluo(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView.a);
+          paramView.a();
+        }
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+    }
+  }
+  
+  public int getViewTypeCount()
+  {
+    return 3;
   }
 }
 

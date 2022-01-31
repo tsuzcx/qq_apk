@@ -1,20 +1,34 @@
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 
 class acvg
   implements Runnable
 {
-  acvg(acvf paramacvf, int paramInt) {}
+  acvg(acve paramacve) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int == 21) {
-      this.jdField_a_of_type_Acvf.a.a.g(true);
-    }
-    while (this.jdField_a_of_type_Int != 22) {
+    try
+    {
+      if (this.a.a.jdField_a_of_type_JavaIoOutputStream == null) {
+        this.a.a.jdField_a_of_type_JavaIoOutputStream = new FileOutputStream(this.a.a.d, true);
+      }
+      if (this.a.a.b == 1) {
+        this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.a.c, 2002);
+      }
+      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 0;
+      this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+      this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 2;
+      FileManagerRSWorker.a(this.a.a, this.a.a.jdField_a_of_type_Long, this.a.a.h);
       return;
     }
-    this.jdField_a_of_type_Acvf.a.a.g(false);
+    catch (FileNotFoundException localFileNotFoundException)
+    {
+      localFileNotFoundException.printStackTrace();
+    }
   }
 }
 

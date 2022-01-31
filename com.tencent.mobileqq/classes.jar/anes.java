@@ -1,25 +1,22 @@
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoSave;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import cooperation.thirdpay.NFCPayPluginProxyActivity;
 
 public class anes
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public anes(EditVideoSave paramEditVideoSave) {}
+  public anes(NFCPayPluginProxyActivity paramNFCPayPluginProxyActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.j();
-    if (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a() != 102) {
-      QQToast.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), 2, "保存成功", 0).a();
-    }
+    this.a.startActivity(new Intent("android.settings.NFC_SETTINGS"));
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anes
  * JD-Core Version:    0.7.0.1
  */

@@ -1,126 +1,75 @@
-import android.content.Context;
-import android.support.annotation.Nullable;
-import android.support.v4.view.PagerAdapter;
-import android.util.SparseArray;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
-import dov.com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
+import android.annotation.TargetApi;
+import android.media.MediaMetadataRetriever;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.richmedia.mediacodec.encoder.EncodeConfig;
+import com.tencent.mobileqq.richmedia.mediacodec.videodecoder.DecodeConfig;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import dov.com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer.Mp4VideoFragmentInfo;
+import dov.com.tencent.mobileqq.richmedia.mediacodec.encoder.Mp4ReEncoder;
+import java.util.List;
 
 public class anwl
-  extends PagerAdapter
+  implements Runnable
 {
-  public final SparseArray a;
-  public ArrayList a;
-  public final Map a;
+  public int a;
+  public int b = 1;
+  public int c;
   
-  public anwl(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager)
+  public anwl(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Int = 30;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.c = paramInt3;
   }
   
-  public int a()
+  @TargetApi(17)
+  public void run()
   {
-    return this.jdField_a_of_type_JavaUtilArrayList.size();
-  }
-  
-  public int a(int paramInt)
-  {
-    int i = this.jdField_a_of_type_JavaUtilArrayList.size();
-    if (i > 0) {
-      return paramInt % i;
-    }
-    return -1;
-  }
-  
-  @Nullable
-  public View a(int paramInt)
-  {
-    return (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-  }
-  
-  public FilterCategoryItem a(int paramInt)
-  {
-    paramInt = a(paramInt);
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {
-      return (FilterCategoryItem)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    }
-    return null;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager.a);
-    notifyDataSetChanged();
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "destroyItem position: " + paramInt);
-    }
-    View localView = (View)paramObject;
-    localView.removeCallbacks((Runnable)localView.getTag());
-    localView.clearAnimation();
-    paramViewGroup.removeView(localView);
-    paramObject = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localView.getClass());
-    paramViewGroup = paramObject;
-    if (paramObject == null)
+    SLog.d("Q.qqstory.record.HWEditLocalVideoPlayer", "start convert i frame video. mVideoPath = " + HWEditLocalVideoPlayer.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer));
+    localObject1 = new MediaMetadataRetriever();
+    try
     {
-      paramViewGroup = new LinkedList();
-      this.jdField_a_of_type_JavaUtilMap.put(localView.getClass(), paramViewGroup);
+      ((MediaMetadataRetriever)localObject1).setDataSource(HWEditLocalVideoPlayer.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer));
+      str1 = ((MediaMetadataRetriever)localObject1).extractMetadata(18);
+      str2 = ((MediaMetadataRetriever)localObject1).extractMetadata(19);
+      localObject2 = ((MediaMetadataRetriever)localObject1).extractMetadata(24);
+      ((MediaMetadataRetriever)localObject1).release();
+      i = 0;
     }
-    paramViewGroup.offer(localView);
-    this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
-  }
-  
-  public int getCount()
-  {
-    return this.jdField_a_of_type_JavaUtilArrayList.size() * 100;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoFilterViewPager", 2, "instantiateItem position: " + paramInt);
-    }
-    Object localObject1 = a(paramInt);
-    if (localObject1 == null)
+    catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("VideoFilterViewPager", 2, "instantiateItem find data is null!");
-      }
-      return null;
+      String str1;
+      String str2;
+      Object localObject2;
+      int i;
+      int j;
+      label96:
+      long l1;
+      long l2;
+      SLog.c("Q.qqstory.record.HWEditLocalVideoPlayer", "setDataSource failed when convert i frame", localException);
+      ((MediaMetadataRetriever)localObject1).release();
+      return;
     }
-    localObject1 = (Queue)this.jdField_a_of_type_JavaUtilMap.get(localObject1.getClass());
-    if (localObject1 != null) {}
-    for (localObject1 = (View)((Queue)localObject1).poll();; localObject1 = null)
+    try
     {
-      Object localObject2 = localObject1;
-      if (localObject1 == null)
-      {
-        localObject2 = ((LayoutInflater)this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewCaptureVideoFilterViewPager.getContext().getSystemService("layout_inflater")).inflate(2130968736, null);
-        ((View)localObject2).setVisibility(8);
-      }
-      paramViewGroup.addView((View)localObject2);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
-      return localObject2;
+      j = Integer.valueOf((String)localObject2).intValue();
+      i = j;
     }
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return ((paramObject instanceof View)) && (paramObject == paramView);
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+      break label96;
+    }
+    HWEditLocalVideoPlayer.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer, new Mp4ReEncoder());
+    localObject1 = HWEditLocalVideoPlayer.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer) + "_" + this.c + ".IFrames.mp4";
+    if (this.b != 0) {
+      HWEditLocalVideoPlayer.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer).jdField_a_of_type_Int = (this.b * this.jdField_a_of_type_Int);
+    }
+    localObject2 = (HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer.a.get(this.c);
+    l1 = HWEditLocalVideoPlayer.Mp4VideoFragmentInfo.a((HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)localObject2);
+    l2 = HWEditLocalVideoPlayer.Mp4VideoFragmentInfo.b((HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)localObject2);
+    HWEditLocalVideoPlayer.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer).a(new DecodeConfig(HWEditLocalVideoPlayer.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer), 0, false, true, l1, l2), new EncodeConfig((String)localObject1, Integer.valueOf(str1).intValue(), Integer.valueOf(str2).intValue(), 12582912, this.b, this.jdField_a_of_type_Int, 0, false, i, null, null, null, false), new anwm(this, (HWEditLocalVideoPlayer.Mp4VideoFragmentInfo)localObject2), null);
   }
 }
 

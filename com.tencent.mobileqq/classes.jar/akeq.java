@@ -1,29 +1,29 @@
-import android.os.Handler;
-import com.tencent.mobileqq.widget.CircleProgressView;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
 
 public class akeq
-  implements Runnable
+  implements TextWatcher
 {
-  private akeq(CircleProgressView paramCircleProgressView) {}
+  public akeq(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput, int paramInt) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (CircleProgressView.a(this.a)) {
-      CircleProgressView.a(this.a, CircleProgressView.a(this.a) + CircleProgressView.b(this.a));
-    }
-    for (;;)
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.a.getText().length() == this.jdField_a_of_type_Int) && (paramCharSequence.charAt(this.jdField_a_of_type_Int - 1) == '\024'))
     {
-      CircleProgressView.a(this.a, CircleProgressView.a(this.a) % 360);
-      CircleProgressView.a(this.a).postDelayed(this, 16L);
-      this.a.invalidate();
-      return;
-      CircleProgressView.a(this.a, CircleProgressView.a(this.a) + 1);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.a.setText(paramCharSequence.subSequence(0, this.jdField_a_of_type_Int - 1));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogWtihEmoticonInput.a.setSelection(this.jdField_a_of_type_Int - 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akeq
  * JD-Core Version:    0.7.0.1
  */

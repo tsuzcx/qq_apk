@@ -1,51 +1,23 @@
-import android.content.Intent;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4NewGroupChat;
-import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
-import com.tencent.av.utils.MultiVideoMembersClickListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiMembersAudioUI;
+import com.tencent.av.ui.MultiMembersVideoUI;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
 public class jxg
-  implements MultiVideoMembersClickListener
+  implements Runnable
 {
-  public jxg(MultiVideoCtrlLayerUI4NewGroupChat paramMultiVideoCtrlLayerUI4NewGroupChat) {}
+  public jxg(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  private void b()
+  public void run()
   {
-    AVActivity localAVActivity = (AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localAVActivity != null)
-    {
-      localIntent = new Intent(localAVActivity, MultiVideoMembersListviewAvtivity.class);
-      localIntent.putExtra("uinType", this.a.jdField_c_of_type_Int);
-      localIntent.putExtra("RelationUin", String.valueOf(this.a.b));
-      localAVActivity.startActivity(localIntent);
+    if (this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI != null) {
+      this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a();
     }
-    while (!QLog.isColorLevel())
-    {
-      Intent localIntent;
-      return;
+    if (this.a.jdField_a_of_type_ComTencentAvUiMultiMembersVideoUI != null) {
+      this.a.jdField_a_of_type_ComTencentAvUiMultiMembersVideoUI.c();
     }
-    QLog.e(this.a.jdField_c_of_type_JavaLangString, 2, "startMembersListViewPage-->can not get activity");
-  }
-  
-  public void a()
-  {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().d == 4) && (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().k())) {
-      MultiVideoCtrlLayerUI4NewGroupChat.a(this.a);
-    }
-  }
-  
-  public void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_c_of_type_JavaLangString, 2, "MultiVideoMembersClickListener , Uin = " + paramLong + " , videoScr = " + paramInt1 + " , isNeedRequest " + paramBoolean + " , positon = " + paramInt2);
-    }
-    if ((paramInt2 == 17) && (paramBoolean)) {
-      b();
-    }
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 2000L);
   }
 }
 

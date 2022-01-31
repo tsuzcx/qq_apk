@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.ark.API;
 
-import aaig;
-import aaih;
-import aaii;
-import aaij;
-import aaik;
-import aail;
-import aaim;
-import aain;
-import aaio;
-import aaiq;
-import aair;
-import aais;
-import aait;
-import aaiu;
-import aaja;
-import aajg;
-import aajh;
+import aaph;
+import aapi;
+import aapj;
+import aapk;
+import aapl;
+import aapm;
+import aapn;
+import aapo;
+import aapp;
+import aapr;
+import aaps;
+import aapt;
+import aapu;
+import aapv;
+import aaqb;
+import aaqh;
+import aaqi;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -154,7 +154,7 @@ public class ArkAppModuleReg$ModuleQQ
       paramString.Reset();
       return;
       if (this.jdField_a_of_type_MqqObserverWtloginObserver == null) {
-        this.jdField_a_of_type_MqqObserverWtloginObserver = new aaio(this, paramLong1);
+        this.jdField_a_of_type_MqqObserverWtloginObserver = new aapp(this, paramLong1);
       }
       ((WtloginManager)((QQAppInterface)localObject2).getManager(1)).GetOpenKeyWithoutPasswd(paramString, paramLong2, paramLong3, this.jdField_a_of_type_MqqObserverWtloginObserver);
       return;
@@ -187,7 +187,7 @@ public class ArkAppModuleReg$ModuleQQ
       {
         str2 = ((Card)localObject).strNick;
         if (((Card)localObject).shGender == 0) {
-          str1 = BaseActivity.sTopActivity.getString(2131433924);
+          str1 = BaseActivity.sTopActivity.getString(2131433941);
         }
       }
     }
@@ -221,7 +221,7 @@ public class ArkAppModuleReg$ModuleQQ
         if (((Card)localObject).shGender != 1) {
           break label422;
         }
-        str1 = BaseActivity.sTopActivity.getString(2131433925);
+        str1 = BaseActivity.sTopActivity.getString(2131433942);
         break;
         paramString = (String)localObject;
         if (!QLog.isColorLevel()) {
@@ -573,7 +573,7 @@ public class ArkAppModuleReg$ModuleQQ
         paramArrayOfVariantWrapper = DeviceInfoUtil.d();
         paramString = paramArrayOfVariantWrapper;
         if (TextUtils.isEmpty(paramArrayOfVariantWrapper)) {
-          paramString = "7.6.0";
+          paramString = "7.6.3";
         }
         paramVariantWrapper.SetString(paramString);
         return true;
@@ -797,7 +797,7 @@ public class ArkAppModuleReg$ModuleQQ
             QLog.i("ArkApp", 2, String.format("GetCurrentPosition.app.%s", new Object[] { this.jdField_a_of_type_JavaLangString }));
           }
           l1 = a(paramArrayOfVariantWrapper[0].Copy());
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager.b(new aaig(this, l1));
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager.b(new aaph(this, l1));
           return true;
         }
         if (paramString.equals("WatchPosition"))
@@ -809,7 +809,7 @@ public class ArkAppModuleReg$ModuleQQ
             QLog.i("ArkApp", 2, String.format("WatchPosition.app.%s", new Object[] { this.jdField_a_of_type_JavaLangString }));
           }
           l1 = a(paramArrayOfVariantWrapper[0].Copy());
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager.a(new aaiq(this, l1));
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager.a(new aapr(this, l1));
           return true;
         }
         if (paramString.equals("ClearWatch"))
@@ -826,7 +826,7 @@ public class ArkAppModuleReg$ModuleQQ
             return false;
           }
           l1 = a(paramArrayOfVariantWrapper[0].Copy());
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager.a(new aair(this, l1));
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppLocationManager.a(new aaps(this, l1));
           return true;
         }
         if (paramString.equals("SendMessage"))
@@ -901,7 +901,7 @@ public class ArkAppModuleReg$ModuleQQ
                   }
                 }
                 else {
-                  ArkAppCenter.a().postToMainThread(new aais(this, (ArkAppMessage)localObject1));
+                  ArkAppCenter.a().postToMainThread(new aapt(this, (ArkAppMessage)localObject1));
                 }
               }
             }
@@ -943,7 +943,7 @@ public class ArkAppModuleReg$ModuleQQ
             QLog.i("ArkApp", 1, "QQ.SendMessage text currentChat success");
             break label5031;
           }
-          ArkAppCenter.a().postToMainThread(new aait(this, paramString));
+          ArkAppCenter.a().postToMainThread(new aapu(this, paramString));
           break label5031;
         }
         if (paramString.equals("Login"))
@@ -981,7 +981,7 @@ public class ArkAppModuleReg$ModuleQQ
           localObject2 = "key_ark_authority_show_dialog" + "_" + paramArrayOfVariantWrapper + "_" + "ark_authority_api_login" + "_" + paramString;
           if (!paramVariantWrapper.getBoolean((String)localObject2, false))
           {
-            ArkAppCenter.a().postToMainThread(new aaiu(this, paramArrayOfVariantWrapper, (String)localObject1, l2, paramString, l1));
+            ArkAppCenter.a().postToMainThread(new aapv(this, paramArrayOfVariantWrapper, (String)localObject1, l2, paramString, l1));
             paramVariantWrapper.edit().putBoolean((String)localObject2, true).commit();
             a(paramArrayOfVariantWrapper, paramString);
           }
@@ -1046,7 +1046,7 @@ public class ArkAppModuleReg$ModuleQQ
           localObject1 = "key_ark_authority_show_dialog" + "_" + paramArrayOfVariantWrapper + "_" + "ark_authority_api_user_info" + "_" + paramString;
           if (!paramVariantWrapper.getBoolean((String)localObject1, false))
           {
-            ArkAppCenter.a().postToMainThread(new aaja(this, paramArrayOfVariantWrapper, (String)localObject2, l1, paramString));
+            ArkAppCenter.a().postToMainThread(new aaqb(this, paramArrayOfVariantWrapper, (String)localObject2, l1, paramString));
             paramVariantWrapper.edit().putBoolean((String)localObject1, true).commit();
             a(paramArrayOfVariantWrapper, paramString);
           }
@@ -1071,7 +1071,7 @@ public class ArkAppModuleReg$ModuleQQ
             paramVariantWrapper = paramArrayOfVariantWrapper[2].GetString();
             paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[3].GetTableAsJsonString();
             QLog.d("ArkOpenView", 1, "OpenView holder=" + l1 + ", type=" + paramString + ", view=" + paramVariantWrapper + ", meta=" + paramArrayOfVariantWrapper);
-            ArkAppCenter.a().postToMainThread(new aajg(this, paramString, paramVariantWrapper, paramArrayOfVariantWrapper, l1));
+            ArkAppCenter.a().postToMainThread(new aaqh(this, paramString, paramVariantWrapper, paramArrayOfVariantWrapper, l1));
           }
           return true;
         }
@@ -1083,7 +1083,7 @@ public class ArkAppModuleReg$ModuleQQ
           if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0].IsView()))
           {
             l1 = paramArrayOfVariantWrapper[0].GetView();
-            ArkAppCenter.a().postToMainThread(new aajh(this, l1));
+            ArkAppCenter.a().postToMainThread(new aaqi(this, l1));
           }
           return true;
         }
@@ -1096,7 +1096,7 @@ public class ArkAppModuleReg$ModuleQQ
           {
             paramString = paramArrayOfVariantWrapper[0].GetString();
             paramArrayOfVariantWrapper = paramArrayOfVariantWrapper[1].GetTableAsJsonString();
-            ArkAppCenter.a().postToMainThread(new aaih(this, paramString, paramArrayOfVariantWrapper));
+            ArkAppCenter.a().postToMainThread(new aapi(this, paramString, paramArrayOfVariantWrapper));
           }
           return true;
         }
@@ -1109,7 +1109,7 @@ public class ArkAppModuleReg$ModuleQQ
           {
             l1 = paramArrayOfVariantWrapper[0].GetView();
             paramString = paramArrayOfVariantWrapper[1].GetString();
-            ArkAppCenter.a().postToMainThread(new aaii(this, l1, paramString));
+            ArkAppCenter.a().postToMainThread(new aapj(this, l1, paramString));
           }
           return true;
         }
@@ -1121,7 +1121,7 @@ public class ArkAppModuleReg$ModuleQQ
           if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0].IsView()))
           {
             l1 = paramArrayOfVariantWrapper[0].GetView();
-            ArkAppCenter.a().postToMainThread(new aaij(this, l1));
+            ArkAppCenter.a().postToMainThread(new aapk(this, l1));
           }
           return true;
         }
@@ -1131,7 +1131,7 @@ public class ArkAppModuleReg$ModuleQQ
           {
             l1 = paramArrayOfVariantWrapper[0].GetView();
             paramString = paramArrayOfVariantWrapper[1].GetString();
-            ArkAppCenter.a().postToMainThread(new aaik(this, l1, paramString));
+            ArkAppCenter.a().postToMainThread(new aapl(this, l1, paramString));
           }
           return true;
         }
@@ -1140,7 +1140,7 @@ public class ArkAppModuleReg$ModuleQQ
           if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0].IsView()))
           {
             l1 = paramArrayOfVariantWrapper[0].GetView();
-            ArkAppCenter.a().postToMainThread(new aail(this, l1));
+            ArkAppCenter.a().postToMainThread(new aapm(this, l1));
           }
           return true;
         }
@@ -1149,7 +1149,7 @@ public class ArkAppModuleReg$ModuleQQ
           if ((paramArrayOfVariantWrapper != null) && (paramArrayOfVariantWrapper.length >= 1) && (paramArrayOfVariantWrapper[0].IsView()))
           {
             l1 = paramArrayOfVariantWrapper[0].GetView();
-            ArkAppCenter.a().postToMainThread(new aaim(this, l1));
+            ArkAppCenter.a().postToMainThread(new aapn(this, l1));
           }
           return true;
         }
@@ -1200,7 +1200,7 @@ public class ArkAppModuleReg$ModuleQQ
       }
       ((ark.Application)localObject1).Release();
       i = (int)Math.round(paramArrayOfVariantWrapper[1].GetDouble());
-      ArkAppCenter.a().postToMainThread(new aain(this, i, (ArrayList)localObject2));
+      ArkAppCenter.a().postToMainThread(new aapo(this, i, (ArrayList)localObject2));
       return true;
       bool = true;
       break label2702;

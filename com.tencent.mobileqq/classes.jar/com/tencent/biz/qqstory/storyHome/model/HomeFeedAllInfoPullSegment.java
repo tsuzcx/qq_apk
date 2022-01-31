@@ -20,10 +20,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
-import nxb;
-import nxc;
-import nxd;
-import nxe;
+import nyo;
+import nyp;
+import nyq;
+import nyr;
 
 public class HomeFeedAllInfoPullSegment
   extends JobSegment
@@ -178,11 +178,11 @@ public class HomeFeedAllInfoPullSegment
     GetFeedFeatureRequest localGetFeedFeatureRequest = new GetFeedFeatureRequest();
     this.jdField_a_of_type_JavaUtilVector.add(localGetFeedFeatureRequest);
     ((BatchGetFriendStoryFeedInfoRequest)localObject).jdField_a_of_type_JavaUtilList = localList;
-    CmdTaskManger.a().a((NetworkRequest)localObject, new nxb(this, paramJobContext, paramGetFeedIdListResult));
-    CmdTaskManger.a().a(localBatchGetFeedCommentRequest, new nxc(this, paramJobContext, paramGetFeedIdListResult));
-    CmdTaskManger.a().a(localBatchGetFeedLikeRequest, new nxd(this, paramJobContext, paramGetFeedIdListResult));
+    CmdTaskManger.a().a((NetworkRequest)localObject, new nyo(this, paramJobContext, paramGetFeedIdListResult));
+    CmdTaskManger.a().a(localBatchGetFeedCommentRequest, new nyp(this, paramJobContext, paramGetFeedIdListResult));
+    CmdTaskManger.a().a(localBatchGetFeedLikeRequest, new nyq(this, paramJobContext, paramGetFeedIdListResult));
     localGetFeedFeatureRequest.jdField_a_of_type_JavaUtilList = localArrayList;
-    CmdTaskManger.a().a(localGetFeedFeatureRequest, new nxe(this, paramJobContext, paramGetFeedIdListResult));
+    CmdTaskManger.a().a(localGetFeedFeatureRequest, new nyr(this, paramJobContext, paramGetFeedIdListResult));
   }
   
   protected void a(JobContext paramJobContext, FeedListPageLoaderBase.GetFeedIdListResult paramGetFeedIdListResult)

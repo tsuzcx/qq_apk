@@ -1,61 +1,58 @@
-import android.os.RemoteException;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
-import com.tencent.mobileqq.pluginsdk.PluginManagerClient;
-import com.tencent.mobileqq.pluginsdk.PluginManagerHelper.OnPluginManagerLoadedListener;
+import com.tencent.sharp.jni.TraeAudioManager;
 
-class alyz
-  implements PluginManagerHelper.OnPluginManagerLoadedListener
+public class alyz
+  extends alzc
 {
-  alyz(alyy paramalyy) {}
-  
-  public void onPluginManagerLoaded(PluginManagerClient paramPluginManagerClient)
+  public alyz(TraeAudioManager paramTraeAudioManager)
   {
-    try
+    super(paramTraeAudioManager);
+  }
+  
+  public String a()
+  {
+    return "DEVICE_EARPHONE";
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a, false);
+    e();
+    int i = 0;
+    for (;;)
     {
-      if (!paramPluginManagerClient.isPluginInstalled("qqfav.apk"))
+      if (this.jdField_a_of_type_Boolean == true)
       {
-        if (this.a.a == null)
-        {
-          paramPluginManagerClient.installPlugin("qqfav.apk");
-          return;
+        if (TraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager)) {
+          this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a(this.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a, false);
         }
-        paramPluginManagerClient.installPlugin("qqfav.apk", this.a.a);
-        return;
-      }
-    }
-    catch (Exception paramPluginManagerClient)
-    {
-      if (this.a.a != null)
-      {
+        long l;
+        if (i < 5) {
+          l = 1000L;
+        }
         try
         {
-          this.a.a.onInstallError("qqfav.apk", -1);
-          return;
+          for (;;)
+          {
+            Thread.sleep(l);
+            label69:
+            i += 1;
+            break;
+            l = 4000L;
+          }
         }
-        catch (RemoteException paramPluginManagerClient)
+        catch (InterruptedException localInterruptedException)
         {
-          paramPluginManagerClient.printStackTrace();
-          return;
-        }
-        paramPluginManagerClient = this.a.a;
-        if (paramPluginManagerClient != null) {
-          try
-          {
-            this.a.a.onInstallFinish("qqfav.apk");
-            return;
-          }
-          catch (RemoteException paramPluginManagerClient)
-          {
-            paramPluginManagerClient.printStackTrace();
-          }
+          break label69;
         }
       }
     }
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alyz
  * JD-Core Version:    0.7.0.1
  */

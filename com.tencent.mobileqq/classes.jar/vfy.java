@@ -1,36 +1,28 @@
-import android.content.Intent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.item.ThumbItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SVIPHandler;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.vas.IndividuationUrlHelper;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoPTVItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoPTVItemBuilder.Holder;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class vfy
-  implements View.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public vfy(ThumbItemBuilder paramThumbItemBuilder, int paramInt) {}
+  public vfy(ShortVideoPTVItemBuilder paramShortVideoPTVItemBuilder, MessageForShortVideo paramMessageForShortVideo, ShortVideoPTVItemBuilder.Holder paramHolder, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-    paramView.putExtra("individuation_url_type", 40303);
-    String str = IndividuationUrlHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_AndroidContentContext, "call", "mvip.gongneng.anroid.individuation.web");
-    str = str + "&funcallId=" + this.jdField_a_of_type_Int;
-    VasWebviewUtil.openQQBrowserWithoutAD(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_AndroidContentContext, str, 524288L, paramView, true, -1);
-    int i = ((SVIPHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(13)).j();
-    if (i == 2) {
-      i = 0;
+    switch (paramInt)
+    {
     }
     for (;;)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemThumbItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004A25", "0X8004A25", 0, 0, "" + i, "", "", "");
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
       return;
-      if (i == 3) {
-        i = 2;
+      if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 2) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoPTVItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoPTVItemBuilder$Holder);
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoPTVItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoPTVItemBuilder$Holder);
       }
     }
   }

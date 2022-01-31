@@ -1,22 +1,21 @@
-import com.tencent.av.core.VcControllerImpl;
+import com.tencent.av.gaudio.AVNotifyCenter;
 
 public class jic
 {
-  public int a;
-  public long a;
   public String a;
-  public byte[] a;
-  public int b;
-  public long b;
-  public byte[] b;
-  public long c;
-  public long d;
+  public String b;
+  public String c;
   
-  public jic(VcControllerImpl paramVcControllerImpl) {}
+  public jic(AVNotifyCenter paramAVNotifyCenter, String paramString1, String paramString2, String paramString3)
+  {
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.b = paramString2;
+    this.c = paramString3;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     jic
  * JD-Core Version:    0.7.0.1
  */

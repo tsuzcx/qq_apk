@@ -1,47 +1,15 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SignatureManager;
-import com.tencent.mobileqq.richstatus.EditActivity;
-import com.tencent.mobileqq.vas.SignatureTemplateConfig.SignatureTemplateType;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.PrinterStatusHandler;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class zjs
-  implements Handler.Callback
+  implements Runnable
 {
-  public zjs(SignatureManager paramSignatureManager) {}
+  public zjs(PrinterStatusHandler paramPrinterStatusHandler, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void run()
   {
-    if (2 == paramMessage.what)
-    {
-      SignatureManager.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateConfig$SignatureTemplateType = (SignatureTemplateConfig.SignatureTemplateType[])paramMessage.obj;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
-      {
-        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
-        if (paramMessage != null) {
-          paramMessage.sendEmptyMessageDelayed(2, 50L);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SignatureManager", 2, "update sign tpl info...");
-        }
-      }
-    }
-    for (;;)
-    {
-      return true;
-      if ((3 == paramMessage.what) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-      {
-        paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(EditActivity.class);
-        if (paramMessage != null) {
-          paramMessage.sendEmptyMessageDelayed(7, 50L);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SignatureManager", 2, "update sign tpl animation ...");
-        }
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppPrinterStatusHandler.b(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg, this.jdField_a_of_type_JavaLangObject);
   }
 }
 

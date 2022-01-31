@@ -1,24 +1,29 @@
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.widgets.ShareResultDialog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.webviewplugin.QzoneWebViewOfflinePlugin;
+import com.tencent.mobileqq.webview.webso.WebSoCgiService.WebSoCgiState;
 
 public class pcs
-  implements View.OnClickListener
+  extends Handler
 {
-  public pcs(ShareResultDialog paramShareResultDialog, DialogInterface.OnClickListener paramOnClickListener) {}
-  
-  public void onClick(View paramView)
+  public pcs(QzoneWebViewOfflinePlugin paramQzoneWebViewOfflinePlugin, Looper paramLooper)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog, -1);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (!(paramMessage.obj instanceof WebSoCgiService.WebSoCgiState)) {}
+    while (paramMessage.what != 204) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.dismiss();
+    this.a.a((WebSoCgiService.WebSoCgiState)paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pcs
  * JD-Core Version:    0.7.0.1
  */

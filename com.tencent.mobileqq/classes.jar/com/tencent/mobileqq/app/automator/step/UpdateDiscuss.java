@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import zol;
+import zrr;
 
 public class UpdateDiscuss
   extends AsyncStep
@@ -19,7 +19,7 @@ public class UpdateDiscuss
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new zol(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new zrr(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver);
     }
     ((DiscussionHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(6)).f(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.getCurrentAccountUin()).longValue());

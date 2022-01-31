@@ -1,36 +1,29 @@
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.common.galleryactivity.UrlGalleryAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.webviewplugin.WebSoPlugin;
 
 public class pdo
-  extends URLDrawableDownListener.Adapter
+  extends Handler
 {
-  public pdo(UrlGalleryAdapter paramUrlGalleryAdapter, int paramInt, ViewGroup paramViewGroup) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public pdo(WebSoPlugin paramWebSoPlugin, Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityUrlGalleryAdapter.a(this.jdField_a_of_type_Int, false);
+    super(paramLooper);
   }
   
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityUrlGalleryAdapter.b(this.jdField_a_of_type_Int, paramInt / 100);
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityUrlGalleryAdapter.a(this.jdField_a_of_type_Int, true);
-    paramView = this.jdField_a_of_type_ComTencentCommonGalleryactivityUrlGalleryAdapter.a(paramURLDrawable.getURL(), this.jdField_a_of_type_AndroidViewViewGroup);
-    if (paramView != null) {
-      this.jdField_a_of_type_ComTencentCommonGalleryactivityUrlGalleryAdapter.a(paramView, paramURLDrawable);
+    if ((paramMessage.what == 203) && ((paramMessage.obj instanceof Bundle)))
+    {
+      paramMessage = (Bundle)paramMessage.obj;
+      WebSoPlugin.a(this.a, paramMessage);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pdo
  * JD-Core Version:    0.7.0.1
  */

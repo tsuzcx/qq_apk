@@ -44,14 +44,14 @@ import java.util.Queue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
-import ohd;
-import ohe;
-import ohf;
-import ohg;
-import ohh;
-import ohi;
-import ohj;
-import ohk;
+import oin;
+import oio;
+import oip;
+import oiq;
+import oir;
+import ois;
+import oit;
+import oiu;
 
 @TargetApi(9)
 public class DoodleEmojiManager
@@ -61,7 +61,7 @@ public class DoodleEmojiManager
   public final int a;
   public long a;
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
-  private LocationListener jdField_a_of_type_AndroidLocationLocationListener = new ohg(this);
+  private LocationListener jdField_a_of_type_AndroidLocationLocationListener = new oiq(this);
   public DoodleEmojiItem a;
   public final Object a;
   public final List a;
@@ -414,7 +414,7 @@ public class DoodleEmojiManager
     do
     {
       return false;
-      paramFile = paramFile.listFiles(new ohk());
+      paramFile = paramFile.listFiles(new oiu());
     } while ((paramFile == null) || (paramFile.length <= 0));
     return true;
   }
@@ -470,7 +470,7 @@ public class DoodleEmojiManager
     else
     {
       this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-      CmdTaskManger.a().a(new GetEmojiPackInfoListRequest(this.jdField_b_of_type_JavaLangString, 50), new ohj(this));
+      CmdTaskManger.a().a(new GetEmojiPackInfoListRequest(this.jdField_b_of_type_JavaLangString, 50), new oit(this));
       return;
     }
     SLog.d("DoodleEmojiManager", "fireRequestEmojiPackList now is already requesting, just waiting is ok, requesting past time = %d", new Object[] { Long.valueOf(l) });
@@ -535,7 +535,7 @@ public class DoodleEmojiManager
   public void a(int paramInt1, int paramInt2, DoodleEmojiManager.POIPostersRequestCallback paramPOIPostersRequestCallback)
   {
     paramPOIPostersRequestCallback = new WeakReference(paramPOIPostersRequestCallback);
-    CmdTaskManger.a().a(new GetPoiFacesRequest(paramInt1, paramInt2), new ohi(this, paramPOIPostersRequestCallback));
+    CmdTaskManger.a().a(new GetPoiFacesRequest(paramInt1, paramInt2), new ois(this, paramPOIPostersRequestCallback));
   }
   
   public void a(Context paramContext)
@@ -547,7 +547,7 @@ public class DoodleEmojiManager
       Object localObject1 = new File(jdField_a_of_type_JavaLangString);
       if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory()))
       {
-        localObject1 = ((File)localObject1).listFiles(new ohd(this));
+        localObject1 = ((File)localObject1).listFiles(new oin(this));
         if (localObject1 != null)
         {
           int j = localObject1.length;
@@ -555,7 +555,7 @@ public class DoodleEmojiManager
           if (i < j)
           {
             File localFile = localObject1[i];
-            Object localObject2 = localFile.listFiles(new ohe(this));
+            Object localObject2 = localFile.listFiles(new oio(this));
             if ((localObject2 != null) && (localObject2.length > 0))
             {
               localObject2 = a(localFile);
@@ -609,7 +609,7 @@ public class DoodleEmojiManager
       a(localBasicLocation.b, localBasicLocation.jdField_a_of_type_Int, paramPOIPostersRequestCallback);
       return;
     }
-    localLbsManager.a(new ohh(this, paramPOIPostersRequestCallback));
+    localLbsManager.a(new oir(this, paramPOIPostersRequestCallback));
     localLbsManager.c();
   }
   
@@ -759,7 +759,7 @@ public class DoodleEmojiManager
         if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem != null)
         {
           SLog.b("DoodleEmojiManager", "downloader startDownload : " + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem);
-          Bosses.get().postJob(new ohf(this, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem));
+          Bosses.get().postJob(new oip(this, this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem));
         }
         return;
       }

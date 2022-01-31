@@ -1,45 +1,37 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.UIBaseEventReceiver;
-import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListEvent;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeHomeFeed;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter;
-import com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.HomeFeedPresenterListener;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.biz.qqstory.storyHome.memory.controller.QQStoryMemoriesPresenter;
 import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class nxl
-  extends UIBaseEventReceiver
+  extends QQUIEventReceiver
 {
-  public nxl(HomeFeedPresenter paramHomeFeedPresenter)
+  public nxl(@NonNull QQStoryMemoriesPresenter paramQQStoryMemoriesPresenter)
   {
-    super(paramHomeFeedPresenter);
+    super(paramQQStoryMemoriesPresenter);
   }
   
-  public void a(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull DetailLikeListLoader.GetLikeListEvent paramGetLikeListEvent)
+  public void a(@NonNull QQStoryMemoriesPresenter paramQQStoryMemoriesPresenter, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    Object localObject = paramHomeFeedPresenter.a(paramGetLikeListEvent.jdField_a_of_type_JavaLangString);
-    if ((localObject == null) || (paramGetLikeListEvent.jdField_a_of_type_Boolean))
+    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null) && (TextUtils.equals(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.getUnionId(), paramQQStoryMemoriesPresenter.jdField_a_of_type_JavaLangString)))
     {
-      SLog.d(this.TAG, "is not my like, %s, isForDetail:%b", new Object[] { paramGetLikeListEvent.jdField_a_of_type_JavaLangString, Boolean.valueOf(paramGetLikeListEvent.jdField_a_of_type_Boolean) });
-      return;
+      SLog.b("Q.qqstory.memories.QQStoryMemoriesPresenter", "receive user info event. %s. from others.", paramUpdateUserInfoEvent);
+      paramQQStoryMemoriesPresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem;
+      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).d();
+      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).b();
+      QQStoryMemoriesPresenter.a(paramQQStoryMemoriesPresenter).c();
     }
-    if (!(localObject instanceof CommentLikeHomeFeed))
-    {
-      SLog.e(this.TAG, "that is error type!");
-      return;
-    }
-    localObject = (CommentLikeHomeFeed)localObject;
-    ((CommentLikeFeedItem)((CommentLikeHomeFeed)localObject).a).mLikeCount = paramGetLikeListEvent.b;
-    ((CommentLikeHomeFeed)localObject).b(paramGetLikeListEvent.jdField_a_of_type_JavaUtilList, true);
-    HomeFeedPresenter.a(paramHomeFeedPresenter).b(paramGetLikeListEvent.jdField_a_of_type_JavaLangString);
   }
   
   public Class acceptEventClass()
   {
-    return DetailLikeListLoader.GetLikeListEvent.class;
+    return GetUserInfoHandler.UpdateUserInfoEvent.class;
   }
-  
-  public void b(@NonNull HomeFeedPresenter paramHomeFeedPresenter, @NonNull DetailLikeListLoader.GetLikeListEvent paramGetLikeListEvent) {}
 }
 
 

@@ -1,17 +1,25 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.activity.photo.PhotoUtils;
+import com.tencent.mobileqq.statistics.ReportController;
+import java.util.ArrayList;
 
 public class wwa
   implements View.OnClickListener
 {
-  public wwa(GoldMsgSettingActivity paramGoldMsgSettingActivity) {}
+  public wwa(CameraPreviewActivity paramCameraPreviewActivity) {}
   
   public void onClick(View paramView)
   {
-    GoldMsgAioState.a(this.a.getWindow(), this.a, null);
-    this.a.finish();
+    if (CameraPreviewActivity.a(this.a, (String)CameraPreviewActivity.a(this.a).get(0))) {
+      return;
+    }
+    if (this.a.b) {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8004D96", "0X8004D96", 0, 0, "", "", "", "");
+    }
+    PhotoUtils.a(this.a, this.a.getIntent(), CameraPreviewActivity.a(this.a), 2, true);
+    paramView.setClickable(false);
   }
 }
 

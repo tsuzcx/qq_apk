@@ -1,32 +1,33 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeVidListPullSegment;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeVidListRequest;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeVidListRequest.MsgTabNodeVidListResponse;
+import com.tencent.biz.qqstory.model.TroopNickNameManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopObserver;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class ndc
-  implements CmdTaskManger.CommandCallback
+  extends TroopObserver
 {
-  public ndc(MsgTabNodeVidListPullSegment paramMsgTabNodeVidListPullSegment, MsgTabNodeInfo paramMsgTabNodeInfo) {}
+  public ndc(TroopNickNameManager paramTroopNickNameManager) {}
   
-  public void a(@NonNull MsgTabNodeVidListRequest paramMsgTabNodeVidListRequest, @Nullable MsgTabNodeVidListRequest.MsgTabNodeVidListResponse paramMsgTabNodeVidListResponse, @NonNull ErrorMessage paramErrorMessage)
+  protected void a(boolean paramBoolean, ArrayList paramArrayList)
   {
-    if ((paramMsgTabNodeVidListResponse == null) || (paramErrorMessage.isFail()))
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      QLog.e("Q.qqstory.msgTab.jobPullVidList", 1, "pull failed, info=" + this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo + ", err=" + paramErrorMessage.getErrorMessage());
-      MsgTabNodeVidListPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment, new ErrorMessage(101, paramErrorMessage.getErrorMessage()));
+      localStringBuilder = new StringBuilder().append("onGetTroopMemberCardInfoResult suc=").append(paramBoolean).append(" size=");
+      if (paramArrayList != null) {
+        break label78;
+      }
+    }
+    label78:
+    for (int i = 0;; i = paramArrayList.size())
+    {
+      QLog.d("TroopNickNameManager", 2, i);
+      if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+        ThreadManager.executeOnSubThread(new ndd(this, paramArrayList));
+      }
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, "pull succeed, info=" + this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo);
-    }
-    MsgTabStoryManager.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, paramMsgTabNodeVidListResponse.a);
-    MsgTabNodeVidListPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment, paramMsgTabNodeVidListResponse);
   }
 }
 

@@ -7,7 +7,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
-import neg;
+import nfq;
 
 public class GetUserIconHandler$GetUserIconListResponse
   extends LegoResponseBase
@@ -25,7 +25,7 @@ public class GetUserIconHandler$GetUserIconListResponse
   public void a()
   {
     if ((this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspIconPostfix.icon_info.has()) && (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspIconPostfix.icon_info.size() > 0)) {
-      Bosses.get().postJob(new neg(this));
+      Bosses.get().postJob(new nfq(this));
     }
   }
   

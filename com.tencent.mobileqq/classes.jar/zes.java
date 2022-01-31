@@ -1,49 +1,15 @@
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.NewFriendManager.INewFriendListener;
-import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mobileqq.app.HotChatCenterManager;
+import com.tencent.mobileqq.data.HotChatItemData;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 public class zes
-  implements PhoneContactManager.IPhoneContactListener
+  implements Runnable
 {
-  public zes(NewFriendManager paramNewFriendManager) {}
+  public zes(HotChatCenterManager paramHotChatCenterManager, EntityManager paramEntityManager, HotChatItemData paramHotChatItemData) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "onBindStateChanged = " + paramInt);
-    }
-    this.a.b();
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "onRecommendCountChanged = " + paramInt);
-    }
-    this.a.b();
-  }
-  
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("NewFriendManager", 2, "onUpdateContactList = " + paramInt);
-    }
-    if ((paramInt & 0x1) != 0) {
-      synchronized (NewFriendManager.a(this.a))
-      {
-        Iterator localIterator = NewFriendManager.a(this.a).iterator();
-        if (localIterator.hasNext()) {
-          ((NewFriendManager.INewFriendListener)localIterator.next()).b();
-        }
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.b(this.jdField_a_of_type_ComTencentMobileqqDataHotChatItemData);
   }
 }
 

@@ -1,46 +1,30 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPtt;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import mqq.os.MqqHandler;
+import android.view.ScaleGestureDetector;
+import com.tencent.mobileqq.activity.PortraitImageview;
+import com.tencent.mobileqq.activity.PortraitImageview.SimpleOnScaleGestureListener;
 
 public class tgh
-  extends MessageObserver
+  extends PortraitImageview.SimpleOnScaleGestureListener
 {
-  public tgh(QQLSActivity paramQQLSActivity) {}
+  public tgh(PortraitImageview paramPortraitImageview) {}
   
-  public void a(boolean paramBoolean1, List paramList, boolean paramBoolean2)
+  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgRevoke", 4, "onMsgRevokeNotice isSuccess=" + paramBoolean1);
-    }
-    this.a.a.removeMessages(267387140);
-    Object localObject1 = new ArrayList();
-    Object localObject2;
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      localObject2 = paramList.iterator();
-      while (((Iterator)localObject2).hasNext()) {
-        ((List)localObject1).add((ChatMessage)((Iterator)localObject2).next());
+    if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.isInProgress())) {
+      try
+      {
+        float f1 = this.a.a();
+        float f2 = paramScaleGestureDetector.getScaleFactor();
+        f1 = Math.min(this.a.b(), Math.max(f1 * f2, 0.1F));
+        this.a.a(f1, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
+        this.a.invalidate();
+        return true;
+      }
+      catch (IllegalArgumentException paramScaleGestureDetector)
+      {
+        paramScaleGestureDetector.printStackTrace();
       }
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.d("MsgRevoke", 4, "onMsgRevokeNotice chatlist=" + ((List)localObject1).size());
-    }
-    if ((paramBoolean1) && (localObject1 != null) && (!((List)localObject1).isEmpty()) && (((ChatMessage)((List)localObject1).get(0) instanceof MessageForPtt)))
-    {
-      localObject1 = (MessageForPtt)((List)localObject1).get(0);
-      localObject2 = MediaPlayerManager.a(QQLSActivity.a(this.a)).a();
-      if ((localObject2 == localObject1) || (((localObject2 instanceof MessageForPtt)) && (((ChatMessage)localObject2).frienduin != null) && (((ChatMessage)localObject2).frienduin.equals(((MessageForPtt)localObject1).frienduin)) && (((ChatMessage)localObject2).uniseq == ((MessageForPtt)localObject1).uniseq))) {
-        MediaPlayerManager.a(QQLSActivity.a(this.a)).a(true);
-      }
-    }
-    super.a(paramBoolean1, paramList, paramBoolean2);
+    return false;
   }
 }
 

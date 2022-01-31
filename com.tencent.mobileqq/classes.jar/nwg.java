@@ -1,28 +1,35 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
-import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesVideoCollectionPresenter;
-import com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesVideoListSegment;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.model.item.HotTopicInfoItem;
+import com.tencent.biz.qqstory.storyHome.discover.view.QQStoryDiscoverFragment;
+import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
-import java.util.ArrayList;
 
-class nwg
-  implements Runnable
+public class nwg
+  implements View.OnClickListener
 {
-  nwg(nwf paramnwf, ArrayList paramArrayList1, int paramInt, ArrayList paramArrayList2, boolean paramBoolean, QQUserUIItem paramQQUserUIItem) {}
+  public nwg(StoryDiscoverActivity paramStoryDiscoverActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    StoryPlayVideoActivity.a((FragmentActivity)MemoriesVideoListSegment.a(this.jdField_a_of_type_Nwf.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment), MemoriesVideoListSegment.a(this.jdField_a_of_type_Nwf.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.jdField_a_of_type_Nwf.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Nwf.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Boolean, StoryMemoriesFragment.a(this.jdField_a_of_type_Nwf.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment.jdField_a_of_type_Int));
-    int i = StoryMemoriesFragment.a(this.jdField_a_of_type_Nwf.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isMe()) {}
-    for (String str = "1";; str = "2")
+    if (StoryDiscoverActivity.a(this.a) > 0L)
     {
-      StoryReportor.a("memory", "clk_video", i, 0, new String[] { str, "", "", this.jdField_a_of_type_Nwf.b });
-      SLog.b("Q.qqstory.memories.MemoriesVideoListSegment", "go to player , collection key = %s, feedIds = %s , vid = %s , keyIndex = %s , video pos = %d , keyList = %s", new Object[] { this.jdField_a_of_type_Nwf.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Nwf.b, Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Nwf.jdField_a_of_type_Int), this.jdField_a_of_type_JavaUtilArrayList });
+      if (StoryDiscoverActivity.a(this.a).a() == null) {
+        break label96;
+      }
+      paramView = String.valueOf(StoryDiscoverActivity.a(this.a).a().mTopicId);
+      if (StoryDiscoverActivity.a(this.a).a() == null) {
+        break label102;
+      }
+    }
+    label96:
+    label102:
+    for (String str = StoryDiscoverActivity.a(this.a).a().mSubjectName;; str = "")
+    {
+      StoryReportor.a("content_flow", "clk_share", 0, 0, new String[] { paramView, "", str });
       return;
+      paramView = "";
+      break;
     }
   }
 }

@@ -1,11 +1,5 @@
 package dov.com.qq.im.capture.view;
 
-import amzm;
-import amzn;
-import amzo;
-import amzp;
-import amzq;
-import amzr;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -27,6 +21,12 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
+import anpr;
+import anps;
+import anpt;
+import anpu;
+import anpv;
+import anpw;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
@@ -51,7 +51,7 @@ public class QIMProviderContainerView
   implements IProviderContainerOperator
 {
   private float jdField_a_of_type_Float;
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new amzm(this);
+  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new anpr(this);
   View jdField_a_of_type_AndroidViewView;
   FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
   public LinearLayout a;
@@ -169,7 +169,7 @@ public class QIMProviderContainerView
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView.getId() != 2131362415) {
+      if (this.jdField_a_of_type_DovComQqImCaptureViewProviderView.getId() != 2131362418) {
         this.jdField_a_of_type_DovComQqImCaptureQIMCaptureController.d(false);
       }
       this.jdField_a_of_type_DovComQqImCaptureViewProviderView.a();
@@ -200,12 +200,12 @@ public class QIMProviderContainerView
     paramInt = UIUtils.a(getContext(), 88.0F);
     Object localObject = new AnimatorSet();
     ((AnimatorSet)localObject).playTogether(new Animator[] { ObjectAnimator.ofFloat(this, "translationY", new float[] { paramInt, 0.0F }), QIMAnimationUtils.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, getResources().getColor(2131492879), 0, 153), QIMAnimationUtils.a(this.jdField_a_of_type_AndroidViewView, getResources().getColor(2131492879), 0, 153), QIMAnimationUtils.a(this.jdField_b_of_type_AndroidViewView, getResources().getColor(2131492879), 0, 153) });
-    ((AnimatorSet)localObject).addListener(new amzn(this));
+    ((AnimatorSet)localObject).addListener(new anps(this));
     ((AnimatorSet)localObject).setDuration(300L).start();
     localObject = QIMAnimationUtils.a(this.jdField_a_of_type_DovComQqImCaptureViewProviderView, 0.0F, 1.0F);
     ((Animation)localObject).setStartOffset(200L);
     ((Animation)localObject).setDuration(100L);
-    ((Animation)localObject).setAnimationListener(new amzo(this));
+    ((Animation)localObject).setAnimationListener(new anpt(this));
     startAnimation((Animation)localObject);
   }
   
@@ -215,25 +215,25 @@ public class QIMProviderContainerView
     Object localObject = ObjectAnimator.ofFloat(this, "translationY", new float[] { 0.0F, UIUtils.a(getContext(), 88.0F) });
     AnimatorSet localAnimatorSet = new AnimatorSet();
     localAnimatorSet.playTogether(new Animator[] { localObject, QIMAnimationUtils.a(this.jdField_a_of_type_AndroidWidgetLinearLayout, getResources().getColor(2131492879), 153, 0), QIMAnimationUtils.a(this.jdField_a_of_type_AndroidViewView, getResources().getColor(2131492879), 153, 0), QIMAnimationUtils.a(this.jdField_b_of_type_AndroidViewView, getResources().getColor(2131492879), 153, 0) });
-    localAnimatorSet.addListener(new amzp(this));
+    localAnimatorSet.addListener(new anpu(this));
     localAnimatorSet.setDuration(300L).start();
     localObject = QIMAnimationUtils.a(this.jdField_a_of_type_DovComQqImCaptureViewProviderView, 1.0F, 0.0F);
     ((Animation)localObject).setStartOffset(0L);
     ((Animation)localObject).setDuration(100L);
-    ((Animation)localObject).setAnimationListener(new amzq(this, paramBoolean));
+    ((Animation)localObject).setAnimationListener(new anpv(this, paramBoolean));
     startAnimation((Animation)localObject);
   }
   
   private void i()
   {
-    View localView = LayoutInflater.from(getContext()).inflate(2130970110, null);
+    View localView = LayoutInflater.from(getContext()).inflate(2130970124, null);
     addView(localView);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369054));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131369120));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setGravity(0);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131364426));
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131369055);
-    this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131369056);
-    this.jdField_c_of_type_AndroidViewView = localView.findViewById(2131369057);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)localView.findViewById(2131364450));
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131369121);
+    this.jdField_b_of_type_AndroidViewView = localView.findViewById(2131369122);
+    this.jdField_c_of_type_AndroidViewView = localView.findViewById(2131369123);
     this.jdField_a_of_type_DovComQqImCaptureUtilQIMProviderViewBuilder = new QIMProviderViewBuilder(0);
     this.jdField_a_of_type_Boolean = ((Activity)getContext()).getIntent().getBooleanExtra("qim_camera_open_specific", false);
     this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidWidgetLinearLayout);
@@ -244,7 +244,7 @@ public class QIMProviderContainerView
   
   private void j()
   {
-    ThreadManager.post(new amzr(this), 8, null, true);
+    ThreadManager.post(new anpw(this), 8, null, true);
   }
   
   public Bundle a()
@@ -371,10 +371,10 @@ public class QIMProviderContainerView
       if ((this.jdField_a_of_type_Float == 0.0F) && (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount() > 1)) {
         this.jdField_a_of_type_Float = (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(1).getX() - this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(0).getX());
       }
-      localObject3 = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362486);
-      localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362490);
-      localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362487);
-      localObject4 = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362488);
+      localObject3 = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362493);
+      localObject1 = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362497);
+      localObject2 = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362494);
+      localObject4 = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131362495);
       if (!paramBoolean) {
         break;
       }

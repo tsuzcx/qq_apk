@@ -1,23 +1,20 @@
-import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
+import com.tencent.mobileqq.utils.NewUpgradeDialog;
+import com.tencent.mobileqq.utils.NewUpgradeDialog.YYBDownloadListener;
+import com.tencent.open.downloadnew.DownloadInfo;
 
 public class akdl
   implements Runnable
 {
-  public akdl(WebViewJumpPlugin paramWebViewJumpPlugin) {}
+  public akdl(NewUpgradeDialog.YYBDownloadListener paramYYBDownloadListener, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    Activity localActivity = this.a.mRuntime.a();
-    if ((localActivity != null) && (!localActivity.isFinishing())) {
-      localActivity.finish();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog$YYBDownloadListener.a.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akdl
  * JD-Core Version:    0.7.0.1
  */

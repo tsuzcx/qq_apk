@@ -1,23 +1,10 @@
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
-import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
 
 public class acoz
-  implements Runnable
 {
-  public acoz(QfavFilePreviewController paramQfavFilePreviewController) {}
-  
-  public void run()
-  {
-    if (3 != QfavFilePreviewController.b(this.a))
-    {
-      this.a.a.a(false, QfavFilePreviewController.a(this.a), String.valueOf(QfavFilePreviewController.a(this.a)), QfavFilePreviewController.a(this.a), null, QfavFilePreviewController.b(this.a), null, QfavFilePreviewController.c(this.a));
-      QfavFilePreviewController.b(this.a, 3);
-      if (QLog.isColorLevel()) {
-        QLog.i("QfavFilePreviewController", 2, "QfavFilePreviewController.run:wait for remote command timeout(5min).");
-      }
-    }
-  }
+  public int a;
+  public TextView a;
+  public TextView b;
 }
 
 

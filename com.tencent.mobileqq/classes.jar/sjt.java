@@ -1,51 +1,18 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortAdapter;
-import com.tencent.mobileqq.model.QueryCallback;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class sjt
-  implements QueryCallback
+  implements DialogInterface.OnClickListener
 {
-  public sjt(EmosmActivity paramEmosmActivity) {}
+  public sjt(DialogActivity paramDialogActivity) {}
   
-  public void a(List paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a();
-    }
-    if ((paramList != null) && (paramList.size() > 0))
-    {
-      EmoticonPackage localEmoticonPackage;
-      if (this.a.b == 1)
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          localEmoticonPackage = (EmoticonPackage)paramList.next();
-          if ((3 != localEmoticonPackage.jobType) && (1 != localEmoticonPackage.jobType) && (5 != localEmoticonPackage.jobType)) {
-            this.a.jdField_a_of_type_JavaUtilArrayList.add(localEmoticonPackage);
-          }
-        }
-      }
-      if (this.a.b == 2)
-      {
-        paramList = paramList.iterator();
-        while (paramList.hasNext())
-        {
-          localEmoticonPackage = (EmoticonPackage)paramList.next();
-          if ((3 == localEmoticonPackage.jobType) || (5 == localEmoticonPackage.jobType)) {
-            this.a.jdField_a_of_type_JavaUtilArrayList.add(localEmoticonPackage);
-          }
-        }
-      }
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.notifyDataSetChanged();
-    }
+    QLog.d("qqBaseActivity", 1, "checkBackgroundRestricWhilteList cancel.");
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

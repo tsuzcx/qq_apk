@@ -1,20 +1,19 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeBigSocial;
+import com.tencent.biz.pubaccount.readinjoy.protocol.ReadInJoyMSFService;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ltf
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public ltf(FeedItemCellTypeBigSocial paramFeedItemCellTypeBigSocial, LinearLayout paramLinearLayout) {}
+  public ltf(ReadInJoyMSFService paramReadInJoyMSFService, ToServiceMsg paramToServiceMsg, WeakReference paramWeakReference) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (paramMotionEvent.getAction() == 0) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-    }
-    return false;
+    int i = ReadInJoyMSFService.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyMSFService);
+    this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.getAttributes().put("seq", Integer.valueOf(i));
+    ReadInJoyMSFService.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyProtocolReadInJoyMSFService).put(Integer.valueOf(i), this.jdField_a_of_type_JavaLangRefWeakReference);
   }
 }
 

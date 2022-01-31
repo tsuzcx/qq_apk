@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView.CaptureListener;
 
 public class xxm
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public xxm(SelectMemberActivity paramSelectMemberActivity) {}
+  public xxm(CameraGLSurfaceView paramCameraGLSurfaceView, CameraGLSurfaceView.CaptureListener paramCaptureListener) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.m();
-    paramDialogInterface.dismiss();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView$CaptureListener = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView$CaptureListener;
   }
 }
 

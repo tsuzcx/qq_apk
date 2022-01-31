@@ -1,24 +1,52 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.util.FaceDecoder.DecodeTaskCompletionListener;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.pubaccount.readinjoy.KanDianViewController;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import java.util.List;
 
 public class lao
-  implements FaceDecoder.DecodeTaskCompletionListener
+  extends ReadInJoyObserver
 {
-  public lao(EcShopAssistantManager paramEcShopAssistantManager) {}
+  public lao(KanDianViewController paramKanDianViewController) {}
   
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void Z_()
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramBitmap != null))
-    {
-      Intent localIntent = new Intent("action_decode_finish");
-      localIntent.putExtra("bitmap", paramBitmap);
-      localIntent.putExtra("uin", paramString);
-      BaseApplicationImpl.getContext().sendBroadcast(localIntent);
+    if ((KanDianViewController.a(this.a) != null) && ((KanDianViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)KanDianViewController.a(this.a)).k();
+    }
+  }
+  
+  public void a(int paramInt, List paramList)
+  {
+    if ((KanDianViewController.a(this.a) != null) && ((KanDianViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)KanDianViewController.a(this.a)).a(paramInt, paramList);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
+  {
+    if ((KanDianViewController.a(this.a) != null) && ((KanDianViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)KanDianViewController.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void b(int paramInt, List paramList)
+  {
+    if ((KanDianViewController.a(this.a) != null) && ((KanDianViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)KanDianViewController.a(this.a)).c(paramInt, paramList);
+    }
+  }
+  
+  public void b(boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
+  {
+    if ((KanDianViewController.a(this.a) != null) && ((KanDianViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)KanDianViewController.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void c(int paramInt, List paramList)
+  {
+    if ((KanDianViewController.a(this.a) != null) && ((KanDianViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)KanDianViewController.a(this.a)).b(paramInt, paramList);
     }
   }
 }

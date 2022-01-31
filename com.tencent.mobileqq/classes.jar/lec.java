@@ -1,19 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinHandler.ReadInJoySkinObserver;
-import com.tencent.mobileqq.app.ThreadManager;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
-import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
 
 public class lec
-  extends ReadInJoySkinHandler.ReadInJoySkinObserver
+  implements Runnable
 {
-  public lec(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
+  public lec(ReadInJoySelfActivity paramReadInJoySelfActivity) {}
   
-  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo)
+  public void run()
   {
-    if (paramBoolean) {
-      ThreadManager.post(new led(this, paramGuideInfo2, paramRefreshInfo, paramSkinInfo, paramGuideInfo1), 5, null, true);
+    if (this.a.a != null) {
+      this.a.a.g();
     }
   }
 }

@@ -1,25 +1,16 @@
-import com.tencent.av.redpacket.config.AVRedPacketConfigManager;
-import com.tencent.av.service.AVRedPacketConfig;
-import com.tencent.mobileqq.armap.ResDownloadManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.redpacket.ui.RedPacketShareFragment;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class jly
   implements Runnable
 {
-  public jly(AVRedPacketConfigManager paramAVRedPacketConfigManager) {}
+  public jly(RedPacketShareFragment paramRedPacketShareFragment) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVRedPacketConfigManger", 2, "musicPreDownloadTask called");
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig == null)
-    {
-      QLog.d("AVRedPacketConfigManger", 1, "musicPreDownloadTask, redPacketConfig is null");
-      return;
-    }
-    this.a.c = false;
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager.a(this.a.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResUrl, this.a.jdField_a_of_type_ComTencentAvServiceAVRedPacketConfig.musicResMd5, ".zip", true, 4, Integer.valueOf(2));
+    String str = RedPacketShareFragment.a(this.a);
+    ThreadManager.getUIHandler().post(new jlz(this, str));
   }
 }
 

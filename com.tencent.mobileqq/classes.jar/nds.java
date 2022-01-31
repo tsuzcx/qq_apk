@@ -1,37 +1,40 @@
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.model.StoryConfigManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.WeatherDataProvider;
+import com.tencent.biz.qqstory.model.WeatherDataProvider.WeatherInfo;
+import com.tencent.biz.qqstory.network.request.GetWeatherRequest;
+import com.tencent.biz.qqstory.network.response.GetWeatherResponse;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class nds
-  extends RecyclerView.OnScrollListener
+  implements CmdTaskManger.CommandCallback
 {
-  boolean jdField_a_of_type_Boolean = false;
+  public nds(WeatherDataProvider paramWeatherDataProvider) {}
   
-  public nds(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
-  
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void a(@NonNull GetWeatherRequest paramGetWeatherRequest, @Nullable GetWeatherResponse paramGetWeatherResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramRecyclerView = (LinearLayoutManager)paramRecyclerView.getLayoutManager();
-    if (paramInt == 0)
+    SLog.b("WeatherDataProvider", "requestWeather Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramGetWeatherResponse != null))
     {
-      if ((paramRecyclerView.findLastCompletelyVisibleItemPosition() == paramRecyclerView.getItemCount() - 1) && (this.jdField_a_of_type_Boolean)) {
-        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a.c();
-      }
-      return;
+      SLog.a("WeatherDataProvider", "requestWeather onCmdRespond success, temperature : %s .", Integer.valueOf(paramGetWeatherResponse.b));
+      this.a.jdField_a_of_type_JavaLangObject = new WeatherDataProvider.WeatherInfo(paramGetWeatherResponse.b);
+      SLog.c("WeatherDataProvider", "update local weather data.");
+      paramGetWeatherRequest = (StoryConfigManager)SuperManager.a(10);
+      paramGetWeatherRequest.b("edit_video_weather_filter_data", Integer.valueOf(paramGetWeatherResponse.b));
+      paramGetWeatherRequest.b("edit_video_weather_expiry_time", Long.valueOf(System.currentTimeMillis() + 14400000L));
+      this.a.a(true, this.a.jdField_a_of_type_JavaLangObject);
     }
-    MsgTabStoryNodeListManager.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager);
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    if (paramInt1 > 0)
+    for (;;)
     {
-      this.jdField_a_of_type_Boolean = true;
+      this.a.jdField_a_of_type_Boolean = false;
       return;
+      SLog.d("WeatherDataProvider", "requestWeather onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramGetWeatherRequest });
+      this.a.a(false, null);
     }
-    this.jdField_a_of_type_Boolean = false;
   }
 }
 

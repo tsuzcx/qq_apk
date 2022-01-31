@@ -10,31 +10,31 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.common.ApiCompatibilityUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.FeedsInfoUser;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyYAFolderTextView;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.widget.FixSizeImageView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import lvf;
+import lvo;
 
 public class ComponentHeaderNewSocial
   extends ComponentHeaderFriendRecommend
 {
   View jdField_a_of_type_AndroidViewView;
   ReadInJoyYAFolderTextView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView;
-  View jdField_b_of_type_AndroidViewView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView d;
+  View b;
+  ImageView jdField_c_of_type_AndroidWidgetImageView;
+  TextView jdField_c_of_type_AndroidWidgetTextView;
   
   public ComponentHeaderNewSocial(Context paramContext)
   {
@@ -67,7 +67,7 @@ public class ComponentHeaderNewSocial
     return paramArticleInfo;
   }
   
-  private void c(IReadInJoyModel paramIReadInJoyModel)
+  private void b(IReadInJoyModel paramIReadInJoyModel)
   {
     paramIReadInJoyModel = paramIReadInJoyModel.a();
     if (paramIReadInJoyModel == null)
@@ -86,22 +86,22 @@ public class ComponentHeaderNewSocial
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("你的其他").append(localList.size()).append("个好友也Biu了");
-    this.d.setText(localStringBuilder.toString());
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new lvf(this, paramIReadInJoyModel));
+    this.jdField_c_of_type_AndroidWidgetTextView.setText(localStringBuilder.toString());
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new lvo(this, paramIReadInJoyModel));
   }
   
-  private void d(IReadInJoyModel paramIReadInJoyModel)
+  private void c(IReadInJoyModel paramIReadInJoyModel)
   {
     ArticleInfo localArticleInfo = paramIReadInJoyModel.a();
     if ((localArticleInfo == null) || (localArticleInfo.mSocialFeedInfo == null))
     {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      this.b.setVisibility(8);
       return;
     }
     paramIReadInJoyModel = localArticleInfo.mSocialFeedInfo;
     if ((paramIReadInJoyModel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo != null) && (paramIReadInJoyModel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo.jdField_a_of_type_JavaUtilList != null) && (paramIReadInJoyModel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo.jdField_a_of_type_JavaUtilList.size() > 0) && ((paramIReadInJoyModel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo.jdField_a_of_type_JavaUtilList.size() != 1) || ((!TextUtils.isEmpty(((SocializeFeedsInfo.BiuCommentInfo)paramIReadInJoyModel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString)) && (!TextUtils.equals(((SocializeFeedsInfo.BiuCommentInfo)paramIReadInJoyModel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString, ":")) && (!TextUtils.equals(((SocializeFeedsInfo.BiuCommentInfo)paramIReadInJoyModel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo.jdField_a_of_type_JavaUtilList.get(0)).jdField_a_of_type_JavaLangString, "：")))))
     {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      this.b.setVisibility(0);
       List localList = paramIReadInJoyModel.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$BiuInfo.jdField_a_of_type_JavaUtilList;
       StringBuilder localStringBuilder = new StringBuilder();
       Object localObject2 = new ArrayList();
@@ -118,21 +118,27 @@ public class ComponentHeaderNewSocial
         j = localStringBuilder.length();
         i -= 2;
         if (i < 0) {
-          break label478;
+          break label487;
         }
         localBiuCommentInfo = (SocializeFeedsInfo.BiuCommentInfo)localList.get(i);
         l = localBiuCommentInfo.jdField_a_of_type_JavaLangLong.longValue();
-        paramIReadInJoyModel = ContactUtils.b((QQAppInterface)ReadInJoyUtils.a(), String.valueOf(l), true);
+        paramIReadInJoyModel = ReadInJoyUserInfoModule.a(l, null);
+        if (paramIReadInJoyModel == null) {
+          break label468;
+        }
+        paramIReadInJoyModel = paramIReadInJoyModel.nick;
+        label320:
         localObject1 = "@" + paramIReadInJoyModel;
         paramIReadInJoyModel = (IReadInJoyModel)localObject1;
         if (localBiuCommentInfo.c == 1) {
           paramIReadInJoyModel = (String)localObject1 + " ";
         }
         if (localBiuCommentInfo.jdField_a_of_type_JavaLangString != null) {
-          break label468;
+          break label477;
         }
       }
       label468:
+      label477:
       for (localObject1 = "";; localObject1 = localBiuCommentInfo.jdField_a_of_type_JavaLangString)
       {
         localStringBuilder.append(paramIReadInJoyModel).append((String)localObject1);
@@ -150,8 +156,10 @@ public class ComponentHeaderNewSocial
         }
         paramIReadInJoyModel = "";
         break;
+        paramIReadInJoyModel = String.valueOf(l);
+        break label320;
       }
-      label478:
+      label487:
       paramIReadInJoyModel = new SpannableStringBuilder(new QQText(localStringBuilder, 7, 16));
       localObject1 = ((List)localObject2).iterator();
       while (((Iterator)localObject1).hasNext())
@@ -167,36 +175,36 @@ public class ComponentHeaderNewSocial
     }
     if (!TextUtils.isEmpty(paramIReadInJoyModel.jdField_a_of_type_JavaLangString))
     {
-      this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+      this.b.setVisibility(0);
       if (paramIReadInJoyModel.jdField_a_of_type_JavaLangString.length() >= 100) {
         paramIReadInJoyModel.jdField_a_of_type_JavaLangString = (paramIReadInJoyModel.jdField_a_of_type_JavaLangString.substring(0, 99) + '…');
       }
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setText(paramIReadInJoyModel.jdField_a_of_type_JavaLangString);
       return;
     }
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
+    this.b.setVisibility(8);
   }
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969571, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969578, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131366985);
-    ApiCompatibilityUtils.a(this.jdField_a_of_type_AndroidViewView, getResources().getDrawable(2130839717));
-    this.d = ((TextView)findViewById(2131366987));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366986));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131366990);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131366991));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131367029);
+    ApiCompatibilityUtils.a(this.jdField_a_of_type_AndroidViewView, getResources().getDrawable(2130839723));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131367031));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131367030));
+    this.b = findViewById(2131367034);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView = ((ReadInJoyYAFolderTextView)findViewById(2131367035));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setSpannableFactory(QQText.a);
-    this.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[1].setVisibility(8);
-    this.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[2].setVisibility(8);
-    this.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[3].setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 15.5F);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(2, 16.0F);
+    this.jdField_a_of_type_ArrayOfComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView[1].setVisibility(8);
+    this.jdField_a_of_type_ArrayOfComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView[2].setVisibility(8);
+    this.jdField_a_of_type_ArrayOfComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView[3].setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setTextSize(2, 15.5F);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 16.0F);
   }
   
   public void a(Object paramObject)
@@ -209,8 +217,8 @@ public class ComponentHeaderNewSocial
       if ((paramObject instanceof IReadInJoyModel))
       {
         paramObject = (IReadInJoyModel)paramObject;
+        b(paramObject);
         c(paramObject);
-        d(paramObject);
       }
       return;
     }
@@ -223,7 +231,7 @@ public class ComponentHeaderNewSocial
   
   public void setReadedStatus(boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setTextColor(getContext().getResources().getColor(2131492970));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyYAFolderTextView.setTextColor(getContext().getResources().getColor(2131492971));
   }
 }
 

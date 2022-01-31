@@ -1,20 +1,30 @@
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.qcall.QCallStartBrigeActivity;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class aghk
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public aghk(QCallStartBrigeActivity paramQCallStartBrigeActivity) {}
+  public aghk(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    QCallStartBrigeActivity.a(this.a);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghk
  * JD-Core Version:    0.7.0.1
  */

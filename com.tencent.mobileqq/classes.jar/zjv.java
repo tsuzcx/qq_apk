@@ -1,22 +1,33 @@
-import com.tencent.mobileqq.app.SignatureManager;
-import com.tencent.mobileqq.vas.SignatureTemplateConfig;
-import com.tencent.mobileqq.vas.SignatureTemplateInfo;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.mobileqq.app.ThreadOptimizer;
+import java.util.concurrent.ThreadFactory;
 
 public class zjv
-  implements Runnable
+  implements ThreadFactory
 {
-  public zjv(SignatureManager paramSignatureManager, int paramInt) {}
+  public int a;
+  public String a;
+  public volatile int b;
   
-  public void run()
+  public zjv(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppSignatureManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(this.jdField_a_of_type_Int);
-    SignatureTemplateInfo localSignatureTemplateInfo = SignatureTemplateConfig.a(this.jdField_a_of_type_ComTencentMobileqqAppSignatureManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int);
-    if (localSignatureTemplateInfo != null) {
-      SignatureManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localSignatureTemplateInfo);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public Thread newThread(Runnable paramRunnable)
+  {
+    this.b += 1;
+    if (this.b > 10000) {
+      this.b = 0;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppSignatureManager.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(-1);
+    paramRunnable = new Thread(paramRunnable, this.jdField_a_of_type_JavaLangString + "-" + this.b);
+    if (ThreadOptimizer.a().c())
+    {
+      paramRunnable.setPriority(1);
+      return paramRunnable;
+    }
+    paramRunnable.setPriority(this.jdField_a_of_type_Int);
+    return paramRunnable;
   }
 }
 

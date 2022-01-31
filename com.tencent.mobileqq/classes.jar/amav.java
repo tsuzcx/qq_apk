@@ -1,19 +1,23 @@
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.widget.CirclePageIndicator.SavedState;
 
 public final class amav
-  implements Runnable
+  implements Parcelable.Creator
 {
-  public amav(QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public CirclePageIndicator.SavedState a(Parcel paramParcel)
   {
-    HtmlOffline.b("2036", this.a, true, new amaw(this));
+    return new CirclePageIndicator.SavedState(paramParcel, null);
+  }
+  
+  public CirclePageIndicator.SavedState[] a(int paramInt)
+  {
+    return new CirclePageIndicator.SavedState[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amav
  * JD-Core Version:    0.7.0.1
  */

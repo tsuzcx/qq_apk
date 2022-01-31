@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
+import com.tencent.litetransfersdk.ProtocolHelper;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
 public class rdl
-  extends AccountObserver
+  implements Runnable
 {
-  public rdl(AccountManageActivity paramAccountManageActivity) {}
+  public rdl(ProtocolHelper paramProtocolHelper) {}
   
-  public void onDeleteAccount(boolean paramBoolean)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Switch_Account", 2, "onDeleteAccount isSuccess " + paramBoolean);
-    }
+    FMToastUtil.a(2131427562);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     rdl
  * JD-Core Version:    0.7.0.1
  */

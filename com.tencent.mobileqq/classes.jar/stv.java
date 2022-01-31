@@ -1,22 +1,14 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
-import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
+import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
+import com.tencent.mobileqq.gesturelock.LockPatternView;
 
-public class stv
-  implements View.OnFocusChangeListener
+class stv
+  implements Runnable
 {
-  public stv(Leba paramLeba) {}
+  stv(stu paramstu) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      paramView.clearFocus();
-      UniteSearchActivity.a(this.a.a(), null, 21, 0L, (HotWordSearchEntryDataModel.HotSearchItem)Leba.a(this.a).getTag(), 3);
-    }
+    this.a.a.a.a();
   }
 }
 

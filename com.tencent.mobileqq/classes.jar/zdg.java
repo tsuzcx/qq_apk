@@ -1,29 +1,14 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.msf.sdk.QNotificationManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.widget.UpSideDownDrawable;
 
 public class zdg
   implements Runnable
 {
-  public zdg(MessageHandler paramMessageHandler, QNotificationManager paramQNotificationManager) {}
+  public zdg(FrameHelperActivity paramFrameHelperActivity, UpSideDownDrawable paramUpSideDownDrawable) {}
   
   public void run()
   {
-    try
-    {
-      Thread.sleep(5000L);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("Q.msg.MessageHandler", 4, "IPADonline time expired cancel now");
-      }
-      this.jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.cancel("Q.msg.MessageHandler_IpadOnlineNotifition", MessageHandler.h);
-      MessageHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler, false);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.msg.MessageHandler", 2, "IPADonline thread Interrupt");
-    }
+    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable.b();
   }
 }
 

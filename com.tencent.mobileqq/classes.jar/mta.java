@@ -1,33 +1,15 @@
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import android.view.ViewGroup;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter;
+import java.util.ArrayList;
 
 public class mta
-  implements WXShareHelper.WXShareListener
 {
-  public mta(GalleryShareHelper paramGalleryShareHelper, String paramString) {}
+  public ViewGroup a;
+  public ArrayList a;
   
-  public void a(BaseResp paramBaseResp)
+  private mta(SubscriptFeedsAdapter paramSubscriptFeedsAdapter)
   {
-    if ((this.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
-    {
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131435286);
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      QRUtils.a(2, 2131435285);
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
 }
 

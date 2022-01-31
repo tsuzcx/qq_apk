@@ -1,22 +1,28 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import com.tencent.mobileqq.ark.ArkAiScrollBar;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.arcard.ARCardHeadIconManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aalu
-  implements View.OnLayoutChangeListener
+  implements Runnable
 {
-  public aalu(ArkAiScrollBar paramArkAiScrollBar) {}
+  public aalu(ARCardHeadIconManager paramARCardHeadIconManager) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void run()
   {
-    if (paramInt4 != paramInt8) {
-      this.a.e();
+    Intent localIntent = new Intent("com.tencent.qqhead.getheadreq");
+    localIntent.putStringArrayListExtra("uinList", ARCardHeadIconManager.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("DingdongHeadManager", 2, "mContactHeadReqRunnable: request contact head whose size=" + ARCardHeadIconManager.a(this.a).size());
     }
+    ARCardHeadIconManager.a(this.a).sendBroadcast(localIntent, "com.tencent.qqhead.permission.getheadresp");
+    ARCardHeadIconManager.a(this.a).clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aalu
  * JD-Core Version:    0.7.0.1
  */

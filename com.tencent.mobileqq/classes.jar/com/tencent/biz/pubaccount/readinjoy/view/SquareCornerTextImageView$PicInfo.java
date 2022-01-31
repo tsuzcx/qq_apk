@@ -7,14 +7,20 @@ public class SquareCornerTextImageView$PicInfo
   private final int jdField_a_of_type_Int;
   private final URL jdField_a_of_type_JavaNetURL;
   private final boolean jdField_a_of_type_Boolean;
-  private final int b;
+  private final int jdField_b_of_type_Int;
+  private boolean jdField_b_of_type_Boolean;
   
   public SquareCornerTextImageView$PicInfo(int paramInt1, int paramInt2, URL paramURL, boolean paramBoolean)
   {
     this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    this.jdField_b_of_type_Int = paramInt2;
     this.jdField_a_of_type_JavaNetURL = paramURL;
     this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_b_of_type_Boolean = paramBoolean;
   }
 }
 

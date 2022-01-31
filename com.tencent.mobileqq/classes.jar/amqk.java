@@ -1,46 +1,15 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import cooperation.wadl.ipc.IWadlProxyServiceMonitor;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import cooperation.qqpim.QQPimBridgeActivity;
 
-public final class amqk
-  extends Handler
+public class amqk
+  implements DialogInterface.OnDismissListener
 {
-  public amqk(WadlProxyServiceManager paramWadlProxyServiceManager, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public amqk(QQPimBridgeActivity paramQQPimBridgeActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      this.a.b();
-      continue;
-      this.a.c();
-      continue;
-      Bundle localBundle = paramMessage.getData();
-      this.a.a.post(new amql(this, localBundle));
-      continue;
-      localBundle = paramMessage.getData();
-      this.a.a.post(new amqm(this, localBundle));
-      continue;
-      if (WadlProxyServiceManager.a(this.a) != null)
-      {
-        WadlProxyServiceManager.a(this.a).a();
-        continue;
-        if (WadlProxyServiceManager.a(this.a) != null) {
-          WadlProxyServiceManager.a(this.a).b();
-        }
-      }
-    }
+    this.a.finish();
   }
 }
 

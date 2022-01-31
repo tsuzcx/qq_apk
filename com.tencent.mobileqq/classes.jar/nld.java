@@ -1,23 +1,21 @@
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.biz.qqstory.playmode.util.DiscoverVideoDataProvider;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playmode.child.SelectVideosPlayMode;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 import java.util.ArrayList;
 
-public class nld
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+class nld
+  implements Runnable
 {
-  public nld(DiscoverVideoDataProvider paramDiscoverVideoDataProvider, BatchGetVideoInfo paramBatchGetVideoInfo) {}
+  nld(nlc paramnlc, ArrayList paramArrayList) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilDiscoverVideoDataProvider.a(false, null);
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilDiscoverVideoDataProvider.a(true, paramArrayList);
+    this.jdField_a_of_type_Nlc.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.setVisibility(8);
+    this.jdField_a_of_type_Nlc.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Nlc.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
+    this.jdField_a_of_type_Nlc.a.jdField_a_of_type_AndroidOsHandler.post(new nle(this));
   }
 }
 

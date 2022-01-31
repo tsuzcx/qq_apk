@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.BusinessCardManager;
-import com.tencent.mobileqq.businessCard.BusinessCardObserver;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.profile.view.ProfileBaseView;
 
-public class sqf
-  extends BusinessCardObserver
+class sqf
+  implements Runnable
 {
-  public sqf(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  sqf(sqe paramsqe) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      BusinessCardManager localBusinessCardManager = (BusinessCardManager)this.a.app.getManager(111);
-      this.a.a = localBusinessCardManager.a(paramString);
+    if ((this.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null) && ((this.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileBaseView))) {
+      ((ProfileBaseView)this.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView).b(this.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, true);
     }
   }
 }

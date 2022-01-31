@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acmt;
-import acmu;
+import acwq;
+import acwr;
 import com.qq.taf.jce.HexUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -17,11 +17,11 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 
 public class FtnUploader
-  implements acmu, IHttpCommunicatorListener
+  implements acwr, IHttpCommunicatorListener
 {
   private final int jdField_a_of_type_Int;
   private final long jdField_a_of_type_Long;
-  private acmt jdField_a_of_type_Acmt;
+  private acwq jdField_a_of_type_Acwq;
   private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private HttpMsg jdField_a_of_type_ComTencentMobileqqUtilsHttputilsHttpMsg;
   private boolean jdField_a_of_type_Boolean;
@@ -82,7 +82,7 @@ public class FtnUploader
     {
       localDataInputStream.skip(4L);
       if (localDataInputStream.readInt() != 0) {
-        this.jdField_a_of_type_Acmt.a(9001, "httpServer retCode!=0");
+        this.jdField_a_of_type_Acwq.a(9001, "httpServer retCode!=0");
       }
     }
     catch (IOException localIOException)
@@ -94,7 +94,7 @@ public class FtnUploader
         long l2;
         localIOException.printStackTrace();
         QLog.e("FtnHttpUploader<FileAssistant>", 1, "unPackageData exception:" + localIOException.toString());
-        this.jdField_a_of_type_Acmt.a(9001, "httpServer flag!=0 flag!=1");
+        this.jdField_a_of_type_Acwq.a(9001, "httpServer flag!=0 flag!=1");
         try
         {
           paramArrayOfByte.close();
@@ -105,7 +105,7 @@ public class FtnUploader
         {
           return;
         }
-        this.jdField_a_of_type_Acmt.a(9001, "httpServer flag!=0 flag!=1");
+        this.jdField_a_of_type_Acwq.a(9001, "httpServer flag!=0 flag!=1");
       }
     }
     finally
@@ -135,7 +135,7 @@ public class FtnUploader
       i = localDataInputStream.readInt();
       l1 = localDataInputStream.readInt();
       l2 = i;
-      this.jdField_a_of_type_Acmt.a(l1 << 32 | l2, null);
+      this.jdField_a_of_type_Acwq.a(l1 << 32 | l2, null);
     }
     for (;;)
     {
@@ -152,7 +152,7 @@ public class FtnUploader
       if (i != 1) {
         break;
       }
-      this.jdField_a_of_type_Acmt.b();
+      this.jdField_a_of_type_Acwq.b();
     }
     label232:
   }
@@ -223,9 +223,9 @@ public class FtnUploader
     }
   }
   
-  public void a(acmt paramacmt)
+  public void a(acwq paramacwq)
   {
-    this.jdField_a_of_type_Acmt = paramacmt;
+    this.jdField_a_of_type_Acwq = paramacwq;
   }
   
   public void a(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
@@ -264,7 +264,7 @@ public class FtnUploader
     {
       if (0L != l)
       {
-        this.jdField_a_of_type_Acmt.a(paramHttpMsg2.f, paramHttpMsg2.d(), paramHttpMsg2.d);
+        this.jdField_a_of_type_Acwq.a(paramHttpMsg2.f, paramHttpMsg2.d(), paramHttpMsg2.d);
         return;
       }
       a(paramHttpMsg2.a());
@@ -279,7 +279,7 @@ public class FtnUploader
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Acmt.a(paramString);
+    this.jdField_a_of_type_Acwq.a(paramString);
   }
   
   public boolean a(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2, int paramInt)
@@ -321,10 +321,10 @@ public class FtnUploader
     }
     if (paramHttpMsg2 != null)
     {
-      this.jdField_a_of_type_Acmt.a(paramHttpMsg2.f, paramHttpMsg2.d(), paramHttpMsg2.d);
+      this.jdField_a_of_type_Acwq.a(paramHttpMsg2.f, paramHttpMsg2.d(), paramHttpMsg2.d);
       return;
     }
-    this.jdField_a_of_type_Acmt.a(0, "null", "null");
+    this.jdField_a_of_type_Acwq.a(0, "null", "null");
   }
 }
 

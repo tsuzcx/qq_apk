@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.ui.RefreshView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d57" android:background="#ff2e3132" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d60" android:layout_width="fill_parent" android:layout_height="fill_parent">
-            <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d61" android:layout_width="fill_parent" android:layout_height="wrap_content" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f04021d" />
-            <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d62" android:layout_width="fill_parent" android:layout_height="fill_parent">
-                <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d63" android:layout_width="fill_parent" android:layout_height="fill_parent" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040397" />
-                <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0580" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d64" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:paddingBottom="80.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="页面暂时无法加载，请稍候重试" />
-                <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d65" android:paddingBottom="50.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
-                    <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0580" android:gravity="center" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="发现身边的美好，从打开定位开始" android:drawableTop="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207ac" android:drawablePadding="20.0dip" />
-                    <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0580" android:gravity="center" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="请在手机设置中打开定位服务，允许\nQQ使用定位服务。" android:lineSpacingExtra="5.0dip" />
-                </LinearLayout>
-            </FrameLayout>
-        </com.tencent.mobileqq.nearby.widget.OverCoverFrameLayout>
-    </com.tencent.biz.ui.RefreshView>
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d66" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021493" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d7d" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0214a7" android:visibility="gone" android:layout_width="180.0dip" android:layout_height="40.0dip" android:layout_marginTop="6.0dip">
+        <com.tencent.image.URLImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d7e" android:layout_width="30.0dip" android:layout_height="30.0dip" android:layout_marginLeft="5.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d7f" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:text="24条未读消息" android:layout_weight="1.0" />
+        <ImageView android:layout_gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.5dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020c35" />
+    </LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <HorizontalScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d80" android:background="#ffffffff" android:paddingTop="12.0dip" android:paddingBottom="12.0dip" android:scrollbars="none" android:fadingEdge="none" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:overScrollMode="never">
+            <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d81" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        </HorizontalScrollView>
+        <View android:layout_gravity="bottom" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207a0" android:layout_width="fill_parent" android:layout_height="10.0dip" />
+    </FrameLayout>
+</LinearLayout>

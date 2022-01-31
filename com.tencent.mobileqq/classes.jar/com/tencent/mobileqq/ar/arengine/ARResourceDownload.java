@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aadl;
-import aadm;
+import aaio;
+import aaip;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.INetEngine;
@@ -19,7 +19,7 @@ public class ARResourceDownload
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aadm();
+    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aaip();
   }
   
   public ARResourceDownload(AppInterface paramAppInterface)
@@ -52,7 +52,7 @@ public class ARResourceDownload
     if ((paramDownloadInfo == null) || (??? == null)) {
       return false;
     }
-    ??? = new aadl(this, paramDownloadInfo, ???);
+    ??? = new aaio(this, paramDownloadInfo, ???);
     HttpNetReq localHttpNetReq = new HttpNetReq();
     localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = ???;
     localHttpNetReq.jdField_a_of_type_JavaLangString = paramDownloadInfo.jdField_a_of_type_JavaLangString;

@@ -42,10 +42,10 @@ public class LiveMomentItemBuilder
   public View a(ViewGroup paramViewGroup, BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     paramMomentViewHolder = (LiveMomentItemBuilder.LiveViewHolder)paramMomentViewHolder;
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970433, paramViewGroup, false);
-    paramMomentViewHolder.j = ((TextView)paramViewGroup.findViewById(2131367080));
-    paramMomentViewHolder.f = ((ImageView)paramViewGroup.findViewById(2131366351));
-    paramMomentViewHolder.g = ((ImageView)paramViewGroup.findViewById(2131370525));
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970474, paramViewGroup, false);
+    paramMomentViewHolder.j = ((TextView)paramViewGroup.findViewById(2131367129));
+    paramMomentViewHolder.f = ((ImageView)paramViewGroup.findViewById(2131366378));
+    paramMomentViewHolder.g = ((ImageView)paramViewGroup.findViewById(2131370666));
     return paramViewGroup;
   }
   
@@ -97,8 +97,8 @@ public class LiveMomentItemBuilder
       try
       {
         localObject1 = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842715);
-        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842715);
+        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842814);
+        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842814);
         localObject1 = URLDrawable.getDrawable((String)localObject2, (URLDrawable.URLDrawableOptions)localObject1);
         ((URLDrawable)localObject1).setTag(URLDrawableDecodeHandler.a(UIUtils.a(BaseApplicationImpl.getContext(), 200.0F), UIUtils.a(BaseApplicationImpl.getContext(), 200.0F), DisplayUtil.a(paramMomentViewHolder.f.getContext(), 4.0F)));
         ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.b);
@@ -115,7 +115,7 @@ public class LiveMomentItemBuilder
       {
         do
         {
-          paramMomentViewHolder.f.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842715));
+          paramMomentViewHolder.f.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842814));
         } while (!QLog.isColorLevel());
         QLog.i("LiveMomentItemBuilder", 2, "convertURL, e=" + localException.toString(), localException);
       }

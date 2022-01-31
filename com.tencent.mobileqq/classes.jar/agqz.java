@@ -1,56 +1,45 @@
-import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.ItemDecoration;
-import android.support.v7.widget.RecyclerView.LayoutParams;
-import android.support.v7.widget.RecyclerView.State;
-import android.view.View;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profile.view.ProfileBaseView;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.AvatarPendantUtil;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
+import com.tencent.mobileqq.vas.PendantInfo;
 
-public class agqz
-  extends RecyclerView.ItemDecoration
+class agqz
+  implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private int b;
+  agqz(agqy paramagqy, ExtensionInfo paramExtensionInfo) {}
   
-  private agqz(Drawable paramDrawable, int paramInt1, int paramInt2)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    paramRect.set(0, 0, 0, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight());
-  }
-  
-  public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, RecyclerView.State paramState)
-  {
-    int j = paramRecyclerView.getPaddingLeft();
-    int k = this.jdField_a_of_type_Int;
-    int m = paramRecyclerView.getWidth();
-    int n = paramRecyclerView.getPaddingRight();
-    int i1 = this.b;
-    int i2 = paramRecyclerView.getChildCount();
-    int i = 0;
-    while (i < i2)
+    if ((this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.isPendantValid()))
     {
-      paramState = paramRecyclerView.getChildAt(i);
-      RecyclerView.LayoutParams localLayoutParams = (RecyclerView.LayoutParams)paramState.getLayoutParams();
-      int i3 = paramState.getBottom();
-      i3 = localLayoutParams.bottomMargin + i3;
-      int i4 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(j + k, i3, m - n - i1, i4 + i3);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
-      i += 1;
+      this.jdField_a_of_type_Agqy.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_a_of_type_Agqy.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantId;
+      AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)this.jdField_a_of_type_Agqy.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(45);
+      if (AvatarPendantUtil.a(this.jdField_a_of_type_Agqy.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_Long)) {
+        localAvatarPendantManager.a(this.jdField_a_of_type_Agqy.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_Long).a(this.jdField_a_of_type_Agqy.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_AndroidWidgetImageView, 2, PendantInfo.c, this.jdField_a_of_type_Agqy.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
+      }
+      for (;;)
+      {
+        if (this.jdField_a_of_type_Agqy.jdField_a_of_type_Boolean) {
+          ReportController.b(this.jdField_a_of_type_Agqy.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "AvatarClick", "ppshow", 0, 0, "", "", "", "");
+        }
+        return;
+        localAvatarPendantManager.a(this.jdField_a_of_type_Agqy.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_Long).a(this.jdField_a_of_type_Agqy.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_AndroidWidgetImageView, 1, PendantInfo.c, this.jdField_a_of_type_Agqy.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
+      }
     }
+    this.jdField_a_of_type_Agqy.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_a_of_type_Agqy.jdField_a_of_type_ComTencentMobileqqProfileViewProfileBaseView.jdField_a_of_type_Long = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agqz
  * JD-Core Version:    0.7.0.1
  */

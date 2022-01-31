@@ -1,21 +1,19 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.activity.aio.item.ArkAppView.Callback;
-import com.tencent.mobileqq.data.MessageForArkFlashChat;
-import com.tencent.mobileqq.flashchat.FlashChatPanel;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
 
 public class aczw
-  implements ArkAppView.Callback
 {
-  public aczw(FlashChatPanel paramFlashChatPanel, MessageForArkFlashChat paramMessageForArkFlashChat1, MessageForArkFlashChat paramMessageForArkFlashChat2) {}
+  public int a;
+  public long a;
+  public Bundle a;
+  public String a;
+  public boolean a;
   
-  public void a()
-  {
-    ArkDispatchTask.getInstance().post(new aczx(this));
-  }
+  public aczw(UniformDownloadMgr paramUniformDownloadMgr) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aczw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,36 +1,30 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.servlet.QZoneNotifyServlet;
-import cooperation.qzone.LbsDataV2;
-import cooperation.qzone.util.QZLog;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
 
-public final class ahjz
-  extends SosoInterface.OnLocationListener
+public class ahjz
+  implements Runnable
 {
-  public ahjz(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public ahjz(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment, boolean paramBoolean) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void run()
   {
-    QZLog.e(QZoneNotifyServlet.a(), "onConsecutiveFailure failCode:" + paramInt1 + ",failCount:" + paramInt2);
-  }
-  
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
-  {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null))
+    if (this.jdField_a_of_type_Boolean)
     {
-      QZoneNotifyServlet.a(LbsDataV2.convertFromSoso(paramSosoLbsInfo.a));
-      QZLog.i(QZoneNotifyServlet.a(), 1, "onLocationFinish succeed! gps=" + QZoneNotifyServlet.b());
+      EffectsCameraCaptureFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment).setVisibility(8);
+      EffectsCameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment).setVisibility(8);
+      EffectsCameraCaptureFragment.c(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment).setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment.d.setVisibility(8);
+      EffectsCameraCaptureFragment.e(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment, false);
       return;
     }
-    QZLog.e(QZoneNotifyServlet.a(), "onLocationFinish failed: error in force gps info update..");
+    EffectsCameraCaptureFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment, EffectsCameraCaptureFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment), EffectsCameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment), EffectsCameraCaptureFragment.c(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment), EffectsCameraCaptureFragment.d(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment));
+    EffectsCameraCaptureFragment.e(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentEffectsCameraCaptureFragment, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahjz
  * JD-Core Version:    0.7.0.1
  */

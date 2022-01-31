@@ -1,18 +1,15 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.bubble.BubbleDiyFetcher;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.armap.ShopScanDragView;
 
 public class abdv
   implements Runnable
 {
-  public abdv(BubbleDiyFetcher paramBubbleDiyFetcher) {}
+  public abdv(ShopScanActivity paramShopScanActivity) {}
   
   public void run()
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      this.a.b((QQAppInterface)localAppRuntime);
+    if (this.a.a != null) {
+      this.a.a.a();
     }
   }
 }

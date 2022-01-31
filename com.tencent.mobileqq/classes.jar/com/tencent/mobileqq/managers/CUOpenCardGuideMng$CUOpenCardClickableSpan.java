@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.managers;
 
-import adrp;
-import adrq;
+import aeev;
+import aeew;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -27,7 +27,7 @@ public class CUOpenCardGuideMng$CUOpenCardClickableSpan
     this.jdField_b_of_type_JavaLangString = paramString2;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_b_of_type_Int = Color.parseColor("#00a5e0");
-    ThreadManager.post(new adrp(this), 5, null, false);
+    ThreadManager.post(new aeev(this), 5, null, false);
   }
   
   public void onClick(View paramView)
@@ -37,7 +37,7 @@ public class CUOpenCardGuideMng$CUOpenCardClickableSpan
     paramView.putExtra("url", this.jdField_a_of_type_JavaLangString);
     paramView.putExtra("hide_more_button", true);
     this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    ThreadManager.post(new adrq(this), 5, null, false);
+    ThreadManager.post(new aeew(this), 5, null, false);
   }
   
   public void updateDrawState(TextPaint paramTextPaint)
@@ -48,7 +48,7 @@ public class CUOpenCardGuideMng$CUOpenCardClickableSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.managers.CUOpenCardGuideMng.CUOpenCardClickableSpan
  * JD-Core Version:    0.7.0.1
  */

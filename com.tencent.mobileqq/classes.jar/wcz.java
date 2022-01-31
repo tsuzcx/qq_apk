@@ -1,32 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListAdapter;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar;
+import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBarData;
 
-class wcz
+public class wcz
   implements Runnable
 {
-  wcz(wcy paramwcy, List paramList) {}
+  public wcz(LightalkBlueTipsBar paramLightalkBlueTipsBar) {}
   
   public void run()
   {
-    ChatHistoryBubbleListAdapter localChatHistoryBubbleListAdapter = this.jdField_a_of_type_Wcy.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter;
-    List localList = this.jdField_a_of_type_JavaUtilList;
-    if (this.jdField_a_of_type_JavaUtilList.size() < 21) {}
-    for (boolean bool = true;; bool = false)
+    LightalkBlueTipsBarData localLightalkBlueTipsBarData = LightalkBlueTipsBarData.a();
+    if (localLightalkBlueTipsBarData != null)
     {
-      localChatHistoryBubbleListAdapter.b(localList, bool);
-      if (this.jdField_a_of_type_Wcy.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() > 0)
-      {
-        this.jdField_a_of_type_Wcy.a.jdField_a_of_type_Long = ((MessageRecord)this.jdField_a_of_type_Wcy.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getItem(0)).shmsgseq;
-        this.jdField_a_of_type_Wcy.a.b = ((MessageRecord)this.jdField_a_of_type_Wcy.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getItem(this.jdField_a_of_type_Wcy.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() - 1)).shmsgseq;
-      }
-      this.jdField_a_of_type_Wcy.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.a = true;
-      this.jdField_a_of_type_Wcy.a.jdField_a_of_type_AndroidWidgetTextView.setText("点击加载更多");
-      this.jdField_a_of_type_Wcy.a.a(this.jdField_a_of_type_Wcy.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.a, this.jdField_a_of_type_Wcy.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.b);
-      this.jdField_a_of_type_Wcy.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.notifyDataSetChanged();
-      return;
+      this.a.a = localLightalkBlueTipsBarData.d;
+      this.a.b = localLightalkBlueTipsBarData.e;
     }
   }
 }

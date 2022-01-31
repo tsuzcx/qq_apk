@@ -1,19 +1,23 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.hardware.Sensor;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.app.BaseActivity2;
+import com.tencent.mobileqq.statistics.battery.BackgroundCpuMonitor;
 
 public class zan
   implements Runnable
 {
-  public zan(FrameHelperActivity paramFrameHelperActivity) {}
+  public zan(BaseActivity2 paramBaseActivity2) {}
   
   public void run()
   {
-    if ((!ThemeUtil.isNowThemeIsDIY()) && (!ThemeUtil.isNowThemeIsAnimate())) {}
-    for (boolean bool = true;; bool = false)
+    zap localzap = new zap(null);
+    SensorManager localSensorManager = (SensorManager)this.a.getSystemService("sensor");
+    Sensor localSensor = localSensorManager.getDefaultSensor(1);
+    if (BackgroundCpuMonitor.a().a()) {}
+    for (int i = 2;; i = 0)
     {
-      this.a.a.removeMessages(16);
-      this.a.a.sendMessage(this.a.a.obtainMessage(16, Boolean.valueOf(bool)));
+      localSensorManager.registerListener(localzap, localSensor, i);
+      BaseActivity2.a(localzap);
       return;
     }
   }

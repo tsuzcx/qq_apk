@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnErrorListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
 
-class aelo
+public class aelo
   implements Runnable
 {
-  aelo(aeln paramaeln, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject) {}
+  public aelo(NearbyAppInterface paramNearbyAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, String paramString6, String paramString7, String paramString8, String paramString9) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aeln.a.a != null) {
-      this.jdField_a_of_type_Aeln.a.a.a(this.jdField_a_of_type_Aeln.a, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a().a(false, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.c, this.d, this.e, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.f, this.g, this.h, this.i);
   }
 }
 

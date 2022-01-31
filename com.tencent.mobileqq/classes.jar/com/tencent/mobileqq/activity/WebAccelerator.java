@@ -47,7 +47,7 @@ import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import mqq.app.MobileQQ;
-import ufp;
+import uip;
 
 public class WebAccelerator
 {
@@ -151,7 +151,7 @@ public class WebAccelerator
   {
     if (jdField_a_of_type_Boolean)
     {
-      ThreadManager.post(new ufp(paramString, paramIntent, paramContext), 8, null, false);
+      ThreadManager.post(new uip(paramString, paramIntent, paramContext), 8, null, false);
       return;
     }
     paramContext.startActivity(paramIntent);

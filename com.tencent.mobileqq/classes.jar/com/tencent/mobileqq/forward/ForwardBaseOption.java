@@ -1,14 +1,14 @@
 package com.tencent.mobileqq.forward;
 
-import adad;
-import adaf;
-import adag;
-import adah;
-import adaj;
-import adak;
-import adal;
-import adan;
-import adao;
+import adka;
+import adkc;
+import adkd;
+import adke;
+import adkg;
+import adkh;
+import adki;
+import adkk;
+import adkl;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -91,7 +91,7 @@ public abstract class ForwardBaseOption
   public Bundle a;
   View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   protected ShareResultDialog a;
-  DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new adao(this);
+  DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new adkl(this);
   public QQAppInterface a;
   public QQCustomDialog a;
   protected QQProgressDialog a;
@@ -188,13 +188,13 @@ public abstract class ForwardBaseOption
   
   public int a()
   {
-    return 2131432998;
+    return 2131433015;
   }
   
   protected final DialogInterface.OnClickListener a()
   {
     if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new adad(this);
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new adka(this);
     }
     return this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
   }
@@ -307,7 +307,7 @@ public abstract class ForwardBaseOption
   
   public void a(Drawable paramDrawable, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adaj(this, paramDrawable, paramBoolean1, paramInt, paramBoolean2));
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new adkg(this, paramDrawable, paramBoolean1, paramInt, paramBoolean2));
   }
   
   public void a(QQAppInterface paramQQAppInterface, Activity paramActivity)
@@ -425,7 +425,7 @@ public abstract class ForwardBaseOption
       if (!TextUtils.isEmpty(str))
       {
         bool1 = bool2;
-        if (str.equals(this.jdField_a_of_type_AndroidAppActivity.getString(2131431600))) {
+        if (str.equals(this.jdField_a_of_type_AndroidAppActivity.getString(2131431617))) {
           bool1 = true;
         }
       }
@@ -433,7 +433,7 @@ public abstract class ForwardBaseOption
     if (bool1)
     {
       this.jdField_a_of_type_AndroidOsBundle.putBoolean("isBack2Root", true);
-      this.jdField_a_of_type_AndroidOsBundle.putString("leftBackText", this.jdField_a_of_type_AndroidAppActivity.getString(2131433280));
+      this.jdField_a_of_type_AndroidOsBundle.putString("leftBackText", this.jdField_a_of_type_AndroidAppActivity.getString(2131433297));
       paramIntent.putExtras(this.jdField_a_of_type_AndroidOsBundle);
     }
     bool2 = this.jdField_a_of_type_AndroidOsBundle.getBoolean("isFromAIOPlus");
@@ -490,13 +490,13 @@ public abstract class ForwardBaseOption
   
   public int b()
   {
-    return 2131433614;
+    return 2131433631;
   }
   
   protected final DialogInterface.OnClickListener b()
   {
     if (this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener == null) {
-      this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new adaf(this);
+      this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new adkc(this);
     }
     return this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener;
   }
@@ -547,19 +547,19 @@ public abstract class ForwardBaseOption
       localBundle.putAll(this.jdField_a_of_type_AndroidOsBundle);
       Intent localIntent = new Intent();
       DataLineHandler localDataLineHandler = (DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(8);
-      adal localadal = new adal(this);
+      adki localadki = new adki(this);
       if (this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("sendMultiple", false))
       {
         a(localIntent);
         localBundle.putAll(localIntent.getExtras());
       }
-      for (paramInt = localDataLineHandler.a().a(str, localBundle, localadal);; paramInt = localDataLineHandler.a().b(str, localBundle, localadal))
+      for (paramInt = localDataLineHandler.a().a(str, localBundle, localadki);; paramInt = localDataLineHandler.a().b(str, localBundle, localadki))
       {
-        if ((localadal.jdField_a_of_type_Boolean) && (paramInt != 0)) {
+        if ((localadki.jdField_a_of_type_Boolean) && (paramInt != 0)) {
           break label340;
         }
         DirectForwarder.b(this.jdField_a_of_type_AndroidAppActivity, paramInt);
-        if (localadal.jdField_a_of_type_Boolean) {
+        if (localadki.jdField_a_of_type_Boolean) {
           break;
         }
         this.jdField_a_of_type_AndroidContentIntent.putExtra("NOCANCEL4DATALIN", true);
@@ -608,7 +608,7 @@ public abstract class ForwardBaseOption
     if (QLog.isColorLevel()) {
       QLog.d("ForwardOption.ForwardBaseOption", 2, "updateImageView: filepath=" + paramString);
     }
-    ThreadManager.post(new adak(this, paramString, paramQQCustomDialog), 8, null, false);
+    ThreadManager.post(new adkh(this, paramString, paramQQCustomDialog), 8, null, false);
     if (QLog.isColorLevel()) {
       QLog.d("ForwardOption.ForwardBaseOption", 2, "updateImageView end! ");
     }
@@ -622,7 +622,7 @@ public abstract class ForwardBaseOption
   protected final DialogInterface.OnClickListener c()
   {
     if (this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener == null) {
-      this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener = new adag(this);
+      this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener = new adkd(this);
     }
     return this.jdField_c_of_type_AndroidContentDialogInterface$OnClickListener;
   }
@@ -650,7 +650,7 @@ public abstract class ForwardBaseOption
     label272:
     for (Object localObject1 = String.valueOf(l / 100L);; localObject1 = String.valueOf((float)l / 100.0F))
     {
-      String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131432301);
+      String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131432318);
       Object localObject3 = localObject2;
       if (localObject2 == null) {
         localObject3 = "";
@@ -752,29 +752,29 @@ public abstract class ForwardBaseOption
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
     }
     t();
-    adan localadan = new adan(this);
+    adkk localadkk = new adkk(this);
     if (this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog == null) {
       this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog = new ShareResultDialog(this.jdField_a_of_type_AndroidAppActivity);
     }
     for (;;)
     {
-      String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131433681);
+      String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131433698);
       Object localObject = str;
       if (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidOsBundle.getString("app_name"))) {
         localObject = str + this.jdField_a_of_type_AndroidOsBundle.getString("app_name");
       }
-      this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.a((String)localObject, localadan);
-      this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.a(2131429898);
+      this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.a((String)localObject, localadkk);
+      this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.a(2131429904);
       localObject = this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog;
       boolean bool;
       if (paramInt == 0)
       {
         bool = true;
         ((ShareResultDialog)localObject).a(bool);
-        this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.a(2131431585);
+        this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.a(2131431602);
         this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.b(0);
-        this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.c(2131431584);
-        this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.b(this.jdField_a_of_type_AndroidAppActivity.getString(2131431588), localadan);
+        this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.c(2131431601);
+        this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.b(this.jdField_a_of_type_AndroidAppActivity.getString(2131431605), localadkk);
       }
       try
       {
@@ -903,8 +903,8 @@ public abstract class ForwardBaseOption
       {
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, c(), this.jdField_a_of_type_AndroidOsBundle);
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage("");
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131432998, b());
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131433614, a());
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131433015, b());
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131433631, a());
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       }
     }
@@ -956,8 +956,8 @@ public abstract class ForwardBaseOption
         }
         label493:
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage("");
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131432998, b());
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131433614, a());
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131433015, b());
+        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131433631, a());
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
         continue;
         this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, c(), a(), null, a(), b(), 0);
@@ -1109,7 +1109,7 @@ public abstract class ForwardBaseOption
     String str = this.jdField_a_of_type_AndroidOsBundle.getString("uin");
     boolean bool = this.jdField_a_of_type_AndroidOsBundle.getBoolean("forward_photo_shortvideo_is_edited", false);
     if ((this.jdField_a_of_type_AndroidViewView$OnClickListener == null) && (!bool)) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener = new adah(this, str);
+      this.jdField_a_of_type_AndroidViewView$OnClickListener = new adke(this, str);
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setImageOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
   }

@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import alky;
+import amao;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -61,7 +61,7 @@ public abstract class AdapterView
   @ViewDebug.ExportedProperty(category="list")
   public int mSelectedPosition = -1;
   public long mSelectedRowId = -9223372036854775808L;
-  private alky mSelectionNotifier;
+  private amao mSelectionNotifier;
   int mSpecificBottom;
   int mSpecificTop;
   long mSyncHeight;
@@ -740,7 +740,7 @@ public abstract class AdapterView
         break label78;
       }
       if (this.mSelectionNotifier == null) {
-        this.mSelectionNotifier = new alky(this, null);
+        this.mSelectionNotifier = new amao(this, null);
       }
       post(this.mSelectionNotifier);
     }

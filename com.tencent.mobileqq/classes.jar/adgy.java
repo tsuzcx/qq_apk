@@ -1,19 +1,20 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class adgy
+public final class adgy
   implements Runnable
 {
-  public adgy(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, String paramString) {}
+  public adgy(String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.c.setText(this.jdField_a_of_type_JavaLangString);
+    QQToast.a(BaseApplicationImpl.getContext(), 2, this.a, 0).b(FMToastUtil.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adgy
  * JD-Core Version:    0.7.0.1
  */

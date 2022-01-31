@@ -1,24 +1,19 @@
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.tencent.mobileqq.tribe.view.TEditText;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class aijx
-  extends AnimatorListenerAdapter
+  implements DialogInterface.OnClickListener
 {
-  aijx(aijw paramaijw) {}
+  aijx(aijv paramaijv) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.r();
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishActivity.b.requestFocus();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aijx
  * JD-Core Version:    0.7.0.1
  */

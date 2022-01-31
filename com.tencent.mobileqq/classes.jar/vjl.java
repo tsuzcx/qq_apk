@@ -1,8 +1,15 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.TroopFeeMsgItemBuilder;
 
-public abstract interface vjl
+public class vjl
+  extends BaseBubbleBuilder.ViewHolder
 {
-  public abstract void a(AIOImageData paramAIOImageData, boolean paramBoolean);
+  public long a;
+  public RelativeLayout a;
+  public String b;
+  
+  private vjl(TroopFeeMsgItemBuilder paramTroopFeeMsgItemBuilder) {}
 }
 
 

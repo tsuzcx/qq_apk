@@ -1,53 +1,34 @@
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgTranslator;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgTranslator.TranslatorListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import java.io.OutputStream;
-import msg.aio_doodle.DoodleMsgProto.DoodleData;
-import msg.aio_doodle.DoodleMsgProto.DoodleHeader;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgAnimatorCtr;
+import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgLayAnim;
+import com.tencent.qphone.base.util.QLog;
 
 public class uoz
-  implements DoodleMsgTranslator.TranslatorListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public uoz(DoodlePanel paramDoodlePanel, OutputStream paramOutputStream) {}
+  public uoz(GoldMsgLayAnim paramGoldMsgLayAnim) {}
   
-  public boolean a(DoodleMsgProto.DoodleData paramDoodleData)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (paramDoodleData == null) {
-      return false;
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    float f = i / 100.0F;
+    int j = (int)(this.a.jdField_b_of_type_Int * f);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("GoldMsgLayAnim", 4, "updateTextView currentValue=" + i + ",fraction=" + f + ",textOldWidth=" + this.a.jdField_b_of_type_Int + ",textNewWidth=" + j);
     }
-    paramDoodleData = paramDoodleData.toByteArray();
-    byte[] arrayOfByte = DoodleMsgTranslator.a(paramDoodleData.length);
-    try
-    {
-      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
-      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleData);
-      label33:
-      return true;
+    this.a.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams().width = j;
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setAlpha(f);
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.requestLayout();
+    if ((paramValueAnimator == this.a.jdField_a_of_type_AndroidAnimationValueAnimator) && (i == 100)) {
+      this.a.a();
     }
-    catch (Exception paramDoodleData)
-    {
-      break label33;
+    while ((paramValueAnimator != this.a.jdField_b_of_type_AndroidAnimationValueAnimator) || (i != 0)) {
+      return;
     }
-  }
-  
-  public boolean a(DoodleMsgProto.DoodleHeader paramDoodleHeader)
-  {
-    if (paramDoodleHeader == null) {
-      return false;
-    }
-    paramDoodleHeader = paramDoodleHeader.toByteArray();
-    byte[] arrayOfByte = DoodleMsgTranslator.a(paramDoodleHeader.length);
-    try
-    {
-      this.jdField_a_of_type_JavaIoOutputStream.write(arrayOfByte);
-      this.jdField_a_of_type_JavaIoOutputStream.write(paramDoodleHeader);
-      label33:
-      return true;
-    }
-    catch (Exception paramDoodleHeader)
-    {
-      break label33;
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgAnimatorCtr.a();
   }
 }
 

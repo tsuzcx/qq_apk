@@ -1,18 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetApkNameCallback;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 
-public final class acyg
-  implements UniformDownloadUtil.GetApkNameCallback
+public class acyg
+  extends acxu
 {
-  public acyg(String paramString) {}
-  
-  public void a(String paramString)
+  public acyg(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    if (paramString == null) {
-      return;
-    }
-    new Handler(Looper.getMainLooper()).post(new acyh(this));
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateSaveToWeiYunByPC";
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import ajpn;
-import ajpo;
+import akdu;
+import akdv;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
@@ -31,7 +31,7 @@ public class QQCustomArkDialog
   extends QQCustomDialog
 {
   int jdField_a_of_type_Int = 0;
-  private ArkAppContainer.ArkAppModuleCallback jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer$ArkAppModuleCallback = new ajpn(this);
+  private ArkAppContainer.ArkAppModuleCallback jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer$ArkAppModuleCallback = new akdu(this);
   ArkAppContainer jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer;
   ArkAppView jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView;
   boolean jdField_a_of_type_Boolean = false;
@@ -101,16 +101,16 @@ public class QQCustomArkDialog
         Object localObject1 = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
         if (!bool)
         {
-          Object localObject3 = findViewById(2131364012);
+          Object localObject3 = findViewById(2131364036);
           if (localObject3 != null) {
             ((View)localObject3).setVisibility(8);
           }
           this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setOnTouchListener(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView);
-          localObject3 = findViewById(2131364009);
+          localObject3 = findViewById(2131364033);
           if (localObject3 != null) {
             ((View)localObject3).setVisibility(8);
           }
-          localObject3 = findViewById(2131364011);
+          localObject3 = findViewById(2131364035);
           if (localObject3 != null) {
             ((View)localObject3).setVisibility(8);
           }
@@ -132,7 +132,7 @@ public class QQCustomArkDialog
           this.jdField_a_of_type_Int = AIOUtils.a(390.0F, paramContext.getResources());
           this.b = AIOUtils.a(132.0F, paramContext.getResources());
           this.c = (AIOUtils.a(296.0F, paramContext.getResources()) - i - j * 2);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.post(new ajpo(this, paramBundle));
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.post(new akdv(this, paramBundle));
           this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.setInputHolderAnchor((ViewGroup)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppView.getRootView());
           if (!(paramContext instanceof Activity)) {
             break label502;

@@ -9,10 +9,10 @@ import android.view.animation.LinearInterpolator;
 import android.view.animation.TranslateAnimation;
 import android.widget.TextSwitcher;
 import com.tencent.mobileqq.app.ThreadManager;
-import jmj;
-import jmk;
-import jml;
-import jmm;
+import jlu;
+import jlv;
+import jlw;
+import jlx;
 
 public class RedPacketRollTextView
   extends TextSwitcher
@@ -20,8 +20,8 @@ public class RedPacketRollTextView
 {
   private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
-  private jml jdField_a_of_type_Jml;
-  private jmm jdField_a_of_type_Jmm = new jmm(this);
+  private jlw jdField_a_of_type_Jlw;
+  private jlx jdField_a_of_type_Jlx = new jlx(this);
   public boolean a;
   private int jdField_b_of_type_Int;
   private boolean jdField_b_of_type_Boolean = true;
@@ -115,12 +115,12 @@ public class RedPacketRollTextView
     }
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     a(paramBoolean);
-    setFactory(new jmj(this, paramBoolean));
+    setFactory(new jlu(this, paramBoolean));
   }
   
   public void b()
   {
-    ThreadManager.postImmediately(new jmk(this), null, true);
+    ThreadManager.postImmediately(new jlv(this), null, true);
   }
   
   public void onAnimationEnd(Animation paramAnimation)
@@ -138,9 +138,9 @@ public class RedPacketRollTextView
     Log.e("RollTextView", "WL_DEBUG onAnimationStart");
   }
   
-  public void setListener(jml paramjml)
+  public void setListener(jlw paramjlw)
   {
-    this.jdField_a_of_type_Jml = paramjml;
+    this.jdField_a_of_type_Jlw = paramjlw;
   }
   
   public void setScope(int paramInt1, int paramInt2)

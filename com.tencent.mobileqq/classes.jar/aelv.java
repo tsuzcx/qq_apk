@@ -1,15 +1,26 @@
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnErrorListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.NearbyFakeActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class aelv
-  implements Runnable
+public class aelv
+  extends Handler
 {
-  aelv(aelu paramaelu) {}
+  public aelv(NearbyFakeActivity paramNearbyFakeActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.a(this.a.a, 102, 201, 0, "", null);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("NearbyFakeActivity", 2, "procPreload time out");
+      }
+      NearbyFakeActivity.a(this.a, 1);
     }
   }
 }

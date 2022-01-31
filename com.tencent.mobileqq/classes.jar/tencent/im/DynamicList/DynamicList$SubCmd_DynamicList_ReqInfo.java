@@ -2,16 +2,16 @@ package tencent.im.DynamicList;
 
 import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
+import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 
 public final class DynamicList$SubCmd_DynamicList_ReqInfo
   extends MessageMicro
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "SubCmd_Req", "reqEvent" }, new Object[] { null, Integer.valueOf(0) }, SubCmd_DynamicList_ReqInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16 }, new String[] { "SubCmd_Req", "isGrayVer" }, new Object[] { null, Boolean.valueOf(false) }, SubCmd_DynamicList_ReqInfo.class);
   public final PBRepeatMessageField SubCmd_Req = PBField.initRepeatMessage(DynamicList.SubCmd_DynamicItem_Req.class);
-  public final PBUInt32Field reqEvent = PBField.initUInt32(0);
+  public final PBBoolField isGrayVer = PBField.initBool(false);
 }
 
 

@@ -13,16 +13,20 @@ import com.tencent.mobileqq.activity.Conversation;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.utils.SharedPreferencesHandler;
 import com.tencent.mobileqq.webprocess.WebProcessManager;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.readinjoy.ReadInJoyHelper;
 import java.io.ByteArrayInputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import mts;
+import muz;
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.w3c.dom.Document;
@@ -35,6 +39,7 @@ public class PublicAccountConfigUtil
   public static int a;
   private static QQHashMap jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap;
   public static String a;
+  public static ArrayList a;
   private static final AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   public static boolean a;
   public static int b;
@@ -76,6 +81,7 @@ public class PublicAccountConfigUtil
     jdField_i_of_type_JavaLangString = "";
     jdField_j_of_type_JavaLangString = "";
     jdField_k_of_type_JavaLangString = "";
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
   
   public static int a(QQAppInterface paramQQAppInterface)
@@ -93,11 +99,11 @@ public class PublicAccountConfigUtil
     switch (paramInt)
     {
     default: 
-      return paramContext.getResources().getDrawable(2130839128);
+      return paramContext.getResources().getDrawable(2130839132);
     case 1: 
-      return paramContext.getResources().getDrawable(2130839200);
+      return paramContext.getResources().getDrawable(2130839204);
     }
-    return paramContext.getResources().getDrawable(2130839205);
+    return paramContext.getResources().getDrawable(2130839209);
   }
   
   public static PublicAccountConfigUtil.PublicAccountConfigFolder a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt)
@@ -164,6 +170,7 @@ public class PublicAccountConfigUtil
     jdField_k_of_type_JavaLangString = "";
     n = false;
     o = false;
+    jdField_a_of_type_JavaUtilArrayList.clear();
     jdField_b_of_type_Int = 0;
     jdField_c_of_type_Int = 0;
     jdField_d_of_type_Int = 0;
@@ -201,14 +208,14 @@ public class PublicAccountConfigUtil
     }
     if (!c(paramQQAppInterface, paramContext, SharedPreUtils.e(paramContext)))
     {
-      localObject = new PublicAccountConfigUtil.PublicAccountConfigFolder(paramQQAppInterface, paramContext, 1, 2131430062, 2130839200);
+      localObject = new PublicAccountConfigUtil.PublicAccountConfigFolder(paramQQAppInterface, paramContext, 1, 2131430079, 2130839204);
       jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(Integer.valueOf(1), localObject);
     }
     Object localObject = SharedPreUtils.h(paramContext);
     String str = SharedPreUtils.i(paramContext);
     if ((TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.isEmpty(str)))
     {
-      paramQQAppInterface = new PublicAccountConfigUtil.PublicAccountConfigFolder(paramQQAppInterface, paramContext, 2, 2131428431, 2130839205);
+      paramQQAppInterface = new PublicAccountConfigUtil.PublicAccountConfigFolder(paramQQAppInterface, paramContext, 2, 2131428437, 2130839209);
       jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(Integer.valueOf(2), paramQQAppInterface);
     }
     for (;;)
@@ -655,7 +662,7 @@ public class PublicAccountConfigUtil
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          ReadInJoyHelper.l(paramQQAppInterface, i1);
+          ReadInJoyHelper.m(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "video_channel_style value = " + i1);
           }
@@ -664,7 +671,7 @@ public class PublicAccountConfigUtil
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          ReadInJoyHelper.m(paramQQAppInterface, i1);
+          ReadInJoyHelper.n(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "multi_video_dynamic_recommend_strategyid value = " + i1);
           }
@@ -673,7 +680,7 @@ public class PublicAccountConfigUtil
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          ReadInJoyHelper.n(paramQQAppInterface, i1);
+          ReadInJoyHelper.o(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "multi_video_dynamic_recommend_duration_limit value = " + i1);
           }
@@ -692,7 +699,7 @@ public class PublicAccountConfigUtil
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          ReadInJoyHelper.o(paramQQAppInterface, i1);
+          ReadInJoyHelper.p(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "multi_video_dynamic_recommend_operator value = " + i1);
           }
@@ -701,7 +708,7 @@ public class PublicAccountConfigUtil
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          ReadInJoyHelper.p(paramQQAppInterface, i1);
+          ReadInJoyHelper.q(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "video_dynamic_recommend_strategyid value = " + i1);
           }
@@ -710,7 +717,7 @@ public class PublicAccountConfigUtil
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          ReadInJoyHelper.q(paramQQAppInterface, i1);
+          ReadInJoyHelper.r(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "video_dynamic_recommend_duration_limit value = " + i1);
           }
@@ -728,7 +735,7 @@ public class PublicAccountConfigUtil
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          ReadInJoyHelper.r(paramQQAppInterface, i1);
+          ReadInJoyHelper.s(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "video_dynamic_recommend_operator value = " + i1);
           }
@@ -737,7 +744,7 @@ public class PublicAccountConfigUtil
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          ReadInJoyHelper.s(paramQQAppInterface, i1);
+          ReadInJoyHelper.t(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "web_viola_render_switch value = " + i1);
           }
@@ -746,7 +753,7 @@ public class PublicAccountConfigUtil
         if ((localObject1 != null) && (((NodeList)localObject1).getLength() > 0))
         {
           i1 = Integer.valueOf(((Element)((NodeList)localObject1).item(0)).getFirstChild().getNodeValue()).intValue();
-          ReadInJoyHelper.t(paramQQAppInterface, i1);
+          ReadInJoyHelper.u(paramQQAppInterface, i1);
           if (QLog.isColorLevel()) {
             QLog.d("PublicAccountConfigUtil", 2, "web_viola_render_mode value = " + i1);
           }
@@ -862,9 +869,9 @@ public class PublicAccountConfigUtil
     default: 
       return null;
     case 1: 
-      return paramContext.getString(2131430062);
+      return paramContext.getString(2131430079);
     }
-    return paramContext.getString(2131428431);
+    return paramContext.getString(2131428437);
   }
   
   public static void b(QQAppInterface paramQQAppInterface)
@@ -891,6 +898,10 @@ public class PublicAccountConfigUtil
       n = localSharedPreferences.getBoolean("readInJoy_loading_img", false);
       jdField_c_of_type_Boolean = localSharedPreferences.getBoolean("service_account_folder_redspots_delete", false);
       o = localSharedPreferences.getBoolean("big_data_share_channel", false);
+      Set localSet = SharedPreferencesHandler.a(localSharedPreferences, "big_data_share_channel_urls", null);
+      if (localSet != null) {
+        jdField_a_of_type_JavaUtilArrayList = new ArrayList(localSet);
+      }
       jdField_b_of_type_Int = localSharedPreferences.getInt("album_predown_enable", 0);
       jdField_c_of_type_Int = localSharedPreferences.getInt("album_predown_photo_rule", 0);
       jdField_d_of_type_Int = localSharedPreferences.getInt("album_predown_slide_photocounts", 0);
@@ -1128,7 +1139,7 @@ public class PublicAccountConfigUtil
   
   public static void c(QQAppInterface paramQQAppInterface)
   {
-    ThreadManager.executeOnFileThread(new mts(paramQQAppInterface));
+    ThreadManager.executeOnFileThread(new muz(paramQQAppInterface));
   }
   
   private static boolean c(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
@@ -1179,381 +1190,423 @@ public class PublicAccountConfigUtil
     if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    label1541:
-    label1547:
-    label1553:
-    label1559:
-    label1565:
-    label1571:
-    label1577:
-    label1583:
-    label1589:
-    label1595:
-    label1601:
-    label1607:
-    label1613:
-    label1619:
-    label1625:
-    label1631:
-    label1890:
-    label1892:
-    for (;;)
+    Object localObject;
+    String str;
+    label61:
+    label195:
+    label254:
+    int i17;
+    label136:
+    label313:
+    label372:
+    int i18;
+    label431:
+    label490:
+    label1399:
+    int i23;
+    label549:
+    label940:
+    label1458:
+    try
     {
-      String str1;
-      try
+      localJSONObject = new JSONObject(paramString);
+      if (!localJSONObject.has("service_folder_name")) {
+        break label1847;
+      }
+      localObject = localJSONObject.getString("service_folder_name");
+      if (!localJSONObject.has("service_folder_icon")) {
+        break label1854;
+      }
+      str = localJSONObject.getString("service_folder_icon");
+      if ((TextUtils.isEmpty((CharSequence)localObject)) || (TextUtils.isEmpty(str))) {
+        break label1733;
+      }
+      jdField_f_of_type_JavaLangString = (String)localObject;
+      jdField_g_of_type_JavaLangString = str;
+      if (!QLog.isColorLevel()) {
+        break label1738;
+      }
+      QLog.d("PublicAccountConfigUtil", 2, "SERVICE_ACCOUNT_FOLDER_CONFIG_CMD checkPublicAccountCenterUrlConfigData SERVICE_ACCOUNT_FOLDER_NAME:" + jdField_f_of_type_JavaLangString + " SERVICE_ACCOUNT_FOLDER_ICON:" + jdField_g_of_type_JavaLangString);
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      JSONObject localJSONObject;
+      label608:
+      label999:
+      if (!QLog.isColorLevel()) {
+        break label1602;
+      }
+      label726:
+      label1117:
+      label1508:
+      QLog.e("PublicAccountConfigUtil", 2, "checkPublicAccountCenterUrlConfigData error", paramQQAppInterface);
+      label847:
+      paramQQAppInterface.printStackTrace();
+      label1340:
+      label1602:
+      return false;
+    }
+    if (localJSONObject.has("service_folder_redspots"))
+    {
+      jdField_b_of_type_Boolean = localJSONObject.getBoolean("service_folder_redspots");
+      if (!QLog.isColorLevel()) {
+        break label1743;
+      }
+      QLog.d("PublicAccountConfigUtil", 2, "SERVICE_ACCOUNT_FOLDER_CONFIG_CMD checkPublicAccountCenterUrlConfigData service_folder_redspots:" + jdField_b_of_type_Boolean);
+      break label1743;
+      if (localJSONObject.has("service_folder_delete"))
       {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        if (!localJSONObject.has("service_folder_name")) {
-          break label1892;
+        jdField_a_of_type_Boolean = localJSONObject.getBoolean("service_folder_delete");
+        if (!QLog.isColorLevel()) {
+          break label1748;
         }
-        str1 = localJSONObject.getString("service_folder_name");
-        String str2;
-        if (localJSONObject.has("service_folder_icon"))
+        QLog.d("PublicAccountConfigUtil", 2, "SERVICE_ACCOUNT_FOLDER_CONFIG_CMD checkPublicAccountCenterUrlConfigData service_folder_delete:" + jdField_a_of_type_Boolean);
+        break label1748;
+        if (localJSONObject.has("ServiceFolder_RedClean_After_Enter"))
         {
-          str2 = localJSONObject.getString("service_folder_icon");
-          if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2))) {
-            break label1636;
-          }
-          jdField_f_of_type_JavaLangString = str1;
-          jdField_g_of_type_JavaLangString = str2;
-          if (!QLog.isColorLevel()) {
-            break label1641;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "SERVICE_ACCOUNT_FOLDER_CONFIG_CMD checkPublicAccountCenterUrlConfigData SERVICE_ACCOUNT_FOLDER_NAME:" + jdField_f_of_type_JavaLangString + " SERVICE_ACCOUNT_FOLDER_ICON:" + jdField_g_of_type_JavaLangString);
-          break label1641;
-          if (!localJSONObject.has("service_folder_redspots")) {
-            break label1631;
-          }
-          jdField_b_of_type_Boolean = localJSONObject.getBoolean("service_folder_redspots");
-          if (!QLog.isColorLevel()) {
-            break label1646;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "SERVICE_ACCOUNT_FOLDER_CONFIG_CMD checkPublicAccountCenterUrlConfigData service_folder_redspots:" + jdField_b_of_type_Boolean);
-          break label1646;
-          if (!localJSONObject.has("service_folder_delete")) {
-            break label1625;
-          }
-          jdField_a_of_type_Boolean = localJSONObject.getBoolean("service_folder_delete");
-          if (!QLog.isColorLevel()) {
-            break label1651;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "SERVICE_ACCOUNT_FOLDER_CONFIG_CMD checkPublicAccountCenterUrlConfigData service_folder_delete:" + jdField_a_of_type_Boolean);
-          break label1651;
-          if (!localJSONObject.has("ServiceFolder_RedClean_After_Enter")) {
-            break label1619;
-          }
           p = localJSONObject.getBoolean("ServiceFolder_RedClean_After_Enter");
           if (!QLog.isColorLevel()) {
-            break label1657;
+            break label1754;
           }
           QLog.d("PublicAccountConfigUtil", 2, "ServiceFolder_RedClean_After_Enter = " + p);
-          break label1657;
-          if (!localJSONObject.has("readInJoy_feeds_preload")) {
-            break label1613;
-          }
-          jdField_e_of_type_Boolean = localJSONObject.getBoolean("readInJoy_feeds_preload");
-          if (!QLog.isColorLevel()) {
-            break label1663;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "readInJoy feeds preload:" + jdField_e_of_type_Boolean);
-          break label1663;
-          if (!localJSONObject.has("readInJoy_feeds_preload_wifi")) {
-            break label1607;
-          }
-          jdField_f_of_type_Boolean = localJSONObject.getBoolean("readInJoy_feeds_preload_wifi");
-          if (!QLog.isColorLevel()) {
-            break label1669;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "readInJoy feeds preload wifi:" + jdField_f_of_type_Boolean);
-          break label1669;
-          if (!localJSONObject.has("readInJoy_feeds_preload_4G")) {
-            break label1601;
-          }
-          jdField_g_of_type_Boolean = localJSONObject.getBoolean("readInJoy_feeds_preload_4G");
-          if (!QLog.isColorLevel()) {
-            break label1675;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "readInJoy feeds preload 4G:" + jdField_g_of_type_Boolean);
-          break label1675;
-          if (!localJSONObject.has("readInJoy_feeds_preload_3G")) {
-            break label1595;
-          }
-          jdField_h_of_type_Boolean = localJSONObject.getBoolean("readInJoy_feeds_preload_3G");
-          if (!QLog.isColorLevel()) {
-            break label1681;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "readInJoy feeds preload 3G:" + jdField_h_of_type_Boolean);
-          break label1681;
-          if (!localJSONObject.has("readInJoy_feeds_preload_2G")) {
-            break label1589;
-          }
-          jdField_i_of_type_Boolean = localJSONObject.getBoolean("readInJoy_feeds_preload_2G");
-          if (!QLog.isColorLevel()) {
-            break label1687;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "readInJoy feeds preload 2G:" + jdField_i_of_type_Boolean);
-          break label1687;
-          if (!localJSONObject.has("pub_account_bottom_bar")) {
-            break label1583;
-          }
-          l = localJSONObject.getBoolean("pub_account_bottom_bar");
-          if (!QLog.isColorLevel()) {
-            break label1693;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "needPABottomBar: " + l);
-          break label1693;
-          if (!localJSONObject.has("readInJoy_feeds_image_preload")) {
-            break label1577;
-          }
-          jdField_j_of_type_Boolean = localJSONObject.getBoolean("readInJoy_feeds_image_preload");
-          if (!QLog.isColorLevel()) {
-            break label1699;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "readInJoy feeds image preload" + jdField_j_of_type_Boolean);
-          break label1699;
-          if (!localJSONObject.has("kandian_feeds_fling_LToR_host")) {
-            break label1571;
-          }
-          jdField_h_of_type_JavaLangString = localJSONObject.optJSONArray("kandian_feeds_fling_LToR_host").toString();
-          if (!QLog.isColorLevel()) {
-            break label1705;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "kandian_feeds_fling_LToR_host" + jdField_h_of_type_JavaLangString);
-          break label1705;
-          if (!localJSONObject.has("readInJoy_ip_connect")) {
-            break label1565;
-          }
-          m = localJSONObject.getBoolean("readInJoy_ip_connect");
-          if (!QLog.isColorLevel()) {
-            break label1711;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "readInJoy_ip_connect:" + m);
-          break label1711;
-          if ((!localJSONObject.has("readInJoy_ip_connect_full_report")) || (!localJSONObject.has("readInJoy_ip_connect_report_tail"))) {
-            break label1559;
-          }
-          jdField_a_of_type_Int = localJSONObject.getInt("readInJoy_ip_connect_full_report");
-          jdField_k_of_type_JavaLangString = localJSONObject.getString("readInJoy_ip_connect_report_tail");
-          if (!QLog.isColorLevel()) {
-            break label1717;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "readInJoy_ip_connect_full_report:" + jdField_a_of_type_Int + ", readInJoy_ip_connect_report_tail:" + jdField_k_of_type_JavaLangString);
-          break label1717;
-          if (!localJSONObject.has("readInJoy_load_img")) {
-            break label1553;
-          }
-          n = localJSONObject.getBoolean("readInJoy_load_img");
-          if (!QLog.isColorLevel()) {
-            break label1723;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "readInJoyLoadImg:" + n);
-          break label1723;
-          if (!localJSONObject.has("service_account_folder_redspots_delete")) {
-            break label1547;
-          }
-          jdField_c_of_type_Boolean = localJSONObject.getBoolean("service_account_folder_redspots_delete");
-          if (!QLog.isColorLevel()) {
-            break label1729;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "service_account_folder_redspots_delete:" + jdField_c_of_type_Boolean);
-          break label1729;
-          if (!localJSONObject.has("disable_big_data_channel")) {
-            break label1541;
-          }
-          o = localJSONObject.getBoolean("disable_big_data_channel");
-          if (!QLog.isColorLevel()) {
-            break label1735;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "disable big data channel is " + o);
-          break label1735;
-          if (!localJSONObject.has("album_predown_enable")) {
-            break label1535;
-          }
-          jdField_b_of_type_Int = localJSONObject.getInt("album_predown_enable");
-          if (!QLog.isColorLevel()) {
-            break label1741;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "imageCollectionPreloadEnable is " + jdField_b_of_type_Int);
-          break label1741;
-          if (!localJSONObject.has("album_predown_photo_rule")) {
-            break label1529;
-          }
-          jdField_c_of_type_Int = localJSONObject.getInt("album_predown_photo_rule");
-          if (!QLog.isColorLevel()) {
-            break label1747;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "imageCollectionPreloadCoverEnable is " + jdField_c_of_type_Int);
-          break label1747;
-          if (!localJSONObject.has("album_predown_slide_photocounts")) {
-            break label1523;
-          }
-          jdField_d_of_type_Int = localJSONObject.getInt("album_predown_slide_photocounts");
-          if (!QLog.isColorLevel()) {
-            break label1753;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "imageCollectionPreloadImageEnable is " + jdField_d_of_type_Int);
-          break label1753;
-          if (!localJSONObject.has("preload_tool_process")) {
-            break label1517;
-          }
-          jdField_k_of_type_Boolean = localJSONObject.getBoolean("preload_tool_process");
-          if (!QLog.isColorLevel()) {
-            break label1759;
-          }
-          QLog.d("PublicAccountConfigUtil", 2, "preload tool progress is " + jdField_k_of_type_Boolean);
-          break label1759;
-          if (localJSONObject.has("useNewLogic"))
+          break label1754;
+          if (localJSONObject.has("readInJoy_feeds_preload"))
           {
-            jdField_i_of_type_JavaLangString = paramString;
+            jdField_e_of_type_Boolean = localJSONObject.getBoolean("readInJoy_feeds_preload");
             if (!QLog.isColorLevel()) {
-              break label1765;
+              break label1760;
             }
-            QLog.d("PublicAccountConfigUtil", 2, "read in joy preload tool progress config is " + paramString);
-            break label1765;
-            i23 = 0;
-            if (!localJSONObject.has("releaseServiceMinMem")) {
-              break label1774;
+            QLog.d("PublicAccountConfigUtil", 2, "readInJoy feeds preload:" + jdField_e_of_type_Boolean);
+            break label1760;
+            if (localJSONObject.has("readInJoy_feeds_preload_wifi"))
+            {
+              jdField_f_of_type_Boolean = localJSONObject.getBoolean("readInJoy_feeds_preload_wifi");
+              if (!QLog.isColorLevel()) {
+                break label1766;
+              }
+              QLog.d("PublicAccountConfigUtil", 2, "readInJoy feeds preload wifi:" + jdField_f_of_type_Boolean);
+              break label1766;
+              if (localJSONObject.has("readInJoy_feeds_preload_4G"))
+              {
+                jdField_g_of_type_Boolean = localJSONObject.getBoolean("readInJoy_feeds_preload_4G");
+                if (!QLog.isColorLevel()) {
+                  break label1772;
+                }
+                QLog.d("PublicAccountConfigUtil", 2, "readInJoy feeds preload 4G:" + jdField_g_of_type_Boolean);
+                break label1772;
+                label1281:
+                if (localJSONObject.has("readInJoy_feeds_preload_3G"))
+                {
+                  jdField_h_of_type_Boolean = localJSONObject.getBoolean("readInJoy_feeds_preload_3G");
+                  if (!QLog.isColorLevel()) {
+                    break label1778;
+                  }
+                  QLog.d("PublicAccountConfigUtil", 2, "readInJoy feeds preload 3G:" + jdField_h_of_type_Boolean);
+                  break label1778;
+                  label1157:
+                  if (localJSONObject.has("readInJoy_feeds_preload_2G"))
+                  {
+                    jdField_i_of_type_Boolean = localJSONObject.getBoolean("readInJoy_feeds_preload_2G");
+                    if (!QLog.isColorLevel()) {
+                      break label1784;
+                    }
+                    QLog.d("PublicAccountConfigUtil", 2, "readInJoy feeds preload 2G:" + jdField_i_of_type_Boolean);
+                    break label1784;
+                    label788:
+                    if (localJSONObject.has("pub_account_bottom_bar"))
+                    {
+                      l = localJSONObject.getBoolean("pub_account_bottom_bar");
+                      if (!QLog.isColorLevel()) {
+                        break label1790;
+                      }
+                      QLog.d("PublicAccountConfigUtil", 2, "needPABottomBar: " + l);
+                      break label1790;
+                      label667:
+                      if (localJSONObject.has("readInJoy_feeds_image_preload"))
+                      {
+                        jdField_j_of_type_Boolean = localJSONObject.getBoolean("readInJoy_feeds_image_preload");
+                        if (!QLog.isColorLevel()) {
+                          break label1796;
+                        }
+                        QLog.d("PublicAccountConfigUtil", 2, "readInJoy feeds image preload" + jdField_j_of_type_Boolean);
+                        break label1796;
+                        if (localJSONObject.has("kandian_feeds_fling_LToR_host"))
+                        {
+                          jdField_h_of_type_JavaLangString = localJSONObject.optJSONArray("kandian_feeds_fling_LToR_host").toString();
+                          if (!QLog.isColorLevel()) {
+                            break label1802;
+                          }
+                          QLog.d("PublicAccountConfigUtil", 2, "kandian_feeds_fling_LToR_host" + jdField_h_of_type_JavaLangString);
+                          break label1802;
+                          if (localJSONObject.has("readInJoy_ip_connect"))
+                          {
+                            m = localJSONObject.getBoolean("readInJoy_ip_connect");
+                            if (!QLog.isColorLevel()) {
+                              break label1808;
+                            }
+                            QLog.d("PublicAccountConfigUtil", 2, "readInJoy_ip_connect:" + m);
+                            break label1808;
+                            if ((localJSONObject.has("readInJoy_ip_connect_full_report")) && (localJSONObject.has("readInJoy_ip_connect_report_tail")))
+                            {
+                              jdField_a_of_type_Int = localJSONObject.getInt("readInJoy_ip_connect_full_report");
+                              jdField_k_of_type_JavaLangString = localJSONObject.getString("readInJoy_ip_connect_report_tail");
+                              if (!QLog.isColorLevel()) {
+                                break label1814;
+                              }
+                              QLog.d("PublicAccountConfigUtil", 2, "readInJoy_ip_connect_full_report:" + jdField_a_of_type_Int + ", readInJoy_ip_connect_report_tail:" + jdField_k_of_type_JavaLangString);
+                              break label1814;
+                              if (localJSONObject.has("readInJoy_load_img"))
+                              {
+                                n = localJSONObject.getBoolean("readInJoy_load_img");
+                                if (!QLog.isColorLevel()) {
+                                  break label1820;
+                                }
+                                QLog.d("PublicAccountConfigUtil", 2, "readInJoyLoadImg:" + n);
+                                break label1820;
+                                if (localJSONObject.has("service_account_folder_redspots_delete"))
+                                {
+                                  jdField_c_of_type_Boolean = localJSONObject.getBoolean("service_account_folder_redspots_delete");
+                                  if (!QLog.isColorLevel()) {
+                                    break label1826;
+                                  }
+                                  QLog.d("PublicAccountConfigUtil", 2, "service_account_folder_redspots_delete:" + jdField_c_of_type_Boolean);
+                                  break label1826;
+                                  label1058:
+                                  if (localJSONObject.has("disable_big_data_channel"))
+                                  {
+                                    o = localJSONObject.getBoolean("disable_big_data_channel");
+                                    if (!QLog.isColorLevel()) {
+                                      break label1832;
+                                    }
+                                    QLog.d("PublicAccountConfigUtil", 2, "disable big data channel is " + o);
+                                    break label1832;
+                                    if ((i17 != 0) && (localJSONObject.has("host_white_list")))
+                                    {
+                                      localObject = localJSONObject.optJSONArray("host_white_list");
+                                      jdField_a_of_type_JavaUtilArrayList.clear();
+                                      if (localObject != null)
+                                      {
+                                        i18 = 0;
+                                        if (i18 < ((JSONArray)localObject).length())
+                                        {
+                                          jdField_a_of_type_JavaUtilArrayList.add(((JSONArray)localObject).getString(i18));
+                                          if (!QLog.isColorLevel()) {
+                                            break label1838;
+                                          }
+                                          QLog.d("PublicAccountConfigUtil", 2, " big data channel white host is " + ((JSONArray)localObject).getString(i18));
+                                          break label1838;
+                                        }
+                                      }
+                                    }
+                                    if (localJSONObject.has("album_predown_enable"))
+                                    {
+                                      jdField_b_of_type_Int = localJSONObject.getInt("album_predown_enable");
+                                      if (!QLog.isColorLevel()) {
+                                        break label1861;
+                                      }
+                                      QLog.d("PublicAccountConfigUtil", 2, "imageCollectionPreloadEnable is " + jdField_b_of_type_Int);
+                                      break label1861;
+                                      if (localJSONObject.has("album_predown_photo_rule"))
+                                      {
+                                        jdField_c_of_type_Int = localJSONObject.getInt("album_predown_photo_rule");
+                                        if (!QLog.isColorLevel()) {
+                                          break label1867;
+                                        }
+                                        QLog.d("PublicAccountConfigUtil", 2, "imageCollectionPreloadCoverEnable is " + jdField_c_of_type_Int);
+                                        break label1867;
+                                        if (localJSONObject.has("album_predown_slide_photocounts"))
+                                        {
+                                          jdField_d_of_type_Int = localJSONObject.getInt("album_predown_slide_photocounts");
+                                          if (!QLog.isColorLevel()) {
+                                            break label1873;
+                                          }
+                                          QLog.d("PublicAccountConfigUtil", 2, "imageCollectionPreloadImageEnable is " + jdField_d_of_type_Int);
+                                          break label1873;
+                                          if (localJSONObject.has("preload_tool_process"))
+                                          {
+                                            jdField_k_of_type_Boolean = localJSONObject.getBoolean("preload_tool_process");
+                                            if (!QLog.isColorLevel()) {
+                                              break label1879;
+                                            }
+                                            QLog.d("PublicAccountConfigUtil", 2, "preload tool progress is " + jdField_k_of_type_Boolean);
+                                            break label1879;
+                                            if (localJSONObject.has("useNewLogic"))
+                                            {
+                                              jdField_i_of_type_JavaLangString = paramString;
+                                              if (!QLog.isColorLevel()) {
+                                                break label1885;
+                                              }
+                                              QLog.d("PublicAccountConfigUtil", 2, "read in joy preload tool progress config is " + paramString);
+                                              break label1885;
+                                              i23 = 0;
+                                              if (!localJSONObject.has("releaseServiceMinMem")) {
+                                                break label1894;
+                                              }
+                                              jdField_j_of_type_JavaLangString = paramString;
+                                              if (!QLog.isColorLevel()) {
+                                                break label1891;
+                                              }
+                                              QLog.d("PublicAccountConfigUtil", 2, "release web service config is " + paramString);
+                                              break label1891;
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
-            jdField_j_of_type_JavaLangString = paramString;
-            if (!QLog.isColorLevel()) {
-              break label1771;
-            }
-            QLog.d("PublicAccountConfigUtil", 2, "release web service config is " + paramString);
-            break label1771;
-            paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
-            if (paramQQAppInterface == null) {
-              break label1890;
-            }
-            paramQQAppInterface.sendEmptyMessage(1009);
-            break label1890;
           }
-        }
-        else
-        {
-          str2 = "";
-          continue;
-          return false;
-        }
-      }
-      catch (Exception paramQQAppInterface)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PublicAccountConfigUtil", 2, "checkPublicAccountCenterUrlConfigData error", paramQQAppInterface);
-        }
-        paramQQAppInterface.printStackTrace();
-        return false;
-      }
-      int i22 = 0;
-      continue;
-      label1517:
-      int i21 = 0;
-      continue;
-      label1523:
-      int i20 = 0;
-      continue;
-      label1529:
-      int i19 = 0;
-      continue;
-      label1535:
-      int i18 = 0;
-      continue;
-      int i17 = 0;
-      continue;
-      int i16 = 0;
-      continue;
-      int i15 = 0;
-      continue;
-      int i14 = 0;
-      continue;
-      int i13 = 0;
-      continue;
-      int i12 = 0;
-      continue;
-      int i11 = 0;
-      continue;
-      int i10 = 0;
-      continue;
-      int i9 = 0;
-      continue;
-      int i8 = 0;
-      continue;
-      int i7 = 0;
-      continue;
-      int i6 = 0;
-      continue;
-      int i5 = 0;
-      continue;
-      int i4 = 0;
-      continue;
-      int i3 = 0;
-      continue;
-      int i2 = 0;
-      continue;
-      label1636:
-      int i1 = 0;
-      continue;
-      label1641:
-      i1 = 1;
-      continue;
-      label1646:
-      i2 = 1;
-      continue;
-      label1651:
-      i3 = 1;
-      continue;
-      label1657:
-      i4 = 1;
-      continue;
-      label1663:
-      i5 = 1;
-      continue;
-      i6 = 1;
-      continue;
-      i7 = 1;
-      continue;
-      i8 = 1;
-      continue;
-      i9 = 1;
-      continue;
-      i10 = 1;
-      continue;
-      i11 = 1;
-      continue;
-      i12 = 1;
-      continue;
-      i13 = 1;
-      continue;
-      i14 = 1;
-      continue;
-      i15 = 1;
-      continue;
-      i16 = 1;
-      continue;
-      i17 = 1;
-      continue;
-      i18 = 1;
-      continue;
-      i19 = 1;
-      continue;
-      i20 = 1;
-      continue;
-      i21 = 1;
-      continue;
-      label1765:
-      i22 = 1;
-      continue;
-      label1771:
-      int i23 = 1;
-      label1774:
-      if ((i1 == 0) && (i2 == 0) && (i3 == 0) && (i5 == 0) && (i6 == 0) && (i7 == 0) && (i8 == 0) && (i9 == 0) && (i10 == 0) && (i11 == 0) && (i13 == 0) && (i14 == 0) && (i15 == 0) && (i16 == 0) && (i17 == 0) && (i18 == 0) && (i19 == 0) && (i20 == 0) && (i21 == 0) && (i12 == 0) && (i22 == 0) && (i23 == 0)) {
-        if (i4 != 0)
-        {
-          continue;
-          return true;
-          str1 = "";
         }
       }
     }
+    label1561:
+    label1733:
+    label1738:
+    label1743:
+    label1748:
+    label1754:
+    label1760:
+    label1766:
+    label1894:
+    for (;;)
+    {
+      paramQQAppInterface = paramQQAppInterface.getHandler(Conversation.class);
+      if (paramQQAppInterface != null) {
+        paramQQAppInterface.sendEmptyMessage(1009);
+      }
+      return true;
+      int i4;
+      label1772:
+      label1778:
+      label1784:
+      label1790:
+      do
+      {
+        return false;
+        int i22 = 0;
+        break label1508;
+        int i21 = 0;
+        break label1458;
+        int i20 = 0;
+        break label1399;
+        int i19 = 0;
+        break label1340;
+        i18 = 0;
+        break label1281;
+        i17 = 0;
+        break label1117;
+        int i16 = 0;
+        break label1058;
+        int i15 = 0;
+        break label999;
+        int i14 = 0;
+        break label940;
+        int i13 = 0;
+        break label847;
+        int i12 = 0;
+        break label788;
+        int i11 = 0;
+        break label726;
+        int i10 = 0;
+        break label667;
+        int i9 = 0;
+        break label608;
+        int i8 = 0;
+        break label549;
+        int i7 = 0;
+        break label490;
+        int i6 = 0;
+        break label431;
+        int i5 = 0;
+        break label372;
+        i4 = 0;
+        break label313;
+        int i3 = 0;
+        break label254;
+        int i2 = 0;
+        break label195;
+        int i1 = 0;
+        break label136;
+        i1 = 1;
+        break label136;
+        i2 = 1;
+        break label195;
+        i3 = 1;
+        break label254;
+        i4 = 1;
+        break label313;
+        i5 = 1;
+        break label372;
+        i6 = 1;
+        break label431;
+        i7 = 1;
+        break label490;
+        i8 = 1;
+        break label549;
+        i9 = 1;
+        break label608;
+        i10 = 1;
+        break label667;
+        i11 = 1;
+        break label726;
+        i12 = 1;
+        break label788;
+        i13 = 1;
+        break label847;
+        i14 = 1;
+        break label940;
+        i15 = 1;
+        break label999;
+        i16 = 1;
+        break label1058;
+        i17 = 1;
+        break label1117;
+        i18 += 1;
+        break label1157;
+        localObject = "";
+        break;
+        str = "";
+        break label61;
+        i18 = 1;
+        break label1281;
+        i19 = 1;
+        break label1340;
+        i20 = 1;
+        break label1399;
+        i21 = 1;
+        break label1458;
+        i22 = 1;
+        break label1508;
+        i23 = 1;
+        if ((i1 != 0) || (i2 != 0) || (i3 != 0) || (i5 != 0) || (i6 != 0) || (i7 != 0) || (i8 != 0) || (i9 != 0) || (i10 != 0) || (i11 != 0) || (i13 != 0) || (i14 != 0) || (i15 != 0) || (i16 != 0) || (i17 != 0) || (i18 != 0) || (i19 != 0) || (i20 != 0) || (i21 != 0) || (i12 != 0) || (i22 != 0) || (i23 != 0)) {
+          break label1561;
+        }
+      } while (i4 == 0);
+    }
+  }
+  
+  public static boolean c(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext()) {
+      if (paramString.equalsIgnoreCase((String)localIterator.next())) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public static void d(QQAppInterface paramQQAppInterface)

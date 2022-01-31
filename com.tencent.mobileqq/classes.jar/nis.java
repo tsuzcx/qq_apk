@@ -1,15 +1,15 @@
-import com.tencent.biz.qqstory.playmode.child.NewDiscoverBannerPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.base.preload.FileCacheUtils;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.common.app.BaseApplicationImpl;
 
-public class nis
+class nis
   implements Runnable
 {
-  public nis(NewDiscoverBannerPlayMode paramNewDiscoverBannerPlayMode) {}
+  nis(nir paramnir, String paramString) {}
   
   public void run()
   {
-    this.a.e = false;
-    this.a.a.setCurrentItem(this.a.b, false);
+    FileCacheUtils.a(this.jdField_a_of_type_Nir.a, this.jdField_a_of_type_JavaLangString, 0, StoryReportor.a(BaseApplicationImpl.getContext()));
   }
 }
 

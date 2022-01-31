@@ -1,14 +1,16 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class vhw
   implements Runnable
 {
-  public vhw(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  public vhw(StructingMsgItemBuilder paramStructingMsgItemBuilder, Dialog paramDialog) {}
   
   public void run()
   {
-    HapticManager.a().a();
+    if (this.jdField_a_of_type_AndroidAppDialog.isShowing()) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    }
   }
 }
 

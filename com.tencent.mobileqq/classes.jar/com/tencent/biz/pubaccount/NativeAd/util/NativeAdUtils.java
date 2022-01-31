@@ -41,9 +41,9 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
 import java.io.File;
-import kxo;
-import kxp;
-import kxq;
+import kwz;
+import kxa;
+import kxb;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
@@ -53,7 +53,7 @@ import org.json.JSONObject;
 public class NativeAdUtils
 {
   public static int a = 1;
-  public static int b = 2;
+  public static int b;
   public static int c;
   public static int d = 4;
   public static int e = 5;
@@ -61,14 +61,21 @@ public class NativeAdUtils
   public static int g = 7;
   public static int h = 8;
   public static int i = 9;
-  public static int j = 4;
-  public static int k = 1;
-  public static int l = 2;
-  public static int m = 9;
+  public static int j = 1;
+  public static int k = 3;
+  public static int l = 4;
+  public static int m = 5;
   public static int n = 10;
+  public static int o = 11;
+  public static int p = 1;
+  public static int q = 2;
+  public static int r = 2;
+  public static int s = 9;
+  public static int t = 10;
   
   static
   {
+    jdField_b_of_type_Int = 2;
     jdField_c_of_type_Int = 3;
   }
   
@@ -112,9 +119,9 @@ public class NativeAdUtils
   
   public static Dialog a(Context paramContext, String paramString1, String paramString2, View.OnClickListener paramOnClickListener1, String paramString3, View.OnClickListener paramOnClickListener2, String paramString4)
   {
-    paramContext = new Dialog(paramContext, 2131624515);
+    paramContext = new Dialog(paramContext, 2131624516);
     paramContext.setContentView(2130968842);
-    TextView localTextView = (TextView)paramContext.findViewById(2131364010);
+    TextView localTextView = (TextView)paramContext.findViewById(2131364034);
     if (localTextView != null)
     {
       if (paramString1 != null) {
@@ -123,7 +130,7 @@ public class NativeAdUtils
     }
     else
     {
-      paramString1 = (TextView)paramContext.findViewById(2131362758);
+      paramString1 = (TextView)paramContext.findViewById(2131362776);
       if (paramString1 != null)
       {
         if (paramString4 == null) {
@@ -132,7 +139,7 @@ public class NativeAdUtils
         paramString1.setText(paramString4);
       }
       label68:
-      paramString1 = (TextView)paramContext.findViewById(2131364013);
+      paramString1 = (TextView)paramContext.findViewById(2131364037);
       if (paramString1 != null)
       {
         if (paramString2 == null) {
@@ -146,7 +153,7 @@ public class NativeAdUtils
     }
     for (;;)
     {
-      paramString1 = (TextView)paramContext.findViewById(2131364014);
+      paramString1 = (TextView)paramContext.findViewById(2131364038);
       if (paramString1 != null)
       {
         if (paramString3 == null) {
@@ -169,6 +176,23 @@ public class NativeAdUtils
     label166:
     paramString1.setVisibility(8);
     return paramContext;
+  }
+  
+  public static AdvertisementInfo a(VideoAdInfo paramVideoAdInfo)
+  {
+    AdvertisementInfo localAdvertisementInfo = new AdvertisementInfo();
+    if (paramVideoAdInfo != null)
+    {
+      localAdvertisementInfo.mAdTraceId = paramVideoAdInfo.h;
+      localAdvertisementInfo.mAdFetchTime = paramVideoAdInfo.a;
+      localAdvertisementInfo.mAdViewId = paramVideoAdInfo.m;
+      localAdvertisementInfo.mAdPosID = paramVideoAdInfo.jdField_b_of_type_Long;
+      localAdvertisementInfo.mAdKdPos = paramVideoAdInfo.jdField_b_of_type_Int;
+      localAdvertisementInfo.mAdProductId = paramVideoAdInfo.i;
+      localAdvertisementInfo.mAdProductType = paramVideoAdInfo.jdField_c_of_type_Int;
+      localAdvertisementInfo.mAdRl = paramVideoAdInfo.f;
+    }
+    return localAdvertisementInfo;
   }
   
   public static JSONObject a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
@@ -201,7 +225,7 @@ public class NativeAdUtils
       localJSONObject.put("uin", paramQQAppInterface.getAccount());
       localJSONObject.put("ts", NetConnInfoCenter.getServerTimeMillis());
       localJSONObject.put("dinfo", b(paramQQAppInterface.getApplication().getApplicationContext()));
-      localJSONObject.put("ver", "7.6.0");
+      localJSONObject.put("ver", "7.6.3");
       localJSONObject.put("type", paramInt1);
       localJSONObject.put("stype", paramInt2);
       localJSONObject.put("isdpg", 1);
@@ -278,12 +302,12 @@ public class NativeAdUtils
     paramContext.startActivity(paramString);
   }
   
-  public static void a(AppInterface paramAppInterface, Context paramContext, int paramInt1, int paramInt2, AdvertisementInfo paramAdvertisementInfo, VideoAdInfo paramVideoAdInfo, int paramInt3)
+  public static void a(AppInterface paramAppInterface, Context paramContext, int paramInt1, int paramInt2, AdvertisementInfo paramAdvertisementInfo, VideoAdInfo paramVideoAdInfo, long paramLong)
   {
-    a(paramAppInterface, paramContext, paramInt1, paramInt2, paramAdvertisementInfo, paramVideoAdInfo, paramInt3, null);
+    a(paramAppInterface, paramContext, paramInt1, paramInt2, paramAdvertisementInfo, paramVideoAdInfo, paramLong, null);
   }
   
-  public static void a(AppInterface paramAppInterface, Context paramContext, int paramInt1, int paramInt2, AdvertisementInfo paramAdvertisementInfo, VideoAdInfo paramVideoAdInfo, int paramInt3, JSONObject paramJSONObject)
+  public static void a(AppInterface paramAppInterface, Context paramContext, int paramInt1, int paramInt2, AdvertisementInfo paramAdvertisementInfo, VideoAdInfo paramVideoAdInfo, long paramLong, JSONObject paramJSONObject)
   {
     if ((paramAppInterface == null) && (BaseApplicationImpl.sProcessId == 1))
     {
@@ -297,7 +321,7 @@ public class NativeAdUtils
       if (paramAppInterface == null) {
         return;
       }
-      ThreadManager.post(new kxq(paramAppInterface.getAccount(), paramInt1, paramInt2, paramContext, paramAdvertisementInfo, paramVideoAdInfo, paramInt3, paramJSONObject, paramAppInterface), 5, null, true);
+      ThreadManager.post(new kxb(paramAppInterface.getAccount(), paramInt1, paramInt2, paramContext, paramAdvertisementInfo, paramVideoAdInfo, paramLong, paramJSONObject, paramAppInterface), 5, null, true);
       return;
     }
   }
@@ -321,7 +345,7 @@ public class NativeAdUtils
         paramString = new NewIntent(paramQQAppInterface.getApplication(), PublicAccountServlet.class);
         paramString.putExtra("cmd", "MQUpdateSvc_com_qq_mp.web.proxy.kandian_ad_report");
         paramString.putExtra("data", localWebSsoRequestBody.toByteArray());
-        paramString.setObserver(new kxp());
+        paramString.setObserver(new kxa());
         paramQQAppInterface.startServlet(paramString);
       }
       return;
@@ -341,7 +365,7 @@ public class NativeAdUtils
       localJSONObject.put("adId", paramString1);
       localJSONObject.put("channelId", paramString2);
       localJSONObject.put("info", paramString3);
-      localJSONObject.put("version", "7.6.0");
+      localJSONObject.put("version", "7.6.3");
       localJSONObject.put("actionCode", paramInt1);
       localJSONObject.put("subType", paramInt2);
       if (paramInt1 == 4) {
@@ -358,7 +382,7 @@ public class NativeAdUtils
         paramString2 = new NewIntent(paramQQAppInterface.getApplication(), PublicAccountServlet.class);
         paramString2.putExtra("cmd", "MQUpdateSvc_com_qq_mp.web.proxy.kandian_ad");
         paramString2.putExtra("data", paramString1.toByteArray());
-        paramString2.setObserver(new kxo());
+        paramString2.setObserver(new kwz());
         paramQQAppInterface.startServlet(paramString2);
       }
       return;
@@ -554,7 +578,7 @@ public class NativeAdUtils
     }
   }
   
-  private static JSONObject b(AdvertisementInfo paramAdvertisementInfo, VideoAdInfo paramVideoAdInfo, int paramInt)
+  private static JSONObject b(AdvertisementInfo paramAdvertisementInfo, VideoAdInfo paramVideoAdInfo, long paramLong)
   {
     JSONObject localJSONObject = new JSONObject();
     if (paramAdvertisementInfo != null) {}
@@ -565,7 +589,7 @@ public class NativeAdUtils
       localJSONObject.put("apurl", paramAdvertisementInfo.mAdApurl);
       localJSONObject.put("rl", paramAdvertisementInfo.mAdRl);
       localJSONObject.put("viewid", paramAdvertisementInfo.mAdViewId);
-      localJSONObject.put("fb_type_id", paramInt);
+      localJSONObject.put("fb_type_id", paramLong);
       localJSONObject.put("posid", paramAdvertisementInfo.mAdPosID);
       localJSONObject.put("channel_id", paramAdvertisementInfo.mChannelID);
       localJSONObject.put("kd_pos", paramAdvertisementInfo.mAdKdPos);
@@ -592,6 +616,9 @@ public class NativeAdUtils
       localJSONObject.put("ad_material_id", paramAdvertisementInfo.mAdMaterialId);
       if (paramVideoAdInfo != null)
       {
+        if (localJSONObject.isNull("apurl")) {
+          localJSONObject.put("apurl", paramVideoAdInfo.g);
+        }
         localJSONObject.put("via", paramVideoAdInfo.t);
         localJSONObject.put("dis_channel", paramVideoAdInfo.j);
         localJSONObject.put("button_url", paramVideoAdInfo.u);

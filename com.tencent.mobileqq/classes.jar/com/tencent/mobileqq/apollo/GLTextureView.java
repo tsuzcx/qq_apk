@@ -16,15 +16,15 @@ import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Method;
 import mqq.os.MqqHandler;
-import ykb;
-import ykc;
-import ykd;
-import ykf;
-import ykg;
-import ykh;
-import ykj;
-import ykk;
-import ykm;
+import ynh;
+import yni;
+import ynj;
+import ynl;
+import ynm;
+import ynn;
+import ynp;
+import ynq;
+import yns;
 
 @TargetApi(14)
 public class GLTextureView
@@ -44,7 +44,7 @@ public class GLTextureView
   public static final int RENDERMODE_WHEN_DIRTY = 0;
   private static final String TAG = "GLTextureView";
   private static int sGLESVersion;
-  private static final ykk sGLThreadManager = new ykk(null);
+  private static final ynq sGLThreadManager = new ynq(null);
   private static int sThreadName;
   private int mDebugFlags;
   private boolean mDetached;
@@ -52,8 +52,8 @@ public class GLTextureView
   private int mEGLContextClientVersion;
   private GLTextureView.EGLContextFactory mEGLContextFactory;
   private GLTextureView.EGLWindowSurfaceFactory mEGLWindowSurfaceFactory;
-  private Runnable mForceSetAlphaTask = new ykc(this);
-  protected ykj mGLThread;
+  private Runnable mForceSetAlphaTask = new yni(this);
+  protected ynp mGLThread;
   private GLTextureView.GLWrapper mGLWrapper;
   private boolean mPreserveEGLContextOnPause;
   private GLSurfaceView.Renderer mRenderer;
@@ -112,7 +112,7 @@ public class GLTextureView
   {
     sGLESVersion = getInt(getContext(), "ro.opengles.version", 0).intValue();
     setSurfaceTextureListener(this);
-    addOnLayoutChangeListener(new ykb(this));
+    addOnLayoutChangeListener(new ynh(this));
     setViewAlpha(0.0F);
   }
   
@@ -132,7 +132,7 @@ public class GLTextureView
     if ((this.mSurfaceTextureAvailable) && (this.mSurfaceHadDraw))
     {
       if (Looper.myLooper() != Looper.getMainLooper()) {
-        ThreadManager.getUIHandler().post(new ykd(this));
+        ThreadManager.getUIHandler().post(new ynj(this));
       }
     }
     else {
@@ -182,7 +182,7 @@ public class GLTextureView
     label74:
     for (int i = this.mGLThread.a();; i = 1)
     {
-      this.mGLThread = new ykj(this.mThisWeakRef);
+      this.mGLThread = new ynp(this.mThisWeakRef);
       if (i != 1) {
         this.mGLThread.a(i);
       }
@@ -274,7 +274,7 @@ public class GLTextureView
   
   public void setEGLConfigChooser(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    setEGLConfigChooser(new ykf(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6));
+    setEGLConfigChooser(new ynl(this, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6));
   }
   
   public void setEGLConfigChooser(GLTextureView.EGLConfigChooser paramEGLConfigChooser)
@@ -285,7 +285,7 @@ public class GLTextureView
   
   public void setEGLConfigChooser(boolean paramBoolean)
   {
-    setEGLConfigChooser(new ykm(this, paramBoolean));
+    setEGLConfigChooser(new yns(this, paramBoolean));
   }
   
   public void setEGLContextClientVersion(int paramInt)
@@ -325,16 +325,16 @@ public class GLTextureView
   {
     checkRenderThreadState();
     if (this.mEGLConfigChooser == null) {
-      this.mEGLConfigChooser = new ykm(this, true);
+      this.mEGLConfigChooser = new yns(this, true);
     }
     if (this.mEGLContextFactory == null) {
-      this.mEGLContextFactory = new ykg(this, null);
+      this.mEGLContextFactory = new ynm(this, null);
     }
     if (this.mEGLWindowSurfaceFactory == null) {
-      this.mEGLWindowSurfaceFactory = new ykh(null);
+      this.mEGLWindowSurfaceFactory = new ynn(null);
     }
     this.mRenderer = paramRenderer;
-    this.mGLThread = new ykj(this.mThisWeakRef);
+    this.mGLThread = new ynp(this.mThisWeakRef);
     this.mGLThread.start();
   }
   

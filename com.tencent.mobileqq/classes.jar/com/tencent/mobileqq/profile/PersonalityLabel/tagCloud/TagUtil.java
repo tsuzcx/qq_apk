@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.PersonalityLabel.tagCloud;
 
-import agbe;
+import agpg;
 import android.os.Build;
 import android.text.Spannable;
 import android.text.TextPaint;
@@ -99,7 +99,7 @@ public class TagUtil
       localArrayList.add(new Pair(Long.valueOf(((PersonalityLabelInfo)paramPersonalityLabel.personalityLabelInfos.get(i)).id), ((PersonalityLabelInfo)paramPersonalityLabel.personalityLabelInfos.get(i)).text));
       i += 1;
     }
-    Collections.sort(localArrayList, new agbe());
+    Collections.sort(localArrayList, new agpg());
     int i5 = paramPersonalityLabel.getSize();
     long l2;
     label161:

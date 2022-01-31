@@ -1,20 +1,21 @@
-import com.tencent.av.business.manager.pendant.EffectPendantTips;
+import com.tencent.av.VideoController;
+import com.tencent.av.camera.AndroidCamera.CameraPreviewCallback;
+import com.tencent.av.camera.CameraUtils;
 
 public class jgt
-  implements Runnable
+  implements AndroidCamera.CameraPreviewCallback
 {
-  public jgt(EffectPendantTips paramEffectPendantTips, int paramInt) {}
+  public jgt(CameraUtils paramCameraUtils) {}
   
-  public void run()
+  public void a(byte[] paramArrayOfByte, int paramInt, long paramLong, boolean paramBoolean)
   {
-    try
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
     {
-      this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips.b(this.jdField_a_of_type_Int, null);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      this.a.b("onPreviewData");
+      if (this.a.jdField_a_of_type_Boolean) {
+        this.a.a("onPreviewData");
+      }
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramArrayOfByte, paramInt, paramLong, paramBoolean);
     }
   }
 }

@@ -1,39 +1,32 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.widget.DynamicGridView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.qidian.QidianManager;
+import com.tencent.qidian.data.BmqqAccountType;
 
-class allq
-  implements ViewTreeObserver.OnPreDrawListener
+public class allq
+  implements Runnable
 {
-  private final int jdField_a_of_type_Int;
-  private final int b;
+  public allq(QidianManager paramQidianManager, BmqqAccountType paramBmqqAccountType) {}
   
-  allq(allp paramallp, int paramInt1, int paramInt2)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-  }
-  
-  public boolean onPreDraw()
-  {
-    this.jdField_a_of_type_Allp.a.getViewTreeObserver().removeOnPreDrawListener(this);
-    DynamicGridView.a(this.jdField_a_of_type_Allp.a, DynamicGridView.a(this.jdField_a_of_type_Allp.a) + allp.a(this.jdField_a_of_type_Allp));
-    DynamicGridView.b(this.jdField_a_of_type_Allp.a, DynamicGridView.b(this.jdField_a_of_type_Allp.a) + allp.b(this.jdField_a_of_type_Allp));
-    if (DynamicGridView.a(this.jdField_a_of_type_Allp.a) != null) {
-      DynamicGridView.a(this.jdField_a_of_type_Allp.a).setVisibility(0);
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentQidianQidianManager.a.getEntityManagerFactory().createEntityManager();
+    if (localEntityManager != null) {}
+    try
+    {
+      localEntityManager.b(this.jdField_a_of_type_ComTencentQidianDataBmqqAccountType);
+      return;
     }
-    DynamicGridView.a(this.jdField_a_of_type_Allp.a, this.jdField_a_of_type_Allp.a.a(DynamicGridView.a(this.jdField_a_of_type_Allp.a)));
-    if (DynamicGridView.a(this.jdField_a_of_type_Allp.a) != null) {
-      DynamicGridView.a(this.jdField_a_of_type_Allp.a).setVisibility(4);
+    finally
+    {
+      localEntityManager.a();
     }
-    DynamicGridView.a(this.jdField_a_of_type_Allp.a, this.jdField_a_of_type_Int, this.b);
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     allq
  * JD-Core Version:    0.7.0.1
  */

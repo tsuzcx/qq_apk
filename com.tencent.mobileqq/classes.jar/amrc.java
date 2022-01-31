@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.qphone.base.util.QLog;
 
-public final class amrc
-  implements FMDialogUtil.FMDialogInterface
+class amrc
+  implements AsyncBack
 {
-  public amrc(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
+  amrc(amrb paramamrb) {}
   
-  public void a()
+  public void a(int paramInt) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, BaseActivity.sTopActivity);
+    if (QLog.isColorLevel()) {
+      QLog.d("VipPreloadReaderProcess", 2, "Load offline package finish, code = " + paramInt);
+    }
+    if ((paramInt != 0) && (QLog.isColorLevel())) {
+      QLog.e("VipProxyRreLoadReaderProcess", 2, "offline update failed.");
+    }
   }
-  
-  public void b() {}
 }
 
 

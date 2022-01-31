@@ -1,17 +1,14 @@
-import android.hardware.Camera;
-import android.hardware.Camera.Face;
-import android.hardware.Camera.FaceDetectionListener;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class xmk
-  implements Camera.FaceDetectionListener
+class xmk
+  implements DialogInterface.OnClickListener
 {
-  public xmk(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  xmk(xmi paramxmi) {}
   
-  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {}
+    paramDialogInterface.dismiss();
   }
 }
 

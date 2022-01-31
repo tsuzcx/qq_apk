@@ -18,6 +18,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.ArkAppFeedsInfo;
@@ -31,6 +32,7 @@ import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.TopicRecommendFeedsInfo;
 
 public class BaseArticleInfo
   extends Entity
+  implements IVideoCardUIModel
 {
   @notColumn
   private static final String TAG = "Q.readinjoy.BaseArticleInfo";
@@ -43,6 +45,8 @@ public class BaseArticleInfo
   @notColumn
   public int feedsFirstExposurePos = -1;
   public String galleryReprotExdData;
+  @notColumn
+  public boolean hintFlag;
   public String innerUniqueID;
   public String interfaceData;
   @notColumn
@@ -60,6 +64,8 @@ public class BaseArticleInfo
   public long mArticleID = -1L;
   public String mArticleSubscriptColor;
   public String mArticleSubscriptText;
+  @notColumn
+  private URL mCacheVideoURL;
   public long mChannelID = -1L;
   public String mChannelInfoDisplayName;
   public int mChannelInfoId = -1;
@@ -74,6 +80,7 @@ public class BaseArticleInfo
   public String mDiskLikeInfoString;
   @notColumn
   public ArrayList mDislikeInfos;
+  public String mFeedCookie;
   public long mFeedId;
   @notColumn
   public long mFeedIndexInGroup;
@@ -98,6 +105,8 @@ public class BaseArticleInfo
   public List mLabelListObj;
   public byte[] mLableListInfoBytes;
   public long mMergeVideoId;
+  @notColumn
+  private IVideoCardUIModel mModel;
   public String mOriginalUrl = "";
   public boolean mPUinIsActive;
   public byte[] mPackInfoBytes;
@@ -107,6 +116,8 @@ public class BaseArticleInfo
   public URL[] mPictures;
   @notColumn
   public PolymericInfo mPolymericInfo;
+  @notColumn
+  public URL mPolymericSmallVideoCoverUrl;
   @notColumn
   public TemplateBean mProteusTemplateBean;
   public long mRecommendSeq = -1L;
@@ -150,6 +161,8 @@ public class BaseArticleInfo
   public String mVideoArticleSubsText;
   public int mVideoCommentCount;
   @notColumn
+  private BaseArticleInfo.OnVideoCoverInterceptor mVideoCoverInterceptor;
+  @notColumn
   public URL mVideoCoverUrl;
   @notColumn
   public int mVideoDuration;
@@ -176,15 +189,80 @@ public class BaseArticleInfo
   public String videoJumpChannelName = "";
   public int videoJumpChannelType = -1;
   
+  private IVideoCardUIModel getLazyModel()
+  {
+    if (this.mModel == null) {
+      this.mModel = VideoCardUIModelUtils.a(this);
+    }
+    return this.mModel;
+  }
+  
+  public int getCommentCount()
+  {
+    return getLazyModel().getCommentCount();
+  }
+  
+  public String getInnerUniqueID()
+  {
+    return getLazyModel().getInnerUniqueID();
+  }
+  
+  public String getShareUrl()
+  {
+    return getLazyModel().getShareUrl();
+  }
+  
+  public String getSubscribeName()
+  {
+    return getLazyModel().getSubscribeName();
+  }
+  
+  public String getSubscribeUin()
+  {
+    return getLazyModel().getSubscribeUin();
+  }
+  
+  public URL getVideoCoverURL()
+  {
+    if (this.mCacheVideoURL == null)
+    {
+      this.mCacheVideoURL = getLazyModel().getVideoCoverURL();
+      if (this.mVideoCoverInterceptor != null) {
+        this.mCacheVideoURL = this.mVideoCoverInterceptor.a(this.mCacheVideoURL);
+      }
+    }
+    return this.mCacheVideoURL;
+  }
+  
+  public int getVideoDuration()
+  {
+    return getLazyModel().getVideoDuration();
+  }
+  
+  public int getVideoHeight()
+  {
+    return getLazyModel().getVideoHeight();
+  }
+  
+  public String getVideoVid()
+  {
+    return getLazyModel().getVideoVid();
+  }
+  
+  public int getVideoWidth()
+  {
+    return getLazyModel().getVideoWidth();
+  }
+  
   public boolean hasOnlyTwoVideoFeeds()
   {
-    if (!ReadInJoyUtils.a(this)) {
+    if ((!ReadInJoyUtils.a(this)) && (!ReadInJoyUtils.g(this))) {
       return false;
     }
     if ((this.mSubArtilceList != null) && (this.mSubArtilceList.size() == 1))
     {
       ArticleInfo localArticleInfo = (ArticleInfo)this.mSubArtilceList.get(0);
-      if ((localArticleInfo != null) && (ReadInJoyUtils.a(localArticleInfo))) {
+      if ((localArticleInfo != null) && ((ReadInJoyUtils.a(localArticleInfo)) || (ReadInJoyUtils.g(localArticleInfo)))) {
         return true;
       }
     }
@@ -363,7 +441,7 @@ public class BaseArticleInfo
                     }
                     StringBuilder localStringBuilder = new StringBuilder().append("postRead(): 解析 sub articleSummary【");
                     int j = i + 1;
-                    QLog.e("Q.readinjoy.BaseArticleInfo", 2, i + "】 id : " + localArticleInfo.mArticleID + " seq : " + localArticleInfo.mRecommendSeq + " title : " + ReadInJoyUtils.c(localArticleInfo.mTitle) + " , groupID : " + localArticleInfo.mGroupId + " algorithmID : " + localArticleInfo.mAlgorithmID + " strategyId : " + localArticleInfo.mStrategyId + " businessID : " + localArticleInfo.businessId + " businessName :" + localArticleInfo.businessName);
+                    QLog.e("Q.readinjoy.BaseArticleInfo", 2, i + "】 id : " + localArticleInfo.mArticleID + " seq : " + localArticleInfo.mRecommendSeq + " title : " + ReadInJoyUtils.d(localArticleInfo.mTitle) + " , groupID : " + localArticleInfo.mGroupId + " algorithmID : " + localArticleInfo.mAlgorithmID + " strategyId : " + localArticleInfo.mStrategyId + " businessID : " + localArticleInfo.businessId + " businessName :" + localArticleInfo.businessName);
                     i = j;
                     continue;
                     localInvalidProtocolBufferMicroException1 = localInvalidProtocolBufferMicroException1;
@@ -485,6 +563,16 @@ public class BaseArticleInfo
         }
       }
     }
+  }
+  
+  public void setOnVideoCoverInterceptor(BaseArticleInfo.OnVideoCoverInterceptor paramOnVideoCoverInterceptor)
+  {
+    this.mVideoCoverInterceptor = paramOnVideoCoverInterceptor;
+  }
+  
+  public String toSString()
+  {
+    return "BaseArticleInfo{mArticleID=" + this.mArticleID + ", mTitle='" + this.mTitle + '\'' + ", mSummary='" + this.mSummary + '\'' + ", mFirstPagePicUrl='" + this.mFirstPagePicUrl + '\'' + ", mOriginalUrl='" + this.mOriginalUrl + '\'' + ", mArticleContentUrl='" + this.mArticleContentUrl + '\'' + ", mTime=" + this.mTime + ", mCommentCount=" + this.mCommentCount + ", mSubscribeID='" + this.mSubscribeID + '\'' + ", mSubscribeName='" + this.mSubscribeName + '\'' + ", mRecommendTime=" + this.mRecommendTime + ", mChannelID=" + this.mChannelID + ", mRecommendSeq=" + this.mRecommendSeq + ", mShowBigPicture=" + this.mShowBigPicture + ", mAlgorithmID=" + this.mAlgorithmID + ", mRecommentdReason='" + this.mRecommentdReason + '\'' + ", mJsonVideoList='" + this.mJsonVideoList + '\'' + ", mJsonPictureList='" + this.mJsonPictureList + '\'' + ", mAbandonRepeatFlag=" + this.mAbandonRepeatFlag + ", mArticleSubscriptText='" + this.mArticleSubscriptText + '\'' + ", mArticleSubscriptColor='" + this.mArticleSubscriptColor + '\'' + ", mArticleFriendLikeText='" + this.mArticleFriendLikeText + '\'' + ", mStrategyId=" + this.mStrategyId + ", mTopicPicWHRatio=" + this.mTopicPicWHRatio + ", mTopicPicInfo='" + this.mTopicPicInfo + '\'' + ", thirdIcon='" + this.thirdIcon + '\'' + ", thirdName='" + this.thirdName + '\'' + ", thirdAction='" + this.thirdAction + '\'' + ", busiType=" + this.busiType + ", innerUniqueID='" + this.innerUniqueID + '\'' + ", mVideoType=" + this.mVideoType + ", mChannelInfoId=" + this.mChannelInfoId + ", mChannelInfoName='" + this.mChannelInfoName + '\'' + ", mChannelInfoType=" + this.mChannelInfoType + ", mChannelInfoDisplayName='" + this.mChannelInfoDisplayName + '\'' + ", mCommentIconType=" + this.mCommentIconType + ", mServerContext=" + Arrays.toString(this.mServerContext) + ", mDiskLikeInfoString='" + this.mDiskLikeInfoString + '\'' + ", mSocialFeedInfoByte=" + Arrays.toString(this.mSocialFeedInfoByte) + ", mTopicRecommendFeedsInfoByte=" + Arrays.toString(this.mTopicRecommendFeedsInfoByte) + ", mFeedId=" + this.mFeedId + ", mFeedType=" + this.mFeedType + ", mCircleId=" + this.mCircleId + ", mStrCircleId='" + this.mStrCircleId + '\'' + ", mPUinIsActive=" + this.mPUinIsActive + ", mIsDispTimestamp=" + this.mIsDispTimestamp + ", mIsGallery=" + this.mIsGallery + ", mGalleryPicNumber=" + this.mGalleryPicNumber + ", mCommentInfoBytes=" + Arrays.toString(this.mCommentInfoBytes) + ", mPackInfoBytes=" + Arrays.toString(this.mPackInfoBytes) + ", mSubscribeInfoBytes=" + Arrays.toString(this.mSubscribeInfoBytes) + ", mVideoPlayCount=" + this.mVideoPlayCount + ", mLableListInfoBytes=" + Arrays.toString(this.mLableListInfoBytes) + ", videoJumpChannelID=" + this.videoJumpChannelID + ", videoJumpChannelType=" + this.videoJumpChannelType + ", videoJumpChannelName='" + this.videoJumpChannelName + '\'' + ", businessId=" + this.businessId + ", businessName='" + this.businessName + '\'' + ", businessUrl='" + this.businessUrl + '\'' + ", businessNamePrefix='" + this.businessNamePrefix + '\'' + ", mAccountLess=" + this.mAccountLess + ", publishUin=" + this.publishUin + ", interfaceData='" + this.interfaceData + '\'' + ", galleryReprotExdData='" + this.galleryReprotExdData + '\'' + ", articleStyle=" + this.articleStyle + ", proteusItemsData='" + this.proteusItemsData + '\'' + ", mArkAppFeedsInfo=" + this.mArkAppFeedsInfo + ", mArkAppFeedsInfoBytes=" + Arrays.toString(this.mArkAppFeedsInfoBytes) + ", mDislikeInfos=" + this.mDislikeInfos + ", like=" + this.like + ", mPictures=" + Arrays.toString(this.mPictures) + ", mSinglePicture=" + this.mSinglePicture + ", mVideoCoverUrl=" + this.mVideoCoverUrl + ", mVideoVid='" + this.mVideoVid + '\'' + ", mVideoDuration=" + this.mVideoDuration + ", mVideoJsonWidth=" + this.mVideoJsonWidth + ", mVideoJsonHeight=" + this.mVideoJsonHeight + ", mXGFileSize=" + this.mXGFileSize + ", mThirdVideoURL='" + this.mThirdVideoURL + '\'' + ", mThirdVideoURLExpireTime=" + this.mThirdVideoURLExpireTime + ", thirdUin='" + this.thirdUin + '\'' + ", thirdUinName='" + this.thirdUinName + '\'' + ", mCommentsObj=" + this.mCommentsObj + ", mPackInfoObj=" + this.mPackInfoObj + ", mPolymericInfo=" + this.mPolymericInfo + ", mIsInPolymeric=" + this.mIsInPolymeric + ", mSubscribeInfoObj=" + this.mSubscribeInfoObj + ", mGroupId=" + this.mGroupId + ", mGroupCount=" + this.mGroupCount + ", mFeedIndexInGroup=" + this.mFeedIndexInGroup + ", mHeaderIconUrl=" + this.mHeaderIconUrl + ", mSocialFeedInfo=" + this.mSocialFeedInfo + ", mLabelListObj=" + this.mLabelListObj + ", mTopicRecommendFeedsInfo=" + this.mTopicRecommendFeedsInfo + ", isNeedShowBtnWhenFollowed=" + this.isNeedShowBtnWhenFollowed + ", feedsFirstExposurePos=" + this.feedsFirstExposurePos + ", mSubArticleListBytes=" + Arrays.toString(this.mSubArticleListBytes) + ", mSubSummaryListObj=" + this.mSubSummaryListObj + ", mSubArtilceList=" + this.mSubArtilceList + ", mMergeVideoId=" + this.mMergeVideoId + ", mGroupSubArticleList=" + this.mGroupSubArticleList + ", mVideoCommentCount=" + this.mVideoCommentCount + ", mProteusTemplateBean=" + this.mProteusTemplateBean + ", mVideoArticleSubsText='" + this.mVideoArticleSubsText + '\'' + ", mVideoArticleSubsColor='" + this.mVideoArticleSubsColor + '\'' + ", mVideoAdsJumpUrl='" + this.mVideoAdsJumpUrl + '\'' + ", mVideoAdsJumpType=" + this.mVideoAdsJumpType + ", mVideoAdsSource=" + this.mVideoAdsSource + '}';
   }
   
   public String toString()

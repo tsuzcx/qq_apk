@@ -1,28 +1,14 @@
-import android.widget.Scroller;
-import com.tencent.mobileqq.activity.aio.item.ClickedWaveView;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleResHelper;
+import java.lang.ref.WeakReference;
 
 public class usf
-  implements Runnable
 {
-  public usf(ClickedWaveView paramClickedWaveView) {}
+  public int a;
+  public WeakReference a;
+  public boolean a;
+  public int b;
   
-  public void run()
-  {
-    if ((this.a.a.computeScrollOffset()) || (this.a.d > 0))
-    {
-      this.a.c = this.a.a.getCurrX();
-      if (this.a.d > 0)
-      {
-        ClickedWaveView localClickedWaveView = this.a;
-        localClickedWaveView.d -= 3;
-      }
-      if (this.a.d < 0) {
-        this.a.d = 0;
-      }
-      this.a.postInvalidate();
-      this.a.postDelayed(this, 20L);
-    }
-  }
+  public usf(DoodleResHelper paramDoodleResHelper) {}
 }
 
 

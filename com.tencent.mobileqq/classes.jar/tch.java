@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.NotificationActivity;
 
 public class tch
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public tch(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public tch(NotificationActivity paramNotificationActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.e.setBackgroundDrawable(FormSwitchItem.a(this.a.getResources(), 0));
+    NotificationActivity.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tch
  * JD-Core Version:    0.7.0.1
  */

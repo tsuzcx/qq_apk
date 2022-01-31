@@ -21,11 +21,11 @@ import com.tencent.av.utils.TintStateDrawable;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import kfo;
-import kfp;
-import kfq;
-import kfr;
-import kfs;
+import kez;
+import kfa;
+import kfb;
+import kfc;
+import kfd;
 
 public class GuideTip2
   extends SubHandleBase
@@ -61,26 +61,26 @@ public class GuideTip2
   
   RelativeLayout a(AVActivity paramAVActivity)
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramAVActivity.findViewById(2131366208);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramAVActivity.findViewById(2131366235);
     if (localRelativeLayout != null) {
       paramAVActivity = localRelativeLayout;
     }
     for (;;)
     {
       return paramAVActivity;
-      localRelativeLayout = (RelativeLayout)paramAVActivity.getLayoutInflater().inflate(2130969346, (RelativeLayout)paramAVActivity.findViewById(2131365796)).findViewById(2131366208);
+      localRelativeLayout = (RelativeLayout)paramAVActivity.getLayoutInflater().inflate(2130969347, (RelativeLayout)paramAVActivity.findViewById(2131365823)).findViewById(2131366235);
       a(localRelativeLayout);
       b();
-      localRelativeLayout.findViewById(2131366211).setOnClickListener(new kfo(this));
-      Object localObject = localRelativeLayout.findViewById(2131366212);
+      localRelativeLayout.findViewById(2131366238).setOnClickListener(new kez(this));
+      Object localObject = localRelativeLayout.findViewById(2131366239);
       if (this.b == null) {
         this.b = RedBagUtil.a("qav_redpacket_result_close.png", true);
       }
       if (this.b != null) {
-        ((View)localObject).setBackgroundDrawable(TintStateDrawable.a(paramAVActivity.getResources(), this.b, 2131494065));
+        ((View)localObject).setBackgroundDrawable(TintStateDrawable.a(paramAVActivity.getResources(), this.b, 2131494071));
       }
-      ((View)localObject).setOnClickListener(new kfp(this));
-      localObject = (VideoView)localRelativeLayout.findViewById(2131366209);
+      ((View)localObject).setOnClickListener(new kfa(this));
+      localObject = (VideoView)localRelativeLayout.findViewById(2131366236);
       String str = RedBagUtil.b() + "qav_redpacket_guide.mp4";
       ((VideoView)localObject).setVideoPath(str);
       ((VideoView)localObject).setZOrderOnTop(true);
@@ -126,7 +126,7 @@ public class GuideTip2
   
   void a(RelativeLayout paramRelativeLayout)
   {
-    paramRelativeLayout.setOnTouchListener(new kfq(this));
+    paramRelativeLayout.setOnTouchListener(new kfb(this));
   }
   
   public boolean a(GuideTip2.OnGuideTipListener paramOnGuideTipListener)
@@ -148,19 +148,19 @@ public class GuideTip2
     Object localObject = a();
     if (localObject != null)
     {
-      RelativeLayout localRelativeLayout = (RelativeLayout)((Activity)localObject).findViewById(2131366208);
+      RelativeLayout localRelativeLayout = (RelativeLayout)((Activity)localObject).findViewById(2131366235);
       if (localRelativeLayout != null)
       {
         localRelativeLayout.setOnTouchListener(null);
-        localObject = (RelativeLayout)((Activity)localObject).findViewById(2131365796);
+        localObject = (RelativeLayout)((Activity)localObject).findViewById(2131365823);
         if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
         {
-          VideoView localVideoView = (VideoView)localRelativeLayout.findViewById(2131366209);
+          VideoView localVideoView = (VideoView)localRelativeLayout.findViewById(2131366236);
           if (localVideoView != null) {
             localVideoView.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap));
           }
         }
-        ((RelativeLayout)localObject).post(new kfs(this, (RelativeLayout)localObject, localRelativeLayout));
+        ((RelativeLayout)localObject).post(new kfd(this, (RelativeLayout)localObject, localRelativeLayout));
       }
     }
     for (boolean bool = true;; bool = false)
@@ -181,7 +181,7 @@ public class GuideTip2
     if (this.jdField_a_of_type_ComTencentAvUiControlUIObserver != null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentAvUiControlUIObserver = new kfr(this);
+    this.jdField_a_of_type_ComTencentAvUiControlUIObserver = new kfc(this);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_ComTencentAvUiControlUIObserver);
   }
   
@@ -198,7 +198,7 @@ public class GuideTip2
       paramMediaPlayer = a();
       if (paramMediaPlayer != null)
       {
-        paramMediaPlayer = (VideoView)paramMediaPlayer.findViewById(2131366209);
+        paramMediaPlayer = (VideoView)paramMediaPlayer.findViewById(2131366236);
         if (paramMediaPlayer != null) {
           paramMediaPlayer.setBackgroundDrawable(null);
         }
@@ -213,7 +213,7 @@ public class GuideTip2
     Object localObject = a();
     if (localObject != null)
     {
-      localObject = (VideoView)((AVActivity)localObject).findViewById(2131366209);
+      localObject = (VideoView)((AVActivity)localObject).findViewById(2131366236);
       if (localObject != null)
       {
         ((VideoView)localObject).start();

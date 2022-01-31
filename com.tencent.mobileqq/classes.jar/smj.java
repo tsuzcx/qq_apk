@@ -1,22 +1,41 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.emosm.view.DragSortAdapter;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class smj
   implements View.OnClickListener
 {
-  public smj(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public smj(EmosmActivity paramEmosmActivity) {}
   
   public void onClick(View paramView)
   {
-    this.a.O();
-    this.a.finish();
-    if ((this.a.a.a != null) && (this.a.a.a.a) && (this.a.app != null) && (!"0".equals(this.a.app.getCurrentAccountUin()))) {
-      this.a.app.a(this.a);
+    if (!this.a.b)
+    {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131436073);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(true);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a(true);
+      this.a.b = true;
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.notifyDataSetChanged();
+      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
+      ReportController.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpsEdit", 0, 0, "", "", "", "");
     }
+    while ((this.a.jdField_a_of_type_Int != 2) && (this.a.jdField_a_of_type_Int != 1)) {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131436070);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.setDragEnabled(false);
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a(false);
+    this.a.e();
+    this.a.b = false;
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.notifyDataSetChanged();
+    this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortAdapter.a();
+    this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
   }
 }
 

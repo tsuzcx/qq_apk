@@ -1,30 +1,18 @@
-import com.tencent.component.network.utils.http.pool.AbstractConnPool;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicLong;
-import org.apache.commons.logging.Log;
-import org.apache.http.conn.OperatedClientConnection;
-import org.apache.http.conn.routing.HttpRoute;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.component.network.downloader.DownloadResult;
 
-public class pjg
-  extends AbstractConnPool
+public final class pjg
+  implements Parcelable.Creator
 {
-  private static AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong();
-  private final long jdField_a_of_type_Long;
-  private final TimeUnit jdField_a_of_type_JavaUtilConcurrentTimeUnit;
-  private final Log jdField_a_of_type_OrgApacheCommonsLoggingLog;
-  
-  public pjg(Log paramLog, int paramInt1, int paramInt2, long paramLong, TimeUnit paramTimeUnit)
+  public DownloadResult a(Parcel paramParcel)
   {
-    super(new pjh(), paramInt1, paramInt2);
-    this.jdField_a_of_type_OrgApacheCommonsLoggingLog = paramLog;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_JavaUtilConcurrentTimeUnit = paramTimeUnit;
+    return new DownloadResult(paramParcel);
   }
   
-  protected pji a(HttpRoute paramHttpRoute, OperatedClientConnection paramOperatedClientConnection)
+  public DownloadResult[] a(int paramInt)
   {
-    String str = Long.toString(jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.getAndIncrement());
-    return new pji(this.jdField_a_of_type_OrgApacheCommonsLoggingLog, str, paramHttpRoute, paramOperatedClientConnection, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaUtilConcurrentTimeUnit);
+    return new DownloadResult[paramInt];
   }
 }
 

@@ -1,33 +1,14 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoState;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class xrp
-  extends RMVideoState
+  implements Runnable
 {
-  public void a()
-  {
-    RMVideoStateMgr.a().a.p();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoIdleState", 2, "[@] initState end");
-    }
-  }
+  public xrp(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public boolean a()
+  public void run()
   {
-    RMVideoStateMgr.a().a("RMVideoIdleState");
-    return true;
-  }
-  
-  public void b()
-  {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMVideoIdleState", 2, "[@] realDeleteVideoSegment ...");
-    }
-    localRMVideoStateMgr.a.a(100);
-    localRMVideoStateMgr.a(3);
+    this.a.c.setVisibility(8);
   }
 }
 

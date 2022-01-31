@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
 public class acfa
   implements Runnable
 {
-  public acfa(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public acfa(EmoticonMainPanel paramEmoticonMainPanel) {}
   
   public void run()
   {
-    DownloadManager.a().b(UniformDownloadActivity.a(this.a));
+    EmoticonMainPanel.b(this.a);
   }
 }
 

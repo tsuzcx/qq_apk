@@ -1,17 +1,28 @@
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 import com.tencent.mobileqq.app.BaseActivity;
+import mqq.os.MqqHandler;
 
 public class xiu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public xiu(LoginView paramLoginView, String paramString) {}
+  public xiu(BannerManager paramBannerManager, long paramLong, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.a(this.jdField_a_of_type_JavaLangString, true);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.a.runOnUiThread(new xiv(this, localObject));
+    if (BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager) != null)
+    {
+      paramView = BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).obtainMessage(1134028);
+      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).sendMessage(paramView);
     }
+    paramView = new Intent();
+    paramView.setAction("cooperation.qqreader.aioback2reader");
+    paramView.putExtra("bookid", this.jdField_a_of_type_Long);
+    paramView.putExtra("chapterid", this.jdField_a_of_type_JavaLangString);
+    paramView.putExtra("is_from_conversation", true);
+    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).sendBroadcast(paramView);
   }
 }
 

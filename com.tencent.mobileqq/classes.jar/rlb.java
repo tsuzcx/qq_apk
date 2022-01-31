@@ -1,94 +1,23 @@
-import android.text.InputFilter;
-import android.text.Spanned;
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class rlb
-  implements InputFilter
+  implements CompoundButton.OnCheckedChangeListener
 {
-  private int jdField_a_of_type_Int = 32;
+  public rlb(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public rlb(AuthDevRenameActivity paramAuthDevRenameActivity) {}
-  
-  public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int j = paramInt1;
-    int k = 0;
-    if (j < paramInt2)
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      i = paramCharSequence.charAt(j);
-      if (i < 128) {
-        i = 1;
-      }
-      for (;;)
-      {
-        j += 1;
-        k += i;
-        break;
-        if (i < 2048) {
-          i = 2;
-        } else {
-          i = 3;
-        }
-      }
-    }
-    int n = paramSpanned.length();
-    int i = 0;
-    int m = 0;
-    if (m < n)
-    {
-      if ((m >= paramInt3) && (m < paramInt4)) {
-        break label272;
-      }
-      j = paramSpanned.charAt(m);
-      if (j < 128)
-      {
-        j = 1;
-        label127:
-        i = j + i;
-      }
-    }
-    label272:
-    for (;;)
-    {
-      m += 1;
-      break;
-      if (j < 2048)
-      {
-        j = 2;
-        break label127;
-      }
-      j = 3;
-      break label127;
-      i = this.jdField_a_of_type_Int - i;
-      if (i <= 0) {
-        return "";
-      }
-      if (i >= k) {
-        return null;
-      }
-      paramInt4 = paramInt1;
-      while (paramInt4 < paramInt2)
-      {
-        paramInt3 = paramCharSequence.charAt(paramInt4);
-        if (paramInt3 < 128) {
-          paramInt3 = 1;
-        }
-        for (;;)
-        {
-          i -= paramInt3;
-          if (i >= 0) {
-            break;
-          }
-          return paramCharSequence.subSequence(paramInt1, paramInt4);
-          if (paramInt3 < 2048) {
-            paramInt3 = 2;
-          } else {
-            paramInt3 = 3;
-          }
-        }
-        paramInt4 += 1;
-      }
-      return null;
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "System_icon", 0, i, "", "", "", "");
+      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131436020), "qqsetting_notify_icon_key", paramBoolean);
+      return;
     }
   }
 }

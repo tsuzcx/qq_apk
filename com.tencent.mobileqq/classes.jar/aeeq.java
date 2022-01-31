@@ -1,47 +1,45 @@
-import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.CustomViewPager;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
-import com.tencent.mobileqq.nearby.now.view.StuffContainerView.OnCloseListener;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerPagerAdapter;
+import android.os.Handler;
+import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager.MagicfaceActionListener;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
 import com.tencent.qphone.base.util.QLog;
 
 public class aeeq
-  implements StuffContainerView.OnCloseListener
+  implements MagicfaceActionManager.MagicfaceActionListener
 {
-  public aeeq(SmallVideoFragment paramSmallVideoFragment) {}
+  public aeeq(MagicfaceViewController paramMagicfaceViewController, long paramLong, int paramInt) {}
   
-  public void a(int paramInt)
+  public void a(ActionGlobalData paramActionGlobalData)
   {
-    Object localObject;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a() != null)
-    {
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a().jdField_a_of_type_JavaLangString;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a() == null) {
-        break label168;
-      }
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    if (QLog.isColorLevel()) {
+      QLog.d("MagicfaceViewController", 2, "【magicface】 cost =" + (l1 - l2) + "ms");
     }
-    label168:
-    for (long l = this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewStuffContainerView.a().jdField_a_of_type_Long;; l = 0L)
+    boolean bool;
+    if (this.jdField_a_of_type_Int == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Native_ShortVideo_Report", 2, "onClickClose report module=short_video, action=view_click, obj1=6, res2=" + (String)localObject + ", anchor=" + l);
-      }
-      localObject = (VideoPlayerPagerAdapter)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getAdapter();
-      if ((((VideoPlayerPagerAdapter)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getCurrentItem()) instanceof ShortVideoCommentsView)) {
-        ((ShortVideoCommentsView)((VideoPlayerPagerAdapter)localObject).a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewCustomViewPager.getCurrentItem())).j();
-      }
-      this.a.d();
+      bool = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.b();
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c(bool);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_AndroidOsHandler.post(new aeer(this, paramActionGlobalData));
       return;
-      localObject = "0";
-      break;
+      bool = this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c();
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager.c(bool);
     }
+  }
+  
+  public void b(ActionGlobalData paramActionGlobalData)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.jdField_a_of_type_AndroidOsHandler.post(new aees(this, paramActionGlobalData));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeeq
  * JD-Core Version:    0.7.0.1
  */

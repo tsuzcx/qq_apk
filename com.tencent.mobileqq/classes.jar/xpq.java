@@ -1,27 +1,17 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter.IPtvTemplateItemChangedCallback;
+import android.hardware.Camera;
+import android.hardware.Camera.Face;
+import android.hardware.Camera.FaceDetectionListener;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class xpq
-  implements Handler.Callback
+  implements Camera.FaceDetectionListener
 {
-  public xpq(PtvTemplateAdapter paramPtvTemplateAdapter) {}
+  public xpq(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      this.a.a(null);
-      continue;
-      if (PtvTemplateAdapter.a(this.a) != null) {
-        PtvTemplateAdapter.a(this.a).h();
-      }
-    }
+    if (QLog.isColorLevel()) {}
   }
 }
 

@@ -1,30 +1,16 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebChromeClient;
+import com.tencent.smtt.export.external.interfaces.JsPromptResult;
 
-class kvt
-  implements TVK_SDKMgr.InstallListener
+public class kvt
+  implements DialogInterface.OnClickListener
 {
-  kvt(kvs paramkvs) {}
+  public kvt(CustomWebChromeClient paramCustomWebChromeClient, JsPromptResult paramJsPromptResult) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverView", 2, "installSDK onInstalledFailed arg0=" + paramInt);
-    }
-    this.a.a.b = false;
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoCoverView", 2, "installSDK onInstalledSuccessed");
-    }
-    this.a.a.b = true;
-    ThreadManager.getUIHandler().post(new kvu(this));
+    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsPromptResult.cancel();
   }
 }
 

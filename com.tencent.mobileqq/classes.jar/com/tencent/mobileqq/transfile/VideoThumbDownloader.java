@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aidz;
+import aisc;
 import android.annotation.SuppressLint;
 import android.content.ContentResolver;
 import android.database.Cursor;
@@ -101,12 +101,12 @@ public class VideoThumbDownloader
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    return AlbumThumbManager.a(BaseApplicationImpl.getContext()).a(paramDownloadParams.url, new aidz(this));
+    return AlbumThumbManager.a(BaseApplicationImpl.getContext()).a(paramDownloadParams.url, new aisc(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.VideoThumbDownloader
  * JD-Core Version:    0.7.0.1
  */

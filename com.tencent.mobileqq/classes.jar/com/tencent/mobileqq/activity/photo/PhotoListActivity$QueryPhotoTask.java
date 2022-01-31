@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.text.TextUtils;
 import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.SlideShowPhotoListManager;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
 import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.utils.LogTag;
 import com.tencent.mobileqq.widget.QQToast;
@@ -20,9 +20,9 @@ import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import wur;
-import wuu;
-import wuv;
+import wxw;
+import wxz;
+import wya;
 
 public class PhotoListActivity$QueryPhotoTask
   extends AsyncTask
@@ -341,7 +341,7 @@ public class PhotoListActivity$QueryPhotoTask
   protected void a(List paramList)
   {
     int m = 0;
-    this.a.runOnUiThread(new wuv(this));
+    this.a.runOnUiThread(new wya(this));
     Object localObject;
     if (paramList == null)
     {
@@ -357,8 +357,8 @@ public class PhotoListActivity$QueryPhotoTask
           ((List)localObject).add(0, paramList);
         }
       }
-      this.a.jdField_a_of_type_Wur.a((List)localObject);
-      this.a.jdField_a_of_type_Wur.notifyDataSetChanged();
+      this.a.jdField_a_of_type_Wxw.a((List)localObject);
+      this.a.jdField_a_of_type_Wxw.notifyDataSetChanged();
       this.a.e();
       QQToast.a(this.a, "暂无媒体文件", 1000).a();
       return;
@@ -369,7 +369,7 @@ public class PhotoListActivity$QueryPhotoTask
       ((LocalMediaInfo)localObject).mMimeType = "mobileqq/camera";
       paramList.add(0, localObject);
     }
-    this.a.jdField_a_of_type_Wur.a(paramList);
+    this.a.jdField_a_of_type_Wxw.a(paramList);
     label231:
     int i;
     if (paramList.isEmpty())
@@ -436,19 +436,19 @@ public class PhotoListActivity$QueryPhotoTask
       for (;;)
       {
         label489:
-        j = this.a.jdField_a_of_type_Wur.getCount();
+        j = this.a.jdField_a_of_type_Wxw.getCount();
         if (j == 0) {
           j = m;
         }
         for (;;)
         {
           this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView.setSelection(j);
-          this.a.jdField_a_of_type_Wur.notifyDataSetChanged();
+          this.a.jdField_a_of_type_Wxw.notifyDataSetChanged();
           this.a.e();
-          if ((!this.a.N) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideShowPhotoListManager == null)) {
+          if ((!this.a.N) || (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager == null)) {
             break;
           }
-          this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideShowPhotoListManager.a(this.a.jdField_c_of_type_JavaUtilArrayList);
+          this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager.a(this.a.jdField_c_of_type_JavaUtilArrayList);
           return;
           if ((!this.a.J) || (paramList.size() != 1)) {
             break label231;
@@ -487,7 +487,7 @@ public class PhotoListActivity$QueryPhotoTask
   protected void onPreExecute()
   {
     super.onPreExecute();
-    this.a.runOnUiThread(new wuu(this));
+    this.a.runOnUiThread(new wxz(this));
   }
 }
 

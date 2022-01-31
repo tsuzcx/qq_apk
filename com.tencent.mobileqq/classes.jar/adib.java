@@ -1,23 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.FileInfo;
+import com.tencent.mobileqq.filemanager.util.UniformDownloadUtil.GetFileInfoCallBack;
 
-public class adib
-  implements DialogInterface.OnClickListener
+public final class adib
+  implements Runnable
 {
-  public adib(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
+  public adib(String paramString, UniformDownloadUtil.GetFileInfoCallBack paramGetFileInfoCallBack) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    PresenceInterfaceImpl.a(this.a);
-    QLog.d("PresenceInterfaceImpl", 2, "User allowed downd");
+    UniformDownloadUtil.FileInfo localFileInfo = UniformDownloadUtil.a(this.jdField_a_of_type_JavaLangString);
+    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloadUtil$GetFileInfoCallBack != null) && (localFileInfo != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilUniformDownloadUtil$GetFileInfoCallBack.a(localFileInfo.jdField_a_of_type_JavaLangString, localFileInfo.jdField_a_of_type_Long);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adib
  * JD-Core Version:    0.7.0.1
  */

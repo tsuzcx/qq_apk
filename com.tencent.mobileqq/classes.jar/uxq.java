@@ -1,47 +1,40 @@
-import android.support.v4.app.FragmentActivity;
+import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
+import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.LongMsgItemBuilder;
-import com.tencent.mobileqq.data.MessageForLongMsg;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.item.FoldMsgGrayTipsItemBuilder;
+import com.tencent.mobileqq.data.MessageForFoldMsgGrayTips;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class uxq
   implements View.OnClickListener
 {
-  public uxq(LongMsgItemBuilder paramLongMsgItemBuilder) {}
+  public uxq(FoldMsgGrayTipsItemBuilder paramFoldMsgGrayTipsItemBuilder) {}
   
   public void onClick(View paramView)
   {
-    if (LongMsgItemBuilder.a(this.a)) {}
-    BaseChatPie localBaseChatPie;
-    do
+    Object localObject = AIOUtils.a(paramView);
+    if ((localObject instanceof MessageForFoldMsgGrayTips))
     {
-      do
+      ((MessageForFoldMsgGrayTips)localObject).isOpen = true;
+      paramView = (uxr)AIOUtils.a(paramView);
+      paramView.jdField_b_of_type_AndroidWidgetTextView.setText(((MessageForFoldMsgGrayTips)localObject).getShowMsgContent(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext));
+      localObject = paramView.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
+      if ((localObject instanceof ViewGroup.MarginLayoutParams))
       {
-        do
-        {
-          return;
-          paramView = AIOUtils.a(paramView);
-          if ((paramView instanceof MessageForLongMsg)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForLongMsg");
-        return;
-        paramView = (MessageForLongMsg)paramView;
-      } while ((paramView.mSourceMsgInfo == null) || (!(this.a.a instanceof FragmentActivity)));
-      if (QLog.isColorLevel()) {
-        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: isReplyMsg = true");
+        localObject = (ViewGroup.MarginLayoutParams)localObject;
+        if (((ViewGroup.MarginLayoutParams)localObject).rightMargin != AIOUtils.a(10.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources())) {
+          ((ViewGroup.MarginLayoutParams)localObject).rightMargin = AIOUtils.a(10.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources());
+        }
       }
-      localBaseChatPie = ((FragmentActivity)this.a.a).getChatFragment().a();
-    } while (!localBaseChatPie.f());
-    localBaseChatPie.a(20, paramView.mSourceMsgInfo.mSourceMsgSeq, (int)(paramView.shmsgseq - paramView.mSourceMsgInfo.mSourceMsgSeq), paramView);
-    MessageForReplyText.reportReplyMsg(null, "replyMsg_bubble", "clk_original", paramView.frienduin, paramView);
+      paramView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramView.a.requestLayout();
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80064BD", "0X80064BD", 0, 0, "", "", "", "");
+    }
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ark;
 
-import aaku;
-import aakv;
-import aakw;
-import aakx;
+import aarv;
+import aarw;
+import aarx;
+import aary;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
@@ -35,8 +35,8 @@ public class ArkAiBubbleView
   protected TextView a;
   public ArkAiInfo a;
   public ArkAiScrollBar a;
-  private ArkAppCenter.OnGetAppIcon jdField_a_of_type_ComTencentMobileqqArkArkAppCenter$OnGetAppIcon = new aaku(this);
-  private Runnable jdField_a_of_type_JavaLangRunnable = new aakv(this);
+  private ArkAppCenter.OnGetAppIcon jdField_a_of_type_ComTencentMobileqqArkArkAppCenter$OnGetAppIcon = new aarv(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new aarw(this);
   public List a;
   public boolean a;
   private Runnable b;
@@ -45,10 +45,10 @@ public class ArkAiBubbleView
   
   public ArkAiBubbleView(ArkRecommendController paramArkRecommendController, LinearLayout paramLinearLayout)
   {
-    this.jdField_b_of_type_JavaLangRunnable = new aakw(this);
+    this.jdField_b_of_type_JavaLangRunnable = new aarx(this);
     this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramArkRecommendController.a().a).inflate(2130968707, paramLinearLayout, false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363304));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363305));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363322));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363323));
     this.jdField_a_of_type_AndroidViewView.setTag(this);
   }
   
@@ -63,7 +63,7 @@ public class ArkAiBubbleView
   
   private void a(View.OnClickListener paramOnClickListener)
   {
-    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aakx(this, paramOnClickListener));
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new aary(this, paramOnClickListener));
   }
   
   public ArkAiInfo a()
@@ -81,7 +81,7 @@ public class ArkAiBubbleView
     b();
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130838196));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidWidgetImageView.getResources().getDrawable(2130838200));
       ArkAppCenter.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.d);
       this.jdField_a_of_type_Boolean = false;
     }
@@ -97,7 +97,7 @@ public class ArkAiBubbleView
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
     this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetTextView.setMaxWidth(AIOUtils.a(200.0F, (Resources)localObject));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(((Resources)localObject).getString(2131438813));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(((Resources)localObject).getString(2131438831));
     a(paramOnClickListener);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     paramLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
@@ -161,7 +161,7 @@ public class ArkAiBubbleView
     {
       if ((!paramArkAiInfo.d.equals(this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.d)) && (this.jdField_a_of_type_Boolean))
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localResources.getDrawable(2130838196));
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localResources.getDrawable(2130838200));
         ArkAppCenter.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.d);
         this.jdField_a_of_type_Boolean = false;
       }

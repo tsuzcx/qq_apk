@@ -1,25 +1,16 @@
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.main.MainAssistObserver;
-import com.tencent.mobileqq.app.QIMNewFriendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
 
-public class sya
+class sya
   implements Runnable
 {
-  public sya(MainFragment paramMainFragment) {}
+  sya(sxz paramsxz) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.a();
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel != null) && (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a != null)) {
+      Leba.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityLeba, this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a);
     }
-    if (MainFragment.a(this.a) != null)
-    {
-      MainFragment.a(this.a).addObserver(MainFragment.a(this.a));
-      ((QIMNewFriendManager)MainFragment.a(this.a).getManager(256)).a(MainFragment.a(this.a));
-      MainFragment.a(this.a).registObserver(MainFragment.a(this.a));
-    }
-    MainFragment.a(this.a, false);
   }
 }
 

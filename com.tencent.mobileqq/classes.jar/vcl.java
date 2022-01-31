@@ -1,26 +1,26 @@
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder.Holder;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
+import com.tencent.mobileqq.pic.PicResult;
+import com.tencent.mobileqq.pic.UiCallBack.DownAdapter;
+import com.tencent.qphone.base.util.QLog;
 
 public class vcl
-  implements Runnable
+  extends UiCallBack.DownAdapter
 {
-  public vcl(ShortVideoItemBuilder paramShortVideoItemBuilder, boolean paramBoolean, ShortVideoItemBuilder.Holder paramHolder) {}
+  public vcl(PicItemBuilder paramPicItemBuilder, BaseChatItemLayout paramBaseChatItemLayout) {}
   
-  public void run()
+  public void a(int paramInt, PicResult paramPicResult)
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.d.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.setProgressVisable(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PicItemBuilder", 2, "2g diy gif onDownload");
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoItemBuilder$Holder.d.setVisibility(0);
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("PicItemBuilder", 2, "2g diy gif onUpdateProgress");
     }
   }
 }

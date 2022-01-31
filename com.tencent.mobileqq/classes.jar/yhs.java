@@ -1,24 +1,20 @@
-import android.view.View;
-import android.widget.PopupWindow;
-import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.adapter.NewFriendMoreSysMsgAdapter;
+import com.tencent.mobileqq.newfriend.NewFriendMessage;
+import java.util.Comparator;
 
-public final class yhs
-  implements Runnable
+public class yhs
+  implements Comparator
 {
-  public yhs(ApolloRender paramApolloRender, View paramView, int paramInt) {}
+  public yhs(NewFriendMoreSysMsgAdapter paramNewFriendMoreSysMsgAdapter) {}
   
-  public void run()
+  public int a(NewFriendMessage paramNewFriendMessage1, NewFriendMessage paramNewFriendMessage2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView.getRootView(), 0, 0, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.update(0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight());
+    return (int)(paramNewFriendMessage2.a - paramNewFriendMessage1.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yhs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,34 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.av.VideoController;
+import com.tencent.av.gaudio.GaInviteLockActivity;
+import com.tencent.av.ui.QavPanel.SlideAcceptListener;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class jil
-  implements Runnable
+  implements QavPanel.SlideAcceptListener
 {
-  public jil(AVNotifyCenter paramAVNotifyCenter) {}
+  public jil(GaInviteLockActivity paramGaInviteLockActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (this.a.a == null) {}
+    if (paramBoolean)
+    {
+      if ((!this.a.a.e) && (!this.a.a.l())) {
+        break label62;
+      }
+      this.a.f();
+    }
     for (;;)
     {
+      ReportController.b(null, "CliOper", "", "", "0X800420E", "0X800420E", 0, 0, "", "", "", "");
       return;
-      Iterator localIterator = this.a.a.keySet().iterator();
-      long l;
-      while (localIterator.hasNext())
-      {
-        l = ((Long)localIterator.next()).longValue();
-        this.a.a(l, 2, this.a.b(l), false);
-        this.a.a(1, 2, l, null, 0L);
-        this.a.a(21, 2, l, 0L);
-        localIterator.remove();
-      }
-      localIterator = this.a.b.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        l = ((Long)localIterator.next()).longValue();
-        this.a.a(l, 1, this.a.b(l), false);
-        this.a.a(1, l, 10, 21, 0);
-        this.a.a(2, 1, l, null, 0L);
-        this.a.a(21, 1, l, 0L);
-        localIterator.remove();
-      }
+      label62:
+      this.a.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     jil
  * JD-Core Version:    0.7.0.1
  */

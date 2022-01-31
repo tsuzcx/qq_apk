@@ -1,8 +1,8 @@
 package cooperation.qappcenter.remote;
 
-import alws;
-import alwt;
-import alwu;
+import ammw;
+import ammx;
+import ammy;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.DeadObjectException;
@@ -40,7 +40,7 @@ public class RemoteServiceProxy
     this.jdField_a_of_type_JavaLangObject = new Object();
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
     this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_AndroidContentServiceConnection = new alws(this);
+    this.jdField_a_of_type_AndroidContentServiceConnection = new ammw(this);
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.b = paramString2;
   }
@@ -67,16 +67,16 @@ public class RemoteServiceProxy
   
   public void a()
   {
-    alwt localalwt = new alwt(this);
-    localalwt.setName("handleWaitSendProxyMsgThread");
-    localalwt.start();
+    ammx localammx = new ammx(this);
+    localammx.setName("handleWaitSendProxyMsgThread");
+    localammx.start();
   }
   
   public void a(SendMsg paramSendMsg)
   {
     if (Looper.getMainLooper().getThread() == Thread.currentThread())
     {
-      ThreadManager.post(new alwu(this, paramSendMsg), 10, null, false);
+      ThreadManager.post(new ammy(this, paramSendMsg), 10, null, false);
       return;
     }
     this.jdField_a_of_type_CooperationQappcenterRemoteIServiceHandler.a(paramSendMsg);

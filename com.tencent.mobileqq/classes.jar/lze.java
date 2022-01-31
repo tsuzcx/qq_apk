@@ -1,22 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import java.util.List;
 
 public class lze
-  implements View.OnClickListener
+  extends ReadInJoyObserver
 {
-  public lze(TopicShareHelper paramTopicShareHelper) {}
+  public lze(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public void onClick(View paramView)
+  public void c(List paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.TopicShareHelper", 2, "mShareActionSheet cancle button OnClick");
-    }
-    if (TopicShareHelper.a(this.a).isShowing()) {
-      TopicShareHelper.a(this.a).dismiss();
-    }
+    ReadInJoyVideoTagSelectionFragment.a(this.a).addAll(paramList);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this);
   }
 }
 

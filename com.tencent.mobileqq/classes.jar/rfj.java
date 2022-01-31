@@ -1,20 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
+import com.tencent.mobileqq.Doraemon.APICallback;
+import com.tencent.mobileqq.Doraemon.APIParam;
 
-public class rfj
-  implements DialogInterface.OnDismissListener
+public final class rfj
+  implements Runnable
 {
-  public rfj(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  public rfj(APICallback paramAPICallback, APIParam paramAPIParam) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.finish();
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonAPIParam);
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonAPICallback.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rfj
  * JD-Core Version:    0.7.0.1
  */

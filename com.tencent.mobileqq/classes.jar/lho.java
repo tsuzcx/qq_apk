@@ -1,20 +1,13 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoDownloadManager.VideoDownloadCallback;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraProgressView;
 
 public class lho
-  implements ReadInJoyVideoDownloadManager.VideoDownloadCallback
+  implements Runnable
 {
-  public lho(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
+  public lho(ReadInJoyCameraProgressView paramReadInJoyCameraProgressView) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    ReadInJoyCameraCaptureActivity.a(this.a).post(new lhq(this, paramInt));
-  }
-  
-  public void a(String paramString1, String paramString2, boolean paramBoolean)
-  {
-    ReadInJoyCameraCaptureActivity.a(this.a).post(new lhp(this, paramBoolean, paramString2));
+    this.a.invalidate();
   }
 }
 

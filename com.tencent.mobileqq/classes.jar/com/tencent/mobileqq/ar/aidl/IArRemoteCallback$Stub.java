@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar.aidl;
 
+import aaet;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import zzz;
 
 public abstract class IArRemoteCallback$Stub
   extends Binder
@@ -25,7 +25,7 @@ public abstract class IArRemoteCallback$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IArRemoteCallback))) {
       return (IArRemoteCallback)localIInterface;
     }
-    return new zzz(paramIBinder);
+    return new aaet(paramIBinder);
   }
   
   public IBinder asBinder()

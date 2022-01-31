@@ -1,114 +1,200 @@
-import AvatarInfo.QQHeadInfo;
-import com.tencent.mobileqq.app.FaceDownloader;
-import com.tencent.mobileqq.app.FaceHandler;
-import com.tencent.mobileqq.app.NearByFaceDownloader;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.util.FaceInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.util.Pair;
+import com.tencent.mobileqq.app.DiscussionHandler;
+import com.tencent.mobileqq.app.GroupIconHelper;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Iterator;
+import java.util.Set;
 
 public class zej
   implements Runnable
 {
-  int jdField_a_of_type_Int = 0;
-  long jdField_a_of_type_Long;
-  FaceInfo jdField_a_of_type_ComTencentMobileqqUtilFaceInfo;
-  String jdField_a_of_type_JavaLangString;
-  int b;
-  int c;
-  int d;
+  public boolean a;
   
-  public zej(NearByFaceDownloader paramNearByFaceDownloader, int paramInt1, FaceInfo paramFaceInfo, int paramInt2, int paramInt3, String paramString, int paramInt4, long paramLong)
+  private zej(GroupIconHelper paramGroupIconHelper)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.c = paramInt3;
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.d = paramInt4;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo = paramFaceInfo;
+    this.jdField_a_of_type_Boolean = true;
   }
   
   public void run()
   {
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_AvatarInfoQQHeadInfo.dstUsrType + "_" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b + "_" + this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentMobileqqAppNearByFaceDownloader.jdField_a_of_type_ComTencentMobileqqAppFaceHandler.a(str1, false);
-    if (NetworkUtil.d(BaseApplication.getContext())) {
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m] <= 0L) || (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.l] <= 0L)) {
-        break label770;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqhead.dih", 2, "CheckDisIconThread start.");
     }
-    label770:
-    for (long l1 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m] - this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.l];; l1 = 0L)
+    int i;
+    long l;
+    Object localObject4;
+    label62:
+    Object localObject7;
+    zem localzem;
+    label319:
+    label334:
+    int j;
+    boolean bool1;
+    if (this.jdField_a_of_type_Boolean)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n] > this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m]) && (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m] > 0L)) {}
-      for (long l2 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n] - this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.m];; l2 = 0L)
+      i = 0;
+      l = System.currentTimeMillis();
+      localObject4 = null;
+      Object localObject1 = null;
+      for (;;)
       {
-        if ((this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.o] > 0L) && (this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n] > 0L)) {}
-        for (long l3 = this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.o] - this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.jdField_a_of_type_ArrayOfLong[FaceInfo.n];; l3 = 0L)
+        synchronized (GroupIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppGroupIconHelper))
         {
-          Object localObject1 = new HashMap();
-          ((HashMap)localObject1).put("key", str1);
-          ((HashMap)localObject1).put("totalTime", String.valueOf((float)this.jdField_a_of_type_Long / 1000.0F));
-          ((HashMap)localObject1).put("downInfo_time", String.valueOf(l1));
-          ((HashMap)localObject1).put("downInfo_stime", String.valueOf((float)l1 / 1000.0F));
-          ((HashMap)localObject1).put("interval_time", String.valueOf(l2));
-          ((HashMap)localObject1).put("downPic_time", String.valueOf(l3));
-          ((HashMap)localObject1).put("downPic_stime", String.valueOf((float)l3 / 1000.0F));
-          ((HashMap)localObject1).put("downPic_size", String.valueOf(this.c));
-          ((HashMap)localObject1).put("download_url", this.jdField_a_of_type_JavaLangString);
-          ((HashMap)localObject1).put("param_FailCode", Integer.toString(this.jdField_a_of_type_Int));
-          ((HashMap)localObject1).put("fail_reason", Integer.toString(this.d));
-          ((HashMap)localObject1).put("ssoAndHttp", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.e));
-          Object localObject2 = FaceDownloader.a(32);
-          Object localObject3 = StatisticCollector.a(BaseApplication.getContext());
-          String str2 = this.jdField_a_of_type_ComTencentMobileqqAppNearByFaceDownloader.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin();
-          boolean bool;
-          if (this.jdField_a_of_type_Int == 0)
+          Iterator localIterator = GroupIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppGroupIconHelper).keySet().iterator();
+          if (!localIterator.hasNext()) {
+            break label604;
+          }
+          localObject7 = (String)localIterator.next();
+          localzem = (zem)GroupIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppGroupIconHelper).get(localObject7);
+          if ((localzem != null) && (localzem.jdField_b_of_type_Int >= 8))
           {
-            bool = true;
-            ((StatisticCollector)localObject3).a(str2, (String)localObject2, bool, this.jdField_a_of_type_Long, 0L, (HashMap)localObject1, "");
-            localObject2 = StatisticCollector.a(BaseApplication.getContext());
-            localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppNearByFaceDownloader.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin();
-            if (this.jdField_a_of_type_Int != 0) {
-              break label747;
+            if ((GroupIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppGroupIconHelper) instanceof DiscussionHandler)) {
+              ((DiscussionHandler)GroupIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppGroupIconHelper)).a(false, true, (String)localObject7);
             }
-            bool = true;
-            label528:
-            ((StatisticCollector)localObject2).a((String)localObject3, "actGetNearbyHead", bool, this.jdField_a_of_type_Long, 0L, (HashMap)localObject1, "");
-            if ((QLog.isColorLevel()) || (this.jdField_a_of_type_Long > 3000L))
+            if (!QLog.isColorLevel()) {
+              continue;
+            }
+            QLog.d("Q.qqhead.dih", 2, "CheckDisIcon, maxCreateCnt: " + (String)localObject7 + ",crateIconCount=" + localzem.jdField_b_of_type_Int);
+          }
+        }
+        if ((localzem != null) && (!localzem.e))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.qqhead.dih", 2, "CheckDisIcon isFromCreate: " + (String)localObject7 + ",fromCreate is false");
+          }
+        }
+        else
+        {
+          if ((localzem == null) || (localzem.jdField_a_of_type_JavaLangString == null) || (localzem.jdField_a_of_type_Byte == 3)) {
+            break label866;
+          }
+          if ((localzem.jdField_a_of_type_Byte == 1) && (l - localzem.jdField_a_of_type_Long >= GroupIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppGroupIconHelper)))
+          {
+            if (localObject4 != null) {
+              break label875;
+            }
+            localObject4 = new ArrayList();
+            if (!GroupIconHelper.a((String)localObject7)) {
+              break label872;
+            }
+            localObject7 = GroupIconHelper.b((String)localObject7);
+            j = localzem.jdField_a_of_type_JavaUtilArrayList.size();
+            localzem.jdField_a_of_type_Byte = 2;
+            if (j <= 0) {
+              break label885;
+            }
+            bool2 = true;
+            bool1 = bool2;
+            if (localzem.jdField_b_of_type_JavaLangString != null)
             {
-              localObject1 = new StringBuffer(200);
-              ((StringBuffer)localObject1).append("NearByFaceDownloader resultCode=").append(this.jdField_a_of_type_Int);
-              ((StringBuffer)localObject1).append(", key=").append(str1);
-              ((StringBuffer)localObject1).append(", totalTime=").append(String.format("%-5s", new Object[] { Long.valueOf(this.jdField_a_of_type_Long) }));
-              ((StringBuffer)localObject1).append(", downInfoTime=").append(l1);
-              ((StringBuffer)localObject1).append(", intervalTime=").append(l2);
-              ((StringBuffer)localObject1).append(", picSize=").append(String.valueOf(this.c));
-              ((StringBuffer)localObject1).append(", downPicTime=").append(l3);
-              ((StringBuffer)localObject1).append(", reasonCode=").append(this.d);
-              ((StringBuffer)localObject1).append(", downUrl=").append(this.jdField_a_of_type_JavaLangString);
-              if (!QLog.isColorLevel()) {
-                break label753;
+              String str = GroupIconHelper.a(localzem.jdField_a_of_type_JavaUtilArrayList, false);
+              bool1 = bool2;
+              if (localzem.jdField_b_of_type_JavaLangString.equals(str)) {
+                bool1 = false;
               }
             }
-          }
-          label747:
-          label753:
-          for (int i = 2;; i = 1)
-          {
-            QLog.i("Q.qqhead.NearByFaceDownloader", i, ((StringBuffer)localObject1).toString());
-            return;
-            bool = false;
-            break;
-            bool = false;
-            break label528;
+            bool2 = bool1;
+            if (bool1)
+            {
+              ((ArrayList)localObject4).add(Pair.create(localObject7, localzem));
+              GroupIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppGroupIconHelper).remove(localObject7);
+            }
           }
         }
       }
+    }
+    label604:
+    label866:
+    label869:
+    label872:
+    label875:
+    label878:
+    label882:
+    label885:
+    for (boolean bool2 = bool1;; bool2 = false)
+    {
+      if (QLog.isColorLevel())
+      {
+        QLog.d("Q.qqhead.dih", 2, "CheckDisIcon expired: " + (String)localObject7 + ", isTryCreate: " + bool2 + localzem.toString());
+        break label878;
+        if ((localzem.jdField_a_of_type_Byte == 2) && (l - localzem.jdField_a_of_type_Long >= GroupIconHelper.b(this.jdField_a_of_type_ComTencentMobileqqAppGroupIconHelper)))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.qqhead.dih", 2, "CheckDisIcon timeout: " + (String)localObject7 + localzem.toString());
+          }
+          if (localObject2 != null) {
+            break label869;
+          }
+          ??? = new ArrayList();
+        }
+        for (;;)
+        {
+          for (;;)
+          {
+            ((ArrayList)???).add(localObject7);
+            i += 1;
+            break label882;
+            if (localzem.jdField_a_of_type_Byte == 3) {
+              break label866;
+            }
+            i += 1;
+            break label882;
+            if ((this.jdField_a_of_type_Boolean) && (localObject4 != null))
+            {
+              j = 0;
+              while ((j < ((ArrayList)localObject4).size()) && (this.jdField_a_of_type_Boolean))
+              {
+                localObject7 = (Pair)((ArrayList)localObject4).get(j);
+                GroupIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppGroupIconHelper, (String)((Pair)localObject7).first, (zem)((Pair)localObject7).second, true);
+                j += 1;
+              }
+            }
+            if ((this.jdField_a_of_type_Boolean) && (??? != null))
+            {
+              j = 0;
+              while ((j < ((ArrayList)???).size()) && (this.jdField_a_of_type_Boolean))
+              {
+                localObject4 = (String)((ArrayList)???).get(j);
+                this.jdField_a_of_type_ComTencentMobileqqAppGroupIconHelper.b((String)localObject4);
+                j += 1;
+              }
+            }
+            if (i == 0) {}
+            synchronized (GroupIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppGroupIconHelper))
+            {
+              GroupIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppGroupIconHelper, null);
+              if (QLog.isColorLevel()) {
+                QLog.d("Q.qqhead.dih", 2, "CheckDisIconThread exit. isRunning=" + this.jdField_a_of_type_Boolean);
+              }
+              return;
+              if (!this.jdField_a_of_type_Boolean) {
+                break;
+              }
+            }
+          }
+          try
+          {
+            synchronized (GroupIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppGroupIconHelper))
+            {
+              GroupIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppGroupIconHelper).wait(GroupIconHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppGroupIconHelper) / 10);
+            }
+            localObject6 = finally;
+            throw localObject6;
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            break label839;
+          }
+          break label882;
+        }
+        break label334;
+        break label319;
+      }
+      i += 1;
+      break label62;
     }
   }
 }

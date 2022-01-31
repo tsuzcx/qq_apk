@@ -1,17 +1,12 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.io.File;
+import com.tencent.mobileqq.activity.aio.item.PokeEmoItemBuilder;
+import com.tencent.mobileqq.activity.aio.stickerbubble.PEPanelHelper;
 
-class vcu
+public class vcu
   implements Runnable
 {
-  vcu(vcr paramvcr, MessageForShortVideo paramMessageForShortVideo) {}
+  public vcu(PokeEmoItemBuilder paramPokeEmoItemBuilder) {}
   
-  public void run()
-  {
-    FileUtils.a(new File(this.jdField_a_of_type_Vcr.b), new File(ShortVideoUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo, "mp4")));
-  }
+  public void run() {}
 }
 
 

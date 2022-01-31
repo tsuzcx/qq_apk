@@ -1,39 +1,26 @@
-import android.app.Activity;
-import com.tencent.common.galleryactivity.AbstractAnimationManager;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
-import com.tencent.common.galleryactivity.AbstractImageListModel;
-import com.tencent.common.galleryactivity.AbstractImageListScene;
-import com.tencent.common.galleryactivity.GalleryManager;
-import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserModel;
-import com.tencent.mobileqq.profile.FriendProfileCardPicScene;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
+import com.tencent.mobileqq.medalwall.MedalWallMng;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class sqt
-  extends GalleryManager
+  implements Runnable
 {
-  public sqt(FriendProfilePicBrowserActivity paramFriendProfilePicBrowserActivity) {}
+  public sqt(FriendProfileCardActivity paramFriendProfileCardActivity, DiniFlyAnimationView paramDiniFlyAnimationView) {}
   
-  public AbstractAnimationManager a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  public void run()
   {
-    return super.a(paramActivity, paramAbstractImageListModel);
-  }
-  
-  public AbstractGalleryScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
-  {
-    this.a.a = new FriendProfileCardPicScene((FriendProfilePicBrowserActivity)paramActivity, paramAbstractImageListModel);
-    return this.a.a;
-  }
-  
-  public AbstractImageListModel a(Activity paramActivity)
-  {
-    paramActivity = new PicBrowserModel(this.a, FriendProfilePicBrowserActivity.a(this.a));
-    paramActivity.a(FriendProfilePicBrowserActivity.a(this.a));
-    return paramActivity;
-  }
-  
-  public AbstractImageListScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
-  {
-    return null;
+    JSONObject localJSONObject = MedalWallMng.a();
+    if (localJSONObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("MedalWallMng", 2, "lottie json is null!");
+      }
+      return;
+    }
+    LottieComposition.Factory.fromJson(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getResources(), localJSONObject, new squ(this));
   }
 }
 

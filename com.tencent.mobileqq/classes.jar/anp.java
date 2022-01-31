@@ -1,19 +1,38 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.qq.im.poi.LbsPackInfo;
-import com.qq.im.poi.LbsPackListAdapter;
-import com.qq.im.poi.LbsPackListAdapter.LbsPackItemCallback;
+import android.os.Bundle;
+import com.qq.im.poi.LbsPackManager;
+import com.qq.im.poi.LbsPackObserver;
+import com.qq.im.poi.LbsPackPoiListActivity;
+import com.qq.im.poi.LbsPackPoiListAdapter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class anp
-  implements View.OnClickListener
+  extends LbsPackObserver
 {
-  public anp(LbsPackListAdapter paramLbsPackListAdapter, LbsPackInfo paramLbsPackInfo, int paramInt) {}
+  public anp(LbsPackPoiListActivity paramLbsPackPoiListActivity) {}
   
-  public void onClick(View paramView)
+  public void onGetSendPOIList(boolean paramBoolean, Bundle paramBundle)
   {
-    if (LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter) != null) {
-      LbsPackListAdapter.a(this.jdField_a_of_type_ComQqImPoiLbsPackListAdapter).a(this.jdField_a_of_type_ComQqImPoiLbsPackInfo, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.i("LbsPack", 2, "isSuccess:" + paramBoolean);
     }
+    if (paramBoolean)
+    {
+      paramBundle = LbsPackPoiListActivity.a(this.a).a();
+      if (paramBundle != null)
+      {
+        LbsPackPoiListActivity.a(this.a).clear();
+        LbsPackPoiListActivity.a(this.a).addAll(paramBundle);
+      }
+      if (LbsPackPoiListActivity.a(this.a) != null)
+      {
+        LbsPackPoiListActivity.a(this.a).a(LbsPackPoiListActivity.a(this.a));
+        this.a.a.sendEmptyMessageDelayed(101, 200L);
+      }
+      return;
+    }
+    this.a.a.sendEmptyMessage(101);
   }
 }
 

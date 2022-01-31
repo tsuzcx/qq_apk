@@ -1,85 +1,23 @@
-import com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgrAppDownload;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.richmedia.dc.DCShortVideo;
+import com.tencent.mobileqq.richmedia.dc.DataReport;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
-class ahnm
-  implements INetEngine.INetEngineListener
+public class ahnm
+  implements Runnable
 {
-  ahnm(ahnl paramahnl, String paramString, DownloadInfo paramDownloadInfo, int paramInt1, int paramInt2) {}
+  public ahnm(DCShortVideo paramDCShortVideo, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2, String paramString, int paramInt3) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
+  public void run()
   {
-    int i;
-    if (paramLong2 == 0L) {
-      i = 0;
+    Object localObject = new ahns();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaDcDCShortVideo.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, (ahnt)localObject);
+    ((ahns)localObject).jdField_a_of_type_Int = this.c;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("DCShortVideo", 4, "[reportPreview]shortVideoType=" + ((ahns)localObject).f + ",uinType = " + ((ahns)localObject).b + ",groupMemCount = " + ((ahns)localObject).c + ",age = " + ((ahns)localObject).d + ",gender = " + ((ahns)localObject).e + ",reprotHour = " + ((ahns)localObject).g + ",netType = " + ((ahns)localObject).h + ",playAction = " + ((ahns)localObject).jdField_a_of_type_Int);
     }
-    for (;;)
-    {
-      GestureMgrAppDownload.a(i / this.jdField_a_of_type_Ahnl.jdField_a_of_type_Int + this.jdField_a_of_type_Ahnl.b);
-      return;
-      if (paramLong1 >= paramLong2) {
-        i = 99;
-      } else {
-        i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
-      }
-    }
-  }
-  
-  public void a(NetResp paramNetResp)
-  {
-    HttpNetReq localHttpNetReq = (HttpNetReq)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq;
-    if (this.jdField_a_of_type_Ahnl.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq == localHttpNetReq) {
-      this.jdField_a_of_type_Ahnl.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("QavGesture", 2, String.format("onResp, Url[%s], mResult[%s], mHttpCode[%s], md5[%s]", new Object[] { localHttpNetReq.jdField_a_of_type_JavaLangString, Integer.valueOf(paramNetResp.jdField_a_of_type_Int), Integer.valueOf(paramNetResp.c), this.jdField_a_of_type_JavaLangString }));
-    }
-    int i;
-    if (paramNetResp.jdField_a_of_type_Int == 0)
-    {
-      paramNetResp = new File(localHttpNetReq.c);
-      if (paramNetResp.exists())
-      {
-        try
-        {
-          String str = paramNetResp.getParent();
-          FileUtils.a(localHttpNetReq.c, str, false);
-          GestureMgrAppDownload.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.jdField_a_of_type_Int);
-          i = 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-            i = 0;
-          }
-          GestureMgrAppDownload.a(-1);
-          return;
-        }
-        paramNetResp.delete();
-      }
-    }
-    for (;;)
-    {
-      if (i != 0)
-      {
-        GestureMgrAppDownload.a(100 / this.jdField_a_of_type_Ahnl.jdField_a_of_type_Int + this.jdField_a_of_type_Ahnl.b);
-        paramNetResp = this.jdField_a_of_type_Ahnl;
-        paramNetResp.b += 100 / this.jdField_a_of_type_Ahnl.jdField_a_of_type_Int;
-        if (!this.jdField_a_of_type_Ahnl.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo, this.b - 1)) {
-          this.jdField_a_of_type_Ahnl.jdField_a_of_type_Boolean = false;
-        }
-        return;
-      }
-      i = 0;
-    }
+    localObject = new ahnz("ShortVideo.Preview", ((ahns)localObject).a("ShortVideo.Preview"));
+    DataReport.a().a((ahnz)localObject);
   }
 }
 

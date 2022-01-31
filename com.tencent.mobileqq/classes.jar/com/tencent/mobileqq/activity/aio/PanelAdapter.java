@@ -17,7 +17,7 @@ import com.tencent.widget.XPanelContainer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import uiy;
+import uly;
 
 public class PanelAdapter
   extends PagerAdapter
@@ -42,16 +42,16 @@ public class PanelAdapter
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  private void a(int paramInt, uiy paramuiy)
+  private void a(int paramInt, uly paramuly)
   {
     int m = this.jdField_a_of_type_Int;
     int n = this.jdField_b_of_type_Int;
-    paramuiy.a(paramInt);
+    paramuly.a(paramInt);
     int i = 0;
     int j = 0;
     while (j < this.jdField_b_of_type_Int)
     {
-      LinearLayout localLinearLayout = (LinearLayout)paramuiy.getChildAt(j);
+      LinearLayout localLinearLayout = (LinearLayout)paramuly.getChildAt(j);
       int k = 0;
       if (k < this.jdField_a_of_type_Int)
       {
@@ -123,18 +123,18 @@ public class PanelAdapter
       i = 0;
       localObject2 = localObject1;
     } while (i >= this.jdField_a_of_type_AndroidViewViewGroup.getChildCount());
-    uiy localuiy = (uiy)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
+    uly localuly = (uly)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
     localObject2 = localObject1;
     int j;
     label57:
     int k;
-    if (localuiy != null)
+    if (localuly != null)
     {
       j = 0;
       localObject2 = localObject1;
       if (j < this.jdField_b_of_type_Int)
       {
-        LinearLayout localLinearLayout = (LinearLayout)localuiy.getChildAt(j);
+        LinearLayout localLinearLayout = (LinearLayout)localuly.getChildAt(j);
         k = 0;
         label83:
         if (k >= this.jdField_a_of_type_Int) {
@@ -199,10 +199,10 @@ public class PanelAdapter
         int i = 0;
         while (i < this.jdField_a_of_type_AndroidViewViewGroup.getChildCount())
         {
-          uiy localuiy = (uiy)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
-          if ((localuiy != null) && (paramInt == localuiy.jdField_a_of_type_Int))
+          uly localuly = (uly)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(i);
+          if ((localuly != null) && (paramInt == localuly.jdField_a_of_type_Int))
           {
-            a(paramInt, localuiy);
+            a(paramInt, localuly);
             return;
           }
           i += 1;
@@ -233,9 +233,9 @@ public class PanelAdapter
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
-    uiy localuiy = (uiy)paramObject;
-    ((ViewGroup)paramView).removeView(localuiy);
-    localuiy.a();
+    uly localuly = (uly)paramObject;
+    ((ViewGroup)paramView).removeView(localuly);
+    localuly.a();
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.a((View)paramObject);
     this.jdField_a_of_type_AndroidUtilSparseArray.remove(paramInt);
   }
@@ -253,7 +253,7 @@ public class PanelAdapter
     if (this.jdField_b_of_type_Boolean) {
       return -2;
     }
-    if (((paramObject instanceof uiy)) && (((uiy)paramObject).jdField_a_of_type_Int >= getCount())) {
+    if (((paramObject instanceof uly)) && (((uly)paramObject).jdField_a_of_type_Int >= getCount())) {
       return -2;
     }
     return super.getItemPosition(paramObject);
@@ -264,27 +264,27 @@ public class PanelAdapter
     if (QLog.isColorLevel()) {
       QLog.d("PanelIconAdapter", 2, "instantiateItem " + paramInt);
     }
-    uiy localuiy = (uiy)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.a();
+    uly localuly = (uly)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.a();
     Object localObject;
-    if (localuiy != null)
+    if (localuly != null)
     {
-      localObject = localuiy.getTag();
-      if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localuiy.getTag()).intValue() != XPanelContainer.d))
+      localObject = localuly.getTag();
+      if ((localObject != null) && ((localObject instanceof Integer)) && (((Integer)localuly.getTag()).intValue() != XPanelContainer.d))
       {
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewPanelRecycleBin.a();
-        localuiy = null;
+        localuly = null;
       }
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramView);
-      localObject = localuiy;
-      if (localuiy == null) {
-        localObject = new uiy(this, this.jdField_a_of_type_AndroidContentContext, null);
+      localObject = localuly;
+      if (localuly == null) {
+        localObject = new uly(this, this.jdField_a_of_type_AndroidContentContext, null);
       }
-      ((uiy)localObject).a(paramInt);
-      a(paramInt, (uiy)localObject);
-      if ((((uiy)localObject).getParent() != paramView) && (paramInt < getCount())) {
+      ((uly)localObject).a(paramInt);
+      a(paramInt, (uly)localObject);
+      if ((((uly)localObject).getParent() != paramView) && (paramInt < getCount())) {
         ((ViewGroup)paramView).addView((View)localObject);
       }
       return localObject;

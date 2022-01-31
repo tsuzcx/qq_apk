@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.QQLSActivity;
 
-class tiv
+public class tiv
   implements Runnable
 {
-  tiv(tit paramtit) {}
+  public tiv(QQLSActivity paramQQLSActivity) {}
   
   public void run()
   {
-    this.a.a.p();
+    this.a.b();
   }
 }
 

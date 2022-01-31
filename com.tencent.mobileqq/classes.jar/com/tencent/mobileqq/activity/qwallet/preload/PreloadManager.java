@@ -39,14 +39,14 @@ import mqq.app.AppRuntime;
 import mqq.manager.Manager;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import xci;
-import xcj;
-import xck;
-import xcm;
-import xcn;
-import xco;
-import xcp;
-import xcq;
+import xfn;
+import xfo;
+import xfp;
+import xfr;
+import xfs;
+import xft;
+import xfu;
+import xfv;
 
 public class PreloadManager
   extends PreloadManagerAbs
@@ -101,7 +101,7 @@ public class PreloadManager
         QLog.d("PreloadManager", 2, "delayLargerModulesAndReturnSmallerModules|begin delay download:" + this.jdField_a_of_type_Int + "|" + this.b + "|" + localArrayList2);
       }
       paramList = new WeakReference(this);
-      ThreadManager.getTimer().schedule(new xcm(this, paramList, localArrayList2, paramDownloadListener), this.jdField_a_of_type_Int * 1000);
+      ThreadManager.getTimer().schedule(new xfr(this, paramList, localArrayList2, paramDownloadListener), this.jdField_a_of_type_Int * 1000);
     }
     return localArrayList1;
   }
@@ -129,7 +129,7 @@ public class PreloadManager
       DownloadChooseReq localDownloadChooseReq = new DownloadChooseReq();
       localDownloadChooseReq.iUin = this.jdField_a_of_type_MqqAppAppRuntime.getLongAccountUin();
       localDownloadChooseReq.vecResInfo = PreloadConfig.modulesToResInfos(paramList);
-      QWalletCommonServlet.a(localDownloadChooseReq, new xck(this, paramList, paramDownloadListener, paramBoolean));
+      QWalletCommonServlet.a(localDownloadChooseReq, new xfp(this, paramList, paramDownloadListener, paramBoolean));
       return;
     }
     paramList = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadConfig.resInfosToModules(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadBackControlConfig.getLastBackResInfos());
@@ -278,7 +278,7 @@ public class PreloadManager
   
   private void g()
   {
-    ThreadManager.executeOnSubThread(new xci(this));
+    ThreadManager.executeOnSubThread(new xfn(this));
   }
   
   private void h()
@@ -286,7 +286,7 @@ public class PreloadManager
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    ThreadManager.post(new xcn(this, new WeakReference(this)), 5, null, true);
+    ThreadManager.post(new xfs(this, new WeakReference(this)), 5, null, true);
   }
   
   private void i()
@@ -295,7 +295,7 @@ public class PreloadManager
     {
       this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("FlowControlThread");
       this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new xcq(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      this.jdField_a_of_type_AndroidOsHandler = new xfv(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
     }
   }
   
@@ -879,7 +879,7 @@ public class PreloadManager
       }
       else
       {
-        ((PreloadResource)localObject2).startDownload(this, str, new xco(this, paramDownloadCallback), false);
+        ((PreloadResource)localObject2).startDownload(this, str, new xft(this, paramDownloadCallback), false);
         continue;
         label265:
         continue;
@@ -926,7 +926,7 @@ public class PreloadManager
   
   public void a(String paramString, boolean paramBoolean, PreloadManager.OnGetPathListener paramOnGetPathListener)
   {
-    paramOnGetPathListener = new PreloadResource.RealTimeDownloadListener(new xcj(this, new WeakReference(this), paramBoolean, paramOnGetPathListener));
+    paramOnGetPathListener = new PreloadResource.RealTimeDownloadListener(new xfo(this, new WeakReference(this), paramBoolean, paramOnGetPathListener));
     PreloadComDownloader.a().a(paramString, d(paramString), null, paramOnGetPathListener, false);
   }
   
@@ -1165,7 +1165,7 @@ public class PreloadManager
       paramDownloadCallback.onDownloadResFinished(paramString1, -4, null, null);
       continue;
       label171:
-      paramString2.downloadModule(true, new xcp(this, paramString1, paramDownloadCallback), this, false);
+      paramString2.downloadModule(true, new xfu(this, paramString1, paramDownloadCallback), this, false);
     }
   }
   

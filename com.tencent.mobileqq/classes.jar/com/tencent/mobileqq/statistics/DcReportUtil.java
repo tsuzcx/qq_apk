@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.statistics;
 
-import ahrq;
-import ahrr;
+import aift;
+import aifu;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -23,7 +23,7 @@ public class DcReportUtil
     }
     if (paramQQAppInterface == null)
     {
-      ThreadManager.post(new ahrr(paramString1, paramString2), 5, null, true);
+      ThreadManager.post(new aifu(paramString1, paramString2), 5, null, true);
       return;
     }
     a(paramQQAppInterface, paramString1, paramString2, 1);
@@ -59,7 +59,7 @@ public class DcReportUtil
     }
     if (paramQQAppInterface == null)
     {
-      ThreadManager.post(new ahrq(paramString1, paramString2), 5, null, true);
+      ThreadManager.post(new aift(paramString1, paramString2), 5, null, true);
       return;
     }
     a(paramQQAppInterface, paramString1, paramString2, 1);
@@ -67,7 +67,7 @@ public class DcReportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.DcReportUtil
  * JD-Core Version:    0.7.0.1
  */

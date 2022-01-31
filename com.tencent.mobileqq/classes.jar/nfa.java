@@ -1,40 +1,48 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.job.AddInteractViewJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import java.io.File;
-import java.net.URI;
-import java.net.URISyntaxException;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeView;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class nfa
-  extends AddInteractViewJob
+  implements Runnable
 {
-  public nfa(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem)
-  {
-    super(paramStoryVideoItem);
-  }
+  public nfa(MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate, String paramString) {}
   
-  public boolean b()
+  public void run()
   {
-    Object localObject = (String)a("result");
-    try
+    int j = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a.a.getChildCount();
+    int i = 0;
+    for (;;)
     {
-      localObject = new URI((String)localObject);
-      if ("file".equals(((URI)localObject).getScheme()))
+      if (i < j)
       {
-        localObject = new File((URI)localObject);
-        if (((File)localObject).exists())
+        Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a.a.getChildAt(i);
+        if (TextUtils.equals(this.jdField_a_of_type_JavaLangString, String.valueOf(((View)localObject).getTag())))
         {
-          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
-          return true;
+          localObject = (ImageView)((View)localObject).findViewById(2131371907);
+          if (localObject != null)
+          {
+            Rect localRect = new Rect();
+            ((ImageView)localObject).getGlobalVisibleRect(localRect);
+            MsgTabStoryManager localMsgTabStoryManager = (MsgTabStoryManager)this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(250);
+            localMsgTabStoryManager.a = (localRect.left + ((ImageView)localObject).getWidth() / 2);
+            i = localRect.top;
+            localMsgTabStoryManager.b = (((ImageView)localObject).getHeight() / 2 + i);
+          }
         }
       }
+      else
+      {
+        return;
+      }
+      i += 1;
     }
-    catch (URISyntaxException localURISyntaxException)
-    {
-      SLog.c(this.b, "Error: 评分投票失败", localURISyntaxException);
-    }
-    return false;
   }
 }
 

@@ -1,10 +1,18 @@
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+
 public class msv
+  implements Runnable
 {
-  public int a;
-  public boolean a;
-  public int b;
-  public boolean b;
-  public int c;
+  public msv(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  
+  public void run()
+  {
+    ((PublicAccountDataManager)this.a.app.getManager(55)).a();
+    TroopBarAssistantManager.a().c(this.a.app);
+  }
 }
 
 

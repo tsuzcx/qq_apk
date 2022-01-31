@@ -1,27 +1,19 @@
-import android.content.Context;
-import android.text.ClipboardManager;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.ContextMenuTextView;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
+import com.tencent.util.InputMethodUtil;
 
 public class akfd
-  implements View.OnClickListener
+  implements Runnable
 {
-  public akfd(ContextMenuTextView paramContextMenuTextView) {}
+  public akfd(QQCustomDialogWtihInputAndChoose paramQQCustomDialogWtihInputAndChoose) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (paramView.getId() == 2131375342)
-    {
-      paramView = ContextMenuTextView.a(this.a);
-      ContextMenuTextView.a(this.a);
-      ((ClipboardManager)paramView.getSystemService("clipboard")).setText(this.a.getText().toString());
-    }
+    InputMethodUtil.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akfd
  * JD-Core Version:    0.7.0.1
  */

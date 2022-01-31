@@ -1,20 +1,43 @@
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.activity.photo.MimeHelper;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
+import java.lang.ref.WeakReference;
 
-public final class wtf
-  extends MediaFileFilter
+public class wtf
+  extends Handler
 {
-  public boolean a(String paramString)
+  private WeakReference a;
+  
+  public wtf(BaseActivityView paramBaseActivityView)
   {
-    String[] arrayOfString = MimeHelper.a(paramString);
-    if (arrayOfString != null)
-    {
-      if (("image".equals(arrayOfString[0])) && (MimeHelper.a(arrayOfString[1]))) {}
-      while (("video".equals(arrayOfString[0])) && ("video/mp4".equals(paramString))) {
-        return false;
-      }
+    this.a = new WeakReference(paramBaseActivityView);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    boolean bool = true;
+    BaseActivityView localBaseActivityView = (BaseActivityView)this.a.get();
+    if (localBaseActivityView == null) {
+      return;
     }
-    return true;
+    switch (paramMessage.what)
+    {
+    default: 
+      throw new RuntimeException("Unknown message: " + paramMessage.what);
+    case 1: 
+      int i = paramMessage.arg1;
+      if (paramMessage.arg2 == 1) {}
+      for (;;)
+      {
+        localBaseActivityView.b(i, bool);
+        return;
+        bool = false;
+      }
+    case 2: 
+      localBaseActivityView.f();
+      return;
+    }
+    localBaseActivityView.i();
   }
 }
 

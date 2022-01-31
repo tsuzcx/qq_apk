@@ -39,11 +39,11 @@ import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import yre;
-import yrf;
-import yrg;
-import yrh;
-import yri;
+import yuk;
+import yul;
+import yum;
+import yun;
+import yuo;
 
 public class ApolloSSOConfig
 {
@@ -115,7 +115,7 @@ public class ApolloSSOConfig
         ((DownloadTask)localObject).b = 1;
         ((DownloadTask)localObject).o = true;
         ((DownloadTask)localObject).p = true;
-        ((DownloadTask)localObject).a(new yrf(localSharedPreferences, paramInt, paramApolloSSOConfig));
+        ((DownloadTask)localObject).a(new yul(localSharedPreferences, paramInt, paramApolloSSOConfig));
         paramApolloSSOConfig = (DownloaderFactory)paramAppInterface.getManager(46);
         paramBoolean = bool2;
         if (paramApolloSSOConfig != null)
@@ -129,7 +129,7 @@ public class ApolloSSOConfig
           }
         }
         if (paramBoolean) {
-          ThreadManager.executeOnNetWorkThread(new yrg((DownloadTask)localObject));
+          ThreadManager.executeOnNetWorkThread(new yum((DownloadTask)localObject));
         }
       } while (!QLog.isColorLevel());
       QLog.d("apollo_client_ApolloSSOConfig", 2, "checkUpdateApolloWebViewConfig async:" + paramBoolean);
@@ -235,10 +235,10 @@ public class ApolloSSOConfig
           if ((i2 != 4) && (i2 != 5) && (TextUtils.isEmpty(str4))) {
             break label770;
           }
-          localObject5 = new yri(null);
-          ((yri)localObject5).jdField_a_of_type_JavaLangString = str3;
-          ((yri)localObject5).jdField_a_of_type_Int = i2;
-          ((yri)localObject5).b = str4;
+          localObject5 = new yuo(null);
+          ((yuo)localObject5).jdField_a_of_type_JavaLangString = str3;
+          ((yuo)localObject5).jdField_a_of_type_Int = i2;
+          ((yuo)localObject5).b = str4;
           ((List)localObject3).add(localObject5);
         }
       }
@@ -250,11 +250,11 @@ public class ApolloSSOConfig
         QLog.e("apollo_client_ApolloSSOConfig", 1, localException.getMessage());
         return false;
       }
-      Object localObject4 = new yrh();
-      ((yrh)localObject4).jdField_a_of_type_JavaLangString = str2;
-      ((yrh)localObject4).b = str1;
-      ((yrh)localObject4).jdField_a_of_type_JavaUtilList.addAll((Collection)localObject3);
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(a(((yrh)localObject4).b, ((yrh)localObject4).jdField_a_of_type_JavaLangString), localObject4);
+      Object localObject4 = new yun();
+      ((yun)localObject4).jdField_a_of_type_JavaLangString = str2;
+      ((yun)localObject4).b = str1;
+      ((yun)localObject4).jdField_a_of_type_JavaUtilList.addAll((Collection)localObject3);
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(a(((yun)localObject4).b, ((yun)localObject4).jdField_a_of_type_JavaLangString), localObject4);
       localException.add(str2);
       break label763;
       label614:
@@ -306,7 +306,7 @@ public class ApolloSSOConfig
     if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramAppInterface == null)) {
       return null;
     }
-    paramString2 = (yrh)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(a(paramString2, paramString3));
+    paramString2 = (yun)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(a(paramString2, paramString3));
     if (paramString2 != null) {
       return paramString2.a(paramString1, paramAppInterface);
     }
@@ -332,7 +332,7 @@ public class ApolloSSOConfig
     }
     localReqBody.int_protocolver.set(1);
     localReqBody.uint_clientplatid.set(109);
-    localReqBody.str_clientver.set("7.6.0.3525");
+    localReqBody.str_clientver.set("7.6.3.3560");
     localReqBody.uint_uin.set(Long.parseLong((String)localObject2));
     int i = ((SharedPreferences)localObject1).getInt("sp_key_apollo_webView_config_version", 0);
     localObject2 = new ClubContentUpdateInfoPb.ReqItemInfo();
@@ -348,7 +348,7 @@ public class ApolloSSOConfig
     ((NewIntent)localObject1).putExtra("extra_cmd", "ClubContentUpdate.Req");
     ((NewIntent)localObject1).putExtra("extra_data", localReqBody.toByteArray());
     ((NewIntent)localObject1).putExtra("extra_callbackid", paramAppInterface.getCurrentAccountUin());
-    ((NewIntent)localObject1).setObserver(new yre(this, paramAppInterface));
+    ((NewIntent)localObject1).setObserver(new yuk(this, paramAppInterface));
     paramAppInterface.startServlet((NewIntent)localObject1);
     QLog.i("apollo_client_ApolloSSOConfig", 1, "checkRequestSendSSO local ver: " + i);
   }

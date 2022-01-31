@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playmode.child.SelectVideosPlayMode;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.child.MsgTabPlayMode.StoryVideoPublishStatusReceiver;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.VideoLocalCacheFilter;
 
-class njv
-  implements View.OnClickListener
+public class njv
+  implements BatchGetVideoInfo.VideoLocalCacheFilter
 {
-  njv(njs paramnjs) {}
+  public njv(MsgTabPlayMode.StoryVideoPublishStatusReceiver paramStoryVideoPublishStatusReceiver) {}
   
-  public void onClick(View paramView)
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildSelectVideosPlayMode.a(this.a.jdField_a_of_type_AndroidOsBundle);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildSelectVideosPlayMode.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildSelectVideosPlayMode.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    return paramStoryVideoItem.mVideoIndex <= 0L;
   }
 }
 

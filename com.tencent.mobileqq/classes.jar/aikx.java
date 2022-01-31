@@ -1,22 +1,21 @@
-import android.widget.ImageButton;
-import com.tencent.mobileqq.troop.activity.TroopBarReplyActivity;
-import com.tencent.util.InputMethodUtil;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
 
 public class aikx
   implements Runnable
 {
-  public aikx(TroopBarReplyActivity paramTroopBarReplyActivity) {}
+  public aikx(SubAccountManager paramSubAccountManager, SubAccountInfo paramSubAccountInfo) {}
   
   public void run()
   {
-    InputMethodUtil.a(this.a.jdField_a_of_type_AndroidWidgetEditText);
-    this.a.jdField_a_of_type_AndroidWidgetImageButton.setSelected(false);
-    this.a.c.setSelected(false);
+    if (this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo != null) {
+      this.jdField_a_of_type_ComTencentMobileqqSubaccountDatamanagerSubAccountManager.a(this.jdField_a_of_type_ComTencentMobileqqDataSubAccountInfo);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aikx
  * JD-Core Version:    0.7.0.1
  */

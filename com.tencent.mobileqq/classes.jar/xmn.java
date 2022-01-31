@@ -1,17 +1,25 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
+import com.tencent.mobileqq.widget.InputMethodRelativeLayout;
 
-public class xmn
-  implements Runnable
+class xmn
+  implements Animation.AnimationListener
 {
-  public xmn(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  xmn(xmm paramxmm) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), "录制出现异常，请重试", 1).a();
-    this.a.finish();
+    this.a.a.c.setVisibility(0);
+    this.a.a.c.clearAnimation();
+    this.a.a.c.setAnimation(null);
+    this.a.a.a.invalidate();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

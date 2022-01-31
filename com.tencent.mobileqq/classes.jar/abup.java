@@ -1,64 +1,33 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloFavActionData;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.data.MessageForNearbyMarketGrayTips;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 class abup
   implements Runnable
 {
-  abup(abue paramabue, QQAppInterface paramQQAppInterface, Bundle paramBundle, MessengerService paramMessengerService) {}
+  abup(abul paramabul, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    JSONObject localJSONObject1;
-    JSONArray localJSONArray;
-    int i;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (QLog.isDevelopLevel()) {
+      QLog.i("MessageForNearbyMarketGrayTips", 4, "0X80052C4");
+    }
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80052C4", "0X80052C4", 0, 0, abul.a(this.jdField_a_of_type_Abul).frienduin, "", "", "");
+    QQAppInterface localQQAppInterface;
+    if ((abul.a(this.jdField_a_of_type_Abul).AioType == 1) || (abul.a(this.jdField_a_of_type_Abul).AioType == 3))
     {
-      localObject = ((ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154)).d();
-      localJSONObject1 = new JSONObject();
-      localJSONArray = new JSONArray();
-      if (localObject != null) {
-        i = 0;
+      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      if (abul.a(this.jdField_a_of_type_Abul).AioType != 0) {
+        break label122;
       }
     }
-    try
+    label122:
+    for (String str = "0";; str = "1")
     {
-      while (i < ((List)localObject).size())
-      {
-        JSONObject localJSONObject2 = new JSONObject();
-        localJSONObject2.put("seq", ((ApolloFavActionData)((List)localObject).get(i)).favId);
-        localJSONObject2.put("actionId", ((ApolloFavActionData)((List)localObject).get(i)).acitonId);
-        localJSONObject2.put("actionText", ((ApolloFavActionData)((List)localObject).get(i)).text);
-        localJSONObject2.put("textType", ((ApolloFavActionData)((List)localObject).get(i)).textType);
-        localJSONObject2.put("audioId", ((ApolloFavActionData)((List)localObject).get(i)).audioId);
-        if (!Float.isNaN(((ApolloFavActionData)((List)localObject).get(i)).audioStartTime)) {
-          localJSONObject2.put("audioStartTime", ((ApolloFavActionData)((List)localObject).get(i)).audioStartTime);
-        }
-        localJSONArray.put(localJSONObject2);
-        i += 1;
-      }
-      localJSONObject1.put("favActionSet", localJSONArray);
+      ReportController.b(localQQAppInterface, "dc00899", "grp_lbs", "", "tmp_grey", "clk_blue", 0, 0, str, "", "", "");
+      return;
     }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.emoji.web.MessengerService", 2, "getLocalFavAction json error " + localJSONException.toString());
-        }
-      }
-    }
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putString("getFavResult", localJSONObject1.toString());
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", (Bundle)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

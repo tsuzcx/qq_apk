@@ -1,24 +1,19 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
-import dov.com.qq.im.capture.music.QQMusicPlayerScene;
-import java.util.TimerTask;
+import android.os.Bundle;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class amvz
-  extends TimerTask
+  implements Runnable
 {
-  private amvz(QQMusicPlayerScene paramQQMusicPlayerScene) {}
+  public amvz(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString, Bundle paramBundle) {}
   
   public void run()
   {
-    this.a.a.sendEmptyMessage(1);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQMusicPlayerScene", 2, "MyMusicTimerTask MSG_MUSIC_REPLAY");
-    }
+    QzoneWebMusicJsPlugin.access$800(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amvz
  * JD-Core Version:    0.7.0.1
  */

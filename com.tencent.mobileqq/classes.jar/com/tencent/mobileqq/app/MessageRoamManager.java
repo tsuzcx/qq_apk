@@ -55,17 +55,17 @@ import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import zdy;
-import zdz;
-import zea;
-import zeb;
-import zec;
-import zed;
-import zee;
-import zef;
-import zeg;
-import zeh;
-import zei;
+import zhe;
+import zhf;
+import zhg;
+import zhh;
+import zhi;
+import zhj;
+import zhk;
+import zhl;
+import zhm;
+import zhn;
+import zho;
 
 public class MessageRoamManager
   implements Manager
@@ -98,7 +98,7 @@ public class MessageRoamManager
   public MessageRoamManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new zdz(this);
+    this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new zhf(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAppUtilsMessageRoamHandler = ((MessageRoamHandler)paramQQAppInterface.a(59));
     this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRoamDateCache = ((RoamDateCache)paramQQAppInterface.a().a(2));
@@ -323,7 +323,7 @@ public class MessageRoamManager
   
   private void r()
   {
-    ThreadManager.getSubThreadHandler().post(new zeh(this));
+    ThreadManager.getSubThreadHandler().post(new zhn(this));
   }
   
   public int a()
@@ -791,7 +791,7 @@ public class MessageRoamManager
       }
       while (paramBoolean)
       {
-        ThreadManager.getSubThreadHandler().post(new zec(this, i));
+        ThreadManager.getSubThreadHandler().post(new zhi(this, i));
         return;
         a(((Long)this.jdField_a_of_type_JavaUtilList.get(i)).longValue());
       }
@@ -902,7 +902,7 @@ public class MessageRoamManager
     return;
     b(paramMessageRecord);
     q();
-    this.jdField_a_of_type_JavaLangRunnable = new zee(this, i);
+    this.jdField_a_of_type_JavaLangRunnable = new zhk(this, i);
     ThreadManager.getSubThreadHandler().post(this.jdField_a_of_type_JavaLangRunnable);
     return;
     label139:
@@ -926,7 +926,7 @@ public class MessageRoamManager
     {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putLong("cloudSearchCfgLastModify", paramDownloadTask.i).commit();
       if (200 == paramDownloadTask.e) {
-        ThreadManager.getFileThreadHandler().post(new zea(this));
+        ThreadManager.getFileThreadHandler().post(new zhg(this));
       }
     }
     if (QLog.isColorLevel())
@@ -992,7 +992,7 @@ public class MessageRoamManager
       QLog.d("MessageRoamManagerDebug", 4, paramString);
       this.d = null;
       this.jdField_a_of_type_JavaUtilHashMap.clear();
-      ThreadManager.getSubThreadHandler().post(new zdy(this));
+      ThreadManager.getSubThreadHandler().post(new zhe(this));
       return;
       this.jdField_a_of_type_JavaUtilList.clear();
       break;
@@ -1061,7 +1061,7 @@ public class MessageRoamManager
         break;
       case 3: 
         if (paramBoolean) {
-          ThreadManager.getSubThreadHandler().post(new zed(this, paramCalendar));
+          ThreadManager.getSubThreadHandler().post(new zhj(this, paramCalendar));
         }
         while ((NetworkUtil.d(BaseApplication.getContext())) && (paramRoamMessagePreloadInfo != null))
         {
@@ -1824,7 +1824,7 @@ public class MessageRoamManager
     if (QLog.isColorLevel()) {
       QLog.d("Q.roammsg.MessageRoamManager", 2, "savePasswordMD5ForRoamMessage passwordMD5" + Arrays.toString(this.jdField_a_of_type_ArrayOfByte));
     }
-    ThreadManager.getFileThreadHandler().post(new zef(this));
+    ThreadManager.getFileThreadHandler().post(new zhl(this));
   }
   
   public void c(Calendar paramCalendar)
@@ -1998,7 +1998,7 @@ public class MessageRoamManager
       localObject2 = MessageRecord.getTableName(this.jdField_a_of_type_JavaLangString, 0);
       String str1 = MessageRecord.getOldTableName(this.jdField_a_of_type_JavaLangString, 0);
       str2 = "( msgtype " + MsgProxyUtils.b() + " and isValid=1 and" + str2 + " ) " + "ORDER BY time asc , longMsgIndex asc";
-      ThreadManager.getSubThreadHandler().post(new zeb(this, (String)localObject2, str1, str2, (Pair)localObject1, l));
+      ThreadManager.getSubThreadHandler().post(new zhh(this, (String)localObject2, str1, str2, (Pair)localObject1, l));
       return;
     }
   }
@@ -2110,7 +2110,7 @@ public class MessageRoamManager
   
   public void k()
   {
-    ThreadManager.getSubThreadHandler().post(new zeg(this));
+    ThreadManager.getSubThreadHandler().post(new zhm(this));
   }
   
   public void l()
@@ -2208,10 +2208,10 @@ public class MessageRoamManager
           {
             localObject4 = (JSONObject)localJSONArray.get(0);
             localObject1 = ((JSONObject)localObject4).getString("version");
-            if ((TextUtils.isEmpty((CharSequence)localObject1)) || ("7.6.0".compareTo(((String)localObject1).substring(0, "7.6.0".length())) < 0))
+            if ((TextUtils.isEmpty((CharSequence)localObject1)) || ("7.6.3".compareTo(((String)localObject1).substring(0, "7.6.3".length())) < 0))
             {
               if (QLog.isColorLevel()) {
-                QLog.d("Q.roammsg.MessageRoamManager", 2, "curr ver: 7.6.0, config qqVer:" + (String)localObject1);
+                QLog.d("Q.roammsg.MessageRoamManager", 2, "curr ver: 7.6.3, config qqVer:" + (String)localObject1);
               }
             }
             else
@@ -2386,7 +2386,7 @@ public class MessageRoamManager
   
   public void o()
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new zei(this), 100L);
+    ThreadManager.getSubThreadHandler().postDelayed(new zho(this), 100L);
   }
   
   public void onDestroy()

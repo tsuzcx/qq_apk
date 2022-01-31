@@ -7,7 +7,7 @@ import android.content.SharedPreferences.Editor;
 import android.graphics.Bitmap;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
-import anqo;
+import aogt;
 import com.tencent.av.AVNetEngine;
 import com.tencent.av.utils.UITools;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -92,7 +92,7 @@ public class VideoFilterTools
   public static int a(Context paramContext)
   {
     int i = 0;
-    int j = PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("qq_video_filter_config_version", 0);
+    int j = PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("dov_video_filter_config_version", 0);
     if ((j > 0) && (!new File(CaptureVideoFilterManager.jdField_a_of_type_JavaLangString + "filter_config_new.xml").exists())) {
       UITools.a("VideoFilterTools", "getQQShortVideoFilterConfigVersion config file don't exist!");
     }
@@ -365,7 +365,7 @@ public class VideoFilterTools
   private static void a(Context paramContext)
   {
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt("qq_video_filter_config_first_launch", 1);
+    paramContext.putInt("dov_video_filter_config_first_launch", 1);
     paramContext.commit();
   }
   
@@ -373,7 +373,7 @@ public class VideoFilterTools
   {
     UITools.a("VideoFilterTools", "setQQShortVideoFilterConfigVersion:" + paramInt);
     paramContext = PreferenceManager.getDefaultSharedPreferences(paramContext).edit();
-    paramContext.putInt("qq_video_filter_config_version", paramInt);
+    paramContext.putInt("dov_video_filter_config_version", paramInt);
     paramContext.commit();
   }
   
@@ -449,7 +449,7 @@ public class VideoFilterTools
   private static boolean b(Context paramContext)
   {
     boolean bool = false;
-    int i = PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("qq_video_filter_config_first_launch", 0);
+    int i = PreferenceManager.getDefaultSharedPreferences(paramContext).getInt("dov_video_filter_config_first_launch", 0);
     UITools.a("VideoFilterTools", "getIsFirstLauncher:" + i);
     if (i == 0) {
       bool = true;
@@ -754,7 +754,7 @@ public class VideoFilterTools
             if (!localFile.exists())
             {
               localObject = new HttpNetReq();
-              ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new anqo(this);
+              ((HttpNetReq)localObject).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new aogt(this);
               ((HttpNetReq)localObject).jdField_a_of_type_JavaLangString = localFilterDesc.jdField_a_of_type_JavaLangString;
               ((HttpNetReq)localObject).jdField_a_of_type_Int = 0;
               ((HttpNetReq)localObject).jdField_c_of_type_JavaLangString = (CaptureVideoFilterManager.jdField_b_of_type_JavaLangString + localFilterDesc.e + ".zip");

@@ -2,6 +2,7 @@ package com.tencent.mobileqq.activity.aio.item;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
@@ -48,10 +49,10 @@ import com.tencent.mobileqq.widget.ProgressPieDrawable;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheetHelper;
-import vcb;
-import vcc;
-import vcd;
-import vce;
+import vfd;
+import vfe;
+import vff;
+import vfh;
 
 public class ScribbleItemBuilder
   extends QIMTailItemBubbleBuilder
@@ -69,13 +70,13 @@ public class ScribbleItemBuilder
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
     this.jdField_b_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vcb(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vfd(this);
     if (jdField_b_of_type_Int == 0)
     {
-      e = BaseChatItemLayout.j + paramContext.getResources().getDimensionPixelSize(2131559437);
-      d = BaseChatItemLayout.i + paramContext.getResources().getDimensionPixelSize(2131559439);
-      c = BaseChatItemLayout.h + paramContext.getResources().getDimensionPixelSize(2131559440);
-      jdField_b_of_type_Int = BaseChatItemLayout.g + paramContext.getResources().getDimensionPixelSize(2131559438);
+      e = BaseChatItemLayout.j + paramContext.getResources().getDimensionPixelSize(2131559439);
+      d = BaseChatItemLayout.i + paramContext.getResources().getDimensionPixelSize(2131559441);
+      c = BaseChatItemLayout.h + paramContext.getResources().getDimensionPixelSize(2131559442);
+      jdField_b_of_type_Int = BaseChatItemLayout.g + paramContext.getResources().getDimensionPixelSize(2131559440);
     }
   }
   
@@ -152,10 +153,10 @@ public class ScribbleItemBuilder
     return new DoodleMsgLayout(paramContext, null);
   }
   
-  private ProgressPieDrawable a()
+  private static ProgressPieDrawable a(Context paramContext, Handler paramHandler)
   {
-    ProgressPieDrawable localProgressPieDrawable = new ProgressPieDrawable(this.jdField_a_of_type_AndroidContentContext);
-    localProgressPieDrawable.a(AIOUtils.a(50.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    ProgressPieDrawable localProgressPieDrawable = new ProgressPieDrawable(paramContext);
+    localProgressPieDrawable.a(AIOUtils.a(50.0F, paramContext.getResources()));
     localProgressPieDrawable.a(true);
     localProgressPieDrawable.c(false);
     localProgressPieDrawable.f(-1);
@@ -164,16 +165,26 @@ public class ScribbleItemBuilder
     localProgressPieDrawable.g(3);
     localProgressPieDrawable.jdField_f_of_type_Boolean = true;
     localProgressPieDrawable.jdField_f_of_type_Int = 2;
-    localProgressPieDrawable.a(new vce(this));
+    localProgressPieDrawable.a(new vff(paramHandler));
     return localProgressPieDrawable;
+  }
+  
+  public static ProgressPieDrawable a(MessageForScribble paramMessageForScribble, Context paramContext, Handler paramHandler)
+  {
+    if (paramMessageForScribble.mProgressPie != null) {
+      return paramMessageForScribble.mProgressPie;
+    }
+    paramContext = a(paramContext, paramHandler);
+    paramMessageForScribble.mProgressPie = paramContext;
+    return paramContext;
   }
   
   private void a(View paramView, MessageForScribble paramMessageForScribble)
   {
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this.jdField_a_of_type_AndroidContentContext, null);
-    localActionSheet.a(2131433618, 5);
-    localActionSheet.c(2131432998);
-    localActionSheet.a(new vcd(this, paramView, paramMessageForScribble, localActionSheet));
+    localActionSheet.a(2131433635, 5);
+    localActionSheet.c(2131433015);
+    localActionSheet.a(new vfe(this, paramView, paramMessageForScribble, localActionSheet));
     localActionSheet.show();
   }
   
@@ -232,15 +243,32 @@ public class ScribbleItemBuilder
     }
   }
   
-  private void a(MessageForScribble paramMessageForScribble)
+  public static void a(MessageForScribble paramMessageForScribble, ScribbleItemBuilder.Holder paramHolder, int paramInt, boolean paramBoolean, Context paramContext, Handler paramHandler)
   {
-    int i = Math.max(paramMessageForScribble.mRealProgress, 68);
-    if ((NetworkUtil.d(BaseApplicationImpl.getContext())) && (paramMessageForScribble.mUiProgress < i)) {
-      paramMessageForScribble.mUiProgress += 1;
+    paramHolder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
+    paramHolder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramInt, paramMessageForScribble.frienduin + paramMessageForScribble.uniseq);
+    paramContext = a(paramMessageForScribble, paramContext, paramHandler);
+    paramContext.a();
+    paramHolder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(0);
+    paramInt = ShortVideoUtils.a(paramInt, 10);
+    if (paramBoolean) {
+      paramContext.b(paramInt);
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ScribbleItemBuilder", 2, "[setProgress] uinseq:" + paramMessageForScribble.uniseq + ", p:" + paramInt + ", current:" + paramContext.a());
+      }
+      paramContext.b(true);
+      paramContext.d(false);
+      paramContext.e(1426063360);
+      paramContext.a(String.valueOf(paramInt) + "%");
+      return;
+      paramContext.c(paramInt);
     }
   }
   
-  private void a(MessageForScribble paramMessageForScribble, FileMsg paramFileMsg)
+  private static void a(MessageForScribble paramMessageForScribble, FileMsg paramFileMsg)
   {
     if ((paramFileMsg != null) && (paramFileMsg.a > 0L))
     {
@@ -301,13 +329,12 @@ public class ScribbleItemBuilder
     }
   }
   
-  private void b(MessageForScribble paramMessageForScribble)
+  private static void b(MessageForScribble paramMessageForScribble)
   {
-    if (paramMessageForScribble == null) {
-      return;
+    int i = Math.max(paramMessageForScribble.mRealProgress, 68);
+    if ((NetworkUtil.d(BaseApplicationImpl.getContext())) && (paramMessageForScribble.mUiProgress < i)) {
+      paramMessageForScribble.mUiProgress += 1;
     }
-    this.jdField_b_of_type_AndroidOsHandler.removeCallbacks(paramMessageForScribble.mUpdateProgressRunnable);
-    paramMessageForScribble.mUpdateProgressRunnable = null;
   }
   
   private void c(ScribbleItemBuilder.Holder paramHolder, MessageForScribble paramMessageForScribble, boolean paramBoolean, int paramInt)
@@ -348,6 +375,15 @@ public class ScribbleItemBuilder
         break;
       }
     }
+  }
+  
+  private void c(MessageForScribble paramMessageForScribble)
+  {
+    if (paramMessageForScribble == null) {
+      return;
+    }
+    this.jdField_b_of_type_AndroidOsHandler.removeCallbacks(paramMessageForScribble.mUpdateProgressRunnable);
+    paramMessageForScribble.mUpdateProgressRunnable = null;
   }
   
   private void d(ScribbleItemBuilder.Holder paramHolder, MessageForScribble paramMessageForScribble, boolean paramBoolean, int paramInt)
@@ -460,7 +496,7 @@ public class ScribbleItemBuilder
           if (localMessageForScribble.mUpdateProgressRunnable != null) {
             this.jdField_b_of_type_AndroidOsHandler.removeCallbacks(localMessageForScribble.mUpdateProgressRunnable);
           }
-          localMessageForScribble.mUpdateProgressRunnable = new vcc(this, localMessageForScribble, paramBaseChatItemLayout);
+          localMessageForScribble.mUpdateProgressRunnable = new vfh(localMessageForScribble, paramBaseChatItemLayout, this.jdField_b_of_type_AndroidOsHandler, this.jdField_a_of_type_AndroidContentContext);
           int i = a(localMessageForScribble, paramBaseChatItemLayout, paramViewHolder);
           if (QLog.isColorLevel()) {
             QLog.i("ScribbleItemBuilder", 2, "ScribbleItemBuilder pos:" + paramBaseChatItemLayout.jdField_b_of_type_Int + " State:" + i);
@@ -529,16 +565,6 @@ public class ScribbleItemBuilder
     return new ScribbleItemBuilder.Holder(this);
   }
   
-  public ProgressPieDrawable a(MessageForScribble paramMessageForScribble)
-  {
-    if (paramMessageForScribble.mProgressPie != null) {
-      return paramMessageForScribble.mProgressPie;
-    }
-    ProgressPieDrawable localProgressPieDrawable = a();
-    paramMessageForScribble.mProgressPie = localProgressPieDrawable;
-    return localProgressPieDrawable;
-  }
-  
   protected String a(ChatMessage paramChatMessage)
   {
     return "涂鸦消息";
@@ -557,7 +583,7 @@ public class ScribbleItemBuilder
     default: 
       super.a(paramInt, paramContext, paramChatMessage);
       return;
-    case 2131375336: 
+    case 2131375567: 
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
     }
@@ -696,8 +722,8 @@ public class ScribbleItemBuilder
       {
         localMessageForScribble.mRealProgress = 100;
         localMessageForScribble.mUiProgress = 100;
-        b(localMessageForScribble);
-        a(localMessageForScribble, paramView, localMessageForScribble.mUiProgress, true);
+        c(localMessageForScribble);
+        a(localMessageForScribble, paramView, localMessageForScribble.mUiProgress, true, this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidOsHandler);
         continue;
         QLog.e("ScribbleItemBuilder", 2, "涂鸦数据发送错误");
         b(paramView, localMessageForScribble, true, paramInt1);
@@ -706,7 +732,7 @@ public class ScribbleItemBuilder
         continue;
         QLog.e("ScribbleItemBuilder", 2, "涂鸦数据发送取消");
         b(paramView, localMessageForScribble, true, paramInt1);
-        b(localMessageForScribble);
+        c(localMessageForScribble);
         a(paramView);
         continue;
         switch (paramFileMsg.d)
@@ -729,15 +755,15 @@ public class ScribbleItemBuilder
           {
             localMessageForScribble.mRealProgress = 100;
             localMessageForScribble.mUiProgress = 100;
-            b(localMessageForScribble);
-            a(localMessageForScribble, paramView, localMessageForScribble.mUiProgress, true);
+            c(localMessageForScribble);
+            a(localMessageForScribble, paramView, localMessageForScribble.mUiProgress, true, this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_AndroidOsHandler);
             break;
             b(paramView, localMessageForScribble, false);
           }
         case 2005: 
           QLog.e("ScribbleItemBuilder", 2, "涂鸦数据下载失败");
           b(paramView, localMessageForScribble, false);
-          b(localMessageForScribble);
+          c(localMessageForScribble);
           a(paramView);
         }
       }
@@ -747,43 +773,26 @@ public class ScribbleItemBuilder
   public void a(View paramView, boolean paramBoolean)
   {
     paramView = AIOUtils.a(paramView);
-    int i;
-    int j;
-    int k;
-    int m;
-    MessageForScribble localMessageForScribble;
+    Drawable localDrawable;
     if ((paramView instanceof ScribbleItemBuilder.Holder))
     {
       paramView = (ScribbleItemBuilder.Holder)paramView;
-      i = paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingLeft();
-      j = paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingRight();
-      k = paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingTop();
-      m = paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingBottom();
-      localMessageForScribble = (MessageForScribble)paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage;
-      if (paramView.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null) {
-        QLog.e("ScribbleItemBuilder", 2, "longClicked: holder.mMessage is null");
+      if ((paramView != null) && (paramView.jdField_a_of_type_AndroidWidgetRelativeLayout != null))
+      {
+        localDrawable = paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.getBackground();
+        if (localDrawable != null) {
+          if (!paramBoolean) {
+            break label56;
+          }
+        }
       }
     }
-    else
+    label56:
+    for (paramView = null;; paramView = jdField_a_of_type_AndroidGraphicsColorFilter)
     {
+      localDrawable.setColorFilter(paramView);
+      localDrawable.invalidateSelf();
       return;
-    }
-    if (paramBoolean) {
-      if (localMessageForScribble.isSend()) {
-        paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845659);
-      }
-    }
-    for (;;)
-    {
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(i, k, j, m);
-      return;
-      paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845493);
-      continue;
-      if (localMessageForScribble.isSend()) {
-        paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845660);
-      } else {
-        paramView.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845494);
-      }
     }
   }
   
@@ -808,7 +817,7 @@ public class ScribbleItemBuilder
     paramBaseChatItemLayout = (RelativeLayout.LayoutParams)paramContext.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.getLayoutParams();
     if (paramChatMessage.isSend())
     {
-      paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845661);
+      paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845789);
       paramBaseChatItemLayout.topMargin = AIOUtils.a(9.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       paramBaseChatItemLayout.leftMargin = AIOUtils.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       paramBaseChatItemLayout.rightMargin = AIOUtils.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
@@ -819,35 +828,10 @@ public class ScribbleItemBuilder
       paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(paramInt1, i, paramInt2, j);
       paramContext.jdField_a_of_type_AndroidViewView.setPadding(0, 0, 0, 0);
       return;
-      paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845497);
+      paramContext.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845625);
       paramBaseChatItemLayout.topMargin = AIOUtils.a(8.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       paramBaseChatItemLayout.leftMargin = AIOUtils.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
       paramBaseChatItemLayout.rightMargin = AIOUtils.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    }
-  }
-  
-  public void a(MessageForScribble paramMessageForScribble, ScribbleItemBuilder.Holder paramHolder, int paramInt, boolean paramBoolean)
-  {
-    paramHolder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
-    paramHolder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramInt, paramMessageForScribble.frienduin + paramMessageForScribble.uniseq);
-    ProgressPieDrawable localProgressPieDrawable = a(paramMessageForScribble);
-    localProgressPieDrawable.a();
-    paramHolder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(0);
-    paramInt = ShortVideoUtils.a(paramInt, 10);
-    if (paramBoolean) {
-      localProgressPieDrawable.b(paramInt);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ScribbleItemBuilder", 2, "[setProgress] uinseq:" + paramMessageForScribble.uniseq + ", p:" + paramInt + ", current:" + localProgressPieDrawable.a());
-      }
-      localProgressPieDrawable.b(true);
-      localProgressPieDrawable.d(false);
-      localProgressPieDrawable.e(1426063360);
-      localProgressPieDrawable.a(String.valueOf(paramInt) + "%");
-      return;
-      localProgressPieDrawable.c(paramInt);
     }
   }
   
@@ -906,16 +890,18 @@ public class ScribbleItemBuilder
     }
     if (((paramView instanceof DoodleMsgView)) || ((paramView instanceof URLImageView)))
     {
-      paramView = (ScribbleItemBuilder.Holder)AIOUtils.a(paramView);
-      if (paramView == null)
+      ScribbleItemBuilder.Holder localHolder = (ScribbleItemBuilder.Holder)AIOUtils.a(paramView);
+      if (localHolder == null)
       {
         QLog.e("ScribbleItemBuilder", 2, "onclick(): holder is null");
         return;
       }
-      PlayLastLogic.a().a(paramView.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout, true);
-      return;
+      if ((localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout != null) && (localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout.a(paramView)))
+      {
+        PlayLastLogic.a().a(localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleMsgLayout, true);
+        return;
+      }
     }
-    paramView.getId();
     super.onClick(paramView);
   }
 }

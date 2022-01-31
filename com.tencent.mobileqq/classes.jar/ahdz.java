@@ -1,31 +1,38 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.mobileqq.service.message.MessageUtils;
 import com.tencent.qphone.base.util.QLog;
 
-class ahdz
-  extends SosoInterface.OnLocationListener
+public class ahdz
+  implements Runnable
 {
-  ahdz(ahdy paramahdy, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public ahdz(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.UniteSearchActivity", 2, "onLocationFinish() errCode=" + paramInt);
+      QLog.d("ReceiptMessageDetailFragment", 2, "mSendFetchReadStatusRequestRunnable");
     }
-    if ((paramInt != 0) || (paramSosoLbsInfo == null) || (paramSosoLbsInfo.a == null)) {
+    switch (ReceiptMessageDetailFragment.a(this.a).jdField_a_of_type_Int)
+    {
+    default: 
+      return;
+    case 3000: 
+      ReceiptMessageDetailFragment.e(this.a);
+      return;
+    case 0: 
+      ReceiptMessageDetailFragment.a(this.a).addObserver(ReceiptMessageDetailFragment.b(this.a), false);
+      ReceiptMessageDetailFragment.b(this.a, ReceiptMessageDetailFragment.a(this.a).a().b(ReceiptMessageDetailFragment.a(this.a), ReceiptMessageDetailFragment.a(this.a, ReceiptMessageDetailFragment.a(this.a).jdField_a_of_type_JavaLangString), ReceiptMessageDetailFragment.a(this.a), MessageUtils.a(ReceiptMessageDetailFragment.b(this.a))));
       return;
     }
-    com.tencent.mobileqq.search.activity.UniteSearchActivity.a = paramSosoLbsInfo.a.a;
-    com.tencent.mobileqq.search.activity.UniteSearchActivity.b = paramSosoLbsInfo.a.b;
+    ReceiptMessageDetailFragment.f(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahdz
  * JD-Core Version:    0.7.0.1
  */

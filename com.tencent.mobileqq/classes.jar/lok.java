@@ -1,14 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadinjoyFixPosArticleManager;
-import com.tencent.biz.pubaccount.readinjoy.model.FixPosArticleInterface.FixPosArticleAsyncListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class lok
-  implements FixPosArticleInterface.FixPosArticleAsyncListener
+public final class lok
+  implements DialogInterface.OnClickListener
 {
-  lok(loj paramloj) {}
-  
-  public void a(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ReadinjoyFixPosArticleManager.a(this.a.a, paramInt);
+    paramDialogInterface.dismiss();
   }
 }
 

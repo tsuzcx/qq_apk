@@ -1,81 +1,28 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordHelper;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
+import java.util.List;
 
 public class ajct
-  extends DownloadListener
+  implements Runnable
 {
-  public ajct(TroopTopicMgr paramTroopTopicMgr, int paramInt) {}
+  public ajct(TroopAioKeywordTipManager paramTroopAioKeywordTipManager, String paramString1, String paramString2, Integer paramInteger) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void run()
   {
-    if (paramDownloadTask.jdField_a_of_type_Int == 0)
+    String str = TroopAioKeywordTipManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_JavaLangInteger);
+    synchronized (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.b)
     {
-      Object localObject = paramDownloadTask.a().getString("filePath");
-      try
-      {
-        paramDownloadTask = new File((String)localObject);
-        String str = FileUtils.b(paramDownloadTask);
-        if (QLog.isColorLevel()) {
-          QLog.d(".troop.troop_topic.TroopTopicMgr", 2, "onDone() content =  " + str + ", filePath = " + (String)localObject);
-        }
-        boolean bool = TextUtils.isEmpty(str);
-        if (bool) {
-          return;
-        }
-        try
-        {
-          localObject = new JSONObject(str);
-          ((JSONObject)localObject).put("version", this.jdField_a_of_type_Int);
-          TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr).getApp().getSharedPreferences(TroopTopicMgr.a(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr).getCurrentAccountUin() + "_TroopTopic", 0).edit().putString("ShareCommentWhiteList", ((JSONObject)localObject).toString()).commit();
-          this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopTopicMgr.b(((JSONObject)localObject).toString());
-          paramDownloadTask.deleteOnExit();
-          return;
-        }
-        catch (JSONException localJSONException)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d(".troop.troop_topic.TroopTopicMgr", 2, "handleSaveWhiteList exception: " + localJSONException.getMessage());
-            }
-          }
-        }
-        QLog.d(".troop.troop_topic.TroopTopicMgr", 2, QLog.getStackTraceString(paramDownloadTask));
+      if (!this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.b.contains(str)) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.b.add(str);
       }
-      catch (IOException paramDownloadTask)
-      {
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-      }
+      TroopAioKeywordHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager.a, str);
+      return;
     }
-    else if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.troop_topic.TroopTopicMgr", 2, "errorCode = " + paramDownloadTask.jdField_a_of_type_Int);
-    }
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    return super.onStart(paramDownloadTask);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajct
  * JD-Core Version:    0.7.0.1
  */

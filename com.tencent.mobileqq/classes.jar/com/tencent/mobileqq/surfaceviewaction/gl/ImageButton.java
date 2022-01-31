@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.surfaceviewaction.gl;
 
-import ahxe;
+import ailh;
 import android.graphics.Bitmap;
 import android.view.MotionEvent;
 
 public class ImageButton
   extends Sprite
-  implements ahxe
+  implements ailh
 {
   private ImageButton.OnClickListener jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton$OnClickListener;
   private boolean jdField_a_of_type_Boolean;
@@ -85,7 +85,7 @@ public class ImageButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.ImageButton
  * JD-Core Version:    0.7.0.1
  */

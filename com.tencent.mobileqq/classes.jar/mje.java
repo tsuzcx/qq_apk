@@ -1,16 +1,37 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.mobileqq.util.FaceDecoder.DecodeTaskCompletionListener;
+import android.net.Uri;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyScreenShotReporter;
+import com.tencent.biz.pubaccount.util.ScreenshotContentObserver.Listener;
+import com.tencent.qphone.base.util.QLog;
 
-public class mje
-  implements FaceDecoder.DecodeTaskCompletionListener
+public final class mje
+  implements ScreenshotContentObserver.Listener
 {
-  public mje(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
-  
-  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  public void a(Uri paramUri, String paramString, int paramInt)
   {
-    if (ReadinjoyTabFrame.b(this.a) != null) {
-      ReadinjoyTabFrame.b(this.a);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder().append("onDetectScreenshot() path=").append(paramString).append(", channelID=");
+      if (ReadInJoyScreenShotReporter.a(ReadInJoyScreenShotReporter.a()) != null) {
+        break label129;
+      }
+      paramUri = "null";
+      paramString = paramString.append(paramUri).append(", channelType=");
+      if (ReadInJoyScreenShotReporter.b(ReadInJoyScreenShotReporter.a()) != null) {
+        break label139;
+      }
+    }
+    label129:
+    label139:
+    for (paramUri = "null";; paramUri = ReadInJoyScreenShotReporter.b(ReadInJoyScreenShotReporter.a()))
+    {
+      QLog.d("ReadInJoyScreenShotReporter", 2, paramUri);
+      if (ReadInJoyScreenShotReporter.a(ReadInJoyScreenShotReporter.a()) != null) {
+        PublicAccountReportUtils.b(null, "", "0X8008100", "0X8008100", 0, 0, String.valueOf(System.currentTimeMillis() / 1000L), String.valueOf(ReadInJoyScreenShotReporter.b(ReadInJoyScreenShotReporter.a())), String.valueOf(ReadInJoyScreenShotReporter.a(ReadInJoyScreenShotReporter.a())), null, false);
+      }
+      return;
+      paramUri = ReadInJoyScreenShotReporter.a(ReadInJoyScreenShotReporter.a());
+      break;
     }
   }
 }

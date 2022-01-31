@@ -61,18 +61,18 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map.Entry;
 import java.util.Set;
-import ktq;
-import ktr;
-import kts;
-import ktt;
-import ktu;
-import ktv;
-import ktz;
-import kua;
-import kub;
-import kuc;
-import kud;
-import kue;
+import ktb;
+import ktc;
+import ktd;
+import kte;
+import ktf;
+import ktg;
+import ktk;
+import ktl;
+import ktm;
+import ktn;
+import kto;
+import ktp;
 import mqq.os.MqqHandler;
 
 public class PublicAccountAdvertisementActivity
@@ -128,7 +128,7 @@ public class PublicAccountAdvertisementActivity
   
   public PublicAccountAdvertisementActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new kts(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new ktd(this, Looper.getMainLooper());
   }
   
   private void a(VideoDownloadItem paramVideoDownloadItem)
@@ -170,9 +170,9 @@ public class PublicAccountAdvertisementActivity
   
   private void b()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdControlView = ((AdControlView)super.findViewById(2131365549));
-    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout = ((DragFrameLayout)super.findViewById(2131365545));
-    FrameLayout localFrameLayout = (FrameLayout)super.findViewById(2131365546);
+    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdControlView = ((AdControlView)super.findViewById(2131365576));
+    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout = ((DragFrameLayout)super.findViewById(2131365572));
+    FrameLayout localFrameLayout = (FrameLayout)super.findViewById(2131365573);
     this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout.setDraggableView(localFrameLayout);
     this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout.setOnDraggingListener(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout$OnDraggingListener);
     this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout.jdField_a_of_type_Int = (this.jdField_a_of_type_Int / 4);
@@ -187,13 +187,13 @@ public class PublicAccountAdvertisementActivity
   
   private void c()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout$OnDraggingListener = new ktq(this);
-    this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new ktu(this);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ktv(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout$OnDraggingListener = new ktb(this);
+    this.jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new ktf(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ktg(this);
     if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener = new ktz(this);
-      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnInterceptTouchListener = new kua(this);
+      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener = new ktk(this);
+      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnInterceptTouchListener = new ktl(this);
     }
   }
   
@@ -356,24 +356,24 @@ public class PublicAccountAdvertisementActivity
     while ((k != 0) && (k != 1)) {
       return;
     }
-    ThreadManager.getSubThreadHandler().postDelayed(new ktt(this), 300L);
+    ThreadManager.getSubThreadHandler().postDelayed(new kte(this), 300L);
   }
   
   void a()
   {
-    Dialog localDialog = new Dialog(this, 2131624515);
-    localDialog.setContentView(2130970286);
-    ((TextView)localDialog.findViewById(2131369910)).setVisibility(8);
-    TextView localTextView1 = (TextView)localDialog.findViewById(2131369911);
-    TextView localTextView2 = (TextView)localDialog.findViewById(2131369912);
-    TextView localTextView3 = (TextView)localDialog.findViewById(2131369913);
-    localTextView1.setText(2131438931);
+    Dialog localDialog = new Dialog(this, 2131624516);
+    localDialog.setContentView(2130970302);
+    ((TextView)localDialog.findViewById(2131369987)).setVisibility(8);
+    TextView localTextView1 = (TextView)localDialog.findViewById(2131369988);
+    TextView localTextView2 = (TextView)localDialog.findViewById(2131369989);
+    TextView localTextView3 = (TextView)localDialog.findViewById(2131369990);
+    localTextView1.setText(2131438959);
     localTextView1.setGravity(3);
-    localTextView2.setText(2131438932);
-    localTextView3.setText(2131438933);
+    localTextView2.setText(2131438960);
+    localTextView3.setText(2131438961);
     localDialog.setCanceledOnTouchOutside(false);
-    localTextView2.setOnClickListener(new kuc(this, localDialog));
-    localTextView3.setOnClickListener(new kud(this, localDialog));
+    localTextView2.setOnClickListener(new ktn(this, localDialog));
+    localTextView3.setOnClickListener(new kto(this, localDialog));
     try
     {
       localDialog.show();
@@ -439,19 +439,19 @@ public class PublicAccountAdvertisementActivity
   
   public void b(String paramString)
   {
-    Dialog localDialog = new Dialog(this, 2131624515);
-    localDialog.setContentView(2130970286);
-    ((TextView)localDialog.findViewById(2131369910)).setVisibility(8);
-    TextView localTextView1 = (TextView)localDialog.findViewById(2131369911);
-    TextView localTextView2 = (TextView)localDialog.findViewById(2131369912);
-    TextView localTextView3 = (TextView)localDialog.findViewById(2131369913);
+    Dialog localDialog = new Dialog(this, 2131624516);
+    localDialog.setContentView(2130970302);
+    ((TextView)localDialog.findViewById(2131369987)).setVisibility(8);
+    TextView localTextView1 = (TextView)localDialog.findViewById(2131369988);
+    TextView localTextView2 = (TextView)localDialog.findViewById(2131369989);
+    TextView localTextView3 = (TextView)localDialog.findViewById(2131369990);
     localTextView1.setText(paramString);
     localTextView1.setGravity(3);
-    localTextView2.setText(2131438939);
-    localTextView3.setText(2131438940);
+    localTextView2.setText(2131438967);
+    localTextView3.setText(2131438968);
     localDialog.setCanceledOnTouchOutside(false);
-    localTextView2.setOnClickListener(new kue(this, localDialog));
-    localTextView3.setOnClickListener(new ktr(this, localDialog));
+    localTextView2.setOnClickListener(new ktp(this, localDialog));
+    localTextView3.setOnClickListener(new ktc(this, localDialog));
     try
     {
       localDialog.show();
@@ -514,7 +514,7 @@ public class PublicAccountAdvertisementActivity
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
     super.a(paramBundle);
-    setContentView(2130969199);
+    setContentView(2130969200);
     overridePendingTransition(2131034221, 0);
     getWindow().addFlags(1024);
     getWindow().addFlags(128);
@@ -526,12 +526,12 @@ public class PublicAccountAdvertisementActivity
     paramBundle = super.getSupportFragmentManager().beginTransaction();
     if (this.jdField_b_of_type_Boolean)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView = ((VerticalPagerView)findViewById(2131365547));
+      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView = ((VerticalPagerView)findViewById(2131365574));
       this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView.setOnPagerChangedListener(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnPagerChangedListener);
       this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView.setOnInterceptTouchListener(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView$OnInterceptTouchListener);
       this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewVerticalPagerView.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131365570);
-      paramBundle.add(2131365548, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131365597);
+      paramBundle.add(2131365575, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment);
     }
     for (;;)
     {
@@ -542,7 +542,7 @@ public class PublicAccountAdvertisementActivity
       }
       getWindow().setFormat(-3);
       return true;
-      paramBundle.add(2131365546, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment);
+      paramBundle.add(2131365573, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment);
     }
   }
   
@@ -584,7 +584,7 @@ public class PublicAccountAdvertisementActivity
         this.jdField_a_of_type_AndroidMediaAudioManager.setStreamVolume(3, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment.jdField_a_of_type_Int, 0);
         this.j = true;
       }
-      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdControlView.b().setBackgroundResource(2130839655);
+      this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdControlView.b().setBackgroundResource(2130839661);
       VideoCoverFragment.jdField_c_of_type_Boolean = false;
       this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment.a();
       continue;
@@ -597,7 +597,7 @@ public class PublicAccountAdvertisementActivity
       }
       if (this.jdField_a_of_type_AndroidMediaAudioManager.getStreamVolume(3) <= 1)
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdControlView.b().setBackgroundResource(2130839654);
+        this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdControlView.b().setBackgroundResource(2130839660);
         VideoCoverFragment.jdField_c_of_type_Boolean = true;
         continue;
         if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdControlView != null) {
@@ -650,7 +650,7 @@ public class PublicAccountAdvertisementActivity
   
   public void finish()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout.a(this.jdField_a_of_type_Int / 2, this.jdField_e_of_type_Int / 2, 0, 0, 300, new kub(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewDragFrameLayout.a(this.jdField_a_of_type_Int / 2, this.jdField_e_of_type_Int / 2, 0, 0, 300, new ktm(this));
   }
   
   protected void onCreate(Bundle paramBundle)
@@ -715,7 +715,7 @@ public class PublicAccountAdvertisementActivity
     getWindow().setFeatureInt(7, 2130968865);
     try
     {
-      ((View)findViewById(2131364068).getParent()).setVisibility(8);
+      ((View)findViewById(2131364092).getParent()).setVisibility(8);
       label65:
       super.setContentView(paramInt);
       return;

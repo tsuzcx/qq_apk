@@ -1,17 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.CardObserver;
 
-class wqk
-  implements DialogInterface.OnClickListener
+public class wqk
+  extends CardObserver
 {
-  wqk(wqg paramwqg) {}
+  public wqk(MainAssistObserver paramMainAssistObserver) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void e(boolean paramBoolean)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.setText("");
+    if (paramBoolean) {
+      this.a.e();
+    }
+  }
+  
+  protected void m(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1) {
+      this.a.e();
     }
   }
 }

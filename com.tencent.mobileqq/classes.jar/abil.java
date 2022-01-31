@@ -1,45 +1,23 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.view.ViewGroup;
-import com.tencent.mobileqq.campuscircle.CampusCirclePublishActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity.LoadingTimeStamp;
 
-public class abil
-  implements Animator.AnimatorListener
+public final class abil
+  implements Parcelable.Creator
 {
-  public abil(CampusCirclePublishActivity paramCampusCirclePublishActivity) {}
-  
-  public void onAnimationCancel(Animator paramAnimator)
+  public ARMapLoadingActivity.LoadingTimeStamp a(Parcel paramParcel)
   {
-    CampusCirclePublishActivity.a(this.a);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("CampusCircle", 4, String.format(Locale.getDefault(), "onAnimationCancel %s", new Object[] { paramAnimator }));
-    }
+    return new ARMapLoadingActivity.LoadingTimeStamp(paramParcel);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public ARMapLoadingActivity.LoadingTimeStamp[] a(int paramInt)
   {
-    CampusCirclePublishActivity.a(this.a);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("CampusCircle", 4, String.format(Locale.getDefault(), "onAnimationEnd %s", new Object[] { paramAnimator }));
-    }
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    this.a.c.setVisibility(0);
-    this.a.b.setVisibility(0);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("CampusCircle", 4, String.format(Locale.getDefault(), "onAnimationStart %s", new Object[] { paramAnimator }));
-    }
+    return new ARMapLoadingActivity.LoadingTimeStamp[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abil
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,71 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderManagerImpl;
+import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable;
+import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
+import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.qphone.base.util.QLog;
 
 public class aagt
-  implements aagu
+  implements Runnable
 {
-  private aagt(ArkAppDeviceModule paramArkAppDeviceModule) {}
+  public aagt(AREngine paramAREngine, ArCloudConfigInfo paramArCloudConfigInfo, int paramInt1, int paramInt2, Object paramObject) {}
   
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public void run()
   {
-    if (!ArkAppModuleReg.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Long, "permission.CONNECTION_TYPE")) {
-      return false;
+    if ((this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo.a())) {
+      switch (this.jdField_a_of_type_Int)
+      {
+      }
     }
-    if (!AppNetConnInfo.isNetSupport()) {
-      paramVariantWrapper.SetString("none");
-    }
-    for (;;)
+    do
     {
-      return true;
-      if (AppNetConnInfo.isWifiConn())
+      do
       {
-        paramVariantWrapper.SetString("wifi");
-      }
-      else if (AppNetConnInfo.isMobileConn())
-      {
-        int i = AppNetConnInfo.getMobileInfo();
-        if (i == 0) {
-          paramVariantWrapper.SetString("none");
-        } else if (-1 == i) {
-          paramVariantWrapper.SetString("other");
-        } else {
-          paramVariantWrapper.SetString("cellular");
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                do
+                {
+                  return;
+                  this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.s();
+                  return;
+                  localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine;
+                  if (this.b == 1) {}
+                  for (boolean bool = true;; bool = false)
+                  {
+                    ((AREngine)localObject).f(bool);
+                    return;
+                  }
+                } while (this.b != 0);
+                AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo, this.jdField_a_of_type_JavaLangObject.toString());
+                return;
+              } while (!(AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) instanceof ARRenderManagerImpl));
+              localObject = (ARRenderManagerImpl)AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine);
+            } while ((((ARRenderManagerImpl)localObject).a == null) || (!(((ARRenderManagerImpl)localObject).a instanceof Interactive3DRenderable)));
+            localObject = (Interactive3DRenderable)((ARRenderManagerImpl)localObject).a;
+            Object[] arrayOfObject = (Object[])this.jdField_a_of_type_JavaLangObject;
+            ((Interactive3DRenderable)localObject).a(((Integer)arrayOfObject[0]).intValue(), ((Integer)arrayOfObject[1]).intValue(), (String)arrayOfObject[2]);
+            return;
+          } while (!(AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) instanceof ARRenderManagerImpl));
+          localObject = (ARRenderManagerImpl)AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine);
+        } while ((((ARRenderManagerImpl)localObject).a == null) || (!(((ARRenderManagerImpl)localObject).a instanceof Interactive3DRenderable)) || (this.jdField_a_of_type_JavaLangObject == null) || (!(this.jdField_a_of_type_JavaLangObject instanceof String)));
+        Object localObject = (Interactive3DRenderable)((ARRenderManagerImpl)localObject).a;
+        if (this.b == 0)
+        {
+          ((Interactive3DRenderable)localObject).a(this.jdField_a_of_type_JavaLangObject.toString());
+          return;
         }
-      }
-    }
+        ((Interactive3DRenderable)localObject).b(this.jdField_a_of_type_JavaLangObject.toString());
+        return;
+      } while (this.b != 1);
+      this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.g();
+      this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.g();
+    } while (!QLog.isColorLevel());
+    QLog.d("AREngine_AREngine", 2, "binhai_pause ar cloud");
   }
 }
 

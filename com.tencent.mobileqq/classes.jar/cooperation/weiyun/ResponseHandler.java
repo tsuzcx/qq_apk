@@ -1,10 +1,10 @@
 package cooperation.weiyun;
 
-import amqq;
-import amqr;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
+import angv;
+import angw;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 public class ResponseHandler
 {
   private static volatile int jdField_a_of_type_Int;
-  private static amqr jdField_a_of_type_Amqr = new amqr(Looper.getMainLooper());
+  private static angw jdField_a_of_type_Angw = new angw(Looper.getMainLooper());
   private static volatile String jdField_a_of_type_JavaLangString;
   private static volatile int jdField_b_of_type_Int;
   private static volatile String jdField_b_of_type_JavaLangString;
@@ -97,8 +97,8 @@ public class ResponseHandler
     {
       jdField_a_of_type_Int += 1;
       QLog.d("ResponseHandler", 2, "start count=" + jdField_a_of_type_Int);
-      jdField_a_of_type_Amqr.removeMessages(0);
-      jdField_a_of_type_Amqr.sendEmptyMessageDelayed(0, 60000L);
+      jdField_a_of_type_Angw.removeMessages(0);
+      jdField_a_of_type_Angw.sendEmptyMessageDelayed(0, 60000L);
       return;
     }
     finally
@@ -136,7 +136,7 @@ public class ResponseHandler
       if (paramInt2 != 1127) {
         break label55;
       }
-      str2 = paramQQAppInterface.getApp().getString(2131439377);
+      str2 = paramQQAppInterface.getApp().getString(2131439444);
       str1 = WeiyunHelper.a(paramQQAppInterface.getCurrentAccountUin(), "qq_aio_flow_open_vip");
       if (!TextUtils.isEmpty(str2)) {
         break label181;
@@ -148,32 +148,32 @@ public class ResponseHandler
       return;
       if (paramInt2 == 22000)
       {
-        str2 = paramQQAppInterface.getApp().getString(2131439378);
+        str2 = paramQQAppInterface.getApp().getString(2131439445);
         str1 = WeiyunHelper.a(paramQQAppInterface.getCurrentAccountUin(), "qq_aio_flow_open_vip");
         break;
       }
       if (paramInt2 == 1053)
       {
-        str2 = paramQQAppInterface.getApp().getString(2131439377);
+        str2 = paramQQAppInterface.getApp().getString(2131439444);
         str1 = WeiyunHelper.a(paramQQAppInterface.getCurrentAccountUin(), "qq_aio_capacity_open_vip");
         break;
       }
       if (paramInt2 == 22081)
       {
-        str2 = paramQQAppInterface.getApp().getString(2131439378);
+        str2 = paramQQAppInterface.getApp().getString(2131439445);
         str1 = WeiyunHelper.a(paramQQAppInterface.getCurrentAccountUin(), "qq_aio_capacity_open_vip");
         break;
       }
       if (paramInt2 != 22121) {
         break;
       }
-      str2 = paramQQAppInterface.getApp().getString(2131439379);
+      str2 = paramQQAppInterface.getApp().getString(2131439446);
       str1 = WeiyunHelper.c();
       break;
       paramInt2 = paramString3.indexOf(str2);
     } while (paramInt2 == -1);
     label181:
-    new Thread(new amqq(paramString1, paramString2, paramString3, paramInt1, str1, paramInt2, str2, paramQQAppInterface)).start();
+    new Thread(new angv(paramString1, paramString2, paramString3, paramInt1, str1, paramInt2, str2, paramQQAppInterface)).start();
   }
   
   public static void a(String paramString1, String paramString2, int paramInt)
@@ -238,14 +238,14 @@ public class ResponseHandler
         }
         if (jdField_a_of_type_Int == 0)
         {
-          jdField_a_of_type_Amqr.removeMessages(0);
+          jdField_a_of_type_Angw.removeMessages(0);
           return bool;
         }
         jdField_a_of_type_Int -= 1;
         QLog.d("ResponseHandler", 2, "end count=" + jdField_a_of_type_Int);
         if (jdField_a_of_type_Int <= 0)
         {
-          jdField_a_of_type_Amqr.removeMessages(0);
+          jdField_a_of_type_Angw.removeMessages(0);
           jdField_a_of_type_Int = 0;
         }
         else
@@ -267,10 +267,10 @@ public class ResponseHandler
   
   private static void b(QQAppInterface paramQQAppInterface)
   {
-    Message localMessage = jdField_a_of_type_Amqr.obtainMessage();
+    Message localMessage = jdField_a_of_type_Angw.obtainMessage();
     localMessage.what = 1;
     localMessage.obj = paramQQAppInterface;
-    jdField_a_of_type_Amqr.sendMessageDelayed(localMessage, 1000L);
+    jdField_a_of_type_Angw.sendMessageDelayed(localMessage, 1000L);
   }
   
   public static boolean b()

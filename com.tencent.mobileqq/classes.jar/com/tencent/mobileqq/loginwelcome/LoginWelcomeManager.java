@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.loginwelcome;
 
 import SecurityAccountServer.RecommendedContactInfo;
-import adpc;
-import adpd;
-import adpe;
-import adpf;
+import aeci;
+import aecj;
+import aeck;
+import aecl;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -55,10 +55,10 @@ public class LoginWelcomeManager
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new adpf(this);
+  private CardObserver jdField_a_of_type_ComTencentMobileqqAppCardObserver = new aecl(this);
   PhoneContactManagerImp jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp = null;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new adpd(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new aecj(this);
   private LoginWelcomeHandler jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeHandler;
   public NearbyCardObserver a;
   public String a;
@@ -70,7 +70,7 @@ public class LoginWelcomeManager
   
   public LoginWelcomeManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new adpc(this);
+    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardObserver = new aeci(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginWelcomeHandler = ((LoginWelcomeHandler)paramQQAppInterface.a(84));
   }
@@ -547,7 +547,7 @@ public class LoginWelcomeManager
   public void c(Bundle paramBundle)
   {
     String str = paramBundle.getString("uin");
-    PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), str, new adpe(this, paramBundle), true, 15);
+    PublicAccountUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), str, new aeck(this, paramBundle), true, 15);
   }
   
   public void d()
@@ -707,7 +707,7 @@ public class LoginWelcomeManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.LoginWelcomeManager
  * JD-Core Version:    0.7.0.1
  */

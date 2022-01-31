@@ -1,18 +1,24 @@
-import com.tencent.av.widget.stageview.StageEffectView;
+import com.tencent.biz.JoinGroupHandler.IJoinGroupCB;
+import com.tencent.biz.JoinGroupTransitActivity;
 
 public class kiw
-  implements Runnable
+  implements JoinGroupHandler.IJoinGroupCB
 {
-  public kiw(StageEffectView paramStageEffectView, String[] paramArrayOfString) {}
+  public kiw(JoinGroupTransitActivity paramJoinGroupTransitActivity) {}
   
-  public void run()
+  public void a()
   {
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
-    {
-      this.jdField_a_of_type_ComTencentAvWidgetStageviewStageEffectView.a(new String[] { this.jdField_a_of_type_ArrayOfJavaLangString[i] });
-      i += 1;
-    }
+    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(1);
+  }
+  
+  public void b()
+  {
+    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(2);
+  }
+  
+  public void c()
+  {
+    JoinGroupTransitActivity.a(this.a).sendEmptyMessage(3);
   }
 }
 

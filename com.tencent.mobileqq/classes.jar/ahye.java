@@ -1,53 +1,24 @@
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportHandler;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.teamwork.TeamWorkHttpUtils;
-import org.json.JSONObject;
+import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
 
 public class ahye
-  implements Runnable
+  extends Handler
 {
-  public ahye(TeamWorkFileImportHandler paramTeamWorkFileImportHandler, JSONObject paramJSONObject, TeamWorkFileImportInfo paramTeamWorkFileImportInfo) {}
-  
-  public void run()
+  public ahye(BaseShortVideoOprerator paramBaseShortVideoOprerator, Looper paramLooper)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler.b == null) {}
-    label141:
-    for (;;)
-    {
-      return;
-      Object localObject = TeamWorkHttpUtils.a(this.jdField_a_of_type_OrgJsonJSONObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler.b.getCurrentAccountUin());
-      if (localObject != null) {}
-      for (boolean bool = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler.b((String)localObject, this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);; bool = false)
-      {
-        if (bool) {
-          break label141;
-        }
-        if (FileUtil.b(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.c))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler.c(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-          localObject = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
-          ((TeamWorkFileImportInfo)localObject).a = false;
-          this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler.a((TeamWorkFileImportInfo)localObject);
-          return;
-        }
-        if (TeamWorkFileImportHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler) == null) {
-          break;
-        }
-        localObject = TeamWorkFileImportHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler).obtainMessage(8002);
-        ((Message)localObject).obj = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
-        TeamWorkFileImportHandler.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler).sendMessage((Message)localObject);
-        return;
-      }
-    }
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahye
  * JD-Core Version:    0.7.0.1
  */

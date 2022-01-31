@@ -33,16 +33,16 @@ public class NetSearchTemplateUniversalView
     super.a();
     View localView = a(this.jdField_b_of_type_Int);
     a(localView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131366365));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131366366));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366367));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131366368));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131366369));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366370));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366371));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)localView.findViewById(2131366372));
-    this.c = ((LinearLayout)localView.findViewById(2131366373));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131366374));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131366392));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131366393));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131366394));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131366395));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131366396));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366397));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131366398));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetSquareImageView = ((SquareImageView)localView.findViewById(2131366399));
+    this.c = ((LinearLayout)localView.findViewById(2131366400));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131366401));
   }
 }
 

@@ -1,28 +1,48 @@
-import android.os.Build;
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.ArNativeSoManager;
+import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes;
+import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.ARResourceDownloadCallback;
+import com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.DownloadInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class aacu
-  implements Runnable
+  implements ARPreSoResourceDownload.ARResourceDownloadCallback
 {
-  public aacu(ARReport paramARReport, long paramLong1, long paramLong2) {}
+  public aacu(ArNativeSoManager paramArNativeSoManager, ARCommonConfigInfo.NativeSoRes paramNativeSoRes) {}
   
-  public void run()
+  public void a()
   {
-    HashMap localHashMap = new HashMap();
-    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.jdField_a_of_type_Long)) {
-      localHashMap.put("total_render_all_time", String.valueOf(this.jdField_a_of_type_Long));
+    ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback = ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localARResourceDownloadCallback != null) {
+      localARResourceDownloadCallback.a();
     }
-    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.b)) {
-      localHashMap.put("total_render_success_time", String.valueOf(this.b));
+  }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback = ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    if (localARResourceDownloadCallback != null) {
+      localARResourceDownloadCallback.a(paramLong1, paramLong2);
     }
-    localHashMap.put("buildmodel", Build.MODEL);
-    localHashMap.put("cpuNumber", String.valueOf(ARReport.a()));
-    localHashMap.put("totalram", ARReport.a(BaseApplication.getContext()));
-    localHashMap.put("cpuname", this.jdField_a_of_type_ComTencentMobileqqArArengineARReport.a());
-    StatisticCollector.a(BaseApplication.getContext()).a("", "AndroidactARTotal", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+  }
+  
+  public void a(boolean paramBoolean, ARPreSoResourceDownload.DownloadInfo paramDownloadInfo)
+  {
+    QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes onARResourceDownloadComplete. result = " + paramBoolean + ", name = " + this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a + ", filename = " + paramDownloadInfo.c + ", url = " + paramDownloadInfo.a);
+    if (paramBoolean) {
+      if (!ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, paramDownloadInfo.c, paramDownloadInfo.b))
+      {
+        ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, paramDownloadInfo.c);
+        QLog.i("AREngine_ArNativeSoManager", 1, "downloadSoRes failed. checkFileValid failed.");
+      }
+    }
+    ARPreSoResourceDownload.ARResourceDownloadCallback localARResourceDownloadCallback;
+    do
+    {
+      return;
+      if (this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager.a(paramDownloadInfo.d, paramDownloadInfo.c, paramDownloadInfo.b) == 0) {}
+      localARResourceDownloadCallback = ArNativeSoManager.a(this.jdField_a_of_type_ComTencentMobileqqArArNativeSoManager, this.jdField_a_of_type_ComTencentMobileqqArAidlARCommonConfigInfo$NativeSoRes.a);
+    } while (localARResourceDownloadCallback == null);
+    localARResourceDownloadCallback.a(paramBoolean, paramDownloadInfo);
   }
 }
 

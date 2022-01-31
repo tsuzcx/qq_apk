@@ -1,38 +1,55 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.settings.FMSettingInterface.MoveFileCallback;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
 
 class adgi
-  implements Runnable
+  implements FMSettingInterface.MoveFileCallback
 {
-  adgi(adgf paramadgf) {}
+  adgi(adgh paramadgh) {}
   
-  public void run()
+  public void a()
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.a, 232, null, "腾讯视频插件加载失败", new adgj(this), null);
-    try
+    synchronized (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings)
     {
-      localQQCustomDialog.show();
+      FMSettings localFMSettings2 = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings;
+      localFMSettings2.jdField_a_of_type_Int += 1;
+      FMSettings.a(1, "onMovedOver,count[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
+      {
+        FMSettings.a(1, "moveFileToDefaultPath,move over!");
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettingInterface$MoveFileCallback.a();
+      }
       return;
     }
-    catch (Exception localException)
+  }
+  
+  public void a(int paramInt)
+  {
+    synchronized (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicManagerHotPicPageView", 2, "show dialog fail");
+      FMSettings localFMSettings2 = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings;
+      localFMSettings2.jdField_a_of_type_Int += 1;
+      FMSettings.a(1, "onMoveFail,count[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.jdField_a_of_type_Int + "],total[" + this.a.jdField_a_of_type_Int + "]");
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.jdField_a_of_type_Int == this.a.jdField_a_of_type_Int)
+      {
+        FMSettings.a(1, "moveFileToDefaultPath,move over!");
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettingInterface$MoveFileCallback.a(16);
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a == 1) {
-        this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a(0);
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
+      return;
     }
   }
+  
+  public void a(long paramLong1, long paramLong2)
+  {
+    FMSettings localFMSettings = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings;
+    localFMSettings.jdField_a_of_type_Long += paramLong1;
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettingInterface$MoveFileCallback.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.b);
+  }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adgi
  * JD-Core Version:    0.7.0.1
  */

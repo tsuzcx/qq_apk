@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.app.CardObserver;
-import dov.com.qq.im.capture.data.ComboLockManager;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import java.util.ArrayList;
 
 public class amvj
-  extends CardObserver
+  implements Runnable
 {
-  public amvj(ComboLockManager paramComboLockManager) {}
+  public amvj(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, int paramInt1, int paramInt2, ArrayList paramArrayList) {}
+  
+  public void run()
+  {
+    RemoteHandleManager.a().a().b(QzoneWebMusicJsPlugin.access$200(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaUtilArrayList);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amvj
  * JD-Core Version:    0.7.0.1
  */

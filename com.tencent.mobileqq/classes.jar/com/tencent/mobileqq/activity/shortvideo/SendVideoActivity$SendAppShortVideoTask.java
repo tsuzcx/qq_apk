@@ -19,7 +19,7 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import xzo;
+import ycv;
 
 public class SendVideoActivity$SendAppShortVideoTask
   extends AsyncTask
@@ -60,7 +60,7 @@ public class SendVideoActivity$SendAppShortVideoTask
   
   public static void b(Context paramContext, int paramInt)
   {
-    DialogUtil.a(paramContext, 232, null, paramContext.getString(paramInt), new xzo(paramContext), null).show();
+    DialogUtil.a(paramContext, 232, null, paramContext.getString(paramInt), new ycv(paramContext), null).show();
   }
   
   /* Error */
@@ -632,11 +632,11 @@ public class SendVideoActivity$SendAppShortVideoTask
         }
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
         return;
-        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624515);
+        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624516);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969181);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363381));
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399));
       }
       return;
     }
@@ -703,22 +703,22 @@ public class SendVideoActivity$SendAppShortVideoTask
       return;
     case 2: 
     case 6: 
-      b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437349);
+      b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437366);
       return;
     case 3: 
-      b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437356);
+      b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437373);
       return;
     case 4: 
-      b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437354);
+      b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437371);
       return;
     }
-    b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437357);
+    b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437374);
   }
   
   protected void onPreExecute()
   {
     super.onPreExecute();
-    a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131436128);
+    a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131436145);
   }
 }
 

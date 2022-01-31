@@ -1,60 +1,26 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.arengine.ARReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class aahy
-  implements INetInfoHandler
+  implements Runnable
 {
-  public aahy(ArkAppEventObserverManager paramArkAppEventObserverManager) {}
+  public aahy(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
   
-  public void onNetMobile2None()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetMobile2None mLastNetType=" + ArkAppEventObserverManager.a(this.a));
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
+    if (this.jdField_a_of_type_Boolean) {
+      localHashMap.put("result", "0");
     }
-    ArkAppCenter.a().post(new aaie(this));
-  }
-  
-  public void onNetMobile2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetMobile2Wifi mLastNetType=" + ArkAppEventObserverManager.a(this.a));
+    for (;;)
+    {
+      StatisticCollector.a(BaseApplication.getContext()).a("", "ARLocalMarkerRecoglinit", true, 0L, 0L, localHashMap, "");
+      return;
+      localHashMap.put("result", "1");
     }
-    ArkAppCenter.a().post(new aaid(this));
-  }
-  
-  public void onNetNone2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetNone2Mobile mLastNetType=" + ArkAppEventObserverManager.a(this.a));
-    }
-    ArkAppCenter.a().post(new aaic(this));
-  }
-  
-  public void onNetNone2Wifi(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetNone2Wifi mLastNetType=" + ArkAppEventObserverManager.a(this.a));
-    }
-    ArkAppCenter.a().post(new aaib(this));
-  }
-  
-  public void onNetWifi2Mobile(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetWifi2Mobile mLastNetType=" + ArkAppEventObserverManager.a(this.a));
-    }
-    ArkAppCenter.a().post(new aaia(this));
-  }
-  
-  public void onNetWifi2None()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArkAppEventObserverManager", 2, "onNetWifi2None mLastNetType=" + ArkAppEventObserverManager.a(this.a));
-    }
-    ArkAppCenter.a().post(new aahz(this));
   }
 }
 

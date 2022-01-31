@@ -13,7 +13,7 @@ public class TroopNotificationMsg
   
   public TroopNotificationMsg(Context paramContext)
   {
-    this.a = paramContext.getString(2131433490);
+    this.a = paramContext.getString(2131433507);
     this.jdField_b_of_type_JavaLangString = this.a;
   }
   

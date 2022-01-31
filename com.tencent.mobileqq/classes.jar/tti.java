@@ -1,65 +1,19 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Collections;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.SpaceLowNoticeActiviy;
 
 public class tti
-  implements Runnable
+  implements DialogInterface.OnKeyListener
 {
-  public tti(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public tti(SpaceLowNoticeActiviy paramSpaceLowNoticeActiviy) {}
   
-  public void run()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    try
-    {
-      List localList = this.a.a();
-      StringBuilder localStringBuilder = new StringBuilder().append("refreshTroopList -- data.size():");
-      int i;
-      if (localList == null) {
-        i = 0;
-      }
-      for (;;)
-      {
-        QLog.e("TroopAssistantActivity", 2, i);
-        if (QLog.isColorLevel())
-        {
-          localStringBuilder = new StringBuilder().append("data|size");
-          if (localList != null) {
-            break label118;
-          }
-          i = 0;
-          QLog.i("TroopAssistantActivity", 2, i);
-        }
-        try
-        {
-          Collections.sort(localList, this.a.a);
-          this.a.runOnUiThread(new ttj(this, localList));
-          return;
-          i = localList.size();
-          continue;
-          label118:
-          i = localList.size();
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("TroopAssistantActivity", 2, "Collections.sort error ..., msg: " + localException2.getMessage());
-            }
-          }
-        }
-      }
-      return;
+    if (paramInt == 4) {
+      this.a.finish();
     }
-    catch (Exception localException1)
-    {
-      ReportController.b(this.a.app, "P_CliOper", "BizTechReport", "", "troop_assistant", "load_data_failed", 0, 0, localException1.toString(), "", "", "");
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopAssistantActivity", 2, "refreshTroopList exception:" + localException1.toString());
-      }
-    }
+    return false;
   }
 }
 

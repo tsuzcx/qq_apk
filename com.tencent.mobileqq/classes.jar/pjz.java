@@ -1,9 +1,19 @@
-import java.util.concurrent.Callable;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.component.network.downloader.impl.strategy.QzoneResumeTransfer.CacheFileAttribute;
 
-public abstract class pjz
-  implements Callable
+public final class pjz
+  implements Parcelable.Creator
 {
-  public Object[] a;
+  public QzoneResumeTransfer.CacheFileAttribute a(Parcel paramParcel)
+  {
+    return new QzoneResumeTransfer.CacheFileAttribute(paramParcel);
+  }
+  
+  public QzoneResumeTransfer.CacheFileAttribute[] a(int paramInt)
+  {
+    return new QzoneResumeTransfer.CacheFileAttribute[paramInt];
+  }
 }
 
 

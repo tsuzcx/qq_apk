@@ -1,41 +1,18 @@
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
-import com.tencent.mobileqq.hotpic.VideoBaseItem.OnInnerStateChangeListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
+import com.tencent.mobileqq.filemanager.util.UniformDownloaderAppBabySdk;
 
-public class adim
-  implements TVK_IMediaPlayer.OnInfoListener
+class adim
+  implements Runnable
 {
-  public adim(VideoBaseItem paramVideoBaseItem) {}
+  adim(adil paramadil, String paramString, long paramLong1, long paramLong2) {}
   
-  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
+  public void run()
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBaseItem", 2, "video start buffering !");
-      }
-      if (VideoBaseItem.a(this.a) != null) {
-        VideoBaseItem.a(this.a).a(this.a.b, 0);
-      }
-      this.a.c = 6;
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoBaseItem", 2, "video end buffering !");
-      }
-    } while (VideoBaseItem.a(this.a) == null);
-    VideoBaseItem.a(this.a).a(this.a.b, 1);
-    return false;
+    UniformDownloaderAppBabySdk.a(this.jdField_a_of_type_Adil.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adim
  * JD-Core Version:    0.7.0.1
  */

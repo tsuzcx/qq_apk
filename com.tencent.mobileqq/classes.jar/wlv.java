@@ -1,19 +1,13 @@
-import android.view.animation.Animation;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
 
 public class wlv
-  extends AnimateUtils.AnimationAdapter
+  implements Runnable
 {
-  public wlv(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
+  public wlv(ContactsDeviceAdapter paramContactsDeviceAdapter) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a(true);
-    EmoticonGroupStoreFragment.a(this.a, false);
-    this.a.a.removeView(EmoticonGroupStoreFragment.a(this.a));
-    this.a.a.removeView(EmoticonGroupStoreFragment.b(this.a));
+    this.a.a = true;
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.open.appcommon.now.download.local;
 
-import akpk;
+import alfa;
 import android.app.Activity;
 import android.os.Handler;
 import android.os.Looper;
@@ -138,7 +138,7 @@ public class DownloadNativeApi
   
   public void a(Activity paramActivity, DownloadInfo paramDownloadInfo, DownloadTaskInfo paramDownloadTaskInfo)
   {
-    new Handler(Looper.getMainLooper()).post(new akpk(this, paramDownloadInfo, paramDownloadTaskInfo, paramActivity));
+    new Handler(Looper.getMainLooper()).post(new alfa(this, paramDownloadInfo, paramDownloadTaskInfo, paramActivity));
   }
   
   public void a(DownloadNativeApi.IDownloadObserver paramIDownloadObserver)

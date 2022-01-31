@@ -1,16 +1,13 @@
-import com.tencent.biz.anonymous.QQAnonymousDialog;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
 public class vxt
   implements Runnable
 {
-  public vxt(TroopChatPie paramTroopChatPie) {}
+  public vxt(PublicAccountChatPie paramPublicAccountChatPie) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.dismiss();
-    }
+    PublicAccountChatPie.b(this.a);
   }
 }
 

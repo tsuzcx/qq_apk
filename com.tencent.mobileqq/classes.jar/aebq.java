@@ -1,113 +1,61 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomTransActivity;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomUtils;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.lightReply.FacePicDectect;
+import com.tencent.mobileqq.lightReply.FacePicDectect.FaceDetectFinishedListener;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
+import com.tencent.ttpic.util.youtu.VideoPreviewFaceOutlineDetector;
 
 public class aebq
-  implements WerewolvesHandler.Callback
+  implements Runnable
 {
-  public aebq(GameRoomTransActivity paramGameRoomTransActivity, String paramString, int paramInt) {}
+  public aebq(FacePicDectect paramFacePicDectect, FacePicDectect.FaceDetectFinishedListener paramFaceDetectFinishedListener) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public void run()
   {
-    String str3 = null;
-    String str2;
-    if (paramRspBody.string_err_title.has())
+    try
     {
-      str2 = paramRspBody.string_err_title.get().toStringUtf8();
-      str1 = str2;
-      if (!TextUtils.isEmpty(str2)) {}
-    }
-    for (String str1 = null;; str1 = null)
-    {
-      str2 = str3;
-      if (paramRspBody.string_err_msg.has())
+      int j;
+      int i;
+      if (FacePicDectect.a() != null)
       {
-        str2 = paramRspBody.string_err_msg.get().toStringUtf8();
-        if (!TextUtils.isEmpty(str2)) {
-          break label562;
+        long l1 = System.currentTimeMillis();
+        FacePicDectect.a(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect).doTrack(FacePicDectect.a(), FacePicDectect.a(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect) / 1, FacePicDectect.b(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect) / 1);
+        FacePicDectect.a(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect).doFaceDetect(FacePicDectect.a(), FacePicDectect.a(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect) / 1, FacePicDectect.b(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect) / 1);
+        j = FacePicDectect.a(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect).getFaceCount();
+        FacePicDectect.a(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect).doTrack(FacePicDectect.a(), FacePicDectect.a(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect) / 1, FacePicDectect.b(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect) / 1);
+        if (QLog.isColorLevel()) {
+          QLog.i("faceDetectPLL", 2, "detect face temp count" + j);
         }
-        str2 = str3;
+        long l2 = System.currentTimeMillis();
+        if (QLog.isColorLevel()) {
+          QLog.d("FacePicDetect", 2, "detect time is" + (l2 - l1));
+        }
+        i = FacePicDectect.a(this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect).getFaceCount();
       }
-      label562:
       for (;;)
       {
+        i = Math.max(i, j);
         if (QLog.isColorLevel()) {
-          QLog.d("qqBaseActivity", 2, "onAcceptInvite invitedId = " + this.jdField_a_of_type_JavaLangString + " errorCode = " + paramInt + " ,errTitle = " + str1 + " ,errMsgFromServer = " + str2);
+          QLog.d("FacePicDetect", 2, "faceDetect faceCount = " + i);
         }
-        if ((paramInt == 1000) || (paramInt == 1001) || (paramInt == 1002) || (paramInt == 1003) || (paramInt == 1007)) {
-          this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = GameRoomUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2);
-        }
-        for (;;)
-        {
-          if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) {
-            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnDismissListener(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener);
-          }
-          return;
-          if ((paramInt == 1004) || (paramInt == 1006) || (paramInt == 1010) || (paramInt == 1013))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = GameRoomUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2);
-          }
-          else
-          {
-            if ((paramInt == 0) || (paramInt == 1005))
-            {
-              paramRspBody = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, GameRoomInviteActivity.class);
-              paramRspBody.putExtra("inviteId", this.jdField_a_of_type_JavaLangString);
-              paramRspBody.putExtra("roomNum", this.jdField_a_of_type_Int);
-              GameRoomInviteActivity.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.startActivity(paramRspBody);
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.finish();
-              return;
-            }
-            if (paramInt == 1008)
-            {
-              str3 = paramRspBody.string_invite_id.get().toStringUtf8();
-              GameRoomInviteActivity.jdField_a_of_type_JavaLangString = str3;
-              paramInt = this.jdField_a_of_type_Int;
-              if (paramRspBody.uint32_max_member_num.has()) {
-                paramInt = paramRspBody.uint32_max_member_num.get();
-              }
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = GameRoomUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2, str3, paramInt);
-            }
-            else if (paramInt == 1009)
-            {
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, 230);
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(str1);
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(str2);
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton("查看我的游戏", new aebr(this, paramRspBody));
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131432397, new aebs(this));
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
-            }
-            else
-            {
-              if (TextUtils.isEmpty(str2)) {
-                break;
-              }
-              this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = GameRoomUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, str1, str2);
-            }
-          }
-        }
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity, 1, "加入组队失败", 1).a();
-        this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomTransActivity.finish();
+        this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect$FaceDetectFinishedListener.a(i);
+        FacePicDectect.a(null);
         return;
+        QLog.e("FacePicDetect", 1, "rgbdata is null");
+        i = -1;
+        j = -1;
       }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("FacePicDetect", 1, "face detect failed", localException);
+      this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect$FaceDetectFinishedListener.a(-1);
+      FacePicDectect.a(null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aebq
  * JD-Core Version:    0.7.0.1
  */

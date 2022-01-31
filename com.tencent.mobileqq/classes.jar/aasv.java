@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import android.view.View;
+import android.view.View.OnLayoutChangeListener;
+import com.tencent.mobileqq.ark.ArkAiScrollBar;
 
-class aasv
-  implements DialogInterface.OnDismissListener
+public class aasv
+  implements View.OnLayoutChangeListener
 {
-  aasv(aasr paramaasr) {}
+  public aasv(ArkAiScrollBar paramArkAiScrollBar) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    ARMapActivity.a(this.a.a, null);
+    if (paramInt4 != paramInt8) {
+      this.a.e();
+    }
   }
 }
 

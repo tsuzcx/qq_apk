@@ -1,54 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.qwallet.report.VACDReportMgr;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
 
 public class xef
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public xef(VACDReportMgr paramVACDReportMgr, byte[] paramArrayOfByte) {}
+  public xef(GoldMsgAioState paramGoldMsgAioState) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    synchronized ()
-    {
-      try
-      {
-        while ((VACDReportMgr.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletReportVACDReportMgr).isEmpty()) && (VACDReportMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletReportVACDReportMgr).isEmpty())) {
-          VACDReportMgr.a().wait();
-        }
-        try
-        {
-          synchronized (this.jdField_a_of_type_ArrayOfByte)
-          {
-            this.jdField_a_of_type_ArrayOfByte.wait(2000L);
-          }
-          do
-          {
-            synchronized (VACDReportMgr.a())
-            {
-              VACDReportMgr.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletReportVACDReportMgr, 2);
-              if (VACDReportMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletReportVACDReportMgr))
-              {
-                VACDReportMgr.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletReportVACDReportMgr).post(this);
-                return;
-                localObject1 = finally;
-                throw localObject1;
-                localObject2 = finally;
-                throw localObject2;
-              }
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("VACDReport", 2, "WriteDBThread exit.");
-          return;
-        }
-        catch (Exception localException2)
-        {
-          break label61;
-        }
-      }
-      catch (Exception localException1) {}
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

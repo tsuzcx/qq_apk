@@ -1,18 +1,28 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.qwallet.SendHbActivity;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.CheckBox;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class wyj
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public wyj(SendHbActivity paramSendHbActivity) {}
+  public wyj(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (SendHbActivity.a(this.a)) && ((this.a.a & 0x40) > 0)) {
-      this.a.finish();
+    if (!this.a.b.isChecked())
+    {
+      if (this.a.a() > 0)
+      {
+        QQToast.a(this.a, this.a.getResources().getString(2131435920), 0).b(this.a.getResources().getDimensionPixelSize(2131558448));
+        return;
+      }
+      this.a.b.setChecked(true);
+      return;
     }
+    this.a.b.setChecked(false);
   }
 }
 

@@ -1,38 +1,32 @@
-import com.tencent.biz.qqstory.utils.PollWidgetUtils.OnSelectedChangedListener;
-import com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetElement;
-import com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetWrapper;
+import android.util.AndroidRuntimeException;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
+import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher;
 
 public class oms
-  implements PollWidgetUtils.OnSelectedChangedListener
+  implements View.OnClickListener
 {
-  public oms(PollWidgetUtils.WidgetWrapper paramWidgetWrapper) {}
+  public oms(StoryLocalPublishPart paramStoryLocalPublishPart) {}
   
-  public void a(PollWidgetUtils.WidgetElement paramWidgetElement, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    int i = 0;
-    if (paramBoolean)
+    SLog.d("story.publish.StoryLocalPublishPart", "onClick %s", new Object[] { paramView });
+    switch (paramView.getId())
     {
-      PollWidgetUtils.WidgetElement[] arrayOfWidgetElement = this.a.a();
-      j = arrayOfWidgetElement.length;
-      i = 0;
-      while (i < j)
-      {
-        PollWidgetUtils.WidgetElement localWidgetElement = arrayOfWidgetElement[i];
-        if (localWidgetElement != paramWidgetElement) {
-          localWidgetElement.b(false);
-        }
-        i += 1;
-      }
+    default: 
+      return;
     }
-    paramWidgetElement = this.a.a();
-    int j = paramWidgetElement.length;
-    for (;;)
+    StoryReportor.a("video_edit", "clk_local", 0, 0, new String[0]);
+    paramView = StoryPublishLauncher.a();
+    if (paramView.a())
     {
-      if ((i >= j) || (paramWidgetElement[i].a())) {
-        return;
-      }
-      i += 1;
+      paramView.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryEffectsCameraCaptureFragment, this.a.a(), this.a.jdField_a_of_type_Int);
+      return;
     }
+    throw new AndroidRuntimeException("StoryPublishLauncher is not support");
   }
 }
 

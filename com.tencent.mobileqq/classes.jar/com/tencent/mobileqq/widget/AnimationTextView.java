@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import akeh;
+import akso;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -34,7 +34,7 @@ public class AnimationTextView
   private Drawable[] jdField_a_of_type_ArrayOfAndroidGraphicsDrawableDrawable;
   public float b;
   private MotionEvent jdField_b_of_type_AndroidViewMotionEvent;
-  Runnable jdField_b_of_type_JavaLangRunnable = new akeh(this);
+  Runnable jdField_b_of_type_JavaLangRunnable = new akso(this);
   private boolean jdField_b_of_type_Boolean;
   public boolean j = true;
   public boolean k;
@@ -123,7 +123,7 @@ public class AnimationTextView
         }
         localObject = getResources();
         if (bool) {}
-        for (i = 2130845657;; i = 2130845493)
+        for (i = 2130845785;; i = 2130845621)
         {
           localBubbleInfo.a(this, ((Resources)localObject).getDrawable(i));
           return;
@@ -331,7 +331,7 @@ public class AnimationTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AnimationTextView
  * JD-Core Version:    0.7.0.1
  */

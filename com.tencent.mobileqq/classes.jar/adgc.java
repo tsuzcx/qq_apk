@@ -1,21 +1,25 @@
-import android.support.v7.widget.StaggeredGridLayoutManager.ExceptionListener;
-import android.view.View;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
 
 public class adgc
-  implements StaggeredGridLayoutManager.ExceptionListener
+  implements CUKingCardHelper.CUKingDialogListener
 {
-  public adgc(HotPicPageView paramHotPicPageView) {}
+  public adgc(FileModel paramFileModel, FMDialogUtil.FMDialogInterface paramFMDialogInterface) {}
   
-  public void onGetPositionErr(View paramView, boolean paramBoolean, int paramInt, Exception paramException)
+  public void callback(int paramInt)
   {
-    QLog.e("HotPicManagerHotPicPageView", 1, "onGetPositionErr 1  final p:" + paramInt + " rescue:" + paramBoolean + " v:" + paramView + " error: " + paramException);
+    if ((paramInt == 1) || (paramInt == 2))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface.a();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adgc
  * JD-Core Version:    0.7.0.1
  */

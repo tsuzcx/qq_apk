@@ -1,15 +1,13 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.MusicFileViewer;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager;
 
-public class acvw
+public final class acvw
   implements Runnable
 {
-  public acvw(MusicFileViewer paramMusicFileViewer, String paramString) {}
+  public acvw(int paramInt) {}
   
   public void run()
   {
-    MusicFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer).setText(FileManagerUtil.a(this.jdField_a_of_type_JavaLangString, false, MusicFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer).getMeasuredWidth(), MusicFileViewer.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerMusicFileViewer).getPaint(), 2));
+    FileVideoManager.b(this.a);
   }
 }
 

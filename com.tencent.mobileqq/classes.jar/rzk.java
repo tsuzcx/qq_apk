@@ -1,16 +1,22 @@
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troop.widget.ExpandableTextView.OnExpandStateListener;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class rzk
-  implements ExpandableTextView.OnExpandStateListener
+  implements View.OnClickListener
 {
-  public rzk(ChatSettingForTroop paramChatSettingForTroop) {}
+  public rzk(ChatHistory paramChatHistory) {}
   
-  public void a(TextView paramTextView, View paramView, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    paramView.setVisibility(8);
+    long l = System.currentTimeMillis();
+    if (l - this.a.b > 1000L)
+    {
+      this.a.b = l;
+      this.a.b();
+      ReportController.b(this.a.app, "CliOper", "", "", "0X800568D", "0X800568D", this.a.k, 0, "", "", "", "");
+    }
   }
 }
 

@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.aio.doodle.MyParcel;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ups
+  implements Runnable
 {
-  public int a;
-  public byte[] a;
+  public ups(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
   
-  public ups(MyParcel paramMyParcel)
+  public void run()
   {
-    this.jdField_a_of_type_Int = 0;
+    this.a.b();
+    QQToast.a(this.a.a, this.a.a.getString(2131433385), 0).a();
   }
 }
 

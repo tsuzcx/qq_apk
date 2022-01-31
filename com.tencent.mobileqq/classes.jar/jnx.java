@@ -1,38 +1,24 @@
-import com.tencent.av.service.IQQServiceLocationCallback;
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import java.lang.ref.WeakReference;
+import android.widget.TextView;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.smallscreen.PstnSmallScreenService;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class jnx
-  implements ConditionSearchManager.IConfigListener
+  implements Runnable
 {
-  private WeakReference a;
-  private WeakReference b;
-  private WeakReference c;
+  public jnx(PstnSmallScreenService paramPstnSmallScreenService) {}
   
-  public jnx(jnz paramjnz, ConditionSearchManager paramConditionSearchManager, IQQServiceLocationCallback paramIQQServiceLocationCallback)
+  public void run()
   {
-    this.a = new WeakReference(paramjnz);
-    this.b = new WeakReference(paramConditionSearchManager);
-    this.c = new WeakReference(paramIQQServiceLocationCallback);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    Object localObject = (ConditionSearchManager)this.b.get();
-    if (localObject != null) {
-      ((ConditionSearchManager)localObject).d(this);
+    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131429565);
     }
-    localObject = (jnz)this.a.get();
-    IQQServiceLocationCallback localIQQServiceLocationCallback = (IQQServiceLocationCallback)this.c.get();
-    if ((localObject != null) && (localIQQServiceLocationCallback != null)) {
-      ((jnz)localObject).a(paramBoolean, localIQQServiceLocationCallback);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b = 2;
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(true);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(true);
     }
-  }
-  
-  public void a(IQQServiceLocationCallback paramIQQServiceLocationCallback)
-  {
-    this.c = new WeakReference(paramIQQServiceLocationCallback);
   }
 }
 

@@ -1,15 +1,12 @@
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class mxa
-  implements Runnable
+public final class mxa
+  implements DialogInterface.OnClickListener
 {
-  mxa(mwx parammwx) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (PublicAccountImageCollectionMainActivity.a(this.a.a) != null) {
-      PublicAccountImageCollectionMainActivity.a(this.a.a).a(PublicAccountImageCollectionMainActivity.d(this.a.a));
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

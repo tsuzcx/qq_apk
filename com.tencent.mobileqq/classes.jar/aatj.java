@@ -1,13 +1,12 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
+import java.util.ArrayList;
 
 public class aatj
-  implements DialogInterface.OnDismissListener
 {
-  public aatj(ARMapActivity paramARMapActivity) {}
-  
-  public void onDismiss(DialogInterface paramDialogInterface) {}
+  public ArkAppCGI.ArkAppCGICallback a;
+  public Object a;
+  public final ArrayList a = new ArrayList();
+  public final ArrayList b = new ArrayList();
 }
 
 

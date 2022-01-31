@@ -13,7 +13,7 @@ import android.widget.Scroller;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.BaseApplication;
-import usf;
+import uvh;
 
 public class ClickedWaveView
   extends ImageView
@@ -24,7 +24,7 @@ public class ClickedWaveView
   private Bundle jdField_a_of_type_AndroidOsBundle;
   public Scroller a;
   ClickedWaveView.OnTouchReceive jdField_a_of_type_ComTencentMobileqqActivityAioItemClickedWaveView$OnTouchReceive = null;
-  usf jdField_a_of_type_Usf = new usf(this);
+  uvh jdField_a_of_type_Uvh = new uvh(this);
   public int c = 20;
   public int d = 0;
   
@@ -81,7 +81,7 @@ public class ClickedWaveView
       this.c = jdField_a_of_type_Int;
       this.d = 30;
       PokeItemHelper.a(this, this.jdField_a_of_type_AndroidOsBundle.getInt("type"), this.jdField_a_of_type_AndroidOsBundle.getInt("id"));
-      postDelayed(this.jdField_a_of_type_Usf, 20L);
+      postDelayed(this.jdField_a_of_type_Uvh, 20L);
       return true;
       setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
       if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) && ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof CustomFrameAnimationDrawable))) {

@@ -1,16 +1,24 @@
-class ajjn
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
+import com.tencent.mobileqq.troop.homework.recite.ui.VolumeVisualizerView;
+
+public class ajjn
   implements Runnable
 {
-  ajjn(ajjm paramajjm, boolean paramBoolean, String paramString) {}
+  public ajjn(ReciteRecordLayout paramReciteRecordLayout, int paramInt) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ajjm.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
+    if (!this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.jdField_a_of_type_AndroidWidgetTextView.setText(2131431556);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteRecordLayout.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiVolumeVisualizerView.a(AudioPanel.a(this.jdField_a_of_type_Int) / 1180);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajjn
  * JD-Core Version:    0.7.0.1
  */

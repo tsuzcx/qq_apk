@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.presenter;
 
-import ahgh;
+import ahuj;
 import android.content.res.Resources;
 import android.text.TextUtils;
 import android.view.View;
@@ -29,7 +29,7 @@ public class SearchResultGroupFooterViewPresenter
       }
       paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
       paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetTextView.setText(paramIModel.a);
-      paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new ahgh(this, paramIModel));
+      paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(new ahuj(this, paramIModel));
       bool = ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime());
       localResources = paramISearchResultGroupView.a().getResources();
       if (TextUtils.isEmpty(paramIModel.b)) {
@@ -38,33 +38,33 @@ public class SearchResultGroupFooterViewPresenter
       if (!bool) {
         break label135;
       }
-      paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130838576);
+      paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130838580);
     }
     for (;;)
     {
       if (!bool) {
         break label193;
       }
-      paramISearchResultGroupView.jdField_a_of_type_AndroidViewView.setBackgroundColor(localResources.getColor(2131492949));
+      paramISearchResultGroupView.jdField_a_of_type_AndroidViewView.setBackgroundColor(localResources.getColor(2131492950));
       return;
       label123:
       paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       break;
       label135:
-      paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130838575);
+      paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130838579);
     }
     label147:
     if (bool) {
-      paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(localResources.getColor(2131492947));
+      paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(localResources.getColor(2131492948));
     }
     for (;;)
     {
       paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setEnabled(false);
       break;
-      paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(localResources.getColor(2131492968));
+      paramISearchResultGroupView.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(localResources.getColor(2131492969));
     }
     label193:
-    paramISearchResultGroupView.jdField_a_of_type_AndroidViewView.setBackgroundColor(localResources.getColor(2131492948));
+    paramISearchResultGroupView.jdField_a_of_type_AndroidViewView.setBackgroundColor(localResources.getColor(2131492949));
   }
 }
 

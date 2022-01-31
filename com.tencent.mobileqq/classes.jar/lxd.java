@@ -1,26 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.skin.SkinGifImageDownloader;
-import com.tencent.image.NativeGifImage;
-import java.io.File;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
 
 public class lxd
-  extends NativeGifImage
+  implements Runnable
 {
-  public lxd(SkinGifImageDownloader paramSkinGifImageDownloader, File paramFile, boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2, float paramFloat)
-  {
-    super(paramFile, paramBoolean1, paramBoolean2, paramInt1, paramInt2, paramFloat);
-  }
+  public lxd(ReadInJoySkinManager paramReadInJoySkinManager, int paramInt, String paramString) {}
   
-  protected void executeNewTask()
+  public void run()
   {
-    if (this.mCurrentLoop == 1) {
-      return;
-    }
-    super.executeNewTask();
-  }
-  
-  public void reset()
-  {
-    super.reset();
+    ReadInJoySkinManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoySkinManager, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emoticonview;
 
-import abzh;
-import abzj;
-import abzl;
-import abzm;
+import acgj;
+import acgl;
+import acgn;
+import acgo;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -73,7 +73,7 @@ public class PicEmoticonInfo
     {
       paramString = BaseApplication.getContext().getResources();
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130837572);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130841313);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130841350);
       return;
     }
     catch (Exception paramString)
@@ -103,8 +103,8 @@ public class PicEmoticonInfo
     try
     {
       Resources localResources = BaseApplication.getContext().getResources();
-      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = localResources.getDrawable(2130843835);
-      this.d = localResources.getDrawable(2130843836);
+      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = localResources.getDrawable(2130843959);
+      this.d = localResources.getDrawable(2130843960);
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_c_of_type_AndroidGraphicsDrawableDrawable;
       this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = this.d;
       return;
@@ -189,7 +189,7 @@ public class PicEmoticonInfo
   
   private static void b(Context paramContext, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, Emoticon paramEmoticon)
   {
-    ThreadManager.post(new abzm(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon), 5, null, true);
+    ThreadManager.post(new acgo(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon), 5, null, true);
   }
   
   public static void b(URLDrawable paramURLDrawable)
@@ -241,7 +241,7 @@ public class PicEmoticonInfo
   {
     EmojiManager localEmojiManager = (EmojiManager)paramQQAppInterface.getManager(42);
     ReportController.b(paramQQAppInterface, "CliOper", "", "", "MbFasong", "MbIDDianji", 0, 0, paramEmoticon.epId, "", "", "");
-    ((EmoticonManager)paramQQAppInterface.getManager(13)).a(paramEmoticon.epId, -1, new abzj(paramContext, paramQQAppInterface, paramEmoticon, localEmojiManager, paramSessionInfo, paramStickerInfo));
+    ((EmoticonManager)paramQQAppInterface.getManager(13)).a(paramEmoticon.epId, -1, new acgl(paramContext, paramQQAppInterface, paramEmoticon, localEmojiManager, paramSessionInfo, paramStickerInfo));
   }
   
   private static void e(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, Emoticon paramEmoticon, EmojiStickerManager.StickerInfo paramStickerInfo)
@@ -252,7 +252,7 @@ public class PicEmoticonInfo
     }
     ReportController.b(paramQQAppInterface, "CliOper", "", "", "ep_mall", "0X800579D", 0, 0, paramEmoticon.epId, "", "", "");
     localObject = (EmojiManager)paramQQAppInterface.getManager(42);
-    ((EmoticonManager)paramQQAppInterface.getManager(13)).a(paramEmoticon.epId, 0, new abzl(paramContext, paramQQAppInterface, paramEmoticon, (EmojiManager)localObject, paramSessionInfo));
+    ((EmoticonManager)paramQQAppInterface.getManager(13)).a(paramEmoticon.epId, 0, new acgn(paramContext, paramQQAppInterface, paramEmoticon, (EmojiManager)localObject, paramSessionInfo));
     c(paramQQAppInterface, paramContext, paramSessionInfo, paramEmoticon, paramStickerInfo);
   }
   
@@ -617,7 +617,7 @@ public class PicEmoticonInfo
         if (paramEditText.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, Boolean.valueOf(false))) {
           break;
         }
-        ChatActivityUtils.a(paramContext, 2131436290, 0);
+        ChatActivityUtils.a(paramContext, 2131436307, 0);
         paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
       } while (paramQQAppInterface == null);
       paramQQAppInterface.obtainMessage(10).sendToTarget();
@@ -628,7 +628,7 @@ public class PicEmoticonInfo
         QLog.d("PicEmoticonInfo", 2, "forward,【maxInt:】" + i);
       }
       i = PngFrameUtil.a(i);
-      ((EmoticonManager)paramQQAppInterface.getManager(13)).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, new abzh(this, paramQQAppInterface, i, paramContext, paramSessionInfo));
+      ((EmoticonManager)paramQQAppInterface.getManager(13)).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, new acgj(this, paramQQAppInterface, i, paramContext, paramSessionInfo));
       return;
       if ((this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.jobType == 4) && (paramBoolean) && (((paramContext instanceof SplashActivity)) || ((paramContext instanceof ChatActivity))))
       {
@@ -652,7 +652,7 @@ public class PicEmoticonInfo
           QLog.d("PicEmoticonInfo", 2, "forward not support h5magic");
         }
       }
-      ChatActivityUtils.a(paramContext, 2131436290, 0);
+      ChatActivityUtils.a(paramContext, 2131436307, 0);
       paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
     } while (paramQQAppInterface == null);
     paramQQAppInterface.obtainMessage(10).sendToTarget();

@@ -1,14 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
+import com.tencent.mobileqq.apollo.store.ApolloGuestsPresenter;
+import com.tencent.mobileqq.apollo.store.ApolloResDownloader.OnApolloDownLoadListener;
+import com.tencent.mobileqq.apollo.store.IApolloGuestsView;
+import com.tencent.qphone.base.util.QLog;
 
-class yth
-  implements Runnable
+public class yth
+  implements ApolloResDownloader.OnApolloDownLoadListener
 {
-  yth(ytg paramytg, Bundle paramBundle) {}
+  public yth(ApolloGuestsPresenter paramApolloGuestsPresenter) {}
   
-  public void run()
+  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    ApolloGameUtil.a(this.jdField_a_of_type_Ytg.a, this.jdField_a_of_type_AndroidOsBundle);
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloGuestsPresenter", 2, "res download sucess roleId=" + paramInt1 + "dressIds=" + paramArrayOfInt);
+      }
+      if (ApolloGuestsPresenter.a(this.a) != null) {
+        ApolloGuestsPresenter.a(this.a).e();
+      }
+      this.a.c();
+    }
   }
 }
 

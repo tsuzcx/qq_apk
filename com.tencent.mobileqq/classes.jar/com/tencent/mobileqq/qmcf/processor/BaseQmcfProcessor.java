@@ -119,7 +119,7 @@ public class BaseQmcfProcessor
     if (SLog.a()) {
       SLog.d(this.c, String.format("initProcessor, Inited[%s], Destroyed[%s], ModeChange[%s], qmcfMode[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.jdField_b_of_type_Boolean), Boolean.valueOf(jdField_a_of_type_ComTencentMobileqqQmcfQmcfManager.c), Integer.valueOf(i) }));
     }
-    if (QmcfManager.a().a(i)) {}
+    if (QmcfManager.a().a(i, true)) {}
     for (;;)
     {
       try

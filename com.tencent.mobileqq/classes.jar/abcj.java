@@ -1,27 +1,18 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager;
-import com.tencent.mobileqq.util.DynamicFaceDrawable;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.armap.CameraSurfaceView;
 
 public class abcj
   implements Runnable
 {
-  public abcj(DynamicAvatarManager paramDynamicAvatarManager) {}
+  public abcj(CameraSurfaceView paramCameraSurfaceView) {}
   
   public void run()
   {
-    synchronized (DynamicFaceDrawable.a)
-    {
-      DynamicFaceDrawable.b = false;
-      ThreadManager.getUIHandler().post(new abck(this));
-      this.a.c();
-      return;
-    }
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abcj
  * JD-Core Version:    0.7.0.1
  */

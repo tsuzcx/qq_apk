@@ -1,15 +1,10 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayBasePanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class aepe
-  implements Runnable
+public final class aepe
+  implements DialogInterface.OnClickListener
 {
-  aepe(aepd paramaepd) {}
-  
-  public void run()
-  {
-    NearbyPeopleProfileActivity.a(this.a.a).i();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

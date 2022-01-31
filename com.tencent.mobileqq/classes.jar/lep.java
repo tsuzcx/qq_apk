@@ -1,18 +1,33 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.mobileqq.widget.BounceScrollView.DrawFinishedListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.Switch;
 
 public class lep
-  implements BounceScrollView.DrawFinishedListener
+  implements DialogInterface.OnKeyListener
 {
-  public lep(ReadInJoySelfActivity paramReadInJoySelfActivity) {}
+  public lep(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void a()
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (ReadInJoySelfActivity.a(this.a))
+    boolean bool = true;
+    if (paramInt == 4)
     {
-      ReadInJoySelfActivity.a(this.a, false);
-      PublicTracker.a("self_tab_cost", null);
+      ReadInJoySettingActivity.a(this.a, true);
+      paramDialogInterface = ReadInJoySettingActivity.a(this.a);
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label53;
+      }
+    }
+    for (;;)
+    {
+      paramDialogInterface.setChecked(bool);
+      ReadInJoySettingActivity.a(this.a).cancel();
+      return false;
+      label53:
+      bool = false;
     }
   }
 }

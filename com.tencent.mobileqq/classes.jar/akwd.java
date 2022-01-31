@@ -1,21 +1,23 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.qidian.QidianManager;
-import com.tencent.qidian.data.BmqqAccountType;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.ui.CustomMenuBar.OnMenuItemClickListener;
+import com.tencent.mobileqq.widget.PublicMenuBar;
 
 public class akwd
-  implements Runnable
+  implements View.OnClickListener
 {
-  public akwd(QidianManager paramQidianManager, String paramString) {}
+  public akwd(PublicMenuBar paramPublicMenuBar, String paramString, int paramInt) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentQidianQidianManager.b(this.jdField_a_of_type_ComTencentQidianQidianManager.a.getApp().getBaseContext(), new BmqqAccountType(this.jdField_a_of_type_JavaLangString, 1));
+    if (PublicMenuBar.a(this.jdField_a_of_type_ComTencentMobileqqWidgetPublicMenuBar) != null) {
+      PublicMenuBar.b(this.jdField_a_of_type_ComTencentMobileqqWidgetPublicMenuBar).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akwd
  * JD-Core Version:    0.7.0.1
  */

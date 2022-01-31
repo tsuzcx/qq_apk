@@ -1,37 +1,27 @@
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class tka
-  extends DownloadListener
+  implements View.OnClickListener
 {
-  public tka(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
+  public tka(QQMapActivity paramQQMapActivity) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onClick(View paramView)
   {
-    super.onDone(paramDownloadTask);
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "onDone status: " + paramDownloadTask.e + ", url: " + paramDownloadTask.a);
-    }
-    int i = paramDownloadTask.a.indexOf("?");
-    String str;
-    if (i == -1)
+    if (this.a.l)
     {
-      str = paramDownloadTask.a;
-      if (!"http://imgcache.qq.com/qqshow/admindata/comdata/chatHistoryEvent/xydata.json".contains(str)) {
-        break label104;
-      }
-      QQSettingMsgHistoryActivity.a(this.a, paramDownloadTask);
-    }
-    label104:
-    while (!QLog.isColorLevel())
-    {
+      this.a.w();
       return;
-      str = paramDownloadTask.a.substring(0, i - 1);
-      break;
     }
-    QLog.e("IphoneTitleBarActivity", 2, "onDone unkonw url: " + paramDownloadTask.a);
+    if ("group_activity".equals(this.a.o))
+    {
+      this.a.k();
+      return;
+    }
+    this.a.setResult(-1, this.a.a());
+    this.a.finish();
+    this.a.d();
   }
 }
 

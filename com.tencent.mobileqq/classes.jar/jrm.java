@@ -1,32 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import android.telephony.TelephonyManager;
-import com.tencent.av.ui.CallbackWaitingActivity;
-import com.tencent.mobileqq.utils.AudioUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class jrm
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public jrm(CallbackWaitingActivity paramCallbackWaitingActivity) {}
+  public jrm(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramIntent.getAction().equals("android.intent.action.NEW_OUTGOING_CALL")) {
-      return;
-    }
-    switch (((TelephonyManager)paramContext.getSystemService("phone")).getCallState())
-    {
-    default: 
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d(CallbackWaitingActivity.a(), 2, "state is TelephonyManager.CALL_STATE_RINGING");
-    }
-    AudioUtil.a();
-    CallbackWaitingActivity.a(this.a).sendEmptyMessageDelayed(10, 2000L);
+    paramDialogInterface.dismiss();
+    ReportController.b(this.a.app, "CliOper", "", "", "0X80063FA", "0X80063FA", 5, 0, "", "", "", "");
   }
 }
 

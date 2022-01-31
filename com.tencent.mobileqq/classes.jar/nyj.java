@@ -1,16 +1,21 @@
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStepExector.ErrorHandler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader;
+import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.ArrayList;
+import java.util.List;
 
 public class nyj
-  implements SimpleStepExector.ErrorHandler
+  extends JobSegment
 {
-  public nyj(StoryListPresenter paramStoryListPresenter) {}
+  private int jdField_a_of_type_Int;
+  private CommentListPageLoader jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader;
+  private List jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public void a(ErrorMessage paramErrorMessage)
+  protected void a(JobContext paramJobContext, FeedCommentSync paramFeedCommentSync)
   {
-    SLog.e("Q.qqstory.home.StoryListPresenter", "step %s error occur when requestAllDataFromNet error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader = new CommentListPageLoader(paramFeedCommentSync, new nyk(this, paramJobContext, paramFeedCommentSync));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader.c();
   }
 }
 

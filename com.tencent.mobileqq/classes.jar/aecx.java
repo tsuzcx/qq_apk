@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager.TimerTaskRunnable;
+import com.tencent.mobileqq.lyric.widget.LyricViewController;
 
-class aecx
-  implements Runnable
+public class aecx
+  extends TimerTaskManager.TimerTaskRunnable
 {
-  aecx(aecv paramaecv, boolean paramBoolean, int paramInt, ArrayList paramArrayList) {}
+  public aecx(LyricViewController paramLyricViewController) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_Aecv.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
+    if (!a()) {
+      LyricViewController.a(this.a);
+    }
   }
 }
 

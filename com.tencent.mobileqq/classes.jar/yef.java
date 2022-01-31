@@ -1,20 +1,36 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.adapter.LebaListMgrAdapter.ViewHolder;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class yef
-  implements Runnable
+public class yef
+  extends BroadcastReceiver
 {
-  yef(yee paramyee, Bitmap paramBitmap) {}
+  public yef(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Yee.a.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    paramContext = paramIntent.getAction();
+    if ("android.intent.action.SCREEN_OFF".equals(paramContext))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ShortVideoPreviewActivity", 2, "ACTION_SCREEN_OFF == >>");
+      }
+      this.a.d();
+    }
+    while (!"tencent.av.v2q.StartVideoChat".equals(paramContext)) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "ACTION_START_VIDEO_CHAT == >>");
+    }
+    this.a.d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yef
  * JD-Core Version:    0.7.0.1
  */

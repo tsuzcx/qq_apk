@@ -1,6 +1,5 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import andh;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,6 +9,7 @@ import android.util.SparseArray;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import antm;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import dov.com.tencent.biz.qqstory.takevideo.filter.FilterData;
 import dov.com.tencent.biz.qqstory.takevideo.filter.FilterData.FilterPageItem;
@@ -139,7 +139,7 @@ public class EditVideoFilter$FilterPagerAdapter
         localObject2 = localFilterData.a(this.jdField_a_of_type_AndroidContentContext, paramViewGroup);
       }
       paramViewGroup.addView(((FilterData.FilterPageItem)localObject2).jdField_a_of_type_AndroidViewView);
-      ((FilterData.FilterPageItem)localObject2).jdField_a_of_type_AndroidViewView.setOnTouchListener(new andh(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener));
+      ((FilterData.FilterPageItem)localObject2).jdField_a_of_type_AndroidViewView.setOnTouchListener(new antm(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoFilter$ItemViewGestureListener));
       ((FilterData.FilterPageItem)localObject2).a(localFilterData, paramInt);
       this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localObject2);
       return localObject2;

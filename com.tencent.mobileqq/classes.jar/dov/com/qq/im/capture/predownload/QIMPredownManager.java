@@ -451,7 +451,7 @@ public class QIMPredownManager
       ((QIMReadWriteReportItem)localObject2).d = "0X80090DF";
       ((QIMReadWriteReportItem)localObject2).f = String.valueOf(m);
       ((QIMReadWriteReportItem)localObject2).h = ((String)localObject1);
-      ((QIMReadWriteReportItem)localObject2).i = String.valueOf(SharedPreUtils.C(BaseApplicationImpl.context));
+      ((QIMReadWriteReportItem)localObject2).i = String.valueOf(SharedPreUtils.B(BaseApplicationImpl.context));
       if (j == 0) {
         break label880;
       }

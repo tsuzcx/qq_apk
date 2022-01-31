@@ -5,12 +5,12 @@ import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.SpannableString;
 import com.tencent.qphone.base.util.QLog;
-import joh;
+import jns;
 
 public class RecvMsg
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new joh();
+  public static final Parcelable.Creator CREATOR = new jns();
   static String jdField_a_of_type_JavaLangString = "RecvMsg";
   int jdField_a_of_type_Int;
   public long a;

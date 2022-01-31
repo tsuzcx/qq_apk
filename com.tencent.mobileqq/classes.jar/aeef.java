@@ -1,100 +1,64 @@
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface;
+import com.tencent.mobileqq.magicface.view.GLRender;
 
 public class aeef
-  implements NearbyProcessInterface
 {
-  private IBinder a;
+  public float a;
+  public int a;
+  public boolean a;
+  public byte[] a;
+  public int b;
+  public byte[] b;
+  public int c;
+  public int d;
   
-  public aeef(IBinder paramIBinder)
-  {
-    this.a = paramIBinder;
-  }
+  public aeef(GLRender paramGLRender) {}
   
-  public Message a(Message paramMessage)
+  public boolean a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat, boolean paramBoolean)
   {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
-    for (;;)
+    if (paramArrayOfByte1 != null)
     {
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-        if (paramMessage != null)
-        {
-          localParcel1.writeInt(1);
-          paramMessage.writeToParcel(localParcel1, 0);
-          this.a.transact(2, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramMessage = (Message)Message.CREATOR.createFromParcel(localParcel2);
-            return paramMessage;
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        paramMessage = null;
+      if (this.jdField_a_of_type_ArrayOfByte != null) {
+        break label28;
       }
-      finally
-      {
-        localParcel2.recycle();
-        localParcel1.recycle();
+      this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte1.length];
+      if (this.jdField_a_of_type_ArrayOfByte != null) {
+        break label49;
       }
     }
-  }
-  
-  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
-  {
-    Parcel localParcel1 = Parcel.obtain();
-    Parcel localParcel2 = Parcel.obtain();
     for (;;)
     {
-      try
-      {
-        localParcel1.writeInterfaceToken("com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface");
-        if (paramBasicTypeDataParcel != null)
-        {
-          localParcel1.writeInt(1);
-          paramBasicTypeDataParcel.writeToParcel(localParcel1, 0);
-          this.a.transact(1, localParcel1, localParcel2, 0);
-          localParcel2.readException();
-          if (localParcel2.readInt() != 0)
-          {
-            paramBasicTypeDataParcel = (BasicTypeDataParcel)BasicTypeDataParcel.CREATOR.createFromParcel(localParcel2);
-            return paramBasicTypeDataParcel;
-          }
-        }
-        else
-        {
-          localParcel1.writeInt(0);
-          continue;
-        }
-        paramBasicTypeDataParcel = null;
+      return false;
+      label28:
+      if (this.jdField_a_of_type_ArrayOfByte.length == paramArrayOfByte1.length) {
+        break;
       }
-      finally
+      this.jdField_a_of_type_ArrayOfByte = new byte[paramArrayOfByte1.length];
+      break;
+      label49:
+      System.arraycopy(paramArrayOfByte1, 0, this.jdField_a_of_type_ArrayOfByte, 0, paramArrayOfByte1.length);
+      if (this.jdField_b_of_type_ArrayOfByte == null) {
+        this.jdField_b_of_type_ArrayOfByte = new byte[paramArrayOfByte2.length];
+      }
+      while (this.jdField_b_of_type_ArrayOfByte != null)
       {
-        localParcel2.recycle();
-        localParcel1.recycle();
+        System.arraycopy(paramArrayOfByte2, 0, this.jdField_b_of_type_ArrayOfByte, 0, paramArrayOfByte2.length);
+        this.jdField_a_of_type_Int = paramInt3;
+        this.jdField_b_of_type_Int = paramInt4;
+        this.c = paramInt1;
+        this.d = paramInt2;
+        this.jdField_a_of_type_Float = paramFloat;
+        this.jdField_a_of_type_Boolean = paramBoolean;
+        return true;
+        if (this.jdField_b_of_type_ArrayOfByte.length != paramArrayOfByte2.length) {
+          this.jdField_b_of_type_ArrayOfByte = new byte[paramArrayOfByte2.length];
+        }
       }
     }
-  }
-  
-  public IBinder asBinder()
-  {
-    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeef
  * JD-Core Version:    0.7.0.1
  */

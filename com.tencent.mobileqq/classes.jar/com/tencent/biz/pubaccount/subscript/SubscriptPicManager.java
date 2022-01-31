@@ -11,7 +11,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.net.URL;
 import java.util.HashMap;
-import mrz;
+import mtg;
 
 public class SubscriptPicManager
   implements URLDrawable.URLDrawableListener
@@ -53,10 +53,10 @@ public class SubscriptPicManager
         if (paramObject.getStatus() != 1)
         {
           paramImageView.setTag(2131362118, paramObject.getURL());
-          mrz localmrz = new mrz(this, null);
-          localmrz.a = new WeakReference(paramImageView);
-          localmrz.b = new WeakReference(paramImageHostListener);
-          this.a.put(paramObject, localmrz);
+          mtg localmtg = new mtg(this, null);
+          localmtg.a = new WeakReference(paramImageView);
+          localmtg.b = new WeakReference(paramImageHostListener);
+          this.a.put(paramObject, localmtg);
           paramObject.setURLDrawableListener(this);
         }
         paramImageView.setImageDrawable(null);
@@ -103,10 +103,10 @@ public class SubscriptPicManager
           paramImageView.setTag(2131362120, Integer.valueOf(paramInt1));
           paramImageView.setTag(2131362121, Integer.valueOf(paramInt2));
           paramImageView.setTag(2131362122, Integer.valueOf(paramInt3));
-          mrz localmrz = new mrz(this, null);
-          localmrz.a = new WeakReference(paramImageView);
-          localmrz.b = new WeakReference(paramImageHostListener);
-          this.a.put(paramObject, localmrz);
+          mtg localmtg = new mtg(this, null);
+          localmtg.a = new WeakReference(paramImageView);
+          localmtg.b = new WeakReference(paramImageHostListener);
+          this.a.put(paramObject, localmtg);
           paramObject.setURLDrawableListener(this);
         }
         paramObject.setTag(URLDrawableDecodeHandler.a(paramInt1, paramInt2, (int)(paramInt3 * DeviceInfoUtil.a())));
@@ -139,12 +139,12 @@ public class SubscriptPicManager
         do
         {
           return;
-          localObject = (mrz)this.a.get(paramURLDrawable);
+          localObject = (mtg)this.a.get(paramURLDrawable);
         } while (localObject == null);
         this.a.remove(paramURLDrawable);
-        localImageView = (ImageView)((mrz)localObject).a.get();
+        localImageView = (ImageView)((mtg)localObject).a.get();
       } while ((localImageView == null) || (!paramURLDrawable.getURL().equals(localImageView.getTag(2131362118))));
-      localObject = (SubscriptPicManager.ImageHostListener)((mrz)localObject).b.get();
+      localObject = (SubscriptPicManager.ImageHostListener)((mtg)localObject).b.get();
     } while ((localObject != null) && (!((SubscriptPicManager.ImageHostListener)localObject).a(localImageView)));
     if ((localImageView.getTag(2131362119) != null) && (((Boolean)localImageView.getTag(2131362119)).booleanValue()))
     {

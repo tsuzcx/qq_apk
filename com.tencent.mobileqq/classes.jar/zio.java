@@ -1,17 +1,30 @@
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.data.PhoneContact;
 import java.util.Comparator;
 
 public class zio
   implements Comparator
 {
-  public int a(zin paramzin1, zin paramzin2)
+  public zio(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  
+  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
   {
-    if (paramzin1.b < paramzin2.b) {
-      return -1;
+    Object localObject2 = paramPhoneContact1.pinyinFirst;
+    String str = paramPhoneContact2.pinyinFirst;
+    Object localObject1 = localObject2;
+    if (((String)localObject2).endsWith("#")) {
+      localObject1 = "Za";
     }
-    if (paramzin1.b > paramzin2.b) {
-      return 1;
+    localObject2 = str;
+    if (str.endsWith("#")) {
+      localObject2 = "Za";
     }
-    return 0;
+    int j = ((String)localObject1).compareTo((String)localObject2);
+    int i = j;
+    if (j == 0) {
+      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
+    }
+    return i;
   }
 }
 

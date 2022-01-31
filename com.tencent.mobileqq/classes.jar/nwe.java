@@ -1,14 +1,19 @@
-import com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesVideoListSegment;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreSimpleListener;
+import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
+import com.tencent.biz.qqstory.storyHome.discover.view.QQStoryDiscoverFragment;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
 
 public class nwe
-  extends LoadingMoreHelper.OnLoadMoreSimpleListener
+  implements LoadingMoreHelper.OnLoadMoreListener
 {
-  public nwe(MemoriesVideoListSegment paramMemoriesVideoListSegment) {}
+  public nwe(QQStoryDiscoverFragment paramQQStoryDiscoverFragment) {}
+  
+  public void a() {}
   
   public boolean a(boolean paramBoolean)
   {
-    this.a.b();
+    QQStoryDiscoverFragment.a(this.a).c();
+    StoryReportor.a("content_flow", "load_more", 0, 0, new String[0]);
     return true;
   }
 }

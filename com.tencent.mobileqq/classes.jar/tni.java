@@ -1,27 +1,12 @@
-import android.os.Handler;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
 
 public class tni
-  implements Runnable
 {
-  public tni(RegisterSendUpSms paramRegisterSendUpSms) {}
+  public String a;
+  public String b;
+  public String c;
   
-  public void run()
-  {
-    if (RegisterSendUpSms.a(this.a) == 1)
-    {
-      RegisterSendUpSms.a(this.a).setText("重新发送");
-      RegisterSendUpSms.a(this.a).setEnabled(true);
-      RegisterSendUpSms.a(this.a).setClickable(true);
-      RegisterSendUpSms.a(this.a, 0);
-      RegisterSendUpSms.b(this.a, 10);
-      return;
-    }
-    RegisterSendUpSms.b(this.a);
-    RegisterSendUpSms.a(this.a).setText("正在验证(" + RegisterSendUpSms.a(this.a) + "s)");
-    this.a.a.postDelayed(this, 1000L);
-  }
+  private tni(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
 }
 
 

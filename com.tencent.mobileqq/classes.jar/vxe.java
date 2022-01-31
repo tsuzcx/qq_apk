@@ -1,14 +1,17 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class vxe
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public vxe(TroopChatPie paramTroopChatPie) {}
+  public vxe(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.showOverScrollHeader();
+    this.a.ac = false;
+    ReportController.b(this.a.a, "CliOper", "", "", "0X8004EFA", "0X8004EFA", 0, 0, "", "", "", "");
   }
 }
 

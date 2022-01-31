@@ -1,7 +1,7 @@
 package cooperation.qzone.cache;
 
-import amdr;
-import amds;
+import amtv;
+import amtw;
 import android.content.Context;
 import android.os.Environment;
 import android.os.StatFs;
@@ -97,7 +97,7 @@ public class CacheManager
     synchronized (jdField_a_of_type_JavaLangObject)
     {
       if (jdField_a_of_type_CooperationQzoneCacheFileStorageHandler == null) {
-        jdField_a_of_type_CooperationQzoneCacheFileStorageHandler = new FileStorageHandler(new amdr());
+        jdField_a_of_type_CooperationQzoneCacheFileStorageHandler = new FileStorageHandler(new amtv());
       }
       return jdField_a_of_type_CooperationQzoneCacheFileStorageHandler;
     }
@@ -207,7 +207,7 @@ public class CacheManager
   public static void a(long paramLong)
   {
     b(paramLong);
-    ThreadManager.postImmediately(new amds(), null, false);
+    ThreadManager.postImmediately(new amtw(), null, false);
   }
   
   public static void a(Context paramContext)

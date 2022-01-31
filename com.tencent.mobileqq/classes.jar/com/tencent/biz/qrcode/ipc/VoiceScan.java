@@ -21,7 +21,7 @@ import com.tencent.mobileqq.earlydownload.handler.ChirpSoHandler.Callback;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
-import otd;
+import oux;
 
 public class VoiceScan
   implements Handler.Callback, PCMRecorder.OnQQRecorderListener, ChirpSoHandler.Callback
@@ -103,7 +103,7 @@ public class VoiceScan
               QLog.d("VoiceScan", 2, "checkInitVoiceScan, permission is forbidden, " + this.jdField_b_of_type_Boolean);
             }
           } while (this.jdField_b_of_type_Boolean);
-          BaseApplicationImpl.sUiHandler.post(new otd(this));
+          BaseApplicationImpl.sUiHandler.post(new oux(this));
           return;
           if (!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c()) {
             break;

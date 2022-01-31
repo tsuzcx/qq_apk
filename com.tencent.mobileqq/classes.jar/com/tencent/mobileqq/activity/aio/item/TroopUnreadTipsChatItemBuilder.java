@@ -17,7 +17,7 @@ import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import vht;
+import vkv;
 
 public class TroopUnreadTipsChatItemBuilder
   extends AbstractChatItemBuilder
@@ -29,25 +29,25 @@ public class TroopUnreadTipsChatItemBuilder
   
   protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
-    paramViewHolder = (vht)paramViewHolder;
+    paramViewHolder = (vkv)paramViewHolder;
     paramViewHolder = paramView;
     if (paramView == null)
     {
       paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968788, null);
-      paramViewHolder = (TextView)paramView.findViewById(2131363766);
+      paramViewHolder = (TextView)paramView.findViewById(2131363789);
       paramViewHolder.setMovementMethod(null);
       paramViewHolder.setGravity(17);
       paramViewHolder = paramView;
       if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
       {
-        paramViewHolder = (TextView)paramView.findViewById(2131363778);
-        paramLinearLayout = (TextView)paramView.findViewById(2131363779);
-        paramViewHolder.setBackgroundColor(2130840573);
-        paramLinearLayout.setBackgroundColor(2130840573);
+        paramViewHolder = (TextView)paramView.findViewById(2131363801);
+        paramLinearLayout = (TextView)paramView.findViewById(2131363802);
+        paramViewHolder.setBackgroundColor(2130840579);
+        paramLinearLayout.setBackgroundColor(2130840579);
         paramViewHolder = paramView;
       }
     }
-    paramView = (TextView)paramViewHolder.findViewById(2131363766);
+    paramView = (TextView)paramViewHolder.findViewById(2131363789);
     if ((paramMessageRecord.istroop == 1) && (AnonymousChatHelper.a().a(paramMessageRecord.senderuin)))
     {
       paramView.setTextColor(AnonymousChatHelper.d);
@@ -59,7 +59,7 @@ public class TroopUnreadTipsChatItemBuilder
   
   protected AbstractChatItemBuilder.ViewHolder a()
   {
-    return new vht(this);
+    return new vkv(this);
   }
   
   public void a(int paramInt, Context paramContext, ChatMessage paramChatMessage) {}

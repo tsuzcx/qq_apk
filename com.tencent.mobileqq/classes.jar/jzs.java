@@ -1,20 +1,16 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.av.ui.QQLogo;
+import android.content.res.Resources;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.QavVideoRecordUICtrl;
 
 public class jzs
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public jzs(QQLogo paramQQLogo) {}
+  public jzs(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.setVisibility(8);
+    QavVideoRecordUICtrl.a(this.a, 1004, QavVideoRecordUICtrl.a(this.a).getResources().getString(2131429644), 2000L, 0);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

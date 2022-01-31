@@ -1,6 +1,6 @@
 package com.tencent.mqq;
 
-import akjt;
+import akzj;
 import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
@@ -29,7 +29,7 @@ public class MqqImageLoader
       return;
     }
     paramString = URLDrawable.getDrawable(paramString, URLDrawable.URLDrawableOptions.obtain());
-    paramString.setURLDrawableListener(new akjt(this, paramListener));
+    paramString.setURLDrawableListener(new akzj(this, paramListener));
     paramString.startDownload();
   }
   
@@ -67,7 +67,7 @@ public class MqqImageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mqq.MqqImageLoader
  * JD-Core Version:    0.7.0.1
  */

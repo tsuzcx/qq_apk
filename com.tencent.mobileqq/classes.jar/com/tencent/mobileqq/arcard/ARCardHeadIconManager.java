@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.arcard;
 
-import aaet;
-import aaeu;
-import aaev;
+import aalu;
+import aalv;
+import aalw;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -19,9 +19,9 @@ import mqq.os.MqqHandler;
 
 public class ARCardHeadIconManager
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aaeu(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aalv(this);
   private final Context jdField_a_of_type_AndroidContentContext;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new aaet(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new aalu(this);
   private final ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private final Hashtable jdField_a_of_type_JavaUtilHashtable = new Hashtable();
   private boolean jdField_a_of_type_Boolean = true;
@@ -35,15 +35,15 @@ public class ARCardHeadIconManager
   {
     if (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramString))
     {
-      aaev localaaev = (aaev)this.jdField_a_of_type_JavaUtilHashtable.get(paramString);
-      localaaev.jdField_a_of_type_Boolean = true;
-      localaaev.jdField_a_of_type_Long = System.currentTimeMillis();
+      aalw localaalw = (aalw)this.jdField_a_of_type_JavaUtilHashtable.get(paramString);
+      localaalw.jdField_a_of_type_Boolean = true;
+      localaalw.jdField_a_of_type_Long = System.currentTimeMillis();
       this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
       if (1 == this.jdField_a_of_type_JavaUtilArrayList.size()) {
         ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 200L);
       }
       if (QLog.isColorLevel()) {
-        QLog.i("DingdongHeadManager", 2, "RequestContactHeadPathByIpc:uin=[" + paramString + "],request_time=[" + localaaev.jdField_a_of_type_Long + "].");
+        QLog.i("DingdongHeadManager", 2, "RequestContactHeadPathByIpc:uin=[" + paramString + "],request_time=[" + localaalw.jdField_a_of_type_Long + "].");
       }
     }
   }
@@ -75,31 +75,31 @@ public class ARCardHeadIconManager
   
   public String a(String paramString)
   {
-    aaev localaaev2 = (aaev)this.jdField_a_of_type_JavaUtilHashtable.get(paramString);
-    aaev localaaev1 = localaaev2;
-    if (localaaev2 == null)
+    aalw localaalw2 = (aalw)this.jdField_a_of_type_JavaUtilHashtable.get(paramString);
+    aalw localaalw1 = localaalw2;
+    if (localaalw2 == null)
     {
-      localaaev1 = new aaev(this);
-      this.jdField_a_of_type_JavaUtilHashtable.put(paramString, localaaev1);
+      localaalw1 = new aalw(this);
+      this.jdField_a_of_type_JavaUtilHashtable.put(paramString, localaalw1);
     }
-    if (localaaev1.jdField_a_of_type_Boolean)
+    if (localaalw1.jdField_a_of_type_Boolean)
     {
       long l = System.currentTimeMillis();
-      if (localaaev1.jdField_a_of_type_Long + 1500L < l) {
+      if (localaalw1.jdField_a_of_type_Long + 1500L < l) {
         return null;
       }
-      localaaev1.jdField_a_of_type_Boolean = false;
+      localaalw1.jdField_a_of_type_Boolean = false;
     }
-    if (TextUtils.isEmpty(localaaev1.jdField_a_of_type_JavaLangString)) {
-      localaaev1.jdField_a_of_type_JavaLangString = b(paramString);
+    if (TextUtils.isEmpty(localaalw1.jdField_a_of_type_JavaLangString)) {
+      localaalw1.jdField_a_of_type_JavaLangString = b(paramString);
     }
-    if ((localaaev1.jdField_a_of_type_JavaLangString != null) && (!a(localaaev1.jdField_a_of_type_JavaLangString))) {
-      localaaev1.jdField_a_of_type_JavaLangString = null;
+    if ((localaalw1.jdField_a_of_type_JavaLangString != null) && (!a(localaalw1.jdField_a_of_type_JavaLangString))) {
+      localaalw1.jdField_a_of_type_JavaLangString = null;
     }
-    if ((localaaev1.jdField_a_of_type_JavaLangString == null) && (!localaaev1.jdField_a_of_type_Boolean)) {
+    if ((localaalw1.jdField_a_of_type_JavaLangString == null) && (!localaalw1.jdField_a_of_type_Boolean)) {
       a(paramString);
     }
-    return localaaev1.jdField_a_of_type_JavaLangString;
+    return localaalw1.jdField_a_of_type_JavaLangString;
   }
   
   public void a()
@@ -135,7 +135,7 @@ public class ARCardHeadIconManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.arcard.ARCardHeadIconManager
  * JD-Core Version:    0.7.0.1
  */

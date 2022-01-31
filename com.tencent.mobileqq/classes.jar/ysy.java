@@ -1,30 +1,22 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.apollo.utils.ApolloGameInvitation;
-import com.tencent.mobileqq.apollo.view.ApolloPanel.GameMsgInfo;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
-class ysy
-  implements WXShareHelper.WXShareListener
+public class ysy
+  implements Animation.AnimationListener
 {
-  ysy(ysx paramysx) {}
+  public ysy(ApolloGameActivity paramApolloGameActivity) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramBaseResp == null) {}
-    do
-    {
-      do
-      {
-        return;
-      } while ((ApolloGameInvitation.a(this.a.a) == null) || (!ApolloGameInvitation.a(this.a.a).equals(paramBaseResp.transaction)));
-      QLog.i("ApolloGameInvitation", 1, "[onWXShareResp], resp.errCode:" + paramBaseResp.errCode);
-    } while ((paramBaseResp.errCode != 0) || (ApolloGameInvitation.a(this.a.a) == null) || (ApolloGameInvitation.a(this.a.a) == null) || ((AppInterface)ApolloGameInvitation.a(this.a.a).get() == null));
-    VipUtils.a(null, "cmshow", "Apollo", "wechat_invite_sent", 0, 0, new String[] { Integer.toString(ApolloGameInvitation.a(this.a.a).e) });
+    ApolloGameActivity.a(this.a).setVisibility(4);
+    ApolloGameActivity.a(this.a);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

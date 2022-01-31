@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentFileBaseExpandableListAdapter;
+import com.tencent.mobileqq.extendfriend.pulltorefresh.PullToRefreshBase;
 
 public class acjn
+  implements Runnable
 {
-  public int a;
-  public int b;
+  public acjn(PullToRefreshBase paramPullToRefreshBase) {}
   
-  public acjn(QfileRecentFileBaseExpandableListAdapter paramQfileRecentFileBaseExpandableListAdapter) {}
+  public void run()
+  {
+    this.a.requestLayout();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acjn
  * JD-Core Version:    0.7.0.1
  */

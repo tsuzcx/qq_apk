@@ -1,53 +1,39 @@
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.VideoServerInfoManager;
-import com.tencent.biz.qqstory.base.preload.PreloadDownloaderManager;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.notification.StoryMsgNotification;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewFactory;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.FileUtils;
-import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import com.tencent.mobileqq.transfile.StoryUploadProcessor;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.handler.GetShareGroupInfoHandler.GetShareGroupInfoEvent;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class nse
-  extends SimpleJob
+  extends QQUIEventReceiver
 {
-  public nse(QQStoryMainController paramQQStoryMainController) {}
-  
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public nse(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    FileUtils.a(this.a.jdField_a_of_type_AndroidAppActivity);
-    ((PreloadDownloaderManager)SuperManager.a(6)).c();
-    VideoViewFactory.a(this.a.jdField_a_of_type_AndroidAppActivity);
-    PngQuantUtils.a(QQStoryContext.a());
-    ((VideoServerInfoManager)SuperManager.a(4)).c();
-    StoryUploadProcessor.q();
-    paramJobContext = (StoryConfigManager)SuperManager.a(10);
-    paramJobContext.c();
-    paramJobContext.d();
-    SLog.d("QQStoryMainController", "onCreate : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(StoryVideoUploadManager.a()) });
-    StoryMsgNotification.a().a(this.a.jdField_a_of_type_AndroidAppActivity, 3);
-    SLog.b("QQStoryMainController", "queueIdle loadShortVideoSo start");
-    ShortVideoUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    SLog.b("QQStoryMainController", "queueIdle loadShortVideoSo end");
-    SLog.b("QQStoryMainController", "queueIdle startDownloadFilterSo start");
-    this.a.b = PtvFilterSoLoad.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, BaseApplicationImpl.getContext());
-    SLog.b("QQStoryMainController", "queueIdle startDownloadFilterSo end");
-    SLog.b("QQStoryMainController", "queueIdle preloadFrameDrawable start");
-    QQStoryLoadingView.a(this.a.jdField_a_of_type_AndroidAppActivity);
-    SLog.b("QQStoryMainController", "queueIdle preloadFrameDrawable end");
-    return null;
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull GetShareGroupInfoHandler.GetShareGroupInfoEvent paramGetShareGroupInfoEvent)
+  {
+    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramGetShareGroupInfoEvent.jdField_a_of_type_JavaLangString)) {
+      return;
+    }
+    if ((paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "update sharegroup info: " + paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.toString());
+      }
+      QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
+      return;
+    }
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramGetShareGroupInfoEvent);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return GetShareGroupInfoHandler.GetShareGroupInfoEvent.class;
   }
 }
 

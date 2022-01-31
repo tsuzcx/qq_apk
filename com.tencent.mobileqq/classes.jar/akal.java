@@ -1,58 +1,50 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.qphone.base.util.QLog;
 
-public class akal
-  implements ActionSheet.OnButtonClickListener
+class akal
+  implements Runnable
 {
-  public akal(SwiftBrowserLongClickHandler paramSwiftBrowserLongClickHandler) {}
+  akal(akak paramakak, String paramString) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null)
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_Int);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435466);
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
-    if (paramInt == 0) {
-      if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) {
-        this.a.jdField_b_of_type_Int = 0;
-      }
-    }
     for (;;)
     {
-      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      try
+      {
+        Intent localIntent = new Intent(this.jdField_a_of_type_Akak.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
+        localIntent.putExtra("BSafeReportPost", true);
+        if (this.jdField_a_of_type_JavaLangString != null) {
+          continue;
+        }
+        arrayOfByte = null;
+        localIntent.putExtra("SafeReportData", arrayOfByte);
+        localIntent.putExtra("hide_more_button", true);
+        localIntent.putExtra("ishiderefresh", true);
+        localIntent.putExtra("ishidebackforward", true);
+        this.jdField_a_of_type_Akak.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent.putExtra("url", "https://jubao.qq.com/uniform_impeach/impeach_entry"));
+      }
+      catch (Exception localException)
+      {
+        byte[] arrayOfByte;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("Q.profilecard.FrdProfileCard", 2, "safetyReport exception" + localException.getMessage());
+        continue;
+      }
+      this.jdField_a_of_type_Akak.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
       return;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      }
-      this.a.b(this.a.jdField_b_of_type_JavaLangString);
-      continue;
-      if (paramInt == 1)
-      {
-        if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString)) {
-          this.a.jdField_b_of_type_Int = 1;
-        } else {
-          this.a.a(this.a.jdField_b_of_type_JavaLangString);
-        }
-      }
-      else if (paramInt == 2)
-      {
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-        }
-        this.a.c(this.a.jdField_b_of_type_JavaLangString);
-      }
+      arrayOfByte = this.jdField_a_of_type_JavaLangString.getBytes("utf-8");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akal
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,27 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.util.FaceDrawable;
+import android.os.AsyncTask;
+import com.tencent.mfsdk.collector.FPSCalculator;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-class rdt
-  implements Runnable
+public class rdt
+  extends AsyncTask
 {
-  rdt(rds paramrds, String paramString, int paramInt) {}
+  public rdt(FPSCalculator paramFPSCalculator) {}
   
-  public void run()
+  protected Void a(Void... paramVarArgs)
   {
-    try
-    {
-      FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_Rds.a.app, this.jdField_a_of_type_JavaLangString, (byte)3);
-      ((ImageView)this.jdField_a_of_type_Rds.a.a.getChildAt(this.jdField_a_of_type_Int).findViewById(2131362701)).setImageDrawable(localFaceDrawable);
-      return;
+    paramVarArgs = FPSCalculator.a(this.a).iterator();
+    while (paramVarArgs.hasNext()) {
+      QLog.d("Q.PerfTrace", 2, (String)paramVarArgs.next());
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    FPSCalculator.a(this.a).clear();
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rdt
  * JD-Core Version:    0.7.0.1
  */

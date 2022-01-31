@@ -1,16 +1,39 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.activity.emogroupstore.EmoticonGroupStoreFragment;
+import com.tencent.mobileqq.activity.emogroupstore.FilterAdapter;
+import com.tencent.mobileqq.activity.emogroupstore.FilterAdapter.FilterItemContent;
+import java.util.List;
 
 public class woz
-  implements DialogInterface.OnClickListener
+  implements AdapterView.OnItemClickListener
 {
-  public woz(AvatarPendantActivity paramAvatarPendantActivity) {}
+  public woz(EmoticonGroupStoreFragment paramEmoticonGroupStoreFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8005FDA", "0X8005FDA", 0, 0, "", "", "", "");
+    paramAdapterView = (FilterAdapter.FilterItemContent)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
+    boolean bool = paramAdapterView.jdField_a_of_type_Boolean;
+    if (bool)
+    {
+      if (EmoticonGroupStoreFragment.b(this.a).contains(paramAdapterView.jdField_a_of_type_JavaLangString)) {
+        EmoticonGroupStoreFragment.b(this.a).remove(paramAdapterView.jdField_a_of_type_JavaLangString);
+      }
+      paramAdapterView = (FilterAdapter.FilterItemContent)EmoticonGroupStoreFragment.a(this.a).get(paramInt);
+      if (bool) {
+        break label126;
+      }
+    }
+    label126:
+    for (bool = true;; bool = false)
+    {
+      paramAdapterView.jdField_a_of_type_Boolean = bool;
+      EmoticonGroupStoreFragment.a(this.a).notifyDataSetChanged();
+      return;
+      EmoticonGroupStoreFragment.b(this.a).add(paramAdapterView.jdField_a_of_type_JavaLangString);
+      break;
+    }
   }
 }
 

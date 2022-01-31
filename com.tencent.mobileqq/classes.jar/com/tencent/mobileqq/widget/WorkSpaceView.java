@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import akja;
+import akxj;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
@@ -20,7 +20,7 @@ public class WorkSpaceView
 {
   private float jdField_a_of_type_Float;
   public int a;
-  private Handler jdField_a_of_type_AndroidOsHandler = new akja(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new akxj(this);
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private Scroller jdField_a_of_type_AndroidWidgetScroller = new Scroller(getContext(), new AccelerateDecelerateInterpolator());
   private WorkSpaceView.OnScreenChangeListener jdField_a_of_type_ComTencentMobileqqWidgetWorkSpaceView$OnScreenChangeListener;
@@ -465,7 +465,7 @@ public class WorkSpaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.WorkSpaceView
  * JD-Core Version:    0.7.0.1
  */

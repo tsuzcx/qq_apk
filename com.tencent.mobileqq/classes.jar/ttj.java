@@ -1,26 +1,42 @@
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import java.util.List;
+import android.content.IntentFilter;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.msf.sdk.QNotificationManager;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
 
-class ttj
+public class ttj
   implements Runnable
 {
-  ttj(tti paramtti, List paramList) {}
+  public ttj(SplashActivity paramSplashActivity) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Tti.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout != null) && (this.jdField_a_of_type_Tti.a.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1) && (this.jdField_a_of_type_Tti.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null))
+    try
     {
-      this.jdField_a_of_type_Tti.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(4);
-      this.jdField_a_of_type_Tti.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_Tti.a.d();
+      QNotificationManager localQNotificationManager = new QNotificationManager(this.a);
+      localQNotificationManager.cancel("SplashActivity", 120);
+      QZoneManagerImp localQZoneManagerImp = (QZoneManagerImp)this.a.app.getManager(9);
+      if (localQZoneManagerImp != null) {
+        localQZoneManagerImp.a(1, 0);
+      }
+      localQNotificationManager.cancel("SplashActivity", 121);
+      localQNotificationManager.cancel("SplashActivity", 122);
+      localQNotificationManager.cancel("SplashActivity", 123);
+      localQNotificationManager.cancel("SplashActivity", 129);
+      localQNotificationManager.cancel("SplashActivity", 144);
+      localQNotificationManager.cancel("SplashActivity", 193);
+      localQNotificationManager.cancel("SplashActivity", 194);
+      localQNotificationManager.cancel("SplashActivity", 211);
+      SplashActivity.a(this.a, new ttk(this));
+      this.a.registerReceiver(SplashActivity.a(this.a), new IntentFilter("before_account_change"));
+      return;
     }
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ttj
  * JD-Core Version:    0.7.0.1
  */

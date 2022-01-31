@@ -1,28 +1,46 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
+import android.os.Bundle;
+import com.tencent.mobileqq.search.model.GroupSearchModeTitle;
+import com.tencent.mobileqq.search.model.GroupSearchModelMoreItem;
+import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import com.tencent.mobileqq.search.searchengine.SearchRequest;
+import com.tencent.mobileqq.search.util.SearchStatisticsConstants;
+import java.util.ArrayList;
+import java.util.List;
 
-class ahvt
-  implements DialogInterface.OnClickListener
+public class ahvt
+  extends GroupSearchEngine.SearchEngineEntity
 {
-  ahvt(ahvs paramahvs, Context paramContext, View paramView) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public ahvt(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
   {
-    StructMsgItemVideo.a(this.jdField_a_of_type_Ahvs.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView);
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
-      ReportController.b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
+    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
+  }
+  
+  public ISearchResultGroupModel a(List paramList, String paramString)
+  {
+    return null;
+  }
+  
+  public List a(SearchRequest paramSearchRequest)
+  {
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = -1;
+    if (paramSearchRequest.jdField_a_of_type_AndroidOsBundle == null) {
+      paramSearchRequest.jdField_a_of_type_AndroidOsBundle = new Bundle();
     }
-    paramDialogInterface.dismiss();
+    ArrayList localArrayList = new ArrayList();
+    paramSearchRequest = new GroupSearchModelMoreItem(paramSearchRequest.jdField_a_of_type_JavaLangString, GroupSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineGroupSearchEngine));
+    localArrayList.add(new GroupSearchModeTitle(paramSearchRequest));
+    localArrayList.add(paramSearchRequest);
+    SearchStatisticsConstants.a(0);
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahvt
  * JD-Core Version:    0.7.0.1
  */

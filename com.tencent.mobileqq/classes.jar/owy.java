@@ -1,73 +1,52 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import com.tencent.biz.troopgift.AIOGiftPanelContainer;
-import com.tencent.biz.troopgift.TroopGiftAioPanelData;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.troop.utils.TroopGiftManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.biz.troop.VideoCombineHelper;
+import com.tencent.biz.troop.VideoCombineHelper.Callback;
+import com.tencent.biz.troop.VideoCombineHelper.CombineParams;
+import com.tencent.biz.troop.VideoCombineHelper.Task;
+import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.HashMap;
 
 class owy
-  extends DownloadListener
+  extends VideoCombineHelper.TaskListener
 {
-  owy(owx paramowx, int paramInt) {}
-  
-  public void onDone(DownloadTask paramDownloadTask)
+  owy(owx paramowx)
   {
-    if (paramDownloadTask.jdField_a_of_type_Int == 0) {
-      localObject = paramDownloadTask.a().getString("filePath");
-    }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        Object localObject;
-        paramDownloadTask = new File((String)localObject);
-        String str = FileUtils.b(paramDownloadTask);
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOGiftPanelContainer", 2, "onDone() content =  " + str + ", filePath = " + (String)localObject);
-        }
-        if (!TextUtils.isEmpty(str))
-        {
-          localObject = new JSONObject(str);
-          this.jdField_a_of_type_Owx.jdField_a_of_type_Oww.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData = new TroopGiftAioPanelData((JSONObject)localObject);
-          this.jdField_a_of_type_Owx.jdField_a_of_type_Oww.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData.a(this.jdField_a_of_type_Owx.jdField_a_of_type_Oww.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Owx.jdField_a_of_type_Oww.jdField_a_of_type_Int);
-          this.jdField_a_of_type_Owx.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Owx.jdField_a_of_type_Oww.jdField_a_of_type_Int);
-          this.jdField_a_of_type_Owx.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a(false);
-          if (!this.jdField_a_of_type_Owx.jdField_a_of_type_Oww.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.isFinishing()) {
-            this.jdField_a_of_type_Owx.jdField_a_of_type_Oww.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.jdField_a_of_type_AndroidOsHandler.post(new owz(this));
-          }
-          paramDownloadTask.deleteOnExit();
-        }
-        this.jdField_a_of_type_Owx.jdField_a_of_type_Oww.jdField_a_of_type_ComTencentBizTroopgiftAIOGiftPanelContainer.a(0);
-        return;
-      }
-      catch (IOException paramDownloadTask)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("AIOGiftPanelContainer", 2, QLog.getStackTraceString(paramDownloadTask));
-        return;
-      }
-      catch (JSONException paramDownloadTask)
-      {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("AIOGiftPanelContainer", 2, QLog.getStackTraceString(paramDownloadTask));
-        return;
-      }
-    }
-    QLog.d("AIOGiftPanelContainer", 2, "onError() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_Owx.jdField_a_of_type_Long) + ", errorCode = " + paramDownloadTask.jdField_a_of_type_Int);
+    super(paramowx.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper);
   }
   
-  public boolean onStart(DownloadTask paramDownloadTask)
+  public void a(VideoCombineHelper.Task paramTask)
   {
-    return super.onStart(paramDownloadTask);
+    do
+    {
+      synchronized (this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_JavaLangObject)
+      {
+        this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_JavaUtilHashMap.remove(paramTask.c);
+        if ((paramTask instanceof oxm))
+        {
+          this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "download failed! msg = " + paramTask.d);
+          return;
+        }
+      }
+      if ((paramTask instanceof oxe))
+      {
+        this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "combine failed! msg = " + paramTask.d);
+        return;
+      }
+    } while (!(paramTask instanceof oxp));
+    this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "sending failed! msg = " + paramTask.d);
+  }
+  
+  public void b(VideoCombineHelper.Task paramTask)
+  {
+    VideoCombineHelper.CombineParams localCombineParams = paramTask.a();
+    if (((paramTask instanceof oxe)) || (localCombineParams.b)) {}
+    synchronized (this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_JavaLangObject)
+    {
+      this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.jdField_a_of_type_JavaUtilHashMap.remove(paramTask.c);
+      this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(localCombineParams.e, true, "seding success");
+      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+      return;
+    }
   }
 }
 

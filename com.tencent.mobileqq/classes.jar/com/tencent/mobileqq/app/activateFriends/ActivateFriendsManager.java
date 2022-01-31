@@ -36,10 +36,10 @@ import tencent.im.c2c.msgtype0x210.submsgtype0xeb.submsgtype0xeb.MsgBody;
 import tencent.im.c2c.msgtype0x210.submsgtype0xeb.submsgtype0xeb.MsgInfo;
 import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.GeoGraphicNotify;
 import tencent.im.s2c.msgtype0x210.submsgtype0x76.SubMsgType0x76.MsgBody;
-import zmg;
-import zmh;
-import zmi;
-import zmj;
+import zpm;
+import zpn;
+import zpo;
+import zpp;
 
 public class ActivateFriendsManager
   implements Manager
@@ -49,7 +49,7 @@ public class ActivateFriendsManager
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new zmg(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new zpm(this);
   Set jdField_a_of_type_JavaUtilSet = new HashSet();
   private int jdField_b_of_type_Int = 1;
   private long jdField_b_of_type_Long;
@@ -136,38 +136,38 @@ public class ActivateFriendsManager
     switch (paramInt1)
     {
     default: 
-      return BaseApplicationImpl.sApplication.getString(2131437245, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
+      return BaseApplicationImpl.sApplication.getString(2131437262, new Object[] { Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) });
     case 0: 
-      return BaseApplicationImpl.sApplication.getString(2131437241);
+      return BaseApplicationImpl.sApplication.getString(2131437258);
     case 1: 
-      return BaseApplicationImpl.sApplication.getString(2131437243);
+      return BaseApplicationImpl.sApplication.getString(2131437260);
     }
-    return BaseApplicationImpl.sApplication.getString(2131437244);
+    return BaseApplicationImpl.sApplication.getString(2131437261);
   }
   
   public static String a(Context paramContext)
   {
     int[] arrayOfInt = new int[10];
     int[] tmp6_5 = arrayOfInt;
-    tmp6_5[0] = 2131437256;
+    tmp6_5[0] = 2131437273;
     int[] tmp11_6 = tmp6_5;
-    tmp11_6[1] = 2131437257;
+    tmp11_6[1] = 2131437274;
     int[] tmp16_11 = tmp11_6;
-    tmp16_11[2] = 2131437258;
+    tmp16_11[2] = 2131437275;
     int[] tmp21_16 = tmp16_11;
-    tmp21_16[3] = 2131437259;
+    tmp21_16[3] = 2131437276;
     int[] tmp26_21 = tmp21_16;
-    tmp26_21[4] = 2131437260;
+    tmp26_21[4] = 2131437277;
     int[] tmp31_26 = tmp26_21;
-    tmp31_26[5] = 2131437261;
+    tmp31_26[5] = 2131437278;
     int[] tmp36_31 = tmp31_26;
-    tmp36_31[6] = 2131437262;
+    tmp36_31[6] = 2131437279;
     int[] tmp42_36 = tmp36_31;
-    tmp42_36[7] = 2131437263;
+    tmp42_36[7] = 2131437280;
     int[] tmp48_42 = tmp42_36;
-    tmp48_42[8] = 2131437264;
+    tmp48_42[8] = 2131437281;
     int[] tmp54_48 = tmp48_42;
-    tmp54_48[9] = 2131437265;
+    tmp54_48[9] = 2131437282;
     tmp54_48;
     return paramContext.getString(arrayOfInt[new java.util.Random().nextInt(arrayOfInt.length)]);
   }
@@ -181,18 +181,18 @@ public class ActivateFriendsManager
       if (paramMsgBody.uint32_msg_type.get() != 1) {
         break label63;
       }
-      str1 = String.format(paramContext.getString(2131437212), new Object[] { paramMsgBody.msg_geographic_notify.bytes_local_city.get().toStringUtf8() });
+      str1 = String.format(paramContext.getString(2131437229), new Object[] { paramMsgBody.msg_geographic_notify.bytes_local_city.get().toStringUtf8() });
     }
     label63:
     do
     {
       return str1;
       if (paramMsgBody.uint32_msg_type.get() == 2) {
-        return paramContext.getString(2131437213);
+        return paramContext.getString(2131437230);
       }
       str1 = str2;
     } while (paramMsgBody.uint32_msg_type.get() != 3);
-    return paramContext.getString(2131437214);
+    return paramContext.getString(2131437231);
   }
   
   private Set a(int paramInt)
@@ -405,7 +405,7 @@ public class ActivateFriendsManager
       {
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007210", "0X8007211", 0, 0, "", "", "", "");
         this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("key_last_birth_msg_stamp", MessageCache.a()).commit();
-        ThreadManager.getSubThreadHandler().post(new zmj(this));
+        ThreadManager.getSubThreadHandler().post(new zpp(this));
       }
       return;
       if (paramInt == 2) {
@@ -441,7 +441,7 @@ public class ActivateFriendsManager
     {
       localStringBuilder.append(" | giftId = ").append(paramInt2);
       QLog.d("ActivateFriends.Manager", 2, localStringBuilder.toString());
-      ThreadManager.getSubThreadHandler().post(new zmi(this, paramInt1, paramArrayOfLong1, paramString, paramInt2, paramArrayOfLong2));
+      ThreadManager.getSubThreadHandler().post(new zpo(this, paramInt1, paramArrayOfLong1, paramString, paramInt2, paramArrayOfLong2));
       return;
       label120:
       int k = paramArrayOfLong1.length;
@@ -545,7 +545,7 @@ public class ActivateFriendsManager
       ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).i(paramBoolean1);
       return;
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433573) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramBoolean1).commit();
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433590) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramBoolean1).commit();
   }
   
   public void a(long[] paramArrayOfLong, int paramInt)
@@ -599,7 +599,7 @@ public class ActivateFriendsManager
     if (paramBoolean) {
       ((CardHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(2)).q();
     }
-    return this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433573) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
+    return this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433590) + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
   }
   
   public boolean a(byte[] paramArrayOfByte)
@@ -625,13 +625,13 @@ public class ActivateFriendsManager
   
   public void b()
   {
-    zmh localzmh = new zmh(this);
+    zpn localzpn = new zpn(this);
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      ThreadManager.getSubThreadHandler().post(localzmh);
+      ThreadManager.getSubThreadHandler().post(localzpn);
       return;
     }
-    localzmh.run();
+    localzpn.run();
   }
   
   void b(long paramLong)

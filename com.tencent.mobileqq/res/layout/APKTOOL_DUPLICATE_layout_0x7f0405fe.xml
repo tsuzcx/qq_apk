@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d55" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:paddingTop="260.0dip" android:layout_width="fill_parent" android:layout_height="600.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c5e" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_alignParentTop="true" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c5f" android:layout_width="fill_parent" android:layout_height="170.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1c5e" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c60" android:layout_width="fill_parent" android:layout_height="36.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1c5f" />
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0a4a" android:layout_width="fill_parent" android:layout_height="206.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1c5e" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c61" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0027" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1c5e" />
-</RelativeLayout>
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c6f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0217a0" />
+    <TextView android:textSize="16.0dip" android:textColor="#ff212226" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c70" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="这家伙很懒什么都没留下" />
+    <TextView android:textSize="16.0dip" android:textColor="#ff212226" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c71" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="这家伙很懒什么都没留下" android:drawableRight="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020920" />
+    <Button android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0173" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c72" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021158" android:layout_width="220.0dip" android:layout_height="40.0dip" android:layout_marginTop="20.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b12b5" />
+</LinearLayout>

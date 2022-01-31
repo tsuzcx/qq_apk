@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.graphics.Xfermode;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.widget.DrawableContainer.ContainerState;
+import com.tencent.mobileqq.widget.XfermodeDrawable;
 
-class akxn
-  implements Runnable
+public class akxn
+  extends DrawableContainer.ContainerState
 {
-  akxn(akxm paramakxm, QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public Xfermode a;
   
-  public void run()
+  public Drawable newDrawable()
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, "保存图片失败", 0).b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getTitleBarHeight());
+    return new XfermodeDrawable(this, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akxn
  * JD-Core Version:    0.7.0.1
  */

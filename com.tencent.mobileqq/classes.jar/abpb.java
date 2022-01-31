@@ -1,22 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
-import com.tencent.mobileqq.database.corrupt.DBFixManager;
+import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
 
 public class abpb
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public abpb(DBFixDialogUI paramDBFixDialogUI) {}
+  public abpb(ClearEllipsisEditText paramClearEllipsisEditText, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.cancel();
-    DBFixDialogUI.a(this.a).c();
+    ClearEllipsisEditText.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText, true);
+    ClearEllipsisEditText.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText, this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.getMeasuredWidth());
+    this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setText(ClearEllipsisEditText.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText, this.jdField_a_of_type_JavaLangString, ClearEllipsisEditText.a(this.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abpb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,37 @@
-import com.tencent.open.base.http.HttpCgiAsyncTask;
-import com.tencent.open.base.http.HttpCgiAsyncTask.Callback;
-import java.util.HashMap;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.manager.TicketManager;
 
 public class akpy
   implements Runnable
 {
-  public akpy(HttpCgiAsyncTask paramHttpCgiAsyncTask, HashMap paramHashMap) {}
+  public akpy(SwiftBrowserStatistics paramSwiftBrowserStatistics) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.a != null)
+    Object localObject2 = BaseApplicationImpl.sApplication.getRuntime();
+    if (localObject2 != null)
     {
-      if (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get("ResultType")).intValue() == 1) {
-        this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.a.a((JSONObject)this.jdField_a_of_type_JavaUtilHashMap.get("ResultValue"));
+      localObject1 = (TicketManager)((AppRuntime)localObject2).getManager(2);
+      localObject2 = ((AppRuntime)localObject2).getAccount();
+      if (localObject1 == null) {
+        break label50;
       }
     }
-    else {
+    label50:
+    for (Object localObject1 = ((TicketManager)localObject1).getSkey((String)localObject2);; localObject1 = "")
+    {
+      QLog.doReportLogSelf(AppSetting.a, "FeedbackReport", "", (String)localObject2, (String)localObject1);
       return;
     }
-    this.jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask.a.a((Exception)this.jdField_a_of_type_JavaUtilHashMap.get("ResultValue"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akpy
  * JD-Core Version:    0.7.0.1
  */

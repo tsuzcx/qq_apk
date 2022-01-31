@@ -1,28 +1,20 @@
-import android.graphics.drawable.Drawable;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class abhz
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public abhz(ClearEllipsisEditText paramClearEllipsisEditText) {}
+  public abhz(ARMapLoadingActivity paramARMapLoadingActivity, int paramInt1, int paramInt2, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if (this.a.getCompoundDrawables()[2] == null) {}
-    for (;;)
-    {
-      return false;
-      if (paramMotionEvent.getX() > this.a.getWidth() - this.a.getPaddingRight() - ClearEllipsisEditText.a(this.a).getIntrinsicWidth()) {}
-      for (int i = 1; (paramMotionEvent.getAction() == 0) && (i != 0); i = 0)
-      {
-        this.a.setText("");
-        this.a.setClearButtonVisible(false);
-        return true;
-      }
-    }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("failType", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("subType", String.valueOf(this.b));
+    localHashMap.put("failInfo", this.jdField_a_of_type_JavaLangString);
+    StatisticCollector.a(BaseApplication.getContext()).a("", "REPORT_TAG_LOADING_FAIL", false, 0L, 0L, localHashMap, "", false);
   }
 }
 

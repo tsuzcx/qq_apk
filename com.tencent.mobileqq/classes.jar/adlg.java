@@ -1,31 +1,31 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.intervideo.now.NowWebViewPlugin;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.MainFragment;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
 
 public class adlg
-  implements TroopMemberApiClient.Callback
+  implements DialogInterface.OnClickListener
 {
-  public adlg(NowWebViewPlugin paramNowWebViewPlugin) {}
+  public adlg(ForwardSdkBaseOption paramForwardSdkBaseOption) {}
   
-  public void a(Bundle paramBundle)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = paramBundle.getInt("msg");
-    if (i == 91)
-    {
-      NowWebViewPlugin.a(this.a, paramBundle.getInt("state"));
-      NowWebViewPlugin.a(this.a, NowWebViewPlugin.a(this.a), NowWebViewPlugin.b(this.a));
-    }
-    while (i != 92) {
-      return;
-    }
-    i = paramBundle.getInt("errCode");
-    paramBundle = paramBundle.getString("desc");
-    NowWebViewPlugin.a(this.a, i, paramBundle);
+    com.tencent.mobileqq.app.PhoneContactManagerImp.g = false;
+    paramDialogInterface = new Intent(this.a.a, SplashActivity.class);
+    paramDialogInterface.putExtra("tab_index", MainFragment.a);
+    paramDialogInterface.putExtra("fragment_id", 1);
+    paramDialogInterface.setFlags(67108864);
+    paramDialogInterface.setFlags(268435456);
+    this.a.a.startActivity(paramDialogInterface);
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adlg
  * JD-Core Version:    0.7.0.1
  */

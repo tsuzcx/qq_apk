@@ -1,23 +1,17 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter;
+import com.tencent.mobileqq.app.PublicAccountObserver;
 
 public class sxl
-  extends MqqHandler
+  extends PublicAccountObserver
 {
-  public sxl(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  public sxl(Leba paramLeba) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 2014: 
-      this.a.finish();
-      return;
+    if ((paramBoolean1) && (paramBoolean2)) {
+      this.a.a.notifyDataSetChanged();
     }
-    this.a.finish();
   }
 }
 

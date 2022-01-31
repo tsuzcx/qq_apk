@@ -1,24 +1,15 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-import com.tencent.sveffects.SLog;
-import com.tencent.ttpic.facedetect.FaceDetector;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.richmedia.conn.ConnManager;
+import com.tencent.mobileqq.richmedia.server.PeakAudioTransHandler;
 
 public class ahne
   implements Runnable
 {
-  public ahne(QQFilterRenderManager paramQQFilterRenderManager, ahnf paramahnf) {}
+  public ahne(ConnManager paramConnManager, long paramLong) {}
   
   public void run()
   {
-    long l1 = SystemClock.elapsedRealtimeNanos();
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoFilterQQFilterRenderManager.a.doFaceDetect(this.jdField_a_of_type_Ahnf.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_Ahnf.jdField_a_of_type_Int, this.jdField_a_of_type_Ahnf.b);
-    }
-    long l2 = SystemClock.elapsedRealtimeNanos();
-    long l3 = (l2 - l1) / 1000L;
-    if (SLog.a()) {
-      SLog.d("QQFilterRenderManager", "FilterProcessRender_showPreview[doFaceDetect=" + (l2 - l1) / 1000L + "us]");
-    }
+    ((PeakAudioTransHandler)ConnManager.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaConnConnManager).getBusinessHandler(0)).b(this.jdField_a_of_type_Long);
   }
 }
 

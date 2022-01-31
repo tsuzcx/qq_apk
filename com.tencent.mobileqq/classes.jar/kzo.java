@@ -1,13 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
-public class kzo
-  implements DialogInterface.OnClickListener
+public final class kzo
+  implements WXShareHelper.WXShareListener
 {
-  public kzo(PublicAccountManager paramPublicAccountManager) {}
+  public kzo(String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a(BaseResp paramBaseResp)
+  {
+    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
+      return;
+    }
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
+    {
+    case -1: 
+    default: 
+      QRUtils.a(1, 2131435303);
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      QRUtils.a(2, 2131435302);
+    }
+  }
 }
 
 

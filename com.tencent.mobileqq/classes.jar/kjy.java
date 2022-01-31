@@ -1,20 +1,15 @@
-import android.view.GestureDetector;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.PoiMapActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.BizTroopHandler;
 
-public class kjy
-  implements View.OnTouchListener
+public final class kjy
+  implements DialogInterface.OnClickListener
 {
-  public kjy(PoiMapActivity paramPoiMapActivity) {}
+  public kjy(BizTroopHandler paramBizTroopHandler, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.onTouchEvent(paramMotionEvent);
-    }
-    return false;
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopHandler.b(this.jdField_a_of_type_JavaLangString, false);
   }
 }
 

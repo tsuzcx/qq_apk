@@ -1,115 +1,40 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.pic.PicBusiManager;
-import com.tencent.mobileqq.pic.PicReq;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.WeiYunLogicCenter;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.weiyun.sdk.download.WyDownloader.IDownloadListener;
 import java.io.File;
 
 public class adah
-  implements View.OnClickListener
+  implements WyDownloader.IDownloadListener
 {
-  public adah(ForwardBaseOption paramForwardBaseOption, String paramString) {}
+  public adah(WeiYunLogicCenter paramWeiYunLogicCenter, String paramString, int paramInt, Object paramObject) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, long paramLong, float paramFloat) {}
+  
+  public void a(String paramString1, String paramString2, boolean paramBoolean, String paramString3, int paramInt)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800514A", "0X800514A", 0, 0, "", "", "", "");
-    paramView = this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_AndroidOsBundle.getParcelable("FORWARD_MSG_FOR_PIC");
-    Object localObject;
-    if ((paramView instanceof MessageForPic))
+    int i;
+    if ((paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString2)) && (new File(paramString2).exists()))
     {
-      paramView = (MessageForPic)paramView;
-      int j = 1;
-      localObject = new File(paramView.path);
-      int i = j;
-      if (localObject != null)
-      {
-        i = j;
-        if (((File)localObject).exists())
-        {
-          i = j;
-          if (((File)localObject).length() == paramView.size) {
-            i = 0;
-          }
-        }
-      }
+      i = 1;
       if (i == 0) {
-        ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption, paramView.path, this.jdField_a_of_type_JavaLangString);
+        break label128;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onSucceed. filePath[" + paramString2 + "]");
+      }
+      WeiYunLogicCenter.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreWeiYunLogicCenter).a().a(true, 39, new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int), paramString2, this.jdField_a_of_type_JavaLangObject });
     }
-    do
+    label128:
+    while (!QLog.isColorLevel())
     {
-      do
-      {
-        return;
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800514B", "0X800514B", 0, 0, "", "", "", "");
-        if (NetworkUtil.a(BaseApplication.getContext()) == 0)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ForwardOption.ForwardBaseOption", 2, "Edit Forward Image: none network");
-          }
-          QQToast.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_AndroidAppActivity, "目前没有网络，请稍后再试!", 1000).b(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
-          return;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setProgressBarVisibility(0);
-        localObject = PicBusiManager.a(6, 1536, 1);
-        ((PicReq)localObject).a(paramView, paramView.getPicDownloadInfo());
-        ((PicReq)localObject).a(new adai(this, paramView));
-        PicBusiManager.a((PicReq)localObject, this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-        return;
-        if (!(paramView instanceof AIOImageData)) {
-          break;
-        }
-        paramView = (AIOImageData)paramView;
-        if (paramView.a(4))
-        {
-          localObject = paramView.a(4);
-          if (localObject != null)
-          {
-            ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption, ((File)localObject).getAbsolutePath(), this.jdField_a_of_type_JavaLangString);
-            return;
-          }
-        }
-        if (paramView.a(2))
-        {
-          paramView = paramView.a(2);
-          if (paramView != null)
-          {
-            ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption, paramView.getAbsolutePath(), this.jdField_a_of_type_JavaLangString);
-            return;
-          }
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("ForwardOption.ForwardBaseOption", 2, "Edit Forward Image: image does not exist");
       return;
-      paramView = this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_AndroidOsBundle.getString("forward_filepath");
-      if (paramView != null)
-      {
-        ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption, paramView, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("key_flag_from_plugin", false))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardOption.ForwardBaseOption", 2, "Edit Forward Image: from QZone");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.jdField_a_of_type_AndroidOsBundle.putBoolean("FORWARD_IS_QZONE_SHARE", true);
-        ForwardBaseOption.a(this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption, this.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.b, this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ForwardOption.ForwardBaseOption", 2, "Edit Forward Image: Unknown source");
+      i = 0;
+      break;
+    }
+    QLog.i("WeiYunLogicCenter<FileAssistant>", 2, "getWeiYunThumb onFailed: errcode[" + paramInt + "], errmsg[" + paramString3 + "]");
   }
 }
 

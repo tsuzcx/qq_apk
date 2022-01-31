@@ -1,52 +1,30 @@
-import android.os.Handler;
-import com.tencent.mobileqq.ar.ArConfigService;
-import com.tencent.mobileqq.earlydownload.EarlyDownloadManager.EarlyDownLoadListener;
-import com.tencent.mobileqq.earlydownload.xmldata.XmlData;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.mobileqq.ar.ARGlobalRemoteManager;
+import com.tencent.mobileqq.ar.aidl.IArGlobalConfigManager.Stub;
 import com.tencent.qphone.base.util.QLog;
 
 public class zxi
-  implements EarlyDownloadManager.EarlyDownLoadListener
+  implements ServiceConnection
 {
-  public zxi(ArConfigService paramArConfigService) {}
+  public zxi(ARGlobalRemoteManager paramARGlobalRemoteManager) {}
   
-  public void a(XmlData paramXmlData) {}
-  
-  public void a(XmlData paramXmlData, long paramLong1, long paramLong2)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
+    ARGlobalRemoteManager.a(this.a, IArGlobalConfigManager.Stub.a(paramIBinder));
     if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadProgress data=%s curOffset=%s totalLen=%s", new Object[] { paramXmlData, Long.valueOf(paramLong1), Long.valueOf(paramLong2) }));
-    }
-    if ("qq.android.ar.native.so_v7.3.8".equals(paramXmlData.strResName)) {
-      ArConfigService.a(this.a, (int)(100L * paramLong1 / paramLong2));
-    }
-    int i = (ArConfigService.a(this.a) + ArConfigService.b(this.a) + ArConfigService.c(this.a)) / 3;
-    if (!ArConfigService.d(this.a)) {
-      ArConfigService.a(this.a).post(new zxj(this, i));
+      QLog.d("ARGlobalRemoteManager", 2, "onServiceConnected ARGlobalRemoteManager=" + ARGlobalRemoteManager.a(this.a));
     }
   }
   
-  public void a(XmlData paramXmlData, boolean paramBoolean1, int paramInt, boolean paramBoolean2, String paramString)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
+    ARGlobalRemoteManager.a(this.a, null);
     if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_ArConfigService", 2, String.format("onDownloadFinish data=%s result=%s", new Object[] { paramXmlData, Boolean.valueOf(paramBoolean1) }));
+      QLog.d("ARGlobalRemoteManager", 2, "onServiceDisconnected ARGlobalRemoteManager=" + ARGlobalRemoteManager.a(this.a));
     }
-    if (paramBoolean1)
-    {
-      if ("qq.android.ar.native.so_v7.3.8".equals(paramXmlData.strResName)) {
-        ArConfigService.b(this.a, true);
-      }
-      if ((ArConfigService.e(this.a)) && (ArConfigService.f(this.a)) && (ArConfigService.g(this.a))) {
-        ArConfigService.a(this.a).post(new zxk(this));
-      }
-    }
-    while (ArConfigService.d(this.a)) {
-      return;
-    }
-    ArConfigService.a(this.a).post(new zxl(this));
-    ArConfigService.a(this.a, true);
   }
-  
-  public void b(XmlData paramXmlData) {}
 }
 
 

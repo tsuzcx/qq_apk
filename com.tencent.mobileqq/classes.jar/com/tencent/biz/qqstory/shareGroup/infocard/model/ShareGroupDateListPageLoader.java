@@ -24,8 +24,8 @@ import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatchers;
 import java.util.ArrayList;
 import java.util.Collections;
-import nqw;
-import nqx;
+import nsj;
+import nsk;
 
 public class ShareGroupDateListPageLoader
   extends INetPageLoader
@@ -170,7 +170,7 @@ public class ShareGroupDateListPageLoader
   public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
   {
     super.a(paramTencentLocation, paramInt);
-    Bosses.get().postJob(new nqw(this));
+    Bosses.get().postJob(new nsj(this));
   }
   
   protected boolean a(String paramString)
@@ -181,7 +181,7 @@ public class ShareGroupDateListPageLoader
   public void c()
   {
     super.c();
-    Bosses.get().postJob(new nqx(this));
+    Bosses.get().postJob(new nsk(this));
   }
 }
 

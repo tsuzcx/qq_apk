@@ -1,47 +1,90 @@
+import android.text.Editable;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.app.EmoticonHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.multimsg.LongTextMsgManager;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.model.EmoticonManager;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import java.util.ArrayList;
+import java.util.List;
+import mqq.os.MqqHandler;
 
-public final class rsk
-  implements UpCallBack
+public class rsk
+  implements Runnable
 {
-  public rsk(MessageForArkApp paramMessageForArkApp, QQAppInterface paramQQAppInterface) {}
+  public rsk(BaseChatPie paramBaseChatPie, String paramString, Editable paramEditable) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void run()
   {
-    return null;
-  }
-  
-  public void a(UpCallBack.SendResult paramSendResult) {}
-  
-  public void b(UpCallBack.SendResult paramSendResult)
-  {
-    try
-    {
-      if (paramSendResult.jdField_a_of_type_Int == 0)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp.resIDForLongMsg = paramSendResult.c;
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, null, false);
-        return;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatActivityFacade", 2, "upload multi msg pack failed, result.errStr=" + paramSendResult.b + ",result.errStr=" + paramSendResult.jdField_a_of_type_JavaLangString);
-      }
-      LongTextMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+    int i = 9;
+    int m = 0;
+    int j = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).b(this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseChatPie", 2, this.jdField_a_of_type_AndroidTextEditable.toString() + "is hotword, totalnum = " + j);
+    }
+    if (j == 0) {
       return;
     }
-    catch (Exception paramSendResult)
+    Object localObject3 = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_JavaLangString);
+    Object localObject2 = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).b(this.jdField_a_of_type_JavaLangString);
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new ArrayList();
+    }
+    if (j > 9) {}
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ChatActivityFacade", 2, "upload multi msg pack failed, catch exception", paramSendResult);
+      long l = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a(this.jdField_a_of_type_JavaLangString);
+      boolean bool;
+      if (BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).a()) {
+        if (System.currentTimeMillis() - l > 86400000L) {
+          bool = true;
+        }
       }
-      LongTextMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.aio.BaseChatPie", 2, "afterTextChanged isNeedReq = " + bool);
+        }
+        if (bool)
+        {
+          ((List)localObject1).clear();
+          localObject2 = new ArrayList();
+          j = i;
+          int k = m;
+          if (localObject3 != null)
+          {
+            ((List)localObject2).add(((Emoticon)localObject3).eId);
+            ((List)localObject1).add(localObject3);
+            j = i - 1;
+            k = m;
+          }
+          for (;;)
+          {
+            if (k < j)
+            {
+              localObject3 = new Emoticon();
+              ((Emoticon)localObject3).epId = "NONE";
+              ((Emoticon)localObject3).eId = ("_" + k);
+              ((List)localObject1).add(localObject3);
+              k += 1;
+              continue;
+              if (((List)localObject1).size() >= i) {
+                break label407;
+              }
+              bool = true;
+              break;
+            }
+          }
+          localObject3 = BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie).c(this.jdField_a_of_type_JavaLangString);
+          ((EmoticonHandler)this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(12)).a(this.jdField_a_of_type_AndroidTextEditable.toString(), (List)localObject2, (List)localObject3);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_MqqOsMqqHandler.post(new rsl(this, (List)localObject1));
+        return;
+        label407:
+        bool = false;
+      }
+      i = j;
     }
   }
 }

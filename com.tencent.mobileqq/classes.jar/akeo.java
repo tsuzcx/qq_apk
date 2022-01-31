@@ -1,30 +1,30 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.CircleProgressBar;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.WindowManager;
+import android.widget.ImageView;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihEmoticonInput;
 
 public class akeo
-  extends Handler
+  implements View.OnTouchListener
 {
-  public akeo(CircleProgressBar paramCircleProgressBar) {}
+  public akeo(QQCustomDialogWtihEmoticonInput paramQQCustomDialogWtihEmoticonInput) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMessage.what)
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845858);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setTag(Integer.valueOf(2130845858));
+    if (this.a.b)
     {
+      this.a.jdField_a_of_type_AndroidViewWindowManager.removeView(this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemEmoticonPanel);
+      this.a.b = false;
     }
-    do
-    {
-      return;
-      paramMessage = this.a;
-      paramMessage.i += 3;
-      this.a.postInvalidate();
-    } while (!this.a.a);
-    sendEmptyMessageDelayed(10000, 50L);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akeo
  * JD-Core Version:    0.7.0.1
  */

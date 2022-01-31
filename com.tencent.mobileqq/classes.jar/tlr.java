@@ -1,15 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.RegisterActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.data.Card;
 
-public class tlr
-  implements DialogInterface.OnClickListener
+class tlr
+  implements Runnable
 {
-  public tlr(RegisterActivity paramRegisterActivity) {}
+  tlr(tlo paramtlo, Card paramCard) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    if (QQSettingMe.a(this.jdField_a_of_type_Tlo.a) != null) {
+      QQSettingMe.a(this.jdField_a_of_type_Tlo.a).a(this.jdField_a_of_type_ComTencentMobileqqDataCard);
+    }
   }
 }
 

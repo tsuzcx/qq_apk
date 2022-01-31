@@ -1,25 +1,27 @@
-import android.view.View;
-import com.tencent.mobileqq.nearby.now.location.LocationDataManager;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
-import com.tencent.mobileqq.nearby.now.model.LocationInfo;
-import com.tencent.mobileqq.nearby.now.widget.ItemClickHelper;
-import java.util.List;
+import android.animation.ArgbEvaluator;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.medalwall.MedalGuideView;
 
 public class aefs
-  extends ItemClickHelper
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public aefs(SelectLocationFragment paramSelectLocationFragment) {}
+  public aefs(MedalGuideView paramMedalGuideView) {}
   
-  public void a(int paramInt, View paramView)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    SelectLocationFragment.a(this.a, paramInt);
-    SelectLocationFragment.b(this.a, (LocationInfo)SelectLocationFragment.a(this.a).a().get(SelectLocationFragment.b(this.a)));
-    SelectLocationFragment.a(this.a, SelectLocationFragment.b(this.a));
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int i = ((Integer)this.a.jdField_a_of_type_AndroidAnimationArgbEvaluator.evaluate(f, Integer.valueOf(this.a.jdField_a_of_type_Int), Integer.valueOf(0))).intValue();
+    this.a.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(i);
+    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
+      paramValueAnimator.removeAllUpdateListeners();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefs
  * JD-Core Version:    0.7.0.1
  */

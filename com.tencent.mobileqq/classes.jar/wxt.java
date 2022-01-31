@@ -1,57 +1,44 @@
-import Wallet.WalletSkinRsp;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler;
-import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler.SkinListener;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManagerProxy;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import cooperation.qzone.util.QZLog;
+import java.io.File;
+import java.util.Map;
 
-public class wxt
+class wxt
   implements Runnable
 {
-  public wxt(QWalletSkinHandler paramQWalletSkinHandler, WalletSkinRsp paramWalletSkinRsp, QWalletSkinHandler.SkinListener paramSkinListener) {}
+  wxt(wxs paramwxs, String paramString1, String paramString2, int paramInt) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_WalletWalletSkinRsp == null) || (TextUtils.isEmpty(this.jdField_a_of_type_WalletWalletSkinRsp.zipUrl)))
+    Message localMessage = Message.obtain();
+    localMessage.what = 1;
+    String str = PhotoListActivity.a(this.jdField_a_of_type_Wxs.a, this.jdField_a_of_type_JavaLangString);
+    localMessage.obj = str;
+    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
+    try
     {
-      QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletSkinHandler", 2, "setWalletSkin fail:" + this.jdField_a_of_type_WalletWalletSkinRsp);
-      }
+      localLocalMediaInfo.path = str;
+      localLocalMediaInfo.mMimeType = "video/mp4";
+      localLocalMediaInfo.addedDate = System.currentTimeMillis();
+      localLocalMediaInfo.modifiedDate = System.currentTimeMillis();
+      localLocalMediaInfo.thumbnailPath = this.b;
+      localLocalMediaInfo.mDuration = this.jdField_a_of_type_Int;
+      localLocalMediaInfo.fileSize = new File(str).length();
+      localLocalMediaInfo.isSystemMeidaStore = false;
+      PhotoListActivity.a().put(str, localLocalMediaInfo);
+      this.jdField_a_of_type_Wxs.a.a.sendMessage(localMessage);
       return;
     }
-    if (this.jdField_a_of_type_WalletWalletSkinRsp.skinID == 0)
+    catch (Exception localException)
     {
-      QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, 0);
-      QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, true);
-      return;
-    }
-    String str1 = QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_WalletWalletSkinRsp.skinID + "", 0);
-    String str2 = QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, str1);
-    String str3 = QWalletSkinHandler.b(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, str1);
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_WalletWalletSkinRsp.zipUrl)) && (QWalletTools.c(str3, this.jdField_a_of_type_WalletWalletSkinRsp.zipUrl)) && (QWalletTools.c(str2, this.jdField_a_of_type_WalletWalletSkinRsp.zipMd5)) && (QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler).c(this.jdField_a_of_type_WalletWalletSkinRsp.zipUrl) != null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QWalletSkinHandler", 2, "setWalletSkin res exist" + this.jdField_a_of_type_WalletWalletSkinRsp);
+      for (;;)
+      {
+        QZLog.e("PhotoListActivity", 2, new Object[] { "get new video info exception", localException });
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler.a() != this.jdField_a_of_type_WalletWalletSkinRsp.skinID) {
-        QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, null);
-      }
-      QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_WalletWalletSkinRsp.skinID);
-      QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, true);
-      QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler);
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QWalletSkinHandler", 2, "setWalletSkin res not exist" + this.jdField_a_of_type_WalletWalletSkinRsp);
-    }
-    QWalletTools.a(QWalletSkinHandler.c(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, str1));
-    if (!TextUtils.isEmpty(str3)) {
-      QWalletTools.a(QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler).d(str3));
-    }
-    QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, null);
-    QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler).a(this.jdField_a_of_type_WalletWalletSkinRsp.zipUrl, this.jdField_a_of_type_WalletWalletSkinRsp.zipMd5, new wxu(this, str1), true);
   }
 }
 

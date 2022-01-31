@@ -1,18 +1,28 @@
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.view.Window;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.biz.now.CgiHelper;
+import com.tencent.biz.now.CgiHelper.cigHelperCallback;
 
 public class knx
-  implements View.OnLayoutChangeListener
+  extends Handler
 {
-  public knx(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
+  public knx(CgiHelper paramCgiHelper) {}
   
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public void handleMessage(Message paramMessage)
   {
-    paramInt1 = this.a.getWindow().getDecorView().getBottom() - this.a.getWindow().getDecorView().getTop();
-    if (paramInt1 != this.a.b) {
-      LebaSearchPluginManagerActivity.a(this.a, paramInt1);
+    if ((paramMessage.what == 1001) && (CgiHelper.a(this.a) != null))
+    {
+      paramMessage = CgiHelper.a(this.a);
+      if (TextUtils.isEmpty(CgiHelper.a(this.a))) {
+        break label58;
+      }
+    }
+    label58:
+    for (boolean bool = true;; bool = false)
+    {
+      paramMessage.a(bool, CgiHelper.b(this.a));
+      return;
     }
   }
 }

@@ -1,62 +1,28 @@
-import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.business.base.AppUtil;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.common.DownloadDBHelper;
-import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
-import java.util.concurrent.ConcurrentHashMap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.webso.WebSoService;
+import com.tencent.mobileqq.webview.webso.WebSoService.CallBack;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
 
 public class akrm
-  implements Runnable
+  implements WebSoService.CallBack
 {
-  public akrm(DownloadManager paramDownloadManager) {}
+  public akrm(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState, long paramLong) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = ((ConcurrentHashMap)DownloadDBHelper.a().a());
-    try
-    {
-      DownloadInfo localDownloadInfo = this.a.b("com.tencent.mobileqq");
-      if ((localDownloadInfo != null) && (localDownloadInfo.jdField_c_of_type_Int == 0))
-      {
-        String str = "";
-        TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo1;
-        if (localDownloadInfo.a == 0)
-        {
-          TMAssistantDownloadTaskInfo localTMAssistantDownloadTaskInfo2 = this.a.a(localDownloadInfo.jdField_c_of_type_JavaLangString);
-          localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
-          if (localTMAssistantDownloadTaskInfo2 != null)
-          {
-            str = localTMAssistantDownloadTaskInfo2.mSavePath;
-            localTMAssistantDownloadTaskInfo1 = localTMAssistantDownloadTaskInfo2;
-          }
-        }
-        while (localTMAssistantDownloadTaskInfo1 == null)
-        {
-          this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
-          DownloadDBHelper.a().a(localDownloadInfo.b);
-          return;
-          localTMAssistantDownloadTaskInfo1 = this.a.a(localDownloadInfo.h);
-          str = localDownloadInfo.k;
-        }
-        if ((localTMAssistantDownloadTaskInfo1.mState == 4) && (AppUtil.c(str) <= CommonDataAdapter.a().a()))
-        {
-          this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(localDownloadInfo.b);
-          DownloadDBHelper.a().a(localDownloadInfo.b);
-          return;
-        }
-      }
+    if (TextUtils.isEmpty(paramString)) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Int = 10005;
     }
-    catch (Exception localException)
-    {
-      LogUtility.c(DownloadManager.jdField_a_of_type_JavaLangString, "speical clear>>>", localException);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.f = false;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter$HybridWebReportInfo.d = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akrm
  * JD-Core Version:    0.7.0.1
  */

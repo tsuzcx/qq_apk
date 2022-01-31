@@ -108,28 +108,28 @@ import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
-import wou;
-import wov;
-import wow;
-import wox;
-import woy;
-import woz;
-import wpa;
-import wpb;
-import wpc;
-import wpd;
-import wpe;
-import wpg;
-import wpi;
-import wpj;
-import wpk;
-import wpl;
-import wpn;
-import wpp;
-import wpq;
-import wps;
-import wpu;
-import wpv;
+import wrz;
+import wsa;
+import wsb;
+import wsc;
+import wsd;
+import wse;
+import wsf;
+import wsg;
+import wsh;
+import wsi;
+import wsj;
+import wsl;
+import wsn;
+import wso;
+import wsp;
+import wsq;
+import wss;
+import wsu;
+import wsv;
+import wsx;
+import wsz;
+import wta;
 
 public class AvatarPendantActivity
   extends IphoneTitleBarActivity
@@ -151,17 +151,17 @@ public class AvatarPendantActivity
   public TextView a;
   public ProfileActivity.AllInOne a;
   public AvatarPendantAdapter a;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new wpe(this);
-  UniPayHandler.UniPayUpdateListener jdField_a_of_type_ComTencentMobileqqAppUniPayHandler$UniPayUpdateListener = new wpl(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new wsj(this);
+  UniPayHandler.UniPayUpdateListener jdField_a_of_type_ComTencentMobileqqAppUniPayHandler$UniPayUpdateListener = new wsq(this);
   UniPayHandler jdField_a_of_type_ComTencentMobileqqAppUniPayHandler;
   public DynamicAvatarView a;
-  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new wou(this);
+  private GameCenterObserver jdField_a_of_type_ComTencentMobileqqObserverGameCenterObserver = new wrz(this);
   public RedTouch a;
   public AvatarPendantShopItemInfo a;
   public AvatarPendantShopSeriesInfo a;
-  VasExtensionObserver jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver = new woy(this);
-  VasQuickUpdateManager.CallBacker jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new wpd(this);
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new wox(this);
+  VasExtensionObserver jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver = new wsd(this);
+  VasQuickUpdateManager.CallBacker jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new wsi(this);
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new wsc(this);
   TipsBar jdField_a_of_type_ComTencentMobileqqWidgetTipsBar;
   public BusinessInfoCheckUpdate.AppInfo a;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
@@ -216,8 +216,8 @@ public class AvatarPendantActivity
     }
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { 1, 100 });
     localValueAnimator.setInterpolator(new DecelerateInterpolator());
-    localValueAnimator.addUpdateListener(new wpj(this, paramList1, paramList2));
-    localValueAnimator.addListener(new wpk(this));
+    localValueAnimator.addUpdateListener(new wso(this, paramList1, paramList2));
+    localValueAnimator.addListener(new wsp(this));
     localValueAnimator.setDuration(paramInt).start();
   }
   
@@ -250,7 +250,7 @@ public class AvatarPendantActivity
     }
     File localFile2 = new File(AvatarPendantUtil.b + "/icon.zip");
     if ((localFile1.exists()) && (!localFile2.exists()) && (localObject != null)) {
-      ThreadManager.getSubThreadHandler().post(new wpu(this, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, this.app));
+      ThreadManager.getSubThreadHandler().post(new wsz(this, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, this.app));
     }
     localObject = ((AvatarPendantManager)this.app.getManager(45)).a();
     this.app.getApp().getSharedPreferences("clubContentPendantMarketJsonUpdate", 0);
@@ -271,38 +271,38 @@ public class AvatarPendantActivity
   
   private void g()
   {
-    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131363362);
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131363091);
-    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131372078);
-    View localView = super.findViewById(2131371045);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131372079));
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131372077));
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView = ((DynamicAvatarView)super.findViewById(2131372081));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131372083));
-    this.jdField_d_of_type_AndroidViewView = super.findViewById(2131372082);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar = ((TipsBar)super.findViewById(2131365435));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131372092));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131372093));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372085));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372084));
+    this.jdField_b_of_type_AndroidViewView = super.findViewById(2131363380);
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131363109);
+    this.jdField_c_of_type_AndroidViewView = super.findViewById(2131372251);
+    View localView = super.findViewById(2131371209);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131372252));
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)super.findViewById(2131372250));
+    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView = ((DynamicAvatarView)super.findViewById(2131372254));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131372256));
+    this.jdField_d_of_type_AndroidViewView = super.findViewById(2131372255);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar = ((TipsBar)super.findViewById(2131365457));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131372265));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131372266));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131372258));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372257));
     this.jdField_c_of_type_AndroidViewView.addOnLayoutChangeListener(this);
     this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    findViewById(2131364614).setOnClickListener(this);
-    Object localObject1 = (TextView)findViewById(2131372087);
+    findViewById(2131364638).setOnClickListener(this);
+    Object localObject1 = (TextView)findViewById(2131372260);
     ((TextView)localObject1).setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch = new RedTouch(this, (View)localObject1).a(53).a();
     i();
-    localObject1 = (TextView)super.findViewById(2131363227);
-    ((TextView)localObject1).setText(super.getString(2131433681));
+    localObject1 = (TextView)super.findViewById(2131363245);
+    ((TextView)localObject1).setText(super.getString(2131433698));
     ((TextView)localObject1).setOnClickListener(this);
-    localObject1 = (TextView)super.findViewById(2131363363);
-    ((TextView)localObject1).setText(super.getString(2131436710));
+    localObject1 = (TextView)super.findViewById(2131363381);
+    ((TextView)localObject1).setText(super.getString(2131436727));
     ((TextView)localObject1).setFocusable(true);
     ((TextView)localObject1).setFocusableInTouchMode(true);
     ((TextView)localObject1).setClickable(true);
-    ((TextView)localObject1).setContentDescription(super.getString(2131436710));
-    localObject1 = (RelativeLayout)super.findViewById(2131363362);
+    ((TextView)localObject1).setContentDescription(super.getString(2131436727));
+    localObject1 = (RelativeLayout)super.findViewById(2131363380);
     localObject1 = getWindowManager().getDefaultDisplay();
     int i1 = ((Display)localObject1).getHeight();
     int i2 = ((Display)localObject1).getWidth();
@@ -319,7 +319,7 @@ public class AvatarPendantActivity
       d2 = d3 - 1.67D;
       a();
       i2 = super.getResources().getDimensionPixelSize(2131558448);
-      localObject2 = (RelativeLayout)super.findViewById(2131372080);
+      localObject2 = (RelativeLayout)super.findViewById(2131372253);
       localLayoutParams = (RelativeLayout.LayoutParams)((RelativeLayout)localObject2).getLayoutParams();
       localLayoutParams.topMargin = (i2 / 2 + 14 - (int)(Math.abs(d2) * 24.0D));
       ((RelativeLayout)localObject2).setLayoutParams(localLayoutParams);
@@ -338,7 +338,7 @@ public class AvatarPendantActivity
       this.h = ((int)(this.f * d2));
       if (!this.jdField_b_of_type_Boolean)
       {
-        super.findViewById(2131372088).setVisibility(8);
+        super.findViewById(2131372261).setVisibility(8);
         this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(0);
         this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setTipsText("没有SD卡无法使用头像挂件");
         this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.a(false);
@@ -388,7 +388,7 @@ public class AvatarPendantActivity
         return;
         if (this.jdField_c_of_type_Boolean)
         {
-          super.findViewById(2131372088).setVisibility(8);
+          super.findViewById(2131372261).setVisibility(8);
           this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(0);
           this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setTipsText("SD卡已满，可能无法使用头像挂件");
           this.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.a(false);
@@ -416,7 +416,7 @@ public class AvatarPendantActivity
   
   private void i()
   {
-    ThreadManager.post(new wpg(this), 5, null, true);
+    ThreadManager.post(new wsl(this), 5, null, true);
   }
   
   private void j()
@@ -433,48 +433,48 @@ public class AvatarPendantActivity
     Object localObject = (RelativeLayout.LayoutParams)this.jdField_d_of_type_AndroidViewView.getLayoutParams();
     ((RelativeLayout.LayoutParams)localObject).height = this.o;
     this.jdField_d_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    localObject = new wps();
-    wps localwps1 = new wps();
-    wps localwps2 = new wps();
-    ((wps)localObject).jdField_c_of_type_Int = localLayoutParams.height;
-    ((wps)localObject).jdField_d_of_type_Int = this.g;
+    localObject = new wsx();
+    wsx localwsx1 = new wsx();
+    wsx localwsx2 = new wsx();
+    ((wsx)localObject).jdField_c_of_type_Int = localLayoutParams.height;
+    ((wsx)localObject).jdField_d_of_type_Int = this.g;
     int i1 = localLayoutParams.topMargin;
-    ((wps)localObject).jdField_b_of_type_Int = i1;
-    ((wps)localObject).jdField_a_of_type_Int = i1;
-    ((wps)localObject).g = ((int)(Math.abs(this.g - localLayoutParams.height) * 1.0D / this.g * ((wps)localObject).g));
+    ((wsx)localObject).jdField_b_of_type_Int = i1;
+    ((wsx)localObject).jdField_a_of_type_Int = i1;
+    ((wsx)localObject).g = ((int)(Math.abs(this.g - localLayoutParams.height) * 1.0D / this.g * ((wsx)localObject).g));
     i1 = localLayoutParams1.topMargin;
-    localwps1.jdField_b_of_type_Int = i1;
-    localwps1.jdField_a_of_type_Int = i1;
-    localwps1.jdField_e_of_type_Int = localLayoutParams1.width;
-    localwps1.f = this.i;
-    localwps1.jdField_c_of_type_Int = localLayoutParams1.height;
-    localwps1.jdField_d_of_type_Int = this.i;
-    localwps1.g = ((wps)localObject).g;
+    localwsx1.jdField_b_of_type_Int = i1;
+    localwsx1.jdField_a_of_type_Int = i1;
+    localwsx1.jdField_e_of_type_Int = localLayoutParams1.width;
+    localwsx1.f = this.i;
+    localwsx1.jdField_c_of_type_Int = localLayoutParams1.height;
+    localwsx1.jdField_d_of_type_Int = this.i;
+    localwsx1.g = ((wsx)localObject).g;
     i1 = localLayoutParams2.topMargin;
-    localwps2.jdField_b_of_type_Int = i1;
-    localwps2.jdField_a_of_type_Int = i1;
-    localwps2.jdField_e_of_type_Int = localLayoutParams2.width;
-    localwps2.f = this.k;
-    localwps2.jdField_c_of_type_Int = localLayoutParams2.height;
-    localwps2.jdField_d_of_type_Int = this.m;
-    localwps2.g = ((wps)localObject).g;
+    localwsx2.jdField_b_of_type_Int = i1;
+    localwsx2.jdField_a_of_type_Int = i1;
+    localwsx2.jdField_e_of_type_Int = localLayoutParams2.width;
+    localwsx2.f = this.k;
+    localwsx2.jdField_c_of_type_Int = localLayoutParams2.height;
+    localwsx2.jdField_d_of_type_Int = this.m;
+    localwsx2.g = ((wsx)localObject).g;
     localArrayList2.add(this.jdField_c_of_type_AndroidViewView);
     localArrayList2.add(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarView);
     localArrayList2.add(this.jdField_b_of_type_AndroidWidgetImageView);
     localArrayList1.add(localObject);
-    localArrayList1.add(localwps1);
-    localArrayList1.add(localwps2);
-    if (((wps)localObject).g <= 0)
+    localArrayList1.add(localwsx1);
+    localArrayList1.add(localwsx2);
+    if (((wsx)localObject).g <= 0)
     {
-      QLog.e("AvatarPendantActivity", 2, "heigth: " + this.g + " palytime: " + ((wps)localObject).g);
+      QLog.e("AvatarPendantActivity", 2, "heigth: " + this.g + " palytime: " + ((wsx)localObject).g);
       return;
     }
-    a(localArrayList2, localArrayList1, ((wps)localObject).g);
+    a(localArrayList2, localArrayList1, ((wsx)localObject).g);
   }
   
   private void k()
   {
-    ThreadManager.getFileThreadHandler().post(new wpn(this));
+    ThreadManager.getFileThreadHandler().post(new wss(this));
   }
   
   private void l()
@@ -536,7 +536,7 @@ public class AvatarPendantActivity
         for (;;)
         {
           this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-          this.jdField_a_of_type_AndroidWidgetButton.setText(2131434589);
+          this.jdField_a_of_type_AndroidWidgetButton.setText(2131434606);
           ReportController.b(this.app, "CliOper", "", "", "0X8005FDD", "0X8005FDD", 0, 0, "1", "", "", "");
           break;
           localAvatarPendantManager.a(((ExtensionInfo)localObject).pendantId).a(this.jdField_b_of_type_AndroidWidgetImageView, 5, PendantInfo.i, this.app.getCurrentAccountUin(), ((ExtensionInfo)localObject).pendantDiyId);
@@ -620,7 +620,7 @@ public class AvatarPendantActivity
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new wpi(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new wsn(this));
   }
   
   public void a(TextView paramTextView, View paramView)
@@ -673,7 +673,7 @@ public class AvatarPendantActivity
     }
     for (;;)
     {
-      DialogUtil.a(this, 230).setTitle(paramPendantTipsInfo.titleWording).setMessage(paramPendantTipsInfo.wording).setPositiveButton(paramPendantTipsInfo.rightBtnWording, new wpa(this, paramPendantTipsInfo, paramInt)).setNegativeButton(paramPendantTipsInfo.leftBtnWording, new woz(this)).show();
+      DialogUtil.a(this, 230).setTitle(paramPendantTipsInfo.titleWording).setMessage(paramPendantTipsInfo.wording).setPositiveButton(paramPendantTipsInfo.rightBtnWording, new wsf(this, paramPendantTipsInfo, paramInt)).setNegativeButton(paramPendantTipsInfo.leftBtnWording, new wse(this)).show();
       ReportController.b(this.app, "CliOper", "", "", "0X8005FD8", "0X8005FD8", 0, 0, "", "", "", "");
       paramPendantTipsInfo = (PendantTipsInfo)localObject;
       break;
@@ -687,7 +687,7 @@ public class AvatarPendantActivity
           QQToast.a(this, 1, "设置挂件失败", 0).b(getTitleBarHeight());
           return;
         }
-        paramPendantTipsInfo = DialogUtil.a(this, 230).setTitle(paramPendantTipsInfo.titleWording).setMessage(paramPendantTipsInfo.wording).setPositiveButton(paramPendantTipsInfo.rightBtnWording, new wpc(this, paramPendantTipsInfo, paramInt)).setNegativeButton(paramPendantTipsInfo.leftBtnWording, new wpb(this));
+        paramPendantTipsInfo = DialogUtil.a(this, 230).setTitle(paramPendantTipsInfo.titleWording).setMessage(paramPendantTipsInfo.wording).setPositiveButton(paramPendantTipsInfo.rightBtnWording, new wsh(this, paramPendantTipsInfo, paramInt)).setNegativeButton(paramPendantTipsInfo.leftBtnWording, new wsg(this));
         localObject = paramPendantTipsInfo.getMessageTextView();
         ViewGroup.LayoutParams localLayoutParams = ((TextView)localObject).getLayoutParams();
         localLayoutParams.width = -1;
@@ -730,7 +730,7 @@ public class AvatarPendantActivity
         if (!str2.equals("LTMCLUB")) {
           break label155;
         }
-        str1 = getString(2131436723);
+        str1 = getString(2131436740);
       }
       for (;;)
       {
@@ -743,7 +743,7 @@ public class AvatarPendantActivity
           label155:
           if (str2.equals("CJCLUBT"))
           {
-            str1 = getString(2131436926);
+            str1 = getString(2131436943);
           }
           else
           {
@@ -788,7 +788,7 @@ public class AvatarPendantActivity
   
   public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (paramAdapterView.getId() != 2131372116) {}
+    if (paramAdapterView.getId() != 2131372289) {}
     while ((!(paramAdapterView instanceof GridView)) || (paramAdapterView.getTag() == null) || (paramView == null) || (paramView.getTag() == null)) {
       return;
     }
@@ -835,7 +835,7 @@ public class AvatarPendantActivity
     int i5;
     if (a())
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131434589);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131434606);
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       i1 = 4;
       VasWebviewUtil.reportCommercialDrainage(this.app.getCurrentAccountUin(), "faceAddon", "0X80088ED", "", 1, 0, 0, null, String.valueOf(i1), String.valueOf(this.jdField_a_of_type_Long));
@@ -902,14 +902,14 @@ public class AvatarPendantActivity
           if (i6 == 0) {
             break label736;
           }
-          this.jdField_a_of_type_AndroidWidgetButton.setText(2131434582);
+          this.jdField_a_of_type_AndroidWidgetButton.setText(2131434599);
           i1 = 3;
           break;
           boolean bool = VipUtils.b(this.app);
           i6 = bool;
           if (!bool)
           {
-            i2 = 2131434583;
+            i2 = 2131434600;
             i1 = 0;
             i6 = bool;
             continue;
@@ -917,12 +917,12 @@ public class AvatarPendantActivity
             i6 = bool;
             if (!bool)
             {
-              i2 = 2131434584;
+              i2 = 2131434601;
               i1 = 1;
               i6 = bool;
               continue;
               i6 = 0;
-              i2 = 2131434585;
+              i2 = 2131434602;
               i1 = 2;
             }
           }
@@ -946,7 +946,7 @@ public class AvatarPendantActivity
   public void a(boolean paramBoolean)
   {
     String str = this.jdField_a_of_type_JavaLangString;
-    ThreadManager.getFileThreadHandler().post(new wow(this, str));
+    ThreadManager.getFileThreadHandler().post(new wsb(this, str));
   }
   
   public boolean a()
@@ -1053,9 +1053,9 @@ public class AvatarPendantActivity
   
   public void c()
   {
-    ImageView localImageView = (ImageView)super.findViewById(2131372089);
-    TextView localTextView = (TextView)super.findViewById(2131372090);
-    Button localButton = (Button)super.findViewById(2131372091);
+    ImageView localImageView = (ImageView)super.findViewById(2131372262);
+    TextView localTextView = (TextView)super.findViewById(2131372263);
+    Button localButton = (Button)super.findViewById(2131372264);
     String str2 = this.app.getCurrentAccountUin();
     SharedPreferences localSharedPreferences = this.app.getApp().getSharedPreferences("uniPaySp_" + str2, 0);
     String str3 = localSharedPreferences.getString("sUin", "");
@@ -1063,7 +1063,7 @@ public class AvatarPendantActivity
     int i2 = localSharedPreferences.getInt("iUinpPayType", 0);
     Object localObject3 = "LTMCLUB";
     String str1 = "QQ会员";
-    String str4 = super.getString(2131436891);
+    String str4 = super.getString(2131436908);
     Object localObject2 = str1;
     Object localObject1 = localObject3;
     if (str3 != null)
@@ -1100,59 +1100,59 @@ public class AvatarPendantActivity
       localObject3 = localObject1;
       localObject1 = localObject2;
       localObject2 = localObject3;
-      localButton.setOnClickListener(new wpp(this, Integer.valueOf(localSharedPreferences.getString("open_month", "3")).intValue(), (String)localObject1, (String)localObject2));
+      localButton.setOnClickListener(new wsu(this, Integer.valueOf(localSharedPreferences.getString("open_month", "3")).intValue(), (String)localObject1, (String)localObject2));
       return;
-      localButton.setText(2131436167);
-      localTextView.setText(super.getString(2131436226, new Object[] { str4 }));
-      localImageView.setBackgroundDrawable(super.getResources().getDrawable(2130840606));
+      localButton.setText(2131436184);
+      localTextView.setText(super.getString(2131436243, new Object[] { str4 }));
+      localImageView.setBackgroundDrawable(super.getResources().getDrawable(2130840628));
       localObject1 = "QQ会员";
       localObject2 = "LTMCLUB";
       continue;
-      localButton.setText(2131436168);
-      localTextView.setText(super.getString(2131436227, new Object[] { str4 }));
-      localImageView.setBackgroundDrawable(super.getResources().getDrawable(2130841471));
+      localButton.setText(2131436185);
+      localTextView.setText(super.getString(2131436244, new Object[] { str4 }));
+      localImageView.setBackgroundDrawable(super.getResources().getDrawable(2130841508));
       localObject1 = "QQ会员";
       localObject2 = "LTMCLUB";
       continue;
-      localButton.setText(2131436167);
-      localTextView.setText(super.getString(2131436228, new Object[] { str4 }));
-      localImageView.setBackgroundDrawable(super.getResources().getDrawable(2130840606));
+      localButton.setText(2131436184);
+      localTextView.setText(super.getString(2131436245, new Object[] { str4 }));
+      localImageView.setBackgroundDrawable(super.getResources().getDrawable(2130840628));
       localObject2 = "CJCLUBT";
       localObject1 = "超级会员";
       continue;
-      localButton.setText(2131436168);
-      localTextView.setText(super.getString(2131436229, new Object[] { str4 }));
-      localImageView.setBackgroundDrawable(super.getResources().getDrawable(2130840935));
+      localButton.setText(2131436185);
+      localTextView.setText(super.getString(2131436246, new Object[] { str4 }));
+      localImageView.setBackgroundDrawable(super.getResources().getDrawable(2130840972));
       localObject2 = "CJCLUBT";
       localObject1 = "超级会员";
       continue;
-      localButton.setText(2131436168);
-      localTextView.setText(super.getString(2131436233, new Object[] { str4 }));
-      localImageView.setBackgroundDrawable(super.getResources().getDrawable(2130841472));
+      localButton.setText(2131436185);
+      localTextView.setText(super.getString(2131436250, new Object[] { str4 }));
+      localImageView.setBackgroundDrawable(super.getResources().getDrawable(2130841509));
       localObject2 = "CJCLUBT";
       localObject1 = "超级会员";
       continue;
-      localButton.setText(2131436169);
-      localTextView.setText(super.getString(2131436234, new Object[] { str4 }));
-      localImageView.setBackgroundDrawable(super.getResources().getDrawable(2130841472));
+      localButton.setText(2131436186);
+      localTextView.setText(super.getString(2131436251, new Object[] { str4 }));
+      localImageView.setBackgroundDrawable(super.getResources().getDrawable(2130841509));
       localObject2 = "CJCLUBT";
       localObject1 = "超级会员";
       continue;
-      localButton.setText(2131436169);
-      localTextView.setText(super.getString(2131436230, new Object[] { str4 }));
-      localImageView.setBackgroundDrawable(super.getResources().getDrawable(2130840935));
+      localButton.setText(2131436186);
+      localTextView.setText(super.getString(2131436247, new Object[] { str4 }));
+      localImageView.setBackgroundDrawable(super.getResources().getDrawable(2130840972));
       localObject2 = "CJCLUBT";
       localObject1 = "超级会员";
       continue;
-      localButton.setText(2131436168);
-      localTextView.setText(super.getString(2131436231, new Object[] { str4 }));
-      localImageView.setBackgroundDrawable(super.getResources().getDrawable(2130841473));
+      localButton.setText(2131436185);
+      localTextView.setText(super.getString(2131436248, new Object[] { str4 }));
+      localImageView.setBackgroundDrawable(super.getResources().getDrawable(2130841510));
       localObject2 = "LTMCLUB";
       localObject1 = "QQ会员";
       continue;
-      localButton.setText(2131436169);
-      localTextView.setText(super.getString(2131436232, new Object[] { str4 }));
-      localImageView.setBackgroundDrawable(super.getResources().getDrawable(2130841473));
+      localButton.setText(2131436186);
+      localTextView.setText(super.getString(2131436249, new Object[] { str4 }));
+      localImageView.setBackgroundDrawable(super.getResources().getDrawable(2130841510));
       localObject2 = "LTMCLUB";
       localObject1 = "QQ会员";
     }
@@ -1180,7 +1180,7 @@ public class AvatarPendantActivity
     for (;;)
     {
       ((ActionSheet)localObject).d(arrayOfString[16]);
-      ((ActionSheet)localObject).a(new wpq(this, bool, (ActionSheet)localObject));
+      ((ActionSheet)localObject).a(new wsv(this, bool, (ActionSheet)localObject));
       try
       {
         if (!isFinishing())
@@ -1312,7 +1312,7 @@ public class AvatarPendantActivity
   {
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentViewNoTitle(2130970885);
+    super.setContentViewNoTitle(2130970933);
     getWindow().setBackgroundDrawable(null);
     paramBundle = super.getIntent();
     boolean bool2;
@@ -1417,7 +1417,7 @@ public class AvatarPendantActivity
       ReportController.b(this.app, "CliOper", "", "", "0X8005FDE", "0X8005FDE", 0, 0, "0", "", "", "");
       continue;
       label147:
-      QQToast.a(this, 1, 2131435908, 0).b(getTitleBarHeight());
+      QQToast.a(this, 1, 2131435925, 0).b(getTitleBarHeight());
     }
   }
   
@@ -1471,7 +1471,7 @@ public class AvatarPendantActivity
     while (paramMessage.what != 1000) {
       return true;
     }
-    runOnUiThread(new wov(this, ((AvatarPendantManager)this.app.getManager(45)).a()));
+    runOnUiThread(new wsa(this, ((AvatarPendantManager)this.app.getManager(45)).a()));
     return true;
   }
   
@@ -1491,10 +1491,10 @@ public class AvatarPendantActivity
           {
           default: 
             return;
-          case 2131363227: 
+          case 2131363245: 
             finish();
             return;
-          case 2131372087: 
+          case 2131372260: 
             ((RedTouchManager)this.app.getManager(35)).b("100100.100125.100127");
             paramView = new Intent(this, QQBrowserActivity.class);
             paramView.putExtra("individuation_url_type", 40100);
@@ -1508,7 +1508,7 @@ public class AvatarPendantActivity
             VasWebviewUtil.reportCommercialDrainage(this.app.getCurrentAccountUin(), "face", "0X80088EC", "", 1, 0, 0, null, "", "");
             h();
             return;
-          case 2131364614: 
+          case 2131364638: 
             paramView = new Intent(this, QQBrowserActivity.class);
             paramView.putExtra("individuation_url_type", 40100);
             paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
@@ -1520,10 +1520,10 @@ public class AvatarPendantActivity
             startActivity(paramView);
             VasWebviewUtil.reportCommercialDrainage(this.app.getCurrentAccountUin(), "faceAddon", "0X8008A05", "", 1, 0, 0, null, "", "");
             return;
-          case 2131372093: 
+          case 2131372266: 
             if (!NetworkUtil.d(this))
             {
-              QQToast.a(this, 2131436452, 0).b(getTitleBarHeight());
+              QQToast.a(this, 2131436469, 0).b(getTitleBarHeight());
               return;
             }
             break;
@@ -1536,7 +1536,7 @@ public class AvatarPendantActivity
         ReportController.b(this.app, "CliOper", "", "", "0X8005FDB", "0X8005FDB", 0, 0, String.valueOf(this.jdField_a_of_type_Long), "", "", "");
         return;
         if (ProfileCardUtil.a()) {
-          QQToast.a(this, 1, 2131434550, 0).b(getTitleBarHeight());
+          QQToast.a(this, 1, 2131434567, 0).b(getTitleBarHeight());
         }
         for (;;)
         {
@@ -1575,8 +1575,8 @@ public class AvatarPendantActivity
     boolean bool3 = false;
     if (this.jdField_a_of_type_AndroidWidgetTextView.getVisibility() == 0)
     {
-      paramView = findViewById(2131372080);
-      View localView = findViewById(2131367454);
+      paramView = findViewById(2131372253);
+      View localView = findViewById(2131367522);
       if (this.jdField_a_of_type_AndroidWidgetTextView.getRight() > this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouch.getLeft())
       {
         paramInt1 = 1;
@@ -1606,7 +1606,7 @@ public class AvatarPendantActivity
         }
       }
       if ((bool1) || (bool2)) {
-        ThreadManager.getUIHandler().post(new wpv(this, bool1, bool2));
+        ThreadManager.getUIHandler().post(new wta(this, bool1, bool2));
       }
       return;
       paramInt1 = 0;

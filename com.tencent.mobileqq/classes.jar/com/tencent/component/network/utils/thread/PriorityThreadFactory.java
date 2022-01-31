@@ -2,7 +2,7 @@ package com.tencent.component.network.utils.thread;
 
 import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.atomic.AtomicInteger;
-import pka;
+import plu;
 
 public class PriorityThreadFactory
   implements ThreadFactory
@@ -19,7 +19,7 @@ public class PriorityThreadFactory
   
   public Thread newThread(Runnable paramRunnable)
   {
-    return new pka(this, paramRunnable, this.jdField_a_of_type_JavaLangString + '-' + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() + " sub:");
+    return new plu(this, paramRunnable, this.jdField_a_of_type_JavaLangString + '-' + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement() + " sub:");
   }
 }
 

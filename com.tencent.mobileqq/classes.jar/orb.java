@@ -1,34 +1,80 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
-import com.tencent.biz.qrcode.util.QRCard;
-import java.util.HashMap;
+import com.tencent.biz.qqstory.view.widget.QQStoryLoadingProgressView;
 
 public class orb
-  implements View.OnClickListener
+  extends Thread
 {
-  public orb(QRCardActivity paramQRCardActivity) {}
+  private orb(QQStoryLoadingProgressView paramQQStoryLoadingProgressView) {}
   
-  public void onClick(View paramView)
+  private boolean a()
   {
-    Object localObject = paramView.getTag();
-    if ((localObject instanceof Integer)) {
-      if (((Integer)localObject).intValue() != 0) {
-        break label101;
-      }
+    boolean bool = false;
+    if (this.a.jdField_a_of_type_Boolean) {
+      bool = a(QQStoryLoadingProgressView.a(this.a), 400, 0.3300000131130219D, false);
     }
-    label101:
-    for (String str = (String)((TextView)paramView.findViewById(2131363039)).getText();; str = null)
+    return bool;
+  }
+  
+  private boolean a(int paramInt1, int paramInt2)
+  {
+    return a(paramInt1, paramInt2, 1.0D, true);
+  }
+  
+  private boolean a(int paramInt1, int paramInt2, double paramDouble)
+  {
+    return a(paramInt1, paramInt2, paramDouble, true);
+  }
+  
+  private boolean a(int paramInt1, int paramInt2, double paramDouble, boolean paramBoolean)
+  {
+    boolean bool2 = true;
+    boolean bool1;
+    if ((paramInt1 < 0) || (paramInt2 < 0)) {
+      bool1 = false;
+    }
+    do
     {
-      if (((Integer)localObject).intValue() == 1)
-      {
-        this.a.a((String)this.a.a.d.get(this.a.h));
-        return;
+      return bool1;
+      if (QQStoryLoadingProgressView.b(this.a) >= paramInt1) {
+        break;
       }
-      QRCardActivity.a(this.a, paramView.getContext(), ((Integer)localObject).intValue(), null, str);
+      int i = (paramInt1 - QQStoryLoadingProgressView.b(this.a)) / (paramInt2 / QQStoryLoadingProgressView.jdField_a_of_type_Int);
+      paramInt2 = i;
+      if (i == 0) {
+        paramInt2 = 1;
+      }
+      bool1 = bool2;
+    } while (QQStoryLoadingProgressView.b(this.a) >= paramInt1);
+    if ((paramBoolean) && (a())) {
+      return false;
+    }
+    QQStoryLoadingProgressView.a(this.a, QQStoryLoadingProgressView.b(this.a) + paramInt2);
+    this.a.postInvalidate();
+    for (;;)
+    {
+      try
+      {
+        double d2 = QQStoryLoadingProgressView.jdField_a_of_type_Int;
+        if (paramDouble >= 0.0D) {
+          break label148;
+        }
+        d1 = QQStoryLoadingProgressView.a(this.a, (int)paramDouble);
+        Thread.sleep((d1 * d2));
+      }
+      catch (InterruptedException localInterruptedException) {}
+      break;
+      label148:
+      double d1 = paramDouble;
+    }
+    return false;
+  }
+  
+  public void run()
+  {
+    if (!a((int)(40.0D + Math.random() * 31.0D) * QQStoryLoadingProgressView.a(this.a) / 100, 1500)) {}
+    while (!a(QQStoryLoadingProgressView.a(this.a) * 90 / 100, 1500)) {
       return;
     }
+    a(QQStoryLoadingProgressView.a(this.a) * 99 / 100, QQStoryLoadingProgressView.jdField_a_of_type_Int * 10, QQStoryLoadingProgressView.b);
   }
 }
 

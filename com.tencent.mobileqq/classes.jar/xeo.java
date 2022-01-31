@@ -1,28 +1,37 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
-import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView.CircleHolder;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgAnimatorCtr;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgChatHelper;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ListView;
 
-public class xeo
-  implements ValueAnimator.AnimatorUpdateListener
+public final class xeo
+  implements Runnable
 {
-  public xeo(RecordMicView paramRecordMicView) {}
+  public xeo(int paramInt, SessionInfo paramSessionInfo, String paramString1, ListView paramListView, String paramString2, long paramLong1, long paramLong2, boolean paramBoolean, GoldMsgAnimatorCtr paramGoldMsgAnimatorCtr) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    float f = paramValueAnimator.getAnimatedFraction();
-    paramValueAnimator = RecordMicView.a(this.a).iterator();
-    while (paramValueAnimator.hasNext())
+    if ((this.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)))
     {
-      RecordMicView.CircleHolder localCircleHolder = (RecordMicView.CircleHolder)paramValueAnimator.next();
-      localCircleHolder.jdField_c_of_type_Float = (localCircleHolder.f + (localCircleHolder.g - localCircleHolder.f) * f);
-      localCircleHolder.d = (localCircleHolder.h + (localCircleHolder.i - localCircleHolder.h) * f);
-      localCircleHolder.e = (localCircleHolder.j + (localCircleHolder.k - localCircleHolder.j) * f);
-      localCircleHolder.a = (localCircleHolder.b + (int)((localCircleHolder.jdField_c_of_type_Int - localCircleHolder.b) * f));
+      BaseBubbleBuilder.ViewHolder localViewHolder = GoldMsgChatHelper.a(this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_b_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d("GoldMsgChatHelper", 2, "handleGrapSelf findAIOMessageByListId viewHolder=" + localViewHolder);
+      }
+      long l2 = 0L;
+      long l1 = l2;
+      if (localViewHolder != null)
+      {
+        l1 = l2;
+        if (localViewHolder.a != null)
+        {
+          GoldMsgChatHelper.a(localViewHolder, 1, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, this.jdField_a_of_type_Boolean);
+          l1 = localViewHolder.a.uniseq;
+        }
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgAnimatorCtr.a(new Object[] { Long.valueOf(this.jdField_b_of_type_Long), Long.valueOf(this.jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), Long.valueOf(l1) });
     }
-    this.a.invalidate();
   }
 }
 

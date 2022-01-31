@@ -30,21 +30,21 @@ import java.util.Locale;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.os.MqqHandler;
-import trd;
-import trf;
-import trg;
-import trh;
-import tri;
-import trj;
+import tud;
+import tuf;
+import tug;
+import tuh;
+import tui;
+import tuj;
 
 public class SubAccountUgActivity
   extends SubAccountBaseActivity
   implements View.OnClickListener, Observer
 {
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new trh(this);
-  SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new trd(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new tuh(this);
+  SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new tud(this);
   public String a;
-  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new trg(this);
+  MqqHandler jdField_a_of_type_MqqOsMqqHandler = new tug(this);
   boolean jdField_a_of_type_Boolean;
   public boolean b;
   
@@ -71,7 +71,7 @@ public class SubAccountUgActivity
         while (i < j)
         {
           Pair localPair = (Pair)paramString.get(i);
-          paramSubAccountControll.a(this.app, this, localPair, new trf(this, paramSubAccountControll, localPair));
+          paramSubAccountControll.a(this.app, this, localPair, new tuf(this, paramSubAccountControll, localPair));
           i += 1;
         }
       }
@@ -80,7 +80,7 @@ public class SubAccountUgActivity
   
   private void a(boolean paramBoolean)
   {
-    View localView = findViewById(2131375016);
+    View localView = findViewById(2131375202);
     if (localView != null)
     {
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
@@ -98,15 +98,15 @@ public class SubAccountUgActivity
   public void a()
   {
     this.jdField_a_of_type_Boolean = false;
-    View localView = findViewById(2131375016);
-    TextView localTextView1 = (TextView)findViewById(2131375013);
-    TextView localTextView2 = (TextView)findViewById(2131375014);
-    ImageView localImageView = (ImageView)findViewById(2131375011);
-    ((Button)findViewById(2131375015)).setText(2131436304);
+    View localView = findViewById(2131375202);
+    TextView localTextView1 = (TextView)findViewById(2131375199);
+    TextView localTextView2 = (TextView)findViewById(2131375200);
+    ImageView localImageView = (ImageView)findViewById(2131375197);
+    ((Button)findViewById(2131375201)).setText(2131436321);
     localView.setVisibility(8);
-    localTextView1.setText(2131436293);
+    localTextView1.setText(2131436310);
     localTextView2.setVisibility(8);
-    localImageView.setImageResource(2130845979);
+    localImageView.setImageResource(2130846107);
   }
   
   public void b()
@@ -124,17 +124,17 @@ public class SubAccountUgActivity
         if (i > 99) {
           localObject = "99+";
         }
-        this.leftView.setText(getString(2131433280) + "(" + (String)localObject + ")");
+        this.leftView.setText(getString(2131433297) + "(" + (String)localObject + ")");
       }
     }
     else
     {
       return;
     }
-    this.leftView.setText(getString(2131433280));
+    this.leftView.setText(getString(2131433297));
     return;
     label97:
-    this.leftView.setText(getString(2131433280));
+    this.leftView.setText(getString(2131433297));
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
@@ -159,22 +159,22 @@ public class SubAccountUgActivity
         finish();
         return false;
       }
-      super.setContentView(2130971575);
-      setTitle(2131436291);
-      findViewById(2131362822).setOnClickListener(this);
-      ImageView localImageView2 = (ImageView)findViewById(2131375012);
-      ImageView localImageView1 = (ImageView)findViewById(2131375011);
-      TextView localTextView1 = (TextView)findViewById(2131375013);
-      TextView localTextView2 = (TextView)findViewById(2131375014);
-      Button localButton = (Button)findViewById(2131375015);
-      View localView = findViewById(2131375016);
+      super.setContentView(2130971623);
+      setTitle(2131436308);
+      findViewById(2131362840).setOnClickListener(this);
+      ImageView localImageView2 = (ImageView)findViewById(2131375198);
+      ImageView localImageView1 = (ImageView)findViewById(2131375197);
+      TextView localTextView1 = (TextView)findViewById(2131375199);
+      TextView localTextView2 = (TextView)findViewById(2131375200);
+      Button localButton = (Button)findViewById(2131375201);
+      View localView = findViewById(2131375202);
       Object localObject = this.app.a(this.app.getAccount(), false);
       paramBundle = (Bundle)localObject;
       if (localObject == null) {
         paramBundle = ImageUtil.a();
       }
       localImageView2.setImageBitmap(paramBundle);
-      localTextView1.setTextColor(getResources().getColor(2131494207));
+      localTextView1.setTextColor(getResources().getColor(2131494214));
       localTextView2.setVisibility(8);
       int i;
       if (this.jdField_a_of_type_Boolean)
@@ -199,9 +199,9 @@ public class SubAccountUgActivity
       {
         int j = i;
         if (i == 0) {
-          j = 2131436295;
+          j = 2131436312;
         }
-        localTextView1.setTextColor(getResources().getColor(2131494207));
+        localTextView1.setTextColor(getResources().getColor(2131494214));
         paramBundle = this.app.a(this.jdField_a_of_type_JavaLangString, false);
         if (paramBundle != null) {
           localImageView1.setImageBitmap(paramBundle);
@@ -217,14 +217,14 @@ public class SubAccountUgActivity
           paramBundle = this.jdField_a_of_type_JavaLangString;
         }
         localTextView1.setText(getString(j, new Object[] { paramBundle }));
-        if (j == 2131436295)
+        if (j == 2131436312)
         {
           localTextView2.setVisibility(0);
           label468:
-          localButton.setText(2131436305);
+          localButton.setText(2131436322);
           localView.setVisibility(0);
-          ((Button)localView.findViewById(2131375017)).setOnClickListener(this);
-          ((Button)localView.findViewById(2131375019)).setOnClickListener(this);
+          ((Button)localView.findViewById(2131375203)).setOnClickListener(this);
+          ((Button)localView.findViewById(2131375205)).setOnClickListener(this);
         }
         for (;;)
         {
@@ -238,21 +238,21 @@ public class SubAccountUgActivity
             a(true);
           }
           return true;
-          i = 2131436342;
+          i = 2131436359;
           break;
-          i = 2131436340;
+          i = 2131436357;
           break;
-          i = 2131436341;
+          i = 2131436358;
           break;
-          i = 2131436342;
+          i = 2131436359;
           break;
-          i = 2131436342;
+          i = 2131436359;
           break;
-          i = 2131436295;
+          i = 2131436312;
           break;
           localTextView2.setVisibility(8);
           break label468;
-          localImageView1.setImageResource(2130845979);
+          localImageView1.setImageResource(2130846107);
         }
         label640:
         i = 0;
@@ -287,11 +287,11 @@ public class SubAccountUgActivity
   {
     switch (paramView.getId())
     {
-    case 2131375016: 
-    case 2131375018: 
+    case 2131375202: 
+    case 2131375204: 
     default: 
       return;
-    case 2131375015: 
+    case 2131375201: 
       localObject = new Intent();
       if (this.jdField_a_of_type_Boolean)
       {
@@ -306,12 +306,12 @@ public class SubAccountUgActivity
       ((Intent)localObject).putExtra("fromWhere", this.b);
       startActivity((Intent)localObject);
       return;
-    case 2131375017: 
+    case 2131375203: 
       paramView = (ActionSheet)ActionSheetHelper.a(getActivity(), null);
-      paramView.a(2131436322);
-      paramView.a(getResources().getString(2131436315), 3);
-      paramView.c(2131432998);
-      paramView.a(new tri(this, paramView));
+      paramView.a(2131436339);
+      paramView.a(getResources().getString(2131436332), 3);
+      paramView.c(2131433015);
+      paramView.a(new tui(this, paramView));
       paramView.show();
       return;
     }
@@ -336,7 +336,7 @@ public class SubAccountUgActivity
   public void update(Observable paramObservable, Object paramObject)
   {
     if (((paramObject instanceof MessageRecord)) && (!((MessageRecord)paramObject).isSendFromLocal())) {
-      runOnUiThread(new trj(this));
+      runOnUiThread(new tuj(this));
     }
   }
 }

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.capture.gesture;
 
-import agwk;
+import ahkm;
 import android.opengl.GLSurfaceView;
 import android.view.MotionEvent;
 import com.tencent.mobileqq.shortvideo.ptvfilter.material.GameEventConsumer.MotionEventData;
@@ -19,7 +19,7 @@ public class GL3DGesture
   public boolean a(MotionEvent paramMotionEvent, boolean paramBoolean)
   {
     paramMotionEvent = new GameEventConsumer.MotionEventData(paramMotionEvent);
-    GLGestureProxy.a().a().queueEvent(new agwk(this, paramMotionEvent));
+    GLGestureProxy.a().a().queueEvent(new ahkm(this, paramMotionEvent));
     return false;
   }
 }

@@ -1,43 +1,36 @@
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader;
-import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader.CommentListener;
-import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader.GetFeedCommentEvent;
-import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
+import com.tencent.biz.qqstory.storyHome.memory.controller.ShareGroupPageLoader.GetShareGroupListEvent;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import java.util.List;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
-class nwx
-  implements CommentListPageLoader.CommentListener
+public class nwx
+  extends QQUIEventReceiver
 {
-  nwx(nww paramnww, JobContext paramJobContext, FeedCommentSync paramFeedCommentSync) {}
-  
-  public void a(CommentListPageLoader.GetFeedCommentEvent paramGetFeedCommentEvent)
+  public nwx(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter)
   {
-    if (this.jdField_a_of_type_ComTribeAsyncAsyncJobContext.isJobCancelled())
+    super(paramMemoriesProfilePresenter);
+  }
+  
+  public void a(@NonNull MemoriesProfilePresenter paramMemoriesProfilePresenter, @NonNull ShareGroupPageLoader.GetShareGroupListEvent paramGetShareGroupListEvent)
+  {
+    if (paramGetShareGroupListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
-      SLog.d("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "comment is cancel, feedId:%d", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedCommentSync });
-      return;
-    }
-    nww.a(this.jdField_a_of_type_Nww);
-    SLog.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "on comment back loop count:%d, event:%s", Integer.valueOf(nww.b(this.jdField_a_of_type_Nww)), paramGetFeedCommentEvent);
-    if (paramGetFeedCommentEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      nww.a(this.jdField_a_of_type_Nww).addAll(paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList);
-      if ((!paramGetFeedCommentEvent.jdField_a_of_type_Boolean) && (nww.b(this.jdField_a_of_type_Nww) < 10))
+      SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "update share group total count. %d.", Integer.valueOf(paramGetShareGroupListEvent.jdField_a_of_type_Int));
+      MemoriesProfilePresenter.b(paramMemoriesProfilePresenter, paramGetShareGroupListEvent.jdField_a_of_type_Int);
+      if (paramMemoriesProfilePresenter.a != null)
       {
-        SLog.a("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull next page, loop count:%d", Integer.valueOf(nww.b(this.jdField_a_of_type_Nww)));
-        nww.a(this.jdField_a_of_type_Nww).c();
-        return;
+        paramMemoriesProfilePresenter.a.shareGroupCount = MemoriesProfilePresenter.b(paramMemoriesProfilePresenter);
+        ThreadManager.post(new nwy(this, paramMemoriesProfilePresenter), 5, null, false);
       }
-      paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList = nww.a(this.jdField_a_of_type_Nww);
-      SLog.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment end, comment count:%d", Integer.valueOf(nww.a(this.jdField_a_of_type_Nww).size()));
-      nww.a(this.jdField_a_of_type_Nww, paramGetFeedCommentEvent);
-      return;
     }
-    paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList = nww.a(this.jdField_a_of_type_Nww);
-    SLog.b("Q.qqstory.home.data.FeedCommentBackgroundSyncer", "pull comment error, comment count:%d", Integer.valueOf(nww.a(this.jdField_a_of_type_Nww).size()));
-    nww.b(this.jdField_a_of_type_Nww, paramGetFeedCommentEvent);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return ShareGroupPageLoader.GetShareGroupListEvent.class;
   }
 }
 

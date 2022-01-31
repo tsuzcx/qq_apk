@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.scribble;
 
-import ahbw;
+import ahpy;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.MessageForScribble;
@@ -56,7 +56,7 @@ public class ScribbleBaseOperator
   
   public boolean a(MessageForScribble paramMessageForScribble)
   {
-    ThreadManager.post(new ahbw(this, paramMessageForScribble), 8, null, false);
+    ThreadManager.post(new ahpy(this, paramMessageForScribble), 8, null, false);
     return true;
   }
   
@@ -94,7 +94,7 @@ public class ScribbleBaseOperator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleBaseOperator
  * JD-Core Version:    0.7.0.1
  */

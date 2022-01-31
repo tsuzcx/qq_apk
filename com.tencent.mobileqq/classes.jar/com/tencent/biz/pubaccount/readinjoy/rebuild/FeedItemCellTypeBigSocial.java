@@ -16,12 +16,12 @@ import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.util.FaceDecoder;
 import com.tencent.widget.AbsListView.LayoutParams;
-import ltd;
-import lte;
-import ltf;
-import ltg;
-import lth;
-import lti;
+import ltm;
+import ltn;
+import lto;
+import ltp;
+import ltq;
+import ltr;
 
 public class FeedItemCellTypeBigSocial
   extends FeedItemCellTypeBigImage
@@ -73,17 +73,17 @@ public class FeedItemCellTypeBigSocial
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setId(2);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle.setLayoutParams(localLayoutParams);
       localLinearLayout3.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentTitle);
-      localLinearLayout3.setOnClickListener(new ltd(this, localLinearLayout1, localLinearLayout3, localLinearLayout2));
+      localLinearLayout3.setOnClickListener(new ltm(this, localLinearLayout1, localLinearLayout3, localLinearLayout2));
       localLinearLayout3.setDuplicateParentStateEnabled(true);
-      localLinearLayout3.setOnTouchListener(new lte(this, localLinearLayout3));
-      localLinearLayout2.setOnTouchListener(new ltf(this, localLinearLayout3));
-      ApiCompatibilityUtils.a(localLinearLayout3, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840751));
+      localLinearLayout3.setOnTouchListener(new ltn(this, localLinearLayout3));
+      localLinearLayout2.setOnTouchListener(new lto(this, localLinearLayout3));
+      ApiCompatibilityUtils.a(localLinearLayout3, this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130840774));
       localLinearLayout2.addView(localLinearLayout3);
       localLinearLayout2.setDuplicateParentStateEnabled(true);
-      localLinearLayout2.setOnTouchListener(new ltg(this, localLinearLayout2));
-      localLinearLayout1.setOnTouchListener(new lth(this, localLinearLayout2, localLinearLayout3));
+      localLinearLayout2.setOnTouchListener(new ltp(this, localLinearLayout2));
+      localLinearLayout1.setOnTouchListener(new ltq(this, localLinearLayout2, localLinearLayout3));
     }
-    localLinearLayout2.setOnClickListener(new lti(this));
+    localLinearLayout2.setOnClickListener(new ltr(this));
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource != null) {
       localLinearLayout2.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentContentUgcSource);
     }

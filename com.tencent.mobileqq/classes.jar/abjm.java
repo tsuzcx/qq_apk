@@ -1,37 +1,28 @@
-import com.tencent.mobileqq.app.ConditionSearchManager;
-import com.tencent.mobileqq.app.ConditionSearchManager.ISearchListener;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.widget.QQToast;
-import java.util.List;
+import com.tencent.mobileqq.app.DeviceProfileManager.DPCObserver;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager;
+import mqq.util.WeakReference;
 
 public class abjm
-  implements ConditionSearchManager.ISearchListener
+  implements DeviceProfileManager.DPCObserver
 {
-  public abjm(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  WeakReference a;
   
-  public void a(boolean paramBoolean1, List paramList, boolean paramBoolean2, int paramInt)
+  public abjm(DynamicAvatarManager paramDynamicAvatarManager)
   {
-    this.a.a();
-    if (paramInt != 1) {
-      return;
+    this.a = new WeakReference(paramDynamicAvatarManager);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    DynamicAvatarManager localDynamicAvatarManager = (DynamicAvatarManager)this.a.get();
+    if (localDynamicAvatarManager != null) {
+      localDynamicAvatarManager.a(paramBoolean);
     }
-    if (!paramBoolean1)
-    {
-      QQToast.a(this.a, 2131437283, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    if ((paramList == null) || (paramList.isEmpty()))
-    {
-      QQToast.a(this.a, 2131437284, 0).b(this.a.getTitleBarHeight());
-      return;
-    }
-    SearchResultActivity.a(this.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.b(), this.a.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.c(), this.a.e, this.a.d, paramList, paramBoolean2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abjm
  * JD-Core Version:    0.7.0.1
  */

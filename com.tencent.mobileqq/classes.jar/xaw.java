@@ -1,26 +1,30 @@
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.OnSingleDownloadCallback;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import Wallet.WalletSkinRsp;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler;
+import com.tencent.mobileqq.activity.qwallet.QWalletSkinHandler.SkinListener;
 import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class xaw
-  implements PreloadImgManager.OnSingleDownloadCallback
+  implements BusinessObserver
 {
-  public xaw(ThemeHbFragment paramThemeHbFragment) {}
+  public xaw(QWalletSkinHandler paramQWalletSkinHandler, QWalletSkinHandler.SkinListener paramSkinListener) {}
   
-  public void a()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ThemeHbFragment.a(this.a, null);
-  }
-  
-  public void a(Object paramObject)
-  {
+    paramBundle = (WalletSkinRsp)paramBundle.getSerializable("rsp");
     if (QLog.isColorLevel()) {
-      QLog.i("ThemeHbFragment", 2, "setAnimFrameBgProcess download back obj = " + paramObject);
+      QLog.d("QWalletSkinHandler", 2, "OpenWalletSkin openObserver:" + paramBoolean + "|" + paramBundle);
     }
-    if (((paramObject instanceof String)) && (ThemeHbFragment.a(this.a) != null)) {
-      ThemeHbFragment.a(this.a).post(new xax(this, paramObject));
+    if ((paramBoolean) && (paramBundle != null) && (paramBundle.status == 1))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler.a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener);
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("QWalletSkinHandler", 2, "OpenWalletSkin rsp fail:" + paramBundle);
+    }
+    QWalletSkinHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletQWalletSkinHandler$SkinListener, false);
   }
 }
 

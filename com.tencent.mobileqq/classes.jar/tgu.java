@@ -1,26 +1,44 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class tgu
-  extends BroadcastReceiver
+  extends CardObserver
 {
-  public tgu(QQMapActivity paramQQMapActivity) {}
+  public tgu(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if ((paramIntent.getAction().equals("android.intent.action.SCREEN_OFF")) && (!this.a.p) && (!this.a.q) && (GesturePWDUtils.getGesturePWDState(this.a, this.a.k) == 2) && (GesturePWDUtils.getGesturePWDMode(this.a, this.a.k) == 21))
+    if (!this.a.a.a.equals(paramString)) {
+      return;
+    }
+    this.a.e();
+    if (paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("qqbaseactivity", 2, "qqmapactivity.start lock. receive lock.");
-      }
-      paramContext = new Intent(this.a, GesturePWDUnlockActivity.class);
-      QQMapActivity.a(this.a, paramContext);
-      this.a.q = true;
+      this.a.a(2131433470, 2);
+      return;
+    }
+    this.a.a(2131433469, 1);
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2 != this.a.c.a()))
+    {
+      this.a.c.setOnCheckedChangeListener(null);
+      this.a.c.setChecked(paramBoolean2);
+      this.a.c.setOnCheckedChangeListener(this.a);
+    }
+  }
+  
+  protected void c(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (paramBoolean2 != this.a.c.a()))
+    {
+      this.a.c.setOnCheckedChangeListener(null);
+      this.a.c.setChecked(paramBoolean2);
+      this.a.c.setOnCheckedChangeListener(this.a);
     }
   }
 }

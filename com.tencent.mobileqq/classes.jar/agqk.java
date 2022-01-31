@@ -1,26 +1,33 @@
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.profile.upload.VipUploadUtils;
+import com.tencent.mobileqq.profile.upload.config.VipUploadConfigImpl;
+import com.tencent.mobileqq.profile.upload.task.VipImageUploadManager;
+import com.tencent.upload.uinterface.AbstractUploadTask;
+import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
 
 public class agqk
-  implements Runnable
+  extends VipUploadConfigImpl
 {
-  public agqk(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
-  
-  public void run()
+  public agqk(VipImageUploadManager paramVipImageUploadManager, long paramLong)
   {
-    ReceiptMessageReadMemberListContainerFragment.a(this.a, new ArrayList());
-    ReceiptMessageReadMemberListContainerFragment.b(this.a, new ArrayList());
-    if (ReceiptMessageReadMemberListContainerFragment.a(this.a))
+    super(paramLong);
+  }
+  
+  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
+  {
+    paramUploadImageSize = VipUploadUtils.a(paramAbstractUploadTask.uploadFilePath);
+    if (paramUploadImageSize != null)
     {
-      ReceiptMessageReadMemberListContainerFragment.a(this.a, 0L);
-      return;
+      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
+      paramUploadImageSize.recycle();
+      return paramAbstractUploadTask;
     }
-    ReceiptMessageReadMemberListContainerFragment.a(this.a);
+    return new IUploadConfig.UploadImageSize(640, 1136, 100);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agqk
  * JD-Core Version:    0.7.0.1
  */

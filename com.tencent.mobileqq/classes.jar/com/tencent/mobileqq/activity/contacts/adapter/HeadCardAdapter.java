@@ -20,14 +20,17 @@ import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.AddFriendLogicActivity;
 import com.tencent.mobileqq.activity.ProfileActivity;
 import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.contacts.base.CommonCardEntry;
+import com.tencent.mobileqq.activity.contacts.view.card.CardChildView;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.confess.ConfessConfig;
 import com.tencent.mobileqq.confess.ConfessMsgUtil;
 import com.tencent.mobileqq.data.MayKnowRecommend;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
 import com.tencent.mobileqq.richstatus.IIconListener;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.mobileqq.richstatus.StatusManager;
@@ -45,8 +48,8 @@ import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
-import wjg;
-import wjh;
+import wml;
+import wmm;
 
 public class HeadCardAdapter
   implements View.OnClickListener, FaceDecoder.DecodeTaskCompletionListener
@@ -57,7 +60,7 @@ public class HeadCardAdapter
   private HeadCardAdapter.HeadAdapterCallback jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterHeadCardAdapter$HeadAdapterCallback;
   private FriendsManager jdField_a_of_type_ComTencentMobileqqAppFriendsManager;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new wjg(this);
+  private IIconListener jdField_a_of_type_ComTencentMobileqqRichstatusIIconListener = new wml(this);
   private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
   protected FaceDecoder a;
   private final ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -79,16 +82,16 @@ public class HeadCardAdapter
   private void a(CommonCardEntry paramCommonCardEntry, View paramView)
   {
     int i = 0;
-    TextView localTextView1 = (TextView)paramView.findViewById(2131363360);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131362701);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131363039);
-    TextView localTextView3 = (TextView)paramView.findViewById(2131363561);
-    TextView localTextView4 = (TextView)paramView.findViewById(2131363834);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131363378);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131362719);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131363057);
+    TextView localTextView3 = (TextView)paramView.findViewById(2131363579);
+    TextView localTextView4 = (TextView)paramView.findViewById(2131363857);
     localImageView.setImageResource(paramCommonCardEntry.jdField_b_of_type_Int);
     localTextView1.setText(paramCommonCardEntry.jdField_a_of_type_JavaLangString);
     localTextView2.setText(paramCommonCardEntry.jdField_b_of_type_JavaLangString);
     localTextView3.setText(paramCommonCardEntry.c);
-    if (paramCommonCardEntry.jdField_a_of_type_Int == 0) {}
+    if (paramCommonCardEntry.jdField_a_of_type_Int == 1) {}
     for (boolean bool1 = ConfessConfig.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "redpoint_contact_show");; bool1 = false)
     {
       boolean bool2;
@@ -97,21 +100,21 @@ public class HeadCardAdapter
         bool2 = true;
         if (bool1 != bool2) {
           if (!bool1) {
-            break label174;
+            break label175;
           }
         }
       }
       for (;;)
       {
         localTextView4.setVisibility(i);
-        paramView = paramView.findViewById(2131363831);
+        paramView = paramView.findViewById(2131363854);
         paramView.setOnClickListener(this);
-        paramView.setTag(2131363831, paramCommonCardEntry);
+        paramView.setTag(2131363854, paramCommonCardEntry);
         paramView.setBackgroundResource(this.jdField_a_of_type_Int);
         return;
         bool2 = false;
         break;
-        label174:
+        label175:
         i = 8;
       }
     }
@@ -119,16 +122,16 @@ public class HeadCardAdapter
   
   private void a(MayKnowRecommend paramMayKnowRecommend, View paramView)
   {
-    Object localObject1 = (ImageView)paramView.findViewById(2131363824);
-    TextView localTextView3 = (TextView)paramView.findViewById(2131363826);
-    TextView localTextView4 = (TextView)paramView.findViewById(2131363827);
-    TextView localTextView1 = (TextView)paramView.findViewById(2131363828);
-    TextView localTextView2 = (TextView)paramView.findViewById(2131363829);
-    Object localObject2 = (TextView)paramView.findViewById(2131363830);
-    LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131363825);
-    View localView = paramView.findViewById(2131363822);
+    Object localObject1 = (ImageView)paramView.findViewById(2131363847);
+    TextView localTextView3 = (TextView)paramView.findViewById(2131363849);
+    TextView localTextView4 = (TextView)paramView.findViewById(2131363850);
+    TextView localTextView1 = (TextView)paramView.findViewById(2131363851);
+    TextView localTextView2 = (TextView)paramView.findViewById(2131363852);
+    Object localObject2 = (TextView)paramView.findViewById(2131363853);
+    LinearLayout localLinearLayout = (LinearLayout)paramView.findViewById(2131363848);
+    View localView = paramView.findViewById(2131363845);
     localView.setOnClickListener(this);
-    localView.setTag(2131363822, paramMayKnowRecommend);
+    localView.setTag(2131363845, paramMayKnowRecommend);
     localView.setBackgroundResource(this.jdField_a_of_type_Int);
     ((ImageView)localObject1).setImageBitmap(a(1, paramMayKnowRecommend.uin));
     ((TextView)localObject2).setOnClickListener(this);
@@ -138,10 +141,10 @@ public class HeadCardAdapter
     int i;
     if (paramMayKnowRecommend.friendStatus == 0)
     {
-      localLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838662));
-      ((TextView)localObject2).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838555));
-      ((TextView)localObject2).setText(2131433016);
-      ((TextView)localObject2).setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433016) + "按钮");
+      localLinearLayout.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838666));
+      ((TextView)localObject2).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838559));
+      ((TextView)localObject2).setText(2131433033);
+      ((TextView)localObject2).setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433033) + "按钮");
       int k = paramMayKnowRecommend.age;
       localObject2 = new StringBuilder();
       localObject1 = new StringBuilder();
@@ -162,7 +165,7 @@ public class HeadCardAdapter
       {
       default: 
         j = 0;
-        localTextView4.setBackgroundResource(2130843021);
+        localTextView4.setBackgroundResource(2130843120);
         i = 0;
         label341:
         if (paramMayKnowRecommend.age > 0)
@@ -210,8 +213,8 @@ public class HeadCardAdapter
       }
       localLinearLayout.setBackgroundDrawable(null);
       ((TextView)localObject2).setBackgroundDrawable(null);
-      ((TextView)localObject2).setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433031));
-      ((TextView)localObject2).setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433031) + "按钮");
+      ((TextView)localObject2).setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433048));
+      ((TextView)localObject2).setContentDescription(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433048) + "按钮");
       break;
       label597:
       paramView = paramMayKnowRecommend.nick;
@@ -220,14 +223,14 @@ public class HeadCardAdapter
       paramView = paramMayKnowRecommend.remark;
       break label266;
       i = 1;
-      j = 2130843020;
+      j = 2130843119;
       ((StringBuilder)localObject2).append("男,");
-      localTextView4.setBackgroundResource(2130843021);
+      localTextView4.setBackgroundResource(2130843120);
       break label341;
       i = 1;
-      j = 2130843018;
+      j = 2130843117;
       ((StringBuilder)localObject2).append("女,");
-      localTextView4.setBackgroundResource(2130843019);
+      localTextView4.setBackgroundResource(2130843118);
       break label341;
       localTextView4.setText("");
       break label374;
@@ -242,7 +245,7 @@ public class HeadCardAdapter
   private void a(MayKnowRecommend paramMayKnowRecommend, TextView paramTextView, Bitmap paramBitmap)
   {
     RichStatus localRichStatus = paramMayKnowRecommend.getRichStatus();
-    paramMayKnowRecommend = localRichStatus.toSpannableString(null, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494270), this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494270));
+    paramMayKnowRecommend = localRichStatus.toSpannableString(null, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494277), this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494277));
     Object localObject;
     if (QLog.isColorLevel())
     {
@@ -292,11 +295,15 @@ public class HeadCardAdapter
   
   public int a(int paramInt)
   {
-    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()))
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
     {
-      wjh localwjh = (wjh)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      if (localwjh != null) {
-        return localwjh.jdField_a_of_type_Int;
+      int i = 0;
+      while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      {
+        if (((wmm)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int == paramInt) {
+          return i;
+        }
+        i += 1;
       }
     }
     return -1;
@@ -318,38 +325,38 @@ public class HeadCardAdapter
   {
     Object localObject = null;
     if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())) {}
-    for (wjh localwjh = (wjh)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);; localwjh = null)
+    for (wmm localwmm = (wmm)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);; localwmm = null)
     {
-      if (localwjh != null)
+      if (localwmm != null)
       {
-        localObject = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(localwjh.jdField_a_of_type_Int);
+        localObject = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(localwmm.jdField_a_of_type_Int);
         if ((localObject == null) || (((ArrayList)localObject).size() <= 0)) {
-          break label373;
+          break label377;
         }
       }
-      label373:
+      label377:
       for (localObject = (View)((ArrayList)localObject).remove(((ArrayList)localObject).size() - 1);; localObject = null)
       {
-        switch (localwjh.jdField_a_of_type_Int)
+        switch (localwmm.jdField_a_of_type_Int)
         {
         default: 
           if (QLog.isColorLevel()) {
-            QLog.i("HeadCardAdapter", 2, String.format(Locale.getDefault(), "getView undefined data [type: %s, data: %s]", new Object[] { Integer.valueOf(localwjh.jdField_a_of_type_Int), localwjh.jdField_a_of_type_JavaLangObject }));
+            QLog.i("HeadCardAdapter", 2, String.format(Locale.getDefault(), "getView undefined data [type: %s, data: %s]", new Object[] { Integer.valueOf(localwmm.jdField_a_of_type_Int), localwmm.jdField_a_of_type_JavaLangObject }));
           }
           if (localObject != null) {
-            ((View)localObject).setTag(localwjh);
+            ((View)localObject).setTag(localwmm);
           }
           return localObject;
-        case 1: 
+        case 2: 
           if (localObject != null) {
             break;
           }
         }
         for (paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968809, paramViewGroup, false);; paramViewGroup = (ViewGroup)localObject)
         {
-          if ((localwjh.jdField_a_of_type_JavaLangObject instanceof MayKnowRecommend))
+          if ((localwmm.jdField_a_of_type_JavaLangObject instanceof MayKnowRecommend))
           {
-            a((MayKnowRecommend)localwjh.jdField_a_of_type_JavaLangObject, paramViewGroup);
+            a((MayKnowRecommend)localwmm.jdField_a_of_type_JavaLangObject, paramViewGroup);
             localObject = paramViewGroup;
             break;
           }
@@ -357,15 +364,15 @@ public class HeadCardAdapter
           if (!QLog.isColorLevel()) {
             break;
           }
-          QLog.i("HeadCardAdapter", 2, String.format(Locale.getDefault(), "getView invalidate data [type: %s, data: %s]", new Object[] { Integer.valueOf(localwjh.jdField_a_of_type_Int), localwjh.jdField_a_of_type_JavaLangObject }));
+          QLog.i("HeadCardAdapter", 2, String.format(Locale.getDefault(), "getView invalidate data [type: %s, data: %s]", new Object[] { Integer.valueOf(localwmm.jdField_a_of_type_Int), localwmm.jdField_a_of_type_JavaLangObject }));
           localObject = paramViewGroup;
           break;
           if (localObject == null) {}
           for (paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968810, paramViewGroup, false);; paramViewGroup = (ViewGroup)localObject)
           {
-            if ((localwjh.jdField_a_of_type_JavaLangObject instanceof CommonCardEntry))
+            if ((localwmm.jdField_a_of_type_JavaLangObject instanceof CommonCardEntry))
             {
-              a((CommonCardEntry)localwjh.jdField_a_of_type_JavaLangObject, paramViewGroup);
+              a((CommonCardEntry)localwmm.jdField_a_of_type_JavaLangObject, paramViewGroup);
               localObject = paramViewGroup;
               break;
             }
@@ -373,7 +380,7 @@ public class HeadCardAdapter
             if (!QLog.isColorLevel()) {
               break;
             }
-            QLog.i("HeadCardAdapter", 2, String.format(Locale.getDefault(), "getView invalidate data [type: %s, data: %s]", new Object[] { Integer.valueOf(localwjh.jdField_a_of_type_Int), localwjh.jdField_a_of_type_JavaLangObject }));
+            QLog.i("HeadCardAdapter", 2, String.format(Locale.getDefault(), "getView invalidate data [type: %s, data: %s]", new Object[] { Integer.valueOf(localwmm.jdField_a_of_type_Int), localwmm.jdField_a_of_type_JavaLangObject }));
             localObject = paramViewGroup;
             break;
           }
@@ -386,9 +393,9 @@ public class HeadCardAdapter
   {
     if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()))
     {
-      wjh localwjh = (wjh)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-      if (localwjh != null) {
-        return localwjh.jdField_a_of_type_JavaLangObject;
+      wmm localwmm = (wmm)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      if (localwmm != null) {
+        return localwmm.jdField_a_of_type_JavaLangObject;
       }
     }
     return null;
@@ -407,7 +414,16 @@ public class HeadCardAdapter
     while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
     {
       ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i);
-      if (localArrayList != null) {
+      if (localArrayList != null)
+      {
+        Iterator localIterator = localArrayList.iterator();
+        while (localIterator.hasNext())
+        {
+          View localView = (View)localIterator.next();
+          if ((localView instanceof CardChildView)) {
+            localView.setOnClickListener(null);
+          }
+        }
         localArrayList.clear();
       }
       i += 1;
@@ -419,18 +435,29 @@ public class HeadCardAdapter
     int i = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
     if (i >= 0)
     {
-      wjh localwjh = (wjh)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      if (localwjh == null) {}
+      wmm localwmm = (wmm)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      if (localwmm == null) {}
       for (;;)
       {
         i -= 1;
         break;
-        if (localwjh.jdField_a_of_type_Int == paramInt)
+        if (localwmm.jdField_a_of_type_Int == paramInt)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(localwjh);
-          localwjh.a();
+          this.jdField_a_of_type_JavaUtilArrayList.remove(localwmm);
+          localwmm.a();
         }
       }
+    }
+  }
+  
+  public void a(int paramInt1, CommonCardEntry paramCommonCardEntry, int paramInt2)
+  {
+    a(paramInt1);
+    if (paramCommonCardEntry != null)
+    {
+      paramCommonCardEntry = wmm.a(paramInt1, paramCommonCardEntry);
+      paramInt1 = Math.max(0, Math.min(this.jdField_a_of_type_JavaUtilArrayList.size(), paramInt2));
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramInt1, paramCommonCardEntry);
     }
   }
   
@@ -440,7 +467,7 @@ public class HeadCardAdapter
     ArrayList localArrayList;
     if (paramCommonCardEntry != null)
     {
-      paramCommonCardEntry = wjh.a(paramInt, paramCommonCardEntry);
+      paramCommonCardEntry = wmm.a(paramInt, paramCommonCardEntry);
       localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
       if (!paramBoolean) {
         break label35;
@@ -465,8 +492,8 @@ public class HeadCardAdapter
         paramList = paramList.iterator();
         while (paramList.hasNext())
         {
-          wjh localwjh = wjh.a(paramInt, (MayKnowRecommend)paramList.next());
-          this.jdField_a_of_type_JavaUtilArrayList.add(i, localwjh);
+          wmm localwmm = wmm.a(paramInt, (MayKnowRecommend)paramList.next());
+          this.jdField_a_of_type_JavaUtilArrayList.add(i, localwmm);
           i += 1;
         }
       }
@@ -480,14 +507,14 @@ public class HeadCardAdapter
     {
       return;
       localObject = paramView.getTag();
-    } while (!(localObject instanceof wjh));
-    wjh localwjh = (wjh)localObject;
-    ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(localwjh.jdField_a_of_type_Int);
+    } while (!(localObject instanceof wmm));
+    wmm localwmm = (wmm)localObject;
+    ArrayList localArrayList = (ArrayList)this.jdField_a_of_type_AndroidUtilSparseArray.get(localwmm.jdField_a_of_type_Int);
     Object localObject = localArrayList;
     if (localArrayList == null)
     {
       localObject = new ArrayList(2);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(localwjh.jdField_a_of_type_Int, localObject);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(localwmm.jdField_a_of_type_Int, localObject);
     }
     ((ArrayList)localObject).add(paramView);
     paramView.setTag(null);
@@ -496,14 +523,14 @@ public class HeadCardAdapter
   public void a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      this.jdField_a_of_type_Int = 2130838660;
+      this.jdField_a_of_type_Int = 2130838664;
     }
     for (;;)
     {
       return;
       String str = ThemeUtil.getCurrentThemeId();
       if ("1103".equals(str)) {}
-      for (this.jdField_a_of_type_Int = 2130838661; QLog.isDevelopLevel(); this.jdField_a_of_type_Int = 2130838662)
+      for (this.jdField_a_of_type_Int = 2130838665; QLog.isDevelopLevel(); this.jdField_a_of_type_Int = 2130838666)
       {
         QLog.i("HeadCardAdapter", 4, String.format(Locale.getDefault(), "onThemeChanged cur: %s", new Object[] { str }));
         return;
@@ -514,6 +541,18 @@ public class HeadCardAdapter
   public int b()
   {
     return 3;
+  }
+  
+  public int b(int paramInt)
+  {
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size()))
+    {
+      wmm localwmm = (wmm)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      if (localwmm != null) {
+        return localwmm.jdField_a_of_type_Int;
+      }
+    }
+    return -1;
   }
   
   public void onClick(View paramView)
@@ -531,23 +570,35 @@ public class HeadCardAdapter
           do
           {
             return;
-            paramView = paramView.getTag(2131363831);
+            paramView = paramView.getTag(2131363854);
           } while (!(paramView instanceof CommonCardEntry));
           paramView = (CommonCardEntry)paramView;
-          if (!TextUtils.isEmpty(paramView.d))
+          if (paramView.jdField_a_of_type_Int == 1)
           {
-            localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-            ((Intent)localObject).putExtra("hide_more_button", true);
-            ((Intent)localObject).putExtra("hide_operation_bar", true);
-            ((Intent)localObject).putExtra("url", paramView.d);
-            this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+            if (!TextUtils.isEmpty(paramView.d))
+            {
+              localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+              ((Intent)localObject).putExtra("hide_more_button", true);
+              ((Intent)localObject).putExtra("hide_operation_bar", true);
+              ((Intent)localObject).putExtra("url", paramView.d);
+              this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+            }
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008F4B", "0X8008F4B", 1, 0, "", "", "", "");
           }
-          if (paramView.jdField_a_of_type_Int == 0) {
-            ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+          for (;;)
+          {
+            if (paramView.jdField_a_of_type_Int == 1) {
+              ConfessMsgUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+            }
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008F4B", "0X8008F4B", 1, 0, "", "", "", "");
+            return;
+            if (paramView.jdField_a_of_type_Int == 0)
+            {
+              ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80092C7", "0X80092C7", 0, 0, "", "", "", "");
+              PublicFragmentActivity.a(this.jdField_a_of_type_AndroidContentContext, ExtendFriendFragment.class);
+            }
           }
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8008F4B", "0X8008F4B", 1, 0, "", "", "", "");
-          return;
-          paramView = paramView.getTag(2131363822);
+          paramView = paramView.getTag(2131363845);
         } while (!(paramView instanceof MayKnowRecommend));
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8007F15", "0X8007F15", 0, 0, "", "", "", "");
         paramView = (MayKnowRecommend)paramView;
@@ -584,7 +635,7 @@ public class HeadCardAdapter
       }
       for (;;)
       {
-        paramView = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidContentContext, 1, ((MayKnowRecommend)localObject).uin, null, 3045, 9, paramView, null, SplashActivity.class.getName(), this.jdField_a_of_type_AndroidContentContext.getString(2131435209), null);
+        paramView = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidContentContext, 1, ((MayKnowRecommend)localObject).uin, null, 3045, 9, paramView, null, SplashActivity.class.getName(), this.jdField_a_of_type_AndroidContentContext.getString(2131435226), null);
         paramView.putExtra("key_param_age_area", ProfileCardUtil.a(this.jdField_a_of_type_AndroidContentContext, ((MayKnowRecommend)localObject).gender, ((MayKnowRecommend)localObject).age, ((MayKnowRecommend)localObject).country, ((MayKnowRecommend)localObject).province, ((MayKnowRecommend)localObject).city));
         this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
         return;
@@ -619,8 +670,8 @@ public class HeadCardAdapter
         {
           paramInt1 += 1;
           break;
-          if ((((View)localObject).getTag() instanceof wjh)) {}
-          for (paramString = (wjh)((View)localObject).getTag();; paramString = null)
+          if ((((View)localObject).getTag() instanceof wmm)) {}
+          for (paramString = (wmm)((View)localObject).getTag();; paramString = null)
           {
             if ((paramString == null) || (!(paramString.jdField_a_of_type_JavaLangObject instanceof MayKnowRecommend))) {
               break label159;
@@ -630,7 +681,7 @@ public class HeadCardAdapter
             if (paramString == null) {
               break;
             }
-            localObject = (ImageView)((View)localObject).findViewById(2131363824);
+            localObject = (ImageView)((View)localObject).findViewById(2131363847);
             if (localObject == null) {
               break;
             }

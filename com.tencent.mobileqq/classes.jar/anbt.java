@@ -1,37 +1,18 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import com.tencent.open.base.ToastUtil;
-import com.tencent.util.WeakReferenceHandler;
-import dov.com.qq.im.capture.music.MusicDownloadListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecognitionPart;
+import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
 
 public class anbt
-  extends MusicDownloadListener
+  implements Runnable
 {
-  public anbt(EditRecognitionPart paramEditRecognitionPart) {}
+  public anbt(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString, boolean paramBoolean)
+  public void run()
   {
-    ToastUtil.a().a("正在下载: " + EditRecognitionPart.a(this.a));
-  }
-  
-  public void a(String paramString, boolean paramBoolean, int paramInt)
-  {
-    if ((paramBoolean) && (EditRecognitionPart.a(this.a).a().equals(paramString)))
-    {
-      EditRecognitionPart.a(this.a).sendEmptyMessage(2);
-      EditRecognitionPart.a(this.a, EditRecognitionPart.a(this.a));
-    }
+    QZoneSharePictureJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_ArrayOfJavaLangString[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anbt
  * JD-Core Version:    0.7.0.1
  */

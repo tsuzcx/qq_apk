@@ -1,28 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar;
-import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar.OnTabChangeListener;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ThirdVideoManager.UUIDToUrlCallback;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPreDownloadMgr;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class mfg
-  implements View.OnClickListener
+  implements ThirdVideoManager.UUIDToUrlCallback
 {
-  long jdField_a_of_type_Long = 0L;
+  public mfg(VideoPreDownloadMgr paramVideoPreDownloadMgr, int paramInt) {}
   
-  public mfg(BaseTabbar paramBaseTabbar, int paramInt) {}
-  
-  public void onClick(View paramView)
+  public void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, String paramString3)
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 300L)
-    {
-      this.jdField_a_of_type_Long = 0L;
-      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.a.a(this.jdField_a_of_type_Int);
-      }
+    if (TextUtils.isEmpty(paramString1)) {
       return;
     }
-    this.jdField_a_of_type_Long = l;
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewBaseTabbar.setSelectedTab(this.jdField_a_of_type_Int, true);
+    ThreadManager.post(new mfh(this, paramString2, paramString1, paramInt), 5, null, true);
   }
 }
 

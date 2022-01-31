@@ -1,97 +1,108 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.file.TroopFileProtocol.ReqDownloadFileObserver;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportHandler;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportJobForGroup;
-import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x6d6.oidb_0x6d6.DownloadFileRspBody;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.Logger;
+import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+import com.tencent.mobileqq.shortvideo.ShortVideoUploadInfo;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransferRequest;
 
 public class ahyj
-  extends TroopFileProtocol.ReqDownloadFileObserver
+  implements Runnable
 {
-  public ahyj(TeamWorkFileImportJobForGroup paramTeamWorkFileImportJobForGroup) {}
+  ShortVideoUploadInfo jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUploadInfo;
   
-  public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
+  public ahyj(BaseShortVideoOprerator paramBaseShortVideoOprerator, ShortVideoUploadInfo paramShortVideoUploadInfo)
   {
-    int i = 0;
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBoolean) {
-      if (paramDownloadFileRspBody != null)
-      {
-        paramInt = paramDownloadFileRspBody.int32_ret_code.get();
-        if (paramInt != 0) {
-          break label414;
-        }
-        Object localObject = HexUtil.a(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
-        paramBundle = (Bundle)localObject;
-        if (localObject != null) {
-          paramBundle = ((String)localObject).toLowerCase();
-        }
-        localObject = paramDownloadFileRspBody.str_download_ip.get();
-        String str = HexUtil.a(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
-        if (QLog.isColorLevel()) {
-          QLog.i("TeamWorkFileImportJobForGroup", 2, "---onReqDownloadFileResult success ,ip: " + (String)localObject + ",param: " + str);
-        }
-        paramDownloadFileRspBody = new StringBuilder("http://");
-        paramDownloadFileRspBody.append((String)localObject).append("/ftn_handler/").append(str).append("/?fname=").append(HexUtil.b(this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d));
-        try
-        {
-          localObject = new JSONArray();
-          ((JSONArray)localObject).put(0, paramDownloadFileRspBody.toString());
-          localJSONObject.put("urls", localObject);
-          localJSONObject.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
-          localJSONObject.put("cookie", "FTN5K=" + paramBundle);
-          paramInt = 1;
-          if (paramInt != 0) {}
-        }
-        catch (Exception paramDownloadFileRspBody)
-        {
-          label346:
-          QLog.e("TeamWorkFileImportJobForGroup", 1, "onReqDownloadFileResult json exception: " + paramDownloadFileRspBody.toString());
-        }
-      }
-    }
-    try
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUploadInfo = paramShortVideoUploadInfo;
+  }
+  
+  public void run()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUploadInfo == null) {}
+    for (;;)
     {
-      localJSONObject.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString);
-      localJSONObject.put("filetype", 3);
-      localJSONObject.put("fileid", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d);
-      localJSONObject.put("businesstype", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.jdField_b_of_type_Int);
-      localJSONObject.put("groupuin", Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.a));
-      i = 1;
-    }
-    catch (Exception paramDownloadFileRspBody)
-    {
-      label414:
-      QLog.e("TeamWorkFileImportJobForGroup", 2, "put fileid exception: " + paramDownloadFileRspBody.toString());
-      break label346;
-      this.a.a(true);
-    }
-    if (((i != 0) || (paramInt != 0)) && (localJSONObject != null))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler.a(localJSONObject, this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
       return;
-      for (;;)
+      ShortVideoUploadInfo localShortVideoUploadInfo = this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUploadInfo;
+      Object localObject;
+      int i;
+      if (!localShortVideoUploadInfo.jdField_a_of_type_Boolean)
       {
-        paramInt = 0;
-        break;
-        QLog.e("TeamWorkFileImportJobForGroup", 1, "onReqDownloadFileResult retCode: " + paramInt);
-        continue;
-        QLog.e("TeamWorkFileImportJobForGroup", 1, "onReqDownloadFileResult errorCode: " + paramInt);
+        localObject = (MessageForShortVideo)localShortVideoUploadInfo.jdField_a_of_type_JavaLangObject;
+        i = 0;
+      }
+      while (localObject != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject);
+        long l = System.currentTimeMillis();
+        TransferRequest localTransferRequest = new TransferRequest();
+        localTransferRequest.jdField_b_of_type_JavaLangString = ((MessageRecord)localObject).selfuin;
+        localTransferRequest.c = ((MessageRecord)localObject).frienduin;
+        localTransferRequest.jdField_a_of_type_Int = ((MessageRecord)localObject).istroop;
+        if ((((MessageRecord)localObject).istroop == 0) || (((MessageRecord)localObject).istroop == 1008))
+        {
+          localTransferRequest.jdField_b_of_type_Int = 6;
+          label117:
+          localTransferRequest.jdField_a_of_type_Long = ((MessageRecord)localObject).uniseq;
+          localTransferRequest.jdField_a_of_type_Boolean = true;
+          localTransferRequest.e = localShortVideoUploadInfo.jdField_a_of_type_Int;
+          localTransferRequest.f = localShortVideoUploadInfo.e;
+          localTransferRequest.i = (localShortVideoUploadInfo.h + "QQ_&_MoblieQQ_&_QQ" + localShortVideoUploadInfo.j + "QQ_&_MoblieQQ_&_QQ" + localShortVideoUploadInfo.jdField_f_of_type_Int + "QQ_&_MoblieQQ_&_QQ" + localShortVideoUploadInfo.jdField_g_of_type_JavaLangString);
+          localTransferRequest.jdField_a_of_type_ComTencentMobileqqPicUpCallBack = this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator;
+          localTransferRequest.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)localObject);
+          localTransferRequest.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoUploadInfo;
+          this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localTransferRequest);
+          if ((!localShortVideoUploadInfo.d) && (!localShortVideoUploadInfo.jdField_f_of_type_Boolean))
+          {
+            if (localShortVideoUploadInfo.jdField_a_of_type_Boolean) {
+              break label468;
+            }
+            this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localObject);
+          }
+        }
+        for (;;)
+        {
+          Logger.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.jdField_g_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.f, "doSendShortVideo", "cost:" + (System.currentTimeMillis() - l));
+          Logger.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.jdField_g_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.f, "doSendShortVideo.start", "TransferRequest: " + localTransferRequest.toString());
+          return;
+          if (localShortVideoUploadInfo.jdField_g_of_type_Int == 0)
+          {
+            localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.a(localShortVideoUploadInfo);
+            i = 1;
+            break;
+          }
+          if (localShortVideoUploadInfo.jdField_g_of_type_Int != 1) {
+            break label484;
+          }
+          localObject = (MessageForShortVideo)localShortVideoUploadInfo.jdField_a_of_type_JavaLangObject;
+          i = 0;
+          break;
+          if (((MessageRecord)localObject).istroop == 3000)
+          {
+            localTransferRequest.jdField_b_of_type_Int = 17;
+            break label117;
+          }
+          if (((MessageRecord)localObject).istroop != 1) {
+            break label117;
+          }
+          localTransferRequest.jdField_b_of_type_Int = 9;
+          break label117;
+          label468:
+          if (i != 0) {
+            this.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.a((MessageRecord)localObject);
+          }
+        }
+        label484:
+        localObject = null;
+        i = 0;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahyj
  * JD-Core Version:    0.7.0.1
  */

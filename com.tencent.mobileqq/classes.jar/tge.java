@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.Comparator;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.PortraitImageview;
 
 public class tge
-  implements Comparator
+  implements Runnable
 {
-  public tge(QQLSActivity paramQQLSActivity) {}
+  public tge(PortraitImageview paramPortraitImageview, Bitmap paramBitmap) {}
   
-  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
+  public void run()
   {
-    if (paramChatMessage1.shmsgseq == paramChatMessage2.shmsgseq) {
-      return 0;
-    }
-    if (paramChatMessage1.shmsgseq > paramChatMessage2.shmsgseq) {
-      return 1;
-    }
-    return -1;
+    this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
   }
 }
 

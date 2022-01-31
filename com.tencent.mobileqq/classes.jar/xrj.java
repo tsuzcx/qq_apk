@@ -1,24 +1,31 @@
-import com.tencent.biz.qqstory.model.AddressDataProvider;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.model.DataProviderManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.music.MusicGridAdapter;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.music.P2VEditMusicDialog;
+import android.view.WindowManager.BadTokenException;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 
-class xrj
+public class xrj
   implements Runnable
 {
-  xrj(xri paramxri, AddressDataProvider.AddressInfo paramAddressInfo) {}
+  public xrj(NewFlowCameraActivity paramNewFlowCameraActivity, String paramString, int paramInt) {}
   
   public void run()
   {
-    SLog.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "address update, refresh ui.");
-    if (((AddressDataProvider)((DataProviderManager)SuperManager.a(20)).a(1)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelAddressDataProvider$AddressInfo))
+    String str = this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_a_of_type_Int == 2002) {
+      str = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getString(2131428347);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, 230).setMessage(str).setPositiveButton(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.getString(2131428346), new xrk(this));
+    try
     {
-      QLog.d("zivonchen", 2, "isInternationalUser --------------------2");
-      this.jdField_a_of_type_Xri.a.a.a();
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.setCancelable(false);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.show();
+      return;
+    }
+    catch (WindowManager.BadTokenException localBadTokenException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("PTV.NewFlowCameraActivity", 2, "", localBadTokenException);
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.avatar.dynamicavatar;
 
-import abca;
-import abcb;
+import abjb;
+import abjc;
 import android.content.SharedPreferences;
 import android.os.Environment;
 import android.text.TextUtils;
@@ -125,7 +125,7 @@ public class DynamicAvatarDownloadManager
       this.jdField_a_of_type_Long = System.currentTimeMillis();
       this.jdField_a_of_type_Int = 0;
     }
-    ThreadManager.executeOnFileThread(new abcb(this, l));
+    ThreadManager.executeOnFileThread(new abjc(this, l));
   }
   
   public final void a()
@@ -243,7 +243,7 @@ public class DynamicAvatarDownloadManager
       return false;
     }
     ??? = new HttpNetReq();
-    ((HttpNetReq)???).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new abca(this);
+    ((HttpNetReq)???).jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new abjb(this);
     ((HttpNetReq)???).jdField_a_of_type_JavaLangString = paramString;
     ((HttpNetReq)???).jdField_a_of_type_Int = 0;
     ((HttpNetReq)???).jdField_c_of_type_JavaLangString = a(paramString).getPath();
@@ -282,7 +282,7 @@ public class DynamicAvatarDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarDownloadManager
  * JD-Core Version:    0.7.0.1
  */

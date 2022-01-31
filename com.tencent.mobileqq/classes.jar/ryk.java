@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class ryk
-  implements Runnable
+public class ryk
+  implements View.OnClickListener
 {
-  ryk(ryj paramryj, boolean paramBoolean) {}
+  public ryk(ChatHistory paramChatHistory) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Ryj.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.d();
-    if (this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_Ryj.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.b(this.jdField_a_of_type_Ryj.jdField_a_of_type_Boolean);
-      return;
-    }
-    this.jdField_a_of_type_Ryj.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.g();
+    this.a.k();
+    ReportController.b(this.a.app, "CliOper", "", "", "0X800568E", "0X800568E", this.a.k, 0, "", "", "", "");
   }
 }
 

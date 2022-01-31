@@ -31,9 +31,9 @@ import java.util.Map;
 import java.util.Set;
 import mqq.observer.ServerConfigObserver;
 import protocol.KQQConfig.GetResourceReqInfoV2;
-import zcr;
-import zcs;
-import zct;
+import zfx;
+import zfy;
+import zfz;
 
 public class LebaHelper
 {
@@ -45,7 +45,7 @@ public class LebaHelper
   ArrayList jdField_a_of_type_JavaUtilArrayList;
   List jdField_a_of_type_JavaUtilList;
   public Set a;
-  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver = new zcr(this);
+  private ServerConfigObserver jdField_a_of_type_MqqObserverServerConfigObserver = new zfx(this);
   public boolean a;
   byte[] jdField_a_of_type_ArrayOfByte = new byte[0];
   List b;
@@ -197,7 +197,7 @@ public class LebaHelper
   {
     ResourcePluginInfo localResourcePluginInfo = new ResourcePluginInfo();
     localResourcePluginInfo.strPkgName = "qzone_feedlist";
-    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433893);
+    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433910);
     localResourcePluginInfo.strResURL = "qq_leba_list_seek_feeds";
     localResourcePluginInfo.sResSubType = 2;
     localResourcePluginInfo.cCanChangeState = 0;
@@ -213,9 +213,9 @@ public class LebaHelper
     this.jdField_b_of_type_JavaUtilList.add(localResourcePluginInfo);
     localResourcePluginInfo = new ResourcePluginInfo();
     localResourcePluginInfo.strPkgName = "nearby_friends";
-    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433884);
+    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433901);
     localResourcePluginInfo.strResURL = "qq_leba_list_seek_neighbour";
-    localResourcePluginInfo.strResDesc = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435156);
+    localResourcePluginInfo.strResDesc = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435173);
     localResourcePluginInfo.sResSubType = 2;
     localResourcePluginInfo.cCanChangeState = 1;
     localResourcePluginInfo.cDefaultState = 0;
@@ -230,9 +230,9 @@ public class LebaHelper
     this.jdField_b_of_type_JavaUtilList.add(localResourcePluginInfo);
     localResourcePluginInfo = new ResourcePluginInfo();
     localResourcePluginInfo.strPkgName = "com.tx.xingqubuluo.android";
-    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433903);
+    localResourcePluginInfo.strResName = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433920);
     localResourcePluginInfo.strResURL = "qb_leba_xingqu_buluo";
-    localResourcePluginInfo.strResDesc = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433903);
+    localResourcePluginInfo.strResDesc = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433920);
     localResourcePluginInfo.sResSubType = 2;
     localResourcePluginInfo.cCanChangeState = 1;
     localResourcePluginInfo.cDefaultState = 0;
@@ -609,7 +609,7 @@ public class LebaHelper
     if (QLog.isColorLevel()) {
       QLog.d("LebaHelper", 2, "LebaHelper  init");
     }
-    a(new zcs(this));
+    a(new zfy(this));
   }
   
   public void a(PluginConfigProxy paramPluginConfigProxy)
@@ -695,7 +695,7 @@ public class LebaHelper
     if (QLog.isColorLevel()) {
       QLog.i("LebaHelper", 2, "Download icon for " + paramString);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zct(this, paramURL, paramFile, paramString));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new zfz(this, paramURL, paramFile, paramString));
   }
   
   /* Error */

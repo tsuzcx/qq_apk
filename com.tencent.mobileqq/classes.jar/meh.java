@@ -1,21 +1,33 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyAdVideoReportData;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
 
 public class meh
-  implements View.OnClickListener
+  implements Runnable
 {
-  public meh(VideoShareHelper paramVideoShareHelper) {}
+  public meh(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "mShareActionSheet cancle button OnClick");
+    if ((VideoFeedsPlayManager.a(this.a) != null) && ((VideoFeedsPlayManager.a(this.a).c() == 5) || (VideoFeedsPlayManager.a(this.a).c() == 2)))
+    {
+      VideoFeedsPlayManager.a(this.a).e();
+      VideoFeedsPlayManager.a(this.a, 8);
+      if ((VideoFeedsPlayManager.a(this.a) == null) || (VideoFeedsPlayManager.a(this.a).c.getVisibility() != 0)) {
+        break label118;
+      }
+      this.a.b(3);
     }
-    if (VideoShareHelper.a(this.a).isShowing()) {
-      VideoShareHelper.a(this.a).dismiss();
+    for (;;)
+    {
+      if (VideoFeedsPlayManager.f(this.a)) {
+        VideoFeedsPlayManager.a(this.a).a.f = ReadinjoyAdVideoReportData.b;
+      }
+      return;
+      label118:
+      this.a.b(4);
     }
   }
 }

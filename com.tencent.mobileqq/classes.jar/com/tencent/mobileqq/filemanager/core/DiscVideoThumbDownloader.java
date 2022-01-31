@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import ackx;
+import acuu;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.app.FMObserver;
 import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
@@ -19,7 +19,7 @@ public class DiscVideoThumbDownloader
   public DiscVideoThumbDownloader(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new ackx(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new acuu(this);
     paramQQAppInterface.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
   }
   

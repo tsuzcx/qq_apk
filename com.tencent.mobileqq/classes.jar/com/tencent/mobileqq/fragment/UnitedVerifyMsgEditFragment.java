@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
-import adeg;
+import adof;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -26,21 +26,21 @@ public class UnitedVerifyMsgEditFragment
   
   protected int a()
   {
-    return 2130970630;
+    return 2130970674;
   }
   
   protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
     this.jdField_a_of_type_Int = getArguments().getInt("VERIFY_MSG_BYTES_LIMIT", 100);
-    a(getString(2131433015));
-    a(2131432998, null);
-    b(2131433614, this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_e_of_type_AndroidViewView.findViewById(2131362879));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_e_of_type_AndroidViewView.findViewById(2131362878));
+    a(getString(2131433032));
+    a(2131433015, null);
+    b(2131433631, this);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_e_of_type_AndroidViewView.findViewById(2131362897));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_e_of_type_AndroidViewView.findViewById(2131362896));
     this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$MaxBytesTextWatcher = new AddFriendVerifyActivity.MaxBytesTextWatcher(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetEditText);
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$MaxBytesTextWatcher);
-    ThreadManager.post(new adeg(this), 8, null, true);
+    ThreadManager.post(new adof(this), 8, null, true);
   }
   
   public boolean d()
@@ -78,7 +78,7 @@ public class UnitedVerifyMsgEditFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.UnitedVerifyMsgEditFragment
  * JD-Core Version:    0.7.0.1
  */

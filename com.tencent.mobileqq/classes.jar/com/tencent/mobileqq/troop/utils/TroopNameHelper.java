@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajbx;
-import ajby;
-import ajca;
+import ajqb;
+import ajqc;
+import ajqe;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.FriendsManager;
@@ -19,12 +19,12 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class TroopNameHelper
 {
-  ajca jdField_a_of_type_Ajca;
+  ajqe jdField_a_of_type_Ajqe;
   public FriendsManager a;
   public QQAppInterface a;
   public TroopHandler a;
   public TroopManager a;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ajbx(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ajqb(this);
   public ConcurrentHashMap a;
   public ConcurrentLinkedQueue a;
   public ConcurrentHashMap b = new ConcurrentHashMap();
@@ -68,10 +68,10 @@ public class TroopNameHelper
     }
   }
   
-  private void a(ajca paramajca)
+  private void a(ajqe paramajqe)
   {
-    if ((!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(paramajca)) && (!paramajca.a)) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramajca);
+    if ((!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.contains(paramajqe)) && (!paramajqe.a)) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.add(paramajqe);
     }
     b();
   }
@@ -99,11 +99,11 @@ public class TroopNameHelper
     if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
     {
       TroopNameHelper localTroopNameHelper = ((TroopManager)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getManager(51)).a();
-      ajby localajby = (ajby)localTroopNameHelper.b.get(paramString);
-      if (localajby == null) {
+      ajqc localajqc = (ajqc)localTroopNameHelper.b.get(paramString);
+      if (localajqc == null) {
         break label64;
       }
-      localTroopNameHelper.a(localajby);
+      localTroopNameHelper.a(localajqc);
       localTroopNameHelper.b.remove(paramString);
     }
     label64:
@@ -117,12 +117,12 @@ public class TroopNameHelper
   {
     try
     {
-      if ((this.jdField_a_of_type_Ajca == null) || (!this.jdField_a_of_type_Ajca.a))
+      if ((this.jdField_a_of_type_Ajqe == null) || (!this.jdField_a_of_type_Ajqe.a))
       {
-        this.jdField_a_of_type_Ajca = null;
-        this.jdField_a_of_type_Ajca = ((ajca)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll());
-        if (this.jdField_a_of_type_Ajca != null) {
-          ThreadManager.post(this.jdField_a_of_type_Ajca, 8, null, false);
+        this.jdField_a_of_type_Ajqe = null;
+        this.jdField_a_of_type_Ajqe = ((ajqe)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll());
+        if (this.jdField_a_of_type_Ajqe != null) {
+          ThreadManager.post(this.jdField_a_of_type_Ajqe, 8, null, false);
         }
       }
       return;
@@ -152,7 +152,7 @@ public class TroopNameHelper
   
   public void a(String paramString, TroopNameHelper.GenTroopNameCallback paramGenTroopNameCallback)
   {
-    a(new ajby(this, paramString, paramGenTroopNameCallback));
+    a(new ajqc(this, paramString, paramGenTroopNameCallback));
   }
   
   public boolean a(String paramString)
@@ -162,7 +162,7 @@ public class TroopNameHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopNameHelper
  * JD-Core Version:    0.7.0.1
  */

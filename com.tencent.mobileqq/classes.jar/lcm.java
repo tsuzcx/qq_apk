@@ -1,13 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.qphone.base.util.QLog;
 
-public class lcm
-  implements Runnable
+class lcm
+  implements AsyncBack
 {
-  public lcm(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  lcm(lcl paramlcl) {}
   
-  public void run()
+  public void a(int paramInt) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    ReadInJoyBaseDeliverActivity.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 2378 html web resource finish");
+    }
   }
 }
 

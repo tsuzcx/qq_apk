@@ -1,33 +1,29 @@
-import com.tencent.mobileqq.ark.ArkAiScrollBar;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class aaqf
-  implements Runnable
+class aaqf
+  implements DialogInterface.OnClickListener
 {
-  public aaqf(ArkRecommendController paramArkRecommendController) {}
+  aaqf(aaqb paramaaqb, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int j = 1;
-    int i = j;
-    if (ArkRecommendController.a(this.a) == null)
+    ArkAppCenter.a().post(new aaqg(this));
+    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
+    try
     {
-      ArkRecommendController.a(this.a, new ArkAiScrollBar(this.a));
-      i = j;
-      if (!ArkRecommendController.a(this.a).a())
-      {
-        ArkRecommendController.a(this.a, null);
-        if (QLog.isColorLevel()) {
-          QLog.d("ArkRecommendController", 2, "showBabyQBubbleView.mScrollBar.init.false");
-        }
-        i = 0;
-      }
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+      label38:
+      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aaqb.a, "ark_authority_api_user_info", this.jdField_a_of_type_Aaqb.c, 1);
+      return;
     }
-    if (i != 0)
+    catch (Exception paramDialogInterface)
     {
-      ArkRecommendController.a(this.a).a(ArkRecommendController.a(this.a));
-      ArkRecommendController.a(this.a).b();
+      break label38;
     }
   }
 }

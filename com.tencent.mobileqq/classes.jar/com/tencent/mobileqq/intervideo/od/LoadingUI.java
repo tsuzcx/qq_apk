@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.intervideo.od;
 
-import adlj;
-import adlk;
+import advi;
+import advj;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -137,7 +137,7 @@ public class LoadingUI
     i = this.g;
     this.g = (i + 1);
     ((ImageView)localObject1).setId(i);
-    localObject1 = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840620);
+    localObject1 = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840642);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
     localObject1 = new RelativeLayout.LayoutParams(a(100.0F), a(75.0F));
     ((RelativeLayout.LayoutParams)localObject1).setMargins(0, 0, 0, a(15.0F));
@@ -188,9 +188,9 @@ public class LoadingUI
     ((ImageView)localObject).setId(i);
     this.jdField_c_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
     new StateListDrawable();
-    localObject = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840618);
+    localObject = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840640);
     this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new adlj(this));
+    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(new advi(this));
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
     paramRelativeLayout.addView(this.jdField_c_of_type_AndroidWidgetImageView, paramString);
   }
@@ -242,7 +242,7 @@ public class LoadingUI
     i = this.g;
     this.g = (i + 1);
     ((ImageView)localObject1).setId(i);
-    localObject1 = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840619);
+    localObject1 = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130840641);
     this.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
     localObject1 = new RelativeLayout.LayoutParams(a(100.0F), a(75.0F));
     ((RelativeLayout.LayoutParams)localObject1).setMargins(0, 0, 0, a(15.0F));
@@ -267,12 +267,12 @@ public class LoadingUI
     ((RelativeLayout.LayoutParams)localObject2).addRule(12);
     ((RelativeLayout.LayoutParams)localObject2).addRule(14);
     paramRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
-    ((Button)localObject1).setOnClickListener(new adlk(this));
+    ((Button)localObject1).setOnClickListener(new advj(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.od.LoadingUI
  * JD-Core Version:    0.7.0.1
  */

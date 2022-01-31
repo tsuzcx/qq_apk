@@ -1,30 +1,60 @@
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
-import dov.com.qq.im.capture.QIMCaptureController;
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
+import android.os.Bundle;
+import android.os.ResultReceiver;
+import com.tencent.mobileqq.shortvideo.ShortVideoErrorReport;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzoneVideoSoDownloadModule;
 
 public class amtm
-  implements Runnable
+  implements ShortVideoResourceManager.INet_ShortVideoResource
 {
-  public amtm(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit, boolean paramBoolean) {}
+  ResultReceiver jdField_a_of_type_AndroidOsResultReceiver;
   
-  public void run()
+  public amtm(QzoneVideoSoDownloadModule paramQzoneVideoSoDownloadModule, ResultReceiver paramResultReceiver)
   {
-    if ((this.jdField_a_of_type_Boolean) && (QIMEffectCameraCaptureUnit.e(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit)))
+    this.jdField_a_of_type_AndroidOsResultReceiver = paramResultReceiver;
+  }
+  
+  public void C_()
+  {
+    QLog.e("QzoneVideoSoDownloadModule", 1, "onNetWorkNone");
+    QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -3, "短视频插件下载失败：网络异常");
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    QLog.i("QzoneVideoSoDownloadModule", 1, "onDownloadFinish name=" + paramString1 + " result=" + paramInt + " filePath=" + paramString2);
+    if (paramString1.startsWith("new_qq_android_native_short_video_"))
     {
-      this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.d = true;
-      QIMEffectCameraCaptureUnit.d(this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit);
+      if (paramInt == 0) {
+        break label108;
+      }
+      QzoneVideoSoDownloadModule.a(this.jdField_a_of_type_CooperationQzoneQzoneVideoSoDownloadModule, this.jdField_a_of_type_AndroidOsResultReceiver, -3, "短视频插件下载失败[" + paramInt + "]");
+      ShortVideoErrorReport.b(2, paramInt);
     }
-    ((QIMPtvTemplateManager)QIMManager.a(3)).a("0", QIMPtvTemplateAdapter.b, "");
-    this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.jdField_a_of_type_DovComQqImCaptureQIMCaptureController.t();
-    this.jdField_a_of_type_DovComQqImQIMEffectCameraCaptureUnit.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.setFaceEffect("");
+    for (;;)
+    {
+      if (paramString1.startsWith("new_qq_android_native_short_filter_")) {}
+      return;
+      label108:
+      if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
+      {
+        paramString2 = new Bundle();
+        this.jdField_a_of_type_AndroidOsResultReceiver.send(0, paramString2);
+      }
+    }
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QzoneVideoSoDownloadModule", 4, "onUpdateProgress: name=" + paramString + " curOffset=" + paramLong1 + " totalLen=" + paramLong2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amtm
  * JD-Core Version:    0.7.0.1
  */

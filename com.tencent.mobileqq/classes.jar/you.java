@@ -1,21 +1,59 @@
-import com.tencent.mobileqq.apollo.script.SpriteBridge;
-import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
-import com.tencent.mobileqq.apollo.script.callback.ISpriteTaskInterface;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.aioChannel.IRenderRunner;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
+import com.tencent.mobileqq.apollo.utils.ApolloGameMusicPlayer;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.lang.ref.WeakReference;
 
 public class you
   implements Runnable
 {
-  public you(SpriteBridge paramSpriteBridge, SpriteTaskParam paramSpriteTaskParam) {}
+  private final int jdField_a_of_type_Int;
+  private final long jdField_a_of_type_Long;
+  private final String jdField_a_of_type_JavaLangString;
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private final int jdField_b_of_type_Int;
+  private WeakReference jdField_b_of_type_JavaLangRefWeakReference;
+  private int jdField_c_of_type_Int;
+  private WeakReference jdField_c_of_type_JavaLangRefWeakReference;
+  
+  public you(int paramInt1, AppInterface paramAppInterface, IRenderRunner paramIRenderRunner, ApolloGameMusicPlayer paramApolloGameMusicPlayer, long paramLong, int paramInt2, int paramInt3, String paramString)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppInterface);
+    this.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramIRenderRunner);
+    this.jdField_c_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloGameMusicPlayer);
+    this.jdField_a_of_type_Int = paramInt2;
+    this.jdField_b_of_type_Int = paramInt3;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_c_of_type_Int = paramInt1;
+  }
   
   public void run()
   {
-    if (SpriteBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteBridge) != null)
+    AppInterface localAppInterface = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    IRenderRunner localIRenderRunner = (IRenderRunner)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+    Object localObject = (ApolloGameMusicPlayer)this.jdField_c_of_type_JavaLangRefWeakReference.get();
+    if ((localAppInterface == null) || (localObject == null) || (localIRenderRunner == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {}
+    for (;;)
     {
-      if (SpriteBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteBridge).a()) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.j = 1;
+      return;
+      int i = ((ApolloGameMusicPlayer)localObject).a(this.jdField_c_of_type_Int, localAppInterface, localIRenderRunner, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long);
+      localObject = null;
+      if ((localAppInterface instanceof QQAppInterface)) {
+        localObject = ApolloCmdChannel.getChannel((QQAppInterface)localAppInterface);
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.a = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteBridge;
-      SpriteBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteBridge).a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam);
+      while (localObject != null)
+      {
+        ApolloCmdChannel.access$300((ApolloCmdChannel)localObject, localIRenderRunner, i, this.jdField_a_of_type_Long);
+        return;
+        if ((localAppInterface instanceof CmGameAppInterface)) {
+          localObject = CmGameUtil.a();
+        }
+      }
     }
   }
 }

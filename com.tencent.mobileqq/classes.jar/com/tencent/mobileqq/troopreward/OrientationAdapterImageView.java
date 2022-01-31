@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troopreward;
 
-import ajjd;
+import ajxh;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -25,7 +25,7 @@ public class OrientationAdapterImageView
     super(paramContext);
     this.jdField_a_of_type_Int = 1;
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_AndroidOsHandler = new ajjd(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ajxh(this);
     a(paramContext);
   }
   
@@ -34,7 +34,7 @@ public class OrientationAdapterImageView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = 1;
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_a_of_type_AndroidOsHandler = new ajjd(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ajxh(this);
     a(paramContext);
   }
   
@@ -122,7 +122,7 @@ public class OrientationAdapterImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troopreward.OrientationAdapterImageView
  * JD-Core Version:    0.7.0.1
  */

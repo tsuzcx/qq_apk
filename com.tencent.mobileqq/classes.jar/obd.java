@@ -1,26 +1,22 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditJumpToPtu;
-import com.tencent.biz.qqstory.takevideo.EditJumpToPtu.UIHandler;
-import com.tencent.biz.qqstory.takevideo.EditPicConstants;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.FeedFeatureItem;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryVideoListStep.Result;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStep.SimpleStepResultCallback;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
 
 public class obd
-  implements Runnable
+  implements SimpleStep.SimpleStepResultCallback
 {
-  public obd(EditJumpToPtu paramEditJumpToPtu) {}
+  public obd(NewMyStorySegment paramNewMyStorySegment, String paramString) {}
   
-  public void run()
+  public void a(GetMyStoryVideoListStep.Result paramResult)
   {
-    EditJumpToPtu.a(this.a, EditPicConstants.a + "qq_pic_Jump_" + System.currentTimeMillis() + ".png");
-    if (this.a.a(EditJumpToPtu.a(this.a)))
+    if ((paramResult.a != null) && (TextUtils.equals(paramResult.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)))
     {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditJumpToPtu$UIHandler.sendEmptyMessage(1);
-      return;
+      NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment).a = paramResult.a;
+      NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment).sendMessage(NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment).obtainMessage(0, NewMyStorySegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewSegmentNewMyStorySegment)));
     }
-    EditJumpToPtu.a(this.a, null);
-    SLog.e("EditJumpToPtu", "get rawBitmap error!");
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditJumpToPtu$UIHandler.sendEmptyMessage(3);
   }
 }
 

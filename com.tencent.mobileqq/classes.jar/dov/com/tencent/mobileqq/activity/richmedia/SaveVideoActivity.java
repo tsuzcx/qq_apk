@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.ViewGroup;
-import anqj;
-import anqk;
+import aogo;
+import aogp;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.database.QQStoryEntityManagerFactory;
 import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
@@ -25,7 +25,7 @@ public class SaveVideoActivity
 {
   private static FFmpeg jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpeg;
   private static boolean b;
-  private anqk jdField_a_of_type_Anqk;
+  private aogp jdField_a_of_type_Aogp;
   private boolean d;
   
   public static Intent a(Context paramContext, String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -91,14 +91,14 @@ public class SaveVideoActivity
     }
     com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.z = paramBundle.getIntExtra("sv_total_frame_count", 0);
     com.tencent.mobileqq.shortvideo.mediadevice.CodecParam.y = paramBundle.getIntExtra("sv_total_record_time", 0);
-    this.jdField_a_of_type_Anqk = new anqk(this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-    anqk.a(this.jdField_a_of_type_Anqk, paramBundle.getStringExtra("mc_video.mp4"));
-    anqk.b(this.jdField_a_of_type_Anqk, paramBundle.getStringExtra("mc_audio.mp4"));
-    anqk.c(this.jdField_a_of_type_Anqk, paramBundle.getStringExtra("all_i_mc_video.mp4"));
-    anqk.a(this.jdField_a_of_type_Anqk, paramBundle.getBooleanExtra("mediacodec_encode_enable", false));
-    anqk.b(this.jdField_a_of_type_Anqk, paramBundle.getBooleanExtra("video_edit_flag", false));
-    anqk.a(this.jdField_a_of_type_Anqk, paramBundle.getIntExtra("save_video_businessid", -1));
-    Utils.executeAsyncTaskOnSerialExcuter(this.jdField_a_of_type_Anqk, new Void[] { (Void)null });
+    this.jdField_a_of_type_Aogp = new aogp(this, this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    aogp.a(this.jdField_a_of_type_Aogp, paramBundle.getStringExtra("mc_video.mp4"));
+    aogp.b(this.jdField_a_of_type_Aogp, paramBundle.getStringExtra("mc_audio.mp4"));
+    aogp.c(this.jdField_a_of_type_Aogp, paramBundle.getStringExtra("all_i_mc_video.mp4"));
+    aogp.a(this.jdField_a_of_type_Aogp, paramBundle.getBooleanExtra("mediacodec_encode_enable", false));
+    aogp.b(this.jdField_a_of_type_Aogp, paramBundle.getBooleanExtra("video_edit_flag", false));
+    aogp.a(this.jdField_a_of_type_Aogp, paramBundle.getIntExtra("save_video_businessid", -1));
+    Utils.executeAsyncTaskOnSerialExcuter(this.jdField_a_of_type_Aogp, new Void[] { (Void)null });
   }
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
@@ -106,15 +106,15 @@ public class SaveVideoActivity
     if (paramInt == 4)
     {
       this.d = true;
-      if ((this.jdField_a_of_type_Anqk != null) && (!isFinishing()))
+      if ((this.jdField_a_of_type_Aogp != null) && (!isFinishing()))
       {
         if (QLog.isColorLevel()) {
           QLog.d("SaveVideoActivity", 2, "cancel save video");
         }
-        anqk.a(this.jdField_a_of_type_Anqk).set(true);
+        aogp.a(this.jdField_a_of_type_Aogp).set(true);
         setResult(0, getIntent());
         if (getIntent() != null) {
-          ThreadManager.postImmediately(new anqj(this, getIntent().getStringExtra("fakeId")), null, true);
+          ThreadManager.postImmediately(new aogo(this, getIntent().getStringExtra("fakeId")), null, true);
         }
       }
     }

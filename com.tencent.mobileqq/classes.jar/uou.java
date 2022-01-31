@@ -1,33 +1,19 @@
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleLayout.DoodleLayoutListener;
-import com.tencent.mobileqq.activity.aio.doodle.DoodlePanel;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipWaveView;
+import com.tencent.mobileqq.surfaceviewaction.action.Action;
+import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
+import com.tencent.mobileqq.surfaceviewaction.action.RotateAction;
+import com.tencent.mobileqq.surfaceviewaction.gl.Sprite;
 
-public class uou
-  implements DoodleLayout.DoodleLayoutListener
+class uou
+  implements Action.OnActionEndListener
 {
-  public uou(DoodlePanel paramDoodlePanel) {}
+  uou(uos paramuos) {}
   
-  public void a(int paramInt)
+  public void a()
   {
-    DoodlePanel.a(this.a);
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if (paramInt1 == 2)
-    {
-      if (!DoodlePanel.a(this.a))
-      {
-        DoodlePanel.a(this.a, true);
-        uov localuov = new uov(this);
-        DialogUtil.a(this.a.getContext(), 230, null, this.a.getContext().getString(2131439049), null, this.a.getContext().getString(2131439053), localuov, null).show();
-      }
-      return;
-    }
-    QQToast.a(this.a.getContext(), this.a.getContext().getString(2131439050), 0).a();
+    RotateAction localRotateAction = new RotateAction(3000, 360, 0);
+    localRotateAction.a = true;
+    this.a.a.e.a(new Action[] { localRotateAction });
   }
 }
 

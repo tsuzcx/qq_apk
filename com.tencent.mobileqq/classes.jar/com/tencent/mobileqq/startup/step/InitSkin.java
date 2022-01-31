@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.startup.step;
 
-import ahqx;
-import ahqy;
+import aiez;
+import aifa;
 import android.annotation.TargetApi;
 import android.app.Application;
 import android.content.Context;
@@ -50,9 +50,9 @@ public class InitSkin
   {
     jdField_a_of_type_JavaLangObject = new Object();
     jdField_a_of_type_Int = 3000;
-    jdField_a_of_type_ArrayOfInt = new int[] { 2130837592, 2130837906, 2130837905, 2130837904, 2130838475, 2130838567, 2130838566, 2130838591, 2130838593, 2130838597, 2130838581, 2130838699, 2130838913, 2130839189, 2130839524, 2130840566, 2130842977, 2130842976, 2130842972, 2130842971, 2130842967, 2130842966, 2130841498, 2130841503, 2130841504, 2130841505, 2130841506, 2130841507, 2130841508, 2130841509, 2130841510, 2130841511, 2130841514, 2130841513, 2130841515, 2130841516, 2130841517, 2130841519, 2130841518, 2130841520, 2130841521, 2130841522, 2130841523, 2130841524, 2130841525, 2130841526, 2130841527, 2130841528, 2130841529, 2130841530, 2130839135, 2130839134, 2130842882, 2130841625, 2130841626, 2130841504, 2130841563, 2130841625, 2130841626, 2130841503, 2130845309, 2130845504, 2130845494, 2130845493, 2130845515, 2130845514, 2130845873, 2130845810, 2130845807, 2130845677, 2130845743, 2130845927, 2130845755, 2130845753, 2130845757, 2130845761, 2130845760, 2130845746, 2130845705, 2130845711, 2130845712, 2130845724, 2130845873, 2130845836, 2130845837, 2130845842, 2130845858, 2130845862, 2130845860, 2130845866, 2130845864, 2130839143, 2130839147, 2130845782, 2130841543, 2130841542, 2130838583, 2130838584, 2130845812, 2130845809 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2130837534, 2130837535, 2130837538, 2130837539, 2130837541, 2130837542, 2130837544, 2130837545, 2130838567, 2130838566, 2130845504, 2130845942, 2130845941, 2130839149, 2130839147, 2130846136, 2130845743, 2130845746, 2130845753, 2130845755, 2130845757, 2130845758, 2130845759, 2130845760, 2130845761, 2130846141, 2130846242, 2130839217, 2130839215, 2130839216, 2130839214, 2130839212, 2130839213, 2130841535, 2130841533, 2130841534, 2130839220, 2130839218, 2130839219, 2130838206, 2130846277, 2130839777, 2130839778, 2130839779, 2130839780, 2130845918, 2130845677, 2130845722, 2130845724, 2130840526, 2130840525, 2130840532, 2130845810, 2130845807, 2130845813, 2130845741, 2130845681, 2130845866, 2130845864, 2130845858, 2130838699, 2130845876, 2130845878, 2130845835, 2130845834 };
-    jdField_c_of_type_ArrayOfInt = new int[] { 2130837534, 2130837535, 2130837538, 2130837539, 2130837541, 2130837542, 2130837544, 2130837545, 2130837571, 2130837618, 2130837719, 2130837967, 2130846322, 2130846319, 2130846320, 2130846317, 2130846318, 2130846324, 2130838206, 2130838207, 2130838208, 2130838323, 2130838348, 2130838350, 2130838419, 2130838420, 2130838423, 2130838424, 2130838475, 2130838476, 2130838478, 2130838479, 2130838566, 2130838567, 2130838570, 2130838591, 2130838595, 2130838597, 2130838635, 2130838644, 2130838674, 2130838699, 2130838715, 2130838733, 2130839941, 2130838901, 2130838914, 2130837760, 2130846321, 2130846312, 2130839128, 2130844654, 2130844655, 2130839208, 2130839209, 2130844735, 2130839519, 2130839552, 2130840431, 2130840432, 2130840434, 2130840435, 2130841060, 2130841061, 2130841163, 2130841625, 2130841626, 2130842966, 2130842967, 2130842971, 2130842972, 2130842974, 2130842975, 2130842976, 2130842977, 2130843001, 2130846327, 2130844248, 2130844249, 2130844255, 2130844290, 2130844297, 2130844303, 2130844304, 2130844305, 2130844306, 2130844307, 2130844308, 2130844309, 2130844310, 2130844312, 2130844313, 2130844316, 2130844320, 2130844358, 2130844359, 2130844360, 2130846331, 2130844361, 2130844362, 2130844363, 2130844379, 2130844380, 2130845841, 2130837541, 2130844444, 2130844445, 2130846314, 2130846315, 2130844485, 2130846326, 2130844995, 2130844502, 2130844503, 2130844519, 2130846328, 2130846330, 2130844520, 2130844543, 2130844544, 2130844570, 2130844582, 2130844583, 2130844590, 2130844594, 2130844595, 2130844602, 2130844604, 2130844605, 2130844611, 2130844612, 2130844614, 2130844618, 2130844620, 2130844624, 2130844627, 2130844632, 2130844638, 2130844639, 2130844640, 2130844652, 2130844653, 2130844659, 2130844664, 2130844670, 2130844679, 2130844696, 2130844725, 2130844728, 2130844730, 2130844731, 2130844732, 2130844733, 2130844734, 2130844780, 2130844818, 2130844849, 2130844859, 2130844860, 2130844862, 2130844865, 2130844868, 2130842440, 2130844900, 2130844901, 2130844914, 2130844915, 2130844922, 2130844937, 2130844960, 2130845038, 2130845094, 2130845109, 2130845139, 2130845143, 2130845146, 2130845147, 2130845148, 2130845154, 2130845167, 2130845168, 2130845224, 2130845232, 2130845233, 2130845242, 2130845243, 2130845244, 2130845245, 2130845249, 2130845250, 2130845255, 2130845256, 2130845257, 2130845259, 2130845261, 2130845262, 2130845263, 2130845264, 2130845310, 2130845311, 2130845312, 2130845313, 2130845315, 2130845317, 2130845348, 2130845393, 2130845391, 2130845392, 2130845395, 2130845677, 2130845695, 2130845696, 2130845697, 2130845698, 2130845699, 2130845703, 2130845704, 2130845705, 2130845711, 2130845712, 2130845713, 2130845714, 2130845722, 2130845723, 2130845724, 2130845743, 2130845746, 2130845753, 2130845755, 2130845757, 2130845758, 2130845759, 2130845760, 2130845761, 2130845762, 2130845774, 2130845775, 2130845776, 2130845777, 2130845778, 2130845779, 2130845780, 2130845781, 2130845782, 2130845790, 2130845791, 2130845807, 2130845836, 2130845837, 2130845838, 2130845839, 2130845840, 2130845842, 2130845845, 2130845846, 2130845847, 2130845848, 2130845849, 2130845855, 2130845858, 2130845860, 2130845862, 2130845864, 2130845866, 2130845870, 2130845873, 2130845876, 2130845878, 2130845885, 2130845887, 2130845891, 2130845893, 2130845926, 2130845927, 2130845965, 2130846129, 2130846131, 2130846134, 2130846277, 2130846151, 2130846153 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2130837595, 2130837909, 2130837908, 2130837907, 2130838479, 2130838571, 2130838570, 2130838595, 2130838597, 2130838601, 2130838585, 2130838703, 2130838917, 2130839193, 2130839529, 2130840572, 2130843076, 2130843075, 2130843071, 2130843070, 2130843066, 2130843065, 2130841535, 2130841540, 2130841541, 2130841542, 2130841543, 2130841544, 2130841545, 2130841546, 2130841547, 2130841548, 2130841551, 2130841550, 2130841552, 2130841553, 2130841554, 2130841556, 2130841555, 2130841557, 2130841558, 2130841559, 2130841560, 2130841561, 2130841562, 2130841563, 2130841564, 2130841565, 2130841566, 2130841567, 2130839139, 2130839138, 2130842981, 2130841662, 2130841663, 2130841541, 2130841600, 2130841662, 2130841663, 2130841540, 2130845437, 2130845632, 2130845622, 2130845621, 2130845643, 2130845642, 2130846001, 2130845938, 2130845935, 2130845805, 2130845871, 2130846055, 2130845883, 2130845881, 2130845885, 2130845889, 2130845888, 2130845874, 2130845833, 2130845839, 2130845840, 2130845852, 2130846001, 2130845964, 2130845965, 2130845970, 2130845986, 2130845990, 2130845988, 2130845994, 2130845992, 2130839147, 2130839151, 2130845910, 2130841580, 2130841579, 2130838587, 2130838588, 2130845940, 2130845937 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2130837534, 2130837535, 2130837538, 2130837539, 2130837541, 2130837542, 2130837544, 2130837545, 2130838571, 2130838570, 2130845632, 2130846070, 2130846069, 2130839153, 2130839151, 2130846264, 2130845871, 2130845874, 2130845881, 2130845883, 2130845885, 2130845886, 2130845887, 2130845888, 2130845889, 2130846269, 2130846370, 2130839221, 2130839219, 2130839220, 2130839218, 2130839216, 2130839217, 2130841572, 2130841570, 2130841571, 2130839224, 2130839222, 2130839223, 2130838210, 2130846407, 2130839783, 2130839784, 2130839785, 2130839786, 2130846046, 2130845805, 2130845850, 2130845852, 2130840532, 2130840531, 2130840538, 2130845938, 2130845935, 2130845941, 2130845869, 2130845809, 2130845994, 2130845992, 2130845986, 2130838703, 2130846004, 2130846006, 2130845963, 2130845962 };
+    jdField_c_of_type_ArrayOfInt = new int[] { 2130837534, 2130837535, 2130837538, 2130837539, 2130837541, 2130837542, 2130837544, 2130837545, 2130837571, 2130837621, 2130837722, 2130837970, 2130846452, 2130846449, 2130846450, 2130846447, 2130846448, 2130846454, 2130838210, 2130838211, 2130838212, 2130838327, 2130838352, 2130838354, 2130838423, 2130838424, 2130838427, 2130838428, 2130838479, 2130838480, 2130838482, 2130838483, 2130838570, 2130838571, 2130838574, 2130838595, 2130838599, 2130838601, 2130838639, 2130838648, 2130838678, 2130838703, 2130838719, 2130838737, 2130839941, 2130838905, 2130838918, 2130837760, 2130846451, 2130846442, 2130839132, 2130844778, 2130844779, 2130839212, 2130839213, 2130844860, 2130839524, 2130839557, 2130840437, 2130840438, 2130840440, 2130840441, 2130841097, 2130841098, 2130841200, 2130841662, 2130841663, 2130843065, 2130843066, 2130843070, 2130843071, 2130843073, 2130843074, 2130843075, 2130843076, 2130843100, 2130846457, 2130844372, 2130844373, 2130844379, 2130844414, 2130844421, 2130844427, 2130844428, 2130844429, 2130844430, 2130844431, 2130844432, 2130844433, 2130844434, 2130844436, 2130844437, 2130844440, 2130844444, 2130844482, 2130844483, 2130844484, 2130846461, 2130844485, 2130844486, 2130844487, 2130844503, 2130844504, 2130845969, 2130837541, 2130844568, 2130844569, 2130846444, 2130846445, 2130844609, 2130846456, 2130845120, 2130844626, 2130844627, 2130844643, 2130846458, 2130846460, 2130844644, 2130844667, 2130844668, 2130844694, 2130844706, 2130844707, 2130844714, 2130844718, 2130844719, 2130844726, 2130844728, 2130844729, 2130844735, 2130844736, 2130844738, 2130844742, 2130844744, 2130844748, 2130844751, 2130844756, 2130844762, 2130844763, 2130844764, 2130844776, 2130844777, 2130844783, 2130844788, 2130844794, 2130844803, 2130844820, 2130844850, 2130844853, 2130844855, 2130844856, 2130844857, 2130844858, 2130844859, 2130844905, 2130844943, 2130844974, 2130844984, 2130844985, 2130844987, 2130844990, 2130844993, 2130842532, 2130845025, 2130845026, 2130845039, 2130845040, 2130845047, 2130845062, 2130845085, 2130845163, 2130845219, 2130845234, 2130845264, 2130845268, 2130845271, 2130845272, 2130845273, 2130845279, 2130845292, 2130845293, 2130845349, 2130845357, 2130845358, 2130845367, 2130845368, 2130845369, 2130845370, 2130845374, 2130845375, 2130845380, 2130845381, 2130845382, 2130845384, 2130845386, 2130845387, 2130845388, 2130845389, 2130845438, 2130845439, 2130845440, 2130845441, 2130845443, 2130845445, 2130845476, 2130845521, 2130845519, 2130845520, 2130845523, 2130845805, 2130845823, 2130845824, 2130845825, 2130845826, 2130845827, 2130845831, 2130845832, 2130845833, 2130845839, 2130845840, 2130845841, 2130845842, 2130845850, 2130845851, 2130845852, 2130845871, 2130845874, 2130845881, 2130845883, 2130845885, 2130845886, 2130845887, 2130845888, 2130845889, 2130845890, 2130845902, 2130845903, 2130845904, 2130845905, 2130845906, 2130845907, 2130845908, 2130845909, 2130845910, 2130845918, 2130845919, 2130845935, 2130845964, 2130845965, 2130845966, 2130845967, 2130845968, 2130845970, 2130845973, 2130845974, 2130845975, 2130845976, 2130845977, 2130845983, 2130845986, 2130845988, 2130845990, 2130845992, 2130845994, 2130845998, 2130846001, 2130846004, 2130846006, 2130846013, 2130846015, 2130846019, 2130846021, 2130846054, 2130846055, 2130846093, 2130846257, 2130846259, 2130846262, 2130846407, 2130846279, 2130846281 };
   }
   
   private static final int a(Context paramContext)
@@ -152,7 +152,7 @@ public class InitSkin
         }
         QLog.d("SkinEngine", 2, "No cache found");
         SkinEngine.init(paramContext, jdField_b_of_type_ArrayOfInt, 1264, 2131492864, null);
-        ThreadManager.getSubThreadHandler().postDelayed(new ahqy("/skin/web_config", "/skin/web_skin_cache"), 10000L);
+        ThreadManager.getSubThreadHandler().postDelayed(new aifa("/skin/web_config", "/skin/web_skin_cache"), 10000L);
         continue;
       }
       try
@@ -164,7 +164,7 @@ public class InitSkin
         i = localObjectInputStream.readInt();
         str = localObjectInputStream.readUTF();
         localObjectInputStream.close();
-        if ((i != AppSetting.jdField_a_of_type_Int) || (!"345599".equals(str))) {
+        if ((i != AppSetting.jdField_a_of_type_Int) || (!"349884".equals(str))) {
           continue;
         }
         if (QLog.isColorLevel()) {
@@ -190,8 +190,8 @@ public class InitSkin
         continue;
       }
       SkinEngine.getInstances().setSkinEngineHandler(new OOMHandler(BaseApplicationImpl.getApplication()));
-      SkinEngine.getInstances().addDrawableResource(2130838210);
-      SkinEngine.getInstances().addDrawableResource(2130838586);
+      SkinEngine.getInstances().addDrawableResource(2130838214);
+      SkinEngine.getInstances().addDrawableResource(2130838590);
       l2 = SystemClock.uptimeMillis();
       try
       {
@@ -214,7 +214,7 @@ public class InitSkin
         QLog.d("SkinEngine", 2, "web skin cache time out");
       }
       SkinEngine.init(paramContext, jdField_b_of_type_ArrayOfInt, 1264, 2131492864, null);
-      ThreadManager.getSubThreadHandler().postDelayed(new ahqy("/skin/web_config", "/skin/web_skin_cache"), 10000L);
+      ThreadManager.getSubThreadHandler().postDelayed(new aifa("/skin/web_config", "/skin/web_skin_cache"), 10000L);
     }
   }
   
@@ -255,7 +255,7 @@ public class InitSkin
       QLog.i("InitSkin", 2, "ToolAsynInitDPC = " + jdField_b_of_type_Boolean + "  sToolInitTimeout = " + jdField_a_of_type_Int);
     }
     if (jdField_b_of_type_Boolean) {
-      ThreadManager.post(new ahqx(this), 8, null, false);
+      ThreadManager.post(new aiez(this), 8, null, false);
     }
     label223:
     label228:
@@ -321,7 +321,7 @@ public class InitSkin
         }
         QLog.d("SkinEngine", 2, "No cache found");
         SkinEngine.init(paramContext, jdField_a_of_type_ArrayOfInt, 1264, 2131492864, null);
-        ThreadManager.getSubThreadHandler().postDelayed(new ahqy("/skin/qqfav_config", "/skin/qqfav_skin_cache"), 10000L);
+        ThreadManager.getSubThreadHandler().postDelayed(new aifa("/skin/qqfav_config", "/skin/qqfav_skin_cache"), 10000L);
         continue;
       }
       try
@@ -333,7 +333,7 @@ public class InitSkin
         i = localObjectInputStream.readInt();
         str = localObjectInputStream.readUTF();
         localObjectInputStream.close();
-        if ((i != AppSetting.jdField_a_of_type_Int) || (!"345599".equals(str))) {
+        if ((i != AppSetting.jdField_a_of_type_Int) || (!"349884".equals(str))) {
           continue;
         }
         if (QLog.isColorLevel()) {
@@ -359,10 +359,10 @@ public class InitSkin
         continue;
       }
       SkinEngine.getInstances().setSkinEngineHandler(new OOMHandler(BaseApplicationImpl.getApplication()));
-      SkinEngine.getInstances().addDrawableResource(2130838210);
-      SkinEngine.getInstances().addDrawableResource(2130838339);
-      SkinEngine.getInstances().addDrawableResource(2130838586);
-      SkinEngine.getInstances().addDrawableResource(2130838349);
+      SkinEngine.getInstances().addDrawableResource(2130838214);
+      SkinEngine.getInstances().addDrawableResource(2130838343);
+      SkinEngine.getInstances().addDrawableResource(2130838590);
+      SkinEngine.getInstances().addDrawableResource(2130838353);
       l2 = SystemClock.uptimeMillis();
       try
       {
@@ -385,7 +385,7 @@ public class InitSkin
         QLog.d("SkinEngine", 2, "qqfav skin cache time out");
       }
       SkinEngine.init(paramContext, jdField_a_of_type_ArrayOfInt, 1264, 2131492864, null);
-      ThreadManager.getSubThreadHandler().postDelayed(new ahqy("/skin/qqfav_config", "/skin/qqfav_skin_cache"), 10000L);
+      ThreadManager.getSubThreadHandler().postDelayed(new aifa("/skin/qqfav_config", "/skin/qqfav_skin_cache"), 10000L);
     }
   }
   
@@ -436,7 +436,7 @@ public class InitSkin
         }
         QLog.d("SkinEngine", 2, "No cache found");
         SkinEngine.init(paramContext, jdField_c_of_type_ArrayOfInt, 1264, 2131492864, null);
-        a().postDelayed(new ahqy("/skin/qzone_config", "/skin/qzone_skin_cache"), 10000L);
+        a().postDelayed(new aifa("/skin/qzone_config", "/skin/qzone_skin_cache"), 10000L);
         continue;
       }
       try
@@ -448,7 +448,7 @@ public class InitSkin
         i = localObjectInputStream.readInt();
         str = localObjectInputStream.readUTF();
         localObjectInputStream.close();
-        if ((i != AppSetting.jdField_a_of_type_Int) || (!"345599".equals(str))) {
+        if ((i != AppSetting.jdField_a_of_type_Int) || (!"349884".equals(str))) {
           continue;
         }
         if (QLog.isColorLevel()) {
@@ -474,10 +474,10 @@ public class InitSkin
         continue;
       }
       SkinEngine.getInstances().setSkinEngineHandler(new OOMHandler(BaseApplicationImpl.getApplication()));
-      SkinEngine.getInstances().addDrawableResource(2130838210);
-      SkinEngine.getInstances().addDrawableResource(2130838339);
-      SkinEngine.getInstances().addDrawableResource(2130838586);
-      SkinEngine.getInstances().addDrawableResource(2130838349);
+      SkinEngine.getInstances().addDrawableResource(2130838214);
+      SkinEngine.getInstances().addDrawableResource(2130838343);
+      SkinEngine.getInstances().addDrawableResource(2130838590);
+      SkinEngine.getInstances().addDrawableResource(2130838353);
       l2 = SystemClock.uptimeMillis();
       try
       {
@@ -500,7 +500,7 @@ public class InitSkin
         QLog.d("SkinEngine", 2, "qzone skin cache time out");
       }
       SkinEngine.init(paramContext, jdField_c_of_type_ArrayOfInt, 1264, 2131492864, null);
-      a().postDelayed(new ahqy("/skin/qzone_config", "/skin/qzone_skin_cache"), 10000L);
+      a().postDelayed(new aifa("/skin/qzone_config", "/skin/qzone_skin_cache"), 10000L);
     }
   }
   
@@ -545,7 +545,7 @@ public class InitSkin
         }
         QLog.d("SkinEngine", 2, "No cache found");
         SkinEngine.init(paramContext, 8191, 2130837504, 1264, 2131492864, null);
-        ThreadManager.getSubThreadHandler().postDelayed(new ahqy("/skin/config", str), 10000L);
+        ThreadManager.getSubThreadHandler().postDelayed(new aifa("/skin/config", str), 10000L);
         continue;
       }
       try
@@ -553,13 +553,13 @@ public class InitSkin
         localObject2 = BaseApplicationImpl.sApplication;
         if (((Application)localObject2).getPackageManager().getApplicationInfo(((Application)localObject2).getPackageName(), 128).metaData.getBoolean("com.sec.android.support.multiwindow"))
         {
-          SkinEngine.mIconResourceID = Integer.valueOf(2130839189);
+          SkinEngine.mIconResourceID = Integer.valueOf(2130839193);
           if (QLog.isColorLevel()) {
-            QLog.d("SkinEngine", 2, "Set icon resouceID to " + 2130839189);
+            QLog.d("SkinEngine", 2, "Set icon resouceID to " + 2130839193);
           }
         }
         i = a(paramContext);
-        str = "/skin/skin_cache_mobileqq_" + AppSetting.jdField_a_of_type_Int + "_" + "345599" + "_" + i;
+        str = "/skin/skin_cache_mobileqq_" + AppSetting.jdField_a_of_type_Int + "_" + "349884" + "_" + i;
         localObject2 = new File(localFile, "/skin/config");
         localFile = new File(localFile, str);
         try
@@ -591,20 +591,20 @@ public class InitSkin
           continue;
         }
         SkinEngine.getInstances().setSkinEngineHandler((SkinEngineHandler)localObject1);
-        SkinEngine.getInstances().addDrawableResource(2130838210);
-        SkinEngine.getInstances().addDrawableResource(2130838339);
-        SkinEngine.getInstances().addDrawableResource(2130838211);
-        SkinEngine.getInstances().addDrawableResource(2130838586);
-        SkinEngine.getInstances().addDrawableResource(2130838349);
+        SkinEngine.getInstances().addDrawableResource(2130838214);
+        SkinEngine.getInstances().addDrawableResource(2130838343);
+        SkinEngine.getInstances().addDrawableResource(2130838215);
+        SkinEngine.getInstances().addDrawableResource(2130838590);
+        SkinEngine.getInstances().addDrawableResource(2130838353);
         l2 = SystemClock.uptimeMillis();
-        localObject1 = new SkinEngine.BackupForOOMData(2130845689, 2130845691, Bitmap.Config.RGB_565);
-        SkinEngine.getInstances().addBackupForOOMData(Integer.valueOf(2130845689), (SkinEngine.BackupForOOMData)localObject1);
-        localObject1 = new SkinEngine.BackupForOOMData(2130843187, 2130845691, Bitmap.Config.RGB_565);
-        SkinEngine.getInstances().addBackupForOOMData(Integer.valueOf(2130843187), (SkinEngine.BackupForOOMData)localObject1);
-        localObject1 = new SkinEngine.BackupForOOMData(2130843184, 2130845691, Bitmap.Config.RGB_565);
-        SkinEngine.getInstances().addBackupForOOMData(Integer.valueOf(2130843184), (SkinEngine.BackupForOOMData)localObject1);
-        localObject1 = new SkinEngine.BackupForOOMData(2130845679, 2130845691, Bitmap.Config.RGB_565);
-        SkinEngine.getInstances().addBackupForOOMData(Integer.valueOf(2130845679), (SkinEngine.BackupForOOMData)localObject1);
+        localObject1 = new SkinEngine.BackupForOOMData(2130845817, 2130845819, Bitmap.Config.RGB_565);
+        SkinEngine.getInstances().addBackupForOOMData(Integer.valueOf(2130845817), (SkinEngine.BackupForOOMData)localObject1);
+        localObject1 = new SkinEngine.BackupForOOMData(2130843286, 2130845819, Bitmap.Config.RGB_565);
+        SkinEngine.getInstances().addBackupForOOMData(Integer.valueOf(2130843286), (SkinEngine.BackupForOOMData)localObject1);
+        localObject1 = new SkinEngine.BackupForOOMData(2130843283, 2130845819, Bitmap.Config.RGB_565);
+        SkinEngine.getInstances().addBackupForOOMData(Integer.valueOf(2130843283), (SkinEngine.BackupForOOMData)localObject1);
+        localObject1 = new SkinEngine.BackupForOOMData(2130845807, 2130845819, Bitmap.Config.RGB_565);
+        SkinEngine.getInstances().addBackupForOOMData(Integer.valueOf(2130845807), (SkinEngine.BackupForOOMData)localObject1);
       }
       catch (PackageManager.NameNotFoundException localNameNotFoundException)
       {
@@ -671,7 +671,7 @@ public class InitSkin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.InitSkin
  * JD-Core Version:    0.7.0.1
  */

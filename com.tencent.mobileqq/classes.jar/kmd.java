@@ -1,51 +1,92 @@
-import com.tencent.biz.common.offline.BidDownloader;
-import com.tencent.biz.common.offline.OfflineEnvHelper;
-import com.tencent.biz.common.offline.OfflineExpire;
+import android.content.Context;
+import android.os.Bundle;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.PublicAccountHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
+import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
+import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import mqq.observer.BusinessObserver;
 
 public final class kmd
-  implements Runnable
+  implements BusinessObserver
 {
-  public kmd(WeakReference paramWeakReference, ArrayList paramArrayList) {}
+  public kmd(Context paramContext, QQAppInterface paramQQAppInterface, QQProgressDialog paramQQProgressDialog, EqqDetail paramEqqDetail, SessionInfo paramSessionInfo, String paramString) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject == null)
-    {
-      QLog.i(OfflineExpire.a, 1, "app == null, download wont start");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("CrmUtils", 2, "success:" + String.valueOf(paramBoolean));
     }
-    localObject = (PreDownloadController)((QQAppInterface)localObject).getManager(192);
-    int k = this.jdField_a_of_type_JavaUtilArrayList.size();
-    int i = 0;
-    label50:
-    kmf localkmf;
-    String str1;
-    String str2;
-    String str3;
-    if (i < k)
+    mobileqq_mp.FollowResponse localFollowResponse;
+    if (paramBoolean)
     {
-      localkmf = (kmf)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-      str1 = localkmf.a.a;
-      str2 = localkmf.a.c;
-      str3 = localkmf.a.b;
-      if (!localkmf.a.f) {
-        break label197;
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null) {
+        localFollowResponse = new mobileqq_mp.FollowResponse();
       }
     }
-    label197:
-    for (int j = 1;; j = 2)
+    for (;;)
     {
-      boolean bool = ((PreDownloadController)localObject).a(10066, "app", str1, k - i, str2, str3, j, 0, OfflineEnvHelper.a(localkmf.a.a), localkmf);
-      QLog.i(OfflineExpire.a, 1, "requestPreDownload bid=" + localkmf.a.a + " re=" + bool);
-      i += 1;
-      break label50;
-      break;
+      try
+      {
+        localFollowResponse.mergeFrom(paramBundle);
+        paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
+        if (paramInt == 0)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType = 1;
+          CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+          paramBundle = (PublicAccountHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(11);
+          if (paramBundle != null) {
+            paramBundle.a(this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+          }
+          if (QLog.isDevelopLevel()) {
+            QLog.d("IVR_TS_CrmUtils", 4, "<<<end follow, ts=" + System.currentTimeMillis());
+          }
+          CrmUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_JavaLangString);
+          EnterpriseQQManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin, true);
+          CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+          return;
+        }
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131430033);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+        CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+        return;
+      }
+      if (paramInt == 58)
+      {
+        CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131430041);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "PublicAccount_max_limit_false", 0, 0, "", "", "", "");
+      }
+      else if (paramInt == 65)
+      {
+        CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131430042);
+      }
+      else if (paramInt == 20)
+      {
+        CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131430043);
+      }
+      else
+      {
+        CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131430033);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+        continue;
+        CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131430033);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+        continue;
+        CrmUtils.a(this.jdField_a_of_type_AndroidContentContext, 2131430033);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80049DF", "AutoFollowFalse", 0, 0, "", "", "", "");
+      }
     }
   }
 }

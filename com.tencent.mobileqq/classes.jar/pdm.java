@@ -1,26 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.common.galleryactivity.GalleryPageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.webviewplugin.UrlCheckPlugin;
 
 public class pdm
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public pdm(GalleryPageView paramGalleryPageView) {}
+  public pdm(UrlCheckPlugin paramUrlCheckPlugin) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.a.clearAnimation();
-    this.a.a.setVisibility(4);
+    this.a.a();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pdm
  * JD-Core Version:    0.7.0.1
  */

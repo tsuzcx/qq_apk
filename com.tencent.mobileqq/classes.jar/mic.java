@@ -1,19 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySubscriptionListViewGroup;
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.widget.XListView.DrawFinishedListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.PrefetchListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseListView;
 
 public class mic
-  implements XListView.DrawFinishedListener
+  implements ReadInJoyBaseAdapter.PrefetchListener
 {
-  public mic(ReadInJoySubscriptionListViewGroup paramReadInJoySubscriptionListViewGroup) {}
+  public mic(ReadInJoyBaseListView paramReadInJoyBaseListView) {}
   
   public void a()
   {
-    if ((!this.a.b) && (this.a.c))
-    {
-      this.a.b = true;
-      PublicTracker.a("SUBSCRIPT_FEEDS_COST", null);
-      PublicTracker.a("KANDIAN_TO_SUBSCRIPT_COST", null);
+    if ((this.a.d != 70) || ((this.a.c == 0) && (!this.a.b))) {
+      ReadInJoyBaseListView.a(this.a, 4);
     }
   }
 }

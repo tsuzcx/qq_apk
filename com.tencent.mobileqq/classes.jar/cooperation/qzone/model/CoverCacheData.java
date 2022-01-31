@@ -4,7 +4,7 @@ import NS_MOBILE_COVER_DATE.CoverPackageInfo;
 import NS_MOBILE_COVER_DATE.GameCoverInfo;
 import NS_MOBILE_COVER_DATE.feeds_cover;
 import NS_MOBILE_MAIN_PAGE.mobile_sub_get_cover_rsp;
-import amef;
+import amuj;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -14,7 +14,7 @@ import java.util.HashMap;
 public class CoverCacheData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amef();
+  public static final Parcelable.Creator CREATOR = new amuj();
   public int a;
   public long a;
   public CoverCacheData.GameCoverInfo a;

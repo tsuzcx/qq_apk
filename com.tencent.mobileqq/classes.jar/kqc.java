@@ -1,15 +1,19 @@
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
+import com.tencent.biz.pubaccount.AccountDetail.handler.AccountDetailBaseItemClickHandler;
 
 public class kqc
   implements View.OnClickListener
 {
-  public kqc(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
+  public kqc(AccountDetailBaseItemClickHandler paramAccountDetailBaseItemClickHandler, String paramString) {}
   
   public void onClick(View paramView)
   {
-    this.a.d(this.a.b());
+    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    AccountDetailBaseItemClickHandler.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailHandlerAccountDetailBaseItemClickHandler).startActivity(paramView);
   }
 }
 

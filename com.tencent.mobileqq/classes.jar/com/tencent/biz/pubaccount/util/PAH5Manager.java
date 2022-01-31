@@ -22,7 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import mth;
+import muo;
 
 public class PAH5Manager
   implements INetEngine.INetEngineListener
@@ -30,7 +30,7 @@ public class PAH5Manager
   public TroopMemberApiService a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
-  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new mth(this);
+  TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new muo(this);
   private String jdField_a_of_type_JavaLangString;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public HashMap a;

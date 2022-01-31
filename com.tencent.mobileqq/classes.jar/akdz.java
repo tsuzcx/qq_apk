@@ -1,36 +1,28 @@
-import android.view.View;
-import com.tencent.mobileqq.werewolves.ReflectUtils;
-import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.lang.reflect.Method;
+import android.content.DialogInterface.OnClickListener;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class akdz
-  implements ActionSheet.OnButtonClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public akdz(WerewolvesHostInterface paramWerewolvesHostInterface, Object paramObject, ActionSheet paramActionSheet) {}
+  public akdz(QQCustomDialog paramQQCustomDialog, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramView = ReflectUtils.a(this.jdField_a_of_type_JavaLangObject.getClass(), "onClick", new Class[] { Integer.TYPE });
-    try
+    paramCompoundButton = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-      paramView.invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { Integer.valueOf(paramInt) });
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      paramCompoundButton.onClick(localQQCustomDialog, i);
       return;
-    }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        paramView.printStackTrace();
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akdz
  * JD-Core Version:    0.7.0.1
  */

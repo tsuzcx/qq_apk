@@ -1,31 +1,21 @@
-import android.os.Process;
-import com.tencent.open.agent.QuickLoginAuthorityActivity;
+import android.view.animation.Transformation;
+import com.tencent.mobileqq.utils.ValueAnimation;
+import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
+import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 
 public class akmu
-  extends Thread
+  implements ValueAnimation.AnimationUpdateListener
 {
-  public akmu(QuickLoginAuthorityActivity paramQuickLoginAuthorityActivity) {}
+  public akmu(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI) {}
   
-  public void run()
+  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
   {
-    try
-    {
-      Thread.sleep(1000L);
-      Process.killProcess(Process.myPid());
-      return;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
-    }
+    this.a.b(paramInteger.intValue());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akmu
  * JD-Core Version:    0.7.0.1
  */

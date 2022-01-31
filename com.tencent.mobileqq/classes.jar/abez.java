@@ -1,23 +1,13 @@
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.armap.config.ARMapConfigManager;
 
-class abez
+public class abez
   implements Runnable
 {
-  abez(abey paramabey, Runnable paramRunnable) {}
+  public abez(ARMapConfigManager paramARMapConfigManager) {}
   
   public void run()
   {
-    try
-    {
-      QLog.d("QQAnimationDrawable", 2, "SerialExecutor run");
-      this.jdField_a_of_type_JavaLangRunnable.run();
-      return;
-    }
-    finally
-    {
-      QLog.d("QQAnimationDrawable", 2, "SerialExecutor scheduleNext");
-      this.jdField_a_of_type_Abey.a();
-    }
+    this.a.a();
   }
 }
 

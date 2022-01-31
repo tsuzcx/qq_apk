@@ -1,25 +1,49 @@
-import com.tencent.mobileqq.nearby.now.model.VideoData;
-import com.tencent.mobileqq.nearby.now.view.PlayResultListener;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerView;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnErrorListener;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.mybusiness.MyBusinessManager;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class aelg
-  implements IVideoView.OnErrorListener
+  extends ContactBindObserver
 {
-  public aelg(VideoPlayerView paramVideoPlayerView, VideoData paramVideoData) {}
+  boolean jdField_a_of_type_Boolean = false;
   
-  public boolean a(IVideoView paramIVideoView, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public aelg(MyBusinessManager paramMyBusinessManager) {}
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewVideoPlayerView.a.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelVideoData.a, paramInt1, paramInt2, "use sdk play error");
+    if ((this.jdField_a_of_type_Boolean) && (paramBoolean2))
+    {
+      RespondQueryQQBindingStat localRespondQueryQQBindingStat = ((PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqMybusinessMyBusinessManager.a.getManager(10)).a();
+      if ((localRespondQueryQQBindingStat == null) || (TextUtils.isEmpty(localRespondQueryQQBindingStat.mobileNo))) {
+        break label95;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("PhoneContact", 2, "mybusiness ContactBindObserver onQueryBindState");
+      }
+      ((MyBusinessManager)this.jdField_a_of_type_ComTencentMobileqqMybusinessMyBusinessManager.a.getManager(48)).a(localRespondQueryQQBindingStat.mobileNo, localRespondQueryQQBindingStat.type, "", false);
+      this.jdField_a_of_type_Boolean = false;
     }
-    return true;
+    label95:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("PhoneContact", 2, "mybusiness bindInfo null ");
+  }
+  
+  protected void c(boolean paramBoolean, int paramInt)
+  {
+    if ((paramBoolean) && (paramInt == 0)) {
+      this.jdField_a_of_type_Boolean = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aelg
  * JD-Core Version:    0.7.0.1
  */

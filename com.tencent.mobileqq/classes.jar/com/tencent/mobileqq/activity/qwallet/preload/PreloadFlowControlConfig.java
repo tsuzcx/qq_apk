@@ -5,7 +5,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import java.io.Serializable;
 import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
-import xch;
+import xfm;
 
 public class PreloadFlowControlConfig
   implements Serializable
@@ -53,7 +53,7 @@ public class PreloadFlowControlConfig
   
   public void saveConfig()
   {
-    ThreadManager.getFileThreadHandler().post(new xch(this));
+    ThreadManager.getFileThreadHandler().post(new xfm(this));
   }
 }
 

@@ -1,28 +1,21 @@
-import android.graphics.Rect;
-import java.util.Comparator;
+import android.animation.AnimatorSet;
+import com.tencent.mobileqq.bubble.BubbleInterActiveAnim;
+import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.AnimFrameData;
+import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.AnimHolder;
 
-public final class ablh
-  implements Comparator
+public class ablh
+  implements Runnable
 {
-  public int a(Rect paramRect1, Rect paramRect2)
+  public ablh(BubbleInterActiveAnim paramBubbleInterActiveAnim, BubbleInterActiveAnim.AnimFrameData paramAnimFrameData) {}
+  
+  public void run()
   {
-    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
-    do
-    {
-      return 1;
-      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
-        return -1;
-      }
-    } while (paramRect1.width() > paramRect2.width());
-    if (paramRect1.width() < paramRect2.width()) {
-      return -1;
-    }
-    return 0;
+    this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimFrameData.a.a.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ablh
  * JD-Core Version:    0.7.0.1
  */

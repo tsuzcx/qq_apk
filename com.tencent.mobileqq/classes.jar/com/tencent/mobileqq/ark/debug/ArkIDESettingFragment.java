@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.ark.debug;
 
-import aarl;
-import aarm;
-import aarn;
-import aarq;
+import aaym;
+import aayn;
+import aayo;
+import aayr;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -66,7 +66,7 @@ public class ArkIDESettingFragment
   
   protected int a()
   {
-    return 2130970188;
+    return 2130970204;
   }
   
   protected void a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -78,12 +78,12 @@ public class ArkIDESettingFragment
   
   void b()
   {
-    FormSwitchItem localFormSwitchItem1 = (FormSwitchItem)this.e.findViewById(2131369464);
-    FormSwitchItem localFormSwitchItem2 = (FormSwitchItem)this.e.findViewById(2131369465);
-    View localView1 = this.e.findViewById(2131369466);
-    View localView2 = this.e.findViewById(2131369467);
+    FormSwitchItem localFormSwitchItem1 = (FormSwitchItem)this.e.findViewById(2131369541);
+    FormSwitchItem localFormSwitchItem2 = (FormSwitchItem)this.e.findViewById(2131369542);
+    View localView1 = this.e.findViewById(2131369543);
+    View localView2 = this.e.findViewById(2131369544);
     localFormSwitchItem1.setChecked(true);
-    localFormSwitchItem1.setOnCheckedChangeListener(new aarl(this));
+    localFormSwitchItem1.setOnCheckedChangeListener(new aaym(this));
     if ((!TextUtils.isEmpty(b())) && (b().equals("close")))
     {
       localFormSwitchItem2.setChecked(false);
@@ -91,9 +91,9 @@ public class ArkIDESettingFragment
     }
     for (;;)
     {
-      localFormSwitchItem2.setOnCheckedChangeListener(new aarm(this));
-      localView1.setOnClickListener(new aarn(this));
-      localView2.setOnClickListener(new aarq(this));
+      localFormSwitchItem2.setOnCheckedChangeListener(new aayn(this));
+      localView1.setOnClickListener(new aayo(this));
+      localView2.setOnClickListener(new aayr(this));
       return;
       localFormSwitchItem2.setChecked(true);
       c();

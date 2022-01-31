@@ -10,8 +10,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import java.net.URLDecoder;
 import mqq.app.NewIntent;
-import osk;
-import osl;
+import oue;
+import ouf;
 
 public class QRJumpActivity
   extends BaseActivity
@@ -29,8 +29,8 @@ public class QRJumpActivity
       return false;
     }
     this.a = new QQProgressDialog(this, super.getTitleBarHeight());
-    this.a.c(2131429995);
-    this.a.setOnCancelListener(new osk(this));
+    this.a.c(2131430012);
+    this.a.setOnCancelListener(new oue(this));
     this.a.show();
     String str = URLDecoder.decode(paramBundle);
     paramBundle = Uri.parse(str);
@@ -42,7 +42,7 @@ public class QRJumpActivity
     if (paramBundle == null) {}
     for (paramBundle = null;; paramBundle = paramBundle.getQueryParameter("auth"))
     {
-      paramBundle = new osl(this, paramBundle, this, str);
+      paramBundle = new ouf(this, paramBundle, this, str);
       NewIntent localNewIntent = new NewIntent(this, QRCodeServlet.class);
       localNewIntent.putExtra("d", str);
       localNewIntent.putExtra("cmd", "QRCodeSvc.decode");

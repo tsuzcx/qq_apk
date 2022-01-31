@@ -1,24 +1,22 @@
-import com.tencent.av.config.ConfigPBProtocol.ConfigSysInfoNew;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.utils.PhoneStatusMonitor;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class jhv
+  implements Runnable
 {
-  public int a;
-  public int b = 0;
-  public int c = 0;
-  public int d = 0;
-  public int e = 0;
-  public int f = 0;
-  public int g = 0;
-  public int h = 0;
+  public jhv(AVNotifyCenter paramAVNotifyCenter) {}
   
-  public jhv(ConfigPBProtocol.ConfigSysInfoNew paramConfigSysInfoNew)
+  public void run()
   {
-    this.jdField_a_of_type_Int = 0;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.a.jdField_a_of_type_ComTencentAvUtilsPhoneStatusMonitor = new PhoneStatusMonitor(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     jhv
  * JD-Core Version:    0.7.0.1
  */

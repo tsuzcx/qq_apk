@@ -1,30 +1,10 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentMediaFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-
-public class acjp
-  implements Runnable
+public abstract interface acjp
 {
-  public acjp(QfileRecentMediaFileTabView paramQfileRecentMediaFileTabView, String paramString, FileManagerEntity paramFileManagerEntity) {}
-  
-  public void run()
-  {
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentMediaFileTabView.a.containsKey(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentMediaFileTabView.a.put(this.jdField_a_of_type_JavaLangString, new ArrayList());
-    }
-    List localList = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentMediaFileTabView.a.get(this.jdField_a_of_type_JavaLangString);
-    if (localList.contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity) == true) {
-      return;
-    }
-    localList.add(0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentMediaFileTabView.i();
-  }
+  public abstract void a();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acjp
  * JD-Core Version:    0.7.0.1
  */

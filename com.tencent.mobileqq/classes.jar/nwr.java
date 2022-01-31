@@ -1,26 +1,18 @@
-import android.content.res.Resources;
-import com.tencent.biz.qqstory.view.widget.StorySwipeTextViewMenuBuilder;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.biz.qqstory.utils.TranslucentTitleBarHelper;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class nwr
-  extends StorySwipeTextViewMenuBuilder
+  implements AbsListView.OnScrollListener
 {
-  private static final int[] e = { 2131434024 };
-  private static final int[] f = { 2131493367 };
-  private static final int[] g = { 2131369925 };
-  private static int[] h = { BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131559399) };
+  public nwr(StoryMemoriesFragment paramStoryMemoriesFragment, TranslucentTitleBarHelper paramTranslucentTitleBarHelper) {}
   
-  public nwr()
-  {
-    super(1, 1, h, -1, g, e, f);
-  }
+  public void a(AbsListView paramAbsListView, int paramInt) {}
   
-  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramArrayOfSwipRightMenuItem[0].a = 0;
-    paramArrayOfSwipRightMenuItem[0].b = 0;
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsTranslucentTitleBarHelper.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
   }
 }
 

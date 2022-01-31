@@ -1,46 +1,43 @@
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.statistics.MTAReportController;
-import com.tencent.mobileqq.utils.quic.QuicResDownload;
-import java.util.Properties;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
+import com.tencent.mobileqq.richmedia.capture.data.FilterCategoryItem;
+import com.tencent.mobileqq.richmedia.capture.view.CaptureVideoFilterViewPager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class ahlq
-  implements ShortVideoResourceManager.INet_ShortVideoResource
+public class ahlq
+  implements Runnable
 {
-  ahlq(ahlp paramahlp) {}
+  public ahlq(CaptureVideoFilterViewPager paramCaptureVideoFilterViewPager) {}
   
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void run()
   {
-    VideoEnvironment.a("QuicResDownload", "doUserDownloadQuicResourceAsync: [onDownloadFinish]name=" + paramString1 + " filepath=" + paramString2, null);
-  }
-  
-  public void a(String paramString, long paramLong1, long paramLong2)
-  {
-    if ((paramLong1 == paramLong2) && (!QuicResDownload.a)) {
-      QuicResDownload.a = true;
-    }
-    try
+    this.a.setVisibility(0);
+    List localList = CaptureVideoFilterManager.a().b();
+    this.a.a.clear();
+    int i = 0;
+    if (i < localList.size())
     {
-      Properties localProperties = new Properties();
-      localProperties.put("version", "7.6.0.3525");
-      localProperties.put("appid", String.valueOf(AppSetting.a));
-      localProperties.put("release", String.valueOf(true));
-      localProperties.put("name", paramString);
-      MTAReportController.a(this.a.a.getApplication().getApplicationContext()).reportKVEvent("msf_quic_resdown", localProperties);
-      return;
+      if (i != 0)
+      {
+        FilterCategoryItem localFilterCategoryItem = (FilterCategoryItem)localList.get(i);
+        if (!localFilterCategoryItem.a()) {
+          this.a.a.add(localFilterCategoryItem);
+        }
+      }
+      for (;;)
+      {
+        i += 1;
+        break;
+        this.a.a.add(localList.get(i));
+      }
     }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+    CaptureVideoFilterViewPager.a(this.a).a();
+    if (CaptureVideoFilterManager.a().a() == null) {
+      this.a.setCurrentItem(CaptureVideoFilterViewPager.a(this.a).a() * 50, false);
     }
-  }
-  
-  public void y_()
-  {
-    VideoEnvironment.a("QuicResDownload", "doUserDownloadQuicResourceAsync: [onNetWorkNone]", null);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFilterViewPager", 2, "CaptureVideoFilterViewPager update size=" + this.a.a.size());
+    }
   }
 }
 

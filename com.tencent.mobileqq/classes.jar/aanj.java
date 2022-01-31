@@ -1,19 +1,20 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import com.tencent.mobileqq.arcard.ARCardUtils;
+import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
 
-class aanj
+public class aanj
   implements Runnable
 {
-  aanj(aani paramaani, String paramString) {}
+  public aanj(ARVideoPreviewActivity paramARVideoPreviewActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aani.a.a.setText(this.jdField_a_of_type_JavaLangString);
+    this.a.b();
+    ARCardUtils.a(this.a, 0, this.a.a, this.a.b, 1, ARVideoPreviewActivity.c(this.a), ARVideoPreviewActivity.d(this.a), ARVideoPreviewActivity.e(this.a), ARVideoPreviewActivity.f(this.a), ARVideoPreviewActivity.g(this.a), ARVideoPreviewActivity.h(this.a), ARVideoPreviewActivity.i(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aanj
  * JD-Core Version:    0.7.0.1
  */

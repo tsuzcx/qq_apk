@@ -17,7 +17,7 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import xzt;
+import yda;
 
 public class SendVideoActivity$SendVideoTask
   extends AsyncTask
@@ -68,7 +68,7 @@ public class SendVideoActivity$SendVideoTask
   
   public static void a(BaseActivity paramBaseActivity, int paramInt, boolean paramBoolean)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(paramBaseActivity, 232, null, paramBaseActivity.getString(paramInt), new xzt(paramBoolean, paramBaseActivity), null);
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(paramBaseActivity, 232, null, paramBaseActivity.getString(paramInt), new yda(paramBoolean, paramBaseActivity), null);
     if (!paramBaseActivity.isFinishing()) {
       localQQCustomDialog.show();
     }
@@ -894,11 +894,11 @@ public class SendVideoActivity$SendVideoTask
       QLog.e("SendVideoActivity", 2, "showProgressDialog", paramContext);
       return;
       label63:
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624515);
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624516);
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969181);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363381));
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399));
     }
   }
   
@@ -961,22 +961,22 @@ public class SendVideoActivity$SendVideoTask
       }
     case 2: 
     case 6: 
-      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437349, this.jdField_a_of_type_Boolean);
+      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437366, this.jdField_a_of_type_Boolean);
       return;
     case 3: 
-      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437356, this.jdField_a_of_type_Boolean);
+      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437373, this.jdField_a_of_type_Boolean);
       return;
     case 4: 
-      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437354, this.jdField_a_of_type_Boolean);
+      a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437371, this.jdField_a_of_type_Boolean);
       return;
     }
-    a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437357, this.jdField_a_of_type_Boolean);
+    a((BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437374, this.jdField_a_of_type_Boolean);
   }
   
   protected void onPreExecute()
   {
     super.onPreExecute();
-    a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131436128);
+    a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131436145);
   }
 }
 

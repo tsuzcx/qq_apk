@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragmentAllWaite;
-import com.tencent.mobileqq.shortvideo.gesture.GestureMgr;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.qcall.LightalkShieldHandler;
+import com.tencent.mobileqq.qcall.LightalkSwitchHanlder;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.qcall.UinUtils;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class agum
-  implements Runnable
+class agum
+  implements DialogInterface.OnClickListener
 {
-  public agum(CaptureSoDownloadFragmentAllWaite paramCaptureSoDownloadFragmentAllWaite) {}
+  agum(aguk paramaguk, QQCustomDialog paramQQCustomDialog) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    GestureMgr.a().b();
+    if (paramInt == 0) {
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    }
+    while (paramInt != 1) {
+      return;
+    }
+    QCallDetailActivity.a(this.jdField_a_of_type_Aguk.a).b(10, UinUtils.a(QCallDetailActivity.a(this.jdField_a_of_type_Aguk.a)));
+    QCallDetailActivity.a(this.jdField_a_of_type_Aguk.a).a((byte)0);
   }
 }
 

@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.banner;
 
-import amva;
 import android.text.TextUtils;
+import anlf;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.armap.ArMapUtil;
@@ -414,7 +414,7 @@ public class QIMCaptureBannerConfig
     if (QLog.isColorLevel()) {
       QLog.d("QIMCaptureBannerConfig", 2, "saveBannerConfig|config= " + paramQIMCaptureBannerConfig);
     }
-    ThreadManager.getFileThreadHandler().post(new amva(paramString, paramQQAppInterface, paramQIMCaptureBannerConfig));
+    ThreadManager.getFileThreadHandler().post(new anlf(paramString, paramQQAppInterface, paramQIMCaptureBannerConfig));
   }
   
   public String toString()

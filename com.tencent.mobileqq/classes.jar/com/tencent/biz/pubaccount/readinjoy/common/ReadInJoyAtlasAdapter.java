@@ -22,7 +22,7 @@ import com.tencent.mobileqq.transfile.URLDrawableHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
-import lkp;
+import lkl;
 import tencent.im.oidb.gallery.gallery.PictureInfo;
 
 public class ReadInJoyAtlasAdapter
@@ -80,7 +80,7 @@ public class ReadInJoyAtlasAdapter
     localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
     localURLDrawableOptions.mRequestHeight = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
     localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.a;
-    localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846201);
+    localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846329);
     localURLDrawableOptions.mPlayGifImage = true;
     Object localObject = URLDrawable.getDrawable((String)localObject, localURLDrawableOptions);
     if (((URLDrawable)localObject).getStatus() == 1) {
@@ -88,7 +88,7 @@ public class ReadInJoyAtlasAdapter
     }
     localURLImageView.setImageDrawable((Drawable)localObject);
     a(paramViewHolder);
-    localURLImageView.setURLDrawableDownListener(new lkp(this, paramViewHolder, localAtlasModelImage, localURLImageView));
+    localURLImageView.setURLDrawableDownListener(new lkl(this, paramViewHolder, localAtlasModelImage, localURLImageView));
   }
   
   public void a(View paramView)
@@ -144,11 +144,11 @@ public class ReadInJoyAtlasAdapter
     View localView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130971434, null);
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130971482, null);
       paramView = new ReadInJoyAtlasAdapter.ViewHolder(this);
       paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131361846));
       paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131361845));
-      paramViewGroup = paramViewGroup.getContext().getResources().getDrawable(2130840391);
+      paramViewGroup = paramViewGroup.getContext().getResources().getDrawable(2130840397);
       paramView.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramViewGroup);
       localView.setTag(paramView);
       paramViewGroup = paramView;

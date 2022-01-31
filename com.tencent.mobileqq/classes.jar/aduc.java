@@ -1,33 +1,36 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.mixedmsg.MixedMsgManager;
-import com.tencent.mobileqq.service.message.MessageCache;
+import android.content.Context;
+import com.tencent.hydevteam.pluginframework.installedplugin.InstalledPlugin;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import com.tencent.mobileqq.intervideo.huayang.HuayangDowanloadHelper;
+import com.tencent.mobileqq.intervideo.huayang.HuayangLoadbackgroudActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aduc
-  extends MessageObserver
+class aduc
+  implements Runnable
 {
-  public aduc(MixedMsgManager paramMixedMsgManager, QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, String paramString, int paramInt) {}
+  aduc(adub paramadub, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(6003, true, new Object[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq + "" });
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData);
-    if (paramBoolean)
+    if (QLog.isColorLevel()) {
+      QLog.d("HuayangPluginNewDownloader", 2, "startLoadingActivity：" + System.currentTimeMillis());
+    }
+    Context localContext = HuayangDowanloadHelper.a(this.jdField_a_of_type_Adub.a);
+    String str2 = adub.a(this.jdField_a_of_type_Adub);
+    IVPluginInfo localIVPluginInfo = adub.a(this.jdField_a_of_type_Adub);
+    InstalledPlugin localInstalledPlugin = adub.a(this.jdField_a_of_type_Adub);
+    String str3 = HuayangDowanloadHelper.d(this.jdField_a_of_type_Adub.a);
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str1 = HuayangDowanloadHelper.e(this.jdField_a_of_type_Adub.a);; str1 = null)
     {
-      MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true);
+      HuayangLoadbackgroudActivity.a(localContext, str2, localIVPluginInfo, localInstalledPlugin, str3, str1, this.b, this.jdField_a_of_type_Boolean, HuayangDowanloadHelper.c(this.jdField_a_of_type_Adub.a));
       return;
     }
-    MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true, "sendStructLongMsg fail : errCode = " + paramStatictisInfo.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aduc
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,17 @@
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 
-class ajgu
-  implements Runnable
+public class ajgu
+  implements DialogInterface.OnClickListener
 {
-  ajgu(ajgt paramajgt) {}
+  public ajgu(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void run()
-  {
-    this.a.a.a.b();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajgu
  * JD-Core Version:    0.7.0.1
  */

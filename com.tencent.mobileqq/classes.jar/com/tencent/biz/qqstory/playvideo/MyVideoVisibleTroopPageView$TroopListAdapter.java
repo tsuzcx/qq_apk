@@ -13,7 +13,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.TroopInfo;
 import java.util.ArrayList;
 import java.util.List;
-import nmf;
+import nnr;
 
 public class MyVideoVisibleTroopPageView$TroopListAdapter
   extends BaseAdapter
@@ -56,10 +56,10 @@ public class MyVideoVisibleTroopPageView$TroopListAdapter
     Object localObject = (TroopInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     if (paramView == null)
     {
-      paramViewGroup = new nmf(this);
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970850, null);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364953));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362876));
+      paramViewGroup = new nnr(this);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970898, null);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364975));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362894));
       paramView.setTag(paramViewGroup);
     }
     for (;;)
@@ -68,7 +68,7 @@ public class MyVideoVisibleTroopPageView$TroopListAdapter
       localObject = PlayModeUtils.a().a(((TroopInfo)localObject).troopuin);
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
       return paramView;
-      paramViewGroup = (nmf)paramView.getTag();
+      paramViewGroup = (nnr)paramView.getTag();
     }
   }
 }

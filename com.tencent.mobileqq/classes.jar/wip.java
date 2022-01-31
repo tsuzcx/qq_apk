@@ -1,14 +1,38 @@
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.activity.contact.troop.TroopView.MyTroopObserver;
+import android.text.TextUtils;
+import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class wip
-  implements Runnable
+  implements TextView.OnEditorActionListener
 {
-  public wip(TroopView.MyTroopObserver paramMyTroopObserver) {}
+  public wip(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public void run()
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    this.a.a.j();
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramInt != 3)
+    {
+      bool1 = bool2;
+      if (paramKeyEvent != null)
+      {
+        bool1 = bool2;
+        if (paramKeyEvent.getKeyCode() != 66) {}
+      }
+    }
+    else
+    {
+      paramTextView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+      if (!TextUtils.isEmpty(paramTextView)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramTextView, false);
+      }
+      bool1 = true;
+    }
+    return bool1;
   }
 }
 

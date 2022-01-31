@@ -1,18 +1,21 @@
-import java.util.List;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerListAdapter;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper.OnLoadMoreListener;
 
 public class nst
+  implements LoadingMoreHelper.OnLoadMoreListener
 {
-  int jdField_a_of_type_Int;
-  List jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean;
-  int b;
+  public nst(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public nst(boolean paramBoolean, List paramList, int paramInt1, int paramInt2)
+  public void a() {}
+  
+  public boolean a(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller != null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoryDataPuller.a(this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a());
+    }
+    return true;
   }
 }
 

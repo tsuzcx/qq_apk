@@ -2,14 +2,14 @@ package com.tencent.mobileqq.app.automator.step;
 
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
-import znv;
+import zrb;
 
 public class GetTbsSwitchInfo
   extends AsyncStep
 {
   protected int a()
   {
-    ThreadManager.post(new znv(this), 8, null, false);
+    ThreadManager.post(new zrb(this), 8, null, false);
     return 7;
   }
 }

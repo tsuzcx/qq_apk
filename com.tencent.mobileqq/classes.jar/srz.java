@@ -1,18 +1,19 @@
-import android.media.SoundPool;
-import android.media.SoundPool.OnLoadCompleteListener;
-import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ExtensionInfo;
+import com.tencent.mobileqq.vas.AvatarPendantManager;
+import com.tencent.mobileqq.vas.PendantInfo;
 
-public class srz
-  implements SoundPool.OnLoadCompleteListener
+class srz
+  implements Runnable
 {
-  public srz(H5MagicPlayerActivity paramH5MagicPlayerActivity, String paramString) {}
+  srz(sry paramsry, ExtensionInfo paramExtensionInfo) {}
   
-  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
+  public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_AndroidMediaSoundPool.play(paramInt1, 1.0F, 1.0F, 0, this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_Int - 1, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_Sry.a.b.setVisibility(0);
+    ((AvatarPendantManager)this.jdField_a_of_type_Sry.a.app.getManager(45)).a(this.jdField_a_of_type_Sry.a.a).a(this.jdField_a_of_type_Sry.a.b, 1, PendantInfo.d, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.uin, this.jdField_a_of_type_ComTencentMobileqqDataExtensionInfo.pendantDiyId);
   }
 }
 

@@ -1,48 +1,32 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.av.ui.QavVideoRecordUICtrl;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.VideoControlUI;
+import java.lang.ref.WeakReference;
 
 public class kap
-  implements Animator.AnimatorListener
+  implements View.OnTouchListener
 {
-  public kap(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
+  WeakReference a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public kap(VideoControlUI paramVideoControlUI)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationCancel");
-    }
-    this.a.b(3, false);
-    QavVideoRecordUICtrl.b(this.a).requestLayout();
-    QavVideoRecordUICtrl.b(this.a, false);
+    this.a = new WeakReference(paramVideoControlUI);
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationEnd");
+    paramView = (VideoControlUI)this.a.get();
+    if (paramView != null) {
+      switch (paramMotionEvent.getAction())
+      {
+      }
     }
-    this.a.c(3);
-    QavVideoRecordUICtrl.b(this.a).requestLayout();
-    QavVideoRecordUICtrl.b(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationStart");
+    for (;;)
+    {
+      return false;
+      paramView.ad();
     }
-    QavVideoRecordUICtrl.a(this.a).setVisibility(0);
-    QavVideoRecordUICtrl.a(this.a).setAlpha(0.0F);
-    QavVideoRecordUICtrl.b(this.a).setVisibility(0);
-    QavVideoRecordUICtrl.b(this.a).setAlpha(0.0F);
-    QavVideoRecordUICtrl.e(this.a).height = -2;
-    QavVideoRecordUICtrl.e(this.a).width = -2;
   }
 }
 

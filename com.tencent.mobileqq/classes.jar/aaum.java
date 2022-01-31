@@ -1,16 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
 
-public class aaum
-  implements DialogInterface.OnClickListener
+class aaum
+  implements ArkAppCenter.OnGetAppIcon
 {
-  public aaum(ARMapActivity paramARMapActivity) {}
+  aaum(aaul paramaaul) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    this.a.startActivity(new Intent("android.settings.WIFI_SETTINGS"));
+    if (paramBitmap != null) {
+      this.a.a.a.setImageBitmap(paramBitmap);
+    }
   }
 }
 

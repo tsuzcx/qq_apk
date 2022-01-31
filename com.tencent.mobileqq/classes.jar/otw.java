@@ -1,59 +1,44 @@
-import android.content.res.Resources;
-import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.TextView;
-import com.tencent.biz.troop.EditUniqueTitleActivity;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import android.view.View;
+import android.widget.LinearLayout.LayoutParams;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class otw
-  implements TextWatcher
+  implements Runnable
 {
-  public otw(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
+  public otw(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    String str = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    int i;
-    if (str.equals(""))
+    int i = this.a.jdField_c_of_type_AndroidViewView.getHeight();
+    int j = this.a.b.getHeight();
+    View localView;
+    LinearLayout.LayoutParams localLayoutParams;
+    if (j < i)
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-      i = str.length();
-      ThemeUtil.getCurrentThemeInfo().getString("themeId");
-      if (i <= 6) {
-        break label215;
+      localView = this.a.findViewById(2131367543);
+      localLayoutParams = (LinearLayout.LayoutParams)localView.getLayoutParams();
+      if (this.a.jdField_c_of_type_Int != 2) {
+        break label79;
       }
-      EditUniqueTitleActivity.a(this.a, false);
-      if (!this.a.jdField_a_of_type_Boolean) {
-        this.a.rightViewText.setAlpha(0.5F);
-      }
+      localLayoutParams.topMargin = 0;
+      localLayoutParams.bottomMargin = 0;
     }
-    for (paramEditable = this.a.getResources().getColorStateList(2131494295);; paramEditable = this.a.getResources().getColorStateList(2131494262))
+    for (;;)
     {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramEditable);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(str.length() + "/" + 6);
-      int j = 6 - str.length();
-      i = j;
-      if (j < 0) {
-        i = 0;
-      }
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(String.format(this.a.getString(2131430396), new Object[] { Integer.valueOf(i) }));
+      localView.setLayoutParams(localLayoutParams);
       return;
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-      break;
-      label215:
-      EditUniqueTitleActivity.b(this.a, true);
-      if (!this.a.jdField_a_of_type_Boolean) {
-        this.a.rightViewText.setAlpha(1.0F);
+      label79:
+      if (this.a.jdField_c_of_type_Int == 5)
+      {
+        int k = localLayoutParams.topMargin;
+        localLayoutParams.topMargin = ((i - j) / 2 + k);
+      }
+      else
+      {
+        localLayoutParams.topMargin = 50;
       }
     }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -7,12 +7,12 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.troop.data.MediaInfo;
 import java.io.File;
-import occ;
+import odu;
 
 public class EditTakeVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator CREATOR = new occ();
+  public static final Parcelable.Creator CREATOR = new odu();
   @NonNull
   public final LocalMediaInfo a;
   @NonNull

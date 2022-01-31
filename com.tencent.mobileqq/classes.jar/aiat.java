@@ -1,18 +1,42 @@
-import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
+import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
+import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.ReadyResource;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceReadyFilter;
+import java.util.List;
 
-class aiat
-  implements Runnable
+public class aiat
+  implements Animation.AnimationListener
 {
-  aiat(aias paramaias, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
+  public aiat(DanceReadyFilter paramDanceReadyFilter) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Aias.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 1);
+    if (DanceReadyFilter.a(this.a) > 0)
+    {
+      DanceReadyFilter.e(this.a).a((String)DanceReadyFilter.a(this.a).a.a.get(DanceReadyFilter.a(this.a) - 1));
+      if (DanceReadyFilter.c(this.a) != null)
+      {
+        DanceReadyFilter.c(this.a).setStartOffset(300L);
+        DanceReadyFilter.e(this.a).e();
+        DanceReadyFilter.e(this.a).a(DanceReadyFilter.c(this.a));
+      }
+      return;
+    }
+    DanceReadyFilter.e(this.a).h_(false);
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    DanceReadyFilter.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiat
  * JD-Core Version:    0.7.0.1
  */

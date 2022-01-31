@@ -1,11 +1,11 @@
 package dov.com.qq.im.capture.paster;
 
-import amwu;
-import amwv;
-import amwx;
 import android.annotation.TargetApi;
 import android.text.TextUtils;
 import android.widget.RelativeLayout;
+import anmz;
+import anna;
+import annc;
 import com.tencent.biz.common.util.ZipUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -143,14 +143,14 @@ public class QIMInformationPasterManager
     {
       InfomationFacePackage.Item localItem = (InfomationFacePackage.Item)paramDoodleEmojiItem.next();
       if ((localItem.b == 1) && (!a(localItem))) {
-        a(localItem, new amwx(this));
+        a(localItem, new annc(this));
       }
     }
   }
   
   public void a(InfomationFacePackage.Item paramItem, QIMInformationPasterManager.IInformationPasterResDownloaderCallback paramIInformationPasterResDownloaderCallback)
   {
-    ThreadManager.postImmediately(new amwu(this, paramItem, paramIInformationPasterResDownloaderCallback), null, true);
+    ThreadManager.postImmediately(new anmz(this, paramItem, paramIInformationPasterResDownloaderCallback), null, true);
   }
   
   public void a(String paramString)
@@ -160,7 +160,7 @@ public class QIMInformationPasterManager
   
   public void a(List paramList)
   {
-    ThreadManager.postImmediately(new amwv(this, paramList), null, true);
+    ThreadManager.postImmediately(new anna(this, paramList), null, true);
   }
   
   public boolean a(InfomationFacePackage.Item paramItem)

@@ -16,10 +16,10 @@ import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import mqq.app.AppRuntime;
-import ymu;
-import ymv;
-import ymw;
-import ymx;
+import yqa;
+import yqb;
+import yqc;
+import yqd;
 
 public class CmGameServerQIPCModule
   extends QIPCModule
@@ -36,7 +36,7 @@ public class CmGameServerQIPCModule
   
   public static CmGameServerQIPCModule a()
   {
-    return ymx.a();
+    return yqd.a();
   }
   
   public static void a()
@@ -110,7 +110,7 @@ public class CmGameServerQIPCModule
         }
         paramString = new ReadInJoyCameraCaptureSoManager(paramString, BaseApplicationImpl.getContext());
         b = true;
-        paramString.a(new ymu(this, paramInt));
+        paramString.a(new yqa(this, paramInt));
         paramString.a();
         return null;
         if ("onGameCheckStart".equals(paramString))
@@ -150,7 +150,7 @@ public class CmGameServerQIPCModule
           if ((paramBundle == null) || (paramBundle.game == null)) {
             break;
           }
-          ThreadManager.post(new ymv(this, paramString, paramBundle), 5, null, true);
+          ThreadManager.post(new yqb(this, paramString, paramBundle), 5, null, true);
           return null;
         }
         if ("game_activity_lifecycle".equals(paramString))
@@ -173,7 +173,7 @@ public class CmGameServerQIPCModule
         if ((paramString != null) && ((paramString instanceof QQAppInterface))) {}
         for (paramString = (QQAppInterface)paramString; paramString != null; paramString = null)
         {
-          ThreadManager.post(new ymw(this, paramString, paramBundle.getString("reqData"), paramInt), 5, null, true);
+          ThreadManager.post(new yqc(this, paramString, paramBundle.getString("reqData"), paramInt), 5, null, true);
           return null;
         }
         break;

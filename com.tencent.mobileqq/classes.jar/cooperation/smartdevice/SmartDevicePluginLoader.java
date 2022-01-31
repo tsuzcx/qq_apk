@@ -1,7 +1,5 @@
 package cooperation.smartdevice;
 
-import amof;
-import amog;
 import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
@@ -13,6 +11,8 @@ import android.content.res.Resources;
 import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
+import anek;
+import anel;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -316,9 +316,9 @@ public class SmartDevicePluginLoader
     if ((!bool) || (paramOnDismissListener != null))
     {
       paramAppRuntime.a("正在加载...");
-      paramAppRuntime.setOnDismissListener(new amof(this, paramOnDismissListener));
+      paramAppRuntime.setOnDismissListener(new anek(this, paramOnDismissListener));
       if (bool) {
-        paramAppRuntime.setOnShowListener(new amog(this, paramAppRuntime));
+        paramAppRuntime.setOnShowListener(new anel(this, paramAppRuntime));
       }
     }
     for (;;)
@@ -458,9 +458,13 @@ public class SmartDevicePluginLoader
     if (QLog.isColorLevel()) {
       QLog.i(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] onPluginManagerLoaded SUPPORT_NETWORKING:true");
     }
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    paramPluginManagerClient = this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.queryPlugin("qqsmartdevice.apk");
-    if (paramPluginManagerClient != null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient != null)
+    {
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      paramPluginManagerClient = this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.queryPlugin("qqsmartdevice.apk");
+      if (paramPluginManagerClient == null) {
+        break label206;
+      }
       if (paramPluginManagerClient.mState == 4)
       {
         if (QLog.isColorLevel()) {
@@ -487,6 +491,14 @@ public class SmartDevicePluginLoader
         this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginManagerClient.installPlugin("qqsmartdevice.apk");
         i = 0;
         continue;
+        if (QLog.isColorLevel()) {
+          QLog.d(jdField_a_of_type_JavaLangString, 2, "[SmartDevicePluginLoader] not support networking");
+        }
+        this.jdField_a_of_type_Boolean = true;
+        b(0);
+        b();
+        return;
+        label206:
         i = 0;
       }
     }

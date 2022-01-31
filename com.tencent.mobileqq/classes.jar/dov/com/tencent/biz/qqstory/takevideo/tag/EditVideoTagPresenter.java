@@ -1,8 +1,8 @@
 package dov.com.tencent.biz.qqstory.takevideo.tag;
 
 import android.support.annotation.Nullable;
-import anop;
-import anor;
+import aoeu;
+import aoew;
 import com.tencent.biz.qqstory.channel.CmdTaskManger;
 import com.tencent.biz.qqstory.network.request.GetTagListRequest;
 import com.tencent.biz.qqstory.support.logging.SLog;
@@ -113,7 +113,7 @@ public class EditVideoTagPresenter
     if (paramEditBehavior.jdField_a_of_type_Boolean) {}
     for (paramEditBehavior = new GetTagListRequest(paramEditBehavior.jdField_a_of_type_Int, paramEditBehavior.jdField_a_of_type_Long, "", 20);; paramEditBehavior = new GetTagListRequest("", 20))
     {
-      CmdTaskManger.a().a(paramEditBehavior, new anop(this));
+      CmdTaskManger.a().a(paramEditBehavior, new aoeu(this));
       return;
     }
   }
@@ -149,7 +149,7 @@ public class EditVideoTagPresenter
     if (paramEditBehavior.jdField_a_of_type_Boolean) {}
     for (paramEditBehavior = new GetTagListRequest(paramEditBehavior.jdField_a_of_type_Int, paramEditBehavior.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, 20);; paramEditBehavior = new GetTagListRequest(this.jdField_a_of_type_JavaLangString, 20))
     {
-      CmdTaskManger.a().a(paramEditBehavior, new anor(this));
+      CmdTaskManger.a().a(paramEditBehavior, new aoew(this));
       return;
     }
   }

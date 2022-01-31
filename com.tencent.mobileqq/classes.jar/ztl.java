@@ -1,14 +1,12 @@
-import com.tencent.biz.common.offline.util.OfflineDownloader;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
-class ztl
-  implements Runnable
+public final class ztl
+  implements Comparator
 {
-  ztl(ztj paramztj) {}
-  
-  public void run()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    UpgradeTIMManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMManager).a(this.a.jdField_a_of_type_JavaLangString);
+    return (int)(paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq);
   }
 }
 

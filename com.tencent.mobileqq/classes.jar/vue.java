@@ -1,36 +1,32 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
+import com.tencent.qphone.base.util.QLog;
 
 public class vue
-  implements ActionSheet.OnButtonClickListener
+  extends BroadcastReceiver
 {
-  public vue(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vue(GameRoomChatPie paramGameRoomChatPie) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.ac) {
+    paramIntent.getStringExtra("peerUin");
+    paramIntent.getIntExtra("sessionType", -1);
+    paramContext = paramIntent.getStringExtra("sessionId");
+    if (TextUtils.isEmpty(paramContext)) {}
+    while (!paramContext.startsWith("10-")) {
       return;
     }
-    this.a.ac = true;
-    if ((this.a.jdField_a_of_type_ArrayOfInt != null) && (this.a.jdField_a_of_type_ArrayOfInt.length > 0))
-    {
-      this.a.v(2131430012);
-      paramInt = this.a.jdField_a_of_type_ArrayOfInt[0];
-      if (paramInt == 0) {
-        this.a.b(true, 0);
-      }
+    this.a.a.c();
+    this.a.j.setEnabled(true);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.werewolf.GameRoomChatPie", 2, "onBind enter room setSoundDisable");
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.a.b(false, paramInt);
-      continue;
-      this.a.v(2131430012);
-      this.a.b(true, 0);
-    }
+    this.a.a.a(false);
   }
 }
 

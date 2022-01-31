@@ -12,6 +12,8 @@ public abstract interface StickerBubbleTouchDelegate$StickerBubbleSendCallbackBy
   
   public abstract void a(int paramInt1, int paramInt2);
   
+  public abstract boolean a(float paramFloat1, float paramFloat2);
+  
   public abstract void c();
   
   public abstract void d();

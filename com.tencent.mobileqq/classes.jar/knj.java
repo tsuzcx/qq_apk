@@ -1,29 +1,23 @@
-import android.text.TextUtils;
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.os.Handler;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
 
 public class knj
-  implements AsyncBack
+  implements View.OnTouchListener
 {
-  public knj(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
+  int jdField_a_of_type_Int = 0;
+  Handler jdField_a_of_type_AndroidOsHandler = new knk(this);
   
-  public void a(int paramInt) {}
+  public knj(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
   
-  public void a(String paramString, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString))) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
-      return;
+    if (paramMotionEvent.getAction() == 1) {
+      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(), 5L);
     }
-    catch (JSONException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return false;
   }
 }
 

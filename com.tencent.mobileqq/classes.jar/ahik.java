@@ -1,24 +1,23 @@
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.PublicAccountSearchEngine;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
-import java.util.List;
+import android.widget.TextView;
+import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahik
   implements Runnable
 {
-  public ahik(PublicAccountSearchEngine paramPublicAccountSearchEngine, SearchRequest paramSearchRequest, ISearchListener paramISearchListener) {}
+  public ahik(CaptureSoDownloadFragment paramCaptureSoDownloadFragment, String paramString) {}
   
   public void run()
   {
-    List localList = this.jdField_a_of_type_ComTencentMobileqqSearchSearchenginePublicAccountSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest);
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
+    CaptureSoDownloadFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragment).setText(this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel()) {
+      QLog.d("CaptureSoDownloadFragment", 2, "setTipsTextData: textData=" + this.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahik
  * JD-Core Version:    0.7.0.1
  */

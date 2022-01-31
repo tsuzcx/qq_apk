@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
-import com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class vln
-  implements Runnable
+class vln
+  implements DialogInterface.OnClickListener
 {
-  public vln(AIOPhotoListAdapter paramAIOPhotoListAdapter, AIOImageData paramAIOImageData) {}
+  vln(vlm paramvlm) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOPhotoListAdapter.a.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.g, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData.f, 1);
+    paramDialogInterface.dismiss();
   }
 }
 

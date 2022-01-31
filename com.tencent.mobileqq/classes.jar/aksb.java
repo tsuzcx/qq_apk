@@ -1,49 +1,43 @@
 import android.os.Bundle;
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.qipc.QIPCModule;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloaderGetCodeServer;
-import eipc.EIPCResult;
-import java.util.Map;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler;
+import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
+import com.tencent.qphone.base.util.QLog;
+import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
 
 public class aksb
-  extends ConfigObserver
+  extends ProtoUtils.TroopProtocolObserver
 {
-  private aksb(DownloaderGetCodeServer paramDownloaderGetCodeServer) {}
+  public aksb(WerewolvesHandler paramWerewolvesHandler, WerewolvesHandler.Callback paramCallback) {}
   
-  protected void a(boolean paramBoolean, String paramString1, String paramString2)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    LogUtility.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver onGetAuthCode isSuccess|" + paramBoolean + " code|" + paramString1 + " reqId|" + paramString2);
-    if (paramString2 == null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler$Callback != null)
+    {
+      paramBundle = new oidb_0x8e4.RspBody();
+      if (paramArrayOfByte == null) {}
+    }
+    try
+    {
+      paramBundle.mergeFrom(paramArrayOfByte);
+      this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHandler$Callback.a(paramInt, paramBundle);
       return;
     }
-    Bundle localBundle = (Bundle)DownloaderGetCodeServer.a(this.a).get(paramString2);
-    if (localBundle == null)
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      LogUtility.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver reqId|" + paramString2 + "  but params context is null");
-      return;
-    }
-    int i = localBundle.getInt("CallbackId");
-    paramString2 = new Bundle();
-    paramString2.putString("PackageName", localBundle.getString("PackageName"));
-    paramString2.putInt("VersionCode", localBundle.getInt("VersionCode"));
-    if (paramBoolean)
-    {
-      paramString2.putBoolean("IsSuccess", true);
-      paramString2.putString("Code", paramString1);
-    }
-    for (;;)
-    {
-      LogUtility.c("DownloaderWriteCodeIPC", "GetAuthCodeObserver callbackId|" + i + " result|" + paramString2);
-      DownloaderGetCodeServer.a(this.a).callbackResult(i, EIPCResult.createSuccessResult(paramString2));
-      return;
-      paramString2.putBoolean("IsSuccess", false);
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("WerewolvesHandler", 2, paramArrayOfByte.getMessage());
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aksb
  * JD-Core Version:    0.7.0.1
  */

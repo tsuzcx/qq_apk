@@ -1,43 +1,21 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
 import com.tencent.qphone.base.util.QLog;
 
 public class xry
-  implements Runnable
+  implements Camera.AutoFocusCallback
 {
-  public xry(RMVideoRecordState paramRMVideoRecordState) {}
+  public xry(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
     if (QLog.isColorLevel()) {
-      QLog.d("RMRecordState", 2, "[@] EVENT_READ_MIC [error]麦克风读取数据错误...");
+      QLog.d(".photo", 2, "shot photo with custom camera focus " + paramBoolean);
     }
-    localRMVideoStateMgr.h = true;
-    localRMVideoStateMgr.e = false;
-    if (localRMVideoStateMgr.a != null)
-    {
-      if (localRMVideoStateMgr.a.i != -1) {
-        break label92;
-      }
-      localRMVideoStateMgr.b(0, "麦克风被禁用", false);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RMRecordState", 2, "[@] EVENT_READ_MIC [error]麦克风被禁用,音频录制失败 errorcode=" + localRMVideoStateMgr.a.i);
-      }
-      return;
-      label92:
-      if (localRMVideoStateMgr.a.i == -2) {
-        localRMVideoStateMgr.b(0, "麦克风可能被禁用", false);
-      } else if (localRMVideoStateMgr.a.i == -3) {
-        localRMVideoStateMgr.b(0, "麦克风可能被禁用", false);
-      } else {
-        localRMVideoStateMgr.b(0, "麦克风可能被禁用", false);
-      }
-    }
+    NewFlowCameraReporter.a(paramBoolean);
+    NewFlowCameraActivity.b(this.a);
   }
 }
 

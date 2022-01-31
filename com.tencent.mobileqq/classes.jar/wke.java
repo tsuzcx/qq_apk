@@ -1,29 +1,107 @@
-import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
-import com.tencent.mobileqq.app.CardObserver;
+import android.content.res.Resources;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.activity.contact.newfriend.SystemRequestInfoView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
+import com.tencent.mobileqq.systemmsg.SystemMsgUtils;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
+import tencent.mobileim.structmsg.structmsg.StructMsg;
 
 public class wke
-  extends CardObserver
+  extends MessageObserver
 {
-  private wke(FriendFragment paramFriendFragment) {}
+  public wke(SystemRequestInfoView paramSystemRequestInfoView) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  protected void a(String paramString)
   {
-    if ((paramBoolean) && (FriendFragment.b(this.a))) {
-      FriendFragment.a(this.a, 1400L, true);
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
+    if (this.a.a())
     {
+      paramString = this.a.getResources().getString(2131433176);
+      QQToast.a(this.a.getContext(), 1, paramString, 0).b(this.a.a());
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionError");
+  }
+  
+  protected void a(boolean paramBoolean, String paramString) {}
+  
+  protected void a(boolean paramBoolean, String paramString1, int paramInt1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, int paramInt4)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionFin");
+    }
+    if (!this.a.a()) {
       if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " contacts onGetCalReactiveDays isAllow= " + paramBoolean2);
+        QLog.d("SystemRequestInfoView", 2, "onSendSystemMsgActionFin stopProgress = fasle");
       }
-      FriendFragment.a(this.a, 1400L, false);
+    }
+    long l1;
+    structmsg.StructMsg localStructMsg;
+    for (;;)
+    {
+      return;
+      long l2 = FriendSystemMsgController.a().b();
+      l1 = l2;
+      if (!TextUtils.isEmpty(paramString1)) {}
+      try
+      {
+        l1 = Long.parseLong(paramString1);
+        localStructMsg = FriendSystemMsgController.a().a(Long.valueOf(l1));
+        if (!paramBoolean) {
+          if (!TextUtils.isEmpty(paramString3))
+          {
+            QQToast.a(this.a.getContext(), 1, paramString3, 0).b(this.a.a());
+            if (!SystemMsgUtils.a(localStructMsg, paramInt3, paramString2, paramString4)) {
+              continue;
+            }
+            SystemRequestInfoView.a(this.a).finish();
+            return;
+          }
+        }
+      }
+      catch (Exception paramString1)
+      {
+        for (;;)
+        {
+          paramString1.printStackTrace();
+          l1 = l2;
+          continue;
+          paramString3 = this.a.getResources().getString(2131434464);
+        }
+        SystemMsgUtils.a(localStructMsg, paramInt1, paramString2, paramInt2);
+        paramString2 = null;
+        if (paramInt1 != 1) {
+          break label234;
+        }
+      }
+    }
+    SystemRequestInfoView.a(this.a).finish();
+    paramString1 = this.a.getResources().getString(2131433072);
+    for (;;)
+    {
+      QQToast.a(this.a.getContext(), 2, paramString1, 0).b(this.a.a());
+      return;
+      label234:
+      paramString1 = paramString2;
+      if (paramInt1 == 0)
+      {
+        paramString1 = paramString2;
+        if (localStructMsg != null)
+        {
+          paramString1 = this.a.getResources().getString(2131433071);
+          AutoRemarkActivity.a(SystemRequestInfoView.a(this.a), 1017, String.valueOf(localStructMsg.req_uin.get()), l1, null);
+        }
+      }
     }
   }
+  
+  protected void b(boolean paramBoolean, String paramString) {}
 }
 
 

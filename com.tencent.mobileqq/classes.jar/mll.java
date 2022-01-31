@@ -1,16 +1,17 @@
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter.WebFastAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.DialogAppInPushNotification;
 
 public class mll
-  implements BubblePopupWindow.OnDismissListener
+  implements View.OnClickListener
 {
-  public mll(WebFastAdapter paramWebFastAdapter, BaseItemViewHolder paramBaseItemViewHolder) {}
+  public mll(DialogAppInPushNotification paramDialogAppInPushNotification) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebItemBaseItemViewHolder.a.setSelected(false);
+    AppInPushNotification.a(1);
+    this.a.a(true, false);
   }
 }
 

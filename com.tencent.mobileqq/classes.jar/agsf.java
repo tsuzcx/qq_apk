@@ -1,32 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.revokemsg.RevokeMsgInfo;
+import android.hardware.SensorManager;
+import com.tencent.mobileqq.profile.view.ShakeImageView;
 
-public final class agsf
-  implements Parcelable.Creator
+public class agsf
+  implements Runnable
 {
-  public RevokeMsgInfo a(Parcel paramParcel)
-  {
-    RevokeMsgInfo localRevokeMsgInfo = new RevokeMsgInfo();
-    localRevokeMsgInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localRevokeMsgInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    localRevokeMsgInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localRevokeMsgInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localRevokeMsgInfo.b = paramParcel.readLong();
-    localRevokeMsgInfo.jdField_c_of_type_Long = paramParcel.readLong();
-    localRevokeMsgInfo.d = paramParcel.readString();
-    localRevokeMsgInfo.e = paramParcel.readInt();
-    return localRevokeMsgInfo;
-  }
+  public agsf(ShakeImageView paramShakeImageView) {}
   
-  public RevokeMsgInfo[] a(int paramInt)
+  public void run()
   {
-    return new RevokeMsgInfo[paramInt];
+    ShakeImageView.a(this.a, ShakeImageView.a(this.a).getDefaultSensor(9));
+    if (ShakeImageView.a(this.a) != null) {
+      ShakeImageView.a(this.a).registerListener(this.a, ShakeImageView.a(this.a), 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agsf
  * JD-Core Version:    0.7.0.1
  */

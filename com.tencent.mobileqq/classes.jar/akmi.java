@@ -1,21 +1,27 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.open.agent.FriendChooser.SearchResultAdapter;
-import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.webview.WebSecurityPlugin;
+import mqq.observer.BusinessObserver;
 
 public class akmi
-  implements ImageLoader.ImageLoadListener
+  implements BusinessObserver
 {
-  public akmi(FriendChooser.SearchResultAdapter paramSearchResultAdapter, ImageView paramImageView) {}
+  public akmi(WebSecurityPlugin paramWebSecurityPlugin) {}
   
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
+      this.a.a(paramBoolean, paramBundle);
+      return;
+    }
+    this.a.a.post(new akmj(this, paramBoolean, paramBundle));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akmi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,73 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDisAdapter;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.persistence.Entity;
-import java.util.Comparator;
-import java.util.HashMap;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade.ISearchListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchResult;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class wit
-  implements Comparator
+  implements ContactSearchFacade.ISearchListener
 {
-  public wit(ContactsDisAdapter paramContactsDisAdapter, HashMap paramHashMap) {}
+  public wit(SearchBaseFragment paramSearchBaseFragment) {}
   
-  public int a(Entity paramEntity1, Entity paramEntity2)
+  public void a(int paramInt1, boolean paramBoolean, Object paramObject, int paramInt2, String paramString)
   {
-    long l1 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity1).uin)).longValue();
-    long l2 = ((Long)this.jdField_a_of_type_JavaUtilHashMap.get(((DiscussionInfo)paramEntity2).uin)).longValue();
-    if (l1 < l2) {
-      return -1;
+    int i = 3;
+    this.a.i();
+    if (paramBoolean)
+    {
+      if ((paramObject != null) && ((paramObject instanceof ArrayList)))
+      {
+        paramObject = (ArrayList)paramObject;
+        if (paramObject.size() != 0) {
+          break label94;
+        }
+        if (this.a.a != null)
+        {
+          paramObject = this.a.a;
+          if (!this.a.b) {
+            break label89;
+          }
+          paramInt1 = 3;
+          paramObject.sendEmptyMessage(paramInt1);
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(SearchBaseFragment.a(), 2, "error! SearchResult is null!");
+        }
+      }
+      for (;;)
+      {
+        return;
+        label89:
+        paramInt1 = 2;
+        break;
+        label94:
+        if (paramObject.size() > 0) {}
+        try
+        {
+          paramString = (SearchResult)paramObject.get(0);
+          if ((this.a.a(paramObject)) && (this.a.a != null))
+          {
+            this.a.a.sendEmptyMessage(0);
+            return;
+          }
+        }
+        catch (Exception paramObject)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(SearchBaseFragment.a(), 2, "", paramObject);
+          }
+          paramObject = this.a.a;
+          if (!this.a.b) {}
+        }
+      }
+      for (paramInt1 = i;; paramInt1 = 2)
+      {
+        paramObject.sendEmptyMessage(paramInt1);
+        return;
+      }
     }
-    if (l1 > l2) {
-      return 1;
-    }
-    return 0;
+    this.a.a(paramInt1, paramObject, paramInt2, paramString);
   }
 }
 

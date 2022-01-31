@@ -17,7 +17,7 @@ public final class EPushRspFlag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aad.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     PUSHAPI.EPushRspFlag
  * JD-Core Version:    0.7.0.1
  */

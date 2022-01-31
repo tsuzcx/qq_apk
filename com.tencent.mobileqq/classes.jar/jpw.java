@@ -1,22 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.av.VideoController;
+import com.tencent.av.gaudio.VideoViewInfo;
 import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoControlUI;
+import java.util.Comparator;
 
 public class jpw
-  implements DialogInterface.OnDismissListener
+  implements Comparator
 {
   public jpw(AVActivity paramAVActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public int a(VideoViewInfo paramVideoViewInfo1, VideoViewInfo paramVideoViewInfo2)
   {
-    if (this.a.jdField_a_of_type_ComTencentAvUiVideoControlUI != null)
-    {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().r = false;
-      this.a.jdField_a_of_type_ComTencentAvUiVideoControlUI.l(true);
-      this.a.jdField_a_of_type_ComTencentAvUiVoiceChangeChooseDialog = null;
+    if (paramVideoViewInfo1.a) {}
+    while (paramVideoViewInfo2.a) {
+      return 1;
     }
+    return 0;
   }
 }
 

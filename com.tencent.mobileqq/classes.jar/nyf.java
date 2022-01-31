@@ -1,17 +1,32 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.model.TroopNickNameManager.TroopNickNameUpdateEvent;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class nyf
-  implements DialogInterface.OnClickListener
+  extends QQUIEventReceiver
 {
-  public nyf(StoryListPresenter paramStoryListPresenter) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public nyf(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
   {
-    StoryReportor.a("home_page", "guide_known", 0, 0, new String[0]);
-    paramDialogInterface.dismiss();
+    super(paramStoryMessageListActivity);
+  }
+  
+  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull TroopNickNameManager.TroopNickNameUpdateEvent paramTroopNickNameUpdateEvent)
+  {
+    if (paramTroopNickNameUpdateEvent.a.isSuccess())
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i(this.TAG, 2, "TroopNickNameUpdateEvent");
+      }
+      paramStoryMessageListActivity.e();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return TroopNickNameManager.TroopNickNameUpdateEvent.class;
   }
 }
 

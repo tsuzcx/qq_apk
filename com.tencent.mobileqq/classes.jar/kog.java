@@ -1,38 +1,43 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.lebasearch.Utils;
-import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.mobileqq.app.BusinessObserver;
+import android.os.Handler;
+import com.tencent.biz.now.NowVideoView;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class kog
-  implements DialogInterface.OnClickListener
+public class kog
+  extends Thread
 {
-  public kog(int paramInt, BusinessObserver paramBusinessObserver, Context paramContext, TroopMemberApiClient paramTroopMemberApiClient, long paramLong) {}
+  public kog(NowVideoView paramNowVideoView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    if (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean != null) {
+      this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    }
+    for (;;)
     {
-    default: 
-      return;
-    case 1: 
-      if (this.jdField_a_of_type_Int == 1)
+      if ((this != null) && (!this.a.jdField_a_of_type_Boolean))
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.onUpdate(17, false, null);
-        paramDialogInterface.dismiss();
-        return;
+        if ((this.a.jdField_a_of_type_Long != 0L) && (System.currentTimeMillis() - this.a.jdField_a_of_type_Long > 2000L))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("NowVideoView", 2, "no draw for Now");
+          }
+          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1003);
+        }
       }
-      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver, this.jdField_a_of_type_Long, false);
-      return;
+      else
+      {
+        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+        return;
+        this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(true);
+        continue;
+      }
+      try
+      {
+        Thread.sleep(1000L);
+      }
+      catch (Exception localException) {}
     }
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver, this.jdField_a_of_type_Long, true);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.onUpdate(17, false, null);
-    paramDialogInterface.dismiss();
   }
 }
 

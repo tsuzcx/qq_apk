@@ -1,14 +1,23 @@
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.util.Base64;
+import com.tencent.mobileqq.app.MessageRoamManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AudioUtil;
+import mqq.app.MobileQQ;
 
 public class zhl
   implements Runnable
 {
-  public zhl(QQAppInterface paramQQAppInterface, int paramInt) {}
+  public zhl(MessageRoamManager paramMessageRoamManager) {}
   
   public void run()
   {
-    AudioUtil.a(this.jdField_a_of_type_Int, false);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    {
+      SharedPreferences localSharedPreferences = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("vip_message_roam_passwordmd5_and_signature_file", 0);
+      String str = Base64.encodeToString(this.a.jdField_a_of_type_ArrayOfByte, 0);
+      localSharedPreferences.edit().putString("vip_message_roam_passwordmd5" + this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), str).commit();
+    }
   }
 }
 

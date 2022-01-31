@@ -7,14 +7,14 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AccountNotMatchException;
-import zir;
-import zis;
+import zlx;
+import zly;
 
 public class QQMapActivityProxy
 {
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new zir(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new zlx(this);
   private Context jdField_a_of_type_AndroidContentContext;
-  private LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new zis(this);
+  private LBSObserver jdField_a_of_type_ComTencentMobileqqAppLBSObserver = new zly(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
   public QQMapActivityProxy(String paramString)

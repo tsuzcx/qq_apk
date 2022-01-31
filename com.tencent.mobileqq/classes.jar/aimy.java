@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.troop.createNewTroop.ContactListAdapter;
-import com.tencent.widget.BubblePopupWindow.OnDismissListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.teamwork.fragment.TeamWorkAuthorizeSettingFragment;
 
 public class aimy
-  implements BubblePopupWindow.OnDismissListener
+  implements DialogInterface.OnClickListener
 {
-  public aimy(ContactListAdapter paramContactListAdapter) {}
+  public aimy(TeamWorkAuthorizeSettingFragment paramTeamWorkAuthorizeSettingFragment) {}
   
-  public void a() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aimy
  * JD-Core Version:    0.7.0.1
  */

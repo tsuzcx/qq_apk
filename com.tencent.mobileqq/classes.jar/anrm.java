@@ -1,29 +1,27 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import com.tencent.mobileqq.widget.QQToast;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
 
-public class anrm
+class anrm
   implements Runnable
 {
-  public anrm(RMVideoStateMgr paramRMVideoStateMgr) {}
+  anrm(anrl paramanrl) {}
   
   public void run()
   {
-    synchronized (RMVideoStateMgr.a(this.a))
+    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(EditPicSave.a(this.a.a));
+    this.a.a.jdField_a_of_type_Boolean = true;
+    this.a.a.a(100);
+    this.a.a.d();
+    if (this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a() == 102)
     {
-      if (this.a.f())
-      {
-        this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture.b(this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture$OnAudioRecordListener);
-        this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture.f();
-        if (QLog.isColorLevel()) {
-          QLog.d("RMVideoStateMgr", 2, "[@][closeAudioRecord]");
-        }
-      }
-      this.a.d = false;
-      this.a.jdField_a_of_type_DovComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
-      this.a.e = false;
+      EditPicSave.a(this.a.a, this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a());
       return;
     }
+    QQToast.a(this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), 2, "保存成功", 0).a();
   }
 }
 

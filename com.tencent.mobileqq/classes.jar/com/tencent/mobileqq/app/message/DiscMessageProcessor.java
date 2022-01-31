@@ -102,10 +102,10 @@ import tencent.im.oidb.cmd0x858.oidb_0x858.NotifyMsgBody;
 import tencent.im.oidb.cmd0x858.oidb_0x858.NotifyObjmsgUpdate;
 import tencent.im.oidb.cmd0x858.oidb_0x858.RedGrayTipsInfo;
 import tencent.im.s2c.msgtype0x210.submsgtype0xaa.SubMsgType0xaa.MsgBody;
-import zpy;
-import zpz;
-import zqa;
-import zqm;
+import zte;
+import ztf;
+import ztg;
+import zts;
 
 public class DiscMessageProcessor
   extends BaseMessageProcessorForTroopAndDisc
@@ -234,7 +234,7 @@ public class DiscMessageProcessor
           }
           localObject1 = ContactUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l1), (String)localObject6);
         }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433987, new Object[] { localObject1 });
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434004, new Object[] { localObject1 });
         ((List)localObject5).add(localObject6);
         ((DiscussionHandler)localObject4).a(l1, (String)localObject6, (List)localObject5, 10009);
         if (((String)localObject6).equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
@@ -321,7 +321,7 @@ public class DiscMessageProcessor
         }
         if (l2 == paramLong)
         {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435905, new Object[] { localObject5 });
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435922, new Object[] { localObject5 });
           ((DiscussionHandler)localObject4).a(String.valueOf(l1), (String)localObject5);
           a(paramMsgInfo, paramLong, l1, l2, (String)localObject1);
           return null;
@@ -341,7 +341,7 @@ public class DiscMessageProcessor
             }
             localObject3 = ContactUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(l1), String.valueOf(l2));
           }
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435906, new Object[] { localObject3, localObject5 });
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435923, new Object[] { localObject3, localObject5 });
           break;
           localObject1 = localObject3;
           if (paramMsgInfo.vNickName != null)
@@ -394,7 +394,7 @@ public class DiscMessageProcessor
       if (this.jdField_a_of_type_AndroidOsHandler == null) {
         this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
       }
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new zpy(this, (ArrayList)localObject4, paramLong, l1, (String)localObject1, paramMsgInfo, l2), 2000L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new zte(this, (ArrayList)localObject4, paramLong, l1, (String)localObject1, paramMsgInfo, l2), 2000L);
       return null;
     case 22: 
       l3 = PkgTools.a((byte[])localObject6, 5);
@@ -484,7 +484,7 @@ public class DiscMessageProcessor
           if (this.jdField_a_of_type_AndroidOsHandler == null) {
             this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
           }
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new zpz(this, l3, paramLong, (Pair)localObject7, paramMsgInfo, l1, l2, b, l4, (Pair)localObject8, (ArrayList)localObject9), 2000L);
+          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ztf(this, l3, paramLong, (Pair)localObject7, paramMsgInfo, l1, l2, b, l4, (Pair)localObject8, (ArrayList)localObject9), 2000L);
           break;
           if (l4 == 1L) {
             i = 10006;
@@ -634,7 +634,7 @@ public class DiscMessageProcessor
         {
           localObject6 = (DiscussionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(6);
           ((DiscussionHandler)localObject6).a(l1, (String)localObject7, (List)localObject5, 10005);
-          localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433988, new Object[] { localObject3 });
+          localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434005, new Object[] { localObject3 });
           if (((HashSet)localObject8).contains(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
           {
             if ((int)l3 < 0)
@@ -684,7 +684,7 @@ public class DiscMessageProcessor
               }
               ((DiscussionHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(6)).a(String.valueOf(l1));
               if ((BaseActivity.sTopActivity instanceof SplashActivity)) {}
-              ((BizTroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22)).a(42, true, new Object[] { Integer.valueOf(2131429856), localObject3, localObject2, Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c().equals(paramMsgInfo)) });
+              ((BizTroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22)).a(42, true, new Object[] { Integer.valueOf(2131429862), localObject3, localObject2, Boolean.valueOf(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.c().equals(paramMsgInfo)) });
             }
           }
           catch (Exception paramMsgInfo)
@@ -762,7 +762,7 @@ public class DiscMessageProcessor
   private void a(MsgInfo paramMsgInfo, long paramLong1, long paramLong2, long paramLong3, int paramInt)
   {
     MessageRecord localMessageRecord = MessageRecordFactory.a(-1050);
-    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131433030);
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131433047);
     switch (paramInt)
     {
     default: 
@@ -771,7 +771,7 @@ public class DiscMessageProcessor
       }
       return;
     }
-    for (int i = 2131433028;; i = 2131433029)
+    for (int i = 2131433045;; i = 2131433046)
     {
       localMessageRecord.init(paramLong2, paramLong1, paramLong3, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(i, new Object[] { str }), paramMsgInfo.uRealMsgTime, -1050, 3000, paramMsgInfo.uMsgTime);
       localMessageRecord.extStr = str;
@@ -822,18 +822,18 @@ public class DiscMessageProcessor
         paramPair1 = ContactUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, String.valueOf(paramLong2), String.valueOf(l1));
       }
       if (paramLong4 == 0L) {
-        paramPair1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434002, new Object[] { paramPair1 });
+        paramPair1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434019, new Object[] { paramPair1 });
       }
       for (;;)
       {
         a(paramMsgInfo, paramLong1, paramLong2, paramLong3, paramPair1);
         return;
         if (paramLong4 == 1L) {
-          paramPair1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434004, new Object[] { paramPair1, paramPair2 });
+          paramPair1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434021, new Object[] { paramPair1, paramPair2 });
         } else if (paramLong4 == 2L) {
-          paramPair1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131437158, new Object[] { paramPair1 });
+          paramPair1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131437175, new Object[] { paramPair1 });
         } else {
-          paramPair1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433986, new Object[] { paramPair1 });
+          paramPair1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434003, new Object[] { paramPair1 });
         }
       }
     }
@@ -866,7 +866,7 @@ public class DiscMessageProcessor
       if (k == 0) {
         break label167;
       }
-      paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433995);
+      paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434012);
       a(paramByte, Long.valueOf(paramString).longValue(), paramLong1);
       label133:
       if (j != 0) {
@@ -911,12 +911,12 @@ public class DiscMessageProcessor
     Object localObject = MessageRecordFactory.a(i);
     paramPair = "";
     if (paramByte == 11) {
-      paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434001);
+      paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434018);
     }
     if (paramByte == 22)
     {
       if (paramLong2 == 0L) {
-        paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434001);
+        paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434018);
       }
       for (;;)
       {
@@ -936,9 +936,9 @@ public class DiscMessageProcessor
         }
         return;
         if (paramLong2 == 1L) {
-          paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434003);
+          paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434020);
         } else if (paramLong2 == 2L) {
-          paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131437159, new Object[] { localStringBuffer.toString() });
+          paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131437176, new Object[] { localStringBuffer.toString() });
         }
       }
     }
@@ -952,11 +952,11 @@ public class DiscMessageProcessor
       if (!QLog.isColorLevel()) {
         break label841;
       }
-      paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433994);
+      paramPair = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434011);
     }
     for (;;)
     {
-      paramPair = paramPair + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433986, new Object[] { localStringBuffer.toString() });
+      paramPair = paramPair + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434003, new Object[] { localStringBuffer.toString() });
       break;
       j = 0;
       break label644;
@@ -972,7 +972,7 @@ public class DiscMessageProcessor
       if (ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString)) {
         paramPair = ContactUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, String.valueOf(l));
       }
-      paramPair = paramPair + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433993);
+      paramPair = paramPair + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434010);
       continue;
       label841:
       paramPair = "";
@@ -984,7 +984,7 @@ public class DiscMessageProcessor
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
     }
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new zqa(this, paramPair, paramMsgInfo, paramArrayList, paramLong, paramString, paramByte, paramBoolean), 2000L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ztg(this, paramPair, paramMsgInfo, paramArrayList, paramLong, paramString, paramByte, paramBoolean), 2000L);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, int paramInt, MessageRecord paramMessageRecord, boolean paramBoolean)
@@ -1434,8 +1434,8 @@ public class DiscMessageProcessor
         localStringBuilder.append(k - 1);
         localStringBuilder.append("人");
       }
-      paramArrayList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131433027, new Object[] { localStringBuilder });
-      localMessageRecord.init(paramString2, paramString1, paramString3, paramArrayList + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131435936), l, -1016, 3000, l);
+      paramArrayList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131433044, new Object[] { localStringBuilder });
+      localMessageRecord.init(paramString2, paramString1, paramString3, paramArrayList + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getString(2131435953), l, -1016, 3000, l);
       localMessageRecord.extStr = paramArrayList;
       localMessageRecord.isread = true;
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localMessageRecord, localMessageRecord.selfuin);
@@ -2029,7 +2029,7 @@ public class DiscMessageProcessor
     }
   }
   
-  public zqm a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
+  public zts a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
     switch (paramInt)
     {
@@ -2038,7 +2038,7 @@ public class DiscMessageProcessor
     {
       return null;
       if ((paramMsgInfo != null) && (paramSvcReqPushMsg != null)) {
-        return new zqm(a(paramMsgInfo, paramSvcReqPushMsg), false);
+        return new zts(a(paramMsgInfo, paramSvcReqPushMsg), false);
       }
       a(getClass().getName(), paramInt);
     }

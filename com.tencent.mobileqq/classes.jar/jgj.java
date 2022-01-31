@@ -1,17 +1,29 @@
-import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder;
-import com.tencent.av.business.manager.magicface.MagicfaceBaseDecoder.MagicPlayListener;
-import java.lang.ref.WeakReference;
+import com.tencent.av.business.manager.report.VideoNodeReporter;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class jgj
   implements Runnable
 {
-  public jgj(MagicfaceBaseDecoder paramMagicfaceBaseDecoder, String paramString, int paramInt) {}
+  public jgj(VideoNodeReporter paramVideoNodeReporter, long paramLong) {}
   
   public void run()
   {
-    MagicfaceBaseDecoder.MagicPlayListener localMagicPlayListener = (MagicfaceBaseDecoder.MagicPlayListener)this.jdField_a_of_type_ComTencentAvBusinessManagerMagicfaceMagicfaceBaseDecoder.a.get();
-    if (localMagicPlayListener != null) {
-      localMagicPlayListener.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter.a.size() > 0)
+    {
+      Iterator localIterator = this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter.a.iterator();
+      while (localIterator.hasNext())
+      {
+        jgo localjgo = (jgo)localIterator.next();
+        if (localjgo.jdField_a_of_type_Long == -1L)
+        {
+          localjgo.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+          this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter.a(this.jdField_a_of_type_Long, 26, this.jdField_a_of_type_Long);
+          QLog.d("VideoNodeReporter", 1, "updateCallerRoomId  updated roomId = " + this.jdField_a_of_type_Long);
+          VideoNodeReporter.a(this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter, -1L);
+        }
+      }
     }
   }
 }

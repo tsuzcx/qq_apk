@@ -1,15 +1,22 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.view.View;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.TranslateAnimation;
+import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
 
-class xmm
+public class xmm
   implements Runnable
 {
-  xmm(xml paramxml) {}
+  public xmm(LoginView paramLoginView) {}
   
   public void run()
   {
-    this.a.a.e.setVisibility(4);
-    this.a.a.e.setAlpha(255);
+    this.a.c.setVisibility(0);
+    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
+    localTranslateAnimation.setInterpolator(new DecelerateInterpolator());
+    localTranslateAnimation.setDuration(500L);
+    localTranslateAnimation.setFillAfter(true);
+    localTranslateAnimation.setAnimationListener(new xmn(this));
+    this.a.c.startAnimation(localTranslateAnimation);
   }
 }
 

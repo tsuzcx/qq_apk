@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.data;
 
 import ActionMsg.MsgBody;
-import abnq;
-import abnr;
+import abur;
+import abus;
 import android.os.Looper;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -28,6 +28,7 @@ import com.tencent.mobileqq.pic.PicDownloadInfo;
 import com.tencent.mobileqq.pic.PicUiInterface;
 import com.tencent.mobileqq.pic.PicUploadInfo;
 import com.tencent.mobileqq.pic.ReportInfo;
+import com.tencent.mobileqq.service.message.MessageConstants;
 import com.tencent.mobileqq.transfile.AbsDownloader;
 import com.tencent.mobileqq.transfile.PicFowardDbRecordData;
 import com.tencent.mobileqq.transfile.TranDbRecord.PicDbRecord;
@@ -48,7 +49,7 @@ public class MessageForPic
   extends MessageForRichText
   implements Parcelable, LoggerInterface, PicUiInterface
 {
-  public static final Parcelable.Creator CREATOR = new abnr();
+  public static final Parcelable.Creator CREATOR = new abus();
   private static final String TAG = "MessageForPic";
   public static int defaultSuMsgId = -1;
   public long DSKey;
@@ -94,6 +95,7 @@ public class MessageForPic
   public int subThumbHeight = -1;
   public int subThumbWidth = -1;
   public int subVersion = 5;
+  public boolean sync2Story;
   public int thumbHeight;
   public String thumbMsgUrl;
   public int thumbSize = -1;
@@ -151,134 +153,140 @@ public class MessageForPic
     }
     catch (Exception localException2)
     {
-      label1030:
-      label1041:
-      Object localObject2;
-      do
+      for (;;)
       {
-        do
+        Object localObject4;
+        try
         {
-          do
+          int i;
+          Object localObject3;
+          PicFowardDbRecordData localPicFowardDbRecordData;
+          if (this.istroop == 0)
           {
-            for (;;)
-            {
-              Object localObject4;
-              try
-              {
-                int i;
-                Object localObject3;
-                PicFowardDbRecordData localPicFowardDbRecordData;
-                if (this.istroop == 0)
-                {
-                  localObject3 = new NotOnlineImageExtPb.ResvAttr();
-                  ((NotOnlineImageExtPb.ResvAttr)localObject3).mergeFrom((byte[])localObject1);
-                  this.picExtraData = new PicMessageExtraData((NotOnlineImageExtPb.ResvAttr)localObject3);
-                  if (QLog.isDevelopLevel()) {
-                    QLog.d("MessageForPic", 4, "bytes_pb_reserved.has");
-                  }
-                  if ((this.imageType != 3) && (this.imageType != 2000))
-                  {
-                    localObject1 = Looper.getMainLooper();
-                    if (Thread.currentThread() != ((Looper)localObject1).getThread()) {
-                      break label1041;
-                    }
-                    ThreadManager.post(new abnq(this), 10, null, false);
-                  }
-                  this.mIsParsed = true;
-                  if (((this.extLong & 0x4) <= 0) || (!EmojiStickerManager.e)) {
-                    break;
-                  }
-                  System.currentTimeMillis();
-                  localObject1 = getExtInfoFromExtStr("sticker_info");
-                  if (!TextUtils.isEmpty((CharSequence)localObject1))
-                  {
-                    if (this.msgtype == -2000) {
-                      this.msgtype = -2058;
-                    }
-                    localObject1 = EmojiStickerManager.StickerInfo.transformFromJson((String)localObject1);
-                    if (localObject1 != null)
-                    {
-                      ((EmojiStickerManager.StickerInfo)localObject1).isDisplayed = this.isread;
-                      this.stickerInfo = ((EmojiStickerManager.StickerInfo)localObject1);
-                      System.currentTimeMillis();
-                    }
-                  }
-                  return;
-                  localException2 = localException2;
-                  localException2.printStackTrace();
-                  i = 0;
-                  continue;
-                }
-                localObject4 = new CustomFaceExtPb.ResvAttr();
-                ((CustomFaceExtPb.ResvAttr)localObject4).mergeFrom((byte[])localObject1);
-                this.picExtraData = new PicMessageExtraData((CustomFaceExtPb.ResvAttr)localObject4);
-                continue;
-              }
-              catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-              {
-                localInvalidProtocolBufferMicroException.printStackTrace();
-                continue;
-              }
-              if (this.msg == null) {}
-              try
-              {
-                if (this.versionCode > 0) {
-                  this.msg = new String(this.msgData, "UTF-8");
-                }
-                this.isShareAppActionMsg = ActionMsgUtil.a(this.msgtype);
-                if ((this.isShareAppActionMsg) || (this.msgtype == -3001) || (this.msgtype == -30002) || (this.msgtype == -30003) || (this.msgtype == -1032))
-                {
-                  bool = true;
-                  this.isMixed = bool;
-                  TranDbRecord.PicDbRecord localPicDbRecord = new TranDbRecord.PicDbRecord();
-                  if (!this.isMixed) {
-                    break label1030;
-                  }
-                  localObject4 = ActionMsgUtil.a(this.msg);
-                  this.action = ((MsgBody)localObject4).action;
-                  this.shareAppID = ((MsgBody)localObject4).shareAppID;
-                  localPicDbRecord.a(((MsgBody)localObject4).msg);
-                  this.actMsgContentValue = ((MsgBody)localObject4).actMsgContentValue;
-                  this.path = localPicDbRecord.jdField_a_of_type_JavaLangString;
-                  this.size = localPicDbRecord.jdField_a_of_type_Long;
-                  this.type = localPicDbRecord.jdField_a_of_type_Int;
-                  this.isRead = localPicDbRecord.jdField_a_of_type_Boolean;
-                  this.uuid = localPicDbRecord.jdField_b_of_type_JavaLangString;
-                  this.md5 = localPicDbRecord.jdField_c_of_type_JavaLangString;
-                  this.serverStoreSource = localPicDbRecord.jdField_d_of_type_JavaLangString;
-                  this.thumbMsgUrl = localPicDbRecord.jdField_e_of_type_JavaLangString;
-                  this.bigThumbMsgUrl = localPicDbRecord.h;
-                  this.bigMsgUrl = localPicDbRecord.f;
-                  this.rawMsgUrl = localPicDbRecord.jdField_g_of_type_JavaLangString;
-                  this.picExtraFlag = localPicDbRecord.jdField_c_of_type_Int;
-                  this.picExtraObject = localPicDbRecord.jdField_a_of_type_JavaLangObject;
-                  this.subVersion = 0;
-                }
-              }
-              catch (Exception localException1)
-              {
-                for (;;)
-                {
-                  boolean bool;
-                  if (QLog.isColorLevel())
-                  {
-                    QLog.e("MessageForPic", 2, localException1.getMessage());
-                    continue;
-                    bool = false;
-                    continue;
-                    localException1.a(this.msg);
-                  }
-                }
-              }
-              checkIsGIF();
+            localObject3 = new NotOnlineImageExtPb.ResvAttr();
+            ((NotOnlineImageExtPb.ResvAttr)localObject3).mergeFrom((byte[])localObject1);
+            this.picExtraData = new PicMessageExtraData((NotOnlineImageExtPb.ResvAttr)localObject3);
+            if (QLog.isDevelopLevel()) {
+              QLog.d("MessageForPic", 4, "bytes_pb_reserved.has");
             }
-          } while (this.msgtype != -2058);
-          localObject2 = getExtInfoFromExtStr("sticker_info");
-        } while (TextUtils.isEmpty((CharSequence)localObject2));
-        localObject2 = EmojiStickerManager.StickerInfo.transformFromJson((String)localObject2);
-      } while (localObject2 == null);
-      ((EmojiStickerManager.StickerInfo)localObject2).isDisplayed = this.isread;
-      this.stickerInfo = ((EmojiStickerManager.StickerInfo)localObject2);
+            if ((this.imageType != 3) && (this.imageType != 2000))
+            {
+              localObject1 = Looper.getMainLooper();
+              if (Thread.currentThread() != ((Looper)localObject1).getThread()) {
+                break label1062;
+              }
+              ThreadManager.post(new abur(this), 10, null, false);
+            }
+            this.mIsParsed = true;
+            if (((this.extLong & 0x4) <= 0) || (!EmojiStickerManager.e)) {
+              break label1069;
+            }
+            System.currentTimeMillis();
+            localObject1 = getExtInfoFromExtStr("sticker_info");
+            if (!TextUtils.isEmpty((CharSequence)localObject1))
+            {
+              if (this.msgtype == -2000) {
+                this.msgtype = -2058;
+              }
+              localObject1 = EmojiStickerManager.StickerInfo.transformFromJson((String)localObject1);
+              if (localObject1 != null)
+              {
+                ((EmojiStickerManager.StickerInfo)localObject1).isDisplayed = this.isread;
+                this.stickerInfo = ((EmojiStickerManager.StickerInfo)localObject1);
+                System.currentTimeMillis();
+              }
+            }
+            if (!"1".equals(getExtInfoFromExtStr(MessageConstants.n))) {
+              break;
+            }
+            this.sync2Story = true;
+            return;
+            localException2 = localException2;
+            localException2.printStackTrace();
+            i = 0;
+            continue;
+          }
+          localObject4 = new CustomFaceExtPb.ResvAttr();
+          ((CustomFaceExtPb.ResvAttr)localObject4).mergeFrom((byte[])localObject1);
+          this.picExtraData = new PicMessageExtraData((CustomFaceExtPb.ResvAttr)localObject4);
+          continue;
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          localInvalidProtocolBufferMicroException.printStackTrace();
+          continue;
+        }
+        if (this.msg == null) {}
+        try
+        {
+          if (this.versionCode > 0) {
+            this.msg = new String(this.msgData, "UTF-8");
+          }
+          this.isShareAppActionMsg = ActionMsgUtil.a(this.msgtype);
+          if ((this.isShareAppActionMsg) || (this.msgtype == -3001) || (this.msgtype == -30002) || (this.msgtype == -30003) || (this.msgtype == -1032))
+          {
+            bool = true;
+            this.isMixed = bool;
+            TranDbRecord.PicDbRecord localPicDbRecord = new TranDbRecord.PicDbRecord();
+            if (!this.isMixed) {
+              break label1051;
+            }
+            localObject4 = ActionMsgUtil.a(this.msg);
+            this.action = ((MsgBody)localObject4).action;
+            this.shareAppID = ((MsgBody)localObject4).shareAppID;
+            localPicDbRecord.a(((MsgBody)localObject4).msg);
+            this.actMsgContentValue = ((MsgBody)localObject4).actMsgContentValue;
+            this.path = localPicDbRecord.jdField_a_of_type_JavaLangString;
+            this.size = localPicDbRecord.jdField_a_of_type_Long;
+            this.type = localPicDbRecord.jdField_a_of_type_Int;
+            this.isRead = localPicDbRecord.jdField_a_of_type_Boolean;
+            this.uuid = localPicDbRecord.jdField_b_of_type_JavaLangString;
+            this.md5 = localPicDbRecord.jdField_c_of_type_JavaLangString;
+            this.serverStoreSource = localPicDbRecord.jdField_d_of_type_JavaLangString;
+            this.thumbMsgUrl = localPicDbRecord.jdField_e_of_type_JavaLangString;
+            this.bigThumbMsgUrl = localPicDbRecord.h;
+            this.bigMsgUrl = localPicDbRecord.f;
+            this.rawMsgUrl = localPicDbRecord.jdField_g_of_type_JavaLangString;
+            this.picExtraFlag = localPicDbRecord.jdField_c_of_type_Int;
+            this.picExtraObject = localPicDbRecord.jdField_a_of_type_JavaLangObject;
+            this.subVersion = 0;
+          }
+        }
+        catch (Exception localException1)
+        {
+          for (;;)
+          {
+            boolean bool;
+            if (QLog.isColorLevel())
+            {
+              QLog.e("MessageForPic", 2, localException1.getMessage());
+              continue;
+              bool = false;
+              continue;
+              label1051:
+              localException1.a(this.msg);
+            }
+          }
+        }
+        label1062:
+        checkIsGIF();
+        continue;
+        label1069:
+        if (this.msgtype == -2058)
+        {
+          Object localObject2 = getExtInfoFromExtStr("sticker_info");
+          if (!TextUtils.isEmpty((CharSequence)localObject2))
+          {
+            localObject2 = EmojiStickerManager.StickerInfo.transformFromJson((String)localObject2);
+            if (localObject2 != null)
+            {
+              ((EmojiStickerManager.StickerInfo)localObject2).isDisplayed = this.isread;
+              this.stickerInfo = ((EmojiStickerManager.StickerInfo)localObject2);
+            }
+          }
+        }
+      }
+      this.sync2Story = false;
     }
     if (i != 0)
     {
@@ -692,6 +700,7 @@ public class MessageForPic
     paramParcel.writeString(this.path);
     paramParcel.writeLong(this.size);
     paramParcel.writeInt(this.type);
+    int i;
     if (this.isRead)
     {
       i = 1;
@@ -709,19 +718,16 @@ public class MessageForPic
       paramParcel.writeInt(this.fileSizeFlag);
       paramParcel.writeInt(this.picExtraFlag);
       if (!this.isMixed) {
-        break label373;
+        break label388;
       }
       i = 1;
       label146:
       paramParcel.writeInt(i);
       if (!this.isShareAppActionMsg) {
-        break label378;
+        break label393;
       }
-    }
-    label373:
-    label378:
-    for (int i = j;; i = 0)
-    {
+      i = 1;
+      label160:
       paramParcel.writeInt(i);
       paramParcel.writeString(this.action);
       paramParcel.writeLong(this.shareAppID);
@@ -748,11 +754,23 @@ public class MessageForPic
       paramParcel.writeInt(this.previewed);
       paramParcel.writeInt(this.mNotPredownloadReason);
       paramParcel.writeParcelable(this.reportInfo, paramInt);
+      if (!this.sync2Story) {
+        break label398;
+      }
+    }
+    label388:
+    label393:
+    label398:
+    for (paramInt = j;; paramInt = 0)
+    {
+      paramParcel.writeByte((byte)paramInt);
       return;
       i = 0;
       break;
       i = 0;
       break label146;
+      i = 0;
+      break label160;
     }
   }
 }

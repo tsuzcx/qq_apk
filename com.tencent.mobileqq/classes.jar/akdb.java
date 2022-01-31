@@ -1,28 +1,34 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
-import com.tencent.mobileqq.webview.webso.WebSoUtils;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NewUpgradeDialog;
+import com.tencent.open.appcircle.st.AppCircleReportManager;
+import com.tencent.open.appcircle.st.STUtils;
+import com.tencent.open.base.LogUtility;
+import java.lang.ref.WeakReference;
 
 public class akdb
-  implements Runnable
+  implements View.OnClickListener
 {
-  public akdb(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState, String paramString, Handler paramHandler) {}
+  public akdb(NewUpgradeDialog paramNewUpgradeDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_b_of_type_JavaLangString = WebSoUtils.c(this.jdField_a_of_type_JavaLangString);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_b_of_type_JavaLangString)) {
-      return;
+    int i = 2;
+    LogUtility.b("NewUpgradeDialog", STUtils.a(10010, NewUpgradeDialog.a(), 2, 200));
+    AppCircleReportManager.a().a(17, STUtils.a(10010, NewUpgradeDialog.a(), 4, 200));
+    this.a.dismiss();
+    ((Activity)this.a.a.get()).finish();
+    if (NewUpgradeDialog.a() == 2) {
+      i = 1;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.f = true;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_b_of_type_Boolean = true;
-    WebSoService.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService, this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState);
+    ReportController.b(null, "dc00898", "", "", "0X8008FFC", "0X8008FFC", i, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akdb
  * JD-Core Version:    0.7.0.1
  */

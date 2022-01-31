@@ -1,29 +1,20 @@
-import com.tencent.mobileqq.richmedia.capture.data.CapturePtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ptt.LSRecordPanel;
 
 public class agtc
   implements Runnable
 {
-  public agtc(CapturePtvTemplateManager paramCapturePtvTemplateManager) {}
+  public agtc(LSRecordPanel paramLSRecordPanel) {}
   
   public void run()
   {
-    boolean bool1 = PtvFilterSoLoad.b();
-    boolean bool2 = NetworkUtil.d(BaseApplication.getContext());
-    if (QLog.isColorLevel()) {
-      QLog.i("CapturePtvTemplateManager", 2, "dealyPreDownload isSupport: " + bool1 + " isNetWorkSupport: " + bool2);
-    }
-    if ((bool1) && (bool2)) {
-      this.a.a(this.a.a);
-    }
+    LSRecordPanel.b(this.a, false);
+    LSRecordPanel.a(this.a, "亲们，QQ没有使用麦克风权限呢");
+    LSRecordPanel.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     agtc
  * JD-Core Version:    0.7.0.1
  */

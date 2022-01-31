@@ -28,9 +28,9 @@ import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.utils.TimeFormatterUtils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import vcg;
-import vch;
-import vci;
+import vfi;
+import vfj;
+import vfk;
 
 public class ShakeItemBuilder
   extends BaseBubbleBuilder
@@ -41,7 +41,7 @@ public class ShakeItemBuilder
   public ShakeItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vcg(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vfi(this);
   }
   
   public int a(ChatMessage paramChatMessage)
@@ -64,9 +64,9 @@ public class ShakeItemBuilder
       ((LinearLayout.LayoutParams)localObject).gravity = 16;
       paramViewHolder.addView(paramView, (ViewGroup.LayoutParams)localObject);
       localObject = new TextView(paramBaseChatItemLayout);
-      ((TextView)localObject).setTextColor(paramBaseChatItemLayout.getResources().getColorStateList(2131494220));
+      ((TextView)localObject).setTextColor(paramBaseChatItemLayout.getResources().getColorStateList(2131494227));
       ((TextView)localObject).setMaxWidth(BaseChatItemLayout.e);
-      ((TextView)localObject).setId(2131363557);
+      ((TextView)localObject).setId(2131363575);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 16;
       paramViewHolder.addView((View)localObject, localLayoutParams);
@@ -77,17 +77,17 @@ public class ShakeItemBuilder
     int k = BaseChatItemLayout.n;
     int j = BaseChatItemLayout.o;
     int i = BaseChatItemLayout.n;
-    localHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842166);
+    localHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842203);
     if (paramChatMessage.isSend())
     {
       k = BaseChatItemLayout.o;
       j = BaseChatItemLayout.n;
       i = BaseChatItemLayout.o;
-      localHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842167);
+      localHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842204);
     }
     localHolder.jdField_a_of_type_AndroidWidgetImageView.setPadding(i, 0, 0, 0);
     localHolder.jdField_a_of_type_AndroidWidgetTextView.setPadding(k, BaseChatItemLayout.l, j, BaseChatItemLayout.m);
-    localHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseChatItemLayout.getResources().getString(2131433321));
+    localHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseChatItemLayout.getResources().getString(2131433338));
     paramViewHolder.setOnTouchListener(paramOnLongClickAndTouchListener);
     paramViewHolder.setOnLongClickListener(paramOnLongClickAndTouchListener);
     paramViewHolder.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -141,7 +141,7 @@ public class ShakeItemBuilder
     {
     default: 
       return;
-    case 2131375336: 
+    case 2131375567: 
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
     }
@@ -152,10 +152,10 @@ public class ShakeItemBuilder
   {
     super.a(paramView);
     paramView = (MessageForShakeWindow)AIOUtils.a(paramView);
-    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433618);
-    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433619);
+    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433635);
+    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433636);
     if (paramView.isSendFromLocal()) {
-      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new vch(this, paramView), new vci(this)).show();
+      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new vfj(this, paramView), new vfk(this)).show();
     }
   }
   
@@ -167,7 +167,7 @@ public class ShakeItemBuilder
       paramView = paramView.getResources();
       if (paramChatMessage.isSend())
       {
-        paramViewHolder = paramView.getColorStateList(2131494223);
+        paramViewHolder = paramView.getColorStateList(2131494230);
         if (paramViewHolder != null) {
           localHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramViewHolder);
         }
@@ -176,11 +176,11 @@ public class ShakeItemBuilder
         }
       }
       label90:
-      for (paramViewHolder = paramView.getColorStateList(2131494222);; paramViewHolder = paramView.getColorStateList(2131494221))
+      for (paramViewHolder = paramView.getColorStateList(2131494229);; paramViewHolder = paramView.getColorStateList(2131494228))
       {
         localHolder.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramViewHolder);
         return;
-        paramViewHolder = paramView.getColorStateList(2131494220);
+        paramViewHolder = paramView.getColorStateList(2131494227);
         break;
       }
     }
@@ -189,7 +189,7 @@ public class ShakeItemBuilder
     }
     while (paramBubbleInfo.c == 0)
     {
-      localHolder.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramView.getResources().getColorStateList(2131494221));
+      localHolder.jdField_a_of_type_AndroidWidgetTextView.setLinkTextColor(paramView.getResources().getColorStateList(2131494228));
       return;
       localHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramBubbleInfo.b);
     }

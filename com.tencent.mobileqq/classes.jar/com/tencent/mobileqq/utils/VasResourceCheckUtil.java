@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import ajsj;
-import ajsk;
+import akgq;
+import akgr;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
@@ -28,7 +28,7 @@ public class VasResourceCheckUtil
   static
   {
     jdField_a_of_type_JavaLangString = AppConstants.aJ + ".VasResourceCheck/temp.json";
-    jdField_a_of_type_AndroidOsHandler$Callback = new ajsk();
+    jdField_a_of_type_AndroidOsHandler$Callback = new akgr();
   }
   
   public static void a(QQAppInterface paramQQAppInterface)
@@ -99,7 +99,7 @@ public class VasResourceCheckUtil
       jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandler$Callback);
     }
     paramActivity = new DownloadTask(paramString, new File(jdField_a_of_type_JavaLangString));
-    ((DownloaderFactory)paramQQAppInterface.getManager(46)).a(1).a(paramActivity, new ajsj(paramQQAppInterface), null);
+    ((DownloaderFactory)paramQQAppInterface.getManager(46)).a(1).a(paramActivity, new akgq(paramQQAppInterface), null);
   }
   
   public static boolean a(String paramString)

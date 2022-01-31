@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.contacts.adapter.ContactsDeviceAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
 
 public class wir
-  implements Runnable
+  implements View.OnClickListener
 {
-  public wir(ContactsDeviceAdapter paramContactsDeviceAdapter) {}
+  public wir(SearchBaseActivity paramSearchBaseActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a = true;
+    this.a.setResult(1);
+    this.a.finish();
   }
 }
 

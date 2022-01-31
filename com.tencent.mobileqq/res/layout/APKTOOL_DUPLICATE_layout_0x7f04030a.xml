@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a115b" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<com.tencent.av.smallscreen.SmallScreenRelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a116e" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020b03" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b081d"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a115c" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d066d" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d066d">
-        <com.tencent.av.funchat.AVListImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a115d" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d066d" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d066d" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0201c9" />
-        <com.tencent.mobileqq.widget.CircleProgress android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a115e" android:layout_width="16.0dip" android:layout_height="16.0dip" android:scaleType="fitXY" android:layout_centerInParent="true" />
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a115f" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="3.0dip" android:layout_marginBottom="3.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021615" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-    </RelativeLayout>
-</LinearLayout>
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1175" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0611" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0612" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b081d" />
+    <TextView android:textSize="11.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0287" android:ellipsize="marquee" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e03" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="36.0dip" android:maxLines="1" android:layout_centerHorizontal="true" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e07" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020b08" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0615" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b081d" />
+</com.tencent.av.smallscreen.SmallScreenRelativeLayout>

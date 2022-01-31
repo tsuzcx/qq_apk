@@ -1,17 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
 
 public class aeqt
-  implements DialogInterface.OnClickListener
+  implements Animation.AnimationListener
 {
-  public aeqt(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, QQCustomDialog paramQQCustomDialog) {}
+  public aeqt(ChooseInterestTagActivity paramChooseInterestTagActivity, View paramView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    ChooseInterestTagActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity).postDelayed(new aequ(this), 100L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

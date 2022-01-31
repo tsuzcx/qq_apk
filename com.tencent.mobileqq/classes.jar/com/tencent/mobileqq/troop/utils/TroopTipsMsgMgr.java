@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajcn;
+import ajqr;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Bundle;
@@ -293,7 +293,7 @@ public class TroopTipsMsgMgr
               paramArrayOfByte = (TroopTips0x857.RedGrayTipsInfo)((TroopTips0x857.NotifyMsgBody)localObject2).opt_msg_redtips.get();
               if (paramQQAppInterface.a.b())
               {
-                a(new ajcn(this, ((TroopTipsEntity)localObject1).troopUin, paramArrayOfByte));
+                a(new ajqr(this, ((TroopTipsEntity)localObject1).troopUin, paramArrayOfByte));
                 return null;
               }
               ((TroopTipsEntity)localObject1).currentUin = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
@@ -569,12 +569,12 @@ public class TroopTipsMsgMgr
     return localArrayList1;
   }
   
-  public void a(ajcn paramajcn)
+  public void a(ajqr paramajqr)
   {
     if (QLog.isColorLevel()) {
       QLog.d("TroopTipsMsgMgr", 2, "addWalletTipsCache");
     }
-    this.jdField_a_of_type_JavaUtilArrayList.add(paramajcn);
+    this.jdField_a_of_type_JavaUtilArrayList.add(paramajqr);
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -588,8 +588,8 @@ public class TroopTipsMsgMgr
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      ajcn localajcn = (ajcn)localIterator.next();
-      TroopTips0x857.RedGrayTipsInfo localRedGrayTipsInfo = localajcn.jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$RedGrayTipsInfo;
+      ajqr localajqr = (ajqr)localIterator.next();
+      TroopTips0x857.RedGrayTipsInfo localRedGrayTipsInfo = localajqr.jdField_a_of_type_TencentImOidbCmd0x857TroopTips0x857$RedGrayTipsInfo;
       String str = paramQQAppInterface.getCurrentAccountUin();
       MessageForQQWalletTips localMessageForQQWalletTips = (MessageForQQWalletTips)MessageRecordFactory.a(-2029);
       localMessageForQQWalletTips.senderUin = (localRedGrayTipsInfo.uint64_sender_uin.get() + "");
@@ -597,7 +597,7 @@ public class TroopTipsMsgMgr
       localMessageForQQWalletTips.senderContent = localRedGrayTipsInfo.bytes_sender_rich_content.get().toStringUtf8();
       localMessageForQQWalletTips.reciverContent = localRedGrayTipsInfo.bytes_receiver_rich_content.get().toStringUtf8();
       localMessageForQQWalletTips.authKey = localRedGrayTipsInfo.bytes_authkey.get().toStringUtf8();
-      localMessageForQQWalletTips.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localajcn.jdField_a_of_type_JavaLangString, "", "[QQWallet Tips]", MessageCache.a(), -2029, 1, MessageCache.a());
+      localMessageForQQWalletTips.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), localajqr.jdField_a_of_type_JavaLangString, "", "[QQWallet Tips]", MessageCache.a(), -2029, 1, MessageCache.a());
       localMessageForQQWalletTips.isread = true;
       localMessageForQQWalletTips.getBytes();
       localMessageForQQWalletTips.onReceiveGrapTips();
@@ -985,7 +985,7 @@ public class TroopTipsMsgMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopTipsMsgMgr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.service.gamecenter.AppLaucherHelper;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnErrorListener;
 
 public class ahjf
-  extends Handler
+  implements GuideVideoView.OnErrorListener
 {
-  public ahjf(AppLaucherHelper paramAppLaucherHelper) {}
+  public ahjf(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void a(String paramString)
   {
-    super.handleMessage(paramMessage);
-    if (paramMessage.what == 0)
-    {
-      AppLaucherHelper.a = false;
-      if (QLog.isColorLevel()) {
-        QLog.d(getClass().getSimpleName(), 2, "wtlogin time out");
-      }
-    }
+    EffectsCameraCaptureFragment.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahjf
  * JD-Core Version:    0.7.0.1
  */

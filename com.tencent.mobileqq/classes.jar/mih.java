@@ -1,23 +1,30 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInjoyTabDragAnimationView;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySocialMsgTips;
 
-public class mih
-  implements Animator.AnimatorListener
+class mih
+  implements Runnable
 {
-  public mih(ReadInjoyTabDragAnimationView paramReadInjoyTabDragAnimationView) {}
+  mih(mig parammig, KandianOx210MsgInfo paramKandianOx210MsgInfo) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    this.a.setRotation(0.0F);
-    this.a.setAlpha(1.0F);
+    if ((ReadInJoyListViewGroup.a(this.jdField_a_of_type_Mig.a) != null) && (ReadInJoyListViewGroup.a(this.jdField_a_of_type_Mig.a).a())) {
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.a <= 0)
+      {
+        ReadInJoyListViewGroup.a(this.jdField_a_of_type_Mig.a).b();
+        ReadInJoyListViewGroup.a(this.jdField_a_of_type_Mig.a).removeHeaderView(ReadInJoyListViewGroup.a(this.jdField_a_of_type_Mig.a).a());
+      }
+    }
+    while (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.a <= 0)
+    {
+      return;
+      ReadInJoyListViewGroup.a(this.jdField_a_of_type_Mig.a).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo);
+      return;
+    }
+    this.jdField_a_of_type_Mig.a.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo);
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

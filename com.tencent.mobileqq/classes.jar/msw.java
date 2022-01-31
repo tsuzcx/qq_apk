@@ -1,26 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.GalleryReportedUtils;
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
 public class msw
-  implements View.OnClickListener
+  implements AsyncBack
 {
-  public msw(GalleryShareHelper paramGalleryShareHelper) {}
+  public msw(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("GalleryShareHelper", 2, "mShareActionSheet cancle button OnClick");
+      QLog.d("SubscriptFeedsActivity", 2, "HtmlOffline.checkUpByBusinessId businessId=2278, code=" + paramInt);
     }
-    PublicAccountReportUtils.a(null, "", "0X8008E35", "0X8008E35", 0, 0, "", "", "", GalleryReportedUtils.a(GalleryShareHelper.a(this.a), GalleryShareHelper.a(this.a).getCurrentAccountUin(), GalleryShareHelper.a(this.a), GalleryShareHelper.a(this.a), GalleryShareHelper.a(this.a)), false);
-    if (GalleryShareHelper.a(this.a).isShowing()) {
-      GalleryShareHelper.a(this.a).dismiss();
-    }
+    this.a.app.getApplication();
+    int i = NetworkUtil.a(MobileQQ.getContext());
+    paramString = new HashMap();
+    paramString.put("network", "" + i);
+    paramString.put("status_code", "" + paramInt);
+    StatisticCollector.a(this.a).a(null, "subscription_htmloffline", true, 0L, 0L, paramString, "", false);
   }
 }
 

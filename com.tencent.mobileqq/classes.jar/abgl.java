@@ -1,21 +1,27 @@
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
-import com.tencent.mobileqq.businessCard.data.CardOCRInfo;
+import android.graphics.Bitmap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
+import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class abgl
-  implements Runnable
+  implements NonMainAppHeadLoader.FaceObserver
 {
-  public abgl(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public abgl(ARGridMapViewDialog paramARGridMapViewDialog) {}
   
-  public void run()
+  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard != null) {
-      BusinessCardEditActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardName, this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.company, this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.mobilesNum);
+    if ((!TextUtils.isEmpty(paramString1)) && (TextUtils.equals(paramString1, ARGridMapViewDialog.a(this.a))) && (paramBitmap != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ARMapBaseDialog", 2, "ARMapPOIDialog onFaceUpdate uin:" + paramString1);
+      }
+      if (this.a.c == 2) {
+        ThreadManager.getUIHandler().post(new abgm(this, paramBitmap));
+      }
     }
-    while (this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataCardOCRInfo == null) {
-      return;
-    }
-    BusinessCardEditActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataCardOCRInfo.a, null, this.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataCardOCRInfo.b);
   }
 }
 

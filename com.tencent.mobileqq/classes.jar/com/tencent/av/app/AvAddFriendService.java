@@ -24,9 +24,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import jer;
-import jes;
-import jet;
+import jec;
+import jed;
+import jee;
 import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsgAction;
@@ -36,8 +36,8 @@ public class AvAddFriendService
 {
   public static String a;
   public int a;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new jer(this);
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new jes(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new jec(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new jed(this);
   public QQAppInterface a;
   public HashMap a;
   public boolean a;
@@ -73,7 +73,7 @@ public class AvAddFriendService
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "setRelationStatus :" + paramString + ",status" + paramInt);
     }
-    ((jet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b = paramInt;
+    ((jee)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b = paramInt;
   }
   
   private void a(String paramString, int paramInt1, int paramInt2)
@@ -88,8 +88,8 @@ public class AvAddFriendService
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "setRelationStatus :" + paramString + ",status" + paramInt1 + ",safeStatus:" + paramInt2);
     }
-    ((jet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b = paramInt1;
-    ((jet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b = paramInt2;
+    ((jee)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b = paramInt1;
+    ((jee)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b = paramInt2;
   }
   
   private void a(structmsg.StructMsg paramStructMsg, long paramLong)
@@ -153,7 +153,7 @@ public class AvAddFriendService
       }
       return 0;
     }
-    return ((jet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b;
+    return ((jee)this.jdField_a_of_type_JavaUtilHashMap.get(paramString)).b;
   }
   
   public void a()
@@ -189,8 +189,8 @@ public class AvAddFriendService
     this.jdField_a_of_type_Int = paramInt;
     if (((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).b(paramString))
     {
-      localjet = new jet(this);
-      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localjet);
+      localjee = new jee(this);
+      this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localjee);
       a(paramString, 4);
       a(paramString);
       return true;
@@ -201,8 +201,8 @@ public class AvAddFriendService
     if (QLog.isColorLevel()) {
       QLog.d(jdField_a_of_type_JavaLangString, 2, "addFriend uin" + paramString);
     }
-    jet localjet = new jet(this);
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localjet);
+    jee localjee = new jee(this);
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localjee);
     ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).a("OidbSvc.0x476_147", Long.parseLong(paramString), 147);
     return true;
   }

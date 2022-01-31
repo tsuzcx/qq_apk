@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.apollo.IApolloRenderView;
+import com.tencent.mobileqq.apollo.game.ApolloFragment;
+import com.tencent.mobileqq.apollo.game.ApolloFragmentManager;
+import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 
-class ype
+public class ype
   implements Runnable
 {
-  ype(ypd paramypd, IApolloRenderView paramIApolloRenderView) {}
+  public ype(ApolloFragmentManager paramApolloFragmentManager, ApolloFragment paramApolloFragment) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView != null)
-    {
-      if (ypd.a(this.jdField_a_of_type_Ypd)) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.setVisibility(8);
-      }
-    }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqApolloIApolloRenderView.setVisibility(0);
+    ((ApolloGameActivity)ApolloFragmentManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloFragmentManager)).a(this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloFragment.a());
   }
 }
 

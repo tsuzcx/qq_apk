@@ -1,63 +1,18 @@
-import android.os.Message;
-import android.view.Surface;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.tracker.SimpleStickerTracker2;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.tracker.TrackingDecoderListener;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
 
 public class anxf
-  implements TrackingDecoderListener
+  extends AnimatorListenerAdapter
 {
-  public anxf(SimpleStickerTracker2 paramSimpleStickerTracker2) {}
+  public anxf(FaceLayer.FaceItem paramFaceItem) {}
   
-  public Surface a()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    return null;
+    this.a.p = 12.0F;
+    this.a.b.k();
   }
-  
-  public void a()
-  {
-    SimpleStickerTracker2.a(this.a, System.currentTimeMillis());
-    if (SimpleStickerTracker2.a(this.a) != null)
-    {
-      Message localMessage = SimpleStickerTracker2.a(this.a).obtainMessage(1);
-      SimpleStickerTracker2.a(this.a).sendMessage(localMessage);
-    }
-  }
-  
-  public void a(int paramInt, Throwable paramThrowable)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("SimpleStickerTracker2", 2, "SimpleStickerTracker2 onDecodeError errorCode =" + paramInt);
-    }
-    paramThrowable.printStackTrace();
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void a(long paramLong1, long paramLong2) {}
-  
-  public void a(byte[] paramArrayOfByte, long paramLong)
-  {
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0)) {
-      SimpleStickerTracker2.a(this.a, paramArrayOfByte, paramLong);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e("SimpleStickerTracker2", 2, "onDecodeFinish ");
-    }
-    if (SimpleStickerTracker2.a(this.a) != null)
-    {
-      Message localMessage = SimpleStickerTracker2.a(this.a).obtainMessage(3);
-      SimpleStickerTracker2.a(this.a).sendMessage(localMessage);
-    }
-  }
-  
-  public void c() {}
-  
-  public void d() {}
 }
 
 

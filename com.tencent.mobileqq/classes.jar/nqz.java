@@ -1,13 +1,16 @@
-import com.tencent.biz.qqstory.shareGroup.infocard.view.MyMemoriesListView;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnInfoListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnInfoListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.MediaPlayerWrapper;
 
 public class nqz
-  implements Runnable
+  implements MediaPlayer.OnInfoListener
 {
-  public nqz(MyMemoriesListView paramMyMemoriesListView) {}
+  public nqz(MediaPlayerWrapper paramMediaPlayerWrapper, IMediaPlayer.OnInfoListener paramOnInfoListener) {}
   
-  public void run()
+  public boolean onInfo(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    this.a.springBackOverScrollHeaderView();
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnInfoListener.a_(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperMediaPlayerWrapper, paramInt1, paramInt2);
   }
 }
 

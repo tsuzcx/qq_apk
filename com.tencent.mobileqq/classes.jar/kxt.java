@@ -1,18 +1,25 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import com.tencent.qphone.base.util.QLog;
 
-public class kxt
+class kxt
   implements Runnable
 {
-  public kxt(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
+  kxt(kxs paramkxs) {}
   
   public void run()
   {
-    if ((ReadInJoyNativeAdAppVideoView.a(this.a) == 4) || (ReadInJoyNativeAdAppVideoView.a(this.a) == 3))
+    try
     {
-      ReadInJoyNativeAdAppVideoView.a(this.a).setVisibility(8);
-      ReadInJoyNativeAdAppVideoView.a(this.a).setVisibility(8);
+      boolean bool = SubscriptRecommendController.a(this.a.a.a, false, this.a.a.g);
+      if (QLog.isColorLevel()) {
+        QLog.d("WebLog_WebViewFragment", 2, "set subscribe full recommend switch = false , result : " + bool);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }

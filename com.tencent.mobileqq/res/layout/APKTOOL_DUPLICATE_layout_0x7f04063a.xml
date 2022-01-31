@@ -1,12 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.ptt.LSRecordPanel android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:change_voice_volume="http://schemas.android.com/apk/res-auto">
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1daa" android:background="#ffff0000" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1dab" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1dac" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213f6" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_marginRight="7.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1dad" android:layout_width="46.0dip" android:layout_height="46.0dip" android:layout_marginRight="7.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0534" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213f8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <com.tencent.mobileqq.ptt.LSRecordTextView android:textSize="16.0dip" android:textColor="#ffffffff" android:gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a120a" android:visibility="invisible" android:layout_width="38.0dip" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:text="0:00" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
-    <com.tencent.mobileqq.activity.aio.audiopanel.VolumeIndicateSquareView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1dae" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:layout_centerVertical="true" change_voice_volume:mOrentation="0" change_voice_volume:mSquareCount="18" change_voice_volume:mColor="#ffffffff" change_voice_volume:mSquareWidth="3.0dip" />
-</com.tencent.mobileqq.ptt.LSRecordPanel>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d003f" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0571" android:id="@id/textView1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:includeFontPadding="false" android:layout_centerVertical="true" />
+</RelativeLayout>

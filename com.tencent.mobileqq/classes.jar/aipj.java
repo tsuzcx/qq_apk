@@ -1,46 +1,50 @@
+import android.os.Message;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic;
-import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.transfile.FileMsg;
+import com.tencent.mobileqq.transfile.ForwardImageProcessor;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
+import com.tencent.mobileqq.utils.FileUtils;
 
 public class aipj
-  extends TroopObserver
+  extends TransProcessorHandler
 {
-  public aipj(TroopCreateLogic paramTroopCreateLogic) {}
+  public aipj(ForwardImageProcessor paramForwardImageProcessor) {}
   
-  protected void a(int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    QLog.e("TroopCreateLogic", 1, "onTroopManagerFailed, result = " + paramInt2);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback != null)
+    int i = paramMessage.what;
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((i == 2002) || ((ForwardImageProcessor.a(this.a).equals(localFileMsg.p)) && (localFileMsg.b == 1) && (i != 2002)))
     {
-      if (paramInt1 == 8) {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback.b(paramInt2, "");
+      if ((localFileMsg.r == null) || (!localFileMsg.r.equals(ForwardImageProcessor.b(this.a)))) {
+        return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback = null;
-    }
-  }
-  
-  protected void a(int paramInt1, int paramInt2, String paramString)
-  {
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback != null)
-    {
-      if (paramInt1 == 8)
+      switch (i)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback.b(0, paramString);
-        this.a.a(paramString, true, "");
-        ((TroopHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).b(Long.parseLong(paramString));
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback = null;
+    }
+    for (;;)
+    {
+      super.handleMessage(paramMessage);
+      return;
+      ForwardImageProcessor.a(this.a);
+      continue;
+      if (FileUtils.b(ForwardImageProcessor.c(this.a)))
+      {
+        ForwardImageProcessor.a(this.a).a().b(this);
+        ForwardImageProcessor.b(this.a);
+      }
+      else
+      {
+        ForwardImageProcessor.a(this.a);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aipj
  * JD-Core Version:    0.7.0.1
  */

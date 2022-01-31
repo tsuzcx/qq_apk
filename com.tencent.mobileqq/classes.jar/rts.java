@@ -1,18 +1,41 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import android.view.View;
+import android.widget.FrameLayout;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.qphone.base.util.QLog;
 
-public final class rts
-  implements DialogInterface.OnClickListener
+public class rts
+  implements Runnable
 {
-  public rts(ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  public rts(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (this.a != null) {
-      this.a.a();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.msg.delmsg", 2, "hor anim onAnimationEnd() is called,time is:" + System.currentTimeMillis());
     }
-    paramDialogInterface.dismiss();
+    int i;
+    if (this.a.jdField_a_of_type_ArrayOfAndroidWidgetFrameLayout != null)
+    {
+      i = 0;
+      while (i < this.a.jdField_a_of_type_ArrayOfAndroidWidgetFrameLayout.length)
+      {
+        if (this.a.jdField_a_of_type_ArrayOfAndroidWidgetFrameLayout[i] != null) {
+          this.a.jdField_a_of_type_ArrayOfAndroidWidgetFrameLayout[i].setVisibility(8);
+        }
+        i += 1;
+      }
+    }
+    if (this.a.jdField_a_of_type_ArrayOfAndroidViewView != null)
+    {
+      i = 0;
+      while (i < this.a.jdField_a_of_type_ArrayOfAndroidViewView.length)
+      {
+        if (this.a.jdField_a_of_type_ArrayOfAndroidViewView[i] != null) {
+          this.a.jdField_a_of_type_ArrayOfAndroidViewView[i].setVisibility(0);
+        }
+        i += 1;
+      }
+    }
   }
 }
 

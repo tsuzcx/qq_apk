@@ -1,18 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class rip
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public rip(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public rip(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Card localCard = ((FriendsManager)this.a.app.getManager(50)).b(this.a.app.getCurrentAccountUin());
-    this.a.a.sendMessage(this.a.a.obtainMessage(2, Boolean.valueOf(localCard.medalSwitchDisable)));
+    this.a.a = null;
   }
 }
 

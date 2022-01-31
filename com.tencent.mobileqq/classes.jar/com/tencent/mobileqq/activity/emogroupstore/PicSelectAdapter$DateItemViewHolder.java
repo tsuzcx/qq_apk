@@ -12,7 +12,7 @@ public class PicSelectAdapter$DateItemViewHolder
   PicSelectAdapter$DateItemViewHolder(View paramView)
   {
     super(paramView);
-    this.a = ((TextView)paramView.findViewById(2131372143));
+    this.a = ((TextView)paramView.findViewById(2131372316));
   }
 }
 

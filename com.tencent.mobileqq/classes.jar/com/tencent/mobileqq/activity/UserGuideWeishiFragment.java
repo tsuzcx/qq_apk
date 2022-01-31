@@ -29,10 +29,10 @@ public class UserGuideWeishiFragment
     if (QLog.isColorLevel()) {
       QLog.d("UserGuideWeishiFragment", 2, "initUI has been called");
     }
-    this.b = paramView.findViewById(2131375231);
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131375229);
+    this.b = paramView.findViewById(2131375417);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131375415);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375230));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131375416));
     c();
   }
   
@@ -329,7 +329,7 @@ public class UserGuideWeishiFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130971662, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2130971710, null);
     a(paramLayoutInflater);
     return paramLayoutInflater;
   }

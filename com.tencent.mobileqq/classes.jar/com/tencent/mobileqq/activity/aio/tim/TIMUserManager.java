@@ -41,10 +41,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import vzb;
-import vzc;
-import vzd;
-import vzf;
+import wcg;
+import wch;
+import wci;
+import wck;
 
 public class TIMUserManager
 {
@@ -157,12 +157,12 @@ public class TIMUserManager
   
   public static void a(LinearLayout paramLinearLayout, XEditTextEx paramXEditTextEx, PanelIconLinearLayout paramPanelIconLinearLayout, PatchedButton paramPatchedButton)
   {
-    ThreadManager.post(new vzd(paramLinearLayout, paramXEditTextEx, paramPanelIconLinearLayout, paramPatchedButton), 8, null, true);
+    ThreadManager.post(new wci(paramLinearLayout, paramXEditTextEx, paramPanelIconLinearLayout, paramPatchedButton), 8, null, true);
   }
   
   public static void a(TextView paramTextView)
   {
-    ThreadManager.post(new vzf(paramTextView), 8, null, true);
+    ThreadManager.post(new wck(paramTextView), 8, null, true);
   }
   
   public static void a(SessionInfo paramSessionInfo, Context paramContext, TextView paramTextView1, TextView paramTextView2, TextView paramTextView3, ImageView paramImageView, TextView paramTextView4, LinearLayout paramLinearLayout, XEditTextEx paramXEditTextEx, PanelIconLinearLayout paramPanelIconLinearLayout, PatchedButton paramPatchedButton, ViewGroup paramViewGroup)
@@ -170,9 +170,9 @@ public class TIMUserManager
     if ((paramSessionInfo.jdField_b_of_type_Boolean) && (paramSessionInfo.e)) {
       if (paramSessionInfo.jdField_c_of_type_Boolean)
       {
-        paramTextView1.setTextColor(paramContext.getResources().getColor(2131494205));
-        paramTextView2.setTextColor(paramContext.getResources().getColor(2131494205));
-        paramTextView3.setTextColor(paramContext.getResources().getColor(2131494205));
+        paramTextView1.setTextColor(paramContext.getResources().getColor(2131494212));
+        paramTextView2.setTextColor(paramContext.getResources().getColor(2131494212));
+        paramTextView3.setTextColor(paramContext.getResources().getColor(2131494212));
         if (paramSessionInfo.jdField_c_of_type_Boolean) {
           break label110;
         }
@@ -191,25 +191,25 @@ public class TIMUserManager
         paramTextView1.setTextColor(-1);
         paramTextView2.setTextColor(-1);
         break;
-        paramLinearLayout.setBackgroundResource(2130845507);
-        paramPanelIconLinearLayout.setBackgroundResource(2130845549);
-        paramPatchedButton.setBackgroundResource(2130837749);
-        paramPatchedButton.setTextColor(paramContext.getResources().getColor(2131494201));
+        paramLinearLayout.setBackgroundResource(2130845635);
+        paramPanelIconLinearLayout.setBackgroundResource(2130845677);
+        paramPatchedButton.setBackgroundResource(2130837752);
+        paramPatchedButton.setTextColor(paramContext.getResources().getColor(2131494208));
       } while (paramXEditTextEx == null);
-      paramXEditTextEx.setBackgroundResource(2130845508);
-      paramXEditTextEx.setTextColor(paramContext.getResources().getColor(2131494275));
+      paramXEditTextEx.setBackgroundResource(2130845636);
+      paramXEditTextEx.setTextColor(paramContext.getResources().getColor(2131494282));
       return;
-      paramLinearLayout.setBackgroundResource(2130845507);
-      paramTextView1.setTextColor(paramContext.getResources().getColor(2131494205));
-      paramTextView2.setTextColor(paramContext.getResources().getColor(2131494205));
-      paramTextView3.setBackgroundResource(2130846136);
-      paramTextView3.setTextColor(paramContext.getResources().getColor(2131494205));
-      paramPanelIconLinearLayout.setBackgroundResource(2130845549);
-      paramPatchedButton.setBackgroundResource(2130837749);
-      paramPatchedButton.setTextColor(paramContext.getResources().getColor(2131494201));
+      paramLinearLayout.setBackgroundResource(2130845635);
+      paramTextView1.setTextColor(paramContext.getResources().getColor(2131494212));
+      paramTextView2.setTextColor(paramContext.getResources().getColor(2131494212));
+      paramTextView3.setBackgroundResource(2130846264);
+      paramTextView3.setTextColor(paramContext.getResources().getColor(2131494212));
+      paramPanelIconLinearLayout.setBackgroundResource(2130845677);
+      paramPatchedButton.setBackgroundResource(2130837752);
+      paramPatchedButton.setTextColor(paramContext.getResources().getColor(2131494208));
     } while (paramXEditTextEx == null);
-    paramXEditTextEx.setBackgroundResource(2130845508);
-    paramXEditTextEx.setTextColor(paramContext.getResources().getColor(2131494275));
+    paramXEditTextEx.setBackgroundResource(2130845636);
+    paramXEditTextEx.setTextColor(paramContext.getResources().getColor(2131494282));
   }
   
   private void a(QQAppInterface paramQQAppInterface)
@@ -433,7 +433,7 @@ public class TIMUserManager
     b();
     if (paramBoolean)
     {
-      ThreadManager.post(new vzb(this, paramString1, paramString2, paramQQAppInterface, paramBoolean), 8, null, true);
+      ThreadManager.post(new wcg(this, paramString1, paramString2, paramQQAppInterface, paramBoolean), 8, null, true);
       return;
     }
     if (a(paramString2))
@@ -442,7 +442,7 @@ public class TIMUserManager
       this.jdField_a_of_type_Int = 2;
       return;
     }
-    ThreadManager.post(new vzc(this, paramString1, paramString2, paramBoolean), 8, null, true);
+    ThreadManager.post(new wch(this, paramString1, paramString2, paramBoolean), 8, null, true);
   }
   
   public boolean a()

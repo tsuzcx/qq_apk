@@ -1,27 +1,45 @@
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryForTroopFragment;
-import com.tencent.mobileqq.activity.chathistory.TroopAIOImageGeter.LoadMediaDataCallBack;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.tips.TipsManager;
 
 public class wdj
-  implements TroopAIOImageGeter.LoadMediaDataCallBack
+  implements Animation.AnimationListener
 {
-  public wdj(ChatHistoryForTroopFragment paramChatHistoryForTroopFragment) {}
+  public wdj(TipsManager paramTipsManager) {}
   
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramArrayOfAIORichMediaData != null) && (paramArrayOfAIORichMediaData.length > 0))
+    try
     {
-      this.a.a = paramArrayOfAIORichMediaData[(paramArrayOfAIORichMediaData.length - 1)];
-      if (QLog.isColorLevel()) {
-        QLog.i("chatHistory.troop.portal", 2, "get the first media data");
+      if ((this.a.jdField_b_of_type_AndroidViewAnimationAnimation != null) && (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAnimation))
+      {
+        paramAnimation = AnimationUtils.loadAnimation(BaseApplicationImpl.getContext(), 2131034353);
+        paramAnimation.setInterpolator(new LinearInterpolator());
+        this.a.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363229));
+        this.a.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363230));
+        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
+        this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
+        this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
+        this.a.jdField_b_of_type_AndroidWidgetImageView.startAnimation(paramAnimation);
+        return;
+      }
+      if ((paramAnimation == this.a.c) && (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout != null) && (this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout) != -1))
+      {
+        this.a.jdField_b_of_type_AndroidWidgetRelativeLayout.removeView(this.a.jdField_a_of_type_AndroidWidgetRelativeLayout);
+        return;
       }
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.i("chatHistory.troop.portal", 2, "no media data found");
+    catch (Throwable paramAnimation) {}
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

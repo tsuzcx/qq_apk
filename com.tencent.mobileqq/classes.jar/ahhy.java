@@ -1,34 +1,40 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchManager;
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
-import java.util.List;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.richmedia.capture.fragment.BlessEffectsCameraCaptureFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahhy
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public ahhy(MessageSearchEngine paramMessageSearchEngine, ISearchListener paramISearchListener, SearchRequest paramSearchRequest) {}
+  public ahhy(BlessEffectsCameraCaptureFragment paramBlessEffectsCameraCaptureFragment) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ahhz localahhz = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null)
+    if ("tencent.video.q2v.startUploadPTV".equals(paramIntent.getAction())) {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOEffectsCameraCaptureFragment", 2, "receive ACTION_BLESS_UPLOAD_PTV.");
+      }
+    }
+    switch (paramIntent.getIntExtra("broadcastType", 1))
     {
-      localahhz = new ahhz(this);
-      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a.addObserver(localahhz);
+    default: 
+    case 1: 
+      do
+      {
+        return;
+        paramContext = this.a.getActivity();
+      } while ((paramContext == null) || (paramContext.isFinishing()));
+      paramContext.finish();
+      return;
     }
-    List localList = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest);
-    if (localahhz != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a.deleteObserver(localahhz);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
-    }
+    BlessEffectsCameraCaptureFragment.a(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahhy
  * JD-Core Version:    0.7.0.1
  */

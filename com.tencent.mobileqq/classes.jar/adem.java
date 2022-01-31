@@ -1,20 +1,16 @@
-import android.widget.ImageView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
-import com.tencent.mobileqq.freshnews.QQInputView;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.PreviewSimpleFilePresenter;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
 
 public class adem
-  implements Runnable
+  implements FileManagerUtil.TipsClickedInterface
 {
-  public adem(QQInputView paramQQInputView) {}
+  public adem(PreviewSimpleFilePresenter paramPreviewSimpleFilePresenter) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    QQInputView.a(this.a).setVisibility(0);
-    QQInputView.a(this.a).setImageResource(2130844422);
-    if (AppSetting.b) {
-      QQInputView.a(this.a).setContentDescription("表情");
-    }
+    this.a.a.g();
   }
 }
 

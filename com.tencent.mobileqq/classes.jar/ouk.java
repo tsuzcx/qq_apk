@@ -1,46 +1,15 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.intervideo.IVPluginEvtListener;
+import com.tencent.biz.qrcode.activity.QRLoginActivity;
+import com.tencent.mobileqq.util.FaceDrawable;
 
-public class ouk
-  implements IVPluginEvtListener
+class ouk
+  extends Thread
 {
-  public ouk(TroopMemberApiService paramTroopMemberApiService) {}
+  ouk(ouj paramouj, String paramString) {}
   
-  public void a(Activity paramActivity) {}
-  
-  public void a(String paramString) {}
-  
-  public void a(String paramString, int paramInt) {}
-  
-  public void a(String paramString1, int paramInt, String paramString2)
+  public void run()
   {
-    paramString1 = new Bundle();
-    paramString1.putInt("errCode", paramInt);
-    paramString1.putString("desc", paramString2);
-    paramString1.putInt("msg", 92);
-    this.a.a(92, paramString1);
-  }
-  
-  public void a(String paramString1, String paramString2, Bundle paramBundle) {}
-  
-  public void b(String paramString)
-  {
-    paramString = new Bundle();
-    paramString.putInt("state", 1);
-    paramString.putInt("msg", 91);
-    this.a.a(91, paramString);
-  }
-  
-  public void c(String paramString) {}
-  
-  public void d(String paramString)
-  {
-    paramString = new Bundle();
-    paramString.putInt("errCode", 0);
-    paramString.putInt("msg", 92);
-    this.a.a(92, paramString);
+    FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_Ouj.a.app, 1, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Ouj.a.runOnUiThread(new oul(this, localFaceDrawable));
   }
 }
 

@@ -1,72 +1,112 @@
-import android.content.Intent;
-import android.media.MediaPlayer;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.music.QQPlayerService;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotificationUtils;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.jsp.TroopApiPlugin;
 import com.tencent.qphone.base.util.QLog;
 
-public final class adwz
-  extends Handler
+public class adwz
+  extends TroopObserver
 {
-  public adwz(QQPlayerService paramQQPlayerService, Looper paramLooper)
+  public adwz(TroopApiPlugin paramTroopApiPlugin) {}
+  
+  protected void a(int paramInt1, int paramInt2)
   {
-    super(paramLooper);
+    if (this.a.jdField_a_of_type_Int == -1) {
+      return;
+    }
+    if (1 == paramInt1) {
+      TroopApiPlugin.a(this.a, 2131434466);
+    }
+    this.a.jdField_a_of_type_Int = -1;
   }
   
-  public void handleMessage(Message paramMessage)
+  protected void a(int paramInt1, int paramInt2, String paramString)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      QQPlayerService.a(this.a, (Intent)paramMessage.obj);
+    if (this.a.jdField_a_of_type_Int == -1) {
+      return;
+    }
+    if (1 == paramInt1) {
+      switch (paramInt2)
+      {
+      default: 
+        TroopApiPlugin.a(this.a, 2131434466);
+      }
     }
     for (;;)
     {
+      this.a.jdField_a_of_type_Int = -1;
       return;
-      try
+      if ((this.a.jdField_a_of_type_Int == 2) || (this.a.jdField_a_of_type_Int == 5))
       {
-        BaseApplicationImpl.getContext().unregisterReceiver(QQPlayerService.a(this.a));
-        paramMessage = (adwy)paramMessage.obj;
-        if (paramMessage == null) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("QQPlayerService", 2, "release player");
-        }
-        if (paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer != null)
-        {
-          paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer.release();
-          if (QQPlayerService.a() == paramMessage.jdField_a_of_type_AndroidMediaMediaPlayer) {
-            QQPlayerService.a(null);
-          }
-        }
-        if (paramMessage.jdField_a_of_type_AndroidOsLooper != null) {
-          paramMessage.jdField_a_of_type_AndroidOsLooper.quit();
-        }
-        if (QQPlayerService.b() != paramMessage.jdField_a_of_type_ComTencentMobileqqMusicSongInfo) {
-          continue;
-        }
-        QQPlayerService.a(null);
-        return;
+        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":1,\"message\":\"ok\"}" });
       }
-      catch (Exception localException)
+      else
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QQPlayerService", 2, "onDestroy unregisterReceiver exception ");
-          }
+        TroopApiPlugin.a(this.a, 2131434465, 2);
+        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0,\"message\":\"ok\"}" });
+        continue;
+        TroopApiPlugin.a(this.a, 2131434431);
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  {
+    if (this.a.b == 0) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopApiPlugin", 2, "AddTroop onOIDB0X88D_1_Ret success.");
+      }
+      paramLong = paramTroopInfo.troopPrivilegeFlag;
+      if ((0x80 & paramLong) != 0L)
+      {
+        paramInt1 = 1;
+        if ((paramLong & 0x200) == 0L) {
+          break label110;
         }
+        paramInt2 = 1;
+        label61:
+        paramString = TroopApiPlugin.a(this.a);
+        if ((paramInt1 == 0) || (paramInt2 == 0) || (paramString == null)) {
+          break label116;
+        }
+        TroopNotificationUtils.a(paramString, paramTroopInfo.troopuin);
+      }
+    }
+    for (;;)
+    {
+      this.a.b = 0;
+      return;
+      paramInt1 = 0;
+      break;
+      label110:
+      paramInt2 = 0;
+      break label61;
+      label116:
+      if (paramTroopInfo.cGroupOption == 1)
+      {
+        this.a.jdField_a_of_type_Int = paramTroopInfo.cGroupOption;
+        TroopApiPlugin.a(this.a, paramTroopInfo);
+      }
+      else
+      {
+        TroopApiPlugin.b(this.a, paramTroopInfo);
+        continue;
+        if (QLog.isColorLevel()) {
+          QLog.d("TroopApiPlugin", 2, "AddTroop onOIDB0X88D_1_Ret failed.");
+        }
+        this.a.callJs(this.a.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1,\"message\":\"request fail\"}" });
+        TroopApiPlugin.a(this.a, 2131434455);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adwz
  * JD-Core Version:    0.7.0.1
  */

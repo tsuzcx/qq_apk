@@ -4,14 +4,14 @@ import com.tencent.qphone.base.util.QLog;
 class ldd
   implements AsyncBack
 {
-  ldd(lda paramlda) {}
+  ldd(ldc paramldc) {}
   
   public void a(int paramInt) {}
   
   public void a(String paramString, int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2378 html web resource finish");
     }
   }
 }

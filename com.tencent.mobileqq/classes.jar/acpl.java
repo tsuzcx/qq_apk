@@ -1,41 +1,100 @@
-import android.os.Bundle;
+import android.content.Intent;
+import android.os.Parcelable;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import com.tencent.mobileqq.statistics.StatisticAssist;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileBaseExpandableListAdapter.CloudItemHolder;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.data.FMConfig;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
+import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
+import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter.fileAssistantReportData;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class acpl
-  implements Runnable
+  implements View.OnClickListener
 {
-  public acpl(UniformDownloadMgr paramUniformDownloadMgr, String paramString, Bundle paramBundle) {}
+  public acpl(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_JavaLangString == null) || (this.jdField_a_of_type_AndroidOsBundle == null))
-    {
-      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] onDownloadNotificationBeClean. param error!!");
-      return;
-    }
-    int i = this.jdField_a_of_type_AndroidOsBundle.getInt("_notify_param_Id");
-    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL] >>>onDownloadNotificationBeClean. URL:" + this.jdField_a_of_type_JavaLangString + " nofiyid:" + i);
-    acpy localacpy = UniformDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString);
-    if ((localacpy != null) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a != null))
-    {
-      if (localacpy.a != 1) {
-        break label175;
+    QfileCloudFileBaseExpandableListAdapter.CloudItemHolder localCloudItemHolder = (QfileCloudFileBaseExpandableListAdapter.CloudItemHolder)paramView.getTag();
+    Object localObject = (WeiYunFileInfo)localCloudItemHolder.a;
+    paramView = QfileBaseCloudFileTabView.c(this.a).a().c(((WeiYunFileInfo)localObject).jdField_a_of_type_JavaLangString);
+    if (paramView != null) {
+      if (localCloudItemHolder.c == 1)
+      {
+        this.a.a.a().ac();
+        if (!NetworkUtil.d(BaseApplication.getContext()))
+        {
+          FMToastUtil.a(2131428327);
+          return;
+        }
+        FileModel.a(paramView).a(false, this.a.a, new acpm(this, paramView));
       }
-      StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a.getCurrentAccountUin(), "Stop_download_2-1_3-0");
     }
     for (;;)
     {
-      UniformDownloadMgr.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString);
-      UniformDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.c(this.jdField_a_of_type_JavaLangString);
-      UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
+      this.a.i();
       return;
-      label175:
-      StatisticAssist.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a.getApplication().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr.a.getCurrentAccountUin(), "Stop_download_2-1_3-1");
+      if (localCloudItemHolder.c == 3)
+      {
+        this.a.a.a().ae();
+        if (!NetworkUtil.d(BaseApplication.getContext()))
+        {
+          FMToastUtil.a(2131428327);
+          return;
+        }
+        FileModel.a(paramView).a(false, this.a.a, new acpn(this, paramView));
+      }
+      else if (localCloudItemHolder.c == 0)
+      {
+        this.a.a.a().ab();
+        localObject = new FileManagerReporter.fileAssistantReportData();
+        ((FileManagerReporter.fileAssistantReportData)localObject).b = "file_viewer_in";
+        ((FileManagerReporter.fileAssistantReportData)localObject).jdField_a_of_type_Int = 73;
+        ((FileManagerReporter.fileAssistantReportData)localObject).c = FileUtil.a(paramView.fileName);
+        ((FileManagerReporter.fileAssistantReportData)localObject).jdField_a_of_type_Long = paramView.fileSize;
+        FileManagerReporter.a(QfileBaseCloudFileTabView.f(this.a).getCurrentAccountUin(), (FileManagerReporter.fileAssistantReportData)localObject);
+        localObject = new ForwardFileInfo();
+        ((ForwardFileInfo)localObject).d(paramView.getCloudType());
+        ((ForwardFileInfo)localObject).b(10001);
+        ((ForwardFileInfo)localObject).b(paramView.nSessionId);
+        ((ForwardFileInfo)localObject).c(paramView.uniseq);
+        ((ForwardFileInfo)localObject).d(paramView.fileName);
+        ((ForwardFileInfo)localObject).d(paramView.fileSize);
+        ((ForwardFileInfo)localObject).b(paramView.Uuid);
+        paramView = new Intent(QfileBaseCloudFileTabView.a(this.a), FileBrowserActivity.class);
+        paramView.putExtra("fileinfo", (Parcelable)localObject);
+        QfileBaseCloudFileTabView.b(this.a).startActivityForResult(paramView, 102);
+      }
+      else if (localCloudItemHolder.c == 2)
+      {
+        this.a.a.a().ad();
+        QfileBaseCloudFileTabView.g(this.a).a().a(paramView.nSessionId);
+        continue;
+        this.a.a.a().ac();
+        paramView = new acpo(this, (WeiYunFileInfo)localObject);
+        if ((((WeiYunFileInfo)localObject).jdField_a_of_type_Long > FMConfig.a()) && (FileManagerUtil.a())) {
+          FileManagerUtil.a(false, this.a.a, paramView);
+        } else {
+          paramView.a();
+        }
+      }
     }
   }
 }

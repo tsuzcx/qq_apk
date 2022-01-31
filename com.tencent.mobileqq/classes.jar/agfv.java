@@ -1,13 +1,20 @@
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public final class agfv
-  implements ActionSheet.OnDismissListener
+public class agfv
+  implements Runnable
 {
-  public void onDismiss() {}
+  public agfv(ScanTorchActivity paramScanTorchActivity) {}
+  
+  public void run()
+  {
+    ScanTorchActivity.l(this.a);
+    ScanTorchActivity.k(this.a);
+    ScanTorchActivity.a(this.a, null);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agfv
  * JD-Core Version:    0.7.0.1
  */

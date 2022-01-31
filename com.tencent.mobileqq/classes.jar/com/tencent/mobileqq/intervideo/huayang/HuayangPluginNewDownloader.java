@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.intervideo.huayang;
 
-import adkk;
-import adkl;
-import adkm;
+import aduj;
+import aduk;
+import adul;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Environment;
@@ -35,9 +35,9 @@ public class HuayangPluginNewDownloader
   private static HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
-  private adkm jdField_a_of_type_Adkm;
+  private adul jdField_a_of_type_Adul;
   private final Context jdField_a_of_type_AndroidContentContext;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new adkk(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aduj(this);
   private final Handler jdField_a_of_type_AndroidOsHandler;
   private final UpgradeablePluginManager jdField_a_of_type_ComTencentHydevteamPluginframeworkPluginmanagerUpgradeablePluginManager;
   public String a;
@@ -441,7 +441,7 @@ public class HuayangPluginNewDownloader
     if (Monitor.jdField_a_of_type_Boolean) {}
     for (String str = "huayang";; str = "group_video")
     {
-      StoryReportor.a(str, paramString1, paramInt1, paramInt2, new String[] { paramString2, paramString3, this.d + "_" + this.jdField_b_of_type_JavaLangString, "7.6.0" });
+      StoryReportor.a(str, paramString1, paramInt1, paramInt2, new String[] { paramString2, paramString3, this.d + "_" + this.jdField_b_of_type_JavaLangString, "7.6.3" });
       return;
     }
   }
@@ -526,9 +526,9 @@ public class HuayangPluginNewDownloader
     }
   }
   
-  public void a(adkm paramadkm)
+  public void a(adul paramadul)
   {
-    this.jdField_a_of_type_Adkm = paramadkm;
+    this.jdField_a_of_type_Adul = paramadul;
   }
   
   public void a(String paramString1, String paramString2, String paramString3, Map paramMap)
@@ -545,12 +545,12 @@ public class HuayangPluginNewDownloader
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.d = paramString1;
     this.jdField_a_of_type_Int = 0;
-    ThreadManager.postDownLoadTask(new adkl(this, paramString1), 8, null, false);
+    ThreadManager.postDownLoadTask(new aduk(this, paramString1), 8, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.HuayangPluginNewDownloader
  * JD-Core Version:    0.7.0.1
  */

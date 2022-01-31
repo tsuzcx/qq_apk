@@ -36,10 +36,10 @@ import java.util.Map;
 import java.util.Properties;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import paw;
-import pax;
-import pay;
-import paz;
+import pcq;
+import pcr;
+import pcs;
+import pct;
 
 public class QzoneWebViewOfflinePlugin
   extends WebViewPlugin
@@ -301,7 +301,7 @@ public class QzoneWebViewOfflinePlugin
           QLog.i("QzoneWebViewOfflinePlugin", 2, "QzoneData.ResourceIsCached url: " + str1 + ",dir " + str3 + ",callback: " + str4);
         }
         if (this.mRuntime != null) {}
-        for (paramVarArgs = this.mRuntime.a(); QzoneZipCacheHelper.checkAndDownLoadFileIfNeeded(paramVarArgs, str1, str2, str3, i, new pax(this, str2, str3, str4)); paramVarArgs = null)
+        for (paramVarArgs = this.mRuntime.a(); QzoneZipCacheHelper.checkAndDownLoadFileIfNeeded(paramVarArgs, str1, str2, str3, i, new pcr(this, str2, str3, str4)); paramVarArgs = null)
         {
           a(true, str2, str3, str4);
           return;
@@ -515,7 +515,7 @@ public class QzoneWebViewOfflinePlugin
       localCgiReqInfo.jdField_a_of_type_Int = ((int)(((JSONObject)localObject2).optDouble("timeout", 0.0D) * 1000.0D));
       localCgiReqInfo.jdField_a_of_type_JavaLangObject = ((JSONObject)localObject2).opt("userinfo");
       if (this.jdField_b_of_type_AndroidOsHandler == null) {
-        this.jdField_b_of_type_AndroidOsHandler = new pay(this, Looper.getMainLooper());
+        this.jdField_b_of_type_AndroidOsHandler = new pcs(this, Looper.getMainLooper());
       }
       if (WebSoCgiService.a().a(localCgiReqInfo, this.jdField_b_of_type_AndroidOsHandler)) {
         break;
@@ -552,7 +552,7 @@ public class QzoneWebViewOfflinePlugin
   protected boolean handleEvent(String paramString, long paramLong, Map paramMap)
   {
     if ((8589934594L == paramLong) || (8589934593L == paramLong)) {
-      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new paz(this, paramString, paramLong));
+      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new pct(this, paramString, paramLong));
     }
     return false;
   }
@@ -596,7 +596,7 @@ public class QzoneWebViewOfflinePlugin
           break label281;
         }
         if (this.jdField_a_of_type_AndroidOsHandler == null) {
-          this.jdField_a_of_type_AndroidOsHandler = new paw(this, Looper.getMainLooper());
+          this.jdField_a_of_type_AndroidOsHandler = new pcq(this, Looper.getMainLooper());
         }
         WebSoService.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsHandler);
       }

@@ -1,22 +1,16 @@
+import android.app.Dialog;
 import android.view.View;
-import android.widget.FrameLayout;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.qphone.base.util.QLog;
 
 public class rqr
-  implements Runnable
+  implements View.OnClickListener
 {
-  public rqr(BaseChatPie paramBaseChatPie, FrameLayout paramFrameLayout) {}
+  public rqr(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.delmsg", 2, "hor anim onAnimationEnd() is called,time is:" + System.currentTimeMillis());
-    }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.f != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.f.setVisibility(0);
-    }
+    this.a.c.cancel();
   }
 }
 

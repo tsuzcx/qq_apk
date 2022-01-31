@@ -1,44 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.config.ConfigInfo;
-import com.tencent.av.report.TraeConfigUpdate;
-import com.tencent.av.ui.ConfigInfoTips;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.utils.UITools;
+import java.lang.ref.WeakReference;
 
 public class jsl
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public jsl(ConfigInfoTips paramConfigInfoTips) {}
+  public jsl(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if (paramContext.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE"))
-    {
-      if (!ConfigInfoTips.a(this.a))
-      {
-        ConfigInfoTips.a(this.a, true);
-        if (ConfigInfoTips.b(this.a)) {
-          ConfigInfoTips.a(this.a);
-        }
-      }
-      paramContext = ConfigInfo.instance();
-      if (paramContext != null)
-      {
-        int i = paramContext.getSharpConfigVersionFromFile();
-        TraeConfigUpdate.a().a("update", i);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((!paramContext.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) || (ConfigInfoTips.b(this.a)));
-      ConfigInfoTips.b(this.a, true);
-      ConfigInfoTips.a(this.a, paramIntent.getIntExtra("version", 0));
-    } while (!ConfigInfoTips.a(this.a));
-    ConfigInfoTips.a(this.a);
+    UITools.a((AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
   }
 }
 

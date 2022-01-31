@@ -1,69 +1,53 @@
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.component.network.downloader.impl.ipc.Const;
-import com.tencent.component.network.downloader.impl.ipc.DownloadSerice;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import com.tencent.component.media.image.drawable.SliceBitmapDrawable;
+import com.tencent.component.media.image.drawable.SliceBitmapDrawable.SliceBitmap;
 
-public class pid
-  implements Downloader.DownloadListener
+public final class pid
+  extends Drawable.ConstantState
 {
-  public pid(DownloadSerice paramDownloadSerice, Messenger paramMessenger) {}
+  public int a;
+  public Paint a;
+  public SliceBitmapDrawable.SliceBitmap a;
+  public int b = 160;
   
-  public void onDownloadCanceled(String paramString)
+  public pid(Bitmap paramBitmap)
   {
-    paramString = Const.a(paramString);
-    try
-    {
-      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+    this.jdField_a_of_type_ComTencentComponentMediaImageDrawableSliceBitmapDrawable$SliceBitmap = new SliceBitmapDrawable.SliceBitmap(paramBitmap);
   }
   
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public pid(SliceBitmapDrawable.SliceBitmap paramSliceBitmap)
   {
-    paramString = Const.b(paramString, paramDownloadResult);
-    try
-    {
-      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+    this.jdField_a_of_type_ComTencentComponentMediaImageDrawableSliceBitmapDrawable$SliceBitmap = paramSliceBitmap;
   }
   
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
+  public pid(pid parampid)
   {
-    paramString = Const.a(paramString, paramLong, paramFloat);
-    try
-    {
-      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(6);
+    this.jdField_a_of_type_ComTencentComponentMediaImageDrawableSliceBitmapDrawable$SliceBitmap = parampid.jdField_a_of_type_ComTencentComponentMediaImageDrawableSliceBitmapDrawable$SliceBitmap;
+    this.jdField_a_of_type_Int = parampid.jdField_a_of_type_Int;
+    this.b = parampid.b;
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint(parampid.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
+  public int getChangingConfigurations()
   {
-    paramString = Const.a(paramString, paramDownloadResult);
-    try
-    {
-      this.jdField_a_of_type_AndroidOsMessenger.send(paramString);
-      return;
-    }
-    catch (RemoteException paramString)
-    {
-      paramString.printStackTrace();
-    }
+    return this.jdField_a_of_type_Int;
+  }
+  
+  public Drawable newDrawable()
+  {
+    return new SliceBitmapDrawable(this, null, null);
+  }
+  
+  public Drawable newDrawable(Resources paramResources)
+  {
+    return new SliceBitmapDrawable(this, paramResources, null);
   }
 }
 

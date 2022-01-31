@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.config;
 
-import aayj;
+import abfk;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -306,7 +306,7 @@ public class ConfigCheckHander
   
   public void b(boolean paramBoolean)
   {
-    ThreadManager.postImmediately(new aayj(this, paramBoolean), null, true);
+    ThreadManager.postImmediately(new abfk(this, paramBoolean), null, true);
   }
 }
 

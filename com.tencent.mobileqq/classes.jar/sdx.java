@@ -1,24 +1,30 @@
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.utils.DBUtils;
 import com.tencent.qphone.base.util.QLog;
 
-class sdx
+public class sdx
   implements Runnable
 {
-  sdx(sdv paramsdv, String paramString) {}
+  public sdx(ChatSettingForTroop paramChatSettingForTroop) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Sdv.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) {
-      this.jdField_a_of_type_Sdv.a.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a(this.jdField_a_of_type_JavaLangString, false);
-    }
-    if (this.jdField_a_of_type_Sdv.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager != null)
+    try
     {
-      this.jdField_a_of_type_Sdv.a.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a(this.jdField_a_of_type_JavaLangString);
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum = DBUtils.a(this.a.app.getCurrentAccountUin(), "troop_photo_message", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
       if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "Conversation onUpdateCustomHead uin = " + this.jdField_a_of_type_JavaLangString);
+        QLog.i("Q.chatopttroop", 2, "从群空间返回，更新群空间未读计数， troopuin = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin + ", unreadmsgnum = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum + ", newphotonum = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nNewPhotoNum);
       }
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.i("Q.chatopttroop", 2, localException.toString());
     }
   }
 }

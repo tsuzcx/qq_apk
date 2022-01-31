@@ -11,11 +11,11 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
-import yme;
-import ymf;
-import ymg;
-import ymh;
-import ymi;
+import ypk;
+import ypl;
+import ypm;
+import ypn;
+import ypo;
 
 public class ApolloGameStateMachine
   extends Observable
@@ -25,8 +25,8 @@ public class ApolloGameStateMachine
   public static final HashMap a;
   public static AtomicBoolean a;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable = new yme(this);
-  private Observer jdField_a_of_type_JavaUtilObserver = new ymf(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new ypk(this);
+  private Observer jdField_a_of_type_JavaUtilObserver = new ypl(this);
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   private AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong();
@@ -151,9 +151,9 @@ public class ApolloGameStateMachine
   
   protected void b()
   {
-    a(1, new ymg(this));
-    a(5, new ymh(this));
-    a(6, new ymi(this));
+    a(1, new ypm(this));
+    a(5, new ypn(this));
+    a(6, new ypo(this));
   }
   
   public void c()

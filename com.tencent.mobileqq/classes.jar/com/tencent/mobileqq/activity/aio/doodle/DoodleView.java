@@ -8,14 +8,14 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import java.util.List;
-import upe;
-import upf;
+import usg;
+import ush;
 
 public class DoodleView
   extends View
 {
   private LineLayer jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer;
-  private upf jdField_a_of_type_Upf;
+  private ush jdField_a_of_type_Ush;
   
   public DoodleView(Context paramContext, AttributeSet paramAttributeSet)
   {
@@ -26,7 +26,7 @@ public class DoodleView
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer = new LineLayer(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a(new upe(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a(new usg(this));
     this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a(LineLayer.a);
     super.requestLayout();
   }
@@ -101,12 +101,12 @@ public class DoodleView
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer != null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLineLayer.a();
     }
-    this.jdField_a_of_type_Upf = null;
+    this.jdField_a_of_type_Ush = null;
   }
   
-  public void a(upf paramupf)
+  public void a(ush paramush)
   {
-    this.jdField_a_of_type_Upf = paramupf;
+    this.jdField_a_of_type_Ush = paramush;
     c();
   }
   

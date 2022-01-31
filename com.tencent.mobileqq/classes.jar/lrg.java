@@ -1,14 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.readinjoy.model.FollowCoverInfoModule;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class lrg
   implements Runnable
 {
-  public lrg(InterestLabelInfoModule paramInterestLabelInfoModule, int paramInt) {}
+  public lrg(FollowCoverInfoModule paramFollowCoverInfoModule) {}
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Int);
+    Object localObject = ReadInJoyHelper.a(FollowCoverInfoModule.a(this.a), true, false);
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      if (localObject != null)
+      {
+        ((SharedPreferences.Editor)localObject).remove("follow_tab_topic_update_info_exposure");
+        ReadInJoyHelper.a((SharedPreferences.Editor)localObject, true);
+      }
+    }
   }
 }
 

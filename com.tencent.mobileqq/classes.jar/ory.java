@@ -1,37 +1,17 @@
-import android.os.CountDownTimer;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
 public class ory
-  extends CountDownTimer
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public ory(QRDisplayActivity paramQRDisplayActivity, long paramLong1, long paramLong2)
-  {
-    super(paramLong1, paramLong2);
-  }
+  public ory(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public void onFinish()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    QRDisplayActivity.a(this.a, true);
-    if (QRDisplayActivity.a(this.a) == null)
-    {
-      QRDisplayActivity.b(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("QRDisplayActivity", 4, "enter longclick");
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (QRDisplayActivity.a(this.a) == null);
-      QRDisplayActivity.c(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("QRDisplayActivity", 4, "enter longclickstop");
+    RotateCircleImageView.c(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
-  
-  public void onTick(long paramLong) {}
 }
 
 

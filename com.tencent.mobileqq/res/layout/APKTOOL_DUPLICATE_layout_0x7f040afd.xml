@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ProgressBar android:layout_gravity="center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1243" android:visibility="gone" android:layout_width="18.0dip" android:layout_height="18.0dip" android:indeterminate="true" />
-    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d077b" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c03f6" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1244" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正在加载评论..." android:singleLine="true" />
-    <com.qzone.proxy.feedcomponent.widget.SafeTextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d077b" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c03f2" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3182" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正在加载评论..." android:singleLine="true" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3030" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="250.0dip" android:layout_marginTop="0.0dip">
+            <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1334" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        </FrameLayout>
+        <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2de8" android:background="@null" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0034" android:layout_alignParentTop="true">
+            <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b37" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0033" />
+            <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b38" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021e27" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0035" />
+            <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2b39" android:background="@null" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0032" layout="@layout/qzone_custom_commen_title" />
+        </FrameLayout>
+        <com.qzone.widget.AsyncImageView android:layout_gravity="bottom|center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31bb" android:visibility="gone" android:layout_width="50.0dip" android:layout_height="50.0dip" />
+    </FrameLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31bc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="18.0dip" android:layout_marginBottom="13.0dip">
+            <TextView android:textSize="18.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31bd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginRight="9.0dip" android:text="视频背景" />
+            <TextView android:textSize="10.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:gravity="center" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31be" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021b41" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="动态" android:singleLine="true" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a31bc" />
+        </LinearLayout>
+        <CheckBox android:textSize="13.0sp" android:textColor="#ff808080" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31bf" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:checked="false" android:button="@null" android:text="分享到好友动态" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021db5" android:drawablePadding="5.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a31bc" android:layout_alignParentLeft="true" />
+        <Button android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0535" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31c0" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021db6" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_margin="15.0dip" android:text="使用" android:layout_alignParentBottom="true" />
+        <RelativeLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31c1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021dee" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_margin="15.0dip" android:layout_alignParentBottom="true">
+            <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31c2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ed6" />
+                <TextView android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0142" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2be2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="开通黄钻" />
+            </LinearLayout>
+        </RelativeLayout>
+    </RelativeLayout>
 </LinearLayout>

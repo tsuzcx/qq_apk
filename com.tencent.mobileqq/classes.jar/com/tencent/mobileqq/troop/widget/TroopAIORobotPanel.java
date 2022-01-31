@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajev;
-import ajew;
-import ajex;
+import ajsz;
+import ajta;
+import ajtb;
 import android.content.Context;
 import android.content.Intent;
 import android.text.Editable;
@@ -109,7 +109,7 @@ public class TroopAIORobotPanel
       localObject1 = localObject2;
       try
       {
-        localTroopRobotManager.b(Long.parseLong(this.jdField_a_of_type_JavaLangString), localObject3, new ajew(this, localRobotPanelItemData));
+        localTroopRobotManager.b(Long.parseLong(this.jdField_a_of_type_JavaLangString), localObject3, new ajta(this, localRobotPanelItemData));
         this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotPanel$DataListAdapter.a(paramView, paramInt1, paramInt2);
         paramView = (View)localObject1;
         if (QLog.isColorLevel())
@@ -173,7 +173,7 @@ public class TroopAIORobotPanel
               this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.getText().length());
               this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildBaseTroopChatPie.a(this.b, this.c, true, 0);
             }
-            localTroopRobotManager.a(l, paramView, new ajex(this, localRobotPanelItemData));
+            localTroopRobotManager.a(l, paramView, new ajtb(this, localRobotPanelItemData));
           }
           catch (Exception paramView)
           {
@@ -223,7 +223,7 @@ public class TroopAIORobotPanel
     {
       l = Long.parseLong(paramString1);
       int i = SharedPreUtils.aK(getContext(), paramString1 + "_" + paramString2);
-      paramBaseTroopChatPie.a(l, i, new ajev(this, i, paramString2, paramString1, paramString3, paramGetListDataCallback));
+      paramBaseTroopChatPie.a(l, i, new ajsz(this, i, paramString2, paramString1, paramString3, paramGetListDataCallback));
       return;
     }
     catch (Exception localException)
@@ -242,7 +242,7 @@ public class TroopAIORobotPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopAIORobotPanel
  * JD-Core Version:    0.7.0.1
  */

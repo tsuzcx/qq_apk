@@ -1,26 +1,13 @@
-import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.AnimationEndListener;
-import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
 
 public class via
-  implements CustomFrameAnimationDrawable.AnimationEndListener
+  implements DialogInterface.OnClickListener
 {
-  public via(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
+  public via(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void a()
-  {
-    UnlimitedBladeWorks.a(this.a).b = true;
-    UnlimitedBladeWorks.a(this.a).a = false;
-    if (UnlimitedBladeWorks.a(this.a) != null)
-    {
-      UnlimitedBladeWorks.a(this.a).a();
-      if (UnlimitedBladeWorks.b(this.a))
-      {
-        HapticManager.a().c(UnlimitedBladeWorks.a(this.a));
-        UnlimitedBladeWorks.a(this.a, 0);
-      }
-    }
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

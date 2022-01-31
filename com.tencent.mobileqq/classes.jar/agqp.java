@@ -1,31 +1,25 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment;
-import com.tencent.mobileqq.receipt.ReceiptMsgManager;
-import java.util.ArrayList;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.profile.view.BreatheEffectView;
+import com.tencent.mobileqq.profile.view.BreatheEffectView.BreatheListener;
 
 public class agqp
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public agqp(ReceiptMessageReadMemberListContainerFragment paramReceiptMessageReadMemberListContainerFragment) {}
+  public agqp(BreatheEffectView paramBreatheEffectView, BreatheEffectView.BreatheListener paramBreatheListener) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    MessageRecord localMessageRecord = ReceiptMessageReadMemberListContainerFragment.a(this.a).a().b(ReceiptMessageReadMemberListContainerFragment.a(this.a).jdField_a_of_type_JavaLangString, ReceiptMessageReadMemberListContainerFragment.a(this.a).jdField_a_of_type_Int, ReceiptMessageReadMemberListContainerFragment.c(this.a));
-    if (ReceiptMessageReadMemberListContainerFragment.a(this.a).size() == 0) {
-      ReceiptMsgManager.a(ReceiptMessageReadMemberListContainerFragment.a(this.a), localMessageRecord, "3");
-    }
-    while (ReceiptMessageReadMemberListContainerFragment.b(this.a).size() <= 0) {
-      return;
-    }
-    ReceiptMsgManager.a(ReceiptMessageReadMemberListContainerFragment.a(this.a), localMessageRecord, "4");
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewBreatheEffectView$BreatheListener.a();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agqp
  * JD-Core Version:    0.7.0.1
  */

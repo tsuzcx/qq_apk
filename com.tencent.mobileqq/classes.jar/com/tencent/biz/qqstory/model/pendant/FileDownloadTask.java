@@ -5,7 +5,7 @@ import com.tencent.biz.qqstory.base.download.Downloader;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.utils.FileUtils;
 import java.io.File;
-import nco;
+import ndz;
 
 public class FileDownloadTask
   extends AsyncTask
@@ -217,7 +217,7 @@ public class FileDownloadTask
       a("already has local file, don't need download");
       return new FileDownloadTask.Output(paramVarArgs, 0, "has local file already");
     }
-    this.a.a(new nco(this, paramVarArgs));
+    this.a.a(new ndz(this, paramVarArgs));
     int i = this.a.a(paramVarArgs.a, paramVarArgs.b, 0L);
     a("download finish : " + i);
     if ((i == 0) && (!a(paramVarArgs.b, paramVarArgs.c)))

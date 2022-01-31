@@ -1,24 +1,18 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
 
 public class yqg
-  implements Animator.AnimatorListener
+  implements Runnable
 {
-  public yqg(ApolloGuestsStateActivity paramApolloGuestsStateActivity) {}
+  public yqg(CmGameAvHandler paramCmGameAvHandler, String paramString, long paramLong) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    ThreadManager.getUIHandler().postDelayed(new yqh(this), 200L);
+    AVEngineWalper.a().b(this.jdField_a_of_type_JavaLangString);
+    CmGameUtil.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, "cs.audioRoom_change_qav_role.local", "{}");
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

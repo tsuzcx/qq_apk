@@ -1,31 +1,47 @@
-import android.app.Activity;
-import android.view.Display;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.WindowManager;
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager;
-import com.tencent.smtt.sdk.TbsReaderView;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Set;
 
 class acrw
-  implements View.OnClickListener
+  implements Runnable
 {
-  acrw(acrv paramacrv, int paramInt) {}
+  acrw(acrv paramacrv, ArrayList paramArrayList, HashMap paramHashMap1, HashMap paramHashMap2, LinkedHashMap paramLinkedHashMap) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.jdField_a_of_type_Int == 5018)
-    {
-      paramView = this.jdField_a_of_type_Acrv.jdField_a_of_type_AndroidAppActivity.getWindowManager().getDefaultDisplay();
-      if (paramView.getWidth() > paramView.getHeight()) {}
-      for (int i = 0; i != 0; i = 1)
-      {
-        this.jdField_a_of_type_Acrv.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(0);
-        return;
-      }
-      this.jdField_a_of_type_Acrv.jdField_a_of_type_AndroidAppActivity.setRequestedOrientation(1);
-      return;
+    this.jdField_a_of_type_Acrv.a.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Acrv.a.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+    this.jdField_a_of_type_Acrv.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    if ((QfileLocalFileMediaTabView.a(this.jdField_a_of_type_Acrv.a) & 0x2) > 0) {
+      this.jdField_a_of_type_Acrv.a.jdField_a_of_type_JavaUtilLinkedHashMap.put("Camera", new ArrayList());
     }
-    LocalTbsViewManager.a(this.jdField_a_of_type_Acrv.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileViewLocalTbsViewManager).doCommand(Integer.valueOf(this.jdField_a_of_type_Int), null, null);
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
+    String str;
+    while (localIterator.hasNext())
+    {
+      str = (String)localIterator.next();
+      if (!this.jdField_a_of_type_Acrv.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey("已下载的视频")) {
+        this.jdField_a_of_type_Acrv.a.jdField_a_of_type_JavaUtilLinkedHashMap.put("已下载的视频", new ArrayList());
+      }
+      ((List)this.jdField_a_of_type_Acrv.a.jdField_a_of_type_JavaUtilLinkedHashMap.get("已下载的视频")).addAll((Collection)this.jdField_a_of_type_JavaUtilHashMap.get(str));
+    }
+    localIterator = this.b.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      str = (String)localIterator.next();
+      if (!this.jdField_a_of_type_Acrv.a.jdField_a_of_type_JavaUtilLinkedHashMap.containsKey("已下载的音乐")) {
+        this.jdField_a_of_type_Acrv.a.jdField_a_of_type_JavaUtilLinkedHashMap.put("已下载的音乐", new ArrayList());
+      }
+      ((List)this.jdField_a_of_type_Acrv.a.jdField_a_of_type_JavaUtilLinkedHashMap.get("已下载的音乐")).addAll((Collection)this.b.get(str));
+    }
+    this.jdField_a_of_type_Acrv.a.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
+    this.jdField_a_of_type_Acrv.a.i();
+    this.jdField_a_of_type_Acrv.a.setSelect(0);
   }
 }
 

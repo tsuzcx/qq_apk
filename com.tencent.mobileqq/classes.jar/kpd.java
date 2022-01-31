@@ -1,17 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class kpd
-  implements View.OnClickListener
+  implements Runnable
 {
-  public kpd(EqqAccountDetailActivity paramEqqAccountDetailActivity, PaConfigAttr.PaConfigInfo paramPaConfigInfo) {}
+  public kpd(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a = this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo.d;
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a);
+    int i = 1;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "updateFollowInfo");
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail != null)
+    {
+      this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+      EqqAccountDetailActivity.b(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+      this.a.d();
+      EnterpriseQQManager.a(EqqAccountDetailActivity.g(this.a)).a(EqqAccountDetailActivity.f(this.a), this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.uin, true);
+      if (EqqAccountDetailActivity.a(this.a) != null) {
+        break label130;
+      }
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        EqqAccountDetailActivity.b(this.a, new kpe(this));
+      }
+      return;
+      label130:
+      i = 0;
+    }
   }
 }
 

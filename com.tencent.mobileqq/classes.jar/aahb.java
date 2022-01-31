@@ -1,18 +1,16 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.qphone.base.util.QLog;
 
-class aahb
+public class aahb
   implements Runnable
 {
-  aahb(aaha paramaaha) {}
+  public aahb(AREngine paramAREngine) {}
   
   public void run()
   {
-    ArkAppDeviceModule.a(this.a.a.jdField_a_of_type_Aagv.a, this.a.a.jdField_a_of_type_Long, false, 0.0D, 0.0D);
-    ark.VariantWrapper localVariantWrapper = this.a.a.jdField_a_of_type_Aagv.a.a(this.a.a.jdField_a_of_type_Long);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
-    }
+    this.a.j();
+    AREngine.b(this.a, 0);
+    QLog.i("AREngine_AREngine", 1, "stop end. mCurEngineState = " + AREngine.e(this.a));
   }
 }
 

@@ -21,8 +21,8 @@ import cooperation.smartdevice.SmartDevicePluginProxyActivity;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.app.AppRuntime;
-import pub;
-import puc;
+import pvv;
+import pvw;
 
 public class DevicePluginDownloadActivity
   extends IphoneTitleBarActivity
@@ -98,7 +98,7 @@ public class DevicePluginDownloadActivity
       if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra(jdField_a_of_type_JavaLangString, -1) == 0)
       {
         if (!QZoneShareManager.a((AppInterface)super.getAppRuntime(), this, this.jdField_a_of_type_AndroidContentIntent.getBundleExtra("data"), null)) {
-          QRUtils.a(1, 2131435463);
+          QRUtils.a(1, 2131435480);
         }
         super.finish();
         return true;
@@ -122,7 +122,7 @@ public class DevicePluginDownloadActivity
       super.setContentView(2130968914);
       super.setTitle(2131427531);
       SmartDevicePluginLoader.a().addObserver(this);
-      this.leftView.setText(2131432397);
+      this.leftView.setText(2131432414);
     } while (SmartDevicePluginLoader.a().a(this.app));
     SmartDevicePluginLoader.a().a();
     return true;
@@ -145,8 +145,8 @@ public class DevicePluginDownloadActivity
       if (paramObservable.intValue() != 0)
       {
         paramObservable = DialogUtil.a(this, 230);
-        paramObservable.setNegativeButton(2131432998, new pub(this));
-        paramObservable.setPositiveButton(2131427788, new puc(this));
+        paramObservable.setNegativeButton(2131433015, new pvv(this));
+        paramObservable.setPositiveButton(2131427788, new pvw(this));
         paramObservable.setTitle(2131427791);
         paramObservable.setMessage(2131427792);
         paramObservable.show();

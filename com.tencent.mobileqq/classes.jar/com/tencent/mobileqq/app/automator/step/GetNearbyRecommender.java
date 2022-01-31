@@ -15,12 +15,12 @@ import com.tencent.mobileqq.nearby.NearbySPUtil;
 import com.tencent.mobileqq.nearpeople.NearbyRecommender.NearbyRecommenderUtils;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
-import zns;
+import zqy;
 
 public class GetNearbyRecommender
   extends AsyncStep
 {
-  private zns a;
+  private zqy a;
   
   protected int a()
   {
@@ -33,10 +33,10 @@ public class GetNearbyRecommender
     int i = 0;
     if (localObject1 == null)
     {
-      if (this.jdField_a_of_type_Zns == null) {
-        this.jdField_a_of_type_Zns = new zns(this);
+      if (this.jdField_a_of_type_Zqy == null) {
+        this.jdField_a_of_type_Zqy = new zqy(this);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.addObserver(this.jdField_a_of_type_Zns, true);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.addObserver(this.jdField_a_of_type_Zqy, true);
       if (QLog.isColorLevel()) {
         QLog.d("QQInitHandler", 2, "GetNearbyRecommender doStep|RESULT_WAITING");
       }
@@ -163,10 +163,10 @@ public class GetNearbyRecommender
   
   public void c()
   {
-    if (this.jdField_a_of_type_Zns != null)
+    if (this.jdField_a_of_type_Zqy != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.removeObserver(this.jdField_a_of_type_Zns);
-      this.jdField_a_of_type_Zns = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.removeObserver(this.jdField_a_of_type_Zqy);
+      this.jdField_a_of_type_Zqy = null;
     }
   }
 }

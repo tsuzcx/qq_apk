@@ -1,21 +1,25 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterChooseLoginActivity;
-import mqq.os.MqqHandler;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.QQSettingMe;
 
-public class tmh
-  extends MqqHandler
+class tmh
+  implements Animator.AnimatorListener
 {
-  public tmh(RegisterChooseLoginActivity paramRegisterChooseLoginActivity) {}
+  tmh(tmg paramtmg) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
+    if (QQSettingMe.a(this.a.a) != null) {
+      QQSettingMe.a(this.a.a).setVisibility(4);
     }
-    this.a.finish();
   }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

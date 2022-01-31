@@ -1,19 +1,20 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel.GetListDataCallback;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
+import com.tencent.mobileqq.data.PublicAccountInfo;
 
 public class vxz
-  implements TroopAIORobotPanel.GetListDataCallback
+  implements DialogInterface.OnClickListener
 {
-  public vxz(TroopChatPie paramTroopChatPie) {}
+  public vxz(PublicAccountChatPie paramPublicAccountChatPie, PublicAccountInfo paramPublicAccountInfo, PublicAccountDataManager paramPublicAccountDataManager) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramBoolean) && (this.a.f.equals(paramString)))
-    {
-      TroopChatPie.a(this.a, true);
-      return;
-    }
-    TroopChatPie.a(this.a, false);
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsAgreeSyncLbs = false;
+    this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.mIsSyncLbsSelected = true;
+    this.jdField_a_of_type_ComTencentMobileqqAppPublicAccountDataManager.a(this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.a(2, null);
   }
 }
 

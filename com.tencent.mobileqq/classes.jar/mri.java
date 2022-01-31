@@ -1,40 +1,56 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
+import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import java.util.Iterator;
+import java.util.List;
 
 public class mri
-  extends SubscriptObserver
+  implements Runnable
 {
-  public mri(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public mri(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity, String paramString) {}
   
-  protected void a(boolean paramBoolean, ArrayList paramArrayList)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList isSuccess: " + paramBoolean + " | data: " + paramArrayList);
-    }
-    if (!paramBoolean) {}
-    do
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySearchReadInJoyNewSearchActivity.app.getEntityManagerFactory().createEntityManager();
+    List localList = localEntityManager.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
+    ReadInJoySearchHistoryEntity localReadInJoySearchHistoryEntity;
+    if (localList != null)
     {
-      do
+      Iterator localIterator = localList.iterator();
+      while (localIterator.hasNext())
       {
-        return;
-        if ((paramArrayList != null) && (paramArrayList.size() == 4)) {
-          break;
+        localReadInJoySearchHistoryEntity = (ReadInJoySearchHistoryEntity)localIterator.next();
+        if (localReadInJoySearchHistoryEntity.keyWord.equals(this.jdField_a_of_type_JavaLangString)) {
+          localEntityManager.b(localReadInJoySearchHistoryEntity);
         }
-      } while (!QLog.isColorLevel());
-      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList data is null or small than 4");
-      return;
-    } while (this.a.a == null);
-    Message localMessage = new Message();
-    localMessage.what = 1003;
-    Bundle localBundle = new Bundle();
-    localBundle.putSerializable("ReadInJoyArticleList", paramArrayList);
-    localMessage.setData(localBundle);
-    this.a.a.removeMessages(1003);
+      }
+    }
+    for (;;)
+    {
+      if (localReadInJoySearchHistoryEntity != null) {
+        localList.remove(localReadInJoySearchHistoryEntity);
+      }
+      if (localList.size() == 20)
+      {
+        localEntityManager.b((Entity)localList.get(localList.size() - 1));
+        localList.remove(localList.size() - 1);
+      }
+      for (;;)
+      {
+        localReadInJoySearchHistoryEntity = new ReadInJoySearchHistoryEntity();
+        localReadInJoySearchHistoryEntity.keyWord = this.jdField_a_of_type_JavaLangString;
+        localReadInJoySearchHistoryEntity.timestamp = System.currentTimeMillis();
+        localEntityManager.a(localReadInJoySearchHistoryEntity);
+        localEntityManager.a();
+        return;
+        new ArrayList();
+      }
+      localReadInJoySearchHistoryEntity = null;
+    }
   }
 }
 

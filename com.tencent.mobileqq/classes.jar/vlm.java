@@ -1,214 +1,61 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService.AIOImageProviderListener;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack;
+import android.content.Context;
+import android.view.View;
+import com.tencent.av.utils.VideoActionSheet;
+import com.tencent.av.utils.VideoMsgTools;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.item.VideoItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.MsgProxy;
-import com.tencent.mobileqq.app.message.MultiMsgProxy;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
-import mqq.app.AccountNotMatchException;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr.SelfGagInfo;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QAVGroupConfig.Report;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class vlm
-  implements Runnable
+public final class vlm
+  implements ActionSheet.OnButtonClickListener
 {
-  public vlm(AIOImageProviderService paramAIOImageProviderService) {}
+  public vlm(VideoActionSheet paramVideoActionSheet, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString, Context paramContext, boolean paramBoolean, int paramInt1, int paramInt2) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject7;
-    ArrayList localArrayList1;
-    Object localObject8;
-    for (;;)
+    this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
+    int i;
+    if ((paramInt == 0) || (paramInt == 1))
     {
-      try
-      {
-        this.a.jdField_c_of_type_Boolean = true;
-        if (this.a.jdField_d_of_type_Int < 60)
-        {
-          this.a.jdField_c_of_type_Boolean = false;
-          this.a.b();
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOImageProviderService", 2, "[IncreasinglyLoadTask] start");
-        }
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack == null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService$AIOImageProviderListener == null))
-        {
-          this.a.jdField_c_of_type_Boolean = false;
-          this.a.b();
-          return;
-        }
-        l = System.currentTimeMillis();
-        localObject7 = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.a.jdField_a_of_type_JavaLangString);
-        localArrayList2 = new ArrayList();
-        localArrayList1 = new ArrayList();
-        if (this.a.jdField_a_of_type_Boolean) {
-          continue;
-        }
-        if (this.a.jdField_b_of_type_JavaLangString == null)
-        {
-          this.a.jdField_c_of_type_Boolean = false;
-          this.a.b();
-          return;
-        }
-        localObject8 = new int[7];
-        Object tmp194_192 = localObject8;
-        tmp194_192[0] = -20000;
-        Object tmp200_194 = tmp194_192;
-        tmp200_194[1] = -2000;
-        Object tmp206_200 = tmp200_194;
-        tmp206_200[2] = -1035;
-        Object tmp212_206 = tmp206_200;
-        tmp212_206[3] = -2011;
-        Object tmp218_212 = tmp212_206;
-        tmp218_212[4] = -2022;
-        Object tmp224_218 = tmp218_212;
-        tmp224_218[5] = -2005;
-        Object tmp230_224 = tmp224_218;
-        tmp230_224[6] = -2017;
-        tmp230_224;
-        if (this.a.jdField_b_of_type_Boolean) {
-          continue;
-        }
-        localObject6 = ((QQAppInterface)localObject7).a(this.a.jdField_a_of_type_Int).a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, (int[])localObject8);
-        localObject1 = localObject6;
-        if (((List)localObject6).size() < 60)
-        {
-          localObject1 = ((QQAppInterface)localObject7).a().a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, (int[])localObject8, 60);
-          this.a.jdField_d_of_type_Int = ((List)localObject1).size();
-        }
-      }
-      catch (AccountNotMatchException localAccountNotMatchException)
-      {
-        long l;
-        ArrayList localArrayList2;
-        Object localObject6;
-        Object localObject1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("AIOImageProviderService", 2, "no appRuntime");
-        return;
-        localObject2 = ((QQAppInterface)localObject7).a().a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Long, this.a.jdField_c_of_type_Int, this.a.jdField_d_of_type_Long, (int[])localObject8, 60);
-        continue;
-        if ((((QQAppInterface)localObject7).a() != null) && (!this.a.jdField_b_of_type_Boolean)) {
-          continue;
-        }
-        this.a.jdField_c_of_type_Boolean = false;
-        this.a.b();
-        return;
-        localObject2 = ((QQAppInterface)localObject7).a().a(this.a.jdField_a_of_type_Long);
-        continue;
-        localArrayList2.addAll(0, (Collection)localObject2);
-        localArrayList1.addAll(0, AIOImageProviderService.a(this.a, (QQAppInterface)localObject7, (List)localObject2));
-        continue;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        label513:
-        label581:
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("AIOImageProviderService", 2, "out of memory", localOutOfMemoryError);
-        return;
-        localList = this.a.jdField_b_of_type_JavaUtilList;
-        continue;
-        localObject8 = this.a.jdField_b_of_type_JavaUtilList;
-        i = 0;
-        try
-        {
-          if (i >= localList.size()) {
-            break label1084;
-          }
-          localAIORichMediaData = (AIORichMediaData)localList.get(i);
-          if (this.a.a(localAIORichMediaData)) {
-            break label1129;
-          }
-          ((List)localObject7).add(localAIORichMediaData);
-        }
-        finally {}
-      }
-      finally
-      {
-        this.a.jdField_c_of_type_Boolean = false;
-      }
-      if (this.a.jdField_b_of_type_Boolean) {
-        continue;
-      }
-      localArrayList2.addAll((Collection)localObject1);
-      localArrayList1.addAll(AIOImageProviderService.a(this.a, (QQAppInterface)localObject7, (List)localObject1));
-      this.a.jdField_b_of_type_Boolean = true;
-      if ((this.a.jdField_a_of_type_Boolean) || (localArrayList1.size() >= 30) || (this.a.jdField_d_of_type_Int < 60))
-      {
-        if (localArrayList1.size() <= 0) {
-          break label1112;
-        }
-        localObject6 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
-        if (localObject6 != null)
-        {
-          localObject7 = new ArrayList();
-          if (this.a.jdField_a_of_type_Int == 1) {
-            break label1122;
-          }
-          if (this.a.jdField_a_of_type_Int != 1026) {
-            continue;
-          }
-          break label1122;
-          if (this.a.jdField_a_of_type_Int != 1) {
-            continue;
-          }
-          localObject1 = (AIORichMediaData[])((List)localObject1).toArray(new AIORichMediaData[((List)localObject1).size()]);
-          if (localObject1.length > 0) {
-            ((IAIOImageProviderCallBack)localObject6).a((AIORichMediaData[])localObject1, -1);
-          }
-        }
-        localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService$AIOImageProviderListener;
-        if (localObject1 != null)
-        {
-          localObject6 = (AIORichMediaData[])localArrayList1.toArray(new AIORichMediaData[localArrayList1.size()]);
-          if (localObject6.length > 0) {
-            ((AIOImageProviderService.AIOImageProviderListener)localObject1).a((AIORichMediaData[])localObject6, -1);
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("AIOImageProviderService", 2, "[IncreasinglyLoadTask] end isMultiMsg: " + this.a.jdField_a_of_type_Boolean + ", tempList.size: " + localArrayList2.size() + ", tempDataList.size: " + localArrayList1.size() + ", cost:" + (System.currentTimeMillis() - l));
-        }
-        this.a.jdField_c_of_type_Boolean = false;
-        return;
-        if (!MsgProxy.a(this.a.jdField_a_of_type_Int)) {
-          continue;
-        }
-        localObject1 = this.a;
-        ((AIOImageProviderService)localObject1).jdField_c_of_type_Long -= 1L;
-        localObject1 = ((QQAppInterface)localObject7).a().a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.jdField_b_of_type_Long, this.a.jdField_c_of_type_Int, this.a.jdField_c_of_type_Long, (int[])localObject8, 60);
-        this.a.jdField_d_of_type_Int = ((List)localObject1).size();
-        localObject6 = this.a;
-        ((AIOImageProviderService)localObject6).e += 1;
+      paramView = (TroopGagMgr)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(47);
+      if (paramView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString)) {
+        i = 2131429198;
       }
     }
     for (;;)
     {
-      Object localObject2;
-      List localList;
-      int i;
-      AIORichMediaData localAIORichMediaData;
-      label1084:
-      Object localObject5 = (AIORichMediaData[])((List)localObject7).toArray(new AIORichMediaData[((List)localObject7).size()]);
-      break label513;
-      label1112:
-      this.a.b();
-      break label581;
-      label1122:
-      localObject5 = localArrayList1;
-      break;
-      label1129:
-      i += 1;
+      if (i != 0)
+      {
+        paramView = this.jdField_a_of_type_AndroidContentContext.getString(i);
+        DialogUtil.b(this.jdField_a_of_type_AndroidContentContext, 230, null, paramView, 2131429048, 2131428674, new vln(this), null).show();
+        return;
+        if (paramView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, false).jdField_a_of_type_Boolean) {
+          i = 2131429197;
+        }
+      }
+      else
+      {
+        QAVGroupConfig.Report.a(this.jdField_a_of_type_Boolean, paramInt);
+        switch (paramInt)
+        {
+        default: 
+          return;
+        case 0: 
+          VideoItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.b);
+          return;
+        }
+        VideoMsgTools.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.jdField_a_of_type_Boolean);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005DC7", "0X8005DC7", 0, 0, "", "", "", "");
+        return;
+      }
+      i = 0;
     }
   }
 }

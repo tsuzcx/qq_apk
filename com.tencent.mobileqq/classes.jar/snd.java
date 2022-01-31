@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.app.FontSettingManager;
+import mqq.os.MqqHandler;
 
 public class snd
-  implements Runnable
+  extends MqqHandler
 {
-  public snd(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public snd(FontSettingActivity paramFontSettingActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.z();
+    if (16711697 == paramMessage.what)
+    {
+      FontSettingManager.a(this.a, FontSettingActivity.a(this.a), false);
+      this.a.c = true;
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

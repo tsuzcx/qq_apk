@@ -2,13 +2,13 @@ package com.tencent.component.network.downloader;
 
 import android.text.TextUtils;
 import com.tencent.component.network.utils.NetworkUtils;
-import phr;
-import phs;
+import pjl;
+import pjm;
 
 public abstract class UrlKeyGenerator
 {
-  public static final UrlKeyGenerator a = new phr(null);
-  public static final UrlKeyGenerator b = new phs(null);
+  public static final UrlKeyGenerator a = new pjl(null);
+  public static final UrlKeyGenerator b = new pjm(null);
   
   private static boolean b(String paramString1, String paramString2)
   {

@@ -8,13 +8,13 @@ import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.utils.UITools;
 import java.lang.ref.WeakReference;
-import jzk;
-import jzl;
+import jyv;
+import jyw;
 
 public class PstnCallbackWaitingUi
 {
   public Handler a;
-  PhoneStateListener jdField_a_of_type_AndroidTelephonyPhoneStateListener = new jzl(this);
+  PhoneStateListener jdField_a_of_type_AndroidTelephonyPhoneStateListener = new jyw(this);
   TelephonyManager jdField_a_of_type_AndroidTelephonyTelephonyManager = null;
   public VideoController a;
   public VideoAppInterface a;
@@ -27,7 +27,7 @@ public class PstnCallbackWaitingUi
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
     this.jdField_a_of_type_AndroidOsHandler = null;
     this.jdField_a_of_type_ComTencentAvVideoController = null;
-    this.jdField_a_of_type_JavaLangRunnable = new jzk(this);
+    this.jdField_a_of_type_JavaLangRunnable = new jyv(this);
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAVActivity);
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = ((VideoAppInterface)paramAVActivity.getAppRuntime());
     this.jdField_a_of_type_ComTencentAvVideoController = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a();

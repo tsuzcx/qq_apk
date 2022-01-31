@@ -1,30 +1,21 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import cooperation.qzone.webviewplugin.QZoneFeedActionJsPlugin;
 
 public class anbl
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public anbl(EditPicSave paramEditPicSave) {}
+  public anbl(QZoneFeedActionJsPlugin paramQZoneFeedActionJsPlugin) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
-      return;
-    }
-    EditPicSave localEditPicSave = this.a;
-    localEditPicSave.jdField_a_of_type_Int += this.a.b;
-    if (this.a.jdField_a_of_type_Int > 99)
-    {
-      this.a.jdField_a_of_type_Int = 99;
-      this.a.a(this.a.jdField_a_of_type_Int);
-      return;
-    }
-    this.a.a(this.a.jdField_a_of_type_Int);
-    this.a.c();
+    QZoneFeedActionJsPlugin.a(this.a, paramContext, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anbl
  * JD-Core Version:    0.7.0.1
  */

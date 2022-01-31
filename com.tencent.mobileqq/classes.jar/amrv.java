@@ -1,23 +1,23 @@
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
+import cooperation.qzone.report.lp.LpReportInfo_dc00321;
 
 public class amrv
-  implements ThreadPool.Job
+  implements View.OnClickListener
 {
-  public amrv(WyDownloader paramWyDownloader, List paramList) {}
+  public amrv(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public void onClick(View paramView)
   {
-    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (paramJobContext.hasNext())
+    if (!this.a.b)
     {
-      long l = ((Long)paramJobContext.next()).longValue();
-      this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader.a(l);
+      if (1 == this.a.c) {
+        LpReportInfo_dc00321.report(8, 129, 0, false, false, null);
+      }
+      this.a.a(false, false);
+      this.a.b();
     }
-    return null;
   }
 }
 

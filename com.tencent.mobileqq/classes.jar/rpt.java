@@ -1,15 +1,23 @@
-import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class rpt
-  implements Runnable
+  implements View.OnClickListener
 {
-  public rpt(BaseChatPie paramBaseChatPie, Intent paramIntent) {}
+  public rpt(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ForwardUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentIntent);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a();
+    paramView = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
+    paramView.putInt("funcall_tip_" + this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 4);
+    paramView.commit();
   }
 }
 

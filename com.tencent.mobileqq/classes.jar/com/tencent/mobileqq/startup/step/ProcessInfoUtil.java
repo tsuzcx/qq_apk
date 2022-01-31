@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.startup.step;
 
-import ahrj;
+import aifm;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.content.Context;
@@ -83,7 +83,7 @@ public class ProcessInfoUtil
   
   public static void a(String paramString)
   {
-    ThreadManager.post(new ahrj(paramString), 5, null, true);
+    ThreadManager.post(new aifm(paramString), 5, null, true);
   }
   
   public static long b(String paramString)
@@ -107,7 +107,7 @@ public class ProcessInfoUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.ProcessInfoUtil
  * JD-Core Version:    0.7.0.1
  */

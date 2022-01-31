@@ -1,22 +1,11 @@
-import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.PASingleItemBuilder;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
-public class uze
-  extends AbstractChatItemBuilder.ViewHolder
+class uze
+  implements ActionSheet.OnDismissListener
 {
-  public long a;
-  public Object a;
-  public String a;
-  public int b;
-  public String b;
-  public int c;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
-  public String g;
+  uze(uzb paramuzb) {}
   
-  public uze(PASingleItemBuilder paramPASingleItemBuilder) {}
+  public void onDismiss() {}
 }
 
 

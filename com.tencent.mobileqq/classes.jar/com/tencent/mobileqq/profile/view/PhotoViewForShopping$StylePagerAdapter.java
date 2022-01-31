@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.view;
 
-import agcv;
+import agqx;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -28,7 +28,7 @@ public class PhotoViewForShopping$StylePagerAdapter
   
   public PhotoViewForShopping$StylePagerAdapter(PhotoViewForShopping paramPhotoViewForShopping, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new agcv(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new agqx(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
   }
@@ -54,9 +54,9 @@ public class PhotoViewForShopping$StylePagerAdapter
     if (QLog.isColorLevel()) {
       QLog.d("ProfileCard.ProfileShoppingView", 2, "instantiateItem, pos = " + paramInt);
     }
-    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970967, paramViewGroup, false);
+    View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971015, paramViewGroup, false);
     PhotoViewForShopping.StylePagerAdapter.ViewHolder localViewHolder = new PhotoViewForShopping.StylePagerAdapter.ViewHolder(this);
-    localViewHolder.a = ((ProfileCardScrollImageView)localView.findViewById(2131372378));
+    localViewHolder.a = ((ProfileCardScrollImageView)localView.findViewById(2131372551));
     localView.setTag(localViewHolder);
     localViewHolder.a.setScaleType(ImageView.ScaleType.FIT_XY);
     Object localObject = (RelativeLayout.LayoutParams)localViewHolder.a.getLayoutParams();
@@ -65,7 +65,7 @@ public class PhotoViewForShopping$StylePagerAdapter
     localViewHolder.a.setLayoutParams((ViewGroup.LayoutParams)localObject);
     localObject = ((ShoppingPhotoItemInfo)this.jdField_a_of_type_ComTencentMobileqqProfileViewPhotoViewForShopping.a.get(paramInt)).b;
     localView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844075);
+    localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844199);
     localViewHolder.a.setImageDrawable((Drawable)localObject);
     localView.setId(paramInt);
     paramViewGroup.addView(localView);

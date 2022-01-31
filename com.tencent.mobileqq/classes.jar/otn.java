@@ -1,26 +1,27 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
-import java.lang.ref.WeakReference;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 
-public class otn
+class otn
   implements Runnable
 {
-  private WeakReference a;
-  
-  public otn(TribeVideoPlugin paramTribeVideoPlugin)
-  {
-    this.a = new WeakReference(paramTribeVideoPlugin);
-  }
+  otn(otm paramotm, String paramString) {}
   
   public void run()
   {
-    TribeVideoPlugin localTribeVideoPlugin = (TribeVideoPlugin)this.a.get();
-    if (localTribeVideoPlugin == null) {
+    if (this.jdField_a_of_type_Otm.a.isFinishing()) {
       return;
     }
-    TVK_SDKMgr.installPlugin(localTribeVideoPlugin.mRuntime.a().getApplication(), new oto(this));
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("forward_type", 1);
+    localBundle.putString("forward_filepath", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("forward_thumb", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("forward_urldrawable_big_url", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("forward_extra", this.jdField_a_of_type_JavaLangString);
+    Intent localIntent = new Intent();
+    localIntent.putExtras(localBundle);
+    ForwardBaseOption.a(this.jdField_a_of_type_Otm.a, localIntent, 21);
   }
 }
 

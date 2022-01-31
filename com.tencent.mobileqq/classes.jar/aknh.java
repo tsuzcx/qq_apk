@@ -1,39 +1,26 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.open.agent.report.ReportCenter;
+import android.view.View;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class aknh
-  extends Handler
+  implements Runnable
 {
-  public aknh(ReportCenter paramReportCenter, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public aknh(WebViewFragment paramWebViewFragment, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "banner scroll to " + this.jdField_a_of_type_Int + " !");
     }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      ReportCenter localReportCenter = this.a;
-      if (paramMessage.obj == null) {}
-      for (String str = null;; str = (String)paramMessage.obj)
-      {
-        localReportCenter.a(str);
-        break;
-      }
-      this.a.a();
+    if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a.a) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.a.getView().scrollTo(0, this.jdField_a_of_type_Int);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aknh
  * JD-Core Version:    0.7.0.1
  */

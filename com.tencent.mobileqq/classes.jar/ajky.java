@@ -1,24 +1,20 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import android.view.accessibility.AccessibilityNodeInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.EditItemInfoBase;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem;
 
-public final class ajky
-  extends View.AccessibilityDelegate
+public class ajky
+  implements Runnable
 {
-  public ajky(CharSequence paramCharSequence, String paramString) {}
+  public ajky(ImageItem paramImageItem, EditItemInfoBase paramEditItemInfoBase) {}
   
-  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfo paramAccessibilityNodeInfo)
+  public void run()
   {
-    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfo);
-    if (this.jdField_a_of_type_JavaLangCharSequence != null) {
-      paramAccessibilityNodeInfo.setContentDescription(this.jdField_a_of_type_JavaLangCharSequence);
-    }
-    paramAccessibilityNodeInfo.setClassName(this.jdField_a_of_type_JavaLangString);
+    ImageItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiImageItem, (ImageInfo)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajky
  * JD-Core Version:    0.7.0.1
  */

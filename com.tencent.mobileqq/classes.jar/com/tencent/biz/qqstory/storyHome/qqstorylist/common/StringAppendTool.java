@@ -1,10 +1,10 @@
 package com.tencent.biz.qqstory.storyHome.qqstorylist.common;
 
-import nxw;
+import nzh;
 
 public class StringAppendTool
 {
-  public static ThreadLocal a = new nxw();
+  public static ThreadLocal a = new nzh();
   
   public static String a(Object... paramVarArgs)
   {

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.medalwall;
 
-import adsq;
+import aefw;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.content.res.Resources;
@@ -105,24 +105,24 @@ public class ParticleSystem
     this.jdField_a_of_type_Float = paramFloat;
   }
   
-  public void a(float paramFloat1, float paramFloat2, adsq paramadsq)
+  public void a(float paramFloat1, float paramFloat2, aefw paramaefw)
   {
-    if (paramadsq != null)
+    if (paramaefw != null)
     {
       double d1 = a(this.i, this.j);
       double d3 = a(0.0D, 6.283185307179586D);
       double d2 = Math.cos(d3);
       d3 = Math.sin(d3);
       int k = (int)(Math.random() * this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length);
-      paramadsq.jdField_a_of_type_Float = ((float)(d2 * d1 + paramFloat1));
-      paramadsq.jdField_b_of_type_Float = ((float)(d1 * d3 + paramFloat2));
-      paramadsq.jdField_c_of_type_Float = ((float)(a(5.0D, 10.0D) * d2));
-      paramadsq.jdField_d_of_type_Float = ((float)(a(5.0D, 10.0D) * d3));
-      paramadsq.jdField_c_of_type_Int = k;
-      paramadsq.jdField_d_of_type_Int = ((int)a(this.g, this.f));
-      paramadsq.e = ((float)a(0.9800000190734863D, 0.9900000095367432D));
-      paramadsq.f = ((float)a(0.5D, 1.0D));
-      paramadsq.g = ((float)a(0.9800000190734863D, 0.9900000095367432D));
+      paramaefw.jdField_a_of_type_Float = ((float)(d2 * d1 + paramFloat1));
+      paramaefw.jdField_b_of_type_Float = ((float)(d1 * d3 + paramFloat2));
+      paramaefw.jdField_c_of_type_Float = ((float)(a(5.0D, 10.0D) * d2));
+      paramaefw.jdField_d_of_type_Float = ((float)(a(5.0D, 10.0D) * d3));
+      paramaefw.jdField_c_of_type_Int = k;
+      paramaefw.jdField_d_of_type_Int = ((int)a(this.g, this.f));
+      paramaefw.e = ((float)a(0.9800000190734863D, 0.9900000095367432D));
+      paramaefw.f = ((float)a(0.5D, 1.0D));
+      paramaefw.g = ((float)a(0.9800000190734863D, 0.9900000095367432D));
     }
   }
   
@@ -145,9 +145,9 @@ public class ParticleSystem
       paramInt1 = 0;
       while (paramInt1 < 150)
       {
-        adsq localadsq = new adsq();
-        a(0.5F * f1, 0.4F * f2, localadsq);
-        this.jdField_c_of_type_JavaUtilArrayList.add(localadsq);
+        aefw localaefw = new aefw();
+        a(0.5F * f1, 0.4F * f2, localaefw);
+        this.jdField_c_of_type_JavaUtilArrayList.add(localaefw);
         paramInt1 += 1;
       }
     }
@@ -168,8 +168,8 @@ public class ParticleSystem
     int k = this.jdField_c_of_type_JavaUtilArrayList.size() - 1;
     while (k >= 0)
     {
-      localObject = (adsq)this.jdField_c_of_type_JavaUtilArrayList.get(k);
-      if (!a((adsq)localObject))
+      localObject = (aefw)this.jdField_c_of_type_JavaUtilArrayList.get(k);
+      if (!a((aefw)localObject))
       {
         this.jdField_c_of_type_JavaUtilArrayList.remove(k);
         if ((localObject != null) && (this.jdField_c_of_type_Int < this.jdField_b_of_type_Int))
@@ -184,23 +184,23 @@ public class ParticleSystem
     k = 0;
     if (k < this.jdField_c_of_type_JavaUtilArrayList.size())
     {
-      adsq localadsq = (adsq)this.jdField_c_of_type_JavaUtilArrayList.get(k);
-      if (localadsq == null) {}
+      aefw localaefw = (aefw)this.jdField_c_of_type_JavaUtilArrayList.get(k);
+      if (localaefw == null) {}
       for (;;)
       {
         k += 1;
         break;
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(this.jdField_a_of_type_Float * localadsq.f * 2.0F * 255.0F) % 256);
-        ((Rect)localObject).left = ((int)(localadsq.jdField_a_of_type_Float - localadsq.jdField_d_of_type_Int * 0.5F));
-        ((Rect)localObject).top = ((int)(localadsq.jdField_b_of_type_Float - localadsq.jdField_d_of_type_Int * 0.5F));
-        ((Rect)localObject).bottom = (((Rect)localObject).top + localadsq.jdField_d_of_type_Int);
-        ((Rect)localObject).right = (((Rect)localObject).left + localadsq.jdField_d_of_type_Int);
-        paramCanvas.drawBitmap(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[localadsq.jdField_c_of_type_Int], null, (Rect)localObject, this.jdField_a_of_type_AndroidGraphicsPaint);
-        localadsq.jdField_a_of_type_Float += localadsq.jdField_c_of_type_Float;
-        localadsq.jdField_b_of_type_Float += localadsq.jdField_d_of_type_Float;
-        localadsq.jdField_c_of_type_Float *= 0.98F;
-        localadsq.jdField_d_of_type_Float = (localadsq.jdField_d_of_type_Float * 0.98F + this.jdField_b_of_type_Float);
-        localadsq.f *= localadsq.g;
+        this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(this.jdField_a_of_type_Float * localaefw.f * 2.0F * 255.0F) % 256);
+        ((Rect)localObject).left = ((int)(localaefw.jdField_a_of_type_Float - localaefw.jdField_d_of_type_Int * 0.5F));
+        ((Rect)localObject).top = ((int)(localaefw.jdField_b_of_type_Float - localaefw.jdField_d_of_type_Int * 0.5F));
+        ((Rect)localObject).bottom = (((Rect)localObject).top + localaefw.jdField_d_of_type_Int);
+        ((Rect)localObject).right = (((Rect)localObject).left + localaefw.jdField_d_of_type_Int);
+        paramCanvas.drawBitmap(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[localaefw.jdField_c_of_type_Int], null, (Rect)localObject, this.jdField_a_of_type_AndroidGraphicsPaint);
+        localaefw.jdField_a_of_type_Float += localaefw.jdField_c_of_type_Float;
+        localaefw.jdField_b_of_type_Float += localaefw.jdField_d_of_type_Float;
+        localaefw.jdField_c_of_type_Float *= 0.98F;
+        localaefw.jdField_d_of_type_Float = (localaefw.jdField_d_of_type_Float * 0.98F + this.jdField_b_of_type_Float);
+        localaefw.f *= localaefw.g;
       }
     }
   }
@@ -223,10 +223,10 @@ public class ParticleSystem
     b(paramCanvas);
   }
   
-  public boolean a(adsq paramadsq)
+  public boolean a(aefw paramaefw)
   {
-    if (paramadsq == null) {}
-    while ((paramadsq.jdField_d_of_type_Int < 1) || (paramadsq.f <= 0.05F) || (paramadsq.jdField_a_of_type_Float + paramadsq.jdField_d_of_type_Int * 0.5F < 0.0F) || (paramadsq.jdField_b_of_type_Float + paramadsq.jdField_d_of_type_Int * 0.5F < 0.0F) || (paramadsq.jdField_a_of_type_Float - paramadsq.jdField_d_of_type_Int * 0.5F > this.jdField_d_of_type_Int) || (paramadsq.jdField_b_of_type_Float - paramadsq.jdField_d_of_type_Int * 0.5F > this.e)) {
+    if (paramaefw == null) {}
+    while ((paramaefw.jdField_d_of_type_Int < 1) || (paramaefw.f <= 0.05F) || (paramaefw.jdField_a_of_type_Float + paramaefw.jdField_d_of_type_Int * 0.5F < 0.0F) || (paramaefw.jdField_b_of_type_Float + paramaefw.jdField_d_of_type_Int * 0.5F < 0.0F) || (paramaefw.jdField_a_of_type_Float - paramaefw.jdField_d_of_type_Int * 0.5F > this.jdField_d_of_type_Int) || (paramaefw.jdField_b_of_type_Float - paramaefw.jdField_d_of_type_Int * 0.5F > this.e)) {
       return false;
     }
     return true;
@@ -247,8 +247,8 @@ public class ParticleSystem
     int k = this.jdField_b_of_type_JavaUtilArrayList.size() - 1;
     while (k >= 0)
     {
-      localObject = (adsq)this.jdField_b_of_type_JavaUtilArrayList.get(k);
-      if (!a((adsq)localObject))
+      localObject = (aefw)this.jdField_b_of_type_JavaUtilArrayList.get(k);
+      if (!a((aefw)localObject))
       {
         this.jdField_b_of_type_JavaUtilArrayList.remove(k);
         if (localObject != null) {
@@ -266,24 +266,24 @@ public class ParticleSystem
     k = 0;
     while (k < this.jdField_b_of_type_JavaUtilArrayList.size())
     {
-      adsq localadsq = (adsq)this.jdField_b_of_type_JavaUtilArrayList.get(k);
-      if (localadsq != null)
+      aefw localaefw = (aefw)this.jdField_b_of_type_JavaUtilArrayList.get(k);
+      if (localaefw != null)
       {
-        float f1 = (float)Math.abs(Math.cos(localadsq.h) * localadsq.f);
+        float f1 = (float)Math.abs(Math.cos(localaefw.h) * localaefw.f);
         if (f1 >= 0.01F)
         {
           this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(f1 * this.jdField_a_of_type_Float * 255.0F));
-          ((Rect)localObject).left = ((int)(Math.cos(localadsq.k) * localadsq.j + (localadsq.jdField_a_of_type_Float - localadsq.jdField_d_of_type_Int * 0.5F)));
-          ((Rect)localObject).top = ((int)(localadsq.jdField_b_of_type_Float - localadsq.jdField_d_of_type_Int * 0.5F));
-          ((Rect)localObject).bottom = (((Rect)localObject).top + localadsq.jdField_d_of_type_Int);
-          ((Rect)localObject).right = (((Rect)localObject).left + localadsq.jdField_d_of_type_Int);
-          paramCanvas.drawBitmap(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[localadsq.jdField_c_of_type_Int], null, (Rect)localObject, this.jdField_a_of_type_AndroidGraphicsPaint);
+          ((Rect)localObject).left = ((int)(Math.cos(localaefw.k) * localaefw.j + (localaefw.jdField_a_of_type_Float - localaefw.jdField_d_of_type_Int * 0.5F)));
+          ((Rect)localObject).top = ((int)(localaefw.jdField_b_of_type_Float - localaefw.jdField_d_of_type_Int * 0.5F));
+          ((Rect)localObject).bottom = (((Rect)localObject).top + localaefw.jdField_d_of_type_Int);
+          ((Rect)localObject).right = (((Rect)localObject).left + localaefw.jdField_d_of_type_Int);
+          paramCanvas.drawBitmap(this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[localaefw.jdField_c_of_type_Int], null, (Rect)localObject, this.jdField_a_of_type_AndroidGraphicsPaint);
         }
-        localadsq.jdField_a_of_type_Float += localadsq.jdField_c_of_type_Float;
-        localadsq.jdField_b_of_type_Float += localadsq.jdField_d_of_type_Float;
-        localadsq.f *= localadsq.g;
-        localadsq.h += localadsq.i;
-        localadsq.k += localadsq.l;
+        localaefw.jdField_a_of_type_Float += localaefw.jdField_c_of_type_Float;
+        localaefw.jdField_b_of_type_Float += localaefw.jdField_d_of_type_Float;
+        localaefw.f *= localaefw.g;
+        localaefw.h += localaefw.i;
+        localaefw.k += localaefw.l;
       }
       k += 1;
     }
@@ -300,7 +300,7 @@ public class ParticleSystem
   
   public void d()
   {
-    adsq localadsq = null;
+    aefw localaefw = null;
     double d1 = a(this.h, -this.h);
     double d2 = a(this.h, -this.h);
     int k = (int)(Math.random() * this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length);
@@ -308,33 +308,33 @@ public class ParticleSystem
     float f2 = this.e;
     if (this.jdField_c_of_type_Int < this.jdField_b_of_type_Int)
     {
-      localadsq = new adsq();
+      localaefw = new aefw();
       this.jdField_c_of_type_Int += 1;
     }
     for (;;)
     {
-      if (localadsq != null)
+      if (localaefw != null)
       {
-        localadsq.jdField_a_of_type_Float = ((float)(d1 + f1 * 0.5F));
-        localadsq.jdField_b_of_type_Float = ((float)(f2 * 0.4F + d2));
-        localadsq.jdField_c_of_type_Float = 0.0F;
-        localadsq.jdField_d_of_type_Float = ((float)a(-1.0D, -2.0D));
-        localadsq.jdField_c_of_type_Int = k;
-        localadsq.jdField_d_of_type_Int = ((int)a(this.g, this.f));
-        localadsq.e = ((float)a(0.9950000047683716D, 0.9980000257492065D));
-        localadsq.f = ((float)a(1.0D, 1.0D));
-        localadsq.g = ((float)a(0.9900000095367432D, 0.9800000190734863D));
-        localadsq.h = ((float)a(0.0D, 3.141592653589793D));
-        localadsq.i = ((float)a(0.01D, 0.001D));
-        localadsq.j = ((float)a(20.0D, 5.0D));
-        localadsq.k = ((float)a(0.0D, 3.141592653589793D));
-        localadsq.l = ((float)a(0.01D, 0.1D));
-        localadsq.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-        this.jdField_b_of_type_JavaUtilArrayList.add(localadsq);
+        localaefw.jdField_a_of_type_Float = ((float)(d1 + f1 * 0.5F));
+        localaefw.jdField_b_of_type_Float = ((float)(f2 * 0.4F + d2));
+        localaefw.jdField_c_of_type_Float = 0.0F;
+        localaefw.jdField_d_of_type_Float = ((float)a(-1.0D, -2.0D));
+        localaefw.jdField_c_of_type_Int = k;
+        localaefw.jdField_d_of_type_Int = ((int)a(this.g, this.f));
+        localaefw.e = ((float)a(0.9950000047683716D, 0.9980000257492065D));
+        localaefw.f = ((float)a(1.0D, 1.0D));
+        localaefw.g = ((float)a(0.9900000095367432D, 0.9800000190734863D));
+        localaefw.h = ((float)a(0.0D, 3.141592653589793D));
+        localaefw.i = ((float)a(0.01D, 0.001D));
+        localaefw.j = ((float)a(20.0D, 5.0D));
+        localaefw.k = ((float)a(0.0D, 3.141592653589793D));
+        localaefw.l = ((float)a(0.01D, 0.1D));
+        localaefw.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+        this.jdField_b_of_type_JavaUtilArrayList.add(localaefw);
       }
       return;
       if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-        localadsq = (adsq)this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+        localaefw = (aefw)this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
       }
     }
   }
@@ -348,7 +348,7 @@ public class ParticleSystem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.ParticleSystem
  * JD-Core Version:    0.7.0.1
  */

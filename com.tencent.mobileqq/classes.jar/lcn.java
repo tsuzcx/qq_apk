@@ -1,18 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.qphone.base.util.QLog;
 
-public class lcn
-  implements Runnable
+class lcn
+  implements AsyncBack
 {
-  public lcn(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity, int paramInt) {}
+  lcn(lcl paramlcl) {}
   
-  public void run()
+  public void a(int paramInt) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.e) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyBaseActivity", 2, "load 2464 html web resource finish");
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.h();
-    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity, 1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.getString(this.jdField_a_of_type_Int), 0).b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.getTitleBarHeight());
   }
 }
 

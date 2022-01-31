@@ -1,13 +1,12 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-
 public class aatp
-  implements Runnable
 {
-  public aatp(ARMapActivity paramARMapActivity) {}
+  public String a;
+  public String b;
   
-  public void run()
+  public aatp(String paramString1, String paramString2)
   {
-    ARMapActivity.j(this.a);
+    this.a = paramString1;
+    this.b = paramString2;
   }
 }
 

@@ -1,33 +1,34 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.biz.eqq.CrmUtils;
+import android.os.Handler;
 import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.app.PublicAccountHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class kpc
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public kpc(EqqAccountDetailActivity paramEqqAccountDetailActivity, ActionSheet paramActionSheet, String paramString) {}
+  public kpc(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (paramInt)
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "updateUnfollowInfo");
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail != null) {}
+    try
     {
-    default: 
-    case 0: 
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a == null);
-      CrmUtils.a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a.name, EqqAccountDetailActivity.m(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "IvrEnterpriseDetailEngineFalse");
+      EqqAccountDetailActivity.a(this.a).b(this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+      this.a.d(this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail);
+      EqqAccountDetailActivity.b(this.a).sendEmptyMessage(2);
+      EqqAccountDetailActivity.b(this.a).a().a(EqqAccountDetailActivity.b(this.a), EqqAccountDetailActivity.c(this.a));
+      EqqAccountDetailActivity.c(this.a).a().a(EqqAccountDetailActivity.c(this.a), 1024);
+      EqqAccountDetailActivity.d(this.a).a().a(EqqAccountDetailActivity.d(this.a), 0);
+      ReportController.b(EqqAccountDetailActivity.e(this.a), "P_CliOper", "Pb_account_lifeservice", EqqAccountDetailActivity.e(this.a), "0X8004E43", "0X8004E43", 0, 0, EqqAccountDetailActivity.f(this.a), "", "", "");
       return;
     }
-    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.startActivity(paramView);
+    catch (Exception localException) {}
   }
 }
 

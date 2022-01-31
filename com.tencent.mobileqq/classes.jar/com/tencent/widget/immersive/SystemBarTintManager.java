@@ -36,7 +36,7 @@ public class SystemBarTintManager
   
   static
   {
-    if (VersionUtils.h()) {}
+    if (VersionUtils.i()) {}
     try
     {
       Method localMethod = Class.forName("android.os.SystemProperties").getDeclaredMethod("get", new Class[] { String.class });

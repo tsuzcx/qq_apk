@@ -1,15 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule.FastWebContentGetCallback;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.model.ChannelInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
 
 public class lqw
   implements Runnable
 {
-  public lqw(FastWebModule paramFastWebModule, FastWebModule.FastWebContentGetCallback paramFastWebContentGetCallback, boolean paramBoolean1, boolean paramBoolean2, FastWebArticleInfo paramFastWebArticleInfo) {}
+  public lqw(ChannelInfoModule paramChannelInfoModule, ChannelInfo paramChannelInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelFastWebModule$FastWebContentGetCallback.a(this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelInfoModule.a.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelInfo);
   }
 }
 

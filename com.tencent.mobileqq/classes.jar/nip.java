@@ -1,14 +1,13 @@
-import com.tencent.biz.qqstory.playmode.child.NewDiscoverBannerPlayMode;
-import com.tencent.biz.qqstory.playmode.util.NewDiscoverBannerDataProvider;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
 
-public class nip
+class nip
   implements Runnable
 {
-  public nip(NewDiscoverBannerPlayMode paramNewDiscoverBannerPlayMode) {}
+  nip(nio paramnio) {}
   
   public void run()
   {
-    this.a.a.a(true);
+    this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a(this.a.a.jdField_a_of_type_Int);
   }
 }
 

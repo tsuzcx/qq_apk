@@ -1,20 +1,35 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.settings.QQStoryBasicSettingsActivity;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.widget.FormSwitchItem;
+import com.tencent.widget.Switch;
 
 public class rja
-  implements View.OnClickListener
+  extends BizTroopObserver
 {
-  public rja(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public rja(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    paramView = new Intent(this.a, QQStoryBasicSettingsActivity.class);
-    this.a.startActivity(paramView);
-    StoryReportor.a("browse_friend_settings", "clk_set", 0, 0, new String[] { "", "", "", "" });
+    boolean bool = true;
+    Switch localSwitch;
+    AddFriendVerifyActivity localAddFriendVerifyActivity;
+    if ((paramBoolean) && (paramInt1 == 1))
+    {
+      localSwitch = this.a.b.a();
+      localSwitch.setOnCheckedChangeListener(null);
+      localAddFriendVerifyActivity = this.a;
+      if (paramInt2 != 1) {
+        break label72;
+      }
+    }
+    label72:
+    for (paramBoolean = bool;; paramBoolean = false)
+    {
+      localAddFriendVerifyActivity.a = paramBoolean;
+      localSwitch.setChecked(this.a.a);
+      localSwitch.setOnCheckedChangeListener(this.a);
+      return;
+    }
   }
 }
 

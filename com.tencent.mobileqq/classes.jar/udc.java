@@ -1,19 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.contact.troop.TroopNotificationUtils.TroopPrivilegeCallback;
 
-public class udc
-  implements DialogInterface.OnClickListener
+class udc
+  implements Runnable
 {
-  public udc(UpgradeActivity paramUpgradeActivity) {}
+  udc(uda paramuda, int paramInt1, int paramInt2, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, UpgradeConstants.b(), String.valueOf(0), UpgradeController.a(), "0");
-    this.a.a();
+    this.jdField_a_of_type_Uda.jdField_a_of_type_ComTencentMobileqqActivityContactTroopTroopNotificationUtils$TroopPrivilegeCallback.a(this.jdField_a_of_type_Uda.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Uda.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
   }
 }
 

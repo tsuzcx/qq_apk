@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:background="@drawable/qb_tenpay_loading_back_bg" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07dc" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e33" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" />
-    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c02f9" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1719" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0426" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_alignParentTop="true" />
+    <LinearLayout android:orientation="vertical" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e00db" />
+        <ListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07dd" android:fadingEdge="none" android:fadingEdgeLength="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:cacheColorHint="@android:color/transparent" android:divider="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e08" android:dividerHeight="0.5dip" android:requiresFadingEdge="none" />
+        <View style="@style/APKTOOL_DUPLICATE_style_0x7f0e00db" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07de" android:layout_width="fill_parent" android:layout_height="50.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0ec6" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00eb" />
+    </LinearLayout>
 </LinearLayout>

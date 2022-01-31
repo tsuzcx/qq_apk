@@ -1,25 +1,25 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.ApolloPushManager;
+import com.tencent.mobileqq.apollo.ApolloPushManager.OnActionPushListener;
+import com.tencent.mobileqq.data.ApolloActionPush;
 import com.tencent.qphone.base.util.QLog;
 
 public class ykv
-  implements Runnable
+  implements ApolloPushManager.OnActionPushListener
 {
-  public ykv(HotChatCenterFragment paramHotChatCenterFragment) {}
+  public ykv(ApolloPushManager paramApolloPushManager) {}
   
-  public void run()
+  public void a(int paramInt, ApolloActionPush paramApolloActionPush)
   {
-    try
+    if ((ApolloPushManager.a(this.a) != null) && (paramApolloActionPush != null))
     {
-      HotChatCenterFragment.a(this.a);
-      if (this.a.isAdded()) {
-        this.a.getActivity().runOnUiThread(new ykw(this));
+      if (QLog.isColorLevel()) {
+        QLog.d("ApolloPushManager", 2, "[onActionPush], aioType:" + paramInt + ";pushData:" + paramApolloActionPush.toString());
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("HotchatActivity", 1, localThrowable, new Object[] { "[update] failed" });
+      if ((ApolloPushManager.a(this.a).jdField_a_of_type_Int == paramInt) && (paramInt == ApolloPushManager.a(this.a).jdField_a_of_type_Int) && (!TextUtils.isEmpty(ApolloPushManager.a(this.a).jdField_a_of_type_JavaLangString)) && (ApolloPushManager.a(this.a).jdField_a_of_type_JavaLangString.equals(String.valueOf(paramApolloActionPush.mSessionId)))) {
+        this.a.a(paramApolloActionPush);
+      }
     }
   }
 }

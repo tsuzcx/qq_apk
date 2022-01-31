@@ -1,15 +1,37 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
+import java.io.File;
 
-public class opf
-  implements View.OnClickListener
+public final class opf
+  extends ExecuteBinResponseCallback
 {
-  public opf(LoadingMoreHelper paramLoadingMoreHelper) {}
+  public opf(ExecuteBinResponseCallback paramExecuteBinResponseCallback, String paramString) {}
   
-  public void onClick(View paramView)
+  public void a()
   {
-    this.a.b(true);
+    super.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegExecuteBinResponseCallback.a();
+  }
+  
+  public void a(String paramString)
+  {
+    StoryReportor.a("music_composite", "video_music_composite", 0, 0, new String[] { String.valueOf(System.currentTimeMillis() - this.b) });
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegExecuteBinResponseCallback.a(paramString);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    File localFile = new File(this.jdField_a_of_type_JavaLangString);
+    if (localFile.exists()) {
+      localFile.delete();
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegExecuteBinResponseCallback.a(paramBoolean);
+  }
+  
+  public void b(String paramString)
+  {
+    StoryReportor.a("music_composite", "video_music_composite", 0, 1, new String[0]);
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegExecuteBinResponseCallback.b(paramString);
   }
 }
 

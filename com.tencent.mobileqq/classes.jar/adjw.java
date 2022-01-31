@@ -1,63 +1,60 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQGAudioMsgHandler;
-import com.tencent.mobileqq.intervideo.groupvideo.GVideoStateGetListener;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
-import com.tencent.mobileqq.intervideo.groupvideo.VideoStateInfo;
-import com.tencent.mobileqq.troop.utils.TroopVideoManager;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-import java.util.Set;
-import mqq.os.MqqHandler;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewParent;
+import com.tencent.mobileqq.flashchat.FlashChatPanel;
+import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
+import com.tencent.mobileqq.widget.QQViewPager;
 
 public class adjw
-  implements GVideoStateGetListener
+  extends PagerAdapter
 {
-  public adjw(GroupVideoManager paramGroupVideoManager) {}
+  public adjw(FlashChatPanel paramFlashChatPanel) {}
   
-  public void a(List paramList)
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
   {
-    if (GroupVideoManager.a(this.a) == null) {}
-    do
+    ((QQViewPager)paramViewGroup).removeView((View)paramObject);
+  }
+  
+  public int getCount()
+  {
+    return 2;
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    FlashChatTextEffectView localFlashChatTextEffectView;
+    if (paramInt == 0) {
+      localFlashChatTextEffectView = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqFlashchatFlashChatTextEffectView[0];
+    }
+    for (;;)
     {
-      return;
-      Object localObject = new HashMap(GroupVideoManager.a(this.a).a().d);
-      QQGAudioMsgHandler localQQGAudioMsgHandler = GroupVideoManager.a(this.a).a();
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      if (localFlashChatTextEffectView != null)
       {
-        VideoStateInfo localVideoStateInfo = (VideoStateInfo)paramList.next();
-        long[] arrayOfLong = new long[localVideoStateInfo.jdField_a_of_type_JavaUtilList.size()];
-        int i = 0;
-        while (i < arrayOfLong.length)
-        {
-          arrayOfLong[i] = ((Long)localVideoStateInfo.jdField_a_of_type_JavaUtilList.get(i)).longValue();
-          i += 1;
+        ViewParent localViewParent = this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getParent();
+        if (localViewParent != null) {
+          ((ViewGroup)localViewParent).removeView(localFlashChatTextEffectView);
         }
-        ((TroopVideoManager)GroupVideoManager.a(this.a).getManager(163)).a(localVideoStateInfo.jdField_a_of_type_Long);
-        localQQGAudioMsgHandler.a(1, String.valueOf(localVideoStateInfo.jdField_a_of_type_Long), localVideoStateInfo.jdField_a_of_type_Int, arrayOfLong, 14);
-        ((Map)localObject).remove(String.valueOf(localVideoStateInfo.jdField_a_of_type_Long));
+        paramViewGroup.addView(localFlashChatTextEffectView);
+        localFlashChatTextEffectView.requestLayout();
       }
-      paramList = ((Map)localObject).entrySet().iterator();
-      while (paramList.hasNext())
-      {
-        localObject = (Map.Entry)paramList.next();
-        if (((Integer)((Map.Entry)localObject).getValue()).intValue() == 14) {
-          localQQGAudioMsgHandler.a(1, (String)((Map.Entry)localObject).getKey(), 0, null, 14);
-        }
+      return localFlashChatTextEffectView;
+      if (paramInt == 1) {
+        localFlashChatTextEffectView = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqFlashchatFlashChatTextEffectView[1];
+      } else {
+        localFlashChatTextEffectView = null;
       }
-      paramList = GroupVideoManager.a(this.a).getHandler(Conversation.class);
-    } while (paramList == null);
-    paramList.sendEmptyMessage(1009);
+    }
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adjw
  * JD-Core Version:    0.7.0.1
  */

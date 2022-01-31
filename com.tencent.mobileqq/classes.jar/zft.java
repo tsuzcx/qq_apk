@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.app.IndividualRedPacketManager;
+import com.tencent.mobileqq.app.IndividualRedPacketManager.VIPHBStrategy;
 
 public class zft
   implements Runnable
 {
-  public zft(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public zft(IndividualRedPacketManager.VIPHBStrategy paramVIPHBStrategy, IndividualRedPacketManager paramIndividualRedPacketManager, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
   
   public void run()
   {
-    PhoneContactManagerImp.a(this.a, false, false);
+    IndividualRedPacketManager.a(IndividualRedPacketManager.VIPHBStrategy.a(this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager$VIPHBStrategy), this.jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager, this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo);
   }
 }
 

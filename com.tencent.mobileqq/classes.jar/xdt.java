@@ -1,16 +1,22 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.OnCustomizeListener;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.OnSingleDownloadCallback;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
 
 public class xdt
-  implements CustomizeStrategyFactory.OnCustomizeListener
+  implements PreloadImgManager.OnSingleDownloadCallback
 {
-  public xdt(RedPacketManager paramRedPacketManager, IRedPacket.OnGetSkinListener paramOnGetSkinListener) {}
+  public xdt(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  public void a() {}
+  
+  public void a(Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketIRedPacket$OnGetSkinListener.onGetSkin(paramRedPacketInfo);
+    if ((paramObject instanceof Bitmap))
+    {
+      paramObject = QzoneHbFragment.a(this.a).obtainMessage();
+      paramObject.what = 102;
+      QzoneHbFragment.a(this.a).sendMessage(paramObject);
+    }
   }
 }
 

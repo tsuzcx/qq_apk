@@ -1,18 +1,23 @@
-import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.doutu.DoutuData;
 
-public class abxy
-  implements Runnable
+public final class abxy
+  implements Parcelable.Creator
 {
-  public abxy(EmoticonMainPanel paramEmoticonMainPanel) {}
-  
-  public void run()
+  public DoutuData a(Parcel paramParcel)
   {
-    EmoticonMainPanel.b(this.a);
+    return new DoutuData(paramParcel);
+  }
+  
+  public DoutuData[] a(int paramInt)
+  {
+    return new DoutuData[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abxy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search;
 
-import ahcl;
-import ahcm;
+import ahqn;
+import ahqo;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -58,22 +58,22 @@ public class ContentRecommendModel
       }
       this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel$ContentRecommendListAdapter = new ContentRecommendModel.ContentRecommendListAdapter(this);
       this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968825, null));
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new ahcl(this));
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new ahqn(this));
       this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel$ContentRecommendListAdapter);
       if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
-        this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838576);
+        this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838580);
       }
       for (;;)
       {
         return this.jdField_a_of_type_ComTencentWidgetXListView;
-        this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838575);
+        this.jdField_a_of_type_ComTencentWidgetXListView.setBackgroundResource(2130838579);
       }
     }
   }
   
   public void a()
   {
-    ThreadManager.post(new ahcm(this, new ContentRecommendDataModel(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 4, this.jdField_a_of_type_Int)), 5, null, true);
+    ThreadManager.post(new ahqo(this, new ContentRecommendDataModel(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 4, this.jdField_a_of_type_Int)), 5, null, true);
   }
   
   public void a(SearchEntryDataModel paramSearchEntryDataModel)

@@ -1,39 +1,58 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.net.Uri;
-import android.preference.PreferenceManager;
-import android.view.View;
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.PublicAccountDataManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class kzb
-  implements ActionSheet.OnButtonClickListener
+public final class kzb
+  implements Runnable
 {
-  public kzb(PublicAccountManager paramPublicAccountManager, QQAppInterface paramQQAppInterface, Context paramContext, Uri paramUri, SessionInfo paramSessionInfo, ActionSheet paramActionSheet) {}
+  public kzb(String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3, String paramString4, int paramInt1, int paramInt2, String paramString5, String paramString6, String paramString7, boolean paramBoolean) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    String str = this.jdField_a_of_type_JavaLangString;
+    Object localObject = str;
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {}
+    try
     {
-    default: 
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-    case 0: 
-      PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (BaseActivity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidNetUri, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-      PreferenceManager.getDefaultSharedPreferences(BaseApplication.getContext()).edit().putString("LastScreenShotUri", null).commit();
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
+      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface))
+      {
+        localObject = (QQAppInterface)localObject;
+        if (localObject != null) {
+          if (!((PublicAccountDataManager)((AppInterface)localObject).getManager(55)).a(Long.valueOf(this.jdField_b_of_type_JavaLangString))) {
+            break label135;
+          }
+        }
+        label135:
+        for (localObject = "1";; localObject = "0")
+        {
+          localJSONObject.put("fans", localObject);
+          localObject = localJSONObject.toString();
+          PublicAccountReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_JavaLangString, this.c, this.d, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.e, this.f, this.g, (String)localObject, this.jdField_a_of_type_Boolean);
+          return;
+        }
+      }
     }
-    PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, null, null);
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        localObject = str;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("PublicAccountReportUtils", 2, "doVideoDataReportWithFansInfoInR5() error exception = " + localException.getMessage());
+          localObject = str;
+          continue;
+          localObject = null;
+        }
+      }
+    }
   }
 }
 

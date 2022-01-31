@@ -1,20 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.presenter.StoryListPresenter;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.IMyStoryListView;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.GuideInfoDialog;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.network.handler.GetUserInfoHandler.UpdateUserInfoEvent;
+import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class nyg
-  implements View.OnClickListener
+  extends QQUIEventReceiver
 {
-  public nyg(StoryListPresenter paramStoryListPresenter, GuideInfoDialog paramGuideInfoDialog) {}
-  
-  public void onClick(View paramView)
+  public nyg(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
   {
-    StoryReportor.a("home_page", "guide_shoot", 0, 0, new String[0]);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistPresenterStoryListPresenter.a.a(false, true, 13, null);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetGuideInfoDialog.dismiss();
+    super(paramStoryMessageListActivity);
+  }
+  
+  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
+  {
+    if (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i(this.TAG, 2, "get userinfo come back. >>>>>> " + paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList);
+      }
+      paramStoryMessageListActivity.e();
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return GetUserInfoHandler.UpdateUserInfoEvent.class;
   }
 }
 

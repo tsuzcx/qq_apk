@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.armap.ARGLSurfaceView;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.ARMapTracer;
-import com.tencent.mobileqq.armap.ArMapInterface;
+import com.tencent.mobileqq.ark.ArkHorizontalListView;
+import com.tencent.mobileqq.ark.ArkHorizontalListView.RefreshUiCallback;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class aauh
   implements Runnable
 {
-  public aauh(ARMapActivity paramARMapActivity) {}
+  public aauh(ArkHorizontalListView paramArkHorizontalListView) {}
   
   public void run()
   {
-    if ((this.a.app == null) || (this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView == null)) {
-      return;
+    if ((ArkHorizontalListView.a(this.a) != null) && (ArkHorizontalListView.a(this.a).get() != null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ArkHorizontalListView", 2, "checkScrollToChild updateHeadBorder");
+      }
+      ((ArkHorizontalListView.RefreshUiCallback)ArkHorizontalListView.a(this.a).get()).a(this.a);
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("ARMapActivity", 4, "init ARMapTracer");
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapARMapTracer = new ARMapTracer(true, this.a.app.getAccount(), 10, new aaui(this));
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapARGLSurfaceView.setTraceCallback(this.a.jdField_a_of_type_ComTencentMobileqqArmapARMapTracer);
   }
 }
 

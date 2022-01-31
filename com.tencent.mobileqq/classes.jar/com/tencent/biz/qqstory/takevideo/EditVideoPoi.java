@@ -39,10 +39,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.util.WeakReference;
-import oej;
-import oek;
-import oen;
-import oeo;
+import ogc;
+import ogd;
+import ogg;
+import ogh;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -104,7 +104,7 @@ public class EditVideoPoi
       if (localOverScrollViewTag != null)
       {
         localOverScrollViewTag.a = false;
-        new Handler(Looper.getMainLooper()).postDelayed(new oeo(this), 800L);
+        new Handler(Looper.getMainLooper()).postDelayed(new ogh(this), 800L);
         if (paramInt == 0) {
           this.jdField_a_of_type_Long = System.currentTimeMillis();
         }
@@ -138,20 +138,20 @@ public class EditVideoPoi
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
       this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewStub.inflate();
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363227));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363245));
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131371774);
-      this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131371775);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371777));
-      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371778));
+      this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131371944);
+      this.c = this.jdField_a_of_type_AndroidViewView.findViewById(2131371945);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371947));
+      this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371948));
       this.jdField_b_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
       this.c.setOnClickListener(this);
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363363)).setText("所在位置");
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371776));
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363381)).setText("所在位置");
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371946));
       h();
       j();
-      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new oej(this));
+      this.jdField_a_of_type_ComTencentWidgetXListView.setOnScrollListener(new ogc(this));
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPoilistQQStoryPoiListAdapter = new QQStoryPoiListAdapter(a());
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPoilistQQStoryPoiListAdapter.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopBarPOI);
       this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPoilistQQStoryPoiListAdapter);
@@ -159,19 +159,19 @@ public class EditVideoPoi
     }
   }
   
-  public void H_()
+  public void M_()
   {
     a(false);
   }
   
-  public void I_()
+  public void N_()
   {
     i();
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364328));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364352));
   }
   
   public void a(int paramInt, LbsManager.POIListRequestSession paramPOIListRequestSession, List paramList)
@@ -279,14 +279,14 @@ public class EditVideoPoi
     {
       if (AppSetting.b) {}
       return;
-      a(2131432491);
+      a(2131432508);
       continue;
-      a(2131432490);
+      a(2131432507);
       if ((paramVarArgs != null) && (paramVarArgs.length > 0))
       {
         QQToast.a(a(), paramVarArgs[0], 1).a();
         continue;
-        a(2131432489);
+        a(2131432506);
         continue;
         if ((paramVarArgs == null) || (paramVarArgs.length <= 0) || (TextUtils.isEmpty(paramVarArgs[0]))) {
           break;
@@ -438,7 +438,7 @@ public class EditVideoPoi
   {
     SLog.b("Q.qqstory.publish.edit.EditVideoPoi", "requestSosoPoi");
     a(2, new String[0]);
-    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new oen(this, "NewStoryTakeVideoActivity", paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new ogg(this, "NewStoryTakeVideoActivity", paramBoolean);
     SosoInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener);
   }
   
@@ -472,13 +472,13 @@ public class EditVideoPoi
     if (this.d == null) {
       return;
     }
-    TextView localTextView = (TextView)this.d.findViewById(2131363921);
+    TextView localTextView = (TextView)this.d.findViewById(2131363944);
     if (paramBoolean)
     {
-      localTextView.setText(2131434333);
+      localTextView.setText(2131434350);
       return;
     }
-    localTextView.setText(2131434329);
+    localTextView.setText(2131434346);
   }
   
   protected boolean b()
@@ -510,7 +510,7 @@ public class EditVideoPoi
   protected void h()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader == null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(a()).inflate(2130969238, null, false));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader = ((PullRefreshHeader)LayoutInflater.from(a()).inflate(2130969239, null, false));
     }
     Contacts.OverScrollViewTag localOverScrollViewTag = new Contacts.OverScrollViewTag();
     this.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.setTag(localOverScrollViewTag);
@@ -519,7 +519,7 @@ public class EditVideoPoi
     if (QLog.isColorLevel()) {
       QLog.d("zivonchen", 2, "setOverScrollHeader----------------------");
     }
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new oek(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOverScrollListener(new ogd(this));
   }
   
   void i()
@@ -537,13 +537,13 @@ public class EditVideoPoi
   {
     if (this.d == null)
     {
-      this.d = LayoutInflater.from(a()).inflate(2130969238, null);
-      ImageView localImageView = (ImageView)this.d.findViewById(2131363283);
-      TextView localTextView1 = (TextView)this.d.findViewById(2131363921);
-      TextView localTextView2 = (TextView)this.d.findViewById(2131363922);
-      ProgressBar localProgressBar = (ProgressBar)this.d.findViewById(2131363031);
+      this.d = LayoutInflater.from(a()).inflate(2130969239, null);
+      ImageView localImageView = (ImageView)this.d.findViewById(2131363301);
+      TextView localTextView1 = (TextView)this.d.findViewById(2131363944);
+      TextView localTextView2 = (TextView)this.d.findViewById(2131363945);
+      ProgressBar localProgressBar = (ProgressBar)this.d.findViewById(2131363049);
       localTextView1.setTextColor(-8355712);
-      localTextView1.setText(2131434329);
+      localTextView1.setText(2131434346);
       localTextView2.setVisibility(8);
       localImageView.setVisibility(8);
       localProgressBar.setVisibility(8);
@@ -560,15 +560,15 @@ public class EditVideoPoi
     {
     default: 
       return;
-    case 2131363227: 
+    case 2131363245: 
       paramView = (EditVideoPoiPickerCallback)this.jdField_a_of_type_MqqUtilWeakReference.get();
       if (paramView != null) {
         paramView.a();
       }
       b();
       return;
-    case 2131371774: 
-    case 2131371775: 
+    case 2131371944: 
+    case 2131371945: 
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(4, this.jdField_a_of_type_MqqUtilWeakReference.get());
       return;
     }

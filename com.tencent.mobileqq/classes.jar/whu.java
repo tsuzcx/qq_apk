@@ -1,17 +1,26 @@
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import java.util.List;
 
-class whu
-  implements Runnable
+public class whu
+  extends Handler
 {
-  whu(wht paramwht, Bitmap paramBitmap) {}
+  public whu(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    BitmapDrawable localBitmapDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_Wht.a.a.findViewById(2131362822).setBackgroundDrawable(localBitmapDrawable);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 1: 
+      paramMessage = (List)paramMessage.obj;
+      this.a.a(paramMessage, true);
+      return;
+    }
+    paramMessage = (List)paramMessage.obj;
+    this.a.a(paramMessage, false);
   }
 }
 

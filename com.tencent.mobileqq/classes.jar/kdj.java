@@ -1,64 +1,66 @@
-import android.support.v4.view.PagerAdapter;
-import android.util.SparseArray;
-import android.view.View;
-import android.view.ViewGroup;
-import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.ui.funchat.record.QavVideoAudioRecorder;
+import com.tencent.mobileqq.richmedia.mediacodec.encoder.EncodeConfig;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class kdj
-  extends PagerAdapter
+  extends Handler
 {
-  private PagerAdapter jdField_a_of_type_AndroidSupportV4ViewPagerAdapter;
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public kdj(EffectCycleViewPager paramEffectCycleViewPager, PagerAdapter paramPagerAdapter)
+  public kdj(QavVideoAudioRecorder paramQavVideoAudioRecorder1, Looper paramLooper, QavVideoAudioRecorder paramQavVideoAudioRecorder2)
   {
-    this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter = paramPagerAdapter;
-    paramPagerAdapter.registerDataSetObserver(new kdk(this, paramEffectCycleViewPager));
+    super(paramLooper);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQavVideoAudioRecorder2);
   }
   
-  int a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramInt == 0) {
-      return this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount() - 1;
+    int i = paramMessage.what;
+    QavVideoAudioRecorder localQavVideoAudioRecorder = (QavVideoAudioRecorder)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQavVideoAudioRecorder == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.w("QavVideoAudioRecorder", 2, "RecodeHandler.handleMessage: encoder is null");
+      }
+      return;
     }
-    if (paramInt == this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount() + 1) {
-      return 0;
+    switch (i)
+    {
+    default: 
+      throw new RuntimeException("Unhandled msg what=" + i);
+    case 0: 
+      if (paramMessage.obj != null)
+      {
+        QavVideoAudioRecorder.a(localQavVideoAudioRecorder, (EncodeConfig)paramMessage.obj);
+        return;
+      }
+      throw new RuntimeException("MSG_START_RECORDING bundle == null");
+    case 1: 
+      QavVideoAudioRecorder.a(localQavVideoAudioRecorder);
+      return;
+    case 2: 
+      if (paramMessage.obj != null)
+      {
+        paramMessage = (Object[])paramMessage.obj;
+        if ((paramMessage == null) || (paramMessage.length != 5)) {
+          throw new IllegalArgumentException("args == null || args.length != 5");
+        }
+        QavVideoAudioRecorder.a(localQavVideoAudioRecorder, ((Integer)paramMessage[0]).intValue(), ((Integer)paramMessage[1]).intValue(), (float[])paramMessage[2], (float[])paramMessage[3], ((Long)paramMessage[4]).longValue());
+        return;
+      }
+      throw new RuntimeException("MSG_VIDEO_FRAME_AVAILABLE bundle == null");
     }
-    return paramInt - 1;
-  }
-  
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
-  {
-    int i = a(paramInt);
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.remove(paramInt);
-    this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.destroyItem(paramViewGroup, i, paramObject);
-  }
-  
-  public int getCount()
-  {
-    int i = this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.getCount();
-    if (i > 0) {
-      return i + 2;
+    if (paramMessage.obj != null)
+    {
+      paramMessage = (Object[])paramMessage.obj;
+      localQavVideoAudioRecorder.b((byte[])paramMessage[0], ((Long)paramMessage[1]).longValue());
+      return;
     }
-    return 0;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    int i = a(paramInt);
-    paramViewGroup = (View)this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.instantiateItem(paramViewGroup, i);
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.a.put(paramInt, paramViewGroup);
-    return paramViewGroup;
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.isViewFromObject(paramView, paramObject);
-  }
-  
-  public void notifyDataSetChanged()
-  {
-    this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectCycleViewPager.setCurrentItem(1);
-    super.notifyDataSetChanged();
+    throw new RuntimeException("MSG_AUDIO_FRAME_AVAILABLE bundle == null");
   }
 }
 

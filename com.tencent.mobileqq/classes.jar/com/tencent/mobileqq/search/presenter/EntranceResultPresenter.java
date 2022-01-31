@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.presenter;
 
-import ahgf;
-import ahgg;
+import ahuh;
+import ahui;
 import android.text.TextUtils;
 import android.view.View;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -16,11 +16,11 @@ public class EntranceResultPresenter
   public void a(SearchResultModelForEntrance paramSearchResultModelForEntrance, SearchResultEntranceView paramSearchResultEntranceView)
   {
     paramSearchResultEntranceView.a(paramSearchResultModelForEntrance);
-    paramSearchResultEntranceView.a().setOnClickListener(new ahgf(this, paramSearchResultModelForEntrance));
+    paramSearchResultEntranceView.a().setOnClickListener(new ahuh(this, paramSearchResultModelForEntrance));
     if (paramSearchResultModelForEntrance.a != null)
     {
       if (TextUtils.isEmpty(paramSearchResultModelForEntrance.a.jump_url.get().toStringUtf8())) {
-        paramSearchResultEntranceView.a().setOnTouchListener(new ahgg(this));
+        paramSearchResultEntranceView.a().setOnTouchListener(new ahui(this));
       }
     }
     else {

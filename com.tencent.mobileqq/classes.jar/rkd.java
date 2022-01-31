@@ -1,29 +1,13 @@
-import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.FTSDBManager;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
-import com.tencent.mobileqq.managers.MessageRecordManagerImpl;
-import com.tencent.mobileqq.utils.DBUtils;
+import com.tencent.mobileqq.activity.AddRequestActivity;
 
-public class rkd
+class rkd
   implements Runnable
 {
-  public rkd(AssociatedAccountManageActivity paramAssociatedAccountManageActivity, boolean paramBoolean, String paramString) {}
+  rkd(rkb paramrkb) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      ProxyManager localProxyManager = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.app.a();
-      if (localProxyManager != null)
-      {
-        localProxyManager.d();
-        FTSDBManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.app, this.jdField_a_of_type_JavaLangString, true);
-        new MessageRecordManagerImpl().a(this.jdField_a_of_type_JavaLangString);
-        DBUtils.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.app.getApp(), this.jdField_a_of_type_JavaLangString, false);
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.runOnUiThread(new rke(this));
+    this.a.a.d();
   }
 }
 

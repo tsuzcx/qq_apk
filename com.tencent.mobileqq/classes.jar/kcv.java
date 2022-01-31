@@ -1,25 +1,19 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.VideoLayerUIBase;
+import android.database.DataSetObserver;
+import com.tencent.av.ui.funchat.filter.EffectCycleViewPager;
 
-public class kcv
-  implements Runnable
+class kcv
+  extends DataSetObserver
 {
-  public kcv(VideoLayerUIBase paramVideoLayerUIBase) {}
+  kcv(kcu paramkcu, EffectCycleViewPager paramEffectCycleViewPager) {}
   
-  public void run()
+  public void onChanged()
   {
-    String str;
-    if (this.a.a != null)
-    {
-      str = this.a.a.a().c;
-      if ((this.a.a.a().i != 1011) || (this.a.a.a().G == 3)) {}
-    }
-    else
-    {
-      return;
-    }
-    this.a.a.c(str);
+    this.jdField_a_of_type_Kcu.notifyDataSetChanged();
+  }
+  
+  public void onInvalidated()
+  {
+    this.jdField_a_of_type_Kcu.notifyDataSetChanged();
   }
 }
 

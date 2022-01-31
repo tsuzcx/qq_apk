@@ -1,29 +1,23 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.activity.phone.PhoneFrame;
+import com.tencent.mobileqq.activity.phone.PhoneFrameActivity;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 
 public class wuz
   implements View.OnClickListener
 {
-  public wuz(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public wuz(PhoneFrameActivity paramPhoneFrameActivity) {}
   
   public void onClick(View paramView)
   {
-    switch (this.a.b())
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.a(0);
-      return;
-    case 1: 
-      this.a.l();
-      return;
-    case 2: 
-      this.a.k();
-      return;
+    paramView = this.a.a.a();
+    if (paramView != null) {
+      paramView.a(false);
     }
-    this.a.a(0);
+    com.tencent.mobileqq.app.PhoneContactManagerImp.g = false;
+    this.a.setResult(1);
+    this.a.finish();
   }
 }
 

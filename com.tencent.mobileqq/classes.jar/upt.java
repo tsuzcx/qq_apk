@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.aio.doodle.MyParcel;
-import com.tencent.mobileqq.activity.aio.doodle.MyParcelable.Creator;
-import com.tencent.mobileqq.activity.aio.doodle.PathData.PointData;
+import com.tencent.mobileqq.activity.aio.audiopanel.CommonRecordSoundPanel;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-public final class upt
-  implements MyParcelable.Creator
+public class upt
+  implements Runnable
 {
-  public PathData.PointData a(MyParcel paramMyParcel)
+  public upt(CommonRecordSoundPanel paramCommonRecordSoundPanel) {}
+  
+  public void run()
   {
-    return new PathData.PointData(paramMyParcel);
+    this.a.b();
+    QQToast.a(this.a.a, this.a.a.getString(2131433386), 0).a();
   }
 }
 

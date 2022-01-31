@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.systemmsg;
 
-import ahxv;
-import ahxw;
-import ahxx;
+import aily;
+import ailz;
+import aima;
 import android.content.SharedPreferences;
 import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -151,12 +151,12 @@ public class GroupSystemMsgController
   public void a(QQAppInterface paramQQAppInterface, int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    paramQQAppInterface.a(new ahxv(this, paramQQAppInterface, paramInt));
+    paramQQAppInterface.a(new aily(this, paramQQAppInterface, paramInt));
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    paramQQAppInterface.a(new ahxw(this, paramQQAppInterface, paramString));
+    paramQQAppInterface.a(new ailz(this, paramQQAppInterface, paramString));
   }
   
   public void a(Long paramLong, structmsg.StructMsg paramStructMsg)
@@ -179,7 +179,7 @@ public class GroupSystemMsgController
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_b_of_type_JavaLangString = paramQQAppInterface.getCurrentAccountUin();
-    paramQQAppInterface.a(new ahxx(this, paramQQAppInterface, paramBoolean));
+    paramQQAppInterface.a(new aima(this, paramQQAppInterface, paramBoolean));
   }
   
   public boolean a(QQAppInterface paramQQAppInterface)
@@ -209,7 +209,7 @@ public class GroupSystemMsgController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.systemmsg.GroupSystemMsgController
  * JD-Core Version:    0.7.0.1
  */

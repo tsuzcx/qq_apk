@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.earlydownload;
 
-import abrs;
+import abyt;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build.VERSION;
@@ -77,7 +77,7 @@ public class EarlyDownloadManager
   public static int a;
   private static String jdField_a_of_type_JavaLangString;
   public static final Lock a;
-  static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "qq.android.appleemoji", "qq.android.system.face.gifv9", "qq.android.ar.native.so_v7.3.8", QavSoDownloadHandler.e(), "qq.android.qav.image2", "qq.android.qav.muteaudio", "qq.android.pic.jpeg.so_above665", "qq.android.pic.webp.so", "qq.android.qav.video", "qq.android.ptt.so.658", "qq.android.system.chirp", "qq.android.dingdong.ring", "qq.android.early.precover", "android.qq.apollo.js.760g3", "android.qq.apollo.jsc", "qq.android.hotfriend.res", "qq.android.native.apng_v700", "qq.android.poke.res_1228", "qq.android.ar.face.so_v7.2.0", "qq.android.ar.face.models_v7.1.5", "android.qq.readinjoy.viola" };
+  static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "qq.android.appleemoji", "qq.android.system.face.gifv9", "qq.android.ar.native.so_v7.6.5.1", "qq.android.qav.so_665", "qq.android.qav.sov7_755", "qq.android.qav.image2", "qq.android.qav.muteaudio", "qq.android.pic.jpeg.so_above665", "qq.android.pic.webp.so", "qq.android.qav.video", "qq.android.ptt.so.658", "qq.android.system.chirp", "qq.android.dingdong.ring", "qq.android.early.precover", "android.qq.apollo.js.760g3", "android.qq.apollo.jsc", "qq.android.hotfriend.res", "qq.android.native.apng_v700", "qq.android.poke.res_1228", "qq.android.ar.face.so_v7.2.0", "qq.android.ar.face.models_v7.1.5", "android.qq.readinjoy.viola" };
   private long jdField_a_of_type_Long;
   private Handler jdField_a_of_type_AndroidOsHandler;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -139,7 +139,7 @@ public class EarlyDownloadManager
       if ("qq.android.appleemoji".equals(paramString)) {
         return new AppleEmojiHandler(paramQQAppInterface);
       }
-      if ("qq.android.ar.native.so_v7.3.8".equals(paramString)) {
+      if ("qq.android.ar.native.so_v7.6.5.1".equals(paramString)) {
         return new ArNativeSoDownloadHandler(paramQQAppInterface);
       }
       if ("qq.android.dingdong.ring".equals(paramString)) {
@@ -187,10 +187,10 @@ public class EarlyDownloadManager
     {
       localBaseApplication = BaseApplicationImpl.getContext();
       if (Build.VERSION.SDK_INT <= 10) {
-        break label68;
+        break label69;
       }
     }
-    label68:
+    label69:
     for (int i = 4;; i = 0)
     {
       jdField_a_of_type_JavaLangString = localBaseApplication.getSharedPreferences("Last_Login", i).getString("uin", "");
@@ -216,9 +216,9 @@ public class EarlyDownloadManager
     jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
     try
     {
-      localObject = new abrs(null);
-      ((abrs)localObject).jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = paramHttpNetReq;
-      ((abrs)localObject).jdField_a_of_type_ComTencentMobileqqTransfilePredownloadAbsPreDownloadTask = paramAbsPreDownloadTask;
+      localObject = new abyt(null);
+      ((abyt)localObject).jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = paramHttpNetReq;
+      ((abyt)localObject).jdField_a_of_type_ComTencentMobileqqTransfilePredownloadAbsPreDownloadTask = paramAbsPreDownloadTask;
       this.b.put(paramXmlData.strResName, localObject);
       this.c.remove(paramXmlData.strResName);
       return;
@@ -277,7 +277,7 @@ public class EarlyDownloadManager
               }
               ((Message)localObject1).what = 131332;
               ((Message)localObject1).obj = new Object[] { localObject4, localXmlData };
-              if (((String)localObject4).equals("qq.android.ar.native.so_v7.3.8")) {}
+              if (((String)localObject4).equals("qq.android.ar.native.so_v7.6.5.1")) {}
               for (jdField_a_of_type_Int = 0;; jdField_a_of_type_Int = 60000)
               {
                 this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject1, jdField_a_of_type_Int);
@@ -317,7 +317,7 @@ public class EarlyDownloadManager
           }
           paramGetResourceRespV2.what = 131332;
           paramGetResourceRespV2.obj = new Object[] { localObject3, localObject4 };
-          if (!((String)localObject3).equals("qq.android.ar.native.so_v7.3.8")) {
+          if (!((String)localObject3).equals("qq.android.ar.native.so_v7.6.5.1")) {
             break label622;
           }
         }
@@ -469,11 +469,11 @@ public class EarlyDownloadManager
       {
         try
         {
-          localObject = (abrs)this.b.remove(paramXmlData.strResName);
+          localObject = (abyt)this.b.remove(paramXmlData.strResName);
           HttpEngineTask localHttpEngineTask = (HttpEngineTask)this.c.remove(paramXmlData.strResName);
           jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
           if (QLog.isColorLevel()) {
-            QLog.d("EarlyDown", 2, "doOnCancelDownload(), netReq = " + ((abrs)localObject).jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq + ", pendingNetReq = " + localHttpEngineTask);
+            QLog.d("EarlyDown", 2, "doOnCancelDownload(), netReq = " + ((abyt)localObject).jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq + ", pendingNetReq = " + localHttpEngineTask);
           }
           localEarlyHandler = a(paramXmlData.strResName);
           if ((localObject == null) && (localHttpEngineTask == null)) {
@@ -481,7 +481,7 @@ public class EarlyDownloadManager
           }
           if (localObject != null)
           {
-            if (((abrs)localObject).jdField_a_of_type_ComTencentMobileqqTransfilePredownloadAbsPreDownloadTask != null) {
+            if (((abyt)localObject).jdField_a_of_type_ComTencentMobileqqTransfilePredownloadAbsPreDownloadTask != null) {
               this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.a(paramXmlData.strResURL_big);
             }
           }
@@ -504,7 +504,7 @@ public class EarlyDownloadManager
         {
           jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
         }
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0).b(((abrs)localObject).jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getNetEngine(0).b(((abyt)localObject).jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
       }
     } while ((localEarlyHandler == null) || (!localEarlyHandler.d()));
     Object localObject = new Intent("resp.com.tencent.mobileqq.EARLY_CANCEL");
@@ -521,176 +521,176 @@ public class EarlyDownloadManager
   {
     // Byte code:
     //   0: aload_1
-    //   1: getfield 645	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_ComTencentMobileqqTransfileNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
-    //   4: invokevirtual 649	com/tencent/mobileqq/transfile/NetReq:a	()Ljava/lang/Object;
-    //   7: checkcast 274	com/tencent/mobileqq/earlydownload/xmldata/XmlData
+    //   1: getfield 649	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_ComTencentMobileqqTransfileNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
+    //   4: invokevirtual 653	com/tencent/mobileqq/transfile/NetReq:a	()Ljava/lang/Object;
+    //   7: checkcast 278	com/tencent/mobileqq/earlydownload/xmldata/XmlData
     //   10: astore 15
     //   12: aload 15
     //   14: ifnonnull +4 -> 18
     //   17: return
     //   18: aload_1
-    //   19: getfield 650	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_Int	I
+    //   19: getfield 654	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_Int	I
     //   22: iconst_3
     //   23: if_icmpne +46 -> 69
-    //   26: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   26: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   29: ifeq -12 -> 17
-    //   32: ldc 142
+    //   32: ldc 140
     //   34: iconst_2
-    //   35: new 144	java/lang/StringBuilder
+    //   35: new 142	java/lang/StringBuilder
     //   38: dup
-    //   39: invokespecial 145	java/lang/StringBuilder:<init>	()V
-    //   42: ldc_w 652
-    //   45: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   42: ldc_w 656
+    //   45: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   48: aload 15
-    //   50: getfield 323	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
-    //   53: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: ldc_w 654
-    //   59: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   65: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   50: getfield 327	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
+    //   53: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   56: ldc_w 658
+    //   59: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   62: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   65: invokestatic 157	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   68: return
     //   69: aload_1
-    //   70: getfield 650	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_Int	I
+    //   70: getfield 654	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_Int	I
     //   73: ifne +338 -> 411
     //   76: iconst_1
     //   77: istore_3
-    //   78: invokestatic 272	android/os/SystemClock:elapsedRealtime	()J
+    //   78: invokestatic 276	android/os/SystemClock:elapsedRealtime	()J
     //   81: lstore 9
     //   83: aload 15
-    //   85: getfield 277	com/tencent/mobileqq/earlydownload/xmldata/XmlData:tStart	J
+    //   85: getfield 281	com/tencent/mobileqq/earlydownload/xmldata/XmlData:tStart	J
     //   88: lstore 11
     //   90: lconst_0
     //   91: lstore 5
-    //   93: new 458	java/io/File
+    //   93: new 462	java/io/File
     //   96: dup
     //   97: aload_1
-    //   98: getfield 645	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_ComTencentMobileqqTransfileNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
-    //   101: getfield 656	com/tencent/mobileqq/transfile/NetReq:c	Ljava/lang/String;
-    //   104: invokespecial 460	java/io/File:<init>	(Ljava/lang/String;)V
-    //   107: invokevirtual 658	java/io/File:length	()J
+    //   98: getfield 649	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_ComTencentMobileqqTransfileNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
+    //   101: getfield 660	com/tencent/mobileqq/transfile/NetReq:c	Ljava/lang/String;
+    //   104: invokespecial 464	java/io/File:<init>	(Ljava/lang/String;)V
+    //   107: invokevirtual 662	java/io/File:length	()J
     //   110: lstore 7
     //   112: lload 7
     //   114: lstore 5
-    //   116: getstatic 91	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   119: invokeinterface 309 1 0
+    //   116: getstatic 89	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
+    //   119: invokeinterface 313 1 0
     //   124: aload_0
-    //   125: getfield 101	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:b	Ljava/util/HashMap;
+    //   125: getfield 99	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:b	Ljava/util/HashMap;
     //   128: aload 15
-    //   130: getfield 323	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
-    //   133: invokevirtual 331	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   136: checkcast 311	abrs
+    //   130: getfield 327	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
+    //   133: invokevirtual 335	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   136: checkcast 315	abyt
     //   139: astore 13
     //   141: aload 13
     //   143: ifnull +273 -> 416
     //   146: aload 13
-    //   148: getfield 317	abrs:jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq	Lcom/tencent/mobileqq/transfile/HttpNetReq;
+    //   148: getfield 321	abyt:jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq	Lcom/tencent/mobileqq/transfile/HttpNetReq;
     //   151: astore 13
-    //   153: getstatic 91	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   156: invokeinterface 334 1 0
+    //   153: getstatic 89	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
+    //   156: invokeinterface 338 1 0
     //   161: iload_3
     //   162: ifeq +1080 -> 1242
     //   165: aload_0
     //   166: aload 15
     //   168: aload_1
-    //   169: getfield 645	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_ComTencentMobileqqTransfileNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
-    //   172: getfield 656	com/tencent/mobileqq/transfile/NetReq:c	Ljava/lang/String;
-    //   175: invokespecial 660	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:a	(Lcom/tencent/mobileqq/earlydownload/xmldata/XmlData;Ljava/lang/String;)Z
+    //   169: getfield 649	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_ComTencentMobileqqTransfileNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
+    //   172: getfield 660	com/tencent/mobileqq/transfile/NetReq:c	Ljava/lang/String;
+    //   175: invokespecial 664	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:a	(Lcom/tencent/mobileqq/earlydownload/xmldata/XmlData;Ljava/lang/String;)Z
     //   178: istore 4
     //   180: iload 4
     //   182: ifne +68 -> 250
     //   185: aload_1
-    //   186: ldc_w 661
-    //   189: putfield 663	com/tencent/mobileqq/transfile/NetResp:b	I
+    //   186: ldc_w 665
+    //   189: putfield 667	com/tencent/mobileqq/transfile/NetResp:b	I
     //   192: aload_1
-    //   193: new 144	java/lang/StringBuilder
+    //   193: new 142	java/lang/StringBuilder
     //   196: dup
-    //   197: invokespecial 145	java/lang/StringBuilder:<init>	()V
-    //   200: ldc_w 665
-    //   203: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   197: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   200: ldc_w 669
+    //   203: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   206: lload 5
-    //   208: invokevirtual 668	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   208: invokevirtual 672	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
     //   211: aload 15
-    //   213: getfield 503	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strLog	Ljava/lang/String;
-    //   216: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   219: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   222: putfield 669	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   213: getfield 507	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strLog	Ljava/lang/String;
+    //   216: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   219: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   222: putfield 673	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   225: aload 15
-    //   227: ldc_w 257
-    //   230: putfield 503	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strLog	Ljava/lang/String;
+    //   227: ldc_w 261
+    //   230: putfield 507	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strLog	Ljava/lang/String;
     //   233: aload 15
     //   235: iconst_0
-    //   236: putfield 283	com/tencent/mobileqq/earlydownload/xmldata/XmlData:hasResDownloaded	Z
+    //   236: putfield 287	com/tencent/mobileqq/earlydownload/xmldata/XmlData:hasResDownloaded	Z
     //   239: aload_1
-    //   240: getfield 645	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_ComTencentMobileqqTransfileNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
-    //   243: getfield 656	com/tencent/mobileqq/transfile/NetReq:c	Ljava/lang/String;
-    //   246: invokestatic 673	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;)Z
+    //   240: getfield 649	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_ComTencentMobileqqTransfileNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
+    //   243: getfield 660	com/tencent/mobileqq/transfile/NetReq:c	Ljava/lang/String;
+    //   246: invokestatic 677	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;)Z
     //   249: pop
     //   250: iload 4
     //   252: istore_3
-    //   253: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   253: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   256: ifeq +47 -> 303
-    //   259: ldc 142
+    //   259: ldc 140
     //   261: iconst_2
-    //   262: new 144	java/lang/StringBuilder
+    //   262: new 142	java/lang/StringBuilder
     //   265: dup
-    //   266: invokespecial 145	java/lang/StringBuilder:<init>	()V
-    //   269: ldc_w 675
-    //   272: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   266: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   269: ldc_w 679
+    //   272: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   275: iload 4
-    //   277: invokevirtual 678	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   280: ldc_w 680
-    //   283: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   277: invokevirtual 682	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   280: ldc_w 684
+    //   283: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   286: aload 15
-    //   288: getfield 323	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
-    //   291: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   294: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   297: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   288: getfield 327	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
+    //   291: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   294: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   297: invokestatic 157	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   300: iload 4
     //   302: istore_3
     //   303: aload 15
-    //   305: getfield 299	com/tencent/mobileqq/earlydownload/xmldata/XmlData:reqLoadCount	I
+    //   305: getfield 303	com/tencent/mobileqq/earlydownload/xmldata/XmlData:reqLoadCount	I
     //   308: istore_2
     //   309: aload_1
-    //   310: getfield 663	com/tencent/mobileqq/transfile/NetResp:b	I
-    //   313: ldc_w 661
+    //   310: getfield 667	com/tencent/mobileqq/transfile/NetResp:b	I
+    //   313: ldc_w 665
     //   316: if_icmpeq +13 -> 329
     //   319: aload_1
-    //   320: getfield 663	com/tencent/mobileqq/transfile/NetResp:b	I
+    //   320: getfield 667	com/tencent/mobileqq/transfile/NetResp:b	I
     //   323: sipush -9527
     //   326: if_icmpne +107 -> 433
     //   329: iload_2
     //   330: iconst_3
     //   331: if_icmpge +102 -> 433
-    //   334: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   334: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   337: ifeq +60 -> 397
-    //   340: ldc 142
+    //   340: ldc 140
     //   342: iconst_2
-    //   343: new 144	java/lang/StringBuilder
+    //   343: new 142	java/lang/StringBuilder
     //   346: dup
-    //   347: invokespecial 145	java/lang/StringBuilder:<init>	()V
-    //   350: ldc_w 682
-    //   353: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   347: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   350: ldc_w 686
+    //   353: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   356: aload 15
-    //   358: getfield 323	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
-    //   361: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   364: ldc_w 684
-    //   367: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   358: getfield 327	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
+    //   361: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   364: ldc_w 688
+    //   367: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   370: aload 15
-    //   372: getfield 299	com/tencent/mobileqq/earlydownload/xmldata/XmlData:reqLoadCount	I
-    //   375: invokevirtual 428	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   378: ldc_w 686
-    //   381: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   372: getfield 303	com/tencent/mobileqq/earlydownload/xmldata/XmlData:reqLoadCount	I
+    //   375: invokevirtual 432	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   378: ldc_w 690
+    //   381: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   384: aload_1
-    //   385: getfield 663	com/tencent/mobileqq/transfile/NetResp:b	I
-    //   388: invokevirtual 428	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   391: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   394: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   385: getfield 667	com/tencent/mobileqq/transfile/NetResp:b	I
+    //   388: invokevirtual 432	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   391: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   394: invokestatic 157	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   397: aload_0
     //   398: aload 15
     //   400: aload_1
-    //   401: getfield 645	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_ComTencentMobileqqTransfileNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
-    //   404: getfield 656	com/tencent/mobileqq/transfile/NetReq:c	Ljava/lang/String;
-    //   407: invokevirtual 689	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:a	(Lcom/tencent/mobileqq/earlydownload/xmldata/XmlData;Ljava/lang/String;)V
+    //   401: getfield 649	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_ComTencentMobileqqTransfileNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
+    //   404: getfield 660	com/tencent/mobileqq/transfile/NetReq:c	Ljava/lang/String;
+    //   407: invokevirtual 693	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:a	(Lcom/tencent/mobileqq/earlydownload/xmldata/XmlData;Ljava/lang/String;)V
     //   410: return
     //   411: iconst_0
     //   412: istore_3
@@ -699,151 +699,151 @@ public class EarlyDownloadManager
     //   417: astore 13
     //   419: goto -266 -> 153
     //   422: astore_1
-    //   423: getstatic 91	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   426: invokeinterface 334 1 0
+    //   423: getstatic 89	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
+    //   426: invokeinterface 338 1 0
     //   431: aload_1
     //   432: athrow
     //   433: aload 15
     //   435: iconst_0
-    //   436: putfield 299	com/tencent/mobileqq/earlydownload/xmldata/XmlData:reqLoadCount	I
+    //   436: putfield 303	com/tencent/mobileqq/earlydownload/xmldata/XmlData:reqLoadCount	I
     //   439: aload_0
     //   440: aload 15
-    //   442: getfield 323	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
-    //   445: invokevirtual 296	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/earlydownload/handler/EarlyHandler;
+    //   442: getfield 327	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
+    //   445: invokevirtual 300	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/earlydownload/handler/EarlyHandler;
     //   448: astore 16
     //   450: iload_3
     //   451: ifeq +605 -> 1056
     //   454: aload 15
     //   456: lconst_0
-    //   457: putfield 692	com/tencent/mobileqq/earlydownload/xmldata/XmlData:tLoadFail	J
+    //   457: putfield 696	com/tencent/mobileqq/earlydownload/xmldata/XmlData:tLoadFail	J
     //   460: aload 15
     //   462: iconst_1
-    //   463: putfield 280	com/tencent/mobileqq/earlydownload/xmldata/XmlData:loadState	I
+    //   463: putfield 284	com/tencent/mobileqq/earlydownload/xmldata/XmlData:loadState	I
     //   466: aload 15
     //   468: iconst_1
-    //   469: putfield 283	com/tencent/mobileqq/earlydownload/xmldata/XmlData:hasResDownloaded	Z
+    //   469: putfield 287	com/tencent/mobileqq/earlydownload/xmldata/XmlData:hasResDownloaded	Z
     //   472: aconst_null
     //   473: astore 14
-    //   475: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   475: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   478: ifeq +50 -> 528
-    //   481: new 694	java/lang/StringBuffer
+    //   481: new 698	java/lang/StringBuffer
     //   484: dup
-    //   485: new 144	java/lang/StringBuilder
+    //   485: new 142	java/lang/StringBuilder
     //   488: dup
-    //   489: invokespecial 145	java/lang/StringBuilder:<init>	()V
-    //   492: ldc_w 696
-    //   495: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   489: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   492: ldc_w 700
+    //   495: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   498: aload 15
-    //   500: getfield 323	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
-    //   503: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   506: ldc_w 698
-    //   509: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   500: getfield 327	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
+    //   503: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   506: ldc_w 702
+    //   509: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   512: aload 15
-    //   514: getfield 701	com/tencent/mobileqq/earlydownload/xmldata/XmlData:StoreBackup	Z
-    //   517: invokevirtual 678	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   520: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   523: invokespecial 702	java/lang/StringBuffer:<init>	(Ljava/lang/String;)V
+    //   514: getfield 705	com/tencent/mobileqq/earlydownload/xmldata/XmlData:StoreBackup	Z
+    //   517: invokevirtual 682	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   520: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   523: invokespecial 706	java/lang/StringBuffer:<init>	(Ljava/lang/String;)V
     //   526: astore 14
     //   528: aload 15
-    //   530: getfield 701	com/tencent/mobileqq/earlydownload/xmldata/XmlData:StoreBackup	Z
+    //   530: getfield 705	com/tencent/mobileqq/earlydownload/xmldata/XmlData:StoreBackup	Z
     //   533: ifeq +94 -> 627
     //   536: aload 16
     //   538: ifnull +89 -> 627
     //   541: aload 16
-    //   543: invokevirtual 704	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:d	()Ljava/lang/String;
+    //   543: invokevirtual 708	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:d	()Ljava/lang/String;
     //   546: astore 17
     //   548: aload_1
-    //   549: getfield 645	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_ComTencentMobileqqTransfileNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
-    //   552: getfield 656	com/tencent/mobileqq/transfile/NetReq:c	Ljava/lang/String;
+    //   549: getfield 649	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_ComTencentMobileqqTransfileNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
+    //   552: getfield 660	com/tencent/mobileqq/transfile/NetReq:c	Ljava/lang/String;
     //   555: aload 17
-    //   557: invokestatic 707	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   557: invokestatic 711	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;Ljava/lang/String;)Z
     //   560: istore 4
-    //   562: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   562: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   565: ifeq +62 -> 627
     //   568: aload 14
     //   570: ifnull +57 -> 627
     //   573: aload 14
-    //   575: new 144	java/lang/StringBuilder
+    //   575: new 142	java/lang/StringBuilder
     //   578: dup
-    //   579: invokespecial 145	java/lang/StringBuilder:<init>	()V
-    //   582: ldc_w 709
-    //   585: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   579: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   582: ldc_w 713
+    //   585: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   588: iload 4
-    //   590: invokevirtual 678	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   593: ldc_w 711
-    //   596: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   590: invokevirtual 682	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   593: ldc_w 715
+    //   596: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   599: aload_1
-    //   600: getfield 645	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_ComTencentMobileqqTransfileNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
-    //   603: getfield 656	com/tencent/mobileqq/transfile/NetReq:c	Ljava/lang/String;
-    //   606: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   609: ldc_w 713
-    //   612: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   600: getfield 649	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_ComTencentMobileqqTransfileNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
+    //   603: getfield 660	com/tencent/mobileqq/transfile/NetReq:c	Ljava/lang/String;
+    //   606: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   609: ldc_w 717
+    //   612: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   615: aload 17
-    //   617: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   620: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   623: invokevirtual 716	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   617: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   620: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   623: invokevirtual 720	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
     //   626: pop
-    //   627: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   627: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   630: ifeq +19 -> 649
     //   633: aload 14
     //   635: ifnull +14 -> 649
-    //   638: ldc 142
+    //   638: ldc 140
     //   640: iconst_2
     //   641: aload 14
-    //   643: invokevirtual 717	java/lang/StringBuffer:toString	()Ljava/lang/String;
-    //   646: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   643: invokevirtual 721	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   646: invokestatic 157	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   649: aload 15
     //   651: iconst_4
     //   652: anewarray 33	java/lang/String
     //   655: dup
     //   656: iconst_0
-    //   657: ldc_w 718
+    //   657: ldc_w 722
     //   660: aastore
     //   661: dup
     //   662: iconst_1
-    //   663: ldc_w 284
+    //   663: ldc_w 288
     //   666: aastore
     //   667: dup
     //   668: iconst_2
-    //   669: ldc_w 719
+    //   669: ldc_w 723
     //   672: aastore
     //   673: dup
     //   674: iconst_3
-    //   675: ldc_w 285
+    //   675: ldc_w 289
     //   678: aastore
-    //   679: invokestatic 290	com/tencent/mobileqq/earlydownload/EarlyDataFactory:a	(Lcom/tencent/mobileqq/earlydownload/xmldata/XmlData;[Ljava/lang/String;)V
+    //   679: invokestatic 294	com/tencent/mobileqq/earlydownload/EarlyDataFactory:a	(Lcom/tencent/mobileqq/earlydownload/xmldata/XmlData;[Ljava/lang/String;)V
     //   682: aload_0
     //   683: aload 15
-    //   685: invokevirtual 293	com/tencent/mobileqq/earlydownload/xmldata/XmlData:getStrResName	()Ljava/lang/String;
-    //   688: invokevirtual 721	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:b	(Ljava/lang/String;)V
-    //   691: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   685: invokevirtual 297	com/tencent/mobileqq/earlydownload/xmldata/XmlData:getStrResName	()Ljava/lang/String;
+    //   688: invokevirtual 725	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:b	(Ljava/lang/String;)V
+    //   691: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   694: ifeq +70 -> 764
-    //   697: ldc 142
+    //   697: ldc 140
     //   699: iconst_2
-    //   700: new 144	java/lang/StringBuilder
+    //   700: new 142	java/lang/StringBuilder
     //   703: dup
-    //   704: invokespecial 145	java/lang/StringBuilder:<init>	()V
-    //   707: ldc_w 723
-    //   710: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   704: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   707: ldc_w 727
+    //   710: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   713: iload_3
-    //   714: invokevirtual 678	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   717: ldc_w 725
-    //   720: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   714: invokevirtual 682	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   717: ldc_w 729
+    //   720: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   723: aload_1
-    //   724: getfield 663	com/tencent/mobileqq/transfile/NetResp:b	I
-    //   727: invokevirtual 428	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   730: ldc_w 727
-    //   733: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   724: getfield 667	com/tencent/mobileqq/transfile/NetResp:b	I
+    //   727: invokevirtual 432	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   730: ldc_w 731
+    //   733: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   736: aload 15
-    //   738: getfield 323	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
-    //   741: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   744: ldc_w 601
-    //   747: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   738: getfield 327	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
+    //   741: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   744: ldc_w 605
+    //   747: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   750: aload 15
-    //   752: getfield 602	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResURL_big	Ljava/lang/String;
-    //   755: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   758: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   761: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   752: getfield 606	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResURL_big	Ljava/lang/String;
+    //   755: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   758: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   761: invokestatic 157	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   764: aload 13
     //   766: ifnull +418 -> 1184
     //   769: aload 16
@@ -852,190 +852,190 @@ public class EarlyDownloadManager
     //   776: aload 15
     //   778: iload_3
     //   779: aload_1
-    //   780: getfield 663	com/tencent/mobileqq/transfile/NetResp:b	I
+    //   780: getfield 667	com/tencent/mobileqq/transfile/NetResp:b	I
     //   783: aload_1
-    //   784: getfield 645	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_ComTencentMobileqqTransfileNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
-    //   787: getfield 656	com/tencent/mobileqq/transfile/NetReq:c	Ljava/lang/String;
-    //   790: invokevirtual 730	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:a	(Lcom/tencent/mobileqq/earlydownload/xmldata/XmlData;ZILjava/lang/String;)V
+    //   784: getfield 649	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_ComTencentMobileqqTransfileNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
+    //   787: getfield 660	com/tencent/mobileqq/transfile/NetReq:c	Ljava/lang/String;
+    //   790: invokevirtual 734	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:a	(Lcom/tencent/mobileqq/earlydownload/xmldata/XmlData;ZILjava/lang/String;)V
     //   793: aload 16
-    //   795: invokevirtual 732	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:d	()V
+    //   795: invokevirtual 736	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:d	()V
     //   798: aload_1
-    //   799: getfield 663	com/tencent/mobileqq/transfile/NetResp:b	I
+    //   799: getfield 667	com/tencent/mobileqq/transfile/NetResp:b	I
     //   802: sipush 9366
     //   805: if_icmpeq -788 -> 17
     //   808: aload_1
-    //   809: getfield 663	com/tencent/mobileqq/transfile/NetResp:b	I
+    //   809: getfield 667	com/tencent/mobileqq/transfile/NetResp:b	I
     //   812: sipush 9037
     //   815: if_icmpeq -798 -> 17
     //   818: aload_1
-    //   819: getfield 663	com/tencent/mobileqq/transfile/NetResp:b	I
+    //   819: getfield 667	com/tencent/mobileqq/transfile/NetResp:b	I
     //   822: sipush 9004
     //   825: if_icmpeq -808 -> 17
     //   828: aload_1
-    //   829: getfield 663	com/tencent/mobileqq/transfile/NetResp:b	I
+    //   829: getfield 667	com/tencent/mobileqq/transfile/NetResp:b	I
     //   832: sipush 9040
     //   835: if_icmpeq -818 -> 17
-    //   838: new 96	java/util/HashMap
+    //   838: new 94	java/util/HashMap
     //   841: dup
-    //   842: invokespecial 97	java/util/HashMap:<init>	()V
+    //   842: invokespecial 95	java/util/HashMap:<init>	()V
     //   845: astore 13
     //   847: aload 13
-    //   849: ldc_w 734
+    //   849: ldc_w 738
     //   852: aload_1
-    //   853: getfield 663	com/tencent/mobileqq/transfile/NetResp:b	I
-    //   856: invokestatic 739	java/lang/Integer:toString	(I)Ljava/lang/String;
-    //   859: invokevirtual 327	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   853: getfield 667	com/tencent/mobileqq/transfile/NetResp:b	I
+    //   856: invokestatic 743	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   859: invokevirtual 331	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   862: pop
     //   863: aload 13
-    //   865: ldc_w 741
+    //   865: ldc_w 745
     //   868: aload 15
-    //   870: getfield 554	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strPkgName	Ljava/lang/String;
-    //   873: invokevirtual 327	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   870: getfield 558	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strPkgName	Ljava/lang/String;
+    //   873: invokevirtual 331	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   876: pop
     //   877: aload 13
-    //   879: ldc_w 743
+    //   879: ldc_w 747
     //   882: iload_2
-    //   883: invokestatic 739	java/lang/Integer:toString	(I)Ljava/lang/String;
-    //   886: invokevirtual 327	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   883: invokestatic 743	java/lang/Integer:toString	(I)Ljava/lang/String;
+    //   886: invokevirtual 331	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   889: pop
     //   890: iload_3
     //   891: ifne +108 -> 999
     //   894: aload_1
-    //   895: getfield 744	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   895: getfield 748	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
     //   898: ifnull +42 -> 940
     //   901: aload_1
-    //   902: getfield 744	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   905: ldc_w 746
-    //   908: invokevirtual 362	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   902: getfield 748	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
+    //   905: ldc_w 750
+    //   908: invokevirtual 366	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   911: checkcast 33	java/lang/String
     //   914: astore 14
     //   916: aload 14
     //   918: ifnull +22 -> 940
     //   921: aload 14
-    //   923: invokevirtual 162	java/lang/String:length	()I
+    //   923: invokevirtual 161	java/lang/String:length	()I
     //   926: ifle +14 -> 940
     //   929: aload 13
-    //   931: ldc_w 748
+    //   931: ldc_w 752
     //   934: aload 14
-    //   936: invokevirtual 327	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   936: invokevirtual 331	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   939: pop
     //   940: aload_1
-    //   941: getfield 669	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   941: getfield 673	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   944: ifnull +55 -> 999
     //   947: aload_1
-    //   948: getfield 669	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   951: invokevirtual 162	java/lang/String:length	()I
+    //   948: getfield 673	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   951: invokevirtual 161	java/lang/String:length	()I
     //   954: ifle +45 -> 999
     //   957: aload 13
-    //   959: ldc_w 750
-    //   962: new 144	java/lang/StringBuilder
+    //   959: ldc_w 754
+    //   962: new 142	java/lang/StringBuilder
     //   965: dup
-    //   966: invokespecial 145	java/lang/StringBuilder:<init>	()V
+    //   966: invokespecial 143	java/lang/StringBuilder:<init>	()V
     //   969: aload_1
-    //   970: getfield 669	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   973: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   970: getfield 673	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   973: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   976: aload 15
-    //   978: getfield 503	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strLog	Ljava/lang/String;
-    //   981: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   984: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   987: invokevirtual 327	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   978: getfield 507	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strLog	Ljava/lang/String;
+    //   981: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   984: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   987: invokevirtual 331	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   990: pop
     //   991: aload 15
-    //   993: ldc_w 257
-    //   996: putfield 503	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strLog	Ljava/lang/String;
+    //   993: ldc_w 261
+    //   996: putfield 507	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strLog	Ljava/lang/String;
     //   999: aload 16
     //   1001: ifnull -984 -> 17
     //   1004: aload 16
-    //   1006: invokevirtual 752	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:a	()Ljava/lang/String;
+    //   1006: invokevirtual 756	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:a	()Ljava/lang/String;
     //   1009: astore_1
     //   1010: aload_1
     //   1011: ifnull -994 -> 17
     //   1014: aload_1
-    //   1015: invokevirtual 162	java/lang/String:length	()I
+    //   1015: invokevirtual 161	java/lang/String:length	()I
     //   1018: ifle -1001 -> 17
-    //   1021: invokestatic 240	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   1024: invokestatic 757	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
+    //   1021: invokestatic 244	com/tencent/common/app/BaseApplicationImpl:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   1024: invokestatic 761	com/tencent/mobileqq/statistics/StatisticCollector:a	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
     //   1027: aload_0
-    //   1028: getfield 110	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   1031: invokevirtual 760	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
+    //   1028: getfield 108	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   1031: invokevirtual 764	com/tencent/mobileqq/app/QQAppInterface:getCurrentAccountUin	()Ljava/lang/String;
     //   1034: aload 16
-    //   1036: invokevirtual 752	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:a	()Ljava/lang/String;
+    //   1036: invokevirtual 756	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:a	()Ljava/lang/String;
     //   1039: iload_3
     //   1040: lload 9
     //   1042: lload 11
     //   1044: lsub
     //   1045: lload 5
     //   1047: aload 13
-    //   1049: ldc_w 257
-    //   1052: invokevirtual 763	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
+    //   1049: ldc_w 261
+    //   1052: invokevirtual 767	com/tencent/mobileqq/statistics/StatisticCollector:a	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
     //   1055: return
     //   1056: aload_1
-    //   1057: getfield 663	com/tencent/mobileqq/transfile/NetResp:b	I
+    //   1057: getfield 667	com/tencent/mobileqq/transfile/NetResp:b	I
     //   1060: sipush 9366
     //   1063: if_icmpeq +51 -> 1114
     //   1066: aload_1
-    //   1067: getfield 663	com/tencent/mobileqq/transfile/NetResp:b	I
+    //   1067: getfield 667	com/tencent/mobileqq/transfile/NetResp:b	I
     //   1070: sipush 9369
     //   1073: if_icmpeq +41 -> 1114
     //   1076: aload_1
-    //   1077: getfield 663	com/tencent/mobileqq/transfile/NetResp:b	I
+    //   1077: getfield 667	com/tencent/mobileqq/transfile/NetResp:b	I
     //   1080: sipush 9367
     //   1083: if_icmpeq +31 -> 1114
     //   1086: aload_1
-    //   1087: getfield 663	com/tencent/mobileqq/transfile/NetResp:b	I
+    //   1087: getfield 667	com/tencent/mobileqq/transfile/NetResp:b	I
     //   1090: sipush 9037
     //   1093: if_icmpeq +21 -> 1114
     //   1096: aload_1
-    //   1097: getfield 663	com/tencent/mobileqq/transfile/NetResp:b	I
+    //   1097: getfield 667	com/tencent/mobileqq/transfile/NetResp:b	I
     //   1100: sipush 9004
     //   1103: if_icmpeq +11 -> 1114
     //   1106: aload 15
-    //   1108: invokestatic 768	java/lang/System:currentTimeMillis	()J
-    //   1111: putfield 692	com/tencent/mobileqq/earlydownload/xmldata/XmlData:tLoadFail	J
-    //   1114: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1108: invokestatic 772	java/lang/System:currentTimeMillis	()J
+    //   1111: putfield 696	com/tencent/mobileqq/earlydownload/xmldata/XmlData:tLoadFail	J
+    //   1114: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1117: ifeq +47 -> 1164
-    //   1120: ldc 142
+    //   1120: ldc 140
     //   1122: iconst_2
-    //   1123: new 144	java/lang/StringBuilder
+    //   1123: new 142	java/lang/StringBuilder
     //   1126: dup
-    //   1127: invokespecial 145	java/lang/StringBuilder:<init>	()V
-    //   1130: ldc_w 770
-    //   1133: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1127: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   1130: ldc_w 774
+    //   1133: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1136: aload 15
-    //   1138: getfield 692	com/tencent/mobileqq/earlydownload/xmldata/XmlData:tLoadFail	J
-    //   1141: invokevirtual 668	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1144: ldc_w 772
-    //   1147: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1138: getfield 696	com/tencent/mobileqq/earlydownload/xmldata/XmlData:tLoadFail	J
+    //   1141: invokevirtual 672	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1144: ldc_w 776
+    //   1147: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1150: aload 15
-    //   1152: getfield 323	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
-    //   1155: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1158: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1161: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1152: getfield 327	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
+    //   1155: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1158: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1161: invokestatic 157	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1164: aload 16
     //   1166: iconst_1
-    //   1167: invokevirtual 593	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:c	(Z)V
+    //   1167: invokevirtual 597	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:c	(Z)V
     //   1170: aload_1
-    //   1171: getfield 645	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_ComTencentMobileqqTransfileNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
-    //   1174: getfield 656	com/tencent/mobileqq/transfile/NetReq:c	Ljava/lang/String;
-    //   1177: invokestatic 673	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;)Z
+    //   1171: getfield 649	com/tencent/mobileqq/transfile/NetResp:jdField_a_of_type_ComTencentMobileqqTransfileNetReq	Lcom/tencent/mobileqq/transfile/NetReq;
+    //   1174: getfield 660	com/tencent/mobileqq/transfile/NetReq:c	Ljava/lang/String;
+    //   1177: invokestatic 677	com/tencent/mobileqq/utils/FileUtils:d	(Ljava/lang/String;)Z
     //   1180: pop
     //   1181: goto -532 -> 649
-    //   1184: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1184: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   1187: ifeq -1170 -> 17
-    //   1190: ldc 142
+    //   1190: ldc 140
     //   1192: iconst_2
-    //   1193: new 144	java/lang/StringBuilder
+    //   1193: new 142	java/lang/StringBuilder
     //   1196: dup
-    //   1197: invokespecial 145	java/lang/StringBuilder:<init>	()V
-    //   1200: ldc_w 652
-    //   1203: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1197: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   1200: ldc_w 656
+    //   1203: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   1206: aload 15
-    //   1208: getfield 323	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
-    //   1211: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1214: ldc_w 774
-    //   1217: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1220: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1223: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1208: getfield 327	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
+    //   1211: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1214: ldc_w 778
+    //   1217: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1220: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1223: invokestatic 157	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   1226: return
     //   1227: astore 17
     //   1229: goto -602 -> 627
@@ -1178,105 +1178,105 @@ public class EarlyDownloadManager
     //   11: aload_2
     //   12: ifnull +10 -> 22
     //   15: aload_2
-    //   16: invokevirtual 162	java/lang/String:length	()I
+    //   16: invokevirtual 161	java/lang/String:length	()I
     //   19: ifne +74 -> 93
-    //   22: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   22: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   25: ifeq +41 -> 66
-    //   28: new 144	java/lang/StringBuilder
+    //   28: new 142	java/lang/StringBuilder
     //   31: dup
-    //   32: invokespecial 145	java/lang/StringBuilder:<init>	()V
-    //   35: ldc_w 814
-    //   38: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   32: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   35: ldc_w 818
+    //   38: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   41: astore 6
     //   43: aload_1
     //   44: ifnonnull +25 -> 69
-    //   47: ldc_w 816
+    //   47: ldc_w 820
     //   50: astore_1
-    //   51: ldc 142
+    //   51: ldc 140
     //   53: iconst_2
     //   54: aload 6
     //   56: aload_1
-    //   57: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   60: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   63: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   57: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   63: invokestatic 157	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   66: aload_0
     //   67: monitorexit
     //   68: return
-    //   69: new 144	java/lang/StringBuilder
+    //   69: new 142	java/lang/StringBuilder
     //   72: dup
-    //   73: invokespecial 145	java/lang/StringBuilder:<init>	()V
-    //   76: ldc_w 818
-    //   79: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   73: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   76: ldc_w 822
+    //   79: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   82: aload_2
-    //   83: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   86: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   83: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   89: astore_1
     //   90: goto -39 -> 51
-    //   93: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   93: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   96: ifeq +55 -> 151
-    //   99: ldc 142
+    //   99: ldc 140
     //   101: iconst_2
-    //   102: new 144	java/lang/StringBuilder
+    //   102: new 142	java/lang/StringBuilder
     //   105: dup
-    //   106: invokespecial 145	java/lang/StringBuilder:<init>	()V
-    //   109: ldc_w 820
-    //   112: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   106: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   109: ldc_w 824
+    //   112: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   115: aload_1
-    //   116: getfield 323	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
-    //   119: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: ldc_w 822
-    //   125: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   116: getfield 327	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
+    //   119: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: ldc_w 826
+    //   125: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   128: aload_1
-    //   129: getfield 602	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResURL_big	Ljava/lang/String;
-    //   132: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   135: ldc_w 824
-    //   138: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   129: getfield 606	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResURL_big	Ljava/lang/String;
+    //   132: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   135: ldc_w 828
+    //   138: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   141: aload_2
-    //   142: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   145: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   148: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   142: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   145: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   148: invokestatic 157	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   151: aload_1
-    //   152: getfield 602	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResURL_big	Ljava/lang/String;
-    //   155: invokestatic 453	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   152: getfield 606	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResURL_big	Ljava/lang/String;
+    //   155: invokestatic 457	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   158: ifne -92 -> 66
-    //   161: getstatic 91	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   164: invokeinterface 309 1 0
+    //   161: getstatic 89	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
+    //   164: invokeinterface 313 1 0
     //   169: aload_0
-    //   170: getfield 101	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:b	Ljava/util/HashMap;
+    //   170: getfield 99	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:b	Ljava/util/HashMap;
     //   173: aload_1
-    //   174: getfield 323	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
-    //   177: invokevirtual 779	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   174: getfield 327	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
+    //   177: invokevirtual 783	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   180: ifeq +80 -> 260
     //   183: aload_1
-    //   184: getfield 280	com/tencent/mobileqq/earlydownload/xmldata/XmlData:loadState	I
+    //   184: getfield 284	com/tencent/mobileqq/earlydownload/xmldata/XmlData:loadState	I
     //   187: ifne +22 -> 209
     //   190: aload_1
     //   191: iconst_2
-    //   192: putfield 280	com/tencent/mobileqq/earlydownload/xmldata/XmlData:loadState	I
+    //   192: putfield 284	com/tencent/mobileqq/earlydownload/xmldata/XmlData:loadState	I
     //   195: aload_1
     //   196: iconst_1
     //   197: anewarray 33	java/lang/String
     //   200: dup
     //   201: iconst_0
-    //   202: ldc_w 284
+    //   202: ldc_w 288
     //   205: aastore
-    //   206: invokestatic 290	com/tencent/mobileqq/earlydownload/EarlyDataFactory:a	(Lcom/tencent/mobileqq/earlydownload/xmldata/XmlData;[Ljava/lang/String;)V
-    //   209: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   206: invokestatic 294	com/tencent/mobileqq/earlydownload/EarlyDataFactory:a	(Lcom/tencent/mobileqq/earlydownload/xmldata/XmlData;[Ljava/lang/String;)V
+    //   209: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   212: ifeq +32 -> 244
-    //   215: ldc 142
+    //   215: ldc 140
     //   217: iconst_2
-    //   218: new 144	java/lang/StringBuilder
+    //   218: new 142	java/lang/StringBuilder
     //   221: dup
-    //   222: invokespecial 145	java/lang/StringBuilder:<init>	()V
-    //   225: ldc_w 826
-    //   228: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   222: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   225: ldc_w 830
+    //   228: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   231: aload_1
-    //   232: getfield 323	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
-    //   235: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   238: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   241: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   244: getstatic 91	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   247: invokeinterface 334 1 0
+    //   232: getfield 327	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
+    //   235: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   238: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   241: invokestatic 157	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   244: getstatic 89	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
+    //   247: invokeinterface 338 1 0
     //   252: goto -186 -> 66
     //   255: astore_1
     //   256: aload_0
@@ -1284,194 +1284,194 @@ public class EarlyDownloadManager
     //   258: aload_1
     //   259: athrow
     //   260: aload_0
-    //   261: getfield 103	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:c	Ljava/util/HashMap;
+    //   261: getfield 101	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:c	Ljava/util/HashMap;
     //   264: aload_1
-    //   265: getfield 323	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
-    //   268: invokevirtual 779	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
+    //   265: getfield 327	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
+    //   268: invokevirtual 783	java/util/HashMap:containsKey	(Ljava/lang/Object;)Z
     //   271: ifeq +97 -> 368
-    //   274: invokestatic 140	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   274: invokestatic 138	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   277: ifeq +32 -> 309
-    //   280: ldc 142
+    //   280: ldc 140
     //   282: iconst_2
-    //   283: new 144	java/lang/StringBuilder
+    //   283: new 142	java/lang/StringBuilder
     //   286: dup
-    //   287: invokespecial 145	java/lang/StringBuilder:<init>	()V
-    //   290: ldc_w 828
-    //   293: invokevirtual 151	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   287: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   290: ldc_w 832
+    //   293: invokevirtual 149	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   296: aload_1
-    //   297: getfield 831	com/tencent/mobileqq/earlydownload/xmldata/XmlData:isUserClick	Z
-    //   300: invokevirtual 678	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   303: invokevirtual 154	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   306: invokestatic 158	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   297: getfield 835	com/tencent/mobileqq/earlydownload/xmldata/XmlData:isUserClick	Z
+    //   300: invokevirtual 682	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   303: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   306: invokestatic 157	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   309: aload_1
-    //   310: getfield 831	com/tencent/mobileqq/earlydownload/xmldata/XmlData:isUserClick	Z
+    //   310: getfield 835	com/tencent/mobileqq/earlydownload/xmldata/XmlData:isUserClick	Z
     //   313: istore 5
     //   315: iload 5
     //   317: ifne +14 -> 331
-    //   320: getstatic 91	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   323: invokeinterface 334 1 0
+    //   320: getstatic 89	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
+    //   323: invokeinterface 338 1 0
     //   328: goto -262 -> 66
     //   331: aload_0
-    //   332: getfield 103	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:c	Ljava/util/HashMap;
+    //   332: getfield 101	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:c	Ljava/util/HashMap;
     //   335: aload_1
-    //   336: getfield 323	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
-    //   339: invokevirtual 331	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   342: checkcast 609	com/tencent/mobileqq/transfile/predownload/HttpEngineTask
+    //   336: getfield 327	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
+    //   339: invokevirtual 335	java/util/HashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   342: checkcast 613	com/tencent/mobileqq/transfile/predownload/HttpEngineTask
     //   345: astore 6
     //   347: aload 6
     //   349: ifnull +19 -> 368
     //   352: aload_0
-    //   353: getfield 133	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController	Lcom/tencent/mobileqq/transfile/predownload/PreDownloadController;
+    //   353: getfield 131	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController	Lcom/tencent/mobileqq/transfile/predownload/PreDownloadController;
     //   356: aload 6
-    //   358: getfield 832	com/tencent/mobileqq/transfile/predownload/HttpEngineTask:jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq	Lcom/tencent/mobileqq/transfile/HttpNetReq;
-    //   361: getfield 835	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   364: invokevirtual 619	com/tencent/mobileqq/transfile/predownload/PreDownloadController:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/transfile/predownload/AbsPreDownloadTask;
+    //   358: getfield 836	com/tencent/mobileqq/transfile/predownload/HttpEngineTask:jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq	Lcom/tencent/mobileqq/transfile/HttpNetReq;
+    //   361: getfield 839	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   364: invokevirtual 623	com/tencent/mobileqq/transfile/predownload/PreDownloadController:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/transfile/predownload/AbsPreDownloadTask;
     //   367: pop
-    //   368: getstatic 91	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   371: invokeinterface 334 1 0
+    //   368: getstatic 89	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
+    //   371: invokeinterface 338 1 0
     //   376: aload_1
-    //   377: invokestatic 272	android/os/SystemClock:elapsedRealtime	()J
-    //   380: putfield 277	com/tencent/mobileqq/earlydownload/xmldata/XmlData:tStart	J
+    //   377: invokestatic 276	android/os/SystemClock:elapsedRealtime	()J
+    //   380: putfield 281	com/tencent/mobileqq/earlydownload/xmldata/XmlData:tStart	J
     //   383: aload_1
     //   384: iconst_2
-    //   385: putfield 280	com/tencent/mobileqq/earlydownload/xmldata/XmlData:loadState	I
+    //   385: putfield 284	com/tencent/mobileqq/earlydownload/xmldata/XmlData:loadState	I
     //   388: aload_1
     //   389: iconst_0
-    //   390: putfield 283	com/tencent/mobileqq/earlydownload/xmldata/XmlData:hasResDownloaded	Z
+    //   390: putfield 287	com/tencent/mobileqq/earlydownload/xmldata/XmlData:hasResDownloaded	Z
     //   393: aload_1
     //   394: iconst_2
     //   395: anewarray 33	java/lang/String
     //   398: dup
     //   399: iconst_0
-    //   400: ldc_w 284
+    //   400: ldc_w 288
     //   403: aastore
     //   404: dup
     //   405: iconst_1
-    //   406: ldc_w 285
+    //   406: ldc_w 289
     //   409: aastore
-    //   410: invokestatic 290	com/tencent/mobileqq/earlydownload/EarlyDataFactory:a	(Lcom/tencent/mobileqq/earlydownload/xmldata/XmlData;[Ljava/lang/String;)V
+    //   410: invokestatic 294	com/tencent/mobileqq/earlydownload/EarlyDataFactory:a	(Lcom/tencent/mobileqq/earlydownload/xmldata/XmlData;[Ljava/lang/String;)V
     //   413: aload_0
-    //   414: getfield 110	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   414: getfield 108	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   417: iconst_0
-    //   418: invokevirtual 626	com/tencent/mobileqq/app/QQAppInterface:getNetEngine	(I)Lcom/tencent/mobileqq/transfile/INetEngine;
+    //   418: invokevirtual 630	com/tencent/mobileqq/app/QQAppInterface:getNetEngine	(I)Lcom/tencent/mobileqq/transfile/INetEngine;
     //   421: astore 6
-    //   423: new 834	com/tencent/mobileqq/transfile/HttpNetReq
+    //   423: new 838	com/tencent/mobileqq/transfile/HttpNetReq
     //   426: dup
-    //   427: invokespecial 836	com/tencent/mobileqq/transfile/HttpNetReq:<init>	()V
+    //   427: invokespecial 840	com/tencent/mobileqq/transfile/HttpNetReq:<init>	()V
     //   430: astore 7
     //   432: aload 7
     //   434: aload_0
-    //   435: putfield 839	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener	Lcom/tencent/mobileqq/transfile/INetEngine$INetEngineListener;
+    //   435: putfield 843	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener	Lcom/tencent/mobileqq/transfile/INetEngine$INetEngineListener;
     //   438: aload 7
     //   440: aload_0
-    //   441: putfield 842	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix	Lcom/tencent/mobileqq/transfile/INetEngine$IBreakDownFix;
+    //   441: putfield 846	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix	Lcom/tencent/mobileqq/transfile/INetEngine$IBreakDownFix;
     //   444: aload 7
     //   446: aload_1
-    //   447: getfield 602	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResURL_big	Ljava/lang/String;
-    //   450: putfield 835	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   447: getfield 606	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResURL_big	Ljava/lang/String;
+    //   450: putfield 839	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   453: aload 7
     //   455: iconst_1
-    //   456: putfield 843	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_Boolean	Z
+    //   456: putfield 847	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_Boolean	Z
     //   459: aload 7
     //   461: iconst_0
-    //   462: putfield 844	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_Int	I
+    //   462: putfield 848	com/tencent/mobileqq/transfile/HttpNetReq:jdField_a_of_type_Int	I
     //   465: aload 7
     //   467: aload_1
-    //   468: invokevirtual 847	com/tencent/mobileqq/transfile/HttpNetReq:a	(Ljava/lang/Object;)V
+    //   468: invokevirtual 851	com/tencent/mobileqq/transfile/HttpNetReq:a	(Ljava/lang/Object;)V
     //   471: aload 7
     //   473: aload_2
-    //   474: putfield 848	com/tencent/mobileqq/transfile/HttpNetReq:c	Ljava/lang/String;
+    //   474: putfield 852	com/tencent/mobileqq/transfile/HttpNetReq:c	Ljava/lang/String;
     //   477: aload 7
     //   479: iconst_1
-    //   480: putfield 851	com/tencent/mobileqq/transfile/HttpNetReq:m	Z
+    //   480: putfield 855	com/tencent/mobileqq/transfile/HttpNetReq:m	Z
     //   483: aload 7
     //   485: iconst_1
-    //   486: putfield 854	com/tencent/mobileqq/transfile/HttpNetReq:n	Z
+    //   486: putfield 858	com/tencent/mobileqq/transfile/HttpNetReq:n	Z
     //   489: aload_1
-    //   490: getfield 831	com/tencent/mobileqq/earlydownload/xmldata/XmlData:isUserClick	Z
+    //   490: getfield 835	com/tencent/mobileqq/earlydownload/xmldata/XmlData:isUserClick	Z
     //   493: ifne +13 -> 506
     //   496: aload_0
-    //   497: getfield 133	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController	Lcom/tencent/mobileqq/transfile/predownload/PreDownloadController;
-    //   500: invokevirtual 856	com/tencent/mobileqq/transfile/predownload/PreDownloadController:a	()Z
+    //   497: getfield 131	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController	Lcom/tencent/mobileqq/transfile/predownload/PreDownloadController;
+    //   500: invokevirtual 860	com/tencent/mobileqq/transfile/predownload/PreDownloadController:a	()Z
     //   503: ifne +47 -> 550
     //   506: aload_1
-    //   507: getfield 831	com/tencent/mobileqq/earlydownload/xmldata/XmlData:isUserClick	Z
+    //   507: getfield 835	com/tencent/mobileqq/earlydownload/xmldata/XmlData:isUserClick	Z
     //   510: ifeq +190 -> 700
     //   513: aload 7
     //   515: iload_3
-    //   516: putfield 858	com/tencent/mobileqq/transfile/HttpNetReq:e	I
+    //   516: putfield 862	com/tencent/mobileqq/transfile/HttpNetReq:e	I
     //   519: aload_0
     //   520: aload_1
     //   521: aload 7
     //   523: aconst_null
-    //   524: invokespecial 860	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:a	(Lcom/tencent/mobileqq/earlydownload/xmldata/XmlData;Lcom/tencent/mobileqq/transfile/HttpNetReq;Lcom/tencent/mobileqq/transfile/predownload/AbsPreDownloadTask;)V
+    //   524: invokespecial 864	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:a	(Lcom/tencent/mobileqq/earlydownload/xmldata/XmlData;Lcom/tencent/mobileqq/transfile/HttpNetReq;Lcom/tencent/mobileqq/transfile/predownload/AbsPreDownloadTask;)V
     //   527: aload 6
     //   529: aload 7
-    //   531: invokeinterface 862 2 0
+    //   531: invokeinterface 866 2 0
     //   536: goto -470 -> 66
     //   539: astore_1
-    //   540: getstatic 91	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   543: invokeinterface 334 1 0
+    //   540: getstatic 89	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
+    //   543: invokeinterface 338 1 0
     //   548: aload_1
     //   549: athrow
     //   550: aload 7
     //   552: iconst_2
-    //   553: putfield 858	com/tencent/mobileqq/transfile/HttpNetReq:e	I
-    //   556: getstatic 91	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   559: invokeinterface 309 1 0
-    //   564: new 609	com/tencent/mobileqq/transfile/predownload/HttpEngineTask
+    //   553: putfield 862	com/tencent/mobileqq/transfile/HttpNetReq:e	I
+    //   556: getstatic 89	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
+    //   559: invokeinterface 313 1 0
+    //   564: new 613	com/tencent/mobileqq/transfile/predownload/HttpEngineTask
     //   567: dup
     //   568: aload_0
-    //   569: getfield 110	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   569: getfield 108	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
     //   572: aload_1
-    //   573: getfield 323	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
+    //   573: getfield 327	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
     //   576: aload_0
     //   577: aload 7
-    //   579: invokespecial 865	com/tencent/mobileqq/transfile/predownload/HttpEngineTask:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/transfile/predownload/HttpEngineTask$IHttpEngineTask;Lcom/tencent/mobileqq/transfile/HttpNetReq;)V
+    //   579: invokespecial 869	com/tencent/mobileqq/transfile/predownload/HttpEngineTask:<init>	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/transfile/predownload/HttpEngineTask$IHttpEngineTask;Lcom/tencent/mobileqq/transfile/HttpNetReq;)V
     //   582: astore_2
     //   583: aload_1
-    //   584: getfield 868	com/tencent/mobileqq/earlydownload/xmldata/XmlData:load2G	Z
+    //   584: getfield 872	com/tencent/mobileqq/earlydownload/xmldata/XmlData:load2G	Z
     //   587: ifeq +81 -> 668
     //   590: iload 4
     //   592: istore_3
     //   593: aload_0
     //   594: aload_1
-    //   595: getfield 323	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
-    //   598: invokevirtual 296	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/earlydownload/handler/EarlyHandler;
+    //   595: getfield 327	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
+    //   598: invokevirtual 300	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/earlydownload/handler/EarlyHandler;
     //   601: astore 6
     //   603: aload 6
     //   605: ifnull +52 -> 657
     //   608: aload_0
-    //   609: getfield 133	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController	Lcom/tencent/mobileqq/transfile/predownload/PreDownloadController;
+    //   609: getfield 131	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController	Lcom/tencent/mobileqq/transfile/predownload/PreDownloadController;
     //   612: aload 6
-    //   614: invokevirtual 870	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:a	()I
+    //   614: invokevirtual 874	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:a	()I
     //   617: aload 6
-    //   619: invokevirtual 872	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:b	()Ljava/lang/String;
+    //   619: invokevirtual 876	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:b	()Ljava/lang/String;
     //   622: aload_1
-    //   623: getfield 323	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
+    //   623: getfield 327	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
     //   626: iconst_0
     //   627: aload_1
-    //   628: getfield 602	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResURL_big	Ljava/lang/String;
+    //   628: getfield 606	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResURL_big	Ljava/lang/String;
     //   631: aload 6
-    //   633: invokevirtual 874	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:c	()Ljava/lang/String;
+    //   633: invokevirtual 878	com/tencent/mobileqq/earlydownload/handler/EarlyHandler:c	()Ljava/lang/String;
     //   636: iload_3
     //   637: iconst_0
     //   638: iconst_0
     //   639: aload_2
-    //   640: invokevirtual 877	com/tencent/mobileqq/transfile/predownload/PreDownloadController:a	(ILjava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;IIZLcom/tencent/mobileqq/transfile/predownload/AbsPreDownloadTask;)Z
+    //   640: invokevirtual 881	com/tencent/mobileqq/transfile/predownload/PreDownloadController:a	(ILjava/lang/String;Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;IIZLcom/tencent/mobileqq/transfile/predownload/AbsPreDownloadTask;)Z
     //   643: pop
     //   644: aload_0
-    //   645: getfield 103	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:c	Ljava/util/HashMap;
+    //   645: getfield 101	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:c	Ljava/util/HashMap;
     //   648: aload_1
-    //   649: getfield 323	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
+    //   649: getfield 327	com/tencent/mobileqq/earlydownload/xmldata/XmlData:strResName	Ljava/lang/String;
     //   652: aload_2
-    //   653: invokevirtual 327	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   653: invokevirtual 331	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
     //   656: pop
-    //   657: getstatic 91	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   660: invokeinterface 334 1 0
+    //   657: getstatic 89	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
+    //   660: invokeinterface 338 1 0
     //   665: goto -599 -> 66
     //   668: aload_1
-    //   669: getfield 880	com/tencent/mobileqq/earlydownload/xmldata/XmlData:load3G	Z
+    //   669: getfield 884	com/tencent/mobileqq/earlydownload/xmldata/XmlData:load3G	Z
     //   672: istore 5
     //   674: iload 5
     //   676: ifeq +8 -> 684
@@ -1482,8 +1482,8 @@ public class EarlyDownloadManager
     //   685: istore_3
     //   686: goto -93 -> 593
     //   689: astore_1
-    //   690: getstatic 91	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
-    //   693: invokeinterface 334 1 0
+    //   690: getstatic 89	com/tencent/mobileqq/earlydownload/EarlyDownloadManager:jdField_a_of_type_JavaUtilConcurrentLocksLock	Ljava/util/concurrent/locks/Lock;
+    //   693: invokeinterface 338 1 0
     //   698: aload_1
     //   699: athrow
     //   700: iconst_2

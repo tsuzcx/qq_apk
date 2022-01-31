@@ -1,18 +1,20 @@
-import android.bluetooth.BluetoothAdapter.LeScanCallback;
-import android.bluetooth.BluetoothDevice;
-import com.tencent.device.qfind.QFindBLEScanMgr;
-import mqq.os.MqqHandler;
+import android.view.View;
+import com.tencent.device.msg.activities.DevicePttItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.PttItemBuilder.Holder;
+import com.tencent.mobileqq.data.MessageForPtt;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class qav
-  implements BluetoothAdapter.LeScanCallback
+  implements ActionSheet.OnButtonClickListener
 {
-  public qav(QFindBLEScanMgr paramQFindBLEScanMgr) {}
+  public qav(DevicePttItemBuilder paramDevicePttItemBuilder, PttItemBuilder.Holder paramHolder, MessageForPtt paramMessageForPtt, ActionSheet paramActionSheet) {}
   
-  public void onLeScan(BluetoothDevice paramBluetoothDevice, int paramInt, byte[] paramArrayOfByte)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.post(new qaw(this, paramBluetoothDevice, paramArrayOfByte));
-    }
+    this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder$Holder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt);
+    this.jdField_a_of_type_ComTencentDeviceMsgActivitiesDevicePttItemBuilder.b();
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 

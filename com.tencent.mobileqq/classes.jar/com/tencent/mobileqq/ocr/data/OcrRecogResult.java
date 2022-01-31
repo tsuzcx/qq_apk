@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr.data;
 
-import afpp;
+import agcv;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -16,7 +16,7 @@ public class OcrRecogResult
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new afpp();
+  public static final Parcelable.Creator CREATOR = new agcv();
   @unique
   public String filename;
   public String goodsDetailUrl;

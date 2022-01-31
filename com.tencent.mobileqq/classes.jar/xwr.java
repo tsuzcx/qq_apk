@@ -1,19 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.ContactFriendInnerFrame;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Handler;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.richmedia.conn.HostInfo;
+import com.tencent.mobileqq.richmedia.server.PeakAudioTransHandler;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
-class xwr
-  implements DialogInterface.OnClickListener
+public class xwr
 {
-  xwr(xwp paramxwp) {}
+  public int a;
+  public long a;
+  public Handler a;
+  public INetInfoHandler a;
+  public HostInfo a;
+  public Thread a;
+  public WeakReference a;
+  public HashMap a;
+  public xvu a;
+  public boolean a;
+  public int b = 0;
+  public long b;
+  public boolean b;
+  public int c;
+  public long c;
+  public boolean c;
+  public int d;
+  public int e;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public xwr()
   {
-    paramDialogInterface.dismiss();
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberContactFriendInnerFrame.g();
-    ReportController.b(this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80063FA", "0X80063FA", 1, 0, "", "", "", "");
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  }
+  
+  public void a()
+  {
+    ((PeakAudioTransHandler)QQStoryContext.a().getBusinessHandler(0)).b();
+    this.jdField_a_of_type_JavaLangThread = null;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
+    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    this.jdField_a_of_type_Long = -1L;
+    this.jdField_a_of_type_Int = 0;
+    this.b = 0;
+    if (this.jdField_a_of_type_Xvu != null)
+    {
+      this.jdField_a_of_type_Xvu.a();
+      this.jdField_a_of_type_Xvu = null;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = null;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
-import akip;
-import akiq;
+import akwy;
+import akwz;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -20,7 +20,7 @@ public class SlideTabWidget
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = -1;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-  private Handler jdField_a_of_type_AndroidOsHandler = new akip(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new akwy(this);
   private SlideTabWidget.OnTabSlideCompleteListener jdField_a_of_type_ComTencentMobileqqWidgetSlideTabWidget$OnTabSlideCompleteListener;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = -1;
@@ -30,13 +30,13 @@ public class SlideTabWidget
   public SlideTabWidget(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131494213));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131494220));
   }
   
   public SlideTabWidget(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131494213));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131494220));
   }
   
   public void dispatchDraw(Canvas paramCanvas)
@@ -70,7 +70,7 @@ public class SlideTabWidget
       }
     } while ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqWidgetSlideTabWidget$OnTabSlideCompleteListener == null) || (!this.jdField_c_of_type_Boolean));
     this.jdField_c_of_type_Boolean = false;
-    post(new akiq(this));
+    post(new akwz(this));
   }
   
   public void setCurrentTab(int paramInt)
@@ -105,7 +105,7 @@ public class SlideTabWidget
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SlideTabWidget
  * JD-Core Version:    0.7.0.1
  */

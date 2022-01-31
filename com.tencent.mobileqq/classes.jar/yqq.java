@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.store.ApolloStoreActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.util.Log;
+import com.tencent.TMG.sdk.AVRoomMulti.RequestViewListCompleteCallback;
+import com.tencent.TMG.sdk.AVView;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
 
 public class yqq
-  implements Runnable
+  implements AVRoomMulti.RequestViewListCompleteCallback
 {
-  public yqq(ApolloStoreActivity paramApolloStoreActivity) {}
+  public yqq(CmGameAvHandler paramCmGameAvHandler) {}
   
-  public void run()
+  public void OnComplete(String[] paramArrayOfString, AVView[] paramArrayOfAVView, int paramInt1, int paramInt2, String paramString)
   {
-    if (!ApolloEngine.a())
-    {
-      QLog.e("ApolloStoreActivity", 1, "error engine not ready");
-      return;
-    }
-    this.a.a.sendEmptyMessage(357);
+    Log.d("CmGameAvHandler", "RequestViewListCompleteCallback.OnComplete result: " + paramInt2 + paramString);
   }
 }
 

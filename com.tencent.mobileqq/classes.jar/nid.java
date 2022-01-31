@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
 
 public class nid
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public nid(FeedsPlayModeBase paramFeedsPlayModeBase) {}
+  public nid(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.s();
+    this.a.a = 0;
+    this.a.a(null);
   }
 }
 

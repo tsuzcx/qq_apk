@@ -1,24 +1,23 @@
-import com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenDoubleVideoControlUI;
+import com.tencent.av.smallscreen.SmallScreenVideoController;
 
 public class joy
   implements Runnable
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  boolean jdField_a_of_type_Boolean;
-  int b;
-  
-  public joy(SmallScreenMultiVideoControlUI paramSmallScreenMultiVideoControlUI, int paramInt1, long paramLong, boolean paramBoolean, int paramInt2)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramInt2;
-  }
+  public joy(SmallScreenVideoController paramSmallScreenVideoController) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenMultiVideoControlUI.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.b);
+    if ((this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI instanceof SmallScreenDoubleVideoControlUI))
+    {
+      String str = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
+      int i = this.a.jdField_a_of_type_ComTencentAvVideoController.a().P;
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(42), str, Integer.valueOf(i) });
+    }
+    this.a.a();
   }
 }
 

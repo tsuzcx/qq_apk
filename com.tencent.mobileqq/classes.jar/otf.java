@@ -1,46 +1,32 @@
-import android.os.Bundle;
-import com.tencent.biz.qrcode.QRCodeEncodeCallback;
-import mqq.observer.BusinessObserver;
-import org.json.JSONObject;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
-public final class otf
-  implements BusinessObserver
+public class otf
+  implements WXShareHelper.WXShareListener
 {
-  public otf(QRCodeEncodeCallback paramQRCodeEncodeCallback) {}
+  public otf(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a(BaseResp paramBaseResp)
   {
-    if ((paramBoolean) && (paramBundle != null)) {}
-    for (paramBundle = paramBundle.getString("result");; paramBundle = null)
-    {
-      try
-      {
-        paramBundle = new JSONObject(paramBundle);
-        if (paramBundle.getInt("r") != 0) {
-          continue;
-        }
-        paramBundle = paramBundle.getString("url");
-        if (paramBundle != null)
-        {
-          this.a.a(true, paramBundle);
-          return;
-        }
-      }
-      catch (Exception paramBundle)
-      {
-        for (;;)
-        {
-          paramBundle = null;
-        }
-      }
-      this.a.a(false, null);
+    if ((this.a.g == null) || (!this.a.g.equals(paramBaseResp.transaction))) {
       return;
     }
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      QRUtils.a(1, 2131435303);
+      return;
+    }
+    QRUtils.a(2, 2131435302);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     otf
  * JD-Core Version:    0.7.0.1
  */

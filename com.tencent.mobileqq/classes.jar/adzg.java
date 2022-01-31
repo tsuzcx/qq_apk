@@ -1,28 +1,31 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearpeople.mytab.NearbyMineHelper;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.leba.LebaGridManager;
+import com.tencent.mobileqq.leba.model.PluginInfo;
+import java.util.Comparator;
 
 public class adzg
-  implements Runnable
+  implements Comparator
 {
-  public adzg(NearbyProxy paramNearbyProxy) {}
+  public adzg(LebaGridManager paramLebaGridManager) {}
   
-  public void run()
+  public int a(PluginInfo paramPluginInfo1, PluginInfo paramPluginInfo2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("NearbyProxy", 2, "receive msg_notify_new_msg in Main,updateNearbyNumAppinfo start..");
+    if (paramPluginInfo1.type < paramPluginInfo2.type) {}
+    do
+    {
+      return 1;
+      if (paramPluginInfo1.type > paramPluginInfo2.type) {
+        return -1;
+      }
+    } while (paramPluginInfo1.weight < paramPluginInfo2.weight);
+    if (paramPluginInfo1.weight > paramPluginInfo2.weight) {
+      return -1;
     }
-    ((RedTouchManager)this.a.a.getManager(35)).a = true;
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = NearbyMineHelper.a(this.a.a, true);
-    this.a.a(4102, new Object[] { localAppInfo });
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adzg
  * JD-Core Version:    0.7.0.1
  */

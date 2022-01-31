@@ -1,20 +1,58 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.annotation.TargetApi;
+import android.app.ProgressDialog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import java.util.List;
 
 public class abac
-  implements View.OnClickListener
+  implements Handler.Callback
 {
-  public abac(ARMapPOIStarDialog paramARMapPOIStarDialog) {}
+  public abac(ARMapActivity paramARMapActivity) {}
   
-  public void onClick(View paramView)
+  @TargetApi(11)
+  public boolean handleMessage(Message paramMessage)
   {
-    ReportController.b(null, "dc01440", "", "", "0X80079CC", "0X80079CC", 0, 0, "", "", "", "");
-    if (!this.a.c) {
-      ReportController.b(null, "dc01440", "", "", "0X80079CC", "0X80079CC", 0, 0, "", "", "", "");
+    switch (paramMessage.what)
+    {
     }
-    this.a.a();
+    for (;;)
+    {
+      return true;
+      this.a.jdField_c_of_type_Int = paramMessage.arg1;
+      if (this.a.jdField_c_of_type_Int == 4)
+      {
+        int i = paramMessage.arg2;
+        this.a.a(i);
+        continue;
+        float f = ((Float)paramMessage.obj).floatValue();
+        this.a.jdField_c_of_type_AndroidWidgetImageView.setRotation(f - 45.0F);
+        ARMapActivity.a(this.a, -f);
+        continue;
+        ARMapActivity.a(this.a, (List)paramMessage.obj);
+        continue;
+        ARMapActivity.e(this.a);
+        continue;
+        ARMapActivity.g(this.a, false);
+        continue;
+        if (this.a.a == null)
+        {
+          this.a.a = new ProgressDialog(this.a, 2131624516);
+          this.a.a.setCanceledOnTouchOutside(false);
+          this.a.a.show();
+          this.a.a.setContentView(2130969180);
+        }
+        ((TextView)this.a.a.findViewById(2131363399)).setText("正在加载...");
+        if ((!this.a.a.isShowing()) && (!this.a.isFinishing()))
+        {
+          this.a.a.show();
+          continue;
+          ARMapActivity.f(this.a);
+        }
+      }
+    }
   }
 }
 

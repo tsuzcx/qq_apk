@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.receipt;
 
-import agqk;
-import agql;
-import agqm;
-import agqn;
-import agqo;
-import agqp;
-import agqq;
-import agqr;
-import agqs;
-import agqt;
-import agqw;
-import agqx;
+import ahem;
+import ahen;
+import aheo;
+import ahep;
+import aheq;
+import aher;
+import ahes;
+import ahet;
+import aheu;
+import ahev;
+import ahey;
+import ahez;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -53,21 +53,21 @@ public class ReceiptMessageReadMemberListContainerFragment
   extends IphoneTitleBarFragment
 {
   private long jdField_a_of_type_Long;
-  private agqt jdField_a_of_type_Agqt;
-  private agqw jdField_a_of_type_Agqw;
-  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new agqr(this);
+  private ahev jdField_a_of_type_Ahev;
+  private ahey jdField_a_of_type_Ahey;
+  private ViewPager.OnPageChangeListener jdField_a_of_type_AndroidSupportV4ViewViewPager$OnPageChangeListener = new ahet(this);
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new agqm(this);
+  private TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new aheo(this);
   private QQViewPager jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager;
-  private TabBarView.OnTabChangeListener jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener = new agqq(this);
+  private TabBarView.OnTabChangeListener jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener = new ahes(this);
   private TabBarView jdField_a_of_type_ComTencentMobileqqWidgetTabBarView;
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
-  private Comparator jdField_a_of_type_JavaUtilComparator = new agqn(this);
+  private Comparator jdField_a_of_type_JavaUtilComparator = new ahep(this);
   private boolean jdField_a_of_type_Boolean;
   private long jdField_b_of_type_Long;
   private ArrayList jdField_b_of_type_JavaUtilArrayList;
-  private Comparator jdField_b_of_type_JavaUtilComparator = new agqo(this);
+  private Comparator jdField_b_of_type_JavaUtilComparator = new aheq(this);
   private boolean jdField_b_of_type_Boolean;
   private long c;
   private long d;
@@ -112,7 +112,7 @@ public class ReceiptMessageReadMemberListContainerFragment
     localReqBody.uint32_msg_seq.set((int)this.jdField_e_of_type_Long);
     localReqBody.uint64_start_uin.set(paramLong);
     localReqBody.uint64_from_uin.set(this.c);
-    ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new agqx(this), localReqBody.toByteArray(), "OidbSvc.0x986_1", 2438, 1);
+    ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new ahez(this), localReqBody.toByteArray(), "OidbSvc.0x986_1", 2438, 1);
   }
   
   private ArrayList b(List paramList)
@@ -132,7 +132,7 @@ public class ReceiptMessageReadMemberListContainerFragment
   
   private void b()
   {
-    ThreadManager.post(new agqk(this), 10, null, true);
+    ThreadManager.post(new ahem(this), 10, null, true);
   }
   
   private void c()
@@ -144,12 +144,12 @@ public class ReceiptMessageReadMemberListContainerFragment
     localGetReadListReq.uint64_conf_uin.set(a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString));
     localGetReadListReq.uint64_from_uin.set(this.c);
     localReqBody.msg_get_read_list_req.set(localGetReadListReq);
-    ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new agqs(this), localReqBody.toByteArray(), "OidbSvc.0x985", 2437, 0);
+    ProtoUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new aheu(this), localReqBody.toByteArray(), "OidbSvc.0x985", 2437, 0);
   }
   
   private void d()
   {
-    ThreadManager.post(new agql(this), 8, null, true);
+    ThreadManager.post(new ahen(this), 8, null, true);
   }
   
   private void e()
@@ -167,7 +167,7 @@ public class ReceiptMessageReadMemberListContainerFragment
       localMemberInfo = (ReceiptMessageReadMemberListFragment.MemberInfo)localIterator.next();
       localMemberInfo.b = ContactUtils.g(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.toString(this.jdField_a_of_type_Long), localMemberInfo.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_Agqt.sendEmptyMessage(5);
+    this.jdField_a_of_type_Ahev.sendEmptyMessage(5);
   }
   
   private void f()
@@ -178,14 +178,14 @@ public class ReceiptMessageReadMemberListContainerFragment
   
   private void g()
   {
-    this.jdField_a_of_type_Agqw = new agqw(getChildFragmentManager(), null);
-    Object localObject = getString(2131438970);
-    String str = getString(2131438971);
-    this.jdField_a_of_type_Agqw.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, new String[] { localObject, str });
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_Agqw);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setUnselectColor(getResources().getColor(2131494270));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(String.format(getString(2131438965), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(String.format(getString(2131438964), new Object[] { Integer.valueOf(this.jdField_b_of_type_JavaUtilArrayList.size()) }));
+    this.jdField_a_of_type_Ahey = new ahey(getChildFragmentManager(), null);
+    Object localObject = getString(2131438998);
+    String str = getString(2131438999);
+    this.jdField_a_of_type_Ahey.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_b_of_type_JavaUtilArrayList, new String[] { localObject, str });
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.setAdapter(this.jdField_a_of_type_Ahey);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setUnselectColor(getResources().getColor(2131494277));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(String.format(getString(2131438993), new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.a(String.format(getString(2131438992), new Object[] { Integer.valueOf(this.jdField_b_of_type_JavaUtilArrayList.size()) }));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setSelectedTab(0, false);
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener);
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.a(true);
@@ -203,7 +203,7 @@ public class ReceiptMessageReadMemberListContainerFragment
     if (!isAdded()) {
       return;
     }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131438967, 0).a();
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 1, 2131438995, 0).a();
   }
   
   private void i()
@@ -211,7 +211,7 @@ public class ReceiptMessageReadMemberListContainerFragment
     if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    ThreadManager.post(new agqp(this), 8, null, false);
+    ThreadManager.post(new aher(this), 8, null, false);
   }
   
   protected int a()
@@ -222,9 +222,9 @@ public class ReceiptMessageReadMemberListContainerFragment
   protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)this.jdField_e_of_type_AndroidViewView.findViewById(2131363096));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)this.jdField_e_of_type_AndroidViewView.findViewById(2131363095));
-    a(getString(2131438966));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager = ((QQViewPager)this.jdField_e_of_type_AndroidViewView.findViewById(2131363114));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)this.jdField_e_of_type_AndroidViewView.findViewById(2131363113));
+    a(getString(2131438994));
     g();
   }
   
@@ -258,13 +258,13 @@ public class ReceiptMessageReadMemberListContainerFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_Agqt = new agqt(this, null);
+    this.jdField_a_of_type_Ahev = new ahev(this, null);
     b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListContainerFragment
  * JD-Core Version:    0.7.0.1
  */

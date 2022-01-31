@@ -1,40 +1,46 @@
-import com.tencent.mobileqq.app.activateFriends.ActivateFriendServlet;
-import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.commonsdk.cache.QQHashMap;
+import com.tencent.mobileqq.app.RoamSettingManager;
+import com.tencent.mobileqq.data.RoamSetting;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.utils.RoamSettingController;
+import java.util.ArrayList;
+import java.util.concurrent.locks.Lock;
 
 public class zmg
   implements Runnable
 {
-  public zmg(ActivateFriendsManager paramActivateFriendsManager) {}
+  public zmg(RoamSettingManager paramRoamSettingManager) {}
   
   public void run()
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if (Math.abs(System.currentTimeMillis() - ActivateFriendsManager.a(this.a)) > ActivateFriendsManager.b(this.a))
-    {
-      bool1 = true;
-      if (Math.abs(System.currentTimeMillis() - ActivateFriendsManager.c(this.a)) <= ActivateFriendsManager.d(this.a)) {
-        break label168;
-      }
+    int i = 0;
+    ArrayList localArrayList = (ArrayList)this.a.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(RoamSetting.class, false, null, null, null, null, null, null);
+    if ((localArrayList != null) && (localArrayList.size() > 0)) {
+      this.a.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ActivateFriends.Manager", 2, "checkRunnable | lastBirthdayCheckInStamp = " + ActivateFriendsManager.a(this.a) + " | checkBirthdayInterval = " + ActivateFriendsManager.b(this.a) + " | lastMemorialCheckInStamp = " + ActivateFriendsManager.c(this.a) + " | checkMemorialInterval = " + ActivateFriendsManager.d(this.a) + " | isBirthday = " + bool1 + " | isMemorial = " + bool2);
+      try
+      {
+        if (i < localArrayList.size())
+        {
+          RoamSetting localRoamSetting = (RoamSetting)localArrayList.get(i);
+          if (RoamSettingController.a(localRoamSetting.path) == 1) {
+            this.a.b.put(localRoamSetting.path, localRoamSetting);
+          } else {
+            this.a.jdField_a_of_type_ComTencentCommonsdkCacheQQHashMap.put(localRoamSetting.path, localRoamSetting);
+          }
+        }
       }
-      if ((bool1) || (bool2)) {
-        break label173;
+      finally
+      {
+        this.a.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
       }
+      this.a.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      this.a.jdField_a_of_type_Boolean = true;
       return;
-      bool1 = false;
-      break;
-      label168:
-      bool2 = false;
+      i += 1;
     }
-    label173:
-    ActivateFriendServlet.a(ActivateFriendsManager.a(this.a), bool1, bool2);
-    this.a.a = ActivateFriendsManager.a(this.a);
   }
 }
 

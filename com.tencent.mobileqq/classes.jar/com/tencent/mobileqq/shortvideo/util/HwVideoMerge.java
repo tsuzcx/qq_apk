@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import ahpn;
+import aidp;
 import android.annotation.TargetApi;
 import android.media.MediaExtractor;
 import android.media.MediaFormat;
@@ -15,7 +15,7 @@ import java.nio.ByteBuffer;
 public class HwVideoMerge
 {
   private int jdField_a_of_type_Int;
-  private ahpn jdField_a_of_type_Ahpn = new ahpn(null);
+  private aidp jdField_a_of_type_Aidp = new aidp(null);
   private MediaExtractor jdField_a_of_type_AndroidMediaMediaExtractor;
   private MediaMuxer jdField_a_of_type_AndroidMediaMediaMuxer;
   private String jdField_a_of_type_JavaLangString;
@@ -32,8 +32,8 @@ public class HwVideoMerge
   private int a()
   {
     int i = 0;
-    this.jdField_a_of_type_Ahpn.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    if (this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Ahpn.jdField_a_of_type_JavaNioByteBuffer, 0) <= 0)
+    this.jdField_a_of_type_Aidp.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    if (this.jdField_a_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Aidp.jdField_a_of_type_JavaNioByteBuffer, 0) <= 0)
     {
       a();
       i = -5;
@@ -41,8 +41,8 @@ public class HwVideoMerge
     do
     {
       return i;
-      this.jdField_a_of_type_Ahpn.jdField_a_of_type_JavaNioByteBuffer.position(0);
-    } while (this.jdField_b_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Ahpn.jdField_a_of_type_JavaNioByteBuffer, 0) > 0);
+      this.jdField_a_of_type_Aidp.jdField_a_of_type_JavaNioByteBuffer.position(0);
+    } while (this.jdField_b_of_type_AndroidMediaMediaExtractor.readSampleData(this.jdField_a_of_type_Aidp.jdField_a_of_type_JavaNioByteBuffer, 0) > 0);
     a();
     return -6;
   }
@@ -138,10 +138,10 @@ public class HwVideoMerge
     //   196: invokestatic 132	com/tencent/mobileqq/shortvideo/util/FileFFmpegUtils:b	(Landroid/content/Context;)Ljava/lang/String;
     //   199: invokeinterface 112 2 0
     //   204: pop
-    //   205: new 134	ahpm
+    //   205: new 134	aido
     //   208: dup
     //   209: aconst_null
-    //   210: invokespecial 135	ahpm:<init>	(Lahpl;)V
+    //   210: invokespecial 135	aido:<init>	(Laidn;)V
     //   213: astore_0
     //   214: new 137	java/lang/ProcessBuilder
     //   217: dup
@@ -162,9 +162,9 @@ public class HwVideoMerge
     //   247: astore 4
     //   249: aload_0
     //   250: aload 4
-    //   252: putfield 157	ahpm:a	Ljava/lang/Process;
+    //   252: putfield 157	aido:a	Ljava/lang/Process;
     //   255: aload_0
-    //   256: invokevirtual 158	ahpm:a	()V
+    //   256: invokevirtual 158	aido:a	()V
     //   259: aload 4
     //   261: invokevirtual 163	java/lang/Process:waitFor	()I
     //   264: pop
@@ -195,7 +195,7 @@ public class HwVideoMerge
     //   315: aconst_null
     //   316: invokestatic 100	com/tencent/mobileqq/shortvideo/util/HwVideoMerge:b	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   319: aload_0
-    //   320: invokevirtual 176	ahpm:b	()V
+    //   320: invokevirtual 176	aido:b	()V
     //   323: aload 4
     //   325: ifnull +8 -> 333
     //   328: aload 4
@@ -474,10 +474,10 @@ public class HwVideoMerge
     //   262: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   265: aconst_null
     //   266: invokestatic 100	com/tencent/mobileqq/shortvideo/util/HwVideoMerge:b	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   269: new 134	ahpm
+    //   269: new 134	aido
     //   272: dup
     //   273: aconst_null
-    //   274: invokespecial 135	ahpm:<init>	(Lahpl;)V
+    //   274: invokespecial 135	aido:<init>	(Laidn;)V
     //   277: astore_0
     //   278: new 137	java/lang/ProcessBuilder
     //   281: dup
@@ -498,9 +498,9 @@ public class HwVideoMerge
     //   307: astore_1
     //   308: aload_0
     //   309: aload_1
-    //   310: putfield 157	ahpm:a	Ljava/lang/Process;
+    //   310: putfield 157	aido:a	Ljava/lang/Process;
     //   313: aload_0
-    //   314: invokevirtual 158	ahpm:a	()V
+    //   314: invokevirtual 158	aido:a	()V
     //   317: aload_1
     //   318: invokevirtual 163	java/lang/Process:waitFor	()I
     //   321: pop
@@ -547,7 +547,7 @@ public class HwVideoMerge
     //   410: aconst_null
     //   411: invokestatic 100	com/tencent/mobileqq/shortvideo/util/HwVideoMerge:b	(Ljava/lang/String;Ljava/lang/Throwable;)V
     //   414: aload_0
-    //   415: invokevirtual 176	ahpm:b	()V
+    //   415: invokevirtual 176	aido:b	()V
     //   418: aload_1
     //   419: ifnull +7 -> 426
     //   422: aload_1
@@ -615,7 +615,7 @@ public class HwVideoMerge
         break label198;
       }
       this.jdField_b_of_type_AndroidMediaMediaExtractor.selectTrack(0);
-      this.jdField_a_of_type_Ahpn.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      this.jdField_a_of_type_Aidp.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       j = a();
       i = j;
     } while (j != 0);
@@ -639,8 +639,8 @@ public class HwVideoMerge
       this.jdField_a_of_type_AndroidMediaMediaMuxer = new MediaMuxer(paramString, 0);
       paramInt = b(this.jdField_a_of_type_JavaLangString, paramInt);
       this.jdField_a_of_type_AndroidMediaMediaMuxer.setOrientationHint(paramInt);
-      this.jdField_a_of_type_Ahpn.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(localMediaFormat);
-      this.jdField_a_of_type_Ahpn.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack((MediaFormat)localObject);
+      this.jdField_a_of_type_Aidp.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack(localMediaFormat);
+      this.jdField_a_of_type_Aidp.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidMediaMediaMuxer.addTrack((MediaFormat)localObject);
       return j;
     }
     catch (IOException paramString)

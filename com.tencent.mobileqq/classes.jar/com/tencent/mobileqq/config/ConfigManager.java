@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.config;
 
-import abln;
-import ablo;
+import abso;
+import absp;
 import android.content.Context;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -25,7 +25,7 @@ public class ConfigManager
 {
   private static int jdField_a_of_type_Int = 1;
   public static final byte[] a;
-  public abln a;
+  public abso a;
   private File jdField_a_of_type_JavaIoFile;
   String jdField_a_of_type_JavaLangString;
   private Timer jdField_a_of_type_JavaUtilTimer;
@@ -40,7 +40,7 @@ public class ConfigManager
   
   public ConfigManager(Context paramContext, String paramString)
   {
-    this.jdField_a_of_type_Abln = new abln(this);
+    this.jdField_a_of_type_Abso = new abso(this);
     String str = paramContext.getFilesDir().getAbsolutePath() + "/" + paramString;
     File localFile = new File(str);
     if (localFile != null) {}
@@ -489,7 +489,7 @@ public class ConfigManager
         if (this.jdField_a_of_type_Boolean) {
           return;
         }
-        ConfigParser.a(paramHttpMsg2, new ablo(), this.b);
+        ConfigParser.a(paramHttpMsg2, new absp(), this.b);
         a();
         d();
         return;
@@ -504,7 +504,7 @@ public class ConfigManager
   public boolean a()
   {
     boolean bool = true;
-    switch (this.jdField_a_of_type_Abln.a)
+    switch (this.jdField_a_of_type_Abso.a)
     {
     default: 
       bool = false;

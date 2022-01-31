@@ -1,14 +1,12 @@
-import com.tencent.mobileqq.activity.aio.item.DetectableAnimationDrawable;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleParam;
+import java.util.List;
+import java.util.Map;
 
-public class usq
-  implements Runnable
+public abstract interface usq
 {
-  public usq(DetectableAnimationDrawable paramDetectableAnimationDrawable) {}
+  public abstract void a(String paramString, int paramInt, DoodleParam paramDoodleParam, List paramList, Map paramMap);
   
-  public void run()
-  {
-    this.a.a();
-  }
+  public abstract boolean a(String paramString);
 }
 
 

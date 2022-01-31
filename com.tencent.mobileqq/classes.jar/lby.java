@@ -1,22 +1,19 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
-class lby
-  extends Client.onRemoteRespObserver
+public class lby
+  implements Runnable
 {
-  lby(lbx paramlbx) {}
+  public lby(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity, int paramInt) {}
   
-  public void onBindedToClient()
+  public void run()
   {
-    ReadInJoyArticleDetailActivity.a(this.a.a);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.e) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.h();
+    QQToast.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity, 1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.getString(this.jdField_a_of_type_Int), 0).b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyBaseDeliverActivity.getTitleBarHeight());
   }
-  
-  public void onDisconnectWithService() {}
-  
-  public void onPushMsg(Bundle paramBundle) {}
-  
-  public void onResponse(Bundle paramBundle) {}
 }
 
 

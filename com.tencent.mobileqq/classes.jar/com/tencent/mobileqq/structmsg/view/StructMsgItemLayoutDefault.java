@@ -68,7 +68,7 @@ public class StructMsgItemLayoutDefault
         int n;
         if (!TextUtils.isEmpty(this.c))
         {
-          ((LinearLayout)localObject1).setBackgroundResource(2130837914);
+          ((LinearLayout)localObject1).setBackgroundResource(2130837917);
           n = AIOUtils.a(1.0F, localResources);
           paramView = (LinearLayout.LayoutParams)((LinearLayout)localObject1).getLayoutParams();
           paramView.leftMargin = n;
@@ -397,7 +397,7 @@ public class StructMsgItemLayoutDefault
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayoutDefault
  * JD-Core Version:    0.7.0.1
  */

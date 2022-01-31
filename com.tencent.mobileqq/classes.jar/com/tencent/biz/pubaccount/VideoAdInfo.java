@@ -14,7 +14,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import kzx;
+import kzi;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.AdInfo;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.NegFeedback;
 import tencent.im.oidb.cmd0x6cf.oidb_0x6cf.PosAdInfo;
@@ -24,7 +24,7 @@ import tencent.im.oidb.cmd0x886.oidb_cmd0x886.VideoPlayInfo;
 public class VideoAdInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new kzx();
+  public static final Parcelable.Creator CREATOR = new kzi();
   public int a;
   public long a;
   public String a;

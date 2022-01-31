@@ -1,6 +1,6 @@
 package cooperation.qzone.music;
 
-import amfc;
+import amvh;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -13,7 +13,7 @@ import org.json.JSONObject;
 public class BroadcastUrl
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amfc();
+  public static final Parcelable.Creator CREATOR = new amvh();
   public Map mapBroadcastUrl;
   
   public BroadcastUrl() {}

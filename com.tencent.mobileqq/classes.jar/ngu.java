@@ -1,45 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.OnFetchUserInfoCallback;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.newshare.job.UploadImageJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
 
 public class ngu
-  implements PlayModeUtils.OnFetchUserInfoCallback
+  extends UploadImageJob
 {
-  public ngu(VideoPlayModeBase paramVideoPlayModeBase, int paramInt, String paramString1, String paramString2, StoryVideoItem paramStoryVideoItem) {}
+  public ngu(ShareModeBase paramShareModeBase, ShareSinaData paramShareSinaData) {}
   
-  public void a(boolean paramBoolean1, QQUserUIItem paramQQUserUIItem, boolean paramBoolean2)
+  public boolean b()
   {
-    SLog.d("Q.qqstory.player.YPlayModeUtils", "fetchUserInfo, onFinish, position = %d", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-    StringBuilder localStringBuilder;
-    if (QLog.isDevelopLevel())
-    {
-      localStringBuilder = new StringBuilder().append("[az]VideoPlayModeBase.fetchUserInfo: unionId ==>").append(this.jdField_a_of_type_JavaLangString).append("; uin ==> ").append(this.b).append("; \r\nsuccess ==>").append(paramBoolean1).append("; isFromNet ==>").append(paramBoolean2).append("; [important]storyVideoItem.mOwnerUid ==> ").append(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid).append("; \r\nuserUIItem ==> ");
-      if (paramQQUserUIItem == null) {
-        break label207;
-      }
-    }
-    label207:
-    for (String str = paramQQUserUIItem.toString();; str = "null")
-    {
-      QLog.d("VideoPlayModeBase", 2, str);
-      if ((paramBoolean1) && (paramQQUserUIItem != null) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid)))
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid = paramQQUserUIItem.uid;
-        ((StoryManager)SuperManager.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
-      }
-      if (Looper.getMainLooper() != Looper.myLooper()) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.a.post(new ngv(this));
-      }
-      return;
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.e = ((String)a("UploadImageJob_out_image_url"));
+    return true;
   }
 }
 

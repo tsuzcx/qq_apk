@@ -1,20 +1,26 @@
-import android.os.AsyncTask;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity.QueryPhotoTask;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.phone.CountryActivity;
 
 public class wue
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public wue(PhotoListActivity paramPhotoListActivity) {}
+  public wue(CountryActivity paramCountryActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.a == null)
+    if (!this.a.isFinishing())
     {
-      this.a.a = new PhotoListActivity.QueryPhotoTask(this.a);
-      this.a.a.execute(new Object[0]);
+      this.a.jdField_a_of_type_Wul.show();
+      this.a.b.setAnimation(null);
+      this.a.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

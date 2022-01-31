@@ -1,16 +1,16 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.mobileqq.businessCard.helpers.CameraHelper;
+import com.tencent.mobileqq.armap.ItemInfo;
+import com.tencent.mobileqq.armap.POIInfo;
+import com.tencent.mobileqq.armap.map.ARMapEngine;
+import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
 
 public class abhk
-  implements Camera.AutoFocusCallback
+  implements Runnable
 {
-  public abhk(CameraHelper paramCameraHelper) {}
+  public abhk(ARMapPOIStarDialog paramARMapPOIStarDialog, ItemInfo paramItemInfo) {}
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public void run()
   {
-    paramCamera = this.a.a();
-    this.a.a(paramCamera);
+    ARMapEngine.removePOITask(this.jdField_a_of_type_ComTencentMobileqqArmapItemInfo.a.a);
   }
 }
 

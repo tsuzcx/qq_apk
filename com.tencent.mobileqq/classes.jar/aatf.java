@@ -1,74 +1,33 @@
-import android.os.Handler;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.ArMapUtil;
-import com.tencent.mobileqq.armap.RedPackRainCloudView;
-import com.tencent.mobileqq.armap.wealthgod.WealthGodInfo;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
-import java.text.SimpleDateFormat;
+import com.tencent.mobileqq.ark.ArkAppCGI;
+import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import java.util.ArrayList;
 
 public class aatf
-  implements Runnable
+  implements aath
 {
-  public aatf(ARMapActivity paramARMapActivity, WealthGodInfo paramWealthGodInfo) {}
+  public aatf(ArkAppCGI paramArkAppCGI) {}
   
-  public void run()
+  public void a(aati paramaati, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    boolean bool = false;
-    long l1;
-    long l3;
-    if (!this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.isFinishing())
-    {
-      l1 = this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodWealthGodInfo.c;
-      long l2 = NetConnInfoCenter.getServerTimeMillis();
-      l3 = l1 - l2;
-      if (ArMapUtil.a(l1, l2)) {
-        break label74;
-      }
-      ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, 2);
-      if (this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_ComTencentMobileqqArmapRedPackRainCloudView.getVisibility() == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_ComTencentMobileqqArmapRedPackRainCloudView.setVisibility(4);
-      }
-    }
-    return;
-    label74:
-    Object localObject2;
-    String str1;
-    Object localObject1;
-    if ((l3 > 0L) && (l3 <= 60000L))
-    {
-      localObject2 = ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodWealthGodInfo, false) + "即将天降红包";
-      String str2 = new SimpleDateFormat("mm:ss").format(Long.valueOf(l3));
-      this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidOsHandler.removeCallbacks(ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity));
-      this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidOsHandler.postDelayed(ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity), 1000L);
-      str1 = str2;
-      localObject1 = localObject2;
-      if (ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity) != 3)
-      {
-        ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, 3);
-        ARMapActivity.i(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity);
-        localObject1 = localObject2;
-        str1 = str2;
-      }
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    if ((!paramBoolean) || (paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("getPredownloadAppList: fail, url=%s", new Object[] { paramaati.jdField_a_of_type_JavaLangString }));
     }
     for (;;)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_ComTencentMobileqqArmapRedPackRainCloudView.getVisibility() != 0) {
-        this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_ComTencentMobileqqArmapRedPackRainCloudView.setVisibility(0);
-      }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_ComTencentMobileqqArmapRedPackRainCloudView;
-      if (ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity) == 3) {
-        bool = true;
-      }
-      ((RedPackRainCloudView)localObject2).a((String)localObject1, str1, bool);
-      return;
-      localObject1 = ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodWealthGodInfo, false) + "天降红包时间";
-      if ((l3 > 0L) && (l3 < this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.b))
+      int i = 0;
+      while (i < paramaati.b.size())
       {
-        this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidOsHandler.removeCallbacks(ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity));
-        this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.jdField_a_of_type_AndroidOsHandler.postDelayed(ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity), l3 - 60000L);
+        paramArrayOfByte = paramaati.jdField_a_of_type_JavaUtilArrayList.get(i);
+        ArkAppCGI.ArkAppCGICallback localArkAppCGICallback = (ArkAppCGI.ArkAppCGICallback)paramaati.b.get(i);
+        if (localArkAppCGICallback != null) {
+          localArkAppCGICallback.a(paramBoolean, localArrayList1, localArrayList2, paramArrayOfByte);
+        }
+        i += 1;
       }
-      str1 = new SimpleDateFormat("HH:mm").format(Long.valueOf(l1));
-      ARMapActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity, 2);
+      ArkAppCGI.a(this.a, paramArrayOfByte, localArrayList1, localArrayList2);
     }
   }
 }

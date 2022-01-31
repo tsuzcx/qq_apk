@@ -1,23 +1,19 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
+import com.tencent.mobileqq.arcard.ARBlessWordFragment;
 
 class aalh
-  implements aalq
+  implements Runnable
 {
-  aalh(aalg paramaalg) {}
+  aalh(aalf paramaalf) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, full update result, success=%s, name=%s", new Object[] { Boolean.toString(paramBoolean), this.a.jdField_a_of_type_Aalo.a }));
-    if (paramBoolean) {
-      ArkAppDataReport.a(this.a.jdField_a_of_type_Aalo.a, 2);
-    }
-    this.a.jdField_a_of_type_Aalq.a(paramBoolean);
+    ARBlessWordFragment.b(this.a.a);
+    ARBlessWordFragment.c(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aalh
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,26 @@
-import android.widget.EditText;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.widget.ActionSheet;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
+import com.tencent.mobileqq.nearby.now.location.adapter.LocationListAdapter;
+import com.tencent.mobileqq.nearby.now.model.LocationInfo;
+import com.tencent.mobileqq.nearby.now.send.SmallVideoCameraCaptureFragment;
+import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import com.tencent.mobileqq.nearby.now.widget.ItemClickHelper;
+import com.tencent.util.LogUtil;
+import java.util.List;
 
 public class aesx
-  implements IphonePickerView.IphonePickListener
+  extends ItemClickHelper
 {
-  public aesx(NearbyProfileEditPanel paramNearbyProfileEditPanel, IphonePickerView paramIphonePickerView, ActionSheet paramActionSheet) {}
+  public aesx(SelectLocationFragment paramSelectLocationFragment) {}
   
-  public void onConfirmBtClicked()
+  public void a(int paramInt, View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()))
-    {
-      NearbyProfileEditPanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.b, false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    }
-  }
-  
-  public void onItemSelected(int paramInt1, int paramInt2)
-  {
-    paramInt1 = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(0);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.b.setTag(Byte.valueOf((byte)paramInt1));
-    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.b.setText(NearbyProfileEditPanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel).getText(0, paramInt1));
+    LogUtil.d("SelectLocationFragment", "onItemClick: " + paramInt);
+    SelectLocationFragment.a(this.a, paramInt);
+    SelectLocationFragment.b(this.a, (LocationInfo)SelectLocationFragment.a(this.a).a().get(paramInt));
+    new NowVideoReporter().h("video_public").i("change_poi").d(SmallVideoCameraCaptureFragment.a).a(SelectLocationFragment.a(this.a)).b(this.a.getActivity().app);
+    LogUtil.d("SelectLocationFragment", "onItemClick: " + SelectLocationFragment.b(this.a).toString());
   }
 }
 

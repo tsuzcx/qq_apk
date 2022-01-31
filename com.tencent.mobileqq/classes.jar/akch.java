@@ -1,48 +1,27 @@
-import android.os.MessageQueue.IdleHandler;
-import com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper;
-import com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper.IdleTask;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.photo.StatisticConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class akch
-  implements MessageQueue.IdleHandler
+public final class akch
+  implements Runnable
 {
-  public akch(SwiftBrowserIdleTaskHelper paramSwiftBrowserIdleTaskHelper) {}
+  public akch(String paramString, int paramInt, QQAppInterface paramQQAppInterface) {}
   
-  public boolean queueIdle()
+  public void run()
   {
-    Object localObject;
-    int i;
-    if (!SwiftBrowserIdleTaskHelper.a().isEmpty())
+    try
     {
-      localObject = (SwiftBrowserIdleTaskHelper.IdleTask)SwiftBrowserIdleTaskHelper.a().remove(0);
-      i = ((SwiftBrowserIdleTaskHelper.IdleTask)localObject).a();
-      if (2 == i) {
-        SwiftBrowserIdleTaskHelper.a().add(localObject);
-      }
+      String str = this.jdField_a_of_type_JavaLangString;
+      int i = this.jdField_a_of_type_Int;
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      StatisticConstants.a(new String[] { str }, i, false, true, -1, localQQAppInterface);
+      return;
     }
-    else
-    {
-      label38:
-      localObject = this.a;
-      if (SwiftBrowserIdleTaskHelper.a().isEmpty()) {
-        break label75;
-      }
-    }
-    label75:
-    for (boolean bool = true;; bool = false)
-    {
-      ((SwiftBrowserIdleTaskHelper)localObject).a = bool;
-      return this.a.a;
-      if (1 != i) {
-        break;
-      }
-      break label38;
-    }
+    catch (Exception localException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akch
  * JD-Core Version:    0.7.0.1
  */

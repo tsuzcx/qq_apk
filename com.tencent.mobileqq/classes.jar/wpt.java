@@ -1,20 +1,16 @@
-import android.widget.BaseAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.AnimationScrollListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.observer.VipGifObserver;
 
 public class wpt
-  implements Runnable
+  extends VipGifObserver
 {
-  public wpt(AvatarPendantActivity.AnimationScrollListener paramAnimationScrollListener) {}
+  public wpt(MainAssistObserver paramMainAssistObserver) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.a.b.r == 0)
-    {
-      URLDrawable.resume();
-      this.a.b.a.a = false;
-      this.a.b.a.notifyDataSetChanged();
+    if ((paramInt == 0) && (paramBoolean == true)) {
+      MainAssistObserver.a(this.a);
     }
   }
 }

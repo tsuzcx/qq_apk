@@ -1,12 +1,14 @@
-import com.tencent.component.network.utils.FileUtils.FileComparator;
-import java.io.File;
+import com.tencent.component.network.DownloaderFactory;
+import com.tencent.component.network.downloader.handler.FileHandler;
 
-public final class pje
-  implements FileUtils.FileComparator
+public class pje
+  implements FileHandler
 {
-  public boolean a(File paramFile1, File paramFile2)
+  public pje(DownloaderFactory paramDownloaderFactory) {}
+  
+  public boolean a(String paramString1, String paramString2)
   {
-    return (paramFile1.length() == paramFile2.length()) && (paramFile1.lastModified() == paramFile2.lastModified());
+    return false;
   }
 }
 

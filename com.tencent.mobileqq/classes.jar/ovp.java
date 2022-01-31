@@ -1,21 +1,15 @@
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
 
-class ovp
-  extends ovu
+public class ovp
+  implements View.OnClickListener
 {
-  ovp(ovk paramovk, long paramLong, VideoCombineHelper.Callback paramCallback, File paramFile)
-  {
-    super(paramovk.a);
-  }
+  public ovp(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public void b(boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.trace_video_combine", 2, "combineVideos total = " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), paramBoolean, null);
+    EditUniqueTitleActivity.a(this.a);
   }
 }
 

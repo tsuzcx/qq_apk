@@ -1,35 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.Comic;
-import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
-import java.util.ArrayList;
-import java.util.List;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
 
-public final class abmv
-  implements Parcelable.Creator
+public class abmv
+  implements View.OnClickListener
 {
-  public IPSiteModel.Comic a(Parcel paramParcel)
-  {
-    IPSiteModel.Comic localComic = new IPSiteModel.Comic();
-    localComic.comicType = paramParcel.readInt();
-    localComic.cover = paramParcel.readString();
-    localComic.desc = paramParcel.readString();
-    localComic.id = paramParcel.readString();
-    localComic.jumpUrl = paramParcel.readString();
-    localComic.name = paramParcel.readString();
-    localComic.recommDesc = paramParcel.readString();
-    localComic.typeName = paramParcel.readString();
-    if (localComic.comicRiches == null) {
-      localComic.comicRiches = new ArrayList();
-    }
-    localComic.comicRiches.clear();
-    paramParcel.readList(localComic.comicRiches, IPSiteModel.ComicRich.class.getClassLoader());
-    return localComic;
-  }
+  public abmv(BusinessCardEditActivity paramBusinessCardEditActivity) {}
   
-  public IPSiteModel.Comic[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new IPSiteModel.Comic[paramInt];
+    if ((this.a.a != null) && (this.a.a.isShowing()))
+    {
+      this.a.a.dismiss();
+      this.a.a = null;
+    }
   }
 }
 

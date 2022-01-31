@@ -1,15 +1,20 @@
-import com.tencent.av.ui.ConferenceFlyTicketActivity;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
 
 public class jsf
-  implements Runnable
+  implements QavInOutAnimation.QavOutAnimationListener
 {
-  public jsf(ConferenceFlyTicketActivity paramConferenceFlyTicketActivity, String paramString) {}
+  public jsf(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public void run()
+  public void a()
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.getTitleBarHeight());
-    this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.finish();
+    this.a.l = true;
+    this.a.ah();
+  }
+  
+  public void b()
+  {
+    this.a.l = false;
   }
 }
 

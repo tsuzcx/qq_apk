@@ -1,27 +1,25 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.armap.config.ARMapConfig;
-import com.tencent.mobileqq.armap.config.ARMapConfigManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.ArkPassiveSearchInfo;
+import com.tencent.mobileqq.ark.ArkRecommendLogic.SemanticAnalysisResult;
+import java.lang.ref.WeakReference;
 
-public class aaya
+class aaya
   implements Runnable
 {
-  public aaya(ARMapConfigManager paramARMapConfigManager) {}
+  aaya(aaxz paramaaxz, ArkMessageServerLogic.ArkPassiveSearchInfo paramArkPassiveSearchInfo) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapConfigManager", 2, "onGetARMapConfig ,excute runnable");
+    if (this.jdField_a_of_type_Aaxz.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      ArkAppCenter.b("ArkApp.ArkRecommendLogic", String.format("passiveSearchText, this is null, return", new Object[0]));
     }
-    if (ARMapConfigManager.a(this.a) != null) {}
-    synchronized (ARMapConfigManager.a(this.a))
+    ArkRecommendLogic.SemanticAnalysisResult localSemanticAnalysisResult;
+    do
     {
-      if (ARMapConfigManager.a(this.a) != null) {
-        ARMapConfigManager.a(this.a).saveToFile(ARMapConfigManager.a(this.a).getCurrentAccountUin());
-      }
-      ARMapConfigManager.a(this.a);
       return;
-    }
+      localSemanticAnalysisResult = (ArkRecommendLogic.SemanticAnalysisResult)this.jdField_a_of_type_Aaxz.b.get();
+    } while (localSemanticAnalysisResult == null);
+    localSemanticAnalysisResult.a(this.jdField_a_of_type_Aaxz.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$ArkPassiveSearchInfo);
   }
 }
 

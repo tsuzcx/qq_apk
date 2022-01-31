@@ -1,35 +1,28 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.widget.FadeIconImageView;
-import cooperation.qqfav.QfavUtil;
-import cooperation.qqfav.widget.FavoriteActionSheet;
-import cooperation.qqfav.widget.FavoriteActionSheet.Actions;
-import cooperation.qqfav.widget.LocationDetailActivity;
-import mqq.app.AppRuntime;
+import android.widget.ImageView.ScaleType;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.widget.RandomCoverView;
+import com.tencent.widget.UpSideDownDrawable;
 
-public class alzk
-  extends FavoriteActionSheet
+public final class alzk
+  implements Runnable
 {
-  public alzk(LocationDetailActivity paramLocationDetailActivity, Activity paramActivity, FavoriteActionSheet.Actions paramActions, int paramInt1, int paramInt2, AppRuntime paramAppRuntime)
-  {
-    super(paramActivity, paramActions, paramInt1, paramInt2, paramAppRuntime);
-  }
+  public alzk(RandomCoverView paramRandomCoverView, UpSideDownDrawable paramUpSideDownDrawable, boolean paramBoolean) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (LocationDetailActivity.a(this.a))
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setScaleType(ImageView.ScaleType.FIT_CENTER);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setImageDrawable(this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable);
+    if (this.jdField_a_of_type_Boolean)
     {
-      QfavUtil.a(true);
-      if (LocationDetailActivity.a(this.a) != null) {
-        LocationDetailActivity.a(this.a).setVisibility(8);
-      }
+      this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable.d();
+      return;
     }
-    super.onClick(paramView);
+    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alzk
  * JD-Core Version:    0.7.0.1
  */

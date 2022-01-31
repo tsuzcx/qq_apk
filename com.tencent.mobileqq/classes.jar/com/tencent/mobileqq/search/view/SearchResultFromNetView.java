@@ -36,7 +36,7 @@ public class SearchResultFromNetView
     switch (this.jdField_a_of_type_Int)
     {
     default: 
-      this.jdField_b_of_type_Int = 2130969408;
+      this.jdField_b_of_type_Int = 2130969409;
       localResources = paramViewGroup.getResources();
       localLinearLayout = new LinearLayout(paramViewGroup.getContext());
       localLinearLayout.setOrientation(1);
@@ -44,9 +44,9 @@ public class SearchResultFromNetView
       localLinearLayout.addView(paramViewGroup, new LinearLayout.LayoutParams(-1, -2));
       if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
       {
-        localLinearLayout.setBackgroundColor(localResources.getColor(2131492947));
+        localLinearLayout.setBackgroundColor(localResources.getColor(2131492948));
         if (a()) {
-          paramViewGroup.setBackgroundResource(2130838576);
+          paramViewGroup.setBackgroundResource(2130838580);
         }
       }
       break;
@@ -58,23 +58,23 @@ public class SearchResultFromNetView
       this.d = localLinearLayout;
       a();
       return;
-      this.jdField_b_of_type_Int = 2130969700;
+      this.jdField_b_of_type_Int = 2130969714;
       break;
-      this.jdField_b_of_type_Int = 2130969378;
+      this.jdField_b_of_type_Int = 2130969379;
       break;
-      this.jdField_b_of_type_Int = 2130970453;
+      this.jdField_b_of_type_Int = 2130970494;
       break;
-      this.jdField_b_of_type_Int = 2130970454;
+      this.jdField_b_of_type_Int = 2130970495;
       break;
-      this.jdField_b_of_type_Int = 2130969387;
+      this.jdField_b_of_type_Int = 2130969388;
       break;
-      paramViewGroup.setBackgroundColor(localResources.getColor(2131492947));
+      paramViewGroup.setBackgroundColor(localResources.getColor(2131492948));
       continue;
-      localLinearLayout.setBackgroundColor(localResources.getColor(2131492968));
+      localLinearLayout.setBackgroundColor(localResources.getColor(2131492969));
       if (a()) {
-        paramViewGroup.setBackgroundResource(2130838575);
+        paramViewGroup.setBackgroundResource(2130838579);
       } else {
-        paramViewGroup.setBackgroundColor(localResources.getColor(2131492968));
+        paramViewGroup.setBackgroundColor(localResources.getColor(2131492969));
       }
     }
   }
@@ -92,26 +92,26 @@ public class SearchResultFromNetView
   protected void a()
   {
     super.a();
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.d.findViewById(2131362701));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.d.findViewById(2131366346));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.d.findViewById(2131362719));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.d.findViewById(2131366373));
     switch (this.jdField_a_of_type_Int)
     {
     default: 
       return;
     case 1001: 
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.d.findViewById(2131365186));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.d.findViewById(2131365208));
       return;
     case 1002: 
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.d.findViewById(2131366563));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.d.findViewById(2131370720));
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)this.d.findViewById(2131370721));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.d.findViewById(2131366587));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.d.findViewById(2131370860));
+      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopLabelLayout = ((TroopLabelLayout)this.d.findViewById(2131370861));
       return;
     }
-    this.jdField_a_of_type_AndroidViewView = this.d.findViewById(2131363937);
-    this.jdField_b_of_type_AndroidViewView = this.d.findViewById(2131366328);
-    this.jdField_c_of_type_AndroidViewView = this.d.findViewById(2131366327);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.d.findViewById(2131364741));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.d.findViewById(2131366329));
+    this.jdField_a_of_type_AndroidViewView = this.d.findViewById(2131363960);
+    this.jdField_b_of_type_AndroidViewView = this.d.findViewById(2131366355);
+    this.jdField_c_of_type_AndroidViewView = this.d.findViewById(2131366354);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.d.findViewById(2131364763));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.d.findViewById(2131366356));
   }
   
   public boolean a()

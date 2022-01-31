@@ -1,16 +1,26 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.common.offline.util.ILog;
+import android.app.Activity;
+import android.view.View;
+import com.tencent.biz.common.util.FileChooserHelper;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public final class klw
-  implements AsyncBack
+public class klw
+  implements ActionSheet.OnButtonClickListener
 {
-  public void a(int paramInt) {}
+  public klw(FileChooserHelper paramFileChooserHelper, Activity paramActivity, String paramString, ActionSheet paramActionSheet) {}
   
-  public void a(String paramString, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((paramInt == 0) && (HtmlOffline.a.a())) {
-      HtmlOffline.a.a("HtmlCheckUpdate", 2, "CODE_SUCCESS");
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      FileChooserHelper.a(this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper, this.jdField_a_of_type_AndroidAppActivity);
+      continue;
+      FileChooserHelper.a(this.jdField_a_of_type_ComTencentBizCommonUtilFileChooserHelper, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString);
     }
   }
 }

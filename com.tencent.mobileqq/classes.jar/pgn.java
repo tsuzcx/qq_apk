@@ -1,22 +1,14 @@
-import android.graphics.Xfermode;
-import android.graphics.drawable.Drawable;
-import com.tencent.component.media.image.drawable.DrawableContainer;
-import com.tencent.component.media.image.drawable.XfermodeDrawable;
+import com.tencent.component.media.image.ImageManager;
+import java.util.HashSet;
 
 public class pgn
-  extends pgb
+  extends ThreadLocal
 {
-  public Xfermode a;
+  public pgn(ImageManager paramImageManager) {}
   
-  public pgn(Drawable paramDrawable, DrawableContainer paramDrawableContainer, Xfermode paramXfermode)
+  protected HashSet a()
   {
-    super(paramDrawable, paramDrawableContainer);
-    this.a = paramXfermode;
-  }
-  
-  public Drawable newDrawable()
-  {
-    return new XfermodeDrawable(this, null, null);
+    return new HashSet();
   }
 }
 

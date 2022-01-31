@@ -1,27 +1,17 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import com.tencent.mobileqq.app.QQAppInterface;
+import dov.com.qq.im.capture.text.DynamicTextBuilder;
+import java.util.Arrays;
+import java.util.Map;
 
-public class anns
-  extends Property
+public final class anns
+  implements Runnable
 {
-  public anns(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public anns(QQAppInterface paramQQAppInterface) {}
   
-  public Integer a(GroundDrawable paramGroundDrawable)
+  public void run()
   {
-    if (paramGroundDrawable != null) {
-      return Integer.valueOf(GroundDrawable.c(paramGroundDrawable));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Integer paramInteger)
-  {
-    if (paramGroundDrawable != null) {
-      GroundDrawable.c(paramGroundDrawable, paramInteger.intValue());
-    }
+    String str = this.a.getCurrentNickname();
+    DynamicTextBuilder.a().put(Integer.valueOf(5), Arrays.asList(new String[] { "旅行的意义", "MY JOURNEY \n" + str }));
   }
 }
 

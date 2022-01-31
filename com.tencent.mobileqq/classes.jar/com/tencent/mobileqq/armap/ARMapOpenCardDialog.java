@@ -38,14 +38,14 @@ public class ARMapOpenCardDialog
   
   public ARMapOpenCardDialog(Context paramContext, boolean paramBoolean)
   {
-    super(paramContext, 2131624515);
+    super(paramContext, 2131624516);
     this.jdField_a_of_type_AndroidAppActivity = ((Activity)paramContext);
-    setContentView(2130970203);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369603));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369604));
-    findViewById(2131369607).setOnClickListener(this);
-    findViewById(2131369606).setOnClickListener(this);
-    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131369601);
+    setContentView(2130970219);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369680));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369681));
+    findViewById(2131369684).setOnClickListener(this);
+    findViewById(2131369683).setOnClickListener(this);
+    RelativeLayout localRelativeLayout = (RelativeLayout)findViewById(2131369678);
     int i = paramContext.getResources().getDisplayMetrics().widthPixels;
     int j = paramContext.getResources().getDisplayMetrics().heightPixels;
     this.jdField_a_of_type_ComTencentMobileqqPortalSanHuaView = new SanHuaView(paramContext, i / 2, j / 2);

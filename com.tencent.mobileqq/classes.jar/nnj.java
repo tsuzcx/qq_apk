@@ -1,21 +1,17 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.model.MyVideoSharePlayingListSync;
-import java.util.Comparator;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
 
 public class nnj
-  implements Comparator
+  implements View.OnTouchListener
 {
-  public nnj(MyVideoSharePlayingListSync paramMyVideoSharePlayingListSync) {}
+  public nnj(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public int a(StoryVideoItem paramStoryVideoItem1, StoryVideoItem paramStoryVideoItem2)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramStoryVideoItem1.mCreateTime > paramStoryVideoItem2.mCreateTime) {
-      return 1;
-    }
-    if (paramStoryVideoItem1.mCreateTime < paramStoryVideoItem2.mCreateTime) {
-      return -1;
-    }
-    return 0;
+    return this.a.a.onTouchEvent(paramMotionEvent);
   }
 }
 

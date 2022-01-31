@@ -30,6 +30,7 @@ public class WeShiGuideDialog
   extends Dialog
   implements View.OnClickListener
 {
+  private int jdField_a_of_type_Int;
   private Context jdField_a_of_type_AndroidContentContext;
   private View jdField_a_of_type_AndroidViewView;
   private Button jdField_a_of_type_AndroidWidgetButton;
@@ -41,10 +42,11 @@ public class WeShiGuideDialog
   private String c = "";
   private String d = "";
   private String e;
+  private String f;
   
   public WeShiGuideDialog(@NonNull Context paramContext)
   {
-    this(paramContext, 2131624515);
+    this(paramContext, 2131624516);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -54,24 +56,24 @@ public class WeShiGuideDialog
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public static Dialog a(Context paramContext, String paramString1, String paramString2, String paramString3)
+  public static Dialog a(Context paramContext, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4)
   {
     if (WeishiGuideUtils.a(paramContext))
     {
-      WeishiGuideUtils.a(paramContext);
+      WeishiGuideUtils.a(paramContext, paramInt, paramString4);
       return null;
     }
-    paramContext = new WeShiGuideDialog(paramContext).a(paramString1, paramString2, paramString3);
+    paramContext = new WeShiGuideDialog(paramContext).a(paramString1, paramString2, paramString3).a(paramInt, paramString4);
     paramContext.show();
     return paramContext;
   }
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131371999));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363197));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131371997);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371998));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131372172));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363215));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131372170);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372171));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setText("下载微视");
@@ -96,6 +98,13 @@ public class WeShiGuideDialog
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+  }
+  
+  public WeShiGuideDialog a(int paramInt, String paramString)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    this.f = paramString;
+    return this;
   }
   
   public WeShiGuideDialog a(String paramString)
@@ -141,34 +150,34 @@ public class WeShiGuideDialog
     {
     default: 
       return;
-    case 2131371999: 
+    case 2131372172: 
       a();
       if (TextUtils.isEmpty(this.e))
       {
         if (this.jdField_a_of_type_Boolean) {
-          WeishiGuideUtils.a(getContext());
+          WeishiGuideUtils.a(getContext(), this.jdField_a_of_type_Int, this.f);
         }
         for (;;)
         {
           StoryReportor.a("weishi_share", "cover_clk", 0, 0, new String[] { this.c, this.b, "weishi", this.d });
-          label100:
+          label108:
           dismiss();
           return;
           QQToast.a(getContext(), "正在下载，请稍候。", 0).a();
-          WeishiGuideUtils.b(getContext());
+          WeishiGuideUtils.a(getContext());
         }
       }
       if (this.jdField_a_of_type_Boolean)
       {
         VideoFeedsWeiShiUtils.a(getContext(), this.e);
-        label147:
+        label155:
         if (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-          break label392;
+          break label400;
         }
       }
       break;
     }
-    label392:
+    label400:
     for (int i = ((Activity)this.jdField_a_of_type_AndroidContentContext).getIntent().getIntExtra("REPORT_VIDEO_FEEDS_JUMP_FROM", 0);; i = 0)
     {
       JSONObject localJSONObject = new JSONObject();
@@ -195,10 +204,10 @@ public class WeShiGuideDialog
         break;
         QQToast.a(getContext(), -1, "正在下载，请稍候。", 0).b(getContext().getResources().getDimensionPixelSize(2131558448));
         VideoFeedsWeiShiUtils.b(getContext(), this.e);
-        break label147;
+        break label155;
         paramView = "1";
       }
-      break label100;
+      break label108;
       dismiss();
       if (!TextUtils.isEmpty(this.e)) {
         break;
@@ -211,7 +220,7 @@ public class WeShiGuideDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2130970857);
+    setContentView(2130970905);
     b();
     setCanceledOnTouchOutside(false);
   }

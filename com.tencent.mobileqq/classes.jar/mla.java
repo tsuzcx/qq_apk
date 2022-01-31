@@ -1,32 +1,29 @@
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.event.ItemShowDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ItemDatasListUtils;
-import java.util.List;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import android.widget.FrameLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ZImageView;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
-class mla
-  implements Runnable
+public class mla
+  extends AnimateUtils.AnimationAdapter
 {
-  mla(mkz parammkz, boolean paramBoolean, String paramString, List paramList1, List paramList2) {}
+  public mla(ReadinjoyTabFrame paramReadinjoyTabFrame, View paramView1, View paramView2) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((this.jdField_a_of_type_Boolean) && (FastWebActivity.a(this.jdField_a_of_type_Mkz.a) != null) && (FastWebActivity.a(this.jdField_a_of_type_Mkz.a).l.equals(this.jdField_a_of_type_JavaLangString)))
-    {
-      ItemDatasListUtils.a(FastWebActivity.a(this.jdField_a_of_type_Mkz.a), this.jdField_a_of_type_JavaUtilList, this.b, FastWebActivity.a(this.jdField_a_of_type_Mkz.a), FastWebActivity.a(this.jdField_a_of_type_Mkz.a));
-      FastWebModule localFastWebModule = ReadInJoyLogicEngine.a().a();
-      if (localFastWebModule != null) {
-        localFastWebModule.a(FastWebActivity.a(this.jdField_a_of_type_Mkz.a).j, FastWebActivity.a(this.jdField_a_of_type_Mkz.a));
-      }
-      FastWebActivity.g(this.jdField_a_of_type_Mkz.a);
-      ItemDatasListUtils.a(FastWebActivity.a(this.jdField_a_of_type_Mkz.a));
-      FastWebActivity.a(this.jdField_a_of_type_Mkz.a).notifyDataSetChanged();
-      this.jdField_a_of_type_Mkz.a.a(FastWebActivity.a(this.jdField_a_of_type_Mkz.a));
-      FastWebActivity.a(this.jdField_a_of_type_Mkz.a).a(FastWebActivity.a(this.jdField_a_of_type_Mkz.a), 0);
-    }
+    paramAnimation = new ScaleAnimation(1.1F, 1.0F, 1.1F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(166L);
+    ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame).startAnimation(paramAnimation);
+    paramAnimation.setAnimationListener(new mlb(this));
+  }
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
+    this.b.setAlpha(1.0F);
+    ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame).setAlpha(1.0F);
   }
 }
 

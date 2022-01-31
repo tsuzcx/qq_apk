@@ -1,45 +1,51 @@
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo.EditVideoLabel;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditPicSave;
 import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.label.QQStoryAddVideoLabelViewPart;
+import com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
+import com.tencent.biz.qqstory.takevideo.publish.GeneratePicArgs;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.reactive.SimpleObserver;
 
 public class odm
-  implements View.OnClickListener
+  extends SimpleObserver
 {
-  public odm(EditVideoLabel paramEditVideoLabel) {}
+  public odm(EditPicSave paramEditPicSave) {}
   
-  public void onClick(View paramView)
+  public void a(GenerateContext paramGenerateContext)
   {
-    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.jdField_a_of_type_JavaLangString))
+    super.onNext(paramGenerateContext);
+    this.a.a(40);
+    paramGenerateContext = paramGenerateContext.a.b;
+    SLog.b("EditPicSave", "picPath = " + paramGenerateContext);
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.getActivity() != null)
     {
-      this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.jdField_a_of_type_JavaLangString;
-      paramView = this.a.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
-      if ((paramView.equals("##")) || (TextUtils.isEmpty(paramView)) || (!paramView.equals("# " + this.a.jdField_a_of_type_JavaLangString)))
-      {
-        EditVideoPartManager localEditVideoPartManager = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager;
-        if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a())
-        {
-          paramView = "2";
-          localEditVideoPartManager.a("use_custom_tag", 0, 0, new String[] { paramView });
-        }
-      }
-      else
-      {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("# " + this.a.jdField_a_of_type_JavaLangString);
-      }
+      ThreadManager.post(new odn(this, paramGenerateContext), 5, this.a.jdField_a_of_type_ComTencentMobileqqAppThreadExcutor$IThreadListener, true);
+      this.a.jdField_a_of_type_Int = 40;
+      this.a.jdField_a_of_type_Boolean = false;
+      this.a.b = 10;
+      this.a.e();
     }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-      return;
-      paramView = "1";
-      break;
-      this.a.jdField_a_of_type_JavaLangString = "";
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
-    }
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    SLog.d("EditPicSave", "saveVideo cancel !");
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+    this.a.h();
+    QQToast.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), "取消保存", 0).a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    SLog.e("EditPicSave", "saveVideo error ：" + paramError);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
+    QQToast.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), 1, "保存失败，请重试 : " + paramError, 0).a();
+    this.a.h();
   }
 }
 

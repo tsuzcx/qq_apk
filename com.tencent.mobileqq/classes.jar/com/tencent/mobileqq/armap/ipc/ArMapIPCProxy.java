@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.armap.ipc;
 
-import aayy;
-import aayz;
-import aaza;
+import abfz;
+import abga;
+import abgb;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.qipc.QIPCModule;
@@ -19,9 +19,9 @@ public class ArMapIPCProxy
 {
   private static ArMapIPCProxy jdField_a_of_type_ComTencentMobileqqArmapIpcArMapIPCProxy;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new aaza(this, "ArMapModule");
-  EIPCOnGetConnectionListener jdField_a_of_type_EipcEIPCOnGetConnectionListener = new aayy(this);
-  EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new aayz(this);
+  QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new abgb(this, "ArMapModule");
+  EIPCOnGetConnectionListener jdField_a_of_type_EipcEIPCOnGetConnectionListener = new abfz(this);
+  EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new abga(this);
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   public boolean a;
@@ -94,13 +94,13 @@ public class ArMapIPCProxy
     //   40: astore 6
     //   42: aload_0
     //   43: getfield 68	com/tencent/mobileqq/armap/ipc/ArMapIPCProxy:jdField_a_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   46: new 137	aazb
+    //   46: new 137	abgc
     //   49: dup
     //   50: aload_0
     //   51: aload 6
     //   53: aload_1
     //   54: aload_2
-    //   55: invokespecial 140	aazb:<init>	(Lcom/tencent/mobileqq/armap/ipc/ArMapIPCProxy;Lcom/tencent/mobileqq/armap/ipc/IAsyncObserver;Ljava/lang/String;Leipc/EIPCResult;)V
+    //   55: invokespecial 140	abgc:<init>	(Lcom/tencent/mobileqq/armap/ipc/ArMapIPCProxy;Lcom/tencent/mobileqq/armap/ipc/IAsyncObserver;Ljava/lang/String;Leipc/EIPCResult;)V
     //   58: invokevirtual 146	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   61: pop
     //   62: iload_3
@@ -130,13 +130,13 @@ public class ArMapIPCProxy
     //   110: astore 6
     //   112: aload_0
     //   113: getfield 73	com/tencent/mobileqq/armap/ipc/ArMapIPCProxy:jdField_b_of_type_MqqOsMqqHandler	Lmqq/os/MqqHandler;
-    //   116: new 148	aazc
+    //   116: new 148	abgd
     //   119: dup
     //   120: aload_0
     //   121: aload 6
     //   123: aload_1
     //   124: aload_2
-    //   125: invokespecial 149	aazc:<init>	(Lcom/tencent/mobileqq/armap/ipc/ArMapIPCProxy;Lcom/tencent/mobileqq/armap/ipc/IAsyncObserver;Ljava/lang/String;Leipc/EIPCResult;)V
+    //   125: invokespecial 149	abgd:<init>	(Lcom/tencent/mobileqq/armap/ipc/ArMapIPCProxy;Lcom/tencent/mobileqq/armap/ipc/IAsyncObserver;Ljava/lang/String;Leipc/EIPCResult;)V
     //   128: invokevirtual 146	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   131: pop
     //   132: iload_3

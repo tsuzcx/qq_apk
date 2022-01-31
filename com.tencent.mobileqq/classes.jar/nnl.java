@@ -1,21 +1,27 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
+import com.tencent.biz.qqstory.base.QQStoryBanInfo;
+import com.tencent.biz.qqstory.base.QQStoryObserver;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisiblePersonPageView;
+import com.tencent.qphone.base.util.QLog;
 
 public class nnl
-  implements Animation.AnimationListener
+  extends QQStoryObserver
 {
-  public nnl(ExploreAnimalView paramExploreAnimalView) {}
+  public nnl(MyVideoVisiblePersonPageView paramMyVideoVisiblePersonPageView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void a(boolean paramBoolean, QQStoryBanInfo paramQQStoryBanInfo)
   {
-    this.a.a.startAnimation(this.a.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("MyVideoVisiblePersonPageView", 2, "onGetVideoReaderConfig: isSuccess " + paramBoolean + ", QQStoryBanInfo = " + paramQQStoryBanInfo);
+    }
+    if (paramBoolean)
+    {
+      if (paramQQStoryBanInfo != null) {
+        this.a.a(paramQQStoryBanInfo.a);
+      }
+      return;
+    }
+    this.a.e();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,37 +1,96 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.AccountObserver;
 
 public class ryj
-  extends AccountObserver
+  implements TextWatcher
 {
-  public ryj(ChatHistoryForC2C paramChatHistoryForC2C, boolean paramBoolean) {}
+  public ryj(ChatHistory paramChatHistory) {}
   
-  public void onRefreshDA2(boolean paramBoolean, String paramString1, String paramString2)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    boolean bool2 = false;
-    if (QLog.isColorLevel())
+    if ((paramCharSequence != null) && (paramCharSequence.length() != 0)) {}
+    for (;;)
     {
-      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
-      if (paramString2 != null) {
-        break label93;
-      }
-    }
-    label93:
-    for (int i = 0;; i = paramString2.length())
-    {
-      QLog.d("ChatHistoryForC2C", 2, i);
-      boolean bool1 = bool2;
-      if (paramBoolean)
+      try
       {
-        bool1 = bool2;
-        if (!TextUtils.isEmpty(paramString2)) {
-          bool1 = true;
+        paramInt1 = Integer.valueOf(paramCharSequence.toString()).intValue();
+        if ((paramCharSequence.length() <= 1) || (paramCharSequence.charAt(0) != '0')) {
+          break label421;
+        }
+        paramCharSequence = String.valueOf(paramInt1);
+        paramInt2 = 1;
+        if ((paramInt1 < 1) || (paramInt1 > this.a.c)) {
+          paramCharSequence = paramCharSequence.subSequence(0, paramCharSequence.length() - 1).toString();
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.runOnUiThread(new ryk(this, bool1));
-      return;
+      catch (Exception localException1)
+      {
+        try
+        {
+          paramInt1 = Integer.valueOf(paramCharSequence.toString()).intValue();
+          paramInt2 = 1;
+          continue;
+          localException1 = localException1;
+          paramInt1 = this.a.c;
+        }
+        catch (Exception paramCharSequence)
+        {
+          paramInt1 = this.a.c;
+          paramCharSequence = String.valueOf(paramInt1);
+          continue;
+        }
+      }
+      if (paramInt2 != 0) {}
+      try
+      {
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(Math.max(0, paramCharSequence.length() - 1));
+        this.a.jdField_a_of_type_AndroidWidgetEditText.setText(paramCharSequence.toString());
+        paramCharSequence = this.a;
+        if (paramInt1 < this.a.c)
+        {
+          paramCharSequence.d = paramInt1;
+          if (this.a.d < this.a.c) {
+            break label369;
+          }
+          this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
+          this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130845465);
+          if (this.a.d > 1) {
+            break label395;
+          }
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(false);
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839268);
+          this.a.e = ((this.a.d - 1) * 8);
+          this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
+        }
+      }
+      catch (Exception localException2)
+      {
+        for (;;)
+        {
+          QLog.e("ChatHistory", 1, "current s:" + paramCharSequence);
+          continue;
+          paramInt1 = this.a.c;
+          continue;
+          label369:
+          this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(true);
+          this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130838348);
+          continue;
+          label395:
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
+          this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838347);
+        }
+      }
+      label421:
+      paramInt2 = 0;
     }
   }
 }

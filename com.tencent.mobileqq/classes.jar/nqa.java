@@ -1,10 +1,17 @@
-import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnCompletionListener;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTextureImpl;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnCompletionListener;
 
-public abstract interface nqa
+public class nqa
+  implements IMediaPlayer.OnCompletionListener
 {
-  public abstract void a(@NonNull npy paramnpy);
+  public nqa(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnCompletionListener paramOnCompletionListener) {}
   
-  public abstract void b(@NonNull npy paramnpy);
+  public void a(IMediaPlayer paramIMediaPlayer)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView$OnCompletionListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTextureImpl);
+  }
 }
 
 

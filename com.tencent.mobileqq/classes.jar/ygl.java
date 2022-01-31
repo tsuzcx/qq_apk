@@ -1,24 +1,30 @@
-import com.tencent.mobileqq.apollo.ApolloGameManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.ApolloContentUpdateHandler;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler;
 
-public class ygl
-  implements Runnable
+class ygl
+  extends Handler
 {
-  public ygl(ApolloGameManager paramApolloGameManager) {}
-  
-  public void run()
+  ygl(ygk paramygk, Looper paramLooper)
   {
-    if (ApolloGameManager.a(this.a) == null) {}
-    while ((ApolloContentUpdateHandler)ApolloGameManager.a(this.a).a(115) == null) {
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
       return;
     }
-    ApolloContentUpdateHandler.a(ApolloGameManager.a(this.a), 2);
+    VipSpecialCareHandler.a(this.a.a, "-->request timeout");
+    VipSpecialCareHandler.a(this.a.a, -2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ygl
  * JD-Core Version:    0.7.0.1
  */

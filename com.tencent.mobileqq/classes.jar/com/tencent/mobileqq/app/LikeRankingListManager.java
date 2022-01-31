@@ -59,6 +59,9 @@ public class LikeRankingListManager
   {
     if ((paramInt1 != this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.likeCountOfToday) || (paramInt3 != this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.totalLikeCount) || (paramInt2 != this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.rankingNum))
     {
+      if (QLog.isColorLevel()) {
+        QLog.i("LikeRankingListManager", 2, String.format("updateMyRank todayVoteCount:%d rank:%d total:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3) }));
+      }
       this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.totalLikeCount = paramInt3;
       this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.likeCountOfToday = paramInt1;
       this.jdField_a_of_type_ComTencentMobileqqDataLikeRankingInfo.rankingNum = paramInt2;

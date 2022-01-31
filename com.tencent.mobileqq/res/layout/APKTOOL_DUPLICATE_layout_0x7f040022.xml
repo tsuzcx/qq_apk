@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0417" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d5f" android:layout_width="120.0dip" android:layout_height="25.0dip" android:layout_centerHorizontal="true">
-        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0418" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0429" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021ddc" android:layout_width="120.0dip" android:layout_height="25.0dip" android:layout_centerHorizontal="true">
+        <ImageView android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a042a" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     </FrameLayout>
-    <com.tencent.plato.sdk.render.PlatoRootView android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0419" android:background="#fff9f9fb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0417" />
-    <FrameLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a041a" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_centerInParent="true" />
+    <com.tencent.plato.sdk.render.PlatoRootView android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a042b" android:background="#fff9f9fb" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0429" />
+    <FrameLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a042c" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_centerInParent="true" />
 </RelativeLayout>

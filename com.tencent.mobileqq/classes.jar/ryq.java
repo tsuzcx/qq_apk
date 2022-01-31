@@ -1,22 +1,16 @@
-import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class ryq
   implements DialogInterface.OnClickListener
 {
-  public ryq(ChatHistoryImageView paramChatHistoryImageView) {}
+  public ryq(ChatHistory paramChatHistory) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
-    {
-      this.a.jdField_a_of_type_AndroidAppDialog.cancel();
-      if (this.a.jdField_a_of_type_Rys != null) {
-        this.a.jdField_a_of_type_Rys.a(false);
-      }
-    }
+    ThreadManager.post(new ryr(this), 8, null, false);
   }
 }
 

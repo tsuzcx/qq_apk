@@ -102,6 +102,7 @@ public class Card
   public byte cSqqLevel;
   public int cardType;
   public int constellation = 0;
+  public String declaration;
   public String diyDefaultText;
   public String diyText;
   public float diyTextDegree;
@@ -115,6 +116,10 @@ public class Card
   public int dynamicCardFlag;
   public byte eUserIdentityType;
   public String encId;
+  public short extendFriendEntryAddFriend;
+  public short extendFriendEntryContact;
+  public int extendFriendFlag;
+  public int extendFriendVoiceDuration;
   public int favoriteSource;
   public long feedPreviewTime;
   public int greenLevel;
@@ -139,6 +144,7 @@ public class Card
   public int iXManScene2DelayTime;
   public boolean isGreenDiamond;
   public boolean isRedDiamond;
+  public boolean isShowCard;
   public boolean isSuperGreenDiamond;
   public boolean isSuperRedDiamond;
   public boolean isSuperYellowDiamond;
@@ -185,6 +191,7 @@ public class Card
   public byte olympicTorch;
   @notColumn
   public PersonalityLabel personalityLabel;
+  public int popularity;
   public String privilegeJumpUrl;
   public String privilegePromptStr;
   @notColumn
@@ -312,6 +319,7 @@ public class Card
   @unique
   public String uin;
   public int ulShowControl;
+  public long updateTime;
   public byte[] vBackground;
   public byte[] vClosePriv;
   public byte[] vContent;
@@ -327,6 +335,7 @@ public class Card
   public boolean videoHeadFlag;
   public String videoHeadUrl;
   public boolean visibleMusicPendant;
+  public String voiceUrl;
   public byte[] wzryHonorInfo;
   public int yellowLevel;
   
@@ -989,29 +998,29 @@ public class Card
     //   0: aconst_null
     //   1: astore_1
     //   2: aload_0
-    //   3: getfield 812	com/tencent/mobileqq/data/Card:vOpenPriv	[B
+    //   3: getfield 821	com/tencent/mobileqq/data/Card:vOpenPriv	[B
     //   6: ifnull +171 -> 177
-    //   9: new 507	java/io/ObjectInputStream
+    //   9: new 516	java/io/ObjectInputStream
     //   12: dup
-    //   13: new 509	java/io/ByteArrayInputStream
+    //   13: new 518	java/io/ByteArrayInputStream
     //   16: dup
     //   17: aload_0
-    //   18: getfield 812	com/tencent/mobileqq/data/Card:vOpenPriv	[B
-    //   21: invokespecial 511	java/io/ByteArrayInputStream:<init>	([B)V
-    //   24: invokespecial 514	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   18: getfield 821	com/tencent/mobileqq/data/Card:vOpenPriv	[B
+    //   21: invokespecial 520	java/io/ByteArrayInputStream:<init>	([B)V
+    //   24: invokespecial 523	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
     //   27: astore_2
     //   28: aload_2
     //   29: astore_1
     //   30: aload_2
-    //   31: invokevirtual 517	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   34: checkcast 328	java/util/ArrayList
+    //   31: invokevirtual 526	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   34: checkcast 337	java/util/ArrayList
     //   37: astore_3
     //   38: aload_3
     //   39: astore_1
     //   40: aload_2
     //   41: ifnull +9 -> 50
     //   44: aload_2
-    //   45: invokevirtual 782	java/io/ObjectInputStream:close	()V
+    //   45: invokevirtual 791	java/io/ObjectInputStream:close	()V
     //   48: aload_3
     //   49: astore_1
     //   50: aload_1
@@ -1020,7 +1029,7 @@ public class Card
     //   55: areturn
     //   56: astore_1
     //   57: aload_1
-    //   58: invokevirtual 520	java/lang/Exception:printStackTrace	()V
+    //   58: invokevirtual 529	java/lang/Exception:printStackTrace	()V
     //   61: aload_3
     //   62: astore_1
     //   63: goto -13 -> 50
@@ -1030,17 +1039,17 @@ public class Card
     //   69: aload_2
     //   70: astore_1
     //   71: aload_3
-    //   72: invokevirtual 520	java/lang/Exception:printStackTrace	()V
+    //   72: invokevirtual 529	java/lang/Exception:printStackTrace	()V
     //   75: aload_2
     //   76: ifnull +101 -> 177
     //   79: aload_2
-    //   80: invokevirtual 782	java/io/ObjectInputStream:close	()V
+    //   80: invokevirtual 791	java/io/ObjectInputStream:close	()V
     //   83: aconst_null
     //   84: astore_1
     //   85: goto -35 -> 50
     //   88: astore_1
     //   89: aload_1
-    //   90: invokevirtual 520	java/lang/Exception:printStackTrace	()V
+    //   90: invokevirtual 529	java/lang/Exception:printStackTrace	()V
     //   93: aconst_null
     //   94: astore_1
     //   95: goto -45 -> 50
@@ -1050,17 +1059,17 @@ public class Card
     //   101: aload_2
     //   102: astore_1
     //   103: aload_3
-    //   104: invokevirtual 813	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   104: invokevirtual 822	java/lang/OutOfMemoryError:printStackTrace	()V
     //   107: aload_2
     //   108: ifnull +69 -> 177
     //   111: aload_2
-    //   112: invokevirtual 782	java/io/ObjectInputStream:close	()V
+    //   112: invokevirtual 791	java/io/ObjectInputStream:close	()V
     //   115: aconst_null
     //   116: astore_1
     //   117: goto -67 -> 50
     //   120: astore_1
     //   121: aload_1
-    //   122: invokevirtual 520	java/lang/Exception:printStackTrace	()V
+    //   122: invokevirtual 529	java/lang/Exception:printStackTrace	()V
     //   125: aconst_null
     //   126: astore_1
     //   127: goto -77 -> 50
@@ -1072,16 +1081,16 @@ public class Card
     //   135: aload_2
     //   136: ifnull +7 -> 143
     //   139: aload_2
-    //   140: invokevirtual 782	java/io/ObjectInputStream:close	()V
+    //   140: invokevirtual 791	java/io/ObjectInputStream:close	()V
     //   143: aload_1
     //   144: athrow
     //   145: astore_2
     //   146: aload_2
-    //   147: invokevirtual 520	java/lang/Exception:printStackTrace	()V
+    //   147: invokevirtual 529	java/lang/Exception:printStackTrace	()V
     //   150: goto -7 -> 143
-    //   153: new 328	java/util/ArrayList
+    //   153: new 337	java/util/ArrayList
     //   156: dup
-    //   157: invokespecial 329	java/util/ArrayList:<init>	()V
+    //   157: invokespecial 338	java/util/ArrayList:<init>	()V
     //   160: areturn
     //   161: astore_3
     //   162: aload_1

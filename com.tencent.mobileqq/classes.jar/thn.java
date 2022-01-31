@@ -1,32 +1,61 @@
-import com.tencent.mobileqq.activity.QQSettingCleanActivity;
-import com.tencent.mobileqq.activity.QQSettingCleanActivity.IProgressCallback;
-import com.tencent.mobileqq.statistics.storage.StorageReport;
-import com.tencent.mobileqq.utils.SdCardUtil;
-import com.tencent.mobileqq.widget.CircleProgressBar;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
+import com.tencent.mobileqq.activity.PublicAccountSearchActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class thn
-  implements Runnable
+  implements View.OnClickListener
 {
-  public thn(QQSettingCleanActivity paramQQSettingCleanActivity) {}
+  public thn(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    long l1 = SdCardUtil.a();
-    long l2 = SdCardUtil.a(this.a);
-    long l3 = SdCardUtil.b();
-    long l4 = SdCardUtil.b(this.a);
-    this.a.b = (l1 + l2);
-    this.a.e = (l3 + l4);
-    tho localtho = new tho(this);
-    this.a.c = StorageReport.a().a(localtho, 0, 98);
-    this.a.d = StorageReport.a().a(QQSettingCleanActivity.jdField_a_of_type_JavaUtilArrayList);
-    this.a.c -= this.a.d;
-    localtho.a(100);
-    QLog.d("QQCleanActivity", 1, "SpaceInfo total: " + this.a.b + " ava: " + this.a.e + " qq: " + this.a.c + " file: " + this.a.d);
-    QLog.d("QQCleanActivity", 1, "SpaceInfo totalIner: " + l1 + " totalExter: " + l2 + " avaInter: " + l3 + " avaExter: " + l4);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressBar.setFinish(this.a.c, this.a.d, this.a.b - this.a.c - this.a.d - this.a.e, this.a.e, 3.0F);
-    this.a.runOnUiThread(new thp(this.a, 5));
+    switch (paramView.getId())
+    {
+    default: 
+    case 2131363245: 
+    case 2131363428: 
+    case 2131365666: 
+      Object localObject;
+      do
+      {
+        return;
+        this.a.finish();
+        return;
+        PublicAccountSearchActivity.a(this.a);
+        PublicAccountReportUtils.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573A", "0X800573A", 0, 0, "", "", "", "", false);
+        paramView = (RedTouchManager)this.a.app.getManager(35);
+        localObject = paramView.a("101000.101001");
+        if ((localObject != null) && (((BusinessInfoCheckUpdate.AppInfo)localObject).iNewFlag.get() == 1)) {
+          ReportController.b(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X80060E3", "0X80060E3", 0, 0, "", "", "", "");
+        }
+        paramView.b("101000.101001");
+        return;
+        localObject = (String)paramView.getTag(-1);
+        paramView = (String)paramView.getTag(-2);
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!TextUtils.isEmpty(paramView))) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.w("PublicAccountListActivity", 2, "onClick - uin = " + (String)localObject + ", name = " + paramView);
+      return;
+      CrmUtils.a(this.a.app, this.a, paramView, (String)localObject, "IvrEnterpriseDetailEngineFalse");
+      return;
+    case 2131365668: 
+      PublicAccountSearchActivity.a(this.a, (String)this.a.d.getTag());
+      PublicAccountReportUtils.a(this.a.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800573D", "0X800573D", 0, 0, "", "", "", "", false);
+      return;
+    }
+    PublicAccountSearchActivity.a(this.a, (String)this.a.d.getTag());
   }
 }
 

@@ -1,48 +1,59 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.ConversationFacade;
 import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.text.ReplyedMessageSpan;
+import com.tencent.mobileqq.data.SubAccountInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class rmo
-  implements View.OnClickListener
+  implements Runnable
 {
-  public rmo(BaseChatPie paramBaseChatPie) {}
+  public rmo(AssociatedAccountActivity paramAssociatedAccountActivity, QQMessageFacade paramQQMessageFacade) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    switch (paramView.getId())
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.isFinishing()) {
+      return;
     }
-    BaseChatPie localBaseChatPie;
-    do
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.getString(2131433297);
+    int i;
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade != null)
     {
-      do
-      {
-        do
-        {
-          return;
-          paramView = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131362132);
-        } while (!(paramView instanceof ReplyedMessageSpan));
-        paramView = (ReplyedMessageSpan)paramView;
-      } while ((paramView == null) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null));
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.aio.BaseChatPie", 2, "TextItemBuilder onClickListener: isReplyMsg = true, mSourceMsgSeq = " + paramView.a);
+      i = this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.b();
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app.a();
+      if ((localObject == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a == null)) {
+        break label231;
       }
-      localBaseChatPie = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getChatFragment().a();
-    } while (!localBaseChatPie.f());
-    QQMessageFacade.Message localMessage = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-    localBaseChatPie.a(20, paramView.a, (int)(localMessage.shmsgseq - paramView.a), null);
-    MessageForReplyText.reportReplyMsg(null, "typebox", "clk_original", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, null);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.addAll(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a);
+      Iterator localIterator = localArrayList.iterator();
+      while (localIterator.hasNext()) {
+        i -= ((ConversationFacade)localObject).a(((SubAccountInfo)localIterator.next()).subuin, 7000);
+      }
+      localArrayList.clear();
+    }
+    label231:
+    for (;;)
+    {
+      if (i > 0)
+      {
+        localObject = Integer.toString(i);
+        if (i > 99) {
+          localObject = "99+";
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("AssociatedAccountActivity", 2, "updateUnreadNumOnTitleBar unreadText = " + (String)localObject);
+        }
+      }
+      for (localObject = str + "(" + (String)localObject + ")";; localObject = str)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.runOnUiThread(new rmp(this, (String)localObject));
+        return;
+      }
+    }
   }
 }
 

@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.FaceScoreCallBack;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import com.tencent.mobileqq.troop.robot.RobotResourcesManager;
 
-public final class ajmi
-  extends FaceScoreCallBack
+class ajmi
+  implements FrameSprite.OnFrameEndListener
 {
-  public ajmi(BaseActivity paramBaseActivity, String paramString1, String paramString2, int paramInt, QQProgressDialog paramQQProgressDialog) {}
+  ajmi(ajmg paramajmg) {}
   
-  public void a(long paramLong1, long paramLong2)
+  public void a()
   {
-    ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, String.valueOf(paramLong2), this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog);
+    if (RobotResourcesManager.a(this.a.a) != null) {
+      new Handler(Looper.getMainLooper()).post(new ajmj(this));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajmi
  * JD-Core Version:    0.7.0.1
  */

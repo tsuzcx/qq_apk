@@ -1,22 +1,42 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.qmcf.QmcfManager;
+import com.tencent.sveffects.SLog;
+import java.util.ArrayList;
 
-class agvp
-  extends AnimatorListenerAdapter
+public class agvp
+  implements Runnable
 {
-  agvp(agvn paramagvn) {}
+  public agvp(QmcfManager paramQmcfManager) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    EffectsCameraCaptureFragment.a(this.a.a).setVisibility(8);
-    EffectsCameraCaptureFragment.j(this.a.a, false);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    EffectsCameraCaptureFragment.j(this.a.a, true);
+    String str;
+    synchronized (QmcfManager.a(this.a))
+    {
+      if (QmcfManager.a(this.a).size() > 0)
+      {
+        str = (String)QmcfManager.a(this.a).get(QmcfManager.a(this.a).size() - 1);
+        QmcfManager.a(this.a).clear();
+      }
+    }
+    try
+    {
+      QmcfManager.a(this.a, str);
+      this.a.a();
+      return;
+      if (SLog.a()) {
+        SLog.d("QMCF_MGR", "ignore the old switch!");
+      }
+      return;
+      localObject = finally;
+      throw localObject;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        SLog.c("QMCF_MGR", "switchModel excep!");
+      }
+    }
   }
 }
 

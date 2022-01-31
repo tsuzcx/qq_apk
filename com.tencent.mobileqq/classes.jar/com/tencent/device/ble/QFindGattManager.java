@@ -21,18 +21,18 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import mqq.os.MqqHandler;
-import puo;
-import pup;
-import puq;
+import pwi;
+import pwj;
+import pwk;
 
 @TargetApi(18)
 public class QFindGattManager
 {
   static int jdField_a_of_type_Int = 1000;
   private static QFindGattManager jdField_a_of_type_ComTencentDeviceBleQFindGattManager;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new puq(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new pwk(this);
   private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
-  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new pup(this);
+  private ServiceConnection jdField_a_of_type_AndroidContentServiceConnection = new pwj(this);
   private BluetoothLeService jdField_a_of_type_ComTencentDeviceQfindBluetoothLeService;
   public PeerInfo a;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -44,7 +44,7 @@ public class QFindGattManager
   
   public QFindGattManager()
   {
-    this.jdField_a_of_type_MqqOsMqqHandler = new puo(this, Looper.getMainLooper());
+    this.jdField_a_of_type_MqqOsMqqHandler = new pwi(this, Looper.getMainLooper());
     Object localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, BluetoothLeService.class);
     this.jdField_a_of_type_AndroidContentContext.bindService((Intent)localObject, this.jdField_a_of_type_AndroidContentServiceConnection, 1);
     localObject = new IntentFilter();

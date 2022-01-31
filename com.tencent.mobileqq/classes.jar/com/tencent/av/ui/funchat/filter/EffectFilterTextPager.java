@@ -24,10 +24,10 @@ import com.tencent.av.business.manager.filter.EffectFilterTools;
 import com.tencent.av.business.manager.filter.FilterItem;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import kdo;
-import kdp;
-import kdq;
-import kdr;
+import kcz;
+import kda;
+import kdb;
+import kdc;
 
 public class EffectFilterTextPager
   extends EffectCycleViewPager
@@ -40,7 +40,7 @@ public class EffectFilterTextPager
   public VideoAppInterface a;
   private EffectFilterTools jdField_a_of_type_ComTencentAvBusinessManagerFilterEffectFilterTools;
   public EffectFilterTextPager.FilterTextAdapter a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new kdo(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new kcz(this);
   public boolean a;
   public float b;
   private int b;
@@ -54,7 +54,7 @@ public class EffectFilterTextPager
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter = new EffectFilterTextPager.FilterTextAdapter(paramContext);
     setAdapter(this.jdField_a_of_type_ComTencentAvUiFunchatFilterEffectFilterTextPager$FilterTextAdapter);
-    this.jdField_a_of_type_AndroidOsHandler = new kdp(this);
+    this.jdField_a_of_type_AndroidOsHandler = new kda(this);
     setOnTouchListener(this);
     this.jdField_b_of_type_Int = -1;
   }
@@ -99,14 +99,14 @@ public class EffectFilterTextPager
       }
     }
     label172:
-    for (int i = 2131560052;; i = 2131560051)
+    for (int i = 2131560070;; i = 2131560069)
     {
       float f2 = getContext().getResources().getDimension(i);
       AVLog.c("EffectFilterTextPager", "changeLayout: " + paramBoolean + "|" + j + "|" + f1);
       i = 0;
       while (i < j)
       {
-        ImageView localImageView = (ImageView)((ViewGroup)getChildAt(i)).findViewById(2131366264);
+        ImageView localImageView = (ImageView)((ViewGroup)getChildAt(i)).findViewById(2131366291);
         LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
         localLayoutParams.setMargins(localLayoutParams.leftMargin, (int)f2, localLayoutParams.rightMargin, localLayoutParams.bottomMargin);
         localImageView.setScaleX(f1);
@@ -126,7 +126,7 @@ public class EffectFilterTextPager
     {
       AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
       localAlphaAnimation.setDuration(450L);
-      localAlphaAnimation.setAnimationListener(new kdr(this, localView));
+      localAlphaAnimation.setAnimationListener(new kdc(this, localView));
       localView.startAnimation(localAlphaAnimation);
     }
   }
@@ -154,7 +154,7 @@ public class EffectFilterTextPager
       if ((localObject instanceof Activity))
       {
         localObject = (Activity)localObject;
-        EditText localEditText = (EditText)((Activity)localObject).findViewById(2131365920);
+        EditText localEditText = (EditText)((Activity)localObject).findViewById(2131365947);
         if (localEditText != null)
         {
           localEditText.clearFocus();
@@ -203,7 +203,7 @@ public class EffectFilterTextPager
   
   public void setOnFilterListenner(EffectFilterTextPager.OnEffectFilterChangeListener paramOnEffectFilterChangeListener)
   {
-    setOnPageChangeListener(new kdq(this, paramOnEffectFilterChangeListener));
+    setOnPageChangeListener(new kdb(this, paramOnEffectFilterChangeListener));
   }
   
   public void setVisibility(int paramInt)

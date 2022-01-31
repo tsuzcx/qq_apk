@@ -1,30 +1,46 @@
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil.GetApkPackageInfoCallback;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class acxi
+public class acxi
   implements Runnable
 {
-  public acxi(String paramString, FileCategoryUtil.GetApkPackageInfoCallback paramGetApkPackageInfoCallback) {}
+  public acxi(OnlineFileSessionWorker paramOnlineFileSessionWorker, float paramFloat) {}
   
   public void run()
   {
-    Object localObject = BaseApplicationImpl.getContext().getPackageManager();
-    PackageInfo localPackageInfo = ((PackageManager)localObject).getPackageArchiveInfo(this.jdField_a_of_type_JavaLangString, 1);
-    if (localPackageInfo != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null) {}
+    FileManagerEntity localFileManagerEntity;
+    do
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileCategoryUtil$GetApkPackageInfoCallback.b(localPackageInfo.applicationInfo.packageName);
-      localObject = localPackageInfo.applicationInfo.loadLabel((PackageManager)localObject).toString();
-      localObject = (String)localObject + ".apk";
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileCategoryUtil$GetApkPackageInfoCallback.a((String)localObject);
       return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileCategoryUtil$GetApkPackageInfoCallback.b(FileManagerUtil.a(this.jdField_a_of_type_JavaLangString));
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileCategoryUtil$GetApkPackageInfoCallback.a(FileManagerUtil.a(this.jdField_a_of_type_JavaLangString));
+      localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+      if ((localFileManagerEntity.fProgress < this.jdField_a_of_type_Float) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null))
+      {
+        float f = localFileManagerEntity.fProgress + 0.05F;
+        if (f > this.jdField_a_of_type_Float) {}
+        for (localFileManagerEntity.fProgress = this.jdField_a_of_type_Float;; localFileManagerEntity.fProgress = f)
+        {
+          for (;;)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localFileManagerEntity.uniseq, localFileManagerEntity.nSessionId, localFileManagerEntity.peerUin, localFileManagerEntity.peerType, 16, null, 0, null);
+            try
+            {
+              Thread.sleep(100L);
+            }
+            catch (InterruptedException localInterruptedException)
+            {
+              localInterruptedException.printStackTrace();
+            }
+          }
+          break;
+        }
+      }
+    } while ((localFileManagerEntity.fProgress < 1.0F) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null));
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + localFileManagerEntity.nSessionId + "] state:" + OnlineFileSessionWorker.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker).a() + " make progress. direct pass to 1.0 and notify make done");
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(true, 41, new Object[] { Long.valueOf(localFileManagerEntity.nSessionId) });
   }
 }
 

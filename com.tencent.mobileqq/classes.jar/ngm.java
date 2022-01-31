@@ -1,44 +1,41 @@
-import android.app.Activity;
-import android.content.res.Resources;
-import android.graphics.drawable.Animatable;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.newshare.job.AddInteractViewJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class ngm
-  implements TextWatcher
+  extends AddInteractViewJob
 {
-  public ngm(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
-  
-  public void afterTextChanged(Editable paramEditable)
+  public ngm(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem)
   {
-    this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString().trim();
-    if (TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) {
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(8);
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("正在加载…");
-      this.a.b.setVisibility(8);
-      paramEditable = this.a.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838592);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(paramEditable, null, null, null);
-      ((Animatable)paramEditable).start();
-      this.a.jdField_a_of_type_Int = 0;
-      this.a.a(null);
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
-    }
+    super(paramStoryVideoItem);
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public boolean b()
+  {
+    Object localObject = (String)a("result");
+    try
+    {
+      localObject = new URI((String)localObject);
+      if ("file".equals(((URI)localObject).getScheme()))
+      {
+        localObject = new File((URI)localObject);
+        if (((File)localObject).exists())
+        {
+          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
+          return true;
+        }
+      }
+    }
+    catch (URISyntaxException localURISyntaxException)
+    {
+      SLog.c(this.b, "Error: 评分投票失败", localURISyntaxException);
+    }
+    return false;
+  }
 }
 
 

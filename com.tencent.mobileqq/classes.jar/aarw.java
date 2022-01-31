@@ -1,15 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import com.tencent.mobileqq.ark.ArkAiBubbleView;
+import com.tencent.mobileqq.ark.ArkAiScrollBar;
+import com.tencent.qphone.base.util.QLog;
 
-class aarw
-  implements DialogInterface.OnClickListener
+public class aarw
+  implements Runnable
 {
-  aarw(aarv paramaarv, QQCustomDialog paramQQCustomDialog) {}
+  public aarw(ArkAiBubbleView paramArkAiBubbleView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ark.ai", 2, String.format("ArkAiBubbleView.mScrollBar == null: %h", new Object[] { this.a }));
+      }
+      this.a.c();
+      return;
+    }
+    this.a.b = true;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar.b())
+    {
+      this.a.c();
+      return;
+    }
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+    localAlphaAnimation.setDuration(500L);
+    localAlphaAnimation.setAnimationListener(this.a);
+    this.a.jdField_a_of_type_AndroidViewView.startAnimation(localAlphaAnimation);
   }
 }
 

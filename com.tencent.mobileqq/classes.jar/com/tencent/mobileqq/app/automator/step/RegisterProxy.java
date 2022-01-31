@@ -29,9 +29,9 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MsgAutoMonitorUtil;
 import java.util.HashMap;
 import java.util.Random;
-import zoe;
-import zof;
-import zog;
+import zrk;
+import zrl;
+import zrm;
 
 public class RegisterProxy
   extends AsyncStep
@@ -40,7 +40,7 @@ public class RegisterProxy
   public long a;
   Handler jdField_a_of_type_AndroidOsHandler;
   MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver;
-  private zoe jdField_a_of_type_Zoe;
+  private zrk jdField_a_of_type_Zrk;
   private boolean jdField_a_of_type_Boolean;
   private int e = 0;
   private int f = 0;
@@ -63,7 +63,7 @@ public class RegisterProxy
       }
       if (paramBoolean)
       {
-        this.jdField_a_of_type_AndroidOsHandler = new zog(this, ThreadManager.getSubThreadLooper());
+        this.jdField_a_of_type_AndroidOsHandler = new zrm(this, ThreadManager.getSubThreadLooper());
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(100, 3000L);
       }
       return;
@@ -248,10 +248,10 @@ public class RegisterProxy
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new zof(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new zrl(this, null);
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
-      this.jdField_a_of_type_Zoe = new zoe(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Zoe);
+      this.jdField_a_of_type_Zrk = new zrk(this, null);
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Zrk);
     }
     if ((this.jdField_b_of_type_Int == 17) || (this.jdField_b_of_type_Int == 19)) {
       MsgAutoMonitorUtil.a().a(Thread.currentThread().getThreadGroup().activeCount());
@@ -293,8 +293,8 @@ public class RegisterProxy
     {
       this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver);
       this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver = null;
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Zoe);
-      this.jdField_a_of_type_Zoe = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Zrk);
+      this.jdField_a_of_type_Zrk = null;
     }
     if ((this.jdField_a_of_type_Int != 7) || (!b()))
     {

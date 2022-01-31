@@ -22,8 +22,8 @@ public class StoryRelayoutUtil
       return false;
     }
     paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(-16777216);
-    ImageView localImageView = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366351);
-    paramVideoViewHolder = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370501);
+    ImageView localImageView = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366378);
+    paramVideoViewHolder = (ImageView)paramVideoViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370642);
     localImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
     paramVideoViewHolder.setScaleType(ImageView.ScaleType.FIT_CENTER);
     return true;

@@ -1,23 +1,36 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import cooperation.qzone.model.LocalImageShootInfo;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.widget.calloutpopupwindow.CalloutPopupWindow;
+import java.lang.ref.WeakReference;
 
-public final class amem
-  implements Parcelable.Creator
+public class amem
+  extends Handler
 {
-  public LocalImageShootInfo a(Parcel paramParcel)
+  public amem()
   {
-    return new LocalImageShootInfo(paramParcel);
+    super(Looper.getMainLooper());
   }
   
-  public LocalImageShootInfo[] a(int paramInt)
+  public void handleMessage(Message paramMessage)
   {
-    return null;
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while (paramMessage.obj == null);
+      paramMessage = ((WeakReference)paramMessage.obj).get();
+    } while ((paramMessage == null) || (!(paramMessage instanceof CalloutPopupWindow)));
+    ((CalloutPopupWindow)paramMessage).dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amem
  * JD-Core Version:    0.7.0.1
  */

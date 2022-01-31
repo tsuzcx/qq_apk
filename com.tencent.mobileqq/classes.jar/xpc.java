@@ -1,70 +1,34 @@
-import android.os.Build;
-import android.os.Handler;
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.io.File;
+import android.os.MessageQueue.IdleHandler;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.view.CameraGLSurfaceView;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
+import com.tencent.qphone.base.util.QLog;
 
 public class xpc
-  implements Runnable
+  implements MessageQueue.IdleHandler
 {
-  public final int a;
-  public final long a;
-  public final File[] a;
-  public long b;
+  public xpc(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  private xpc(NewFlowCameraActivity paramNewFlowCameraActivity, String paramString, int paramInt)
+  public boolean queueIdle()
   {
-    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    paramString = new File(paramString);
-    if (paramString.isDirectory()) {}
-    for (this.jdField_a_of_type_ArrayOfJavaIoFile = paramString.listFiles();; this.jdField_a_of_type_ArrayOfJavaIoFile = null)
-    {
-      this.b = a();
-      this.jdField_a_of_type_Int = paramInt;
-      paramNewFlowCameraActivity.e("请稍候");
-      return;
+    if (CameraCompatibleList.d(CameraCompatibleList.b)) {
+      this.a.b(true);
     }
-  }
-  
-  private long a()
-  {
-    long l1 = 0L;
-    long l2 = l1;
-    if (this.jdField_a_of_type_ArrayOfJavaIoFile != null)
+    for (;;)
     {
-      File[] arrayOfFile = this.jdField_a_of_type_ArrayOfJavaIoFile;
-      int j = arrayOfFile.length;
-      int i = 0;
-      for (;;)
-      {
-        l2 = l1;
-        if (i >= j) {
-          break;
-        }
-        l2 = FileUtils.a(arrayOfFile[i].getAbsolutePath());
-        i += 1;
-        l1 = l2 + l1;
+      if ((this.a.g) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraGLSurfaceView.onResume();
       }
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a();
+      this.a.c.setEnabled(false);
+      if (QLog.isColorLevel()) {
+        QLog.i("PEAK_CAMERA", 2, "Added camera view.");
+      }
+      return false;
+      this.a.i();
     }
-    return l2;
-  }
-  
-  public void run()
-  {
-    long l = a();
-    SLog.a("PTV.NewFlowCameraActivity", "recordTime = %d, currentLength = %d, old length = %d", Integer.valueOf(this.jdField_a_of_type_Int), Long.valueOf(l), Long.valueOf(this.b));
-    if (l == this.b)
-    {
-      StoryReportor.b("video_shoot", "wait_start_edit", 0, 0, new String[] { Build.MODEL.toLowerCase(), String.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long), String.valueOf(this.jdField_a_of_type_Int) });
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.P();
-      NewFlowCameraActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity, this.jdField_a_of_type_Int);
-      return;
-    }
-    this.b = l;
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.postDelayed(this, 500L);
   }
 }
 

@@ -1,32 +1,41 @@
-import android.view.View;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.VoteLayer.VoteItem;
-import dov.com.tencent.biz.qqstory.takevideo.vote.VoteDashItem;
+import android.os.SystemClock;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.util.WeakReferenceHandler;
+import dov.com.qq.im.capture.music.MusicDownloadListener;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class anpb
-  implements Runnable
+  extends MusicDownloadListener
 {
-  public anpb(VoteDashItem paramVoteDashItem, VoteLayer.VoteItem paramVoteItem, boolean paramBoolean, View paramView, Runnable paramRunnable) {}
+  public anpb(MusicProviderView paramMusicProviderView) {}
   
-  public void run()
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    VoteLayer.VoteItem localVoteItem;
-    if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer$VoteItem.jdField_a_of_type_Boolean != this.jdField_a_of_type_Boolean)
+    long l = SystemClock.uptimeMillis();
+    if ((this.a.jdField_a_of_type_Long == 0L) || (l - this.a.jdField_a_of_type_Long > 16L))
     {
-      localVoteItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer$VoteItem;
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer$VoteItem.jdField_a_of_type_Boolean) {
-        break label69;
-      }
+      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
+      this.a.jdField_a_of_type_Long = l;
     }
-    label69:
-    for (boolean bool = true;; bool = false)
-    {
-      localVoteItem.jdField_a_of_type_Boolean = bool;
-      this.jdField_a_of_type_AndroidViewView.invalidate();
-      if (this.jdField_a_of_type_JavaLangRunnable != null) {
-        this.jdField_a_of_type_JavaLangRunnable.run();
-      }
-      VoteDashItem.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoVoteVoteDashItem, false);
-      return;
+  }
+  
+  public void a(String paramString, boolean paramBoolean)
+  {
+    this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
+  }
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(2);
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataMusicItemInfo.a().equals(paramString))) {
+      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(1);
+    }
+    if ((!paramBoolean) && (paramInt == -104)) {
+      this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(5);
     }
   }
 }

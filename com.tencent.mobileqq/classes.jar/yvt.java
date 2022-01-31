@@ -1,14 +1,21 @@
-import android.widget.ImageView;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import com.tencent.mobileqq.data.ApolloFavActionData;
+import java.util.Comparator;
 
 public class yvt
-  implements Runnable
+  implements Comparator
 {
-  public yvt(ApolloPanel paramApolloPanel) {}
+  public yvt(ApolloDaoManager paramApolloDaoManager) {}
   
-  public void run()
+  public int a(ApolloFavActionData paramApolloFavActionData1, ApolloFavActionData paramApolloFavActionData2)
   {
-    this.a.a.setVisibility(0);
+    if (paramApolloFavActionData2.favId == paramApolloFavActionData1.favId) {
+      return 0;
+    }
+    if (paramApolloFavActionData2.favId > paramApolloFavActionData1.favId) {
+      return 1;
+    }
+    return -1;
   }
 }
 

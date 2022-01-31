@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abnu;
+import abuv;
 import android.annotation.TargetApi;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -13,6 +13,7 @@ import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.pic.LoggerInterface;
+import com.tencent.mobileqq.service.message.MessageConstants;
 import com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.widget.ProgressPieDrawable;
@@ -28,7 +29,7 @@ public class MessageForShortVideo
   public static final int BUSI_TYPE_SHORT_VIDEO = 1;
   public static final int BUSI_TYPE_SHORT_VIDEO_PTV = 2;
   public static final int BUSI_TYPE_VIDEO = 0;
-  public static final Parcelable.Creator CREATOR = new abnu();
+  public static final Parcelable.Creator CREATOR = new abuv();
   public static final int EXTRA_FLAG_FORWARD = 2;
   public static final int EXTRA_FLAG_UPLOAD = 1;
   public static final int FORWARD_CHAT_TYPE_DISCUS = 2;
@@ -170,16 +171,23 @@ public class MessageForShortVideo
         continue;
         String str2 = "";
         continue;
+        label596:
         str2 = "";
         continue;
+        label602:
         str2 = "";
         continue;
+        label608:
         str2 = "";
         continue;
+        label614:
         i = 0;
         continue;
+        label619:
         str2 = "";
       }
+      label625:
+      this.syncToStory = false;
     }
     if (i != 0)
     {
@@ -217,29 +225,29 @@ public class MessageForShortVideo
         str1 = localVideoFile.bytes_hotvideo_icon.get().toStringUtf8();
         this.hotVideoIconUrl = str1;
         if (!localVideoFile.bytes_hotvideo_title.has()) {
-          break label575;
+          break label596;
         }
         str1 = localVideoFile.bytes_hotvideo_title.get().toStringUtf8();
         this.hotVideoTitle = str1;
         if (!localVideoFile.bytes_hotvideo_url.has()) {
-          break label581;
+          break label602;
         }
         str1 = localVideoFile.bytes_hotvideo_url.get().toStringUtf8();
         this.hotVideoUrl = str1;
         if (!localVideoFile.bytes_hotvideo_icon_sub.has()) {
-          break label587;
+          break label608;
         }
         str1 = localVideoFile.bytes_hotvideo_icon_sub.get().toStringUtf8();
         this.hotVideoSubIconUrl = str1;
         if (!localVideoFile.uint32_special_video_type.has()) {
-          break label593;
+          break label614;
         }
         i = localVideoFile.uint32_special_video_type.get();
         this.specialVideoType = i;
         this.msgTailType = localVideoFile.uint32_msg_tail_type.get();
         this.redBagType = localVideoFile.uint32_red_envelope_type.get();
         if (!localVideoFile.bytes_shortVideoId.has()) {
-          break label598;
+          break label619;
         }
         str1 = localVideoFile.bytes_shortVideoId.get().toStringUtf8();
         this.shortVideoId = str1;
@@ -248,6 +256,10 @@ public class MessageForShortVideo
     }
     else
     {
+      if (!"1".equals(getExtInfoFromExtStr(MessageConstants.o))) {
+        break label625;
+      }
+      this.syncToStory = true;
       return;
     }
   }
@@ -530,12 +542,10 @@ public class MessageForShortVideo
       paramParcel.writeInt(this.videoAttr);
       paramParcel.writeInt(this.binarySet);
       if (!this.mediacodecEncode) {
-        break label358;
+        break label373;
       }
-    }
-    label358:
-    for (paramInt = i;; paramInt = 0)
-    {
+      paramInt = 1;
+      label274:
       paramParcel.writeByte((byte)paramInt);
       paramParcel.writeString(this.hotVideoIconUrl);
       paramParcel.writeString(this.hotVideoSubIconUrl);
@@ -546,9 +556,20 @@ public class MessageForShortVideo
       paramParcel.writeInt(this.redBagType);
       paramParcel.writeString(this.shortVideoId);
       paramParcel.writeInt(this.redBagStat);
+      if (!this.syncToStory) {
+        break label378;
+      }
+    }
+    label373:
+    label378:
+    for (paramInt = i;; paramInt = 0)
+    {
+      paramParcel.writeByte((byte)paramInt);
       return;
       paramInt = 0;
       break;
+      paramInt = 0;
+      break label274;
     }
   }
 }

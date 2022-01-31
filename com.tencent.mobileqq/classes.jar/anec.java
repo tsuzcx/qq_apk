@@ -1,29 +1,18 @@
-import android.view.View;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import cooperation.qzone.widget.QzoneGuideBubbleHelper;
 
 public class anec
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public anec(EditVideoPartManager paramEditVideoPartManager, ActionSheet paramActionSheet) {}
+  public anec(QzoneGuideBubbleHelper paramQzoneGuideBubbleHelper) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.b();
-    }
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anec
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,42 @@
-import android.view.ScaleGestureDetector;
-import com.tencent.mobileqq.activity.PortraitImageview;
-import com.tencent.mobileqq.activity.PortraitImageview.SimpleOnScaleGestureListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import com.tencent.mobileqq.activity.NotificationActivity;
+import com.tencent.open.downloadnew.MyAppApi;
+import org.json.JSONObject;
 
 public class tdh
-  extends PortraitImageview.SimpleOnScaleGestureListener
+  implements DialogInterface.OnClickListener
 {
-  public tdh(PortraitImageview paramPortraitImageview) {}
+  public tdh(NotificationActivity paramNotificationActivity, String paramString) {}
   
-  public boolean onScale(ScaleGestureDetector paramScaleGestureDetector)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramScaleGestureDetector != null) && (paramScaleGestureDetector.isInProgress())) {
-      try
-      {
-        float f1 = this.a.a();
-        float f2 = paramScaleGestureDetector.getScaleFactor();
-        f1 = Math.min(this.a.b(), Math.max(f1 * f2, 0.1F));
-        this.a.a(f1, paramScaleGestureDetector.getFocusX(), paramScaleGestureDetector.getFocusY());
-        this.a.invalidate();
-        return true;
-      }
-      catch (IllegalArgumentException paramScaleGestureDetector)
-      {
-        paramScaleGestureDetector.printStackTrace();
-      }
+    try
+    {
+      paramDialogInterface = new JSONObject();
+      paramDialogInterface.put("appid", "100686848");
+      paramDialogInterface.put("apkId", "6633");
+      paramDialogInterface.put("versionCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.getPackageManager().getPackageInfo(this.jdField_a_of_type_JavaLangString, 16384).versionCode));
+      paramDialogInterface.put("via", "ANDROIDQQ.NEICE.OTHER");
+      paramDialogInterface.put("appPackageName", this.jdField_a_of_type_JavaLangString);
+      paramDialogInterface.put("channel", "000316053134377c30");
+      paramDialogInterface.put("appAuthorizedStr", NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
+      paramDialogInterface = paramDialogInterface.toString();
+      MyAppApi.a().a(paramDialogInterface, new tdi(this), this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
+      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, true);
+      return;
     }
-    return false;
+    catch (Exception paramDialogInterface)
+    {
+      paramDialogInterface.printStackTrace();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tdh
  * JD-Core Version:    0.7.0.1
  */

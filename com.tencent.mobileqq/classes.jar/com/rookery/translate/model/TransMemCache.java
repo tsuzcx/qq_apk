@@ -1,7 +1,7 @@
 package com.rookery.translate.model;
 
 import android.support.v4.util.LruCache;
-import jdc;
+import jcn;
 
 public class TransMemCache
   implements ICache
@@ -27,7 +27,7 @@ public class TransMemCache
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new jdc(this, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new jcn(this, this.jdField_a_of_type_Int);
   }
   
   /* Error */
@@ -110,7 +110,7 @@ public class TransMemCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.rookery.translate.model.TransMemCache
  * JD-Core Version:    0.7.0.1
  */

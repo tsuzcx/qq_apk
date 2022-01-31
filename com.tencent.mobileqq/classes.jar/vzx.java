@@ -1,20 +1,13 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.tips.MovieTicketTipsBar;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-public class vzx
-  implements View.OnClickListener
+class vzx
+  implements Runnable
 {
-  public vzx(MovieTicketTipsBar paramMovieTicketTipsBar) {}
+  vzx(vzv paramvzv) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(MovieTicketTipsBar.a(this.a), QQBrowserActivity.class);
-    paramView.putExtra("url", MovieTicketTipsBar.a(this.a));
-    MovieTicketTipsBar.a(this.a).startActivity(paramView);
+    this.a.a.a.ar();
   }
 }
 

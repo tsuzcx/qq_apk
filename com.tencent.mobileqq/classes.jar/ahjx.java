@@ -1,38 +1,27 @@
-import android.content.ContentResolver;
-import android.content.ContentValues;
-import com.tencent.common.config.provider.QZoneConfigConst;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
-import cooperation.qzone.UndealCount.QZoneCountInfo;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
+import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.OnResourceDownloadListener;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahjx
-  implements Runnable
+class ahjx
+  implements CaptureVideoFilterManager.OnResourceDownloadListener
 {
-  public ahjx(QZoneManagerImp paramQZoneManagerImp, QZoneCountInfo paramQZoneCountInfo, int paramInt) {}
+  ahjx(ahjw paramahjw) {}
   
-  public void run()
+  public void a(boolean paramBoolean)
   {
-    if (QZoneManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqServletQZoneManagerImp) == null) {
-      return;
-    }
-    ContentValues localContentValues = this.jdField_a_of_type_CooperationQzoneUndealCountQZoneCountInfo.a();
-    localContentValues.put("own_uin", QZoneManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqServletQZoneManagerImp).getAccount());
-    localContentValues.put("type", Integer.valueOf(this.jdField_a_of_type_Int));
-    try
+    if (paramBoolean)
     {
-      QZoneManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqServletQZoneManagerImp).getApplication().getContentResolver().insert(QZoneConfigConst.h, localContentValues);
-      return;
-    }
-    catch (Exception localException)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqServletQZoneManagerImp.a(localException);
+      this.a.a.a(CaptureVideoFilterManager.a().a());
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraCaptureFragment", 2, "EffectsCameraCaptureFragment onResourceDownload");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahjx
  * JD-Core Version:    0.7.0.1
  */

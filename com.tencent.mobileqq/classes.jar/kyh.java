@@ -1,55 +1,25 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import org.json.JSONObject;
 
 public class kyh
-  implements View.OnClickListener
+  implements Runnable
 {
-  public kyh(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
+  public kyh(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, String paramString1, JSONObject paramJSONObject, String paramString2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    switch (paramView.getId())
+    long l = PublicAccountJavascriptInterface.a();
+    try
     {
-    default: 
-      onClick(paramView);
-      return;
-    case 2131363410: 
-      if (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a.a)
+      PublicAccountJavascriptInterface.a(l);
+      if (PublicAccountJavascriptInterface.b() > 52428800L)
       {
-        paramView = this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c.getText().toString();
-        this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("javascript:onRightBtn(\"" + paramView + "\")");
+        this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{ret:-12, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
         return;
       }
-      if (PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a) == 1001)
-      {
-        ThreadManager.executeOnSubThread(new kyi(this));
-        this.a.getActivity().finish();
-        return;
-      }
-      onClick(paramView);
-      return;
     }
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a.a)
-    {
-      paramView = this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.getText().toString();
-      if (paramView.equals(PublicAccountBrowser.PublicAccountBrowserFragment.a(this.a).getStringExtra("leftViewText")))
-      {
-        this.a.n();
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl("javascript:onLeftBtn(\"" + paramView + "\")");
-      return;
-    }
-    onClick(paramView);
+    finally {}
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.a(this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
   }
 }
 

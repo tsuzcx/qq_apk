@@ -1,17 +1,19 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class sew
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  sew(ses paramses) {}
+  sew(sev paramsev) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.a != null)
+    if (paramInt == 1)
     {
-      this.a.a.a.a();
-      this.a.a.a.a(-1, null);
+      this.a.a.a.cancel();
+      this.a.a.finish();
     }
   }
 }

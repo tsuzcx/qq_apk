@@ -1,24 +1,29 @@
-import com.tencent.biz.webviewplugin.WebSoPlugin;
+import com.tencent.biz.common.util.Util;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.webviewplugin.OfflinePlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler.CheckOfflineCallback;
 import com.tencent.qphone.base.util.QLog;
 
-class pbw
-  implements Runnable
+public class pbw
+  implements SwiftBrowserOfflineHandler.CheckOfflineCallback
 {
-  pbw(pbv parampbv) {}
+  public pbw(OfflinePlugin paramOfflinePlugin, long paramLong, String paramString) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if ((this.a.a.mRuntime != null) && (this.a.a.mRuntime.a() != null)) {}
-    try
+    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.c = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    if (QLog.isColorLevel()) {
+      QLog.i("OfflinePluginQQ", 2, "onCheckOfflineFinish, cost: " + this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.c + ", url: " + Util.b(this.jdField_a_of_type_JavaLangString, new String[0]));
+    }
+    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.a(this.jdField_a_of_type_JavaLangString, paramInt);
+    CustomWebView localCustomWebView = this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.mRuntime.a();
+    if (localCustomWebView != null)
     {
-      this.a.a.a(this.a.a.mRuntime.a());
+      localCustomWebView.a(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("WebSoPlugin", 1, "asynJudgmentDynamicCover, useSoftwareMode err, ExceptionMsg = " + localThrowable.getMessage());
-    }
+    QLog.e("OfflinePluginQQ", 1, "error!!!! webview is null, now can not loadUrl " + this.jdField_a_of_type_JavaLangString);
   }
 }
 

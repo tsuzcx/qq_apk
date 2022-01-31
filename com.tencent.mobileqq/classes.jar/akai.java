@@ -1,20 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserDebugHelper;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class akai
-  implements DialogInterface.OnClickListener
+public final class akai
+  implements Runnable
 {
-  public akai(SwiftBrowserDebugHelper paramSwiftBrowserDebugHelper) {}
+  public akai(String paramString1, String paramString2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    String str1 = CardHandler.a(this.a, CardHandler.b(BaseApplication.getContext()));
+    int i = CardHandler.c(BaseApplication.getContext());
+    String str2 = CardHandler.a(this.a, i);
+    ImageUtil.a(this.b, str1);
+    ImageUtil.a(this.b, str2, i, i);
+    FileUtils.a(this.b, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akai
  * JD-Core Version:    0.7.0.1
  */

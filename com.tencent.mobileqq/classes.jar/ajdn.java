@@ -1,26 +1,46 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.troop.widget.AvatarWallAdapter.AvatarInfo;
-import com.tencent.mobileqq.troop.widget.BorderURLImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.troop.data.TroopCreateLogic;
+import com.tencent.mobileqq.troop.data.TroopCreateLogic.TroopCreateCallback;
+import com.tencent.qphone.base.util.QLog;
 
-class ajdn
-  implements Runnable
+public class ajdn
+  extends TroopObserver
 {
-  ajdn(ajdm paramajdm) {}
+  public ajdn(TroopCreateLogic paramTroopCreateLogic) {}
   
-  public void run()
+  protected void a(int paramInt1, int paramInt2)
   {
-    Bitmap localBitmap = this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallAdapter$AvatarInfo.a;
-    if ((localBitmap != null) && (!localBitmap.isRecycled()))
+    QLog.e("TroopCreateLogic", 1, "onTroopManagerFailed, result = " + paramInt2);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback != null)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView.setImageBitmap(localBitmap);
-      return;
+      if (paramInt1 == 8) {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback.b(paramInt2, "");
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback = null;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView.setImageDrawable(null);
+  }
+  
+  protected void a(int paramInt1, int paramInt2, String paramString)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback != null)
+    {
+      if (paramInt1 == 8)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback.b(0, paramString);
+        this.a.a(paramString, true, "");
+        ((TroopHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20)).b(Long.parseLong(paramString));
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopCreateLogic$TroopCreateCallback = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajdn
  * JD-Core Version:    0.7.0.1
  */

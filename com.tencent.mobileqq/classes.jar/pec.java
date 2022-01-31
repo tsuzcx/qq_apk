@@ -1,30 +1,20 @@
-import com.tencent.component.media.gif.InvalidationHandler;
-import com.tencent.component.media.gif.NewGifDecoder;
-import com.tencent.component.media.gif.NewGifDrawable;
+import com.tencent.biz.widgets.ScannerView;
 
 public class pec
-  extends pej
+  implements Runnable
 {
-  public pec(NewGifDrawable paramNewGifDrawable1, NewGifDrawable paramNewGifDrawable2, int paramInt)
-  {
-    super(paramNewGifDrawable2);
-  }
+  public pec(ScannerView paramScannerView) {}
   
-  public void doWork()
+  public void run()
   {
-    synchronized (this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.mLock4Bmp)
-    {
-      this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.mBuffer = this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.seekToTime(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDrawable.mBuffer);
-      if (!this.b.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.hasMessages(0)) {
-        this.b.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
-      }
-      return;
+    if (ScannerView.a(this.a) != null) {
+      ScannerView.a(this.a).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pec
  * JD-Core Version:    0.7.0.1
  */

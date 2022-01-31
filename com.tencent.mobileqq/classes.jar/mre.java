@@ -1,31 +1,28 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsAdapter;
-import java.io.Serializable;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class mre
+public class mre
   implements Runnable
 {
-  mre(mrb parammrb, Serializable paramSerializable) {}
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public mre(ReadInJoySkinAnimManager paramReadInJoySkinAnimManager, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramReadInJoySkinAnimManager);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
   
   public void run()
   {
-    SubscriptFeedsActivity localSubscriptFeedsActivity;
-    if ((this.jdField_a_of_type_JavaIoSerializable != null) && (SubscriptFeedsActivity.a(this.jdField_a_of_type_Mrb.a) != null))
+    ReadInJoySkinAnimManager localReadInJoySkinAnimManager = (ReadInJoySkinAnimManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localReadInJoySkinAnimManager != null)
     {
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Mrb.a, (ArrayList)this.jdField_a_of_type_JavaIoSerializable);
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Mrb.a).b(SubscriptFeedsActivity.a(this.jdField_a_of_type_Mrb.a));
-      SubscriptFeedsActivity.a(this.jdField_a_of_type_Mrb.a).a = true;
-      localSubscriptFeedsActivity = this.jdField_a_of_type_Mrb.a;
-      if (SubscriptFeedsActivity.a(this.jdField_a_of_type_Mrb.a).f != 1) {
-        break label110;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoySkinAnimManager", 1, "InitResourceRunnable folder = " + ReadInJoySkinAnimManager.b(localReadInJoySkinAnimManager));
       }
-    }
-    label110:
-    for (boolean bool = true;; bool = false)
-    {
-      SubscriptFeedsActivity.a(localSubscriptFeedsActivity, false, false, bool);
-      return;
+      ReadInJoySkinAnimManager.a(localReadInJoySkinAnimManager, this.jdField_a_of_type_Boolean);
     }
   }
 }

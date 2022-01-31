@@ -4,7 +4,7 @@ import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
-import jng;
+import jmr;
 
 public abstract class IAVServiceCallback$Stub
   extends Binder
@@ -24,7 +24,7 @@ public abstract class IAVServiceCallback$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IAVServiceCallback))) {
       return (IAVServiceCallback)localIInterface;
     }
-    return new jng(paramIBinder);
+    return new jmr(paramIBinder);
   }
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)

@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
 import java.lang.ref.WeakReference;
 import java.util.List;
-import wfi;
+import win;
 
 public class ReadInJoySearchHistoryAdapter
   extends BaseAdapter
@@ -83,11 +83,11 @@ public class ReadInJoySearchHistoryAdapter
       return localView;
       if (paramView == null)
       {
-        paramView = LayoutInflater.from(paramViewGroup).inflate(2130969379, null);
-        paramViewGroup = new wfi(this);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366305));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366304));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366306));
+        paramView = LayoutInflater.from(paramViewGroup).inflate(2130969380, null);
+        paramViewGroup = new win(this);
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366332));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366331));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366333));
         paramView.setTag(paramViewGroup);
         paramView.setOnClickListener(this);
       }
@@ -101,7 +101,7 @@ public class ReadInJoySearchHistoryAdapter
         paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
         paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((ReadInJoySearchHistoryEntity)this.jdField_a_of_type_JavaUtilList.get(paramInt)).keyWord);
         return paramView;
-        paramViewGroup = (wfi)paramView.getTag();
+        paramViewGroup = (win)paramView.getTag();
       }
       localView = paramView;
     } while (paramInt != this.jdField_a_of_type_JavaUtilList.size());
@@ -112,9 +112,9 @@ public class ReadInJoySearchHistoryAdapter
   
   public void onClick(View paramView)
   {
-    if ((paramView.getTag() instanceof wfi))
+    if ((paramView.getTag() instanceof win))
     {
-      paramView = (wfi)paramView.getTag();
+      paramView = (win)paramView.getTag();
       if (paramView.jdField_a_of_type_Int >= this.jdField_a_of_type_JavaUtilList.size()) {
         break label69;
       }

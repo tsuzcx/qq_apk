@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import alnf;
+import amcv;
 import android.content.Context;
 import android.view.animation.AnimationUtils;
 import android.view.animation.Interpolator;
@@ -10,10 +10,10 @@ public class OverScroller
 {
   public static int b;
   private int jdField_a_of_type_Int;
-  private final alnf jdField_a_of_type_Alnf;
+  private final amcv jdField_a_of_type_Amcv;
   private final Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator;
   private final boolean jdField_a_of_type_Boolean;
-  private final alnf b;
+  private final amcv b;
   
   static
   {
@@ -34,41 +34,41 @@ public class OverScroller
   {
     this.jdField_a_of_type_AndroidViewAnimationInterpolator = paramInterpolator;
     this.jdField_a_of_type_Boolean = paramBoolean;
-    this.jdField_a_of_type_Alnf = new alnf();
-    this.jdField_b_of_type_Alnf = new alnf();
-    alnf.a(paramContext);
+    this.jdField_a_of_type_Amcv = new amcv();
+    this.jdField_b_of_type_Amcv = new amcv();
+    amcv.a(paramContext);
   }
   
   public float a()
   {
-    return (float)Math.sqrt(alnf.a(this.jdField_a_of_type_Alnf) * alnf.a(this.jdField_a_of_type_Alnf) + alnf.a(this.jdField_b_of_type_Alnf) * alnf.a(this.jdField_b_of_type_Alnf));
+    return (float)Math.sqrt(amcv.a(this.jdField_a_of_type_Amcv) * amcv.a(this.jdField_a_of_type_Amcv) + amcv.a(this.jdField_b_of_type_Amcv) * amcv.a(this.jdField_b_of_type_Amcv));
   }
   
   public final int a()
   {
-    return alnf.a(this.jdField_a_of_type_Alnf);
+    return amcv.a(this.jdField_a_of_type_Amcv);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_Alnf.a();
-    this.jdField_b_of_type_Alnf.a();
+    this.jdField_a_of_type_Amcv.a();
+    this.jdField_b_of_type_Amcv.a();
   }
   
   public final void a(float paramFloat)
   {
-    this.jdField_a_of_type_Alnf.a(paramFloat);
-    this.jdField_b_of_type_Alnf.a(paramFloat);
+    this.jdField_a_of_type_Amcv.a(paramFloat);
+    this.jdField_b_of_type_Amcv.a(paramFloat);
   }
   
   public void a(int paramInt)
   {
-    this.jdField_b_of_type_Alnf.a(paramInt);
+    this.jdField_b_of_type_Amcv.a(paramInt);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    this.jdField_b_of_type_Alnf.b(paramInt1, paramInt2, paramInt3);
+    this.jdField_b_of_type_Amcv.b(paramInt1, paramInt2, paramInt3);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -79,8 +79,8 @@ public class OverScroller
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_Alnf.a(paramInt1, paramInt3, paramInt5);
-    this.jdField_b_of_type_Alnf.a(paramInt2, paramInt4, paramInt5);
+    this.jdField_a_of_type_Amcv.a(paramInt1, paramInt3, paramInt5);
+    this.jdField_b_of_type_Amcv.a(paramInt2, paramInt4, paramInt5);
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
@@ -92,8 +92,8 @@ public class OverScroller
   {
     if ((this.jdField_a_of_type_Boolean) && (!a()))
     {
-      float f1 = alnf.a(this.jdField_a_of_type_Alnf);
-      float f2 = alnf.a(this.jdField_b_of_type_Alnf);
+      float f1 = amcv.a(this.jdField_a_of_type_Amcv);
+      float f2 = amcv.a(this.jdField_b_of_type_Amcv);
       if ((Math.signum(paramInt3) == Math.signum(f1)) && (Math.signum(paramInt4) == Math.signum(f2)))
       {
         paramInt3 = (int)(f1 + paramInt3);
@@ -103,8 +103,8 @@ public class OverScroller
     for (;;)
     {
       this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_Alnf.a(paramInt1, paramInt3, paramInt5, paramInt6, paramInt9);
-      this.jdField_b_of_type_Alnf.a(paramInt2, paramInt4, paramInt7, paramInt8, paramInt10);
+      this.jdField_a_of_type_Amcv.a(paramInt1, paramInt3, paramInt5, paramInt6, paramInt9);
+      this.jdField_b_of_type_Amcv.a(paramInt2, paramInt4, paramInt7, paramInt8, paramInt10);
       return;
     }
   }
@@ -112,48 +112,48 @@ public class OverScroller
   public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10)
   {
     a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7, paramInt8, paramInt9, paramInt10);
-    alnf.a(this.jdField_a_of_type_Alnf, paramLong);
-    alnf.a(this.jdField_b_of_type_Alnf, paramLong);
+    amcv.a(this.jdField_a_of_type_Amcv, paramLong);
+    amcv.a(this.jdField_b_of_type_Amcv, paramLong);
   }
   
   public final void a(boolean paramBoolean)
   {
-    alnf.a(this.jdField_a_of_type_Alnf, alnf.a(this.jdField_b_of_type_Alnf, paramBoolean));
+    amcv.a(this.jdField_a_of_type_Amcv, amcv.a(this.jdField_b_of_type_Amcv, paramBoolean));
   }
   
   public final boolean a()
   {
-    return (alnf.a(this.jdField_a_of_type_Alnf)) && (alnf.a(this.jdField_b_of_type_Alnf));
+    return (amcv.a(this.jdField_a_of_type_Amcv)) && (amcv.a(this.jdField_b_of_type_Amcv));
   }
   
   public boolean a(float paramFloat1, float paramFloat2)
   {
-    int i = alnf.c(this.jdField_a_of_type_Alnf);
-    int j = alnf.b(this.jdField_a_of_type_Alnf);
-    int k = alnf.c(this.jdField_b_of_type_Alnf);
-    int m = alnf.b(this.jdField_b_of_type_Alnf);
+    int i = amcv.c(this.jdField_a_of_type_Amcv);
+    int j = amcv.b(this.jdField_a_of_type_Amcv);
+    int k = amcv.c(this.jdField_b_of_type_Amcv);
+    int m = amcv.b(this.jdField_b_of_type_Amcv);
     return (!a()) && (Math.signum(paramFloat1) == Math.signum(i - j)) && (Math.signum(paramFloat2) == Math.signum(k - m));
   }
   
   public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
     this.jdField_a_of_type_Int = 1;
-    boolean bool1 = this.jdField_a_of_type_Alnf.a(paramInt1, paramInt3, paramInt4);
-    boolean bool2 = this.jdField_b_of_type_Alnf.a(paramInt2, paramInt5, paramInt6);
+    boolean bool1 = this.jdField_a_of_type_Amcv.a(paramInt1, paramInt3, paramInt4);
+    boolean bool2 = this.jdField_b_of_type_Amcv.a(paramInt2, paramInt5, paramInt6);
     return (bool1) || (bool2);
   }
   
   public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
   {
     this.jdField_a_of_type_Int = 1;
-    boolean bool1 = this.jdField_a_of_type_Alnf.a(paramInt1, paramInt3, paramInt4, paramInt7);
-    boolean bool2 = this.jdField_b_of_type_Alnf.a(paramInt2, paramInt5, paramInt6, paramInt7);
+    boolean bool1 = this.jdField_a_of_type_Amcv.a(paramInt1, paramInt3, paramInt4, paramInt7);
+    boolean bool2 = this.jdField_b_of_type_Amcv.a(paramInt2, paramInt5, paramInt6, paramInt7);
     return (bool1) || (bool2);
   }
   
   public final int b()
   {
-    return alnf.a(this.jdField_b_of_type_Alnf);
+    return amcv.a(this.jdField_b_of_type_Amcv);
   }
   
   public boolean b()
@@ -167,38 +167,38 @@ public class OverScroller
     for (;;)
     {
       return true;
-      long l = AnimationUtils.currentAnimationTimeMillis() - alnf.a(this.jdField_a_of_type_Alnf);
-      int i = alnf.d(this.jdField_a_of_type_Alnf);
+      long l = AnimationUtils.currentAnimationTimeMillis() - amcv.a(this.jdField_a_of_type_Amcv);
+      int i = amcv.d(this.jdField_a_of_type_Amcv);
       if (l < i)
       {
         float f = (float)l / i;
         if (this.jdField_a_of_type_AndroidViewAnimationInterpolator == null) {}
         for (f = AnimateUtils.a(f);; f = this.jdField_a_of_type_AndroidViewAnimationInterpolator.getInterpolation(f))
         {
-          if (!alnf.a(this.jdField_a_of_type_Alnf)) {
-            this.jdField_a_of_type_Alnf.b(f);
+          if (!amcv.a(this.jdField_a_of_type_Amcv)) {
+            this.jdField_a_of_type_Amcv.b(f);
           }
-          if (alnf.a(this.jdField_b_of_type_Alnf)) {
+          if (amcv.a(this.jdField_b_of_type_Amcv)) {
             break;
           }
-          this.jdField_b_of_type_Alnf.b(f);
+          this.jdField_b_of_type_Amcv.b(f);
           break;
         }
       }
       a();
       continue;
-      if ((!alnf.a(this.jdField_a_of_type_Alnf)) && (!this.jdField_a_of_type_Alnf.b()) && (!this.jdField_a_of_type_Alnf.a())) {
-        this.jdField_a_of_type_Alnf.a();
+      if ((!amcv.a(this.jdField_a_of_type_Amcv)) && (!this.jdField_a_of_type_Amcv.b()) && (!this.jdField_a_of_type_Amcv.a())) {
+        this.jdField_a_of_type_Amcv.a();
       }
-      if ((!alnf.a(this.jdField_b_of_type_Alnf)) && (!this.jdField_b_of_type_Alnf.b()) && (!this.jdField_b_of_type_Alnf.a())) {
-        this.jdField_b_of_type_Alnf.a();
+      if ((!amcv.a(this.jdField_b_of_type_Amcv)) && (!this.jdField_b_of_type_Amcv.b()) && (!this.jdField_b_of_type_Amcv.a())) {
+        this.jdField_b_of_type_Amcv.a();
       }
     }
   }
   
   public final int c()
   {
-    return alnf.c(this.jdField_a_of_type_Alnf);
+    return amcv.c(this.jdField_a_of_type_Amcv);
   }
 }
 

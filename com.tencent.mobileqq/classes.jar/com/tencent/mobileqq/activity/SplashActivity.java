@@ -65,13 +65,13 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import mqq.app.Constants.LogoutReason;
 import mqq.os.MqqHandler;
-import tqj;
-import tql;
-import tqm;
-import tqn;
-import tqo;
-import tqp;
-import tqq;
+import ttj;
+import ttl;
+import ttm;
+import ttn;
+import tto;
+import ttp;
+import ttq;
 
 public class SplashActivity
   extends FragmentActivity
@@ -229,15 +229,15 @@ public class SplashActivity
     String str2;
     if (GesturePWDUtils.getGestureUnlockFailed(this, this.app.getCurrentAccountUin()))
     {
-      str2 = getString(2131436042);
+      str2 = getString(2131436059);
       if (GesturePWDUtils.getGestureUnlockFailedType(this) != 1) {
         break label73;
       }
     }
     label73:
-    for (String str1 = getString(2131436043);; str1 = getString(2131436044))
+    for (String str1 = getString(2131436060);; str1 = getString(2131436061))
     {
-      DialogUtil.b(this, 230, str2, str1, 2131432998, 2131436041, new tqp(this), new tqq(this)).show();
+      DialogUtil.b(this, 230, str2, str1, 2131433015, 2131436058, new ttp(this), new ttq(this)).show();
       return;
     }
   }
@@ -431,10 +431,10 @@ public class SplashActivity
     if ((this.app == null) || ((!this.app.isLogin()) && (this.app.getKickIntent() == null)))
     {
       localObject = getSharedPreferences("UserGuide", 0).edit();
-      ((SharedPreferences.Editor)localObject).putString("qq_version", "3525");
+      ((SharedPreferences.Editor)localObject).putString("qq_version", "3560");
       ((SharedPreferences.Editor)localObject).commit();
       if (QLog.isColorLevel()) {
-        QLog.e("SplashActivity", 2, "record build num : 3525");
+        QLog.e("SplashActivity", 2, "record build num : 3560");
       }
       startActivity(new Intent(this, LoginActivity.class));
       return true;
@@ -622,7 +622,7 @@ public class SplashActivity
                 jdField_a_of_type_Int = 1;
                 paramBundle.beginTransaction().add(16908290, MainFragment.a(), MainFragment.class.getName()).commitAllowingStateLoss();
               }
-              ThreadManager.getSubThreadHandler().postDelayed(new tqj(this), 1000L);
+              ThreadManager.getSubThreadHandler().postDelayed(new ttj(this), 1000L);
               c(localIntent);
               BaseApplicationImpl.appMainActivityHasLanuch = true;
               StartupTracker.a("Main_OnCreat", null);
@@ -630,7 +630,7 @@ public class SplashActivity
             } while (ImmersiveUtils.c);
             boolean bool1 = bool2;
           } while (isInMultiWindow());
-          getWindow().getDecorView().post(new tql(this));
+          getWindow().getDecorView().post(new ttl(this));
           return true;
           localException = localException;
         }
@@ -914,16 +914,16 @@ public class SplashActivity
       {
         StartupTracker.a(null, "Main_Resume_PCActive");
         if ((!TextUtils.isEmpty(this.app.getAccount())) && (!"0".equals(this.app.getAccount()))) {
-          ThreadManager.getSubThreadHandler().postDelayed(new tqm(this), 800L);
+          ThreadManager.getSubThreadHandler().postDelayed(new ttm(this), 800L);
         }
         StartupTracker.a("Main_Resume_PCActive", null);
-        ThreadManager.getSubThreadHandler().postDelayed(new tqn(this), 800L);
+        ThreadManager.getSubThreadHandler().postDelayed(new ttn(this), 800L);
         ApolloGameWrapper.a(this);
         localObject1 = getIntent();
         if ((((Intent)localObject1).getExtras() != null) && (((Intent)localObject1).getBooleanExtra(MessageConstants.h, false)))
         {
           ((Intent)localObject1).removeExtra(MessageConstants.h);
-          ThreadManager.post(new tqo(this), 8, null, false);
+          ThreadManager.post(new tto(this), 8, null, false);
         }
         if (!isInMultiWindow()) {
           break;
@@ -1163,12 +1163,12 @@ public class SplashActivity
   {
     try
     {
-      LayoutInflater localLayoutInflater = LayoutInflater.from(BaseApplicationImpl.sApplication);
+      LayoutInflater localLayoutInflater = LayoutInflater.from(this);
       this.jdField_a_of_type_ArrayOfAndroidViewView = MainFragment.a(localLayoutInflater);
       this.jdField_a_of_type_AndroidViewView = localLayoutInflater.inflate(2130968827, null);
-      FPSSwipListView localFPSSwipListView = (FPSSwipListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363948);
+      FPSSwipListView localFPSSwipListView = (FPSSwipListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363972);
       if (localFPSSwipListView != null) {
-        this.jdField_b_of_type_AndroidViewView = localLayoutInflater.inflate(2130971470, localFPSSwipListView, false);
+        this.jdField_b_of_type_AndroidViewView = localLayoutInflater.inflate(2130971518, localFPSSwipListView, false);
       }
       PokeItemHelper.b();
       if (PokeItemHelper.b) {

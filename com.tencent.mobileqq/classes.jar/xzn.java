@@ -1,12 +1,16 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
 
-public abstract interface xzn
+public class xzn
+  implements DialogInterface.OnClickListener
 {
-  public abstract void a(int paramInt);
+  public xzn(PhoneContactSelectActivity paramPhoneContactSelectActivity) {}
   
-  public abstract void a(PublishVideoEntry paramPublishVideoEntry, String paramString);
-  
-  public abstract void b(PublishVideoEntry paramPublishVideoEntry, String paramString);
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    paramDialogInterface.dismiss();
+  }
 }
 
 

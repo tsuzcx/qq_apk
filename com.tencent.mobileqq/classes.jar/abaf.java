@@ -1,32 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.map.ARMapEngine;
 
-public class abaf
-  implements View.OnClickListener
+class abaf
+  implements Runnable
 {
-  public abaf(ARMapPOIStarDialog paramARMapPOIStarDialog, POIInfo paramPOIInfo, int paramInt) {}
+  abaf(abae paramabae) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = "" + this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.jdField_a_of_type_Long;
-    String str1 = "" + this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo.jdField_a_of_type_Long;
-    String str2 = "" + this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo.b;
-    StringBuilder localStringBuilder = new StringBuilder().append("");
-    if (this.jdField_a_of_type_Int == 0) {}
-    for (int i = 1;; i = 0)
+    if (this.a.a.a != null)
     {
-      ReportController.b(null, "dc01440", "", "", "0X8007AB2", "0X8007AB2", 0, 0, paramView, str1, str2, i);
-      ThreadManager.postImmediately(new abag(this), null, false);
-      this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
-      this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130842218);
-      this.jdField_a_of_type_ComTencentMobileqqArmapMapARMapPOIStarDialog.b.postDelayed(new abah(this), 500L);
-      return;
+      ARMapEngine localARMapEngine = this.a.a.a;
+      ARMapEngine.nativeOnShowRedPackRainPoi();
     }
   }
 }

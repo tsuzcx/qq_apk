@@ -1,6 +1,6 @@
 package cooperation.qzone.webviewplugin;
 
-import ammo;
+import anct;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build.VERSION;
@@ -42,7 +42,7 @@ public class QzonePersonalizeJsPlugin
   
   QzonePersonalizeJsPlugin()
   {
-    this.jdField_a_of_type_CooperationQzoneFontFontInterface$TrueTypeResult = new ammo(this);
+    this.jdField_a_of_type_CooperationQzoneFontFontInterface$TrueTypeResult = new anct(this);
   }
   
   public static void a(CustomWebView paramCustomWebView)
@@ -401,7 +401,7 @@ public class QzonePersonalizeJsPlugin
           if ((paramVarArgs != null) && (paramVarArgs.length() > 0))
           {
             if ((((JSONObject)localObject).has("toast")) && (((JSONObject)localObject).getBoolean("toast"))) {
-              QQToast.a(paramPluginRuntime.a(), 2, 2131437235, 0).a();
+              QQToast.a(paramPluginRuntime.a(), 2, 2131437252, 0).a();
             }
             localObject = new long[paramVarArgs.length()];
             while (i < paramVarArgs.length())

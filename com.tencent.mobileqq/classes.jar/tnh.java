@@ -1,20 +1,15 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.RegisterSendUpSms;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
 
-public class tnh
-  extends MqqHandler
+class tnh
+  implements Runnable
 {
-  public tnh(RegisterSendUpSms paramRegisterSendUpSms) {}
+  tnh(tng paramtng) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
+    this.a.a.a();
+    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
   }
 }
 

@@ -1,30 +1,20 @@
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.adapter.BuddyListAdapter;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
 
 public class ydt
-  implements View.OnLongClickListener
+  implements DialogInterface.OnClickListener
 {
-  private WeakReference a;
+  public ydt(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
   
-  public ydt(BuddyListAdapter paramBuddyListAdapter)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a = new WeakReference(paramBuddyListAdapter);
-  }
-  
-  public boolean onLongClick(View paramView)
-  {
-    BuddyListAdapter localBuddyListAdapter = (BuddyListAdapter)this.a.get();
-    if (localBuddyListAdapter != null) {
-      return localBuddyListAdapter.onLongClick(paramView);
-    }
-    return false;
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ydt
  * JD-Core Version:    0.7.0.1
  */

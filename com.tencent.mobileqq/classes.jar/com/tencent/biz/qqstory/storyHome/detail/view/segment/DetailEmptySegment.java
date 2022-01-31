@@ -21,7 +21,7 @@ public class DetailEmptySegment
     super(paramActivity);
   }
   
-  public void E_()
+  public void J_()
   {
     if (((StoryDetailListView)a()).a())
     {
@@ -53,7 +53,7 @@ public class DetailEmptySegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970656, paramViewGroup, false));
+    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970702, paramViewGroup, false));
   }
   
   public String a()

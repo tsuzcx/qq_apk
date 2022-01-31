@@ -1,13 +1,18 @@
-import android.widget.TextView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
 
-class rwq
-  implements Runnable
+public final class rwq
+  implements DialogInterface.OnClickListener
 {
-  rwq(rwp paramrwp, String paramString) {}
+  public rwq(ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_Rwp.a.setText(this.jdField_a_of_type_JavaLangString);
+    if (this.a != null) {
+      this.a.a();
+    }
+    paramDialogInterface.dismiss();
   }
 }
 

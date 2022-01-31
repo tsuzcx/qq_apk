@@ -51,11 +51,11 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import nrs;
-import nrt;
-import nru;
-import nrv;
-import nrw;
+import ntf;
+import ntg;
+import nth;
+import nti;
+import ntj;
 
 public class QQStoryBaseActivity
   extends IphoneTitleBarActivity
@@ -63,7 +63,7 @@ public class QQStoryBaseActivity
 {
   public Dialog a;
   public Bitmap a;
-  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new nrv(this);
+  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new nti(this);
   private QQStoryActivityManager jdField_a_of_type_ComTencentBizQqstoryModelQQStoryActivityManager;
   public QQStoryBaseActivity.ProgressView a;
   public AppInterface a;
@@ -156,7 +156,7 @@ public class QQStoryBaseActivity
   public void a(CharSequence paramCharSequence, boolean paramBoolean, long paramLong, DialogInterface.OnDismissListener paramOnDismissListener)
   {
     this.b.removeCallbacksAndMessages(null);
-    this.b.postDelayed(new nrt(this, this, paramOnDismissListener, paramBoolean, paramCharSequence), paramLong);
+    this.b.postDelayed(new ntg(this, this, paramOnDismissListener, paramBoolean, paramCharSequence), paramLong);
   }
   
   protected void a(String paramString) {}
@@ -176,7 +176,7 @@ public class QQStoryBaseActivity
   
   public void a(@NonNull Map paramMap)
   {
-    paramMap.put(new Subscriber.SubscriberWrapper(Looper.getMainLooper(), new nrw(this, this)), "root_group");
+    paramMap.put(new Subscriber.SubscriberWrapper(Looper.getMainLooper(), new ntj(this, this)), "root_group");
   }
   
   protected void b(String paramString) {}
@@ -210,7 +210,7 @@ public class QQStoryBaseActivity
     this.jdField_a_of_type_ComTencentBizQqstoryModelQQStoryActivityManager.a(this);
     QQStoryContext.a();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = QQStoryContext.a();
-    Bosses.get().postLightWeightJob(new nrs(this), 10);
+    Bosses.get().postLightWeightJob(new ntf(this), 10);
     ((TrimmableManager)SuperManager.a(26)).a(0);
     a(getIntent());
     return false;
@@ -264,7 +264,7 @@ public class QQStoryBaseActivity
   public void f()
   {
     this.b.removeCallbacksAndMessages(null);
-    this.b.post(new nru(this));
+    this.b.post(new nth(this));
   }
   
   public void g()
@@ -312,7 +312,7 @@ public class QQStoryBaseActivity
         ((AnimationSet)localObject).setInterpolator(new DecelerateInterpolator());
         ((AnimationSet)localObject).setRepeatMode(1);
         ((AnimationSet)localObject).setRepeatCount(0);
-        ((AnimationSet)localObject).setDuration(400L);
+        ((AnimationSet)localObject).setDuration(100L);
         ((AnimationSet)localObject).addAnimation(new ScaleAnimation(f1, 1.0F, f2, 1.0F, 0.5F, 0.5F));
         ((AnimationSet)localObject).addAnimation(new TranslateAnimation(k, 0.0F, m, 0.0F));
         if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.c == null) || (!this.jdField_i_of_type_Boolean)) {
@@ -322,7 +322,7 @@ public class QQStoryBaseActivity
         localAlphaAnimation.setInterpolator(new DecelerateInterpolator());
         localAlphaAnimation.setRepeatMode(1);
         localAlphaAnimation.setRepeatCount(0);
-        localAlphaAnimation.setDuration(400L);
+        localAlphaAnimation.setDuration(100L);
         this.c.startAnimation(localAlphaAnimation);
         localViewGroup.startAnimation((Animation)localObject);
         localAlphaAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);

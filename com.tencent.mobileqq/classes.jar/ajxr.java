@@ -1,21 +1,16 @@
-import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
-import com.tencent.mobileqq.webprocess.WebProcessReceiver;
-import com.tencent.sonic.sdk.SonicEngine;
-import java.util.Map;
-
-public class ajxr
+class ajxr
   implements Runnable
 {
-  public ajxr(WebProcessReceiver paramWebProcessReceiver, Map paramMap) {}
+  ajxr(ajxq paramajxq, boolean paramBoolean, String paramString) {}
   
   public void run()
   {
-    WebAccelerateHelper.getSonicEngine().removeExpiredSessionCache(this.jdField_a_of_type_JavaUtilMap);
+    this.jdField_a_of_type_Ajxq.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajxr
  * JD-Core Version:    0.7.0.1
  */

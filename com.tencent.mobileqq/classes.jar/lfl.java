@@ -1,22 +1,46 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class lfl
-  extends VideoShareListener
+  implements Runnable
 {
-  public lfl(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
+  public lfl(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
+  public void run()
   {
-    if (!paramBoolean1) {
-      ReadInJoyVideoSubChannelActivity.a(this.a, false);
+    Object localObject = TroopBarAssistantManager.a().c(this.a.app);
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = new ArrayList();
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)((Iterator)localObject).next();
+        lft locallft = new lft(this.a, null);
+        lft.a(locallft, localPublicAccountInfo.getUin());
+        lft.b(locallft, localPublicAccountInfo.name);
+        lft.c(locallft, ChnToSpell.a(lft.b(locallft), 2));
+        if (PublicAccountUtil.b(this.a.app, localPublicAccountInfo.getUin())) {
+          localArrayList2.add(locallft);
+        } else {
+          localArrayList1.add(locallft);
+        }
+      }
     }
-    while (!ReadInJoyVideoSubChannelActivity.a(this.a)) {
-      return;
-    }
-    ReadInJoyVideoSubChannelActivity.a(this.a).b();
-    ReadInJoyVideoSubChannelActivity.a(this.a, false);
+    Collections.sort(localArrayList1, ReadinjoySubscriptManagerActivity.a(this.a));
+    Collections.sort(localArrayList2, ReadinjoySubscriptManagerActivity.a(this.a));
+    localArrayList2.addAll(localArrayList1);
+    ThreadManager.getUIHandler().post(new lfm(this, localArrayList2));
   }
 }
 

@@ -1,23 +1,16 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.forward.ForwardMarketFaceOption;
-import com.tencent.mobileqq.utils.ImageUtil;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.data.search.FileSearchResultGroupPresenter;
+import com.tencent.mobileqq.filemanager.data.search.GroupSearchModelFileEntity;
 
-class aday
-  implements URLDrawable.URLDrawableListener
+public class aday
+  implements View.OnClickListener
 {
-  aday(adax paramadax) {}
+  public aday(FileSearchResultGroupPresenter paramFileSearchResultGroupPresenter, GroupSearchModelFileEntity paramGroupSearchModelFileEntity) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void onClick(View paramView)
   {
-    paramURLDrawable.setBounds(ImageUtil.a(paramURLDrawable, 36, 100, this.a.a.a));
-    this.a.a.a(paramURLDrawable, false, 0);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchGroupSearchModelFileEntity.a(paramView);
   }
 }
 

@@ -10,7 +10,7 @@ import android.util.TypedValue;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RadioGroup.LayoutParams;
-import jwg;
+import jvr;
 
 public class MultiMembersAudioIndicator
   extends RadioGroup
@@ -34,19 +34,19 @@ public class MultiMembersAudioIndicator
   
   RadioButton a()
   {
-    jwg localjwg = new jwg(this, super.getContext());
-    localjwg.setButtonDrawable(2130840272);
-    localjwg.setGravity(17);
+    jvr localjvr = new jvr(this, super.getContext());
+    localjvr.setButtonDrawable(2130840278);
+    localjvr.setGravity(17);
     Resources localResources = super.getContext().getResources();
     RadioGroup.LayoutParams localLayoutParams = new RadioGroup.LayoutParams((int)TypedValue.applyDimension(1, 10.0F, localResources.getDisplayMetrics()), (int)TypedValue.applyDimension(1, 10.0F, localResources.getDisplayMetrics()));
     localLayoutParams.gravity = 17;
     int i = (int)TypedValue.applyDimension(1, 3.0F, localResources.getDisplayMetrics());
     localLayoutParams.leftMargin = i;
     localLayoutParams.rightMargin = i;
-    localjwg.setLayoutParams(localLayoutParams);
-    localjwg.setClickable(false);
-    localjwg.setFocusable(false);
-    return localjwg;
+    localjvr.setLayoutParams(localLayoutParams);
+    localjvr.setClickable(false);
+    localjvr.setFocusable(false);
+    return localjvr;
   }
   
   public void a()

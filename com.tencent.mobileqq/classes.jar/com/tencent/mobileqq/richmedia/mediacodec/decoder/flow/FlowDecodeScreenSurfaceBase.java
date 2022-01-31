@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.richmedia.mediacodec.decoder.flow;
 
-import ahac;
+import ahoe;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import java.lang.ref.WeakReference;
 import javax.microedition.khronos.egl.EGLContext;
@@ -8,7 +8,7 @@ import javax.microedition.khronos.egl.EGLContext;
 public class FlowDecodeScreenSurfaceBase
 {
   protected int a;
-  private FlowDecodeScreenSurfaceBase.EglHelper.FakeGLSurfaceView jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFlowDecodeScreenSurfaceBase$EglHelper$FakeGLSurfaceView = new ahac(this);
+  private FlowDecodeScreenSurfaceBase.EglHelper.FakeGLSurfaceView jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFlowDecodeScreenSurfaceBase$EglHelper$FakeGLSurfaceView = new ahoe(this);
   private FlowDecodeScreenSurfaceBase.EglHelper jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowFlowDecodeScreenSurfaceBase$EglHelper;
   private EGLContext jdField_a_of_type_JavaxMicroeditionKhronosEglEGLContext;
   protected int b;

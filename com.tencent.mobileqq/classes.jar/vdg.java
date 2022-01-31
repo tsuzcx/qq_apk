@@ -1,23 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.util.Map;
+import com.tencent.mobileqq.activity.aio.item.PttItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class vdg
   implements Runnable
 {
-  public vdg(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, String paramString) {}
+  public vdg(PttItemBuilder paramPttItemBuilder, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      if (ShortVideoRealItemBuilder.a().size() == 0) {
-        RMVideoStateMgr.c(this.jdField_a_of_type_JavaLangString);
-      }
-      FileUtils.a(this.jdField_a_of_type_JavaLangString);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttItemBuilder.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.extStr);
   }
 }
 

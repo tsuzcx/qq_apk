@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.model;
 
-import aadu;
+import aakv;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class ArLBSActivity
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aadu();
+  public static final Parcelable.Creator CREATOR = new aakv();
   public String a = "";
   public String b = "";
   public String c = "";

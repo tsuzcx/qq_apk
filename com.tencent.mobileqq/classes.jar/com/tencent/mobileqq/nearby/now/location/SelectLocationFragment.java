@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.nearby.now.location;
 
-import aefj;
-import aefk;
-import aefl;
-import aefm;
-import aefn;
-import aefo;
-import aefp;
-import aefq;
-import aefr;
-import aefs;
-import aeft;
-import aefu;
-import aefv;
-import aefw;
+import aesp;
+import aesq;
+import aesr;
+import aess;
+import aest;
+import aesu;
+import aesv;
+import aesw;
+import aesx;
+import aesy;
+import aesz;
+import aeta;
+import aetb;
+import aetc;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -52,7 +52,7 @@ public class SelectLocationFragment
 {
   private static boolean jdField_a_of_type_Boolean;
   private int jdField_a_of_type_Int = -1;
-  private Handler jdField_a_of_type_AndroidOsHandler = new aefj(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new aesp(this);
   public View a;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private FrameLayout jdField_a_of_type_AndroidWidgetFrameLayout;
@@ -76,28 +76,28 @@ public class SelectLocationFragment
   
   public SelectLocationFragment()
   {
-    this.jdField_a_of_type_JavaLangRunnable = new aefp(this);
+    this.jdField_a_of_type_JavaLangRunnable = new aesv(this);
   }
   
   private void a(LayoutInflater paramLayoutInflater)
   {
     f();
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131365262));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aeft(this));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)a(2131365261));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131365284));
+    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new aesz(this));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)a(2131365283));
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new aefu(this));
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new aefv(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131365263));
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aefw(this));
-    this.c = a(2131365260);
-    this.c.setOnClickListener(new aefk(this));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)a(2131365264));
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowWidgetCommonRecyclerView = ((CommonRecyclerView)a(2131365265));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnEditorActionListener(new aeta(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new aetb(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131365285));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new aetc(this));
+    this.c = a(2131365282);
+    this.c.setOnClickListener(new aesq(this));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)a(2131365286));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowWidgetCommonRecyclerView = ((CommonRecyclerView)a(2131365287));
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowWidgetCommonRecyclerView.setLayoutManager(new CommonLinearLayoutManager(getActivity()));
-    this.d = paramLayoutInflater.inflate(2130969128, this.jdField_a_of_type_ComTencentMobileqqNearbyNowWidgetCommonRecyclerView, false);
-    this.e = a(2131365266);
-    this.e.setOnClickListener(new aefl(this));
+    this.d = paramLayoutInflater.inflate(2130969127, this.jdField_a_of_type_ComTencentMobileqqNearbyNowWidgetCommonRecyclerView, false);
+    this.e = a(2131365288);
+    this.e.setOnClickListener(new aesr(this));
   }
   
   private void a(LocationInfo paramLocationInfo)
@@ -127,8 +127,8 @@ public class SelectLocationFragment
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSearchAdapter = new SearchAdapter((Context)localObject2, 2130969129, (List)localObject1);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSearchAdapter.a(new aefs(this));
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSearchAdapter = new SearchAdapter((Context)localObject2, 2130969128, (List)localObject1);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterSearchAdapter.a(new aesy(this));
       try
       {
         this.jdField_a_of_type_ComTencentMobileqqNearbyNowWidgetCommonRecyclerView.setLayoutManager(new CommonLinearLayoutManager(getActivity()));
@@ -183,7 +183,7 @@ public class SelectLocationFragment
   {
     LogUtil.d("SelectLocationFragment", "getLocation: start");
     ThreadManager.getUIHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationTLocationManager.a(new aefq(this));
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationTLocationManager.a(new aesw(this));
   }
   
   private void e()
@@ -193,8 +193,8 @@ public class SelectLocationFragment
     LogUtil.d("SelectLocationFragment", "updateNearByList: size:" + localList.size());
     if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterLocationListAdapter == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterLocationListAdapter = new LocationListAdapter(getActivity(), 2130969129, localList);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterLocationListAdapter.a(new aefr(this));
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterLocationListAdapter = new LocationListAdapter(getActivity(), 2130969128, localList);
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationAdapterLocationListAdapter.a(new aesx(this));
     }
     while ((this.jdField_a_of_type_ComTencentMobileqqNearbyNowWidgetCommonRecyclerView.a() instanceof LocationListAdapter)) {
       try
@@ -228,10 +228,10 @@ public class SelectLocationFragment
   
   private void f()
   {
-    this.jdField_b_of_type_AndroidViewView = a(2131365256);
-    a(2131365257).setOnClickListener(new aefm(this));
-    a(2131365258).setOnClickListener(new aefn(this));
-    a(2131365259).setOnClickListener(new aefo(this));
+    this.jdField_b_of_type_AndroidViewView = a(2131365278);
+    a(2131365279).setOnClickListener(new aess(this));
+    a(2131365280).setOnClickListener(new aest(this));
+    a(2131365281).setOnClickListener(new aesu(this));
   }
   
   private void g()
@@ -363,7 +363,7 @@ public class SelectLocationFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2130969125, null);
+    this.jdField_a_of_type_AndroidViewView = paramLayoutInflater.inflate(2130969124, null);
     c();
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationLocationDataManager = new LocationDataManager(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelLocationInfo, this, getActivity().app);
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationTLocationManager = new TLocationManager(getActivity());

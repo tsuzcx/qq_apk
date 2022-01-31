@@ -1,33 +1,19 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnInfoListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTextureImpl;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnInfoListener;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadListener;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-public class nop
-  implements IMediaPlayer.OnInfoListener
+public final class nop
+  implements Runnable
 {
-  public nop(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnInfoListener paramOnInfoListener) {}
+  public nop(TVKPreloader.PreloadItem paramPreloadItem) {}
   
-  public boolean a_(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void run()
   {
-    int i;
-    if (paramInt1 == 3) {
-      i = 1;
-    }
-    for (;;)
-    {
-      return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView$OnInfoListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTextureImpl, i, Integer.valueOf(paramInt2));
-      if (paramInt1 == 701)
-      {
-        i = 2;
-      }
-      else
-      {
-        i = paramInt1;
-        if (paramInt1 == 702) {
-          i = 3;
-        }
-      }
+    Iterator localIterator = TVKPreloader.a().iterator();
+    while (localIterator.hasNext()) {
+      ((TVKPreloader.PreloadListener)localIterator.next()).b(this.a);
     }
   }
 }

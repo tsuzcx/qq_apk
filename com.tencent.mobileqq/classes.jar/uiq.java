@@ -1,15 +1,22 @@
-import com.tencent.mobileqq.activity.aio.MediaPlayerManager;
+import android.graphics.Color;
+import android.text.TextPaint;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity;
 
 public class uiq
-  implements Runnable
+  extends ClickableSpan
 {
-  public uiq(MediaPlayerManager paramMediaPlayerManager, boolean paramBoolean) {}
+  public uiq(ActivateFriendActivity paramActivateFriendActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager, this.jdField_a_of_type_Boolean)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioMediaPlayerManager.d();
-    }
+    this.a.b();
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(Color.rgb(0, 165, 224));
   }
 }
 

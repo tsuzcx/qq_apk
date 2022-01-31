@@ -1,16 +1,19 @@
-import android.os.Looper;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import android.text.TextUtils;
+import com.tencent.biz.anonymous.AnonymousChatHelper.AnonymousStatusListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import mqq.os.MqqHandler;
 
 public class waq
-  implements Runnable
+  implements AnonymousChatHelper.AnonymousStatusListener
 {
-  public waq(ZhituManager paramZhituManager) {}
+  public waq(TroopChatPie paramTroopChatPie) {}
   
-  public void run()
+  public void a(String paramString1, String paramString2)
   {
-    ZhituManager.a(this.a, ZhituManager.a(this.a));
-    ZhituManager.a(this.a, false);
-    Looper.myLooper().quit();
+    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equals(this.a.a.a))) {
+      TroopChatPie.m(this.a).post(new war(this, paramString2));
+    }
   }
 }
 

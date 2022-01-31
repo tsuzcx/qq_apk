@@ -1,5 +1,7 @@
 package com.tencent.mobileqq.forward;
 
+import adkm;
+import adkn;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -16,6 +18,7 @@ import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.data.TroopInfo;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -25,7 +28,7 @@ import java.util.Set;
 public class ForwardChooseFriendOption
   extends ForwardBaseOption
 {
-  protected ResultReceiver a;
+  public ResultReceiver a;
   int b;
   int c;
   protected boolean g;
@@ -41,7 +44,7 @@ public class ForwardChooseFriendOption
     this.jdField_c_of_type_Int = paramIntent.getIntExtra("choose_friend_businessSubType", 0);
   }
   
-  protected Bundle a(int paramInt, Bundle paramBundle)
+  public Bundle a(int paramInt, Bundle paramBundle)
   {
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
@@ -153,7 +156,7 @@ public class ForwardChooseFriendOption
     if ((this.jdField_b_of_type_Int == 1) && (this.jdField_c_of_type_Int == 1))
     {
       if (this.jdField_a_of_type_AndroidAppActivity != null) {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131432263);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131432280);
       }
       return this.jdField_a_of_type_JavaLangString;
     }
@@ -240,6 +243,8 @@ public class ForwardChooseFriendOption
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "autofriendpay.buyerselectpage.list", 0, 0, "", "", "", "");
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "autofriendpay.buyerconfirmpage.show", 0, 0, "", "", "", "");
     }
+    label293:
+    label320:
     do
     {
       do
@@ -249,6 +254,45 @@ public class ForwardChooseFriendOption
           ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "autofriendpay.payerselectpage.list", 0, 0, "", "", "", "");
         }
       } while ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()));
+      boolean bool;
+      String str3;
+      String str2;
+      String str1;
+      String str4;
+      if (paramBundle != null)
+      {
+        bool = paramBundle.getBoolean("choose_friend_needConfirm");
+        if (!bool) {
+          break label320;
+        }
+        str3 = paramBundle.getString("choose_friend_confirmTitle");
+        str2 = paramBundle.getString("choose_friend_confirmContent");
+        str1 = str2;
+        if (!TextUtils.isEmpty(str2))
+        {
+          str1 = str2;
+          if (str2.contains("[nick]"))
+          {
+            str4 = paramBundle.getString("uin");
+            str1 = paramBundle.getString("uinname");
+            if (TextUtils.isEmpty(str1)) {
+              break label293;
+            }
+            str1 = str2.replace("[nick]", str1);
+          }
+        }
+      }
+      for (;;)
+      {
+        DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, str3, str1, "取消", "确定", new adkm(this, paramInt, paramBundle), new adkn(this)).show();
+        return;
+        bool = false;
+        break;
+        str1 = str2;
+        if (!TextUtils.isEmpty(str4)) {
+          str1 = str2.replace("[nick]", str4);
+        }
+      }
       if (this.jdField_a_of_type_AndroidOsResultReceiver != null)
       {
         paramBundle = a(paramInt, paramBundle);

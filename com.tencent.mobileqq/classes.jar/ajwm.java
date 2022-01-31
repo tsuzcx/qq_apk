@@ -1,34 +1,29 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.video.VipVideoPlayActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.troopgift.TroopInteractGiftAnimationController;
 
 public class ajwm
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements Runnable
 {
-  public ajwm(VipVideoPlayActivity paramVipVideoPlayActivity) {}
+  public ajwm(TroopInteractGiftAnimationController paramTroopInteractGiftAnimationController) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void run()
   {
-    if (QLog.isColorLevel())
-    {
-      paramTVK_IMediaPlayer = new StringBuilder();
-      paramTVK_IMediaPlayer.append("video player error model=" + paramInt1);
-      paramTVK_IMediaPlayer.append(",what=" + paramInt2);
-      paramTVK_IMediaPlayer.append(",extra=" + paramInt3);
-      paramTVK_IMediaPlayer.append(",detailInfo=" + paramString);
-      QLog.d("VipVideoPlayActivity", 2, paramTVK_IMediaPlayer.toString());
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie == null) {
+      return;
     }
-    long l1 = SystemClock.elapsedRealtime();
-    long l2 = VipVideoPlayActivity.b(this.a);
-    this.a.a("play_error", paramInt1, paramInt2, l1 - l2, paramString);
-    return false;
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.d.removeView(this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton != null) {
+      this.a.jdField_a_of_type_AndroidViewViewGroup.removeView(this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteVideoView = null;
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopgiftTroopGiftActionButton = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajwm
  * JD-Core Version:    0.7.0.1
  */

@@ -1,34 +1,18 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.view.ViewParent;
-import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
-import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
 
-public class aiyj
-  implements View.OnTouchListener
+class aiyj
+  implements Runnable
 {
-  public aiyj(BulkSendMessageFragment paramBulkSendMessageFragment) {}
+  aiyj(aiyh paramaiyh) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    boolean bool1 = this.a.a.canScrollVertically(-1);
-    boolean bool2 = this.a.a.canScrollVertically(1);
-    if ((paramView.isFocused()) && ((bool1) || (bool2))) {
-      paramView.getParent().requestDisallowInterceptTouchEvent(true);
-    }
-    switch (paramMotionEvent.getAction() & 0xFF)
-    {
-    default: 
-      return false;
-    }
-    paramView.getParent().requestDisallowInterceptTouchEvent(false);
-    return false;
+    this.a.a.a(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyj
  * JD-Core Version:    0.7.0.1
  */

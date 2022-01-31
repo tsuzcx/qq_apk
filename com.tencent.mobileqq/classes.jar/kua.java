@@ -1,21 +1,49 @@
+import android.media.AudioManager;
+import android.os.Handler;
 import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
-import com.tencent.biz.pubaccount.Advertisement.fragment.WebpageFragment;
-import com.tencent.biz.pubaccount.Advertisement.view.VerticalPagerView.OnInterceptTouchListener;
-import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class kua
-  implements VerticalPagerView.OnInterceptTouchListener
+  implements Runnable
 {
-  public kua(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity) {}
+  public kua(VideoCoverFragment paramVideoCoverFragment, int paramInt1, int paramInt2) {}
   
-  public boolean a(int paramInt)
+  public void run()
   {
-    return (PublicAccountAdvertisementActivity.d(this.a)) && (PublicAccountAdvertisementActivity.c(this.a));
-  }
-  
-  public boolean b(int paramInt)
-  {
-    return (PublicAccountAdvertisementActivity.d(this.a)) && (!PublicAccountAdvertisementActivity.c(this.a)) && (PublicAccountAdvertisementActivity.a(this.a) != null) && (PublicAccountAdvertisementActivity.a(this.a).a() != null) && (PublicAccountAdvertisementActivity.a(this.a).a().getWebScrollY() == 0);
+    if (VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment) == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (!VideoCoverFragment.b(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment)) {
+            break;
+          }
+          VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment).setStreamVolume(3, this.jdField_a_of_type_Int, 0);
+        } while (!QLog.isColorLevel());
+        QLog.d("VideoCoverFragment", 2, "is broken by user click");
+        return;
+        if (!PublicAccountAdvertisementActivity.a) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("VideoCoverFragment", 2, "is broken by user slip");
+      return;
+      int i = VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment).getStreamVolume(3);
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoCoverFragment", 2, "change volume is " + i);
+      }
+      if (i < this.jdField_a_of_type_Int)
+      {
+        VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment).adjustStreamVolume(3, 1, 0);
+        VideoCoverFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementFragmentVideoCoverFragment).postDelayed(this, this.b);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("VideoCoverFragment", 2, "smoothAdjustVolume() mTargetMusicVolume = " + this.jdField_a_of_type_Int + ", SET mIsSmoothRaiseFinished = true, FINISHED");
   }
 }
 

@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.ptt.TouchProxyRelativeLayout;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-class tfu
-  implements Runnable
+public class tfu
+  implements DialogInterface.OnCancelListener
 {
-  tfu(tft paramtft) {}
+  public tfu(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    QQLSActivity.a(this.a.a).removeView(QQLSActivity.a(this.a.a));
-    QQLSActivity.a(this.a.a, null);
+    this.a.finish();
   }
 }
 

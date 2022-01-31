@@ -1,28 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.smallscreen.SmallScreenService;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.av.switchface.SwitchFaceView;
+import com.tencent.av.ui.GLVideoView;
+import java.util.ArrayList;
 
 public class jpe
-  implements Runnable
 {
-  public jpe(SmallScreenService paramSmallScreenService) {}
+  public int a;
+  public GLVideoView a;
+  public ArrayList a;
+  public byte[] a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
   
-  public void run()
+  jpe(SwitchFaceView paramSwitchFaceView)
   {
-    Object localObject = (VideoAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (localObject != null)
-    {
-      localObject = ((VideoAppInterface)localObject).getApp().getSharedPreferences("qav_SP", 0).edit();
-      if (this.a.a.a()) {
-        ((SharedPreferences.Editor)localObject).putInt("small_window_position_land", this.a.a.a().J);
-      }
-      ((SharedPreferences.Editor)localObject).commit();
-    }
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   }
 }
 

@@ -134,24 +134,39 @@ public class TrimTextureVideoView
         n = View.MeasureSpec.getMode(paramInt2);
         paramInt2 = View.MeasureSpec.getSize(paramInt2);
         if ((m != 1073741824) || (n != 1073741824)) {
-          break label189;
+          break label239;
         }
         if (this.d * paramInt2 >= this.e * paramInt1) {
-          break label128;
+          break label153;
         }
-        j = this.e * paramInt1 / this.d;
-        i = paramInt1;
+        if (!this.g) {
+          break label135;
+        }
+        i = this.d * paramInt2 / this.e;
+        j = paramInt2;
       }
     }
     for (;;)
     {
       super.setMeasuredDimension(i, j);
       return;
-      label128:
+      label135:
+      j = this.e * paramInt1 / this.d;
+      i = paramInt1;
+      continue;
+      label153:
       if ((this.d * paramInt2 > this.e * paramInt1) && (this.jdField_a_of_type_Boolean))
       {
-        i = this.d * paramInt2 / this.e;
-        j = paramInt2;
+        if (this.g)
+        {
+          j = this.e * paramInt1 / this.d;
+          i = paramInt1;
+        }
+        else
+        {
+          i = this.d * paramInt2 / this.e;
+          j = paramInt2;
+        }
       }
       else if (!this.jdField_a_of_type_Boolean)
       {
@@ -159,7 +174,7 @@ public class TrimTextureVideoView
         j = paramInt2;
         i = paramInt1;
         continue;
-        label189:
+        label239:
         if (m == 1073741824)
         {
           j = this.e * paramInt1 / this.d;

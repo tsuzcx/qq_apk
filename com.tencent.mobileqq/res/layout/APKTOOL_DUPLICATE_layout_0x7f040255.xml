@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e54" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:formItem="http://schemas.android.com/apk/res-auto">
-    <ImageView android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="75.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0212fe" />
-    <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c053f" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e69" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="30.0dip" />
-    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0571" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e6a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="30.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="30.0dip" />
-    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d037d" android:weightSum="6.0" android:layout_centerHorizontal="true">
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e6b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="匹配手机通讯录" android:layout_weight="4.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e6" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d037d" android:weightSum="6.0" android:layout_centerHorizontal="true">
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e6c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="查看手机通讯录" android:layout_weight="4.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01d8" />
-    </LinearLayout>
-    <LinearLayout android:gravity="center" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d037d" android:weightSum="6.0" android:layout_centerHorizontal="true">
-        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e6d" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="更换手机号" android:layout_weight="4.0" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01d8" />
-    </LinearLayout>
-</LinearLayout>
+<RelativeLayout android:id="@id/root" android:background="#ff000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0525" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:layout_width="fill_parent" android:layout_height="100.0dip" android:layout_alignParentBottom="true">
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e84" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2a2a" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01de" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e85" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:layout_marginBottom="20.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b217d" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01e8" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e86" android:background="@drawable/skin_header_bar_bg" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true">
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e87" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02156c" android:layout_width="wrap_content" android:layout_height="50.0dip" android:layout_marginLeft="5.0dip" android:scaleType="centerInside" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b218d" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:contentDescription="@null" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01c7" />
+        <TextView android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2184" android:layout_centerInParent="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01c3" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e88" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a0525" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0e86" />
+</RelativeLayout>

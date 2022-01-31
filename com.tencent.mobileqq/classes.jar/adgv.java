@@ -1,27 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class adgv
-  implements Animation.AnimationListener
+public final class adgv
+  implements Runnable
 {
-  public adgv(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder) {}
+  public adgv(int paramInt) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if (this.a.a == 3) {
-      this.a.d.setVisibility(8);
-    }
+    QQToast.a(BaseApplicationImpl.getContext(), 0, this.a, 0).b(FMToastUtil.a());
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adgv
  * JD-Core Version:    0.7.0.1
  */

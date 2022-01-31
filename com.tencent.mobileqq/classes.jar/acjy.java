@@ -1,28 +1,27 @@
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil.GetApkPackageInfoCallback;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.FileExecutor;
-import java.util.concurrent.Executor;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public class acjy
-  implements FileCategoryUtil.GetApkPackageInfoCallback
+public final class acjy
+  implements View.OnTouchListener
 {
-  public acjy(FileManagerEngine paramFileManagerEngine, FileManagerEntity paramFileManagerEntity, Runnable paramRunnable) {}
-  
-  public void a(String paramString)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = paramString;
-    FileManagerUtil.FileExecutor.a().execute(this.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void b(String paramString)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strApkPackageName = paramString;
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acjy
  * JD-Core Version:    0.7.0.1
  */

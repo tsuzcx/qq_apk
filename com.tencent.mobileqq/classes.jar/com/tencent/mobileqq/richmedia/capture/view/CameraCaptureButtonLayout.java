@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import agww;
-import agwx;
-import agwy;
-import agwz;
-import agxa;
+import ahky;
+import ahkz;
+import ahla;
+import ahlb;
+import ahlc;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
@@ -35,8 +35,8 @@ public class CameraCaptureButtonLayout
   private long jdField_a_of_type_Long;
   private ObjectAnimator jdField_a_of_type_AndroidAnimationObjectAnimator;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
-  private Handler jdField_a_of_type_AndroidOsHandler = new agxa(this);
-  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new agwz(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new ahlc(this);
+  private View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new ahlb(this);
   private View jdField_a_of_type_AndroidViewView;
   public ImageView a;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -87,16 +87,16 @@ public class CameraCaptureButtonLayout
   
   private void e()
   {
-    LayoutInflater.from(getContext()).inflate(2130970315, this, true);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131368934);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369444));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370023));
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131368942));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368941));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369445));
+    LayoutInflater.from(getContext()).inflate(2130970344, this, true);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369000);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369521));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370134));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress = ((CircleProgress)findViewById(2131369008));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369007));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369522));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnTouchListener(this.jdField_a_of_type_AndroidViewView$OnTouchListener);
     this.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131492968), 100, getResources().getColor(2131493307));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setBgAndProgressColor(100, getResources().getColor(2131492969), 100, getResources().getColor(2131493308));
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setStrokeWidth(4.5F);
   }
   
@@ -107,8 +107,8 @@ public class CameraCaptureButtonLayout
     VideoAnimation.a(this.jdField_b_of_type_AndroidWidgetImageView, 0.1F, 1.0F, 0.1F, 1.2F, 400, null);
     this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 1.1333F });
     this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(400L);
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new agwx(this));
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new agwy(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new ahkz(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new ahla(this));
     this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
   }
   
@@ -227,7 +227,7 @@ public class CameraCaptureButtonLayout
       this.jdField_a_of_type_AndroidAnimationObjectAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidWidgetTextView, "alpha", new float[] { 1.0F, 0.0F });
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.setStartDelay(2500L);
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.setDuration(500L);
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new agww(this));
+      this.jdField_a_of_type_AndroidAnimationObjectAnimator.addListener(new ahky(this));
       this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
     }
   }

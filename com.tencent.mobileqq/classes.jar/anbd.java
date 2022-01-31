@@ -1,26 +1,30 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditDoodleExport;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfoLoadObserver;
+import cooperation.qzone.plugin.IQZonePluginManager;
+import cooperation.qzone.plugin.PluginRecord;
+import cooperation.qzone.plugin.QZonePluginMangerHelper;
+import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
+import cooperation.qzone.video.QzoneLiveVideoInterface;
 
-public class anbd
-  extends PtvTemplateManager.DoodleInfoLoadObserver
+public final class anbd
+  implements QZonePluginMangerHelper.OnQzonePluginClientReadyListner
 {
-  public anbd(EditPicActivity paramEditPicActivity) {}
+  public anbd(String paramString) {}
   
-  public void a()
+  public void a(IQZonePluginManager paramIQZonePluginManager)
   {
-    SLog.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
-    EditDoodleExport localEditDoodleExport = (EditDoodleExport)EditPicActivity.a(this.a).a(EditDoodleExport.class);
-    if (localEditDoodleExport != null) {
-      localEditDoodleExport.ax_();
+    if (paramIQZonePluginManager == null) {
+      QZonePluginMangerHelper.a(QzoneLiveVideoInterface.getContext(), this);
     }
+    do
+    {
+      return;
+      paramIQZonePluginManager = paramIQZonePluginManager.a(this.a);
+    } while (paramIQZonePluginManager == null);
+    QzoneLiveVideoInterface.access$002(paramIQZonePluginManager.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anbd
  * JD-Core Version:    0.7.0.1
  */

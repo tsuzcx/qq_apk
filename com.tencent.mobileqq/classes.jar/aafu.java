@@ -1,50 +1,54 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.arcard.ARCardShareHelper;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.ar.arengine.ARCloudRecogResult;
+import com.tencent.mobileqq.ar.arengine.AREngine;
 
 public class aafu
   implements Runnable
 {
-  public aafu(ARGreetingCardListManager paramARGreetingCardListManager) {}
+  public aafu(AREngine paramAREngine, boolean paramBoolean) {}
   
   public void run()
   {
-    if (ARGreetingCardListManager.a(this.a) != null)
-    {
-      ARGreetingCardListManager.a(this.a).removeAllViews();
-      ARGreetingCardListManager.a(this.a).setVisibility(8);
-      ARGreetingCardListManager.a(this.a).setOnTouchListener(null);
+    int j = 0;
+    if (AREngine.f(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine)) {
+      if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null) {
+        AREngine.b(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, false);
+      }
     }
-    if (ARGreetingCardListManager.b(this.a) != null)
+    int i;
+    do
     {
-      ARGreetingCardListManager.b(this.a).setVisibility(0);
-      ARGreetingCardListManager.a(this.a, null);
+      return;
+      i = j;
+      if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null)
+      {
+        i = j;
+        if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).a != null)
+        {
+          i = j;
+          if (AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine))
+          {
+            i = j;
+            if (AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) == 2) {
+              i = 1;
+            }
+          }
+        }
+      }
+      if ((this.jdField_a_of_type_Boolean) && (i != 0))
+      {
+        AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).a);
+        return;
+      }
+    } while (i == 0);
+    if (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null) {
+      AREngine.b(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine, true);
     }
-    if (ARGreetingCardListManager.a(this.a) != null)
-    {
-      ARGreetingCardListManager.a(this.a).dismiss();
-      ARGreetingCardListManager.a(this.a, null);
-    }
-    if (ARGreetingCardListManager.a(this.a) != null)
-    {
-      ARGreetingCardListManager.a(this.a).a();
-      ARGreetingCardListManager.a(this.a, null);
-    }
-    ARGreetingCardListManager.a(this.a, null);
-    ARGreetingCardListManager.a(this.a, null);
-    ARGreetingCardListManager.b(this.a, null);
-    ARGreetingCardListManager.a(this.a, null);
-    ARGreetingCardListManager.a(this.a, null);
-    ARGreetingCardListManager.b(this.a, null);
-    ARGreetingCardListManager.c(this.a, null);
-    ARGreetingCardListManager.a(this.a, null);
-    ARGreetingCardListManager.a(this.a, null);
+    this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.m();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aafu
  * JD-Core Version:    0.7.0.1
  */

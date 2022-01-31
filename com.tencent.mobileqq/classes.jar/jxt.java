@@ -1,21 +1,24 @@
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-import com.tencent.av.utils.TipsManager;
+import com.tencent.av.app.VideoObserver;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.qphone.base.util.QLog;
 
-class jxt
-  implements Runnable
+public class jxt
+  extends VideoObserver
 {
-  jxt(jxs paramjxs) {}
+  public jxt(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void run()
+  protected void a(long paramLong)
   {
-    new String();
-    if (this.a.jdField_a_of_type_Int == 1) {}
-    for (String str = "正在呼叫" + this.a.jdField_a_of_type_JavaLangString + "...";; str = "正在呼叫" + this.a.jdField_a_of_type_JavaLangString + "等" + this.a.jdField_a_of_type_Int + "人...")
+    super.a(paramLong);
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin:" + paramLong + ", mRelationId = " + this.a.jdField_a_of_type_Long);
+    }
+    if ((paramLong != 0L) && (paramLong == this.a.jdField_a_of_type_Long))
     {
-      if (this.a.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a != null) {
-        this.a.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.a(68, str, 5000L, 0);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin matched");
       }
-      return;
+      MultiVideoEnterPageActivity.e(this.a);
     }
   }
 }

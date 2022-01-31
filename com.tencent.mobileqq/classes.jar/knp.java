@@ -1,32 +1,25 @@
-import android.os.Bundle;
-import com.tencent.biz.helper.TroopInfoActivityHelper;
-import com.tencent.biz.helper.TroopInfoActivityHelper.IGetSameCityCheckTypeInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.lebasearch.SearchProtocol.SearchObserver;
+import java.util.List;
 
 public final class knp
-  implements BusinessObserver
+  extends Handler
 {
-  public knp(QQAppInterface paramQQAppInterface, TroopInfoActivityHelper.IGetSameCityCheckTypeInfo paramIGetSameCityCheckTypeInfo) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public knp(Looper paramLooper, SearchProtocol.SearchObserver paramSearchObserver)
   {
-    if ((paramBoolean) && (paramBundle != null))
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (paramMessage.arg1 == 0)
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        TroopInfoActivityHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle, this.jdField_a_of_type_ComTencentBizHelperTroopInfoActivityHelper$IGetSameCityCheckTypeInfo);
-      }
-    }
-    else
-    {
+      this.a.a(paramMessage.arg1, (List)paramMessage.obj);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("SplashActivity", 2, "getSameCityCheckTypeInfo success but data is null");
-    }
-    this.jdField_a_of_type_ComTencentBizHelperTroopInfoActivityHelper$IGetSameCityCheckTypeInfo.a();
+    this.a.a(paramMessage.arg1, null);
   }
 }
 

@@ -1,20 +1,24 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.GetLocalUnPiblishListCallback;
+import android.view.View;
+import android.widget.ListView;
+import com.tencent.av.utils.UITools;
+import com.tencent.mobileqq.nearby.now.model.Comments;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 import java.util.List;
 
-class aexi
-  implements NearbyMomentManager.GetLocalUnPiblishListCallback
+public class aexi
+  implements Runnable
 {
-  aexi(aexh paramaexh, List paramList, boolean paramBoolean1, boolean paramBoolean2, int paramInt) {}
+  public aexi(ShortVideoCommentsView paramShortVideoCommentsView) {}
   
-  public void a(List paramList)
+  public void run()
   {
-    NearbyMomentFragment.b(this.jdField_a_of_type_Aexh.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment).clear();
-    NearbyMomentFragment.b(this.jdField_a_of_type_Aexh.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment).addAll(paramList);
-    this.jdField_a_of_type_JavaUtilList.addAll(0, paramList);
-    this.jdField_a_of_type_Aexh.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment.b();
-    NearbyMomentFragment.a(this.jdField_a_of_type_Aexh.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment, this.jdField_a_of_type_JavaUtilList);
-    NearbyMomentFragment.a(this.jdField_a_of_type_Aexh.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Aexh.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFragment$RefreshCallback);
+    int i = UITools.b(this.a.getContext());
+    if (ShortVideoCommentsView.a() * this.a.a.a.size() + ShortVideoCommentsView.b(this.a).getMeasuredHeight() >= i)
+    {
+      ShortVideoCommentsView.a(this.a).setSelectionFromTop(1, ShortVideoCommentsView.a() + ShortVideoCommentsView.b(this.a).getMeasuredHeight());
+      return;
+    }
+    ShortVideoCommentsView.a(this.a).setSelection(this.a.a.a.size() + 1);
   }
 }
 

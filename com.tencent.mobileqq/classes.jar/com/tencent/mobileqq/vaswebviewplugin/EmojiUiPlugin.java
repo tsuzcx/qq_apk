@@ -119,7 +119,7 @@ public abstract class EmojiUiPlugin
   
   private void showGetKeyErrorDialog()
   {
-    QQCustomDialogThreeBtns localQQCustomDialogThreeBtns = DialogUtil.a(this.activity, 230).a(this.activity.getString(2131436247)).b(this.activity.getString(2131436246)).a(this.activity.getString(2131432999), new EmojiUiPlugin.3(this));
+    QQCustomDialogThreeBtns localQQCustomDialogThreeBtns = DialogUtil.a(this.activity, 230).a(this.activity.getString(2131436264)).b(this.activity.getString(2131436263)).a(this.activity.getString(2131433016), new EmojiUiPlugin.3(this));
     localQQCustomDialogThreeBtns.setOnDismissListener(this);
     localQQCustomDialogThreeBtns.setCanceledOnTouchOutside(false);
     localQQCustomDialogThreeBtns.show();
@@ -321,7 +321,7 @@ public abstract class EmojiUiPlugin
       localWebViewFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a(getInfoIntent(), this.homePageUrlInfo.homePageUrl);
       if ((localWebViewFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a != null) && (this.mActivityType == 1) && ((this.mSrcFromType == 1) || (this.mSrcFromType == 6)))
       {
-        localWebViewFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.setText(2131434920);
+        localWebViewFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.setText(2131434937);
         localWebViewFragment.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a.setOnClickListener(new EmojiUiPlugin.2(this));
       }
     }
@@ -329,7 +329,7 @@ public abstract class EmojiUiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiUiPlugin
  * JD-Core Version:    0.7.0.1
  */

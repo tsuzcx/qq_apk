@@ -1,15 +1,22 @@
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryByDateFragment;
-import com.tencent.mobileqq.widget.datepicker.DatePickerView;
-import java.util.ArrayList;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.AIOTipsController;
+import com.tencent.mobileqq.activity.aio.tips.TipsBarTask;
+import com.tencent.mobileqq.activity.aio.tips.TipsManager;
+import java.util.Observer;
 
-class wdh
+public class wdh
   implements Runnable
 {
-  wdh(wdg paramwdg, ArrayList paramArrayList) {}
+  public wdh(TipsManager paramTipsManager, TipsBarTask paramTipsBarTask, Object[] paramArrayOfObject) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Wdg.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment.a.a(this.jdField_a_of_type_Wdg.jdField_a_of_type_Int, this.jdField_a_of_type_Wdg.b, this.jdField_a_of_type_JavaUtilArrayList);
+    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask.a(this.jdField_a_of_type_ArrayOfJavaLangObject);
+    TipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager).a(localView);
+    TipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager, this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsBarTask);
+    if (TipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager) != null) {
+      TipsManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager).update(null, null);
+    }
   }
 }
 

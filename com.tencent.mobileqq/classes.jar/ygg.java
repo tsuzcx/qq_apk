@@ -1,30 +1,26 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.RemoteVideoPreviewCallback;
-import com.tencent.TMG.sdk.AVVideoCtrl.VideoFrame;
-import com.tencent.mobileqq.apollo.AVCameraCaptureModel;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity.ViewHolder;
 
-class ygg
-  extends AVVideoCtrl.RemoteVideoPreviewCallback
+public class ygg
+  implements Animation.AnimationListener
 {
-  ygg(ygd paramygd) {}
+  public ygg(SpecailCareListActivity paramSpecailCareListActivity, SpecailCareListActivity.ViewHolder paramViewHolder) {}
   
-  public void onFrameReceive(AVVideoCtrl.VideoFrame paramVideoFrame)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    Object localObject = CmGameUtil.a(AVCameraCaptureModel.a(this.a.a));
-    if (localObject == null) {}
-    do
-    {
-      return;
-      localObject = ((CmGameLauncher)localObject).a();
-    } while (localObject == null);
-    ((ApolloSurfaceView)localObject).queueEvent(new ygh(this, paramVideoFrame, (ApolloSurfaceView)localObject));
+    this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareSpecailCareListActivity$ViewHolder.c.setVisibility(0);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     ygg
  * JD-Core Version:    0.7.0.1
  */

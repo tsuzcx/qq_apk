@@ -7,8 +7,8 @@ import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import java.util.Observable;
 import java.util.Observer;
-import tqr;
-import tqs;
+import ttr;
+import tts;
 
 public class StructMsgObserver
   implements Observer
@@ -34,7 +34,7 @@ public class StructMsgObserver
           paramObject = paramObservable.mMsgUrl;
           str1 = paramObservable.currentAccountUin;
           str2 = paramObservable.uin;
-          ThreadManager.post(new tqr(this, paramObject, paramObservable.uinType, str1, str2), 5, null, false);
+          ThreadManager.post(new ttr(this, paramObject, paramObservable.uinType, str1, str2), 5, null, false);
           return;
         } while (!(paramObject instanceof MessageForText));
         paramObservable = (MessageForText)paramObject;
@@ -43,7 +43,7 @@ public class StructMsgObserver
     } while (TextUtils.isEmpty(paramObject));
     String str1 = paramObservable.frienduin;
     String str2 = paramObservable.selfuin;
-    ThreadManager.post(new tqs(this, paramObject, paramObservable.istroop, str2, str1), 5, null, false);
+    ThreadManager.post(new tts(this, paramObject, paramObservable.istroop, str2, str1), 5, null, false);
   }
 }
 

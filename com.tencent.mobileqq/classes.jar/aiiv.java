@@ -1,86 +1,81 @@
-import android.os.Bundle;
+import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
-import com.tencent.biz.common.util.ImageUtil;
-import com.tencent.biz.common.util.Util;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.structmsg.AbsStructMsg;
+import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout13.ViewHolder;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.CookieManager;
-import com.tencent.smtt.sdk.CookieSyncManager;
-import com.tencent.widget.ActionSheet;
-import java.io.File;
-import java.net.URL;
 
 public class aiiv
-  implements Runnable
+  implements View.OnClickListener
 {
-  public aiiv(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity, URLDrawable paramURLDrawable, ActionSheet paramActionSheet) {}
+  public aiiv(StructMsgItemLayout13 paramStructMsgItemLayout13) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
+    Object localObject = paramView.getTag(2131362172);
+    if ((localObject instanceof Integer)) {}
+    Intent localIntent;
+    switch (((Integer)localObject).intValue())
     {
+    default: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return;
+        } while ((this.a.a == null) || (!(this.a.a instanceof StructMsgForGeneralShare)));
+        localObject = ((StructMsgForGeneralShare)this.a.a).author;
+      } while ((localObject == null) || (this.a.a.message == null));
+      localIntent = new Intent(paramView.getContext(), FriendProfileCardActivity.class);
+      localIntent.putExtra("troopUin", this.a.a.message.frienduin);
+      localIntent.putExtra("memberUin", (String)localObject);
+      localIntent.putExtra("fromFlag", 0);
+      paramView.getContext().startActivity(localIntent);
       if (QLog.isColorLevel()) {
-        QLog.d("TroopAvatarWallPreviewActivity", 2, "QR Check Start!");
+        QLog.d(".troop.troop_topic", 2, "StructMsgItemLayout13 onClick TAG_AVATAR_VIEW. troopUin:" + this.a.a.message.frienduin + " memberUin:" + (String)localObject);
       }
-      Object localObject = new Bundle();
-      String str1 = this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.a == null)
-      {
-        CookieSyncManager.createInstance(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.getApplicationContext());
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.a = CookieManager.getInstance();
-      }
-      String str2 = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.a.getCookie(str1);
-      if (str2 != null)
-      {
-        ((Bundle)localObject).putString("Cookie", str2);
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopAvatarWallPreviewActivity", 2, "Get cookie: " + Util.c(str2, new String[0]) + " from " + Util.b(str1, new String[0]));
-        }
-      }
-      localObject = ImageUtil.a(BaseApplication.getContext(), str1, (Bundle)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAvatarWallPreviewActivity", 2, "saveTmpImage path = " + (String)localObject);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.c = ((String)localObject);
-      com.tencent.qbar.QbarCrashCollector.a = Util.b(str1, new String[0]);
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (TroopAvatarWallPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity, new File((String)localObject))))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopAvatarWallPreviewActivity", 2, "has QRCode ");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallPreviewActivity.runOnUiThread(new aiiw(this));
-      }
-      for (;;)
-      {
-        com.tencent.qbar.QbarCrashCollector.a = null;
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopAvatarWallPreviewActivity", 2, "no QRCode ");
-        }
-      }
+      ReportController.b(StructMsgItemLayout13.a(this.a), "dc00899", "Grp_talk", "", "obj", "obj_head", 0, 0, this.a.a.message.frienduin + "", "", "", "");
       return;
     }
-    catch (Exception localException)
+    localObject = paramView.getTag(2131362173);
+    if ((localObject instanceof StructMsgItemLayout13.ViewHolder))
     {
-      if (QLog.isColorLevel())
+      localObject = (StructMsgItemLayout13.ViewHolder)localObject;
+      if (!TextUtils.isEmpty(((StructMsgItemLayout13.ViewHolder)localObject).a))
       {
-        QLog.e("TroopAvatarWallPreviewActivity", 2, "showActionSheet error : " + localException.getMessage());
-        return;
+        localIntent = new Intent(BaseApplicationImpl.getContext(), QQBrowserActivity.class);
+        localIntent.putExtra("url", ((StructMsgItemLayout13.ViewHolder)localObject).a);
+        paramView.getContext().startActivity(localIntent);
+        if (QLog.isColorLevel()) {
+          QLog.d(".troop.troop_topic", 2, "StructMsgItemLayout13 onClick TAG_ACTION_VIEW. parentMsg.pid:" + ((StructMsgForGeneralShare)this.a.a).pid + " url:" + ((StructMsgItemLayout13.ViewHolder)localObject).a);
+        }
       }
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    localObject = "";
+    paramView = (View)localObject;
+    if (this.a.a != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopAvatarWallPreviewActivity", 2, "showActionSheet error : " + localUnsatisfiedLinkError.getMessage());
+      paramView = (View)localObject;
+      if (this.a.a.message != null) {
+        paramView = this.a.a.message.frienduin;
       }
     }
+    ReportController.b(StructMsgItemLayout13.a(this.a), "dc00899", "Grp_talk", "", "obj", "Clk_origin", 0, 0, paramView, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiiv
  * JD-Core Version:    0.7.0.1
  */

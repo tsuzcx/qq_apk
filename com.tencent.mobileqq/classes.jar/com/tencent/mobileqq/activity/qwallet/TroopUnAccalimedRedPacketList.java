@@ -29,13 +29,13 @@ import com.tencent.mobileqq.dinifly.LottieComposition.Factory;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
 import org.json.JSONObject;
-import wyz;
-import wza;
-import wzb;
-import wzc;
-import wzd;
-import wze;
-import wzj;
+import xce;
+import xcf;
+import xcg;
+import xch;
+import xci;
+import xcj;
+import xco;
 
 public class TroopUnAccalimedRedPacketList
   extends FrameLayout
@@ -69,15 +69,15 @@ public class TroopUnAccalimedRedPacketList
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams().width = -1;
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams().height = -1;
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(Color.parseColor("#b2000000"));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new wyz(this));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new xce(this));
     jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(jdField_a_of_type_AndroidWidgetImageView);
-    jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841041);
+    jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841078);
     paramQQAppInterface = (RelativeLayout.LayoutParams)jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
     paramQQAppInterface.leftMargin = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 12.5F);
     paramQQAppInterface.topMargin = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 37.5F);
     jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(paramQQAppInterface);
-    jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new wza(this));
+    jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new xcf(this));
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_b_of_type_AndroidWidgetImageView);
     paramQQAppInterface = (RelativeLayout.LayoutParams)this.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
@@ -87,7 +87,7 @@ public class TroopUnAccalimedRedPacketList
     try
     {
       paramQQAppInterface = a();
-      LottieComposition.Factory.fromJson(getResources(), paramQQAppInterface, new wzb(this));
+      LottieComposition.Factory.fromJson(getResources(), paramQQAppInterface, new xcg(this));
       jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(jdField_a_of_type_AndroidWidgetTextView);
       paramQQAppInterface = (RelativeLayout.LayoutParams)jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
@@ -95,7 +95,7 @@ public class TroopUnAccalimedRedPacketList
       paramQQAppInterface.height = -2;
       paramQQAppInterface.addRule(15);
       jdField_a_of_type_AndroidWidgetTextView.setLayoutParams(paramQQAppInterface);
-      paramQQAppInterface = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841040);
+      paramQQAppInterface = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130841077);
       paramQQAppInterface.setBounds(0, 0, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 100.0F), UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 100.0F));
       jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, paramQQAppInterface, null, null);
       jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 20.0F));
@@ -113,11 +113,11 @@ public class TroopUnAccalimedRedPacketList
       jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(new LinearLayoutManager(this.jdField_a_of_type_AndroidContentContext, 0, false));
       jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setAdapter(jdField_a_of_type_ComTencentMobileqqActivityQwalletTroopUnAccalimedRedPacketList$HbListAdapter);
       int i = (UIUtils.a(this.jdField_a_of_type_AndroidContentContext) - UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 160.0F)) / 2;
-      jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new wzj(i, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 3.5F), null));
+      jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.addItemDecoration(new xco(i, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 3.5F), null));
       jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setHasFixedSize(false);
       jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getItemAnimator().setRemoveDuration(300L);
       jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getItemAnimator().setChangeDuration(300L);
-      jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(new wzc(this));
+      jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setOnScrollListener(new xch(this));
       this.jdField_a_of_type_AndroidAnimationAnimator = ObjectAnimator.ofFloat(jdField_a_of_type_AndroidSupportV7WidgetRecyclerView, "translationX", new float[] { i, 0.0F });
       this.jdField_a_of_type_AndroidAnimationAnimator.setInterpolator(new LinearInterpolator());
       this.jdField_a_of_type_AndroidAnimationAnimator.setDuration(300L);
@@ -150,8 +150,8 @@ public class TroopUnAccalimedRedPacketList
     jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
     jdField_a_of_type_AndroidWidgetPopupWindow.setFocusable(true);
     jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.c, 17, 0, 0);
-    jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(new wzd(this));
-    RedPacketManager.getInstance().reqGroupAvailableList(jdField_b_of_type_JavaLangString, jdField_a_of_type_Int, new wze(this));
+    jdField_a_of_type_AndroidWidgetPopupWindow.setOnDismissListener(new xci(this));
+    RedPacketManager.getInstance().reqGroupAvailableList(jdField_b_of_type_JavaLangString, jdField_a_of_type_Int, new xcj(this));
   }
   
   protected void onAttachedToWindow()

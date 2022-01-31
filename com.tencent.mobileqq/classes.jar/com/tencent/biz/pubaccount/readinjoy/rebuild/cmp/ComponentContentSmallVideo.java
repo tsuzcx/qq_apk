@@ -30,13 +30,13 @@ public class ComponentContentSmallVideo
   
   public View a(Context paramContext)
   {
-    return LayoutInflater.from(paramContext).inflate(2130969564, this, true);
+    return LayoutInflater.from(paramContext).inflate(2130969571, this, true);
   }
   
   public void a(View paramView)
   {
     super.a(paramView);
-    this.a = ((TextView)paramView.findViewById(2131364171));
+    this.a = ((TextView)paramView.findViewById(2131364195));
   }
   
   public void a(Object paramObject)

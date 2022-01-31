@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.customviews;
 
-import abmp;
+import abtq;
 import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
@@ -12,7 +12,7 @@ import com.tencent.qphone.base.util.QLog;
 public class MessageProgressTextView
   extends TextView
 {
-  public abmp a;
+  public abtq a;
   private MessageProgressTextView.ProgressListener jdField_a_of_type_ComTencentMobileqqCustomviewsMessageProgressTextView$ProgressListener;
   private BaseTransProcessor jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor;
   private boolean jdField_a_of_type_Boolean = true;
@@ -68,18 +68,18 @@ public class MessageProgressTextView
             QLog.d("ProgressTextView", 2, "currentProgress " + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.a() + " processor " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
           }
           setProgress(i);
-          if (this.jdField_a_of_type_Abmp != null) {
+          if (this.jdField_a_of_type_Abtq != null) {
             break;
           }
-          this.jdField_a_of_type_Abmp = new abmp(this, i, paramInt2);
-          postDelayed(this.jdField_a_of_type_Abmp, l);
+          this.jdField_a_of_type_Abtq = new abtq(this, i, paramInt2);
+          postDelayed(this.jdField_a_of_type_Abtq, l);
           return;
           i = paramInt1;
         } while (paramInt1 < 100);
         this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor = null;
         return;
       } while (paramInt2 == 1);
-      this.jdField_a_of_type_Abmp.a(paramInt2);
+      this.jdField_a_of_type_Abtq.a(paramInt2);
       return;
       if (QLog.isColorLevel()) {
         QLog.d("ProgressTextView", 2, "doUpdateCurrentProgress ,currentProgress:" + i + " receiveProgress " + paramInt1 + "addProgress" + paramInt2 + " processor.getKey() " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor.a() + " processor " + this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor);
@@ -110,10 +110,10 @@ public class MessageProgressTextView
     if (this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor == paramBaseTransProcessor) {
       return;
     }
-    if (this.jdField_a_of_type_Abmp != null)
+    if (this.jdField_a_of_type_Abtq != null)
     {
-      removeCallbacks(this.jdField_a_of_type_Abmp);
-      this.jdField_a_of_type_Abmp = null;
+      removeCallbacks(this.jdField_a_of_type_Abtq);
+      this.jdField_a_of_type_Abtq = null;
     }
     this.jdField_a_of_type_ComTencentMobileqqTransfileBaseTransProcessor = paramBaseTransProcessor;
   }
@@ -150,7 +150,7 @@ public class MessageProgressTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.customviews.MessageProgressTextView
  * JD-Core Version:    0.7.0.1
  */

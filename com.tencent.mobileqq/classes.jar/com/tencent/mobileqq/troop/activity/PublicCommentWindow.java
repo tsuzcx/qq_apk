@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aigl;
-import aigm;
+import aiuo;
+import aiup;
 import android.app.Activity;
 import android.app.Dialog;
 import android.graphics.drawable.ColorDrawable;
@@ -42,7 +42,7 @@ public class PublicCommentWindow
 {
   protected int a;
   protected long a;
-  protected aigm a;
+  protected aiup a;
   protected Handler a;
   public Button a;
   protected EditText a;
@@ -78,22 +78,22 @@ public class PublicCommentWindow
     {
       if (i == 0)
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131430314, 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131430331, 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
         return;
       }
       if (i < this.jdField_b_of_type_Int)
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430315, new Object[] { Integer.valueOf(this.jdField_b_of_type_Int) }), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430332, new Object[] { Integer.valueOf(this.jdField_b_of_type_Int) }), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
         return;
       }
       if (i > this.jdField_a_of_type_Int)
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430316, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430333, new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
         return;
       }
       if (!HttpUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity))
       {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131433086, 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131433103, 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
         return;
       }
       a(str);
@@ -104,7 +104,7 @@ public class PublicCommentWindow
   public void a(Activity paramActivity)
   {
     long l = System.currentTimeMillis();
-    paramActivity = LayoutInflater.from(paramActivity).inflate(2130969466, null);
+    paramActivity = LayoutInflater.from(paramActivity).inflate(2130969467, null);
     setContentView(paramActivity);
     a(paramActivity);
     a();
@@ -196,11 +196,11 @@ public class PublicCommentWindow
     //   144: invokevirtual 268	java/util/ArrayList:add	(Ljava/lang/Object;)Z
     //   147: pop
     //   148: aload_0
-    //   149: new 270	aigm
+    //   149: new 270	aiup
     //   152: dup
     //   153: aload_0
-    //   154: invokespecial 273	aigm:<init>	(Lcom/tencent/mobileqq/troop/activity/PublicCommentWindow;)V
-    //   157: putfield 275	com/tencent/mobileqq/troop/activity/PublicCommentWindow:jdField_a_of_type_Aigm	Laigm;
+    //   154: invokespecial 273	aiup:<init>	(Lcom/tencent/mobileqq/troop/activity/PublicCommentWindow;)V
+    //   157: putfield 275	com/tencent/mobileqq/troop/activity/PublicCommentWindow:jdField_a_of_type_Aiup	Laiup;
     //   160: new 277	android/content/IntentFilter
     //   163: dup
     //   164: ldc_w 279
@@ -209,7 +209,7 @@ public class PublicCommentWindow
     //   171: aload_0
     //   172: getfield 39	com/tencent/mobileqq/troop/activity/PublicCommentWindow:jdField_a_of_type_ComTencentMobileqqAppBaseActivity	Lcom/tencent/mobileqq/app/BaseActivity;
     //   175: aload_0
-    //   176: getfield 275	com/tencent/mobileqq/troop/activity/PublicCommentWindow:jdField_a_of_type_Aigm	Laigm;
+    //   176: getfield 275	com/tencent/mobileqq/troop/activity/PublicCommentWindow:jdField_a_of_type_Aiup	Laiup;
     //   179: aload_1
     //   180: invokevirtual 284	com/tencent/mobileqq/app/BaseActivity:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
     //   183: pop
@@ -245,16 +245,16 @@ public class PublicCommentWindow
   
   protected void a(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout = ((InputMethodRelativeLayout)paramView.findViewById(2131362822));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364051));
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131363479));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131365505));
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131366583));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout = ((InputMethodRelativeLayout)paramView.findViewById(2131362840));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364075));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)paramView.findViewById(2131363497));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131365527));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131366607));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setSelected(true);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    paramView.findViewById(2131366584).setOnClickListener(this);
+    paramView.findViewById(2131366608).setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel = TroopBarPublishUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidWidgetFrameLayout, this.jdField_a_of_type_AndroidWidgetEditText, this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetInputMethodRelativeLayout.setOnSizeChangedListenner(this);
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
@@ -317,8 +317,8 @@ public class PublicCommentWindow
         if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.getVisibility() == 0) {
           this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setVisibility(8);
         }
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844421);
-        this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430324));
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844545);
+        this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430341));
         return;
       }
     } while ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.getVisibility() != 8) || (this.jdField_b_of_type_Boolean));
@@ -362,10 +362,10 @@ public class PublicCommentWindow
   
   public void dismiss()
   {
-    if (this.jdField_a_of_type_Aigm != null)
+    if (this.jdField_a_of_type_Aiup != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.unregisterReceiver(this.jdField_a_of_type_Aigm);
-      this.jdField_a_of_type_Aigm = null;
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.unregisterReceiver(this.jdField_a_of_type_Aiup);
+      this.jdField_a_of_type_Aiup = null;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel != null) {
       this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel = null;
@@ -383,8 +383,8 @@ public class PublicCommentWindow
     switch (paramView.getId())
     {
     default: 
-    case 2131366584: 
-    case 2131364051: 
+    case 2131366608: 
+    case 2131364075: 
       do
       {
         return;
@@ -396,13 +396,13 @@ public class PublicCommentWindow
       {
         this.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setVisibility(8);
         InputMethodUtil.a(this.jdField_a_of_type_AndroidWidgetEditText);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844421);
-        this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430324));
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844545);
+        this.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430341));
         return;
       }
       this.jdField_b_of_type_Boolean = true;
       InputMethodUtil.b(this.jdField_a_of_type_AndroidWidgetEditText);
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aigl(this), 200L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aiuo(this), 200L);
       return;
     }
     a();
@@ -412,7 +412,7 @@ public class PublicCommentWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.PublicCommentWindow
  * JD-Core Version:    0.7.0.1
  */

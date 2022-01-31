@@ -1,15 +1,20 @@
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
-import java.util.List;
+import com.tencent.mapsdk.raster.model.CameraPosition;
+import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
+import com.tencent.tencentmap.mapsdk.map.TencentMap.OnMapCameraChangeListener;
 
-class aazy
-  implements Runnable
+public class aazy
+  implements TencentMap.OnMapCameraChangeListener
 {
-  aazy(aazw paramaazw, POIInfo paramPOIInfo, List paramList, int paramInt) {}
+  public aazy(ARMapActivity paramARMapActivity) {}
   
-  public void run()
+  public void onCameraChange(CameraPosition paramCameraPosition) {}
+  
+  public void onCameraChangeFinish(CameraPosition paramCameraPosition)
   {
-    this.jdField_a_of_type_Aazw.a.a(this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int);
+    if (ARMapActivity.a(this.a) != null) {
+      ARMapActivity.a(this.a).a();
+    }
   }
 }
 

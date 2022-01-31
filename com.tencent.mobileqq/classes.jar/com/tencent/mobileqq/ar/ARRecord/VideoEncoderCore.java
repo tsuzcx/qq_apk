@@ -15,8 +15,8 @@ import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.nio.ByteBuffer;
-import zvm;
-import zvn;
+import zyt;
+import zyu;
 
 @TargetApi(18)
 public class VideoEncoderCore
@@ -56,7 +56,7 @@ public class VideoEncoderCore
       {
         l = System.currentTimeMillis();
         if (QLog.isColorLevel()) {
-          QLog.d("VideoEncoderCore", 2, String.format("handleVideoFrame timestampNanos=%s endOfStream=%s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
+          QLog.d("VideoEncoderCore", 2, String.format("handleVideoFrame1 timestampNanos=%s endOfStream=%s", new Object[] { Long.valueOf(paramLong), Boolean.valueOf(paramBoolean) }));
         }
         if (paramBoolean) {
           this.jdField_a_of_type_AndroidMediaMediaCodec.signalEndOfInputStream();
@@ -65,7 +65,7 @@ public class VideoEncoderCore
         ByteBuffer[] arrayOfByteBuffer1 = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
         j = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 10000L);
         if (!QLog.isColorLevel()) {
-          break label548;
+          break label571;
         }
         QLog.d("VideoEncoderCore", 2, String.format("handleVideoFrame outputIndex=%s endTryTimes=%s", new Object[] { Integer.valueOf(j), Integer.valueOf(i) }));
       }
@@ -79,8 +79,8 @@ public class VideoEncoderCore
       if (j > 100)
       {
         throw new RuntimeException("encoder has not output the last frame.");
-        label537:
-        label548:
+        label560:
+        label571:
         while (j != -1)
         {
           while (j == -2) {
@@ -118,10 +118,10 @@ public class VideoEncoderCore
             ((ByteBuffer)localObject5).position(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset);
             ((ByteBuffer)localObject5).limit(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
             if (QLog.isColorLevel()) {
-              QLog.d("VideoEncoderCore", 2, String.format("handleVideoFrame presentationTimeUs=%s", new Object[] { Long.valueOf(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs) }));
+              QLog.d("VideoEncoderCore", 2, String.format("handleVideoFrame1 presentationTimeUs=%s, duration=%s", new Object[] { Long.valueOf(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs), Long.valueOf((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs * 1000L - paramLong) / 1000000L) }));
             }
             if (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs < this.jdField_c_of_type_Long) {
-              break label537;
+              break label560;
             }
             this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags = 1;
           }
@@ -358,7 +358,7 @@ public class VideoEncoderCore
     this.jdField_a_of_type_AndroidMediaMediaCodec.configure(this.jdField_a_of_type_AndroidMediaMediaFormat, null, null, 1);
     this.jdField_a_of_type_AndroidViewSurface = this.jdField_a_of_type_AndroidMediaMediaCodec.createInputSurface();
     this.jdField_a_of_type_AndroidMediaMediaCodec.start();
-    this.jdField_a_of_type_JavaLangThread = new zvn(this);
+    this.jdField_a_of_type_JavaLangThread = new zyu(this);
     this.jdField_a_of_type_JavaLangThread.start();
     this.jdField_b_of_type_AndroidMediaMediaFormat = MediaFormat.createAudioFormat("audio/mp4a-latm", 48000, 1);
     this.jdField_b_of_type_AndroidMediaMediaFormat.setInteger("aac-profile", 2);
@@ -370,7 +370,7 @@ public class VideoEncoderCore
     this.jdField_b_of_type_AndroidMediaMediaCodec.start();
     this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("VideoEncodeThread");
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_AndroidOsHandler = new zvm(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    this.jdField_a_of_type_AndroidOsHandler = new zyt(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
     paramVideoEncoderCallback = new File(paramEncodeConfig.jdField_a_of_type_JavaLangString);
     if (!paramVideoEncoderCallback.exists()) {
       FileUtils.c(paramVideoEncoderCallback.getAbsolutePath());

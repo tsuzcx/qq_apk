@@ -10,12 +10,12 @@ import com.tencent.mobileqq.shortvideo.common.GloableValue;
 import com.tencent.mobileqq.utils.StackBlur;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import xsb;
+import xvh;
 
 public class RMVideoSwitchCameraPicMgr
 {
   RMVideoSwitchCameraPicMgr.ViewBitmapSource jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr$ViewBitmapSource = null;
-  private xsb jdField_a_of_type_Xsb = new xsb(this, null);
+  private xvh jdField_a_of_type_Xvh = new xvh(this, null);
   
   private Bitmap a(int paramInt1, int paramInt2, RMVideoClipSpec paramRMVideoClipSpec)
   {
@@ -88,7 +88,7 @@ public class RMVideoSwitchCameraPicMgr
   private String a()
   {
     String str = "shortvideo_cover_pic";
-    if (this.jdField_a_of_type_Xsb.jdField_b_of_type_Boolean) {
+    if (this.jdField_a_of_type_Xvh.jdField_b_of_type_Boolean) {
       str = "ptv_cover_pic";
     }
     return GloableValue.b + File.separator + str + ".jpg";
@@ -122,26 +122,26 @@ public class RMVideoSwitchCameraPicMgr
   
   public Bitmap a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, RMVideoClipSpec paramRMVideoClipSpec)
   {
-    this.jdField_a_of_type_Xsb.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Xsb.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Xsb.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_Xsb.jdField_b_of_type_Boolean = paramBoolean2;
-    if ((this.jdField_a_of_type_Xsb.jdField_a_of_type_Int <= 0) || (this.jdField_a_of_type_Xsb.jdField_b_of_type_Int <= 0)) {
-      this.jdField_a_of_type_Xsb.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Xvh.jdField_a_of_type_Int = paramInt1;
+    this.jdField_a_of_type_Xvh.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_Xvh.jdField_a_of_type_Boolean = paramBoolean1;
+    this.jdField_a_of_type_Xvh.jdField_b_of_type_Boolean = paramBoolean2;
+    if ((this.jdField_a_of_type_Xvh.jdField_a_of_type_Int <= 0) || (this.jdField_a_of_type_Xvh.jdField_b_of_type_Int <= 0)) {
+      this.jdField_a_of_type_Xvh.jdField_a_of_type_Boolean = true;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr$ViewBitmapSource == null) {
-      this.jdField_a_of_type_Xsb.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Xvh.jdField_a_of_type_Boolean = true;
     }
-    if (this.jdField_a_of_type_Xsb.jdField_a_of_type_Boolean) {
+    if (this.jdField_a_of_type_Xvh.jdField_a_of_type_Boolean) {
       return a(paramRMVideoClipSpec);
     }
-    return a(this.jdField_a_of_type_Xsb.jdField_b_of_type_Int, this.jdField_a_of_type_Xsb.jdField_a_of_type_Int, paramRMVideoClipSpec);
+    return a(this.jdField_a_of_type_Xvh.jdField_b_of_type_Int, this.jdField_a_of_type_Xvh.jdField_a_of_type_Int, paramRMVideoClipSpec);
   }
   
   public Bitmap a(boolean paramBoolean)
   {
     Object localObject = null;
-    this.jdField_a_of_type_Xsb.jdField_b_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Xvh.jdField_b_of_type_Boolean = paramBoolean;
     String str = a();
     if (new File(str).exists())
     {

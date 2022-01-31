@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
-import com.tencent.mobileqq.earlydownload.handler.PokeResHandler;
+import com.tencent.mobileqq.confess.ConfessMsgListFragment;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class abrv
   implements Runnable
 {
-  public abrv(PokeResHandler paramPokeResHandler) {}
+  public abrv(ConfessMsgListFragment paramConfessMsgListFragment) {}
   
   public void run()
   {
-    PokeItemHelper.a(this.a.a, null);
+    ReportController.b(this.a.a, "dc00898", "", "", "0X8008F4A", "0X8008F4A", 2, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abrv
  * JD-Core Version:    0.7.0.1
  */

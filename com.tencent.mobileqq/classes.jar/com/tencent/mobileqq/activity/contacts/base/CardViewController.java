@@ -23,24 +23,24 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
-import wjj;
-import wjk;
-import wjl;
-import wjm;
-import wjn;
-import wjo;
-import wjp;
+import wmo;
+import wmp;
+import wmq;
+import wmr;
+import wms;
+import wmt;
+import wmu;
 
 public class CardViewController
   extends BaseViewController
 {
   private int jdField_a_of_type_Int;
-  SharedPreferences.OnSharedPreferenceChangeListener jdField_a_of_type_AndroidContentSharedPreferences$OnSharedPreferenceChangeListener = new wjk(this);
+  SharedPreferences.OnSharedPreferenceChangeListener jdField_a_of_type_AndroidContentSharedPreferences$OnSharedPreferenceChangeListener = new wmp(this);
   private SharedPreferences jdField_a_of_type_AndroidContentSharedPreferences;
   private CardConfigManager.CardConfigs jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardConfigManager$CardConfigs;
   private CardConfigManager jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardConfigManager;
   private CardController jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new wjj(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new wmo(this);
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private LinkedList jdField_a_of_type_JavaUtilLinkedList = new LinkedList();
   private boolean jdField_a_of_type_Boolean;
@@ -174,9 +174,9 @@ public class CardViewController
     a().edit().putString("card_displaying_list_sp", paramString).commit();
   }
   
-  private void a(String paramString, wjp paramwjp)
+  private void a(String paramString, wmu paramwmu)
   {
-    new wjl(this, paramString, paramwjp).execute(new Void[] { null, null, null });
+    new wmq(this, paramString, paramwmu).execute(new Void[] { null, null, null });
   }
   
   private void a(List paramList)
@@ -213,7 +213,7 @@ public class CardViewController
       if (a()) {
         break;
       }
-    } while (!this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(1));
+    } while (!this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(2));
     this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(null);
     return;
     QLog.d("CardViewController", 1, "isTimeToUpdate=" + bool);
@@ -337,7 +337,7 @@ public class CardViewController
     if (QLog.isColorLevel()) {
       QLog.d("CardViewController", 2, "getLocalDisplayingList ");
     }
-    new wjo(this, paramBoolean2, paramBoolean1).execute(new Void[] { null, null, null });
+    new wmt(this, paramBoolean2, paramBoolean1).execute(new Void[] { null, null, null });
   }
   
   private boolean b()
@@ -384,7 +384,7 @@ public class CardViewController
   
   private void e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(1))
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsBaseCardController.a(2))
     {
       if (QLog.isColorLevel()) {
         QLog.d("CardViewController", 2, "onCancelMayKnowRecommend  refresh local mState =" + this.jdField_b_of_type_Int);
@@ -415,7 +415,7 @@ public class CardViewController
       if (QLog.isColorLevel()) {
         QLog.d("CardViewController", 2, "getDisplayListAsync  moveUin  start");
       }
-      a((String)localObject, new wjm(this));
+      a((String)localObject, new wmr(this));
       return;
     }
     g();
@@ -426,7 +426,7 @@ public class CardViewController
     if (QLog.isColorLevel()) {
       QLog.d("CardViewController", 2, "getDisplayListAsync  dealSourceList ");
     }
-    new wjn(this).execute(new Void[] { null, null, null });
+    new wms(this).execute(new Void[] { null, null, null });
   }
   
   private void h()

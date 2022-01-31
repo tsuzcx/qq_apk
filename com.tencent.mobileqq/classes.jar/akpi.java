@@ -1,31 +1,30 @@
-import android.text.TextUtils;
-import com.tencent.open.appcommon.now.download.js.DownloadWebInterface;
-import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler.CheckOfflineCallback;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class akpi
   implements Runnable
 {
-  public akpi(DownloadWebInterface paramDownloadWebInterface, String paramString) {}
+  public akpi(SwiftBrowserOfflineHandler paramSwiftBrowserOfflineHandler) {}
   
   public void run()
   {
-    try
-    {
-      if ((this.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadJsDownloadWebInterface.webview != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-        this.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadJsDownloadWebInterface.webview.loadUrl(this.jdField_a_of_type_JavaLangString);
-      }
-      return;
+    if ((QLog.isColorLevel()) && (this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() != 0)) {
+      QLog.i("SwiftBrowserOfflineHandler", 2, "now post offline callback, bid is " + this.a.jdField_a_of_type_JavaLangString + ", mode: " + this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
     }
-    catch (Exception localException)
-    {
-      LogUtility.a(this.jdField_a_of_type_ComTencentOpenAppcommonNowDownloadJsDownloadWebInterface.TAG, "webview loadUrl>>> ", localException);
+    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (localIterator.hasNext()) {
+      ((SwiftBrowserOfflineHandler.CheckOfflineCallback)localIterator.next()).a(this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
     }
+    this.a.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akpi
  * JD-Core Version:    0.7.0.1
  */

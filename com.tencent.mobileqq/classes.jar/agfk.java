@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.ptt.LSRecordPanel;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agfk
   implements Runnable
 {
-  public agfk(LSRecordPanel paramLSRecordPanel) {}
+  public agfk(ScanTorchActivity paramScanTorchActivity) {}
   
   public void run()
   {
-    LSRecordPanel.a(this.a, false);
+    ScanTorchActivity.c(this.a, true);
+    ScanTorchActivity.l(this.a);
+    ScanTorchActivity.d(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agfk
  * JD-Core Version:    0.7.0.1
  */

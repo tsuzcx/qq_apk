@@ -1,21 +1,26 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import mqq.observer.BusinessObserver;
 
 public class vxf
-  implements DialogInterface.OnClickListener
+  implements BusinessObserver
 {
-  public vxf(TroopChatPie paramTroopChatPie) {}
+  public vxf(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    paramDialogInterface = new Intent(this.a.jdField_a_of_type_AndroidContentContext, TroopLowCreditLevelNotifyActivity.class);
-    paramDialogInterface.putExtra("troopUin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-    this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
+    if (paramBundle != null)
+    {
+      paramInt = paramBundle.getInt("update_type");
+      if (paramInt != 2) {}
+    }
+    else
+    {
+      return;
+    }
+    if (paramInt == 1) {}
+    this.a.a.sendEmptyMessage(2);
   }
 }
 

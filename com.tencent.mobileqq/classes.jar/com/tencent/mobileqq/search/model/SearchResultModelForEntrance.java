@@ -306,20 +306,20 @@ public class SearchResultModelForEntrance
     case 0: 
     case 1: 
     default: 
-      return 2130969381;
-    case -1: 
       return 2130969382;
+    case -1: 
+      return 2130969383;
     case -2: 
-      return 2130969380;
+      return 2130969381;
     case -4: 
     case -3: 
-      return 2130969376;
+      return 2130969377;
     case 2: 
-      return 2130969385;
-    case 3: 
       return 2130969386;
+    case 3: 
+      return 2130969387;
     }
-    return 2130969384;
+    return 2130969385;
   }
   
   public CharSequence b()

@@ -159,7 +159,7 @@ public class CaptureUtil
           boolean bool2 = GraphicRenderMgr.loadSo();
           boolean bool3 = PtvFilterSoLoad.a(BaseApplicationImpl.getContext(), false);
           boolean bool4 = PtvFilterSoLoad.a();
-          if (!PtvFilterSoLoad.b(BaseApplicationImpl.getContext())) {
+          if (!PtvFilterSoLoad.a(BaseApplicationImpl.getContext())) {
             continue;
           }
           if ((bool3) && (bool4))
@@ -169,7 +169,7 @@ public class CaptureUtil
             if (!PtvFilterSoLoad.e()) {
               break label131;
             }
-            if (!SoLoader.g()) {
+            if (!SoLoader.h()) {
               break label121;
             }
             break label131;
@@ -222,7 +222,7 @@ public class CaptureUtil
           bool2 = GraphicRenderMgr.loadSo();
           bool3 = PtvFilterSoLoad.a(BaseApplicationImpl.getContext(), false);
           bool4 = PtvFilterSoLoad.a();
-          if (!PtvFilterSoLoad.b(BaseApplicationImpl.getContext())) {
+          if (!PtvFilterSoLoad.a(BaseApplicationImpl.getContext())) {
             continue;
           }
           if ((bool3) && (bool4))
@@ -254,9 +254,9 @@ public class CaptureUtil
   
   public static boolean d()
   {
-    boolean bool = PtvFilterSoLoad.a(BaseApplicationImpl.getContext());
+    boolean bool = SoLoader.a(BaseApplicationImpl.getContext());
     int i;
-    if (PtvFilterSoLoad.c(BaseApplicationImpl.getContext())) {
+    if (PtvFilterSoLoad.b(BaseApplicationImpl.getContext())) {
       if (bool)
       {
         i = 1;

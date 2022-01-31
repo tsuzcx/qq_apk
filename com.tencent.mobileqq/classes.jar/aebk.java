@@ -1,37 +1,32 @@
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.werewolves.WerewolvesHandler.Callback;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0x8e4.oidb_0x8e4.RspBody;
-import tencent.im.oidb.hotchat.Common.WifiPOIInfo;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.leba.view.LebaFeedsViewBase;
 
 public class aebk
-  implements WerewolvesHandler.Callback
+  implements View.OnTouchListener
 {
-  public aebk(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public aebk(LebaFeedsViewBase paramLebaFeedsViewBase) {}
   
-  public void a(int paramInt, oidb_0x8e4.RspBody paramRspBody)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (paramInt == 0)
+    if (!this.a.b) {}
+    switch (paramMotionEvent.getAction())
     {
-      paramRspBody = paramRspBody.poi_info;
-      String str = paramRspBody.bytes_uid.get().toStringUtf8();
-      this.a.a(HotChatInfo.createHotChat(paramRspBody, false, 0), paramRspBody.uint32_group_code.get(), str, paramRspBody.bytes_name.get().toStringUtf8());
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      this.a.a(true);
+      return false;
     }
-    do
-    {
-      return;
-      this.a.a(paramInt, paramRspBody, "开始游戏失败");
-    } while (!QLog.isColorLevel());
-    QLog.d("GameRoomInviteActivity", 2, "start game failed! code = " + paramInt);
+    this.a.a(false);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aebk
  * JD-Core Version:    0.7.0.1
  */

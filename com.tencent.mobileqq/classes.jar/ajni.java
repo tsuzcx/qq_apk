@@ -1,18 +1,19 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 
-public final class ajni
-  implements MediaPlayer.OnCompletionListener
+class ajni
+  implements Runnable
 {
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  ajni(ajng paramajng) {}
+  
+  public void run()
   {
-    paramMediaPlayer.release();
-    com.tencent.mobileqq.utils.AudioUtil.a = null;
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a = 1;
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.a.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajni
  * JD-Core Version:    0.7.0.1
  */

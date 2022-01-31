@@ -1,19 +1,25 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PopupDialog;
+import android.content.Context;
+import android.content.IntentFilter;
+import com.tencent.av.utils.SensorReport;
+import com.tencent.qphone.base.util.QLog;
 
-public class kgw
-  implements DialogInterface.OnClickListener
+public final class kgw
+  implements Runnable
 {
-  public kgw(PopupDialog paramPopupDialog) {}
+  public kgw(Context paramContext, IntentFilter paramIntentFilter) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (PopupDialog.a.a != null) {
-      PopupDialog.a.a.onClick(paramDialogInterface, paramInt);
+    try
+    {
+      this.jdField_a_of_type_AndroidContentContext.registerReceiver(SensorReport.a(), this.jdField_a_of_type_AndroidContentIntentFilter);
+      return;
     }
-    paramDialogInterface.dismiss();
-    PopupDialog.a();
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("SensorReport", 2, "registonUserActionReceiver e = " + localException);
+    }
   }
 }
 

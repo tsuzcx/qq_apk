@@ -16,7 +16,7 @@ public abstract interface EffectsCameraCaptureView$EffectListener
   
   public abstract void d(boolean paramBoolean);
   
-  public abstract void f_(boolean paramBoolean);
+  public abstract void d_(boolean paramBoolean);
 }
 
 

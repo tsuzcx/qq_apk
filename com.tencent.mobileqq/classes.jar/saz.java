@@ -1,30 +1,24 @@
 import android.os.Handler;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.DBUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class saz
-  implements Runnable
+  extends Handler
 {
-  public saz(ChatSettingForTroop paramChatSettingForTroop) {}
+  public saz(ChatHistoryForC2C paramChatHistoryForC2C) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    try
+    if (paramMessage.what == 1)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum = DBUtils.a(this.a.app.getCurrentAccountUin(), "troop_photo_message", this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.chatopttroop", 2, "从群空间返回，更新群空间未读计数， troopuin = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin + ", unreadmsgnum = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nUnreadMsgNum + ", newphotonum = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.nNewPhotoNum);
+      if ((this.a.a != null) && (this.a.a.isShowing())) {
+        this.a.a.dismiss();
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.chatopttroop", 2, localException.toString());
+      this.a.a = new QQProgressDialog(this.a, this.a.getTitleBarHeight());
+      this.a.a.setCancelable(false);
+      this.a.a.c(2131434483);
+      this.a.a.show();
     }
   }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1225" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020f34" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0e9c" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020f7d" android:layout_width="fill_parent" android:layout_height="1.0px" />
-    <TextView android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0571" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a071e" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0e9c" />
+    <com.tencent.mobileqq.troop.widget.AvatarWallViewPager android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a052a" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1243" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040548" />
+    <TextView android:textSize="12.0dip" android:textColor="@android:color/white" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1244" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="点击更换群头像" android:layout_centerInParent="true" />
 </RelativeLayout>

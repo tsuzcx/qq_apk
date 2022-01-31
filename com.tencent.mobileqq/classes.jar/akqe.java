@@ -1,101 +1,40 @@
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.open.business.base.StaticAnalyz;
-import com.tencent.open.business.base.appreport.AppReportReceiver;
-import com.tencent.open.downloadnew.YybHandleUtil;
-import com.tencent.qphone.base.remote.SimpleAccount;
+import android.text.TextUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
+import com.tencent.smtt.sdk.WebView;
+import java.util.HashMap;
+import java.util.Map;
 
-public class akqe
+public final class akqe
   implements Runnable
 {
-  public akqe(AppReportReceiver paramAppReportReceiver, Intent paramIntent, Context paramContext) {}
+  public akqe(String paramString1, String paramString2, WebView paramWebView, int paramInt1, int paramInt2, String paramString3) {}
   
   public void run()
   {
-    try
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      str2 = this.jdField_a_of_type_AndroidContentIntent.getAction();
-      if (str2 == null) {
-        return;
-      }
-      bool = this.jdField_a_of_type_AndroidContentIntent.getBooleanExtra("android.intent.extra.REPLACING", false);
-      Object localObject = this.jdField_a_of_type_AndroidContentIntent.getDataString();
-      if ((localObject != null) && (((String)localObject).startsWith("package:")))
-      {
-        str3 = ((String)localObject).substring(8);
-        String str1 = "";
-        localObject = str1;
-        if (BaseApplicationImpl.getApplication() != null)
-        {
-          localObject = str1;
-          if (BaseApplicationImpl.getApplication().getFirstSimpleAccount() != null) {
-            localObject = BaseApplicationImpl.getApplication().getFirstSimpleAccount().getUin();
-          }
-        }
-        if ((str2.equals("android.intent.action.PACKAGE_ADDED")) && (!bool)) {
-          if (str3.equals("com.tencent.mobileqq"))
-          {
-            if (!QLog.isColorLevel()) {
-              return;
-            }
-            QLog.d("AppReportReceiver", 2, "mobileqq ACTION_PACKAGE_ADDED");
-            return;
-          }
-        }
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("TYPE", "4");
+      localHashMap.put("mimeType", "text/html");
+      localHashMap.put("encoding", "utf-8");
+      localHashMap.put("baseUrl", this.jdField_b_of_type_JavaLangString);
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.getX5WebViewExtension().preLoad(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, localHashMap);
+      if (QLog.isColorLevel()) {
+        QLog.d("SwiftBrowserTBSHandler", 2, "webView.getX5WebViewExtension().preLoad offline data:" + this.jdField_b_of_type_JavaLangString + ", sha1: " + this.c);
       }
     }
-    catch (Throwable localThrowable)
+    do
     {
-      String str2;
-      boolean bool;
-      String str3;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("crash", 2, "", localThrowable);
-        return;
-        bool = str3.equals("com.tencent.android.qqdownloader");
-        if (bool) {}
-        try
-        {
-          StaticAnalyz.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), localThrowable);
-          label166:
-          while ((BaseApplicationImpl.isCurrentVersionFirstLaunch) && (QLog.isColorLevel()))
-          {
-            QLog.d("isFirstLaunch", 2, "firstlaunch!");
-            return;
-            if ((str2.equals("android.intent.action.PACKAGE_REMOVED")) && (!bool))
-            {
-              if (str3.equals("com.tencent.mobileqq")) {
-                if (QLog.isColorLevel()) {
-                  QLog.d("AppReportReceiver", 2, "mobileqq ACTION_PACKAGE_REMOVED");
-                }
-              }
-            }
-            else if ((str2.equals("android.intent.action.PACKAGE_REPLACED")) && (bool)) {
-              if (str3.equals("com.tencent.mobileqq"))
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d("AppReportReceiver", 2, "mobileqq ACTION_PACKAGE_REPLACED deleteYYBApkPackage");
-                }
-                YybHandleUtil.a();
-                return;
-              }
-            }
-          }
-        }
-        catch (Exception localException)
-        {
-          break label166;
-        }
-      }
-    }
+      return;
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.getX5WebViewExtension().preLoad(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, null);
+    } while (!QLog.isColorLevel());
+    QLog.d("SwiftBrowserTBSHandler", 2, "webView.getX5WebViewExtension().preLoad: " + this.jdField_b_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akqe
  * JD-Core Version:    0.7.0.1
  */

@@ -1,21 +1,14 @@
-import com.tencent.biz.qqstory.newshare.callback.OnPlayModeShareListener;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
-import com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.playmode.child.NewDiscoverBannerPlayMode;
+import com.tencent.biz.qqstory.playmode.util.NewDiscoverBannerDataProvider;
 
 public class nkb
-  extends OnPlayModeShareListener
+  implements Runnable
 {
-  public nkb(ShareGroupHotSortPlayMode paramShareGroupHotSortPlayMode, VideoPlayModeBase paramVideoPlayModeBase, ShareGroupItem paramShareGroupItem)
-  {
-    super(paramVideoPlayModeBase);
-  }
+  public nkb(NewDiscoverBannerPlayMode paramNewDiscoverBannerPlayMode) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    super.a(paramInt);
-    StoryReportor.a("share_story", "single_suc", 0, paramInt, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.getReportUserType() });
+    this.a.a.a(true);
   }
 }
 

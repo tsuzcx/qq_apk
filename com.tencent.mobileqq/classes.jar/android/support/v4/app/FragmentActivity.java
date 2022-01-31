@@ -40,7 +40,7 @@ public class FragmentActivity
   final FragmentContainer mContainer = new FragmentActivity.2(this);
   boolean mCreated;
   final FragmentManagerImpl mFragments = new FragmentManagerImpl();
-  final Handler mHandler = new FragmentActivity.1(this);
+  public final Handler mHandler = new FragmentActivity.1(this);
   Fragment.IFragmentAttachCallback mIFragmentAttachCallback;
   LoaderManagerImpl mLoaderManager;
   boolean mLoadersStarted;

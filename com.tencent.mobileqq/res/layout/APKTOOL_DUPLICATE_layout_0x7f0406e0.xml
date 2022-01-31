@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e6b" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0230"
+<FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:layout_weight="1.0">
-        <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c053f" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2098" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:layout_marginBottom="15.0dip" android:maxLines="3" android:layout_centerInParent="true" />
-    </RelativeLayout>
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0661" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:src="@drawable/skin_icon_arrow_right_normal" />
-</LinearLayout>
+    <com.tencent.mobileqq.extendfriend.pulltorefresh.extras.PullToRefreshRecyclerView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a206d" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:layout_width="fill_parent" android:layout_height="fill_parent" ptf:ptfHeaderBackground="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" ptf:ptfHeaderTextColor="#ffffffff" ptf:ptfHeaderSubTextColor="#ffffffff" ptf:ptfMode="APKTOOL_DUPLICATE_id_0x7f0a02da" ptf:ptfDrawableStart="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02045b" ptf:ptfAnimationStyle="APKTOOL_DUPLICATE_id_0x7f0a02e0" xmlns:ptf="http://schemas.android.com/apk/res-auto" />
+</FrameLayout>

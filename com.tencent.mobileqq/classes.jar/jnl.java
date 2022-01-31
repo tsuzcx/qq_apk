@@ -1,18 +1,44 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.LBSInfo;
+import android.os.Bundle;
+import android.os.RemoteCallbackList;
+import android.os.RemoteException;
+import com.tencent.av.service.IQQServiceCallback;
+import com.tencent.av.service.QQServiceForAV;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import com.tencent.qphone.base.util.QLog;
 
-public final class jnl
-  implements Parcelable.Creator
+class jnl
+  extends ProtoUtils.TroopProtocolObserver
 {
-  public LBSInfo a(Parcel paramParcel)
-  {
-    return new LBSInfo(paramParcel);
-  }
+  jnl(jnk paramjnk, String paramString, int paramInt) {}
   
-  public LBSInfo[] a(int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle arg3)
   {
-    return new LBSInfo[paramInt];
+    if (QLog.isColorLevel()) {
+      QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "sendNearbyVideoChatPbReq, cmd " + this.jdField_a_of_type_JavaLangString + "==>onResult, errorCode:" + paramInt);
+    }
+    synchronized (this.jdField_a_of_type_Jnk.a.a)
+    {
+      int j = this.jdField_a_of_type_Jnk.a.a.beginBroadcast();
+      int i = 0;
+      for (;;)
+      {
+        if (i < j) {
+          try
+          {
+            ((IQQServiceCallback)this.jdField_a_of_type_Jnk.a.a.getBroadcastItem(i)).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramInt, paramArrayOfByte);
+            i += 1;
+          }
+          catch (RemoteException paramArrayOfByte)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("QQServiceForAVQ.nearby.video_chat", 2, "callBack RemoteException", paramArrayOfByte);
+            }
+          }
+        }
+      }
+      this.jdField_a_of_type_Jnk.a.a.finishBroadcast();
+      return;
+    }
   }
 }
 

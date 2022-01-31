@@ -1,28 +1,14 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.preload.AsyncFileDownloader;
-import com.tencent.biz.qqstory.base.preload.AsyncFileDownloader.InnerDownloader;
-import com.tencent.biz.qqstory.base.preload.DownloadTask;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
-import java.util.Map;
+import android.widget.TextView;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
-public class myn
-  extends Job
+class myn
+  implements Runnable
 {
-  public myn(AsyncFileDownloader paramAsyncFileDownloader, DownloadTask paramDownloadTask) {}
+  myn(mye parammye) {}
   
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerDownloader.a(this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask);
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader.jdField_a_of_type_JavaUtilMap.put(this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask);
-    return null;
-  }
-  
-  public int getJobType()
-  {
-    return 16;
+    this.a.a.a.setText("" + PublicAccountImageCollectionMainActivity.c(this.a.a));
   }
 }
 

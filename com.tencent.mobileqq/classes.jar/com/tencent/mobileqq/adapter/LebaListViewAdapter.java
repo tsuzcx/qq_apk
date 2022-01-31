@@ -50,8 +50,8 @@ import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x791.oidb_0x791.RedDotInfo;
-import yeh;
-import yej;
+import yho;
+import yhq;
 
 public class LebaListViewAdapter
   extends BaseAdapter
@@ -193,7 +193,7 @@ public class LebaListViewAdapter
     }
     paramString1 = ((RedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(35)).a(paramString1);
     paramRedTouch.a(paramString1);
-    ThreadManager.post(new yej(this, paramString1), 2, null, true);
+    ThreadManager.post(new yhq(this, paramString1), 2, null, true);
   }
   
   private void b(RedTouch paramRedTouch)
@@ -332,20 +332,20 @@ public class LebaListViewAdapter
       {
         paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(this.jdField_a_of_type_Int, null);
         paramViewGroup = new LebaListViewAdapter.CornerListItemHolder(this);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131364306));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364310));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364307));
-        paramViewGroup.b = ((ImageView)paramView.findViewById(2131363776));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131364330));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364334));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364331));
+        paramViewGroup.b = ((ImageView)paramView.findViewById(2131363799));
         paramView = new RedTouch(this.jdField_a_of_type_AndroidContentContext, paramView).c(36).a();
         paramView.setTag(paramViewGroup);
         if ((localLebaViewItem != null) && (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo != null)) {
           paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strResName);
         }
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494212));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131494219));
         if (Build.VERSION.SDK_INT < 16) {
           break label663;
         }
-        paramViewGroup.b.setBackground(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845783));
+        paramViewGroup.b.setBackground(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845911));
         if ((localLebaViewItem == null) || (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo == null)) {
           break label731;
         }
@@ -376,7 +376,7 @@ public class LebaListViewAdapter
         switch (localLebaViewItem.jdField_a_of_type_Int)
         {
         default: 
-          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838625);
+          paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838629);
           label466:
           if ((localLebaViewItem != null) && (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo != null)) {
             a((RedTouch)paramView, localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.uiResId + "", localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.strPkgName);
@@ -419,25 +419,25 @@ public class LebaListViewAdapter
       paramViewGroup = (LebaListViewAdapter.CornerListItemHolder)paramView.getTag();
       break label140;
       label663:
-      paramViewGroup.b.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845783));
+      paramViewGroup.b.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845911));
       break label216;
       label686:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842572);
-      ThreadManager.post(new yeh(this, localLebaViewItem, (String)localObject, paramViewGroup), 5, null, true);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842664);
+      ThreadManager.post(new yho(this, localLebaViewItem, (String)localObject, paramViewGroup), 5, null, true);
       break label416;
       label718:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842572);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842664);
       break label416;
       label731:
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842572);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842664);
       break label416;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838625);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838629);
       break label466;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838632);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838636);
       break label466;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838630);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838634);
       break label466;
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838630);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130838634);
       break label466;
       if (i == 1)
       {

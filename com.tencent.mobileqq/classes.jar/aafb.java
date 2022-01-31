@@ -1,21 +1,18 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
-import com.tencent.mobileqq.arcard.ARCardRender;
+import com.tencent.mobileqq.ar.arengine.ARCamera;
 
-public class aafb
+class aafb
   implements Runnable
 {
-  public aafb(ARCardRender paramARCardRender, ARBaseRender paramARBaseRender) {}
+  aafb(aaez paramaaez) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != null) && (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender != this.jdField_a_of_type_ComTencentMobileqqArcardARCardRender.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender)) {
-      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.d();
-    }
+    ARCamera.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aafb
  * JD-Core Version:    0.7.0.1
  */

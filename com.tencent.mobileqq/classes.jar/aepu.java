@@ -1,36 +1,16 @@
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.data.NearbyPeopleCard;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.util.NearbyProfileUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.biz.troopgift.TroopGiftAioPanelData;
+import com.tencent.biz.troopgift.TroopGiftPanel;
+import com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog;
 
-public class aepu
+class aepu
   implements Runnable
 {
-  public aepu(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  aepu(aept paramaept, TroopGiftAioPanelData paramTroopGiftAioPanelData) {}
   
   public void run()
   {
-    if ((!NetworkUtil.d(BaseApplication.getContext())) && (this.a.k)) {}
-    byte[] arrayOfByte;
-    long l;
-    do
-    {
-      do
-      {
-        return;
-      } while (NearbyPeopleProfileActivity.a(this.a) == null);
-      arrayOfByte = NearbyPeopleProfileActivity.a(this.a).vSeed;
-      l = NearbyPeopleProfileActivity.a(this.a).feedPreviewTime;
-      if (this.a.jdField_a_of_type_Long > 0L)
-      {
-        NearbyProfileUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, this.a.app, this.a.jdField_a_of_type_Long, null, this.a.d, arrayOfByte, l, true, this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long);
-        return;
-      }
-    } while (StringUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString));
-    NearbyProfileUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, this.a.app, 0L, this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString, this.a.d, arrayOfByte, l, true, this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Long);
+    NearbyGiftPanelDialog.a(this.jdField_a_of_type_Aept.a.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog).setGiftData(this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftAioPanelData, true);
+    NearbyGiftPanelDialog.a(this.jdField_a_of_type_Aept.a.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog).b(this.jdField_a_of_type_Aept.a.jdField_a_of_type_Int);
   }
 }
 

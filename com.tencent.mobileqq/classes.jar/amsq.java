@@ -1,30 +1,23 @@
-import android.app.Activity;
-import dov.com.qq.im.QIMCameraCaptureUnit;
-import dov.com.qq.im.QIMCameraUtil;
-import dov.com.qq.im.setting.IQIMCameraContainer;
+import android.widget.Button;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.utils.DisplayUtils;
+import cooperation.qzone.QzoneGiftFullScreenViewController;
 
 public class amsq
   implements Runnable
 {
-  public amsq(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
+  public amsq(QzoneGiftFullScreenViewController paramQzoneGiftFullScreenViewController) {}
   
   public void run()
   {
-    try
-    {
-      QIMCameraCaptureUnit.a(this.a, QIMCameraUtil.a(this.a.a.a(), true));
-      this.a.a.a().runOnUiThread(new amsr(this));
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+    localLayoutParams.rightMargin = ((int)DisplayUtils.a(QzoneGiftFullScreenViewController.a(this.a), 10.0F));
+    this.a.a.setLayoutParams(localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amsq
  * JD-Core Version:    0.7.0.1
  */

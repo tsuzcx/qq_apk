@@ -1,17 +1,19 @@
-import com.tencent.av.ui.AVActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.os.Handler;
+import com.tencent.av.ui.BaseCallbackUI;
+import com.tencent.av.ui.CallbackWaitingActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class jqv
   implements Runnable
 {
-  public jqv(AVActivity paramAVActivity) {}
+  public jqv(CallbackWaitingActivity paramCallbackWaitingActivity) {}
   
   public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d(this.a.b, 4, "onWindowFocusChangedRunnable, nfonWindowFocus[" + this.a.j + "->true]");
-    }
-    this.a.j = true;
+    this.a.a.a.removeCallbacksAndMessages(null);
+    DialogUtil.b(this.a, 230, this.a.getResources().getString(2131429577), this.a.getResources().getString(2131429578), 2131428676, 2131428676, null, new jqw(this)).show();
   }
 }
 

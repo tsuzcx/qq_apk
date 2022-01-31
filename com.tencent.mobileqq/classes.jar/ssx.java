@@ -1,16 +1,32 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.activity.JoinDiscussionActivity;
-import com.tencent.mobileqq.app.DiscussionHandler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.campuscircle.CampusCircleHelper;
+import com.tencent.mobileqq.data.Card;
 
-class ssx
-  implements Runnable
+public class ssx
+  implements sto
 {
-  ssx(ssw paramssw) {}
+  public ssx(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    Bitmap localBitmap = this.a.a.a.a(this.a.a.f);
-    this.a.a.runOnUiThread(new ssy(this, localBitmap));
+    switch (paramInt)
+    {
+    }
+    String str;
+    do
+    {
+      return;
+      str = FriendProfileMoreInfoActivity.b(this.a).getText().toString();
+    } while ((paramString == null) || (paramString.equals(str)));
+    this.a.k = true;
+    this.a.e(paramString);
+    if (CampusCircleHelper.b(this.a.a.lCampusSchoolID) == 4)
+    {
+      this.a.a("0X80081EA", 0);
+      return;
+    }
+    this.a.a("0X80081EC", 1);
   }
 }
 

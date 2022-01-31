@@ -1,19 +1,37 @@
-import com.tencent.mobileqq.activity.TextPreviewActivity;
-import com.tencent.mobileqq.business.sougou.WordMatchManager.MatcherCallback;
-import com.tencent.mobileqq.business.sougou.WordMatchManager.WordMatcher;
+import com.tencent.mobileqq.activity.SettingUncommUsedContactsActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class tsj
-  implements WordMatchManager.MatcherCallback
+  extends FriendListObserver
 {
-  public tsj(TextPreviewActivity paramTextPreviewActivity) {}
+  public tsj(SettingUncommUsedContactsActivity paramSettingUncommUsedContactsActivity) {}
   
-  public void a(WordMatchManager.WordMatcher paramWordMatcher)
+  protected void onGetBothDongtaiPermissions(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$WordMatcher = paramWordMatcher;
-    if (this.a.h != 0) {
-      paramWordMatcher.a(this.a.h);
+    if (paramBoolean1)
+    {
+      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
+      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean3);
     }
-    this.a.h = paramWordMatcher.a(1, this.a.c, 3, this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$MatchCallback);
+  }
+  
+  protected void onSetNotAllowedSeeMyDongtai(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1)
+    {
+      this.a.a(2131436066, 1);
+      SettingUncommUsedContactsActivity.a(this.a, this.a.a.a(), paramBoolean2);
+    }
+  }
+  
+  protected void onSetShieldHisDongtai(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!paramBoolean1)
+    {
+      this.a.a(2131436066, 1);
+      SettingUncommUsedContactsActivity.a(this.a, this.a.b.a(), paramBoolean2);
+    }
   }
 }
 

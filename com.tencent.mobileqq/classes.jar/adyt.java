@@ -1,39 +1,34 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.nearby.NearbyIconDecoder;
-import com.tencent.mobileqq.util.IIconDecoder.IIconListener;
-import java.util.Iterator;
-import java.util.List;
+import android.text.TextUtils;
+import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController;
+import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController.VideoPlayParam;
+import com.tencent.mobileqq.leba.LebaFeedsVideoPlayer;
+import com.tencent.qphone.base.util.QLog;
 
 public class adyt
   implements Runnable
 {
-  public adyt(NearbyIconDecoder paramNearbyIconDecoder, String paramString, Bitmap paramBitmap) {}
+  public adyt(LebaFeedsVideoPlayController paramLebaFeedsVideoPlayController, long paramLong) {}
   
   public void run()
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.i("LebaFeedsVideoPlayController", 2, "playVideo in subThread, param=" + LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController) + ", startPos=" + this.jdField_a_of_type_Long);
+    }
+    if (LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController) != null)
     {
-      String[] arrayOfString = this.jdField_a_of_type_JavaLangString.split("_s_");
-      if ((arrayOfString.length == 3) && (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyIconDecoder.a != null))
-      {
-        int i = Integer.parseInt(arrayOfString[0]);
-        int j = Integer.parseInt(arrayOfString[2]);
-        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyIconDecoder.a.iterator();
-        while (localIterator.hasNext()) {
-          ((IIconDecoder.IIconListener)localIterator.next()).a(i, arrayOfString[1], j, this.jdField_a_of_type_AndroidGraphicsBitmap);
-        }
+      if (!TextUtils.isEmpty(LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).jdField_b_of_type_JavaLangString)) {
+        LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).a(LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).jdField_c_of_type_Long, LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).jdField_b_of_type_Long);
       }
+    }
+    else {
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).b(LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).jdField_c_of_type_JavaLangString, this.jdField_a_of_type_Long, LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).jdField_c_of_type_Long, LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).jdField_b_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adyt
  * JD-Core Version:    0.7.0.1
  */

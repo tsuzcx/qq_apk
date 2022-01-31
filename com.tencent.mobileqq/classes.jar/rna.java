@@ -1,39 +1,29 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.activity.aio.ChatItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ItemBuilderFactory;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.msgforward.AIOShareActionSheet;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.List;
+import com.tencent.mobileqq.activity.AssociatedAccountManageActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.proxy.FTSDBManager;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.managers.MessageRecordManagerImpl;
+import com.tencent.mobileqq.utils.DBUtils;
 
 public class rna
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public rna(BaseChatPie paramBaseChatPie, boolean paramBoolean, List paramList) {}
+  public rna(AssociatedAccountManageActivity paramAssociatedAccountManageActivity, boolean paramBoolean, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a(this.jdField_a_of_type_JavaUtilList, 2);
-    }
-    for (;;)
+    if (this.jdField_a_of_type_Boolean)
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", AIOShareActionSheet.b, AIOShareActionSheet.b, 1, 0, "", "", "", "");
-      return;
-      if (this.jdField_a_of_type_JavaUtilList.size() == 1)
+      ProxyManager localProxyManager = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.app.a();
+      if (localProxyManager != null)
       {
-        paramDialogInterface = (ChatMessage)this.jdField_a_of_type_JavaUtilList.get(0);
-        this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a.a(paramDialogInterface, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1).a(2131363499, this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_AndroidContentContext, paramDialogInterface);
-      }
-      else
-      {
-        BaseChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie, this.jdField_a_of_type_JavaUtilList);
+        localProxyManager.d();
+        FTSDBManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.app, this.jdField_a_of_type_JavaLangString, true);
+        new MessageRecordManagerImpl().a(this.jdField_a_of_type_JavaLangString);
+        DBUtils.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.app.getApp(), this.jdField_a_of_type_JavaLangString, false);
       }
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountManageActivity.runOnUiThread(new rnb(this));
   }
 }
 

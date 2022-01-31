@@ -1,40 +1,37 @@
-import com.tencent.mobileqq.app.HotChatHandler;
-import com.tencent.mobileqq.data.HotChatInfo;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomAVController;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.ConfigHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper.NewApkInfo;
+import com.tencent.mobileqq.utils.SPSettings;
 
 public class zbr
   implements Runnable
 {
-  public zbr(HotChatHandler paramHotChatHandler, boolean paramBoolean, List paramList) {}
+  public zbr(ConfigHandler paramConfigHandler) {}
   
   public void run()
   {
-    if ((!GameRoomAVController.a().jdField_a_of_type_Boolean) && (!GameRoomAVController.a().c))
+    Object localObject = UpgradeController.a().a();
+    if ((localObject == null) || (((UpgradeDetailWrapper)localObject).a == null)) {
+      return;
+    }
+    boolean bool = SPSettings.b();
+    int i = SPSettings.b();
+    int j = ((UpgradeDetailWrapper)localObject).a.a;
+    if ((bool) && (j == i)) {}
+    for (i = 1;; i = 0)
     {
-      if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-        break label110;
+      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      if (i != 0) {
+        break;
       }
-      localHotChatInfo = (HotChatInfo)this.jdField_a_of_type_JavaUtilList.get(0);
+      UpgradeController.a().a((QQAppInterface)localObject, true);
+      SPSettings.b(j);
+      SPSettings.b(true);
+      return;
     }
-    label110:
-    while (GameRoomAVController.a().a() != 1) {
-      try
-      {
-        long l = Long.parseLong(localHotChatInfo.troopUin);
-        GameRoomAVController.a().a(1, null, l, localHotChatInfo.name);
-        return;
-      }
-      catch (Exception localException)
-      {
-        HotChatInfo localHotChatInfo;
-        while (!QLog.isColorLevel()) {}
-        QLog.e("HotChatHandler", 2, "handleGetMyHostChatListRespError hc.troopUin: " + localHotChatInfo.troopUin);
-        return;
-      }
-    }
-    GameRoomAVController.a().d();
   }
 }
 

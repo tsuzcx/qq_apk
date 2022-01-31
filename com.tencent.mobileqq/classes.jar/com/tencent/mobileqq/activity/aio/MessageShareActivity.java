@@ -23,7 +23,7 @@ import com.tencent.mobileqq.structmsg.StructMsgForImageShare;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MqqWeakReferenceHandler;
 import mqq.os.MqqHandler;
-import uix;
+import ulx;
 
 public class MessageShareActivity
   extends BaseActivity
@@ -108,7 +108,7 @@ public class MessageShareActivity
           if (!(localObject1 instanceof StructMsgForImageShare)) {
             break label525;
           }
-          ThreadManager.post(new uix(this, (AbsStructMsg)localObject1, str, j), 8, null, false);
+          ThreadManager.post(new ulx(this, (AbsStructMsg)localObject1, str, j), 8, null, false);
           label458:
           paramMessage.putExtra("stuctmsg_bytes", ((AbsStructMsg)localObject1).getBytes());
           if (this.jdField_a_of_type_AndroidOsBundle.getBoolean("share_from_aio", false)) {
@@ -131,8 +131,8 @@ public class MessageShareActivity
           paramMessage = AIOUtils.a(paramMessage, null);
           paramMessage.putExtra("share_from_aio", true);
         }
-        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363381)).setText("处理失败");
-        this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363380).setVisibility(4);
+        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363399)).setText("处理失败");
+        this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363398).setVisibility(4);
         this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(3, 800L);
         continue;
         finish();
@@ -144,10 +144,10 @@ public class MessageShareActivity
   {
     super.onCreate(paramBundle);
     super.setContentView(new View(this));
-    this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131624515);
+    this.jdField_a_of_type_AndroidAppDialog = new Dialog(this, 2131624516);
     this.jdField_a_of_type_AndroidAppDialog.setCancelable(false);
-    this.jdField_a_of_type_AndroidAppDialog.setContentView(2130969181);
-    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363381)).setText(2131436128);
+    this.jdField_a_of_type_AndroidAppDialog.setContentView(2130969180);
+    ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363399)).setText(2131436145);
     this.jdField_a_of_type_AndroidOsBundle = getIntent().getExtras();
     if (this.jdField_a_of_type_AndroidOsBundle != null) {
       try

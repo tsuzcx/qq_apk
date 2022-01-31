@@ -7,7 +7,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
-import lwp;
+import lwy;
 import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
 import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
 import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.ReqBody;
@@ -39,7 +39,7 @@ public class ReadInJoySkinHandler
     if (paramGuideData2 != null) {
       paramGuideData1.msg_current_guide_info.set(paramGuideData2.toBody(), true);
     }
-    ProtoUtils.a(this.b, new lwp(this), paramGuideData1.toByteArray(), "OidbSvc.0x5bd_1", 1469, 1, new Bundle(), 6000L);
+    ProtoUtils.a(this.b, new lwy(this), paramGuideData1.toByteArray(), "OidbSvc.0x5bd_1", 1469, 1, new Bundle(), 6000L);
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}

@@ -1,36 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.webview.webso.WebSoService;
-import com.tencent.mobileqq.webview.webso.WebSoService.CallBack;
-import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NewUpgradeDialog;
+import com.tencent.open.appcircle.st.AppCircleReportManager;
+import com.tencent.open.appcircle.st.STUtils;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadManager;
 
 public class akdc
-  implements WebSoService.CallBack
+  implements View.OnClickListener
 {
-  public akdc(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState, long paramLong) {}
+  public akdc(NewUpgradeDialog paramNewUpgradeDialog, DialogInterface.OnClickListener paramOnClickListener, boolean paramBoolean) {}
   
-  public void a(String paramString)
+  public void onClick(View paramView)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Int = 10003;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_b_of_type_JavaLangString = paramString;
-    if ((!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e)) && (this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1)) {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.g = true;
+    LogUtility.b("NewUpgradeDialog", STUtils.a(10010, NewUpgradeDialog.a(), 2, 200));
+    AppCircleReportManager.a().a(17, STUtils.a(10010, NewUpgradeDialog.a(), 2, 200));
+    if (NewUpgradeDialog.a() == 2) {
+      ReportController.b(null, "dc00898", "", "", "0X8008F80", "0X8008F80", 0, 0, "", "", "", "");
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.f = false;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter$HybridWebReportInfo.d = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService.a(this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState);
+      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog, 0);
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        DownloadManager.a().b(NewUpgradeDialog.a(this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog));
+        this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog.dismiss();
+      }
+      NewUpgradeDialog.a(this.jdField_a_of_type_ComTencentMobileqqUtilsNewUpgradeDialog, true);
       return;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.jdField_a_of_type_Boolean = true;
+      ReportController.b(null, "dc00898", "", "", "0X8008F83", "0X8008F83", 0, 0, "", "", "", "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akdc
  * JD-Core Version:    0.7.0.1
  */

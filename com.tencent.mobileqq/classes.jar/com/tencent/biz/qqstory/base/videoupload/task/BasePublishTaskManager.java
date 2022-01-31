@@ -8,7 +8,7 @@ import com.tribe.async.async.Bosses;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import mzs;
+import nbd;
 
 public abstract class BasePublishTaskManager
   extends BaseManger
@@ -212,7 +212,7 @@ public abstract class BasePublishTaskManager
   
   public void d()
   {
-    Bosses.get().postLightWeightJob(new mzs(this), 10);
+    Bosses.get().postLightWeightJob(new nbd(this), 10);
   }
   
   public void e()

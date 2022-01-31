@@ -6,8 +6,8 @@ import com.tencent.mobileqq.Doraemon.APIParam;
 import com.tencent.mobileqq.Doraemon.DoraemonAPIModule;
 import com.tencent.mobileqq.Doraemon.util.DoraemonUtil;
 import com.tencent.mobileqq.app.soso.SosoInterface;
-import rcb;
-import rcc;
+import res;
+import ret;
 
 public class SensorModule
   extends DoraemonAPIModule
@@ -19,18 +19,18 @@ public class SensorModule
     default: 
       return false;
     case 3: 
-      SosoInterface.a(new rcc(paramAPICallback, DoraemonUtil.a(paramAPIParam, "allowCacheTime", Integer.valueOf(10)).intValue() * 1000L));
+      SosoInterface.a(new ret(paramAPICallback, DoraemonUtil.a(paramAPIParam, "allowCacheTime", Integer.valueOf(10)).intValue() * 1000L));
     }
     for (;;)
     {
       return true;
-      SosoInterface.a(new rcb(paramAPICallback, DoraemonUtil.a(paramAPIParam, "allowCacheTime", Integer.valueOf(10)).intValue() * 1000L));
+      SosoInterface.a(new res(paramAPICallback, DoraemonUtil.a(paramAPIParam, "allowCacheTime", Integer.valueOf(10)).intValue() * 1000L));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.SensorModule
  * JD-Core Version:    0.7.0.1
  */

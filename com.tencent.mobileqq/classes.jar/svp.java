@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.activity.LebaListMgrActivity;
-import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.JoinDiscussionActivity;
 
-class svp
-  implements Runnable
+public class svp
+  implements View.OnClickListener
 {
-  svp(svo paramsvo, List paramList) {}
+  public svp(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (LebaListMgrActivity.a(this.jdField_a_of_type_Svo.a) != null) {
-      LebaListMgrActivity.a(this.jdField_a_of_type_Svo.a).a(this.jdField_a_of_type_JavaUtilList);
-    }
+    this.a.a();
   }
 }
 

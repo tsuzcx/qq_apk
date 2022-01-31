@@ -18,8 +18,8 @@ import com.tencent.mobileqq.qcall.PstnCardInfo;
 import com.tencent.mobileqq.qcall.PstnManager;
 import com.tencent.mobileqq.qcall.PstnObserver;
 import com.tencent.qphone.base.util.QLog;
-import jol;
-import jom;
+import jnw;
+import jnx;
 import mqq.app.MobileQQ;
 
 public class PstnSmallScreenService
@@ -28,14 +28,14 @@ public class PstnSmallScreenService
 {
   PstnSessionInfo jdField_a_of_type_ComTencentAvAppPstnSessionInfo;
   public QQAppInterface a;
-  PstnObserver jdField_a_of_type_ComTencentMobileqqQcallPstnObserver = new jol(this);
+  PstnObserver jdField_a_of_type_ComTencentMobileqqQcallPstnObserver = new jnw(this);
   public Runnable c;
   boolean g;
   
   public PstnSmallScreenService()
   {
     this.jdField_g_of_type_Boolean = false;
-    this.jdField_c_of_type_JavaLangRunnable = new jom(this);
+    this.jdField_c_of_type_JavaLangRunnable = new jnx(this);
   }
   
   public SmallScreenRelativeLayout a()
@@ -191,7 +191,7 @@ public class PstnSmallScreenService
           break label377;
         }
         this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setSize(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setBackgroundResource(2130840317);
+        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setBackgroundResource(2130840323);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
         localLayoutParams1.leftMargin = this.jdField_g_of_type_Int;
         localLayoutParams1.rightMargin = this.h;
@@ -234,7 +234,7 @@ public class PstnSmallScreenService
         i = 0;
         break label167;
         this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setSize(this.jdField_e_of_type_Int, this.jdField_f_of_type_Int);
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setBackgroundResource(2130840319);
+        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenRelativeLayout.setBackgroundResource(2130840325);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
         localLayoutParams1.leftMargin = this.i;
         localLayoutParams1.rightMargin = this.j;
@@ -279,7 +279,7 @@ public class PstnSmallScreenService
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)this.app);
     int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().jdField_b_of_type_Int;
     if (i == 0) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131429558);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131429564);
     }
     for (;;)
     {
@@ -288,7 +288,7 @@ public class PstnSmallScreenService
       }
       return;
       if (i == 2) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131429559);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131429565);
       }
     }
   }
@@ -307,9 +307,9 @@ public class PstnSmallScreenService
     String str1;
     if ((localObject1 != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().jdField_b_of_type_Int == -1) && (((PstnCardInfo)localObject1).pstn_c2c_call_time == 0) && (((PstnManager)localObject4).b() == 1) && (((PstnCardInfo)localObject1).pstn_c2c_try_status == 0) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().jdField_g_of_type_Boolean))
     {
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131438384);
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131438385);
-      localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131438386);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131438402);
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131438403);
+      localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131438404);
       str2 = ((PstnManager)localObject4).a("key_pstn_c2c_try_over_recharge_title");
       str1 = ((PstnManager)localObject4).a("key_pstn_c2c_try_over_recharge_content");
       localObject4 = ((PstnManager)localObject4).a("key_pstn_c2c_try_over_recharge_confirm_text");

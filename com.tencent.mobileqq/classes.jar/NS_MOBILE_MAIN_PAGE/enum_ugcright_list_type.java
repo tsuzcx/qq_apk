@@ -10,7 +10,7 @@ public final class enum_ugcright_list_type
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aac.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.enum_ugcright_list_type
  * JD-Core Version:    0.7.0.1
  */

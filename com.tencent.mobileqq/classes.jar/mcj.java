@@ -1,17 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsIPCClient;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsIPCClient.Observer;
+import com.tencent.mobileqq.qipc.QIPCModule;
+import eipc.EIPCResult;
+import java.util.Iterator;
+import java.util.List;
 
 public class mcj
-  extends FriendListObserver
+  extends QIPCModule
 {
-  public mcj(VideoFeedsPlayActivity paramVideoFeedsPlayActivity, String paramString) {}
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public mcj(VideoFeedsIPCClient paramVideoFeedsIPCClient, String paramString)
   {
-    if (paramBoolean) {
-      VideoFeedsPlayActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayActivity, ContactUtils.b(VideoFeedsPlayActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayActivity), this.jdField_a_of_type_JavaLangString, true));
+    super(paramString);
+  }
+  
+  public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
+  {
+    synchronized (VideoFeedsIPCClient.a(this.a))
+    {
+      Iterator localIterator = VideoFeedsIPCClient.a(this.a).iterator();
+      if (localIterator.hasNext()) {
+        ((VideoFeedsIPCClient.Observer)localIterator.next()).a(paramString, paramBundle);
+      }
     }
+    return null;
   }
 }
 

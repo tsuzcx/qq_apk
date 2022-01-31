@@ -1,21 +1,15 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.config.ResourcePluginListener;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.JDHongbaoActivity;
 
 public class svl
-  extends ResourcePluginListener
+  implements Runnable
 {
-  public svl(Leba paramLeba) {}
+  public svl(JDHongbaoActivity paramJDHongbaoActivity) {}
   
-  public void a(byte paramByte)
+  public void run()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("Q.lebatab.leba", 4, "ResourcePluginListener listener notify = " + paramByte);
-    }
-    if (paramByte != -1) {
-      this.a.a.sendEmptyMessage(11340002);
-    }
+    JDHongbaoActivity.a(this.a).setVisibility(0);
+    JDHongbaoActivity.a(this.a).startAnimation(JDHongbaoActivity.a(this.a));
   }
 }
 

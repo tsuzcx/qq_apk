@@ -1,13 +1,17 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.playvideo.MyVideoVisibleTroopPageView.TroopListAdapter;
+import com.tencent.biz.qqstory.network.BatchHandlerListPuller;
+import com.tencent.biz.qqstory.network.BatchHandlerListPuller.IPullResultCallback;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
 
 public class nmf
+  implements BatchHandlerListPuller.IPullResultCallback
 {
-  public ImageView a;
-  public TextView a;
+  public nmf(BatchGetVideoInfo paramBatchGetVideoInfo, BatchHandlerListPuller paramBatchHandlerListPuller) {}
   
-  public nmf(MyVideoVisibleTroopPageView.TroopListAdapter paramTroopListAdapter) {}
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryNetworkBatchHandlerListPuller.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.c();
+  }
 }
 
 

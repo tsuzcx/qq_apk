@@ -1,16 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class tjx
-  implements View.OnClickListener
+class tjx
+  implements DialogInterface.OnClickListener
 {
-  public tjx(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
+  tjx(tjw paramtjw) {}
   
-  public void onClick(View paramView)
-  {
-    this.a.d();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

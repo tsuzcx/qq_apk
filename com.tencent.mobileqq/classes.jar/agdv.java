@@ -1,56 +1,24 @@
-import android.graphics.PointF;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.profile.view.BreatheEffectView.BreatheListener;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
-import com.tencent.mobileqq.widget.RatioLayout.LayoutParams;
+import com.tencent.mobileqq.olympic.ShuayishuaConfig;
+import java.util.Comparator;
 
-public class agdv
-  implements BreatheEffectView.BreatheListener
+public final class agdv
+  implements Comparator
 {
-  public agdv(ProfileTagView paramProfileTagView) {}
-  
-  public void a()
+  public int a(ShuayishuaConfig paramShuayishuaConfig1, ShuayishuaConfig paramShuayishuaConfig2)
   {
-    Object localObject1;
-    if (this.a.jdField_b_of_type_AndroidGraphicsPointF != null)
-    {
-      localObject1 = this.a.jdField_a_of_type_ArrayOfAndroidViewView;
-      int j = localObject1.length;
-      int i = 0;
-      while (i < j)
-      {
-        Object localObject2 = localObject1[i];
-        if ((localObject2 != null) && (localObject2.getVisibility() != 8))
-        {
-          RatioLayout.LayoutParams localLayoutParams = (RatioLayout.LayoutParams)localObject2.getLayoutParams();
-          if (localLayoutParams != null)
-          {
-            localLayoutParams.a = this.a.jdField_b_of_type_AndroidGraphicsPointF.x;
-            localLayoutParams.b = this.a.jdField_b_of_type_AndroidGraphicsPointF.y;
-            localObject2.setLayoutParams(localLayoutParams);
-          }
-        }
-        i += 1;
-      }
-      this.a.e();
+    long l = paramShuayishuaConfig1.realBegin - paramShuayishuaConfig2.realBegin;
+    if (l > 0L) {
+      return 1;
     }
-    if (Build.VERSION.SDK_INT >= 11)
-    {
-      localObject1 = (FrameLayout)this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(16908290);
-      if (localObject1 != null)
-      {
-        this.a.jdField_b_of_type_AndroidGraphicsDrawableDrawable = ((FrameLayout)localObject1).getBackground();
-        ((FrameLayout)localObject1).setBackgroundDrawable(null);
-      }
+    if (l < 0L) {
+      return -1;
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agdv
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,7 @@
-public final class ajse
-  implements ajsi
-{
-  public Float a(float paramFloat, Number paramNumber1, Number paramNumber2)
-  {
-    float f = paramNumber1.floatValue();
-    return Float.valueOf(f + (paramNumber2.floatValue() - f) * paramFloat);
-  }
-}
+public class ajse {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajse
  * JD-Core Version:    0.7.0.1
  */

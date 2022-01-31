@@ -1,17 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class lrl
   implements Runnable
 {
-  public lrl(SubscriptionInfoModule paramSubscriptionInfoModule) {}
+  public lrl(InterestLabelInfoModule paramInterestLabelInfoModule, List paramList) {}
   
   public void run()
   {
-    TroopBarAssistantManager localTroopBarAssistantManager = TroopBarAssistantManager.a();
-    SubscriptionInfoModule.a(this.a, localTroopBarAssistantManager.b((QQAppInterface)this.a.a));
-    this.a.a(SubscriptionInfoModule.a(this.a));
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (!this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        InterestLabelInfo localInterestLabelInfo = (InterestLabelInfo)localIterator.next();
+        InterestLabelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelInterestLabelInfoModule).put(Integer.valueOf(localInterestLabelInfo.mInterestLabelID), localInterestLabelInfo);
+      }
+    }
   }
 }
 

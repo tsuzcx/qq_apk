@@ -1,18 +1,21 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter.OnItemClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
 
 public class oam
-  implements View.OnClickListener
+  extends ChildViewClickListener
 {
-  public oam(TagAdapter paramTagAdapter) {}
+  public oam(FeedSegment paramFeedSegment) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
   {
-    if (TagAdapter.a(this.a) != null) {
-      TagAdapter.a(this.a).h();
+    switch (paramView.getId())
+    {
+    default: 
+      return;
     }
+    this.a.l();
   }
 }
 

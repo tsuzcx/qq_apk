@@ -1,6 +1,5 @@
-import com.tencent.av.ui.redbag.AVRedBag;
+import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.qphone.base.util.QLog;
 
 class kei
   implements Runnable
@@ -9,22 +8,8 @@ class kei
   
   public void run()
   {
-    AVRedBagMgr localAVRedBagMgr = this.a.a.a();
-    if (localAVRedBagMgr == null) {
-      if (QLog.isDevelopLevel()) {
-        QLog.w(this.a.a.i, 1, "onAVActivityResume, AVRedBagMgr为空");
-      }
-    }
-    do
-    {
-      return;
-      if (localAVRedBagMgr.a()) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.w("AVRedBag", 1, "onAVActivityResume, 不是GameMode");
-    return;
-    localAVRedBagMgr.c("onAVActivityResume");
+    this.a.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr.b(false);
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(8002) });
   }
 }
 

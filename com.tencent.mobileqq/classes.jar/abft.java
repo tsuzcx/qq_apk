@@ -1,55 +1,32 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.mobileqq.qcall.QCallFacade;
-import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
-import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.armap.ipc.ArMapIPC;
+import com.tencent.mobileqq.armap.ipc.IPCConstants;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCResult;
+import eipc.EIPClientConnectListener;
 
 public class abft
-  implements ActionSheet.OnButtonClickListener
+  implements EIPClientConnectListener
 {
-  public abft(BusinessCardEditActivity paramBusinessCardEditActivity, String paramString, ActionSheet paramActionSheet) {}
+  public abft(ArMapIPC paramArMapIPC) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void connectFailed()
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.i("ArMapIPC", 2, "connectFailed ");
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-      return;
-      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
-      {
-        paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-        if ((!MobileIssueSettings.a) && (KapalaiAdapterUtil.a().a())) {
-          KapalaiAdapterUtil.a().a(paramView);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
-        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.app.a().b(this.jdField_a_of_type_JavaLangString);
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131435748, 1);
-        continue;
-        if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() > 0))
-        {
-          paramView = new Intent();
-          paramView.setAction("android.intent.action.SENDTO");
-          paramView.setData(Uri.parse("smsto:" + this.jdField_a_of_type_JavaLangString));
-          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.getActivity().startActivity(paramView);
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.a(2131435748, 1);
-        }
-      }
+    this.a.a = false;
+    this.a.a(IPCConstants.b, EIPCResult.createResult(-102, null));
+  }
+  
+  public void connectSuccess(EIPCConnection paramEIPCConnection)
+  {
+    paramEIPCConnection = paramEIPCConnection.procName;
+    if (QLog.isColorLevel()) {
+      QLog.i("ArMapIPC", 2, "connectSuccess " + paramEIPCConnection);
     }
+    this.a.a = true;
+    this.a.a(IPCConstants.b, EIPCResult.createResult(0, null));
   }
 }
 

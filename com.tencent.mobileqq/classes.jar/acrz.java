@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager.LocalTbsViewManagerCallback;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileOtherTabView;
+import java.util.LinkedHashMap;
 
 class acrz
   implements Runnable
 {
-  acrz(acrv paramacrv, Integer paramInteger) {}
+  acrz(acry paramacry, LinkedHashMap paramLinkedHashMap) {}
   
   public void run()
   {
-    switch (this.jdField_a_of_type_JavaLangInteger.intValue())
-    {
-    case 12: 
-    case 19: 
-    default: 
-      return;
-    case 5001: 
-      this.jdField_a_of_type_Acrv.a.a(true);
-      return;
-    }
-    this.jdField_a_of_type_Acrv.a.a(false);
+    this.jdField_a_of_type_Acry.a.jdField_a_of_type_JavaUtilLinkedHashMap.clear();
+    this.jdField_a_of_type_Acry.a.jdField_a_of_type_JavaUtilLinkedHashMap.putAll(this.jdField_a_of_type_JavaUtilLinkedHashMap);
+    this.jdField_a_of_type_Acry.a.i();
+    this.jdField_a_of_type_Acry.a.setSelect(0);
   }
 }
 

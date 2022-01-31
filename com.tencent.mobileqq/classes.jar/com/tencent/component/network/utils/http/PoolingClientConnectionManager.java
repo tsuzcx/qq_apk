@@ -14,10 +14,10 @@ import org.apache.http.conn.ManagedClientConnection;
 import org.apache.http.conn.routing.HttpRoute;
 import org.apache.http.conn.scheme.SchemeRegistry;
 import org.apache.http.impl.conn.DefaultClientConnectionOperator;
-import pjg;
-import pji;
-import pjj;
-import pjk;
+import pla;
+import plc;
+import pld;
+import ple;
 
 public class PoolingClientConnectionManager
   implements ConnPoolControl, ClientConnectionManager
@@ -25,7 +25,7 @@ public class PoolingClientConnectionManager
   private final DnsResolver jdField_a_of_type_ComTencentComponentNetworkUtilsHttpDnsResolver;
   private final ClientConnectionOperator jdField_a_of_type_OrgApacheHttpConnClientConnectionOperator;
   private final SchemeRegistry jdField_a_of_type_OrgApacheHttpConnSchemeSchemeRegistry;
-  private final pjg jdField_a_of_type_Pjg;
+  private final pla jdField_a_of_type_Pla;
   
   public PoolingClientConnectionManager()
   {
@@ -53,7 +53,7 @@ public class PoolingClientConnectionManager
     this.jdField_a_of_type_OrgApacheHttpConnSchemeSchemeRegistry = paramSchemeRegistry;
     this.jdField_a_of_type_ComTencentComponentNetworkUtilsHttpDnsResolver = paramDnsResolver;
     this.jdField_a_of_type_OrgApacheHttpConnClientConnectionOperator = a(paramSchemeRegistry);
-    this.jdField_a_of_type_Pjg = new pjg(null, 2, 20, paramLong, paramTimeUnit);
+    this.jdField_a_of_type_Pla = new pla(null, 2, 20, paramLong, paramTimeUnit);
   }
   
   protected ClientConnectionOperator a(SchemeRegistry paramSchemeRegistry)
@@ -65,7 +65,7 @@ public class PoolingClientConnectionManager
   {
     try
     {
-      paramTimeUnit = (pji)paramFuture.get(paramLong, paramTimeUnit);
+      paramTimeUnit = (plc)paramFuture.get(paramLong, paramTimeUnit);
       if ((paramTimeUnit == null) || (paramFuture.isCancelled())) {
         throw new InterruptedException();
       }
@@ -82,28 +82,28 @@ public class PoolingClientConnectionManager
     {
       throw new ConnectionPoolTimeoutException("Timeout waiting for connection from pool");
     }
-    paramFuture = new pjj(this, this.jdField_a_of_type_OrgApacheHttpConnClientConnectionOperator, paramTimeUnit);
+    paramFuture = new pld(this, this.jdField_a_of_type_OrgApacheHttpConnClientConnectionOperator, paramTimeUnit);
     return paramFuture;
   }
   
   public void a(int paramInt)
   {
-    this.jdField_a_of_type_Pjg.a(paramInt);
+    this.jdField_a_of_type_Pla.a(paramInt);
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_Pjg.b(paramInt);
+    this.jdField_a_of_type_Pla.b(paramInt);
   }
   
   public void closeExpiredConnections()
   {
-    this.jdField_a_of_type_Pjg.b();
+    this.jdField_a_of_type_Pla.b();
   }
   
   public void closeIdleConnections(long paramLong, TimeUnit paramTimeUnit)
   {
-    this.jdField_a_of_type_Pjg.a(paramLong, paramTimeUnit);
+    this.jdField_a_of_type_Pla.a(paramLong, paramTimeUnit);
   }
   
   protected void finalize()
@@ -137,10 +137,10 @@ public class PoolingClientConnectionManager
     //   13: invokespecial 50	java/lang/IllegalArgumentException:<init>	(Ljava/lang/String;)V
     //   16: athrow
     //   17: aload_1
-    //   18: checkcast 111	pjj
+    //   18: checkcast 111	pld
     //   21: astore_1
     //   22: aload_1
-    //   23: invokevirtual 142	pjj:a	()Lorg/apache/http/conn/ClientConnectionManager;
+    //   23: invokevirtual 142	pld:a	()Lorg/apache/http/conn/ClientConnectionManager;
     //   26: aload_0
     //   27: if_acmpeq +13 -> 40
     //   30: new 101	java/lang/IllegalStateException
@@ -151,7 +151,7 @@ public class PoolingClientConnectionManager
     //   40: aload_1
     //   41: monitorenter
     //   42: aload_1
-    //   43: invokevirtual 147	pjj:a	()Lpji;
+    //   43: invokevirtual 147	pld:a	()Lplc;
     //   46: astore 6
     //   48: aload 6
     //   50: ifnonnull +6 -> 56
@@ -159,30 +159,30 @@ public class PoolingClientConnectionManager
     //   54: monitorexit
     //   55: return
     //   56: aload_1
-    //   57: invokevirtual 150	pjj:isOpen	()Z
+    //   57: invokevirtual 150	pld:isOpen	()Z
     //   60: ifeq +18 -> 78
     //   63: aload_1
-    //   64: invokevirtual 153	pjj:isMarkedReusable	()Z
+    //   64: invokevirtual 153	pld:isMarkedReusable	()Z
     //   67: istore 5
     //   69: iload 5
     //   71: ifne +7 -> 78
     //   74: aload_1
-    //   75: invokevirtual 154	pjj:shutdown	()V
+    //   75: invokevirtual 154	pld:shutdown	()V
     //   78: aload_1
-    //   79: invokevirtual 153	pjj:isMarkedReusable	()Z
+    //   79: invokevirtual 153	pld:isMarkedReusable	()Z
     //   82: ifeq +16 -> 98
     //   85: aload 4
     //   87: ifnull +34 -> 121
     //   90: aload 6
     //   92: lload_2
     //   93: aload 4
-    //   95: invokevirtual 155	pji:a	(JLjava/util/concurrent/TimeUnit;)V
+    //   95: invokevirtual 155	plc:a	(JLjava/util/concurrent/TimeUnit;)V
     //   98: aload_0
-    //   99: getfield 68	com/tencent/component/network/utils/http/PoolingClientConnectionManager:jdField_a_of_type_Pjg	Lpjg;
+    //   99: getfield 68	com/tencent/component/network/utils/http/PoolingClientConnectionManager:jdField_a_of_type_Pla	Lpla;
     //   102: aload 6
     //   104: aload_1
-    //   105: invokevirtual 153	pjj:isMarkedReusable	()Z
-    //   108: invokevirtual 158	pjg:a	(Lcom/tencent/component/network/utils/http/pool/PoolEntry;Z)V
+    //   105: invokevirtual 153	pld:isMarkedReusable	()Z
+    //   108: invokevirtual 158	pla:a	(Lcom/tencent/component/network/utils/http/pool/PoolEntry;Z)V
     //   111: aload_1
     //   112: monitorexit
     //   113: return
@@ -196,11 +196,11 @@ public class PoolingClientConnectionManager
     //   126: goto -36 -> 90
     //   129: astore 4
     //   131: aload_0
-    //   132: getfield 68	com/tencent/component/network/utils/http/PoolingClientConnectionManager:jdField_a_of_type_Pjg	Lpjg;
+    //   132: getfield 68	com/tencent/component/network/utils/http/PoolingClientConnectionManager:jdField_a_of_type_Pla	Lpla;
     //   135: aload 6
     //   137: aload_1
-    //   138: invokevirtual 153	pjj:isMarkedReusable	()Z
-    //   141: invokevirtual 158	pjg:a	(Lcom/tencent/component/network/utils/http/pool/PoolEntry;Z)V
+    //   138: invokevirtual 153	pld:isMarkedReusable	()Z
+    //   141: invokevirtual 158	pla:a	(Lcom/tencent/component/network/utils/http/pool/PoolEntry;Z)V
     //   144: aload 4
     //   146: athrow
     //   147: astore 7
@@ -212,7 +212,7 @@ public class PoolingClientConnectionManager
     //   0	152	2	paramLong	long
     //   0	152	4	paramTimeUnit	TimeUnit
     //   67	3	5	bool	boolean
-    //   46	90	6	localpji	pji
+    //   46	90	6	localplc	plc
     //   147	1	7	localIOException	IOException
     // Exception table:
     //   from	to	target	type
@@ -234,14 +234,14 @@ public class PoolingClientConnectionManager
     if (paramHttpRoute == null) {
       throw new IllegalArgumentException("HTTP route may not be null");
     }
-    return new pjk(this, this.jdField_a_of_type_Pjg.a(paramHttpRoute, paramObject));
+    return new ple(this, this.jdField_a_of_type_Pla.a(paramHttpRoute, paramObject));
   }
   
   public void shutdown()
   {
     try
     {
-      this.jdField_a_of_type_Pjg.a();
+      this.jdField_a_of_type_Pla.a();
       return;
     }
     catch (IOException localIOException) {}

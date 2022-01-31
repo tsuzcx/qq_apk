@@ -65,26 +65,26 @@ public class NavBarAIO
   private void a(Context paramContext)
   {
     View.inflate(paramContext, 2130968833, this);
-    setBackgroundResource(2130845743);
+    setBackgroundResource(2130845871);
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_Boolean = ThemeUtil.isDefaultOrDIYTheme(false);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363227));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363976));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363970));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363971));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363362));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363939));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363973));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363360));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363975));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363228));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363744));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363978));
-    this.g = ((TextView)findViewById(2131363981));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363979));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363456));
-    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363980));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363982));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363245));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131364000));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363994));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363995));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363380));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363962));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363997));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363378));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363999));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363246));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363767));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364002));
+    this.g = ((TextView)findViewById(2131364005));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364003));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363474));
+    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364004));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364006));
   }
   
   public void a()
@@ -161,7 +161,7 @@ public class NavBarAIO
     {
       if ((!AnonymousChatHelper.a().a(str)) && (!GoldMsgChatHelper.a(paramSessionInfo)))
       {
-        paramSessionInfo = getResources().getColorStateList(2131494205);
+        paramSessionInfo = getResources().getColorStateList(2131494212);
         this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(paramSessionInfo);
         this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(paramSessionInfo);
         this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(paramSessionInfo);
@@ -179,7 +179,7 @@ public class NavBarAIO
     }
     if ((!AnonymousChatHelper.a().a(str)) && (!GoldMsgChatHelper.a(paramSessionInfo)))
     {
-      paramSessionInfo = getResources().getColorStateList(2131494206);
+      paramSessionInfo = getResources().getColorStateList(2131494213);
       this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(paramSessionInfo);
       this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(paramSessionInfo);
       this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(paramSessionInfo);
@@ -218,10 +218,10 @@ public class NavBarAIO
     this.jdField_a_of_type_Boolean = ThemeUtil.isDefaultOrDIYTheme(false);
     if (!this.jdField_a_of_type_Boolean)
     {
-      setBackgroundResource(2130845743);
+      setBackgroundResource(2130845871);
       return;
     }
-    setBackgroundResource(2130845744);
+    setBackgroundResource(2130845872);
   }
   
   public void onClick(View paramView)
@@ -343,7 +343,7 @@ public class NavBarAIO
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.navbar.NavBarAIO
  * JD-Core Version:    0.7.0.1
  */

@@ -62,7 +62,7 @@ public class PhotoUtils$WatermarkPicTask
     if (QLog.isColorLevel()) {
       QLog.d("PhotoUtils", 2, "watermark pic task, w=" + n + ", h=" + m + ", r=" + k);
     }
-    Object localObject4 = ImageUtil.a(BaseApplication.getContext().getResources(), 2130843154);
+    Object localObject4 = ImageUtil.a(BaseApplication.getContext().getResources(), 2130843253);
     if (n != 576)
     {
       float f = n / 576.0F;

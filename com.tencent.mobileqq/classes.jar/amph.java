@@ -1,13 +1,29 @@
-import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
+import com.tencent.mobileqq.search.searchengine.ISearchListener;
+import com.tencent.mobileqq.search.searchengine.SearchRequest;
+import cooperation.qqfav.globalsearch.FavoriteSearchEngine;
+import java.util.List;
 
 public class amph
   implements Runnable
 {
-  public amph(TroopHomeworkHelper.UploadFileTask paramUploadFileTask) {}
+  public ISearchListener a;
+  public SearchRequest a;
+  
+  private amph(FavoriteSearchEngine paramFavoriteSearchEngine) {}
   
   public void run()
   {
-    this.a.b();
+    SearchRequest localSearchRequest = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest;
+    String str = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a;
+    List localList = this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine.a(localSearchRequest);
+    try
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) && (localSearchRequest == this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest) && (str.equals(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a))) {
+        this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
+      }
+      return;
+    }
+    finally {}
   }
 }
 

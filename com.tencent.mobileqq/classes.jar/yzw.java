@@ -1,13 +1,37 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.app.FaceDownloader;
-import com.tencent.mobileqq.util.FaceInfo;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.BabyQFriendStatusWebViewPlugin;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class yzw
+  implements EIPCResultCallback
 {
-  public Bitmap a;
-  public FaceInfo a;
+  public yzw(BabyQFriendStatusWebViewPlugin paramBabyQFriendStatusWebViewPlugin) {}
   
-  public yzw(FaceDownloader paramFaceDownloader) {}
+  public void onCallback(EIPCResult paramEIPCResult)
+  {
+    if ((paramEIPCResult == null) || (paramEIPCResult.data == null))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("BabyQFriendStatusWebViewPlugin", 2, "babyqWeb BabyQFriendStatusWebPlugin EIPCResultCallback : result == null or data == null");
+      }
+      return;
+    }
+    boolean bool = paramEIPCResult.isSuccess();
+    String str2 = paramEIPCResult.data.getString("key_method_action");
+    String str3 = paramEIPCResult.data.getString("web_js_call_back_id");
+    if (QLog.isColorLevel()) {
+      QLog.d("BabyQFriendStatusWebViewPlugin", 2, new Object[] { "babyqWeb BabyQFriendStatusWebPlugin EIPCResultCallback : issuccess = ", Boolean.valueOf(bool), ",action = ", str2, ",jscallback = ", str3 });
+    }
+    String str1 = "";
+    if ("setFriendGrouping".equals(str2))
+    {
+      paramEIPCResult = paramEIPCResult.data.getString("key_handle_set_get_group");
+      str1 = "{ \"ret\": 0, \"group\": \"" + paramEIPCResult + "\"}";
+    }
+    BabyQFriendStatusWebViewPlugin.a(this.a, str3, str1, str2);
+  }
 }
 
 

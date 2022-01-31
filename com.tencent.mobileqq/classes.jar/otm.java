@@ -1,16 +1,17 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class otm
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public otm(TribeVideoPlugin paramTribeVideoPlugin) {}
+  public otm(QRDisplayActivity paramQRDisplayActivity, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    return true;
+    String str = QRUtils.a(this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQrcodeActivityQRDisplayActivity.b);
+    ThreadManager.getUIHandler().post(new otn(this, str));
   }
 }
 

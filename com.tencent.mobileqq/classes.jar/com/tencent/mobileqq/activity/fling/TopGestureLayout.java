@@ -27,7 +27,7 @@ public class TopGestureLayout
   private int jdField_a_of_type_Int;
   public GestureDetector.SimpleOnGestureListener a;
   private boolean jdField_a_of_type_Boolean = true;
-  private boolean b = true;
+  private boolean b;
   private boolean c = true;
   private boolean d;
   public GestureDetector defaultGestureDetector;

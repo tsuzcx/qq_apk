@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.app.utils.ApolloContentUpdateHandler;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.mobileqq.apollo.script.callback.ISpriteTaskInterface;
+import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoBridge;
 
 public class ysm
   implements Runnable
 {
-  public ysm(ApolloDaoManager paramApolloDaoManager) {}
+  public ysm(SpriteDrawerInfoBridge paramSpriteDrawerInfoBridge, SpriteTaskParam paramSpriteTaskParam) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      ApolloContentUpdateHandler.a(this.a.a, 2);
+    if (SpriteDrawerInfoBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerInfoSpriteDrawerInfoBridge) != null)
+    {
+      if (SpriteDrawerInfoBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerInfoSpriteDrawerInfoBridge).a()) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.j = 1;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam.a = this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerInfoSpriteDrawerInfoBridge;
+      SpriteDrawerInfoBridge.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptDrawerInfoSpriteDrawerInfoBridge).a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteTaskParam);
     }
   }
 }

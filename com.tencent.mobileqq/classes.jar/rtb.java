@@ -1,29 +1,91 @@
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.util.Map;
+import android.app.Dialog;
+import android.support.v4.app.FragmentActivity;
+import android.widget.TextView;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.DiscussChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.qphone.base.util.QLog;
 
-public final class rtb
-  implements DialogInterface.OnClickListener
+public class rtb
+  extends CardObserver
 {
-  public rtb(Map paramMap, QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, String paramString, boolean paramBoolean1, boolean paramBoolean2, ChatActivityUtils.StartVideoListener paramStartVideoListener, int paramInt2) {}
+  public rtb(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    paramDialogInterface.dismiss();
-    this.jdField_a_of_type_JavaUtilMap.put("PstnLevel", "LEVEL2");
-    this.jdField_a_of_type_JavaUtilMap.put("ipPstnEnterType", String.valueOf(0));
-    ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.jdField_b_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, this.jdField_a_of_type_JavaUtilMap);
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_b_of_type_Int == 6) {}
-    for (paramInt = 1;; paramInt = 4)
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
     {
-      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063FA", "0X80063FA", paramInt, 0, "", "", "", "");
+      if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (paramObject != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObject.uin)) && ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1001) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1003) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 10002)) && (paramObject.strCertificationInfo != null) && (!paramObject.strCertificationInfo.equals(""))) {
+        ChatActivityFacade.f(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      }
+      if ((paramBoolean) && (paramObject != null)) {}
+      switch (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int)
+      {
+      default: 
+        if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(paramObject.uin)))
+        {
+          this.a.v();
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.aio.BaseChatPie", 2, "onCardDownload nick = " + Utils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d));
+          }
+          this.a.jdField_d_of_type_AndroidWidgetTextView.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
+          if (AppSetting.b)
+          {
+            paramObject = this.a.jdField_d_of_type_AndroidWidgetTextView.getText().toString();
+            this.a.jdField_d_of_type_AndroidWidgetTextView.setContentDescription(paramObject);
+            this.a.a().setTitle(this.a.jdField_d_of_type_AndroidWidgetTextView.getText());
+          }
+          if ((3000 == this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) && ((this.a instanceof DiscussChatPie))) {
+            ((DiscussChatPie)this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_d_of_type_AndroidWidgetTextView);
+          }
+        }
+      case 1034: 
+        return;
+      }
+      this.a.a(false, false);
       return;
+    }
+  }
+  
+  protected void a(boolean paramBoolean, String paramString)
+  {
+    if ((this.a.jdField_d_of_type_AndroidAppDialog != null) && (this.a.jdField_d_of_type_AndroidAppDialog.isShowing())) {
+      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.dismissDialog(231);
+    }
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.showDialog(232);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.showDialog(233);
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays isAllow= " + paramBoolean2);
+      }
+      this.a.aF();
+    }
+  }
+  
+  protected void c(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays");
+      }
+      this.a.aF();
     }
   }
 }

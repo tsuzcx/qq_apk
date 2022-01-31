@@ -1,47 +1,48 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.av.ui.QavPanel;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.av.ui.QavVideoRecordUICtrl;
 import com.tencent.qphone.base.util.QLog;
 
 public class kaa
-  implements View.OnTouchListener
+  implements Animator.AnimatorListener
 {
-  public kaa(QavPanel paramQavPanel) {}
+  public kaa(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationCancel(Animator paramAnimator)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QavPanel", 2, "onTouch action: " + paramMotionEvent.getAction());
+      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationCancel");
     }
-    if (paramView == this.a.m)
-    {
-      if (paramMotionEvent.getAction() == 0)
-      {
-        this.a.d.setAlpha(0.5F);
-        this.a.e.setAlpha(0.5F);
-      }
-      for (;;)
-      {
-        return this.a.a.onTouch(paramView, paramMotionEvent);
-        if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3))
-        {
-          this.a.d.setAlpha(1.0F);
-          this.a.e.setAlpha(1.0F);
-        }
-      }
+    this.a.b(3, false);
+    QavVideoRecordUICtrl.b(this.a).requestLayout();
+    QavVideoRecordUICtrl.b(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationEnd");
     }
-    if (paramMotionEvent.getAction() == 0) {
-      paramView.setAlpha(0.5F);
+    this.a.c(3);
+    QavVideoRecordUICtrl.b(this.a).requestLayout();
+    QavVideoRecordUICtrl.b(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QavVideoRecordUICtrl", 2, "expand onAnimationStart");
     }
-    for (;;)
-    {
-      return false;
-      if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 3)) {
-        paramView.setAlpha(1.0F);
-      }
-    }
+    QavVideoRecordUICtrl.a(this.a).setVisibility(0);
+    QavVideoRecordUICtrl.a(this.a).setAlpha(0.0F);
+    QavVideoRecordUICtrl.b(this.a).setVisibility(0);
+    QavVideoRecordUICtrl.b(this.a).setAlpha(0.0F);
+    QavVideoRecordUICtrl.e(this.a).height = -2;
+    QavVideoRecordUICtrl.e(this.a).width = -2;
   }
 }
 

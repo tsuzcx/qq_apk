@@ -1,7 +1,7 @@
 package com.tencent.open.downloadnew;
 
-import aksa;
-import aksb;
+import alhq;
+import alhr;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.qipc.QIPCModule;
@@ -12,8 +12,8 @@ import java.util.Map;
 public class DownloaderGetCodeServer
 {
   private static DownloaderGetCodeServer jdField_a_of_type_ComTencentOpenDownloadnewDownloaderGetCodeServer;
-  private aksb jdField_a_of_type_Aksb = new aksb(this, null);
-  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new aksa(this, "Module_DownloaderGetCodeServer");
+  private alhr jdField_a_of_type_Alhr = new alhr(this, null);
+  private QIPCModule jdField_a_of_type_ComTencentMobileqqQipcQIPCModule = new alhq(this, "Module_DownloaderGetCodeServer");
   private Map jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap());
   
   private QQAppInterface a()

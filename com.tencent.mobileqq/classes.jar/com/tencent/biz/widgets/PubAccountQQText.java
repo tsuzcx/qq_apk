@@ -36,7 +36,7 @@ public class PubAccountQQText
         str1 = str2 + paramView;
       }
       localIntent.putExtra("url", str1);
-      localIntent.putExtra("assignBackText", localContext.getResources().getString(2131433681));
+      localIntent.putExtra("assignBackText", localContext.getResources().getString(2131433698));
       localIntent.putExtra("puin", this.b);
       localIntent.putExtra("key_isReadModeEnabled", true);
       localIntent.putExtra("fromAio", true);

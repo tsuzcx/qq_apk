@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:paddingLeft="12.0dip" android:paddingRight="12.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14bd" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020cc0" android:layout_width="wrap_content" android:layout_height="26.0dip" android:layout_marginRight="10.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <FrameLayout android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="#ff3b434e" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0086" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="30.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="15.0dip" android:text="相关阅读" />
-    </FrameLayout>
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0861" android:background="#ffe8e8e8" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginBottom="5.0dip" />
+    <TextView android:textSize="12.0dip" android:textStyle="bold" android:textColor="#ff777777" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a14be" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="8.0dip" android:text="321 回复" />
 </LinearLayout>

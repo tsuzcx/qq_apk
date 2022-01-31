@@ -1,16 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17f2" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0172" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a173b" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17f3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c38" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="44.0dip" android:layout_alignParentBottom="true">
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17f4" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-        <RelativeLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17f5" android:visibility="visible" android:layout_width="69.0dip" android:layout_height="27.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true">
-            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17f6" android:layout_width="12.0dip" android:layout_height="12.0dip" android:layout_marginRight="6.0dip" android:layout_centerVertical="true" />
-            <RelativeLayout android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a17f6">
-                <TextView android:textSize="10.0sp" android:textColor="#fff25d5d" android:gravity="center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17f7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="0.0dip" android:text="红包活动" android:singleLine="true" />
-                <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17f8" android:visibility="gone" android:layout_width="6.0dip" android:layout_height="6.0dip" android:layout_marginLeft="-2.0dip" android:layout_marginTop="-4.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0220e3" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a17f7" />
-            </RelativeLayout>
-        </RelativeLayout>
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0426" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+    <RelativeLayout android:paddingLeft="8.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height">
+        <TextView android:textSize="17.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04d0" android:gravity="center_vertical" android:id="@id/ivTitleBtnLeft" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0ddd" android:singleLine="true" android:includeFontPadding="false" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020d93" android:drawablePadding="5.0dip" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="19.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0335" android:gravity="center" android:id="@id/ivTitleName" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" android:singleLine="true" android:layout_centerVertical="true" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04d0" android:id="@id/ivTitleBtnRightText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
     </RelativeLayout>
-    <android.support.v7.widget.RecyclerView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17f9" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="24.0dip" android:layout_marginTop="1.0dip" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a0c38" android:layout_alignParentTop="true" android:overScrollMode="never" />
-</com.tencent.mobileqq.activity.qwallet.widget.HongBaoPanel>
+</LinearLayout>

@@ -1,25 +1,20 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.AdapterView.OnItemClickListener;
-import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter;
-import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter.ViewHolder;
+import com.tencent.mobileqq.data.LebaFeedInfo;
+import com.tencent.mobileqq.leba.LebaFeedsManager;
+import java.util.Comparator;
 
 public class adys
-  implements View.OnClickListener
+  implements Comparator
 {
-  public adys(NearbyFragmentEnterAdapter paramNearbyFragmentEnterAdapter) {}
+  private adys(LebaFeedsManager paramLebaFeedsManager) {}
   
-  public void onClick(View paramView)
+  public int a(LebaFeedInfo paramLebaFeedInfo1, LebaFeedInfo paramLebaFeedInfo2)
   {
-    NearbyFragmentEnterAdapter.ViewHolder localViewHolder = (NearbyFragmentEnterAdapter.ViewHolder)paramView.getTag();
-    if (this.a.a != null) {
-      this.a.a.onItemClick(null, paramView, localViewHolder.a, localViewHolder.a);
-    }
+    return paramLebaFeedInfo2.serverUpdateTime - paramLebaFeedInfo1.serverUpdateTime;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adys
  * JD-Core Version:    0.7.0.1
  */

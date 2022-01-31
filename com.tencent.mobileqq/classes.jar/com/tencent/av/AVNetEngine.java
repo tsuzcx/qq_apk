@@ -4,12 +4,12 @@ import com.tencent.mobileqq.transfile.INetEngine;
 import com.tencent.mobileqq.transfile.OldHttpEngine;
 import com.tencent.mobileqq.utils.httputils.HttpCommunicator;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
-import jdh;
+import jcs;
 
 public class AVNetEngine
 {
   private static INetEngine jdField_a_of_type_ComTencentMobileqqTransfileINetEngine;
-  private static IHttpCommunicatorFlowCount jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount = new jdh();
+  private static IHttpCommunicatorFlowCount jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorFlowCount = new jcs();
   
   public static INetEngine a()
   {

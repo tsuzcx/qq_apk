@@ -1,26 +1,46 @@
-import android.text.SpannableString;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.MultiImageTextView;
-import com.tencent.widget.SpanAdapter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.qidian.QidianProfileCardActivity.QidianCompoundProfileItem;
 
-public class alne
-  extends SpanAdapter
+public final class alne
+  implements Parcelable.Creator
 {
-  public int a;
-  
-  public alne(MultiImageTextView paramMultiImageTextView) {}
-  
-  public void a(SpannableString paramSpannableString)
+  public QidianProfileCardActivity.QidianCompoundProfileItem a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("spanStyle", 2, "[MarginStyle] start:" + this.b + " end:" + this.c + " marginPix:" + this.jdField_a_of_type_Int);
+    boolean bool2 = true;
+    QidianProfileCardActivity.QidianCompoundProfileItem localQidianCompoundProfileItem = new QidianProfileCardActivity.QidianCompoundProfileItem();
+    localQidianCompoundProfileItem.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localQidianCompoundProfileItem.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localQidianCompoundProfileItem.c = paramParcel.readString();
+    if (paramParcel.readByte() != 0)
+    {
+      bool1 = true;
+      localQidianCompoundProfileItem.jdField_a_of_type_Boolean = bool1;
+      localQidianCompoundProfileItem.jdField_a_of_type_Int = paramParcel.readInt();
+      if (paramParcel.readByte() == 0) {
+        break label103;
+      }
     }
-    paramSpannableString.setSpan(new alnd(this.jdField_a_of_type_ComTencentWidgetMultiImageTextView, this.jdField_a_of_type_Int), this.b, this.c, 17);
+    label103:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localQidianCompoundProfileItem.jdField_b_of_type_Boolean = bool1;
+      localQidianCompoundProfileItem.d = paramParcel.readString();
+      localQidianCompoundProfileItem.e = paramParcel.readString();
+      return localQidianCompoundProfileItem;
+      bool1 = false;
+      break;
+    }
+  }
+  
+  public QidianProfileCardActivity.QidianCompoundProfileItem[] a(int paramInt)
+  {
+    return new QidianProfileCardActivity.QidianCompoundProfileItem[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alne
  * JD-Core Version:    0.7.0.1
  */

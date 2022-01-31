@@ -1,70 +1,30 @@
-import android.content.Intent;
-import com.tencent.av.service.QQServiceForAV;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.FriendsManager;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.av.smallscreen.PstnSmallScreenService;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.qcall.PstnObserver;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
 
 public class jnw
-  extends FriendListObserver
+  extends PstnObserver
 {
-  public jnw(QQServiceForAV paramQQServiceForAV) {}
+  public jnw(PstnSmallScreenService paramPstnSmallScreenService) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void a(String paramString, int paramInt)
   {
-    Intent localIntent = new Intent("com.tencent.qqhead.getheadresp2");
-    localIntent.putExtra("uin", paramString);
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    if (this.a.b.contains(paramString)) {
-      localQQAppInterface.getApp().sendBroadcast(localIntent);
+    super.a(paramString, paramInt);
+    if (QLog.isColorLevel()) {
+      QLog.d("PstnSmallScreenService", 2, " callId = " + paramString + "time = " + paramInt);
     }
-    this.a.b.remove(paramString);
-    if (this.a.b()) {
-      localQQAppInterface.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
+    this.a.a().removeCallbacks(this.a.c);
+    if (this.a.jdField_a_of_type_AndroidWidgetTextView != null) {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText(2131429565);
     }
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel())
-    {
-      QLog.d("QQServiceForAV", 2, "onUpdateFriendInfo uin = " + paramString);
-      QLog.d("QQServiceForAV", 2, "onUpdateFriendInfo isSuccess = " + paramBoolean);
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.a();
-    Intent localIntent;
-    if ((paramBoolean) && (paramString != null))
-    {
-      localIntent = new Intent();
-      localIntent.setAction("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO");
-      localIntent.putExtra("uin", paramString);
-      localObject = (FriendsManager)QQServiceForAV.l(this.a).getManager(50);
-      if (localObject == null) {
-        break label205;
-      }
-      localObject = ((FriendsManager)localObject).c(paramString);
-      if (localObject == null) {
-        break label205;
-      }
-    }
-    label205:
-    for (Object localObject = ContactUtils.a((Friends)localObject);; localObject = paramString)
-    {
-      localIntent.putExtra("nick", (String)localObject);
-      localIntent.setPackage(localQQAppInterface.getApplication().getPackageName());
-      localQQAppInterface.getApp().sendBroadcast(localIntent);
-      this.a.jdField_a_of_type_JavaUtilArrayList.remove(paramString);
-      if (this.a.b()) {
-        localQQAppInterface.removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-      }
-      return;
-    }
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().b = 2;
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().g = true;
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().e(true);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(true);
   }
 }
 

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.aio;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Random;
-import ugl;
+import ujl;
 
 public class AIOTimeReporter
 {
@@ -48,7 +48,7 @@ public class AIOTimeReporter
       b();
       return;
     }
-    ThreadManager.post(new ugl(this), 1, null, false);
+    ThreadManager.post(new ujl(this), 1, null, false);
   }
 }
 

@@ -1,66 +1,54 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.HBCustomizeStrategy;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.BaseRedPkgElem;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.BigAnimRedPkgElem;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.ResPathRedPkgElem;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.SkinRedPkgElem;
-import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import com.nineoldandroids.animation.Animator;
+import com.nineoldandroids.animation.AnimatorListenerAdapter;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import java.util.List;
 
 public class uhu
-  implements CustomizeStrategyFactory.HBCustomizeStrategy
+  extends AnimatorListenerAdapter
 {
-  QWalletConfigManager jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager = null;
-  PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = null;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  int jdField_a_of_type_Int = 0;
+  boolean jdField_a_of_type_Boolean = true;
   
-  public uhu(QQAppInterface paramQQAppInterface)
+  public uhu(VisitorsActivity paramVisitorsActivity) {}
+  
+  public void onAnimationRepeat(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(150));
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletConfigQWalletConfigManager = ((QWalletConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(244));
-    }
-  }
-  
-  public void a() {}
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    ThreadManager.post(new uhv(this, paramRedPacketInfo), 5, null, true);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, BaseRedPkgElem paramBaseRedPkgElem)
-  {
-    if (paramRedPacketInfo != null)
-    {
-      if (!(paramBaseRedPkgElem instanceof SkinRedPkgElem)) {
-        break label66;
-      }
-      paramBaseRedPkgElem = (SkinRedPkgElem)paramBaseRedPkgElem;
-      paramRedPacketInfo.background = paramBaseRedPkgElem.jdField_a_of_type_AndroidGraphicsBitmap;
-      paramRedPacketInfo.corner = paramBaseRedPkgElem.jdField_b_of_type_AndroidGraphicsBitmap;
-      paramRedPacketInfo.animInfo = paramBaseRedPkgElem.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
-      paramRedPacketInfo.title = paramBaseRedPkgElem.jdField_b_of_type_JavaLangString;
-      paramRedPacketInfo.icon = paramBaseRedPkgElem.a(paramRedPacketInfo);
-      paramRedPacketInfo.isHideTitle = paramBaseRedPkgElem.jdField_a_of_type_Int;
-    }
-    label66:
-    do
-    {
-      return;
-      if ((paramBaseRedPkgElem instanceof BigAnimRedPkgElem))
+      int j = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a.size();
+      int i = 0;
+      for (;;)
       {
-        paramBaseRedPkgElem = (BigAnimRedPkgElem)paramBaseRedPkgElem;
-        paramRedPacketInfo.specailBackgroundAnimInfo = paramBaseRedPkgElem.jdField_a_of_type_ComTencentMobileqqWidgetAnimationView$AnimationInfo;
-        paramRedPacketInfo.specialBackground = paramBaseRedPkgElem.jdField_a_of_type_AndroidGraphicsBitmap;
-        return;
+        if (i < j)
+        {
+          this.jdField_a_of_type_Int = ((this.jdField_a_of_type_Int + 1) % j);
+          paramAnimator = (Drawable)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a.get(this.jdField_a_of_type_Int);
+          if (paramAnimator == null) {
+            break label112;
+          }
+          if (!(paramAnimator instanceof URLDrawable)) {
+            break label98;
+          }
+          if (((URLDrawable)paramAnimator).getStatus() != 1) {
+            break label112;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.c.setImageDrawable(paramAnimator);
+        }
+        for (;;)
+        {
+          this.jdField_a_of_type_Boolean = false;
+          return;
+          label98:
+          this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.c.setImageDrawable(paramAnimator);
+        }
+        label112:
+        i += 1;
       }
-    } while (!(paramBaseRedPkgElem instanceof ResPathRedPkgElem));
-    paramRedPacketInfo.resPath = ((ResPathRedPkgElem)paramBaseRedPkgElem).jdField_b_of_type_JavaLangString;
+    }
+    this.jdField_a_of_type_Boolean = true;
   }
 }
 

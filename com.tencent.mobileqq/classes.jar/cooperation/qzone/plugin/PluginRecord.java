@@ -1,6 +1,6 @@
 package cooperation.qzone.plugin;
 
-import amgw;
+import amxb;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -11,7 +11,7 @@ import org.json.JSONObject;
 public class PluginRecord
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new amgw();
+  public static final Parcelable.Creator CREATOR = new amxb();
   public float a;
   public int a;
   public long a;

@@ -1,18 +1,34 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.annotation.TargetApi;
+import android.widget.LinearLayout;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import com.tencent.mobileqq.data.MessageForArkApp;
+import com.tencent.qphone.base.util.QLog;
 
-class abud
-  implements Runnable
+public class abud
+  implements ArkViewImplement.LoadCallback
 {
-  abud(abuc paramabuc) {}
+  public abud(MessageForArkApp paramMessageForArkApp, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkAioContainerWrapper paramArkAioContainerWrapper, int paramInt) {}
   
-  public void run()
+  @TargetApi(14)
+  public void onLoadFinish(int paramInt)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)MessengerService.i(this.a.a);
-    QQToast.a(localQQAppInterface.getApplication(), "哦哦~~~获取个签同步说说设置失败，检查一下网络哦！", 0).b(localQQAppInterface.getApp().getResources().getDimensionPixelSize(2131558448));
+    if (QLog.isColorLevel()) {
+      QLog.d("MessageForArkApp", 2, "attachArkView onLoadFinish MessageForArkApp state=" + paramInt);
+    }
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper, this.jdField_a_of_type_Int);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(8);
+    }
   }
 }
 

@@ -1,39 +1,37 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.theme.diy.ResData;
-import com.tencent.mobileqq.theme.diy.ThemeDiyStyleLogic.StyleCallBack;
-import java.lang.ref.WeakReference;
+import android.database.sqlite.SQLiteCursor;
+import android.database.sqlite.SQLiteCursorDriver;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteQuery;
+import com.tencent.mobileqq.utils.SecurityUtile;
 
 class abvc
-  implements ThemeDiyStyleLogic.StyleCallBack
+  extends SQLiteCursor
 {
-  abvc(abue paramabue) {}
-  
-  public int callback(int paramInt1, int paramInt2, Bundle paramBundle, ResData paramResData)
+  abvc(abvb paramabvb, SQLiteDatabase paramSQLiteDatabase, SQLiteCursorDriver paramSQLiteCursorDriver, String paramString, SQLiteQuery paramSQLiteQuery)
   {
-    paramResData = (MessengerService)this.a.a.get();
-    Bundle localBundle;
-    if (paramResData != null)
+    super(paramSQLiteDatabase, paramSQLiteCursorDriver, paramString, paramSQLiteQuery);
+  }
+  
+  public byte[] getBlob(int paramInt)
+  {
+    return SecurityUtile.a(super.getBlob(paramInt));
+  }
+  
+  public String getString(int paramInt)
+  {
+    String str1 = super.getString(paramInt);
+    try
     {
-      localBundle = new Bundle();
-      localBundle.putString("themeId", paramBundle.getString("themeId"));
-      if (paramInt2 != 4) {
-        break label73;
-      }
+      String str2 = SecurityUtile.b(str1);
+      return str2;
     }
-    label73:
-    for (paramInt1 = 0;; paramInt1 = -2)
-    {
-      localBundle.putInt("themeStatus", paramInt1);
-      paramBundle.putBundle("response", localBundle);
-      paramResData.a(paramBundle);
-      return 1;
-    }
+    catch (Exception localException) {}
+    return str1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     abvc
  * JD-Core Version:    0.7.0.1
  */

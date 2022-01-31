@@ -1,23 +1,74 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoStatusListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.ArticleTopicData.TopicInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.List;
 
-class mnt
-  implements Runnable
+public final class mnt
+  implements Parcelable.Creator
 {
-  mnt(mns parammns) {}
-  
-  public void run()
+  public FastWebArticleInfo a(Parcel paramParcel)
   {
-    if (FastWebVideoFeedsPlayManager.a(this.a.a) != null)
+    int i = 0;
+    boolean bool2 = true;
+    FastWebArticleInfo localFastWebArticleInfo = new FastWebArticleInfo();
+    localFastWebArticleInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+    localFastWebArticleInfo.jdField_a_of_type_Long = paramParcel.readLong();
+    localFastWebArticleInfo.jdField_b_of_type_Long = paramParcel.readLong();
+    localFastWebArticleInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+    localFastWebArticleInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+    localFastWebArticleInfo.d = paramParcel.readString();
+    localFastWebArticleInfo.e = paramParcel.readString();
+    localFastWebArticleInfo.f = paramParcel.readString();
+    localFastWebArticleInfo.h = paramParcel.readString();
+    localFastWebArticleInfo.g = paramParcel.readString();
+    localFastWebArticleInfo.j = paramParcel.readString();
+    localFastWebArticleInfo.i = paramParcel.readString();
+    localFastWebArticleInfo.jdField_a_of_type_Int = paramParcel.readInt();
+    localFastWebArticleInfo.k = paramParcel.readString();
+    if (paramParcel.readInt() == 1)
     {
-      Iterator localIterator = FastWebVideoFeedsPlayManager.a(this.a.a).iterator();
-      while (localIterator.hasNext()) {
-        ((FastWebVideoFeedsPlayManager.VideoStatusListener)localIterator.next()).a(FastWebVideoFeedsPlayManager.a(this.a.a));
+      bool1 = true;
+      localFastWebArticleInfo.jdField_a_of_type_Boolean = bool1;
+      localFastWebArticleInfo.l = paramParcel.readString();
+      localFastWebArticleInfo.jdField_c_of_type_Long = paramParcel.readLong();
+      if (paramParcel.readInt() != 1) {
+        break label277;
       }
     }
-    this.a.a.a(0);
+    ArrayList localArrayList;
+    label277:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      localFastWebArticleInfo.jdField_b_of_type_Boolean = bool1;
+      int j = paramParcel.readInt();
+      if (j < 0) {
+        break label293;
+      }
+      localArrayList = new ArrayList();
+      while (i < j)
+      {
+        ArticleTopicData.TopicInfo localTopicInfo = new ArticleTopicData.TopicInfo();
+        localTopicInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+        localTopicInfo.jdField_a_of_type_Long = paramParcel.readLong();
+        localTopicInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+        localArrayList.add(localTopicInfo);
+        i += 1;
+      }
+      bool1 = false;
+      break;
+    }
+    localFastWebArticleInfo.jdField_a_of_type_JavaUtilList = localArrayList;
+    return localFastWebArticleInfo;
+    label293:
+    localFastWebArticleInfo.jdField_a_of_type_JavaUtilList = null;
+    return localFastWebArticleInfo;
+  }
+  
+  public FastWebArticleInfo[] a(int paramInt)
+  {
+    return new FastWebArticleInfo[paramInt];
   }
 }
 

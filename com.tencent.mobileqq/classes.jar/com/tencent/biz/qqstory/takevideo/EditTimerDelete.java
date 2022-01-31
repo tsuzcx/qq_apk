@@ -22,7 +22,7 @@ public class EditTimerDelete
   public void a()
   {
     super.a();
-    this.a = ((LinearLayout)a(2131365514));
+    this.a = ((LinearLayout)a(2131365536));
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)

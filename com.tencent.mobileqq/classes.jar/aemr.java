@@ -1,33 +1,16 @@
-import android.app.Activity;
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
+import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.DeleteFeedCallback;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.intervideo.now.NowProxy;
+import com.tencent.mobileqq.nearby.NearbyProxy;
 
-class aemr
-  implements NearbyMomentManager.DeleteFeedCallback
+public class aemr
+  implements Runnable
 {
-  aemr(aemq paramaemq) {}
+  public aemr(NearbyProxy paramNearbyProxy, Context paramContext) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      NearbyMomentManager localNearbyMomentManager = (NearbyMomentManager)this.a.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(262);
-      if (localNearbyMomentManager != null) {
-        localNearbyMomentManager.e(paramString);
-      }
-      PlayOperationViewModel.a(this.a.a.a, paramString);
-      if ((this.a.a.a.jdField_a_of_type_AndroidViewView.getContext() instanceof Activity)) {
-        ((BaseActivity)this.a.a.a.jdField_a_of_type_AndroidViewView.getContext()).finish();
-      }
-      return;
-    }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, "删除失败", 0).a();
+    ((NowProxy)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy.a.getManager(181)).a(this.jdField_a_of_type_AndroidContentContext);
   }
 }
 

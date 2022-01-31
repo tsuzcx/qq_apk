@@ -1,22 +1,21 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.BaseChatPie;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.AutoRemarkActivity;
+import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class roo
   implements Runnable
 {
-  public roo(BaseChatPie paramBaseChatPie) {}
+  public roo(AutoRemarkActivity paramAutoRemarkActivity) {}
   
   public void run()
   {
-    if (this.a.g != null)
-    {
-      this.a.g.getVisibility();
-      this.a.g.setVisibility(8);
+    if (TextUtils.isEmpty(this.a.a)) {}
+    while (((FriendsManager)this.a.app.getManager(50)).a(this.a.a) != null) {
+      return;
     }
-    if (BaseChatPie.a(this.a) != null) {
-      BaseChatPie.a(this.a).setVisibility(8);
-    }
+    ((FriendListHandler)this.a.app.a(1)).b(this.a.a);
   }
 }
 

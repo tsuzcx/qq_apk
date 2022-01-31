@@ -1,32 +1,16 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.job.AddPollViewJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.AssertUtils;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class nfg
-  extends AddPollViewJob
+  implements ActionSheet.OnDismissListener
 {
-  public nfg(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem, ShareSinaData paramShareSinaData)
-  {
-    super(paramStoryVideoItem);
-  }
+  public nfg(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager, MsgTabNodeInfo paramMsgTabNodeInfo) {}
   
-  public boolean b()
+  public void onDismiss()
   {
-    String str = (String)a("result");
-    AssertUtils.a(str);
-    AssertUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d == null)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d = "";
-      SLog.c(this.b, "imageLocalPath is null", new Throwable());
-    }
-    a("DownloadPic2FileJob_iiu", str);
-    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
-    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.a));
-    return true;
+    StoryReportor.a("msg_tab", "clk_press", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_Int + "", "8", "", this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString });
   }
 }
 

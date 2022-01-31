@@ -1,15 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<TableLayout android:layout_gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33c8" android:layout_width="fill_parent" android:layout_height="216.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07ce" android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07cf" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <TextView android:textSize="14.0sp" android:textColor="#ff1e1e1e" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07d0" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_marginTop="7.5dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b167b" />
-        <com.tencent.biz.widgets.ElasticHorScrView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07d2" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="0.0dip" android:layout_marginTop="0.0dip">
-            <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
-                <GridView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07d3" android:scrollbars="none" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="wrap_content" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003b" android:cacheColorHint="@null" android:horizontalSpacing="0.0dip" android:verticalSpacing="0.0dip" android:stretchMode="none" android:columnWidth="60.0dip" android:numColumns="1" />
-            </LinearLayout>
-        </com.tencent.biz.widgets.ElasticHorScrView>
-    </LinearLayout>
-    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3392" android:background="#ffe6e6e6" android:layout_width="fill_parent" android:layout_height="10.0dip" />
-    <TextView android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c000f" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07d6" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020018" android:layout_width="fill_parent" android:layout_height="50.0dip" />
-</LinearLayout>
+    <TableRow android:layout_height="fill_parent" android:layout_weight="1.0">
+        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33c9" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213c3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213ac" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="1" />
+        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33ca" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213c3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213ad" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="2" />
+        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33cb" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213c3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213ae" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="3" />
+    </TableRow>
+    <TableRow android:layout_height="0.0px" android:layout_weight="1.0">
+        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33cc" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213c3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213af" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="4" />
+        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33cd" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213c3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213b0" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="5" />
+        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33ce" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213c3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213b1" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="6" />
+    </TableRow>
+    <TableRow android:layout_height="0.0px" android:layout_weight="1.0">
+        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33cf" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213c3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213b2" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="7" />
+        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33d0" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213c3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213b3" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="8" />
+        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33d1" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213c3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213b4" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="9" />
+    </TableRow>
+    <TableRow android:layout_height="0.0px" android:layout_weight="1.0">
+        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33d2" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213c1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33d3" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213c3" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213ab" android:scaleType="centerInside" android:layout_weight="1.0" android:contentDescription="0" />
+        <ImageView android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a3371" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0213aa" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" android:contentDescription="删除" />
+    </TableRow>
+</TableLayout>

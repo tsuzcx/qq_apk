@@ -1,36 +1,18 @@
-import android.view.View;
-import com.tencent.biz.qqstory.boundaries.StoryApi;
-import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
-import com.tencent.biz.qqstory.pgc.adapter.PgcSearchResultAdapter.ListItemData;
-import com.tencent.biz.qqstory.pgc.model.UserInfo;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qqstory.newshare.job.ShortenUrlJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareCopyLinkData;
+import java.util.HashMap;
 
 public class ngn
-  implements AdapterView.OnItemClickListener
+  extends ShortenUrlJob
 {
-  public ngn(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
+  public ngn(ShareModeBase paramShareModeBase, ShareCopyLinkData paramShareCopyLinkData) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean b()
   {
-    paramAdapterView = paramAdapterView.getItemAtPosition(paramInt);
-    if (paramAdapterView != null)
-    {
-      paramAdapterView = ((PgcSearchResultAdapter.ListItemData)paramAdapterView).a;
-      if ((paramAdapterView != null) && (paramAdapterView.type != 0)) {
-        break label43;
-      }
-    }
-    for (;;)
-    {
-      StoryReportor.a("search", "clk_detail", 0, 0, new String[0]);
-      return;
-      label43:
-      if (paramAdapterView.type == 1) {
-        StoryApi.a(this.a.a, 19, paramAdapterView.uid);
-      }
-    }
+    HashMap localHashMap = (HashMap)a("ShortenUrlJob_shortenedUrls");
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a = ((String)localHashMap.get(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareCopyLinkData.a));
+    return true;
   }
 }
 

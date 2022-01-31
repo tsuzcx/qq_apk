@@ -1,16 +1,60 @@
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgPayManager;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgPayManager.PayItem;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import Wallet.PfaFriend;
+import Wallet.PfaFriendRsp;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.TopayManager;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInputAndChoose;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public class xbt
-  implements Runnable
+public final class xbt
+  implements DialogInterface.OnClickListener
 {
-  public xbt(GoldMsgPayManager paramGoldMsgPayManager, GoldMsgPayManager.PayItem paramPayItem) {}
+  public xbt(WeakReference paramWeakReference, ArrayList paramArrayList) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgPayManager$PayItem.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTimeMillis() / 1000L);
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgPayManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletGoldmsgGoldMsgPayManager$PayItem.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    if ((paramDialogInterface instanceof QQCustomDialogWtihInputAndChoose)) {
+      switch (paramInt)
+      {
+      }
+    }
+    do
+    {
+      return;
+      TopayManager.a((SelectMemberActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), this.jdField_a_of_type_JavaUtilArrayList, (QQCustomDialogWtihInputAndChoose)paramDialogInterface);
+    } while ((TopayManager.a == null) || (TopayManager.a.vecRec == null) || (TopayManager.a.vecRec.size() <= 0));
+    paramInt = 0;
+    label79:
+    String str;
+    int i;
+    if (paramInt < this.jdField_a_of_type_JavaUtilArrayList.size())
+    {
+      str = "friendpay.selectpage.unrecomchoosefriclick";
+      i = 0;
+    }
+    for (;;)
+    {
+      paramDialogInterface = str;
+      if (i < TopayManager.a.vecRec.size())
+      {
+        if (((ResultRecord)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt)).a.equals(((PfaFriend)TopayManager.a.vecRec.get(i)).uin)) {
+          paramDialogInterface = "friendpay.selectpage.recommendfriclick";
+        }
+      }
+      else
+      {
+        ReportController.b(QWalletTools.a(), "P_CliOper", "Vip_pay_mywallet", "", "wallet", paramDialogInterface, 0, 0, "", "", "", "");
+        paramInt += 1;
+        break label79;
+        break;
+      }
+      i += 1;
+    }
   }
 }
 

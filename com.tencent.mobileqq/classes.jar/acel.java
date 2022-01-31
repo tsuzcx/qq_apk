@@ -1,61 +1,49 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.filemanager.util.UniformDownloader.IUniformDownloaderListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.CustomEmotionData;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
+import com.tencent.mobileqq.emosm.favroaming.SyncListener;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class acel
-  implements UniformDownloader.IUniformDownloaderListener
+  extends SyncListener
 {
-  public acel(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public acel(EmoticonMainPanel paramEmoticonMainPanel) {}
   
-  public void a(int paramInt, Bundle paramBundle)
+  public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadStart progress = " + paramInt);
+      QLog.d("EmoticonMainPanel", 2, "upload_finish");
     }
-    this.a.runOnUiThread(new acen(this));
   }
   
-  public void a(int paramInt, String paramString, Bundle paramBundle)
+  public void a(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadFailed errCode = " + paramInt);
+      QLog.d("EmoticonMainPanel", 2, "download_finish");
     }
-    this.a.runOnUiThread(new acer(this));
+    ThreadManager.getUIHandler().post(new acem(this));
+    this.a.i();
+    ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005CEE", "0X8005CEE", 0, 0, paramInt + "", "", "", "");
   }
   
-  public void a(String paramString, long paramLong, Bundle paramBundle)
+  public void a(CustomEmotionData paramCustomEmotionData, int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadSucess ");
-    }
-    this.a.runOnUiThread(new acem(this));
-    ReportController.b(null, "dc00898", "", "", "0X8008FFA", "0X8008FFA", 1, 0, "", "", "", "");
+    this.a.i();
   }
   
-  public void b(int paramInt, Bundle paramBundle)
+  public void b()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadProgress progress = " + paramInt);
+      QLog.d("EmoticonMainPanel", 2, "roaming_finish");
     }
-    this.a.runOnUiThread(new acep(this, paramInt));
-  }
-  
-  public void c(int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadPause progress = " + paramInt);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      ((FavroamingManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(102)).b(this.a.jdField_a_of_type_ComTencentMobileqqEmosmFavroamingSyncListener);
     }
-    this.a.runOnUiThread(new aceq(this));
-  }
-  
-  public void d(int paramInt, Bundle paramBundle)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "UniformDownloader onDownloadResume progress = " + paramInt);
-    }
-    this.a.runOnUiThread(new aceo(this));
+    this.a.i();
   }
 }
 

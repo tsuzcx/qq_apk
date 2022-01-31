@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.sonic;
 
-import ajyf;
-import ajyg;
+import akmm;
+import akmn;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -52,7 +52,7 @@ public class SonicJsPlugin
       {
         paramString2 = paramString1.a();
         if ((paramString2 != null) && (paramString2.a() != null)) {
-          paramString2.getDiffData(new ajyf(this, paramString1, paramJsBridgeListener));
+          paramString2.getDiffData(new akmm(this, paramString1, paramJsBridgeListener));
         }
       }
       return true;
@@ -120,7 +120,7 @@ public class SonicJsPlugin
           if ((paramString2 != null) && (paramString2.a() != null))
           {
             paramString1.a().a().refresh();
-            paramString2.getDiffData(new ajyg(this, bool, paramString1, paramJsBridgeListener));
+            paramString2.getDiffData(new akmn(this, bool, paramString1, paramJsBridgeListener));
           }
         }
         return true;
@@ -133,7 +133,7 @@ public class SonicJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.webview.sonic.SonicJsPlugin
  * JD-Core Version:    0.7.0.1
  */

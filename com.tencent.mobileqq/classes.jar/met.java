@@ -1,33 +1,29 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayUtils;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoStatusListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
 
-public class met
-  implements SeekBar.OnSeekBarChangeListener
+class met
+  implements Runnable
 {
-  public met(VideoUIManager paramVideoUIManager) {}
+  met(meq parammeq) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean) {}
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  public void run()
   {
-    int i = paramSeekBar.getProgress();
-    int j = VideoUIManager.a(this.a).a();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoUIManager", 2, "onStopTrackingTouch(): progress=" + i + ", playState=" + VideoPlayUtils.a(j));
+    if (VideoPlayManager.a(this.a.a) != null) {
+      VideoPlayManager.a(this.a.a).a(VideoPlayManager.a(this.a.a));
     }
-    if (j == 3) {
-      VideoUIManager.a(this.a).a(i * 1000, VideoUIManager.a(this.a));
+    VideoPlayManager.a(this.a.a, VideoPlayManager.a(this.a.a), VideoPlayManager.a(this.a.a), 7, null);
+    if (VideoPlayManager.a(this.a.a) != null)
+    {
+      VideoPlayManager.a(this.a.a).d = -1;
+      VideoPlayManager.a(this.a.a).b = 0L;
+      VideoPlayManager.a(this.a.a, null);
     }
-    while (j != 5) {
-      return;
+    if (VideoPlayManager.a(this.a.a) != null)
+    {
+      VideoPlayManager.a(this.a.a).h();
+      VideoPlayManager.a(this.a.a, null);
     }
-    VideoUIManager.a(this.a).c(i * 1000);
   }
 }
 

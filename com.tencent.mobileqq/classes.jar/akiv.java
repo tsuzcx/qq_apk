@@ -1,26 +1,27 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.widget.TabDragAnimationView;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-public final class akiv
-  implements ValueAnimator.AnimatorUpdateListener
+public class akiv
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  private final TabDragAnimationView a;
+  public akiv(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public akiv(TabDragAnimationView paramTabDragAnimationView)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.a = paramTabDragAnimationView;
-  }
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.a(f, 0.0F, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("HealthBusinessPlugin", 2, "Completion video000");
+    }
+    paramTVK_IMediaPlayer.seekTo(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("HealthBusinessPlugin", 2, "Completion video");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akiv
  * JD-Core Version:    0.7.0.1
  */

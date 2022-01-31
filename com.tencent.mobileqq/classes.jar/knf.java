@@ -1,17 +1,14 @@
-import android.media.SoundPool;
-import com.tencent.biz.game.SensorAPIJavaScript;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.lebasearch.LebaSearchMoreInfoActivity;
+import com.tencent.biz.pubaccount.CustomWebView;
 
 public class knf
   implements Runnable
 {
-  public knf(SensorAPIJavaScript paramSensorAPIJavaScript, int paramInt, String paramString) {}
+  public knf(LebaSearchMoreInfoActivity paramLebaSearchMoreInfoActivity) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a != null) && (this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.a.play(this.jdField_a_of_type_Int, 1.0F, 1.0F, 0, 0, 1.0F) == 0) && (QLog.isColorLevel())) {
-      QLog.d("SensorApi", 2, "play failure url=" + this.jdField_a_of_type_JavaLangString);
-    }
+    this.a.b(this.a.jdField_a_of_type_AndroidWidgetFrameLayout).loadUrl(this.a.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -56,9 +56,9 @@ import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicReference;
-import xrn;
-import xrp;
-import xrq;
+import xut;
+import xuv;
+import xuw;
 
 public class RMVideoStateMgr
   implements AVCodec.AVCodecCallback, TCTimer.TCTimerCallback, ErrorCenter.ErrorHandleCallback, AudioCapture.OnAudioRecordListener, StorageManager.OnSdCardChangedListener
@@ -91,9 +91,9 @@ public class RMVideoStateMgr
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   public AtomicBoolean a;
   public AtomicInteger a;
-  public xrn a;
-  final xrp jdField_a_of_type_Xrp = new xrp();
-  final xrq jdField_a_of_type_Xrq = new xrq();
+  public xut a;
+  final xuv jdField_a_of_type_Xuv = new xuv();
+  final xuw jdField_a_of_type_Xuw = new xuw();
   public int b;
   public String b;
   public AtomicInteger b;
@@ -604,13 +604,13 @@ public class RMVideoStateMgr
   public RMVideoState a()
   {
     int i1 = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
-    xrq localxrq = this.jdField_a_of_type_Xrq;
+    xuw localxuw = this.jdField_a_of_type_Xuw;
     switch (i1)
     {
     default: 
-      return localxrq;
+      return localxuw;
     case 2: 
-      return this.jdField_a_of_type_Xrp;
+      return this.jdField_a_of_type_Xuv;
     case 3: 
       return this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoRecordState;
     }
@@ -1428,13 +1428,13 @@ public class RMVideoStateMgr
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMViewSTInterface.w();
       this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMViewSTInterface = null;
-      this.jdField_a_of_type_Xrq.f();
-      this.jdField_a_of_type_Xrq.g();
-      this.jdField_a_of_type_Xrp.f();
-      this.jdField_a_of_type_Xrp.g();
+      this.jdField_a_of_type_Xuw.f();
+      this.jdField_a_of_type_Xuw.g();
+      this.jdField_a_of_type_Xuv.f();
+      this.jdField_a_of_type_Xuv.g();
       this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture = null;
       k();
-      this.jdField_a_of_type_Xrn = null;
+      this.jdField_a_of_type_Xut = null;
       this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoSwitchCameraPicMgr.a = null;
       this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture$OnAudioRecordListener = null;
       h();
@@ -1517,7 +1517,7 @@ public class RMVideoStateMgr
   
   public void e(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Xrq.jdField_f_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_Xuw.jdField_f_of_type_Boolean = paramBoolean;
   }
   
   public boolean e()
@@ -1648,15 +1648,15 @@ public class RMVideoStateMgr
   
   public void j()
   {
-    if ((this.jdField_a_of_type_Xrn != null) && (this.jdField_a_of_type_Double > 0.0D)) {
-      this.jdField_a_of_type_Xrn.startWatching();
+    if ((this.jdField_a_of_type_Xut != null) && (this.jdField_a_of_type_Double > 0.0D)) {
+      this.jdField_a_of_type_Xut.startWatching();
     }
   }
   
   public void k()
   {
-    if (this.jdField_a_of_type_Xrn != null) {
-      this.jdField_a_of_type_Xrn.stopWatching();
+    if (this.jdField_a_of_type_Xut != null) {
+      this.jdField_a_of_type_Xut.stopWatching();
     }
   }
   

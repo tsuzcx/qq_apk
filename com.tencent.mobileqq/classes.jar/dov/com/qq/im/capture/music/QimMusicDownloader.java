@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.music;
 
-import amwa;
 import android.text.TextUtils;
+import anmf;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 
@@ -14,7 +14,7 @@ public class QimMusicDownloader
       QLog.e("MusicProviderView.Downloader", 1, "invalid downlaod params " + paramString1 + ", " + paramString2);
       return;
     }
-    ThreadManager.post(new amwa(paramString1, paramString2, paramMusicDownloadListener), 5, null, false);
+    ThreadManager.post(new anmf(paramString1, paramString2, paramMusicDownloadListener), 5, null, false);
   }
 }
 

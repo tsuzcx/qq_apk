@@ -1,15 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AddRequestActivity;
+import com.tencent.mobileqq.activity.AddAccountActivity;
 
 public class rhm
-  implements View.OnClickListener
+  implements Runnable
 {
-  public rhm(AddRequestActivity paramAddRequestActivity) {}
+  public rhm(AddAccountActivity paramAddAccountActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.b();
+    AddAccountActivity.a(this.a, true);
   }
 }
 

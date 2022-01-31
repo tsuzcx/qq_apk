@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import alko;
+import amae;
 import android.content.Context;
 import android.database.DataSetObserver;
 import android.graphics.Rect;
@@ -16,7 +16,7 @@ public abstract class AbsSpinner
   extends AdapterView
 {
   private static final int jdField_a_of_type_Int = getStyleableValue("AbsSpinner_entries");
-  final alko jdField_a_of_type_Alko = new alko(this);
+  final amae jdField_a_of_type_Amae = new amae(this);
   private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver;
   final Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   SpinnerAdapter jdField_a_of_type_AndroidWidgetSpinnerAdapter;
@@ -156,12 +156,12 @@ public abstract class AbsSpinner
   void b()
   {
     int j = getChildCount();
-    alko localalko = this.jdField_a_of_type_Alko;
+    amae localamae = this.jdField_a_of_type_Amae;
     int k = this.mFirstPosition;
     int i = 0;
     while (i < j)
     {
-      localalko.a(k + i, getChildAt(i));
+      localamae.a(k + i, getChildAt(i));
       i += 1;
     }
   }
@@ -225,13 +225,13 @@ public abstract class AbsSpinner
       if ((i < 0) || (this.jdField_a_of_type_AndroidWidgetSpinnerAdapter == null) || (i >= this.jdField_a_of_type_AndroidWidgetSpinnerAdapter.getCount())) {
         break label437;
       }
-      View localView = this.jdField_a_of_type_Alko.a(i);
+      View localView = this.jdField_a_of_type_Amae.a(i);
       localObject = localView;
       if (localView == null) {
         localObject = this.jdField_a_of_type_AndroidWidgetSpinnerAdapter.getView(i, null, this);
       }
       if (localObject != null) {
-        this.jdField_a_of_type_Alko.a(i, (View)localObject);
+        this.jdField_a_of_type_Amae.a(i, (View)localObject);
       }
       if (localObject == null) {
         break label437;
@@ -377,7 +377,7 @@ public abstract class AbsSpinner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.AbsSpinner
  * JD-Core Version:    0.7.0.1
  */

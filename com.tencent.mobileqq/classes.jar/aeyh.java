@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.GetLocalUnPiblishListCallback;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
 
-class aeyh
-  implements Runnable
+public final class aeyh
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  aeyh(aeyg paramaeyg, List paramList) {}
-  
-  public void run()
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    if (this.jdField_a_of_type_Aeyg.a != null) {
-      this.jdField_a_of_type_Aeyg.a.a(this.jdField_a_of_type_JavaUtilList);
-    }
+    QLog.i("VideoPlayerView", 2, "onPreLoadFailed() called with: s = [" + paramString1 + "], i = [" + paramInt + "], s1 = [" + paramString2 + "]");
+  }
+  
+  public void onPreLoadSucess(String paramString1, String paramString2)
+  {
+    QLog.i("VideoPlayerView", 2, "onPreLoadSucess() called with: s = [" + paramString1 + "], s1 = [" + paramString2 + "]");
   }
 }
 

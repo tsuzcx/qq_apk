@@ -18,7 +18,7 @@ import java.util.Map;
 import java.util.Set;
 import mqq.os.MqqHandler;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
-import yxk;
+import zaq;
 
 public abstract class BaseBusinessHandler
 {
@@ -200,7 +200,7 @@ public abstract class BaseBusinessHandler
   
   private void a(int paramInt, boolean paramBoolean1, Object paramObject, boolean paramBoolean2, BusinessObserver paramBusinessObserver, MqqHandler paramMqqHandler)
   {
-    paramObject = new yxk(this, paramBusinessObserver, paramInt, paramMqqHandler, paramBoolean1, paramObject);
+    paramObject = new zaq(this, paramBusinessObserver, paramInt, paramMqqHandler, paramBoolean1, paramObject);
     if (paramBoolean2)
     {
       paramMqqHandler.postAtFrontOfQueue(paramObject);

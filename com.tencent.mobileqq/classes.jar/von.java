@@ -1,68 +1,64 @@
-import android.os.Bundle;
-import android.os.SystemClock;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.app.EnterpriseQQHandler;
-import com.tencent.mobileqq.app.FriendListHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.mobileqq.app.FlashPicHelper;
+import com.tencent.mobileqq.app.HotChatHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mp.mobileqq_mp.FollowResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AccountNotMatchException;
 
 public class von
-  implements BusinessObserver
+  implements Runnable
 {
-  public von(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public von(AIOImageProviderService paramAIOImageProviderService, long paramLong) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      this.a.v(2131430016);
-    }
-    for (;;)
+    try
     {
-      ChatActivityUtils.b();
-      return;
-      try
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a);
+      ChatMessage localChatMessage = AIOImageProviderService.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService, this.jdField_a_of_type_Long);
+      QQMessageFacade localQQMessageFacade;
+      if (localChatMessage != null)
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
+        localQQMessageFacade = localQQAppInterface.a();
+        if (!HotChatHelper.a(localChatMessage)) {
+          break label157;
+        }
+        HotChatHelper.a(localChatMessage);
+        break label180;
+      }
+      for (;;)
+      {
+        localQQMessageFacade.a(localChatMessage.frienduin, localChatMessage.istroop, localChatMessage.uniseq, "extStr", localChatMessage.extStr);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.hotchat", 2, "makeFlashPicReaded,uin:" + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.b + ",type:" + localChatMessage.istroop + ",extStr" + localChatMessage.extStr);
+        }
+        ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8005979", "0X8005979", 0, 0, "", "", "", "");
+        return;
+        label157:
+        FlashPicHelper.a(localChatMessage);
+        Iterator localIterator = localQQMessageFacade.b(localChatMessage.frienduin, localChatMessage.msgtype).iterator();
+        label180:
+        if (localIterator.hasNext())
         {
-          mobileqq_mp.FollowResponse localFollowResponse = new mobileqq_mp.FollowResponse();
-          localFollowResponse.mergeFrom(paramBundle);
-          paramInt = ((mobileqq_mp.RetInfo)localFollowResponse.ret_info.get()).ret_code.get();
-          if (paramInt == 0)
-          {
-            ((FriendListHandler)this.a.a.a(1)).a(true, false);
-            paramBundle = (EnterpriseQQHandler)this.a.a.a(21);
-            if (paramBundle != null) {
-              paramBundle.a(SystemClock.uptimeMillis());
-            }
+          MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
+          if (localMessageRecord.uniseq != this.jdField_a_of_type_Long) {
+            break;
           }
-          else if (paramInt == 58)
-          {
-            this.a.v(2131430024);
-          }
-          else if (paramInt == 65)
-          {
-            this.a.v(2131430025);
-          }
-          else if (paramInt == 20)
-          {
-            this.a.v(2131430026);
-          }
-          else
-          {
-            this.a.v(2131430016);
-          }
+          FlashPicHelper.a(localMessageRecord);
         }
       }
-      catch (Exception paramBundle) {}
+      return;
+    }
+    catch (AccountNotMatchException localAccountNotMatchException)
+    {
+      QLog.d("Q.hotchat", 2, "setFlashPicReaded，account no match exception");
     }
   }
 }

@@ -29,10 +29,10 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import zmz;
-import zne;
-import znf;
-import zng;
+import zqf;
+import zqk;
+import zql;
+import zqm;
 
 public class CleanCache
   extends AsyncStep
@@ -63,7 +63,7 @@ public class CleanCache
         n = localObject1.length;
         if (n > 200)
         {
-          Arrays.sort((Object[])localObject1, new zng(this));
+          Arrays.sort((Object[])localObject1, new zqm(this));
           int i1 = localObject1.length;
           k = 0;
           j = 0;
@@ -110,7 +110,7 @@ public class CleanCache
   {
     this.a.b.getApp().getSharedPreferences("HEAD", 0).edit().clear().commit();
     b();
-    ThreadManager.post(new zmz(this), 2, null, false);
+    ThreadManager.post(new zqf(this), 2, null, false);
     return 7;
   }
   
@@ -150,10 +150,10 @@ public class CleanCache
       Object localObject = new File("/data/data/com.tencent.mobileqq/files/crashinfo/");
       if ((localObject != null) && (((File)localObject).exists()))
       {
-        localObject = ((File)localObject).listFiles(new zne(this));
+        localObject = ((File)localObject).listFiles(new zqk(this));
         if ((localObject != null) && (localObject.length > 10))
         {
-          Arrays.sort((Object[])localObject, new znf(this));
+          Arrays.sort((Object[])localObject, new zql(this));
           while (i < localObject.length)
           {
             localObject[i].delete();

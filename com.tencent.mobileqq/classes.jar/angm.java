@@ -1,23 +1,86 @@
-import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
-import dov.com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import android.os.RemoteException;
+import com.tencent.open.wadl.WLog;
+import cooperation.wadl.ipc.IWadlProxyServiceMonitor;
+import cooperation.wadl.ipc.IWadlService;
+import cooperation.wadl.ipc.IWadlService.Stub;
+import cooperation.wadl.ipc.WadlProxyServiceManager;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class angm
-  implements IMediaPlayer.OnErrorListener
+  implements ServiceConnection
 {
-  public angm(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  public angm(WadlProxyServiceManager paramWadlProxyServiceManager) {}
   
-  public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void a()
   {
-    LocalVideoSelectActivity.a(this.a).a();
-    LocalVideoSelectActivity.a(this.a).a(true);
-    return true;
+    if ((WadlProxyServiceManager.a(this.a) != null) && (!WadlProxyServiceManager.a(this.a).b())) {
+      WadlProxyServiceManager.a(this.a).b();
+    }
+  }
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    WLog.b("WadlProxyServiceManager", "onServiceConnected success");
+    this.a.a = false;
+    WadlProxyServiceManager.a(this.a, IWadlService.Stub.a(paramIBinder));
+    try
+    {
+      WadlProxyServiceManager.a(this.a).a(WadlProxyServiceManager.a(this.a));
+      WadlProxyServiceManager.a(this.a);
+      a();
+    }
+    catch (RemoteException paramComponentName)
+    {
+      for (;;)
+      {
+        try
+        {
+          WadlProxyServiceManager.a(this.a).asBinder().linkToDeath(WadlProxyServiceManager.a(this.a), 0);
+          return;
+        }
+        catch (RemoteException paramComponentName)
+        {
+          paramComponentName.printStackTrace();
+        }
+        paramComponentName = paramComponentName;
+        paramComponentName.printStackTrace();
+      }
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    WLog.b("WadlProxyServiceManager", "onServiceDisconnected");
+    try
+    {
+      WadlProxyServiceManager.a(this.a).getApplication().unbindService(WadlProxyServiceManager.a(this.a));
+      if (WadlProxyServiceManager.a(this.a) != null) {
+        WadlProxyServiceManager.a(this.a).a();
+      }
+      if (WadlProxyServiceManager.a(this.a) != null) {
+        WadlProxyServiceManager.a(this.a).b(WadlProxyServiceManager.a(this.a));
+      }
+      return;
+    }
+    catch (Exception paramComponentName)
+    {
+      paramComponentName.printStackTrace();
+      return;
+    }
+    finally
+    {
+      WadlProxyServiceManager.a(this.a, null);
+      this.a.a = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     angm
  * JD-Core Version:    0.7.0.1
  */

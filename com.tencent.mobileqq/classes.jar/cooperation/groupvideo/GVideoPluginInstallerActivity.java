@@ -1,8 +1,8 @@
 package cooperation.groupvideo;
 
-import alvd;
-import alve;
-import alvf;
+import amlh;
+import amli;
+import amlj;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,9 +23,9 @@ public class GVideoPluginInstallerActivity
   final int jdField_a_of_type_Int = 1;
   Handler jdField_a_of_type_AndroidOsHandler;
   public TextView a;
-  private final OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new alve(this);
+  private final OnPluginInstallListener jdField_a_of_type_ComTencentMobileqqPluginsdkOnPluginInstallListener = new amli(this);
   public IPluginManager a;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new alvf(this);
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new amlj(this);
   public final String a;
   final int jdField_b_of_type_Int = 2;
   public final Handler b;
@@ -36,7 +36,7 @@ public class GVideoPluginInstallerActivity
   public GVideoPluginInstallerActivity()
   {
     this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-    this.jdField_b_of_type_AndroidOsHandler = new alvd(this, Looper.getMainLooper());
+    this.jdField_b_of_type_AndroidOsHandler = new amlh(this, Looper.getMainLooper());
   }
   
   private String a(ArrayList paramArrayList, boolean paramBoolean)
@@ -79,7 +79,7 @@ public class GVideoPluginInstallerActivity
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131430773));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131430790));
     this.jdField_b_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4, 1000L);
   }
   
@@ -94,13 +94,13 @@ public class GVideoPluginInstallerActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     boolean bool = super.doOnCreate(paramBundle);
-    super.setContentView(2130969951);
-    super.setTitle(getString(2131430774));
+    super.setContentView(2130969965);
+    super.setTitle(getString(2131430791));
     if ((this.leftView != null) && (getIntent() != null)) {
       this.leftView.setText(getIntent().getExtras().getString("leftViewText"));
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365531));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131430772));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365553));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(getString(2131430789));
     this.jdField_a_of_type_CooperationPluginIPluginManager = ((IPluginManager)this.app.getManager(26));
     return bool;
   }

@@ -4,7 +4,7 @@ import android.view.animation.AnimationUtils;
 import com.tencent.mobileqq.utils.PerformanceReportUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.CopyOnWriteArrayList;
-import rbd;
+import rdt;
 
 public class FPSCalculator
 {
@@ -19,7 +19,7 @@ public class FPSCalculator
     if (this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.size() < 1) {
       return;
     }
-    new rbd(this).execute(new Void[0]);
+    new rdt(this).execute(new Void[0]);
   }
   
   public void a(int paramInt)
@@ -74,7 +74,7 @@ public class FPSCalculator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mfsdk.collector.FPSCalculator
  * JD-Core Version:    0.7.0.1
  */

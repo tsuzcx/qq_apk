@@ -1,14 +1,15 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
+import android.support.v4.view.ViewPager;
+import com.tencent.biz.addContactTroopView.TroopCardBanner;
 
-public class kkl
+class kkl
   implements Runnable
 {
-  public kkl(ProtoUtils.TroopProtocolObserver paramTroopProtocolObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
+  kkl(kkk paramkkk) {}
   
   public void run()
   {
-    ProtoUtils.TroopProtocolObserver.a(this.jdField_a_of_type_ComTencentBizProtoUtils$TroopProtocolObserver, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    int i = this.a.a.a.getCurrentItem();
+    this.a.a.a.setCurrentItem(i + 1);
   }
 }
 

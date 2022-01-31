@@ -1,43 +1,32 @@
+import android.os.Handler;
+import com.tencent.av.VideoController;
 import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.opengl.texture.YUVTexture.GLRenderListener;
-import com.tencent.av.ui.GLVideoView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.MultiIncomingCallUICtr;
+import com.tencent.av.ui.VideoInviteFloatBar;
+import com.tencent.av.utils.UITools;
 
 public class jvi
-  implements YUVTexture.GLRenderListener
+  implements Runnable
 {
-  public jvi(GLVideoView paramGLVideoView, VideoAppInterface paramVideoAppInterface) {}
+  public jvi(MultiIncomingCallUICtr paramMultiIncomingCallUICtr) {}
   
-  public void a()
+  public void run()
   {
-    GLVideoView.a(this.jdField_a_of_type_ComTencentAvUiGLVideoView);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(GLVideoView.a(this.jdField_a_of_type_ComTencentAvUiGLVideoView), 2, "onRenderInfoNotify width: " + paramInt1 + ", height: " + paramInt2 + ", angle: " + paramInt3);
-    }
-    GLVideoView.d(this.jdField_a_of_type_ComTencentAvUiGLVideoView);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
+    String str = UITools.a(this.a.jdField_a_of_type_ComTencentAvVideoController.a());
+    if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null)
     {
-      String str = this.jdField_a_of_type_ComTencentAvUiGLVideoView.a();
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(130), str, paramArrayOfByte });
+      this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.a(str);
+      if (this.a.jdField_a_of_type_ComTencentAvVideoController.a() % 60L >= 1L)
+      {
+        this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.a();
+        this.a.a();
+      }
     }
-  }
-  
-  public void b()
-  {
-    GLVideoView.b(this.jdField_a_of_type_ComTencentAvUiGLVideoView);
-  }
-  
-  public void c()
-  {
-    GLVideoView.c(this.jdField_a_of_type_ComTencentAvUiGLVideoView);
+    else
+    {
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
   }
 }
 

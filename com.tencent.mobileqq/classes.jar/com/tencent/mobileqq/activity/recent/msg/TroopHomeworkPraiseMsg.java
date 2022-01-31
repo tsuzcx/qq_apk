@@ -10,7 +10,7 @@ public class TroopHomeworkPraiseMsg
 {
   public TroopHomeworkPraiseMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131430179);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(2131430196);
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   

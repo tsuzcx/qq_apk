@@ -123,7 +123,7 @@ public class ContactSearchModelPhoneContact
     super.a(paramView);
     int i;
     Object localObject1;
-    if ((paramView.getId() == 2131368907) && (this.jdField_b_of_type_Int == 17))
+    if ((paramView.getId() == 2131368973) && (this.jdField_b_of_type_Int == 17))
     {
       int j;
       if (!((PhoneContactManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10)).g())
@@ -326,7 +326,7 @@ public class ContactSearchModelPhoneContact
   public CharSequence d()
   {
     if ((this.jdField_b_of_type_Int == 17) && (this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.samFriend > 0)) {
-      return String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131433294), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.samFriend) });
+      return String.format(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131433311), new Object[] { Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataPhoneContact.samFriend) });
     }
     return null;
   }

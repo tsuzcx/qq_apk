@@ -24,13 +24,13 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import jgx;
-import jgy;
-import jgz;
-import jha;
-import jhb;
-import jhc;
-import jhd;
+import jgi;
+import jgj;
+import jgk;
+import jgl;
+import jgm;
+import jgn;
+import jgo;
 import mqq.app.MobileQQ;
 
 public class VideoNodeReporter
@@ -38,7 +38,7 @@ public class VideoNodeReporter
 {
   static String jdField_a_of_type_JavaLangString;
   public int a;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new jgx(this);
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new jgi(this);
   public Handler a;
   HandlerThread jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("VideoNodeReportThread");
   public List a;
@@ -96,17 +96,17 @@ public class VideoNodeReporter
     Object localObject1 = localObject2;
     if (localObject2 == null)
     {
-      localObject1 = new jhd();
-      ((jhd)localObject1).a = paramLong1;
+      localObject1 = new jgo();
+      ((jgo)localObject1).a = paramLong1;
       this.jdField_a_of_type_JavaUtilList.add(localObject1);
     }
     localObject2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
     SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
-    if (((jhd)localObject1).a == localSessionInfo.j) {
-      ((jhd)localObject1).a(localSessionInfo, (String)localObject2);
+    if (((jgo)localObject1).a == localSessionInfo.j) {
+      ((jgo)localObject1).a(localSessionInfo, (String)localObject2);
     }
-    localObject2 = ((jhd)localObject1).a();
-    localObject1 = ((jhd)localObject1).a(paramInt, paramLong2);
+    localObject2 = ((jgo)localObject1).a();
+    localObject1 = ((jgo)localObject1).a(paramInt, paramLong2);
     a(paramLong1, (String)localObject2 + (String)localObject1);
   }
   
@@ -143,16 +143,16 @@ public class VideoNodeReporter
     AVLog.d("VideoNodeReporter", "removeSpSessionRecord,roomId = " + paramLong);
   }
   
-  jhd a(long paramLong)
+  jgo a(long paramLong)
   {
     if (this.jdField_a_of_type_JavaUtilList.size() > 0)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
-        jhd localjhd = (jhd)localIterator.next();
-        if (paramLong == localjhd.a) {
-          return localjhd;
+        jgo localjgo = (jgo)localIterator.next();
+        if (paramLong == localjgo.a) {
+          return localjgo;
         }
       }
     }
@@ -185,7 +185,7 @@ public class VideoNodeReporter
       AVLog.d("VideoNodeReporter", " report error 1 ,exit has been called,node = " + paramInt);
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new jgz(this, paramInt, paramLong));
+    this.jdField_a_of_type_AndroidOsHandler.post(new jgk(this, paramInt, paramLong));
   }
   
   protected void a(int paramInt, String paramString1, String paramString2)
@@ -202,7 +202,7 @@ public class VideoNodeReporter
     {
       paramString1 = this.jdField_a_of_type_JavaUtilList.iterator();
       while (paramString1.hasNext()) {
-        ((jhd)paramString1.next()).b = System.currentTimeMillis();
+        ((jgo)paramString1.next()).b = System.currentTimeMillis();
       }
     }
     a(38, this.jdField_a_of_type_Int);
@@ -211,7 +211,7 @@ public class VideoNodeReporter
   public void a(long paramLong)
   {
     QLog.d("VideoNodeReporter", 1, "updateCallerRoomId roomId = " + paramLong);
-    this.jdField_a_of_type_AndroidOsHandler.post(new jgy(this, paramLong));
+    this.jdField_a_of_type_AndroidOsHandler.post(new jgj(this, paramLong));
   }
   
   public void a(long paramLong1, int paramInt, long paramLong2)
@@ -232,12 +232,12 @@ public class VideoNodeReporter
       QLog.d("VideoNodeReporter", 1, "reportByRoomId rooid is 0", new Throwable("test"));
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new jha(this, paramLong1, paramInt, paramLong2));
+    this.jdField_a_of_type_AndroidOsHandler.post(new jgl(this, paramLong1, paramInt, paramLong2));
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new jhb(this, paramString));
+    this.jdField_a_of_type_AndroidOsHandler.post(new jgm(this, paramString));
   }
   
   protected boolean a(String paramString)
@@ -270,7 +270,7 @@ public class VideoNodeReporter
   
   public void b(long paramLong)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new jhc(this, paramLong));
+    this.jdField_a_of_type_AndroidOsHandler.post(new jgn(this, paramLong));
   }
 }
 

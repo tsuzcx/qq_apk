@@ -55,10 +55,10 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
-import zcj;
-import zck;
-import zcl;
-import zcm;
+import zfp;
+import zfq;
+import zfr;
+import zfs;
 
 public class IndividualRedPacketManager
   implements Manager
@@ -114,7 +114,7 @@ public class IndividualRedPacketManager
     this.jdField_b_of_type_Int = 0;
     this.jdField_c_of_type_Int = 0;
     this.jdField_c_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    this.jdField_a_of_type_JavaUtilComparator = new zcl(this);
+    this.jdField_a_of_type_JavaUtilComparator = new zfr(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     SharedPreferences localSharedPreferences = a();
     a(localSharedPreferences.getInt("sp_vip_info_can_use_packet", 0), localSharedPreferences.getInt("sp_vip_info_red_packet_disable", 0), false);
@@ -134,7 +134,7 @@ public class IndividualRedPacketManager
     this.f = ((int)(320.0F * this.jdField_b_of_type_Float + 0.5D));
     this.jdField_a_of_type_Float = ((int)(this.jdField_b_of_type_Float * 104.0F + 0.5D));
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    ThreadManager.post(new zcj(this), 8, null, true);
+    ThreadManager.post(new zfp(this), 8, null, true);
   }
   
   private Bitmap a(IndividualRedPacketManager.FontBitmap paramFontBitmap, String paramString1, String paramString2, int paramInt)
@@ -2652,7 +2652,7 @@ public class IndividualRedPacketManager
   
   public void a()
   {
-    ThreadManager.post(new zck(this), 2, null, true);
+    ThreadManager.post(new zfq(this), 2, null, true);
   }
   
   public void a(int paramInt1, int paramInt2, boolean paramBoolean)
@@ -3185,7 +3185,7 @@ public class IndividualRedPacketManager
   
   public void a(String paramString1, String paramString2, Bundle paramBundle, MessengerService paramMessengerService)
   {
-    ThreadManager.post(new zcm(this, paramString1, paramString2, paramBundle, paramMessengerService), 8, null, true);
+    ThreadManager.post(new zfs(this, paramString1, paramString2, paramBundle, paramMessengerService), 8, null, true);
   }
   
   public void a(boolean paramBoolean)

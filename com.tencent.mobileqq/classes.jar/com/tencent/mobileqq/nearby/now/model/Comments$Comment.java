@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.now.model;
 
-import aegg;
+import aetm;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class Comments$Comment
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aegg();
+  public static final Parcelable.Creator CREATOR = new aetm();
   public int a;
   public long a;
   public MedalInfo a;

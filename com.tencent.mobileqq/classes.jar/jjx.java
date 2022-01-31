@@ -1,28 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.av.SessionMgr;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.SessionInfo.GuildInfo;
-import com.tencent.av.guild.GuildMultiActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.opengl.GlStringParser;
+import com.tencent.av.opengl.texture.YUVTexture;
+import com.tencent.av.opengl.texture.YUVTexture.GLRenderListener;
 
 public class jjx
-  implements DialogInterface.OnClickListener
+  extends Handler
 {
-  public jjx(GuildMultiActivity paramGuildMultiActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public jjx(YUVTexture paramYUVTexture, Looper paramLooper)
   {
-    SessionInfo localSessionInfo = SessionMgr.a().a(this.a.e);
-    if (localSessionInfo != null)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
     {
-      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
-      localIntent.putExtra("url", localSessionInfo.a.f);
-      this.a.startActivity(localIntent);
-      this.a.a(localSessionInfo, 1);
     }
-    paramDialogInterface.dismiss();
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return;
+          } while (YUVTexture.a(this.a) == null);
+          YUVTexture.a(this.a).a();
+          return;
+        } while (YUVTexture.a(this.a) == null);
+        YUVTexture.a(this.a).b();
+        return;
+      } while (YUVTexture.a(this.a) == null);
+      YUVTexture.a(this.a).c();
+      return;
+    } while (YUVTexture.a(this.a) == null);
+    if (YUVTexture.a(this.a) == null) {
+      YUVTexture.a(this.a, new GlStringParser('=', ';'));
+    }
+    paramMessage = (String)paramMessage.obj;
+    YUVTexture.a(this.a).a(paramMessage);
+    int i = YUVTexture.a(this.a).a("width");
+    int j = YUVTexture.a(this.a).a("height");
+    int k = YUVTexture.a(this.a).a("angle");
+    YUVTexture.a(this.a).a(i, j, k);
   }
 }
 

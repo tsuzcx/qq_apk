@@ -1,20 +1,17 @@
 import android.os.Handler;
-import com.tencent.biz.qqstory.troop.forward.TroopStoryForwardTask;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForTroopStory;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.rmw.RMWLog;
+import com.tencent.biz.qqstory.takevideo.rmw.RMWProto;
+import com.tencent.biz.qqstory.takevideo.rmw.RMWService;
 
-class olk
-  implements Runnable
+public class olk
+  extends Handler
 {
-  olk(olj paramolj, String paramString) {}
+  public olk(RMWService paramRMWService) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_Olj.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.storyId = this.jdField_a_of_type_JavaLangString;
-    this.jdField_a_of_type_Olj.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.serial();
-    this.jdField_a_of_type_Olj.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_Olj.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.frienduin, this.jdField_a_of_type_Olj.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.istroop, this.jdField_a_of_type_Olj.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.uniseq, this.jdField_a_of_type_Olj.a.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopStory.msgData);
-    this.jdField_a_of_type_Olj.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    RMWLog.a("RMWService", "service.handle : " + RMWProto.a(paramMessage));
   }
 }
 

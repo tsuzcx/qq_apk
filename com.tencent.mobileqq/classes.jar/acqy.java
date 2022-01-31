@@ -1,29 +1,49 @@
-import com.tencent.mobileqq.filemanager.data.search.FileManagerSearchEngine;
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
-import java.util.List;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class acqy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ISearchListener a;
-  public SearchRequest a;
+  public acqy(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  private acqy(FileManagerSearchEngine paramFileManagerSearchEngine) {}
-  
-  public void run()
+  public void onClick(View paramView)
   {
-    SearchRequest localSearchRequest = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest;
-    String str = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a;
-    List localList = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataSearchFileManagerSearchEngine.a(localSearchRequest);
-    try
+    if (paramView == null)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) && (localSearchRequest == this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest) && (str.equals(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a))) {
-        this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
+      if (QLog.isColorLevel()) {
+        QLog.e(QfileBaseLocalFileTabView.jdField_a_of_type_JavaLangString, 2, "qfilebaserecenttabview del error, tag is null");
       }
       return;
     }
-    finally {}
+    FileInfo localFileInfo = (FileInfo)paramView.getTag();
+    if (localFileInfo != null)
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.a(null);
+      }
+      if (!FileUtil.c(localFileInfo.c())) {
+        break label99;
+      }
+      this.a.a(localFileInfo);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.a(Integer.valueOf(-1));
+      paramView.setVisibility(4);
+      this.a.d();
+      return;
+      label99:
+      String str = QfileBaseLocalFileTabView.a(this.a).getString(2131428146);
+      FMToastUtil.a(FileManagerUtil.d(localFileInfo.d()) + str);
+    }
   }
 }
 

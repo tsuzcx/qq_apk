@@ -1,20 +1,24 @@
 package com.tencent.gdtad.views.freeflip;
 
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import com.tencent.gdtad.log.GdtLog;
 import com.tencent.gdtad.views.image.GdtDrawableLoader.Listener;
 import com.tencent.image.URLDrawable;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
-import qka;
-import qkb;
+import java.util.Map.Entry;
+import java.util.Set;
+import qmo;
+import qmp;
 
 public abstract class GdtFreeFlipContentViewWithRoundTrip
   extends GdtFreeFlipContentView
 {
   protected int a;
-  private GdtDrawableLoader.Listener jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader$Listener = new qka(this);
+  private GdtDrawableLoader.Listener jdField_a_of_type_ComTencentGdtadViewsImageGdtDrawableLoader$Listener = new qmo(this);
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 0;
@@ -32,17 +36,62 @@ public abstract class GdtFreeFlipContentViewWithRoundTrip
     this.jdField_a_of_type_Int = 0;
   }
   
+  private int a(String paramString)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if ((localEntry == null) || (localEntry.getValue() == null)) {
+        GdtLog.d("GdtFreeFlipContentViewWithRoundTrip", "checkDrawableLoaded error");
+      } else if (TextUtils.equals(((qmp)localEntry.getValue()).jdField_a_of_type_JavaLangString, paramString)) {
+        return ((Integer)localEntry.getKey()).intValue();
+      }
+    }
+    return 0;
+  }
+  
   private URLDrawable a(int paramInt)
   {
     if ((!this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(paramInt))) || (this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) == null)) {
       return null;
     }
-    return ((qkb)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).a();
+    return ((qmp)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt))).a();
   }
   
   private void a()
   {
     setImageDrawable(a());
+  }
+  
+  private void b()
+  {
+    if (this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+    for (;;)
+    {
+      if (localIterator.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        if ((localEntry == null) || (localEntry.getValue() == null))
+        {
+          GdtLog.d("GdtFreeFlipContentViewWithRoundTrip", "checkDrawableLoaded error");
+        }
+        else
+        {
+          if (!((qmp)localEntry.getValue()).jdField_a_of_type_Boolean) {
+            break;
+          }
+          if (((qmp)localEntry.getValue()).a() == null) {
+            return;
+          }
+        }
+      }
+    }
+    this.jdField_b_of_type_Boolean = true;
+    postInvalidate();
   }
   
   protected URLDrawable a()
@@ -85,7 +134,7 @@ public abstract class GdtFreeFlipContentViewWithRoundTrip
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.views.freeflip.GdtFreeFlipContentViewWithRoundTrip
  * JD-Core Version:    0.7.0.1
  */

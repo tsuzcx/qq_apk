@@ -5,7 +5,7 @@ import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.Window;
 import android.widget.ImageView;
-import angn;
+import anws;
 import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -39,7 +39,7 @@ public class QQStoryTakeVideoCloseAnimationActivity
   protected void doOnResume()
   {
     super.doOnResume();
-    ThreadManager.getUIHandler().postDelayed(new angn(this), 150L);
+    ThreadManager.getUIHandler().postDelayed(new anws(this), 150L);
   }
   
   protected void onDestroy()

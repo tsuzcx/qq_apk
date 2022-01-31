@@ -1,22 +1,26 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.commonsdk.soload.SoLoadUtilNew;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 
-public final class ahma
+public class ahma
   implements Runnable
 {
+  public ahma(EffectsCameraCaptureView paramEffectsCameraCaptureView) {}
+  
   public void run()
   {
-    try
+    if (!this.a.h)
     {
-      SoLoadUtilNew.loadSoByName(BaseApplicationImpl.getContext(), "GIFEngine");
-      ShortVideoUtils.a(true);
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      localUnsatisfiedLinkError.printStackTrace();
-      ShortVideoUtils.a(false);
+      this.a.a.a(EffectsCameraCaptureView.a(this.a));
+      this.a.a.b(this.a.f, this.a.g, this.a.getWidth(), this.a.getHeight());
+      this.a.a.c(this.a.f, this.a.g, this.a.getWidth(), this.a.getHeight());
+      this.a.a.c(EffectsCameraCaptureView.b(this.a));
+      this.a.h = true;
+      if (EffectsCameraCaptureView.a(this.a) != null) {
+        this.a.setFaceEffect(EffectsCameraCaptureView.a(this.a));
+      }
+      if (EffectsCameraCaptureView.a(this.a) != 0) {
+        this.a.setBeauty(EffectsCameraCaptureView.a(this.a));
+      }
     }
   }
 }

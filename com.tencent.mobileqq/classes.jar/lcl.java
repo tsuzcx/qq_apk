@@ -1,15 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
 
 public class lcl
-  implements View.OnClickListener
+  implements Runnable
 {
-  public lcl(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
+  public lcl(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ReadInJoyBaseDeliverActivity.a(this.a);
+    HtmlOffline.b("2378", this.a.app, true, new lcm(this));
+    HtmlOffline.b("2464", this.a.app, true, new lcn(this));
+    HtmlOffline.b("2463", this.a.app, true, new lco(this));
   }
 }
 

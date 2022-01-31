@@ -1,17 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
+import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
+import com.tencent.biz.pubaccount.Advertisement.data.VideoCoverItem;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementRecentUserManager;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class kuc
-  implements View.OnClickListener
+  implements Runnable
 {
-  public kuc(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
+  public kuc(AdvertisementRecentUserManager paramAdvertisementRecentUserManager, AdvertisementItem paramAdvertisementItem) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    Iterator localIterator = this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.iterator();
+    while (localIterator.hasNext()) {
+      AdvertisementVideoPreloadManager.b(((VideoCoverItem)localIterator.next()).b);
     }
   }
 }

@@ -1,30 +1,23 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.fileviewer.FileView.LocalTbsViewManager.LocalTbsViewManagerCallback;
 
-public class adbw
+class adbw
   implements Runnable
 {
-  public adbw(ForwardSdkShareOption paramForwardSdkShareOption) {}
+  adbw(adbs paramadbs, Integer paramInteger) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_AndroidAppActivity.isFinishing()) {}
-    do
+    switch (this.jdField_a_of_type_JavaLangInteger.intValue())
     {
+    case 12: 
+    case 19: 
+    default: 
       return;
-      if (QLog.isColorLevel()) {
-        QLog.w("ForwardOption.ForwardSdkShareOption", 2, "-->preForward--fetch openid timeout");
-      }
-      this.a.h = true;
-      this.a.t();
-    } while (!ForwardSdkShareOption.a(this.a));
-    this.a.jdField_a_of_type_AndroidOsBundle.putString("uin", String.valueOf("-1010"));
-    this.a.jdField_a_of_type_AndroidOsBundle.putInt("uintype", -1);
-    this.a.jdField_a_of_type_AndroidOsBundle.putInt("key_forward_ability_type", ForwardAbility.ForwardAbilityType.e.intValue());
-    this.a.j();
+    case 5001: 
+      this.jdField_a_of_type_Adbs.a.a(true);
+      return;
+    }
+    this.jdField_a_of_type_Adbs.a.a(false);
   }
 }
 

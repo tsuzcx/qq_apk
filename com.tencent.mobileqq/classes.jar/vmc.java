@@ -1,23 +1,24 @@
-import android.graphics.Paint;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
-import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
+import com.tencent.qphone.base.util.QLog;
 
-public class vmc
+class vmc
   implements Runnable
 {
-  public vmc(PhotoListPanel paramPhotoListPanel, String paramString) {}
+  vmc(vmb paramvmb, boolean paramBoolean, long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
   
   public void run()
   {
-    Object localObject = PhotoListPanel.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel).getPaint();
-    int i = ViewUtils.a((Paint)localObject, "《");
-    int j = PhotoListPanel.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel).getLeft();
-    int k = PhotoListPanel.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel).getRight();
-    localObject = ViewUtils.a((Paint)localObject, this.jdField_a_of_type_JavaLangString, j - k - i * 2);
-    PhotoListPanel.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel).setText("《" + (String)localObject + "》");
-    PhotoListPanel.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPhotoListPanel).setContentDescription(this.jdField_a_of_type_JavaLangString);
+    if (vma.a(this.jdField_a_of_type_Vmb.a) != null)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.d("peak_pgjpeg", 4, "IAIOImageProviderCallBack.notifyImageResult():isPart " + this.jdField_a_of_type_Boolean);
+      }
+      ((AIOGalleryScene)vma.b(this.jdField_a_of_type_Vmb.a)).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
+    }
+    if (this.jdField_a_of_type_Vmb.a.a != null) {
+      ((AIOImageListScene)this.jdField_a_of_type_Vmb.a.a).a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

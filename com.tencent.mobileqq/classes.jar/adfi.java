@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.hiboom.HiBoomPanelView;
-import com.tencent.mobileqq.hiboom.HiBoomPanelView.HiBoomAdapter;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
-class adfi
-  implements Runnable
+public class adfi
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
-  adfi(adfg paramadfg, int paramInt, long paramLong1, long paramLong2) {}
+  public adfi(VideoFilePresenter paramVideoFilePresenter) {}
   
-  public void run()
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    this.jdField_a_of_type_Adfg.a.a.a(this.jdField_a_of_type_Int, (int)(this.jdField_a_of_type_Long * 100L / this.b));
+    new Handler(Looper.getMainLooper()).post(new adfj(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adfi
  * JD-Core Version:    0.7.0.1
  */

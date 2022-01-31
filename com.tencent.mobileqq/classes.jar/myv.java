@@ -1,71 +1,24 @@
-import com.tencent.biz.qqstory.base.preload.DownloadTask;
-import com.tencent.biz.qqstory.base.preload.IVideoPreloader.OnPreloadListener;
-import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
-import com.tencent.biz.qqstory.base.preload.PreloadDownloaderManager.IOnQueueStateChangeListener;
-import com.tencent.biz.qqstory.base.preload.PreloadQueue;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.List;
+import android.view.View;
+import android.view.animation.TranslateAnimation;
+import android.widget.LinearLayout;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 public class myv
   implements Runnable
 {
-  public volatile boolean a;
-  
-  private myv(PreloadDownloader paramPreloadDownloader)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public myv(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
   
   public void run()
   {
-    for (;;)
+    TranslateAnimation localTranslateAnimation = PublicAccountImageCollectionMainActivity.b(this.a);
+    if (localTranslateAnimation != null)
     {
-      if (!this.jdField_a_of_type_Boolean) {
-        return;
-      }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue == null)
-      {
-        try
-        {
-          Thread.sleep(1000L);
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          localInterruptedException.printStackTrace();
-        }
-      }
-      else
-      {
-        if ((this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloaderManager$IOnQueueStateChangeListener != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue.isBusy())) {
-          this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloaderManager$IOnQueueStateChangeListener.a(this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.a());
-        }
-        ??? = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadQueue;
-        this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask = ((PreloadQueue)???).getFirstAndBlockIfLowestPriority();
-        DownloadTask localDownloadTask1 = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_ComTencentBizQqstoryBasePreloadDownloadTask;
-        if (localDownloadTask1 != null)
-        {
-          localDownloadTask1.c = ((PreloadQueue)???).getId();
-          for (;;)
-          {
-            Iterator localIterator;
-            synchronized (PreloadDownloader.jdField_a_of_type_JavaLangObject)
-            {
-              localIterator = this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.jdField_a_of_type_JavaUtilList.iterator();
-              if (!localIterator.hasNext()) {
-                break;
-              }
-              IVideoPreloader.OnPreloadListener localOnPreloadListener = (IVideoPreloader.OnPreloadListener)((WeakReference)localIterator.next()).get();
-              if (localOnPreloadListener != null) {
-                localOnPreloadListener.a(localDownloadTask1.jdField_b_of_type_JavaLangString, localDownloadTask1.a, localDownloadTask1);
-              }
-            }
-            localIterator.remove();
-          }
-          localDownloadTask2.jdField_b_of_type_Int = 1;
-          this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.b(localDownloadTask2);
-        }
-      }
+      this.a.a.setVisibility(0);
+      this.a.a.findViewById(2131365654).setVisibility(0);
+      this.a.a.findViewById(2131365588).setVisibility(0);
+      this.a.a.findViewById(2131365589).setVisibility(0);
+      this.a.a.bringToFront();
+      this.a.a.startAnimation(localTranslateAnimation);
     }
   }
 }

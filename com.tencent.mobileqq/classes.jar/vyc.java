@@ -1,15 +1,33 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.biz.pubaccount.PublicAccountManager.refuseAcceptDone;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 
 public class vyc
-  implements DialogInterface.OnClickListener
+  implements PublicAccountManager.refuseAcceptDone
 {
-  public vyc(TroopChatPie paramTroopChatPie) {}
+  public vyc(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(boolean paramBoolean)
   {
-    paramDialogInterface.dismiss();
+    this.a.aY();
+    if (!paramBoolean)
+    {
+      this.a.w(2131430033);
+      return;
+    }
+    EntityManager localEntityManager = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+    AccountDetail localAccountDetail = (AccountDetail)localEntityManager.a(AccountDetail.class, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    if (localAccountDetail != null) {
+      localEntityManager.b(localAccountDetail);
+    }
+    localEntityManager.a();
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, 1008);
+    this.a.A();
   }
 }
 

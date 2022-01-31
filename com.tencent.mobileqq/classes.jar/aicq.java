@@ -1,17 +1,12 @@
 public class aicq
 {
   public int a;
-  public String[] a;
-  
-  public aicq(int paramInt, String[] paramArrayOfString)
-  {
-    this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
-    this.jdField_a_of_type_Int = paramInt;
-  }
+  public byte[] a;
+  public int b;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aicq
  * JD-Core Version:    0.7.0.1
  */

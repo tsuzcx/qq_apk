@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.hotpic;
 
-import adgc;
-import adgd;
-import adge;
-import adgf;
-import adgk;
-import adgl;
-import adgm;
-import adgo;
-import adgp;
-import adgr;
+import adqb;
+import adqc;
+import adqd;
+import adqe;
+import adqj;
+import adqk;
+import adql;
+import adqn;
+import adqo;
+import adqq;
 import android.annotation.TargetApi;
 import android.app.ActivityManager;
 import android.app.ActivityManager.MemoryInfo;
@@ -90,8 +90,8 @@ public class HotPicPageView
   public static final int f;
   public static final int g;
   public int a;
-  public adgp a;
-  adgr jdField_a_of_type_Adgr;
+  public adqo a;
+  adqq jdField_a_of_type_Adqq;
   BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   public Context a;
   Handler jdField_a_of_type_AndroidOsHandler;
@@ -302,7 +302,7 @@ public class HotPicPageView
   
   public void a(View paramView, int paramInt)
   {
-    HotPicData localHotPicData = (HotPicData)this.jdField_a_of_type_Adgp.jdField_a_of_type_JavaUtilList.get(paramInt);
+    HotPicData localHotPicData = (HotPicData)this.jdField_a_of_type_Adqo.jdField_a_of_type_JavaUtilList.get(paramInt);
     if (localHotPicData.getDataType() == 2) {
       return;
     }
@@ -330,7 +330,7 @@ public class HotPicPageView
       }
       if ((localObject1 == null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1008))
       {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131438792, 0).a();
+        QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131438810, 0).a();
         return;
         if (a(localHotPicData) == 0)
         {
@@ -440,9 +440,9 @@ public class HotPicPageView
   
   public void a(HotPicMainPanel paramHotPicMainPanel, HotPicTagInfo paramHotPicTagInfo)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView = ((HotPicRecyclerView)findViewById(2131362990));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131362709);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131362991);
+    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView = ((HotPicRecyclerView)findViewById(2131363008));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131362727);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131363009);
     this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel = paramHotPicMainPanel;
     this.jdField_a_of_type_AndroidContentContext = paramHotPicMainPanel.jdField_a_of_type_AndroidContentContext;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramHotPicMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -456,14 +456,14 @@ public class HotPicPageView
     {
       this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager = new StaggeredGridLayoutManager(k, 1);
       this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager);
-      this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager.mExceptionListener = new adgc(this);
-      this.jdField_a_of_type_Adgp = new adgp(this, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Adgp.jdField_a_of_type_ComTencentMobileqqHotpicOnHolderItemClickListener = this;
-      this.jdField_a_of_type_Adgr = new adgr(this, this.jdField_a_of_type_Adgp);
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.a(this.jdField_a_of_type_Adgr);
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.setAdapter(this.jdField_a_of_type_Adgp);
+      this.jdField_a_of_type_AndroidSupportV7WidgetStaggeredGridLayoutManager.mExceptionListener = new adqb(this);
+      this.jdField_a_of_type_Adqo = new adqo(this, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Adqo.jdField_a_of_type_ComTencentMobileqqHotpicOnHolderItemClickListener = this;
+      this.jdField_a_of_type_Adqq = new adqq(this, this.jdField_a_of_type_Adqo);
+      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.a(this.jdField_a_of_type_Adqq);
+      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.setAdapter(this.jdField_a_of_type_Adqo);
       if (this.jdField_a_of_type_Int == -20) {
-        this.jdField_a_of_type_Adgr.a(2);
+        this.jdField_a_of_type_Adqq.a(2);
       }
       this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.a = paramHotPicMainPanel;
       this.jdField_a_of_type_ComTencentMobileqqHotpicHotpicDownloadDispatcher = new HotpicDownloadDispatcher(this);
@@ -479,7 +479,7 @@ public class HotPicPageView
         jdField_b_of_type_Boolean = false;
         a(0, 3000L);
       }
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adgd(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new adqc(this);
       paramHotPicMainPanel = new IntentFilter();
       paramHotPicMainPanel.addAction("android.intent.action.SCREEN_OFF");
       paramHotPicMainPanel.addAction("android.intent.action.SCREEN_ON");
@@ -509,7 +509,7 @@ public class HotPicPageView
   public void a(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, int paramInt)
   {
     this.jdField_d_of_type_Boolean = true;
-    TVK_SDKMgr.installPlugin(BaseApplicationImpl.getApplication(), new adgf(this, paramMyVideoViewHolder, paramInt));
+    TVK_SDKMgr.installPlugin(BaseApplicationImpl.getApplication(), new adqe(this, paramMyVideoViewHolder, paramInt));
   }
   
   public void a(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, HotVideoData paramHotVideoData)
@@ -527,7 +527,7 @@ public class HotPicPageView
     localLayoutParams.addRule(10);
     localLayoutParams.addRule(14);
     paramMyVideoViewHolder.a(2);
-    localObject = (HotVideoMongoliaRelativeLayout)((LayoutInflater)localObject).inflate(2130969029, null);
+    localObject = (HotVideoMongoliaRelativeLayout)((LayoutInflater)localObject).inflate(2130969028, null);
     ((HotVideoMongoliaRelativeLayout)localObject).setTag("HotVideoControlTag");
     ((HotVideoMongoliaRelativeLayout)localObject).setHotVideoData(paramHotVideoData);
     ((HotVideoMongoliaRelativeLayout)localObject).setVidoeControlListener(this);
@@ -665,8 +665,8 @@ public class HotPicPageView
     if (!this.jdField_c_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Adgp.a();
-    this.jdField_a_of_type_Adgp.notifyDataSetChanged();
+    this.jdField_a_of_type_Adqo.a();
+    this.jdField_a_of_type_Adqo.notifyDataSetChanged();
     this.jdField_c_of_type_Boolean = false;
   }
   
@@ -685,7 +685,7 @@ public class HotPicPageView
       do
       {
         return;
-        localHotPicData = (HotPicData)this.jdField_a_of_type_Adgp.jdField_a_of_type_JavaUtilList.get(paramInt);
+        localHotPicData = (HotPicData)this.jdField_a_of_type_Adqo.jdField_a_of_type_JavaUtilList.get(paramInt);
       } while (localHotPicData.getDataType() == 2);
       paramInt = a(localHotPicData);
     } while ((paramInt == 2) || (paramInt == -1));
@@ -715,18 +715,18 @@ public class HotPicPageView
       while (k != 0)
       {
         a(paramMyVideoViewHolder, paramInt);
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131430792), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131558448));
+        QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131430809), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131558448));
         return;
         k = 0;
       }
-      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 232, null, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131430790), new adgk(this, paramMyVideoViewHolder, paramInt), new adgl(this, paramMyVideoViewHolder)).show();
+      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 232, null, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131430807), new adqj(this, paramMyVideoViewHolder, paramInt), new adqk(this, paramMyVideoViewHolder)).show();
       return;
     }
-    Object localObject = (HotPicData)this.jdField_a_of_type_Adgp.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject = (HotPicData)this.jdField_a_of_type_Adqo.jdField_a_of_type_JavaUtilList.get(paramInt);
     if (((HotPicData)localObject).getDataType() == 2)
     {
       localObject = (HotVideoData)localObject;
-      ((HotVideoData)localObject).GetVideoURLAsync(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, "0", new adgm(this, (HotVideoData)localObject, paramMyVideoViewHolder));
+      ((HotVideoData)localObject).GetVideoURLAsync(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 0, "0", new adql(this, (HotVideoData)localObject, paramMyVideoViewHolder));
       return;
     }
     paramMyVideoViewHolder.a(0);
@@ -809,7 +809,7 @@ public class HotPicPageView
   {
     jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.setScrollStatusChengedListener(this);
-    this.jdField_a_of_type_AndroidOsHandler = new adge(this);
+    this.jdField_a_of_type_AndroidOsHandler = new adqd(this);
   }
   
   public void f()
@@ -882,7 +882,7 @@ public class HotPicPageView
       return;
       k = this.h;
       m = k + 1;
-    } while (m >= this.jdField_a_of_type_Adgp.getItemCount());
+    } while (m >= this.jdField_a_of_type_Adqo.getItemCount());
     this.i = m;
     this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.a(k, m);
   }
@@ -918,30 +918,30 @@ public class HotPicPageView
     {
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.setVisibility(8);
-      this.jdField_a_of_type_Adgr.a(2);
+      this.jdField_a_of_type_Adqq.a(2);
       if (localHotPicManager.a().size() <= 0)
       {
         this.jdField_b_of_type_AndroidViewView.setVisibility(0);
         return;
       }
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_a_of_type_Adgp.a(localHotPicManager.a());
+      this.jdField_a_of_type_Adqo.a(localHotPicManager.a());
       this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.setVisibility(0);
       this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.scrollToPosition(0);
-      this.jdField_a_of_type_Adgp.notifyDataSetChanged();
+      this.jdField_a_of_type_Adqo.notifyDataSetChanged();
       return;
     }
     if (localHotPicManager.b(this.jdField_a_of_type_Int))
     {
-      this.jdField_a_of_type_Adgp.a(localHotPicManager.a(this.jdField_a_of_type_Int));
+      this.jdField_a_of_type_Adqo.a(localHotPicManager.a(this.jdField_a_of_type_Int));
       if (localHotPicManager.c(this.jdField_a_of_type_Int)) {}
       for (;;)
       {
-        this.jdField_a_of_type_Adgr.a(k);
+        this.jdField_a_of_type_Adqq.a(k);
         this.jdField_a_of_type_AndroidViewView.setVisibility(8);
         this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.setVisibility(0);
         this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.scrollToPosition(0);
-        this.jdField_a_of_type_Adgp.notifyDataSetChanged();
+        this.jdField_a_of_type_Adqo.notifyDataSetChanged();
         return;
         k = 1;
       }
@@ -972,7 +972,7 @@ public class HotPicPageView
       n();
       return;
     }
-    ThreadManager.getUIHandler().post(new adgo(this));
+    ThreadManager.getUIHandler().post(new adqn(this));
   }
   
   public void n()
@@ -989,7 +989,7 @@ public class HotPicPageView
       {
         if ((NetworkUtil.a(this.jdField_a_of_type_AndroidContentContext)) && (this.jdField_a_of_type_JavaUtilSet.size() == this.jdField_b_of_type_JavaUtilSet.size()) && (this.j + 1 <= this.jdField_a_of_type_JavaUtilSet.size()))
         {
-          i3 = this.jdField_a_of_type_Adgp.jdField_a_of_type_JavaUtilList.size();
+          i3 = this.jdField_a_of_type_Adqo.jdField_a_of_type_JavaUtilList.size();
           if ((this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel == null) || (!HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(this.jdField_a_of_type_Int))) {
             break label722;
           }
@@ -1025,7 +1025,7 @@ public class HotPicPageView
         {
           try
           {
-            localURLDrawable1 = a((HotPicData)this.jdField_a_of_type_Adgp.jdField_a_of_type_JavaUtilList.get(i1));
+            localURLDrawable1 = a((HotPicData)this.jdField_a_of_type_Adqo.jdField_a_of_type_JavaUtilList.get(i1));
             if (localURLDrawable1 == null) {
               return;
             }
@@ -1088,7 +1088,7 @@ public class HotPicPageView
           if (this.jdField_a_of_type_JavaUtilSet.size() > i5)
           {
             m = this.jdField_a_of_type_Int;
-            if ((this.jdField_a_of_type_Adgp.jdField_a_of_type_JavaUtilList.size() < i4) && (!HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).c(m))) {
+            if ((this.jdField_a_of_type_Adqo.jdField_a_of_type_JavaUtilList.size() < i4) && (!HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).c(m))) {
               HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(m);
             }
             if (this.jdField_b_of_type_JavaUtilSet.size() <= i4)
@@ -1104,7 +1104,7 @@ public class HotPicPageView
                     {
                       try
                       {
-                        localURLDrawable2 = a((HotPicData)this.jdField_a_of_type_Adgp.jdField_a_of_type_JavaUtilList.get(i1));
+                        localURLDrawable2 = a((HotPicData)this.jdField_a_of_type_Adqo.jdField_a_of_type_JavaUtilList.get(i1));
                         if (localURLDrawable2 == null) {
                           break;
                         }
@@ -1272,7 +1272,7 @@ public class HotPicPageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicPageView
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,7 @@ import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
 import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
 import com.tencent.qphone.base.util.QLog;
 import mqq.util.NativeUtil;
-import zjp;
+import zmv;
 
 public class ScreenShot
   implements Handler.Callback, View.OnClickListener
@@ -38,7 +38,7 @@ public class ScreenShot
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   public Window a;
   public Button a;
-  final zjp jdField_a_of_type_Zjp;
+  final zmv jdField_a_of_type_Zmv;
   private boolean jdField_a_of_type_Boolean;
   public Bitmap b;
   public Drawable b;
@@ -61,9 +61,9 @@ public class ScreenShot
     }
     for (this.jdField_a_of_type_AndroidViewWindow = paramWindow.getWindow();; this.jdField_a_of_type_AndroidViewWindow = paramWindow)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130845347);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130845346);
-      this.jdField_a_of_type_Zjp = new zjp(this, this.jdField_a_of_type_AndroidContentContext);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130845475);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130845474);
+      this.jdField_a_of_type_Zmv = new zmv(this, this.jdField_a_of_type_AndroidContentContext);
       this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
       this.jdField_b_of_type_AndroidOsHandler = new Handler(ThreadManager.getFileThreadLooper(), this);
       if (Looper.getMainLooper() == Looper.myLooper()) {
@@ -137,12 +137,12 @@ public class ScreenShot
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2130971467, null));
-    this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_Zjp, 0);
-    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374815));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374816));
-    this.d = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363969));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374814));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2130971515, null));
+    this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_Zmv, 0);
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375001));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375002));
+    this.d = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363993));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131375000));
     this.d.setOnClickListener(this);
     this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
@@ -243,8 +243,8 @@ public class ScreenShot
   
   public boolean c()
   {
-    this.jdField_a_of_type_Zjp.f = 0;
-    this.jdField_a_of_type_Zjp.jdField_a_of_type_AndroidGraphicsRect.setEmpty();
+    this.jdField_a_of_type_Zmv.f = 0;
+    this.jdField_a_of_type_Zmv.jdField_a_of_type_AndroidGraphicsRect.setEmpty();
     this.jdField_b_of_type_AndroidGraphicsBitmap = null;
     a(false);
     if (d()) {}
@@ -307,27 +307,27 @@ public class ScreenShot
     //   55: if_icmpne +83 -> 138
     //   58: aload_1
     //   59: getfield 418	android/os/Message:obj	Ljava/lang/Object;
-    //   62: checkcast 83	zjp
+    //   62: checkcast 83	zmv
     //   65: astore_1
     //   66: aload_1
     //   67: ldc_w 419
-    //   70: putfield 370	zjp:f	I
+    //   70: putfield 370	zmv:f	I
     //   73: aload_0
     //   74: iconst_0
     //   75: invokespecial 125	com/tencent/mobileqq/app/ScreenShot:a	(Z)V
     //   78: aload_1
-    //   79: invokevirtual 422	zjp:invalidate	()V
+    //   79: invokevirtual 422	zmv:invalidate	()V
     //   82: aload_1
     //   83: aconst_null
-    //   84: new 424	zjo
+    //   84: new 424	zmu
     //   87: dup
     //   88: aload_0
     //   89: aload_1
-    //   90: invokespecial 427	zjo:<init>	(Lcom/tencent/mobileqq/app/ScreenShot;Lzjp;)V
+    //   90: invokespecial 427	zmu:<init>	(Lcom/tencent/mobileqq/app/ScreenShot;Lzmv;)V
     //   93: invokestatic 433	android/os/SystemClock:uptimeMillis	()J
     //   96: ldc2_w 434
     //   99: ladd
-    //   100: invokevirtual 439	zjp:scheduleDrawable	(Landroid/graphics/drawable/Drawable;Ljava/lang/Runnable;J)V
+    //   100: invokevirtual 439	zmv:scheduleDrawable	(Landroid/graphics/drawable/Drawable;Ljava/lang/Runnable;J)V
     //   103: aload_0
     //   104: getfield 51	com/tencent/mobileqq/app/ScreenShot:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
     //   107: invokevirtual 443	android/content/Context:getApplicationContext	()Landroid/content/Context;
@@ -354,7 +354,7 @@ public class ScreenShot
     //   156: ireturn
     //   157: aload_1
     //   158: getfield 418	android/os/Message:obj	Ljava/lang/Object;
-    //   161: checkcast 83	zjp
+    //   161: checkcast 83	zmv
     //   164: astore 6
     //   166: new 469	java/io/File
     //   169: dup
@@ -389,7 +389,7 @@ public class ScreenShot
     //   237: invokespecial 492	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   240: astore_1
     //   241: aload 6
-    //   243: getfield 493	zjp:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   243: getfield 493	zmv:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   246: getstatic 499	android/graphics/Bitmap$CompressFormat:PNG	Landroid/graphics/Bitmap$CompressFormat;
     //   249: bipush 80
     //   251: aload_1
@@ -397,7 +397,7 @@ public class ScreenShot
     //   255: istore_3
     //   256: aload 6
     //   258: aconst_null
-    //   259: putfield 493	zjp:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   259: putfield 493	zmv:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   262: aload_1
     //   263: ifnull +167 -> 430
     //   266: aload_1
@@ -444,7 +444,7 @@ public class ScreenShot
     //   354: ireturn
     //   355: aload 6
     //   357: aconst_null
-    //   358: putfield 493	zjp:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   358: putfield 493	zmv:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   361: aload_1
     //   362: ifnull +63 -> 425
     //   365: aload_1
@@ -459,7 +459,7 @@ public class ScreenShot
     //   380: astore_1
     //   381: aload 6
     //   383: aconst_null
-    //   384: putfield 493	zjp:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   384: putfield 493	zmv:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   387: aload 4
     //   389: ifnull +8 -> 397
     //   392: aload 4
@@ -504,7 +504,7 @@ public class ScreenShot
     //   420	1	4	localFileNotFoundException	java.io.FileNotFoundException
     //   224	96	5	localFile	java.io.File
     //   409	6	5	localObject2	Object
-    //   164	218	6	localzjp	zjp
+    //   164	218	6	localzmv	zmv
     // Exception table:
     //   from	to	target	type
     //   365	369	374	java/io/IOException
@@ -541,11 +541,11 @@ public class ScreenShot
           do
           {
             return;
-            this.jdField_a_of_type_Zjp.a(true);
+            this.jdField_a_of_type_Zmv.a(true);
           } while ((MobileIssueSettings.g) || (Build.VERSION.SDK_INT >= 11));
           KapalaiAdapterUtil.a().b(this.jdField_a_of_type_AndroidViewWindow);
           return;
-          this.jdField_a_of_type_Zjp.a(false);
+          this.jdField_a_of_type_Zmv.a(false);
         } while ((MobileIssueSettings.g) || (Build.VERSION.SDK_INT >= 11));
         KapalaiAdapterUtil.a().b(this.jdField_a_of_type_AndroidViewWindow);
         return;

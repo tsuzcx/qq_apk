@@ -1,40 +1,32 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.preference.PreferenceManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.search.ISearchable;
+import java.util.Comparator;
 
 public final class ahrm
-  implements Runnable
+  implements Comparator
 {
-  public void run()
+  public int a(ISearchable paramISearchable1, ISearchable paramISearchable2)
   {
-    try
+    long l1 = paramISearchable1.c();
+    long l2 = paramISearchable2.c();
+    if (l1 < l2) {}
+    do
     {
-      Object localObject = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.sApplication);
-      int i = ((SharedPreferences)localObject).getInt("dynamic_splash_config_show_times", -1);
-      if (i <= 0) {
-        return;
+      return 1;
+      if (l1 > l2) {
+        return -1;
       }
-      i -= 1;
-      localObject = ((SharedPreferences)localObject).edit();
-      ((SharedPreferences.Editor)localObject).putInt("dynamic_splash_config_show_times", i);
-      ((SharedPreferences.Editor)localObject).commit();
-      if (QLog.isColorLevel())
-      {
-        QLog.d("SetSplash", 2, "saveDynamicSplashShowTime() rest totalShowTimes=" + i);
-        return;
-      }
+      l1 = paramISearchable1.b();
+      l2 = paramISearchable2.b();
+    } while (l1 < l2);
+    if (l1 > l2) {
+      return -1;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.d("SetSplash", 1, "", localThrowable);
-    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahrm
  * JD-Core Version:    0.7.0.1
  */

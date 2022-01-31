@@ -1,13 +1,38 @@
-import com.tencent.av.ui.VideoInviteActivity;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.av.ui.VideoInviteFull;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class kbp
   implements Runnable
 {
-  public kbp(VideoInviteActivity paramVideoInviteActivity) {}
+  public kbp(VideoInviteFull paramVideoInviteFull) {}
   
   public void run()
   {
-    this.a.g();
+    if (this.a.a == null) {}
+    do
+    {
+      do
+      {
+        return;
+        this.a.a.setVisibility(8);
+        this.a.c.setVisibility(8);
+        if ((NetworkUtil.h(VideoInviteFull.a(this.a))) || (NetworkUtil.f(VideoInviteFull.b(this.a)))) {
+          break;
+        }
+        if (NetworkUtil.b(VideoInviteFull.c(this.a)))
+        {
+          this.a.c.setVisibility(0);
+          this.a.c.setText(2131429067);
+        }
+      } while (!NetworkUtil.c(VideoInviteFull.d(this.a)));
+      this.a.c.setVisibility(0);
+      this.a.c.setText(2131429066);
+      return;
+    } while (!this.a.b);
+    this.a.c.setVisibility(0);
+    this.a.c.setText("");
   }
 }
 

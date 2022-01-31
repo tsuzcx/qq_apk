@@ -1,44 +1,89 @@
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.support.v4.util.MQLruCache;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask;
-import com.tencent.mobileqq.troop.utils.TroopUtils;
+import com.tencent.mobileqq.config.DownloadIconsListener;
+import com.tencent.mobileqq.leba.header.LebaGridShowManager;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
-import mqq.app.MobileQQ;
-import mqq.manager.TicketManager;
+import java.io.File;
+import java.net.URL;
+import java.util.List;
+import java.util.Set;
 
 public class aeaz
   implements Runnable
 {
-  public aeaz(GameRoomInviteActivity paramGameRoomInviteActivity) {}
+  public aeaz(LebaGridShowManager paramLebaGridShowManager, QQAppInterface paramQQAppInterface, URL paramURL, File paramFile, String paramString) {}
   
   public void run()
   {
-    Object localObject2 = (TicketManager)this.a.app.getManager(2);
-    Object localObject1 = this.a.app.getCurrentAccountUin();
-    String str = ((TicketManager)localObject2).getSkey(this.a.app.getCurrentAccountUin());
-    localObject2 = new Bundle();
-    ((Bundle)localObject2).putString("bkn", "" + TroopUtils.b(str));
-    ((Bundle)localObject2).putString("ver", "7.6.0");
-    ((Bundle)localObject2).putString("src", "1");
-    ((Bundle)localObject2).putString("platform", "android");
-    ((Bundle)localObject2).putString("uin", this.a.app.getCurrentAccountUin());
-    ((Bundle)localObject2).putString("count", "8");
-    ((Bundle)localObject2).putString("Cookie", "uin=o" + (String)localObject1 + ";skey=" + str);
-    localObject1 = new HashMap();
-    ((HashMap)localObject1).put("BUNDLE", localObject2);
-    this.a.app.getApplication();
-    ((HashMap)localObject1).put("CONTEXT", MobileQQ.getContext());
-    new HttpWebCgiAsyncTask("http://nearby.qq.com/cgi-bin/werewolf/get_friend_board_list", "GET", this.a.a, 0, null, true).execute(new HashMap[] { localObject1 });
-    if (QLog.isColorLevel()) {
-      QLog.d("GameRoomInviteActivity", 2, "get feed from server start: " + System.currentTimeMillis());
+    int i = 0;
+    for (;;)
+    {
+      try
+      {
+        if (HttpDownloadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaNetURL, this.jdField_a_of_type_JavaIoFile))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("LebaGridShowManager", 2, "Download icon key = " + this.jdField_a_of_type_JavaLangString + "suc--------");
+          }
+          Object localObject1 = null;
+          if (BaseApplicationImpl.sImageCache != null)
+          {
+            localObject1 = "LebaIcon://" + this.jdField_a_of_type_JavaIoFile.getAbsolutePath();
+            localObject1 = (Bitmap)BaseApplicationImpl.sImageCache.get(localObject1);
+          }
+          if (QLog.isColorLevel())
+          {
+            ??? = new StringBuilder().append("get Bitmap from cache, result=");
+            if (localObject1 == null) {
+              break label346;
+            }
+            bool = true;
+            QLog.d("LebaGridShowManager", 2, bool);
+          }
+          if (localObject1 != null) {
+            break label343;
+          }
+          localObject1 = LebaGridShowManager.a(this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridShowManager, this.jdField_a_of_type_JavaIoFile);
+          if (localObject1 != null) {
+            if (QLog.isColorLevel()) {
+              QLog.d("LebaGridShowManager", 2, "Download icon key = " + this.jdField_a_of_type_JavaLangString + "notify UI++++++++");
+            }
+          }
+          synchronized (this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridShowManager.jdField_a_of_type_JavaUtilList)
+          {
+            if (i < this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridShowManager.jdField_a_of_type_JavaUtilList.size())
+            {
+              ((DownloadIconsListener)this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridShowManager.jdField_a_of_type_JavaUtilList.get(i)).a(this.jdField_a_of_type_JavaLangString, (Bitmap)localObject1);
+              i += 1;
+              continue;
+            }
+            LebaGridShowManager.a(this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridShowManager, this.jdField_a_of_type_JavaLangString);
+            return;
+          }
+        }
+        this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridShowManager.jdField_a_of_type_JavaUtilSet.remove(this.jdField_a_of_type_JavaLangString);
+      }
+      catch (Exception localException)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridShowManager.jdField_a_of_type_JavaUtilSet.remove(this.jdField_a_of_type_JavaLangString);
+        LebaGridShowManager.b(this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridShowManager, this.jdField_a_of_type_JavaLangString);
+        return;
+      }
+      LebaGridShowManager.b(this.jdField_a_of_type_ComTencentMobileqqLebaHeaderLebaGridShowManager, this.jdField_a_of_type_JavaLangString);
+      return;
+      label343:
+      continue;
+      label346:
+      boolean bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeaz
  * JD-Core Version:    0.7.0.1
  */

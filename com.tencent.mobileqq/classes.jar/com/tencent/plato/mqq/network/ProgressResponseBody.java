@@ -1,6 +1,6 @@
 package com.tencent.plato.mqq.network;
 
-import akun;
+import alkd;
 import android.support.annotation.Nullable;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.ResponseBody;
@@ -20,7 +20,7 @@ public class ProgressResponseBody
   
   private Source a(Source paramSource)
   {
-    return new akun(this, paramSource);
+    return new alkd(this, paramSource);
   }
   
   public long contentLength()
@@ -61,7 +61,7 @@ public class ProgressResponseBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.plato.mqq.network.ProgressResponseBody
  * JD-Core Version:    0.7.0.1
  */

@@ -29,9 +29,9 @@ import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.redtouch.RedTouch;
 import com.tencent.qphone.base.util.QLog;
-import mij;
-import mik;
-import mil;
+import mjt;
+import mju;
+import mjv;
 
 @TargetApi(14)
 public class ReadinjoySlidingIndicator
@@ -88,7 +88,7 @@ public class ReadinjoySlidingIndicator
     b();
     a(paramContext);
     if (Build.VERSION.SDK_INT >= 14) {
-      setAccessibilityDelegate(new mij(this));
+      setAccessibilityDelegate(new mjt(this));
     }
   }
   
@@ -184,7 +184,7 @@ public class ReadinjoySlidingIndicator
       {
         localObject = ValueAnimator.ofInt(new int[] { ((View)localObject).getLeft(), localView.getLeft() });
         ((ValueAnimator)localObject).setDuration(200L);
-        ((ValueAnimator)localObject).addUpdateListener(new mik(this));
+        ((ValueAnimator)localObject).addUpdateListener(new mju(this));
         ((ValueAnimator)localObject).start();
       }
       return;
@@ -199,7 +199,7 @@ public class ReadinjoySlidingIndicator
     {
       this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
       d();
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845302);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845430);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(AIOUtils.a(7.0F, getResources()), AIOUtils.a(7.0F, getResources()));
       localLayoutParams.gravity = 16;
       localLayoutParams.leftMargin = (-AIOUtils.a(11.0F, getResources()));
@@ -223,7 +223,7 @@ public class ReadinjoySlidingIndicator
       a(k, this.jdField_a_of_type_ArrayOfJavaLangString[k], this.jdField_b_of_type_ArrayOfInt[k]);
       k += 1;
     }
-    getViewTreeObserver().addOnGlobalLayoutListener(new mil(this));
+    getViewTreeObserver().addOnGlobalLayoutListener(new mjv(this));
   }
   
   public void a(int paramInt)

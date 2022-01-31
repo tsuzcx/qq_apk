@@ -1,13 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.ArkAppBabyQItemBubbleBuilder;
+import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
 
 public class ura
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public ura(ArkAppBabyQItemBubbleBuilder paramArkAppBabyQItemBubbleBuilder) {}
+  public ura(RecordSoundPanel paramRecordSoundPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    this.a.b();
+  }
 }
 
 

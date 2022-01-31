@@ -69,7 +69,7 @@ public class GestureUtil
   
   static SharedPreferences a()
   {
-    return BaseApplication.getContext().getSharedPreferences("config_qq.android.qavgesture", 4);
+    return BaseApplication.getContext().getSharedPreferences("config_qq.android.qavgesture763", 4);
   }
   
   public static String a()

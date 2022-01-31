@@ -1,35 +1,23 @@
-import android.text.Editable;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.activity.ChatHistory.ChatHistoryAdapter;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.photo.StatisticConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class rvk
-  implements View.OnClickListener
+public final class rvk
+  implements Runnable
 {
-  public rvk(ChatHistory paramChatHistory) {}
+  public rvk(String paramString, SessionInfo paramSessionInfo, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.d < this.a.c)
+    try
     {
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130838343);
-      paramView = this.a;
-      paramView.d += 1;
-      if (this.a.d >= this.a.c)
-      {
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setEnabled(false);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130845337);
-      }
-      this.a.e = ((this.a.d - 1) * 8);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityChatHistory$ChatHistoryAdapter.a(this.a.jdField_b_of_type_JavaLangString, this.a.jdField_a_of_type_Int, this.a.e);
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setText(String.valueOf(this.a.d));
-      this.a.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-      this.a.t();
+      String str = this.jdField_a_of_type_JavaLangString;
+      int i = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      StatisticConstants.a(new String[] { str }, i, false, false, -1, localQQAppInterface);
+      return;
     }
+    catch (Exception localException) {}
   }
 }
 

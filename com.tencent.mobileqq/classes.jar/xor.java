@@ -1,31 +1,50 @@
-import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraOperator;
-import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
-import com.tencent.mobileqq.activity.richmedia.ShortVideoCaptureController;
+import android.os.SystemClock;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
 import com.tencent.qphone.base.util.QLog;
 
 public class xor
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public xor(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xor(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    String str = this.a.e;
-    NewFlowCameraActivity.a(this.a);
-    ShortVideoCaptureController.a(str, NewFlowCameraOperator.a);
-    this.a.q = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "shot photo with capture from video");
+    if (!this.a.m) {}
+    while (((!this.a.g) && (!this.a.d)) || (paramView.getId() != 2131369007)) {
+      return false;
     }
-    NewFlowCameraActivity.a(this.a);
-    if (this.a.a == null) {}
-    for (str = "";; str = this.a.a.a())
+    switch (paramMotionEvent.getAction())
     {
-      FlowCameraMqqAction.a("", "0X80075BE", str, "", "", "");
-      return;
+    case 2: 
+    default: 
+      return false;
+    case 0: 
+      if (QLog.isColorLevel()) {
+        QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_DOWN, event = " + paramMotionEvent);
+      }
+      if (!this.a.b.isLongClickable()) {
+        this.a.a.e();
+      }
+      this.a.b.setText(null);
+      return false;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_UP, event = " + paramMotionEvent);
+    }
+    if (this.a.a != null) {
+      this.a.a.e();
+    }
+    if (this.a.b != null) {
+      this.a.b.setText(2131438162);
+    }
+    FlowCameraActivity2.a(this.a, SystemClock.uptimeMillis());
+    FlowCameraActivity2.a(this.a);
+    return false;
   }
 }
 

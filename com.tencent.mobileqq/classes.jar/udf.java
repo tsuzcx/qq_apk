@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
 
-public class udf
-  implements DialogInterface.OnClickListener
+class udf
+  implements Runnable
 {
-  public udf(UpgradeActivity paramUpgradeActivity) {}
+  udf(ude paramude) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, UpgradeConstants.b(), String.valueOf(0), UpgradeController.a(), "0");
-    this.a.finish();
+    this.a.a.p.setText(this.a.a.i);
+    this.a.a.p.setContentDescription(this.a.a.i);
+    this.a.a.p.setVisibility(0);
   }
 }
 

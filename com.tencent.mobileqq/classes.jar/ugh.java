@@ -1,17 +1,24 @@
-import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
+import com.tencent.mobileqq.app.upgrade.UpgradeController;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class ugh
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public ugh(SendBirthdayWishesActivity paramSendBirthdayWishesActivity) {}
+  public ugh(UpgradeActivity paramUpgradeActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (!this.a.isFinishing())
-    {
-      this.a.setResult(-1);
-      this.a.finish();
+    ReportController.b(this.a.app, "CliOper", "", "", "0X800417F", "0X800417F", 0, 0, "", "", "", "");
+    if (UpgradeActivity.a(this.a)) {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X800714D", "0X800714D", 0, 0, "", "", "", "");
     }
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004DA2", "0X8004DA2", 0, 0, UpgradeConstants.b(), String.valueOf(2), UpgradeController.a(), "0");
+    UpgradeController.a().a(this.a.app);
+    this.a.finish();
   }
 }
 

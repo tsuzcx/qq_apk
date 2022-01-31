@@ -1,63 +1,57 @@
-import android.os.Bundle;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.TransitionDrawable;
 import android.os.Handler;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import android.os.Message;
+import android.os.SystemClock;
+import android.support.v4.util.MQLruCache;
+import android.util.Pair;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import tencent.im.oidb.cmd0x985.oidb_0x985.GetReadListRsp;
-import tencent.im.oidb.cmd0x985.oidb_0x985.RspBody;
 
 public class agqc
-  extends agrh
+  implements Runnable
 {
-  public agqc(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
-  {
-    super(paramReceiptMessageDetailFragment);
-  }
+  public agqc(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, List paramList, String paramString, int paramInt) {}
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void run()
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      QLog.d("ReceiptMessageDetailFragment", 1, "mDiscussionFetchReadStatusCallback request error on code: " + paramInt);
-      return;
+    long l = SystemClock.elapsedRealtime();
+    Bitmap localBitmap1 = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_AndroidContentContext, (String)this.jdField_a_of_type_JavaUtilList.get(1)), true);
+    Bitmap localBitmap2 = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_AndroidContentContext, (String)this.jdField_a_of_type_JavaUtilList.get(0)), true);
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, "ANIMATION_SCROLL time " + (SystemClock.elapsedRealtime() - l));
     }
-    try
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (localBitmap1 != null)
     {
-      paramBundle = new oidb_0x985.RspBody();
-      paramBundle.mergeFrom(paramArrayOfByte);
-      paramInt = paramBundle.uint32_code.get();
-      if (paramInt == 0)
+      localObject1 = localObject2;
+      if (localBitmap2 != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("ReceiptMessageDetailFragment", 2, "mDiscussionFetchReadStatusCallback succ");
-        }
-        paramBundle = (oidb_0x985.GetReadListRsp)paramBundle.msg_get_read_list_rsp.get();
-        paramArrayOfByte = paramBundle.rpt_msg_read_list.get();
-        paramBundle = paramBundle.rpt_msg_unread_list.get();
-        ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a;
-        paramInt = paramArrayOfByte.size();
-        int i = paramArrayOfByte.size();
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, paramInt, paramBundle.size() + i, true);
-        paramInt = paramArrayOfByte.size();
-        ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, true);
-        return;
+        localObject1 = new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.getResources(), localBitmap1);
+        localObject1 = new TransitionDrawable(new Drawable[] { new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.getResources(), localBitmap2), localObject1 });
       }
     }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    if (localObject1 != null)
     {
-      QLog.d("ReceiptMessageDetailFragment", 2, "fetch read member fail on invalid data");
-      return;
+      localObject1 = new Pair(localObject1, Integer.valueOf(Utils.a(localBitmap1) + Utils.a(localBitmap2)));
+      BaseApplicationImpl.sImageCache.put(this.jdField_a_of_type_JavaLangString, localObject1);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      ((Message)localObject1).what = 29;
+      ((Message)localObject1).arg1 = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject1);
     }
-    QLog.d("ReceiptMessageDetailFragment", 1, "mDiscussionFetchReadStatusCallback fail on code: " + paramInt);
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agqc
  * JD-Core Version:    0.7.0.1
  */

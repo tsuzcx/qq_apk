@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.troop.activity.TroopAdminList;
-import com.tencent.mobileqq.troop.activity.TroopAdminList.AdminListAdapter;
-import com.tencent.widget.XListView;
+import java.util.HashSet;
 
 class aigw
-  implements Runnable
 {
-  aigw(aigv paramaigv) {}
+  public int a;
+  public String a;
+  public HashSet a;
   
-  public void run()
+  private aigw(aigv paramaigv)
   {
-    this.a.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList$AdminListAdapter = new TroopAdminList.AdminListAdapter(this.a.a, this.a.a);
-    this.a.a.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.a.a.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAdminList$AdminListAdapter);
+    this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aigw
  * JD-Core Version:    0.7.0.1
  */

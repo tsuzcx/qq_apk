@@ -1,33 +1,24 @@
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.arcard.ARCardPageProcess;
-import java.util.ArrayList;
+import com.tencent.mobileqq.ar.arcloud.ARCloudFileUpload.ARCloudFileUploadCallback;
+import com.tencent.mobileqq.ar.arengine.ARCloudReqInfo;
+import com.tencent.mobileqq.highway.transaction.Transaction;
 
 public class aaex
-  implements Animator.AnimatorListener
 {
-  public aaex(ARCardPageProcess paramARCardPageProcess, boolean paramBoolean) {}
+  public ARCloudFileUpload.ARCloudFileUploadCallback a;
+  public ARCloudReqInfo a;
+  public Transaction a;
+  public String a;
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public aaex()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = null;
+    this.jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback = null;
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess.b) && (this.jdField_a_of_type_Boolean)) {
-      ARCardPageProcess.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess).remove(ARCardPageProcess.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess).size() - 1);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqArcardARCardPageProcess.jdField_a_of_type_Boolean = false;
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aaex
  * JD-Core Version:    0.7.0.1
  */

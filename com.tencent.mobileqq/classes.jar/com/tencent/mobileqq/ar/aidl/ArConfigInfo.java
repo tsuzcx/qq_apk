@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.ar.aidl;
 
+import aaeo;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -19,12 +20,11 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import org.xmlpull.v1.XmlPullParser;
-import zzu;
 
 public class ArConfigInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new zzu();
+  public static final Parcelable.Creator CREATOR = new aaeo();
   public static final String TAG = "ArConfigInfo";
   public static final int VERSION_700 = 10;
   public static final int VERSION_710 = 11;

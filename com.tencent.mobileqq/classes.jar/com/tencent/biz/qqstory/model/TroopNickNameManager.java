@@ -21,10 +21,10 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import nbr;
-import nbt;
-import nbu;
-import nbv;
+import ndc;
+import nde;
+import ndf;
+import ndg;
 
 public class TroopNickNameManager
   implements IManager
@@ -34,7 +34,7 @@ public class TroopNickNameManager
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   TroopHandler jdField_a_of_type_ComTencentMobileqqAppTroopHandler;
   public TroopManager a;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new nbr(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new ndc(this);
   public Map a;
   Map b;
   
@@ -66,7 +66,7 @@ public class TroopNickNameManager
         }
       }
       else {
-        ThreadManager.post(new nbt(this, paramString, paramQQUserUIItem, paramBoolean1, paramBoolean2), 8, null, true);
+        ThreadManager.post(new nde(this, paramString, paramQQUserUIItem, paramBoolean1, paramBoolean2), 8, null, true);
       }
     }
     return paramQQUserUIItem.getDisplayName();
@@ -116,7 +116,7 @@ public class TroopNickNameManager
   {
     if (Looper.myLooper() != ThreadManager.getSubThreadLooper())
     {
-      ThreadManager.executeOnSubThread(new nbu(this));
+      ThreadManager.executeOnSubThread(new ndf(this));
       return;
     }
     long l = System.currentTimeMillis();
@@ -176,7 +176,7 @@ public class TroopNickNameManager
         if (i == 0) {
           break label314;
         }
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new nbv(this), 30000L);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(new ndg(this), 30000L);
         return;
       }
       break;

@@ -1,36 +1,63 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.location.LocationListener;
-import com.tencent.mobileqq.nearby.now.location.TLocationManager;
-import com.tencent.mobileqq.nearby.now.model.LocationInfo;
-import com.tencent.util.LogUtil;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.medalwall.ShareHelper;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.widget.ActionSheet;
 
 public class aefx
-  implements aegb
+  implements AdapterView.OnItemClickListener
 {
-  public aefx(TLocationManager paramTLocationManager, double paramDouble1, double paramDouble2, LocationListener paramLocationListener) {}
+  public aefx(ShareHelper paramShareHelper) {}
   
-  public void a()
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    LogUtil.i("TLocationManager", "getCityByLatLng onFail() ");
-    ThreadManager.getUIHandler().post(new aefy(this));
-  }
-  
-  public void a(String paramString)
-  {
-    LogUtil.i("TLocationManager", "getCityByLatLng onSuccess() " + paramString);
-    LocationInfo localLocationInfo = new LocationInfo();
-    localLocationInfo.lng = String.valueOf(this.jdField_a_of_type_Double);
-    localLocationInfo.lat = String.valueOf(this.b);
-    localLocationInfo.city = paramString;
-    TLocationManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationTLocationManager, this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationLocationListener, localLocationInfo);
-    TLocationManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationTLocationManager).sendEmptyMessage(1);
+    if (this.a.a.a().isShowing()) {
+      this.a.a.a().dismiss();
+    }
+    if ((paramLong == 2L) || (paramLong == 3L)) {
+      if (!WXShareHelper.a().a()) {
+        paramInt = 2131435319;
+      }
+    }
+    for (;;)
+    {
+      if (paramInt != -1)
+      {
+        QRUtils.a(1, paramInt);
+        return;
+        if (!WXShareHelper.a().b()) {
+          paramInt = 2131435320;
+        }
+      }
+      else
+      {
+        switch ((int)paramLong)
+        {
+        default: 
+          return;
+        case 0: 
+          ShareHelper.a(this.a);
+          return;
+        case 1: 
+          ShareHelper.b(this.a);
+          return;
+        case 2: 
+          ShareHelper.c(this.a);
+          return;
+        }
+        ShareHelper.d(this.a);
+        return;
+      }
+      paramInt = -1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefx
  * JD-Core Version:    0.7.0.1
  */

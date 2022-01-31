@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class uez
-  implements TabBarView.OnTabChangeListener
+  implements View.OnClickListener
 {
-  public uez(VisitorsActivity paramVisitorsActivity) {}
+  public uez(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void onClick(View paramView)
   {
-    this.a.a(paramInt2);
+    this.a.a.cancel();
   }
 }
 

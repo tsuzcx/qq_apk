@@ -6,7 +6,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
 import com.tencent.av.AVLog;
-import jki;
+import jjt;
 
 public abstract class GLContextThread
   extends OffscreenSurface
@@ -17,7 +17,7 @@ public abstract class GLContextThread
   {
     HandlerThread localHandlerThread = new HandlerThread("OffscreenGLThread" + (int)(Math.random() * 100.0D));
     localHandlerThread.start();
-    this.a = new jki(localHandlerThread.getLooper(), this);
+    this.a = new jjt(localHandlerThread.getLooper(), this);
   }
   
   public void a()

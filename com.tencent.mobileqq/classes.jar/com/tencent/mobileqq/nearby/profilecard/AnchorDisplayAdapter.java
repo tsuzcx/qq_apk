@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import aeoq;
+import afbw;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -40,35 +40,35 @@ public class AnchorDisplayAdapter
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  private void a(aeoq paramaeoq, cmd0xac5.NowFollowAnchor paramNowFollowAnchor)
+  private void a(afbw paramafbw, cmd0xac5.NowFollowAnchor paramNowFollowAnchor)
   {
-    paramaeoq.jdField_a_of_type_TencentImOidbCmd0xac5Cmd0xac5$NowFollowAnchor = paramNowFollowAnchor;
-    paramaeoq.jdField_a_of_type_AndroidWidgetTextView.setText(((cmd0xac5.NowFollowAnchor)paramNowFollowAnchor.get()).bytes_nick_name.get().toStringUtf8());
+    paramafbw.jdField_a_of_type_TencentImOidbCmd0xac5Cmd0xac5$NowFollowAnchor = paramNowFollowAnchor;
+    paramafbw.jdField_a_of_type_AndroidWidgetTextView.setText(((cmd0xac5.NowFollowAnchor)paramNowFollowAnchor.get()).bytes_nick_name.get().toStringUtf8());
     Object localObject = URLDrawable.getDrawable(paramNowFollowAnchor.bytes_head_url.get().toStringUtf8(), URLDrawable.URLDrawableOptions.obtain());
-    ((URLDrawable)localObject).setTag(URLDrawableDecodeHandler.a(UIUtils.a(paramaeoq.jdField_a_of_type_ComTencentImageURLImageView.getContext(), 135.0F), UIUtils.a(paramaeoq.jdField_a_of_type_ComTencentImageURLImageView.getContext(), 135.0F), UIUtils.a(paramaeoq.jdField_a_of_type_ComTencentImageURLImageView.getContext(), 4.0F)));
+    ((URLDrawable)localObject).setTag(URLDrawableDecodeHandler.a(UIUtils.a(paramafbw.jdField_a_of_type_ComTencentImageURLImageView.getContext(), 135.0F), UIUtils.a(paramafbw.jdField_a_of_type_ComTencentImageURLImageView.getContext(), 135.0F), UIUtils.a(paramafbw.jdField_a_of_type_ComTencentImageURLImageView.getContext(), 4.0F)));
     ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.b);
-    paramaeoq.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+    paramafbw.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
     if (paramNowFollowAnchor.uint32_live_status.get() == 1)
     {
-      paramaeoq.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      paramafbw.jdField_a_of_type_AndroidViewView.setVisibility(0);
       try
       {
         paramNowFollowAnchor = NearbyImgDownloader.a(this.jdField_a_of_type_JavaLangString);
         localObject = URLDrawable.URLDrawableOptions.obtain();
         ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
         paramNowFollowAnchor = URLDrawable.getDrawable(paramNowFollowAnchor, (URLDrawable.URLDrawableOptions)localObject);
-        paramaeoq.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(paramNowFollowAnchor);
+        paramafbw.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(paramNowFollowAnchor);
         return;
       }
-      catch (MalformedURLException paramaeoq)
+      catch (MalformedURLException paramafbw)
       {
         while (!QLog.isColorLevel()) {}
-        QLog.i("AnchorDisplayAdapter", 2, "convertURL, e=" + paramaeoq.toString(), paramaeoq);
+        QLog.i("AnchorDisplayAdapter", 2, "convertURL, e=" + paramafbw.toString(), paramafbw);
         return;
       }
     }
-    paramaeoq.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(null);
-    paramaeoq.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    paramafbw.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(null);
+    paramafbw.jdField_a_of_type_AndroidViewView.setVisibility(8);
   }
   
   public void a(List paramList, boolean paramBoolean, String paramString)
@@ -119,20 +119,20 @@ public class AnchorDisplayAdapter
     View localView = paramView;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130970423, paramViewGroup, false);
-      paramView = new aeoq(this);
-      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131366351));
-      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131370523);
-      paramView.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131370525));
-      paramView.jdField_b_of_type_AndroidViewView = localView.findViewById(2131370526);
-      paramView.c = localView.findViewById(2131370527);
-      paramView.d = localView.findViewById(2131362708);
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369122));
-      paramView.e = localView.findViewById(2131370522);
-      paramView.f = localView.findViewById(2131370529);
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2130970464, paramViewGroup, false);
+      paramView = new afbw(this);
+      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131366378));
+      paramView.jdField_a_of_type_AndroidViewView = localView.findViewById(2131370664);
+      paramView.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131370666));
+      paramView.jdField_b_of_type_AndroidViewView = localView.findViewById(2131370667);
+      paramView.c = localView.findViewById(2131370668);
+      paramView.d = localView.findViewById(2131362726);
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131369188));
+      paramView.e = localView.findViewById(2131370663);
+      paramView.f = localView.findViewById(2131370670);
       localView.setTag(paramView);
     }
-    paramView = (aeoq)localView.getTag();
+    paramView = (afbw)localView.getTag();
     if (paramInt == 0)
     {
       paramView.e.setVisibility(0);

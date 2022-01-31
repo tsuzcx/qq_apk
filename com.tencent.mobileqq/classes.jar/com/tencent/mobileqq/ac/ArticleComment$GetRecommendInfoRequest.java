@@ -24,7 +24,7 @@ public final class ArticleComment$GetRecommendInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.ac.ArticleComment.GetRecommendInfoRequest
  * JD-Core Version:    0.7.0.1
  */

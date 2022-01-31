@@ -1,40 +1,16 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.ViewGroup.MarginLayoutParams;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.FoldMsgGrayTipsItemBuilder;
-import com.tencent.mobileqq.data.MessageForFoldMsgGrayTips;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
+import com.tencent.mobileqq.ark.ArkAppCenter;
 
 public class uuo
-  implements View.OnClickListener
+  implements Runnable
 {
-  public uuo(FoldMsgGrayTipsItemBuilder paramFoldMsgGrayTipsItemBuilder) {}
+  public uuo(ArkAppItemBubbleBuilder.Holder paramHolder1, String paramString, ArkAppItemBubbleBuilder.Holder paramHolder2) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    Object localObject = AIOUtils.a(paramView);
-    if ((localObject instanceof MessageForFoldMsgGrayTips))
-    {
-      ((MessageForFoldMsgGrayTips)localObject).isOpen = true;
-      paramView = (uup)AIOUtils.a(paramView);
-      paramView.jdField_b_of_type_AndroidWidgetTextView.setText(((MessageForFoldMsgGrayTips)localObject).getShowMsgContent(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext));
-      localObject = paramView.jdField_b_of_type_AndroidWidgetTextView.getLayoutParams();
-      if ((localObject instanceof ViewGroup.MarginLayoutParams))
-      {
-        localObject = (ViewGroup.MarginLayoutParams)localObject;
-        if (((ViewGroup.MarginLayoutParams)localObject).rightMargin != AIOUtils.a(10.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources())) {
-          ((ViewGroup.MarginLayoutParams)localObject).rightMargin = AIOUtils.a(10.0F, this.a.jdField_a_of_type_AndroidContentContext.getResources());
-        }
-      }
-      paramView.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramView.a.requestLayout();
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80064BD", "0X80064BD", 0, 0, "", "", "", "");
-    }
+    String str = ArkAppCenter.b(this.jdField_a_of_type_JavaLangString);
+    ArkAppCenter.a().postToMainThread(new uup(this, str));
   }
 }
 

@@ -1,17 +1,42 @@
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.widget.ListView;
+import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
+import com.tencent.mobileqq.util.DisplayUtil;
+
 public class aisn
+  implements Animator.AnimatorListener
 {
-  public Object a;
-  public Object b;
+  public aisn(TribePostTitlePrefixPanelController paramTribePostTitlePrefixPanelController) {}
   
-  aisn(Object paramObject1, Object paramObject2)
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    this.a = paramObject1;
-    this.b = paramObject2;
+    TribePostTitlePrefixPanelController.a(this.a).setPadding(DisplayUtil.a(TribePostTitlePrefixPanelController.a(this.a).getContext(), 8.0F), -TribePostTitlePrefixPanelController.a(this.a), 0, 0);
+    TribePostTitlePrefixPanelController.a(this.a).setVisibility(8);
+    TribePostTitlePrefixPanelController.a(this.a, false);
+    TribePostTitlePrefixPanelController.b(this.a, false);
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    TribePostTitlePrefixPanelController.a(this.a).setPadding(DisplayUtil.a(TribePostTitlePrefixPanelController.a(this.a).getContext(), 8.0F), -TribePostTitlePrefixPanelController.a(this.a), 0, 0);
+    TribePostTitlePrefixPanelController.a(this.a).setVisibility(8);
+    TribePostTitlePrefixPanelController.a(this.a, false);
+    TribePostTitlePrefixPanelController.b(this.a, false);
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    TribePostTitlePrefixPanelController.a(this.a).setPadding(DisplayUtil.a(TribePostTitlePrefixPanelController.a(this.a).getContext(), 8.0F), 0, 0, 0);
+    TribePostTitlePrefixPanelController.a(this.a, true);
+    TribePostTitlePrefixPanelController.b(this.a, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aisn
  * JD-Core Version:    0.7.0.1
  */

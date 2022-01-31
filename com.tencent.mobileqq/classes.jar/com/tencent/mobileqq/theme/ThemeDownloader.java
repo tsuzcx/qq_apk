@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.theme;
 
-import ahzz;
+import aioc;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,7 +33,7 @@ public class ThemeDownloader
   
   public ThemeDownloader(AppRuntime paramAppRuntime, String paramString)
   {
-    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new ahzz(this);
+    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new aioc(this);
     this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
     if (paramAppRuntime == null) {
       QLog.e("ThemeDownloader", 1, "ThemeDownloader app == null!!");
@@ -663,7 +663,7 @@ public class ThemeDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ThemeDownloader
  * JD-Core Version:    0.7.0.1
  */

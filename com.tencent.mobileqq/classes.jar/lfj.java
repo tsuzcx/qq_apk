@@ -1,18 +1,27 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyVideoSubChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyMsgManagerActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class lfj
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public lfj(ReadInJoyVideoSubChannelActivity paramReadInJoyVideoSubChannelActivity) {}
+  public lfj(ReadinjoyMsgManagerActivity paramReadinjoyMsgManagerActivity) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066F9", "0X80066F9", 0, 0, ReadInJoyHelper.a(), "", "", ReadInJoyUtils.a(ReadInJoyVideoSubChannelActivity.b(this.a)), false);
-    PublicAccountReportUtils.a(null, "", "0X8007413", "0X8007413", 0, 0, "", "0", "", VideoReporter.a(ReadInJoyVideoSubChannelActivity.b(this.a), null), false);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadinjoyMsgManagerActivity.a(this.a).dismiss();
+      return;
+      ReadinjoyMsgManagerActivity.a(this.a).a("正在设置");
+      ReadinjoyMsgManagerActivity.a(this.a).show();
+      ReadinjoyMsgManagerActivity.b(this.a, true);
+    }
   }
 }
 

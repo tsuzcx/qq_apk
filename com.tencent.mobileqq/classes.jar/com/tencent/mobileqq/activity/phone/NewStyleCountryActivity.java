@@ -22,13 +22,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.Set;
-import wrm;
-import wrn;
-import wro;
-import wrp;
-import wrq;
-import wrr;
-import wrt;
+import wur;
+import wus;
+import wut;
+import wuu;
+import wuv;
+import wuw;
+import wuy;
 
 public class NewStyleCountryActivity
   extends RegisterNewBaseActivity
@@ -40,8 +40,8 @@ public class NewStyleCountryActivity
   private PinnedDividerListView jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView;
   public ArrayList a;
   public LinkedHashMap a;
-  private wrp jdField_a_of_type_Wrp;
-  public wrt a;
+  private wuu jdField_a_of_type_Wuu;
+  public wuy a;
   public View b;
   private View c;
   
@@ -50,36 +50,36 @@ public class NewStyleCountryActivity
     this.jdField_a_of_type_JavaUtilLinkedHashMap = new LinkedHashMap();
   }
   
-  public static void a(View paramView, wrq paramwrq)
+  public static void a(View paramView, wuv paramwuv)
   {
-    paramView = (wrr)paramView.getTag();
-    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramwrq.b);
-    paramView.jdField_a_of_type_Wrq = paramwrq;
+    paramView = (wuw)paramView.getTag();
+    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramwuv.b);
+    paramView.jdField_a_of_type_Wuv = paramwuv;
   }
   
   private static View b(ViewGroup paramViewGroup, LayoutInflater paramLayoutInflater, boolean paramBoolean)
   {
-    paramViewGroup = paramLayoutInflater.inflate(2130971456, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.inflate(2130971504, paramViewGroup, false);
     if (paramBoolean) {
       paramViewGroup.setPadding(paramViewGroup.getPaddingLeft(), paramViewGroup.getPaddingTop(), (int)DisplayUtils.a(BaseApplicationImpl.sApplication, 40.0F), paramViewGroup.getPaddingBottom());
     }
-    paramLayoutInflater = new wrr(null);
-    paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131365454));
+    paramLayoutInflater = new wuw(null);
+    paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131365476));
     paramViewGroup.setTag(paramLayoutInflater);
     return paramViewGroup;
   }
   
   public void a(View paramView)
   {
-    paramView = (wrr)paramView.getTag();
-    if (paramView.jdField_a_of_type_Wrq != null)
+    paramView = (wuw)paramView.getTag();
+    if (paramView.jdField_a_of_type_Wuv != null)
     {
-      if ((this.jdField_a_of_type_Wrt != null) && (this.jdField_a_of_type_Wrt.isShowing()) && (!super.isFinishing())) {
-        this.jdField_a_of_type_Wrt.dismiss();
+      if ((this.jdField_a_of_type_Wuy != null) && (this.jdField_a_of_type_Wuy.isShowing()) && (!super.isFinishing())) {
+        this.jdField_a_of_type_Wuy.dismiss();
       }
       Intent localIntent = new Intent();
-      localIntent.putExtra("k_name", paramView.jdField_a_of_type_Wrq.b);
-      localIntent.putExtra("k_code", paramView.jdField_a_of_type_Wrq.c);
+      localIntent.putExtra("k_name", paramView.jdField_a_of_type_Wuv.b);
+      localIntent.putExtra("k_code", paramView.jdField_a_of_type_Wuv.c);
       setResult(-1, localIntent);
       finish();
     }
@@ -100,9 +100,9 @@ public class NewStyleCountryActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2130971454);
-    getWindow().setBackgroundDrawableResource(2131493045);
-    c(2131434315);
+    setContentView(2130971502);
+    getWindow().setBackgroundDrawableResource(2131493046);
+    c(2131434332);
     b();
     a(false);
     String[] arrayOfString1 = getResources().getStringArray(2131296344);
@@ -127,22 +127,22 @@ public class NewStyleCountryActivity
     paramBundle = "#";
     j = arrayOfString2.length;
     i = 0;
-    wrq localwrq;
+    wuv localwuv;
     if (i < j)
     {
-      localwrq = new wrq(arrayOfString2[i]);
-      localObject1 = localwrq.a;
+      localwuv = new wuv(arrayOfString2[i]);
+      localObject1 = localwuv.a;
       if (paramBundle.equals(localObject1)) {
         break label601;
       }
-      ((ArrayList)localObject2).add(new wrq((String)localObject1));
+      ((ArrayList)localObject2).add(new wuv((String)localObject1));
       paramBundle = (Bundle)localObject1;
     }
     label596:
     label601:
     for (;;)
     {
-      ((ArrayList)localObject2).add(localwrq);
+      ((ArrayList)localObject2).add(localwuv);
       this.jdField_a_of_type_JavaUtilLinkedHashMap.put(localObject1, Integer.valueOf(((Integer)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(localObject1)).intValue() + 1));
       i += 1;
       break;
@@ -162,21 +162,21 @@ public class NewStyleCountryActivity
         i = j;
         break;
         this.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject2);
-        this.jdField_a_of_type_AndroidViewView = findViewById(2131374758);
+        this.jdField_a_of_type_AndroidViewView = findViewById(2131374944);
         this.b = ((View)this.jdField_a_of_type_AndroidViewView.getParent());
-        this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131365453));
+        this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131365475));
         this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setDivider(null);
-        this.c = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130970543, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false);
-        this.c.findViewById(2131368254).setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.c.findViewById(2131368255));
+        this.c = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130970587, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false);
+        this.c.findViewById(2131368321).setVisibility(8);
+        this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.c.findViewById(2131368322));
         this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
         this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
         this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
         AccessibilityUtil.b(this.c);
         this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.addHeaderView(this.c);
-        this.jdField_a_of_type_Wrp = new wrp(this, null);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Wrp);
-        this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131365424));
+        this.jdField_a_of_type_Wuu = new wuu(this, null);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Wuu);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131365446));
         this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setIndex(arrayOfString1, true);
         this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setOnIndexChangedListener(this);
         return true;
@@ -188,17 +188,17 @@ public class NewStyleCountryActivity
   {
     if (paramView == this.jdField_a_of_type_AndroidWidgetEditText)
     {
-      this.jdField_a_of_type_Wrt = new wrt(this, this);
-      this.jdField_a_of_type_Wrt.setCanceledOnTouchOutside(true);
+      this.jdField_a_of_type_Wuy = new wuy(this, this);
+      this.jdField_a_of_type_Wuy.setCanceledOnTouchOutside(true);
       int i = this.jdField_a_of_type_AndroidViewView.getHeight();
       paramView = new TranslateAnimation(0.0F, 0.0F, 0.0F, -i);
       paramView.setDuration(300L);
       paramView.setFillAfter(true);
-      paramView.setAnimationListener(new wrm(this));
+      paramView.setAnimationListener(new wur(this));
       TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, -i, 0.0F);
       localTranslateAnimation.setDuration(300L);
-      localTranslateAnimation.setAnimationListener(new wrn(this, i));
-      this.jdField_a_of_type_Wrt.setOnDismissListener(new wro(this, i, localTranslateAnimation));
+      localTranslateAnimation.setAnimationListener(new wus(this, i));
+      this.jdField_a_of_type_Wuy.setOnDismissListener(new wut(this, i, localTranslateAnimation));
       this.b.startAnimation(paramView);
       return;
     }

@@ -1,14 +1,17 @@
-import com.tencent.biz.qqstory.comment.FeedCommentEventHandler;
-import com.tencent.biz.qqstory.comment.FeedCommentEventHandler.OnActionSheetButtonClickListener;
+import com.tencent.biz.qqstory.base.preload.PreloadDownloader;
+import com.tencent.biz.qqstory.base.preload.PreloadDownloaderManager;
+import com.tencent.biz.qqstory.base.preload.cachecleaner.CacheCleaner;
 
 public class nah
   implements Runnable
 {
-  public nah(FeedCommentEventHandler.OnActionSheetButtonClickListener paramOnActionSheetButtonClickListener) {}
+  public nah(PreloadDownloaderManager paramPreloadDownloaderManager) {}
   
   public void run()
   {
-    FeedCommentEventHandler.a(this.a.a, FeedCommentEventHandler.OnActionSheetButtonClickListener.a(this.a), FeedCommentEventHandler.OnActionSheetButtonClickListener.a(this.a));
+    this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPreloadDownloader.b();
+    this.a.jdField_a_of_type_JavaLangRunnable = null;
+    CacheCleaner.a().a(false);
   }
 }
 

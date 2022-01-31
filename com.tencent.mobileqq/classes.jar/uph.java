@@ -1,29 +1,20 @@
-import com.tencent.mobileqq.activity.aio.doodle.LineLayer;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgQueueView;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 
 public class uph
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public final String a;
+  public uph(GoldMsgQueueView paramGoldMsgQueueView) {}
   
-  public uph(LineLayer paramLineLayer)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_JavaLangString = (AppConstants.bM + "temp" + File.separator);
-  }
-  
-  public void run()
-  {
-    try
-    {
-      FileUtils.a(this.jdField_a_of_type_JavaLangString, true);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("ClearTempFileJobdownloading", 2, "makedir execption: " + localException);
+    super.onAnimationEnd(paramAnimator);
+    GoldMsgQueueView.a(this.a, false);
+    GoldMsgQueueView.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("GoldMsgQueueView", 2, "tryDoInsert end");
     }
   }
 }

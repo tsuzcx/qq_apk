@@ -32,7 +32,7 @@ public class FavoriteSearchResultPresenter
     localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     if ((5 == localFavoriteSearchResultModel.f) || (localFavoriteSearchResultModel.jdField_a_of_type_Boolean))
     {
-      localImageView.setImageResource(2130841520);
+      localImageView.setImageResource(2130841557);
       if (localFavoriteSearchResultModel.jdField_d_of_type_JavaLangString == null) {
         break label186;
       }

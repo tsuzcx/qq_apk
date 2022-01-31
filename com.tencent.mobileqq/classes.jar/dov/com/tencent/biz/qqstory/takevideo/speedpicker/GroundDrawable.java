@@ -13,17 +13,17 @@ import android.graphics.drawable.Animatable;
 import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.util.Property;
-import anno;
-import annp;
-import annq;
-import annr;
-import anns;
-import annt;
-import annu;
-import annv;
-import annw;
-import annx;
-import anny;
+import aodt;
+import aodu;
+import aodv;
+import aodw;
+import aodx;
+import aody;
+import aodz;
+import aoea;
+import aoeb;
+import aoec;
+import aoed;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -36,7 +36,7 @@ public class GroundDrawable
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  Property jdField_a_of_type_AndroidUtilProperty = new anno(this, Float.class, "backHeight");
+  Property jdField_a_of_type_AndroidUtilProperty = new aodt(this, Float.class, "backHeight");
   private PickerBack jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBack = new PickerBack();
   private PickerFore jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerFore = new PickerFore();
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
@@ -45,25 +45,25 @@ public class GroundDrawable
   private int jdField_b_of_type_Int = 255;
   private RectF jdField_b_of_type_AndroidGraphicsRectF = new RectF();
   private Drawable jdField_b_of_type_AndroidGraphicsDrawableDrawable;
-  Property jdField_b_of_type_AndroidUtilProperty = new annq(this, Integer.class, "backAlpha");
+  Property jdField_b_of_type_AndroidUtilProperty = new aodv(this, Integer.class, "backAlpha");
   private boolean jdField_b_of_type_Boolean;
   private float jdField_c_of_type_Float = 50.0F;
   private int jdField_c_of_type_Int;
   private RectF jdField_c_of_type_AndroidGraphicsRectF = new RectF();
-  Property jdField_c_of_type_AndroidUtilProperty = new annr(this, Integer.class, "speedAlpha");
+  Property jdField_c_of_type_AndroidUtilProperty = new aodw(this, Integer.class, "speedAlpha");
   private float jdField_d_of_type_Float = 50.0F;
   private int jdField_d_of_type_Int = 179;
-  Property jdField_d_of_type_AndroidUtilProperty = new anns(this, Integer.class, "reverseAlpha");
+  Property jdField_d_of_type_AndroidUtilProperty = new aodx(this, Integer.class, "reverseAlpha");
   private float jdField_e_of_type_Float = 30.0F;
   private int jdField_e_of_type_Int;
-  Property jdField_e_of_type_AndroidUtilProperty = new annt(this, Float.class, "foreSpeed");
+  Property jdField_e_of_type_AndroidUtilProperty = new aody(this, Float.class, "foreSpeed");
   private float jdField_f_of_type_Float = 22.0F;
   private int jdField_f_of_type_Int = 179;
-  Property jdField_f_of_type_AndroidUtilProperty = new annu(this, Float.class, "foreHeight");
+  Property jdField_f_of_type_AndroidUtilProperty = new aodz(this, Float.class, "foreHeight");
   private int jdField_g_of_type_Int = -1;
-  Property jdField_g_of_type_AndroidUtilProperty = new annv(this, Float.class, "speedPos");
+  Property jdField_g_of_type_AndroidUtilProperty = new aoea(this, Float.class, "speedPos");
   private int jdField_h_of_type_Int = 0;
-  Property jdField_h_of_type_AndroidUtilProperty = new annw(this, Integer.class, "markAlpha");
+  Property jdField_h_of_type_AndroidUtilProperty = new aoeb(this, Integer.class, "markAlpha");
   
   private float a()
   {
@@ -78,9 +78,9 @@ public class GroundDrawable
       this.jdField_b_of_type_AndroidGraphicsRectF.offset(0.0F, paramFloat - f1);
       if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
       {
-        anny localanny = (anny)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localanny != null) {
-          localanny.a(this.jdField_h_of_type_Int, this.jdField_b_of_type_AndroidGraphicsRectF);
+        aoed localaoed = (aoed)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (localaoed != null) {
+          localaoed.a(this.jdField_h_of_type_Int, this.jdField_b_of_type_AndroidGraphicsRectF);
         }
       }
     }
@@ -113,8 +113,8 @@ public class GroundDrawable
         this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatMode(1);
         this.jdField_a_of_type_AndroidAnimationValueAnimator.setRepeatCount(0);
         this.jdField_a_of_type_AndroidAnimationValueAnimator.setStartDelay(0L);
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new annx(this));
-        this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new annp(this));
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new aoec(this));
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new aodu(this));
         this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
       }
       return;
@@ -330,9 +330,9 @@ public class GroundDrawable
         this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerFore.a(this.jdField_c_of_type_AndroidGraphicsRectF);
         if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
         {
-          anny localanny = (anny)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if (localanny != null) {
-            localanny.a(this.jdField_h_of_type_Int, a());
+          aoed localaoed = (aoed)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if (localaoed != null) {
+            localaoed.a(this.jdField_h_of_type_Int, a());
           }
         }
       }
@@ -391,37 +391,37 @@ public class GroundDrawable
   private void f(int paramInt)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    anny localanny;
+    aoed localaoed;
     do
     {
       return;
-      localanny = (anny)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localanny == null);
-    localanny.b(paramInt);
+      localaoed = (aoed)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localaoed == null);
+    localaoed.b(paramInt);
   }
   
   private void g(int paramInt)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    anny localanny;
+    aoed localaoed;
     do
     {
       return;
-      localanny = (anny)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localanny == null);
-    localanny.a(paramInt);
+      localaoed = (aoed)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localaoed == null);
+    localaoed.a(paramInt);
   }
   
   private void h(int paramInt)
   {
     if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    anny localanny;
+    aoed localaoed;
     do
     {
       return;
-      localanny = (anny)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localanny == null);
-    localanny.c(paramInt);
+      localaoed = (aoed)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localaoed == null);
+    localaoed.c(paramInt);
   }
   
   public int a()
@@ -474,10 +474,10 @@ public class GroundDrawable
         this.jdField_b_of_type_AndroidGraphicsRectF.set(localRectF.centerX() - this.jdField_c_of_type_Float / 2.0F, localRectF.centerY() - this.jdField_d_of_type_Float / 2.0F, localRectF.centerX() + this.jdField_d_of_type_Float / 2.0F, localRectF.centerY() + this.jdField_d_of_type_Float / 2.0F);
         if ((paramBoolean1) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
         {
-          localObject = (anny)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          localObject = (aoed)this.jdField_a_of_type_JavaLangRefWeakReference.get();
           if (localObject != null)
           {
-            ((anny)localObject).a(this.jdField_h_of_type_Int, this.jdField_g_of_type_Int, localRectF);
+            ((aoed)localObject).a(this.jdField_h_of_type_Int, this.jdField_g_of_type_Int, localRectF);
             this.jdField_a_of_type_Boolean = false;
           }
         }
@@ -536,9 +536,9 @@ public class GroundDrawable
     }
   }
   
-  public boolean a(Context paramContext, int paramInt, float paramFloat1, float paramFloat2, anny paramanny)
+  public boolean a(Context paramContext, int paramInt, float paramFloat1, float paramFloat2, aoed paramaoed)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramanny);
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramaoed);
     if (paramInt > 0) {
       this.jdField_a_of_type_Float /= paramInt;
     }
@@ -546,8 +546,8 @@ public class GroundDrawable
     this.jdField_c_of_type_Int = paramInt;
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerFore.a(-1, paramInt, this.jdField_b_of_type_Float, paramFloat1, paramFloat2);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoSpeedpickerPickerBack.a(0, paramFloat1, paramFloat2);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839607);
-    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839606);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839612);
+    this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130839611);
     return true;
   }
   
@@ -618,7 +618,7 @@ public class GroundDrawable
       a(this.jdField_g_of_type_Int, false, false);
       if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null))
       {
-        paramRect = (anny)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramRect = (aoed)this.jdField_a_of_type_JavaLangRefWeakReference.get();
         if (paramRect != null)
         {
           RectF localRectF = new RectF();

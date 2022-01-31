@@ -1,16 +1,17 @@
-import android.app.Activity;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qzone.QZoneVideoCommonUtils.onForwardVideoActivityFailedListener;
-import cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qlink.QlinkReliableReport;
+import java.util.TimerTask;
 
 public class amnp
-  implements QZoneVideoCommonUtils.onForwardVideoActivityFailedListener
+  extends TimerTask
 {
-  public amnp(QZoneCoverStoreJsPlugin paramQZoneCoverStoreJsPlugin, int paramInt) {}
+  public amnp(QlinkReliableReport paramQlinkReliableReport) {}
   
-  public void onFail(Activity paramActivity, String paramString)
+  public void run()
   {
-    QQToast.a(paramActivity, paramString, 0).b(this.jdField_a_of_type_Int);
+    QLog.d("QlinkReliableReport", 2, "doStopReportTimer :  on timer");
+    QlinkReliableReport.a(this.a, null);
+    QlinkReliableReport.g();
   }
 }
 

@@ -1,10 +1,10 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import anbc;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import anrh;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.troop.data.MediaInfo;
 import java.io.File;
@@ -12,7 +12,7 @@ import java.io.File;
 public class EditLocalVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator CREATOR = new anbc();
+  public static final Parcelable.Creator CREATOR = new anrh();
   public int a;
   @NonNull
   public final LocalMediaInfo a;

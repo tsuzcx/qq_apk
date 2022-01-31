@@ -1,73 +1,54 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
-import mqq.os.MqqHandler;
-import mqq.util.WeakReference;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class sce
-  implements Runnable
+  extends CardObserver
 {
-  WeakReference a;
+  public sce(ChatSettingActivity paramChatSettingActivity) {}
   
-  public sce(ChatSettingForTroop paramChatSettingForTroop)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    this.a = new WeakReference(paramChatSettingForTroop);
-  }
-  
-  public void run()
-  {
-    ChatSettingForTroop localChatSettingForTroop = (ChatSettingForTroop)this.a.get();
-    if (localChatSettingForTroop == null) {}
-    while (localChatSettingForTroop.c) {
-      return;
-    }
-    Object localObject1 = localChatSettingForTroop.app;
-    String str = localChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin;
-    Object localObject2 = new StringBuilder();
-    int i = ChatSettingForTroop.a((QQAppInterface)localObject1, str, 1, (StringBuilder)localObject2);
-    List localList = ((QQAppInterface)localObject1).a().b(str, 1);
-    if ((localList != null) && (!localList.isEmpty())) {}
-    for (long l1 = ((MessageRecord)localList.get(localList.size() - 1)).shmsgseq;; l1 = 0L)
+    if ((paramObject instanceof Card)) {}
+    for (paramObject = (Card)paramObject;; paramObject = null)
     {
-      if (i > 0) {}
-      for (;;)
+      if ((paramBoolean) && (paramObject != null))
       {
-        try
+        if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.b(this.a).equals(paramObject.uin)))
         {
-          long l2 = Long.parseLong(((StringBuilder)localObject2).toString());
-          l1 = Math.max(l2, l1);
-          if (l1 > 0L) {
-            ((QQAppInterface)localObject1).a().a(str, 1, l1);
+          String str = ContactUtils.a(this.a.app, ChatSettingActivity.b(this.a));
+          if ((!TextUtils.isEmpty(str)) && (!str.equals(ChatSettingActivity.f(this.a)))) {
+            ChatSettingActivity.c(this.a, str);
           }
-          ((QQAppInterface)localObject1).a().a(str, 1);
-          ((QQAppInterface)localObject1).a().e(str, 1);
-          SpriteCommFunc.a((QQAppInterface)localObject1, "chat_history_confirm_del_msg");
-          localObject1 = ((QQAppInterface)localObject1).getHandler(Conversation.class);
-          localObject2 = ((MqqHandler)localObject1).obtainMessage(1017);
-          ((Message)localObject2).obj = str;
-          ((Message)localObject2).arg1 = 1;
-          ((MqqHandler)localObject1).sendMessage((Message)localObject2);
-          localChatSettingForTroop.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(19);
-          return;
         }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.chatopttroop", 2, "msg history already clear!");
+        if ((this.a.f != null) && (!TextUtils.isEmpty(ChatSettingActivity.b(this.a))) && (ChatSettingActivity.b(this.a).equals(paramObject.uin))) {
+          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.b(this.a)), this.a.f);
         }
       }
+      return;
+    }
+  }
+  
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (this.a.b != null) && (paramBoolean2 != this.a.b.a()))
+    {
+      this.a.b.setOnCheckedChangeListener(null);
+      this.a.b.setChecked(paramBoolean2);
+      this.a.b.setOnCheckedChangeListener(this.a);
+    }
+  }
+  
+  protected void c(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if ((paramBoolean1) && (this.a.b != null) && (paramBoolean2 != this.a.b.a()))
+    {
+      this.a.b.setOnCheckedChangeListener(null);
+      this.a.b.setChecked(paramBoolean2);
+      this.a.b.setOnCheckedChangeListener(this.a);
     }
   }
 }

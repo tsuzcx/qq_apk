@@ -1,16 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment;
+import com.tencent.mobileqq.activity.contacts.fragment.TroopFragment.MyTroopObserver;
 
 public class wok
-  implements View.OnClickListener
+  implements Runnable
 {
-  public wok(MessageSearchDialog paramMessageSearchDialog) {}
+  public wok(TroopFragment.MyTroopObserver paramMyTroopObserver) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.setText("");
+    this.a.a.h();
   }
 }
 

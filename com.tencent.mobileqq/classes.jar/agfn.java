@@ -1,38 +1,20 @@
-import android.media.MediaPlayer;
-import com.tencent.mobileqq.ptt.player.AmrPlayer;
-import com.tencent.mobileqq.ptt.player.IPttPlayerListener;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.WeakReferenceHandler;
+import com.tencent.mobileqq.ar.ObjectSurfaceView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agfn
-  extends Thread
+  implements Runnable
 {
-  private agfn(AmrPlayer paramAmrPlayer) {}
+  public agfn(ScanTorchActivity paramScanTorchActivity) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AmrPlayer", 2, "playAmr " + AmrPlayer.a(this.a));
-    }
-    try
-    {
-      AmrPlayer.a(this.a).b();
-      AmrPlayer.a(this.a).start();
-      if (AmrPlayer.a(this.a, AmrPlayer.a(this.a) - 1000) > 0) {
-        AmrPlayer.a(this.a).seekTo(AmrPlayer.a(this.a));
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (AmrPlayer.a(this.a) == null) {}
-      AmrPlayer.a(this.a).sendEmptyMessage(1);
-    }
+    this.a.a.setVisibility(8);
+    this.a.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agfn
  * JD-Core Version:    0.7.0.1
  */

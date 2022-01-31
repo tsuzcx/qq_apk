@@ -669,13 +669,13 @@ public class C2CPttDownloadProcessor
           }
           localObject = "0X80059B2";
           localPttDownExtraInfo = (TransferRequest.PttDownExtraInfo)this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_JavaLangObject;
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", (String)localObject, (String)localObject, PttInfoCollector.a(localPttDownExtraInfo.jdField_a_of_type_Int, localPttDownExtraInfo.jdField_b_of_type_Int), 0, "", "", "", "7.6.0");
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", (String)localObject, (String)localObject, PttInfoCollector.a(localPttDownExtraInfo.jdField_a_of_type_Int, localPttDownExtraInfo.jdField_b_of_type_Int), 0, "", "", "", "7.6.3");
         }
       }
     }
   }
   
-  public void an_()
+  public void ap_()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.extFlag == -1L) {
       this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt.extFlag = 0L;
@@ -685,7 +685,7 @@ public class C2CPttDownloadProcessor
       localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPtt;
       ((MessageForPtt)localObject).extFlag |= 1L;
     }
-    super.an_();
+    super.ap_();
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
     if (this.jdField_a_of_type_ComTencentMobileqqTransfileTransferRequest.jdField_a_of_type_Int == 0) {}
     for (int i = 1;; i = 4)
@@ -900,7 +900,7 @@ public class C2CPttDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.C2CPttDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

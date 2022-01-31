@@ -1,26 +1,20 @@
-import android.support.annotation.NonNull;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiDownloadEvent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
 
 public class andb
-  extends QQUIEventReceiver
+  implements DialogInterface.OnClickListener
 {
-  public andb(@NonNull EditVideoDoodle paramEditVideoDoodle)
-  {
-    super(paramEditVideoDoodle);
-  }
+  public andb(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin) {}
   
-  public void a(@NonNull EditVideoDoodle paramEditVideoDoodle, @NonNull DoodleEmojiManager.DoodleEmojiDownloadEvent paramDoodleEmojiDownloadEvent) {}
-  
-  public Class acceptEventClass()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return DoodleEmojiManager.DoodleEmojiDownloadEvent.class;
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     andb
  * JD-Core Version:    0.7.0.1
  */

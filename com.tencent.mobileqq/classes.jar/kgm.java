@@ -1,15 +1,21 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.DialogInterface.OnDismissListener;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.av.utils.PopupDialogQQSide;
 
-class kgm
-  implements DialogInterface.OnClickListener
+public class kgm
+  implements DialogInterface.OnDismissListener
 {
-  kgm(kgk paramkgk) {}
+  public kgm(PopupDialogQQSide paramPopupDialogQQSide) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramDialogInterface.dismiss();
-    kgk.a(this.a, this.a.a);
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
+    }
+    if (this.a.getActivity() != null) {
+      this.a.getActivity().doOnBackPressed();
+    }
   }
 }
 

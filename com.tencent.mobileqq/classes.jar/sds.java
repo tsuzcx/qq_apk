@@ -1,21 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
-import com.tencent.mobileqq.portal.PortalManager;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
-public class sds
-  implements View.OnClickListener
+class sds
+  implements Runnable
 {
-  public sds(Conversation paramConversation, PortalManager paramPortalManager) {}
+  sds(sdr paramsdr) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation).removeView(Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation));
-    if (this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager != null) {
-      this.jdField_a_of_type_ComTencentMobileqqPortalPortalManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), true);
-    }
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation, null);
+    this.a.a.v();
   }
 }
 

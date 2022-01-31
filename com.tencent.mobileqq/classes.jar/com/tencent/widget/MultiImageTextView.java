@@ -1,7 +1,7 @@
 package com.tencent.widget;
 
-import alnc;
-import alne;
+import amcs;
+import amcu;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
@@ -44,10 +44,10 @@ public class MultiImageTextView
   
   public MultiImageTextView a(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
-    alnc localalnc = new alnc(this);
-    localalnc.a = paramDrawable;
-    localalnc.a.setBounds(0, 0, paramInt1, paramInt2);
-    a(localalnc);
+    amcs localamcs = new amcs(this);
+    localamcs.a = paramDrawable;
+    localamcs.a.setBounds(0, 0, paramInt1, paramInt2);
+    a(localamcs);
     return this;
   }
   
@@ -68,9 +68,9 @@ public class MultiImageTextView
   
   public void a(int paramInt)
   {
-    alne localalne = new alne(this);
-    localalne.a = paramInt;
-    a(localalne);
+    amcu localamcu = new amcu(this);
+    localamcu.a = paramInt;
+    a(localamcu);
   }
   
   public void a(SpanAdapter paramSpanAdapter)
@@ -108,7 +108,7 @@ public class MultiImageTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.MultiImageTextView
  * JD-Core Version:    0.7.0.1
  */

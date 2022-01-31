@@ -1,23 +1,49 @@
-import com.tencent.mobileqq.adapter.NewFriendMoreSysMsgAdapter;
-import com.tencent.mobileqq.app.QIMNewFriendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.newfriend.NewFriendMessage;
-import com.tencent.mobileqq.newfriend.QIMNotifyAddFriendMsg;
+import android.view.SurfaceHolder;
+import android.view.SurfaceHolder.Callback;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.video.IMediaPlayer;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class yet
-  implements Runnable
+  implements SurfaceHolder.Callback
 {
-  public yet(NewFriendMoreSysMsgAdapter paramNewFriendMoreSysMsgAdapter, NewFriendMessage paramNewFriendMessage) {}
+  public yet(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
+  public void surfaceChanged(SurfaceHolder paramSurfaceHolder, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void surfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    ((QIMNewFriendManager)this.jdField_a_of_type_ComTencentMobileqqAdapterNewFriendMoreSysMsgAdapter.a.getManager(256)).b(((QIMNotifyAddFriendMsg)this.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a);
-    this.jdField_a_of_type_ComTencentMobileqqAdapterNewFriendMoreSysMsgAdapter.a.runOnUiThread(new yeu(this));
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "surfaceCreated: mSavedCurPosition:" + this.a.g + ",mSavedPlayState : " + this.a.a(this.a.h));
+    }
+    if ((this.a.h == 1) && (this.a.g > 0))
+    {
+      this.a.a(this.a.g);
+      this.a.g = 0;
+      this.a.h = 0;
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+  }
+  
+  public void surfaceDestroyed(SurfaceHolder paramSurfaceHolder)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoPreviewActivity", 2, "surfaceDestroyed ");
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.c();
+    }
+    if (this.a.jdField_a_of_type_MqqOsMqqHandler != null) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yet
  * JD-Core Version:    0.7.0.1
  */

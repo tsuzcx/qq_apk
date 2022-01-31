@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
-import aeoh;
+import afbn;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -24,7 +24,7 @@ public class PicBrowserActivity
   
   public PicBrowserActivity()
   {
-    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new aeoh(this);
+    this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager = new afbn(this);
   }
   
   public void a()
@@ -36,10 +36,10 @@ public class PicBrowserActivity
   
   protected void d()
   {
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131363361));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)findViewById(2131363379));
     this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(0);
     ImmersiveUtils.a(getWindow(), ThemeUtil.isNowThemeIsDefault(this.app, false, null));
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(getResources().getColor(2131492970));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setBackgroundColor(getResources().getColor(2131492971));
   }
   
   public void doOnBackPressed()
@@ -54,7 +54,7 @@ public class PicBrowserActivity
     this.mActNeedImmersive = false;
     this.mNeedStatusTrans = true;
     super.doOnCreate(paramBundle);
-    setContentView(2130970430);
+    setContentView(2130970471);
     d();
     a();
     this.jdField_a_of_type_ComTencentCommonGalleryactivityGalleryManager.a(this);

@@ -1,86 +1,125 @@
-import com.tencent.biz.anonymous.AnonymousChatHelper;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForLongTextMsg;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.mixedmsg.MixedMsgManager;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
-import com.tencent.mobileqq.structmsg.AbsShareMsg;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import tencent.im.msg.im_msg_body.RichText;
+import android.app.Activity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class adud
-  implements UpCallBack
+  extends BroadcastReceiver
 {
-  MessageForLongTextMsg jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg;
+  public adud(HuayangJsPlugin paramHuayangJsPlugin) {}
   
-  public adud(MixedMsgManager paramMixedMsgManager, QQAppInterface paramQQAppInterface, MessageForMixedMsg paramMessageForMixedMsg, MessageObserver paramMessageObserver, boolean paramBoolean) {}
-  
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return null;
-  }
-  
-  public void a(UpCallBack.SendResult paramSendResult) {}
-  
-  public void b(UpCallBack.SendResult paramSendResult)
-  {
-    try
+    paramContext = paramIntent.getAction();
+    int i;
+    JSONObject localJSONObject;
+    if ((paramContext.equals(HuayangJsPlugin.a(this.a.b))) || (paramContext.equals(HuayangJsPlugin.d(this.a.b))))
     {
-      if (paramSendResult.jdField_a_of_type_Int == 0)
+      i = paramIntent.getIntExtra("key_state", -1);
+      HuayangJsPlugin.a(this.a, i);
+      localJSONObject = HuayangJsPlugin.a(this.a, i);
+      switch (i)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MixedMsgManager", 2, "step3: sendLongTextMsg pack upload cost: " + (System.currentTimeMillis() - MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager)) + ",mResid:" + paramSendResult.c);
+      default: 
+        this.a.callJs(this.a.a, new String[] { localJSONObject.toString() });
+      }
+    }
+    do
+    {
+      for (;;)
+      {
+        return;
+        l = paramIntent.getLongExtra("key_totalSize", 0L);
+        HuayangJsPlugin.a(this.a, "size:" + l);
+        try
+        {
+          localJSONObject.putOpt("totalSize", Long.valueOf(l));
+          localJSONObject.remove("state");
         }
-        AbsShareMsg localAbsShareMsg = ChatActivityFacade.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getApplicationContext(), this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentNickname());
-        localAbsShareMsg.mResid = paramSendResult.c;
-        localAbsShareMsg.mFileName = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq);
-        localAbsShareMsg.multiMsgFlag = 1;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg = ((MessageForLongTextMsg)MessageRecordFactory.a(-1051));
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.structingMsg = localAbsShareMsg;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.frienduin = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.frienduin;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.istroop = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.istroop;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.selfuin = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.selfuin;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.senderuin = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.senderuin;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.isread = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.isread;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.time = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.time;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.msgseq = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgseq;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.msgUid = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgUid;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.shmsgseq = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.shmsgseq;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.issend = this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.issend;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.mAnimFlag = true;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.longMsgCount = 1;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.longMsgIndex = 0;
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.longMsgId = ((short)(int)this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.shmsgseq);
-        this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg.saveExtInfoToExtStr("long_text_msg_resid", paramSendResult.c);
-        AnonymousChatHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg);
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForLongTextMsg, this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver, this.jdField_a_of_type_Boolean);
+        catch (JSONException paramContext)
+        {
+          for (;;)
+          {
+            paramContext.printStackTrace();
+          }
+        }
+      }
+      int j = paramIntent.getIntExtra("key_progress", 0);
+      long l = paramIntent.getLongExtra("key_totalSize", 0L);
+      paramIntent = this.a;
+      if (i == 1) {}
+      for (paramContext = "progress:STATE_DOWANLOADING:" + j;; paramContext = "progress:STATE_LOADING:" + j)
+      {
+        for (;;)
+        {
+          HuayangJsPlugin.a(paramIntent, paramContext);
+          if (i == 4)
+          {
+            if (j <= 90) {
+              break;
+            }
+            HuayangJsPlugin.a(this.a).removeCallbacksAndMessages(null);
+          }
+          try
+          {
+            localJSONObject.putOpt("totalSize", Long.valueOf(l));
+            localJSONObject.putOpt("pro", Integer.valueOf(j));
+          }
+          catch (JSONException paramContext)
+          {
+            paramContext.printStackTrace();
+          }
+        }
+        break;
+      }
+      HuayangJsPlugin.a(this.a, "STATE_DOWANLODAD_COMPLETE");
+      paramContext = Message.obtain();
+      if (HuayangJsPlugin.a(this.a) == 1) {}
+      for (paramContext.arg1 = 40; !TextUtils.equals(HuayangJsPlugin.a(this.a), "checkVersion"); paramContext.arg1 = 0)
+      {
+        HuayangJsPlugin.a(this.a).sendMessage(paramContext);
+        break;
+      }
+      HuayangJsPlugin.a(this.a, "STATE_DOWANLODAD_FAILED");
+      break;
+      HuayangJsPlugin.a(this.a, "STATE_PRELOAD_FALIED");
+      break;
+      HuayangJsPlugin.a(this.a, "STATE_LOAD_COMPLETE");
+      break;
+      HuayangJsPlugin.a(this.a, "STATE_LOAD_FALIED");
+      break;
+      HuayangJsPlugin.a(this.a, "STATE_LAUNCHERING");
+      break;
+      HuayangJsPlugin.a(this.a, "STATE_LAUNCHER_SUCC");
+      break;
+      HuayangJsPlugin.a(this.a, "STATE_LAUNCHER_FAILED");
+      break;
+      if (HuayangJsPlugin.b(this.a.b).equals(paramContext))
+      {
+        paramContext = this.a.mRuntime.a();
+        if ((paramContext instanceof BaseActivity))
+        {
+          ((BaseActivity)paramContext).doOnBackPressed();
+          return;
+        }
+        paramContext.onBackPressed();
         return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgManager", 2, "upload multi msg pack failed, result.errStr=" + paramSendResult.b + ",result.errStr=" + paramSendResult.jdField_a_of_type_JavaLangString);
-      }
-      MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true, "upload longMsg pack fail: errCode = " + paramSendResult.b);
-      return;
-    }
-    catch (Exception paramSendResult)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("MixedMsgManager", 2, "upload multi msg pack failed, catch exception", paramSendResult);
-      }
-      MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, true, "sendStructLongMsg fail: exception" + paramSendResult.getMessage());
-    }
+    } while (!HuayangJsPlugin.c(this.a.b).equals(paramContext));
+    HuayangJsPlugin.b(this.a, paramIntent.getIntExtra("key_isCache", -1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adud
  * JD-Core Version:    0.7.0.1
  */

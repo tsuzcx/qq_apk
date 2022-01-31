@@ -366,7 +366,7 @@ public class ForwardPhotoOption
       for (;;)
       {
         return true;
-        QQToast.a(BaseApplication.getContext(), 1, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131434447), 0).a();
+        QQToast.a(BaseApplication.getContext(), 1, this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131434464), 0).a();
       }
     }
     if (j == 1008)
@@ -508,7 +508,7 @@ public class ForwardPhotoOption
   protected String d()
   {
     if (jdField_f_of_type_JavaLangString == null) {
-      return this.jdField_a_of_type_AndroidContentContext.getString(2131436268);
+      return this.jdField_a_of_type_AndroidContentContext.getString(2131436285);
     }
     return jdField_f_of_type_JavaLangString;
   }

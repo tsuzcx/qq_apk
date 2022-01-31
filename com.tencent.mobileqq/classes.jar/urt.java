@@ -1,20 +1,10 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppRootLayout.ArkSearchReportCallback;
-
-public class urt
-  extends GestureDetector.SimpleOnGestureListener
+public abstract interface urt
 {
-  public urt(ArkAppRootLayout paramArkAppRootLayout) {}
+  public abstract void a(int paramInt);
   
-  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
-  {
-    if (ArkAppRootLayout.a(this.a) != null) {
-      ArkAppRootLayout.a(this.a).a();
-    }
-    return super.onSingleTapUp(paramMotionEvent);
-  }
+  public abstract void f();
+  
+  public abstract void g();
 }
 
 

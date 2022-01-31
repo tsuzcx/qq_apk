@@ -1,20 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.AppInPushNotification.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.KandianAppInPush;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 
 public class mkf
-  implements AppInPushNotification.OnDismissListener
+  implements Runnable
 {
-  public mkf(KandianAppInPush paramKandianAppInPush) {}
+  public mkf(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    KandianAppInPush.a(this.a, null);
-    KandianAppInPush.a(this.a, null);
-    if ((paramBoolean) && (KandianAppInPush.a(this.a) != null)) {
-      ThreadManager.getSubThreadHandler().postDelayed(new mkg(this), 500L);
-    }
+    ReadInJoyGlobalReporter.a().a(this.a.a, NetConnInfoCenter.getServerTimeMillis(), ReadInJoyUtils.e(), ReadInJoyUtils.d);
   }
 }
 

@@ -1,17 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.mobileqq.widget.SlideTabWidget;
+import com.tencent.mobileqq.widget.SlideTabWidget.OnTabSlideCompleteListener;
 
 public class akwz
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public akwz(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  public akwz(SlideTabWidget paramSlideTabWidget) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    if (SlideTabWidget.a(this.a) != null) {
+      SlideTabWidget.a(this.a).a();
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akwz
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.gameroom.RecentUserInvitePanel;
+import android.os.Handler;
+import com.tencent.mobileqq.log.ReportLog;
+import com.tencent.mobileqq.utils.httputils.HttpMsg;
+import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
 
-public class aecf
-  implements View.OnClickListener
+public final class aecf
+  implements IHttpCommunicatorListener
 {
-  public aecf(RecentUserInvitePanel paramRecentUserInvitePanel) {}
-  
-  public void onClick(View paramView)
+  public void a(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramView);
-    }
+    ReportLog.a().sendEmptyMessage(10000001);
+  }
+  
+  public void a(String paramString) {}
+  
+  public boolean a(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2, int paramInt)
+  {
+    return true;
+  }
+  
+  public void b(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2)
+  {
+    ReportLog.a = false;
+    ReportLog.a().sendEmptyMessage(10000001);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aecf
  * JD-Core Version:    0.7.0.1
  */

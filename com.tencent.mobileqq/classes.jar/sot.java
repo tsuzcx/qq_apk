@@ -1,14 +1,18 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.util.WeakReferenceHandler;
 
-public class sot
+class sot
   implements Runnable
 {
-  public sot(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  sot(sos paramsos, Card paramCard) {}
   
   public void run()
   {
-    this.a.a.startAnimation(this.a.b);
+    boolean bool = this.jdField_a_of_type_Sos.a.a((int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentStyleId, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.lCurrentBgId, this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundUrl, (int)this.jdField_a_of_type_ComTencentMobileqqDataCard.backgroundColor, this.jdField_a_of_type_ComTencentMobileqqDataCard.templateRet);
+    Message localMessage = this.jdField_a_of_type_Sos.a.b.obtainMessage(13, Boolean.valueOf(bool));
+    this.jdField_a_of_type_Sos.a.b.sendMessage(localMessage);
   }
 }
 

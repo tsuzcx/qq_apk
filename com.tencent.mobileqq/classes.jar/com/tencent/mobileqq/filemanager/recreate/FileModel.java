@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.filemanager.recreate;
 
-import acwf;
-import acwg;
-import acwh;
-import acwi;
+import adgc;
+import adgd;
+import adge;
+import adgf;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -91,7 +91,7 @@ public class FileModel
   
   private void b(Activity paramActivity)
   {
-    FileVideoManager.a(paramActivity, new acwi(this, paramActivity));
+    FileVideoManager.a(paramActivity, new adgf(this, paramActivity));
   }
   
   private void c(Activity paramActivity)
@@ -160,18 +160,18 @@ public class FileModel
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getCloudType() == 1)
       {
         if (!NetworkUtil.d(BaseApplicationImpl.getContext())) {
-          FMToastUtil.a(2131437513);
+          FMToastUtil.a(2131437530);
         }
-        acwg localacwg;
+        adgd localadgd;
         do
         {
           return;
           if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status == 2) || (!a(true))) {
             break;
           }
-          localacwg = new acwg(this, paramActivity);
-        } while (!CUKingCardHelper.a(paramActivity, 2, new acwh(this, paramActivity), ""));
-        FMDialogUtil.a(paramActivity, paramActivity.getString(2131428241), paramActivity.getString(2131428239), localacwg);
+          localadgd = new adgd(this, paramActivity);
+        } while (!CUKingCardHelper.a(paramActivity, 2, new adge(this, paramActivity), ""));
+        FMDialogUtil.a(paramActivity, paramActivity.getString(2131428241), paramActivity.getString(2131428239), localadgd);
         return;
       }
       b(paramActivity);
@@ -184,7 +184,7 @@ public class FileModel
   {
     if (!NetworkUtil.e(BaseApplicationImpl.getContext()))
     {
-      FMToastUtil.a(2131437295);
+      FMToastUtil.a(2131437312);
       return;
     }
     boolean bool;
@@ -201,7 +201,7 @@ public class FileModel
       }
       i = 3;
       label45:
-      if (!CUKingCardHelper.a(localActivity, i, new acwf(this, paramFMDialogInterface), "")) {
+      if (!CUKingCardHelper.a(localActivity, i, new adgc(this, paramFMDialogInterface), "")) {
         break label96;
       }
       if (!paramBoolean) {

@@ -1,25 +1,14 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.InfoStickerDrawable;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.InfoStickerDrawable.AnimationListener;
+import dov.com.qq.im.capture.data.CaptureComboManager;
 
 public class anlk
-  implements Animator.AnimatorListener
+  implements Runnable
 {
-  public anlk(InfoStickerDrawable paramInfoStickerDrawable) {}
+  public anlk(CaptureComboManager paramCaptureComboManager) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    if (InfoStickerDrawable.a(this.a) != null) {
-      InfoStickerDrawable.a(this.a).a();
-    }
+    this.a.c();
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

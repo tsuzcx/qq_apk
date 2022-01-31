@@ -1,14 +1,18 @@
-import com.tencent.av.gameplay.ARNativeBridge;
-import com.tencent.av.ui.GamePlayView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.av.ui.MultiIncomingCallsActivity;
+import com.tencent.mobileqq.utils.QAVGroupConfig.Report;
 
 public class jvl
-  implements Runnable
+  implements DialogInterface.OnCancelListener
 {
-  public jvl(GamePlayView paramGamePlayView, float paramFloat1, float paramFloat2, boolean paramBoolean) {}
+  public jvl(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    GamePlayView.a(this.jdField_a_of_type_ComTencentAvUiGamePlayView).native_updateEmitterLocation(this.jdField_a_of_type_Float, this.b, this.jdField_a_of_type_Boolean);
+    this.a.a("onClickCancel", true, null, -1);
+    this.a.b("onClickCancel");
+    QAVGroupConfig.Report.a(false);
   }
 }
 

@@ -1,34 +1,18 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPoiPickerCallback;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.pubaccount.CustomWebView;
 
-public class ancq
-  implements EditVideoPoiPickerCallback
+public final class ancq
+  implements Runnable
 {
-  public ancq(EditVideoDoodle paramEditVideoDoodle) {}
+  public ancq(CustomWebView paramCustomWebView, String paramString) {}
   
-  public void a()
+  public void run()
   {
-    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
-  }
-  
-  public void a(TroopBarPOI paramTroopBarPOI)
-  {
-    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
-    this.a.a.setLocation(paramTroopBarPOI);
-    if (paramTroopBarPOI != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.b = bool;
-      return;
-    }
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancq
  * JD-Core Version:    0.7.0.1
  */

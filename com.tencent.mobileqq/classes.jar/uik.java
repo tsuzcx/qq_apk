@@ -1,33 +1,54 @@
-import android.content.Context;
-import android.net.Uri;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.graphics.Bitmap;
+import android.view.View;
+import com.tencent.mobileqq.activity.VisitorsActivity;
+import com.tencent.mobileqq.richstatus.IIconListener;
+import com.tencent.widget.XListView;
 
-public final class uik
-  implements FMDialogUtil.FMDialogInterface
+public class uik
+  implements IIconListener
 {
-  public uik(ArrayList paramArrayList, Context paramContext, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2) {}
+  public uik(VisitorsActivity paramVisitorsActivity) {}
   
-  public void a()
+  public void a(int paramInt1, int paramInt2, Bitmap paramBitmap)
   {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      Object localObject = (Uri)localIterator.next();
-      localObject = ForwardFileBaseOption.a(this.jdField_a_of_type_AndroidContentContext, (Uri)localObject);
-      if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.jdField_a_of_type_JavaLangString);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
+    int i = 0;
+    if ((paramBitmap != null) && (paramInt2 == 200)) {
+      if (this.a.h == 0) {
+        paramBitmap = this.a.a;
       }
     }
+    for (;;)
+    {
+      if (paramBitmap != null) {
+        paramInt2 = paramBitmap.getChildCount();
+      }
+      for (;;)
+      {
+        if (i < paramInt2)
+        {
+          Object localObject = paramBitmap.getChildAt(i).getTag();
+          if ((localObject != null) && ((localObject instanceof uil)))
+          {
+            localObject = (uil)localObject;
+            if ((((uil)localObject).a == paramInt1) && (((uil)localObject).e != null)) {
+              VisitorsActivity.a(this.a, ((uil)localObject).e, paramInt1);
+            }
+          }
+          i += 1;
+          continue;
+          if (this.a.h != 1) {
+            break label145;
+          }
+          paramBitmap = this.a.b;
+          break;
+        }
+        return;
+        paramInt2 = 0;
+      }
+      label145:
+      paramBitmap = null;
+    }
   }
-  
-  public void b() {}
 }
 
 

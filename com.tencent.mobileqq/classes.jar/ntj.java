@@ -1,22 +1,32 @@
-import android.os.Handler;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import com.tencent.biz.qqstory.utils.BitmapUtils.OutOfMemHandleCommand;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
+import com.tribe.async.dispatch.Subscriber;
+import java.lang.ref.WeakReference;
+import java.util.List;
 
 public class ntj
-  implements View.OnFocusChangeListener
+  implements Subscriber
 {
-  public ntj(DetailCommentHelper paramDetailCommentHelper) {}
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public ntj(QQStoryBaseActivity paramQQStoryBaseActivity1, QQStoryBaseActivity paramQQStoryBaseActivity2)
   {
-    if (!paramBoolean) {
-      this.a.b();
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQStoryBaseActivity2);
+  }
+  
+  public void accept(@NonNull List paramList)
+  {
+    paramList.add(BitmapUtils.OutOfMemHandleCommand.class);
+  }
+  
+  public void handleDispatch(@NonNull Dispatcher.Dispatchable paramDispatchable)
+  {
+    paramDispatchable = (QQStoryBaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramDispatchable != null) {
+      paramDispatchable.g();
     }
-    while (DetailCommentHelper.a(this.a)) {
-      return;
-    }
-    new Handler().postDelayed(new ntk(this), 200L);
   }
 }
 

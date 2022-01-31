@@ -1,27 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
+import android.view.View;
+import android.widget.ExpandableListAdapter;
+import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
+import com.tencent.mobileqq.adapter.TroopMessageSettingAdapter;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.statistics.StatisticTroopAssist;
+import com.tencent.widget.ExpandableListView;
+import com.tencent.widget.ExpandableListView.OnChildClickListener;
 
 public class tvt
-  implements DialogInterface.OnClickListener
+  implements ExpandableListView.OnChildClickListener
 {
-  public tvt(TroopInfoActivity paramTroopInfoActivity) {}
+  public tvt(TroopAssisSettingActivity paramTroopAssisSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean a(ExpandableListView paramExpandableListView, View paramView, int paramInt1, int paramInt2, long paramLong)
   {
-    QQAppInterface localQQAppInterface = this.a.app;
-    String str2 = this.a.a.troopUin;
-    if (this.a.a.bOwner) {}
-    for (String str1 = "0";; str1 = "1")
-    {
-      ReportController.b(localQQAppInterface, "P_CliOper", "Grp_manage", "", "manage_grp", "sub_clk", 0, 0, str2, str1, "1", "");
-      paramDialogInterface.dismiss();
-      this.a.i();
-      return;
+    if (((TroopMessageSettingAdapter)paramExpandableListView.a()).getChildType(paramInt1, paramInt2) == 1) {
+      return true;
     }
+    StatisticTroopAssist.b(this.a.getActivity(), this.a.app.getCurrentAccountUin());
+    paramExpandableListView = (TroopInfo)paramExpandableListView.a().getChild(paramInt1, paramInt2);
+    this.a.a(paramExpandableListView);
+    return true;
   }
 }
 

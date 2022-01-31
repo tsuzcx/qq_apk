@@ -1,15 +1,52 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.activity.richmedia.view.RotationSeekBar;
+import android.os.FileObserver;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.qphone.base.util.QLog;
 
 public class xut
-  implements ValueAnimator.AnimatorUpdateListener
+  extends FileObserver
 {
-  public xut(RotationSeekBar paramRotationSeekBar) {}
+  private boolean a;
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  private void a()
   {
-    RotationSeekBar.a(this.a, ((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    if (!this.a)
+    {
+      this.a = true;
+      RMVideoStateMgr.a().a(new xuu(this));
+    }
+  }
+  
+  public void onEvent(int paramInt, String paramString)
+  {
+    if ((paramInt & 0x20) == 32) {
+      if (QLog.isColorLevel()) {
+        QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][OPEN]  path=" + paramString);
+      }
+    }
+    do
+    {
+      return;
+      if ((paramInt & 0x400) == 1024)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE_SELF]  path=" + paramString);
+        }
+        a();
+        return;
+      }
+      if ((paramInt & 0x200) == 512)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][DELETE]  path=" + paramString);
+        }
+        a();
+        return;
+      }
+    } while ((paramInt & 0x8) != 8);
+    if (QLog.isColorLevel()) {
+      QLog.d("RMFileEventNotify", 2, "RMFileEventNotify[onEvent][CLOSE_WRITE]  path=" + paramString);
+    }
+    a();
   }
 }
 

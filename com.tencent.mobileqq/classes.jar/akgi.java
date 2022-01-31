@@ -1,26 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.widget.ImageViewTouchBase;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.ThreadPoolExecutor.CallerRunsPolicy;
+import java.util.concurrent.TimeUnit;
 
 public class akgi
-  implements Runnable
+  extends ThreadPoolExecutor
 {
-  public akgi(ImageViewTouchBase paramImageViewTouchBase, float paramFloat1, long paramLong, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5) {}
+  private static int a;
   
-  public void run()
+  public akgi(int paramInt, long paramLong)
   {
-    long l = System.currentTimeMillis();
-    float f1 = Math.min(this.jdField_a_of_type_Float, (float)(l - this.jdField_a_of_type_Long));
-    float f2 = this.b;
-    float f3 = this.c;
-    this.jdField_a_of_type_ComTencentMobileqqWidgetImageViewTouchBase.zoomTo(f2 + f3 * f1, this.d, this.e);
-    if (f1 < this.jdField_a_of_type_Float) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetImageViewTouchBase.mHandler.post(this);
-    }
+    super(paramInt, 2147483647, paramLong, TimeUnit.SECONDS, new LinkedBlockingQueue(), new akgj(), new ThreadPoolExecutor.CallerRunsPolicy());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akgi
  * JD-Core Version:    0.7.0.1
  */

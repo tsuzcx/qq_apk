@@ -1,15 +1,4 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
-
-public class unp
-  implements Runnable
-{
-  public unp(PressToSpeakPanel paramPressToSpeakPanel) {}
-  
-  public void run()
-  {
-    this.a.b();
-  }
-}
+public class unp {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar

@@ -1,38 +1,59 @@
-import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Iterator;
+import com.tencent.biz.pubaccount.readinjoy.ReadInJoyChannelViewController;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 import java.util.List;
 
 public class las
-  extends MessageObserver
+  extends ReadInJoyObserver
 {
-  public las(EcshopReportHandler paramEcshopReportHandler) {}
+  public las(ReadInJoyChannelViewController paramReadInJoyChannelViewController) {}
   
-  public void a(List paramList)
+  public void Z_()
   {
-    super.a(paramList);
-    EcshopReportHandler localEcshopReportHandler = (EcshopReportHandler)this.a.a.getBusinessHandler(88);
-    paramList = paramList.iterator();
-    label131:
-    while (paramList.hasNext())
-    {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-      if (("2".equals(localMessageRecord.getExtInfoFromExtStr("inter_num"))) || (ServiceAccountFolderManager.d(this.a.b, localMessageRecord.senderuin))) {}
-      for (int i = 1;; i = 0)
-      {
-        if ((i == 0) && ((EcShopAssistantManager.b == null) || (!EcShopAssistantManager.b.contains(localMessageRecord.senderuin)))) {
-          break label131;
-        }
-        if (i != 0) {
-          localEcshopReportHandler.a(localMessageRecord);
-        }
-        localEcshopReportHandler.b(localMessageRecord);
-        break;
-      }
+    if ((ReadInJoyChannelViewController.a(this.a) != null) && ((ReadInJoyChannelViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ReadInJoyChannelViewController.a(this.a)).k();
+    }
+  }
+  
+  public void a(int paramInt, List paramList)
+  {
+    if ((ReadInJoyChannelViewController.a(this.a) != null) && ((ReadInJoyChannelViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ReadInJoyChannelViewController.a(this.a)).a(paramInt, paramList);
+    }
+  }
+  
+  public void a(boolean paramBoolean, int paramInt, long paramLong, List paramList1, List paramList2)
+  {
+    if ((ReadInJoyChannelViewController.a(this.a) != null) && ((ReadInJoyChannelViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ReadInJoyChannelViewController.a(this.a)).a(paramBoolean, paramInt, paramLong, paramList1, paramList2);
+    }
+  }
+  
+  public void a(boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
+  {
+    if ((ReadInJoyChannelViewController.a(this.a) != null) && ((ReadInJoyChannelViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ReadInJoyChannelViewController.a(this.a)).a(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void b(int paramInt, List paramList)
+  {
+    if ((ReadInJoyChannelViewController.a(this.a) != null) && ((ReadInJoyChannelViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ReadInJoyChannelViewController.a(this.a)).c(paramInt, paramList);
+    }
+  }
+  
+  public void b(boolean paramBoolean1, int paramInt, List paramList, boolean paramBoolean2)
+  {
+    if ((ReadInJoyChannelViewController.a(this.a) != null) && ((ReadInJoyChannelViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ReadInJoyChannelViewController.a(this.a)).b(paramBoolean1, paramInt, paramList, paramBoolean2);
+    }
+  }
+  
+  public void c(int paramInt, List paramList)
+  {
+    if ((ReadInJoyChannelViewController.a(this.a) != null) && ((ReadInJoyChannelViewController.a(this.a) instanceof ReadInJoyListViewGroup))) {
+      ((ReadInJoyListViewGroup)ReadInJoyChannelViewController.a(this.a)).b(paramInt, paramList);
     }
   }
 }

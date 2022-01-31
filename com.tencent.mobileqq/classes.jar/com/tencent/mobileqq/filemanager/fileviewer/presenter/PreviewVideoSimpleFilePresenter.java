@@ -65,7 +65,7 @@ public class PreviewVideoSimpleFilePresenter
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a(3);
   }
   
-  public void aa_()
+  public void ac_()
   {
     if (NetworkUtil.h(BaseApplicationImpl.getContext())) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.b(BaseApplicationImpl.getContext().getString(2131428235));
@@ -81,7 +81,7 @@ public class PreviewVideoSimpleFilePresenter
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerSimpleFileViewer.e(true);
   }
   
-  public void ab_()
+  public void ad_()
   {
     if (this.b) {
       return;

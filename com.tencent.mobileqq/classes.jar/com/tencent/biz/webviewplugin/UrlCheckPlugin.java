@@ -16,10 +16,10 @@ import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
-import pbq;
-import pbr;
-import pbs;
-import pbt;
+import pdk;
+import pdl;
+import pdm;
+import pdn;
 
 public class UrlCheckPlugin
   extends WebViewPlugin
@@ -48,14 +48,14 @@ public class UrlCheckPlugin
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = null;
     this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView = null;
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRunnable = new pbt(this);
+    this.jdField_a_of_type_JavaLangRunnable = new pdn(this);
     this.mPluginNameSpace = "URL_CHECK";
   }
   
   private void b()
   {
     if (this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver == null) {
-      this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver = new SoftKeyboardObserver(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView, new pbr(this));
+      this.jdField_a_of_type_ComTencentBizSoftKeyboardObserver = new SoftKeyboardObserver(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView, new pdl(this));
     }
   }
   
@@ -93,8 +93,8 @@ public class UrlCheckPlugin
       {
         this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = ((BaseActivity)localObject);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getLayoutInflater().inflate(2130968869, null));
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364081));
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364082));
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364105));
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364106));
         this.jdField_a_of_type_AndroidViewWindowManager = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindowManager();
         this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
         localObject = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
@@ -110,7 +110,7 @@ public class UrlCheckPlugin
         this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = -1;
         this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = -2;
         if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-          this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new pbs(this));
+          this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new pdm(this));
         }
         if (this.jdField_a_of_type_AndroidViewWindowManager == null) {
           this.jdField_a_of_type_AndroidViewWindowManager = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindowManager();
@@ -178,7 +178,7 @@ public class UrlCheckPlugin
       a();
       return false;
     } while ((paramLong != 8589934594L) || (this.f != 2) || (this.e == c));
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.postDelayed(new pbq(this), this.g);
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.postDelayed(new pdk(this), this.g);
     return false;
   }
   

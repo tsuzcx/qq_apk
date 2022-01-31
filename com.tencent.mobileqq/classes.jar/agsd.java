@@ -1,20 +1,60 @@
-import android.view.View;
-import com.tencent.mobileqq.remind.widget.IosTimepicker;
-import com.tencent.widget.VerticalGallery.OnSelectViewDataUpdateListener;
+import android.content.Context;
+import android.support.v4.view.ViewPager.LayoutParams;
+import android.widget.AdapterView;
+import android.widget.GridView;
+import com.tencent.mobileqq.profile.view.QzonePhotoView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterViewPagerAdapter.AdapterViewFactory;
 
 public class agsd
-  implements VerticalGallery.OnSelectViewDataUpdateListener
+  implements AdapterViewPagerAdapter.AdapterViewFactory
 {
-  public agsd(IosTimepicker paramIosTimepicker) {}
+  public agsd(QzonePhotoView paramQzonePhotoView) {}
   
-  public void a(View paramView, int paramInt)
+  public AdapterView a(Context paramContext, int paramInt)
   {
-    IosTimepicker.a(this.a, paramView, 1);
+    do
+    {
+      try
+      {
+        paramContext = new GridView(paramContext);
+        ViewPager.LayoutParams localLayoutParams;
+        Context localContext = paramContext;
+      }
+      catch (OutOfMemoryError localOutOfMemoryError1)
+      {
+        try
+        {
+          paramContext.setNumColumns(4);
+          paramContext.setFadingEdgeLength(0);
+          paramContext.setHorizontalSpacing(QzonePhotoView.a(this.a));
+          paramContext.setVerticalSpacing(QzonePhotoView.a(this.a));
+          paramContext.setStretchMode(2);
+          paramContext.setScrollingCacheEnabled(false);
+          paramContext.setSelector(2131492924);
+          localLayoutParams = new ViewPager.LayoutParams();
+          localLayoutParams.gravity = 17;
+          localLayoutParams.height = -2;
+          localLayoutParams.width = -1;
+          paramContext.setLayoutParams(localLayoutParams);
+          localContext = paramContext;
+          return localContext;
+        }
+        catch (OutOfMemoryError localOutOfMemoryError2)
+        {
+          continue;
+        }
+        localOutOfMemoryError1 = localOutOfMemoryError1;
+        paramContext = null;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("ProfileCard.QzonePhotoView", 2, "new gridview error", localOutOfMemoryError1);
+    return paramContext;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agsd
  * JD-Core Version:    0.7.0.1
  */

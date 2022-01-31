@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.bubble;
 
-import abdu;
-import abep;
-import abeq;
-import aber;
-import abes;
-import abet;
-import abeu;
-import abev;
+import abkv;
+import ablq;
+import ablr;
+import abls;
+import ablt;
+import ablu;
+import ablv;
+import ablw;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.Keyframe;
@@ -151,7 +151,7 @@ public class BubbleNewAIOAnim
           if ((paramAnimator != null) && (paramString != null))
           {
             paramString.setDuration(paramAnimator.getDuration());
-            paramAnimator.addListener(new abes(this, paramString));
+            paramAnimator.addListener(new ablt(this, paramString));
           }
           return i1;
           i1 += 1;
@@ -309,7 +309,7 @@ public class BubbleNewAIOAnim
   {
     ObjectAnimator localObjectAnimator = a(paramPendantAnimConf);
     if (localObjectAnimator != null) {
-      localObjectAnimator.addListener(new abeu(this, paramPendantAnimConf));
+      localObjectAnimator.addListener(new ablv(this, paramPendantAnimConf));
     }
     return localObjectAnimator;
   }
@@ -514,7 +514,7 @@ public class BubbleNewAIOAnim
     }
     for (;;)
     {
-      localObjectAnimator1.addListener(new abet(this, localObjectAnimator2));
+      localObjectAnimator1.addListener(new ablu(this, localObjectAnimator2));
       return localObjectAnimator1;
       i1 = 0;
       break;
@@ -682,8 +682,8 @@ public class BubbleNewAIOAnim
             break;
           }
           this.jdField_a_of_type_AndroidAnimationAnimatorSet.playSequentially(localArrayList);
-          this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new abeq(this));
-          this.jdField_a_of_type_AndroidOsHandler.post(new aber(this));
+          this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(new ablr(this));
+          this.jdField_a_of_type_AndroidOsHandler.post(new abls(this));
           return;
         }
         else
@@ -696,7 +696,7 @@ public class BubbleNewAIOAnim
   
   private void i()
   {
-    ThreadManager.post(new abev(this), 5, null, true);
+    ThreadManager.post(new ablw(this), 5, null, true);
   }
   
   protected void a(int paramInt)
@@ -852,7 +852,7 @@ public class BubbleNewAIOAnim
   protected void c()
   {
     a("now stop new bubble animation conf!");
-    this.jdField_a_of_type_AndroidOsHandler.post(new abep(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ablq(this));
   }
   
   public void setBitmapData(BubbleNewAIOAnim.AnimPicData paramAnimPicData)
@@ -873,8 +873,8 @@ public class BubbleNewAIOAnim
         } while (this.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramAnimPicData.jdField_a_of_type_JavaLangString));
         if (paramAnimPicData.jdField_a_of_type_AndroidGraphicsBitmap != null)
         {
-          localObject = new abdu(paramAnimPicData.jdField_a_of_type_AndroidGraphicsBitmap);
-          ((abdu)localObject).jdField_a_of_type_Boolean = paramAnimPicData.jdField_a_of_type_JavaLangBoolean.booleanValue();
+          localObject = new abkv(paramAnimPicData.jdField_a_of_type_AndroidGraphicsBitmap);
+          ((abkv)localObject).jdField_a_of_type_Boolean = paramAnimPicData.jdField_a_of_type_JavaLangBoolean.booleanValue();
           this.jdField_c_of_type_AndroidViewView.setBackgroundDrawable((Drawable)localObject);
           this.jdField_a_of_type_JavaLangString = paramAnimPicData.jdField_a_of_type_JavaLangString;
           a("set bitmap path:" + paramAnimPicData.jdField_a_of_type_JavaLangString);
@@ -885,8 +885,8 @@ public class BubbleNewAIOAnim
       a("get cache bitmap path:" + paramAnimPicData.jdField_a_of_type_JavaLangString);
       localObject = (Bitmap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramAnimPicData.jdField_a_of_type_JavaLangString);
     } while (localObject == null);
-    Object localObject = new abdu((Bitmap)localObject);
-    ((abdu)localObject).jdField_a_of_type_Boolean = paramAnimPicData.jdField_a_of_type_JavaLangBoolean.booleanValue();
+    Object localObject = new abkv((Bitmap)localObject);
+    ((abkv)localObject).jdField_a_of_type_Boolean = paramAnimPicData.jdField_a_of_type_JavaLangBoolean.booleanValue();
     this.jdField_c_of_type_AndroidViewView.setBackgroundDrawable((Drawable)localObject);
     this.jdField_a_of_type_JavaLangString = paramAnimPicData.jdField_a_of_type_JavaLangString;
     this.jdField_c_of_type_AndroidViewView.invalidate();
@@ -952,9 +952,9 @@ public class BubbleNewAIOAnim
         } while (this.jdField_b_of_type_JavaLangString.equalsIgnoreCase(paramAnimPicData.jdField_a_of_type_JavaLangString));
         if (paramAnimPicData.jdField_a_of_type_AndroidGraphicsBitmap != null)
         {
-          localObject = new abdu(paramAnimPicData.jdField_a_of_type_AndroidGraphicsBitmap);
+          localObject = new abkv(paramAnimPicData.jdField_a_of_type_AndroidGraphicsBitmap);
           this.jdField_b_of_type_JavaLangString = paramAnimPicData.jdField_a_of_type_JavaLangString;
-          ((abdu)localObject).jdField_a_of_type_Boolean = paramAnimPicData.jdField_a_of_type_JavaLangBoolean.booleanValue();
+          ((abkv)localObject).jdField_a_of_type_Boolean = paramAnimPicData.jdField_a_of_type_JavaLangBoolean.booleanValue();
           this.jdField_d_of_type_AndroidViewView.setBackgroundDrawable((Drawable)localObject);
           this.jdField_d_of_type_AndroidViewView.invalidate();
           return;
@@ -962,9 +962,9 @@ public class BubbleNewAIOAnim
       } while (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(paramAnimPicData.jdField_a_of_type_JavaLangString));
       localObject = (Bitmap)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramAnimPicData.jdField_a_of_type_JavaLangString);
     } while (localObject == null);
-    Object localObject = new abdu((Bitmap)localObject);
+    Object localObject = new abkv((Bitmap)localObject);
     this.jdField_b_of_type_JavaLangString = paramAnimPicData.jdField_a_of_type_JavaLangString;
-    ((abdu)localObject).jdField_a_of_type_Boolean = paramAnimPicData.jdField_a_of_type_JavaLangBoolean.booleanValue();
+    ((abkv)localObject).jdField_a_of_type_Boolean = paramAnimPicData.jdField_a_of_type_JavaLangBoolean.booleanValue();
     this.jdField_d_of_type_AndroidViewView.setBackgroundDrawable((Drawable)localObject);
     this.jdField_d_of_type_AndroidViewView.invalidate();
   }

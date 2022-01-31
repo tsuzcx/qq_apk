@@ -1,15 +1,20 @@
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-class xkp
-  implements Runnable
+public final class xkp
+  implements Animation.AnimationListener
 {
-  xkp(xko paramxko) {}
+  public xkp(View paramView, Animation paramAnimation) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    EditLocalVideoActivity.a(this.a.a.a).setVisibility(8);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,21 +1,13 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
 
-class vtp
+public class vtp
   implements DialogInterface.OnClickListener
 {
-  vtp(vtn paramvtn, SharedPreferences paramSharedPreferences) {}
+  public vtp(GameRoomChatPie paramGameRoomChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-    paramDialogInterface.putLong("switch_city" + this.jdField_a_of_type_Vtn.a.a.getCurrentAccountUin(), System.currentTimeMillis());
-    paramDialogInterface.commit();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

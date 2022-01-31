@@ -1,24 +1,34 @@
-import android.os.IBinder;
-import android.os.IBinder.DeathRecipient;
-import com.tencent.open.wadl.WLog;
-import cooperation.wadl.ipc.IWadlService;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.richstatus.StatusObserver;
+import cooperation.qqindividuality.ipc.IndividualityRemoteCommandHandler;
+import cooperation.qqindividuality.ipc.QQIndividualityPluginProxyService;
+import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
+import java.util.ArrayList;
 
 public class amqg
-  implements IBinder.DeathRecipient
+  extends StatusObserver
 {
-  public amqg(WadlProxyServiceManager paramWadlProxyServiceManager) {}
+  private amqg(IndividualityRemoteCommandHandler paramIndividualityRemoteCommandHandler) {}
   
-  public void binderDied()
+  protected void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, ArrayList paramArrayList, boolean paramBoolean3)
   {
-    WLog.b("WadlProxyServiceManager", "wadl download process is died!");
-    WadlProxyServiceManager.a(this.a).asBinder().unlinkToDeath(WadlProxyServiceManager.a(this.a), 0);
-    WadlProxyServiceManager.a(this.a, null);
-    if (WadlProxyServiceManager.a(this.a))
-    {
-      WLog.b("WadlProxyServiceManager", "download process died restart service");
-      this.a.b();
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putBoolean("isSuccess", paramBoolean1);
+    localBundle.putInt("start", paramInt1);
+    localBundle.putInt("end", paramInt2);
+    localBundle.putBoolean("over", paramBoolean2);
+    localBundle.putSerializable("data", paramArrayList);
+    localBundle.putBoolean("isAddFromCard", paramBoolean3);
+    localBundle.putInt("which_method", 0);
+    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 5, localBundle);
+  }
+  
+  protected void a(boolean paramBoolean, byte[] paramArrayOfByte, int paramInt)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putByteArray("key", paramArrayOfByte);
+    localBundle.putInt("which_method", 1);
+    QQIndividualityPluginProxyService.a().a("qqindividuality_signature", 5, localBundle);
   }
 }
 

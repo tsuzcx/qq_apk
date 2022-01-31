@@ -1,6 +1,6 @@
 package cooperation.qzone.remote;
 
-import amia;
+import amyf;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
@@ -28,7 +28,7 @@ public abstract class IActionListener$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IActionListener))) {
       return (IActionListener)localIInterface;
     }
-    return new amia(paramIBinder);
+    return new amyf(paramIBinder);
   }
   
   public IBinder asBinder()

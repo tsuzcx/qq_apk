@@ -1,33 +1,34 @@
-import com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerListener;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView;
-import com.tencent.mobileqq.structmsg.widget.CountdownTextView.TimerCallback;
+import com.tencent.mobileqq.app.fms.FullMessageSearchManager;
+import com.tencent.mobileqq.search.searchengine.ISearchListener;
+import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
+import com.tencent.mobileqq.search.searchengine.SearchRequest;
+import java.util.List;
 
 public class ahwa
-  extends CountDownTimer.CountDownTimerListener
+  implements Runnable
 {
-  public ahwa(CountdownTextView paramCountdownTextView, long paramLong, CountdownTextView.TimerCallback paramTimerCallback)
-  {
-    super(paramLong);
-  }
+  public ahwa(MessageSearchEngine paramMessageSearchEngine, ISearchListener paramISearchListener, SearchRequest paramSearchRequest) {}
   
-  public void b()
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback.a();
+    ahwb localahwb = null;
+    if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null)
+    {
+      localahwb = new ahwb(this);
+      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a.addObserver(localahwb);
     }
-    this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView.a();
-  }
-  
-  public void b(long paramLong)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgWidgetCountdownTextView$TimerCallback.a(paramLong);
+    List localList = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest);
+    if (localahwb != null) {
+      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a.deleteObserver(localahwb);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahwa
  * JD-Core Version:    0.7.0.1
  */

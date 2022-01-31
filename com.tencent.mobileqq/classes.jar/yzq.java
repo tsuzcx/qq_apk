@@ -1,24 +1,22 @@
+import com.tencent.mobileqq.apollo.view.ChatApolloViewListener;
+
 public class yzq
+  implements Runnable
 {
-  public int a;
-  public String a;
-  public String b = "";
-  public String c = "0";
-  public String d = "";
+  public yzq(ChatApolloViewListener paramChatApolloViewListener) {}
   
-  yzq()
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = "";
-  }
-  
-  public String toString()
-  {
-    return "DPCXMLParseInfo: key=" + this.jdField_a_of_type_JavaLangString + ",value=" + this.b + ",weight=" + this.jdField_a_of_type_Int + ",taskId=" + this.c + ",testType=" + this.d;
+    if ((this.a.a) && (!this.a.b))
+    {
+      this.a.c();
+      this.a.a = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yzq
  * JD-Core Version:    0.7.0.1
  */

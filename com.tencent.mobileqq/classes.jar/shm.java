@@ -1,28 +1,15 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.troop.widget.FollowImageTextView;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
 
-public class shm
-  implements View.OnTouchListener
+class shm
+  implements Runnable
 {
-  public shm(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  shm(shl paramshl, String paramString) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if ((paramMotionEvent != null) && (this.a.a != null))
-    {
-      paramView = this.a.a;
-      if (paramMotionEvent.getAction() != 0) {
-        break label39;
-      }
-    }
-    label39:
-    for (float f = 0.5F;; f = 1.0F)
-    {
-      paramView.setAlpha(f);
-      return false;
+    if (this.jdField_a_of_type_Shl.a.a != null) {
+      this.jdField_a_of_type_Shl.a.a.a(this.jdField_a_of_type_JavaLangString, 3000);
     }
   }
 }

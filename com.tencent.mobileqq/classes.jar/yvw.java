@@ -1,16 +1,21 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
 public class yvw
-  implements Runnable
+  implements Comparator
 {
-  public yvw(ApolloPanel paramApolloPanel) {}
+  public yvw(ApolloDaoManager paramApolloDaoManager) {}
   
-  public void run()
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    if (this.a.a != null) {
-      this.a.a.setImageDrawable(ApolloPanel.a(this.a));
+    if (paramApolloActionData2.version == paramApolloActionData1.version) {
+      return 0;
     }
+    if (paramApolloActionData2.version > paramApolloActionData1.version) {
+      return 1;
+    }
+    return -1;
   }
 }
 

@@ -1,39 +1,41 @@
-import android.app.Activity;
-import com.tencent.common.galleryactivity.AbstractAnimationManager;
-import com.tencent.common.galleryactivity.AbstractGalleryScene;
-import com.tencent.common.galleryactivity.AbstractImageListModel;
-import com.tencent.common.galleryactivity.AbstractImageListScene;
-import com.tencent.common.galleryactivity.GalleryManager;
-import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.NearbyProfilePicBrowserGalleryScene;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserActivity;
-import com.tencent.mobileqq.nearby.picbrowser.PicBrowserModel;
+import android.os.Bundle;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
+import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aeog
-  extends GalleryManager
+  implements HttpWebCgiAsyncTask.Callback
 {
-  public aeog(NearbyProfilePicBrowserActivity paramNearbyProfilePicBrowserActivity) {}
+  public aeog(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public AbstractAnimationManager a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    return super.a(paramActivity, paramAbstractImageListModel);
-  }
-  
-  public AbstractGalleryScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
-  {
-    return new NearbyProfilePicBrowserGalleryScene((PicBrowserActivity)paramActivity, paramAbstractImageListModel);
-  }
-  
-  public AbstractImageListModel a(Activity paramActivity)
-  {
-    paramActivity = new PicBrowserModel(this.a, this.a.jdField_b_of_type_JavaUtilArrayList);
-    paramActivity.a(this.a.jdField_b_of_type_Int);
-    return paramActivity;
-  }
-  
-  public AbstractImageListScene a(Activity paramActivity, AbstractImageListModel paramAbstractImageListModel)
-  {
-    return null;
+    if (paramJSONObject != null)
+    {
+      paramInt = paramJSONObject.optInt("retcode", -1);
+      paramBundle = new ArrayList();
+      if (paramInt == 0)
+      {
+        paramJSONObject = paramJSONObject.optJSONObject("data");
+        if (paramJSONObject != null)
+        {
+          paramJSONObject = paramJSONObject.optJSONArray("rpt_board_items");
+          if (paramJSONObject != null)
+          {
+            paramInt = 0;
+            while (paramInt < paramJSONObject.length())
+            {
+              paramBundle.add(paramJSONObject.optJSONObject(paramInt).optString("uint64_uin"));
+              paramInt += 1;
+            }
+          }
+        }
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.a(this.a.b, "" + this.a.jdField_a_of_type_Long, paramBundle, new aeoh(this));
+    }
   }
 }
 

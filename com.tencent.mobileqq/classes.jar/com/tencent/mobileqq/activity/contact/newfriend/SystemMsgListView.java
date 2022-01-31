@@ -39,13 +39,13 @@ import com.tencent.widget.SwipListView;
 import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
-import wgs;
-import wgt;
-import wgu;
-import wgv;
-import wgw;
-import wgx;
-import wgy;
+import wjx;
+import wjy;
+import wjz;
+import wka;
+import wkb;
+import wkc;
+import wkd;
 
 public class SystemMsgListView
   extends BaseNewFriendView
@@ -59,13 +59,13 @@ public class SystemMsgListView
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private FlingHandler jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler;
   private SystemMsgListAdapter jdField_a_of_type_ComTencentMobileqqAdapterSystemMsgListAdapter;
-  DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new wgw(this);
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new wgv(this);
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new wgx(this);
+  DiscussionObserver jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new wkb(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new wka(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new wkc(this);
   private NewFriendManager jdField_a_of_type_ComTencentMobileqqAppNewFriendManager;
   QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new wgy(this);
+  private AbsListView.OnScrollListener jdField_a_of_type_ComTencentWidgetAbsListView$OnScrollListener = new wkd(this);
   private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
   public boolean a;
   private final int b = 0;
@@ -73,7 +73,7 @@ public class SystemMsgListView
   public SystemMsgListView(Context paramContext, FlingHandler paramFlingHandler)
   {
     super(paramContext);
-    this.jdField_a_of_type_AndroidOsHandler = new wgs(this);
+    this.jdField_a_of_type_AndroidOsHandler = new wjx(this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqActivityFlingFlingHandler = paramFlingHandler;
   }
@@ -148,7 +148,7 @@ public class SystemMsgListView
     {
       localObject1 = ((NewFriendMoreInfoMessage)((NewFriendMoreInfoBuilder)localObject1).a).a;
       if (((NewFriendMoreInfo)localObject1).type == 1000) {
-        localObject1 = getResources().getString(2131433308);
+        localObject1 = getResources().getString(2131433325);
       }
     }
     for (;;)
@@ -156,14 +156,14 @@ public class SystemMsgListView
       break;
       if (((NewFriendMoreInfo)localObject1).type == 1001)
       {
-        localObject1 = getResources().getString(2131433311);
+        localObject1 = getResources().getString(2131433328);
         continue;
         if ((localObject1 instanceof SystemMsgItemBuilder))
         {
-          localObject1 = getResources().getString(2131433308);
+          localObject1 = getResources().getString(2131433325);
           break;
         }
-        localObject1 = getResources().getString(2131433311);
+        localObject1 = getResources().getString(2131433328);
         break;
         label397:
         ((RelativeLayout.LayoutParams)localObject2).topMargin = 0;
@@ -203,12 +203,12 @@ public class SystemMsgListView
   
   private void n()
   {
-    super.d(2130970595);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131371371));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371372));
-    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131369887));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370742);
-    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131559380);
+    super.d(2130970639);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131371534));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371535));
+    this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131369964));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131370882);
+    this.jdField_a_of_type_Int = getResources().getDimensionPixelSize(2131559382);
   }
   
   public int a()
@@ -328,9 +328,9 @@ public class SystemMsgListView
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(getContext(), 230);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage("在通讯录中发现了" + i + "位小伙伴在使用QQ，绑定手机号，第一时间找到他们。");
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle("绑定手机号码");
-      wgt localwgt = new wgt(this);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton("暂不", localwgt);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton("绑定", localwgt);
+      wjy localwjy = new wjy(this);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton("暂不", localwjy);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton("绑定", localwjy);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
       this.jdField_a_of_type_Boolean = false;
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80077C8", "0X80077C8", 0, 0, "", "", "", "");
@@ -377,7 +377,7 @@ public class SystemMsgListView
       if (i <= 3)
       {
         this.jdField_a_of_type_ComTencentMobileqqAppNewFriendManager.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentWidgetSwipListView.setOverscrollHeader(getResources().getDrawable(2130845743));
+        this.jdField_a_of_type_ComTencentWidgetSwipListView.setOverscrollHeader(getResources().getDrawable(2130845871));
         ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80077C6", "0X80077C6", 0, 0, "", "", "", "");
       }
       for (;;)
@@ -415,7 +415,7 @@ public class SystemMsgListView
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this.jdField_a_of_type_AndroidContentContext, a());
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.jdField_a_of_type_AndroidContentContext.getString(2131434436));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.jdField_a_of_type_AndroidContentContext.getString(2131434453));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
   }
   
@@ -436,7 +436,7 @@ public class SystemMsgListView
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wgu(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wjz(this));
   }
 }
 

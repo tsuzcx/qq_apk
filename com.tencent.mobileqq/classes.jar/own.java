@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.troop.file.MoveFileActivity;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.troop.utils.TroopTopicMgr.DoLikeCallback;
+import org.json.JSONObject;
 
-public class own
-  implements DialogInterface.OnClickListener
+class own
+  implements TroopTopicMgr.DoLikeCallback
 {
-  public own(MoveFileActivity paramMoveFileActivity) {}
+  own(owi paramowi, int paramInt1, int paramInt2) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt, JSONObject paramJSONObject)
   {
-    paramDialogInterface.dismiss();
+    paramJSONObject = new Bundle();
+    paramJSONObject.putInt("reqType", this.jdField_a_of_type_Int);
+    paramJSONObject.putInt("seq", this.b);
+    paramJSONObject.putInt("errorCode", paramInt);
+    this.jdField_a_of_type_Owi.a.a(60, paramJSONObject);
   }
 }
 

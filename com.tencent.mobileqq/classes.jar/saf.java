@@ -1,60 +1,41 @@
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.os.Build.VERSION;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.util.TroopReportor;
+import com.tencent.mobileqq.activity.ChatHistoryFileActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
+import mqq.os.MqqHandler;
 
 public class saf
-  implements View.OnClickListener
+  implements Runnable
 {
-  public saf(ChatSettingForTroop paramChatSettingForTroop) {}
+  public saf(ChatHistoryFileActivity paramChatHistoryFileActivity, List paramList1, List paramList2) {}
   
-  @SuppressLint({"ServiceCast"})
-  @TargetApi(11)
-  public void onClick(View paramView)
+  public void run()
   {
-    String str;
-    try
+    if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.a().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
+    }
+    while ((this.b != null) && (this.b.size() > 0))
     {
-      paramView = String.format(this.a.getString(2131435214), new Object[] { this.a.a.newTroopName, this.a.a.troopUin });
-      if (Build.VERSION.SDK_INT < 11)
+      Iterator localIterator = this.b.iterator();
+      while (localIterator.hasNext())
       {
-        ((android.text.ClipboardManager)this.a.getSystemService("clipboard")).setText(paramView);
-        if ((this.a.d != 1) && (!this.a.a.isMember)) {
-          break label178;
+        FileManagerEntity localFileManagerEntity = (FileManagerEntity)localIterator.next();
+        localFileManagerEntity.bDelInAio = true;
+        if (QLog.isDevelopLevel()) {
+          QLog.d("ChatHistoryFIleActivity", 1, "ChatHistory entity[" + localFileManagerEntity.getId() + "] del File:" + localFileManagerEntity.nSessionId);
         }
-        str = this.a.a.troopUin;
-        if (!this.a.a.isMember) {
-          break label172;
-        }
-        paramView = "1";
-        TroopReportor.a("Grp_set_new", "grpData_admin", "copy_grpuin", 0, 0, new String[] { str, paramView });
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.a().b(localFileManagerEntity.nSessionId);
+      }
+      if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.app.a().a(this.jdField_a_of_type_JavaUtilList, false);
       }
     }
-    catch (Exception paramView)
-    {
-      for (;;)
-      {
-        paramView.printStackTrace();
-        paramView = "";
-        continue;
-        ((android.content.ClipboardManager)this.a.getSystemService("clipboard")).setText(paramView);
-        continue;
-        label172:
-        paramView = "0";
-      }
-      label178:
-      str = this.a.a.troopUin;
-      if (!this.a.a.isMember) {}
-    }
-    for (paramView = "1";; paramView = "0")
-    {
-      TroopReportor.a("Grp_set_new", "grpData_visitor", "copy_grpuin", 0, 0, new String[] { str, paramView });
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a.sendEmptyMessage(2);
   }
 }
 

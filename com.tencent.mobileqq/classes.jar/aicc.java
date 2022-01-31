@@ -1,35 +1,27 @@
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.transfile.GroupPicUploadProcessor;
-import com.tencent.mobileqq.transfile.TransferRequest;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import android.hardware.Camera.Size;
+import com.tencent.mobileqq.activity.richmedia.view.CameraCover.PictureCallback;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
+import java.io.File;
 
 public class aicc
-  extends MessageObserver
 {
-  public aicc(GroupPicUploadProcessor paramGroupPicUploadProcessor) {}
+  int jdField_a_of_type_Int;
+  Rect jdField_a_of_type_AndroidGraphicsRect;
+  Camera.Size jdField_a_of_type_AndroidHardwareCamera$Size;
+  CameraCover.PictureCallback jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewCameraCover$PictureCallback;
+  File jdField_a_of_type_JavaIoFile;
+  boolean jdField_a_of_type_Boolean;
+  byte[] jdField_a_of_type_ArrayOfByte;
+  int b;
+  int c;
+  int d;
   
-  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
-  {
-    if ((this.a.a.a == 1026) && (QLog.isColorLevel())) {
-      QLog.i("PttShow", 2, "onNotifyResultAfterSendRich, UIN_TYPE_HOTCHAT_TOPIC  " + paramBoolean);
-    }
-    this.a.b("sendMsgFinish", "success:" + paramBoolean);
-    this.a.a(this.a.c, false, paramBoolean, paramStatictisInfo);
-    if (paramBoolean)
-    {
-      this.a.e();
-      return;
-    }
-    if (paramStatictisInfo != null) {
-      this.a.u = paramStatictisInfo.d;
-    }
-    this.a.d();
-  }
+  private aicc(CameraControl paramCameraControl) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aicc
  * JD-Core Version:    0.7.0.1
  */

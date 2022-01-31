@@ -1,30 +1,23 @@
-import android.database.DataSetObserver;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.util.Log;
-import com.tencent.biz.qqstory.view.EmptySupportViewPager;
-import com.tencent.biz.qqstory.view.PagerIndicator;
-import com.tencent.biz.qqstory.view.PagerIndicator.IndicatorAdapter;
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.view.Window;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class ooh
-  extends DataSetObserver
-  implements ViewPager.OnPageChangeListener
+public final class ooh
+  implements Runnable
 {
-  private ooh(PagerIndicator paramPagerIndicator) {}
+  public ooh(Context paramContext) {}
   
-  public void onChanged()
+  public void run()
   {
-    Log.d("PagerIndicator", "onChanged");
-    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
-  }
-  
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
-  {
-    Log.d("PagerIndicator", "onPageSelected : " + paramInt);
-    this.a.a(this.a.a.getCurrentItem(), (PagerIndicator.IndicatorAdapter)this.a.a.getAdapter());
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a, 230);
+    localQQCustomDialog.setMessage("存储空间不足，请清理缓存后重试");
+    localQQCustomDialog.setNegativeButton("取消", new ooi(this));
+    localQQCustomDialog.setPositiveButton("清理缓存", new ooj(this));
+    localQQCustomDialog.setCancelable(false);
+    localQQCustomDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+    localQQCustomDialog.show();
   }
 }
 

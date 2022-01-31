@@ -1,29 +1,40 @@
-import com.tencent.biz.common.util.Util;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler.CheckOfflineCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.ui.RoundProgressBar;
 
 public class pac
-  implements SwiftBrowserOfflineHandler.CheckOfflineCallback
+  implements Runnable
 {
-  public pac(OfflinePlugin paramOfflinePlugin, long paramLong, String paramString) {}
+  public pac(RoundProgressBar paramRoundProgressBar, int paramInt) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.c = ((int)(System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    if (QLog.isColorLevel()) {
-      QLog.i("OfflinePluginQQ", 2, "onCheckOfflineFinish, cost: " + this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.c + ", url: " + Util.b(this.jdField_a_of_type_JavaLangString, new String[0]));
+    if (RoundProgressBar.a(this.jdField_a_of_type_ComTencentBizUiRoundProgressBar) < this.jdField_a_of_type_Int) {
+      while (RoundProgressBar.a(this.jdField_a_of_type_ComTencentBizUiRoundProgressBar) < this.jdField_a_of_type_Int)
+      {
+        RoundProgressBar.a(this.jdField_a_of_type_ComTencentBizUiRoundProgressBar, RoundProgressBar.a(this.jdField_a_of_type_ComTencentBizUiRoundProgressBar) + 1);
+        this.jdField_a_of_type_ComTencentBizUiRoundProgressBar.postInvalidate();
+        try
+        {
+          Thread.sleep(50L);
+        }
+        catch (InterruptedException localInterruptedException1)
+        {
+          localInterruptedException1.printStackTrace();
+        }
+      }
     }
-    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.a(this.jdField_a_of_type_JavaLangString, paramInt);
-    CustomWebView localCustomWebView = this.jdField_a_of_type_ComTencentBizWebviewpluginOfflinePlugin.mRuntime.a();
-    if (localCustomWebView != null)
+    while (this.jdField_a_of_type_Int < RoundProgressBar.a(this.jdField_a_of_type_ComTencentBizUiRoundProgressBar))
     {
-      localCustomWebView.a(this.jdField_a_of_type_JavaLangString);
-      return;
+      RoundProgressBar.a(this.jdField_a_of_type_ComTencentBizUiRoundProgressBar, RoundProgressBar.a(this.jdField_a_of_type_ComTencentBizUiRoundProgressBar) - 1);
+      this.jdField_a_of_type_ComTencentBizUiRoundProgressBar.postInvalidate();
+      try
+      {
+        Thread.sleep(50L);
+      }
+      catch (InterruptedException localInterruptedException2)
+      {
+        localInterruptedException2.printStackTrace();
+      }
     }
-    QLog.e("OfflinePluginQQ", 1, "error!!!! webview is null, now can not loadUrl " + this.jdField_a_of_type_JavaLangString);
   }
 }
 

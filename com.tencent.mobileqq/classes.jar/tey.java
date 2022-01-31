@@ -1,21 +1,26 @@
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.activity.contacts.base.CardConfigManager.CardConfigs;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
-public class tey
-  extends FacePreloadBaseAdapter.ViewHolder
+class tey
+  implements Runnable
 {
-  public View a;
-  public ImageView a;
-  public TextView a;
-  public tex a;
-  public ImageView b;
-  public TextView b;
-  public TextView c;
-  public TextView d;
-  public TextView e;
-  public TextView f;
+  tey(tex paramtex) {}
+  
+  public void run()
+  {
+    FormSwitchItem localFormSwitchItem = this.a.a.d;
+    if (PermisionPrivacyActivity.a(this.a.a).a) {}
+    for (int i = 0;; i = 8)
+    {
+      localFormSwitchItem.setVisibility(i);
+      if (this.a.a.d.getVisibility() == 0) {
+        PermisionPrivacyActivity.a(this.a.a, this.a.a.d.a(), this.a.a.app.o());
+      }
+      return;
+    }
+  }
 }
 
 

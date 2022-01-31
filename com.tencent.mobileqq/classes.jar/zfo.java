@@ -1,34 +1,23 @@
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.data.PhoneContact;
+import com.tencent.mobileqq.app.HotchatSCMng;
+import com.tencent.mobileqq.app.HotchatSCMng.HotchatNote;
 import java.util.Comparator;
 
 public class zfo
   implements Comparator
 {
-  public zfo(PhoneContactManagerImp paramPhoneContactManagerImp) {}
+  public zfo(HotchatSCMng paramHotchatSCMng) {}
   
-  public int a(PhoneContact paramPhoneContact1, PhoneContact paramPhoneContact2)
+  public int a(HotchatSCMng.HotchatNote paramHotchatNote1, HotchatSCMng.HotchatNote paramHotchatNote2)
   {
-    Object localObject2 = paramPhoneContact1.pinyinFirst;
-    String str = paramPhoneContact2.pinyinFirst;
-    Object localObject1 = localObject2;
-    if (((String)localObject2).endsWith("#")) {
-      localObject1 = "Za";
-    }
-    localObject2 = str;
-    if (str.endsWith("#")) {
-      localObject2 = "Za";
-    }
-    int j = ((String)localObject1).compareTo((String)localObject2);
-    int i = j;
-    if (j == 0) {
-      i = paramPhoneContact1.pinyinAll.compareTo(paramPhoneContact2.pinyinAll);
-    }
-    j = i;
-    if (i == 0) {
-      j = paramPhoneContact1.contactID - paramPhoneContact2.contactID;
-    }
-    return j;
+    if ((paramHotchatNote1 == null) || (paramHotchatNote2 == null)) {}
+    do
+    {
+      return 0;
+      if (paramHotchatNote1.a > paramHotchatNote2.a) {
+        return 1;
+      }
+    } while (paramHotchatNote1.a >= paramHotchatNote2.a);
+    return -1;
   }
 }
 

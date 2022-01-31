@@ -1,47 +1,23 @@
-import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.doodle.LoadDataJob;
+import com.tencent.mobileqq.activity.aio.doodle.PathDrawer;
+import java.util.List;
 
-public abstract class usp
+public class usp
+  implements uss
 {
-  protected int a;
-  protected String a;
-  protected uxh a;
-  protected int b;
-  protected String b;
+  public usp(LoadDataJob paramLoadDataJob, List paramList) {}
   
-  public int a()
+  public void a(PathDrawer paramPathDrawer)
   {
-    return this.jdField_b_of_type_Int;
-  }
-  
-  public String a()
-  {
-    return this.jdField_b_of_type_JavaLangString;
-  }
-  
-  public abstract void a();
-  
-  public void a(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(uxh paramuxh)
-  {
-    this.jdField_a_of_type_Uxh = paramuxh;
-  }
-  
-  public boolean a(String paramString)
-  {
-    a();
-    if (TextUtils.isEmpty(paramString)) {
-      return false;
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.add(paramPathDrawer);
+      if (this.jdField_a_of_type_JavaUtilList.size() == LoadDataJob.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodleLoadDataJob)) {
+        this.jdField_a_of_type_JavaUtilList.notifyAll();
+      }
+      return;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_b_of_type_Int = -1;
-    return true;
   }
-  
-  public abstract boolean b(String paramString);
 }
 
 

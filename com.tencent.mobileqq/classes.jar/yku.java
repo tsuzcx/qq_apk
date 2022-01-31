@@ -1,17 +1,34 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.apollo.ApolloPanelManager;
+import com.tencent.mobileqq.apollo.script.SpriteActionMessage;
+import com.tencent.mobileqq.apollo.script.SpriteScriptManager;
+import com.tencent.mobileqq.apollo.script.SpriteUtil;
+import java.util.concurrent.atomic.AtomicInteger;
 
-class yku
+public class yku
   implements Runnable
 {
-  yku(ykt paramykt, String paramString) {}
+  public yku(ApolloPanelManager paramApolloPanelManager) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_Ykt.jdField_a_of_type_Int < 0) && (HotChatCenterFragment.a(this.jdField_a_of_type_Ykt.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment))) {
-      this.jdField_a_of_type_Ykt.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    Object localObject = this.a;
+    int i = this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo != null) {}
+    for (boolean bool = true;; bool = false)
+    {
+      ((ApolloPanelManager)localObject).a(i, bool, ApolloPanelManager.a(this.a));
+      if ((this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0) && (!ApolloPanelManager.a(this.a)) && (this.a.a() != null) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo != null))
+      {
+        localObject = SpriteUtil.a(this.a.a()).a();
+        if (localObject != null) {
+          ((SpriteActionMessage)localObject).a(this.a.b);
+        }
+      }
+      if (((ApolloPanelManager.a(this.a)) || (this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 0)) && (this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo != null)) {
+        ApolloPanelManager.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo);
+      }
+      return;
     }
-    this.jdField_a_of_type_Ykt.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

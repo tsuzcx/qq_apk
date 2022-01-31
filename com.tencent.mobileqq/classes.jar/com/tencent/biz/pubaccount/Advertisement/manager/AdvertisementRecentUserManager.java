@@ -26,7 +26,7 @@ import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
-import kur;
+import kuc;
 import tencent.im.oidb.cmd0x886.oidb_cmd0x886.AdInfo;
 import tencent.im.oidb.cmd0x886.oidb_cmd0x886.PhoneInfo;
 import tencent.im.oidb.cmd0x886.oidb_cmd0x886.ReqBody;
@@ -181,7 +181,7 @@ public class AdvertisementRecentUserManager
               RecentUtil.b(paramQQAppInterface, localAdvertisementItem.jdField_a_of_type_JavaLangString, 1008);
               paramQQAppInterface.a().c(localAdvertisementItem.jdField_a_of_type_JavaLangString, 1008);
             }
-            ThreadManager.executeOnFileThread(new kur(this, localAdvertisementItem));
+            ThreadManager.executeOnFileThread(new kuc(this, localAdvertisementItem));
           }
         }
         else

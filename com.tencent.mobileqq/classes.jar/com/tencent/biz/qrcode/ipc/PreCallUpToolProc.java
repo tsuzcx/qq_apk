@@ -9,7 +9,7 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import com.tencent.mobileqq.armap.wealthgod.ARMapThreadStubReceiver;
 import com.tencent.qphone.base.util.QLog;
-import otb;
+import ouv;
 
 public class PreCallUpToolProc
   implements Handler.Callback
@@ -31,7 +31,7 @@ public class PreCallUpToolProc
   {
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver == null)
     {
-      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new otb(this);
+      this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ouv(this);
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED");
       this.jdField_a_of_type_AndroidContentContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);

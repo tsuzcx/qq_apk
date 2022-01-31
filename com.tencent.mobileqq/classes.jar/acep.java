@@ -1,16 +1,20 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
+import com.tencent.qphone.base.util.QLog;
 
-class acep
+public class acep
   implements Runnable
 {
-  acep(acel paramacel, int paramInt) {}
+  public acep(EmoticonMainPanel paramEmoticonMainPanel) {}
   
   public void run()
   {
-    UniformDownloadActivity.b(this.jdField_a_of_type_Acel.a).setVisibility(0);
-    UniformDownloadActivity.b(this.jdField_a_of_type_Acel.a).setText(this.jdField_a_of_type_Acel.a.getString(2131428576, new Object[] { this.jdField_a_of_type_Int + "%" }));
+    if (QLog.isColorLevel()) {
+      QLog.d("EmoticonMainPanel", 2, "func updateLastEmoticonPanel begins.");
+    }
+    if (this.a.a != null) {
+      this.a.a.notifyDataSetChanged();
+    }
   }
 }
 

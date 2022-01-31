@@ -1,25 +1,18 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.startup.step.NewRuntime;
+import com.tencent.mobileqq.search.OperationSearchEntryModel;
 
-public class ahri
+class ahri
   implements Runnable
 {
-  public ahri(NewRuntime paramNewRuntime) {}
+  ahri(ahrh paramahrh) {}
   
   public void run()
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("sp_hack_dvm", 4);
-    if (NewRuntime.b == 15) {
-      localSharedPreferences.edit().putInt("key_continuous_crash_count", 0);
-    }
-    localSharedPreferences.edit().putLong("key_last_hack_verify_time", 0L).commit();
+    this.a.jdField_a_of_type_ComTencentMobileqqSearchOperationSearchEntryModel.b(this.a.jdField_a_of_type_ComTencentMobileqqSearchModelOperationSearchEntryDataModel);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahri
  * JD-Core Version:    0.7.0.1
  */

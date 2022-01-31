@@ -15,12 +15,12 @@ public class TroopAssistantEducationBuilder
   {
     paramObject = paramView;
     if (paramView == null) {
-      paramObject = View.inflate(paramContext, 2130971611, null);
+      paramObject = View.inflate(paramContext, 2130971659, null);
     }
-    paramRecentFaceDecoder = paramObject.findViewById(2131375089);
+    paramRecentFaceDecoder = paramObject.findViewById(2131375275);
     paramRecentFaceDecoder.setTag(-1, Integer.valueOf(paramInt));
     paramRecentFaceDecoder.setOnClickListener(paramOnClickListener);
-    paramRecentFaceDecoder = paramObject.findViewById(2131375099);
+    paramRecentFaceDecoder = paramObject.findViewById(2131375285);
     paramRecentFaceDecoder.setTag(-1, Integer.valueOf(paramInt));
     paramRecentFaceDecoder.setOnClickListener(paramOnClickListener);
     paramObject.setTag(-1, Integer.valueOf(paramInt));

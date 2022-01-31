@@ -1,36 +1,19 @@
-import android.view.ViewGroup;
-import com.tencent.mobileqq.search.ftsentity.BaseMvpFTSEntityAdapter;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailActivity;
-import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchDetailFragment;
-import com.tencent.mobileqq.search.presenter.FTSMessageSearchResultPresenter;
-import com.tencent.mobileqq.search.presenter.IPresenter;
-import com.tencent.mobileqq.search.view.FTSMessageSearchResultView;
-import com.tencent.mobileqq.search.view.IView;
-import com.tencent.mobileqq.util.FaceDecoder;
-import com.tencent.widget.ListView;
-import java.util.List;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.TimeRspBody;
 
 public class ahfq
-  extends BaseMvpFTSEntityAdapter
+  implements Runnable
 {
-  public ahfq(FTSEntitySearchDetailFragment paramFTSEntitySearchDetailFragment, ListView paramListView, FaceDecoder paramFaceDecoder, List paramList, String paramString, FTSEntitySearchDetailActivity paramFTSEntitySearchDetailActivity)
-  {
-    super(paramListView, paramFaceDecoder, paramList, paramString, paramFTSEntitySearchDetailActivity);
-  }
+  public ahfq(RedTouchManager paramRedTouchManager, BusinessInfoCheckUpdate.TimeRspBody paramTimeRspBody) {}
   
-  protected IPresenter a(int paramInt)
+  public void run()
   {
-    return new FTSMessageSearchResultPresenter(FTSEntitySearchDetailFragment.a(this.a));
-  }
-  
-  protected IView a(int paramInt, ViewGroup paramViewGroup)
-  {
-    return new FTSMessageSearchResultView(paramViewGroup, 2130971490);
+    this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager.a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$TimeRspBody);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahfq
  * JD-Core Version:    0.7.0.1
  */

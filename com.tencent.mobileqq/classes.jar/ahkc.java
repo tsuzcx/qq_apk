@@ -1,19 +1,16 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleLayout;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
 
 public class ahkc
-  extends Handler
+  implements Runnable
 {
-  public ahkc(BaseShortVideoOprerator paramBaseShortVideoOprerator, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ahkc(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    this.a.a(paramMessage);
+    if ((EffectsCameraCaptureFragment.a(this.a) != null) && (EffectsCameraCaptureFragment.a(this.a).a())) {
+      EffectsCameraCaptureFragment.a(this.a).a(true);
+    }
   }
 }
 

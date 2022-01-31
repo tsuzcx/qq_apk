@@ -1,15 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.mobileqq.transfile.TransferRequest;
 
-public class aenh
-  implements View.OnClickListener
+public final class aenh
+  implements Runnable
 {
-  public aenh(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public aenh(String paramString, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.e(paramView);
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      TransferRequest localTransferRequest = new TransferRequest();
+      localTransferRequest.a = true;
+      localTransferRequest.i = this.jdField_a_of_type_JavaLangString;
+      localTransferRequest.b = 64;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(localTransferRequest);
+    }
   }
 }
 

@@ -20,8 +20,8 @@ public class RedTouchUI
 {
   public RedAppInfo a;
   private List b;
-  private int r = -1;
-  private int s = -1;
+  private int x = -1;
+  private int y = -1;
   
   public RedTouchUI(Context paramContext)
   {
@@ -166,7 +166,7 @@ public class RedTouchUI
     a(paramString, (URLImageView)localObject, paramInt1);
     if (paramInt2 == 1)
     {
-      if (this.r == -1) {
+      if (this.x == -1) {
         throw new RuntimeException("must set the redpoint imageresource");
       }
       paramString = new FrameLayout(getContext());
@@ -174,7 +174,7 @@ public class RedTouchUI
       ((URLImageView)localObject).setPadding(a(3), a(3), a(3), a(3));
       paramString.addView((View)localObject);
       localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      ((ImageView)localObject).setImageResource(this.r);
+      ((ImageView)localObject).setImageResource(this.x);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
       localLayoutParams.gravity = 53;
       ((ImageView)localObject).setLayoutParams(localLayoutParams);
@@ -192,11 +192,11 @@ public class RedTouchUI
   
   protected ImageView a(int paramInt)
   {
-    if (this.r == -1) {
+    if (this.x == -1) {
       throw new RuntimeException("must set the redpoint imageresource");
     }
     ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    localImageView.setImageResource(this.r);
+    localImageView.setImageResource(this.x);
     localImageView.setBackgroundColor(paramInt);
     localImageView.setLayoutParams(a());
     return localImageView;
@@ -204,7 +204,7 @@ public class RedTouchUI
   
   protected TextView a(String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.s == -1) {
+    if (this.y == -1) {
       throw new RuntimeException("must set the redpoint imageresource");
     }
     TextView localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
@@ -222,7 +222,7 @@ public class RedTouchUI
           break;
         }
         localTextView.setTextSize(11.0F);
-        localTextView.setBackgroundResource(this.s);
+        localTextView.setBackgroundResource(this.y);
         localTextView.setLayoutParams(a());
         if (this.jdField_b_of_type_Boolean)
         {
@@ -264,12 +264,12 @@ public class RedTouchUI
   
   public void setRedpointImgResID(int paramInt)
   {
-    this.r = paramInt;
+    this.x = paramInt;
   }
   
   public void setTextOrNumImgRedID(int paramInt)
   {
-    this.s = paramInt;
+    this.y = paramInt;
   }
 }
 

@@ -1,17 +1,24 @@
 import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
-public class agha
+class agha
+  implements Runnable
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  ImageView jdField_b_of_type_AndroidWidgetImageView;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
-  TextView c;
+  agha(aggv paramaggv) {}
+  
+  public void run()
+  {
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.a())
+    {
+      this.a.a.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.b();
+      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agha
  * JD-Core Version:    0.7.0.1
  */

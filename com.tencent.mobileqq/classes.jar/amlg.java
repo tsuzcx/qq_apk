@@ -1,16 +1,27 @@
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import cooperation.qzone.webviewplugin.QZoneFeedActionJsPlugin;
+import cooperation.dingdong.data.ScheduleTipsDialog;
 
 public class amlg
   extends BroadcastReceiver
 {
-  public amlg(QZoneFeedActionJsPlugin paramQZoneFeedActionJsPlugin) {}
+  public amlg(ScheduleTipsDialog paramScheduleTipsDialog) {}
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QZoneFeedActionJsPlugin.a(this.a, paramContext, paramIntent);
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"))
+    {
+      paramContext = paramIntent.getStringExtra("reason");
+      if ((paramContext != null) && (paramContext.equals("homekey")) && (ScheduleTipsDialog.b(this.a))) {
+        ScheduleTipsDialog.a(this.a, this.a);
+      }
+    }
+    while ((!paramContext.equals("android.intent.action.SCREEN_OFF")) || (!ScheduleTipsDialog.b(this.a))) {
+      return;
+    }
+    ScheduleTipsDialog.a(this.a, this.a);
   }
 }
 

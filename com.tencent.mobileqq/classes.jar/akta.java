@@ -1,59 +1,65 @@
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadConstants;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.open.downloadnew.DownloadManager;
-import com.tencent.open.downloadnew.MyAppApi;
-import com.tencent.tmassistantsdk.TMAssistantCallYYBParamStruct;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V1;
-import com.tencent.tmassistantsdk.TMAssistantCallYYB_V2;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.support.v4.widget.ExploreByTouchHelper;
+import android.view.View;
+import android.view.accessibility.AccessibilityEvent;
+import com.tencent.mobileqq.widget.ClearableEditText;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class akta
-  implements Runnable
+public class akta
+  extends ExploreByTouchHelper
 {
-  akta(aksx paramaksx) {}
-  
-  public void run()
+  public akta(ClearableEditText paramClearableEditText, View paramView)
   {
-    boolean bool2 = false;
-    LogUtility.c("TIME-STATISTIC", "onGetA1Fail");
-    DownloadInfo localDownloadInfo = this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.a.jdField_a_of_type_AndroidOsBundle);
-    DownloadManager.a().e(localDownloadInfo);
-    for (;;)
+    super(paramView);
+  }
+  
+  protected int getVirtualViewAt(float paramFloat1, float paramFloat2)
+  {
+    if ((ClearableEditText.c(this.a)) && (paramFloat1 > this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth())) {
+      return 0;
+    }
+    return -1;
+  }
+  
+  protected void getVisibleVirtualViews(List paramList)
+  {
+    if (ClearableEditText.c(this.a)) {
+      paramList.add(Integer.valueOf(0));
+    }
+  }
+  
+  protected boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ClearableEditTextHelper", 2, "onPerformActionForVirtualView virtualViewId:" + paramInt1);
+    }
+    return false;
+  }
+  
+  protected void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
+  {
+    if (paramInt == 0) {
+      paramAccessibilityEvent.setContentDescription("删除 按钮");
+    }
+  }
+  
+  protected void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  {
+    if (paramInt == 0)
     {
-      boolean bool3;
-      try
-      {
-        LogUtility.a("State_Log", "OpenSDK startToAppDetail param SNGAppId=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskAppId + " packageName=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskPackageName + " version=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.taskVersion + " uin=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.uin + " via=" + this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.via);
-        LogUtility.c("TIME-STATISTIC", "mDownloadSdk.startToAppDetail");
-        if (this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a() <= 2)
-        {
-          ((TMAssistantCallYYB_V1)this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToAppDetail(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, this.a.jdField_a_of_type_Boolean, this.a.b);
-          return;
-        }
-        int i = this.a.jdField_a_of_type_AndroidOsBundle.getInt(DownloadConstants.j);
-        int j = this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.a.jdField_a_of_type_AndroidOsBundle);
-        boolean bool1 = this.a.jdField_a_of_type_Boolean;
-        bool3 = this.a.b;
-        if (i == 3)
-        {
-          bool1 = false;
-          ((TMAssistantCallYYB_V2)this.a.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a()).startToAppDetail(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, bool1, bool2, j);
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        LogUtility.b("MyAppApi", "startToAppDetail err", localException);
-        return;
-      }
-      bool2 = bool3;
+      paramAccessibilityNodeInfoCompat.setContentDescription("删除 按钮");
+      paramAccessibilityNodeInfoCompat.addAction(16);
+      paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect(this.a.getWidth() - this.a.getPaddingRight() - this.a.a.getIntrinsicWidth(), this.a.getPaddingTop(), this.a.getWidth() - this.a.getPaddingRight(), this.a.getHeight() - this.a.getPaddingBottom()));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akta
  * JD-Core Version:    0.7.0.1
  */

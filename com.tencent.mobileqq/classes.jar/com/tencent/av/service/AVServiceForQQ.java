@@ -9,7 +9,7 @@ import com.tencent.av.AVLog;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.utils.TraeHelper;
 import com.tencent.qphone.base.util.QLog;
-import jnc;
+import jmn;
 import mqq.app.AppService;
 
 public class AVServiceForQQ
@@ -20,7 +20,7 @@ public class AVServiceForQQ
   public VideoAppInterface a;
   private TraeHelper jdField_a_of_type_ComTencentAvUtilsTraeHelper;
   public String a;
-  private jnc jdField_a_of_type_Jnc;
+  private jmn jdField_a_of_type_Jmn;
   private boolean jdField_a_of_type_Boolean;
   private int b = 13;
   public String b;
@@ -42,11 +42,11 @@ public class AVServiceForQQ
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
     for (boolean bool1 = true;; bool1 = false)
     {
-      if (this.jdField_a_of_type_Jnc != null) {
+      if (this.jdField_a_of_type_Jmn != null) {
         bool2 = true;
       }
       AVLog.d(paramIntent, String.format("onBind, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
-      return this.jdField_a_of_type_Jnc;
+      return this.jdField_a_of_type_Jmn;
     }
   }
   
@@ -56,8 +56,8 @@ public class AVServiceForQQ
     try
     {
       super.onCreate();
-      if (this.jdField_a_of_type_Jnc == null) {
-        this.jdField_a_of_type_Jnc = new jnc(this, null);
+      if (this.jdField_a_of_type_Jmn == null) {
+        this.jdField_a_of_type_Jmn = new jmn(this, null);
       }
     }
     catch (Exception localException1)
@@ -72,14 +72,14 @@ public class AVServiceForQQ
         if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
         for (boolean bool1 = true;; bool1 = false)
         {
-          if (this.jdField_a_of_type_Jnc != null) {
+          if (this.jdField_a_of_type_Jmn != null) {
             bool2 = true;
           }
           AVLog.d(str1, String.format("onCreate, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
           return;
           localException1 = localException1;
           QLog.d(this.jdField_a_of_type_JavaLangString, 1, "AVServiceForQQ onCreate, Fail", localException1);
-          String str2 = super.getString(2131428790) + " 0x0a";
+          String str2 = super.getString(2131428796) + " 0x0a";
           Toast.makeText(super.getBaseContext(), str2, 0).show();
           break;
         }
@@ -114,7 +114,7 @@ public class AVServiceForQQ
     if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {}
     for (bool1 = true;; bool1 = false)
     {
-      if (this.jdField_a_of_type_Jnc != null) {
+      if (this.jdField_a_of_type_Jmn != null) {
         bool2 = true;
       }
       AVLog.d(str, String.format("onDestroy, appInterface[%b], AVServiceForQQ[%b]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) }));
@@ -138,7 +138,7 @@ public class AVServiceForQQ
     label101:
     for (boolean bool1 = true;; bool1 = false)
     {
-      if (this.jdField_a_of_type_Jnc != null) {
+      if (this.jdField_a_of_type_Jmn != null) {
         bool2 = true;
       }
       QLog.d(paramIntent, 4, String.format("onCreate, appInterface[%b], AVServiceForQQ[%b], flags[%d], startId[%d]", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));

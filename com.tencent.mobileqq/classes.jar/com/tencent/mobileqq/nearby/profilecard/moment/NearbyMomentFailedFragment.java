@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import aewz;
-import aexa;
-import aexb;
+import afkf;
+import afkg;
+import afkh;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.os.Bundle;
@@ -25,23 +25,23 @@ public class NearbyMomentFailedFragment
 {
   private FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
   private NearbyMomentFailedAdapter jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFailedAdapter;
-  private NearbyMomentManager.MomentDataChangeObserver jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$MomentDataChangeObserver = new aexb(this);
+  private NearbyMomentManager.MomentDataChangeObserver jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager$MomentDataChangeObserver = new afkh(this);
   private ListView jdField_a_of_type_ComTencentWidgetListView;
   
   private void b()
   {
-    ((NearbyMomentManager)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(262)).a(new aexa(this));
+    ((NearbyMomentManager)this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app.getManager(262)).a(new afkg(this));
   }
   
   protected int a()
   {
-    return 2130969123;
+    return 2130969122;
   }
   
   public void a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    a(getResources().getString(2131437403));
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.e.findViewById(2131365251));
+    a(getResources().getString(2131437420));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.e.findViewById(2131365273));
     this.jdField_a_of_type_ComTencentWidgetListView.setOnItemClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFailedAdapter = new NearbyMomentFailedAdapter(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.app);
     this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentFailedAdapter);
@@ -52,7 +52,7 @@ public class NearbyMomentFailedFragment
   
   public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramAdapterView = (aewz)paramView.getTag();
+    paramAdapterView = (afkf)paramView.getTag();
     if (paramAdapterView != null)
     {
       if ((paramAdapterView.a instanceof ShortVideoMomentFeedInfo)) {

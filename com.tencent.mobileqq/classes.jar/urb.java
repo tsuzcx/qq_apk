@@ -1,23 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatActivityFacade;
-import com.tencent.mobileqq.activity.aio.item.ArkAppBabyQNoResultBuilder;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
 
 public class urb
-  implements View.OnClickListener
+  implements Runnable
 {
-  public urb(ArkAppBabyQNoResultBuilder paramArkAppBabyQNoResultBuilder, int paramInt) {}
+  public urb(RecordSoundPanel paramRecordSoundPanel, String paramString, QQRecorder.RecorderParam paramRecorderParam) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((paramView instanceof TextView))
-    {
-      paramView = ((TextView)paramView).getText();
-      ChatActivityFacade.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, "@babyQ " + paramView);
-      ArkAppDataReport.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppBabyQNoResultBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Int + 1);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.b();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelRecordSoundPanel.a.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam);
   }
 }
 

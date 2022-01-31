@@ -1,17 +1,32 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 
-class sey
-  implements Runnable
+public class sey
+  implements View.OnTouchListener
 {
-  sey(ses paramses) {}
+  public sey(ChatSettingForTroop paramChatSettingForTroop, ImageView paramImageView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a.a != null)
+    int i;
+    if (paramMotionEvent.getAction() == 0)
     {
-      this.a.a.a.a();
-      this.a.a.a.a(-1, null);
+      i = 1;
+      paramView = this.jdField_a_of_type_AndroidWidgetImageView;
+      if (i == 0) {
+        break label36;
+      }
+    }
+    label36:
+    for (float f = 0.5F;; f = 1.0F)
+    {
+      paramView.setAlpha(f);
+      return false;
+      i = 0;
+      break;
     }
   }
 }

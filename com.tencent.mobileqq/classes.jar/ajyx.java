@@ -1,48 +1,51 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.webview.swift.WebViewFragment;
-import com.tencent.mobileqq.webview.swift.scheduler.SwiftBrowserStateMachineScheduler.StateMachine;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.graphics.Canvas;
+import android.graphics.Matrix;
+import android.graphics.Paint;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
 
-public class ajyx
-  implements SwiftBrowserStateMachineScheduler.StateMachine
+public final class ajyx
+  implements DownloadParams.DecodeHandler
 {
-  public ajyx(WebViewFragment paramWebViewFragment) {}
-  
-  public int a(Bundle paramBundle)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    int j = this.a.m;
-    int i = -1;
-    long l = System.currentTimeMillis();
-    switch (this.a.m)
+    if ((paramBitmap == null) || (paramDownloadParams == null)) {}
+    int i;
+    int j;
+    int k;
+    int m;
+    do
     {
-    }
-    for (;;)
+      do
+      {
+        return paramBitmap;
+        paramDownloadParams = paramDownloadParams.tag;
+      } while ((!(paramDownloadParams instanceof int[])) || (((int[])paramDownloadParams).length != 4));
+      paramDownloadParams = (int[])paramDownloadParams;
+      i = paramDownloadParams[0];
+      j = paramDownloadParams[1];
+      k = paramDownloadParams[2];
+      m = paramDownloadParams[3];
+    } while ((k <= 0) || (m <= 0) || ((k == paramBitmap.getWidth()) && (m == paramBitmap.getHeight())));
+    try
     {
-      QLog.i("WebLog_WebViewFragment", 1, "CreateLoop:step[" + j + "] -> step[" + this.a.m + "] cost" + (System.currentTimeMillis() - l) + " ms.");
-      return i;
-      i = this.a.f(paramBundle);
-      continue;
-      i = this.a.g(paramBundle);
-      continue;
-      i = this.a.h(paramBundle);
-      continue;
-      i = this.a.d(paramBundle);
-      continue;
-      i = this.a.i(paramBundle);
-      continue;
-      i = this.a.e(paramBundle);
-      continue;
-      i = this.a.c(paramBundle);
-      continue;
-      i = this.a.b(paramBundle);
-      continue;
-      i = this.a.a(paramBundle);
+      paramDownloadParams = Bitmap.createBitmap(k, m, Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = new Canvas(paramDownloadParams);
+      Matrix localMatrix = new Matrix();
+      URLDrawableDecodeHandler.a(localMatrix, paramBitmap.getWidth(), paramBitmap.getHeight(), k, m, i, j);
+      localCanvas.drawBitmap(paramBitmap, localMatrix, new Paint(6));
+      return paramDownloadParams;
     }
+    catch (OutOfMemoryError paramDownloadParams) {}
+    return paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajyx
  * JD-Core Version:    0.7.0.1
  */

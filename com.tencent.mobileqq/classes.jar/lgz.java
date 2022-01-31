@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
 
 public class lgz
   implements Runnable
 {
-  public lgz(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  public lgz(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
   
   public void run()
   {
-    ReadInJoyDeliverBiuActivity.a(this.a);
+    ReadInJoyCameraCaptureActivity.b(this.a, ReadInJoyCameraCaptureActivity.c(this.a));
+    ReadInJoyCameraCaptureActivity.a(this.a);
   }
 }
 

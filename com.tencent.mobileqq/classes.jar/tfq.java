@@ -1,27 +1,14 @@
-import android.os.PowerManager;
-import android.os.PowerManager.WakeLock;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class tfq
-  implements Runnable
+class tfq
+  implements DialogInterface.OnClickListener
 {
-  public tfq(QQLSActivity paramQQLSActivity) {}
+  tfq(tfl paramtfl) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      PowerManager localPowerManager = (PowerManager)this.a.getSystemService("power");
-      this.a.a = localPowerManager.newWakeLock(268435462, "QQLSActivity");
-      this.a.a.acquire(10000L);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QQLSActivity", 2, "acquireBrightWakeLock:" + localException.toString());
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

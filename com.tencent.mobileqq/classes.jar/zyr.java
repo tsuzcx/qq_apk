@@ -1,39 +1,36 @@
-import android.os.Handler;
-import android.os.RemoteException;
-import com.tencent.mobileqq.ar.RemoteArConfigManager;
-import com.tencent.mobileqq.ar.aidl.IArConfigManager;
+import android.widget.TextView;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewProxy;
 import com.tencent.qphone.base.util.QLog;
 
 public class zyr
   implements Runnable
 {
-  public zyr(RemoteArConfigManager paramRemoteArConfigManager) {}
+  public zyr(ARVideoRecordViewProxy paramARVideoRecordViewProxy, int paramInt) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager != null)
+    if (this.jdField_a_of_type_Int == 0)
     {
+      ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy).setShowState(2);
+      ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy);
+      ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy, 0);
       if (QLog.isColorLevel()) {
-        QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadResource");
-      }
-      try
-      {
-        if (!this.a.a())
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqArAidlIArConfigManager.a();
-          this.a.jdField_a_of_type_Boolean = true;
-          return;
-        }
-        RemoteArConfigManager.a(this.a).sendMessage(RemoteArConfigManager.a(this.a).obtainMessage(3));
-        return;
-      }
-      catch (RemoteException localRemoteException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("ArConfig_RemoteArConfigManager", 2, "downloadResource|RemoteException e= " + localRemoteException);
-        }
+        QLog.i("ARVideoRecordViewProxy", 2, "switchUIdisplayMode run RECORD_NORMAL_MODE");
       }
     }
+    do
+    {
+      do
+      {
+        return;
+      } while (this.jdField_a_of_type_Int != 1);
+      ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy).setShowState(3);
+      ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy).setVisibility(0);
+      ARVideoRecordViewProxy.b(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy).setVisibility(0);
+      ARVideoRecordViewProxy.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordViewProxy, 1);
+    } while (!QLog.isColorLevel());
+    QLog.i("ARVideoRecordViewProxy", 2, "switchUIdisplayMode run RECORD_PROGRESS_MODE");
   }
 }
 

@@ -1,44 +1,29 @@
-import android.annotation.TargetApi;
-import android.os.Handler;
-import android.view.Choreographer;
-import com.tencent.mobileqq.util.FPSCalculator;
-import com.tencent.qphone.base.util.QLog;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnKeyListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditItemBase.OnEditItemListener;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.TextViewHolder;
 
 public class ajlf
-  implements Runnable
+  implements View.OnKeyListener
 {
-  public ajlf(FPSCalculator paramFPSCalculator) {}
+  public ajlf(TextItem paramTextItem, TextItem.TextViewHolder paramTextViewHolder) {}
   
-  @TargetApi(16)
-  public void run()
+  public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    for (;;)
+    if ((paramKeyEvent.getAction() == 0) && (paramInt == 67) && (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.getSelectionStart() == 0))
     {
-      try
-      {
-        if (FPSCalculator.a(this.a) == null) {
-          continue;
-        }
-        FPSCalculator.a(this.a).removeFrameCallback(FPSCalculator.a(this.a));
-        FPSCalculator.a(this.a).postFrameCallback(FPSCalculator.a(this.a));
-      }
-      catch (Exception localException)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("FPSCalculator", 2, "Choreographer.getInstance", localException);
-        continue;
-      }
-      FPSCalculator.a(this.a).removeCallbacks(FPSCalculator.a(this.a));
-      return;
-      FPSCalculator.a(this.a, Choreographer.getInstance());
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.a.b(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder);
+      return true;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajlf
  * JD-Core Version:    0.7.0.1
  */

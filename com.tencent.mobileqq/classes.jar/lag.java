@@ -1,46 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.ecshopassit.BusinessBrowser.BusinessBrowserFragment;
+import com.tencent.biz.pubaccount.ecshopassit.ShopFolderAdapter;
+import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.widget.SingleLineTextView;
 
 public class lag
-  extends BroadcastReceiver
 {
-  public lag(BusinessBrowser.BusinessBrowserFragment paramBusinessBrowserFragment) {}
+  public View a;
+  public Button a;
+  public ImageView a;
+  public DragTextView a;
+  public SingleLineTextView a;
+  public String a;
+  public ImageView[] a;
+  public SingleLineTextView b;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
-  {
-    paramContext = paramIntent.getAction();
-    if ("action_decode_finish".equals(paramContext))
-    {
-      paramContext = paramIntent.getStringExtra("uin");
-      paramIntent = (Bitmap)paramIntent.getParcelableExtra("bitmap");
-      if ((this.a.jdField_a_of_type_JavaLangString != null) && (this.a.jdField_a_of_type_JavaLangString.equals(paramContext)) && (paramIntent != null)) {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramIntent);
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while ((!"action_follow_status_finish".equals(paramContext)) || (!String.valueOf(paramIntent.getStringExtra("uin")).equals(this.a.jdField_a_of_type_JavaLangString)));
-      this.a.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("isFollow", false);
-    } while (this.a.jdField_a_of_type_AndroidWidgetTextView == null);
-    if (this.a.jdField_a_of_type_Boolean)
-    {
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("已关注");
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(false);
-      this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setText("关注");
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(2130843817);
-  }
+  public lag(ShopFolderAdapter paramShopFolderAdapter) {}
 }
 
 

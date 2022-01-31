@@ -1,22 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
-import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailDynamicListModel;
-import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailBaseInfoModel;
+import com.tencent.mobileqq.data.AccountDetail;
+import com.tencent.qphone.base.util.QLog;
 
-public class kqe
-  implements View.OnClickListener
+class kqe
+  implements Runnable
 {
-  public kqe(AccountDetailBaseAdapter paramAccountDetailBaseAdapter, kql paramkql) {}
+  kqe(kqd paramkqd, AccountDetail paramAccountDetail) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_Kql.jdField_a_of_type_AndroidWidgetTextView.setText(2131430019);
-    this.jdField_a_of_type_Kql.b.setVisibility(4);
-    this.jdField_a_of_type_Kql.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
-    AccountDetailDynamicListModel.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.parseLong(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter.jdField_a_of_type_JavaLangString), ((AccountDetailActivity)this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter.jdField_a_of_type_AndroidAppActivity).a());
+    if (QLog.isColorLevel()) {
+      QLog.d("AccountDetailBaseInfoModel", 2, "saveAccountDetailInSubThread");
+    }
+    AccountDetailBaseInfoModel.a(this.jdField_a_of_type_Kqd.a, this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail);
   }
 }
 

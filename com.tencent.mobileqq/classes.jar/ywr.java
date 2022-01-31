@@ -1,30 +1,27 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.view.animation.AnimationUtils;
+import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ApolloGameRankData;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import java.util.ArrayList;
 
 public final class ywr
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public ywr(View paramView) {}
+  public ywr(QQAppInterface paramQQAppInterface, ApolloGameRankData paramApolloGameRankData) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    if ((this.a != null) && (this.a.getVisibility() == 0))
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqDataApolloGameRankData != null))
     {
-      paramAnimation = AnimationUtils.loadAnimation(this.a.getContext(), 2131034320);
-      paramAnimation.setAnimationListener(this);
-      this.a.startAnimation(paramAnimation);
+      ArrayList localArrayList = new ArrayList();
+      localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqDataApolloGameRankData);
+      ((ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154)).c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager(), localArrayList);
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ywr
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,70 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.DiscoverManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.NearbyCardInfo;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.NormalCardInfo;
-import com.tencent.biz.qqstory.storyHome.discover.model.CardItem.OperationCardInfo;
-import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader;
-import com.tencent.biz.qqstory.storyHome.discover.model.DiscoverPagerLoader.GetDiscoverCardsEvent;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedItem;
+import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
-import java.util.Iterator;
-import java.util.List;
 
-public class nui
-  extends SimpleJob
+class nui
+  implements Runnable
 {
-  public nui(DiscoverPagerLoader paramDiscoverPagerLoader, DiscoverPagerLoader.GetDiscoverCardsEvent paramGetDiscoverCardsEvent, boolean paramBoolean) {}
+  nui(nuh paramnuh, boolean paramBoolean) {}
   
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelDiscoverPagerLoader.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelDiscoverPagerLoader.b();
-    ((DiscoverManager)SuperManager.a(22)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelDiscoverPagerLoader$GetDiscoverCardsEvent.a, DiscoverPagerLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelDiscoverPagerLoader), DiscoverPagerLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelDiscoverPagerLoader), this.jdField_a_of_type_Boolean);
-    paramJobContext = (UserManager)SuperManager.a(2);
-    paramArrayOfObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelDiscoverPagerLoader$GetDiscoverCardsEvent.a.iterator();
-    while (paramArrayOfObject.hasNext())
+    int i1 = 0;
+    if (DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).isJobCancelled())
     {
-      CardItem localCardItem = (CardItem)paramArrayOfObject.next();
-      switch (localCardItem.cardType)
-      {
-      default: 
-        break;
-      case 1: 
-        paramJobContext.a(localCardItem.normalCardInfo.a());
-        break;
-      case 2: 
-        paramJobContext.a(localCardItem.nearByCardInfo.a());
-        break;
-      case 3: 
-        paramJobContext.a(localCardItem.operationCardInfo.a());
-      }
+      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "stream cancel on all function completed.");
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverModelDiscoverPagerLoader.a("Q.qqstory.discover:DiscoverPagerLoader");
-    return null;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      Object localObject = (Integer)this.jdField_a_of_type_Nuh.getFunctionResult(0);
+      if (localObject != null) {
+        DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).a.mViewTotalTime = ((Integer)localObject).intValue();
+      }
+      if (DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).a()) {}
+      int m;
+      int n;
+      for (int j = 2;; j = 1)
+      {
+        int k = 0;
+        int i = 1;
+        for (;;)
+        {
+          m = i;
+          n = i1;
+          if (k >= j) {
+            break;
+          }
+          localObject = (nug)this.jdField_a_of_type_Nuh.getFunctionResult(i);
+          if (localObject != null)
+          {
+            DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).b(((nug)localObject).jdField_a_of_type_JavaUtilList, true, ((nug)localObject).jdField_a_of_type_Boolean);
+            DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).b(((nug)localObject).jdField_a_of_type_Boolean, ((nug)localObject).jdField_a_of_type_Int);
+            DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).a.mHadLike = ((nug)localObject).b;
+          }
+          k += 1;
+          i += 1;
+        }
+      }
+      while (n < j)
+      {
+        localObject = (nuf)this.jdField_a_of_type_Nuh.getFunctionResult(m);
+        if (localObject != null)
+        {
+          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).a(((nuf)localObject).jdField_a_of_type_JavaUtilList, true, ((nuf)localObject).jdField_a_of_type_Boolean);
+          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).a(((nuf)localObject).jdField_a_of_type_Boolean, ((nuf)localObject).jdField_a_of_type_Int);
+          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).a(((nuf)localObject).jdField_a_of_type_Boolean, ((nuf)localObject).b);
+          DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a).a(((nuf)localObject).jdField_a_of_type_Boolean, ((nuf)localObject).jdField_a_of_type_JavaLangString);
+        }
+        n += 1;
+        m += 1;
+      }
+      DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a, DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a));
+      return;
+    }
+    DetailFeedAllInfoPullSegment.a(this.jdField_a_of_type_Nuh.a, new ErrorMessage(-1, "get feed interact data error."));
   }
 }
 

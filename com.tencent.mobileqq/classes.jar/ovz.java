@@ -1,31 +1,31 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.net.InetAddress;
-import java.net.URL;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.app.HotChatObserver;
+import java.util.ArrayList;
 
-public final class ovz
-  implements Runnable
+public class ovz
+  extends HotChatObserver
 {
-  public ovz(String paramString) {}
+  public ovz(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, ArrayList paramArrayList)
   {
-    try
-    {
-      URL localURL = new URL(this.a);
-      String str = InetAddress.getByName(localURL.getHost()).getHostAddress();
-      if (!TextUtils.isEmpty(str)) {
-        BaseApplicationImpl.getContext().getSharedPreferences("qbiz_host_ip_map", 0).edit().putString(localURL.getHost(), str).commit();
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 1050);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", new Object[] { paramString, paramArrayOfByte, Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramArrayList });
+    localBundle.putSerializable("observer_type", Integer.valueOf(5));
+    this.a.a(3, localBundle);
+  }
+  
+  public void a(boolean paramBoolean, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("seq", this.a.f);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putStringArrayList("uins", paramArrayList1);
+    localBundle.putStringArrayList("tinyIds", paramArrayList2);
+    this.a.a(103, localBundle);
   }
 }
 

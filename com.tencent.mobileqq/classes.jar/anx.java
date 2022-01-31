@@ -1,17 +1,22 @@
-import com.qq.im.poi.LbsPackManager;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.qq.im.poi.LbsStrangerPoiDialog;
 
 public class anx
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public anx(LbsPackManager paramLbsPackManager, ARMapActivity paramARMapActivity, long paramLong, String paramString) {}
+  public anx(LbsStrangerPoiDialog paramLbsStrangerPoiDialog) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ARMapEngine localARMapEngine = this.jdField_a_of_type_ComTencentMobileqqArmapARMapActivity.a;
-    ARMapEngine.nativeUnpackedOne(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
+    this.a.b.setVisibility(8);
+    this.a.dismiss();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

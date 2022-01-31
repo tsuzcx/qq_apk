@@ -1,80 +1,34 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
-import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
-import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.mobileqq.jsp.QQApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import java.util.Map;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.fragment.CommonTabFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class admq
-  implements Runnable
+  extends SosoInterface.OnLocationListener
 {
-  public admq(QQApiPlugin paramQQApiPlugin, String paramString1, String paramString2, int paramInt, Map paramMap, String paramString3, String paramString4, String paramString5, String paramString6) {}
-  
-  public void run()
+  public admq(CommonTabFragment paramCommonTabFragment, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    int j = 0;
-    int i = 0;
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.mRuntime.a();
-    if ((localObject == null) || (((Activity)localObject).isFinishing())) {
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CommonTabFragment", 2, "startLocation finish" + System.currentTimeMillis());
+    }
+    if (paramInt != 0)
+    {
+      QQToast.a(this.a.a, 1, "获取地理位置失败。", 1).a();
+      this.a.d();
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) {
-      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.a((Activity)localObject);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener = new admr(this);
-      WXShareHelper.a().a(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentMobileqqWxapiWXShareHelper$WXShareListener);
-    }
-    if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonWxShareHelperFromReadInjoy$WXShareHelperFromReadInjoyListener == null))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonWxShareHelperFromReadInjoy$WXShareHelperFromReadInjoyListener = new adms(this);
-      WxShareHelperFromReadInjoy.a().a(this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonWxShareHelperFromReadInjoy$WXShareHelperFromReadInjoyListener);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c = String.valueOf(System.currentTimeMillis());
-    localObject = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
-    if ("audio".equals(this.c))
-    {
-      localWXShareHelper = WXShareHelper.a();
-      str1 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c;
-      str2 = this.d;
-      str3 = this.e;
-      str4 = this.b;
-      if ("2".equals(this.jdField_a_of_type_JavaLangString)) {}
-      for (;;)
-      {
-        localWXShareHelper.a(str1, str2, (Bitmap)localObject, str3, str4, i, this.f);
-        return;
-        i = 1;
-      }
-    }
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.d(new admt(this, (Bitmap)localObject));
-      return;
-    }
-    WXShareHelper localWXShareHelper = WXShareHelper.a();
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqJspQQApiPlugin.c;
-    String str2 = this.d;
-    String str3 = this.e;
-    String str4 = this.b;
-    if ("2".equals(this.jdField_a_of_type_JavaLangString)) {}
-    for (i = j;; i = 1)
-    {
-      localWXShareHelper.b(str1, str2, (Bitmap)localObject, str3, str4, i);
-      return;
-    }
+    this.a.a(paramSosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     admq
  * JD-Core Version:    0.7.0.1
  */

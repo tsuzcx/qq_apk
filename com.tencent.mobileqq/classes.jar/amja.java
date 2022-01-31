@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import cooperation.qzone.share.QZoneShareActivity;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.buscard.BuscardPluginInstallActivity;
 
 public class amja
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public amja(QZoneShareActivity paramQZoneShareActivity) {}
+  private amja(BuscardPluginInstallActivity paramBuscardPluginInstallActivity) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    QQToast.a(this.a, this.a.a.msg.get(), 0).a();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("BuscardPluginInstallActivity", 4, "BuscardPluginOnResumeReceiver->onReceive, intent:" + paramIntent);
+    }
+    if ((paramIntent == null) || (!"bridge.plugin.onresume.broadcast".equals(paramIntent.getAction()))) {
+      return;
+    }
+    this.a.finish();
   }
 }
 

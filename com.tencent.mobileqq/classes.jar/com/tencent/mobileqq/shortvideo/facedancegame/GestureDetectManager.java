@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo.facedancegame;
 
-import ahnb;
-import ahnc;
+import aibd;
+import aibe;
 import android.annotation.SuppressLint;
 import com.tencent.av.avgesture.AVGestureWrapper;
 import com.tencent.mobileqq.shortvideo.gesture.GestureMgrRecognize;
@@ -53,10 +53,9 @@ public class GestureDetectManager
     try
     {
       String str = SdkContext.a().a().a().a();
-      AVGestureWrapper.setFcnModelPath(str);
-      AVGestureWrapper.setCnnModelPath(str);
+      AVGestureWrapper.setFilePath(str, str, "");
       AVGestureWrapper.setGlobalConfigFile(str);
-      AVGestureWrapper.setAVGestureReport(new ahnb(this));
+      AVGestureWrapper.setAVGestureReport(new aibd(this));
       AVGestureWrapper.setShouldUpload(false);
       SLog.d("GestureDetectManager", String.format("loadSo suc, [%s]", new Object[] { AVGestureWrapper.getVersionInfo() }));
       return false;
@@ -75,7 +74,7 @@ public class GestureDetectManager
   
   public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2, IGestureDetectCallBack paramIGestureDetectCallBack)
   {
-    paramArrayOfByte = new Thread(new ahnc(this, paramArrayOfByte, paramInt1, paramInt2, paramIGestureDetectCallBack));
+    paramArrayOfByte = new Thread(new aibe(this, paramArrayOfByte, paramInt1, paramInt2, paramIGestureDetectCallBack));
     paramArrayOfByte.setPriority(10);
     paramArrayOfByte.start();
   }

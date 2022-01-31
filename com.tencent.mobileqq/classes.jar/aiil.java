@@ -1,24 +1,30 @@
+import android.view.MotionEvent;
 import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemLongClickListener;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemButton;
+import java.lang.ref.WeakReference;
 
-class aiil
-  implements AdapterView.OnItemLongClickListener
+public class aiil
+  implements View.OnTouchListener
 {
-  aiil(aiii paramaiii) {}
+  public aiil(StructMsgItemButton paramStructMsgItemButton) {}
   
-  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if ((this.a.a.a.e) || (this.a.a.a.d)) {
-      TroopAvatarWallPreviewActivity.c(this.a.a.a);
+    if (this.a.a != null)
+    {
+      OnLongClickAndTouchListener localOnLongClickAndTouchListener = (OnLongClickAndTouchListener)this.a.a.get();
+      if (localOnLongClickAndTouchListener != null) {
+        return localOnLongClickAndTouchListener.onTouch(paramView, paramMotionEvent);
+      }
     }
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiil
  * JD-Core Version:    0.7.0.1
  */

@@ -6,8 +6,8 @@ import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import com.tencent.widget.XBaseAdapter;
 import java.util.HashSet;
-import oxw;
-import oxx;
+import ozq;
+import ozr;
 
 public class CustomAnimationAdapter
   extends XBaseAdapter
@@ -16,13 +16,13 @@ public class CustomAnimationAdapter
   
   private void a(View paramView)
   {
-    paramView = paramView.findViewById(2131362822);
+    paramView = paramView.findViewById(2131362840);
     if (paramView == null) {
       return;
     }
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { -paramView.getHeight(), 0 });
     localValueAnimator.setDuration(500L);
-    localValueAnimator.addUpdateListener(new oxx(this, paramView));
+    localValueAnimator.addUpdateListener(new ozr(this, paramView));
     localValueAnimator.start();
   }
   
@@ -38,7 +38,7 @@ public class CustomAnimationAdapter
       localView = paramView;
     } while (!this.a.contains(Integer.valueOf(paramInt)));
     this.a.remove(Integer.valueOf(paramInt));
-    paramView.getViewTreeObserver().addOnPreDrawListener(new oxw(this, paramView));
+    paramView.getViewTreeObserver().addOnPreDrawListener(new ozq(this, paramView));
     return paramView;
   }
   

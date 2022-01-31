@@ -1,16 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.av.ui.ControlUIObserver;
 
-class jrx
-  implements DialogInterface.OnClickListener
+public class jrx
+  implements Runnable
 {
-  jrx(jrt paramjrt) {}
+  public jrx(ControlUIObserver paramControlUIObserver, Object paramObject) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    this.a.a.finish();
+    this.jdField_a_of_type_ComTencentAvUiControlUIObserver.d(this.jdField_a_of_type_JavaLangObject);
   }
 }
 

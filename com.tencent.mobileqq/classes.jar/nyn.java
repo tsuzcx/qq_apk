@@ -1,17 +1,25 @@
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.MystoryListView;
+import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.FeedIdListCache;
+import com.tencent.biz.qqstory.storyHome.model.FeedManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import java.util.ArrayList;
 
 public class nyn
   implements Runnable
 {
-  public nyn(MystoryListView paramMystoryListView) {}
+  public nyn(FeedManager paramFeedManager) {}
   
   public void run()
   {
-    if (this.a.a != null)
+    if (FeedManager.a(this.a) == 0L)
     {
-      this.a.postDelayed(this.a.a, 100L);
-      this.a.a = null;
+      SLog.d("Q.qqstory.home.position", "cache in use");
+      return;
     }
+    this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache != null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache.a();
+    }
+    SLog.d("Q.qqstory.home.position", "release cache");
   }
 }
 

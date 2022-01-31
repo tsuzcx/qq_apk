@@ -1,43 +1,42 @@
-import android.graphics.Rect;
-import android.view.View;
-import android.view.View.OnLayoutChangeListener;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.webview.swift.SwiftFloatViewUI;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
 
-public class ajym
-  implements View.OnLayoutChangeListener
+public final class ajym
+  implements DownloadParams.DecodeHandler
 {
-  public ajym(SwiftFloatViewUI paramSwiftFloatViewUI, View paramView) {}
-  
-  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    this.jdField_a_of_type_AndroidViewView.getWindowVisibleDisplayFrame(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidGraphicsRect);
-    paramInt2 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidGraphicsRect.right - this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidGraphicsRect.left;
-    paramInt4 = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidGraphicsRect.top;
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_c_of_type_Int != paramInt2) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.d != paramInt4))
-    {
-      ThreadManager.getUIHandler().post(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_JavaLangRunnable);
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_c_of_type_Int = paramInt2;
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.d = paramInt4;
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
-    paramInt1 = paramInt3 - paramInt1;
-    if (paramInt1 != paramInt7 - paramInt5)
+    Object localObject;
+    do
     {
-      paramView = (FrameLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      if ((paramView.leftMargin > paramInt1 / 2) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidViewView != null) && (8 == this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_c_of_type_AndroidViewView.getVisibility()))
+      do
       {
-        paramView.leftMargin = (paramInt1 - this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidViewView.getWidth());
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidViewView.setLayoutParams(paramView);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_Int = paramInt1;
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 2);
+    paramDownloadParams = (int[])localObject;
+    float f2 = DeviceInfoUtil.a();
+    float f1 = f2;
+    if (f2 < 0.01F) {
+      f1 = 1.0F;
     }
+    paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
+    paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
+    return ImageUtil.a(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajym
  * JD-Core Version:    0.7.0.1
  */

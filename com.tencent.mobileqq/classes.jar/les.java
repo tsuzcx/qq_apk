@@ -1,41 +1,21 @@
+import android.content.Intent;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyObserver;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoyMsgManagerActivity;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 
 public class les
-  extends ReadInJoyObserver
+  implements View.OnClickListener
 {
-  public les(ReadInJoySelfActivity paramReadInJoySelfActivity) {}
+  public les(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.self.ReadInJoySelfActivity", 2, "onGetFollowAndFansResultAndForbidden retCode:" + paramInt1 + ", followCnt:" + paramInt2 + ", fansCnt:" + paramInt3 + ", isForbidden = " + paramBoolean);
-    }
-    if (paramInt1 == 0)
-    {
-      ReadInJoyHelper.a(this.a.a, paramInt2, paramInt3);
-      ReadInJoyHelper.j(this.a.app, paramBoolean);
-      if (ReadInJoySelfActivity.a(this.a) != null) {
-        ReadInJoySelfActivity.a(this.a).setText(ReadInJoyHelper.a(paramInt2));
-      }
-      if (ReadInJoySelfActivity.b(this.a) != null) {
-        ReadInJoySelfActivity.b(this.a).setText(ReadInJoyHelper.a(paramInt3));
-      }
-      if (ReadInJoySelfActivity.a(this.a) != null)
-      {
-        if (!paramBoolean) {
-          break label162;
-        }
-        ReadInJoySelfActivity.a(this.a).setVisibility(0);
-      }
-    }
-    return;
-    label162:
-    ReadInJoySelfActivity.a(this.a).setVisibility(8);
+    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80078A6", "0X80078A6", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
+    paramView = new Intent(this.a, ReadinjoyMsgManagerActivity.class);
+    this.a.startActivity(paramView);
   }
 }
 

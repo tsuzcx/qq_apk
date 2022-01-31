@@ -1,15 +1,15 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.biz.common.offline.HtmlOffline;
-import mqq.app.AppRuntime;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.common.util.FileChooserHelper;
 
-public final class klv
-  implements Runnable
+public class klv
+  implements DialogInterface.OnCancelListener
 {
-  public klv(String paramString, AppRuntime paramAppRuntime, AsyncBack paramAsyncBack) {}
+  public klv(FileChooserHelper paramFileChooserHelper) {}
   
-  public void run()
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    HtmlOffline.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_MqqAppAppRuntime, false, this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack);
+    FileChooserHelper.a(this.a);
   }
 }
 

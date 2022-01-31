@@ -1,18 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.widget.XListView.DrawFinishedListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinHandler.ReadInJoySkinObserver;
+import com.tencent.mobileqq.app.ThreadManager;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.GuideInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.RefreshInfo;
+import tencent.im.oidb.cmd0x5bd.oidb_0x5bd.SkinInfo;
 
 public class ldn
-  implements XListView.DrawFinishedListener
+  extends ReadInJoySkinHandler.ReadInJoySkinObserver
 {
-  public ldn(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
+  public ldn(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
-  public void a()
+  public void a(boolean paramBoolean, oidb_0x5bd.SkinInfo paramSkinInfo, oidb_0x5bd.GuideInfo paramGuideInfo1, oidb_0x5bd.GuideInfo paramGuideInfo2, oidb_0x5bd.RefreshInfo paramRefreshInfo)
   {
-    if ((!this.a.a) && (this.a.b))
-    {
-      this.a.a = true;
-      PublicTracker.a("subscribe_tab_cost", null);
+    if (paramBoolean) {
+      ThreadManager.post(new ldo(this, paramGuideInfo2, paramRefreshInfo, paramSkinInfo, paramGuideInfo1), 5, null, true);
     }
   }
 }

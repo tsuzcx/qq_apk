@@ -1,23 +1,23 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.lbs.BasicLocation;
-import com.tencent.biz.qqstory.model.lbs.LbsManager;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
-import com.tencent.biz.qqstory.network.handler.OfficialRecommendListPageLoader;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeListLoader.OnMsgTabNodeListLoadListener;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class neh
-  implements LbsManager.LbsUpdateListener
+  implements Runnable
 {
-  public neh(OfficialRecommendListPageLoader paramOfficialRecommendListPageLoader) {}
+  public neh(MsgTabNodeListLoader paramMsgTabNodeListLoader, ArrayList paramArrayList, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3) {}
   
-  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
+  public void run()
   {
-    SLog.b(":OfficialRecommendListPageLoader", "GetOfficialRecommendStoryListRequest onLbsUpdate.");
-    if (!paramBoolean) {
-      SLog.e(":OfficialRecommendListPageLoader", "GetOfficialRecommendStoryListRequest failed.");
+    Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.c.iterator();
+    while (localIterator.hasNext()) {
+      ((MsgTabNodeListLoader.OnMsgTabNodeListLoadListener)localIterator.next()).a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Boolean, this.b, this.c);
     }
-    this.a.a(paramBasicLocation);
-    ((LbsManager)SuperManager.a(9)).b(OfficialRecommendListPageLoader.a(this.a));
+    if ((QLog.isDevelopLevel()) && (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeListLoader.c.isEmpty())) {
+      QLog.d("Q.qqstory.msgTab.nodeList", 2, "mListeners is empty!");
+    }
   }
 }
 

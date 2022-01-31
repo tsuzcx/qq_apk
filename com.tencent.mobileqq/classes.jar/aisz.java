@@ -1,20 +1,19 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aisz
-  implements CompoundButton.OnCheckedChangeListener
+class aisz
+  implements Runnable
 {
-  public aisz(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  aisz(aisy paramaisy) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    PublishHomeWorkFragment.a(this.a, paramCompoundButton, paramBoolean);
+    QQToast.a(this.a.a.getActivity(), 2, "已保存到本地相册", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aisz
  * JD-Core Version:    0.7.0.1
  */

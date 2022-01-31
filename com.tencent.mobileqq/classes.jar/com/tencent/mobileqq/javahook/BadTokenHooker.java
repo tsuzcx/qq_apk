@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.javahook;
 
-import adlo;
-import adlp;
-import adlq;
+import advn;
+import advo;
+import advp;
 import android.annotation.TargetApi;
 import android.os.Build.VERSION;
 import android.view.View;
@@ -16,14 +16,14 @@ import mqq.os.MqqHandler;
 @TargetApi(14)
 public class BadTokenHooker
 {
-  private static adlq a = new adlq(null);
+  private static advp a = new advp(null);
   
   public static void a()
   {
     try
     {
       localClass1 = Class.forName("android.view.ViewRootImpl");
-      JavaHookBridge.findAndHookMethod(localClass1, "setView", new Object[] { View.class, WindowManager.LayoutParams.class, View.class, new adlo(localClass1) });
+      JavaHookBridge.findAndHookMethod(localClass1, "setView", new Object[] { View.class, WindowManager.LayoutParams.class, View.class, new advn(localClass1) });
     }
     catch (NoSuchMethodException localNoSuchMethodException1)
     {
@@ -85,12 +85,12 @@ public class BadTokenHooker
   
   private static void b(int paramInt1, String paramString1, String paramString2, int paramInt2)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new adlp(paramString1, paramString2, paramInt1), paramInt2);
+    ThreadManager.getSubThreadHandler().postDelayed(new advo(paramString1, paramString2, paramInt1), paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.javahook.BadTokenHooker
  * JD-Core Version:    0.7.0.1
  */

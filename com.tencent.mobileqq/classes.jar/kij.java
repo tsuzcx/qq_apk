@@ -1,19 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.utils.download.BaseDownloadAsyncTask;
+import android.view.animation.DecelerateInterpolator;
+import android.widget.ImageView;
+import com.tencent.mobileqq.widget.Rotate3dAnimation;
 
-public class kij
-  extends Handler
+class kij
+  implements Runnable
 {
-  public void handleMessage(Message paramMessage)
+  kij(kii paramkii) {}
+  
+  public void run()
   {
-    kii localkii = (kii)paramMessage.obj;
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    localkii.jdField_a_of_type_ComTencentAvUtilsDownloadBaseDownloadAsyncTask.a(((com.tencent.av.utils.download.DownloadParams[])localkii.jdField_a_of_type_ArrayOfJavaLangObject)[0]);
+    Rotate3dAnimation localRotate3dAnimation = new Rotate3dAnimation(-90.0F, 0.0F, this.a.jdField_a_of_type_Float, this.a.b, 200.0F, false);
+    localRotate3dAnimation.setDuration(500L);
+    localRotate3dAnimation.setInterpolator(new DecelerateInterpolator());
+    this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localRotate3dAnimation);
+    localRotate3dAnimation.setAnimationListener(new kik(this));
   }
 }
 

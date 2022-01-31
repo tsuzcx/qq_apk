@@ -1,18 +1,24 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.apollo.utils.ApolloUtil;
+import com.tencent.mobileqq.utils.VipUtils;
 
-public final class rtf
+class rtf
   implements DialogInterface.OnClickListener
 {
-  public rtf(ChatActivityUtils.StartVideoListener paramStartVideoListener) {}
+  rtf(rtc paramrtc, String paramString, int paramInt) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a != null) {
-      this.a.a();
-    }
-    paramDialogInterface.dismiss();
+    paramDialogInterface = new Intent(this.jdField_a_of_type_Rtc.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Rtc.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramDialogInterface);
+    VipUtils.a(this.jdField_a_of_type_Rtc.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "activity_alert_view", ApolloUtil.b(this.jdField_a_of_type_Rtc.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), 0, new String[] { "" + this.jdField_a_of_type_Int, "1" });
   }
 }
 

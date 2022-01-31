@@ -1,16 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
 
-public class tyz
-  implements View.OnClickListener
+class tyz
+  implements DialogInterface.OnClickListener
 {
-  public tyz(TroopMemberListActivity paramTroopMemberListActivity) {}
+  tyz(tyx paramtyx) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.setResult(0, this.a.getIntent());
-    this.a.finish();
+    this.a.a.finish();
   }
 }
 

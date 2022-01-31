@@ -1,43 +1,29 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
+import android.content.Context;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.tribe.TribePostTitlePrefixPanelController;
-import com.tencent.mobileqq.troop.activity.TroopBarPublishActivity;
+import com.tencent.mobileqq.structmsg.CGILoader;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
 
 public class aijz
-  extends ClickableSpan
+  implements Runnable
 {
-  public aijz(TroopBarPublishActivity paramTroopBarPublishActivity) {}
+  public aijz(StructMsgItemVideo paramStructMsgItemVideo, Context paramContext, View paramView) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.a != null)
+    String str = CGILoader.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.t, StructMsgItemVideo.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo));
+    this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo.a.obtainMessage().obj = this.jdField_a_of_type_AndroidViewView;
+    if (!TextUtils.isEmpty(str))
     {
-      if (!this.a.a.a()) {
-        break label42;
-      }
-      this.a.a.b();
-    }
-    for (;;)
-    {
-      this.a.e(true);
+      StructMsgItemVideo.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo, this.jdField_a_of_type_AndroidContentContext, str);
       return;
-      label42:
-      this.a.a.a();
-      ReportController.b(null, "dc00899", "Grp_tribe", "", "pub_page", "clk_prefixchoose", 0, 0, this.a.r, "", "", "");
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(-16777216);
-    paramTextPaint.setUnderlineText(false);
+    StructMsgItemVideo.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo, this.jdField_a_of_type_AndroidContentContext);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aijz
  * JD-Core Version:    0.7.0.1
  */

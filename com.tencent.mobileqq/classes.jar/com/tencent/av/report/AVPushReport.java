@@ -3,7 +3,7 @@ package com.tencent.av.report;
 import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.utils.HttpUtil.SimpleHttpPostTask;
 import com.tencent.qphone.base.util.QLog;
-import jmv;
+import jmg;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -37,7 +37,7 @@ public class AVPushReport
         {
           localJSONObject.put("uin", paramVideoAppInterface.getLongAccountUin());
           localJSONObject.put("skey", paramVideoAppInterface.b());
-          localJSONObject.put("qqversion", "7.6.0");
+          localJSONObject.put("qqversion", "7.6.3");
           localJSONObject.put("time", System.currentTimeMillis());
           if (paramString != null) {
             localJSONObject.put("attach", paramString);
@@ -50,7 +50,7 @@ public class AVPushReport
             paramVideoAppInterface.printStackTrace();
           }
         }
-        a = new jmv(str, localJSONObject.toString(), null);
+        a = new jmg(str, localJSONObject.toString(), null);
         a.execute(new Void[0]);
         return;
         str = "https://play.mobile.qq.com/avreport/cgi-bin/report";

@@ -1,33 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistory;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.TipsBar;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PstnUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class rvo
-  implements View.OnClickListener
+public final class rvo
+  implements DialogInterface.OnClickListener
 {
-  public rvo(ChatHistory paramChatHistory) {}
+  public rvo(QQAppInterface paramQQAppInterface, Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (NetworkUtil.d(BaseApplication.getContext()))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(8);
-      if (this.a.jdField_a_of_type_Int == 0) {
-        this.a.l();
-      }
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    if (this.a.jdField_a_of_type_AndroidAppDialog != null) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetTipsBar.setVisibility(0);
-    this.a.c.setText(this.a.getString(2131432992));
+    paramDialogInterface.dismiss();
+    PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 2, 16);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80067FC", "0X80067FC", 2, 0, "", "", "", "");
   }
 }
 

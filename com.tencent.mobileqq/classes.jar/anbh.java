@@ -1,32 +1,20 @@
-import com.tencent.mobileqq.widget.QQToast;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicSave;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import cooperation.qzone.video.QzoneLiveVideoGpuProxyActivity;
+import cooperation.qzone.video.QzoneLiveVideoPluginProxyActivity;
+import cooperation.qzone.video.QzoneLiveVideoTransparentActivity;
 
-class anbh
-  implements Runnable
+public class anbh
 {
-  anbh(anbg paramanbg) {}
-  
-  public void run()
+  public static Class a(String paramString)
   {
-    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(EditPicSave.a(this.a.a));
-    this.a.a.jdField_a_of_type_Boolean = true;
-    this.a.a.a(100);
-    this.a.a.d();
-    if (this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a() == 102)
-    {
-      EditPicSave.a(this.a.a, this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a());
-      return;
+    if (QzoneLiveVideoPluginProxyActivity.a(QzoneLiveVideoPluginProxyActivity.a(), paramString)) {
+      return QzoneLiveVideoTransparentActivity.class;
     }
-    QQToast.a(this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), 2, "保存成功", 0).a();
+    return QzoneLiveVideoGpuProxyActivity.class;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anbh
  * JD-Core Version:    0.7.0.1
  */

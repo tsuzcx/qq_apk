@@ -1,29 +1,25 @@
-import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
 import com.tencent.av.business.manager.pendant.EffectPendantTools;
 import com.tencent.av.business.manager.pendant.PendantItem;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.common.util.ZipUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class jgg
   implements Runnable
 {
-  final PendantItem jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public jgg(MagicFaceDataEntity paramMagicFaceDataEntity, PendantItem paramPendantItem)
-  {
-    this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem = paramPendantItem;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMagicFaceDataEntity);
-  }
+  public jgg(EffectPendantTools paramEffectPendantTools, File paramFile, PendantItem paramPendantItem) {}
   
   public void run()
   {
-    MagicFaceDataEntity localMagicFaceDataEntity = (MagicFaceDataEntity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localMagicFaceDataEntity != null)
+    try
     {
-      PendantItem localPendantItem = (PendantItem)localMagicFaceDataEntity.a.a();
-      if ((localPendantItem != null) && (this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem.getName().equals(localPendantItem.getName()))) {
-        localMagicFaceDataEntity.a(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem);
-      }
+      ZipUtils.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTools.b(this.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem));
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      localException.printStackTrace();
     }
   }
 }

@@ -1,14 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySubscribeFragement;
+import com.tencent.biz.pubaccount.util.PublicTracker;
+import com.tencent.widget.XListView.DrawFinishedListener;
 
 public class lnu
-  implements Runnable
+  implements XListView.DrawFinishedListener
 {
-  public lnu(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
+  public lnu(ReadInJoySubscribeFragement paramReadInJoySubscribeFragement) {}
   
-  public void run()
+  public void a()
   {
-    ReadInJoySelfFragment.a(this.a);
-    ReadInJoySelfFragment.b(this.a);
+    if ((!this.a.c) && (this.a.d))
+    {
+      this.a.c = true;
+      PublicTracker.a("subscribe_tab_cost", null);
+    }
   }
 }
 

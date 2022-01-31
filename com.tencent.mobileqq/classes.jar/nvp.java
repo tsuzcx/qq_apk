@@ -1,42 +1,30 @@
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader.GetCollectionListEvent;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesVideoCollectionPresenter;
-import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesVideoCollectionPresenter.VideoCollectionPresenterEventListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.newshare.callback.OnSimpleShareListener;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedItem;
+import com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailInteractSegment;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
 public class nvp
-  extends QQUIEventReceiver
+  extends OnSimpleShareListener
 {
-  public nvp(@NonNull MemoriesVideoCollectionPresenter paramMemoriesVideoCollectionPresenter)
+  public nvp(DetailInteractSegment paramDetailInteractSegment) {}
+  
+  public void a()
   {
-    super(paramMemoriesVideoCollectionPresenter);
+    super.a();
+    DetailInteractSegment.a(this.a, null);
   }
   
-  public void a(@NonNull MemoriesVideoCollectionPresenter paramMemoriesVideoCollectionPresenter, @NonNull DateCollectionListPageLoader.GetCollectionListEvent paramGetCollectionListEvent)
+  public void a(int paramInt)
   {
-    if (!TextUtils.equals(String.valueOf(paramMemoriesVideoCollectionPresenter.hashCode()), paramGetCollectionListEvent.jdField_a_of_type_JavaLangString)) {
-      return;
-    }
-    SLog.b("Q.qqstory.memories.MemoriesVideoCollectionPresenter", "receive video collection list. %s.", paramGetCollectionListEvent);
-    if (paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
-    {
-      paramMemoriesVideoCollectionPresenter.jdField_a_of_type_Int = paramGetCollectionListEvent.jdField_a_of_type_Int;
-      paramMemoriesVideoCollectionPresenter.jdField_a_of_type_Boolean = true;
-      if (paramGetCollectionListEvent.e)
-      {
-        paramMemoriesVideoCollectionPresenter.a(paramGetCollectionListEvent.jdField_a_of_type_JavaUtilList, paramGetCollectionListEvent.c, paramGetCollectionListEvent.jdField_a_of_type_Boolean);
-        paramMemoriesVideoCollectionPresenter.b = paramGetCollectionListEvent.jdField_a_of_type_Boolean;
-      }
-    }
-    MemoriesVideoCollectionPresenter.a(paramMemoriesVideoCollectionPresenter).a(paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+    super.a(paramInt);
+    StoryReportor.a("home_page", "suc_share", 2, paramInt, new String[] { StoryReportor.b(DetailInteractSegment.a(this.a).a) + "", StoryReportor.a(DetailInteractSegment.a(this.a).a) + "", DetailInteractSegment.a(this.a).a.feedId });
   }
   
-  public Class acceptEventClass()
+  public void b(int paramInt)
   {
-    return DateCollectionListPageLoader.GetCollectionListEvent.class;
+    super.b(paramInt);
+    StoryReportor.a("home_page", "share_chanel", 2, paramInt, new String[] { StoryReportor.b(DetailInteractSegment.a(this.a).a) + "", StoryReportor.a(DetailInteractSegment.a(this.a).a) + "", DetailInteractSegment.a(this.a).a.feedId });
   }
 }
 

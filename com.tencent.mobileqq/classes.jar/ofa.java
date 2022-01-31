@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoSyncStoryGuide;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.biz.qqstory.takevideo.EditDoodleExport;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
 
 public class ofa
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public ofa(EditVideoSyncStoryGuide paramEditVideoSyncStoryGuide, QQCustomDialog paramQQCustomDialog) {}
+  public ofa(EditVideoGuide paramEditVideoGuide) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    EditDoodleExport localEditDoodleExport = (EditDoodleExport)this.a.a(EditDoodleExport.class);
+    if (localEditDoodleExport != null) {
+      localEditDoodleExport.c();
+    }
   }
 }
 

@@ -1,13 +1,39 @@
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack;
+import com.tencent.mobileqq.pic.DownCallBack.DownResult;
+import com.tencent.mobileqq.pic.PicInfoInterface.ErrInfo;
+import com.tencent.mobileqq.shortvideo.ShortVideoResult;
+import com.tencent.mobileqq.shortvideo.UiCallBack.DownAdapter;
 
-class vol
-  implements Runnable
+public class vol
+  extends UiCallBack.DownAdapter
 {
-  vol(vok paramvok) {}
+  public vol(AIOImageProviderService paramAIOImageProviderService, long paramLong, int paramInt1, int paramInt2) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    this.a.a.a.p();
+    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
+    if (localIAIOImageProviderCallBack != null) {
+      localIAIOImageProviderCallBack.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramInt, 0L, true);
+    }
+  }
+  
+  public void a(int paramInt, ShortVideoResult paramShortVideoResult)
+  {
+    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
+    if (paramShortVideoResult.jdField_a_of_type_Int == 0)
+    {
+      paramShortVideoResult = (DownCallBack.DownResult)paramShortVideoResult.jdField_a_of_type_JavaLangObject;
+      if (localIAIOImageProviderCallBack != null) {
+        localIAIOImageProviderCallBack.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 1, paramShortVideoResult.b, false);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, paramShortVideoResult.b);
+      return;
+    }
+    if (localIAIOImageProviderCallBack != null) {
+      localIAIOImageProviderCallBack.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, 2, "step:" + paramShortVideoResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.a + ", desc:" + paramShortVideoResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b, false);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b, "I:E");
   }
 }
 

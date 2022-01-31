@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search;
 
-import ahcr;
-import ahcs;
-import ahct;
+import ahqt;
+import ahqu;
+import ahqv;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Handler;
@@ -382,8 +382,8 @@ public class FunctionModuleConfigManager
           break;
           i += 1;
           break label312;
-          Collections.sort(localArrayList2, new ahcr(this));
-          Collections.sort(localArrayList3, new ahcs(this));
+          Collections.sort(localArrayList2, new ahqt(this));
+          Collections.sort(localArrayList3, new ahqu(this));
           localArrayList1.addAll(localArrayList2);
           localArrayList1.addAll(localArrayList3);
           i = localArrayList1.size();
@@ -412,7 +412,7 @@ public class FunctionModuleConfigManager
     while (paramString.equals(a())) {
       return;
     }
-    ThreadManager.post(new ahct(this, paramString), 8, null, false);
+    ThreadManager.post(new ahqv(this, paramString), 8, null, false);
   }
   
   public void c(String paramString)

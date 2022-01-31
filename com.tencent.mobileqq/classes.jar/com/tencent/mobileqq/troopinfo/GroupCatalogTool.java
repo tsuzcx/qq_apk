@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troopinfo;
 
-import ajij;
+import ajwn;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -428,7 +428,7 @@ public class GroupCatalogTool
       HashMap localHashMap = new HashMap();
       File localFile = new File(b(BaseApplicationImpl.getContext()) + "layer.zip");
       localHashMap.put("http://pub.idqqimg.com/qqweb/m/qun/configs/category/layer.zip", localFile);
-      localDownloaderInterface.a(new DownloadTask(localArrayList, localHashMap, "http://pub.idqqimg.com/qqweb/m/qun/configs/category/layer.zip"), new ajij(this, localFile, paramString, paramGetChoiceListCallback), new Bundle());
+      localDownloaderInterface.a(new DownloadTask(localArrayList, localHashMap, "http://pub.idqqimg.com/qqweb/m/qun/configs/category/layer.zip"), new ajwn(this, localFile, paramString, paramGetChoiceListCallback), new Bundle());
     }
   }
   
@@ -494,7 +494,7 @@ public class GroupCatalogTool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troopinfo.GroupCatalogTool
  * JD-Core Version:    0.7.0.1
  */

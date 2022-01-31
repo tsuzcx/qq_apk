@@ -1,5 +1,12 @@
 package com.tencent.mobileqq.ar;
 
+import aaeb;
+import aaec;
+import aaed;
+import aaee;
+import aaef;
+import aaeg;
+import aaeh;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -40,13 +47,6 @@ import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
-import zzh;
-import zzi;
-import zzj;
-import zzk;
-import zzl;
-import zzm;
-import zzn;
 
 public class ScanningSurfaceView
   extends SurfaceView
@@ -60,11 +60,11 @@ public class ScanningSurfaceView
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private SurfaceHolder jdField_a_of_type_AndroidViewSurfaceHolder;
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new zzh(this);
+  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new aaeb(this);
   public FaceUIController a;
   private ScanningData jdField_a_of_type_ComTencentMobileqqArScanningData;
   private final Object jdField_a_of_type_JavaLangObject = new Object();
-  private Runnable jdField_a_of_type_JavaLangRunnable = new zzj(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new aaed(this);
   private List jdField_a_of_type_JavaUtilList;
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private CopyOnWriteArrayList jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
@@ -192,12 +192,12 @@ public class ScanningSurfaceView
       Object localObject;
       if (!localScanningData2.jdField_h_of_type_Boolean)
       {
-        this.jdField_a_of_type_AndroidOsHandler.post(new zzk(this, localScanningData2, localScanningData1));
+        this.jdField_a_of_type_AndroidOsHandler.post(new aaee(this, localScanningData2, localScanningData1));
         if ((localScanningData2.jdField_a_of_type_Boolean) && (!localScanningData2.jdField_b_of_type_Boolean) && (localScanningData2.jdField_g_of_type_Boolean) && (!localScanningData2.jdField_e_of_type_Boolean) && (!TextUtils.isEmpty(localScanningData2.jdField_d_of_type_JavaLangString)) && (!this.jdField_b_of_type_JavaUtilConcurrentCopyOnWriteArrayList.contains(localScanningData2.jdField_d_of_type_JavaLangString)))
         {
           localObject = localScanningData2.jdField_d_of_type_JavaLangString;
           String str = localScanningData2.jdField_b_of_type_JavaLangString;
-          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new zzl(this, (String)localObject, str), 4000L);
+          this.jdField_a_of_type_AndroidOsHandler.postDelayed(new aaef(this, (String)localObject, str), 4000L);
         }
       }
       localScanningData2.jdField_a_of_type_AndroidGraphicsPaint.setColor(localScanningData2.jdField_e_of_type_Int);
@@ -549,7 +549,7 @@ public class ScanningSurfaceView
         if (j == 3) {
           break label5760;
         }
-        this.jdField_a_of_type_ComTencentMobileqqArFaceUIController.a.a(3, localScanningData2.jdField_g_of_type_JavaLangString, localScanningData2.jdField_h_of_type_JavaLangString, new zzm(this, localScanningData2));
+        this.jdField_a_of_type_ComTencentMobileqqArFaceUIController.a.a(3, localScanningData2.jdField_g_of_type_JavaLangString, localScanningData2.jdField_h_of_type_JavaLangString, new aaeg(this, localScanningData2));
         i = 0;
         if ((localScanningData2.jdField_g_of_type_Boolean) && ((localScanningData2.jdField_a_of_type_Boolean) || (localScanningData2.jdField_c_of_type_Boolean)) && (localScanningData2.jdField_f_of_type_Boolean) && (!localScanningData2.jdField_e_of_type_Boolean) && (localScanningData2.bH > 0.0F))
         {
@@ -673,7 +673,7 @@ public class ScanningSurfaceView
         if ((j != 0) && (localMotionEvent != null) && (localMotionEvent.jdField_f_of_type_Boolean) && (!localMotionEvent.jdField_a_of_type_Boolean) && (!localMotionEvent.jdField_e_of_type_Boolean))
         {
           paramMotionEvent = a();
-          this.jdField_a_of_type_AndroidOsHandler.post(new zzn(this, paramMotionEvent, localMotionEvent));
+          this.jdField_a_of_type_AndroidOsHandler.post(new aaeh(this, paramMotionEvent, localMotionEvent));
         }
         if ((i != 0) && (localMotionEvent != null) && (localMotionEvent.jdField_g_of_type_Boolean)) {
           b(localMotionEvent.jdField_b_of_type_JavaLangString);
@@ -798,7 +798,7 @@ public class ScanningSurfaceView
   private void c(ScanningData paramScanningData)
   {
     if ((paramScanningData != null) && ((paramScanningData.jdField_b_of_type_AndroidGraphicsBitmap == null) || (paramScanningData.jdField_a_of_type_AndroidGraphicsBitmap == null)) && (!TextUtils.isEmpty(paramScanningData.jdField_a_of_type_JavaLangString))) {
-      ThreadManager.post(new zzi(this, paramScanningData), 5, null, true);
+      ThreadManager.post(new aaec(this, paramScanningData), 5, null, true);
     }
   }
   

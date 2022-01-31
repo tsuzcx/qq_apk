@@ -1,39 +1,69 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-import com.tencent.mobileqq.shortvideo.redbag.VideoPlayIPCClient;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v4.view.PagerAdapter;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.GridView;
+import com.tencent.mobileqq.richstatus.ActionListActivity;
+import com.tencent.mobileqq.richstatus.StateTag;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class ahpd
-  implements Runnable
+  extends PagerAdapter
 {
-  public ahpd(RedBagVideoManager paramRedBagVideoManager) {}
+  private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   
-  public void run()
+  private ahpd(ActionListActivity paramActionListActivity) {}
+  
+  public void a()
   {
-    String str1 = null;
-    if (RedBagVideoManager.a(this.a) == null) {}
-    while (RedBagVideoManager.a(this.a).jdField_e_of_type_Int != LocalMediaInfo.REDBAG_TYPE_GET) {
-      return;
-    }
-    String str2 = RedBagVideoManager.a(this.a).d;
-    Object localObject = new Bundle();
-    ((Bundle)localObject).putString("VALUE_USER_UIN_TO_GET_NICK_NAME", str2);
-    localObject = VideoPlayIPCClient.a().a("CMD_GET_NICK_NAME_BY_UIN", (Bundle)localObject);
-    if ((localObject == null) && (QLog.isColorLevel())) {
-      QLog.d("RedBagVideoManager", 2, "getNickName VideoPlayIPCClient.callServer value=null");
-    }
-    if (localObject != null) {}
-    for (localObject = ((Bundle)localObject).getString("VALUE_USER_NICK_NAME");; localObject = "")
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    try
     {
-      Bundle localBundle = VideoPlayIPCClient.a().a("CMD_GET_CURRENT_NICK_NAME", null);
-      if (localBundle != null) {
-        str1 = localBundle.getString("VALUE_GET_CURRENT_NICK_NAME");
+      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        StateTag localStateTag = (StateTag)localIterator.next();
+        GridView localGridView = new GridView(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity.getApplicationContext());
+        localGridView.setNumColumns(3);
+        localGridView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
+        localGridView.setSelector(new ColorDrawable(0));
+        localGridView.setScrollingCacheEnabled(false);
+        localGridView.setAdapter(new ahpc(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity, localStateTag.jdField_a_of_type_JavaUtilArrayList));
+        this.jdField_a_of_type_JavaUtilArrayList.add(localGridView);
       }
-      this.a.a(RedBagVideoManager.a(this.a), str2, (String)localObject, str1, RedBagVideoManager.a(this.a).c, RedBagVideoManager.a(this.a).h, RedBagVideoManager.a(this.a).jdField_e_of_type_JavaLangString);
       return;
     }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      System.gc();
+      super.notifyDataSetChanged();
+    }
+  }
+  
+  public void destroyItem(View paramView, int paramInt, Object paramObject) {}
+  
+  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  {
+    paramViewGroup.removeView((View)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt));
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
+  {
+    GridView localGridView = (GridView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    paramViewGroup.addView(localGridView);
+    return localGridView;
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

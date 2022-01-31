@@ -11,6 +11,7 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
+import com.tencent.qphone.base.util.QLog;
 
 public class IndexView
   extends View
@@ -290,6 +291,7 @@ public class IndexView
     boolean bool = false;
     int k = paramMotionEvent.getAction();
     int[] arrayOfInt;
+    Drawable localDrawable;
     float f2;
     int i;
     int j;
@@ -308,23 +310,28 @@ public class IndexView
         this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setState(arrayOfInt);
         this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.invalidateSelf();
       }
-      getBackground().setState(arrayOfInt);
-      getBackground().invalidateSelf();
-      if ((k != 0) && (k != 2) && (k != 1)) {
-        break label389;
-      }
-      f2 = paramMotionEvent.getY();
-      if ((this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener == null) || (f2 < 0.0F)) {
-        break label383;
-      }
-      i = getHeight() - getPaddingTop() - getPaddingBottom();
-      j = a(this.jdField_a_of_type_ArrayOfInt);
-      if (i <= j) {
-        break label397;
+      localDrawable = getBackground();
+      if (localDrawable != null)
+      {
+        localDrawable.setState(arrayOfInt);
+        localDrawable.invalidateSelf();
+        if ((k != 0) && (k != 2) && (k != 1)) {
+          break label425;
+        }
+        f2 = paramMotionEvent.getY();
+        if ((this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener == null) || (f2 < 0.0F)) {
+          break label419;
+        }
+        i = getHeight() - getPaddingTop() - getPaddingBottom();
+        j = a(this.jdField_a_of_type_ArrayOfInt);
+        if (i <= j) {
+          break label433;
+        }
       }
     }
-    label389:
-    label397:
+    label419:
+    label425:
+    label433:
     for (float f1 = (i - j) * 1.0F / (this.jdField_a_of_type_ArrayOfJavaLangString.length - 1);; f1 = 0.0F)
     {
       j = -1;
@@ -341,6 +348,8 @@ public class IndexView
         }
         f2 -= this.jdField_a_of_type_ArrayOfInt[j] + f1;
       }
+      QLog.e("IndexView", 1, "getBackground: failed. ");
+      break;
       if ((k != 3) && (k != 1)) {
         break;
       }
@@ -356,8 +365,14 @@ public class IndexView
         this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setState(arrayOfInt);
         this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.invalidateSelf();
       }
-      getBackground().setState(arrayOfInt);
-      getBackground().invalidateSelf();
+      localDrawable = getBackground();
+      if (localDrawable != null)
+      {
+        localDrawable.setState(arrayOfInt);
+        localDrawable.invalidateSelf();
+        break;
+      }
+      QLog.e("IndexView", 1, "getBackground: failed. ");
       break;
       j = i;
       if (i >= this.jdField_a_of_type_ArrayOfInt.length) {
@@ -367,7 +382,6 @@ public class IndexView
       if (this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener2 != null) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView$OnIndexChangedListener2.a(this.jdField_a_of_type_ArrayOfJavaLangString[j], k);
       }
-      label383:
       bool = true;
       do
       {
@@ -382,12 +396,12 @@ public class IndexView
     if ("$".equals(paramArrayOfString[0]))
     {
       this.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839235);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839239);
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     }
     if (this.c)
     {
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839234);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839238);
       this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
     }
     this.jdField_a_of_type_ArrayOfJavaLangString = paramArrayOfString;
@@ -423,7 +437,7 @@ public class IndexView
       this.c = paramBoolean2;
       this.d = paramBoolean3;
       if ((!paramBoolean2) || (!paramBoolean3)) {
-        break label103;
+        break label105;
       }
       arrayOfString = new String[paramArrayOfString.length + 3];
       arrayOfString[0] = "$";
@@ -439,7 +453,7 @@ public class IndexView
     {
       setIndex(arrayOfString);
       return;
-      label103:
+      label105:
       if ((paramBoolean2) || (paramBoolean3))
       {
         arrayOfString = new String[paramArrayOfString.length + 2];
@@ -482,7 +496,7 @@ public class IndexView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.IndexView
  * JD-Core Version:    0.7.0.1
  */

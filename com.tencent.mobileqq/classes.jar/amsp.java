@@ -1,23 +1,20 @@
-import dov.com.qq.im.capture.QIMManager;
-import dov.com.qq.im.capture.data.CaptureComboManager;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager;
-import dov.com.qq.im.capture.paster.PasterDataManager;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
+import cooperation.qzone.QzoneGiftFullScreenActionManager;
+import cooperation.qzone.QzoneGiftFullScreenActionManager.MagicfaceCloseListener;
+import cooperation.qzone.QzoneGiftFullScreenViewController;
 
-public final class amsp
-  implements Runnable
+public class amsp
+  implements QzoneGiftFullScreenActionManager.MagicfaceCloseListener
 {
-  public void run()
+  public amsp(QzoneGiftFullScreenViewController paramQzoneGiftFullScreenViewController, QzoneGiftFullScreenActionManager paramQzoneGiftFullScreenActionManager) {}
+  
+  public void a()
   {
-    ((QIMMusicConfigManager)QIMManager.a().c(2)).c();
-    ((PasterDataManager)QIMManager.a().c(4)).c();
-    ((QIMPtvTemplateManager)QIMManager.a().c(3)).d();
-    ((CaptureComboManager)QIMManager.a().c(5)).d();
+    this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amsp
  * JD-Core Version:    0.7.0.1
  */

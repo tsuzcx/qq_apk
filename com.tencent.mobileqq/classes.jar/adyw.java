@@ -1,41 +1,33 @@
-import android.app.Activity;
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import cooperation.troop.NearbyVideoChatProxyActivity;
-import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.SelfInfo;
+import android.os.Handler;
+import android.widget.ImageView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController;
+import com.tencent.mobileqq.leba.LebaFeedsVideoPlayer;
 
-class adyw
-  implements TroopMemberApiClient.Callback
+public class adyw
+  implements Runnable
 {
-  adyw(adyv paramadyv, String paramString) {}
+  public adyw(LebaFeedsVideoPlayController paramLebaFeedsVideoPlayController, int paramInt) {}
   
-  public void a(Bundle paramBundle)
+  public void run()
   {
-    if (paramBundle.getBoolean("isOtherTypeChatting", false))
-    {
-      paramBundle = DialogUtil.a(this.jdField_a_of_type_Adyv.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a(), 230);
-      paramBundle.setMessage(this.jdField_a_of_type_Adyv.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a().getString(2131428986));
-      paramBundle.setNegativeButton("确定", new adyx(this));
-      paramBundle.show();
-      return;
+    if (LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController) != null) {
+      LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).setVisibility(8);
     }
-    TroopMemberApiClient.a();
-    paramBundle = new oidb_0x8dd.SelfInfo();
-    paramBundle.uint32_gender.set(this.jdField_a_of_type_Adyv.jdField_a_of_type_Int);
-    paramBundle.uint32_charm_level.set(this.jdField_a_of_type_Adyv.b);
-    paramBundle.uint32_age.set(this.jdField_a_of_type_Adyv.c);
-    NearbyVideoChatProxyActivity.a(this.jdField_a_of_type_Adyv.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a(), this.jdField_a_of_type_Adyv.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.mRuntime.a(), null, this.jdField_a_of_type_JavaLangString, paramBundle, 0);
+    if ((LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController) != null) && (LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController) != null)) {
+      LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController, LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).c());
+    }
+    if ((LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController) != null) && (this.jdField_a_of_type_Int != 3))
+    {
+      LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).setVisibility(0);
+      LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).removeMessages(11);
+      LebaFeedsVideoPlayController.a(this.jdField_a_of_type_ComTencentMobileqqLebaLebaFeedsVideoPlayController).sendEmptyMessageDelayed(11, 3000L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adyw
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,19 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ConnectionCallback;
 
-public abstract interface aapc
+class aapc
+  implements Runnable
 {
-  public abstract void a(ArkLocalAppMgr.UpdateAppByNameTask paramUpdateAppByNameTask, Object paramObject);
+  aapc(aaoz paramaaoz) {}
+  
+  public void run()
+  {
+    if ((ArkAppEventObserverManager.a(this.a.a) != null) && (!"wifi".equals(ArkAppEventObserverManager.a(this.a.a))))
+    {
+      ArkAppEventObserverManager.a(this.a.a).a(true, "wifi");
+      ArkAppEventObserverManager.a(this.a.a, "wifi");
+    }
+  }
 }
 
 

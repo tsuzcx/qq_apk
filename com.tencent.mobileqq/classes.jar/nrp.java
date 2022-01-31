@@ -1,19 +1,10 @@
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListAdapter;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListView.OnHorizontalScrollListener;
-import com.tencent.widget.HorizontalListView.OnScrollStateChangedListener;
+import android.support.annotation.NonNull;
+import com.tribe.async.reactive.Stream;
 
-public class nrp
-  implements HorizontalListView.OnScrollStateChangedListener
+public abstract interface nrp
 {
-  public nrp(StoryPickerHorizontalListView paramStoryPickerHorizontalListView) {}
-  
-  public void a(int paramInt)
-  {
-    if ((paramInt == 4097) && (this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalScrollListener != null)) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListView$OnHorizontalScrollListener.a(this.a.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerHorizontalListAdapter.a);
-    }
-  }
+  @NonNull
+  public abstract Stream a(nrl paramnrl);
 }
 
 

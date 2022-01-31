@@ -1,28 +1,25 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.upload.common.UploadConfiguration.NetworkStateObserver;
+import cooperation.qzone.UploadEnv;
+import cooperation.qzone.util.NetworkState.NetworkStateListener;
 
 public class amtq
-  implements Runnable
+  implements NetworkState.NetworkStateListener
 {
-  public amtq(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public amtq(UploadEnv paramUploadEnv, UploadConfiguration.NetworkStateObserver paramNetworkStateObserver) {}
   
-  public void run()
+  public void onNetworkConnect(boolean paramBoolean)
   {
-    QIMEffectCameraCaptureUnit.g(this.a, false);
-    if (QIMEffectCameraCaptureUnit.a(this.a) == null) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadEnv", 2, "upload2: onNetworkConnect registerNetworkStateObserver|onNetworkConnect：" + paramBoolean);
     }
-    ((ViewGroup)this.a.jdField_a_of_type_AndroidViewView).removeView(QIMEffectCameraCaptureUnit.a(this.a));
-    QIMEffectCameraCaptureUnit.b(this.a).setVisibility(0);
-    QIMEffectCameraCaptureUnit.b(this.a).setEnabled(true);
-    this.a.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewEffectsCameraCaptureView.a(null);
+    UploadEnv.a(this.jdField_a_of_type_CooperationQzoneUploadEnv, paramBoolean);
+    this.jdField_a_of_type_ComTencentUploadCommonUploadConfiguration$NetworkStateObserver.onStateChanged(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amtq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,54 +1,85 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.store.ApolloResDownloader.OnApolloDownLoadListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloBaseInfo;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.content.Context;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.graphics.Rect;
+import android.graphics.drawable.Drawable;
+import android.text.style.ImageSpan;
+import com.tencent.image.URLDrawable;
+import com.tencent.qphone.base.util.QLog;
 
-class abuk
-  implements ApolloResDownloader.OnApolloDownLoadListener
+public class abuk
+  extends ImageSpan
 {
-  abuk(abue paramabue, int paramInt1, QQAppInterface paramQQAppInterface, String paramString1, int paramInt2, boolean paramBoolean, String paramString2, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
+  private Context a;
+  public String a;
   
-  public void onDownLoadFinish(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public abuk(Context paramContext, int paramInt, String paramString)
   {
-    paramString = new Bundle();
-    int i;
-    if (paramBoolean) {
-      if ((this.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
-      {
-        paramArrayOfInt = ((ApolloManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(152)).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-        if (paramArrayOfInt == null) {
-          break label222;
+    super(paramContext, paramInt, 1);
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_JavaLangString = paramString;
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
+  {
+    paramCharSequence = getDrawable();
+    if (paramCharSequence == null) {
+      return;
+    }
+    if (((paramCharSequence instanceof URLDrawable)) && (((URLDrawable)paramCharSequence).getStatus() == 1)) {
+      paramCharSequence.setBounds(0, 0, paramCharSequence.getIntrinsicWidth() / 2, paramCharSequence.getIntrinsicHeight() / 2);
+    }
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat, (paramInt5 - paramInt3 - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
+  }
+  
+  public Drawable getDrawable()
+  {
+    if (this.jdField_a_of_type_JavaLangString != null)
+    {
+      URLDrawable localURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, null);
+      if (QLog.isColorLevel()) {
+        if ("UrlCenterImageSpan.getDrawable. url:" + this.jdField_a_of_type_JavaLangString + " drawable:" + localURLDrawable == null) {
+          break label88;
         }
-        i = paramArrayOfInt.apolloVipFlag;
-        paramInt2 = paramArrayOfInt.apolloVipLevel;
+      }
+      label88:
+      for (String str = localURLDrawable.getIntrinsicWidth() + "";; str = localURLDrawable.toString())
+      {
+        QLog.e(".troop.send_gift", 2, str);
+        return localURLDrawable;
       }
     }
-    for (;;)
-    {
-      paramString.putInt("apollo_apolloVipFlag", i);
-      paramString.putInt("apollo_apolloVipLevel", paramInt2);
-      paramString.putInt("apollo_result", 0);
-      paramString.putInt("apollo_partnerRoleId", paramInt1);
-      paramString.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
-      paramString.putInt("apollo_previewAction", this.jdField_b_of_type_Int);
-      paramString.putBoolean("apollo_previewOnFrame", this.jdField_a_of_type_Boolean);
-      paramString.putString("apollo_id", this.jdField_b_of_type_JavaLangString);
-      paramString.putString("title", this.c);
-      paramString.putString("subTitle", this.d);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      paramString.putInt("apollo_result", 1);
-      paramString.putString("apollo_json", this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramString);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      label222:
-      paramInt2 = 0;
-      i = 0;
+    return super.getDrawable();
+  }
+  
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    paramCharSequence = getDrawable();
+    if (paramCharSequence == null) {
+      return 0;
     }
+    if (((paramCharSequence instanceof URLDrawable)) && (((URLDrawable)paramCharSequence).getStatus() == 1)) {
+      paramCharSequence.setBounds(0, 0, paramCharSequence.getIntrinsicWidth() / 2, paramCharSequence.getIntrinsicHeight() / 2);
+    }
+    paramCharSequence = paramCharSequence.getBounds();
+    if (paramFontMetricsInt != null)
+    {
+      paramPaint = paramPaint.getFontMetricsInt();
+      paramInt2 = paramPaint.bottom - paramPaint.top;
+      int i = paramCharSequence.bottom - paramCharSequence.top;
+      paramInt1 = i / 2 - paramInt2 / 4;
+      i /= 2;
+      paramInt2 = paramInt2 / 4 + i;
+      paramFontMetricsInt.ascent = (-paramInt2);
+      paramFontMetricsInt.top = (-paramInt2);
+      paramFontMetricsInt.bottom = paramInt1;
+      paramFontMetricsInt.descent = paramInt1;
+    }
+    return paramCharSequence.right;
   }
 }
 

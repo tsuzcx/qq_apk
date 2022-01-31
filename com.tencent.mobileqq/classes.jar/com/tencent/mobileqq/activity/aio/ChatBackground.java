@@ -402,7 +402,7 @@ public class ChatBackground
     try
     {
       localObject2 = Shader.TileMode.REPEAT;
-      localDrawable = paramContext.getResources().getDrawable(2130838339);
+      localDrawable = paramContext.getResources().getDrawable(2130838343);
       if (localDrawable == null)
       {
         QLog.e("ChatBackground", 1, "setAIOBackgroundBmp Drawable d == null.");
@@ -427,7 +427,7 @@ public class ChatBackground
       {
         Drawable localDrawable;
         QLog.e("ChatBackground", 1, "setAIOBackgroundBmp OOM1:" + paramString.getMessage());
-        paramChatBackground.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130845691);
+        paramChatBackground.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130845819);
         try
         {
           paramString = new HashMap();
@@ -444,7 +444,7 @@ public class ChatBackground
       {
         label202:
         QLog.e("ChatBackground", 1, "setAIOBackgroundBmp OOM2 or Err:" + paramString.getMessage());
-        paramChatBackground.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130845691);
+        paramChatBackground.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130845819);
         try
         {
           paramString = new HashMap();
@@ -626,14 +626,14 @@ public class ChatBackground
           continue;
         }
         paramChatBackground.jdField_a_of_type_JavaLangString = "null";
-        paramChatBackground.jdField_a_of_type_AndroidContentResColorStateList = paramContext.getResources().getColorStateList(2131494224);
+        paramChatBackground.jdField_a_of_type_AndroidContentResColorStateList = paramContext.getResources().getColorStateList(2131494231);
         a(paramContext, paramChatBackground, str1, bool1);
       }
       catch (OutOfMemoryError paramString1)
       {
         long l3;
         QLog.e("ChatBackground", 1, "getChatBackground OOM0 ; path = " + str1);
-        paramChatBackground.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130845691);
+        paramChatBackground.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130845819);
         try
         {
           paramString1 = new HashMap();
@@ -643,7 +643,7 @@ public class ChatBackground
         }
         catch (Exception paramContext) {}
         continue;
-        paramString2 = paramContext.getResources().getDrawable(2130838339);
+        paramString2 = paramContext.getResources().getDrawable(2130838343);
         continue;
       }
       if (paramChatBackground.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
@@ -844,7 +844,7 @@ public class ChatBackground
         }
         QLog.e("ChatBackground", 2, "getChatBackground, bg == null, path=" + str1 + ", fileErr=" + paramBoolean);
         paramChatBackground.jdField_a_of_type_JavaLangString = "null";
-        paramChatBackground.jdField_a_of_type_AndroidContentResColorStateList = paramContext.getResources().getColorStateList(2131494224);
+        paramChatBackground.jdField_a_of_type_AndroidContentResColorStateList = paramContext.getResources().getColorStateList(2131494231);
         a(paramContext, paramChatBackground, str1, bool1);
         if (paramBoolean) {
           break;

@@ -1,17 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
-import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
 
 public class lsn
-  implements UserOperationModule.Ox978RespCallBack
+  implements View.OnClickListener
 {
-  public lsn(OnTopicRecommendHeaderFollowClickListener paramOnTopicRecommendHeaderFollowClickListener) {}
+  public lsn(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter, String paramString1, String paramString2) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramInt == 2)) {
-      ThreadManager.post(new lso(this), 5, null, true);
-    }
+    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_JavaLangString);
+    ReadInJoyUtils.a(ReadInJoyFooterPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyFooterPresenter), this.b);
   }
 }
 

@@ -1,46 +1,38 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
+import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnVideoDataEventListener;
 
-public final class adcy
-  implements Runnable
+public class adcy
+  implements FileVideoManager.FileVideoManagerCallback
 {
-  public void run()
+  public adcy(DefaultFileModel paramDefaultFileModel, FileBrowserModelBase.OnVideoDataEventListener paramOnVideoDataEventListener) {}
+  
+  public void a(int paramInt, String paramString)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject = localAppRuntime;
-    if (localAppRuntime != null) {
-      localObject = localAppRuntime.getAppRuntime("module_nearby");
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener.a(paramInt, paramString);
     }
-    if ((localObject instanceof NearbyAppInterface))
-    {
-      localObject = (NearbyProcManager)((NearbyAppInterface)localObject).getManager(213);
-      if (localObject != null)
-      {
-        com.tencent.mobileqq.fragment.NearbyHybridFragment.l = true;
-        ((NearbyProcManager)localObject).c();
-        if (QLog.isColorLevel()) {
-          QLog.d("NearbyHybridFragment", 2, "pre load now plugin!");
-        }
-      }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener.a(paramString1, paramString2);
     }
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("NearbyHybridFragment", 2, "pre load now plugin! err npb null;");
-      return;
+  }
+  
+  public void ae_() {}
+  
+  public void af_()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnVideoDataEventListener.a();
     }
-    QLog.d("NearbyHybridFragment", 2, "pre load now plugin! err runtime null or wrong! app = " + localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adcy
  * JD-Core Version:    0.7.0.1
  */

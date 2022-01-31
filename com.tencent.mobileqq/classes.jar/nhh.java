@@ -1,13 +1,19 @@
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.newshare.job.EncryptUrlJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareQZoneData;
 
-class nhh
-  implements Runnable
+public class nhh
+  extends EncryptUrlJob
 {
-  nhh(nhf paramnhf, String paramString1, String paramString2) {}
-  
-  public void run()
+  public nhh(ShareModeBase paramShareModeBase, String paramString1, String paramString2, boolean paramBoolean, ShareQZoneData paramShareQZoneData)
   {
-    this.jdField_a_of_type_Nhf.a.a(this.jdField_a_of_type_JavaLangString, this.b);
+    super(paramString1, paramString2, paramBoolean);
+  }
+  
+  public boolean b()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQZoneData.e = ((String)a("EncryptUrlJob_encryptedUrl"));
+    return true;
   }
 }
 

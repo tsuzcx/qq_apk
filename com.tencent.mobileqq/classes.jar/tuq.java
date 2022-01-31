@@ -1,134 +1,78 @@
-import android.os.Handler;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troop.utils.TroopAvatarManger;
-import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
-import com.tencent.mobileqq.troopinfo.GroupCatalogBean;
-import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.DBUtils;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.activity.SubLoginActivity;
+import com.tencent.mobileqq.app.SubAccountBindObserver;
+import com.tencent.mobileqq.subaccount.SubAccountAssistantForward;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
 import com.tencent.qphone.base.util.QLog;
 
 public class tuq
-  implements Runnable
+  extends SubAccountBindObserver
 {
-  public tuq(TroopInfoActivity paramTroopInfoActivity) {}
+  public tuq(SubLoginActivity paramSubLoginActivity) {}
   
-  public void run()
+  protected void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("Q.troopinfo", 2, "init mTroopInfoData == null");
+      QLog.d("SUB_ACCOUNT", 2, "SubLoginActivity.onBindSubAccount() isSucc=" + paramBoolean + " isBindFromThis=" + this.a.a);
+      if (paramSubAccountBackProtocData != null) {
+        QLog.d("SUB_ACCOUNT", 2, "SubLoginActivity.onBindSubAccount() mainAccount=" + paramSubAccountBackProtocData.b + " subAccount=" + paramSubAccountBackProtocData.c + " errType=" + paramSubAccountBackProtocData.jdField_a_of_type_Int + " errMsg=" + paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString);
       }
+    }
+    if (!this.a.a) {}
+    label428:
+    for (;;)
+    {
       return;
-    }
-    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin))
-    {
-      localObject1 = ContactUtils.l(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
-      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin)))
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick = ((String)localObject1);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-      }
-    }
-    else
-    {
-      label109:
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppTroopHandler != null)
-      {
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.pa == 2)) {
-          break label603;
-        }
-        this.a.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.getStatOption());
-      }
-    }
-    label498:
-    while (!this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.isMember)
-    {
-      this.a.app.d(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
+      this.a.a = false;
       if (QLog.isColorLevel()) {
-        QLog.i("Q.troopinfo", 2, "init(),getTroopMemberCard,getMutiTroopInfo,refreshTroopFace");
+        QLog.d("Q.subaccount.SubLoginActivity", 2, "onBindSubAccount: start");
       }
-      localObject1 = GroupCatalogTool.a(BaseApplication.getContext()).a(this.a, Long.toString(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt));
-      if (localObject1 != null)
+      this.a.c();
+      if (paramBoolean)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopClass = ((GroupCatalogBean)localObject1).a();
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(5);
-      }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppTroopHandler != null)
-      {
-        this.a.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.f(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-        this.a.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      }
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter == null) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.a == null)) {
-        break;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.a.a(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-      return;
-      str = null;
-      Object localObject2 = DBUtils.a().a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
-      if (localObject2 == null)
-      {
-        localObject2 = DBUtils.a().a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
-        localObject1 = str;
-        if (localObject2 != null)
-        {
-          if (TextUtils.isEmpty(((TroopMemberInfo)localObject2).friendnick)) {
-            break label498;
-          }
-          localObject1 = ((TroopMemberInfo)localObject2).friendnick;
+        this.a.c(this.a.getString(2131436373));
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.subaccount.SubLoginActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub success............");
         }
+        SubAccountAssistantForward.b(this.a.app);
+        SubAccountAssistantForward.a(this.a.app);
+        this.a.finish();
       }
       for (;;)
       {
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label562;
+        if ((paramSubAccountBackProtocData == null) || (!QLog.isColorLevel())) {
+          break label428;
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick = ((String)localObject1);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-        break;
-        localObject1 = str;
-        if (!TextUtils.isEmpty(((TroopMemberInfo)localObject2).troopnick))
+        QLog.d("Q.subaccount.SubLoginActivity", 2, "onBindSubAccount:....SubloginActivity......bindSub failed............ ...errorMsg = " + paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString + "...errorType = " + paramSubAccountBackProtocData.jdField_a_of_type_Int);
+        return;
+        if (paramSubAccountBackProtocData == null) {
+          break;
+        }
+        switch (paramSubAccountBackProtocData.jdField_a_of_type_Int)
         {
-          localObject1 = ((TroopMemberInfo)localObject2).troopnick;
-          continue;
-          if (!TextUtils.isEmpty(((TroopMemberCardInfo)localObject2).nick))
-          {
-            localObject1 = ((TroopMemberCardInfo)localObject2).nick;
+        default: 
+          this.a.b(this.a.getString(2131436354));
+          break;
+        case 1002: 
+          SubAccountControll.a(this.a.app, this.a);
+          break;
+        case 1003: 
+          this.a.b(this.a.getString(2131436351));
+          break;
+        case 1004: 
+          String str2 = paramSubAccountBackProtocData.jdField_a_of_type_JavaLangString;
+          String str1 = str2;
+          if (TextUtils.isEmpty(str2)) {
+            str1 = this.a.getString(2131436353);
           }
-          else
-          {
-            localObject1 = str;
-            if (!TextUtils.isEmpty(((TroopMemberCardInfo)localObject2).name)) {
-              localObject1 = ((TroopMemberCardInfo)localObject2).name;
-            }
-          }
+          this.a.b(str1);
+          this.a.runOnUiThread(new tur(this));
+          SubLoginActivity.a(this.a, null);
+          SubAccountAssistantForward.a(this.a.app, 300L);
         }
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler == null) {
-        break label109;
-      }
-      this.a.b = true;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
-      break label109;
-    }
-    label562:
-    label603:
-    Object localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppTroopHandler;
-    String str = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.pa == 28) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ((TroopHandler)localObject1).b(str, bool);
-      break;
     }
   }
 }

@@ -1,40 +1,27 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.troop.widget.AvatarWallAdapter;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class txw
-  extends TroopGiftCallback
+  implements ActionSheet.OnButtonClickListener
 {
-  public txw(TroopMemberListActivity paramTroopMemberListActivity) {}
+  public txw(TroopInfoActivity paramTroopInfoActivity, ActionSheet paramActionSheet) {}
   
-  public void a(int paramInt, String paramString)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList error");
-    }
-    TroopMemberListActivity.a(this.a, true);
-    if (TroopMemberListActivity.b(this.a))
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    switch (paramInt)
     {
-      paramString = this.a.a.obtainMessage(12, null);
-      this.a.a.sendMessage(paramString);
+    default: 
+      return;
+    case 0: 
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.a = ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity, 13);
+      return;
     }
-  }
-  
-  public void a(long[] paramArrayOfLong1, long[] paramArrayOfLong2, long[] paramArrayOfLong3)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopMemberListActivityget_troop_member", 2, "onGetGiftMemberList");
-    }
-    TroopMemberListActivity.a(this.a, paramArrayOfLong1);
-    TroopMemberListActivity.b(this.a, paramArrayOfLong2);
-    TroopMemberListActivity.c(this.a, paramArrayOfLong3);
-    TroopMemberListActivity.a(this.a, true);
-    if (TroopMemberListActivity.b(this.a))
-    {
-      paramArrayOfLong1 = this.a.a.obtainMessage(12, null);
-      this.a.a.sendMessage(paramArrayOfLong1);
-    }
+    AvatarWallAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity, 8);
   }
 }
 

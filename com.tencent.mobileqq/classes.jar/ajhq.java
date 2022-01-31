@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.surfaceviewaction.action.Action.OnActionEndListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
+import com.tencent.util.InputMethodUtil;
 
-class ajhq
-  implements Action.OnActionEndListener
+public class ajhq
+  implements View.OnClickListener
 {
-  ajhq(ajhp paramajhp) {}
+  public ajhq(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
+    InputMethodUtil.b(paramView);
+    this.a.getActivity().doOnBackPressed();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajhq
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,19 @@
-import android.app.Activity;
-import android.content.Context;
-import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
-import com.tencent.mobileqq.app.BizTroopHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForTroopFile;
-import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
-import java.util.HashMap;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.Holder;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.mobileqq.widget.MessageProgressView.AnimRunnableListener;
 
-public final class vgk
-  implements Runnable
+public class vgk
+  implements MessageProgressView.AnimRunnableListener
 {
-  public vgk(Context paramContext, TroopFileStatusInfo paramTroopFileStatusInfo, MessageForTroopFile paramMessageForTroopFile, String paramString, QQAppInterface paramQQAppInterface) {}
+  public vgk(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, ShortVideoRealItemBuilder.Holder paramHolder) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    TroopFileItemBuilder.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
-    long l1 = 0L;
-    if (TroopFileItemBuilder.a.containsKey(this.jdField_a_of_type_JavaLangString)) {
-      l1 = ((Long)TroopFileItemBuilder.a.get(this.jdField_a_of_type_JavaLangString)).longValue();
-    }
-    long l2 = System.currentTimeMillis();
-    if (l2 - l1 > 10000L)
-    {
-      BizTroopHandler localBizTroopHandler = (BizTroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(22);
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).runOnUiThread(new vgl(this, localBizTroopHandler));
-      TroopFileItemBuilder.a.put(this.jdField_a_of_type_JavaLangString, Long.valueOf(l2));
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin + this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq))) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder$Holder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(8);
     }
   }
 }

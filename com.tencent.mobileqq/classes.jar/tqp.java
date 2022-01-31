@@ -1,25 +1,42 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
-import com.tencent.mobileqq.activity.SplashActivity;
+import android.os.Handler;
+import android.text.Selection;
+import android.text.SpannableString;
+import android.text.TextPaint;
+import android.text.TextUtils;
+import android.text.style.ClickableSpan;
+import android.view.View;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.RegisterVerifyCodeActivity;
 
-public class tqp
-  implements DialogInterface.OnClickListener
+class tqp
+  extends ClickableSpan
 {
-  public tqp(SplashActivity paramSplashActivity) {}
+  tqp(tqo paramtqo, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    Intent localIntent = new Intent(this.a, GesturePWDSettingActivity.class);
-    localIntent.putExtra("key_reset", true);
-    this.a.startActivity(localIntent);
-    paramDialogInterface.dismiss();
+    Selection.removeSelection(SpannableString.valueOf(this.jdField_a_of_type_JavaLangString));
+    if (TextUtils.isEmpty(RegisterVerifyCodeActivity.b(this.jdField_a_of_type_Tqo.a))) {}
+    while (!RegisterVerifyCodeActivity.a(this.jdField_a_of_type_Tqo.a)) {
+      return;
+    }
+    RegisterVerifyCodeActivity.a(this.jdField_a_of_type_Tqo.a, false);
+    this.jdField_a_of_type_Tqo.a.a.postDelayed(new tqq(this), 1000L);
+    paramView = new Intent(this.jdField_a_of_type_Tqo.a, QQBrowserActivity.class);
+    paramView.putExtra("url", RegisterVerifyCodeActivity.b(this.jdField_a_of_type_Tqo.a));
+    paramView.putExtra("hide_more_button", true);
+    this.jdField_a_of_type_Tqo.a.startActivity(paramView);
+  }
+  
+  public void updateDrawState(TextPaint paramTextPaint)
+  {
+    paramTextPaint.setColor(-16734752);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tqp
  * JD-Core Version:    0.7.0.1
  */

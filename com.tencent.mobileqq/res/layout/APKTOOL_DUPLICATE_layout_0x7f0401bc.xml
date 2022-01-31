@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="44.0dip"
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b99" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b80" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020435" android:focusable="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b81" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="10.0dip" android:layout_marginBottom="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021372" android:layout_centerVertical="true" android:contentDescription="@null" />
-        <TextView android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b82" android:duplicateParentState="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2000" android:singleLine="true" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0b81" android:layout_centerVertical="true" style="@style/APKTOOL_DUPLICATE_style_0x7f0e000a" />
-    </RelativeLayout>
-</RelativeLayout>
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0858" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="1.0dip" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02f1" />
+    <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d040a" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c05aa" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0b9a" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02f1" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02da" android:layout_marginBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d02da" />
+</LinearLayout>

@@ -1,10 +1,5 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import andk;
-import andl;
-import andm;
-import andn;
-import ando;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
@@ -21,6 +16,11 @@ import android.view.animation.ScaleAnimation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
+import antp;
+import antq;
+import antr;
+import ants;
+import antt;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.RoundedTransformation;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
@@ -39,9 +39,9 @@ public class EditVideoFragment
   public static final int[] a;
   public static final int[] b;
   private int jdField_a_of_type_Int;
-  private andn jdField_a_of_type_Andn;
   private ViewStub jdField_a_of_type_AndroidViewViewStub;
   public RelativeLayout a;
+  private ants jdField_a_of_type_Ants;
   public ElasticImageView a;
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
   private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
@@ -53,8 +53,8 @@ public class EditVideoFragment
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131371594, 2131371597, 2131371600, 2131371603, 2131371606, 2131371609 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 2131371593, 2131371596, 2131371599, 2131371602, 2131371605, 2131371608 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131371759, 2131371762, 2131371765, 2131371768, 2131371771, 2131371774 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 2131371758, 2131371761, 2131371764, 2131371767, 2131371770, 2131371773 };
   }
   
   public EditVideoFragment(@NonNull EditVideoPartManager paramEditVideoPartManager)
@@ -88,7 +88,7 @@ public class EditVideoFragment
       this.jdField_a_of_type_JavaUtilList.clear();
       if (i == 1)
       {
-        this.jdField_a_of_type_JavaUtilList.add(new ando((VideoFragmentInfo)paramList.get(0), null, null));
+        this.jdField_a_of_type_JavaUtilList.add(new antt((VideoFragmentInfo)paramList.get(0), null, null));
         return;
       }
       if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.d()) {}
@@ -126,7 +126,7 @@ public class EditVideoFragment
       if (localObject != null) {}
       for (localObject = localRoundedTransformation.a((Bitmap)localObject);; localObject = null)
       {
-        this.jdField_a_of_type_JavaUtilList.add(new ando(localVideoFragmentInfo, (Bitmap)localObject, null));
+        this.jdField_a_of_type_JavaUtilList.add(new antt(localVideoFragmentInfo, (Bitmap)localObject, null));
         break;
       }
     }
@@ -140,8 +140,8 @@ public class EditVideoFragment
       SLog.c("Q.qqstory.record.EditVideoFragment", "updateValidFragmentThumb error. fragmentInfos=null.");
       return;
     }
-    if (this.jdField_a_of_type_Andn == null) {
-      this.jdField_a_of_type_Andn = new andn(this);
+    if (this.jdField_a_of_type_Ants == null) {
+      this.jdField_a_of_type_Ants = new ants(this);
     }
     int i;
     if (paramBoolean)
@@ -168,9 +168,9 @@ public class EditVideoFragment
         if (j >= this.jdField_a_of_type_JavaUtilList.size()) {
           break;
         }
-      } while (((ando)this.jdField_a_of_type_JavaUtilList.get(j)).jdField_c_of_type_Int != this.jdField_b_of_type_Int);
+      } while (((antt)this.jdField_a_of_type_JavaUtilList.get(j)).jdField_c_of_type_Int != this.jdField_b_of_type_Int);
       SLog.b("Q.qqstory.record.EditVideoFragment", "update the %d fragment's thumb.", Integer.valueOf(j));
-      this.jdField_a_of_type_Andn.a((VideoFragmentInfo)paramList.get(i), (ando)this.jdField_a_of_type_JavaUtilList.get(j));
+      this.jdField_a_of_type_Ants.a((VideoFragmentInfo)paramList.get(i), (antt)this.jdField_a_of_type_JavaUtilList.get(j));
       return;
       i = 0;
       while (i < paramList.size())
@@ -181,13 +181,13 @@ public class EditVideoFragment
           if ((paramList.get(i) == null) || (this.jdField_a_of_type_JavaUtilList.get(j) == null)) {
             SLog.b("Q.qqstory.record.EditVideoFragment", "updateValidFragmentThumb error. fragmentInfos.get(%d) == null or mValidFragmentInfo.get(%d) == null.", Integer.valueOf(i), Integer.valueOf(j));
           }
-          while (((VideoFragmentInfo)paramList.get(i)).jdField_c_of_type_Int != ((ando)this.jdField_a_of_type_JavaUtilList.get(j)).jdField_c_of_type_Int)
+          while (((VideoFragmentInfo)paramList.get(i)).jdField_c_of_type_Int != ((antt)this.jdField_a_of_type_JavaUtilList.get(j)).jdField_c_of_type_Int)
           {
             j += 1;
             break;
           }
           SLog.b("Q.qqstory.record.EditVideoFragment", "updateValidFragmentThumb. update mValidFragmentInfo.get(%d)", Integer.valueOf(j));
-          this.jdField_a_of_type_Andn.a((VideoFragmentInfo)paramList.get(i), (ando)this.jdField_a_of_type_JavaUtilList.get(j));
+          this.jdField_a_of_type_Ants.a((VideoFragmentInfo)paramList.get(i), (antt)this.jdField_a_of_type_JavaUtilList.get(j));
         }
         i += 1;
       }
@@ -214,11 +214,11 @@ public class EditVideoFragment
     SLog.b("Q.qqstory.record.EditVideoFragment", "initViewStub. fragmentCount = %d.", Integer.valueOf(i));
     if (this.jdField_b_of_type_AndroidWidgetRelativeLayout == null)
     {
-      this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364392));
+      this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131364416));
       this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewViewStub.inflate());
     }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131364346));
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetElasticImageView = ((ElasticImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131364347));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131364370));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetElasticImageView = ((ElasticImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131364371));
     this.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout = new RelativeLayout[6];
     i = 0;
     while (i < this.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout.length)
@@ -239,18 +239,18 @@ public class EditVideoFragment
   
   private void c(int paramInt)
   {
-    if (this.jdField_a_of_type_Andn == null) {
-      this.jdField_a_of_type_Andn = new andn(this);
+    if (this.jdField_a_of_type_Ants == null) {
+      this.jdField_a_of_type_Ants = new ants(this);
     }
     int i = 0;
     for (;;)
     {
       if (i < this.jdField_a_of_type_JavaUtilList.size())
       {
-        if (paramInt == ((ando)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_c_of_type_Int)
+        if (paramInt == ((antt)this.jdField_a_of_type_JavaUtilList.get(i)).jdField_c_of_type_Int)
         {
           SLog.b("Q.qqstory.record.EditVideoFragment", "updateValidFragmentDoodleByBlockIndex. update mValidFragmentInfo.get(%d)", Integer.valueOf(i));
-          ((ando)this.jdField_a_of_type_JavaUtilList.get(i)).a = this.jdField_a_of_type_Andn.a(paramInt);
+          ((antt)this.jdField_a_of_type_JavaUtilList.get(i)).a = this.jdField_a_of_type_Ants.a(paramInt);
         }
       }
       else {
@@ -308,7 +308,7 @@ public class EditVideoFragment
       i = j;
       while (i < paramList.size())
       {
-        this.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout[i].setOnTouchListener(new andm(this, i));
+        this.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout[i].setOnTouchListener(new antr(this, i));
         i += 1;
       }
     }
@@ -346,8 +346,8 @@ public class EditVideoFragment
       if (i >= paramList.size()) {
         break label217;
       }
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setBackgroundDrawable(new BitmapDrawable(((ando)paramList.get(i)).b));
-      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setImageBitmap(((ando)paramList.get(i)).a);
+      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setBackgroundDrawable(new BitmapDrawable(((antt)paramList.get(i)).b));
+      this.jdField_a_of_type_ArrayOfAndroidWidgetImageView[i].setImageBitmap(((antt)paramList.get(i)).a);
       this.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout[i].setVisibility(0);
     }
     for (;;)
@@ -395,7 +395,7 @@ public class EditVideoFragment
       SLog.e("Q.qqstory.record.EditVideoFragment", "selectFragment error. fragmentInfo is null!");
       return;
     }
-    if ((this.jdField_a_of_type_Int == ((ando)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_c_of_type_Int) && (!this.jdField_a_of_type_Boolean))
+    if ((this.jdField_a_of_type_Int == ((antt)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_c_of_type_Int) && (!this.jdField_a_of_type_Boolean))
     {
       SLog.e("Q.qqstory.record.EditVideoFragment", "selectFragment error. the same index!");
       return;
@@ -404,7 +404,7 @@ public class EditVideoFragment
     if (i < this.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout.length)
     {
       if (i == paramInt) {
-        this.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout[i].setBackgroundResource(2130843652);
+        this.jdField_a_of_type_ArrayOfAndroidWidgetRelativeLayout[i].setBackgroundResource(2130843773);
       }
       for (;;)
       {
@@ -414,7 +414,7 @@ public class EditVideoFragment
       }
     }
     this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = ((ando)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_c_of_type_Int;
+    this.jdField_a_of_type_Int = ((antt)this.jdField_a_of_type_JavaUtilList.get(paramInt)).jdField_c_of_type_Int;
     if (!this.jdField_a_of_type_Boolean)
     {
       SLog.b("Q.qqstory.record.EditVideoFragment", "send message. selected card index = %d. selected fragment index change form %d to %d.", Integer.valueOf(paramInt), Integer.valueOf(this.jdField_b_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Int));
@@ -582,8 +582,8 @@ public class EditVideoFragment
     ValueAnimator localValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F });
     localValueAnimator.setDuration(200L);
     localValueAnimator.setInterpolator(new DecelerateInterpolator());
-    localValueAnimator.addListener(new andk(this, paramView));
-    localValueAnimator.addUpdateListener(new andl(this, paramInt3, paramInt1, paramInt4, paramInt2, paramView));
+    localValueAnimator.addListener(new antp(this, paramView));
+    localValueAnimator.addUpdateListener(new antq(this, paramInt3, paramInt1, paramInt4, paramInt2, paramView));
     localValueAnimator.start();
   }
   

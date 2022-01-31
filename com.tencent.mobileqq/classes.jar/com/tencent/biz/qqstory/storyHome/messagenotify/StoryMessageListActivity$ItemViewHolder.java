@@ -28,18 +28,16 @@ public class StoryMessageListActivity$ItemViewHolder
   
   public StoryMessageListActivity$ItemViewHolder(StoryMessageListActivity paramStoryMessageListActivity, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366993));
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131364167));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362725));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366842));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131367037));
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetStoryCoverView = ((StoryCoverView)paramView.findViewById(2131364191));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362743));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366884));
     this.c = ((TextView)paramView.findViewById(2131362134));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131371733);
-    this.d = ((TextView)paramView.findViewById(2131365193));
-    this.e = ((TextView)paramView.findViewById(2131371734));
-    this.f = ((TextView)paramView.findViewById(2131371735));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365532);
-    paramView.setOnClickListener(this);
-    paramView.setOnLongClickListener(this);
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131371903);
+    this.d = ((TextView)paramView.findViewById(2131365215));
+    this.e = ((TextView)paramView.findViewById(2131371904));
+    this.f = ((TextView)paramView.findViewById(2131371905));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131365554);
   }
   
   public void a(int paramInt)

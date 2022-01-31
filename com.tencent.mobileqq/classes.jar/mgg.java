@@ -1,13 +1,29 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.OnPlayStateListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
 
-class mgg
-  implements Runnable
+public class mgg
+  implements VideoPlayManager.OnPlayStateListener
 {
-  mgg(mga parammga) {}
+  public mgg(VideoVolumeControl paramVideoVolumeControl) {}
   
-  public void run()
+  public void a(VideoPlayManager.VideoPlayParam paramVideoPlayParam, VideoPlayerWrapper paramVideoPlayerWrapper, int paramInt1, int paramInt2, Object paramObject)
   {
-    this.a.a.notifyDataSetChanged();
+    if (paramInt2 == 0) {}
+    do
+    {
+      do
+      {
+        return;
+      } while ((paramInt2 == 1) || (paramInt2 == 2));
+      if (paramInt2 == 3)
+      {
+        this.a.a(true, "PLAY_STATE_PLAYING");
+        this.a.a(this.a.b(), "video playing", 1);
+        return;
+      }
+    } while ((paramInt2 == 4) || (paramInt2 == 5) || (paramInt2 == 6) || (paramInt2 != 7));
   }
 }
 

@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.app.ThreadOptimizer;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ThreadFactory;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.highway.config.ConfigManager;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public final class zko
-  implements ThreadFactory
+public class zko
+  implements Runnable
 {
-  public Thread newThread(Runnable paramRunnable)
+  public zko(QQAppInterface paramQQAppInterface) {}
+  
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ThreadManager", 2, "serialExecutor_thread");
+    Object localObject = BaseApplication.getContext();
+    String str = this.a.getCurrentAccountUin();
+    localObject = ConfigManager.getInstance((Context)localObject, this.a, this.a.getAppid(), str);
+    if (localObject != null) {
+      ((ConfigManager)localObject).onProxyIpChanged(this.a);
     }
-    paramRunnable = new Thread(paramRunnable, "serialExecutor_thread");
-    if (ThreadOptimizer.a().c()) {
-      paramRunnable.setPriority(1);
-    }
-    return paramRunnable;
   }
 }
 

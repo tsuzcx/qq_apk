@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import aloq;
+import ameg;
 import android.database.DataSetObserver;
 import android.widget.BaseAdapter;
 
@@ -8,7 +8,7 @@ public abstract class XBaseAdapter
   extends BaseAdapter
   implements XListAdapter
 {
-  private final aloq a = new aloq(this);
+  private final ameg a = new ameg(this);
   
   public void a(int paramInt1, int paramInt2)
   {
@@ -37,7 +37,7 @@ public abstract class XBaseAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.XBaseAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,23 +1,16 @@
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.open.downloadnew.DownloadInfo;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import OnlinePushPack.MsgInfo;
+import android.util.Pair;
+import com.tencent.mobileqq.app.message.DiscMessageProcessor;
+import java.util.ArrayList;
 
 public class ztg
   implements Runnable
 {
-  public ztg(UpgradeController paramUpgradeController) {}
+  public ztg(DiscMessageProcessor paramDiscMessageProcessor, Pair paramPair, MsgInfo paramMsgInfo, ArrayList paramArrayList, long paramLong, String paramString, byte paramByte, boolean paramBoolean) {}
   
   public void run()
   {
-    File localFile = new File(UpgradeController.a(this.a).k);
-    if (localFile.exists())
-    {
-      localFile.delete();
-      if (QLog.isColorLevel()) {
-        QLog.d("UpgradeConfigManager", 2, "the jacked apk has been removed.");
-      }
-    }
+    DiscMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageDiscMessageProcessor, this.jdField_a_of_type_AndroidUtilPair, this.jdField_a_of_type_OnlinePushPackMsgInfo, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Byte, 0L, this.jdField_a_of_type_Boolean);
   }
 }
 

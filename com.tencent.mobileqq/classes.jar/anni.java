@@ -1,29 +1,20 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import dov.com.tencent.biz.qqstory.takevideo.rmw.StoryFaceDrawableFactory;
-import dov.com.tencent.biz.qqstory.takevideo.rmw.StoryFaceDrawableFactory.FaceDrawableListener;
+import android.text.Editable;
+import android.text.TextWatcher;
+import dov.com.qq.im.capture.poi.FacePoiSearchUI;
 
 public class anni
-  extends Handler
+  implements TextWatcher
 {
-  public anni(StoryFaceDrawableFactory paramStoryFaceDrawableFactory, Looper paramLooper)
+  public anni(FacePoiSearchUI paramFacePoiSearchUI) {}
+  
+  public void afterTextChanged(Editable paramEditable)
   {
-    super(paramLooper);
+    FacePoiSearchUI.a(this.a);
   }
   
-  public void handleMessage(Message paramMessage)
-  {
-    if (paramMessage.what == 1000)
-    {
-      paramMessage = (String)paramMessage.obj;
-      this.a.a(paramMessage);
-    }
-    while ((paramMessage.what != 1002) || (this.a.a == null)) {
-      return;
-    }
-    this.a.a.a();
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -44,10 +44,10 @@ public class QBInstallerRecorder
     //   24: invokestatic 59	com/tencent/smtt/utils/FileUtil:getTbsSdcardShareDir	()Ljava/io/File;
     //   27: ldc 8
     //   29: invokespecial 62	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   32: astore 5
+    //   32: astore 6
     //   34: aload_2
     //   35: astore_1
-    //   36: aload 5
+    //   36: aload 6
     //   38: invokevirtual 65	java/io/File:exists	()Z
     //   41: ifne +27 -> 68
     //   44: ldc 53
@@ -67,14 +67,14 @@ public class QBInstallerRecorder
     //   67: areturn
     //   68: aload_2
     //   69: astore_1
-    //   70: aload 5
+    //   70: aload 6
     //   72: invokestatic 75	com/tencent/smtt/utils/FileUtil:read	(Ljava/io/File;)[B
-    //   75: astore 6
-    //   77: aload 6
+    //   75: astore 5
+    //   77: aload 5
     //   79: ifnull +11 -> 90
     //   82: aload_2
     //   83: astore_1
-    //   84: aload 6
+    //   84: aload 5
     //   86: arraylength
     //   87: ifgt +24 -> 111
     //   90: ldc 53
@@ -93,7 +93,7 @@ public class QBInstallerRecorder
     //   112: astore_1
     //   113: new 77	java/io/DataInputStream
     //   116: dup
-    //   117: aload 5
+    //   117: aload 6
     //   119: invokestatic 81	com/tencent/smtt/utils/FileUtil:openInputStream	(Ljava/io/File;)Ljava/io/FileInputStream;
     //   122: invokespecial 84	java/io/DataInputStream:<init>	(Ljava/io/InputStream;)V
     //   125: astore_2
@@ -189,8 +189,8 @@ public class QBInstallerRecorder
     //   229	1	3	localError3	java.lang.Error
     //   233	1	3	localException2	Exception
     //   16	133	4	localObject10	Object
-    //   32	86	5	localFile	java.io.File
-    //   75	10	6	arrayOfByte	byte[]
+    //   75	10	5	arrayOfByte	byte[]
+    //   32	86	6	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
     //   53	61	61	java/io/IOException

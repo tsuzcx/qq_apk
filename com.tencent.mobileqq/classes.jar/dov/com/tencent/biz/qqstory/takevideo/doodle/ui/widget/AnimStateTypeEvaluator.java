@@ -2,7 +2,7 @@ package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget;
 
 import android.animation.TimeInterpolator;
 import android.animation.TypeEvaluator;
-import anlg;
+import aobl;
 import java.util.ArrayList;
 
 public class AnimStateTypeEvaluator
@@ -18,7 +18,7 @@ public class AnimStateTypeEvaluator
   public int a(String paramString, long paramLong1, long paramLong2, int paramInt1, int paramInt2, TimeInterpolator paramTimeInterpolator)
   {
     int i = this.c.size();
-    paramString = new anlg(paramLong1, paramLong2, i);
+    paramString = new aobl(paramLong1, paramLong2, i);
     this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
     this.c.add(Integer.valueOf(paramInt1));
     this.d.add(Integer.valueOf(paramInt2));
@@ -57,8 +57,8 @@ public class AnimStateTypeEvaluator
     {
       int k = ((Integer)paramArrayList1.get(i)).intValue();
       int m = ((Integer)paramArrayList2.get(i)).intValue();
-      long l1 = ((anlg)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Long;
-      long l2 = ((anlg)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b;
+      long l1 = ((aobl)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Long;
+      long l2 = ((aobl)this.jdField_a_of_type_JavaUtilArrayList.get(i)).b;
       int n = (int)((float)this.jdField_a_of_type_Long * paramFloat);
       if (n < l1) {
         this.b.add(Integer.valueOf(0));

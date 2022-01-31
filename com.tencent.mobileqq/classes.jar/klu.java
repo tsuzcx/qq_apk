@@ -1,19 +1,14 @@
-import android.content.Context;
-import com.tencent.biz.common.offline.AsyncCallBack;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.common.offline.util.ILog;
+import com.tencent.biz.common.util.FileChooserHelper;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
-public final class klu
-  implements Runnable
+public class klu
+  implements ActionSheet.OnDismissListener
 {
-  public klu(Context paramContext, String paramString, AsyncCallBack paramAsyncCallBack) {}
+  public klu(FileChooserHelper paramFileChooserHelper) {}
   
-  public void run()
+  public void onDismiss()
   {
-    if (HtmlOffline.a.a()) {
-      HtmlOffline.a.a("HtmlCheckUpdate", 2, "-->offline:transToLocalUrl,Begin transThread:");
-    }
-    new kmb(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncCallBack).a();
+    FileChooserHelper.a(this.a);
   }
 }
 

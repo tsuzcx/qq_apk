@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33ae" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="fill_parent" android:layout_height="305.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a338a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="1.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b224a" android:layout_weight="1.0" />
-    <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a338b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0221f6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="0.0dip" android:contentDescription="@null" />
-</LinearLayout>
+    <View android:id="@id/head_layout" android:layout_width="fill_parent" android:layout_height="45.0dip" android:layout_alignParentTop="true" />
+    <com.qzone.module.feedcomponent.view.CornerImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33af" android:layout_width="fill_parent" android:layout_height="210.0dip" android:layout_marginLeft="7.0dip" android:layout_marginRight="7.0dip" android:scaleType="centerCrop" android:layout_below="@id/head_layout" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33b0" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="210.0dip" android:layout_marginLeft="7.0dip" android:layout_marginRight="7.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021da2" android:scaleType="centerCrop" android:layout_below="@id/head_layout" />
+    <TextView android:textSize="12.0sp" android:textColor="#ff808080" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33b1" android:layout_width="fill_parent" android:layout_height="17.0dip" android:layout_marginLeft="7.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="7.0dip" android:layout_marginBottom="1.0dip" android:text="可能认识" android:layout_below="@id/head_layout" />
+    <RelativeLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33b2" android:layout_width="fill_parent" android:layout_height="210.0dip" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_below="@id/head_layout">
+        <com.qzone.proxy.feedcomponent.text.CellTextView android:textSize="16.0sp" android:textColor="#ff333333" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33b3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_centerInParent="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33b4" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021da3" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a33b2">
+        <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <TextView android:textSize="12.0sp" android:textColor="#ff808080" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="赞" android:singleLine="true" android:layout_marginStart="12.0dip" />
+            <TextView android:textSize="12.0sp" android:textColor="#ff808080" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33b5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+            <TextView android:textSize="12.0sp" android:textColor="#ff808080" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="评论" android:singleLine="true" />
+            <TextView android:textSize="12.0sp" android:textColor="#ff808080" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33b6" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" />
+        </LinearLayout>
+        <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="12.0dip">
+            <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33b7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="更多秘密" android:singleLine="true" />
+        </LinearLayout>
+    </LinearLayout>
+    <com.qzone.widget.AsyncImageView android:id="@id/head" android:layout_width="75.0dip" android:layout_height="45.0dip" android:layout_marginTop="7.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a33b8" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="49.0sp" android:layout_marginRight="25.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
+</RelativeLayout>

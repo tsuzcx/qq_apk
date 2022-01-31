@@ -1,50 +1,34 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.view.ViewParent;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
+import com.tencent.mobileqq.widget.ClearableEditText;
 
-class ajmn
-  implements Runnable
+public class ajmn
+  implements View.OnTouchListener
 {
-  ajmn(ajmm paramajmm, String paramString) {}
+  public ajmn(BulkSendMessageFragment paramBulkSendMessageFragment) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    for (;;)
-    {
-      try
-      {
-        Intent localIntent = new Intent(this.jdField_a_of_type_Ajmm.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, QQBrowserActivity.class);
-        localIntent.putExtra("BSafeReportPost", true);
-        if (this.jdField_a_of_type_JavaLangString != null) {
-          continue;
-        }
-        arrayOfByte = null;
-        localIntent.putExtra("SafeReportData", arrayOfByte);
-        localIntent.putExtra("hide_more_button", true);
-        localIntent.putExtra("ishiderefresh", true);
-        localIntent.putExtra("ishidebackforward", true);
-        this.jdField_a_of_type_Ajmm.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(localIntent.putExtra("url", "https://jubao.qq.com/uniform_impeach/impeach_entry"));
-      }
-      catch (Exception localException)
-      {
-        byte[] arrayOfByte;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("Q.profilecard.FrdProfileCard", 2, "safetyReport exception" + localException.getMessage());
-        continue;
-      }
-      this.jdField_a_of_type_Ajmm.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-      return;
-      arrayOfByte = this.jdField_a_of_type_JavaLangString.getBytes("utf-8");
+    boolean bool1 = this.a.a.canScrollVertically(-1);
+    boolean bool2 = this.a.a.canScrollVertically(1);
+    if ((paramView.isFocused()) && ((bool1) || (bool2))) {
+      paramView.getParent().requestDisallowInterceptTouchEvent(true);
     }
+    switch (paramMotionEvent.getAction() & 0xFF)
+    {
+    default: 
+      return false;
+    }
+    paramView.getParent().requestDisallowInterceptTouchEvent(false);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajmn
  * JD-Core Version:    0.7.0.1
  */

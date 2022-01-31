@@ -1,59 +1,37 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.theme.NightModeLogic;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.INetEngine;
 import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
+import java.util.ArrayList;
 
 public class ahzy
-  extends Handler
 {
-  public ahzy(NightModeLogic paramNightModeLogic, Looper paramLooper)
+  public int a;
+  HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
+  public String a;
+  public ArrayList a;
+  public int b = 0;
+  
+  public ahzy(ShortVideoResourceManager paramShortVideoResourceManager, HttpNetReq paramHttpNetReq)
   {
-    super(paramLooper);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
+    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = paramHttpNetReq;
+    this.b = 0;
   }
   
-  public void handleMessage(Message paramMessage)
+  public void a()
   {
-    switch (paramMessage.what)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoResourceManager", 2, "HttpEngineTask[start]: " + this);
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            boolean bool;
-            do
-            {
-              return;
-              this.a.a();
-              return;
-              bool = this.a.c();
-            } while (!QLog.isColorLevel());
-            QLog.i("NightModeLogic", 2, "startNightMode result=" + bool);
-            return;
-          } while ((paramMessage.obj == null) || (!(paramMessage.obj instanceof Bundle)));
-          this.a.a(paramMessage.arg1, (Bundle)paramMessage.obj);
-          return;
-        } while (this.a.a == null);
-        QQToast.a(this.a.a.getApplication(), "主题文件异常，切换回默认主题", 4000).a();
-        return;
-      } while (this.a.a == null);
-      QQToast.a(this.a.a.getApplication(), "夜间主题配置加载失败" + paramMessage.arg1 + "_" + paramMessage.arg2, 4000).a();
-      return;
-    } while (this.a.a == null);
-    QQToast.a(this.a.a.getApplication(), "网络环境异常，夜间主题下载失败" + paramMessage.arg1 + "_" + paramMessage.arg2, 4000).a();
+    this.b = 1;
+    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager).getNetEngine(0).a(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahzy
  * JD-Core Version:    0.7.0.1
  */

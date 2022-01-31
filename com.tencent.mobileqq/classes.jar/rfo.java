@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.ContactUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.grayversion.ShareAppLogActivity;
 
 public class rfo
-  implements Runnable
+  implements View.OnClickListener
 {
-  public rfo(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public rfo(AboutActivity paramAboutActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.d(ContactUtils.f(this.a.app, this.a.app.getCurrentAccountUin()));
+    this.a.startActivity(ShareAppLogActivity.buildIntent(this.a));
   }
 }
 

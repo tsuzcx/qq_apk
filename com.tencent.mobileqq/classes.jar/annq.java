@@ -1,27 +1,14 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import dov.com.qq.im.capture.text.CaptureComboText;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
 
 public class annq
-  extends Property
+  implements Runnable
 {
-  public annq(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public annq(CaptureComboText paramCaptureComboText, DoodleLayout paramDoodleLayout) {}
   
-  public Integer a(GroundDrawable paramGroundDrawable)
+  public void run()
   {
-    if (paramGroundDrawable != null) {
-      return Integer.valueOf(GroundDrawable.a(paramGroundDrawable));
-    }
-    return Integer.valueOf(0);
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Integer paramInteger)
-  {
-    if (paramGroundDrawable != null) {
-      GroundDrawable.a(paramGroundDrawable, paramInteger.intValue());
-    }
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a(0, Boolean.valueOf(false));
   }
 }
 

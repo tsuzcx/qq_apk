@@ -1,20 +1,39 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnHoverListener;
+import android.content.pm.ApplicationInfo;
+import android.content.pm.PackageInfo;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import java.util.Iterator;
+import java.util.List;
 
-class adhe
-  implements View.OnHoverListener
+public final class adhe
+  implements Runnable
 {
-  adhe(adhd paramadhd) {}
+  public adhe(FileManagerEntity paramFileManagerEntity) {}
   
-  public boolean onHover(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    return true;
+    if (FileUtil.a(this.a.getFilePath())) {}
+    PackageInfo localPackageInfo;
+    do
+    {
+      Iterator localIterator;
+      do
+      {
+        return;
+        while ((this.a.strApkPackageName == null) || (this.a.strApkPackageName.length() == 0)) {}
+        localIterator = FileCategoryUtil.a(BaseApplicationImpl.getContext()).iterator();
+      } while (!localIterator.hasNext());
+      localPackageInfo = (PackageInfo)localIterator.next();
+    } while (!this.a.strApkPackageName.equalsIgnoreCase(localPackageInfo.packageName));
+    this.a.setFilePath(localPackageInfo.applicationInfo.publicSourceDir);
+    this.a.fileName = FileCategoryUtil.a(this.a.getFilePath());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adhe
  * JD-Core Version:    0.7.0.1
  */

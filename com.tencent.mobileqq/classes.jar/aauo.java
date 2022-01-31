@@ -1,24 +1,23 @@
-import android.graphics.Bitmap;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.NonMainAppHeadLoader.FaceObserver;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
 import com.tencent.qphone.base.util.QLog;
 
 public class aauo
-  implements NonMainAppHeadLoader.FaceObserver
+  implements Runnable
 {
-  public aauo(ARMapActivity paramARMapActivity) {}
+  public aauo(ArkLocalAppMgr paramArkLocalAppMgr) {}
   
-  public void onFaceUpdate(String paramString1, String paramString2, Bitmap paramBitmap)
+  public void run()
   {
-    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (paramBitmap != null) && (paramString1.equals(this.a.h)) && (this.a.j))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMapActivity", 2, "onFaceUpdate uin:" + paramString1 + " path=" + paramString2);
-      }
-      this.a.j = false;
-      ThreadManager.post(new aaup(this, paramBitmap), 5, null, false);
+      ArkAppCenter.a(true);
+      ArkLocalAppMgr.a(this.a);
+      return;
+    }
+    catch (NoClassDefFoundError localNoClassDefFoundError)
+    {
+      QLog.e("ArkApp.ArkLocalAppMgr", 1, localNoClassDefFoundError.toString());
     }
   }
 }

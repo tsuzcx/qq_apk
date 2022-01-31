@@ -1,45 +1,34 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.tips.ComicTipsBar;
-import cooperation.comic.VipComicJumpActivity;
-import cooperation.comic.VipComicReportUtils;
-import org.json.JSONObject;
+import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.StrangerChatPie;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class vzi
   implements View.OnClickListener
 {
-  public vzi(ComicTipsBar paramComicTipsBar, View paramView) {}
+  public vzi(StrangerChatPie paramStrangerChatPie) {}
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsComicTipsBar.jdField_a_of_type_Boolean) {
-      paramView = new JSONObject();
-    }
-    try
+    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
+    int i;
+    switch (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)
     {
-      paramView.put("from", "19");
-      label27:
-      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsComicTipsBar.jdField_a_of_type_AndroidAppActivity, VipComicJumpActivity.class);
-      localIntent.putExtra("options", paramView.toString());
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsComicTipsBar.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidViewView.postDelayed(new vzj(this), 2500L);
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsComicTipsBar.jdField_a_of_type_Boolean) {
-          break;
-        }
-        VipComicReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsComicTipsBar.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "3009", "2", "40039", this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsComicTipsBar.b, new String[0]);
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsComicTipsBar.jdField_a_of_type_AndroidAppActivity.finish();
-      }
-      VipComicReportUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsComicTipsBar.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "3006", "2", "40025", this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsComicTipsBar.b, new String[] { "2" });
+    default: 
+      i = 0;
+    }
+    for (;;)
+    {
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "Two_call", "Clk_aio_right", 0, 0, String.valueOf(i), "", "", "");
+      PlusPanelUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, true, null, this.a);
       return;
-    }
-    catch (Exception localException)
-    {
-      break label27;
+      i = 1;
+      continue;
+      i = 2;
+      continue;
+      i = 3;
     }
   }
 }

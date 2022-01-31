@@ -1,44 +1,46 @@
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.ListAdapter;
-import com.tencent.widget.HorizontalListView;
+import com.tencent.image.URLDrawable;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class almo
-  extends alms
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public int a;
+  public almo(QidianProfileCardActivity paramQidianProfileCardActivity, ActionSheet paramActionSheet, URLDrawable paramURLDrawable, String paramString) {}
   
-  private almo(HorizontalListView paramHorizontalListView)
+  public void OnClick(View paramView, int paramInt)
   {
-    super(paramHorizontalListView, null);
-  }
-  
-  public void run()
-  {
-    if (this.jdField_a_of_type_ComTencentWidgetHorizontalListView.c()) {}
-    ListAdapter localListAdapter;
-    int i;
-    View localView;
+    if (paramView == null) {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    }
     do
     {
-      do
+      return;
+      paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet.a(paramInt);
+      if (TextUtils.isEmpty(paramView))
       {
-        ((View)this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getParent()).performClick();
-        do
-        {
-          return;
-        } while (this.jdField_a_of_type_ComTencentWidgetHorizontalListView.b);
-        localListAdapter = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.a;
-        i = this.jdField_a_of_type_Int;
-      } while ((localListAdapter == null) || (i == -1) || (i >= localListAdapter.getCount()) || (!a()));
-      localView = this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getChildAt(i - this.jdField_a_of_type_ComTencentWidgetHorizontalListView.getFirstVisiblePosition());
-    } while (localView == null);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.performItemClick(localView, i, localListAdapter.getItemId(i));
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+        return;
+      }
+      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131435871)))
+      {
+        QidianProfileCardActivity.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
+        return;
+      }
+      if (paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131435877)))
+      {
+        QidianProfileCardActivity.b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_ComTencentImageURLDrawable);
+        return;
+      }
+    } while (!paramView.equals(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getString(2131438731)));
+    QidianProfileCardActivity.c(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     almo
  * JD-Core Version:    0.7.0.1
  */

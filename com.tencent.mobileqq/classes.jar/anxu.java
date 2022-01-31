@@ -1,38 +1,20 @@
-import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUBaseFilter;
-import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.renderer.GpuImagePartsFilterGroup;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.widget.VideoFilterPlayView;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.qq.im.capture.text.DynamicTextItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
 
 public class anxu
-  implements Runnable
+  implements View.OnFocusChangeListener
 {
-  public anxu(VideoFilterPlayView paramVideoFilterPlayView) {}
+  public anxu(EditTextDialog paramEditTextDialog) {}
   
-  public void run()
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (VideoFilterPlayView.b(this.a) != null)
-    {
-      VideoFilterPlayView.b(this.a).c();
-      VideoFilterPlayView.a(this.a, null);
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.a(this.a.a.b(), true);
     }
-    if (VideoFilterPlayView.a(this.a) != null)
-    {
-      VideoFilterPlayView.a(this.a).c();
-      VideoFilterPlayView.b(this.a, null);
-    }
-    if (VideoFilterPlayView.a(this.a) != null)
-    {
-      VideoFilterPlayView.a(this.a).c();
-      VideoFilterPlayView.a(this.a, null);
-    }
-    if (VideoFilterPlayView.a(this.a) != null)
-    {
-      VideoFilterPlayView.a(this.a).o();
-      if (QLog.isColorLevel()) {
-        QLog.w("VideoFilterPlayView", 2, "VideoPlay, surfaceDestroy success=");
-      }
-    }
+    SLog.b("EditTextDialog", "onFocusChange:" + paramBoolean);
   }
 }
 

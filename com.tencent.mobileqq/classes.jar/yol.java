@@ -1,29 +1,17 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import com.tencent.mobileqq.apollo.ai.ApolloAILogicProcessor;
 import com.tencent.qphone.base.util.QLog;
 
 public class yol
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public yol(ApolloAILogicProcessor paramApolloAILogicProcessor) {}
+  
+  public void run()
   {
-    if (paramIntent == null) {
-      QLog.e("cmgame_process.CmGameManager", 1, "[onReceive] intent null");
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloAILogicProcessor", 2, "[run post]");
     }
-    ApolloCmdChannel localApolloCmdChannel;
-    do
-    {
-      return;
-      paramContext = paramIntent.getAction();
-      if (QLog.isColorLevel()) {
-        QLog.d("cmgame_process.CmGameManager", 2, new Object[] { "[onReceive] action=", paramContext });
-      }
-      localApolloCmdChannel = CmGameUtil.a();
-    } while ((localApolloCmdChannel == null) || (!"com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext)) || (!"apolloGameWebMessage".equals(paramIntent.getStringExtra("event"))));
-    localApolloCmdChannel.handleWebEvent(paramIntent.getStringExtra("data"));
+    ApolloAILogicProcessor.a(this.a);
   }
 }
 

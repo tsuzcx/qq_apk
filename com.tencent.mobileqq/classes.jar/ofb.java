@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoSyncStoryGuide;
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ofb
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public ofb(EditVideoSyncStoryGuide paramEditVideoSyncStoryGuide) {}
+  private ofb(EditVideoGuide paramEditVideoGuide) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("zivonchen", 2, "showSyncStoryGuide ->onDismiss-------");
+    if (this.a.a.compareAndSet(true, false))
+    {
+      this.a.a(false);
+      this.a.e();
     }
-    SharedPreUtils.b(this.a.a.a());
   }
 }
 

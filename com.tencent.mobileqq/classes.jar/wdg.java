@@ -1,55 +1,25 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.activity.chathistory.ChatHistoryByDateFragment;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
-import com.tencent.mobileqq.widget.datepicker.CalendarDay;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.tips.ReaderTipsBar;
 
 public class wdg
-  implements Runnable
+  implements View.OnClickListener
 {
-  public wdg(ChatHistoryByDateFragment paramChatHistoryByDateFragment, int paramInt1, int paramInt2) {}
+  public wdg(ReaderTipsBar paramReaderTipsBar) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    long l = SystemClock.elapsedRealtime();
-    int i = 0;
-    int m = CalendarDay.getDaysInMonth(this.jdField_a_of_type_Int, this.b);
-    ArrayList localArrayList = new ArrayList();
-    int j = 0;
-    int k = 1;
-    MessageRecord localMessageRecord;
-    if (k <= m)
-    {
-      localMessageRecord = ChatHistoryByDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment, this.jdField_a_of_type_Int, this.b, k);
-      if (localMessageRecord == null) {
-        break label244;
-      }
-      i += 1;
-      localArrayList.add(localMessageRecord);
-    }
-    label244:
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(ChatHistoryByDateFragment.a(), 2, "getFirstMessageByDate: " + ChatHistoryByDateFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryByDateFragment, this.jdField_a_of_type_Int, this.b + 1, k) + " | result: " + localMessageRecord);
-      }
-      k += 1;
-      j += 1;
-      break;
-      if (localArrayList.size() > 0) {
-        ThreadManager.getUIHandler().post(new wdh(this, localArrayList));
-      }
-      l = SystemClock.elapsedRealtime() - l;
-      TroopTechReportUtils.a("chat_history", "query_month_cost", String.valueOf(l), String.valueOf(j), String.valueOf(i), "");
-      if (QLog.isColorLevel()) {
-        QLog.i(ChatHistoryByDateFragment.a(), 2, String.format("queryDB count: %d | message count: %d | cost time %d ", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Long.valueOf(l) }));
-      }
-      return;
-    }
+    paramView = new Intent();
+    paramView.putExtra("bookid", ReaderTipsBar.a(this.a));
+    paramView.putExtra("is_from_conversation", true);
+    Intent localIntent = new Intent();
+    localIntent.putExtras(paramView);
+    localIntent.putExtra("readtype", "15");
+    localIntent.setClassName(ReaderTipsBar.a(this.a), "cooperation.qqreader.QRBridgeActivity");
+    localIntent.addFlags(268435456);
+    ReaderTipsBar.a(this.a).startActivity(localIntent);
   }
 }
 

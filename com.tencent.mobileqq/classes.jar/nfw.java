@@ -1,15 +1,41 @@
-import com.tencent.biz.qqstory.newshare.model.Job;
-import com.tencent.biz.qqstory.newshare.model.JobExecutor;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.biz.qqstory.newshare.StoryShare;
+import com.tencent.biz.qqstory.newshare.callback.OnShareListener;
+import com.tencent.biz.qqstory.newshare.callback.StoryShareCallback;
+import com.tencent.biz.qqstory.newshare.model.ShareData;
 
 public class nfw
-  implements Runnable
+  implements StoryShareCallback
 {
-  public nfw(JobExecutor paramJobExecutor, Job paramJob, ConcurrentHashMap paramConcurrentHashMap) {}
+  public nfw(StoryShare paramStoryShare) {}
   
-  public void run()
+  public void a(ShareData paramShareData)
   {
-    JobExecutor.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJobExecutor, this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob, this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).a(paramShareData.a);
+    }
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).a();
+    }
+  }
+  
+  public void b(ShareData paramShareData)
+  {
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).c(paramShareData.a);
+    }
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).a();
+    }
+  }
+  
+  public void c(ShareData paramShareData)
+  {
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).d(paramShareData.a);
+    }
+    if (StoryShare.a(this.a) != null) {
+      StoryShare.a(this.a).a();
+    }
   }
 }
 

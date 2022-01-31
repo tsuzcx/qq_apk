@@ -1,52 +1,41 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderManager;
+import com.tencent.mobileqq.ar.arengine.ARCamera;
+import com.tencent.mobileqq.arcard.ARCardCameraRecordFragment;
+import com.tencent.qphone.base.util.QLog;
 
-class aaln
+public class aaln
   implements Runnable
 {
-  aaln(aalm paramaalm, byte[] paramArrayOfByte, boolean paramBoolean) {}
+  public aaln(ARCardCameraRecordFragment paramARCardCameraRecordFragment, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aalm.a.jdField_a_of_type_Aalr.jdField_a_of_type_JavaLangRefWeakReference == null)
+    if ((ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment) != 3) || (this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment.a == null))
     {
-      ArkAppCenter.b("ArkApp.Dict.Update", "downloadDictFile, weakPreDownloadCtrl is null, return");
+      QLog.i("ARCardCameraRecordFragment", 2, "cancel to close camera. next mCurCameraState = " + ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment));
       return;
     }
-    PreDownloadController localPreDownloadController = (PreDownloadController)this.jdField_a_of_type_Aalm.a.jdField_a_of_type_Aalr.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localPreDownloadController == null)
+    if ((ARCardCameraRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment) != null) && (this.jdField_a_of_type_Boolean)) {
+      ARCardCameraRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment).c();
+    }
+    if (ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment)) {
+      this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment.a.a();
+    }
+    ARCardCameraRecordFragment.b(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment, false);
+    this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment.a.a();
+    if (ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment) != 3)
     {
-      ArkAppCenter.b("ArkApp.Dict.Update", "downloadDictFile, preDownloadController is null, return");
+      QLog.i("ARCardCameraRecordFragment", 2, "cancel to close camera. next mCurCameraState = " + ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment));
       return;
     }
-    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    long l;
-    if (this.jdField_a_of_type_Aalm.a.jdField_a_of_type_Aalr.jdField_a_of_type_Boolean) {
-      if (this.jdField_a_of_type_Boolean)
-      {
-        String str = this.jdField_a_of_type_Aalm.a.jdField_a_of_type_JavaLangString;
-        if (arrayOfByte == null)
-        {
-          l = 0L;
-          localPreDownloadController.a(str, l);
-        }
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Aalm.a.jdField_a_of_type_Aalp.a(arrayOfByte);
-      return;
-      l = arrayOfByte.length;
-      break;
-      localPreDownloadController.a(this.jdField_a_of_type_Aalm.a.jdField_a_of_type_JavaLangString, -1L);
-      arrayOfByte = null;
-    }
+    ARCardCameraRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment, 0);
+    ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment, false);
+    QLog.i("ARCardCameraRecordFragment", 2, "closeCamera successfully. mCurCameraState = " + ARCardCameraRecordFragment.c(this.jdField_a_of_type_ComTencentMobileqqArcardARCardCameraRecordFragment));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aaln
  * JD-Core Version:    0.7.0.1
  */

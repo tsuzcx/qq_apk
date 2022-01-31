@@ -90,7 +90,7 @@ public class ChatBackgroundJsPlugin
     localIntent.putExtra("friendUin", paramIntent);
     localIntent.putExtra("PhotoConst.SINGLE_PHOTO_PATH", str);
     this.browserApp.getApp().sendBroadcast(localIntent);
-    QQToast.a(this.mRuntime.a(), 2131434977, 0).a();
+    QQToast.a(this.mRuntime.a(), 2131434994, 0).a();
     ReportController.b(null, "CliOper", "", "", "chatbackground", "BjIDShezhi", 0, 0, "1", "", "", "");
   }
   
@@ -290,7 +290,7 @@ public class ChatBackgroundJsPlugin
         {
           paramJsBridgeListener = new Intent();
           paramJsBridgeListener.putExtra("bg_replace_entrance", 8);
-          paramJsBridgeListener.putExtra("selfSet_leftViewText", this.mRuntime.a().getString(2131433681));
+          paramJsBridgeListener.putExtra("selfSet_leftViewText", this.mRuntime.a().getString(2131433698));
           paramJsBridgeListener.putExtra("hide_left_button", false);
           paramJsBridgeListener.putExtra("show_right_close_button", false);
           paramJsBridgeListener.putExtra("startOpenPageTime", System.currentTimeMillis());
@@ -448,7 +448,7 @@ public class ChatBackgroundJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ChatBackgroundJsPlugin
  * JD-Core Version:    0.7.0.1
  */

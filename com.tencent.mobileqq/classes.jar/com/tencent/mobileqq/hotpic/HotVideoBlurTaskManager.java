@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.hotpic;
 
-import adhg;
+import adrf;
 import android.content.Context;
 import android.support.v4.util.ArrayMap;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -238,7 +238,7 @@ public class HotVideoBlurTaskManager
       return;
     }
     this.b = true;
-    ThreadManager.post(new adhg(this), 5, null, true);
+    ThreadManager.post(new adrf(this), 5, null, true);
   }
   
   public void a(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, HotVideoData paramHotVideoData)
@@ -291,7 +291,7 @@ public class HotVideoBlurTaskManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoBlurTaskManager
  * JD-Core Version:    0.7.0.1
  */

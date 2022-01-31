@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.activity.phone.SettingActivity2;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
 public class wsj
-  implements Runnable
+  extends FriendListObserver
 {
-  public wsj(SettingActivity2 paramSettingActivity2) {}
+  public wsj(AvatarPendantActivity paramAvatarPendantActivity) {}
   
-  public void run()
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    this.a.a.f = true;
-    this.a.a.g();
+    if (paramBoolean) {
+      ThreadManager.getUIHandler().post(new wsk(this));
+    }
   }
 }
 

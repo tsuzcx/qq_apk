@@ -1,5 +1,4 @@
-import android.media.MediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.utils.AudioUtil;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
 
 class ajnl
   implements Runnable
@@ -8,12 +7,13 @@ class ajnl
   
   public void run()
   {
-    this.a.a.onCompletion(AudioUtil.a);
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a = 1;
+    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a(this.a.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajnl
  * JD-Core Version:    0.7.0.1
  */

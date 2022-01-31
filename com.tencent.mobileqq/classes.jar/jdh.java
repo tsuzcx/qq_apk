@@ -1,9 +1,17 @@
-import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 
-public final class jdh
-  implements IHttpCommunicatorFlowCount
+public class jdh
+  implements Runnable
 {
-  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
+  public jdh(VideoController paramVideoController, int paramInt, long paramLong) {}
+  
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentAvVideoController.i = null;
+    this.jdField_a_of_type_ComTencentAvVideoController.a().a("startGAudioChat.1", 0);
+    this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, 17, 0);
+  }
 }
 
 

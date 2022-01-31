@@ -1,15 +1,20 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseActivity;
+import android.util.LruCache;
+import com.tencent.biz.qqstory.shareGroup.icon.IconLog;
+import com.tencent.biz.qqstory.shareGroup.icon.ShareGroupIconManager;
 
 public class nrs
-  implements Runnable
+  extends LruCache
 {
-  public nrs(QQStoryBaseActivity paramQQStoryBaseActivity) {}
-  
-  public void run()
+  public nrs(ShareGroupIconManager paramShareGroupIconManager, int paramInt)
   {
-    ((UserManager)SuperManager.a(2)).c();
+    super(paramInt);
+  }
+  
+  protected void a(boolean paramBoolean, String paramString, nrl paramnrl1, nrl paramnrl2)
+  {
+    super.entryRemoved(paramBoolean, paramString, paramnrl1, paramnrl2);
+    IconLog.a("story.icon.ShareGroupIconManager", "entryRemoved key = %s" + paramString);
+    paramnrl1.a();
   }
 }
 

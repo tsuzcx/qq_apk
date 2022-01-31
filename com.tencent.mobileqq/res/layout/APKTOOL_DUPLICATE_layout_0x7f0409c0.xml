@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:layout_gravity="center_vertical" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03ab" android:paddingBottom="20.0dip" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_weight="0.5"
+<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021b04" android:focusable="false" android:focusableInTouchMode="false" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/icon" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0431" android:id="@id/title" android:paddingTop="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+    <RelativeLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ba6" android:layout_width="fill_parent" android:layout_height="60.0dip" android:layout_marginTop="0.0dip">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/image" android:clickable="false" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="9.0dip" android:scaleType="fitCenter" android:layout_centerVertical="true" />
+        <TextView android:textSize="18.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0536" android:layout_gravity="center_vertical" android:id="@id/title" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="编辑相册" android:singleLine="true" android:layout_toRightOf="@id/image" android:layout_centerVertical="true" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ba7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="60.0dip" android:layout_marginRight="9.0dip" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+    </RelativeLayout>
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a072e" android:background="#ffe1e2e6" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="44.0dip" />
 </LinearLayout>

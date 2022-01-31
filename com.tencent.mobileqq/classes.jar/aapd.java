@@ -1,8 +1,19 @@
-import java.util.ArrayList;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.ConnectionCallback;
 
-public class aapd
+class aapd
+  implements Runnable
 {
-  public ArrayList a;
+  aapd(aaoz paramaaoz) {}
+  
+  public void run()
+  {
+    if ((ArkAppEventObserverManager.a(this.a.a) != null) && (!"cellular".equals(ArkAppEventObserverManager.a(this.a.a))))
+    {
+      ArkAppEventObserverManager.a(this.a.a).a(true, "cellular");
+      ArkAppEventObserverManager.a(this.a.a, "cellular");
+    }
+  }
 }
 
 

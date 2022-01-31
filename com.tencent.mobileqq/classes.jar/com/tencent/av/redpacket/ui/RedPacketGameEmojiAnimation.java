@@ -13,7 +13,7 @@ import com.tencent.av.redpacket.AVRedPacketManager.LocalHitInfo;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
-import jmb;
+import jlm;
 
 public class RedPacketGameEmojiAnimation
 {
@@ -56,7 +56,7 @@ public class RedPacketGameEmojiAnimation
     this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleExcellent = new RedPacketGameParticleExcellent();
     this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleGold = new RedPacketGameParticleGold(this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmojiDetected);
     this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmoji.a(paramContext.getString(2131429607));
+    this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmoji.a(paramContext.getString(2131429613));
     this.jdField_a_of_type_AndroidOsVibrator = ((Vibrator)paramContext.getSystemService("vibrator"));
   }
   
@@ -216,7 +216,7 @@ public class RedPacketGameEmojiAnimation
       int i = this.jdField_a_of_type_Int % 3;
       this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmoji.b(i);
       this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmoji.jdField_b_of_type_Boolean = true;
-      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmoji.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmoji$OnShowListener = new jmb(this);
+      this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmoji.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmoji$OnShowListener = new jlm(this);
       this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmoji.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameSprite = this.jdField_a_of_type_ArrayOfComTencentAvRedpacketUiRedPacketGameSprite[localLocalEmojiInfo.emojiType];
       if (this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager != null) {
         this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager.a(localLocalEmojiInfo.emojiId, this.jdField_a_of_type_ComTencentAvRedpacketUiRedPacketGameParticleEmoji.jdField_a_of_type_Long, 1, i, localLocalEmojiInfo.emojiType, localLocalEmojiInfo.isBigEmoji, 0L);

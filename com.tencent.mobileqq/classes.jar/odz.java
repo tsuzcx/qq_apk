@@ -1,16 +1,28 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoiPickerCallback;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.mobileqq.troop.data.TroopBarPOI;
 
 public class odz
-  implements Runnable
+  implements EditVideoPoiPickerCallback
 {
-  public odz(EditVideoPartManager paramEditVideoPartManager) {}
+  public odz(EditVideoDoodle paramEditVideoDoodle) {}
   
-  public void run()
+  public void a()
   {
-    Bitmap localBitmap = this.a.a();
-    this.a.a.a(localBitmap);
+    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocationCancel");
+  }
+  
+  public void a(TroopBarPOI paramTroopBarPOI)
+  {
+    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "onSelectLocation " + paramTroopBarPOI);
+    if (paramTroopBarPOI != null)
+    {
+      this.a.a.setLocation(paramTroopBarPOI.a());
+      return;
+    }
+    this.a.a.setLocation("None for test!!");
   }
 }
 

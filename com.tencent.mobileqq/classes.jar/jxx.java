@@ -1,34 +1,22 @@
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-import com.tencent.av.utils.TipsManager;
+import android.content.res.Resources;
+import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 public class jxx
   implements Runnable
 {
-  int jdField_a_of_type_Int;
-  boolean jdField_a_of_type_Boolean;
-  
-  public jxx(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, int paramInt, boolean paramBoolean)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-  }
+  public jxx(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
   public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.c, 2, "RefreshStatusTipsRunnale , type = " + this.jdField_a_of_type_Int + " , flag = " + this.jdField_a_of_type_Boolean);
+      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TimeoutRunnable Run");
     }
-    int i = this.jdField_a_of_type_Int;
-    if ((i == 50) || (i == 57) || (i == 52) || (i == 58) || (i == 59) || (i == 60)) {
-      if (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a != null) {
-        this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.a(i, this.jdField_a_of_type_Boolean);
-      }
+    QQToast.a(MultiVideoEnterPageActivity.c(this.a), 2131429191, 1).b(MultiVideoEnterPageActivity.b(this.a).getDimensionPixelSize(2131558448));
+    if (!this.a.jdField_a_of_type_Boolean) {
+      MultiVideoEnterPageActivity.g(this.a);
     }
-    while (this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a.b(this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean);
   }
 }
 

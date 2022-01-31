@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import com.tencent.biz.qqstory.comment.StoryFailCommentCacher;
 import com.tencent.biz.qqstory.model.StoryConfigManager;
 import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.model.TrimmableManager;
@@ -33,10 +34,10 @@ import com.tencent.mobileqq.vas.VasApngUtil;
 import com.tencent.widget.immersive.ImmersiveTitleBar2;
 import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
-import tbh;
-import tbi;
-import tbj;
-import tbk;
+import teh;
+import tei;
+import tej;
+import tek;
 
 public class Now
   extends Frame
@@ -50,7 +51,7 @@ public class Now
   public QQStoryMainController a;
   private MystoryListView jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView;
   ImmersiveTitleBar2 jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2;
-  private final Runnable jdField_a_of_type_JavaLangRunnable = new tbh(this);
+  private final Runnable jdField_a_of_type_JavaLangRunnable = new teh(this);
   public String a;
   protected boolean a;
   public RelativeLayout b;
@@ -62,7 +63,7 @@ public class Now
   
   public Now()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController = new QQStoryMainController(new tbi(this), QQStoryMainController.b);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController = new QQStoryMainController(new tei(this), QQStoryMainController.b);
   }
   
   public static void a(int paramInt1, int paramInt2)
@@ -91,21 +92,21 @@ public class Now
   
   private void n()
   {
-    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)a(2131363361));
+    this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2 = ((ImmersiveTitleBar2)a(2131363379));
     IphoneTitleBarActivity.setLayerType(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131362577));
-    IphoneTitleBarActivity.setLayerType((ViewGroup)a(2131363226));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131372002));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new tbk(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131363363));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131367212));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131433277);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131362594));
+    IphoneTitleBarActivity.setLayerType((ViewGroup)a(2131363244));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131372175));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new tek(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131363381));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131367260));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131433294);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131370583));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131372004));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131370723));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131372177));
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)a(2131372003));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)a(2131372176));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
     if (ThemeUtil.isDefaultOrDIYTheme(false))
     {
@@ -117,19 +118,19 @@ public class Now
       return;
     }
     a(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, false);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845743);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845743);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494205));
-    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494205));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845871);
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845871);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494212));
+    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494212));
   }
   
   private void o()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView = ((MystoryListView)a(2131371592));
-    this.d = ((RelativeLayout)a(2131371858));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView = ((MystoryListView)a(2131371757));
+    this.d = ((RelativeLayout)a(2131372027));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.setIsNowTab(true);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.setDivider(null);
-    ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.getParent()).setBackgroundColor(a().getColor(2131494248));
+    ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.getParent()).setBackgroundColor(a().getColor(2131494255));
   }
   
   @TargetApi(16)
@@ -148,7 +149,7 @@ public class Now
         break label261;
       }
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.setContentBackground(((ThemeBackground)localObject).img);
-      this.d.setBackgroundColor(a().getColor(2131494248));
+      this.d.setBackgroundColor(a().getColor(2131494255));
     }
     label261:
     for (int i = 1;; i = 0)
@@ -157,17 +158,17 @@ public class Now
       while ((i == 0) && (j == 0))
       {
         if (ThemeUtil.isNowThemeIsDefault(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.setContentBackground(a().getDrawable(2130845737), false);
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.setContentBackground(a().getDrawable(2130845865), false);
         }
         for (;;)
         {
-          this.d.setBackgroundColor(a().getColor(2131494248));
+          this.d.setBackgroundColor(a().getColor(2131494255));
           return;
           if (!ThemeUtil.isNowThemeIsAnimate()) {
             break label254;
           }
           localObject = ThemeUtil.getAnimatePathByTag(2);
-          Drawable localDrawable = super.a().getDrawable(2130845679);
+          Drawable localDrawable = super.a().getDrawable(2130845807);
           localObject = VasApngUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, "-conversation-", localDrawable, VasApngUtil.a, "-now-", null);
           if (localObject == null) {
             break label254;
@@ -177,7 +178,7 @@ public class Now
           this.d.setBackgroundDrawable((Drawable)localObject);
           i = 0;
           break;
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.setContentBackground(a().getDrawable(2130838211), false);
+          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.setContentBackground(a().getDrawable(2130838215), false);
         }
         label254:
         j = 0;
@@ -201,15 +202,10 @@ public class Now
     }
   }
   
-  public View a()
-  {
-    return this.jdField_c_of_type_AndroidWidgetRelativeLayout;
-  }
-  
   public View a(LayoutInflater paramLayoutInflater)
   {
     SLog.b("Q.qqstory.home:NowTab", "Now tab run onCreateView!");
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.inflate(2130970742, null));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramLayoutInflater.inflate(2130970790, null));
     return this.jdField_b_of_type_AndroidWidgetRelativeLayout;
   }
   
@@ -248,7 +244,7 @@ public class Now
     localHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     localHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 100L);
     ApngImage.playByTag(5);
-    Bosses.get().postLightWeightJob(new tbj(this), 10);
+    Bosses.get().postLightWeightJob(new tej(this), 10);
     this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
   }
   
@@ -273,10 +269,10 @@ public class Now
       return;
     }
     a(this.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2, false);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845743);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845743);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494205));
-    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494205));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845871);
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130845871);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494212));
+    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(a().getColorStateList(2131494212));
   }
   
   public void b(boolean paramBoolean)
@@ -376,6 +372,7 @@ public class Now
     super.k();
     SLog.d("Q.qqstory.home:NowTab", "Now tab run onDestroy!");
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController.d();
+    StoryFailCommentCacher.a().a();
   }
 }
 

@@ -1,20 +1,14 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubAccountUgActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.SecurityPickproofActivity;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
 
 public class trg
-  extends MqqHandler
+  implements Runnable
 {
-  public trg(SubAccountUgActivity paramSubAccountUgActivity) {}
+  public trg(SecurityPickproofActivity paramSecurityPickproofActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    }
-    this.a.finish();
+    HttpDownloadUtil.a(this.a.a, this.a);
   }
 }
 

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a359c" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0222b4" android:paddingTop="3.0dip" android:paddingBottom="3.0dip" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0987"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="17.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c013f" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a23d7" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0987" android:text="分享" android:layout_weight="1.0" />
+    <TextView android:textSize="17.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c013f" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a23d6" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0987" android:text="下载" android:layout_weight="1.0" />
+    <TextView android:textSize="17.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c013f" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09ce" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0987" android:text="删除" android:layout_weight="1.0" /> />
+</LinearLayout>

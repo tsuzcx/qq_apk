@@ -1,29 +1,37 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.nearby.now.StoryPlayController;
-import com.tencent.mobileqq.nearby.now.view.logic.VideoInfoListenerImpl;
+import android.text.TextUtils;
+import com.tencent.mobileqq.managers.CUOpenCardGuideMng.CUOpenCardClickableSpan;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class aeew
-  implements URLDrawable.URLDrawableListener
+  implements Runnable
 {
-  public aeew(StoryPlayController paramStoryPlayController, VideoInfoListenerImpl paramVideoInfoListenerImpl) {}
+  public aeew(CUOpenCardGuideMng.CUOpenCardClickableSpan paramCUOpenCardClickableSpan) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewLogicVideoInfoListenerImpl != null) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewLogicVideoInfoListenerImpl.a(paramURLDrawable.getIntrinsicWidth(), paramURLDrawable.getIntrinsicHeight(), true);
+    String str;
+    if (this.a.a == 1) {
+      str = "0X8008127";
+    }
+    for (;;)
+    {
+      if (!TextUtils.isEmpty(str)) {
+        ReportController.b(null, "dc00898", "", "", str, str, 0, 0, "", "", "", "");
+      }
+      return;
+      if (this.a.a == 2) {
+        str = "0X8008125";
+      } else if ((this.a.a == 3) || (this.a.a == 4)) {
+        str = "0X800813F";
+      } else {
+        str = null;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeew
  * JD-Core Version:    0.7.0.1
  */

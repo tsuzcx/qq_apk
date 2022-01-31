@@ -25,7 +25,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.BinderWarpper;
 import java.util.Arrays;
 import mqq.os.MqqHandler;
-import wtm;
+import wwr;
 
 public class PeakService
   extends IntentService
@@ -84,7 +84,7 @@ public class PeakService
         paramIntent.removeCallbacks(FileUtils.a);
         paramIntent.postDelayed(FileUtils.a, 1000L);
       }
-      ThreadManager.post(new wtm(this), 1, null, true);
+      ThreadManager.post(new wwr(this), 1, null, true);
     }
     for (;;)
     {

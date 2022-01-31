@@ -1,60 +1,30 @@
-import android.content.Context;
-import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendFragment;
 
 public class achx
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public achx(QfileLocalFileMediaTabView paramQfileLocalFileMediaTabView, int paramInt, Context paramContext) {}
+  public achx(ExtendFriendFragment paramExtendFriendFragment) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ArrayList localArrayList = new ArrayList();
-    Map localMap;
-    Iterator localIterator;
-    String str;
-    if ((this.jdField_a_of_type_Int & 0x1) > 0)
+    switch (paramMotionEvent.getAction())
     {
-      localMap = FileCategoryUtil.c(this.jdField_a_of_type_AndroidContentContext);
-      if (localMap != null)
-      {
-        localIterator = localMap.keySet().iterator();
-        while (localIterator.hasNext())
-        {
-          str = (String)localIterator.next();
-          if (str.equalsIgnoreCase("QQfile_recv") != true) {
-            localArrayList.addAll((List)localMap.get(str));
-          }
-        }
-      }
     }
-    if ((this.jdField_a_of_type_Int & 0x2) > 0)
+    for (;;)
     {
-      localMap = FileCategoryUtil.b(this.jdField_a_of_type_AndroidContentContext);
-      if (localMap != null)
-      {
-        localIterator = localMap.keySet().iterator();
-        while (localIterator.hasNext())
-        {
-          str = (String)localIterator.next();
-          if (str.equalsIgnoreCase("QQfile_recv") != true) {
-            localArrayList.addAll((List)localMap.get(str));
-          }
-        }
-      }
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.addAll(localArrayList);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     achx
  * JD-Core Version:    0.7.0.1
  */

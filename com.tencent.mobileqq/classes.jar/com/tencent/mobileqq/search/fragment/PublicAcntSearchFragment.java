@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahfk;
-import ahfl;
+import ahtm;
+import ahtn;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -53,7 +53,7 @@ public class PublicAcntSearchFragment
   {
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver = new ahfl(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver = new ahtn(this);
   }
   
   public static PublicAcntSearchFragment a(int paramInt)
@@ -149,7 +149,7 @@ public class PublicAcntSearchFragment
     if (QLog.isColorLevel()) {
       QLog.i("PublicAcntSearchFragment", 2, "sendNetPublicAcntRequest ,keyword=" + this.jdField_b_of_type_JavaLangString);
     }
-    ThreadManager.getUIHandler().post(new ahfk(this));
+    ThreadManager.getUIHandler().post(new ahtm(this));
     Object localObject1 = ((PublicAccountDataManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55)).a();
     ArrayList localArrayList = new ArrayList();
     if ((localObject1 == null) || (((List)localObject1).isEmpty())) {

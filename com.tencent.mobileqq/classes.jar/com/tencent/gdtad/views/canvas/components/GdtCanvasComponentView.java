@@ -4,9 +4,10 @@ import android.content.Context;
 import android.widget.FrameLayout;
 import com.tencent.gdtad.log.GdtLog;
 import com.tencent.gdtad.statistics.GdtTimeStatistics;
-import com.tencent.gdtad.views.GdtViewLoadListener;
 import com.tencent.gdtad.views.GdtViewStatus;
 import com.tencent.gdtad.views.GdtViewStatus.Listener;
+import com.tencent.gdtad.views.canvas.GdtCanvasData;
+import com.tencent.gdtad.views.canvas.framework.GdtCanvasViewListener;
 import java.lang.ref.WeakReference;
 
 public abstract class GdtCanvasComponentView
@@ -15,7 +16,6 @@ public abstract class GdtCanvasComponentView
 {
   protected GdtTimeStatistics a;
   public GdtViewStatus a;
-  public GdtCanvasComponentData a;
   private WeakReference a;
   
   public GdtCanvasComponentView(Context paramContext, WeakReference paramWeakReference)
@@ -36,10 +36,18 @@ public abstract class GdtCanvasComponentView
       return;
       l = this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics.a();
     } while (l < 0L);
-    ((GdtViewLoadListener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this, l, paramBoolean);
+    ((GdtCanvasViewListener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(a(), l, paramBoolean);
   }
   
   public abstract GdtViewStatus a();
+  
+  public GdtCanvasData a()
+  {
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+      return ((GdtCanvasViewListener)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a();
+    }
+    return null;
+  }
   
   public abstract GdtCanvasComponentData a();
   
@@ -110,7 +118,7 @@ public abstract class GdtCanvasComponentView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.components.GdtCanvasComponentView
  * JD-Core Version:    0.7.0.1
  */

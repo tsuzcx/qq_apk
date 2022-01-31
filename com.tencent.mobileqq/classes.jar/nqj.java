@@ -1,31 +1,42 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.qqstory.shareGroup.icon.IconLog;
-import com.tencent.biz.qqstory.shareGroup.icon.UrlBitmapDownloader.Listener;
-import com.tencent.biz.qqstory.shareGroup.icon.UrlListToBitmapListSegment;
-import java.util.List;
+import android.media.MediaCodec;
+import android.media.MediaFormat;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaExtractor;
 
 public class nqj
-  implements UrlBitmapDownloader.Listener
+  extends nqk
 {
-  public nqj(UrlListToBitmapListSegment paramUrlListToBitmapListSegment, List paramList, Bitmap[] paramArrayOfBitmap, Handler paramHandler) {}
+  private nqe a;
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public nqj(MediaExtractor paramMediaExtractor, boolean paramBoolean, int paramInt, nqm paramnqm, nqe paramnqe)
   {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
-    IconLog.b(UrlListToBitmapListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlListToBitmapListSegment), "bitmap download success index=%d, url=%s", Integer.valueOf(i), paramString);
-    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[i] = paramBitmap;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 0, this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap), 200L);
+    super(paramMediaExtractor, paramBoolean, paramInt, paramnqm);
+    this.a = paramnqe;
+    a();
   }
   
-  public void a(String paramString, Throwable paramThrowable)
+  protected void a(MediaCodec paramMediaCodec, MediaFormat paramMediaFormat)
   {
-    int i = this.jdField_a_of_type_JavaUtilList.indexOf(paramString);
-    IconLog.c(UrlListToBitmapListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconUrlListToBitmapListSegment), "bitmap download failed index=%s, error=%s", Integer.valueOf(i), paramThrowable);
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, paramThrowable), 500L);
+    super.a(paramMediaCodec, paramMediaFormat);
+    this.a.a(paramMediaFormat);
+  }
+  
+  protected void a(MediaFormat paramMediaFormat)
+  {
+    this.a.a(paramMediaFormat);
+  }
+  
+  public void a(nql paramnql, long paramLong)
+  {
+    this.a.a(paramnql.jdField_a_of_type_JavaNioByteBuffer, paramnql.jdField_a_of_type_Long);
+    b(paramnql);
+  }
+  
+  protected boolean a()
+  {
+    if (!c()) {
+      return this.a.a() < 200000L;
+    }
+    return super.a();
   }
 }
 

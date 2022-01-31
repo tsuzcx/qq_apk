@@ -1,28 +1,39 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.ChatHistoryForC2C;
-import com.tencent.mobileqq.activity.messagesearch.C2CMessageSearchDialog;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.msgcache.CacheConstants;
+import com.tencent.mobileqq.service.message.MessageCache;
+import java.util.HashMap;
+import mqq.app.MobileQQ;
 
 public class rye
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public rye(ChatHistoryForC2C paramChatHistoryForC2C, View paramView1, View paramView2) {}
+  public rye(ChatFragment paramChatFragment, int paramInt1, int paramInt2) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchC2CMessageSearchDialog.show();
-    this.jdField_a_of_type_AndroidViewView.setAnimation(null);
-    this.b.setVisibility(8);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryForC2C.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(CacheConstants.a, 0);
+    long l = ((SharedPreferences)localObject).getLong(CacheConstants.d, 0L);
+    if ((l == 0L) || (l > System.currentTimeMillis()) || (System.currentTimeMillis() - l > 14400000L)) {}
+    for (int i = 1;; i = 0)
+    {
+      if (i != 0) {
+        ((SharedPreferences)localObject).edit().putLong(CacheConstants.d, System.currentTimeMillis()).commit();
+      }
+      if (i != 0)
+      {
+        i = this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getIntExtra("entrance", 0);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
+        this.jdField_a_of_type_ComTencentMobileqqActivityChatFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.jdField_a_of_type_Int, i, this.b);
+      }
+      MessageCache.b.clear();
+      return;
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

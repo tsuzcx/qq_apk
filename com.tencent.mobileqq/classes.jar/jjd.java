@@ -1,23 +1,16 @@
-import com.tencent.av.gaudio.GaInviteLockActivity;
-import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
-import com.tencent.av.ui.QavPanel;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.guild.GuildMultiActivity;
+import com.tencent.av.utils.UITools;
 
 class jjd
-  implements QavInOutAnimation.QavOutAnimationListener
+  implements DialogInterface.OnClickListener
 {
-  jjd(jjc paramjjc) {}
+  jjd(jjb paramjjb) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a.a != null) {
-      this.a.a.a.setViewEnable(2131364223, false);
-    }
-  }
-  
-  public void b()
-  {
-    GaInviteLockActivity.a(this.a.a);
-    GaInviteLockActivity.a(this.a.a, 0, 2131034269);
+    UITools.a(this.a.a, this.a.a.a);
   }
 }
 

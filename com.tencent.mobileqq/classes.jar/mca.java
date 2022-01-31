@@ -1,24 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppJumpManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
+import com.tencent.qphone.base.util.QLog;
 
-public class mca
-  implements AbsListView.OnScrollListener
+public final class mca
+  implements UserOperationModule.Ox978RespCallBack
 {
-  public mca(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public mca(String paramString, boolean paramBoolean) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if ((VideoFeedsPlayActivity.j(this.a)) && (paramInt == 1)) {
-      VideoFeedsPlayActivity.b(this.a);
-    }
-    if ((VideoFeedsPlayActivity.a(this.a) != null) && (paramInt == 1)) {
-      VideoFeedsPlayActivity.a(this.a).a(1);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsHelper", 2, "followPubAccount() onFollowPublicAccount uin=" + this.jdField_a_of_type_JavaLangString + ", isSuccess=" + paramBoolean + ", isUGC=" + this.jdField_a_of_type_Boolean);
     }
   }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

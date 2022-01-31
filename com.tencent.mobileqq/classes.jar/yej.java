@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.adapter.LebaListViewAdapter;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
 
 public class yej
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public yej(LebaListViewAdapter paramLebaListViewAdapter, BusinessInfoCheckUpdate.AppInfo paramAppInfo) {}
+  public yej(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((RedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListViewAdapter.a.getManager(35)).a(this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo);
+    ShortVideoPreviewActivity.b(this.a);
+    this.a.setResult(-1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yej
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,34 @@
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ar.config.MainDownAni;
+import com.tencent.mobileqq.ar.config.WorldCupMgr;
+import com.tencent.mobileqq.dinifly.ImageAssetDelegate;
+import com.tencent.mobileqq.dinifly.LottieImageAsset;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.HashMap;
 
 class aajf
-  implements Runnable
+  implements ImageAssetDelegate
 {
   aajf(aaje paramaaje) {}
   
-  public void run()
+  public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    ArkAppModuleReg.ModuleQQ.a(this.a.a.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ, this.a.a.jdField_a_of_type_Long, this.a.a.c, true, 1);
+    if ((ImageView)this.a.a.e.get() != null)
+    {
+      String str = paramLottieImageAsset.getFileName();
+      Bitmap localBitmap = (Bitmap)this.a.a.a.a.a.get(str);
+      paramLottieImageAsset = localBitmap;
+      if (localBitmap == null)
+      {
+        QLog.w(MainDownAni.a(), 1, "loadDownAnimation, 加载图片失败, image[" + str + "]");
+        paramLottieImageAsset = Bitmap.createBitmap(1, 1, Bitmap.Config.ALPHA_8);
+      }
+      return paramLottieImageAsset;
+    }
+    return null;
   }
 }
 

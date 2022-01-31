@@ -8,7 +8,7 @@ public abstract interface ARVideoRecordDataSource
   
   public abstract boolean a();
   
-  public abstract boolean a(boolean paramBoolean);
+  public abstract boolean a(boolean paramBoolean, String paramString);
   
   public abstract boolean a(boolean paramBoolean1, boolean paramBoolean2);
   

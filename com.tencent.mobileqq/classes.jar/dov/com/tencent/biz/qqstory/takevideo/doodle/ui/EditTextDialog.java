@@ -23,17 +23,17 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import anhn;
-import anho;
-import anhp;
-import anhq;
-import anhs;
-import anht;
-import anhu;
-import anhv;
-import anhw;
-import anhx;
-import anhy;
+import anxs;
+import anxt;
+import anxu;
+import anxv;
+import anxx;
+import anxy;
+import anxz;
+import anya;
+import anyb;
+import anyc;
+import anyd;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.QLog;
@@ -61,7 +61,7 @@ public class EditTextDialog
 {
   public int a;
   Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new anhv(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new anya(this);
   public View a;
   public ViewGroup a;
   public EditText a;
@@ -75,7 +75,7 @@ public class EditTextDialog
   public TextInfo a;
   public EditTextDialog.EditTextDialogEventListener a;
   EditTextPanel jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextPanel;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new anhu(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new anxz(this);
   public String a;
   public final MqqHandler a;
   public boolean a;
@@ -98,20 +98,20 @@ public class EditTextDialog
   private void a()
   {
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(getContext()).inflate(2130968953, null));
-    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new anhy(this, null));
-    this.jdField_a_of_type_ComTencentWidgetFitSystemWindowsRelativeLayout = ((FitSystemWindowsRelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364355));
+    this.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().addOnGlobalLayoutListener(new anyd(this, null));
+    this.jdField_a_of_type_ComTencentWidgetFitSystemWindowsRelativeLayout = ((FitSystemWindowsRelativeLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364379));
     this.jdField_a_of_type_ComTencentWidgetFitSystemWindowsRelativeLayout.setFitsSystemWindows(true);
-    this.jdField_a_of_type_ComTencentWidgetXPanelContainer = ((XPanelContainer)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362822));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364357));
+    this.jdField_a_of_type_ComTencentWidgetXPanelContainer = ((XPanelContainer)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131362840));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364381));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364358));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364382));
     this.jdField_a_of_type_AndroidWidgetEditText.setHighlightColor(Color.parseColor("#cceae8"));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364356);
-    this.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView = ((EditTextPreView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364359));
-    this.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView.setOnClickListener(new anhn(this));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364380);
+    this.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView = ((EditTextPreView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131364383));
+    this.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView.setOnClickListener(new anxs(this));
     this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(true);
     this.jdField_a_of_type_AndroidWidgetEditText.setFocusable(true);
-    this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new anhp(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new anxu(this));
     this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(this.jdField_a_of_type_AndroidWidgetEditText);
     this.jdField_a_of_type_ComTencentWidgetXPanelContainer.setOnPanelChangeListener(this);
     if ((this.f == 0) || (this.f == 1))
@@ -121,8 +121,8 @@ public class EditTextDialog
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new anhq(this));
-      this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new anhs(this));
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new anxv(this));
+      this.jdField_a_of_type_AndroidWidgetEditText.setOnTouchListener(new anxx(this));
       return;
       this.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(1);
       b(0);
@@ -179,7 +179,7 @@ public class EditTextDialog
   private void c()
   {
     getWindow().getDecorView().setSystemUiVisibility(4);
-    getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new anht(this));
+    getWindow().getDecorView().setOnSystemUiVisibilityChangeListener(new anxy(this));
   }
   
   public int a()
@@ -201,9 +201,9 @@ public class EditTextDialog
     if (paramInt == 34)
     {
       XPanelContainer.jdField_a_of_type_Int = (int)(191.0F * this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density);
-      localLinearLayout = (LinearLayout)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130970668, null);
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextPanel = ((EditTextPanel)localLinearLayout.findViewById(2131362952));
-      localLinearLayout.findViewById(2131371549).setVisibility(8);
+      localLinearLayout = (LinearLayout)View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130970714, null);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextPanel = ((EditTextPanel)localLinearLayout.findViewById(2131362970));
+      localLinearLayout.findViewById(2131371714).setVisibility(8);
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextPanel.setPanelListener(this);
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiPanelEditTextPanel.a(this.jdField_a_of_type_AndroidWidgetEditText);
     }
@@ -249,7 +249,7 @@ public class EditTextDialog
         this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem = paramDynamicTextConfigBean;
       }
       this.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView.setPreViewDrawer(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem);
-      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(-1, this.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView, true, 3000, 500, new anho(this));
+      this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a(-1, this.jdField_a_of_type_DovComQqImCaptureTextEditTextPreView, true, 3000, 500, new anxt(this));
       this.jdField_a_of_type_AndroidWidgetEditText.setText(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a());
       this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.length());
       if (!this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.a().equals(DynamicTextBuilder.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.c(), this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem.b()))) {
@@ -265,7 +265,7 @@ public class EditTextDialog
       return;
       label260:
       localObject = DynamicTextBuilder.a(DynamicTextBuilder.a(paramDynamicTextConfigBean.text_id), this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem);
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new anhx(this));
+      this.jdField_a_of_type_MqqOsMqqHandler.post(new anyc(this));
       break;
       label294:
       this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(null);
@@ -372,7 +372,7 @@ public class EditTextDialog
     }
     if (paramInt2 == 34)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840497);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840503);
       if ((this.e == -1) && (this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem != null))
       {
         int i = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextBuilder.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem);
@@ -385,16 +385,16 @@ public class EditTextDialog
     }
     for (;;)
     {
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new anhw(this, paramInt1, paramInt2));
+      this.jdField_a_of_type_MqqOsMqqHandler.post(new anyb(this, paramInt1, paramInt2));
       return;
       if (paramInt2 == 1)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845731);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845859);
         b(0);
       }
       else if (paramInt2 == 0)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840497);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840503);
         b(1);
       }
     }

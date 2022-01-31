@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.vas;
 
-import ajtw;
+import akid;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -9,7 +9,7 @@ import java.util.List;
 
 public class VasPalette$OcTreeQuantizer
 {
-  private static final Comparator jdField_a_of_type_JavaUtilComparator = new ajtw();
+  private static final Comparator jdField_a_of_type_JavaUtilComparator = new akid();
   private List jdField_a_of_type_JavaUtilList;
   
   public List a()
@@ -47,7 +47,7 @@ public class VasPalette$OcTreeQuantizer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasPalette.OcTreeQuantizer
  * JD-Core Version:    0.7.0.1
  */

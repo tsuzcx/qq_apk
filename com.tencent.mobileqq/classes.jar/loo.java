@@ -1,14 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.model.AdvertisementInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
+import java.util.Comparator;
 
-public class loo
-  implements Runnable
+class loo
+  implements Comparator
 {
-  public loo(AdvertisementInfoModule paramAdvertisementInfoModule, AdvertisementInfo paramAdvertisementInfo) {}
+  loo(lom paramlom) {}
   
-  public void run()
+  public int a(Integer paramInteger1, Integer paramInteger2)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelAdvertisementInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo);
+    return paramInteger1.intValue() - paramInteger2.intValue();
   }
 }
 

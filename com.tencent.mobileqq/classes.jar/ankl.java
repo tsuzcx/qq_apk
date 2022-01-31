@@ -1,18 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.QIMCommonLoadingView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.capture.QIMCaptureController;
+import dov.com.qq.im.capture.view.ProviderViewEditContainer;
 
-class ankl
-  implements Runnable
+public class ankl
+  implements View.OnTouchListener
 {
-  ankl(ankk paramankk, int paramInt) {}
+  public ankl(QIMCaptureController paramQIMCaptureController) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ankk.a(this.jdField_a_of_type_Ankk).setVisibility(0);
-    ankk.a(this.jdField_a_of_type_Ankk).setProgress(this.jdField_a_of_type_Int);
-    if (QLog.isColorLevel()) {
-      QLog.d("InformationFaceAdapter", 2, "progress:" + this.jdField_a_of_type_Int);
-    }
+    return QIMCaptureController.a(this.a).a(paramMotionEvent);
   }
 }
 

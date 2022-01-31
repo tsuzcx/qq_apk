@@ -1,15 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class tgy
-  implements DialogInterface.OnClickListener
+public class tgy
+  implements View.OnClickListener
 {
-  tgy(tgw paramtgw) {}
+  public tgy(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.a.p();
+    paramView = this.a.getIntent().getStringExtra("uin");
+    if ((paramView != null) && (paramView.equals(this.a.app.getCurrentAccountUin())))
+    {
+      ProfileLabelEditorActivity.a(this.a);
+      ReportController.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "4", "", "", "");
+    }
   }
 }
 

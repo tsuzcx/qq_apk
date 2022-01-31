@@ -1,16 +1,22 @@
-public class aamk
-  extends aamh
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.arcard.ARCardShareHelper;
+import mqq.os.MqqHandler;
+
+class aamk
+  implements Runnable
 {
-  public byte[] b;
+  aamk(aamf paramaamf, int paramInt) {}
   
-  private aamk()
+  public void run()
   {
-    super(null);
+    boolean bool = ARCardShareHelper.a(this.jdField_a_of_type_Aamf.a);
+    String str = ARCardShareHelper.b(this.jdField_a_of_type_Aamf.a);
+    ThreadManager.getUIHandler().post(new aaml(this, bool, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aamk
  * JD-Core Version:    0.7.0.1
  */

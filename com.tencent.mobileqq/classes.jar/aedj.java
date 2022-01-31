@@ -1,70 +1,64 @@
 import android.os.Handler;
-import android.text.TextUtils;
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagAdapter;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagInfo;
-import com.tencent.mobileqq.nearby.interestTag.InterestTagItemView.IInterestTagItemViewCallback;
-import com.tencent.util.InputMethodUtil;
-import java.util.ArrayList;
+import android.os.Message;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.emoticonview.EmoticonUtils;
+import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
+import com.tencent.mobileqq.magicface.drawable.PngFrameManager.RandomDrawableParam;
+import com.tencent.mobileqq.magicface.drawable.PngFrameUtil;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderFactory;
+import java.io.File;
 
 public class aedj
-  implements InterestTagItemView.IInterestTagItemViewCallback
+  implements Runnable
 {
-  public aedj(ChooseInterestTagActivity paramChooseInterestTagActivity) {}
+  public aedj(PngFrameManager paramPngFrameManager, PngFrameManager.RandomDrawableParam paramRandomDrawableParam) {}
   
-  public void a(InterestTagInfo paramInterestTagInfo)
+  public void run()
   {
-    ChooseInterestTagActivity.a(this.a, 0);
-    InputMethodUtil.b(ChooseInterestTagActivity.a(this.a));
-    boolean bool;
-    if (!TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
+    File localFile = new File(EmoticonUtils.r.replace("[epId]", this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString));
+    EmoticonManager localEmoticonManager = (EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13);
+    ??? = localEmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString);
+    Object localObject1 = ???;
+    if (??? == null)
     {
-      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
-      ChooseInterestTagActivity localChooseInterestTagActivity = this.a;
-      if (ChooseInterestTagActivity.b(this.a) != -1)
+      localObject1 = new EmoticonPackage();
+      ((EmoticonPackage)localObject1).epId = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString;
+      ((EmoticonPackage)localObject1).aio = true;
+    }
+    synchronized (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager)
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_AndroidOsHandler != null)
       {
-        bool = true;
-        ChooseInterestTagActivity.a(localChooseInterestTagActivity, false, bool);
-        ChooseInterestTagActivity.a(this.a).setText("");
-        ChooseInterestTagActivity.a(this.a, "");
+        if (!localFile.exists()) {
+          break label165;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameUtil.a(localFile);
+        this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_AndroidOsHandler.obtainMessage(224, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
+        ((EmoticonPackage)localObject1).rscType = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_Int;
+        localEmoticonManager.a((EmoticonPackage)localObject1);
       }
+      label165:
+      DownloadTask localDownloadTask;
+      do
+      {
+        return;
+        localDownloadTask = new DownloadTask(EmosmUtils.a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_JavaLangString), localFile);
+        localDownloadTask.h = true;
+      } while ((DownloaderFactory.a(localDownloadTask, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface) != 0) || (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameUtil == null) || (this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_AndroidOsHandler == null));
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameUtil.a(localFile);
+      ((EmoticonPackage)localObject1).rscType = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam.jdField_a_of_type_Int;
+      localEmoticonManager.a((EmoticonPackage)localObject1);
+      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.jdField_a_of_type_AndroidOsHandler.obtainMessage(224, this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager$RandomDrawableParam).sendToTarget();
     }
-    else
-    {
-      if (!ChooseInterestTagActivity.a(this.a, paramInterestTagInfo)) {
-        break label132;
-      }
-      ChooseInterestTagActivity.a(this.a).remove(paramInterestTagInfo);
-      ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
-    }
-    label132:
-    do
-    {
-      return;
-      bool = false;
-      break;
-      if (ChooseInterestTagActivity.a(this.a).size() < 8) {
-        break label198;
-      }
-    } while (ChooseInterestTagActivity.d(this.a));
-    ChooseInterestTagActivity.a(this.a, "最多只能添加8个标签哦");
-    ChooseInterestTagActivity.b(this.a, true);
-    ChooseInterestTagActivity.a(this.a).postDelayed(new aedk(this), 2800L);
-    return;
-    label198:
-    ChooseInterestTagActivity.a(this.a).add(paramInterestTagInfo);
-    ChooseInterestTagActivity.c(this.a, paramInterestTagInfo);
-  }
-  
-  public boolean a(InterestTagInfo paramInterestTagInfo)
-  {
-    return ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aedj
  * JD-Core Version:    0.7.0.1
  */

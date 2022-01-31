@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.activity.RegisterBaseActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SVIPObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class tma
-  implements Runnable
+  extends SVIPObserver
 {
-  public tma(RegisterBaseActivity paramRegisterBaseActivity, String paramString1, String paramString2) {}
+  public tma(QQSettingMe paramQQSettingMe) {}
   
-  public void run()
+  public void a()
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterBaseActivity, 230);
-    localQQCustomDialog.setTitle(this.jdField_a_of_type_JavaLangString);
-    localQQCustomDialog.setMessage(this.b);
-    localQQCustomDialog.setPositiveButton(2131436303, new tmb(this));
-    localQQCustomDialog.show();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoChangedObserver");
+    }
+    this.a.b(this.a.a.getCurrentAccountUin());
   }
 }
 

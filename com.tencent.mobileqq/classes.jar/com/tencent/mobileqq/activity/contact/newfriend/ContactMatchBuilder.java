@@ -26,7 +26,7 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import mqq.os.MqqHandler;
-import wgg;
+import wjl;
 
 public class ContactMatchBuilder
   extends NewFriendBaseBuilder
@@ -59,14 +59,14 @@ public class ContactMatchBuilder
     if ((paramView == null) || (!(paramView.getTag() instanceof ContactMatchBuilder.ContactMatchHolder)))
     {
       localContactMatchHolder = new ContactMatchBuilder.ContactMatchHolder();
-      paramView = a(this.jdField_a_of_type_AndroidContentContext, 2130970593, localContactMatchHolder);
-      localContactMatchHolder.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366518));
-      localContactMatchHolder.h = ((TextView)paramView.findViewById(2131362876));
-      localContactMatchHolder.i = ((TextView)paramView.findViewById(2131369905));
-      localContactMatchHolder.l = ((TextView)paramView.findViewById(2131371369));
-      localContactMatchHolder.j = ((TextView)paramView.findViewById(2131369907));
-      localContactMatchHolder.k = ((TextView)paramView.findViewById(2131368908));
-      localContactMatchHolder.a = ((Button)paramView.findViewById(2131368907));
+      paramView = a(this.jdField_a_of_type_AndroidContentContext, 2130970637, localContactMatchHolder);
+      localContactMatchHolder.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366545));
+      localContactMatchHolder.h = ((TextView)paramView.findViewById(2131362894));
+      localContactMatchHolder.i = ((TextView)paramView.findViewById(2131369982));
+      localContactMatchHolder.l = ((TextView)paramView.findViewById(2131371532));
+      localContactMatchHolder.j = ((TextView)paramView.findViewById(2131369984));
+      localContactMatchHolder.k = ((TextView)paramView.findViewById(2131368974));
+      localContactMatchHolder.a = ((Button)paramView.findViewById(2131368973));
       paramView.setTag(localContactMatchHolder);
       localContactMatchHolder.jdField_f_of_type_AndroidViewView.setTag(localContactMatchHolder);
       localContactMatchHolder.jdField_f_of_type_AndroidViewView.setOnClickListener(this);
@@ -74,7 +74,7 @@ public class ContactMatchBuilder
       if (this.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage.a()) {
         break label573;
       }
-      localContactMatchHolder.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838585);
+      localContactMatchHolder.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838589);
       localContactMatch = ((ContactMatchMessage)this.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a;
       localStringBuilder = new StringBuilder(256);
       if (TextUtils.isEmpty(localContactMatch.name)) {
@@ -88,7 +88,7 @@ public class ContactMatchBuilder
       switch (localContactMatch.gender)
       {
       default: 
-        localContactMatchHolder.l.setBackgroundResource(2130843021);
+        localContactMatchHolder.l.setBackgroundResource(2130843120);
         i = 0;
         paramInt = 0;
       }
@@ -143,13 +143,13 @@ public class ContactMatchBuilder
           localContactMatchHolder = (ContactMatchBuilder.ContactMatchHolder)paramView.getTag();
           break;
           label573:
-          localContactMatchHolder.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838581);
+          localContactMatchHolder.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838585);
           break label196;
           label586:
           localContactMatchHolder.h.setVisibility(8);
           break label270;
-          paramInt = 2130843020;
-          localContactMatchHolder.l.setBackgroundResource(2130843021);
+          paramInt = 2130843119;
+          localContactMatchHolder.l.setBackgroundResource(2130843120);
           i = paramInt;
           if (!AppSetting.b) {
             break label826;
@@ -159,8 +159,8 @@ public class ContactMatchBuilder
           i = paramInt;
           paramInt = j;
           break label310;
-          paramInt = 2130843018;
-          localContactMatchHolder.l.setBackgroundResource(2130843019);
+          paramInt = 2130843117;
+          localContactMatchHolder.l.setBackgroundResource(2130843118);
           i = paramInt;
           if (!AppSetting.b) {
             break label826;
@@ -179,11 +179,11 @@ public class ContactMatchBuilder
           localContactMatchHolder.a.setText("添加");
           localContactMatchHolder.a.setTag(localContactMatch);
           localContactMatchHolder.a.setOnClickListener(this);
-          ColorStateList localColorStateList = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494231);
+          ColorStateList localColorStateList = this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494238);
           if (localColorStateList != null) {
             localContactMatchHolder.a.setTextColor(localColorStateList);
           }
-          localContactMatchHolder.a.setBackgroundResource(2130838516);
+          localContactMatchHolder.a.setBackgroundResource(2130838520);
           localContactMatchHolder.k.setVisibility(8);
           if (AppSetting.b)
           {
@@ -201,7 +201,7 @@ public class ContactMatchBuilder
   
   protected void a()
   {
-    ThreadManager.getSubThreadHandler().post(new wgg(this));
+    ThreadManager.getSubThreadHandler().post(new wjl(this));
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8006A72", "0X8006A72", 0, 0, "", "", "", "");
   }
   
@@ -236,7 +236,7 @@ public class ContactMatchBuilder
     } while ((paramView == null) || (!(paramView instanceof ContactMatch)));
     if (!NetworkUtil.g(this.jdField_a_of_type_AndroidContentContext))
     {
-      QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131432992), 0).b(b());
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131433009), 0).b(b());
       return;
     }
     paramView = (ContactMatch)paramView;

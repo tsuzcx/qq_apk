@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.app.message.BaseMessageManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.mixedmsg.MixedMsgManager;
+import com.tencent.mobileqq.app.TroopManager;
 
 public class zoz
   implements Runnable
 {
-  public zoz(BaseMessageManager paramBaseMessageManager, MixedMsgManager paramMixedMsgManager, MessageRecord paramMessageRecord) {}
+  public zoz(TroopManager paramTroopManager, String paramString1, String paramString2, String paramString3) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, -100, null, null, -100, -100, -100, -100L, -100L);
   }
 }
 

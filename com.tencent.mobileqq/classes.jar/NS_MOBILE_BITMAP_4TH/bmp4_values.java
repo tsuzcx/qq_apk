@@ -38,7 +38,7 @@ public final class bmp4_values
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aac.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_BITMAP_4TH.bmp4_values
  * JD-Core Version:    0.7.0.1
  */

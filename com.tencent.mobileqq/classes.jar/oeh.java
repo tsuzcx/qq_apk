@@ -1,16 +1,36 @@
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.base.ErrorMessage;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
-import com.tencent.mobileqq.shortvideo.hwcodec.VideoSourceHelper;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiUpdateEvent;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class oeh
-  implements Runnable
+  extends QQUIEventReceiver
 {
-  public oeh(EditVideoPlayer paramEditVideoPlayer, int paramInt) {}
-  
-  public void run()
+  public oeh(@NonNull EditVideoDoodle paramEditVideoDoodle)
   {
-    SLog.a("Q.qqstory.record.EditVideoPlayer", "setPlayMode %d", Integer.valueOf(this.jdField_a_of_type_Int));
-    VideoSourceHelper.nativeSetPlayMode(this.jdField_a_of_type_Int);
+    super(paramEditVideoDoodle);
+  }
+  
+  public void a(@NonNull EditVideoDoodle paramEditVideoDoodle, @NonNull DoodleEmojiManager.DoodleEmojiUpdateEvent paramDoodleEmojiUpdateEvent)
+  {
+    oej localoej = paramEditVideoDoodle.a;
+    if (localoej != null) {
+      localoej.a(paramEditVideoDoodle.a());
+    }
+    for (;;)
+    {
+      StoryReportor.b("edit_video", "face_list_success", 0, paramDoodleEmojiUpdateEvent.a.errorCode, new String[0]);
+      return;
+      SLog.b(this.TAG, "DoodleEmojiListEventReceiver adapter is null");
+    }
+  }
+  
+  public Class acceptEventClass()
+  {
+    return DoodleEmojiManager.DoodleEmojiUpdateEvent.class;
   }
 }
 

@@ -50,16 +50,16 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import java.io.Serializable;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import jyv;
-import jyw;
-import jyx;
-import jyy;
-import jyz;
-import jza;
-import jzb;
-import jzc;
-import jzd;
-import jzi;
+import jyg;
+import jyh;
+import jyi;
+import jyj;
+import jyk;
+import jyl;
+import jym;
+import jyn;
+import jyo;
+import jyt;
 import mqq.os.MqqHandler;
 
 public class PSTNC2CActivity
@@ -69,7 +69,7 @@ public class PSTNC2CActivity
   public static String c;
   public BroadcastReceiver a;
   protected Handler.Callback a;
-  PhoneStateListener jdField_a_of_type_AndroidTelephonyPhoneStateListener = new jzi(this);
+  PhoneStateListener jdField_a_of_type_AndroidTelephonyPhoneStateListener = new jyt(this);
   TelephonyManager jdField_a_of_type_AndroidTelephonyTelephonyManager = null;
   public Button a;
   ImageView jdField_a_of_type_AndroidWidgetImageView = null;
@@ -78,7 +78,7 @@ public class PSTNC2CActivity
   public PstnSessionInfo a;
   public PSTNNotification a;
   public QQAppInterface a;
-  PstnObserver jdField_a_of_type_ComTencentMobileqqQcallPstnObserver = new jzd(this);
+  PstnObserver jdField_a_of_type_ComTencentMobileqqQcallPstnObserver = new jyo(this);
   public Runnable a;
   public final String a;
   public MqqHandler a;
@@ -96,9 +96,9 @@ public class PSTNC2CActivity
     this.jdField_a_of_type_AndroidWidgetButton = null;
     this.jdField_b_of_type_AndroidWidgetButton = null;
     this.jdField_a_of_type_AndroidContentBroadcastReceiver = null;
-    this.jdField_a_of_type_AndroidOsHandler$Callback = new jyv(this);
+    this.jdField_a_of_type_AndroidOsHandler$Callback = new jyg(this);
     this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
-    this.jdField_a_of_type_JavaLangRunnable = new jyw(this);
+    this.jdField_a_of_type_JavaLangRunnable = new jyh(this);
   }
   
   private void a(Button paramButton, int paramInt1, int paramInt2, int paramInt3)
@@ -125,45 +125,45 @@ public class PSTNC2CActivity
   private void b()
   {
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365799));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)super.findViewById(2131365826));
     }
-    LayoutInflater.from(this).inflate(2130969338, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365353));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365354));
+    LayoutInflater.from(this).inflate(2130969339, this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365375));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365376));
     int i = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().jdField_b_of_type_Int;
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365373));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365395));
     if ((i == -1) || (i == 0))
     {
-      a(this.jdField_a_of_type_AndroidWidgetButton, 2130840130, 2131493511, 2131493511);
+      a(this.jdField_a_of_type_AndroidWidgetButton, 2130840136, 2131493517, 2131493517);
       this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
-      this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365369));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365357));
+      this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365391));
+      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365379));
       if (i != 2) {
         break label273;
       }
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(2131429556);
-      a(this.jdField_b_of_type_AndroidWidgetButton, false, 2130840119);
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(2131429562);
+      a(this.jdField_b_of_type_AndroidWidgetButton, false, 2130840125);
       this.jdField_b_of_type_AndroidWidgetButton.setClickable(true);
     }
     for (;;)
     {
       if ((Build.VERSION.SDK_INT >= 19) && (ImmersiveUtils.isSupporImmersive() != 1))
       {
-        RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366240);
+        RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366267);
         if (localRelativeLayout != null)
         {
           RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localRelativeLayout.getLayoutParams();
-          localLayoutParams.topMargin = getResources().getDimensionPixelSize(2131559725);
+          localLayoutParams.topMargin = getResources().getDimensionPixelSize(2131559743);
           localRelativeLayout.setLayoutParams(localLayoutParams);
         }
       }
       return;
-      a(this.jdField_a_of_type_AndroidWidgetButton, false, 2130840130);
+      a(this.jdField_a_of_type_AndroidWidgetButton, false, 2130840136);
       this.jdField_a_of_type_AndroidWidgetButton.setClickable(true);
       break;
       label273:
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(2131429549);
-      a(this.jdField_b_of_type_AndroidWidgetButton, 2130840119, 2131493511, 2131493511);
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(2131429555);
+      a(this.jdField_b_of_type_AndroidWidgetButton, 2130840125, 2131493517, 2131493517);
       this.jdField_b_of_type_AndroidWidgetButton.setClickable(false);
     }
   }
@@ -236,12 +236,12 @@ public class PSTNC2CActivity
     {
     default: 
       return;
-    case 2131365366: 
+    case 2131365388: 
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().jdField_b_of_type_Int = -1;
       c();
       finish();
       return;
-    case 2131365373: 
+    case 2131365395: 
       QLog.d("PSTNC2CActivity", 1, "avideo onClick QavPanel.VIEW_ENUM.HIDE");
       d();
       finish();
@@ -269,7 +269,7 @@ public class PSTNC2CActivity
         ((Intent)localObject2).putExtra("param_subtype", 0);
         ((Intent)localObject2).putExtra("param_ui_flag", 0);
         ((Intent)localObject2).putExtra("param_from", 1005);
-        ((Intent)localObject2).putExtra("param_title", getString(2131438334));
+        ((Intent)localObject2).putExtra("param_title", getString(2131438352));
         ((Intent)localObject2).putParcelableArrayListExtra("param_uin_create_list", paramView);
         ((Intent)localObject2).putExtra("param_uins_selected_default", (Serializable)localObject1);
         ((Intent)localObject2).putExtra("param_entrance", 20);
@@ -315,7 +315,7 @@ public class PSTNC2CActivity
     paramView = PstnUtils.b(this.app, 2);
     Object localObject1 = PstnUtils.c(this.app, 2);
     Object localObject2 = PstnUtils.d(this.app, 2);
-    DialogUtil.a(this, 230, paramView, (String)localObject1, getString(2131428669), (String)localObject2, new jzb(this), new jzc(this)).show();
+    DialogUtil.a(this, 230, paramView, (String)localObject1, getString(2131428675), (String)localObject2, new jym(this), new jyn(this)).show();
   }
   
   public void a()
@@ -324,13 +324,13 @@ public class PSTNC2CActivity
       QLog.d("PSTNC2CActivity", 2, "refreshUI");
     }
     if (this.jdField_a_of_type_AndroidWidgetImageView == null) {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365353));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365375));
     }
     if (this.jdField_a_of_type_AndroidWidgetTextView == null) {
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365354));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131365376));
     }
     if (this.jdField_b_of_type_AndroidWidgetTextView == null) {
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366135));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366162));
     }
     int i;
     if (this.jdField_a_of_type_ComTencentAvAppPstnSessionInfo == null)
@@ -349,7 +349,7 @@ public class PSTNC2CActivity
       {
       default: 
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840183);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840189);
         this.jdField_b_of_type_AndroidWidgetTextView.setText(ContactUtils.c((String)localObject2));
         return;
         localObject1 = this.jdField_a_of_type_ComTencentAvAppPstnSessionInfo.jdField_a_of_type_JavaLangString;
@@ -404,10 +404,10 @@ public class PSTNC2CActivity
   {
     if (paramBoolean)
     {
-      a(paramButton, paramInt, 2131494061, 2131494062);
+      a(paramButton, paramInt, 2131494067, 2131494068);
       return;
     }
-    a(paramButton, paramInt, 2131494053, 2131494054);
+    a(paramButton, paramInt, 2131494059, 2131494060);
   }
   
   protected void a(PstnSessionInfo paramPstnSessionInfo)
@@ -426,7 +426,7 @@ public class PSTNC2CActivity
   {
     this.mNeedStatusTrans = false;
     super.doOnCreate(paramBundle);
-    setContentView(2130969337);
+    setContentView(2130969338);
     super.getWindow().addFlags(524288);
     super.getWindow().addFlags(2097152);
     super.getWindow().addFlags(128);
@@ -445,7 +445,7 @@ public class PSTNC2CActivity
     if (ImmersiveUtils.a()) {
       ImmersiveUtils.a(getWindow(), true);
     }
-    ThreadManager.post(new jyx(this), 5, null, false);
+    ThreadManager.post(new jyi(this), 5, null, false);
     b();
     a(getIntent());
     return true;
@@ -462,9 +462,9 @@ public class PSTNC2CActivity
     String str1;
     if ((localObject1 != null) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a().jdField_b_of_type_Int == -1) && (((PstnCardInfo)localObject1).pstn_c2c_call_time == 0) && (((PstnManager)localObject4).b() == 1) && (((PstnCardInfo)localObject1).pstn_c2c_try_status == 0) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().g))
     {
-      localObject1 = getString(2131438384);
-      localObject2 = getString(2131438385);
-      localObject3 = getString(2131438386);
+      localObject1 = getString(2131438402);
+      localObject2 = getString(2131438403);
+      localObject3 = getString(2131438404);
       str2 = ((PstnManager)localObject4).a("key_pstn_c2c_try_over_recharge_title");
       str1 = ((PstnManager)localObject4).a("key_pstn_c2c_try_over_recharge_content");
       localObject4 = ((PstnManager)localObject4).a("key_pstn_c2c_try_over_recharge_confirm_text");
@@ -555,7 +555,7 @@ public class PSTNC2CActivity
       {
         str = paramIntent.getStringExtra("roomId");
         paramIntent = paramIntent.getStringArrayListExtra("qqPhoneUserList");
-        localObject = new jyy(this);
+        localObject = new jyj(this);
         ChatActivityUtils.a(this.app, this, 3000, str, true, false, true, (ChatActivityUtils.StartVideoListener)localObject, paramIntent, 2, 9);
         ReportController.b(this.app, "CliOper", "", "", "0X8006407", "0X8006407", 4, 0, "", "", "", "");
       }
@@ -566,7 +566,7 @@ public class PSTNC2CActivity
     paramIntent = PstnUtils.b(this.app, 2);
     String str = PstnUtils.c(this.app, 2);
     Object localObject = PstnUtils.d(this.app, 2);
-    DialogUtil.a(this, 230, paramIntent, str, getString(2131428669), (String)localObject, new jyz(this), new jza(this)).show();
+    DialogUtil.a(this, 230, paramIntent, str, getString(2131428675), (String)localObject, new jyk(this), new jyl(this)).show();
   }
   
   protected boolean onBackEvent()

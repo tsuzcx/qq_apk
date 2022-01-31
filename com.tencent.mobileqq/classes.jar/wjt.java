@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.contacts.base.HonestSayController;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.contact.newfriend.QIMFollowerAddBuilder;
+import com.tencent.mobileqq.app.NewFriendManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.newfriend.QIMFollowMessage;
 
 public class wjt
   implements Runnable
 {
-  public wjt(HonestSayController paramHonestSayController) {}
+  public wjt(QIMFollowerAddBuilder paramQIMFollowerAddBuilder) {}
   
   public void run()
   {
-    HonestSayController.a(this.a, true);
-    ReportController.b(HonestSayController.a(this.a), "dc00898", "", "", "0X8008F4A", "0X8008F4A", 1, 0, "", "", "", "");
+    ((NewFriendManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(33)).a(((QIMFollowMessage)this.a.jdField_a_of_type_ComTencentMobileqqNewfriendNewFriendMessage).a);
+    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new wju(this));
   }
 }
 

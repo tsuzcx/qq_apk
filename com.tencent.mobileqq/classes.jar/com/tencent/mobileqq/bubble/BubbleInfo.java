@@ -239,12 +239,12 @@ public class BubbleInfo
         if (!paramBoolean1) {
           break label720;
         }
-        i = 2130845658;
+        i = 2130845786;
         localObject1 = ((Resources)localObject2).getDrawable(i);
         if (!paramBoolean1) {
           break label728;
         }
-        i = 2130845657;
+        i = 2130845785;
         label357:
         localObject2 = ((Resources)localObject2).getDrawable(i);
         localObject3 = new StateListDrawable();
@@ -303,9 +303,9 @@ public class BubbleInfo
         }
         localObject2 = "bubblebg://default_friend";
         break label235;
-        i = 2130845494;
+        i = 2130845622;
         break label339;
-        i = 2130845493;
+        i = 2130845621;
         break label357;
         label736:
         localObject1 = "bubblebg://default_friend";

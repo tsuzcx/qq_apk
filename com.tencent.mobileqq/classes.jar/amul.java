@@ -1,23 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.QIMCaptureController;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.CoverCacheData.PackageInfo;
 
-public class amul
-  implements View.OnClickListener
+public final class amul
+  implements Parcelable.Creator
 {
-  public amul(QIMCaptureController paramQIMCaptureController) {}
-  
-  public void onClick(View paramView)
+  public CoverCacheData.PackageInfo a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("CaptureController", 2, "banner tip clicked");
+    CoverCacheData.PackageInfo localPackageInfo = new CoverCacheData.PackageInfo();
+    if (paramParcel != null)
+    {
+      localPackageInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
+      localPackageInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
+      localPackageInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
+      localPackageInfo.jdField_a_of_type_Int = paramParcel.readInt();
+      localPackageInfo.jdField_b_of_type_Int = paramParcel.readInt();
+      localPackageInfo.jdField_c_of_type_Int = paramParcel.readInt();
+      localPackageInfo.d = paramParcel.readString();
     }
+    return localPackageInfo;
+  }
+  
+  public CoverCacheData.PackageInfo[] a(int paramInt)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amul
  * JD-Core Version:    0.7.0.1
  */

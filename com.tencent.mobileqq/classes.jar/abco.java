@@ -1,37 +1,31 @@
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Interpolator;
+import com.tencent.mobileqq.armap.ConversationActivePendantHolderBase;
 
 public class abco
-  implements Runnable
+  implements Interpolator
 {
-  public abco(DynamicAvatarRecordActivity paramDynamicAvatarRecordActivity, String paramString, int paramInt) {}
+  public abco(ConversationActivePendantHolderBase paramConversationActivePendantHolderBase) {}
   
-  public void run()
+  public float getInterpolation(float paramFloat)
   {
-    String str = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Int == 2002) {
-      str = this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarRecordActivity.getString(2131428347);
+    if (paramFloat < 0.2094D) {
+      return (float)(-34.0D * (paramFloat - 0.18D) * (paramFloat - 0.18D) + 1.08D);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarRecordActivity.a = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarRecordActivity, 230).setMessage(str).setPositiveButton(this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarRecordActivity.getString(2131428346), new abcp(this));
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarRecordActivity.a.setCancelable(false);
-      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarRecordActivity.a.show();
-      return;
+    if (paramFloat < 0.404D) {
+      return (float)(5.9D * (paramFloat - 0.34D) * (paramFloat - 0.34D) + 0.95D);
     }
-    catch (WindowManager.BadTokenException localBadTokenException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("DynamicAvatarRecordActivity", 2, "", localBadTokenException);
+    if (paramFloat < 0.6045D) {
+      return (float)(-3.0D * (paramFloat - 0.53D) * (paramFloat - 0.53D) + 1.02D);
     }
+    if (paramFloat < 0.8064D) {
+      return (float)((paramFloat - 0.72D) * (paramFloat - 0.72D) + 0.99D);
+    }
+    return (float)(-0.3D * (paramFloat - 0.915D) * (paramFloat - 0.915D) + 1.001D);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abco
  * JD-Core Version:    0.7.0.1
  */

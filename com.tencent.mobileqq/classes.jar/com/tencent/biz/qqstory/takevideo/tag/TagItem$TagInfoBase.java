@@ -1,5 +1,6 @@
 package com.tencent.biz.qqstory.takevideo.tag;
 
+import android.text.TextUtils;
 import com.tencent.biz.qqstory.database.TagEntry;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.TagInfoBase;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -40,6 +41,18 @@ public class TagItem$TagInfoBase
   public TagEntry a()
   {
     return new TagEntry();
+  }
+  
+  public qqstory_struct.TagInfoBase a()
+  {
+    qqstory_struct.TagInfoBase localTagInfoBase = new qqstory_struct.TagInfoBase();
+    localTagInfoBase.tag_id.set(this.jdField_a_of_type_Long);
+    localTagInfoBase.tag_name.set(this.jdField_a_of_type_JavaLangString);
+    if (!TextUtils.isEmpty(this.b)) {
+      localTagInfoBase.tag_desc.set(this.b);
+    }
+    localTagInfoBase.tag_type.set(this.jdField_a_of_type_Int);
+    return localTagInfoBase;
   }
   
   public boolean equals(Object paramObject)

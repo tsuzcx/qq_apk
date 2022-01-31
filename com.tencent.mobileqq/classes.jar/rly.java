@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.PokePanel;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class rly
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public rly(BaseChatPie paramBaseChatPie) {}
+  public rly(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "checkAllSourceDowned showPokePanel");
+    SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131433572), "qqsetting_auto_receive_pic_key", paramBoolean);
+    paramCompoundButton = this.a.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
+    {
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Clk_auto_receive_pic", 0, i, "", "", "", "");
+      return;
     }
-    PokePanel.a(this.a.a);
   }
 }
 

@@ -1,23 +1,19 @@
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
-import com.tencent.util.InputMethodUtil;
+import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class aita
-  implements View.OnClickListener
+class aita
+  implements Runnable
 {
-  public aita(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
+  aita(aisy paramaisy) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    InputMethodUtil.b(paramView);
-    this.a.getActivity().doOnBackPressed();
+    QQToast.a(this.a.a.getActivity(), 1, "保存至本地相册失败，请重试", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aita
  * JD-Core Version:    0.7.0.1
  */

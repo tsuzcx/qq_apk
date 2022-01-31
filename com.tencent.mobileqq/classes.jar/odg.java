@@ -1,18 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.biz.qqstory.takevideo.EditPicQzonePublishActivity;
 
 public class odg
-  implements DialogInterface.OnDismissListener
+  implements View.OnClickListener
 {
-  public odg(EditVideoGuide paramEditVideoGuide) {}
+  public odg(EditPicQzonePublishActivity paramEditPicQzonePublishActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onClick(View paramView)
   {
-    this.a.jdField_a_of_type_Int = 3;
-    this.a.b = 3;
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(14);
+    if (!EditPicQzonePublishActivity.a(this.a))
+    {
+      EditPicQzonePublishActivity.a(this.a);
+      return;
+    }
+    EditPicQzonePublishActivity.a(this.a, false);
+    EditPicQzonePublishActivity.a(this.a).setSelected(false);
   }
 }
 

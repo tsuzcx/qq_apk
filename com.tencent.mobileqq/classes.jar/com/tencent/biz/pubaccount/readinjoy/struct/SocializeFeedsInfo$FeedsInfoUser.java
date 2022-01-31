@@ -5,6 +5,7 @@ public class SocializeFeedsInfo$FeedsInfoUser
 {
   public int a;
   public long a;
+  public int b;
   
   public SocializeFeedsInfo$FeedsInfoUser(SocializeFeedsInfo paramSocializeFeedsInfo) {}
   
@@ -17,6 +18,11 @@ public class SocializeFeedsInfo$FeedsInfoUser
     }
     catch (CloneNotSupportedException localCloneNotSupportedException) {}
     return null;
+  }
+  
+  public boolean a()
+  {
+    return this.b == 1;
   }
   
   public String toString()

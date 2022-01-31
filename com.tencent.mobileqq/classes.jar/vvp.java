@@ -1,25 +1,14 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
 
 public class vvp
   implements Runnable
 {
-  public vvp(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vvp(MultiForwardChatPie paramMultiForwardChatPie) {}
   
   public void run()
   {
-    Object localObject = (PublicAccountDataManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(55);
-    if (localObject != null) {}
-    for (localObject = ((PublicAccountDataManager)localObject).b(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);; localObject = null)
-    {
-      if (localObject != null) {
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-      }
-      return;
-    }
+    MultiForwardChatPie.a(this.a).notifyDataSetChanged();
   }
 }
 

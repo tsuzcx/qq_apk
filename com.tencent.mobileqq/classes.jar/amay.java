@@ -1,26 +1,25 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.TypeEvaluator;
+import android.graphics.Rect;
+import com.tencent.widget.DynamicGridView;
 
-class amay
-  implements AsyncBack
+public class amay
+  implements TypeEvaluator
 {
-  amay(amax paramamax) {}
+  public amay(DynamicGridView paramDynamicGridView) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public int a(int paramInt1, int paramInt2, float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipPreloadReaderProcess", 2, "Load offline package finish, code = " + paramInt);
-    }
-    if ((paramInt != 0) && (QLog.isColorLevel())) {
-      QLog.e("VipProxyRreLoadReaderProcess", 2, "offline update failed.");
-    }
+    return (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
+  }
+  
+  public Rect a(float paramFloat, Rect paramRect1, Rect paramRect2)
+  {
+    return new Rect(a(paramRect1.left, paramRect2.left, paramFloat), a(paramRect1.top, paramRect2.top, paramFloat), a(paramRect1.right, paramRect2.right, paramFloat), a(paramRect1.bottom, paramRect2.bottom, paramFloat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amay
  * JD-Core Version:    0.7.0.1
  */

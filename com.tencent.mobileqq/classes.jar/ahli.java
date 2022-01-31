@@ -1,18 +1,21 @@
-import com.tencent.mobileqq.data.MessageForShortVideo;
-import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo;
-import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
-import com.tencent.mobileqq.shortvideo.ShortVideoReq;
+import android.hardware.Camera;
+import android.hardware.Camera.Face;
+import android.hardware.Camera.FaceDetectionListener;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.qphone.base.util.QLog;
 
-public class ahli
-  implements Runnable
+public final class ahli
+  implements Camera.FaceDetectionListener
 {
-  public ahli(ShortVideoPreDownloader paramShortVideoPreDownloader, ShortVideoDownloadInfo paramShortVideoDownloadInfo, MessageForShortVideo paramMessageForShortVideo, ShortVideoReq paramShortVideoReq) {}
-  
-  public void run()
+  public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
   {
-    ShortVideoPreDownloader.a("consumeShortVideoThumb", "start download thumb, fileType=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoDownloadInfo.e + ", uniseq:" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
-    ShortVideoBusiManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq, this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoPreDownloader.a);
+    if (CameraCaptureView.b() != paramArrayOfFace.length)
+    {
+      CameraCaptureView.b(paramArrayOfFace.length);
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraCaptureView", 2, "onFaceDetection, " + CameraCaptureView.b());
+      }
+    }
   }
 }
 

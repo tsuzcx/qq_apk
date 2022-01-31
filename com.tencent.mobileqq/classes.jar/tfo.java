@@ -1,52 +1,16 @@
-import android.os.Handler;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-public class tfo
-  implements View.OnTouchListener
+class tfo
+  implements DialogInterface.OnClickListener
 {
-  public tfo(QQLSActivity paramQQLSActivity) {}
+  tfo(tfl paramtfl) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramMotionEvent.getAction() == 0) {
-      if ((QQLSActivity.a(this.a) != null) && (QQLSActivity.b(this.a) != null) && (QQLSActivity.a(this.a, QQLSActivity.b(this.a), QQLSActivity.a(this.a), paramMotionEvent)))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQLSActivity", 2, "singlelist  click doble");
-        }
-        if (QQLSActivity.a(this.a) != null)
-        {
-          QQLSActivity.a(this.a, QQLSActivity.a(this.a));
-          QQLSActivity.a(this.a, true);
-        }
-        QQLSActivity.a(this.a, MotionEvent.obtain(paramMotionEvent));
-      }
-    }
-    for (;;)
-    {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.e("QQLSActivity", 2, "singlelist  click once");
-      }
-      if (QQLSActivity.a(this.a)) {
-        QQLSActivity.b(this.a).setText(2131437332);
-      }
-      for (;;)
-      {
-        paramView = QQLSActivity.a(this.a).obtainMessage(5);
-        QQLSActivity.a(this.a).sendMessageDelayed(paramView, 500L);
-        break;
-        QQLSActivity.b(this.a).setText(2131437331);
-      }
-      if (paramMotionEvent.getAction() == 1) {
-        QQLSActivity.b(this.a, MotionEvent.obtain(paramMotionEvent));
-      }
-    }
+    this.a.a.setResult(4004);
+    this.a.a.finish();
   }
 }
 

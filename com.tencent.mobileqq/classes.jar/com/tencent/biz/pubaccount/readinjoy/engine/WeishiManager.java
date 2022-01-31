@@ -12,8 +12,8 @@ import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import java.util.ArrayList;
 import java.util.List;
-import lna;
-import lnb;
+import lmx;
+import lmy;
 import mqq.manager.Manager;
 
 public class WeishiManager
@@ -124,7 +124,7 @@ public class WeishiManager
       } while (localObject == null);
       localObject = ((QQMessageFacade)localObject).a();
     } while ((localObject == null) || (((ConversationFacade)localObject).a(AppConstants.aH, 1008) <= 0));
-    ThreadManager.post(new lna(this), 8, null, false);
+    ThreadManager.post(new lmx(this), 8, null, false);
   }
   
   public void a(String paramString, long paramLong)
@@ -136,7 +136,7 @@ public class WeishiManager
       return;
       localQQMessageFacade = this.a.a();
     } while (localQQMessageFacade == null);
-    ThreadManager.post(new lnb(this, localQQMessageFacade, paramString, paramLong), 10, null, false);
+    ThreadManager.post(new lmy(this, localQQMessageFacade, paramString, paramLong), 10, null, false);
   }
   
   public void onDestroy()

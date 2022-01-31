@@ -1,51 +1,26 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import android.view.View;
-import com.tencent.mobileqq.widget.SlideDetectListView;
-import com.tencent.mobileqq.widget.SlideDetectListView.OnSlideListener;
+import android.widget.ImageView;
+import android.widget.SeekBar;
+import android.widget.TextView;
 
-public class akin
-  extends GestureDetector.SimpleOnGestureListener
+class akin
+  implements Runnable
 {
-  public akin(SlideDetectListView paramSlideDetectListView) {}
+  akin(akim paramakim, SeekBar paramSeekBar, TextView paramTextView1, TextView paramTextView2, ImageView paramImageView1, ImageView paramImageView2, TextView paramTextView3) {}
   
-  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public void run()
   {
-    if (!this.a.jdField_c_of_type_Boolean) {}
-    do
-    {
-      return false;
-      if ((paramFloat1 > 0.0F) && (Math.abs(paramFloat1) > Math.abs(paramFloat2) * 2.0F) && ((this.a.jdField_c_of_type_Int == 0) || (this.a.d)) && (!this.a.jdField_a_of_type_Boolean) && (Math.abs(paramFloat1) > this.a.f))
-      {
-        this.a.jdField_b_of_type_Int = this.a.a(this.a.jdField_a_of_type_Int);
-        this.a.jdField_a_of_type_AndroidViewView = this.a.a(this.a.jdField_b_of_type_Int);
-        if (this.a.jdField_a_of_type_AndroidViewView != null)
-        {
-          this.a.jdField_a_of_type_Boolean = true;
-          this.a.setPressed(false);
-          this.a.jdField_a_of_type_AndroidViewView.setPressed(false);
-          if (SlideDetectListView.a(this.a) != null)
-          {
-            int i = this.a.jdField_b_of_type_Int;
-            int j = this.a.getHeaderViewsCount();
-            SlideDetectListView.a(this.a).a(this.a, this.a.jdField_a_of_type_AndroidViewView, i - j);
-          }
-          this.a.jdField_a_of_type_Int = 0;
-        }
-        for (;;)
-        {
-          return true;
-          this.a.jdField_b_of_type_Boolean = true;
-        }
-      }
-    } while (Math.abs(paramFloat1) <= Math.abs(paramFloat2) * 2.0F);
-    this.a.jdField_b_of_type_Boolean = true;
-    return false;
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(4);
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    this.jdField_a_of_type_Akim.a.f = false;
+    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.c.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akin
  * JD-Core Version:    0.7.0.1
  */

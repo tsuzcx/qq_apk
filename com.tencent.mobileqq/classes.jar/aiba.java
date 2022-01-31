@@ -1,24 +1,28 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.transfile.DataLineDownloader;
-import com.tencent.mobileqq.transfile.bitmapcreator.BitmapDecoder;
-import java.net.URL;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
+import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceScoreFilter;
 
 public class aiba
-  implements BitmapDecoder
+  implements Animation.AnimationListener
 {
-  public aiaz a;
+  public aiba(DanceScoreFilter paramDanceScoreFilter) {}
   
-  public aiba(DataLineDownloader paramDataLineDownloader) {}
-  
-  public Bitmap a(URL paramURL)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Aiaz = this.jdField_a_of_type_ComTencentMobileqqTransfileDataLineDownloader.a(paramURL);
-    return DataLineDownloader.a(this.jdField_a_of_type_ComTencentMobileqqTransfileDataLineDownloader, this.jdField_a_of_type_Aiaz);
+    DanceScoreFilter.a(this.a).h_(true);
+    if (DanceScoreFilter.a(this.a) != null) {
+      DanceScoreFilter.a(this.a).a(DanceScoreFilter.a(this.a));
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aiba
  * JD-Core Version:    0.7.0.1
  */

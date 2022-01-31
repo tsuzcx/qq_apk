@@ -1,20 +1,15 @@
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.troop.EditUniqueTitleActivity;
 
-class ovr
-  extends ovu
+public class ovr
+  implements DialogInterface.OnClickListener
 {
-  ovr(ovk paramovk, VideoCombineHelper.Callback paramCallback, String paramString)
-  {
-    super(paramovk.a);
-  }
+  public ovr(EditUniqueTitleActivity paramEditUniqueTitleActivity) {}
   
-  public void b(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "watermark doen");
-    }
-    this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaLangString, paramBoolean, null);
+    EditUniqueTitleActivity.a(this.a);
   }
 }
 

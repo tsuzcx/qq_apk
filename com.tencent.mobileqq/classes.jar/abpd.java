@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.database.corrupt.DBFixDialogUI;
+import com.tencent.mobileqq.camera.CameraManager.CameraAFCallback;
 
-public class abpd
-  implements DialogInterface.OnClickListener
+class abpd
+  implements Runnable
 {
-  public abpd(DBFixDialogUI paramDBFixDialogUI) {}
+  abpd(abpc paramabpc, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.cancel();
+    abpc.a(this.jdField_a_of_type_Abpc).a(this.jdField_a_of_type_Boolean, abpc.a(this.jdField_a_of_type_Abpc));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abpd
  * JD-Core Version:    0.7.0.1
  */

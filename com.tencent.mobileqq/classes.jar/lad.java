@@ -1,31 +1,38 @@
-import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mm.opensdk.modelbase.BaseResp;
-import com.tencent.mobileqq.wxapi.WXShareHelper;
-import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
+import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Iterator;
+import java.util.List;
 
-public final class lad
-  implements WXShareHelper.WXShareListener
+public class lad
+  extends MessageObserver
 {
-  public lad(String paramString) {}
+  public lad(EcshopReportHandler paramEcshopReportHandler) {}
   
-  public void a(BaseResp paramBaseResp)
+  public void a(List paramList)
   {
-    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
-      return;
-    }
-    BaseApplicationImpl.getContext();
-    switch (paramBaseResp.errCode)
+    super.a(paramList);
+    EcshopReportHandler localEcshopReportHandler = (EcshopReportHandler)this.a.a.getBusinessHandler(88);
+    paramList = paramList.iterator();
+    label131:
+    while (paramList.hasNext())
     {
-    case -1: 
-    default: 
-      QRUtils.a(1, 2131435286);
-    }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      QRUtils.a(2, 2131435285);
+      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+      if (("2".equals(localMessageRecord.getExtInfoFromExtStr("inter_num"))) || (ServiceAccountFolderManager.d(this.a.b, localMessageRecord.senderuin))) {}
+      for (int i = 1;; i = 0)
+      {
+        if ((i == 0) && ((EcShopAssistantManager.b == null) || (!EcShopAssistantManager.b.contains(localMessageRecord.senderuin)))) {
+          break label131;
+        }
+        if (i != 0) {
+          localEcshopReportHandler.a(localMessageRecord);
+        }
+        localEcshopReportHandler.b(localMessageRecord);
+        break;
+      }
     }
   }
 }

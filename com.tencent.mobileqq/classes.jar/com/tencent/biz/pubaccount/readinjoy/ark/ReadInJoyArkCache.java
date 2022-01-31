@@ -23,7 +23,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import lgf;
+import lfv;
 import mqq.app.AppRuntime;
 
 public class ReadInJoyArkCache
@@ -60,7 +60,7 @@ public class ReadInJoyArkCache
     localArkAppContainer.setFixSize((int)DeviceInfoUtil.n(), -1);
     paramArkAppMessage = new ArkAppView(paramContext, null);
     paramArkAppMessage.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
-    paramArkAppMessage.setOnTouchListener(new lgf(this, paramBaseArticleInfo, localArkAppContainer));
+    paramArkAppMessage.setOnTouchListener(new lfv(this, paramBaseArticleInfo, localArkAppContainer));
     paramArkAppMessage.initArkView(localArkAppContainer);
     paramContext = new ReadInJoyArkCache.ReadInJoyArkItem(this);
     paramContext.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAppContainer = localArkAppContainer;

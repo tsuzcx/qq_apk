@@ -1,49 +1,45 @@
-import android.os.Handler;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.conditionsearch.SearchResultActivity;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PullRefreshHeader;
-import com.tencent.widget.ListView;
-import com.tencent.widget.OverScrollViewListener;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.VideoDrawable;
+import com.tencent.image.VideoDrawable.OnPlayRepeatListener;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarView;
+import com.tencent.mobileqq.util.DynamicFaceDrawable;
+import com.tencent.qphone.base.util.QLog;
 
 public class abkb
-  implements OverScrollViewListener
+  implements VideoDrawable.OnPlayRepeatListener
 {
-  public abkb(SearchResultActivity paramSearchResultActivity) {}
+  public abkb(DynamicAvatarView paramDynamicAvatarView) {}
   
-  public void a(int paramInt, View paramView, ListView paramListView)
+  public void onPlayRepeat(int paramInt)
   {
-    SearchResultActivity.a(this.a).c(SearchResultActivity.a(this.a));
-  }
-  
-  public boolean a(int paramInt, View paramView, ListView paramListView)
-  {
-    SearchResultActivity.a(this.a).a(SearchResultActivity.a(this.a));
-    if (NetworkUtil.d(this.a)) {
-      SearchResultActivity.c(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.dynamicAvatar", 2, "onPlayRepeat: " + paramInt);
     }
-    for (;;)
+    if ((this.a.b) || (paramInt < 1)) {}
+    while (this.a.a == null) {
+      return;
+    }
+    Object localObject = this.a.a.jdField_a_of_type_ComTencentImageURLDrawable;
+    if ((localObject instanceof URLDrawable))
     {
-      SearchResultActivity.a(this.a, System.currentTimeMillis());
-      return true;
-      SearchResultActivity.a(this.a).a(1);
-      paramView = Message.obtain();
-      paramView.what = 3;
-      SearchResultActivity.a(this.a).sendMessageDelayed(paramView, 1000L);
+      localObject = ((URLDrawable)localObject).getCurrDrawable();
+      if ((localObject instanceof VideoDrawable))
+      {
+        ((VideoDrawable)localObject).removeOnPlayRepeatListener(this);
+        this.a.a.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a(this.a.a, true);
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.dynamicAvatar", 2, "removeOnPlayRepeatListener.03");
+        }
+      }
     }
+    this.a.a.jdField_a_of_type_ComTencentImageURLDrawable = null;
+    this.a.a();
   }
-  
-  public void b(int paramInt, View paramView, ListView paramListView)
-  {
-    SearchResultActivity.a(this.a).b(SearchResultActivity.a(this.a));
-  }
-  
-  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abkb
  * JD-Core Version:    0.7.0.1
  */

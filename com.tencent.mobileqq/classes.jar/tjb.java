@@ -1,21 +1,56 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.vas.VipGrayConfigHelper.VipGrayConfigListener;
+import android.app.ActivityManager;
+import android.app.ActivityManager.RunningTaskInfo;
+import android.content.ComponentName;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.QQLSActivity;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
 public class tjb
-  implements VipGrayConfigHelper.VipGrayConfigListener
+  implements Runnable
 {
-  public tjb(QQSettingMe paramQQSettingMe) {}
+  public tjb(QQLSActivity paramQQLSActivity) {}
   
-  public void a()
+  public void run()
   {
-    if (this.a.a != null)
+    Object localObject1 = (ActivityManager)this.a.getSystemService("activity");
+    try
+    {
+      Object localObject2 = ((ActivityManager)localObject1).getRunningTasks(1);
+      localObject1 = AppSetting.b;
+      if ((localObject2 != null) && (((List)localObject2).size() > 0))
+      {
+        localObject2 = ((ActivityManager.RunningTaskInfo)((List)localObject2).get(0)).topActivity.getClassName();
+        boolean bool = QQLSActivity.e(this.a);
+        if (QLog.isColorLevel()) {
+          QLog.d("QQLSActivity", 2, "qqlsActivity onpause by :" + (String)localObject2);
+        }
+        if ((((String)localObject2).equals("com.tencent.mobileqq.activity.GesturePWDUnlockActivity")) && (bool))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QQLSActivity", 2, "qqlsActivity onpause by locking activity need to front");
+          }
+          if (QQLSActivity.a(this.a).hasMessages(10)) {
+            QQLSActivity.a(this.a).removeMessages(10);
+          }
+          localObject2 = QQLSActivity.a(this.a).obtainMessage(10);
+          if (((String)localObject1).equalsIgnoreCase("Xiaomi-2013022"))
+          {
+            QQLSActivity.a(this.a).sendMessageDelayed((Message)localObject2, 600L);
+            return;
+          }
+          QQLSActivity.a(this.a).sendMessage((Message)localObject2);
+          return;
+        }
+      }
+    }
+    catch (Exception localException)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("QQSettingRedesign", 2, "enterWordListener");
+        QLog.d("QQLSActivity", 2, "qqlsActivity MSG_SETTO_FRONT by locking activity not to front e=" + localException);
       }
-      this.a.b(this.a.a.getAccount());
     }
   }
 }

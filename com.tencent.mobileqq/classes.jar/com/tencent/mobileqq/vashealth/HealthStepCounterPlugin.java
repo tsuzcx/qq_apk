@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vashealth;
 
-import ajvc;
-import ajvd;
-import ajve;
-import ajvh;
-import ajvi;
-import ajvj;
+import akjj;
+import akjk;
+import akjl;
+import akjo;
+import akjp;
+import akjq;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnDismissListener;
@@ -64,7 +64,7 @@ public class HealthStepCounterPlugin
 {
   public static int a;
   public static long a;
-  private static ajvj jdField_a_of_type_Ajvj;
+  private static akjq jdField_a_of_type_Akjq;
   public static boolean a;
   public static int b;
   public static boolean b;
@@ -73,7 +73,7 @@ public class HealthStepCounterPlugin
   String jdField_a_of_type_JavaLangString = null;
   public HashMap a;
   public AtomicBoolean a;
-  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new ajvh(this);
+  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new akjo(this);
   String b;
   public HashMap b;
   public int c;
@@ -203,12 +203,12 @@ public class HealthStepCounterPlugin
   {
     Object localObject1;
     Object localObject2;
-    if (jdField_a_of_type_Ajvj == null)
+    if (jdField_a_of_type_Akjq == null)
     {
-      localObject1 = new ajvj(null);
+      localObject1 = new akjq(null);
       localObject2 = (SensorManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("sensor");
       ((SensorManager)localObject2).registerListener((SensorEventListener)localObject1, ((SensorManager)localObject2).getDefaultSensor(1), 0);
-      jdField_a_of_type_Ajvj = (ajvj)localObject1;
+      jdField_a_of_type_Akjq = (akjq)localObject1;
       QLog.d("HealthStepCounterPlugin", 1, "register shakelistener");
     }
     try
@@ -234,9 +234,9 @@ public class HealthStepCounterPlugin
         callJs(this.e, new String[] { paramString.toString() });
         return;
         label180:
-        ajvi localajvi = new ajvi(this);
-        ((SensorManager)localObject1).registerListener(localajvi, (Sensor)localObject2, 3, 0);
-        ((SensorManager)localObject1).flush(localajvi);
+        akjp localakjp = new akjp(this);
+        ((SensorManager)localObject1).registerListener(localakjp, (Sensor)localObject2, 3, 0);
+        ((SensorManager)localObject1).flush(localakjp);
         localObject1 = new NewIntent(this.mRuntime.a().getApplication(), StepCounterServlert.class);
         ((NewIntent)localObject1).putExtra("msf_cmd_type", "cmd_refresh_steps");
         ((NewIntent)localObject1).putExtra("json_string", paramString);
@@ -343,7 +343,7 @@ public class HealthStepCounterPlugin
       paramString2.put(localObject2);
       ((JSONObject)localObject1).put("oauth_consumer_key", 1002);
       ((JSONObject)localObject1).put("data", paramString2);
-      ((JSONObject)localObject1).put("version", "7.6.0");
+      ((JSONObject)localObject1).put("version", "7.6.3");
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         this.jdField_a_of_type_JavaLangString = URLEncoder.encode(Build.MODEL, "utf-8");
       }
@@ -368,11 +368,11 @@ public class HealthStepCounterPlugin
       localObject2 = new WebSSOAgent.UniSsoServerReqComm();
       ((WebSSOAgent.UniSsoServerReqComm)localObject2).platform.set(109L);
       ((WebSSOAgent.UniSsoServerReqComm)localObject2).osver.set(Build.VERSION.RELEASE);
-      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("7.6.0");
+      ((WebSSOAgent.UniSsoServerReqComm)localObject2).mqqver.set("7.6.3");
       paramString2 = new WebSSOAgent.UniSsoServerReq();
       paramString2.comm.set((MessageMicro)localObject2);
       paramString2.reqdata.set(((JSONObject)localObject1).toString());
-      localObject1 = new ajve(this);
+      localObject1 = new akjl(this);
     } while (this.mRuntime == null);
     Object localObject2 = new NewIntent(this.mRuntime.a().getApplicationContext(), WebSSOAgentServlet.class);
     ((NewIntent)localObject2).putExtra("extra_cmd", "yundong_report.steps");
@@ -780,10 +780,10 @@ public class HealthStepCounterPlugin
     //   824: aload_0
     //   825: getfield 109	com/tencent/mobileqq/vashealth/HealthStepCounterPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
     //   828: invokevirtual 114	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
-    //   831: new 739	ajvf
+    //   831: new 739	akjm
     //   834: dup
     //   835: aload_0
-    //   836: invokespecial 740	ajvf:<init>	(Lcom/tencent/mobileqq/vashealth/HealthStepCounterPlugin;)V
+    //   836: invokespecial 740	akjm:<init>	(Lcom/tencent/mobileqq/vashealth/HealthStepCounterPlugin;)V
     //   839: invokevirtual 744	com/tencent/biz/pubaccount/CustomWebView:post	(Ljava/lang/Runnable;)Z
     //   842: pop
     //   843: goto -656 -> 187
@@ -805,10 +805,10 @@ public class HealthStepCounterPlugin
     //   878: aload_0
     //   879: getfield 109	com/tencent/mobileqq/vashealth/HealthStepCounterPlugin:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
     //   882: invokevirtual 114	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
-    //   885: new 746	ajvg
+    //   885: new 746	akjn
     //   888: dup
     //   889: aload_0
-    //   890: invokespecial 747	ajvg:<init>	(Lcom/tencent/mobileqq/vashealth/HealthStepCounterPlugin;)V
+    //   890: invokespecial 747	akjn:<init>	(Lcom/tencent/mobileqq/vashealth/HealthStepCounterPlugin;)V
     //   893: invokevirtual 744	com/tencent/biz/pubaccount/CustomWebView:post	(Ljava/lang/Runnable;)Z
     //   896: pop
     //   897: goto -710 -> 187
@@ -1142,11 +1142,11 @@ public class HealthStepCounterPlugin
           }
           if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435466);
+            this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435483);
             this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
             this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
           }
-          ThreadManager.post(new ajvc(this, paramVarArgs[0]), 5, null, true);
+          ThreadManager.post(new akjj(this, paramVarArgs[0]), 5, null, true);
           return true;
         }
         if (paramString3.equals("snapshot"))
@@ -1161,11 +1161,11 @@ public class HealthStepCounterPlugin
           }
           if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
           {
-            this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435466);
+            this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435483);
             this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
             this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
           }
-          ThreadManager.post(new ajvd(this, paramString1), 5, null, true);
+          ThreadManager.post(new akjk(this, paramString1), 5, null, true);
           return true;
         }
         if (paramString3.equals("TestReport"))
@@ -1239,10 +1239,10 @@ public class HealthStepCounterPlugin
   protected void onDestroy()
   {
     super.onDestroy();
-    if (jdField_a_of_type_Ajvj != null)
+    if (jdField_a_of_type_Akjq != null)
     {
-      ((SensorManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("sensor")).unregisterListener(jdField_a_of_type_Ajvj);
-      jdField_a_of_type_Ajvj = null;
+      ((SensorManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("sensor")).unregisterListener(jdField_a_of_type_Akjq);
+      jdField_a_of_type_Akjq = null;
     }
   }
   
@@ -1250,7 +1250,7 @@ public class HealthStepCounterPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.HealthStepCounterPlugin
  * JD-Core Version:    0.7.0.1
  */

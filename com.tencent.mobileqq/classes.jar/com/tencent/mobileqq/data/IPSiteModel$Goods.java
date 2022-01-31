@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abmz;
+import abua;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class IPSiteModel$Goods
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abmz();
+  public static final Parcelable.Creator CREATOR = new abua();
   public String cover;
   public String goodsTags;
   public String id;

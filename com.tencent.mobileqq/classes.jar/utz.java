@@ -1,27 +1,20 @@
-import android.widget.FrameLayout;
-import android.widget.RelativeLayout;
-import com.tencent.image.URLDrawable;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.FilePicItemBuilder;
-import com.tencent.mobileqq.customviews.PicProgressView;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import com.tencent.mobileqq.activity.aio.item.ApprovalMsgBuilder;
+import cooperation.dingdong.DingdongMsgItemTitleImageView;
 
 public class utz
   extends BaseBubbleBuilder.ViewHolder
 {
-  public FrameLayout a;
-  public RelativeLayout a;
-  public URLDrawable a;
-  public PicProgressView a;
-  public BubbleImageView a;
-  public boolean a;
-  public int e;
-  public int f;
+  public LinearLayout a;
+  public TextView a;
+  public DingdongMsgItemTitleImageView a;
+  public TextView b;
+  public TextView c;
+  public TextView d;
   
-  public utz(FilePicItemBuilder paramFilePicItemBuilder)
-  {
-    this.jdField_a_of_type_Boolean = true;
-  }
+  public utz(ApprovalMsgBuilder paramApprovalMsgBuilder) {}
 }
 
 

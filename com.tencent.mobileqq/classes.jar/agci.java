@@ -1,28 +1,38 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.profile.upload.VipUploadUtils;
-import com.tencent.mobileqq.profile.upload.config.VipUploadConfigImpl;
-import com.tencent.mobileqq.profile.upload.task.VipImageUploadManager;
-import com.tencent.upload.uinterface.AbstractUploadTask;
-import com.tencent.upload.uinterface.IUploadConfig.UploadImageSize;
+import android.widget.TextView;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
+import com.tencent.mobileqq.ocr.view.MaskView;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
-public class agci
-  extends VipUploadConfigImpl
+class agci
+  implements Runnable
 {
-  public agci(VipImageUploadManager paramVipImageUploadManager, long paramLong)
-  {
-    super(paramLong);
-  }
+  agci(agch paramagch, int paramInt) {}
   
-  public IUploadConfig.UploadImageSize getUploadImageSize(IUploadConfig.UploadImageSize paramUploadImageSize, int paramInt, AbstractUploadTask paramAbstractUploadTask)
+  public void run()
   {
-    paramUploadImageSize = VipUploadUtils.a(paramAbstractUploadTask.uploadFilePath);
-    if (paramUploadImageSize != null)
+    if (this.jdField_a_of_type_Int != 0)
     {
-      paramAbstractUploadTask = new IUploadConfig.UploadImageSize(paramUploadImageSize.getWidth(), paramUploadImageSize.getHeight(), 100);
-      paramUploadImageSize.recycle();
-      return paramAbstractUploadTask;
+      ScanOcrActivity.a(this.jdField_a_of_type_Agch.a).setVisibility(0);
+      ScanOcrActivity.a(this.jdField_a_of_type_Agch.a).setText(2131433732);
+      if (this.jdField_a_of_type_Agch.a.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_Agch.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.setVisibility(0);
+      }
+      return;
     }
-    return new IUploadConfig.UploadImageSize(640, 1136, 100);
+    if (this.jdField_a_of_type_Agch.a.jdField_a_of_type_Int != 1) {
+      if (!ScanOcrActivity.a(this.jdField_a_of_type_Agch.a).a())
+      {
+        ScanOcrActivity.a(this.jdField_a_of_type_Agch.a).setVisibility(0);
+        ScanOcrActivity.a(this.jdField_a_of_type_Agch.a).postDelayed(new agcj(this), 500L);
+      }
+    }
+    for (;;)
+    {
+      ScanOcrActivity.a(this.jdField_a_of_type_Agch.a).setVisibility(0);
+      ScanOcrActivity.a(this.jdField_a_of_type_Agch.a).setText(ScanOcrActivity.a(this.jdField_a_of_type_Agch.a));
+      return;
+      this.jdField_a_of_type_Agch.a.jdField_a_of_type_ComTencentMobileqqOcrViewMaskView.setVisibility(0);
+    }
   }
 }
 

@@ -35,13 +35,13 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
-import kko;
-import kkp;
-import kkq;
-import kkr;
-import kks;
-import kkt;
-import kku;
+import kjz;
+import kka;
+import kkb;
+import kkc;
+import kkd;
+import kke;
+import kkf;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
 import mqq.os.MqqHandler;
@@ -64,7 +64,7 @@ public class TroopRedTouchHandler
   public TroopRedTouchHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver = new kks(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver = new kkd(this);
     this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$NetInfoHandler = new TroopRedTouchHandler.NetInfoHandler(this);
     AppNetConnInfo.registerConnectionChangeReceiver(paramQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentBizTroopRedpointTroopRedTouchHandler$NetInfoHandler);
     this.jdField_a_of_type_Int = 0;
@@ -192,7 +192,7 @@ public class TroopRedTouchHandler
     if (paramQQAppInterface == null) {
       return;
     }
-    ThreadManager.getSubThreadHandler().post(new kkr(paramQQAppInterface, paramLong));
+    ThreadManager.getSubThreadHandler().post(new kkc(paramQQAppInterface, paramLong));
   }
   
   public static void a(QQAppInterface paramQQAppInterface, oidb_0x791.RedDotInfo paramRedDotInfo)
@@ -232,7 +232,7 @@ public class TroopRedTouchHandler
     {
       localRecentUser.lastmsgtime = l;
       localRecentUser.msgType = 0;
-      localRecentUser.displayName = paramQQAppInterface.getApp().getString(2131439167);
+      localRecentUser.displayName = paramQQAppInterface.getApp().getString(2131439195);
       if (paramInt != 0) {
         localRecentUserProxy.a(localRecentUser);
       }
@@ -331,7 +331,7 @@ public class TroopRedTouchHandler
     ((NewIntent)localObject2).setWithouLogin(true);
     ((NewIntent)localObject2).putExtra("cmd", "OidbSvc.0x791_0");
     ((NewIntent)localObject2).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject3).toByteArray());
-    ((NewIntent)localObject2).setObserver(new kkp(this, (List)localObject1));
+    ((NewIntent)localObject2).setObserver(new kka(this, (List)localObject1));
     this.b.startServlet((NewIntent)localObject2);
   }
   
@@ -381,7 +381,7 @@ public class TroopRedTouchHandler
     NewIntent localNewIntent = new NewIntent(this.b.getApplication(), ProtoServlet.class);
     localNewIntent.putExtra("cmd", StoryApi.a("StorySvc.clr_710_message_list"));
     localNewIntent.putExtra("data", localReqClearMessage.toByteArray());
-    localNewIntent.setObserver(new kkt(this, paramInt2));
+    localNewIntent.setObserver(new kke(this, paramInt2));
     this.b.startServlet(localNewIntent);
   }
   
@@ -439,7 +439,7 @@ public class TroopRedTouchHandler
       paramRedDotInfo = new NewIntent(this.b.getApplication(), ProtoServlet.class);
       paramRedDotInfo.putExtra("cmd", "OidbSvc.0x791_" + String.valueOf(paramInt1));
       paramRedDotInfo.putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
-      paramRedDotInfo.setObserver(new kku(this));
+      paramRedDotInfo.setObserver(new kkf(this));
       this.b.startServlet(paramRedDotInfo);
       return;
     }
@@ -479,7 +479,7 @@ public class TroopRedTouchHandler
       localObject2 = new NewIntent(this.b.getApplication(), ProtoServlet.class);
       ((NewIntent)localObject2).putExtra("cmd", "OidbSvc.0x791_" + String.valueOf(paramRedDotInfo.uint32_appid.get()));
       ((NewIntent)localObject2).putExtra("data", ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray());
-      ((NewIntent)localObject2).setObserver(new kkq(this));
+      ((NewIntent)localObject2).setObserver(new kkb(this));
       this.b.startServlet((NewIntent)localObject2);
       return;
       ((oidb_0x791.SetRedDotOpt)localObject1).bool_push_to_client.set(false);
@@ -491,7 +491,7 @@ public class TroopRedTouchHandler
     QLog.d("TroopRedTouchHandler", 2, "getRedPointInfo<requestedRedPoint:" + this.jdField_a_of_type_Int);
     if (this.jdField_a_of_type_Int != 1)
     {
-      ThreadManager.post(new kko(this), 5, null, true);
+      ThreadManager.post(new kjz(this), 5, null, true);
       return true;
     }
     return false;

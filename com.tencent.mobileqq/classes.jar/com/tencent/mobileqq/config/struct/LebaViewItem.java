@@ -9,6 +9,7 @@ public class LebaViewItem
   public long a;
   public ResourcePluginInfo a;
   public String a;
+  public boolean a = true;
   public String b;
 }
 

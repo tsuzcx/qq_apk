@@ -1,26 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.WeiYunFileInfo;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.emoticon.EmotionPanelPayBackListener;
+import com.tencent.mobileqq.emoticonview.EmotionNeedDownloadAdapter;
 
-class acfr
-  implements FMDialogUtil.FMDialogInterface
+public class acfr
+  extends EmotionPanelPayBackListener
 {
-  acfr(acfo paramacfo, WeiYunFileInfo paramWeiYunFileInfo) {}
+  public acfr(EmotionNeedDownloadAdapter paramEmotionNeedDownloadAdapter) {}
   
-  public void a()
+  public void a(int paramInt)
   {
-    FileManagerEntity localFileManagerEntity = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataWeiYunFileInfo);
-    QfileBaseCloudFileTabView.h(this.jdField_a_of_type_Acfo.a).a().b(localFileManagerEntity);
-    QfileBaseCloudFileTabView.i(this.jdField_a_of_type_Acfo.a).a().a(localFileManagerEntity);
-    this.jdField_a_of_type_Acfo.a.a(localFileManagerEntity);
+    this.a.a(paramInt);
   }
-  
-  public void b() {}
 }
 
 

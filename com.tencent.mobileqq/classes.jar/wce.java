@@ -1,27 +1,18 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationHelper;
+import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleReceiverAnimationRunnable;
 
 public class wce
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public wce(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
+  public wce(StickerBubbleReceiverAnimationRunnable paramStickerBubbleReceiverAnimationRunnable) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (("tencent.av.v2q.StartVideoChat".equals(paramIntent.getAction())) && (BlessSelectMemberActivity.c(this.a) == 9003) && (BlessSelectMemberActivity.d(this.a) == 32))
+    if (StickerBubbleReceiverAnimationRunnable.a(this.a))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("BlessSelectMemberActivity", 2, "ACTION_START_VIDEO_CHAT from BLESS_WEB");
-      }
-      paramContext = new Intent("tencent.video.q2v.startUploadPTV");
-      paramContext.putExtra("broadcastType", 1);
-      this.a.app.getApp().sendBroadcast(paramContext);
-      this.a.finish();
+      StickerBubbleAnimationHelper.a(this.a, StickerBubbleReceiverAnimationRunnable.a(this.a));
+      StickerBubbleReceiverAnimationRunnable.a(this.a, false);
+      StickerBubbleReceiverAnimationRunnable.b(this.a, false);
     }
   }
 }

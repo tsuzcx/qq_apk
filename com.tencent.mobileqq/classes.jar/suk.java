@@ -1,20 +1,35 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.app.readinjoy.ReadInJoyObserver;
+import android.view.View;
+import com.tencent.mobileqq.activity.GroupManagerActivity;
+import com.tencent.mobileqq.adapter.GroupEditeDragSortAdapter;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class suk
-  extends ReadInJoyObserver
+  implements ActionSheet.OnButtonClickListener
 {
-  public suk(Leba paramLeba) {}
+  public suk(GroupManagerActivity paramGroupManagerActivity, byte paramByte) {}
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.lebatab.leba", 2, "onReadInJoyNotifyRedTouchUpdate, isSuccess=" + paramBoolean1 + ",isUpdate=" + paramBoolean2 + ", type=" + paramInt);
+    this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.c();
+    if (paramInt == 0)
+    {
+      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).setDragEnabled(true);
+      GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity, this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(this.jdField_a_of_type_Byte));
+      if (QLog.isColorLevel()) {
+        QLog.d("GroupManagerActivity", 2, "DeleteFriendGroup :" + this.jdField_a_of_type_Byte + ", " + GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity));
+      }
+      if (!GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity)) {
+        break label110;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity.a(2131435544);
     }
-    if ((paramBoolean1) && (paramBoolean2) && ((paramInt & 0x1) != 0)) {
-      this.a.a(new sul(this));
+    label110:
+    while (GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity) == null) {
+      return;
     }
+    GroupManagerActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityGroupManagerActivity).notifyDataSetChanged();
   }
 }
 

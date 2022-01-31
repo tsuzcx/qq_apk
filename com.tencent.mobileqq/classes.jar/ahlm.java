@@ -1,27 +1,15 @@
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
 
 public class ahlm
-  implements INetInfoHandler
+  implements Runnable
 {
-  public ahlm(ShortVideoResourceManager paramShortVideoResourceManager) {}
+  public ahlm(CameraCaptureView paramCameraCaptureView) {}
   
-  public void onNetMobile2None()
+  public void run()
   {
-    ShortVideoResourceManager.a(this.a);
-  }
-  
-  public void onNetMobile2Wifi(String paramString) {}
-  
-  public void onNetNone2Mobile(String paramString) {}
-  
-  public void onNetNone2Wifi(String paramString) {}
-  
-  public void onNetWifi2Mobile(String paramString) {}
-  
-  public void onNetWifi2None()
-  {
-    ShortVideoResourceManager.a(this.a);
+    this.a.a = new RenderBuffer(this.a.f, this.a.g, 33984);
+    this.a.k = this.a.a.a();
   }
 }
 

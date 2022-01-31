@@ -1,49 +1,16 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.video.ReadInJoyWebDataManager;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoSearchTagFragment;
 
-class lyy
-  implements HttpWebCgiAsyncTask.Callback
+public class lyy
+  implements View.OnClickListener
 {
-  lyy(lyx paramlyx) {}
+  public lyy(ReadInJoyVideoSearchTagFragment paramReadInJoyVideoSearchTagFragment) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    if (paramJSONObject != null)
-    {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoReadInJoyWebDataManager.a(this.a.b, Integer.toString(ReadInJoyWebDataManager.b));
-      try
-      {
-        if ((this.a.jdField_a_of_type_Lzc != null) && ((this.a.jdField_a_of_type_Lzc instanceof lzc))) {
-          this.a.jdField_a_of_type_Lzc.a(paramJSONObject);
-        }
-        paramBundle = paramJSONObject.toString();
-        ReadInJoyWebDataManager.a(this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoReadInJoyWebDataManager, this.a.b, paramBundle);
-        this.a.jdField_a_of_type_OrgJsonJSONObject.put("data", paramBundle);
-        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoReadInJoyWebDataManager.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject.toString(), "", this.a.jdField_a_of_type_OrgJsonJSONObject);
-      }
-      catch (JSONException paramBundle)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:storeParams putData JSONException :" + paramBundle);
-          }
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result :" + paramJSONObject);
-      }
-    }
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoReadInJoyWebDataManager.a(this.a.b, Integer.toString(ReadInJoyWebDataManager.a));
-    } while (!QLog.isColorLevel());
-    QLog.w("ReadInJoyWebDataManager", 2, "doSendRequestWithExtraHeader:return result null");
+    this.a.getActivity().finish();
   }
 }
 

@@ -26,8 +26,8 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import zgs;
-import zgt;
+import zjy;
+import zjz;
 
 public class PublicAccountDataManager
   implements Manager
@@ -48,7 +48,7 @@ public class PublicAccountDataManager
   {
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    ThreadManager.getSubThreadHandler().postDelayed(new zgs(this), 10L);
+    ThreadManager.getSubThreadHandler().postDelayed(new zjy(this), 10L);
   }
   
   public AccountDetail a(String paramString)
@@ -504,7 +504,7 @@ public class PublicAccountDataManager
     if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     }
-    ThreadManager.executeOnSubThread(new zgt(this, paramPublicAccountInfo));
+    ThreadManager.executeOnSubThread(new zjz(this, paramPublicAccountInfo));
     if (paramPublicAccountInfo.isNeedShow()) {
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramPublicAccountInfo.getUin(), paramPublicAccountInfo);
     }

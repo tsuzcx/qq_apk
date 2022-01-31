@@ -1,20 +1,18 @@
-import com.tencent.component.network.utils.http.pool.AbstractConnPool;
-import com.tencent.component.network.utils.http.pool.FutureCallback;
-import com.tencent.component.network.utils.http.pool.PoolEntry;
-import java.util.concurrent.TimeUnit;
-import java.util.concurrent.locks.Lock;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.component.network.downloader.common.IPInfo;
 
-public class pjn
-  extends pjo
+public final class pjn
+  implements Parcelable.Creator
 {
-  public pjn(AbstractConnPool paramAbstractConnPool, Lock paramLock, FutureCallback paramFutureCallback, Object paramObject1, Object paramObject2)
+  public IPInfo a(Parcel paramParcel)
   {
-    super(paramLock, paramFutureCallback);
+    return new IPInfo(paramParcel);
   }
   
-  public PoolEntry a(long paramLong, TimeUnit paramTimeUnit)
+  public IPInfo[] a(int paramInt)
   {
-    return AbstractConnPool.a(this.jdField_a_of_type_ComTencentComponentNetworkUtilsHttpPoolAbstractConnPool, this.jdField_a_of_type_JavaLangObject, this.b, paramLong, paramTimeUnit, this);
+    return new IPInfo[paramInt];
   }
 }
 

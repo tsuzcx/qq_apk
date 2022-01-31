@@ -61,20 +61,20 @@ import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import mqq.os.MqqHandler;
-import mqx;
-import mqy;
-import mqz;
-import mra;
-import mrb;
-import mri;
-import mrj;
-import mrk;
-import mrl;
-import mrm;
-import mrn;
-import mro;
-import mrp;
-import mrq;
+import mse;
+import msf;
+import msg;
+import msh;
+import msi;
+import msp;
+import msq;
+import msr;
+import mss;
+import mst;
+import msu;
+import msv;
+import msw;
+import msx;
 
 public class SubscriptFeedsActivity
   extends IphoneTitleBarActivity
@@ -87,15 +87,15 @@ public class SubscriptFeedsActivity
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
   private SubscriptFeedsAdapter jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsAdapter;
-  private SubscriptObserver jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptObserver = new mri(this);
+  private SubscriptObserver jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptObserver = new msp(this);
   private SubscriptPicManager jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptPicManager;
   public SubscriptRecommendController a;
   private CustomGuideView jdField_a_of_type_ComTencentBizUiCustomGuideView;
   private TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
   protected DragFrameLayout a;
-  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new mqz(this);
+  MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new msg(this);
   private SwipListView jdField_a_of_type_ComTencentWidgetSwipListView;
-  private XListView.DrawFinishedListener jdField_a_of_type_ComTencentWidgetXListView$DrawFinishedListener = new mqx(this);
+  private XListView.DrawFinishedListener jdField_a_of_type_ComTencentWidgetXListView$DrawFinishedListener = new mse(this);
   private ArrayList jdField_a_of_type_JavaUtilArrayList;
   private List jdField_a_of_type_JavaUtilList;
   public MqqHandler a;
@@ -118,7 +118,7 @@ public class SubscriptFeedsActivity
   public SubscriptFeedsActivity()
   {
     this.jdField_a_of_type_Int = 0;
-    this.jdField_a_of_type_MqqOsMqqHandler = new mrb(this, ThreadManager.getSubThreadLooper());
+    this.jdField_a_of_type_MqqOsMqqHandler = new msi(this, ThreadManager.getSubThreadLooper());
   }
   
   private void a(List paramList)
@@ -221,7 +221,7 @@ public class SubscriptFeedsActivity
   private void d()
   {
     int j = 1;
-    Object localObject = "7.6.0" + this.app.c() + "subscript_guid";
+    Object localObject = "7.6.3" + this.app.c() + "subscript_guid";
     if ((this.app.getPreferences().getBoolean((String)localObject, true)) && (SubscriptRecommendController.e(this.app))) {
       if (j != 0) {
         break label71;
@@ -239,8 +239,8 @@ public class SubscriptFeedsActivity
         localObject = getResources();
         this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow();
         this.jdField_a_of_type_ComTencentBizUiCustomGuideView = new CustomGuideView(this);
-        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.g = ((Resources)localObject).getColor(2131493323);
-        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.f = ((Resources)localObject).getColor(2131493324);
+        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.g = ((Resources)localObject).getColor(2131493324);
+        this.jdField_a_of_type_ComTencentBizUiCustomGuideView.f = ((Resources)localObject).getColor(2131493325);
         this.jdField_a_of_type_ComTencentBizUiCustomGuideView.jdField_a_of_type_Float = AIOUtils.a(2, 14, (Resources)localObject);
         this.jdField_a_of_type_ComTencentBizUiCustomGuideView.e = AIOUtils.a(12.0F, (Resources)localObject);
         this.jdField_a_of_type_ComTencentBizUiCustomGuideView.jdField_a_of_type_Int = AIOUtils.a(30.0F, (Resources)localObject);
@@ -257,7 +257,7 @@ public class SubscriptFeedsActivity
         this.jdField_a_of_type_AndroidWidgetPopupWindow.setHeight(-2);
         j = this.jdField_a_of_type_ComTencentBizUiCustomGuideView.b();
         int k = getResources().getDisplayMetrics().widthPixels;
-        this.rightViewText.post(new mrn(this, k, j));
+        this.rightViewText.post(new msu(this, k, j));
         return;
       }
       catch (Exception localException) {}
@@ -284,7 +284,7 @@ public class SubscriptFeedsActivity
   
   private void f()
   {
-    ThreadManager.executeOnSubThread(new mro(this));
+    ThreadManager.executeOnSubThread(new msv(this));
     if (TroopBarAssistantManager.a().a(this.app)) {
       TroopBarAssistantManager.a().a(this.app.getEntityManagerFactory().createEntityManager(), this.app);
     }
@@ -292,7 +292,7 @@ public class SubscriptFeedsActivity
     addObserver(this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptObserver);
     this.app.a().addObserver(this);
     if ((ReadInJoyHelper.b(this.app)) && ((SubscriptHandler)this.app.a(64) != null)) {}
-    HtmlOffline.b("2278", this.app, true, new mrp(this));
+    HtmlOffline.b("2278", this.app, true, new msw(this));
   }
   
   private void g()
@@ -300,31 +300,31 @@ public class SubscriptFeedsActivity
     boolean bool = ThemeUtil.isInNightMode(this.app);
     if (this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsAdapter.getCount() == 0)
     {
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368250)).setText(2131430065);
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368317)).setText(2131430082);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       if (!bool) {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131493588);
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131493594);
       }
       for (;;)
       {
-        this.jdField_a_of_type_ComTencentWidgetSwipListView.setBackgroundResource(2130846277);
+        this.jdField_a_of_type_ComTencentWidgetSwipListView.setBackgroundResource(2130846407);
         this.jdField_a_of_type_ComTencentWidgetSwipListView.setEnabled(false);
         if (this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendController != null) {
           this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendController.d();
         }
         return;
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131493589);
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2131493595);
       }
     }
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     if (!bool) {
-      this.jdField_a_of_type_ComTencentWidgetSwipListView.setBackgroundResource(2131493588);
+      this.jdField_a_of_type_ComTencentWidgetSwipListView.setBackgroundResource(2131493594);
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentWidgetSwipListView.setEnabled(true);
       return;
-      this.jdField_a_of_type_ComTencentWidgetSwipListView.setBackgroundResource(2131493589);
+      this.jdField_a_of_type_ComTencentWidgetSwipListView.setBackgroundResource(2131493595);
     }
   }
   
@@ -351,7 +351,7 @@ public class SubscriptFeedsActivity
   
   public void a(boolean paramBoolean, int paramInt, DragFrameLayout paramDragFrameLayout)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1) && (paramDragFrameLayout.a() != null) && (paramDragFrameLayout.a().getId() == 2131366789))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a() == -1) && (paramDragFrameLayout.a() != null) && (paramDragFrameLayout.a().getId() == 2131366832))
     {
       paramDragFrameLayout = (SubscriptionFeed)paramDragFrameLayout.a().getTag(2131362114);
       if (paramDragFrameLayout != null)
@@ -392,7 +392,7 @@ public class SubscriptFeedsActivity
   public void c()
   {
     if (this.leftView != null) {
-      ThreadManager.post(new mrq(this), 5, null, true);
+      ThreadManager.post(new msx(this), 5, null, true);
     }
   }
   
@@ -423,7 +423,7 @@ public class SubscriptFeedsActivity
       if (f2 >= this.jdField_c_of_type_Int) {
         if ((this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendController != null) && (this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendController.jdField_a_of_type_Int == 1) && (this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendController.jdField_a_of_type_AndroidViewView != null))
         {
-          localObject = this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendController.jdField_a_of_type_AndroidViewView.findViewById(2131367456);
+          localObject = this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendController.jdField_a_of_type_AndroidViewView.findViewById(2131367524);
           int[] arrayOfInt = new int[2];
           ((View)localObject).getLocationOnScreen(arrayOfInt);
           if (f2 >= arrayOfInt[1])
@@ -484,9 +484,9 @@ public class SubscriptFeedsActivity
       getWindow().setFlags(16777216, 16777216);
     }
     if (Build.VERSION.SDK_INT >= 19) {
-      new MqqHandler().postDelayed(new mrj(this), 1000L);
+      new MqqHandler().postDelayed(new msq(this), 1000L);
     }
-    setContentView(2130969679);
+    setContentView(2130969693);
     getWindow().setBackgroundDrawable(null);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = DragFrameLayout.a(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a(this, false);
@@ -498,31 +498,31 @@ public class SubscriptFeedsActivity
     setTitle(PublicAccountConfigUtil.a(this.app, getApplicationContext()));
     c();
     boolean bool = SubscriptRecommendController.e(this.app);
-    this.rightViewText.setText(2131437921);
+    this.rightViewText.setText(2131437938);
     if (bool)
     {
       this.rightViewText.setVisibility(0);
       this.rightViewImg.setVisibility(8);
       this.rightViewText.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131363098);
-      this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131367292));
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131363116);
+      this.jdField_a_of_type_ComTencentWidgetSwipListView = ((SwipListView)findViewById(2131367347));
       SwipListView localSwipListView = this.jdField_a_of_type_ComTencentWidgetSwipListView;
       if (!ThemeUtil.isInNightMode(this.app)) {
         break label644;
       }
-      paramBundle = getResources().getDrawable(2131493325);
+      paramBundle = getResources().getDrawable(2131493326);
       label281:
       localSwipListView.setDivider(paramBundle);
-      this.jdField_a_of_type_ComTencentWidgetSwipListView.setDividerHeight(getResources().getDimensionPixelSize(2131560405));
-      this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnScrollListener(new mrk(this));
+      this.jdField_a_of_type_ComTencentWidgetSwipListView.setDividerHeight(getResources().getDimensionPixelSize(2131560423));
+      this.jdField_a_of_type_ComTencentWidgetSwipListView.setOnScrollListener(new msr(this));
       this.jdField_a_of_type_ComTencentWidgetSwipListView.setDrawFinishedListener(this.jdField_a_of_type_ComTencentWidgetXListView$DrawFinishedListener);
-      this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130971470, null);
+      this.jdField_b_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130971518, null);
       this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(null);
-      ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131368254)).setVisibility(8);
-      ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368668)).setText(String.format(getResources().getString(2131430082), new Object[] { PublicAccountConfigUtil.a(this.app, getApplicationContext()) }));
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_b_of_type_AndroidViewView.findViewById(2131368255));
+      ((Button)this.jdField_b_of_type_AndroidViewView.findViewById(2131368321)).setVisibility(8);
+      ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368735)).setText(String.format(getResources().getString(2131430099), new Object[] { PublicAccountConfigUtil.a(this.app, getApplicationContext()) }));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.jdField_b_of_type_AndroidViewView.findViewById(2131368322));
       this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
-      this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new mrl(this));
+      this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(new mss(this));
       this.jdField_a_of_type_ComTencentWidgetSwipListView.addHeaderView(this.jdField_b_of_type_AndroidViewView);
       d();
       this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsAdapter = new SubscriptFeedsAdapter(this, this.app, this.jdField_a_of_type_ComTencentWidgetSwipListView, getLayoutInflater());
@@ -533,13 +533,13 @@ public class SubscriptFeedsActivity
       if (ThemeUtil.isInNightMode(this.app)) {
         break label658;
       }
-      this.jdField_a_of_type_ComTencentWidgetSwipListView.setBackgroundResource(2131493588);
+      this.jdField_a_of_type_ComTencentWidgetSwipListView.setBackgroundResource(2131493594);
     }
     for (;;)
     {
       this.jdField_a_of_type_ComTencentWidgetSwipListView.setDragEnable(true);
       this.jdField_a_of_type_ComTencentWidgetSwipListView.setRightIconMenuListener(this);
-      ThreadManager.executeOnSubThread(new mrm(this));
+      ThreadManager.executeOnSubThread(new mst(this));
       f();
       if (this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendController == null) {
         this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptRecommendController = new SubscriptRecommendController(this, this.app, this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptPicManager);
@@ -549,10 +549,10 @@ public class SubscriptFeedsActivity
       this.rightViewText.setVisibility(8);
       break;
       label644:
-      paramBundle = getResources().getDrawable(2131493231);
+      paramBundle = getResources().getDrawable(2131493232);
       break label281;
       label658:
-      this.jdField_a_of_type_ComTencentWidgetSwipListView.setBackgroundResource(2131493589);
+      this.jdField_a_of_type_ComTencentWidgetSwipListView.setBackgroundResource(2131493595);
     }
   }
   
@@ -619,7 +619,7 @@ public class SubscriptFeedsActivity
   {
     super.doOnResume();
     boolean bool = SubscriptRecommendController.c(this.app);
-    Object localObject = super.findViewById(2131364006);
+    Object localObject = super.findViewById(2131364030);
     if (bool) {}
     for (int j = 0;; j = 8)
     {
@@ -676,8 +676,8 @@ public class SubscriptFeedsActivity
     {
     default: 
     case 2131362123: 
-    case 2131363410: 
-    case 2131367437: 
+    case 2131363428: 
+    case 2131367505: 
       do
       {
         return;
@@ -737,11 +737,11 @@ public class SubscriptFeedsActivity
         ReportController.b(this.app, "P_CliOper", "Pb_account_lifeservice", "", "0X800572F", "0X800572F", 0, 0, "", "", "", "");
         break label356;
       }
-    case 2131367445: 
-    case 2131367447: 
-    case 2131367448: 
-    case 2131367449: 
-    case 2131367450: 
+    case 2131367513: 
+    case 2131367515: 
+    case 2131367516: 
+    case 2131367517: 
+    case 2131367518: 
       ReportController.b(null, "CliOper", "", "", "0X8006155", "0X8006155", 0, 0, "", "", "", "");
       localObject1 = new Intent("android.intent.action.MAIN");
       ((Intent)localObject1).putExtra("channel_id", 0);
@@ -757,7 +757,7 @@ public class SubscriptFeedsActivity
           j += 1;
         }
         ((Intent)localObject1).putExtra("subscription_all_article_id", (Serializable)localObject2);
-        if ((paramView.getId() == 2131367447) || (paramView.getId() == 2131367448) || (paramView.getId() == 2131367449) || (paramView.getId() == 2131367450))
+        if ((paramView.getId() == 2131367515) || (paramView.getId() == 2131367516) || (paramView.getId() == 2131367517) || (paramView.getId() == 2131367518))
         {
           j = ((Integer)paramView.getTag()).intValue();
           paramView = (ReadInJoyArticle)this.jdField_a_of_type_JavaUtilArrayList.get(j);
@@ -782,8 +782,8 @@ public class SubscriptFeedsActivity
           QLog.d("SubscriptFeedsActivity", 2, "subscription folder jump to readinjoy with ReadInJoyArticles wrong param");
         }
       }
-    case 2131367443: 
-    case 2131367444: 
+    case 2131367511: 
+    case 2131367512: 
       label536:
       label541:
       label580:
@@ -843,10 +843,10 @@ public class SubscriptFeedsActivity
         for (paramView = (String)paramView;; paramView = "")
         {
           localObject2 = (ActionSheet)ActionSheetHelper.a(this, null);
-          ((ActionSheet)localObject2).a(String.format(getResources().getString(2131430077), new Object[] { paramView }));
-          ((ActionSheet)localObject2).a(2131430037, 3);
-          ((ActionSheet)localObject2).c(2131432998);
-          ((ActionSheet)localObject2).a(new mqy(this, (String)localObject1, (ActionSheet)localObject2));
+          ((ActionSheet)localObject2).a(String.format(getResources().getString(2131430094), new Object[] { paramView }));
+          ((ActionSheet)localObject2).a(2131430054, 3);
+          ((ActionSheet)localObject2).c(2131433015);
+          ((ActionSheet)localObject2).a(new msf(this, (String)localObject1, (ActionSheet)localObject2));
           ((ActionSheet)localObject2).show();
           return;
           localObject1 = "";
@@ -893,7 +893,7 @@ public class SubscriptFeedsActivity
     {
       paramObservable = (MessageRecord)paramObject;
       if (!paramObservable.isSendFromLocal()) {
-        runOnUiThread(new mra(this));
+        runOnUiThread(new msh(this));
       }
       if ((!paramObservable.isSendFromLocal()) || (paramObservable.msgtype != -2002)) {}
     }

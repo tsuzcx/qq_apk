@@ -1,19 +1,27 @@
-import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder.EmotionPanelDataCallback;
-import com.tencent.mobileqq.emoticonview.FavoriteEmotionAdapter;
-import java.util.List;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupDBManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class abzb
-  implements EmotionPanelDataBuilder.EmotionPanelDataCallback
+  implements Handler.Callback
 {
-  public abzb(FavoriteEmotionAdapter paramFavoriteEmotionAdapter) {}
+  public abzb(EmoticonFromGroupDBManager paramEmoticonFromGroupDBManager) {}
   
-  public void a(List paramList)
+  public boolean handleMessage(Message paramMessage)
   {
-    if (paramList != null)
+    switch (paramMessage.what)
     {
-      this.a.a(paramList);
-      this.a.notifyDataSetChanged();
     }
+    do
+    {
+      return true;
+      this.a.b = true;
+      QLog.i("EmoticonFromGroup_DBManager", 1, "set db tag, mCanWriteDataToDB = true.");
+    } while (this.a.b() < 300);
+    EmoticonFromGroupDBManager.a(this.a).clear();
+    return true;
   }
 }
 

@@ -1,91 +1,43 @@
 import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.pluginsdk.PluginInterface;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.thirdpay.ThirdPayGate;
+import cooperation.qqdataline.ipc.DatalineRemoteManager;
+import cooperation.qqdataline.ipc.IDatalineService;
+import java.util.ArrayList;
 
 public class amou
-  extends amov
+  implements Runnable
 {
-  public amou(ThirdPayGate paramThirdPayGate, PluginInterface paramPluginInterface, String paramString, long paramLong, Handler paramHandler)
-  {
-    super(paramThirdPayGate);
-  }
+  public amou(DatalineRemoteManager paramDatalineRemoteManager) {}
   
   public void run()
   {
     for (;;)
     {
-      if (!this.jdField_a_of_type_Boolean)
+      Bundle localBundle;
+      if (!this.a.jdField_a_of_type_JavaUtilArrayList.isEmpty())
       {
-        Bundle localBundle = ThirdPayGate.access$500(this.jdField_a_of_type_CooperationThirdpayThirdPayGate, this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginInterface, this.jdField_a_of_type_JavaLangString);
-        if ((localBundle == null) || (!localBundle.getBoolean("plugininfo", false)))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("CardPayGate", 2, "install----pluginInfo is null...");
-          }
-          if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 5000L)
-          {
-            try
-            {
-              Thread.sleep(1000L);
-            }
-            catch (InterruptedException localInterruptedException1)
-            {
-              localInterruptedException1.printStackTrace();
-            }
-            continue;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("CardPayGate", 2, "install----pluginInfo is null. timeout.");
-          }
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4097);
-        }
+        localBundle = (Bundle)this.a.jdField_a_of_type_JavaUtilArrayList.remove(0);
+        if (localBundle != null) {}
       }
       else
       {
         return;
       }
-      int i = localInterruptedException1.getInt("pluginstate");
-      float f = localInterruptedException1.getFloat("pluginprogress");
-      if (QLog.isColorLevel())
+      String str = localBundle.getString("notify_cmd");
+      try
       {
-        QLog.d("CardPayGate", 2, "pluginState----" + i);
-        QLog.d("CardPayGate", 2, "progress----" + f);
+        localBundle.setClassLoader(getClass().getClassLoader());
+        if (QLog.isColorLevel()) {
+          QLog.d("DatalineRemoteManager", 2, "doPostCachedMsg send success strNotifyCmd:" + str);
+        }
+        this.a.jdField_a_of_type_CooperationQqdatalineIpcIDatalineService.a("com.qqdataline.action.notify", localBundle);
       }
-      if (i == 4)
+      catch (Exception localException)
       {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
-        return;
+        localException.printStackTrace();
       }
-      if (i != 1) {
-        if (i == 2)
-        {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-        }
-        else if (i == 3)
-        {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-        }
-        else
-        {
-          if (System.currentTimeMillis() - this.jdField_a_of_type_Long >= 15000L)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("CardPayGate", 2, "install----pluginInfo is not null. timeout.");
-            }
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4097);
-            return;
-          }
-          try
-          {
-            Thread.sleep(1000L);
-          }
-          catch (InterruptedException localInterruptedException2)
-          {
-            localInterruptedException2.printStackTrace();
-          }
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("DatalineRemoteManager", 2, "doPostCachedMsg send failed strNotifyCmd:" + str);
       }
     }
   }

@@ -1,47 +1,39 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.Intent.ShortcutIconResource;
-import android.content.res.Resources;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.utils.ShortcutUtils;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import android.app.Activity;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Setting;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter;
+import mqq.util.WeakReference;
 
-public final class ajsa
+public class ajsa
   implements Runnable
 {
-  public ajsa(Context paramContext, String paramString) {}
+  public ajsa(AvatarWallViewPagerAdapter paramAvatarWallViewPagerAdapter, URLImageView paramURLImageView, String paramString) {}
   
   public void run()
   {
-    boolean bool = ShortcutUtils.a(this.jdField_a_of_type_AndroidContentContext, new String[] { this.jdField_a_of_type_AndroidContentContext.getString(2131432987) });
-    if (QLog.isColorLevel()) {
-      QLog.d(ShortcutUtils.a(), 2, "createShortcut " + bool + ", " + ShortcutUtils.a());
-    }
-    if (bool)
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
+    Object localObject;
+    Setting localSetting;
+    do
     {
-      if (ShortcutUtils.b() < 3) {
-        ThreadManager.getSubThreadHandler().postDelayed(this, 1000L);
-      }
-      return;
-    }
-    Intent localIntent1 = new Intent("android.intent.action.MAIN");
-    localIntent1.setClassName(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString);
-    localIntent1.addCategory("android.intent.category.LAUNCHER");
-    localIntent1.addFlags(268435456);
-    localIntent1.addFlags(2097152);
-    Intent localIntent2 = new Intent();
-    localIntent2.putExtra("android.intent.extra.shortcut.INTENT", localIntent1);
-    localIntent2.putExtra("android.intent.extra.shortcut.NAME", this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131432987));
-    localIntent2.putExtra("android.intent.extra.shortcut.ICON_RESOURCE", Intent.ShortcutIconResource.fromContext(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), 2130839189));
-    localIntent2.putExtra("duplicate", false);
-    localIntent2.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
-    this.jdField_a_of_type_AndroidContentContext.sendOrderedBroadcast(localIntent2, null);
+      do
+      {
+        return;
+        localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
+        localSetting = (Setting)((EntityManager)localObject).a(Setting.class, "troop_" + this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.jdField_a_of_type_JavaLangString);
+        ((EntityManager)localObject).a();
+      } while (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.jdField_a_of_type_MqqUtilWeakReference == null);
+      localObject = (Activity)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetAvatarWallViewPagerAdapter.jdField_a_of_type_MqqUtilWeakReference.get();
+    } while ((localObject == null) || (((Activity)localObject).isFinishing()));
+    ((Activity)localObject).runOnUiThread(new ajsb(this, localSetting));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajsa
  * JD-Core Version:    0.7.0.1
  */

@@ -1,28 +1,36 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Bitmap;
+import android.os.Message;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.activity.aio.anim.FriendProfileCardBgDrawable;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profile.ProfileShoppingPhotoInfo;
+import com.tencent.mobileqq.utils.StackBlur;
+import com.tencent.util.WeakReferenceHandler;
 
 public class sqh
-  implements ConditionSearchManager.IConfigListener
+  implements Runnable
 {
-  public sqh(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public sqh(FriendProfileCardActivity paramFriendProfileCardActivity, Bitmap paramBitmap) {}
   
-  public void a(int paramInt, boolean paramBoolean)
+  public void run()
   {
-    if ((this.a.a == 1) || (this.a.a == 2))
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    Object localObject = localBitmap;
+    if (localBitmap == null) {
+      localObject = ((FriendProfileCardBgDrawable)this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_AndroidGraphicsDrawableDrawable).b();
+    }
+    if ((localObject != null) && (!((Bitmap)localObject).isRecycled()))
     {
-      if (paramBoolean) {
-        break label55;
+      localObject = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(((Bitmap)localObject).getWidth() * 0.125F), (int)(((Bitmap)localObject).getHeight() * 0.125F), true);
+      StackBlur.a((Bitmap)localObject, 2);
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a != null))
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b.obtainMessage(12, localObject);
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileShoppingPhotoInfo = ProfileShoppingPhotoInfo.getPhotoInfo(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a);
+        this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b.sendMessage((Message)localObject);
       }
-      FriendProfileMoreInfoActivity.a(this.a);
-      QQToast.a(this.a, 2131437281, 0).b(this.a.getTitleBarHeight());
     }
-    label55:
-    while (paramInt != 2) {
-      return;
-    }
-    FriendProfileMoreInfoActivity.a(this.a);
-    FriendProfileMoreInfoActivity.a(this.a, this.a.a);
   }
 }
 

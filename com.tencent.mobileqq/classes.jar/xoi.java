@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraExceptionHandler.Callback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.widget.ActionSheet.OnDismissListener;
+import cooperation.qzone.RDMEtraMsgCollector;
 
 public class xoi
-  implements CameraExceptionHandler.Callback
+  implements ActionSheet.OnDismissListener
 {
-  public xoi(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xoi(EditLocalVideoActivity paramEditLocalVideoActivity) {}
   
-  public void a(RuntimeException paramRuntimeException)
+  public void onDismiss()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PTV.NewFlowCameraActivity", 2, "[onDispatchThreadException]", paramRuntimeException);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[Actvity]").append(getClass().getSimpleName()).append(" QQCustomDialog click :").append("取消");
+    RDMEtraMsgCollector.a().c(localStringBuilder.toString());
   }
 }
 

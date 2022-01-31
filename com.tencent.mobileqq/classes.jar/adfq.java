@@ -1,35 +1,22 @@
-import com.tencent.mobileqq.hotpic.DiskStorageManager;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.io.IOException;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.ZipFilePresenter;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
 
 public class adfq
-  implements Runnable
+  implements FileManagerUtil.TipsClickedInterface
 {
-  private final File jdField_a_of_type_JavaIoFile;
+  public adfq(ZipFilePresenter paramZipFilePresenter) {}
   
-  public adfq(DiskStorageManager paramDiskStorageManager, File paramFile)
+  public void a(View paramView)
   {
-    this.jdField_a_of_type_JavaIoFile = paramFile;
-  }
-  
-  public void run()
-  {
-    try
-    {
-      DiskStorageManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicDiskStorageManager, this.jdField_a_of_type_JavaIoFile);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
-      QLog.d("DiskStorageManager", 2, "IO exception run error in background", localIOException);
-    }
+    FileManagerUtil.b(this.a.jdField_a_of_type_AndroidAppActivity, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adfq
  * JD-Core Version:    0.7.0.1
  */

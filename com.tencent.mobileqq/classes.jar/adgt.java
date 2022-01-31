@@ -1,20 +1,21 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class adgt
-  implements Runnable
+public final class adgt
+  implements DialogInterface.OnClickListener
 {
-  public adgt(HotPicPageView.MyVideoViewHolder paramMyVideoViewHolder, Drawable paramDrawable) {}
+  public adgt(FMDialogUtil.FMDialogInterface paramFMDialogInterface) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.d.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    this.a.b();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adgt
  * JD-Core Version:    0.7.0.1
  */

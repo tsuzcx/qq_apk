@@ -60,9 +60,9 @@ public class CirclePageIndicator
       return;
     }
     Object localObject = getResources();
-    int i = ((Resources)localObject).getColor(2131493125);
-    int j = ((Resources)localObject).getColor(2131493124);
-    int k = ((Resources)localObject).getColor(2131493126);
+    int i = ((Resources)localObject).getColor(2131493126);
+    int j = ((Resources)localObject).getColor(2131493125);
+    int k = ((Resources)localObject).getColor(2131493127);
     float f1 = ((Resources)localObject).getDimension(2131558810);
     float f2 = ((Resources)localObject).getDimension(2131558809);
     paramAttributeSet = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.CirclePageIndicator, paramInt, 0);
@@ -468,7 +468,7 @@ public class CirclePageIndicator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.CirclePageIndicator
  * JD-Core Version:    0.7.0.1
  */

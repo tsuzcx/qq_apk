@@ -1,17 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer.ArkAppModuleCallback;
+import com.tencent.mobileqq.ark.ArkAiAppPanel;
 
-class aaro
-  implements DialogInterface.OnDismissListener
+public class aaro
+  implements ArkAppContainer.ArkAppModuleCallback
 {
-  aaro(aarn paramaarn, ActionSheet paramActionSheet) {}
+  public aaro(ArkAiAppPanel paramArkAiAppPanel) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public boolean a(ArkAppContainer paramArkAppContainer)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    ArkAppCenter.b("ArkApp.DebugOnlineActivity", String.format("ClearApp actionsheet is closed", new Object[0]));
+    if (ArkAiAppPanel.a(this.a) != null)
+    {
+      ArkAiAppPanel.a(this.a).ai();
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean a(ArkAppContainer paramArkAppContainer, String paramString1, String paramString2)
+  {
+    return false;
   }
 }
 

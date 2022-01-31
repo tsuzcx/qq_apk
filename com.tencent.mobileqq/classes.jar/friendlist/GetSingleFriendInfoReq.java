@@ -36,7 +36,7 @@ public final class GetSingleFriendInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\acom2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     friendlist.GetSingleFriendInfoReq
  * JD-Core Version:    0.7.0.1
  */

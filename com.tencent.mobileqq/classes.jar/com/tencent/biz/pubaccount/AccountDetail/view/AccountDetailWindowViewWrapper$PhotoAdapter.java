@@ -17,7 +17,7 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.widget.BubbleViewLayout;
 import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.ArrayList;
-import ksh;
+import krs;
 
 public class AccountDetailWindowViewWrapper$PhotoAdapter
   extends BaseAdapter
@@ -48,7 +48,7 @@ public class AccountDetailWindowViewWrapper$PhotoAdapter
     Object localObject;
     if (paramView == null)
     {
-      paramView = new ksh(this);
+      paramView = new krs(this);
       paramViewGroup = new BubbleViewLayout(this.a.jdField_a_of_type_AndroidContentContext);
       paramViewGroup.setRadius(6.0F);
       paramViewGroup.a(false);
@@ -79,7 +79,7 @@ public class AccountDetailWindowViewWrapper$PhotoAdapter
       paramView.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(URLDrawable.getDrawable(((PaConfigAttr.PaConfigInfo)localObject).e, null, null, true));
       paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((PaConfigAttr.PaConfigInfo)localObject).a);
       return paramViewGroup;
-      localObject = (ksh)paramView.getTag();
+      localObject = (krs)paramView.getTag();
       paramViewGroup = paramView;
       paramView = (View)localObject;
     }

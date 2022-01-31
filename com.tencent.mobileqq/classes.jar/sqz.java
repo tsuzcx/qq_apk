@@ -1,14 +1,26 @@
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.gesturelock.LockPatternView;
+import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.troop.widget.ProfileGuideHelper;
 
-class sqz
-  implements Runnable
+public class sqz
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  sqz(sqv paramsqv) {}
+  public sqz(FriendProfileCardActivity paramFriendProfileCardActivity, View paramView, int paramInt1, int paramInt2) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    this.a.a.a.a();
+    int[] arrayOfInt = new int[2];
+    this.jdField_a_of_type_AndroidViewView.getLocationOnScreen(arrayOfInt);
+    int i = arrayOfInt[1];
+    int j = this.jdField_a_of_type_AndroidViewView.getHeight();
+    if ((i + j <= this.jdField_a_of_type_Int - this.b) && (i != this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.j))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.a(i, j, this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.j = i;
+    }
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
   }
 }
 

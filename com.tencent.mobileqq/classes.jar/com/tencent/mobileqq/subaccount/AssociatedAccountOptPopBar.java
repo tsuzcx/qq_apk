@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.subaccount;
 
-import ahwd;
-import ahwe;
-import ahwf;
-import ahwg;
-import ahwh;
-import ahwi;
+import aikg;
+import aikh;
+import aiki;
+import aikj;
+import aikk;
+import aikl;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
@@ -21,6 +21,7 @@ import com.tencent.mobileqq.activity.AccountManageActivity;
 import com.tencent.mobileqq.activity.AddAccountActivity;
 import com.tencent.mobileqq.activity.SubAccountUgActivity;
 import com.tencent.mobileqq.activity.recent.cur.DragTextView;
+import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.MessageObserver;
@@ -47,12 +48,14 @@ import com.tencent.mobileqq.widget.LeftPopupMenuDialog.MenuItem;
 import com.tencent.mobileqq.widget.LeftPopupMenuDialog.OnClickActionListener;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.worldcup.WorldCupShareFragment;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.CustomWidgetUtil;
 import com.tencent.widget.FixSizeImageView;
 import com.tencent.widget.PopupMenuDialog;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -67,14 +70,14 @@ public class AssociatedAccountOptPopBar
   public int a;
   public Handler a;
   public BaseActivity a;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new ahwf(this);
-  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new ahwh(this);
-  private SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new ahwg(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new aiki(this);
+  private MessageObserver jdField_a_of_type_ComTencentMobileqqAppMessageObserver = new aikk(this);
+  private SubAccountBindObserver jdField_a_of_type_ComTencentMobileqqAppSubAccountBindObserver = new aikj(this);
   public LeftPopupMenuDialog a;
   public QQProgressDialog a;
   public String a;
   public List a;
-  private Observer jdField_a_of_type_JavaUtilObserver = new ahwi(this);
+  private Observer jdField_a_of_type_JavaUtilObserver = new aikl(this);
   public boolean a;
   public boolean b;
   
@@ -88,7 +91,7 @@ public class AssociatedAccountOptPopBar
   {
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0) && (a()) && (this.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog.getContentView() != null))
     {
-      ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog.getContentView().findViewById(2131363039);
+      ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog.getContentView().findViewById(2131363057);
       if (localViewGroup != null)
       {
         int i = 0;
@@ -167,26 +170,26 @@ public class AssociatedAccountOptPopBar
     }
     ArrayList localArrayList1 = new ArrayList();
     if (AppSetting.b) {}
-    for (Object localObject1 = " " + this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131437109);; localObject1 = "")
+    for (String str = " " + this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131437126);; str = "")
     {
-      Object localObject4 = new ArrayList();
-      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getApplication().getAllAccounts();
-      if ((localObject2 != null) && (((List)localObject2).size() > 0)) {
-        ((List)localObject4).addAll((Collection)localObject2);
+      Object localObject3 = new ArrayList();
+      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getApplication().getAllAccounts();
+      if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
+        ((List)localObject3).addAll((Collection)localObject1);
       }
       ArrayList localArrayList2 = ((SubAccountManager)this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.getManager(60)).b();
       if (QLog.isColorLevel()) {
         QLog.d("AssociatedAccountOptPopBar", 2, "loadMenuItemList subAccounts.size() = " + localArrayList2.size());
       }
       int i = 1;
-      Object localObject5 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.a().a();
-      Object localObject6 = new ArrayList();
-      Object localObject7 = localArrayList2.iterator();
+      Object localObject4 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.a().a();
+      Object localObject5 = new ArrayList();
+      Object localObject6 = localArrayList2.iterator();
       SubAccountInfo localSubAccountInfo;
-      Object localObject3;
-      if (((Iterator)localObject7).hasNext())
+      Object localObject2;
+      if (((Iterator)localObject6).hasNext())
       {
-        localSubAccountInfo = (SubAccountInfo)((Iterator)localObject7).next();
+        localSubAccountInfo = (SubAccountInfo)((Iterator)localObject6).next();
         j = i;
         LeftPopupMenuDialog.MenuItem localMenuItem;
         if (localSubAccountInfo != null)
@@ -196,32 +199,32 @@ public class AssociatedAccountOptPopBar
           {
             localMenuItem = new LeftPopupMenuDialog.MenuItem();
             localMenuItem.jdField_a_of_type_Int = i;
-            localObject3 = ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, localSubAccountInfo.subuin, false);
-            localObject2 = localObject3;
-            if (TextUtils.isEmpty((CharSequence)localObject3)) {
-              localObject2 = localSubAccountInfo.subuin;
+            localObject2 = ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, localSubAccountInfo.subuin, false);
+            localObject1 = localObject2;
+            if (TextUtils.isEmpty((CharSequence)localObject2)) {
+              localObject1 = localSubAccountInfo.subuin;
             }
-            localMenuItem.jdField_a_of_type_JavaLangString = ((String)localObject2);
+            localMenuItem.jdField_a_of_type_JavaLangString = ((String)localObject1);
             localMenuItem.c = 0;
             if (localSubAccountInfo.status != 1) {
               break label507;
             }
-            localMenuItem.jdField_b_of_type_Int = ((ConversationFacade)localObject5).a(localSubAccountInfo.subuin, 7000);
+            localMenuItem.jdField_b_of_type_Int = ((ConversationFacade)localObject4).a(localSubAccountInfo.subuin, 7000);
           }
         }
         for (localMenuItem.d = 0;; localMenuItem.d = 1)
         {
           localMenuItem.jdField_a_of_type_JavaLangObject = localSubAccountInfo;
           if (AppSetting.b) {
-            localMenuItem.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131436399, new Object[] { localMenuItem.jdField_a_of_type_JavaLangString }) + (String)localObject1);
+            localMenuItem.jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131436416, new Object[] { localMenuItem.jdField_a_of_type_JavaLangString }) + str);
           }
           localMenuItem.jdField_a_of_type_Long = localSubAccountInfo.lasttime;
-          ((List)localObject6).add(localMenuItem);
+          ((List)localObject5).add(localMenuItem);
           i += 1;
           j = i;
           if (QLog.isColorLevel())
           {
-            QLog.d("AssociatedAccountOptPopBar", 1, "loadMenuItemList subAccount uin:" + localSubAccountInfo.subuin + " showName:" + (String)localObject2);
+            QLog.d("AssociatedAccountOptPopBar", 1, "loadMenuItemList subAccount uin:" + localSubAccountInfo.subuin + " showName:" + (String)localObject1);
             j = i;
           }
           i = j;
@@ -230,40 +233,40 @@ public class AssociatedAccountOptPopBar
           localMenuItem.jdField_b_of_type_Int = 0;
         }
       }
-      if (((List)localObject6).size() > 1) {
-        Collections.sort((List)localObject6);
+      if (((List)localObject5).size() > 1) {
+        Collections.sort((List)localObject5);
       }
-      localArrayList1.addAll((Collection)localObject6);
-      this.jdField_a_of_type_Int = ((List)localObject6).size();
+      localArrayList1.addAll((Collection)localObject5);
+      this.jdField_a_of_type_Int = ((List)localObject5).size();
       if (QLog.isColorLevel()) {
         QLog.d("AssociatedAccountOptPopBar", 2, "loadMenuItemList after add subaccount item.size() = " + localArrayList1.size());
       }
-      localObject2 = new ArrayList();
+      localObject1 = new ArrayList();
       int j = i;
-      if (localObject4 != null)
+      if (localObject3 != null)
       {
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.c();
-        localObject5 = ((List)localObject4).iterator();
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.c();
+        localObject4 = ((List)localObject3).iterator();
       }
-      label1824:
-      label1825:
+      label687:
+      label1744:
+      label1745:
       for (;;)
       {
         j = i;
-        if (((Iterator)localObject5).hasNext())
+        if (((Iterator)localObject4).hasNext())
         {
-          localObject6 = (SimpleAccount)((Iterator)localObject5).next();
-          if ((localObject6 == null) || (((String)localObject3).equals(((SimpleAccount)localObject6).getUin()))) {
+          localObject5 = (SimpleAccount)((Iterator)localObject4).next();
+          if ((localObject5 == null) || (((String)localObject2).equals(((SimpleAccount)localObject5).getUin()))) {
             continue;
           }
-          localObject7 = localArrayList2.iterator();
+          localObject6 = localArrayList2.iterator();
           j = 0;
-          label687:
-          if (((Iterator)localObject7).hasNext())
+          if (((Iterator)localObject6).hasNext())
           {
-            localSubAccountInfo = (SubAccountInfo)((Iterator)localObject7).next();
-            if ((localSubAccountInfo == null) || (!((SimpleAccount)localObject6).getUin().equals(localSubAccountInfo.subuin))) {
-              break label1824;
+            localSubAccountInfo = (SubAccountInfo)((Iterator)localObject6).next();
+            if ((localSubAccountInfo == null) || (!((SimpleAccount)localObject5).getUin().equals(localSubAccountInfo.subuin))) {
+              break label1744;
             }
             j = 1;
           }
@@ -272,107 +275,94 @@ public class AssociatedAccountOptPopBar
         {
           break label687;
           if (j != 0) {
-            break label1825;
+            break label1745;
           }
-          localObject7 = new LeftPopupMenuDialog.MenuItem();
-          ((LeftPopupMenuDialog.MenuItem)localObject7).jdField_a_of_type_Int = i;
-          ((LeftPopupMenuDialog.MenuItem)localObject7).jdField_a_of_type_JavaLangString = SubAccountControll.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, (SimpleAccount)localObject6);
-          ((LeftPopupMenuDialog.MenuItem)localObject7).c = 1;
-          ((LeftPopupMenuDialog.MenuItem)localObject7).d = 0;
-          ((LeftPopupMenuDialog.MenuItem)localObject7).jdField_b_of_type_Int = SubAccountControll.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, ((SimpleAccount)localObject6).getUin());
-          ((LeftPopupMenuDialog.MenuItem)localObject7).jdField_a_of_type_JavaLangObject = localObject6;
+          localObject6 = new LeftPopupMenuDialog.MenuItem();
+          ((LeftPopupMenuDialog.MenuItem)localObject6).jdField_a_of_type_Int = i;
+          ((LeftPopupMenuDialog.MenuItem)localObject6).jdField_a_of_type_JavaLangString = SubAccountControll.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, (SimpleAccount)localObject5);
+          ((LeftPopupMenuDialog.MenuItem)localObject6).c = 1;
+          ((LeftPopupMenuDialog.MenuItem)localObject6).d = 0;
+          ((LeftPopupMenuDialog.MenuItem)localObject6).jdField_b_of_type_Int = SubAccountControll.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, ((SimpleAccount)localObject5).getUin());
+          ((LeftPopupMenuDialog.MenuItem)localObject6).jdField_a_of_type_JavaLangObject = localObject5;
           if (AppSetting.b) {
-            ((LeftPopupMenuDialog.MenuItem)localObject7).jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131436400, new Object[] { ((LeftPopupMenuDialog.MenuItem)localObject7).jdField_a_of_type_JavaLangString }) + (String)localObject1);
+            ((LeftPopupMenuDialog.MenuItem)localObject6).jdField_b_of_type_JavaLangString = (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131436417, new Object[] { ((LeftPopupMenuDialog.MenuItem)localObject6).jdField_a_of_type_JavaLangString }) + str);
           }
-          ((LeftPopupMenuDialog.MenuItem)localObject7).jdField_a_of_type_Long = SubAccountControll.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, ((SimpleAccount)localObject6).getUin());
-          ((List)localObject2).add(localObject7);
+          ((LeftPopupMenuDialog.MenuItem)localObject6).jdField_a_of_type_Long = SubAccountControll.b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, ((SimpleAccount)localObject5).getUin());
+          ((List)localObject1).add(localObject6);
           j = i + 1;
           i = j;
           if (!QLog.isColorLevel()) {
             break;
           }
-          QLog.d("AssociatedAccountOptPopBar", 1, "loadMenuItemList thirdAccount uin:" + ((SimpleAccount)localObject6).getUin() + " showName:" + ((LeftPopupMenuDialog.MenuItem)localObject7).jdField_a_of_type_JavaLangString);
+          QLog.d("AssociatedAccountOptPopBar", 1, "loadMenuItemList thirdAccount uin:" + ((SimpleAccount)localObject5).getUin() + " showName:" + ((LeftPopupMenuDialog.MenuItem)localObject6).jdField_a_of_type_JavaLangString);
           i = j;
           break;
-          if (((List)localObject2).size() > 1) {
-            Collections.sort((List)localObject2);
+          if (((List)localObject1).size() > 1) {
+            Collections.sort((List)localObject1);
           }
-          if (((List)localObject2).size() > 0)
+          if (((List)localObject1).size() > 0)
           {
-            localArrayList1.addAll((Collection)localObject2);
+            localArrayList1.addAll((Collection)localObject1);
             this.jdField_a_of_type_Int += 1;
           }
           if (QLog.isColorLevel())
           {
-            localObject2 = new StringBuilder();
-            ((StringBuilder)localObject2).append("loadMenuItemList allAccounts=[size:").append(((List)localObject4).size()).append(";uins:");
-            localObject3 = ((List)localObject4).iterator();
-            while (((Iterator)localObject3).hasNext()) {
-              ((StringBuilder)localObject2).append(((SimpleAccount)((Iterator)localObject3).next()).getUin()).append(";");
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("loadMenuItemList allAccounts=[size:").append(((List)localObject3).size()).append(";uins:");
+            localObject2 = ((List)localObject3).iterator();
+            while (((Iterator)localObject2).hasNext()) {
+              ((StringBuilder)localObject1).append(((SimpleAccount)((Iterator)localObject2).next()).getUin()).append(";");
             }
-            ((StringBuilder)localObject2).append("] mainUin:").append(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.c());
-            ((StringBuilder)localObject2).append("; displayUin:[");
-            localObject3 = localArrayList1.iterator();
-            while (((Iterator)localObject3).hasNext())
+            ((StringBuilder)localObject1).append("] mainUin:").append(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app.c());
+            ((StringBuilder)localObject1).append("; displayUin:[");
+            localObject2 = localArrayList1.iterator();
+            while (((Iterator)localObject2).hasNext())
             {
-              localObject4 = (LeftPopupMenuDialog.MenuItem)((Iterator)localObject3).next();
-              if (localObject4 != null) {
-                if ((((LeftPopupMenuDialog.MenuItem)localObject4).jdField_a_of_type_JavaLangObject instanceof SimpleAccount)) {
-                  ((StringBuilder)localObject2).append(((SimpleAccount)((LeftPopupMenuDialog.MenuItem)localObject4).jdField_a_of_type_JavaLangObject).getUin()).append("thd;");
-                } else if ((((LeftPopupMenuDialog.MenuItem)localObject4).jdField_a_of_type_JavaLangObject instanceof SubAccountInfo)) {
-                  ((StringBuilder)localObject2).append(((SubAccountInfo)((LeftPopupMenuDialog.MenuItem)localObject4).jdField_a_of_type_JavaLangObject).subuin).append("sub;");
+              localObject3 = (LeftPopupMenuDialog.MenuItem)((Iterator)localObject2).next();
+              if (localObject3 != null) {
+                if ((((LeftPopupMenuDialog.MenuItem)localObject3).jdField_a_of_type_JavaLangObject instanceof SimpleAccount)) {
+                  ((StringBuilder)localObject1).append(((SimpleAccount)((LeftPopupMenuDialog.MenuItem)localObject3).jdField_a_of_type_JavaLangObject).getUin()).append("thd;");
+                } else if ((((LeftPopupMenuDialog.MenuItem)localObject3).jdField_a_of_type_JavaLangObject instanceof SubAccountInfo)) {
+                  ((StringBuilder)localObject1).append(((SubAccountInfo)((LeftPopupMenuDialog.MenuItem)localObject3).jdField_a_of_type_JavaLangObject).subuin).append("sub;");
                 }
               }
             }
-            ((StringBuilder)localObject2).append("]");
-            QLog.i("AssociatedAccountOptPopBar", 2, ((StringBuilder)localObject2).toString());
+            ((StringBuilder)localObject1).append("]");
+            QLog.i("AssociatedAccountOptPopBar", 2, ((StringBuilder)localObject1).toString());
           }
           if (QLog.isColorLevel()) {
             QLog.d("AssociatedAccountOptPopBar", 2, "loadMenuItemList after add third account item.size() = " + localArrayList1.size());
           }
           if (localArrayList1.size() > 0)
           {
-            localObject2 = new LeftPopupMenuDialog.MenuItem();
-            ((LeftPopupMenuDialog.MenuItem)localObject2).jdField_a_of_type_Int = 0;
-            ((LeftPopupMenuDialog.MenuItem)localObject2).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131434519);
-            ((LeftPopupMenuDialog.MenuItem)localObject2).c = 3;
-            ((LeftPopupMenuDialog.MenuItem)localObject2).d = 0;
-            ((LeftPopupMenuDialog.MenuItem)localObject2).jdField_a_of_type_JavaLangObject = null;
+            localObject1 = new LeftPopupMenuDialog.MenuItem();
+            ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_Int = 0;
+            ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131434536);
+            ((LeftPopupMenuDialog.MenuItem)localObject1).c = 3;
+            ((LeftPopupMenuDialog.MenuItem)localObject1).d = 0;
+            ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_JavaLangObject = null;
             if (AppSetting.b) {
-              ((LeftPopupMenuDialog.MenuItem)localObject2).jdField_b_of_type_JavaLangString = ((LeftPopupMenuDialog.MenuItem)localObject2).jdField_a_of_type_JavaLangString;
+              ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_b_of_type_JavaLangString = ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_JavaLangString;
             }
-            localArrayList1.add(0, localObject2);
+            localArrayList1.add(0, localObject1);
             if (localArrayList1.size() <= 8)
             {
-              localObject2 = new LeftPopupMenuDialog.MenuItem();
-              ((LeftPopupMenuDialog.MenuItem)localObject2).jdField_a_of_type_Int = j;
-              ((LeftPopupMenuDialog.MenuItem)localObject2).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131436394);
-              ((LeftPopupMenuDialog.MenuItem)localObject2).c = 2;
-              ((LeftPopupMenuDialog.MenuItem)localObject2).d = 0;
-              ((LeftPopupMenuDialog.MenuItem)localObject2).jdField_a_of_type_JavaLangObject = null;
+              localObject1 = new LeftPopupMenuDialog.MenuItem();
+              ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_Int = j;
+              ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131436411);
+              ((LeftPopupMenuDialog.MenuItem)localObject1).c = 2;
+              ((LeftPopupMenuDialog.MenuItem)localObject1).d = 0;
+              ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_JavaLangObject = null;
               if (AppSetting.b) {
-                ((LeftPopupMenuDialog.MenuItem)localObject2).jdField_b_of_type_JavaLangString = (((LeftPopupMenuDialog.MenuItem)localObject2).jdField_a_of_type_JavaLangString + (String)localObject1);
+                ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_b_of_type_JavaLangString = (((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_JavaLangString + str);
               }
-              localArrayList1.add(localObject2);
+              localArrayList1.add(localObject1);
             }
           }
           for (;;)
           {
-            if ((AudioHelper.d()) && (AudioHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app)))
-            {
-              localObject1 = new LeftPopupMenuDialog.MenuItem();
-              i = j + 1;
-              ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_Int = i;
-              ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_JavaLangString = "退出(release下看到请立即联系soongao)";
-              ((LeftPopupMenuDialog.MenuItem)localObject1).c = 100;
-              ((LeftPopupMenuDialog.MenuItem)localObject1).d = 0;
-              localArrayList1.add(localObject1);
-              localObject1 = new LeftPopupMenuDialog.MenuItem();
-              ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_Int = (i + 1);
-              ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_JavaLangString = "显示音视频debug页面";
-              ((LeftPopupMenuDialog.MenuItem)localObject1).c = 101;
-              ((LeftPopupMenuDialog.MenuItem)localObject1).d = 0;
-              localArrayList1.add(localObject1);
+            if ((AudioHelper.d()) && (AudioHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app))) {
+              PstnCardTestActivity.addDebugMenu(localArrayList1);
             }
             if (QLog.isColorLevel()) {
               QLog.d("AssociatedAccountOptPopBar", 2, "loadMenuItemList end item.size() = " + localArrayList1.size());
@@ -380,27 +370,27 @@ public class AssociatedAccountOptPopBar
             this.jdField_a_of_type_JavaUtilList.clear();
             this.jdField_a_of_type_JavaUtilList.addAll(localArrayList1);
             return;
-            localObject2 = new LeftPopupMenuDialog.MenuItem();
-            ((LeftPopupMenuDialog.MenuItem)localObject2).jdField_a_of_type_Int = j;
-            ((LeftPopupMenuDialog.MenuItem)localObject2).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131436402);
-            ((LeftPopupMenuDialog.MenuItem)localObject2).c = 4;
-            ((LeftPopupMenuDialog.MenuItem)localObject2).d = 0;
-            ((LeftPopupMenuDialog.MenuItem)localObject2).jdField_a_of_type_JavaLangObject = null;
+            localObject1 = new LeftPopupMenuDialog.MenuItem();
+            ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_Int = j;
+            ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131436419);
+            ((LeftPopupMenuDialog.MenuItem)localObject1).c = 4;
+            ((LeftPopupMenuDialog.MenuItem)localObject1).d = 0;
+            ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_JavaLangObject = null;
             if (AppSetting.b) {
-              ((LeftPopupMenuDialog.MenuItem)localObject2).jdField_b_of_type_JavaLangString = (((LeftPopupMenuDialog.MenuItem)localObject2).jdField_a_of_type_JavaLangString + (String)localObject1);
+              ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_b_of_type_JavaLangString = (((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_JavaLangString + str);
             }
-            localArrayList1.add(localObject2);
+            localArrayList1.add(localObject1);
             continue;
-            localObject2 = new LeftPopupMenuDialog.MenuItem();
-            ((LeftPopupMenuDialog.MenuItem)localObject2).jdField_a_of_type_Int = j;
-            ((LeftPopupMenuDialog.MenuItem)localObject2).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131436394);
-            ((LeftPopupMenuDialog.MenuItem)localObject2).c = 2;
-            ((LeftPopupMenuDialog.MenuItem)localObject2).d = 0;
-            ((LeftPopupMenuDialog.MenuItem)localObject2).jdField_a_of_type_JavaLangObject = null;
+            localObject1 = new LeftPopupMenuDialog.MenuItem();
+            ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_Int = j;
+            ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131436411);
+            ((LeftPopupMenuDialog.MenuItem)localObject1).c = 2;
+            ((LeftPopupMenuDialog.MenuItem)localObject1).d = 0;
+            ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_JavaLangObject = null;
             if (AppSetting.b) {
-              ((LeftPopupMenuDialog.MenuItem)localObject2).jdField_b_of_type_JavaLangString = (((LeftPopupMenuDialog.MenuItem)localObject2).jdField_a_of_type_JavaLangString + (String)localObject1);
+              ((LeftPopupMenuDialog.MenuItem)localObject1).jdField_b_of_type_JavaLangString = (((LeftPopupMenuDialog.MenuItem)localObject1).jdField_a_of_type_JavaLangString + str);
             }
-            localArrayList1.add(localObject2);
+            localArrayList1.add(localObject1);
           }
         }
       }
@@ -412,11 +402,11 @@ public class AssociatedAccountOptPopBar
     if (paramInt2 > 1)
     {
       if (paramInt1 >= 1) {
-        return PopupMenuDialog.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131559370);
+        return PopupMenuDialog.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131559372);
       }
-      return PopupMenuDialog.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131559371);
+      return PopupMenuDialog.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131559373);
     }
-    return PopupMenuDialog.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131559372);
+    return PopupMenuDialog.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131559374);
   }
   
   public View a(View paramView, LeftPopupMenuDialog.MenuItem paramMenuItem, int paramInt1, int paramInt2)
@@ -435,13 +425,13 @@ public class AssociatedAccountOptPopBar
       case 1: 
         localView = paramView;
         if (paramView == null) {
-          localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130971556, null);
+          localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130971604, null);
         }
-        localView.setBackgroundResource(2130838682);
-        localFixSizeImageView = (FixSizeImageView)localView.findViewById(2131362701);
-        localObject = (ImageView)localView.findViewById(2131374998);
-        paramView = (TextView)localView.findViewById(2131363360);
-        localDragTextView = (DragTextView)localView.findViewById(2131363189);
+        localView.setBackgroundResource(2130838686);
+        localFixSizeImageView = (FixSizeImageView)localView.findViewById(2131362719);
+        localObject = (ImageView)localView.findViewById(2131375184);
+        paramView = (TextView)localView.findViewById(2131363378);
+        localDragTextView = (DragTextView)localView.findViewById(2131363207);
         paramView.setText(paramMenuItem.jdField_a_of_type_JavaLangString);
         if (paramMenuItem.c == 0)
         {
@@ -466,7 +456,7 @@ public class AssociatedAccountOptPopBar
       }
       if (paramMenuItem.jdField_b_of_type_Int > 0)
       {
-        CustomWidgetUtil.a(localDragTextView, 3, paramMenuItem.jdField_b_of_type_Int, 2130845927, 99, null);
+        CustomWidgetUtil.a(localDragTextView, 3, paramMenuItem.jdField_b_of_type_Int, 2130846055, 99, null);
         if (paramMenuItem.d != 0) {
           break label316;
         }
@@ -487,7 +477,7 @@ public class AssociatedAccountOptPopBar
         localDragTextView.setVisibility(8);
         break label261;
         label316:
-        ((ImageView)localObject).setBackgroundResource(2130845980);
+        ((ImageView)localObject).setBackgroundResource(2130846108);
       }
       ((ImageView)localObject).setVisibility(8);
       if ((paramMenuItem.jdField_a_of_type_JavaLangObject instanceof SimpleAccount)) {}
@@ -501,17 +491,17 @@ public class AssociatedAccountOptPopBar
         }
         if (paramMenuItem.jdField_b_of_type_Int > 0)
         {
-          CustomWidgetUtil.a(localDragTextView, 3, paramMenuItem.jdField_b_of_type_Int, 2130845928, 99, null);
+          CustomWidgetUtil.a(localDragTextView, 3, paramMenuItem.jdField_b_of_type_Int, 2130846056, 99, null);
           break label274;
         }
         localDragTextView.setVisibility(8);
         break label274;
         localView = paramView;
         if (paramView == null) {
-          localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130971557, null);
+          localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130971605, null);
         }
-        ((TextView)localView.findViewById(2131363360)).setText(paramMenuItem.jdField_a_of_type_JavaLangString);
-        localView.setBackgroundResource(2130838681);
+        ((TextView)localView.findViewById(2131363378)).setText(paramMenuItem.jdField_a_of_type_JavaLangString);
+        localView.setBackgroundResource(2130838685);
         paramView = localView;
         if (!AppSetting.b) {
           break;
@@ -524,9 +514,9 @@ public class AssociatedAccountOptPopBar
         return localView;
         localView = paramView;
         if (paramView == null) {
-          localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130971559, null);
+          localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130971607, null);
         }
-        ((TextView)localView.findViewById(2131363360)).setText(paramMenuItem.jdField_a_of_type_JavaLangString);
+        ((TextView)localView.findViewById(2131363378)).setText(paramMenuItem.jdField_a_of_type_JavaLangString);
         localView.setBackgroundDrawable(null);
         paramView = localView;
         if (!AppSetting.b) {
@@ -540,9 +530,9 @@ public class AssociatedAccountOptPopBar
         return localView;
         localView = paramView;
         if (paramView == null) {
-          localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130971558, null);
+          localView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130971606, null);
         }
-        localView.setBackgroundResource(2130845977);
+        localView.setBackgroundResource(2130846105);
         paramView = localView;
         if (!AppSetting.b) {
           break;
@@ -583,7 +573,7 @@ public class AssociatedAccountOptPopBar
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       }
       return;
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435053);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435070);
     }
   }
   
@@ -614,7 +604,7 @@ public class AssociatedAccountOptPopBar
         this.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog.getContentView().setVisibility(0);
       }
       this.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog.showAsDropDown(paramView, paramInt1, paramInt2);
-      this.jdField_a_of_type_AndroidOsHandler.post(new ahwd(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new aikg(this));
       paramView = new Intent("before_account_change");
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.sendBroadcast(paramView);
       return;
@@ -695,10 +685,9 @@ public class AssociatedAccountOptPopBar
       paramMenuItem = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, AccountManageActivity.class);
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramMenuItem);
       return;
-      AccountManageActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app);
+      PstnCardTestActivity.onDebugMenuEvent(paramMenuItem, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
       return;
-      paramMenuItem = new Intent(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, PstnCardTestActivity.class);
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.startActivity(paramMenuItem);
+      WorldCupShareFragment.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, AppConstants.aI + File.separator + "loading.png", AppConstants.aI + File.separator + "test.mp4");
       return;
       paramMenuItem = null;
     }
@@ -708,7 +697,7 @@ public class AssociatedAccountOptPopBar
   {
     if (!NetworkUtil.e(BaseApplication.getContext()))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131432992), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131433009), 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
       return;
     }
     if (QLog.isColorLevel()) {
@@ -747,9 +736,9 @@ public class AssociatedAccountOptPopBar
   public int b(LeftPopupMenuDialog.MenuItem paramMenuItem, int paramInt1, int paramInt2)
   {
     if (paramInt2 > 1) {
-      return PopupMenuDialog.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131559369);
+      return PopupMenuDialog.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131559371);
     }
-    return PopupMenuDialog.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131559374);
+    return PopupMenuDialog.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131559376);
   }
   
   public void b()
@@ -763,7 +752,7 @@ public class AssociatedAccountOptPopBar
       this.jdField_a_of_type_JavaUtilList.clear();
       if ((this.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog.getContentView() != null))
       {
-        View localView = this.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog.getContentView().findViewById(2131363039);
+        View localView = this.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog.getContentView().findViewById(2131363057);
         if ((localView != null) && ((localView instanceof ViewGroup))) {
           ((ViewGroup)localView).removeAllViews();
         }
@@ -811,7 +800,7 @@ public class AssociatedAccountOptPopBar
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog.getContentView() != null))
     {
-      View localView = this.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog.getContentView().findViewById(2131363039);
+      View localView = this.jdField_a_of_type_ComTencentMobileqqWidgetLeftPopupMenuDialog.getContentView().findViewById(2131363057);
       if ((localView != null) && ((localView instanceof ViewGroup))) {
         ((ViewGroup)localView).removeAllViews();
       }
@@ -829,8 +818,8 @@ public class AssociatedAccountOptPopBar
     if ((this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
       return;
     }
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setTitle(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131436403)).setMessage(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131436404));
-    localQQCustomDialog.setPositiveButton(2131432400, new ahwe(this));
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 230).setTitle(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131436420)).setMessage(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131436421));
+    localQQCustomDialog.setPositiveButton(2131432417, new aikh(this));
     localQQCustomDialog.setCancelable(true);
     localQQCustomDialog.show();
   }
@@ -853,7 +842,7 @@ public class AssociatedAccountOptPopBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.subaccount.AssociatedAccountOptPopBar
  * JD-Core Version:    0.7.0.1
  */

@@ -1,77 +1,62 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnDownloadListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.AppProtocolObserver;
+import com.tencent.mobileqq.nearby.FaceScoreCallBack;
+import com.tencent.mobileqq.nearby.FaceScoreConfig;
+import com.tencent.mobileqq.nearby.NearbyFaceScoreManager;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
-import java.io.File;
-import org.json.JSONException;
-import org.json.JSONObject;
+import tencent.im.oidb.cmd0x938.cmd0x938.ClientConfig;
+import tencent.im.oidb.cmd0x938.cmd0x938.DataCardConfig;
+import tencent.im.oidb.cmd0x938.cmd0x938.RspBody;
 
 public class aelt
-  implements TVK_IMediaPlayer.OnDownloadCallbackListener
+  extends ProtoUtils.AppProtocolObserver
 {
-  public aelt(VideoViewTVKImpl paramVideoViewTVKImpl, String paramString1, String paramString2, String paramString3) {}
+  public aelt(NearbyFaceScoreManager paramNearbyFaceScoreManager, FaceScoreCallBack paramFaceScoreCallBack) {}
   
-  public void OnDownloadCallback(String paramString)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.a != null) {}
-    for (;;)
+    boolean bool2 = true;
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
+    try
     {
-      try
+      paramBundle = new cmd0x938.RspBody();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      paramArrayOfByte = (cmd0x938.ClientConfig)paramBundle.msg_client_config.get();
+      boolean bool1;
+      if (paramArrayOfByte.uint32_show_card.get() == 1)
       {
-        paramString = new JSONObject(paramString);
-        i = paramString.getInt("callBackType");
+        bool1 = true;
+        if (paramArrayOfByte.uint32_show_list.get() != 1) {
+          break label208;
+        }
+      }
+      for (;;)
+      {
+        long l = paramArrayOfByte.uint64_next_time.get();
+        if (paramBundle.msg_datacard_config.has()) {
+          ((cmd0x938.DataCardConfig)paramBundle.msg_datacard_config.get()).uint32_entry_ability.get();
+        }
         if (QLog.isColorLevel()) {
-          QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback callBackType=" + i);
+          QLog.e("Q..troop.faceScore", 2, "fetchGrayAbility onResult isShowCard=" + bool1 + "  isShowList=" + bool2 + "  expireTime=" + l);
         }
-        if (i != 7) {
-          break label313;
-        }
-        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          break label312;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback success , vid = " + this.b);
-        }
-        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.a.a(this.b, this.c, new File(this.jdField_a_of_type_JavaLangString));
+        paramArrayOfByte = new FaceScoreConfig(bool1, bool2, l, paramArrayOfByte.bytes_list_jump_url.get().toStringUtf8(), paramArrayOfByte.bytes_card_url_h.get().toStringUtf8(), paramArrayOfByte.bytes_card_url_g.get().toStringUtf8());
+        this.jdField_a_of_type_ComTencentMobileqqNearbyFaceScoreCallBack.a(paramArrayOfByte);
         return;
+        bool1 = false;
+        break;
+        label208:
+        bool2 = false;
       }
-      catch (JSONException paramString)
-      {
-        if (!QLog.isColorLevel()) {
-          break label312;
-        }
-      }
-      int i = paramString.getInt("errorCode");
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback errorCode=" + i);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.a.a(this.b, this.c, i);
       return;
-      QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback JSONException=" + paramString.getMessage());
-      return;
-      label312:
-      label313:
-      do
-      {
-        long l1;
-        if (i == 2)
-        {
-          l1 = paramString.getLong("fileSize");
-          long l2 = paramString.getLong("offset");
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.a.a(this.b, this.c, l1, l2);
-          return;
-        }
-        if (i == 1)
-        {
-          l1 = paramString.getLong("fileSize");
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.a.a(this.b, this.c, l1);
-        }
-        return;
-        if (i == 4) {
-          break;
-        }
-      } while (i != 5);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
     }
   }
 }

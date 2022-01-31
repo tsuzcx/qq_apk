@@ -1,42 +1,17 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.List;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
 
 public class anyn
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public anyn(PtvTemplateManager paramPtvTemplateManager, AppInterface paramAppInterface, File paramFile) {}
+  public anyn(DoodleEditView paramDoodleEditView, GestureHelper.ZoomItem paramZoomItem) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("PtvTemplateManager", 4, String.format("rebuildWebTemplateInfos, runnable[%s]", new Object[] { Integer.valueOf(hashCode()) }));
-    }
-    List localList = this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaIoFile, null);
-    if (localList != null) {}
-    synchronized (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_c_of_type_JavaLangObject)
-    {
-      if (this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.jdField_c_of_type_Boolean) {
-        return;
-      }
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.b.clear();
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.b.addAll(localList);
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.d = true;
-      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) && ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) && (PtvFilterSoLoad.b())) {
-        this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager.b);
-      }
-      PtvTemplateManager.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager);
-      if (QLog.isDevelopLevel())
-      {
-        QLog.d("PtvTemplateManager", 4, String.format("rebuildWebTemplateInfos, [%s] finished", new Object[] { Integer.valueOf(hashCode()) }));
-        return;
-      }
-    }
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUtilGestureHelper$ZoomItem.n = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.invalidate();
   }
 }
 

@@ -1,59 +1,69 @@
-import android.view.View;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.av.utils.VideoActionSheet;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.activity.aio.PlusPanelUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.activity.FavEmosmManageActivity;
+import com.tencent.mobileqq.emosm.favroaming.FavEmoConstant;
+import com.tencent.mobileqq.emosm.favroaming.FavroamingDBManager.FavEmotionDataInPanelCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.util.ProfileCardUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-class smu
-  implements ActionSheet.OnButtonClickListener
+public class smu
+  implements FavroamingDBManager.FavEmotionDataInPanelCallback
 {
-  smu(smr paramsmr, int[] paramArrayOfInt, VideoActionSheet paramVideoActionSheet) {}
+  public smu(FavEmosmManageActivity paramFavEmosmManageActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(List paramList)
   {
-    int i = this.jdField_a_of_type_ArrayOfInt[paramInt];
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendProfileCardActivity", 2, "videoActionSheet onClick,showItems =  " + Arrays.toString(this.jdField_a_of_type_ArrayOfInt) + ",which = " + paramInt + ",item = " + i);
+    List localList2 = paramList;
+    if (paramList != null) {
+      localList1 = paramList;
     }
-    this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
-    switch (i)
+    try
     {
-    case 3: 
-    default: 
-    case 1: 
-    case 4: 
-      do
+      Collections.reverse(paramList);
+      localList2 = paramList;
+      localList1 = paramList;
+      if (paramList.size() > FavEmoConstant.b)
       {
-        return;
-        FriendProfileCardActivity.a(this.jdField_a_of_type_Smr.a.app, this.jdField_a_of_type_Smr.a, this.jdField_a_of_type_Smr.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-        ReportController.b(this.jdField_a_of_type_Smr.a.app, "CliOper", "", "", "0X8008405", "0X8008405", 0, 0, "", "", "", "");
-        return;
-        if ((this.jdField_a_of_type_Smr.a.k == 1) || (this.jdField_a_of_type_Smr.a.k == 2))
+        localList1 = paramList;
+        int i = paramList.size() - FavEmoConstant.b;
+        localList1 = paramList;
+        paramList = paramList.subList(i, paramList.size());
+        localList2 = paramList;
+        localList1 = paramList;
+        if (QLog.isColorLevel())
         {
-          ChatActivityUtils.a(this.jdField_a_of_type_Smr.a.app, this.jdField_a_of_type_Smr.a, this.jdField_a_of_type_Smr.a.jdField_a_of_type_ComTencentAvAppPstnSessionInfo, 1);
-          ReportController.b(this.jdField_a_of_type_Smr.a.app, "CliOper", "", "", "0X8006406", "0X8006406", 9, 0, "", "", "", "");
-          return;
+          localList1 = paramList;
+          QLog.d("FavEmoRoamingHandler", 2, "fav emoticon overflow size" + i);
+          localList2 = paramList;
         }
-      } while (this.jdField_a_of_type_Smr.a.k != 5);
-      PstnUtils.a(this.jdField_a_of_type_Smr.a.app, this.jdField_a_of_type_Smr.a, 1, 7);
+      }
+      paramList = localList2;
+    }
+    catch (UnsupportedOperationException paramList)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FavEmoRoamingHandler", 2, paramList.getMessage());
+        }
+        paramList = localList1;
+      }
+    }
+    if (paramList == null)
+    {
+      paramList = new ArrayList();
+      if (paramList.size() >= FavEmoConstant.a) {
+        ReportController.b(this.a.app, "CliOper", "", "", "0X8005CFA", "0X8005CFA", 0, 0, "", "", "", "");
+      }
+      if (paramList.size() >= FavEmoConstant.b) {
+        ReportController.b(this.a.app, "CliOper", "", "", "0X8005CFB", "0X8005CFB", 0, 0, "", "", "", "");
+      }
+      paramList.add(0, new EmoticonInfo());
+      this.a.a(paramList);
       return;
     }
-    paramView = new SessionInfo();
-    paramView.jdField_a_of_type_Int = ProfileCardUtil.a(this.jdField_a_of_type_Smr.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a);
-    paramView.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_Smr.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString;
-    paramView.d = FriendProfileCardActivity.a(this.jdField_a_of_type_Smr.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, this.jdField_a_of_type_Smr.a.app);
-    paramView.b = this.jdField_a_of_type_Smr.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.d;
-    PlusPanelUtils.a(this.jdField_a_of_type_Smr.a.app, this.jdField_a_of_type_Smr.a, paramView, false, null, null);
-    ReportController.b(this.jdField_a_of_type_Smr.a.app, "CliOper", "", "", "0X80085D6", "0X80085D6", 9, 0, "", "", "", "");
   }
 }
 

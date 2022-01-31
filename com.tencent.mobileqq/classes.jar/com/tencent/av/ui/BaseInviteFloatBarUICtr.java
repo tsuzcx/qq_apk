@@ -15,8 +15,8 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import jqy;
-import jqz;
+import jqj;
+import jqk;
 import mqq.app.MobileQQ;
 
 public abstract class BaseInviteFloatBarUICtr
@@ -26,10 +26,10 @@ public abstract class BaseInviteFloatBarUICtr
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
   public SessionInfo a;
   public VideoAppInterface a;
-  BaseGaInvite.GetGaFaceRunnable.OnGetSink jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable$OnGetSink = new jqy(this);
+  BaseGaInvite.GetGaFaceRunnable.OnGetSink jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable$OnGetSink = new jqj(this);
   BaseGaInvite.GetGaFaceRunnable jdField_a_of_type_ComTencentAvGaudioBaseGaInvite$GetGaFaceRunnable = null;
   public VideoInviteFloatBar a;
-  Runnable jdField_a_of_type_JavaLangRunnable = new jqz(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new jqk(this);
   public final String a;
   boolean jdField_a_of_type_Boolean = false;
   long[] jdField_a_of_type_ArrayOfLong = null;

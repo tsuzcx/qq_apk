@@ -1,12 +1,12 @@
 package cooperation.qzone.webviewplugin;
 
-import amme;
-import ammf;
-import ammg;
-import ammh;
-import ammi;
-import ammj;
-import ammk;
+import ancj;
+import anck;
+import ancl;
+import ancm;
+import ancn;
+import anco;
+import ancp;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -81,7 +81,7 @@ public class QzoneDynamicAlbumPlugin
   private static String jdField_c_of_type_JavaLangString;
   private byte jdField_a_of_type_Byte = 111;
   private int jdField_a_of_type_Int = 274;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new ammf(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new anck(this);
   public Handler a;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   private List jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -103,7 +103,7 @@ public class QzoneDynamicAlbumPlugin
   
   public QzoneDynamicAlbumPlugin()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new ammi(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ancn(this);
   }
   
   public static double a(QzoneDynamicAlbumPlugin.Size paramSize)
@@ -953,7 +953,7 @@ public class QzoneDynamicAlbumPlugin
         if (jdField_a_of_type_JavaIoFile == null) {
           jdField_a_of_type_JavaIoFile = new File(jdField_a_of_type_JavaLangString);
         }
-        ThreadManager.post(new ammj(this, paramArrayList, i), 5, null, true);
+        ThreadManager.post(new anco(this, paramArrayList, i), 5, null, true);
       }
       return;
     }
@@ -1026,7 +1026,7 @@ public class QzoneDynamicAlbumPlugin
         }
       }
     }
-    ThreadManager.post(new ammk(this, paramList, arrayOfString), 5, null, true);
+    ThreadManager.post(new ancp(this, paramList, arrayOfString), 5, null, true);
   }
   
   private void a(boolean paramBoolean)
@@ -1958,7 +1958,7 @@ public class QzoneDynamicAlbumPlugin
       ((IntentFilter)localObject).addAction("tencent.av.v2q.StopVideoChat");
       paramWebViewPlugin.mRuntime.a().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
       RemoteHandleManager.a().a(this);
-      paramWebViewPlugin.mRuntime.a().getHandler(QzoneDynamicAlbumPlugin.class).post(new amme(this));
+      paramWebViewPlugin.mRuntime.a().getHandler(QzoneDynamicAlbumPlugin.class).post(new ancj(this));
       return;
     }
   }
@@ -2087,7 +2087,7 @@ public class QzoneDynamicAlbumPlugin
       }
       if ("getSelectNum".equals(paramString3))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneDynamicAlbumPlugin.class).post(new ammg(this, paramJsBridgeListener));
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneDynamicAlbumPlugin.class).post(new ancl(this, paramJsBridgeListener));
         return true;
       }
       if ("entryWriteMoodAsync".equals(paramString3))
@@ -2107,7 +2107,7 @@ public class QzoneDynamicAlbumPlugin
       }
       if ("cancel".equals(paramString3))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneDynamicAlbumPlugin.class).post(new ammh(this));
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneDynamicAlbumPlugin.class).post(new ancm(this));
         return true;
       }
       if ("requestPlayMusic".equals(paramString3))

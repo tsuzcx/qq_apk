@@ -1,28 +1,28 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.qq.im.poi.LbsPackListAdapter;
-import com.tencent.mobileqq.businessCard.helpers.ViewHelper;
+import com.qq.im.poi.LbsPackShareOption;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
 public class anv
-  extends Animation
+  implements WXShareHelper.WXShareListener
 {
-  public anv(LbsPackListAdapter paramLbsPackListAdapter, View paramView, int paramInt) {}
+  public anv(LbsPackShareOption paramLbsPackShareOption, int paramInt) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void a(BaseResp paramBaseResp)
   {
-    if (paramFloat == 1.0F)
-    {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    if ((this.jdField_a_of_type_ComQqImPoiLbsPackShareOption.jdField_a_of_type_JavaLangString == null) || (!this.jdField_a_of_type_ComQqImPoiLbsPackShareOption.jdField_a_of_type_JavaLangString.equals(paramBaseResp.transaction))) {
       return;
     }
-    float f = this.jdField_a_of_type_Int;
-    ViewHelper.g(this.jdField_a_of_type_AndroidViewView, -1.0F * f * paramFloat);
-  }
-  
-  public boolean willChangeBounds()
-  {
-    return true;
+    switch (paramBaseResp.errCode)
+    {
+    case -2: 
+    case -1: 
+    default: 
+      QRUtils.a(1, 2131435303);
+      return;
+    }
+    QRUtils.a(2, 2131435302);
+    LbsPackShareOption.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComQqImPoiLbsPackShareOption.jdField_a_of_type_Long);
   }
 }
 

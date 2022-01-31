@@ -1,25 +1,23 @@
-import com.tencent.av.opengl.effects.FilterProcessRender;
+import android.os.Handler;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.random.RandomController;
+import com.tencent.av.random.RandomWebProtocol;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.ttpic.util.youtu.VideoPreviewFaceOutlineDetector;
 
 public class jkf
   implements Runnable
 {
-  public jkf(FilterProcessRender paramFilterProcessRender, int paramInt1, int paramInt2) {}
+  public jkf(RandomController paramRandomController) {}
   
   public void run()
   {
-    try
-    {
-      FilterProcessRender.a(this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender).doFaceDetect(this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.e, this.jdField_a_of_type_Int / 4, this.b / 4);
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender.a = System.currentTimeMillis();
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("RandomController", 2, "mMatchTimeoutRunnable trigger, show timeOutDialog!");
     }
-    catch (Throwable localThrowable)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("FilterProcessRender", 2, "faceDetect.run e = " + localThrowable);
-    }
+    this.a.a = -1;
+    RandomController.a(this.a).a();
+    RandomController.c(this.a);
+    RandomController.a(this.a).a().removeCallbacks(RandomController.c(this.a));
   }
 }
 

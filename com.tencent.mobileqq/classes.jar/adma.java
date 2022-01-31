@@ -1,44 +1,24 @@
 import android.app.Activity;
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.jsp.DataApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import java.io.IOException;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.DirectForwardActivity;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
 
 public class adma
-  implements Runnable
+  implements DialogInterface.OnDismissListener
 {
-  public adma(DataApiPlugin paramDataApiPlugin, String paramString1, String paramString2, Bundle paramBundle1, Bundle paramBundle2, String paramString3) {}
+  public adma(ForwardSdkShareOption paramForwardSdkShareOption) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    i = 200;
-    Object localObject1 = null;
-    try
-    {
-      localObject2 = HttpUtil.a(BaseApplicationImpl.getContext(), this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle, this.jdField_b_of_type_AndroidOsBundle);
-      localObject1 = localObject2;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        Object localObject2;
-        i = 0;
-        localIOException.printStackTrace();
-      }
-    }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqJspDataApiPlugin.mRuntime.a();
-    if ((!TextUtils.isEmpty(this.c)) && (localObject2 != null)) {
-      ((Activity)localObject2).runOnUiThread(new admb(this, (Activity)localObject2, localObject1, i));
+    if ((this.a.a instanceof DirectForwardActivity)) {
+      this.a.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adma
  * JD-Core Version:    0.7.0.1
  */

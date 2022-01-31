@@ -1,22 +1,22 @@
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleImageView;
-import com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleListView;
-import java.lang.ref.WeakReference;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.qphone.base.util.QLog;
 
 public class vyy
-  implements vyz
+  implements View.OnClickListener
 {
-  public vyy(StickerBubbleListView paramStickerBubbleListView) {}
+  public vyy(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    if (((paramView instanceof StickerBubbleImageView)) && (paramView.getVisibility() == 0))
-    {
-      ((StickerBubbleImageView)paramView).a();
-      if ((StickerBubbleListView.a(this.a) == null) || (StickerBubbleListView.a(this.a).get() != paramView)) {
-        StickerBubbleListView.a(this.a, new WeakReference((StickerBubbleImageView)paramView));
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.aio.BaseChatPie", 2, "mQidianClickListener ... mQidianKefu = " + this.a.ak);
     }
+    this.a.v(2131430029);
+    this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.j, this.a.k, this.a.l, new vyz(this));
   }
 }
 

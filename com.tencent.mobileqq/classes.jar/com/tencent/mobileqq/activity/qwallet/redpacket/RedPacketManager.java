@@ -33,16 +33,16 @@ import mqq.observer.BusinessObserver;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import xdn;
-import xdp;
-import xdr;
-import xds;
-import xdt;
-import xdu;
-import xdw;
-import xdx;
-import xdy;
-import xdz;
+import xgs;
+import xgu;
+import xgw;
+import xgx;
+import xgy;
+import xgz;
+import xhb;
+import xhc;
+import xhd;
+import xhe;
 
 public class RedPacketManager
   implements IRedPacket
@@ -89,7 +89,7 @@ public class RedPacketManager
   
   public RedPacketManager()
   {
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new xdx(this);
+    this.jdField_a_of_type_MqqObserverBusinessObserver = new xhc(this);
   }
   
   private boolean a(int paramInt)
@@ -136,9 +136,9 @@ public class RedPacketManager
   {
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
-      return xdy.a;
+      return xhd.a;
     }
-    return xdz.a;
+    return xhe.a;
   }
   
   public static boolean isValidDate(String paramString1, String paramString2)
@@ -258,7 +258,7 @@ public class RedPacketManager
         }
       }
     } while (!paramBoolean);
-    ThreadManager.getFileThreadHandler().post(new xdw(this, paramGetGroupRedPackListRsp, paramString1, paramString2, paramInt));
+    ThreadManager.getFileThreadHandler().post(new xhb(this, paramGetGroupRedPackListRsp, paramString1, paramString2, paramInt));
   }
   
   public void a(boolean paramBoolean, Bundle paramBundle)
@@ -330,7 +330,7 @@ public class RedPacketManager
       if (QLog.isColorLevel()) {
         QLog.d("RedPacketManager", 2, "onGetGroupAavailableList error. isSuccess:" + paramBoolean + " retCode:" + i);
       }
-      ThreadManager.getFileThreadHandler().post(new xdu(this, str, paramBundle, j));
+      ThreadManager.getFileThreadHandler().post(new xgz(this, str, paramBundle, j));
       return;
     }
     a(str, paramBundle, j, (IRedPacket.OnGetAvailableListListener)localObject1, localGetGroupRedPackListRsp, true);
@@ -717,7 +717,7 @@ public class RedPacketManager
           localRedPacketInfo.skinId = paramRedPacketInfoBase.skinId;
           localRedPacketInfo.bigAnimId = paramRedPacketInfoBase.bigAnimId;
           localRedPacketInfo.isCache = paramRedPacketInfoBase.isCache;
-          localObject = CustomizeStrategyFactory.a().a((QQAppInterface)localObject, localRedPacketInfo, new xds(this, paramRedPacketInfoBase, paramOnGetSkinListener));
+          localObject = CustomizeStrategyFactory.a().a((QQAppInterface)localObject, localRedPacketInfo, new xgx(this, paramRedPacketInfoBase, paramOnGetSkinListener));
           if (localObject != null)
           {
             ((CustomizeStrategyFactory.RedPacketInfo)localObject).isCache = paramRedPacketInfoBase.isCache;
@@ -941,7 +941,7 @@ public class RedPacketManager
           CustomizeStrategyFactory.RedPacketInfo localRedPacketInfo = new CustomizeStrategyFactory.RedPacketInfo();
           localRedPacketInfo.type = 6;
           localRedPacketInfo.templateId = paramRedPacketInfoBase.templateId;
-          paramRedPacketInfoBase = CustomizeStrategyFactory.a().a(localQQAppInterface, localRedPacketInfo, new xdt(this, paramOnGetSkinListener));
+          paramRedPacketInfoBase = CustomizeStrategyFactory.a().a(localQQAppInterface, localRedPacketInfo, new xgy(this, paramOnGetSkinListener));
           if (paramRedPacketInfoBase != null)
           {
             paramOnGetSkinListener.onGetSkin(paramRedPacketInfoBase);
@@ -1063,8 +1063,8 @@ public class RedPacketManager
         if (this.jdField_b_of_type_MqqObserverBusinessObserver == null) {
           return;
         }
-        ThreadManager.post(new xdn(this, localQQAppInterface), 5, null, false);
-        QWalletCommonServlet.a(new GetSkinListReq(localQQAppInterface.getLongAccountUin(), 0, "7.6.0", "Android", Build.MODEL), new xdp(this, localQQAppInterface));
+        ThreadManager.post(new xgs(this, localQQAppInterface), 5, null, false);
+        QWalletCommonServlet.a(new GetSkinListReq(localQQAppInterface.getLongAccountUin(), 0, "7.6.3", "Android", Build.MODEL), new xgu(this, localQQAppInterface));
         if (QLog.isColorLevel())
         {
           QLog.d("RedPacketManager", 2, "requestRedPacketSkinList");
@@ -1085,7 +1085,7 @@ public class RedPacketManager
     do
     {
       return;
-      QWalletCommonServlet.a(new SetSelectedSkinReq(localQQAppInterface.getLongAccountUin(), 0, "7.6.0", "Android", Build.MODEL, paramInt), new xdr(this, paramBusinessObserver));
+      QWalletCommonServlet.a(new SetSelectedSkinReq(localQQAppInterface.getLongAccountUin(), 0, "7.6.3", "Android", Build.MODEL, paramInt), new xgw(this, paramBusinessObserver));
     } while (!QLog.isColorLevel());
     QLog.d("RedPacketManager", 2, "setSelectedSkin");
   }

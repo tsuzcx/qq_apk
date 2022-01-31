@@ -1,22 +1,37 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.armap.ipc.ArMapIPC;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class abfv
-  implements View.OnClickListener
+  implements EIPCResultCallback
 {
-  public abfv(BusinessCardEditActivity paramBusinessCardEditActivity, String paramString) {}
+  public abfv(ArMapIPC paramArMapIPC) {}
   
-  public void onClick(View paramView)
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.jdField_a_of_type_AndroidAppDialog.isShowing()))
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramEIPCResult != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.jdField_a_of_type_AndroidAppDialog = null;
+      localObject1 = localObject2;
+      if (paramEIPCResult.isSuccess()) {
+        localObject1 = paramEIPCResult.data.getString("action");
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setEllipsisText(this.jdField_a_of_type_JavaLangString);
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ArMapIPC", 2, "onCallback error");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ArMapIPC", 2, "onCallback action:" + (String)localObject1);
+    }
+    this.a.a((String)localObject1, paramEIPCResult);
   }
 }
 

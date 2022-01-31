@@ -1,33 +1,47 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.QQStoryMsgHolder;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.ChatFragment;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.LongMsgItemBuilder;
+import com.tencent.mobileqq.data.MessageForLongMsg;
+import com.tencent.mobileqq.data.MessageForReplyText;
+import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class vas
-  implements Runnable
+  implements View.OnClickListener
 {
-  public vas(QQStoryItemBuilder paramQQStoryItemBuilder, String paramString1, QQStoryItemBuilder.QQStoryMsgHolder paramQQStoryMsgHolder, long paramLong, String paramString2, boolean paramBoolean) {}
+  public vas(LongMsgItemBuilder paramLongMsgItemBuilder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    StoryVideoItem localStoryVideoItem = ((StoryManager)SuperManager.a(5)).a(this.jdField_a_of_type_JavaLangString);
-    if ((localStoryVideoItem == null) || (TextUtils.isEmpty(localStoryVideoItem.mVideoUrl)))
+    if (LongMsgItemBuilder.a(this.a)) {}
+    BaseChatPie localBaseChatPie;
+    do
     {
+      do
+      {
+        do
+        {
+          return;
+          paramView = AIOUtils.a(paramView);
+          if ((paramView instanceof MessageForLongMsg)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForLongMsg");
+        return;
+        paramView = (MessageForLongMsg)paramView;
+      } while ((paramView.mSourceMsgInfo == null) || (!(this.a.a instanceof FragmentActivity)));
       if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.share", 2, "QQStoryItemBuilder setVideoView 1: storyVideoItem = " + localStoryVideoItem);
+        QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: isReplyMsg = true");
       }
-      ((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.b).runOnUiThread(new vat(this));
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.share", 2, "QQStoryItemBuilder setVideoView 2: storyVideoItem = " + localStoryVideoItem);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryItemBuilder$QQStoryMsgHolder, this.jdField_a_of_type_Long, localStoryVideoItem, this.jdField_a_of_type_Boolean);
+      localBaseChatPie = ((FragmentActivity)this.a.a).getChatFragment().a();
+    } while (!localBaseChatPie.f());
+    localBaseChatPie.a(20, paramView.mSourceMsgInfo.mSourceMsgSeq, (int)(paramView.shmsgseq - paramView.mSourceMsgInfo.mSourceMsgSeq), paramView);
+    MessageForReplyText.reportReplyMsg(null, "replyMsg_bubble", "clk_original", paramView.frienduin, paramView);
   }
 }
 

@@ -1,30 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.telephony.TelephonyManager;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
-import com.tencent.mobileqq.utils.AudioUtil;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
 import com.tencent.qphone.base.util.QLog;
 
 public class jrz
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public jrz(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
+  public jrz(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if (paramIntent.getAction().equals("android.intent.action.NEW_OUTGOING_CALL")) {
-      return;
-    }
-    switch (((TelephonyManager)paramContext.getSystemService("phone")).getCallState())
+    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
     {
-    default: 
-      return;
+      QLog.d(this.a.c, 1, "init  double video Control not first time");
+      String str = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
+      int i = this.a.jdField_a_of_type_ComTencentAvVideoController.a().P;
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(42), str, Integer.valueOf(i) });
+      DoubleVideoCtrlUI.a(this.a);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(CallbackWaitingActivityExt.a(), 2, "state is TelephonyManager.CALL_STATE_RINGING");
-    }
-    AudioUtil.a();
   }
 }
 

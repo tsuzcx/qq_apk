@@ -1,23 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.troop.data.TroopBarPOI;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.transfile.DataLineDownloader;
 
-public final class aipc
-  implements Parcelable.Creator
+public class aipc
 {
-  public TroopBarPOI a(Parcel paramParcel)
-  {
-    return new TroopBarPOI(paramParcel.readString(), paramParcel.readString(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString(), paramParcel.readInt(), paramParcel.readString());
-  }
+  public LocalMediaInfo a;
+  public boolean a;
   
-  public TroopBarPOI[] a(int paramInt)
-  {
-    return null;
-  }
+  public aipc(DataLineDownloader paramDataLineDownloader) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aipc
  * JD-Core Version:    0.7.0.1
  */

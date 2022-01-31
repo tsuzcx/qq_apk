@@ -27,10 +27,10 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import mpc;
-import mpk;
-import mpl;
-import mpm;
+import mqj;
+import mqr;
+import mqs;
+import mqt;
 
 public class RunningJob
   implements Runnable
@@ -45,7 +45,7 @@ public class RunningJob
   DiskCache jdField_a_of_type_ComTencentMobileqqTransfileDiskCache;
   File jdField_a_of_type_JavaIoFile;
   public Set a;
-  mpc jdField_a_of_type_Mpc;
+  mqj jdField_a_of_type_Mqj;
   
   static
   {
@@ -57,7 +57,7 @@ public class RunningJob
     this.jdField_a_of_type_JavaUtilSet = new HashSet();
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageManager = paramImageManager;
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest = paramImageRequest;
-    this.jdField_a_of_type_Mpc = paramImageManager.jdField_a_of_type_Mpc;
+    this.jdField_a_of_type_Mqj = paramImageManager.jdField_a_of_type_Mqj;
     this.jdField_a_of_type_ComTencentMobileqqTransfileDiskCache = new DiskCache(URLDrawableHelper.jdField_a_of_type_JavaIoFile);
     this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
@@ -120,8 +120,8 @@ public class RunningJob
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     try
     {
-      if (this.jdField_a_of_type_Mpc.jdField_a_of_type_JavaUtilList.size() > 0) {
-        arrayOfByte1 = (byte[])this.jdField_a_of_type_Mpc.jdField_a_of_type_JavaUtilList.remove(0);
+      if (this.jdField_a_of_type_Mqj.jdField_a_of_type_JavaUtilList.size() > 0) {
+        arrayOfByte1 = (byte[])this.jdField_a_of_type_Mqj.jdField_a_of_type_JavaUtilList.remove(0);
       }
       byte[] arrayOfByte2 = arrayOfByte1;
       if (arrayOfByte1 == null)
@@ -150,12 +150,12 @@ public class RunningJob
       }
       catch (OutOfMemoryError paramFile)
       {
-        this.jdField_a_of_type_Mpc.jdField_a_of_type_JavaUtilList.add(localOptions.inTempStorage);
+        this.jdField_a_of_type_Mqj.jdField_a_of_type_JavaUtilList.add(localOptions.inTempStorage);
         throw paramFile;
       }
       catch (Exception paramFile)
       {
-        this.jdField_a_of_type_Mpc.jdField_a_of_type_JavaUtilList.add(localOptions.inTempStorage);
+        this.jdField_a_of_type_Mqj.jdField_a_of_type_JavaUtilList.add(localOptions.inTempStorage);
         throw paramFile;
       }
       paramFile = finally;
@@ -182,12 +182,12 @@ public class RunningJob
   private void a(Bitmap paramBitmap)
   {
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest);
-    paramBitmap = new CloseableBitmap(paramBitmap, this.jdField_a_of_type_Mpc.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderReleaser);
-    this.jdField_a_of_type_Mpc.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest, paramBitmap);
+    paramBitmap = new CloseableBitmap(paramBitmap, this.jdField_a_of_type_Mqj.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderReleaser);
+    this.jdField_a_of_type_Mqj.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest, paramBitmap);
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.jdField_a_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new mpl(this, paramBitmap));
+    this.jdField_a_of_type_AndroidOsHandler.post(new mqs(this, paramBitmap));
   }
   
   private void a(Throwable paramThrowable)
@@ -202,7 +202,7 @@ public class RunningJob
       {
         WeakReference localWeakReference = (WeakReference)localIterator.next();
         if (localWeakReference.get() != null) {
-          this.jdField_a_of_type_AndroidOsHandler.post(new mpm(this, localWeakReference, paramThrowable));
+          this.jdField_a_of_type_AndroidOsHandler.post(new mqt(this, localWeakReference, paramThrowable));
         }
       }
     }
@@ -293,9 +293,9 @@ public class RunningJob
     //   48: invokevirtual 40	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   51: invokestatic 151	com/tencent/biz/pubaccount/readinjoy/view/imageloader/Utils:a	(Ljava/lang/String;Ljava/lang/String;)V
     //   54: aload_0
-    //   55: getfield 74	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Mpc	Lmpc;
+    //   55: getfield 74	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Mqj	Lmqj;
     //   58: aload_3
-    //   59: invokevirtual 352	mpc:a	(Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   59: invokevirtual 352	mqj:a	(Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   62: astore 4
     //   64: aload 4
     //   66: ifnull +126 -> 192
@@ -325,8 +325,8 @@ public class RunningJob
     //   111: invokevirtual 371	android/graphics/BitmapRegionDecoder:decodeRegion	(Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
     //   114: astore_1
     //   115: aload_0
-    //   116: getfield 74	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Mpc	Lmpc;
-    //   119: getfield 126	mpc:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   116: getfield 74	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Mqj	Lmqj;
+    //   119: getfield 126	mqj:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   122: aload_3
     //   123: getfield 154	android/graphics/BitmapFactory$Options:inTempStorage	[B
     //   126: invokeinterface 183 2 0
@@ -353,8 +353,8 @@ public class RunningJob
     //   166: athrow
     //   167: astore_1
     //   168: aload_0
-    //   169: getfield 74	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Mpc	Lmpc;
-    //   172: getfield 126	mpc:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   169: getfield 74	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Mqj	Lmqj;
+    //   172: getfield 126	mqj:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   175: aload_3
     //   176: getfield 154	android/graphics/BitmapFactory$Options:inTempStorage	[B
     //   179: invokeinterface 183 2 0
@@ -430,8 +430,8 @@ public class RunningJob
     //   61: aload 8
     //   63: astore 5
     //   65: aload_0
-    //   66: getfield 74	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Mpc	Lmpc;
-    //   69: getfield 395	mpc:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBytePool	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/BytePool;
+    //   66: getfield 74	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Mqj	Lmqj;
+    //   69: getfield 395	mqj:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBytePool	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/BytePool;
     //   72: iload_2
     //   73: invokevirtual 400	com/tencent/biz/pubaccount/readinjoy/view/imageloader/BytePool:a	(I)[B
     //   76: astore 7
@@ -502,13 +502,13 @@ public class RunningJob
     //   198: aload 7
     //   200: ifnull +15 -> 215
     //   203: aload_0
-    //   204: getfield 74	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Mpc	Lmpc;
-    //   207: getfield 395	mpc:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBytePool	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/BytePool;
+    //   204: getfield 74	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Mqj	Lmqj;
+    //   207: getfield 395	mqj:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBytePool	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/BytePool;
     //   210: aload 7
     //   212: invokevirtual 415	com/tencent/biz/pubaccount/readinjoy/view/imageloader/BytePool:a	([B)V
     //   215: aload_0
-    //   216: getfield 74	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Mpc	Lmpc;
-    //   219: getfield 126	mpc:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   216: getfield 74	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Mqj	Lmqj;
+    //   219: getfield 126	mqj:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   222: aload 10
     //   224: getfield 154	android/graphics/BitmapFactory$Options:inTempStorage	[B
     //   227: invokeinterface 183 2 0
@@ -556,13 +556,13 @@ public class RunningJob
     //   303: aload 4
     //   305: ifnull +15 -> 320
     //   308: aload_0
-    //   309: getfield 74	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Mpc	Lmpc;
-    //   312: getfield 395	mpc:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBytePool	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/BytePool;
+    //   309: getfield 74	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Mqj	Lmqj;
+    //   312: getfield 395	mqj:jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderBytePool	Lcom/tencent/biz/pubaccount/readinjoy/view/imageloader/BytePool;
     //   315: aload 4
     //   317: invokevirtual 415	com/tencent/biz/pubaccount/readinjoy/view/imageloader/BytePool:a	([B)V
     //   320: aload_0
-    //   321: getfield 74	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Mpc	Lmpc;
-    //   324: getfield 126	mpc:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   321: getfield 74	com/tencent/biz/pubaccount/readinjoy/view/imageloader/RunningJob:jdField_a_of_type_Mqj	Lmqj;
+    //   324: getfield 126	mqj:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   327: aload 10
     //   329: getfield 154	android/graphics/BitmapFactory$Options:inTempStorage	[B
     //   332: invokeinterface 183 2 0
@@ -678,7 +678,7 @@ public class RunningJob
       this.jdField_a_of_type_ComTencentBizPubaccountUtilPubAccountHttpDownloader = localPubAccountHttpDownloader;
       bool2 = localPubAccountHttpDownloader.hasDiskFile((DownloadParams)localObject2);
       l1 = System.currentTimeMillis();
-      this.jdField_a_of_type_JavaIoFile = localPubAccountHttpDownloader.loadImageFile((DownloadParams)localObject2, new mpk(this));
+      this.jdField_a_of_type_JavaIoFile = localPubAccountHttpDownloader.loadImageFile((DownloadParams)localObject2, new mqr(this));
       if (this.jdField_a_of_type_JavaIoFile == null) {
         throw new IOException("downloader fail");
       }

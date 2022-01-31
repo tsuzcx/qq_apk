@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.activity.AboutActivity;
+import com.tencent.mobileqq.app.ConfigObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeDetailWrapper;
 
 public class rft
-  implements DialogInterface.OnDismissListener
+  extends ConfigObserver
 {
-  public rft(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
+  public rft(AboutActivity paramAboutActivity) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
-    this.a.a = null;
+    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
+    paramUpgradeDetailWrapper = this.a.app.a();
+    AboutActivity.a(this.a, paramUpgradeDetailWrapper);
   }
 }
 

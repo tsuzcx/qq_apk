@@ -1,13 +1,13 @@
 package com.tencent.open.agent;
 
-import aklm;
-import akln;
-import aklp;
-import aklr;
-import akls;
-import aklt;
-import aklu;
-import aklv;
+import albc;
+import albd;
+import albf;
+import albh;
+import albi;
+import albj;
+import albk;
+import albl;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
@@ -74,10 +74,10 @@ public class BindGroupConfirmActivity
   public ImageView a;
   protected TextView a;
   public ShareAioResultDialog a;
-  HttpWebCgiAsyncTask.Callback jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new aklu(this);
+  HttpWebCgiAsyncTask.Callback jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new albk(this);
   public QQCustomDialog a;
   public QQProgressDialog a;
-  private final HttpCgiAsyncTask.Callback jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask$Callback = new aklm(this);
+  private final HttpCgiAsyncTask.Callback jdField_a_of_type_ComTencentOpenBaseHttpHttpCgiAsyncTask$Callback = new albc(this);
   public Runnable a;
   protected String a;
   public ImageView b;
@@ -100,29 +100,29 @@ public class BindGroupConfirmActivity
   
   public BindGroupConfirmActivity()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new akln(this);
-    this.jdField_a_of_type_JavaLangRunnable = new akls(this);
+    this.jdField_a_of_type_AndroidOsHandler = new albd(this);
+    this.jdField_a_of_type_JavaLangRunnable = new albi(this);
   }
   
   private void a(String paramString)
   {
-    getActivity().runOnUiThread(new aklv(this, paramString));
+    getActivity().runOnUiThread(new albl(this, paramString));
   }
   
   private void b()
   {
-    Object localObject = findViewById(2131362693);
+    Object localObject = findViewById(2131362711);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
       ImmersiveUtils.a((View)localObject, true);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363227));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363455));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363410));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363363));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131366712));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363245));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363473));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363428));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363381));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131366755));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366711));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366560));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131366754));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366584));
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
     {
       localObject = ImageLoader.a().a(this.jdField_b_of_type_JavaLangString);
@@ -132,7 +132,7 @@ public class BindGroupConfirmActivity
     }
     else
     {
-      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363667));
+      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363690));
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         break label270;
       }
@@ -140,9 +140,9 @@ public class BindGroupConfirmActivity
     }
     for (;;)
     {
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366708));
-      ThreadManager.executeOnSubThread(new aklp(this));
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364292));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)super.findViewById(2131366751));
+      ThreadManager.executeOnSubThread(new albf(this));
+      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131364316));
       this.jdField_f_of_type_AndroidWidgetTextView.setText(this.jdField_e_of_type_JavaLangString);
       if (!TextUtils.isEmpty(this.jdField_c_of_type_JavaLangString)) {
         a(Long.valueOf(this.jdField_c_of_type_JavaLangString).longValue());
@@ -221,7 +221,7 @@ public class BindGroupConfirmActivity
       ((NewIntent)localObject).putExtra("uin", this.app.getCurrentAccountUin());
       ((NewIntent)localObject).putExtra("data", localGetAppinfoRequest.toByteArray());
       ((NewIntent)localObject).putExtra("cmd", "ConnAuthSvr.get_app_info");
-      ((NewIntent)localObject).setObserver(new aklt(this));
+      ((NewIntent)localObject).setObserver(new albj(this));
       super.getAppRuntime().startServlet((NewIntent)localObject);
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
       this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
@@ -237,7 +237,7 @@ public class BindGroupConfirmActivity
   public void a(String paramString1, Bitmap paramBitmap, String paramString2)
   {
     LogUtility.c("BindGroupConfirmActivity", "-->onImageLoaded() url = " + paramString1);
-    this.jdField_a_of_type_AndroidOsHandler.post(new aklr(this, paramBitmap));
+    this.jdField_a_of_type_AndroidOsHandler.post(new albh(this, paramBitmap));
   }
   
   public void a(JSONObject paramJSONObject)
@@ -281,7 +281,7 @@ public class BindGroupConfirmActivity
     catch (Exception paramJSONObject)
     {
       if (this.jdField_e_of_type_AndroidWidgetTextView != null) {
-        this.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131428663));
+        this.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131428669));
       }
       a(paramJSONObject);
       return;
@@ -294,7 +294,7 @@ public class BindGroupConfirmActivity
       QLog.d("BindGroupConfirmActivity", 2, "The JSONObject has error!");
     }
     if (this.jdField_e_of_type_AndroidWidgetTextView != null) {
-      this.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131428663));
+      this.jdField_e_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131428669));
     }
     QQToast.a(this, paramJSONObject.getString("msg"), 0).a(getTitleBarHeight()).show();
   }
@@ -378,7 +378,7 @@ public class BindGroupConfirmActivity
     {
     default: 
       return;
-    case 2131363227: 
+    case 2131363245: 
       finish();
       return;
     }
@@ -395,8 +395,8 @@ public class BindGroupConfirmActivity
   {
     super.requestWindowFeature(1);
     super.onCreate(paramBundle);
-    super.setTheme(2131624736);
-    super.setContentView(2130969499);
+    super.setTheme(2131624738);
+    super.setContentView(2130969506);
     this.jdField_a_of_type_AndroidContentResResources = super.getResources();
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, getTitleBarHeight());
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a("正在加载...");
@@ -445,11 +445,11 @@ public class BindGroupConfirmActivity
   {
     super.onStart();
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131428635));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131428641));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
-    this.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131428660));
+    this.jdField_d_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentResResources.getString(2131428666));
   }
 }
 

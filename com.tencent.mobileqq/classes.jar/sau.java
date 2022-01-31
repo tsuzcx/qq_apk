@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.ChatHistoryForC2C;
+import com.tencent.mobileqq.app.proxy.ProxyObserver;
 
-class sau
-  implements Runnable
+public class sau
+  extends ProxyObserver
 {
-  sau(sat paramsat) {}
+  public sau(ChatHistoryForC2C paramChatHistoryForC2C) {}
   
-  public void run()
+  public void a()
   {
-    this.a.a.v();
+    this.a.runOnUiThread(new sav(this));
   }
 }
 

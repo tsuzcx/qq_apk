@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.config.struct;
 
-import abmf;
+import abtg;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.config.Config;
@@ -181,9 +181,9 @@ public class PicAndAdConf
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 5
+    //   1: astore 4
     //   3: aconst_null
-    //   4: astore 4
+    //   4: astore 5
     //   6: iconst_1
     //   7: istore_3
     //   8: new 27	java/io/File
@@ -257,7 +257,7 @@ public class PicAndAdConf
     //   155: pop
     //   156: goto -47 -> 109
     //   159: astore_1
-    //   160: aload 4
+    //   160: aload 5
     //   162: astore_1
     //   163: iconst_0
     //   164: istore_3
@@ -278,7 +278,7 @@ public class PicAndAdConf
     //   187: iconst_1
     //   188: ireturn
     //   189: astore_1
-    //   190: aload 5
+    //   190: aload 4
     //   192: astore_2
     //   193: aload_2
     //   194: ifnull +7 -> 201
@@ -302,8 +302,8 @@ public class PicAndAdConf
     //   0	221	1	paramArrayOfByte	byte[]
     //   0	221	2	paramString	String
     //   7	158	3	bool	boolean
-    //   4	157	4	localObject1	java.lang.Object
-    //   1	190	5	localObject2	java.lang.Object
+    //   1	190	4	localObject1	java.lang.Object
+    //   4	157	5	localObject2	java.lang.Object
     //   42	50	6	localFile	File
     // Exception table:
     //   from	to	target	type
@@ -1245,7 +1245,7 @@ public class PicAndAdConf
           break;
           label92:
           localStringBuilder.append(" | ").append(localPicStruct.jdField_a_of_type_Long);
-          ThreadManager.post(new abmf(this, localPicStruct), 5, null, false);
+          ThreadManager.post(new abtg(this, localPicStruct), 5, null, false);
         }
       }
       if (QLog.isColorLevel()) {

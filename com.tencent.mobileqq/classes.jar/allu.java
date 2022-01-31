@@ -1,101 +1,49 @@
-import com.tencent.widget.ExpandableListView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.qidian.QidianManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class allu
+  extends SosoInterface.OnLocationListener
 {
-  private static ArrayList a;
-  public int a;
-  public int b;
-  public int c;
-  public int d;
-  
-  static
+  public allu(QidianManager paramQidianManager, int paramInt1, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString1, String paramString2, int paramInt2, String paramString3, int paramInt3, String paramString4, String paramString5, String paramString6)
   {
-    jdField_a_of_type_JavaUtilArrayList = new ArrayList(5);
+    super(paramInt1, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString1);
   }
   
-  private static allu a()
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
   {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    double d2 = 0.0D;
+    if (QLog.isColorLevel()) {
+      QLog.d("QidianManager", 2, "onLocationFinish(): BEGIN errCode=" + paramInt);
+    }
+    String str;
+    double d1;
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
+      if (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString != null)
       {
-        localallu = (allu)jdField_a_of_type_JavaUtilArrayList.remove(0);
-        localallu.b();
-        return localallu;
+        str = paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;
+        if (QLog.isColorLevel()) {
+          QLog.d("QidianManager", 2, "onLocationFinish() latitude=" + paramSosoLbsInfo.a.a + ", longitude=" + paramSosoLbsInfo.a.jdField_b_of_type_Double + ", address=" + str);
+        }
+        d1 = paramSosoLbsInfo.a.a;
+        d2 = paramSosoLbsInfo.a.jdField_b_of_type_Double;
       }
-      allu localallu = new allu();
-      return localallu;
     }
-  }
-  
-  public static allu a(int paramInt)
-  {
-    return a(2, paramInt, 0, 0);
-  }
-  
-  public static allu a(int paramInt1, int paramInt2)
-  {
-    return a(1, paramInt1, paramInt2, 0);
-  }
-  
-  public static allu a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    allu localallu = a();
-    localallu.d = paramInt1;
-    localallu.jdField_a_of_type_Int = paramInt2;
-    localallu.b = paramInt3;
-    localallu.c = paramInt4;
-    return localallu;
-  }
-  
-  public static allu a(long paramLong)
-  {
-    if (paramLong == 4294967295L) {
-      return null;
-    }
-    allu localallu = a();
-    localallu.jdField_a_of_type_Int = ExpandableListView.c(paramLong);
-    if (ExpandableListView.b(paramLong) == 1)
+    for (;;)
     {
-      localallu.d = 1;
-      localallu.b = ExpandableListView.d(paramLong);
-      return localallu;
-    }
-    localallu.d = 2;
-    return localallu;
-  }
-  
-  private void b()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-    this.c = 0;
-    this.d = 0;
-  }
-  
-  public long a()
-  {
-    if (this.d == 1) {
-      return ExpandableListView.a(this.jdField_a_of_type_Int, this.b);
-    }
-    return ExpandableListView.b(this.jdField_a_of_type_Int);
-  }
-  
-  public void a()
-  {
-    synchronized (jdField_a_of_type_JavaUtilArrayList)
-    {
-      if (jdField_a_of_type_JavaUtilArrayList.size() < 5) {
-        jdField_a_of_type_JavaUtilArrayList.add(this);
-      }
+      this.jdField_a_of_type_ComTencentQidianQidianManager.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true, d1, d2, this.jdField_b_of_type_JavaLangString, this.jdField_b_of_type_Int, this.d, this.e, this.f);
       return;
+      str = "";
+      break;
+      d1 = 0.0D;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     allu
  * JD-Core Version:    0.7.0.1
  */

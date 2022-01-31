@@ -8,12 +8,13 @@ import com.tencent.gdtad.net.GdtNetUtil;
 import com.tencent.gdtad.qqproxy.GdtLocationUtil;
 import com.tencent.gdtad.qqproxy.GdtVersionUtil;
 import com.tencent.gdtad.util.GdtDeviceUtil;
+import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.lang.ref.WeakReference;
 import java.util.HashSet;
 import java.util.Set;
-import qiu;
+import qko;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo.Location;
 
@@ -23,7 +24,7 @@ public class GdtAdLoader
   
   public static void a(Context paramContext, GdtAdLoader.Session paramSession, WeakReference paramWeakReference)
   {
-    qiu.a(new qiu(paramSession, paramWeakReference), paramContext);
+    qko.a(new qko(paramSession, paramWeakReference), paramContext);
   }
   
   public static void a(Context paramContext, qq_ad_get.QQAdGet.DeviceInfo paramDeviceInfo)
@@ -68,7 +69,7 @@ public class GdtAdLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.aditem.GdtAdLoader
  * JD-Core Version:    0.7.0.1
  */

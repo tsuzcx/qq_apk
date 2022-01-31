@@ -1,20 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.presenter.ReadInJoyFooterPresenter;
-import com.tencent.mobileqq.pb.PBStringField;
-import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.PackJumpInfo;
+import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule;
+import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
+import com.tencent.mobileqq.pb.PBEnumField;
+import tencent.im.oidb.cmd0x978.oidb_cmd0x978.OneFollowOperationResult;
 
 public class lsb
-  implements View.OnClickListener
+  implements Runnable
 {
-  public lsb(ReadInJoyFooterPresenter paramReadInJoyFooterPresenter, oidb_cmd0x68b.PackJumpInfo paramPackJumpInfo) {}
+  public lsb(UserOperationModule paramUserOperationModule, UserOperationModule.Ox978RespCallBack paramOx978RespCallBack, String paramString, oidb_cmd0x978.OneFollowOperationResult paramOneFollowOperationResult) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = this.jdField_a_of_type_TencentImOidbCmd0x68bOidb_cmd0x68b$PackJumpInfo.str_url.get();
-    ReadInJoyUtils.a(ReadInJoyFooterPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyPresenterReadInJoyFooterPresenter), paramView);
-    ReadInJoyFooterPresenter.a(2, this.jdField_a_of_type_TencentImOidbCmd0x68bOidb_cmd0x68b$PackJumpInfo.str_wording.get());
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelUserOperationModule$Ox978RespCallBack.a(true, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_TencentImOidbCmd0x978Oidb_cmd0x978$OneFollowOperationResult.enum_follow_status.get());
   }
 }
 

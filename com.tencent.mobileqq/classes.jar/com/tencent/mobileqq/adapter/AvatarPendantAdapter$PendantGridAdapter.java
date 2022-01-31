@@ -104,14 +104,14 @@ public class AvatarPendantAdapter$PendantGridAdapter
         break label663;
       }
       localObject1 = new AvatarPendantAdapter.PendantGridAdapter.GridItemHolder(this);
-      localObject2 = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidContentContext).inflate(2130970886, paramViewGroup, false);
-      ((AvatarPendantAdapter.PendantGridAdapter.GridItemHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject2).findViewById(2131372094));
-      ((AvatarPendantAdapter.PendantGridAdapter.GridItemHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject2).findViewById(2131372095));
-      ((AvatarPendantAdapter.PendantGridAdapter.GridItemHolder)localObject1).b = ((ImageView)((View)localObject2).findViewById(2131372096));
-      ((AvatarPendantAdapter.PendantGridAdapter.GridItemHolder)localObject1).c = ((ImageView)((View)localObject2).findViewById(2131372097));
-      ((AvatarPendantAdapter.PendantGridAdapter.GridItemHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject2).findViewById(2131372100));
-      ((AvatarPendantAdapter.PendantGridAdapter.GridItemHolder)localObject1).d = ((ImageView)((View)localObject2).findViewById(2131372098));
-      ((AvatarPendantAdapter.PendantGridAdapter.GridItemHolder)localObject1).e = ((ImageView)((View)localObject2).findViewById(2131372099));
+      localObject2 = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidContentContext).inflate(2130970934, paramViewGroup, false);
+      ((AvatarPendantAdapter.PendantGridAdapter.GridItemHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)((View)localObject2).findViewById(2131372267));
+      ((AvatarPendantAdapter.PendantGridAdapter.GridItemHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject2).findViewById(2131372268));
+      ((AvatarPendantAdapter.PendantGridAdapter.GridItemHolder)localObject1).b = ((ImageView)((View)localObject2).findViewById(2131372269));
+      ((AvatarPendantAdapter.PendantGridAdapter.GridItemHolder)localObject1).c = ((ImageView)((View)localObject2).findViewById(2131372270));
+      ((AvatarPendantAdapter.PendantGridAdapter.GridItemHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject2).findViewById(2131372273));
+      ((AvatarPendantAdapter.PendantGridAdapter.GridItemHolder)localObject1).d = ((ImageView)((View)localObject2).findViewById(2131372271));
+      ((AvatarPendantAdapter.PendantGridAdapter.GridItemHolder)localObject1).e = ((ImageView)((View)localObject2).findViewById(2131372272));
       paramView = ((AvatarPendantAdapter.PendantGridAdapter.GridItemHolder)localObject1).jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
       if (paramView == null) {
         break;
@@ -167,7 +167,7 @@ public class AvatarPendantAdapter$PendantGridAdapter
         paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(localAvatarPendantShopItemInfo);
         if (this.jdField_a_of_type_Int == paramInt)
         {
-          paramView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844061));
+          paramView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844185));
           label460:
           if (localAvatarPendantShopItemInfo.jdField_a_of_type_Int == 0) {
             break label1749;

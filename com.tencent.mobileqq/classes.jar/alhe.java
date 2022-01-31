@@ -1,209 +1,98 @@
-import android.util.Base64;
-import android.util.LruCache;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.common.CommTvRpt;
-import com.tencent.qqprotect.qsec.ICloudAVEngine.ResultBundle;
-import com.tencent.util.Pair;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.securitysdk.utils.ApkExternalInfoTool;
 import java.io.File;
-import java.util.Date;
-import java.util.LinkedList;
-import java.util.List;
-import org.xmlpull.v1.XmlSerializer;
+import java.io.IOException;
 
-public final class alhe
-  extends LruCache
+public class alhe
+  implements Runnable
 {
-  private File jdField_a_of_type_JavaIoFile;
-  private List jdField_a_of_type_JavaUtilList = new LinkedList();
-  private boolean jdField_a_of_type_Boolean = true;
-  private File jdField_b_of_type_JavaIoFile;
-  private boolean jdField_b_of_type_Boolean;
+  public alhe(DownloadManager paramDownloadManager, Bundle paramBundle) {}
   
-  public alhe(String paramString, int paramInt)
+  public void run()
   {
-    super(paramInt);
-    this.jdField_a_of_type_JavaIoFile = new File(paramString);
-    this.jdField_b_of_type_JavaIoFile = new File(this.jdField_a_of_type_JavaIoFile.getPath() + ".bak");
-    b();
-  }
-  
-  private void a(alhj paramalhj)
-  {
-    if (this.jdField_b_of_type_JavaIoFile.exists())
+    DownloadInfo localDownloadInfo;
+    try
     {
-      this.jdField_a_of_type_JavaIoFile.delete();
-      this.jdField_b_of_type_JavaIoFile.renameTo(this.jdField_a_of_type_JavaIoFile);
-    }
-    if ((this.jdField_a_of_type_JavaIoFile.exists()) && (this.jdField_a_of_type_JavaIoFile.isFile()))
-    {
-      int i = 0;
-      if (this.jdField_a_of_type_JavaIoFile.length() > 10485760L)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QSec.AVEngine", 2, "Cache file too big: " + this.jdField_a_of_type_JavaIoFile.length());
-        }
-        i = 1;
-      }
-      new alhi(this.jdField_a_of_type_JavaIoFile, paramalhj).a();
-      if (i != 0)
-      {
-        CommTvRpt.a(2, 2);
-        this.jdField_a_of_type_JavaIoFile.delete();
-      }
-    }
-  }
-  
-  private void a(String paramString, ICloudAVEngine.ResultBundle paramResultBundle, XmlSerializer paramXmlSerializer)
-  {
-    if (paramResultBundle.jdField_a_of_type_Long > new Date().getTime()) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Write entry: " + paramResultBundle.toString());
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      try
-      {
-        paramXmlSerializer.startTag(null, "CacheEntry");
-        paramXmlSerializer.attribute(null, "Key", paramString);
-        paramXmlSerializer.attribute(null, "AttrType", Integer.toString(paramResultBundle.jdField_a_of_type_Int));
-        paramXmlSerializer.attribute(null, "Category", Integer.toString(paramResultBundle.b));
-        paramXmlSerializer.attribute(null, "SubCategory", Integer.toString(paramResultBundle.c));
-        paramXmlSerializer.attribute(null, "Action", Integer.toString(paramResultBundle.d));
-        paramXmlSerializer.attribute(null, "ExpireTime", Long.toString(paramResultBundle.jdField_a_of_type_Long));
-        if (paramResultBundle.jdField_a_of_type_ArrayOfByte != null) {
-          paramXmlSerializer.attribute(null, "ExtraInfo", Base64.encodeToString(paramResultBundle.jdField_a_of_type_ArrayOfByte, 0));
-        }
-        paramXmlSerializer.endTag(null, "CacheEntry");
+      String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("PackageName");
+      LogUtility.c(DownloadManager.a, "receive write code msg pkgName|" + str1);
+      if (str1 == null) {
         return;
       }
-      catch (Exception paramString)
+      localDownloadInfo = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.b(str1);
+      if (localDownloadInfo == null)
       {
-        paramString.printStackTrace();
+        LogUtility.c(DownloadManager.a, "receive write code msg pkgName|" + str1 + " download info is null");
         return;
       }
     }
-    QLog.d("QSec.AVEngine", 2, "Discard expired entry for write: " + paramResultBundle.toString());
-  }
-  
-  private boolean a()
-  {
-    if (this.jdField_a_of_type_JavaIoFile.exists()) {
-      if (!this.jdField_b_of_type_JavaIoFile.exists())
-      {
-        if (!this.jdField_a_of_type_JavaIoFile.renameTo(this.jdField_b_of_type_JavaIoFile)) {
-          return false;
-        }
-      }
-      else {
-        this.jdField_a_of_type_JavaIoFile.delete();
-      }
-    }
-    new alhi(this.jdField_b_of_type_JavaIoFile, new alhh(this, this.jdField_a_of_type_JavaIoFile)).a();
-    return true;
-  }
-  
-  private ICloudAVEngine.ResultBundle b(String paramString)
-  {
-    paramString = new alhg(this, paramString);
-    a(paramString);
-    return paramString.a;
-  }
-  
-  private void b()
-  {
-    a(new alhf(this));
-  }
-  
-  public ICloudAVEngine.ResultBundle a(String paramString)
-  {
-    Object localObject;
-    if (paramString == null) {
-      localObject = null;
-    }
-    ICloudAVEngine.ResultBundle localResultBundle;
-    do
+    catch (Exception localException)
     {
-      do
-      {
-        do
-        {
-          return localObject;
-          localResultBundle = (ICloudAVEngine.ResultBundle)super.get(paramString);
-          if (localResultBundle == null) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("QSec.AVEngine", 2, "Hit memory cache for key: " + paramString);
-          }
-          localObject = localResultBundle;
-        } while (localResultBundle.jdField_a_of_type_Long >= new Date().getTime());
-        if (QLog.isColorLevel()) {
-          QLog.d("QSec.AVEngine", 2, "Memory cache expired for key: " + paramString);
-        }
-        remove(paramString);
-        return null;
-        if (!this.jdField_a_of_type_Boolean) {
-          break;
-        }
-        localObject = localResultBundle;
-      } while (this.jdField_b_of_type_Boolean != true);
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Look from cache file for key: " + paramString);
-      }
-      localResultBundle = b(paramString);
-      localObject = localResultBundle;
-    } while (localResultBundle == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("QSec.AVEngine", 2, "Hit file cache for key: " + paramString);
-    }
-    if (localResultBundle.jdField_a_of_type_Long < new Date().getTime())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "File cache expired for key: " + paramString);
-      }
-      return null;
-    }
-    put(paramString, localResultBundle);
-    return localResultBundle;
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-      a();
-    }
-  }
-  
-  public void a(String paramString, ICloudAVEngine.ResultBundle paramResultBundle)
-  {
-    if ((paramString != null) && (paramResultBundle != null))
-    {
-      if (put(paramString, paramResultBundle) == null) {
-        this.jdField_a_of_type_JavaUtilList.add(new Pair(paramString, paramResultBundle));
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, String.format("Put to cache, key: %s, result: %s ", new Object[] { paramString, paramResultBundle.toString() }));
-      }
-      if (this.jdField_a_of_type_JavaUtilList.size() >= 5)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QSec.AVEngine", 2, "Trigger rebuild cache file");
-        }
-        a();
-      }
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString, ICloudAVEngine.ResultBundle paramResultBundle1, ICloudAVEngine.ResultBundle paramResultBundle2)
-  {
-    super.entryRemoved(paramBoolean, paramString, paramResultBundle1, paramResultBundle2);
-    if (!paramBoolean) {
+      LogUtility.c(DownloadManager.a, "downloadSDKClient>>>", localException);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QSec.AVEngine", 2, "Memory cache overflow.");
+    if (!this.jdField_a_of_type_AndroidOsBundle.getBoolean("IsSuccess"))
+    {
+      localDownloadInfo.jdField_k_of_type_Int = -20;
+      localDownloadInfo.f = -2;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.e(localDownloadInfo);
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(localDownloadInfo, localDownloadInfo.jdField_k_of_type_Int, null);
     }
-    this.jdField_b_of_type_Boolean = true;
+    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("Code");
+    LogUtility.c(DownloadManager.a, "receive write code msg pkgName|" + localException + " code|" + str2);
+    if (TextUtils.isEmpty(str2))
+    {
+      localDownloadInfo.jdField_k_of_type_Int = 0;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.e(localDownloadInfo);
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(4, localDownloadInfo);
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(localDownloadInfo, localDownloadInfo.c);
+      StaticAnalyz.a("300", localDownloadInfo.g, localDownloadInfo.b, localDownloadInfo.m);
+      if (localDownloadInfo.a) {
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.c(localDownloadInfo);
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_AndroidOsBundle.getInt("VersionCode");
+      Object localObject = new File(localDownloadInfo.jdField_k_of_type_JavaLangString);
+      try
+      {
+        ApkExternalInfoTool.a((File)localObject, str2);
+        localObject = ApkExternalInfoTool.a((File)localObject);
+        LogUtility.c(DownloadManager.a, "receive write code msg pkgName|" + localException + " check code|" + (String)localObject);
+        bool = str2.equals(localObject);
+        if (bool)
+        {
+          LogUtility.c(DownloadManager.a, "receive write code msg pkgName|" + localException + " write code and check code suc");
+          localDownloadInfo.jdField_k_of_type_Int = 0;
+          this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.e(localDownloadInfo);
+          this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(4, localDownloadInfo);
+          this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(localDownloadInfo, localDownloadInfo.c);
+          StaticAnalyz.a("300", localDownloadInfo.g, localDownloadInfo.b, localDownloadInfo.m);
+          if (!localDownloadInfo.a) {
+            return;
+          }
+          this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.c(localDownloadInfo);
+        }
+      }
+      catch (IOException localIOException)
+      {
+        for (;;)
+        {
+          LogUtility.c(DownloadManager.a, "write code Exception|" + localIOException.getMessage());
+          boolean bool = false;
+        }
+        LogUtility.c(DownloadManager.a, "receive write code msg pkgName|" + localException + " write code or check code fail");
+        localDownloadInfo.jdField_k_of_type_Int = -20;
+        localDownloadInfo.f = -2;
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.e(localDownloadInfo);
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadManager.a(localDownloadInfo, localDownloadInfo.jdField_k_of_type_Int, null);
+      }
+    }
   }
 }
 

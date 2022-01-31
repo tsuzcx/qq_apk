@@ -1,35 +1,38 @@
-import cooperation.qappcenter.remote.RecvMsg;
-import cooperation.qappcenter.remote.RemoteServiceProxy;
-import cooperation.qappcenter.remote.SendMsg;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import com.tencent.ims.QSecCloudAVEngineMsg.QSecCloudRespBody;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqprotect.qsec.CloudAVEngineImpl;
+import com.tencent.qqprotect.qsec.SecSvcHandlerHelper.ISecSvcRespListener;
 
 public class alwt
-  extends Thread
+  implements SecSvcHandlerHelper.ISecSvcRespListener
 {
-  public alwt(RemoteServiceProxy paramRemoteServiceProxy) {}
+  public alwt(CloudAVEngineImpl paramCloudAVEngineImpl) {}
   
-  public void run()
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    while (!this.a.a.isEmpty())
-    {
-      SendMsg localSendMsg = (SendMsg)this.a.a.poll();
-      if (localSendMsg != null) {
-        try
-        {
-          this.a.a(localSendMsg);
-        }
-        catch (Exception localException)
-        {
-          RecvMsg localRecvMsg = this.a.a(localSendMsg, "sendMsgToServiceFailed，" + localException.toString());
-          this.a.a(localSendMsg, localRecvMsg);
-        }
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null) && (paramObject != null)) {
+      if (QLog.isColorLevel()) {
+        QLog.d("QSec.AVEngine", 2, "server reply packet");
       }
+    }
+    try
+    {
+      paramToServiceMsg = new QSecCloudAVEngineMsg.QSecCloudRespBody();
+      paramToServiceMsg.mergeFrom((byte[])paramObject);
+      CloudAVEngineImpl.a(this.a).sendMessage(CloudAVEngineImpl.a(this.a).obtainMessage(4, paramToServiceMsg));
+      return;
+    }
+    catch (Exception paramToServiceMsg)
+    {
+      paramToServiceMsg.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alwt
  * JD-Core Version:    0.7.0.1
  */

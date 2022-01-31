@@ -9,8 +9,7 @@ import com.tencent.qphone.base.util.QLog;
 public class NativeMemoryMonitor
 {
   public static final String ALL_SO_HOOK = "all_so_hook";
-  public static final long FLAG_JNI_CALLIntMETHOD_MONITOR = 64L;
-  public static final long FLAG_JNI_CALLVoidMETHOD_MONITOR = 32L;
+  public static final long FLAG_JNI_CALLXXMETHOD_MONITOR = 32L;
   public static final long FLAG_JNI_GLOBAL_REF_MONITOR = 1L;
   public static final long FLAG_JNI_LOCAL_REF_MONITOR = 2L;
   public static final long FLAG_JNI_LONG_SET_FIELD_MONITOR = 8L;
@@ -114,7 +113,7 @@ public class NativeMemoryMonitor
     // Byte code:
     //   0: aload_0
     //   1: monitorenter
-    //   2: getstatic 58	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:sSoLoadRes	Z
+    //   2: getstatic 55	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:sSoLoadRes	Z
     //   5: istore_2
     //   6: iload_2
     //   7: ifne +6 -> 13
@@ -122,16 +121,16 @@ public class NativeMemoryMonitor
     //   11: monitorexit
     //   12: return
     //   13: aload_0
-    //   14: getfield 66	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:mInitThreadHook	Z
+    //   14: getfield 63	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:mInitThreadHook	Z
     //   17: ifne -7 -> 10
     //   20: aload_0
     //   21: iconst_1
-    //   22: putfield 66	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:mInitThreadHook	Z
+    //   22: putfield 63	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:mInitThreadHook	Z
     //   25: aload_0
     //   26: aload_1
-    //   27: invokespecial 163	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeThreadCreateHookInit	(Ljava/lang/String;)V
+    //   27: invokespecial 160	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeThreadCreateHookInit	(Ljava/lang/String;)V
     //   30: aload_0
-    //   31: invokespecial 165	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeThreadHook	()V
+    //   31: invokespecial 162	com/tencent/mobileqq/nativememorymonitor/library/NativeMemoryMonitor:nativeThreadHook	()V
     //   34: goto -24 -> 10
     //   37: astore_1
     //   38: aload_0

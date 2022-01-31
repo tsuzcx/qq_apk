@@ -1,72 +1,45 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.data.CmGameMainManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.graphics.Bitmap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
+import com.tencent.mobileqq.adapter.LebaListMgrAdapter.ViewHolder;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.LebaUtil;
+import com.tencent.mobileqq.config.struct.LebaViewItem;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.Observable;
-import java.util.Observer;
-import java.util.concurrent.atomic.AtomicLong;
+import java.io.File;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class yhl
-  implements Observer
+  implements Runnable
 {
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private AtomicLong jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
+  public yhl(LebaListMgrAdapter paramLebaListMgrAdapter, LebaViewItem paramLebaViewItem, String paramString, LebaListMgrAdapter.ViewHolder paramViewHolder) {}
   
-  public yhl(QQAppInterface paramQQAppInterface)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-  }
-  
-  public void update(Observable paramObservable, Object paramObject)
-  {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    do
+    Object localObject = LebaUtil.a(LebaListMgrAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListMgrAdapter), this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.a.strPkgName, this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.a.strResURL);
+    if (((File)localObject).exists())
     {
-      int i;
-      do
-      {
-        do
-        {
-          return;
-          paramObservable = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        } while ((paramObservable == null) || (paramObject == null) || (!(paramObject instanceof Bundle)));
-        i = ((Bundle)paramObject).getInt("TO");
-        if ((i == 5) || (i == 4))
-        {
-          long l = System.currentTimeMillis() - this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
-          paramObject = CmGameMainManager.a();
-          if ((paramObject != null) && (paramObject.a != null))
-          {
-            if (paramObservable != null)
-            {
-              VipUtils.a(paramObservable, "cmshow", "Apollo", "game_time", 0, 0, new String[] { paramObject.a.game.gameId + "", String.valueOf(paramObject.a.gameMode), String.valueOf(l), String.valueOf(paramObject.a.roomId) });
-              if (QLog.isColorLevel()) {
-                QLog.d("ApolloManager", 2, new Object[] { "[update] mGameTimeObserver report: id:", Integer.valueOf(paramObject.a.game.gameId), "# roomId:", Long.valueOf(paramObject.a.roomId), "# mode:", Integer.valueOf(paramObject.a.gameMode), "# [", Long.valueOf(l), "] #", Long.valueOf(System.currentTimeMillis()) });
-              }
-            }
-            for (;;)
-            {
-              this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(System.currentTimeMillis());
-              return;
-              QLog.e("ApolloManager", 1, "[update] mGameTimeObserver no app");
-            }
-          }
-          QLog.e("ApolloManager", 1, "[update] mGameTimeObserver para invalid ");
-          return;
-        }
-      } while (i != 3);
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(System.currentTimeMillis());
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloManager", 2, new Object[] { "[update] mGameTimeObserver set time to ", Long.valueOf(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get()) });
+      localObject = LebaUtil.a((File)localObject);
+      if (localObject == null) {
+        break label122;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.lebatab.mgr", 2, "found bitmap from sdcard, info=" + this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.a.strResName);
+      }
+      BaseApplicationImpl.sImageHashMap.put(this.jdField_a_of_type_JavaLangString, localObject);
+      ((BaseActivity)LebaListMgrAdapter.a(this.jdField_a_of_type_ComTencentMobileqqAdapterLebaListMgrAdapter)).runOnUiThread(new yhm(this, (Bitmap)localObject));
+    }
+    label122:
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("Q.lebatab.mgr", 2, "can't find bitmap form cache & sdcard" + this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.a.strResName);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yhl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,30 +1,23 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import dov.com.qq.im.capture.data.CaptureComboManager;
-import dov.com.qq.im.capture.data.CaptureSet;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.music.BroadcastAudio;
 
-public class amve
-  implements Handler.Callback
+public final class amve
+  implements Parcelable.Creator
 {
-  public amve(CaptureComboManager paramCaptureComboManager) {}
-  
-  public boolean handleMessage(Message paramMessage)
+  public BroadcastAudio a(Parcel paramParcel)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return false;
-      if ((paramMessage.obj instanceof CaptureSet)) {
-        paramMessage = (CaptureSet)paramMessage.obj;
-      }
-    }
+    return new BroadcastAudio(paramParcel);
+  }
+  
+  public BroadcastAudio[] a(int paramInt)
+  {
+    return new BroadcastAudio[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amve
  * JD-Core Version:    0.7.0.1
  */

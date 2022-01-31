@@ -1,23 +1,85 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqconnect.wtlogin.LoginHelper;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class rjd
-  implements CompoundButton.OnCheckedChangeListener
+  implements Runnable
 {
-  public rjd(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public rjd(AddFriendVerifyActivity paramAddFriendVerifyActivity, String paramString) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void run()
   {
-    paramCompoundButton = this.a.app;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
+    int i = AddFriendVerifyActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity);
+    Object localObject = "{\"m\":0,\"source\":\"joinTroop\", \"gc\":" + this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.b + "}";
+    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.sendEmptyMessage(1);
+    for (;;)
     {
-      ReportController.b(paramCompoundButton, "CliOper", "", "", "Setting_tab", "Enter_sendmsg", 0, i, "", "", "", "");
-      SettingCloneUtil.writeValue(this.a, null, this.a.getString(2131433609), "qqsetting_enter_sendmsg_key", paramBoolean);
+      try
+      {
+        AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, true);
+        AddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, "");
+        String str = TroopNoticeJsHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app.getCurrentAccountUin(), "http://admin.qun.qq.com/cgi-bin/qun_admin/upload_msg_img", this.jdField_a_of_type_JavaLangString, (String)localObject, "", LoginHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.app), TroopNoticeJsHandler.b);
+        if (i != AddFriendVerifyActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity))
+        {
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          QLog.w("AddFriendVerifyActivity", 2, "uploadImage task cancelled.");
+          return;
+        }
+        AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, false);
+        localObject = str;
+        if (!TextUtils.isEmpty(str)) {
+          localObject = HttpUtil.b(str);
+        }
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          continue;
+        }
+        localObject = new JSONObject((String)localObject);
+        i = ((JSONObject)localObject).optInt("ec", -1);
+        if (i != 0) {
+          continue;
+        }
+        AddFriendVerifyActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, ((JSONObject)localObject).optLong("gc"));
+        AddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, ((JSONObject)localObject).optInt("fileid"));
+        AddFriendVerifyActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, ((JSONObject)localObject).optString("md5"));
+        AddFriendVerifyActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity, ((JSONObject)localObject).optString("url"));
+      }
+      catch (InterruptedException localInterruptedException)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.w("AddFriendVerifyActivity", 2, "uploadImage exception:" + localInterruptedException.getMessage());
+        continue;
+        this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.sendEmptyMessage(3);
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.w("AddFriendVerifyActivity", 2, "uploadImage error.");
+        continue;
+      }
+      catch (JSONException localJSONException)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.w("AddFriendVerifyActivity", 2, "uploadImage json exception:" + localJSONException.getMessage());
+        continue;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.sendEmptyMessage(2);
       return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a.sendEmptyMessage(3);
+      if (QLog.isColorLevel()) {
+        QLog.w("AddFriendVerifyActivity", 2, "uploadImage error. ec:" + i);
+      }
     }
   }
 }

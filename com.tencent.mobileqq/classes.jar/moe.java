@@ -1,36 +1,71 @@
-import com.tencent.biz.pubaccount.VideoAdInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyAdVideoReportData;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoInfo;
-import java.util.Set;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.WxShareHelperFromReadInjoy;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import cooperation.readinjoy.ReadInJoyHelper;
+import java.util.Map;
+import mqq.app.MobileQQ;
 
 public class moe
   implements Runnable
 {
-  public moe(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
+  public moe(FastWebShareUtils paramFastWebShareUtils, Map paramMap, String paramString1, String paramString2, String paramString3, String paramString4, AppInterface paramAppInterface, String paramString5, ArticleInfo paramArticleInfo) {}
   
   public void run()
   {
-    if ((FastWebVideoFeedsPlayManager.a(this.a) != null) && (FastWebVideoFeedsPlayManager.a(this.a).c() == 2))
+    int j = 0;
+    int i = 0;
+    if (FastWebShareUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebShareUtils).isShowing()) {
+      FastWebShareUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebShareUtils).dismiss();
+    }
+    FastWebShareUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebShareUtils, String.valueOf(System.currentTimeMillis()));
+    Object localObject1 = (Bitmap)this.jdField_a_of_type_JavaUtilMap.remove("image");
+    Object localObject2;
+    String str1;
+    String str2;
+    String str3;
+    String str4;
+    if (ReadInJoyHelper.u(ReadInJoyUtils.a()) == 1)
     {
-      this.a.a(4);
-      FastWebVideoFeedsPlayManager.a(this.a, 8);
-      FastWebVideoFeedsPlayManager.a(this.a).d();
-      if (FastWebVideoFeedsPlayManager.c(this.a))
+      localObject2 = WXShareHelper.a();
+      str1 = FastWebShareUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebShareUtils);
+      str2 = this.jdField_a_of_type_JavaLangString;
+      str3 = this.b;
+      str4 = this.c;
+      if ("2".equals(this.d))
       {
-        String str = FastWebVideoFeedsPlayManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoInfo.a.h;
-        if (FastWebVideoFeedsPlayManager.a(this.a).contains(str)) {
-          break label125;
+        ((WXShareHelper)localObject2).b(str1, str2, (Bitmap)localObject1, str3, str4, i);
+        localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApplication().getApplicationContext();
+        localObject2 = this.e;
+        if (!"2".equals(this.d)) {
+          break label242;
         }
-        FastWebVideoFeedsPlayManager.a(this.a).add(str);
-        FastWebVideoFeedsPlayManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.f = ReadinjoyAdVideoReportData.a;
       }
     }
-    return;
-    label125:
-    FastWebVideoFeedsPlayManager.a(this.a).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadinjoyAdVideoReportData.f = ReadinjoyAdVideoReportData.c;
+    label242:
+    for (i = 4;; i = 5)
+    {
+      FastWebShareUtils.a((Context)localObject1, (String)localObject2, i, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo);
+      return;
+      i = 1;
+      break;
+      localObject2 = WxShareHelperFromReadInjoy.a();
+      str1 = FastWebShareUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebShareUtils);
+      str2 = this.jdField_a_of_type_JavaLangString;
+      str3 = this.b;
+      str4 = this.c;
+      if ("2".equals(this.d)) {}
+      for (i = j;; i = 1)
+      {
+        ((WxShareHelperFromReadInjoy)localObject2).a(str1, str2, (Bitmap)localObject1, str3, str4, i);
+        break;
+      }
+    }
   }
 }
 

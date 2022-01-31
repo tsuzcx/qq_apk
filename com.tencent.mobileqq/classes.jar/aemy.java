@@ -1,23 +1,24 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.app.NearbyHandler;
+import com.tencent.mobileqq.nearby.NearbyReportManager;
+import com.tencent.mobileqq.nearby.NearbyReportManager.ReportRecord;
+import com.tencent.util.LongSparseArray;
+import java.util.ArrayList;
 
 public class aemy
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public aemy(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public aemy(NearbyReportManager paramNearbyReportManager, LongSparseArray paramLongSparseArray, NearbyHandler paramNearbyHandler, boolean paramBoolean) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    if ((paramMotionEvent.getAction() == 0) || (paramMotionEvent.getAction() == 2)) {
-      this.a.a.findViewById(2131370443).setAlpha(0.5F);
-    }
-    for (;;)
+    ArrayList localArrayList = new ArrayList();
+    int i = 0;
+    while (i < this.jdField_a_of_type_ComTencentUtilLongSparseArray.a())
     {
-      return false;
-      this.a.a.findViewById(2131370443).setAlpha(1.0F);
+      localArrayList.add((NearbyReportManager.ReportRecord)this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(i));
+      i += 1;
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppNearbyHandler.a(localArrayList, this.jdField_a_of_type_Boolean);
   }
 }
 

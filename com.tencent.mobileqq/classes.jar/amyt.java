@@ -1,84 +1,42 @@
-import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
-import dov.com.qq.im.capture.music.MusicPlayerSceneListener;
-import dov.com.qq.im.capture.music.QimMusicPlayer;
-import dov.com.qq.im.capture.view.MusicFragmentProviderView;
-import dov.com.qq.im.capture.view.ProviderView.ProviderViewListener;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.report.lp.MachineLearingSmartReport;
 
 public class amyt
-  implements MusicPlayerSceneListener
+  implements ModuleDownloadListener
 {
-  public amyt(MusicFragmentProviderView paramMusicFragmentProviderView) {}
+  public amyt(MachineLearingSmartReport paramMachineLearingSmartReport, String paramString1, String paramString2, String paramString3) {}
   
-  public void a()
+  public void onDownloadCanceled(String paramString)
   {
-    this.a.i();
-  }
-  
-  public void a(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    if (paramInt != -1)
-    {
-      this.a.a(paramInt);
-      MusicFragmentProviderView.a(this.a).set(-1);
-      this.a.j();
-      return;
-    }
-    this.a.i();
-  }
-  
-  public void a(MusicItemInfo paramMusicItemInfo)
-  {
-    if (this.a.a != null)
-    {
-      if (paramMusicItemInfo.d == 2) {
-        this.a.a.c(true);
-      }
-    }
-    else {
-      return;
-    }
-    this.a.a.c(false);
-  }
-  
-  public void b(int paramInt, MusicItemInfo paramMusicItemInfo)
-  {
-    this.a.a(paramInt);
-    if (paramInt != -1)
-    {
-      MusicFragmentProviderView.a(this.a).set(-1);
-      this.a.j();
-    }
-    for (;;)
-    {
-      if (MusicFragmentProviderView.a(this.a) != null) {
-        MusicFragmentProviderView.a(this.a).f();
-      }
-      return;
-      this.a.i();
+    if (QLog.isColorLevel()) {
+      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadCanceled " + paramString);
     }
   }
   
-  public void b(MusicItemInfo paramMusicItemInfo) {}
-  
-  public void c(int paramInt, MusicItemInfo paramMusicItemInfo)
+  public void onDownloadFailed(String paramString)
   {
-    if (paramInt != -1)
-    {
-      this.a.j();
-      return;
-    }
-    this.a.i();
+    MachineLearingSmartReport.access$100(this.jdField_a_of_type_CooperationQzoneReportLpMachineLearingSmartReport, 10, "Module onDownloadFailed " + paramString);
   }
   
-  public void d(int paramInt, MusicItemInfo paramMusicItemInfo)
+  public void onDownloadProgress(String paramString, float paramFloat)
   {
-    this.a.i();
+    if (QLog.isColorLevel()) {
+      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadProgress " + paramString + ",progress=" + Float.toString(paramFloat));
+    }
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadSucceed " + paramString);
+    }
+    MachineLearingSmartReport.access$000(this.jdField_a_of_type_CooperationQzoneReportLpMachineLearingSmartReport, this.jdField_a_of_type_JavaLangString, this.b, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amyt
  * JD-Core Version:    0.7.0.1
  */

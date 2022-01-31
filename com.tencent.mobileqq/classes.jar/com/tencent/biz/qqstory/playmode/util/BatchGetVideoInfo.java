@@ -13,9 +13,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
-import nku;
-import nkv;
-import nkw;
+import nme;
+import nmf;
+import nmg;
 
 public class BatchGetVideoInfo
 {
@@ -27,7 +27,7 @@ public class BatchGetVideoInfo
   public BatchGetVideoInfo(List paramList)
   {
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$VideoLocalCacheFilter = new nku(this);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo$VideoLocalCacheFilter = new nme(this);
     this.jdField_a_of_type_JavaUtilArrayList.addAll(paramList);
   }
   
@@ -51,7 +51,7 @@ public class BatchGetVideoInfo
     SLog.d("BatchGetVideoInfo", "runPuller vid list size = %d", new Object[] { Integer.valueOf(localList.size()) });
     paramList = BatchHandlerListPuller.a(localList);
     paramList.a("BatchGetVideoInfo");
-    paramList.a(new nkv(this, paramList));
+    paramList.a(new nmf(this, paramList));
     paramList.b();
   }
   
@@ -181,7 +181,7 @@ public class BatchGetVideoInfo
     return;
     localObject1 = BatchHandlerListPuller.a(localArrayList2);
     ((BatchHandlerListPuller)localObject1).a("BatchGetVideoInfo");
-    ((BatchHandlerListPuller)localObject1).a(new nkw(this, (BatchHandlerListPuller)localObject1));
+    ((BatchHandlerListPuller)localObject1).a(new nmg(this, (BatchHandlerListPuller)localObject1));
     ((BatchHandlerListPuller)localObject1).b();
   }
   

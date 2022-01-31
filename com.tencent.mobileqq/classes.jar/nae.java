@@ -1,22 +1,79 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.channel.NetworkRequest;
-import com.tencent.biz.qqstory.channel.NetworkRequest.IProtocolListener;
-import com.tencent.biz.qqstory.channel.QQStoryCmdHandler.IllegalUinException;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.preload.DownloadTask;
+import com.tencent.biz.qqstory.base.preload.PlayingListPreloader;
+import com.tencent.biz.qqstory.base.preload.PlayingListPreloader.CurrentVid;
+import com.tencent.biz.qqstory.base.preload.PlayingListPreloader.OnVideoDownloadListener;
+import com.tencent.biz.qqstory.base.preload.SimplePreloadListener;
+import java.io.File;
+import java.util.Map;
 
-class nae
-  extends Job
+public class nae
+  extends SimplePreloadListener
 {
-  nae(nad paramnad, QQStoryCmdHandler.IllegalUinException paramIllegalUinException) {}
-  
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public nae(PlayingListPreloader paramPlayingListPreloader)
   {
-    SLog.d("Q.qqstory.net:QQStoryCmdHandler", "uin convert error");
-    this.jdField_a_of_type_Nad.a.a().a(880002, this.jdField_a_of_type_ComTencentBizQqstoryChannelQQStoryCmdHandler$IllegalUinException.getMessage(), null);
-    return null;
+    super("Q.qqstory.download.preload.PlayingListPreloader");
+  }
+  
+  public void a(String paramString, int paramInt1, ErrorMessage paramErrorMessage, int paramInt2, DownloadTask paramDownloadTask)
+  {
+    super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramDownloadTask);
+    a(paramString, paramInt1, paramErrorMessage, paramDownloadTask);
+  }
+  
+  protected void a(String paramString, int paramInt, ErrorMessage paramErrorMessage, DownloadTask paramDownloadTask)
+  {
+    PlayingListPreloader.CurrentVid localCurrentVid = this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$CurrentVid;
+    if (localCurrentVid == null) {}
+    label14:
+    label169:
+    do
+    {
+      break label14;
+      do
+      {
+        return;
+      } while (!TextUtils.equals(paramString, localCurrentVid.jdField_a_of_type_JavaLangString));
+      if (paramErrorMessage.isFail()) {
+        if (!TextUtils.isEmpty(localCurrentVid.b)) {
+          break label136;
+        }
+      }
+      for (paramErrorMessage = paramErrorMessage.errorMsg;; paramErrorMessage = paramErrorMessage.errorMsg + " | " + paramErrorMessage.errorMsg)
+      {
+        localCurrentVid.b = paramErrorMessage;
+        localCurrentVid.jdField_a_of_type_Int = (paramInt + 1000);
+        if ((!paramDownloadTask.a.containsKey("handleCallback")) || (localCurrentVid.jdField_a_of_type_Boolean)) {
+          break;
+        }
+        localCurrentVid.jdField_a_of_type_Boolean = true;
+        if (!this.a.a(paramString)) {
+          break label169;
+        }
+        if (this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener == null) {
+          break;
+        }
+        this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener.a(paramString, paramDownloadTask.d, paramInt);
+        return;
+      }
+    } while (this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener == null);
+    label136:
+    this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener.a(paramString, paramDownloadTask.d, localCurrentVid.a(), paramInt);
+  }
+  
+  public void b(String paramString, int paramInt, DownloadTask paramDownloadTask)
+  {
+    super.b(paramString, paramInt, paramDownloadTask);
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener != null) && ((paramInt == 0) || (paramInt == 1))) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryBasePreloadPlayingListPreloader$OnVideoDownloadListener.b(paramString, paramDownloadTask.d, paramInt);
+    }
+  }
+  
+  public void b(String paramString, int paramInt1, File paramFile, int paramInt2, DownloadTask paramDownloadTask)
+  {
+    super.b(paramString, paramInt1, paramFile, paramInt2, paramDownloadTask);
+    a(paramString, paramInt1, new ErrorMessage(), paramDownloadTask);
   }
 }
 

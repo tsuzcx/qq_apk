@@ -1,13 +1,13 @@
 package cooperation.comic.ui;
 
-import altw;
-import altx;
-import alty;
-import altz;
-import alub;
-import aluc;
-import alud;
-import aluf;
+import amka;
+import amkb;
+import amkc;
+import amkd;
+import amkf;
+import amkg;
+import amkh;
+import amkj;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -120,10 +120,10 @@ public class QQComicTabBarView
     this.jdField_b_of_type_CooperationComicUtilsSimpleBiMap = new SimpleBiMap();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
     this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_AndroidOsHandler = new altw(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new amka(this, Looper.getMainLooper());
     this.jdField_a_of_type_CooperationComicUtilsQQComicRedTouchManager = null;
-    this.jdField_a_of_type_CooperationComicUtilsQQComicRedTouchManager$PluginRedTouchObserver = new altx(this);
-    this.jdField_a_of_type_CooperationComicJspQQComicDownloadCountObserver = new alty(this);
+    this.jdField_a_of_type_CooperationComicUtilsQQComicRedTouchManager$PluginRedTouchObserver = new amkb(this);
+    this.jdField_a_of_type_CooperationComicJspQQComicDownloadCountObserver = new amkc(this);
     paramContext = super.getContext().getResources();
     this.jdField_b_of_type_Int = -8947849;
     this.jdField_a_of_type_Int = -19456;
@@ -144,7 +144,7 @@ public class QQComicTabBarView
     this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.addRule(13);
     this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams = new RelativeLayout.LayoutParams(this.f, this.f);
     this.jdField_b_of_type_AndroidWidgetRelativeLayout$LayoutParams.addRule(13);
-    ThreadManager.post(new altz(this), 5, null, false);
+    ThreadManager.post(new amkd(this), 5, null, false);
     setLayerType(2, null);
   }
   
@@ -218,7 +218,7 @@ public class QQComicTabBarView
     }
     for (;;)
     {
-      localRelativeLayout.setOnClickListener(new aluf(this, paramInt, bool1));
+      localRelativeLayout.setOnClickListener(new amkj(this, paramInt, bool1));
       localRelativeLayout.addView(localSimpleTextView, this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
       Object localObject;
       File localFile;
@@ -265,8 +265,8 @@ public class QQComicTabBarView
             {
               paramString2 = jdField_a_of_type_ArrayOfJavaLangString[paramInt];
               localObject = (RedTouchUI)new RedTouchUI(super.getContext(), localSimpleTextView).a(5).a();
-              ((RedTouchUI)localObject).setRedpointImgResID(2130845923);
-              ((RedTouchUI)localObject).setTextOrNumImgRedID(2130845927);
+              ((RedTouchUI)localObject).setRedpointImgResID(2130846051);
+              ((RedTouchUI)localObject).setTextOrNumImgRedID(2130846055);
               this.jdField_b_of_type_CooperationComicUtilsSimpleBiMap.put(paramString2, a(paramString2, 0));
               this.jdField_a_of_type_CooperationComicUtilsSimpleBiMap.put(paramString2, localObject);
               localViewHolder.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchUI = ((RedTouchUI)localObject);
@@ -386,7 +386,7 @@ public class QQComicTabBarView
   
   public void a()
   {
-    ThreadManager.postImmediately(new alud(this), null, false);
+    ThreadManager.postImmediately(new amkh(this), null, false);
   }
   
   public void a(int paramInt)
@@ -708,13 +708,13 @@ public class QQComicTabBarView
   protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    ThreadManager.getSubThreadHandler().post(new alub(this));
+    ThreadManager.getSubThreadHandler().post(new amkf(this));
   }
   
   protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    ThreadManager.getSubThreadHandler().post(new aluc(this));
+    ThreadManager.getSubThreadHandler().post(new amkg(this));
   }
   
   public void onMeasure(int paramInt1, int paramInt2)

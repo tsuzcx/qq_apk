@@ -1,30 +1,24 @@
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ar.config.SplashPopupWin;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
-class aajz
-  implements Runnable
+public class aajz
+  implements aakm
 {
-  aajz(aajy paramaajy, Object paramObject, boolean paramBoolean, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  public aajz(SplashPopupWin paramSplashPopupWin, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, View paramView) {}
   
-  public void run()
+  public void a(boolean paramBoolean, ArrayList paramArrayList)
   {
-    aakg localaakg = (aakg)this.jdField_a_of_type_JavaLangObject;
-    if (this.jdField_a_of_type_Boolean)
+    QLog.w("WorldCupMgr", 1, "SplashPopupWin, 异步加载图片[" + paramBoolean + "]");
+    if (paramBoolean)
     {
-      long l1 = ArkActionAppMgr.a(this.jdField_a_of_type_Aajy.a, 2, this.jdField_a_of_type_JavaUtilArrayList);
-      long l2 = ArkActionAppMgr.a(this.jdField_a_of_type_Aajy.a, 1, this.b);
-      if ((l1 < 0L) || (l2 < 0L))
-      {
-        ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("getContextActionAppList, fail, gray-app-id=%d, app-id=%d", new Object[] { Long.valueOf(l2), Long.valueOf(l1) }));
-        ArkActionAppMgr.a(this.jdField_a_of_type_Aajy.a, localaakg, false);
-        return;
-      }
-      ArkActionAppMgr.a(this.jdField_a_of_type_Aajy.a, localaakg, true);
+      SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidViewView);
       return;
     }
-    ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("getContextActionAppList, fail, success is false.", new Object[0]));
-    ArkActionAppMgr.a(this.jdField_a_of_type_Aajy.a, localaakg, false);
+    this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.b();
   }
 }
 

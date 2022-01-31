@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<com.tencent.biz.qqstory.view.widget.DragFrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ec4" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c053f" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a25d1" android:paddingLeft="4.0dip" android:paddingTop="2.5dip" android:paddingRight="4.0dip" android:paddingBottom="2.5dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:layout_marginRight="10.0dip" android:text="等50个标签" />
-</LinearLayout>
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2263" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2264" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27a6" android:background="#ff262626" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2267" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2265" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
+        </RelativeLayout>
+    </com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout>
+</com.tencent.biz.qqstory.view.widget.DragFrameLayout>

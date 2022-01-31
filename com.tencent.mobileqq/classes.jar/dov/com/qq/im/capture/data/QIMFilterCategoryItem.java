@@ -1,10 +1,10 @@
 package dov.com.qq.im.capture.data;
 
-import amvm;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import anlr;
 import com.tencent.av.opengl.filter.qqavimage.QQAVImageFilterConstants;
 import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
 import com.tencent.qphone.base.util.QLog;
@@ -19,7 +19,7 @@ import org.json.JSONArray;
 public class QIMFilterCategoryItem
   implements Parcelable, Cloneable
 {
-  public static final Parcelable.Creator CREATOR = new amvm();
+  public static final Parcelable.Creator CREATOR = new anlr();
   public int a;
   public String a;
   public ArrayList a;
@@ -34,6 +34,7 @@ public class QIMFilterCategoryItem
   public JSONArray d;
   public String e;
   public String f;
+  public String g;
   
   public QIMFilterCategoryItem()
   {
@@ -57,6 +58,7 @@ public class QIMFilterCategoryItem
       bool = true;
     }
     this.jdField_a_of_type_Boolean = bool;
+    this.g = paramParcel.readString();
   }
   
   public static boolean a(QIMFilterCategoryItem paramQIMFilterCategoryItem)
@@ -241,6 +243,7 @@ public class QIMFilterCategoryItem
       paramInt = 1;
     }
     paramParcel.writeByte((byte)paramInt);
+    paramParcel.writeString(this.g);
   }
 }
 

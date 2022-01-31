@@ -1,40 +1,25 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.armap.config.ARMapConfigManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.SearchArkBabyQInfo;
+import com.tencent.mobileqq.ark.ArkRecommendLogic.SemanticAnalysisResult;
+import java.lang.ref.WeakReference;
 
-public class aayc
-  extends SosoInterface.OnLocationListener
+class aayc
+  implements Runnable
 {
-  public aayc(ARMapConfigManager paramARMapConfigManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  aayc(aayb paramaayb, ArkMessageServerLogic.SearchArkBabyQInfo paramSearchArkBabyQInfo, boolean paramBoolean) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void run()
   {
-    if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {}
-    for (;;)
-    {
-      try
-      {
-        l = Long.valueOf(paramSosoLbsInfo.a.f).longValue();
-        ARMapConfigManager.a(this.a, paramSosoLbsInfo.a.b);
-        ARMapConfigManager.b(this.a, paramSosoLbsInfo.a.a);
-        this.a.a(l, true);
-        if (QLog.isColorLevel()) {
-          QLog.d("ARMapConfigManager", 2, String.format("onLocationFinish errCode=%s adCode=%s mLongitude=%s mLatitude=%s", new Object[] { Integer.valueOf(paramInt), Long.valueOf(l), Double.valueOf(ARMapConfigManager.a(this.a)), Double.valueOf(ARMapConfigManager.b(this.a)) }));
-        }
-        return;
-      }
-      catch (Exception paramSosoLbsInfo)
-      {
-        ARMapConfigManager.a(this.a, 0.0D);
-        ARMapConfigManager.b(this.a, 0.0D);
-      }
-      long l = -1L;
+    if (this.jdField_a_of_type_Aayb.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+      ArkAppCenter.b("ArkApp.ArkRecommendLogic", String.format("sendBabyQTextIntent, this is null, return", new Object[0]));
     }
+    ArkRecommendLogic.SemanticAnalysisResult localSemanticAnalysisResult;
+    do
+    {
+      return;
+      localSemanticAnalysisResult = (ArkRecommendLogic.SemanticAnalysisResult)this.jdField_a_of_type_Aayb.b.get();
+    } while (localSemanticAnalysisResult == null);
+    localSemanticAnalysisResult.a(this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$SearchArkBabyQInfo, this.jdField_a_of_type_Aayb.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Boolean);
   }
 }
 

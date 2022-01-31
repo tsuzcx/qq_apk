@@ -1,18 +1,33 @@
-import com.tencent.mobileqq.ark.ArkTipsManager;
-import java.lang.ref.WeakReference;
+import android.annotation.TargetApi;
+import android.widget.Button;
+import android.widget.LinearLayout;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
+import com.tencent.mobileqq.activity.aio.item.ArkAioContainerWrapper;
+import com.tencent.mobileqq.ark.ArkAdapterItemForTextMsg;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
 
 public class aari
-  implements Runnable
+  implements ArkViewImplement.LoadCallback
 {
-  public aari(ArkTipsManager paramArkTipsManager, long paramLong) {}
+  public aari(ArkAdapterItemForTextMsg paramArkAdapterItemForTextMsg, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder, ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkAioContainerWrapper paramArkAioContainerWrapper, int paramInt) {}
   
-  public void run()
+  @TargetApi(14)
+  public void onLoadFinish(int paramInt)
   {
-    if ((ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager) != null) && (this.jdField_a_of_type_Long == ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager).b))
+    if (paramInt == 1)
     {
-      ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager, this.jdField_a_of_type_Long);
-      ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager, new WeakReference(ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager).a));
-      this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager.b();
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.a.setVisibility(0);
+      ArkAdapterItemForTextMsg.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAdapterItemForTextMsg, this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter, this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder);
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(0);
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder, this.jdField_a_of_type_ComTencentMobileqqArkArkAdapterItemForTextMsg);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkAioContainerWrapper, this.jdField_a_of_type_Int);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.a.setVisibility(8);
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.b.setVisibility(8);
     }
   }
 }

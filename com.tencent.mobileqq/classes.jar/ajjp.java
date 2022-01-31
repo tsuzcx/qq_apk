@@ -1,32 +1,38 @@
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.mobileqq.unifiedebug.SnapshotService;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper;
+import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment;
+import com.tencent.mobileqq.troop.widget.LoadMoreXListView;
 
 public class ajjp
-  implements Runnable
+  implements TextWatcher
 {
-  public ajjp(SnapshotService paramSnapshotService, ajjw paramajjw, ajju paramajju) {}
+  public ajjp(SearchReciteArticleFragment paramSearchReciteArticleFragment) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(SnapshotService.a(), 2, "start once debug, webview id =" + ajjw.a(this.jdField_a_of_type_Ajjw) + ", seq=" + this.jdField_a_of_type_Ajju.a);
-    }
-    this.jdField_a_of_type_Ajjw.a.a.invalidate();
-    if (this.jdField_a_of_type_Ajjw.a.a.getX5WebViewExtension() != null) {
-      this.jdField_a_of_type_Ajjw.a.a.loadUrl("javascript:window.scrollTo(0, 0);");
-    }
-    for (;;)
+    if (paramEditable.length() == 0)
     {
-      SnapshotService.a(this.jdField_a_of_type_ComTencentMobileqqUnifiedebugSnapshotService, this.jdField_a_of_type_Ajju, this.jdField_a_of_type_Ajjw);
+      SearchReciteArticleFragment.a(this.a);
+      SearchReciteArticleFragment.a(this.a, false);
       return;
-      this.jdField_a_of_type_Ajjw.a.a.pageUp(true);
     }
+    SearchReciteArticleFragment.a(this.a).a();
+    SearchReciteArticleFragment.a(this.a).notifyDataSetChanged();
+    SearchReciteArticleFragment.a(this.a).a.a(false);
+    SearchReciteArticleFragment.a(this.a, 0);
+    SearchReciteArticleFragment.a(this.a, true);
+    paramEditable = paramEditable.toString();
+    SearchReciteArticleFragment.a(this.a, paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajjp
  * JD-Core Version:    0.7.0.1
  */

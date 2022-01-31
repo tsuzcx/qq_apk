@@ -1,15 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import java.util.HashMap;
 
-public class rgb
-  implements DialogInterface.OnClickListener
+class rgb
+  implements Runnable
 {
-  public rgb(AddFriendVerifyActivity paramAddFriendVerifyActivity, boolean paramBoolean) {}
+  rgb(rga paramrga, boolean paramBoolean, String paramString, Bitmap paramBitmap, Drawable paramDrawable) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity.a(this.jdField_a_of_type_Boolean);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Rga.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
+      AccountManageActivity.b(this.jdField_a_of_type_Rga.jdField_a_of_type_ComTencentMobileqqActivityAccountManageActivity).put(this.jdField_a_of_type_Rga.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString);
+    }
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      this.jdField_a_of_type_Rga.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      return;
+    }
+    this.jdField_a_of_type_Rga.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

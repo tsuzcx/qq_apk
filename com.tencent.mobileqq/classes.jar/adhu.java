@@ -1,25 +1,40 @@
-import android.os.Handler;
-import com.tencent.mobileqq.hotpic.CircleProgressView;
-import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
-import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.smtt.sdk.ValueCallback;
+import java.lang.ref.WeakReference;
 
-public class adhu
-  implements Runnable
+public final class adhu
+  implements ValueCallback
 {
-  public adhu(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
+  public adhu(WeakReference paramWeakReference, Activity paramActivity) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotVideoMongoliaRelativeLayout.a.setProgress(this.a.jdField_a_of_type_ComTencentMobileqqHotpicVideoBaseItem.b());
-    if (this.a.jdField_b_of_type_Boolean) {
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_b_of_type_JavaLangRunnable, 100L);
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if ((localActivity != null) && (paramString != null) && (paramString.startsWith("http")))
+    {
+      if (UniformDownloadMgr.a().a() == null)
+      {
+        paramString = new Bundle();
+        paramString.putString("_filename_from_dlg", this.jdField_a_of_type_AndroidAppActivity.getString(2131435108));
+        Intent localIntent = new Intent("com.tencent.mobileqq.qfile_unifromdownload");
+        localIntent.putExtra("param", paramString);
+        localIntent.putExtra("url", "http://mdc.html5.qq.com/d/directdown.jsp?channel_id=10386");
+        localActivity.sendBroadcast(localIntent);
+      }
     }
+    else {
+      return;
+    }
+    FileManagerUtil.d(localActivity, "http://mdc.html5.qq.com/d/directdown.jsp?channel_id=10386");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adhu
  * JD-Core Version:    0.7.0.1
  */

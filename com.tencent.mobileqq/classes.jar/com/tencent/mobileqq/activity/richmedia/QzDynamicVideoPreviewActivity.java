@@ -84,22 +84,22 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
-import xpw;
-import xpx;
-import xpz;
-import xqc;
-import xqd;
-import xqe;
-import xqf;
-import xqg;
-import xqh;
-import xqi;
-import xqj;
-import xql;
-import xqm;
-import xqp;
-import xqq;
-import xqr;
+import xtc;
+import xtd;
+import xtf;
+import xti;
+import xtj;
+import xtk;
+import xtl;
+import xtm;
+import xtn;
+import xto;
+import xtp;
+import xtr;
+import xts;
+import xtv;
+import xtw;
+import xtx;
 
 public class QzDynamicVideoPreviewActivity
   extends FlowActivity
@@ -121,16 +121,16 @@ public class QzDynamicVideoPreviewActivity
   private QQStoryMusicInfo jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo;
   private PressDarkImageButton jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageButton;
   private URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  private AudioPlayer.AudioPlayerListener jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener = new xpw(this);
+  private AudioPlayer.AudioPlayerListener jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer$AudioPlayerListener = new xtc(this);
   private AudioPlayer jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer;
-  private IFastRenderCallback jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectListenerIFastRenderCallback = new xpz(this);
+  private IFastRenderCallback jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectListenerIFastRenderCallback = new xtf(this);
   private P2VEffectConvertor jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMainP2VEffectConvertor;
   private DynamicVideoView jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewDynamicVideoView;
   private ExtendEditText jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText;
   private RotationSeekBar jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewRotationSeekBar;
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   private CircleProgressView jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressView;
-  Runnable jdField_a_of_type_JavaLangRunnable = new xqi(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new xto(this);
   public String a;
   public ArrayList a;
   public boolean a;
@@ -190,7 +190,7 @@ public class QzDynamicVideoPreviewActivity
   {
     this.jdField_a_of_type_Int = 1;
     this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_AndroidOsHandler = new xqh(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new xtn(this, Looper.getMainLooper());
   }
   
   private int a(float paramFloat)
@@ -220,7 +220,7 @@ public class QzDynamicVideoPreviewActivity
     if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo == null) {
       return;
     }
-    this.jdField_b_of_type_JavaLangRunnable = new xqe(this, this.jdField_a_of_type_Long / 1000L, (int)ShortVideoUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.jdField_g_of_type_JavaLangString) / 1000, paramString);
+    this.jdField_b_of_type_JavaLangRunnable = new xtk(this, this.jdField_a_of_type_Long / 1000L, (int)ShortVideoUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicQQStoryMusicInfo.jdField_g_of_type_JavaLangString) / 1000, paramString);
     QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread").post(this.jdField_b_of_type_JavaLangRunnable);
   }
   
@@ -245,8 +245,8 @@ public class QzDynamicVideoPreviewActivity
   
   private void c(String paramString)
   {
-    xqf localxqf = new xqf(this);
-    MediaScannerConnection.scanFile(this, new String[] { paramString }, null, localxqf);
+    xtl localxtl = new xtl(this);
+    MediaScannerConnection.scanFile(this, new String[] { paramString }, null, localxtl);
   }
   
   private void c(boolean paramBoolean)
@@ -310,48 +310,48 @@ public class QzDynamicVideoPreviewActivity
       if (this.jdField_c_of_type_JavaUtilArrayList.size() != 0) {
         break label124;
       }
-      QQToast.a(this, getString(2131432930), 0).a();
+      QQToast.a(this, getString(2131432947), 0).a();
       finish();
     }
     label124:
     while (i2 == 0) {
       return;
     }
-    QQToast.a(this, getString(2131432929), 0).a();
+    QQToast.a(this, getString(2131432946), 0).a();
   }
   
   private void n()
   {
-    QzoneModuleManager.getInstance().downloadModule("cyber_clink.jar", new xqm(this));
+    QzoneModuleManager.getInstance().downloadModule("cyber_clink.jar", new xts(this));
   }
   
   private void o()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewDynamicVideoView = ((DynamicVideoView)a(2131372578));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131371541));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageButton = ((PressDarkImageButton)a(2131372588));
-    this.jdField_b_of_type_ComTencentBizQqstoryViewPressDarkImageButton = ((PressDarkImageButton)a(2131372589));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364428));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131371911));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewRotationSeekBar = ((RotationSeekBar)a(2131372582));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewDynamicVideoView = ((DynamicVideoView)a(2131372759));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131371706));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageButton = ((PressDarkImageButton)a(2131372769));
+    this.jdField_b_of_type_ComTencentBizQqstoryViewPressDarkImageButton = ((PressDarkImageButton)a(2131372770));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131364452));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131372084));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewRotationSeekBar = ((RotationSeekBar)a(2131372763));
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewRotationSeekBar.setMax(100);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)a(2131372580));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)a(2131372581));
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)a(2131372583));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131373348));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131372576));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)a(2131372575));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131372584));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131372587));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)a(2131372585));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)a(2131372586));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131372579));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)a(2131372761));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)a(2131372762));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)a(2131372764));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131373529));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131372757));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)a(2131372756));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)a(2131372765));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131372768));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)a(2131372766));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)a(2131372767));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131372760));
   }
   
   private void p()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, "放弃制作照片视频？", null, "放弃", "取消", new xqp(this), new xqq(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230, "放弃制作照片视频？", null, "放弃", "取消", new xtv(this), new xtw(this));
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
@@ -367,7 +367,7 @@ public class QzDynamicVideoPreviewActivity
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMainP2VEffectConvertor.setWaterMarkerEnable(this.jdField_j_of_type_Boolean);
     v();
     QLog.d("QzDynamicVideoPreviewActivity", 2, "cancel genera dynamic Video");
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMainP2VEffectConvertor.cancelSave(new xpx(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMainP2VEffectConvertor.cancelSave(new xtd(this));
     if (this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.isHeld()) {
       this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.release();
     }
@@ -738,7 +738,7 @@ public class QzDynamicVideoPreviewActivity
       }
       this.t = false;
       this.jdField_b_of_type_Long = System.currentTimeMillis();
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new xqc(this, localArrayList), 5000L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new xti(this, localArrayList), 5000L);
       i1 = this.jdField_d_of_type_JavaUtilArrayList.size();
       d1 = Math.random();
       i1 = (int)((i1 - 1) * d1);
@@ -753,7 +753,7 @@ public class QzDynamicVideoPreviewActivity
       a(localQQStoryMusicInfo);
     } while ((localQQStoryMusicInfo.jdField_d_of_type_JavaLangString == null) || (!TextUtils.isEmpty(localQQStoryMusicInfo.jdField_g_of_type_JavaLangString)));
     label157:
-    a(localQQStoryMusicInfo.jdField_d_of_type_JavaLangString, new xqd(this, localArrayList));
+    a(localQQStoryMusicInfo.jdField_d_of_type_JavaLangString, new xtj(this, localArrayList));
     return;
     label411:
   }
@@ -761,7 +761,7 @@ public class QzDynamicVideoPreviewActivity
   public void a(int paramInt)
   {
     this.jdField_d_of_type_Int = 2;
-    this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130844244);
+    this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130844368);
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMainP2VEffectConvertor.startPlay(this.jdField_e_of_type_Boolean);
     this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.acquire();
     if ((paramInt == 20) && (this.r))
@@ -818,7 +818,7 @@ public class QzDynamicVideoPreviewActivity
     {
       QLog.e("QzDynamicVideoPreviewActivity", 2, "CaptureUtil.loadP2VEffectSo() failed, Build.MODEL:" + Build.MODEL);
       P2VUtil.a().a(true);
-      QQToast.a(this, getString(2131432932), 0).a();
+      QQToast.a(this, getString(2131432949), 0).a();
       finish();
     }
     for (;;)
@@ -860,7 +860,7 @@ public class QzDynamicVideoPreviewActivity
       {
         QLog.e("QzDynamicVideoPreviewActivity", 2, "YTCommonInterface.initAuth get an UnsatisfiedLinkError");
         P2VUtil.a().a(true);
-        QQToast.a(this, getString(2131432932), 0).a();
+        QQToast.a(this, getString(2131432949), 0).a();
         finish();
       }
     }
@@ -870,7 +870,7 @@ public class QzDynamicVideoPreviewActivity
   {
     QLog.d("QzDynamicVideoPreviewActivity", 2, "onCreateView start");
     this.jdField_b_of_type_AndroidViewViewGroup = paramViewGroup;
-    getLayoutInflater().inflate(2130971006, paramViewGroup);
+    getLayoutInflater().inflate(2130971054, paramViewGroup);
     o();
     this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(URLDrawable.getDrawable("https://qzonestyle.gtimg.cn/aoi/sola/20180130195753_CLvDhicQgS.png", null));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
@@ -880,12 +880,12 @@ public class QzDynamicVideoPreviewActivity
     ((View)localObject).setVisibility(8);
     paramViewGroup.addView((View)localObject);
     this.jdField_a_of_type_AndroidViewView = ((View)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText = ((ExtendEditText)a(2131373349));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText = ((ExtendEditText)a(2131373530));
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText.setEditableFactory(QzoneTextBuilder.b);
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewExtendEditText.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131373350));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131373531));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView = a(2131373352);
+    this.jdField_b_of_type_AndroidViewView = a(2131373533);
     this.jdField_a_of_type_AndroidWidgetProgressBar.setMax(100);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressView = new CircleProgressView(this);
     this.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressView.setVisibility(8);
@@ -906,8 +906,8 @@ public class QzDynamicVideoPreviewActivity
     this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
     this.jdField_c_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMainP2VEffectConvertor = new P2VEffectConvertor(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewDynamicVideoView.a(), this);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMainP2VEffectConvertor.addPlayerCallback(new xqj(this));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMainP2VEffectConvertor.setFilterProvider(new xql(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMainP2VEffectConvertor.addPlayerCallback(new xtp(this));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectMainP2VEffectConvertor.setFilterProvider(new xtr(this));
   }
   
   public void a(QQStoryMusicInfo paramQQStoryMusicInfo)
@@ -953,11 +953,11 @@ public class QzDynamicVideoPreviewActivity
     }
     if (!NetworkUtil.g(BaseApplication.getContext()))
     {
-      QQToast.a(BaseApplication.getContext(), 2131430016, 0).a();
+      QQToast.a(BaseApplication.getContext(), 2131430033, 0).a();
       paramDownloadProgressListener.a(paramString, 102);
       return;
     }
-    ThreadManager.post(new xqg(this, paramDownloadProgressListener, paramString, str), 5, null, true);
+    ThreadManager.post(new xtm(this, paramDownloadProgressListener, paramString, str), 5, null, true);
   }
   
   public void a(String paramString1, String paramString2)
@@ -1113,7 +1113,7 @@ public class QzDynamicVideoPreviewActivity
         this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.release();
       }
       if (paramBoolean) {
-        this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130844243);
+        this.jdField_a_of_type_AndroidWidgetImageButton.setImageResource(2130844367);
       }
     }
   }
@@ -1181,7 +1181,7 @@ public class QzDynamicVideoPreviewActivity
     if (this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageButton != null)
     {
       if (paramInt == 0) {
-        this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageButton.setImageResource(2130843462);
+        this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageButton.setImageResource(2130843583);
       }
     }
     else {
@@ -1189,10 +1189,10 @@ public class QzDynamicVideoPreviewActivity
     }
     if (3 == paramInt)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageButton.setImageResource(2130843461);
+      this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageButton.setImageResource(2130843582);
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageButton.setImageResource(2130843455);
+    this.jdField_a_of_type_ComTencentBizQqstoryViewPressDarkImageButton.setImageResource(2130843576);
   }
   
   public void b(boolean paramBoolean)
@@ -1453,8 +1453,8 @@ public class QzDynamicVideoPreviewActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131372578: 
-    case 2131372580: 
+    case 2131372759: 
+    case 2131372761: 
       do
       {
         return;
@@ -1472,30 +1472,30 @@ public class QzDynamicVideoPreviewActivity
       }
       e();
       return;
-    case 2131372588: 
+    case 2131372769: 
       if (this.k)
       {
-        QQToast.a(this, getString(2131432925), 0).a();
+        QQToast.a(this, getString(2131432942), 0).a();
         return;
       }
       if (this.p)
       {
-        QQToast.a(this, getString(2131432924), 0).a();
+        QQToast.a(this, getString(2131432941), 0).a();
         return;
       }
       s();
       paramView = new P2VEditMusicDialog(this, this, (int)this.jdField_a_of_type_Long, true);
       paramView.setCanceledOnTouchOutside(true);
-      paramView.setOnDismissListener(new xqr(this));
+      paramView.setOnDismissListener(new xtx(this));
       paramView.setCancelable(true);
       paramView.show();
       LpReportInfo_pf00064.allReport(680, 2, 1, true);
       LpReportInfo_pf00064.allReport(680, 3, 1, true);
       return;
-    case 2131372589: 
+    case 2131372770: 
       if (this.p)
       {
-        QQToast.a(this, getString(2131432924), 0).a();
+        QQToast.a(this, getString(2131432941), 0).a();
         return;
       }
       paramView = QZoneHelper.UserInfo.a();
@@ -1504,47 +1504,47 @@ public class QzDynamicVideoPreviewActivity
       QZoneHelper.d(this, paramView, (Bundle)localObject1, 10);
       LpReportInfo_pf00064.allReport(680, 2, 2, true);
       return;
-    case 2131372576: 
+    case 2131372757: 
       if (this.p)
       {
-        QQToast.a(this, getString(2131432924), 0).a();
+        QQToast.a(this, getString(2131432941), 0).a();
         return;
       }
       this.jdField_i_of_type_Int = 1;
       LpReportInfo_pf00064.allReport(680, 2, 6, true);
       c(true);
       return;
-    case 2131372575: 
+    case 2131372756: 
       if (this.p)
       {
-        QQToast.a(this, getString(2131432924), 0).a();
+        QQToast.a(this, getString(2131432941), 0).a();
         return;
       }
       this.jdField_i_of_type_Int = 3;
       LpReportInfo_pf00064.allReport(680, 2, 5, true);
       c(false);
       return;
-    case 2131371541: 
+    case 2131371706: 
       if (this.p) {
         r();
       }
       this.jdField_h_of_type_Boolean = false;
       p();
       return;
-    case 2131364428: 
+    case 2131364452: 
       if (this.p)
       {
-        QQToast.a(this, getString(2131432924), 0).a();
+        QQToast.a(this, getString(2131432941), 0).a();
         return;
       }
       this.jdField_i_of_type_Int = 2;
       LpReportInfo_pf00064.allReport(680, 2, 7, true);
       c(false);
       return;
-    case 2131373349: 
+    case 2131373530: 
       if (this.p)
       {
-        QQToast.a(this, getString(2131432924), 0).a();
+        QQToast.a(this, getString(2131432941), 0).a();
         return;
       }
       this.n = true;
@@ -1582,10 +1582,10 @@ public class QzDynamicVideoPreviewActivity
       QZoneHelper.a(this, (QZoneHelper.UserInfo)localObject1, 1009, "", paramView, "", "", 0, 1, 1, 0, 0, 0, "", 10000, (Bundle)localObject2, false, false, this.jdField_f_of_type_Int, this.jdField_h_of_type_Int, false);
       LpReportInfo_pf00064.allReport(680, 2, 3, true);
       return;
-    case 2131373350: 
+    case 2131373531: 
       if (this.p)
       {
-        QQToast.a(this, getString(2131432924), 0).a();
+        QQToast.a(this, getString(2131432941), 0).a();
         return;
       }
       LpReportInfo_pf00064.allReport(680, 5, 1, true);

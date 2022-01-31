@@ -1,44 +1,28 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
-import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.UUID;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil.GetApkPackageInfoCallback;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil.FileExecutor;
+import java.util.concurrent.Executor;
 
 public class actv
-  extends BizTroopObserver
+  implements FileCategoryUtil.GetApkPackageInfoCallback
 {
-  public actv(TroopFileModel paramTroopFileModel) {}
+  public actv(FileManagerEngine paramFileManagerEngine, FileManagerEntity paramFileManagerEntity, Runnable paramRunnable) {}
   
-  protected void a(Object paramObject)
+  public void a(String paramString)
   {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    paramObject = (TroopFileStatusInfo)paramObject;
-    if (((FileManagerEntity)localObject).TroopUin != paramObject.jdField_a_of_type_Long) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("TroopFileModel<FileAssistant>", 4, "difference troop uin file");
-      }
-    }
-    do
-    {
-      return;
-      if (TextUtils.isEmpty(TroopFileModel.a(this.a)))
-      {
-        localObject = TroopFileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject);
-        if (((TroopFileStatusInfo)localObject).jdField_a_of_type_JavaUtilUUID != null) {
-          TroopFileModel.a(this.a, ((TroopFileStatusInfo)localObject).jdField_a_of_type_JavaUtilUUID.toString());
-        }
-      }
-    } while ((paramObject.jdField_a_of_type_JavaUtilUUID == null) || (TroopFileModel.a(this.a) == null) || (!TroopFileModel.a(this.a).equals(paramObject.jdField_a_of_type_JavaUtilUUID.toString())));
-    TroopFileModel.a(this.a, paramObject);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = paramString;
+    FileManagerUtil.FileExecutor.a().execute(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  public void b(String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strApkPackageName = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     actv
  * JD-Core Version:    0.7.0.1
  */

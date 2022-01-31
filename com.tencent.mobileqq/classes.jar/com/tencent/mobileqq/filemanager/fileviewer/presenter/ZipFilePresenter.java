@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.fileviewer.presenter;
 
-import acvr;
-import acvs;
-import acvt;
-import acvu;
-import acvv;
+import adfo;
+import adfp;
+import adfq;
+import adfr;
+import adfs;
 import android.app.Activity;
 import android.os.Bundle;
 import android.text.SpannableString;
@@ -48,10 +48,10 @@ public class ZipFilePresenter
   {
     if (FileUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.a(true, new acvr(this));
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.a("用其他应用打开", new acvs(this));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.a(true, new adfo(this));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.a("用其他应用打开", new adfp(this));
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.a(true);
-      SpannableString localSpannableString = FileManagerUtil.a(this.jdField_a_of_type_AndroidAppActivity.getString(2131428223), "用QQ浏览器打开", new acvt(this));
+      SpannableString localSpannableString = FileManagerUtil.a(this.jdField_a_of_type_AndroidAppActivity.getString(2131428223), "用QQ浏览器打开", new adfq(this));
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.a(localSpannableString, LinkMovementMethod.getInstance());
       return;
     }
@@ -84,10 +84,10 @@ public class ZipFilePresenter
     }
     if (i == 6)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.a(true, "继续下载(" + FileSizeFormat.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b()) + ")", new acvu(this));
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.a(true, "继续下载(" + FileSizeFormat.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b()) + ")", new adfr(this));
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.a(true, "下载(" + FileSizeFormat.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b()) + ")", new acvv(this));
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerZipFileViewer.a(true, "下载(" + FileSizeFormat.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b()) + ")", new adfs(this));
   }
   
   public void a()
@@ -110,7 +110,7 @@ public class ZipFilePresenter
       if (NetworkUtil.g(this.jdField_a_of_type_AndroidAppActivity)) {
         break label278;
       }
-      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 1, this.jdField_a_of_type_AndroidAppActivity.getString(2131432992), 1).b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.j());
+      QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 1, this.jdField_a_of_type_AndroidAppActivity.getString(2131433009), 1).b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.j());
     }
     for (;;)
     {

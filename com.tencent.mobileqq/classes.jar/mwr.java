@@ -1,19 +1,37 @@
-import com.tencent.biz.pubaccount.PublicAccountArticleHandler;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.pubaccount.util.ProfileParams;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class mwr
-  implements Runnable
+public final class mwr
+  implements DialogInterface.OnClickListener
 {
-  public mwr(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public mwr(Activity paramActivity, ProfileParams paramProfileParams, QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 0;
-    if (PublicAccountImageCollectionMainActivity.d(this.a)) {
-      i = 1;
+    switch (paramInt)
+    {
     }
-    PublicAccountImageCollectionMainActivity.a(this.a).a(this.a.c, PublicAccountImageCollectionMainActivity.b(this.a), i);
-    PublicAccountImageCollectionMainActivity.a(this.a, "");
+    do
+    {
+      do
+      {
+        return;
+        ForwardSdkShareOption.a(this.jdField_a_of_type_AndroidAppActivity, false, "shareToQzone", Long.valueOf(this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams.a()).longValue());
+      } while ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing()));
+      this.jdField_a_of_type_AndroidAppActivity.setResult(0);
+      this.jdField_a_of_type_AndroidAppActivity.finish();
+      return;
+    } while (PublicAccountUtil.a == null);
+    PublicAccountUtil.a.dismiss();
+    PublicAccountUtil.a = null;
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    PublicAccountUtil.d(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountUtilProfileParams);
   }
 }
 

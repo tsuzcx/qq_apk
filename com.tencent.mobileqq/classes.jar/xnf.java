@@ -1,22 +1,30 @@
-import android.graphics.Bitmap;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoSwitchCameraPicMgr;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class xnf
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public xnf(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xnf(EditLocalVideoActivity paramEditLocalVideoActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    Bitmap localBitmap = null;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) {
-      localBitmap = this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.a(false);
+    switch (paramInt)
+    {
     }
-    if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-      this.a.jdField_a_of_type_AndroidOsHandler.post(new xoy(localBitmap, this.a.e));
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity.a("608", "4", "2", true);
+      EditLocalVideoActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, 0);
+      EditLocalVideoActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, 0);
+      EditLocalVideoActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, EditLocalVideoActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity));
+      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).postDelayed(new xng(this), 300L);
+      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, false);
+      EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, false);
     }
   }
 }

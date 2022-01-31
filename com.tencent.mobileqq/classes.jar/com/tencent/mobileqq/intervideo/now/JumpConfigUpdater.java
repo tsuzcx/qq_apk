@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.intervideo.now;
 
-import adkt;
+import adus;
 import android.os.Bundle;
 import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
 import com.tencent.qphone.base.util.QLog;
@@ -10,7 +10,7 @@ public class JumpConfigUpdater
   implements HttpWebCgiAsyncTask.Callback
 {
   long jdField_a_of_type_Long = 0L;
-  adkt jdField_a_of_type_Adkt;
+  adus jdField_a_of_type_Adus;
   String jdField_a_of_type_JavaLangString = "https://now.qq.com/qq/play.html?_bid=2374&_wv=16778245&from=50319";
   boolean jdField_a_of_type_Boolean = false;
   boolean b;
@@ -22,8 +22,8 @@ public class JumpConfigUpdater
       if (QLog.isColorLevel()) {
         QLog.i("XProxy|JumpConfigUpdater", 2, "拉取撑量开关 result字段为空");
       }
-      if (this.jdField_a_of_type_Adkt != null) {
-        this.jdField_a_of_type_Adkt.a(this.jdField_a_of_type_Boolean);
+      if (this.jdField_a_of_type_Adus != null) {
+        this.jdField_a_of_type_Adus.a(this.jdField_a_of_type_Boolean);
       }
       return;
     }
@@ -52,7 +52,7 @@ public class JumpConfigUpdater
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.JumpConfigUpdater
  * JD-Core Version:    0.7.0.1
  */

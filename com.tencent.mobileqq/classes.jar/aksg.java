@@ -1,22 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.open.downloadnew.MyAppApi;
+import android.view.View;
+import com.tencent.mobileqq.werewolves.ReflectUtils;
+import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.lang.reflect.Method;
 
 public class aksg
-  implements DialogInterface.OnDismissListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public aksg(MyAppApi paramMyAppApi) {}
+  public aksg(WerewolvesHostInterface paramWerewolvesHostInterface, Object paramObject, ActionSheet paramActionSheet) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.a.a = null;
-    this.a.c = false;
-    this.a.c = false;
+    paramView = ReflectUtils.a(this.jdField_a_of_type_JavaLangObject.getClass(), "onClick", new Class[] { Integer.TYPE });
+    try
+    {
+      paramView.invoke(this.jdField_a_of_type_JavaLangObject, new Object[] { Integer.valueOf(paramInt) });
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+    }
+    catch (Exception paramView)
+    {
+      for (;;)
+      {
+        paramView.printStackTrace();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aksg
  * JD-Core Version:    0.7.0.1
  */

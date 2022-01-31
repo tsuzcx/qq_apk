@@ -94,8 +94,8 @@ public class ComboEggView
   public void a(ComboUIManager paramComboUIManager, QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.b = ((ImageView)findViewById(2131362946));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362945));
+    this.b = ((ImageView)findViewById(2131362964));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362963));
     this.jdField_a_of_type_MqqOsMqqHandler = new MqqHandler(ThreadManager.getFileThreadLooper());
     this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboUIManager = paramComboUIManager;
     this.jdField_a_of_type_ComTencentMobileqqDoutuComboComboObject = new ComboObject(null, 0);
@@ -177,7 +177,7 @@ public class ComboEggView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.combo.ComboEggView
  * JD-Core Version:    0.7.0.1
  */

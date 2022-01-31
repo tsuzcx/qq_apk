@@ -1,21 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.RoamInfoListWrapper;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
-public final class ziz
-  implements Parcelable.Creator
+public class ziz
+  implements Runnable
 {
-  public RoamInfoListWrapper a(Parcel paramParcel)
-  {
-    RoamInfoListWrapper localRoamInfoListWrapper = new RoamInfoListWrapper();
-    localRoamInfoListWrapper.a = paramParcel.readArrayList(ArrayList.class.getClassLoader());
-    return localRoamInfoListWrapper;
-  }
+  public ziz(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public RoamInfoListWrapper[] a(int paramInt)
+  public void run()
   {
-    return new RoamInfoListWrapper[paramInt];
+    PhoneContactManagerImp.a(this.a, false, false);
   }
 }
 

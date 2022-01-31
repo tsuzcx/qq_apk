@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import ahvp;
+import aijs;
 import android.content.Context;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -49,7 +49,7 @@ public class StructMsgItemTextButton
   public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
     if (paramView != null) {
-      paramContext = (ahvp)paramView.getTag();
+      paramContext = (aijs)paramView.getTag();
     }
     for (;;)
     {
@@ -79,7 +79,7 @@ public class StructMsgItemTextButton
         paramView.setOnClickListener(this);
       }
       return paramView;
-      paramView = new ahvp(this);
+      paramView = new aijs(this);
       paramView.jdField_a_of_type_AndroidWidgetLinearLayout = a(paramContext);
       paramView.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
       paramView.b = new ImageView(paramContext);
@@ -206,7 +206,7 @@ public class StructMsgItemTextButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemTextButton
  * JD-Core Version:    0.7.0.1
  */

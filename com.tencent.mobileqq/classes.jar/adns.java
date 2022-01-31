@@ -1,54 +1,20 @@
-import android.app.Activity;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.ResultReceiver;
-import com.tencent.mobileqq.jsp.UiApiPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.smtt.export.external.extension.interfaces.IX5WebViewExtension;
-import com.tencent.smtt.sdk.WebView;
-import java.util.concurrent.atomic.AtomicLong;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class adns
-  extends BroadcastReceiver
+class adns
+  implements DialogInterface.OnClickListener
 {
-  public adns(UiApiPlugin paramUiApiPlugin) {}
+  adns(adnq paramadnq, QQCustomDialog paramQQCustomDialog) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramContext = (ResultReceiver)paramIntent.getParcelableExtra("receiver");
-    long l = paramIntent.getLongExtra("seq", 0L);
-    Bundle localBundle = new Bundle();
-    localBundle.putLong("seq", l);
-    if (UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get() != -1L) {
-      paramContext.send(-1, localBundle);
-    }
-    String str = paramIntent.getStringExtra("date");
-    paramIntent = paramIntent.getStringExtra("id");
-    Object localObject = this.a.mRuntime.a();
-    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
-    {
-      localObject = this.a.mRuntime.a();
-      if ((localObject == null) || (((WebView)localObject).getX5WebViewExtension() == null))
-      {
-        paramContext.send(-2, localBundle);
-        return;
-      }
-      localBundle = new Bundle();
-      localBundle.putString("date", str);
-      localBundle.putString("id", paramIntent);
-      UiApiPlugin.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(l);
-      UiApiPlugin.jdField_a_of_type_AndroidOsResultReceiver = paramContext;
-      ((WebView)localObject).getX5WebViewExtension().invokeMiscMethod("uploadX5CoreLiveLog", localBundle);
-      return;
-    }
-    paramContext.send(-2, localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adns
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby.gameroom;
 
-import aebp;
-import aebq;
-import aebt;
-import aebu;
+import aeov;
+import aeow;
+import aeoz;
+import aepa;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,7 +21,7 @@ public class GameRoomTransActivity
   public GameRoomTransActivity()
   {
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new aebt(this);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new aeoz(this);
   }
   
   public void a()
@@ -30,7 +30,7 @@ public class GameRoomTransActivity
     {
       i = getIntent().getIntExtra("roomNum", 10);
       int j = getIntent().getIntExtra("zoneId", 0);
-      ((WerewolvesHandler)this.app.a(107)).b(i, j, new aebp(this, i));
+      ((WerewolvesHandler)this.app.a(107)).b(i, j, new aeov(this, i));
       return;
     }
     catch (Exception localException)
@@ -46,7 +46,7 @@ public class GameRoomTransActivity
   {
     String str = getIntent().getStringExtra("inviteId");
     int i = getIntent().getIntExtra("roomNum", 10);
-    ((WerewolvesHandler)this.app.a(107)).a(str, true, new aebq(this, str, i));
+    ((WerewolvesHandler)this.app.a(107)).a(str, true, new aeow(this, str, i));
   }
   
   protected void c()
@@ -54,7 +54,7 @@ public class GameRoomTransActivity
     int i = getIntent().getIntExtra("roomNum", 10);
     int j = getIntent().getIntExtra("zoneId", 0);
     long l = getIntent().getLongExtra("gc", -1L);
-    ((WerewolvesHandler)this.app.a(107)).a(new aebu(this, l, i, j));
+    ((WerewolvesHandler)this.app.a(107)).a(new aepa(this, l, i, j));
   }
   
   protected boolean doOnCreate(Bundle paramBundle)

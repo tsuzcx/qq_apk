@@ -1,42 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.richmedia.capture.audio.AudioCapture;
-import com.tencent.mobileqq.richmedia.capture.audio.AudioDataCache;
-import com.tencent.util.WeakReferenceHandler;
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
-import dov.com.qq.im.capture.music.humrecognition.humming.IRecognizer;
-import java.io.File;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
 
 public class amwe
-  implements Runnable
+  implements amwl
 {
-  public amwe(HummingActivity paramHummingActivity) {}
+  public amwe(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, String paramString) {}
   
-  public void run()
+  public void a()
   {
-    HummingActivity.a(this.a);
-    if (HummingActivity.a(this.a)) {
-      HummingActivity.a(this.a).sendEmptyMessage(4);
-    }
-    do
-    {
-      return;
-      if (HummingActivity.b(this.a) >= 5)
-      {
-        HummingActivity.a(this.a).sendEmptyMessage(5);
-        return;
-      }
-    } while (HummingActivity.a(this.a).a == null);
-    File localFile = new File(HummingActivity.a(this.a).a.b());
-    if (localFile.exists()) {
-      HummingActivity.a(this.a).a(localFile);
-    }
-    HummingActivity.a(this.a).a();
-    HummingActivity.a(this.a).postDelayed(this, 3000L);
+    this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin.playAudioList(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwe
  * JD-Core Version:    0.7.0.1
  */

@@ -247,13 +247,13 @@ public class VasQuickUpdateEngine
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
-    //   3: new 347	java/util/zip/ZipFile
+    //   3: new 347	com/tencent/commonsdk/zip/QZipFile
     //   6: dup
     //   7: aload_0
-    //   8: invokespecial 350	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
+    //   8: invokespecial 350	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/io/File;)V
     //   11: astore 6
     //   13: aload 6
-    //   15: invokevirtual 354	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
+    //   15: invokevirtual 354	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
     //   18: astore 10
     //   20: sipush 8192
     //   23: newarray byte
@@ -445,7 +445,7 @@ public class VasQuickUpdateEngine
     //   423: astore_0
     //   424: aload 6
     //   426: aload 12
-    //   428: invokevirtual 418	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   428: invokevirtual 418	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   431: astore 5
     //   433: aload 5
     //   435: aload 11
@@ -491,7 +491,7 @@ public class VasQuickUpdateEngine
     //   510: aload 6
     //   512: ifnull +8 -> 520
     //   515: aload 6
-    //   517: invokevirtual 440	java/util/zip/ZipFile:close	()V
+    //   517: invokevirtual 440	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   520: aload_0
     //   521: areturn
     //   522: aload 5
@@ -512,7 +512,7 @@ public class VasQuickUpdateEngine
     //   550: aload 5
     //   552: astore 7
     //   554: aload 6
-    //   556: invokevirtual 440	java/util/zip/ZipFile:close	()V
+    //   556: invokevirtual 440	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   559: aload 5
     //   561: ifnull +8 -> 569
     //   564: aload 5
@@ -524,7 +524,7 @@ public class VasQuickUpdateEngine
     //   577: aload 6
     //   579: ifnull +279 -> 858
     //   582: aload 6
-    //   584: invokevirtual 440	java/util/zip/ZipFile:close	()V
+    //   584: invokevirtual 440	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   587: aload_0
     //   588: areturn
     //   589: astore_1
@@ -589,7 +589,7 @@ public class VasQuickUpdateEngine
     //   695: aload 6
     //   697: ifnull +8 -> 705
     //   700: aload 6
-    //   702: invokevirtual 440	java/util/zip/ZipFile:close	()V
+    //   702: invokevirtual 440	com/tencent/commonsdk/zip/QZipFile:close	()V
     //   705: aload_0
     //   706: athrow
     //   707: astore_1
@@ -1262,7 +1262,7 @@ public class VasQuickUpdateEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasQuickUpdateEngine
  * JD-Core Version:    0.7.0.1
  */

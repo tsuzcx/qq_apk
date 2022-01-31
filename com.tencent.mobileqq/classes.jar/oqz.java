@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.view.widget.LoadingMoreHelper;
 
 public class oqz
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public oqz(QRCardActivity paramQRCardActivity) {}
+  public oqz(LoadingMoreHelper paramLoadingMoreHelper) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onClick(View paramView)
+  {
+    this.a.b(true);
+  }
 }
 
 

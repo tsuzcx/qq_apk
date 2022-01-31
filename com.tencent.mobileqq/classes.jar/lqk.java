@@ -1,14 +1,24 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class lqk
   implements Runnable
 {
-  public lqk(ChannelCoverInfoModule paramChannelCoverInfoModule, ChannelCoverInfo paramChannelCoverInfo) {}
+  public lqk(ArticleReadInfoModule paramArticleReadInfoModule, List paramList) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelCoverInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo);
+    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > 0))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
+      {
+        ArticleReadInfo localArticleReadInfo = (ArticleReadInfo)localIterator.next();
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelArticleReadInfoModule.a(localArticleReadInfo);
+      }
+    }
   }
 }
 

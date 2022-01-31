@@ -1,23 +1,25 @@
-import com.tencent.mobileqq.activity.photo.MediaFileFilter;
-import com.tencent.mobileqq.activity.photo.MimeHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.phone.BindNumberActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public final class wtj
-  extends MediaFileFilter
+public class wtj
+  implements DialogInterface.OnClickListener
 {
-  public boolean a()
-  {
-    return true;
-  }
+  public wtj(BindNumberActivity paramBindNumberActivity) {}
   
-  public boolean a(String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramString = MimeHelper.a(paramString);
-    return (paramString == null) || (!"image".equals(paramString[0])) || (!MimeHelper.a(paramString[1])) || (paramString[1].equals("gif"));
-  }
-  
-  public boolean b()
-  {
-    return false;
+    BindNumberActivity.a(this.a);
+    paramDialogInterface.dismiss();
+    paramDialogInterface = this.a.getIntent();
+    if (paramDialogInterface.getBooleanExtra("kFPhoneChange", false)) {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8005DE9", "0X8005DE9", 1, 0, "", "", "", "");
+    }
+    if (paramDialogInterface.getBooleanExtra("kUnityOther", false)) {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8005DE9", "0X8005DE9", 2, 0, "", "", "", "");
+    }
   }
 }
 

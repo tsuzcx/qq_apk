@@ -1,152 +1,220 @@
 import android.text.TextUtils;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
+import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qidian.controller.QidianBusinessObserver;
-import com.tencent.qidian.controller.QidianHandler;
-import com.tencent.qidian.controller.QidianHandler.NavigationMenuConfig;
-import com.tencent.qidian.controller.QidianPubAccountBigDataHandler;
-import com.tencent.qidian.data.PubAccountNavigationMenu;
-import com.tencent.qidian.data.QidianExternalInfo;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import mqq.app.AccountNotMatchException;
 
 public class voi
-  extends QidianBusinessObserver
+  extends FMObserver
 {
-  public voi(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public voi(AIOImageProviderService paramAIOImageProviderService) {}
   
-  protected void a(boolean paramBoolean, QidianHandler.NavigationMenuConfig paramNavigationMenuConfig)
+  protected void a(ThumbnailInfo paramThumbnailInfo)
   {
-    boolean bool = true;
-    if ((paramBoolean) && (paramNavigationMenuConfig != null)) {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(String.valueOf(paramNavigationMenuConfig.jdField_a_of_type_Long)))) {
-        if (paramNavigationMenuConfig.jdField_a_of_type_Int == 1)
-        {
-          localQidianPubAccountBigDataHandler = (QidianPubAccountBigDataHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(105);
-          localPubAccountNavigationMenu = localQidianPubAccountBigDataHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-          localBusinessCmrTmpChatPie = this.a;
-          if (paramNavigationMenuConfig.jdField_b_of_type_Int == 0)
-          {
-            paramBoolean = bool;
-            BusinessCmrTmpChatPie.b(localBusinessCmrTmpChatPie, paramBoolean);
-            if ((localPubAccountNavigationMenu != null) && (paramNavigationMenuConfig.jdField_b_of_type_Int == localPubAccountNavigationMenu.version)) {
-              break label152;
-            }
-            localQidianPubAccountBigDataHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramNavigationMenuConfig.jdField_b_of_type_Long);
-          }
+    if (AIOImageProviderService.b(this.a) == null) {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver == null) {}
+    }
+    label258:
+    for (;;)
+    {
+      try
+      {
+        ((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.a.jdField_a_of_type_JavaLangString)).a().deleteObserver(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+        return;
+      }
+      catch (AccountNotMatchException paramThumbnailInfo)
+      {
+        paramThumbnailInfo.printStackTrace();
+        return;
+      }
+      long l = paramThumbnailInfo.a;
+      Object localObject = AIOImageProviderService.b(this.a).iterator();
+      FileManagerEntity localFileManagerEntity;
+      do
+      {
+        if (!((Iterator)localObject).hasNext()) {
+          break;
         }
+        localFileManagerEntity = (FileManagerEntity)((Iterator)localObject).next();
+      } while (localFileManagerEntity.nSessionId != l);
+      for (;;)
+      {
+        if (localFileManagerEntity == null) {
+          break label258;
+        }
+        AIOImageProviderService.b(this.a).remove(localFileManagerEntity);
+        localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
+        if (localObject == null) {
+          break;
+        }
+        int i = 18;
+        if (paramThumbnailInfo.jdField_b_of_type_Int == 5) {
+          i = 16;
+        }
+        if (FileUtil.a(paramThumbnailInfo.jdField_b_of_type_JavaLangString))
+        {
+          ((IAIOImageProviderCallBack)localObject).a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, 1, paramThumbnailInfo.jdField_b_of_type_JavaLangString, false);
+          this.a.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, paramThumbnailInfo.jdField_b_of_type_JavaLangString);
+          return;
+        }
+        ((IAIOImageProviderCallBack)localObject).a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, 2, null, false);
+        this.a.a(localFileManagerEntity.uniseq, localFileManagerEntity.status, i, "I:E");
+        return;
+        localFileManagerEntity = null;
       }
     }
-    label152:
-    while (!QLog.isColorLevel())
+  }
+  
+  protected void a(ThumbnailInfo paramThumbnailInfo, int paramInt)
+  {
+    if (AIOImageProviderService.b(this.a) == null) {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver == null) {}
+    }
+    label154:
+    for (;;)
+    {
+      try
+      {
+        ((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.a.jdField_a_of_type_JavaLangString)).a().deleteObserver(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+        return;
+      }
+      catch (AccountNotMatchException paramThumbnailInfo)
+      {
+        paramThumbnailInfo.printStackTrace();
+        return;
+      }
+      long l = paramThumbnailInfo.a;
+      Object localObject = AIOImageProviderService.b(this.a).iterator();
+      do
+      {
+        if (!((Iterator)localObject).hasNext()) {
+          break;
+        }
+        paramThumbnailInfo = (FileManagerEntity)((Iterator)localObject).next();
+      } while (paramThumbnailInfo.nSessionId != l);
+      for (;;)
+      {
+        if (paramThumbnailInfo == null) {
+          break label154;
+        }
+        localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
+        if ((localObject == null) || (paramThumbnailInfo == null)) {
+          break;
+        }
+        ((IAIOImageProviderCallBack)localObject).a(paramThumbnailInfo.uniseq, paramThumbnailInfo.status, 18, paramInt, paramThumbnailInfo.fileSize, false);
+        return;
+        paramThumbnailInfo = null;
+      }
+    }
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  {
+    if (AIOImageProviderService.a(this.a) == null) {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver == null) {}
+    }
+    IAIOImageProviderCallBack localIAIOImageProviderCallBack;
+    do
     {
       do
       {
+        try
+        {
+          ((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.a.jdField_a_of_type_JavaLangString)).a().deleteObserver(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+          return;
+        }
+        catch (AccountNotMatchException paramString)
+        {
+          paramString.printStackTrace();
+          return;
+        }
+        localIAIOImageProviderCallBack = null;
+        Iterator localIterator = AIOImageProviderService.a(this.a).iterator();
         do
         {
-          PubAccountNavigationMenu localPubAccountNavigationMenu;
-          for (;;)
-          {
-            QidianPubAccountBigDataHandler localQidianPubAccountBigDataHandler;
-            BusinessCmrTmpChatPie localBusinessCmrTmpChatPie;
-            return;
-            paramBoolean = false;
+          paramString = localIAIOImageProviderCallBack;
+          if (!localIterator.hasNext()) {
+            break;
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("BusinessChatPie", 2, "onGetNatigationStatus show directly");
-          }
-          if (BusinessCmrTmpChatPie.a(this.a) == 0)
-          {
-            this.a.a(localPubAccountNavigationMenu);
-            return;
-          }
-          BusinessCmrTmpChatPie.c(this.a);
-          return;
-        } while (!QLog.isColorLevel());
-        QLog.d("BusinessChatPie", 2, "onGetNatigationStatus response no need show");
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("BusinessChatPie", 2, "onGetNatigationStatus response not the same aio");
-      return;
-    }
-    QLog.d("BusinessChatPie", 2, "onGetNatigationStatus response error");
+          paramString = (FileManagerEntity)localIterator.next();
+        } while (paramString.nSessionId != paramLong2);
+      } while (paramString == null);
+      localIAIOImageProviderCallBack = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
+    } while ((localIAIOImageProviderCallBack == null) || (paramString == null));
+    localIAIOImageProviderCallBack.a(paramLong1, paramString.status, 20, (int)(paramString.fProgress * 10000.0F), paramString.fileSize, false);
   }
   
-  protected void a(boolean paramBoolean, PubAccountNavigationMenu paramPubAccountNavigationMenu)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    if (paramBoolean) {
-      if ((!BusinessCmrTmpChatPie.b(this.a)) && (BusinessCmrTmpChatPie.a(this.a) != 0)) {
-        BusinessCmrTmpChatPie.c(this.a);
-      }
+    if (AIOImageProviderService.a(this.a) == null) {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver == null) {}
     }
-    while (!QLog.isColorLevel())
+    label331:
+    for (;;)
     {
-      return;
-      this.a.a(paramPubAccountNavigationMenu);
-      return;
-    }
-    QLog.d("BusinessChatPie", 2, "onGetNatigation response error");
-  }
-  
-  protected void a(boolean paramBoolean, HashMap paramHashMap)
-  {
-    if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
-    {
-      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(paramHashMap.uin))
+      try
       {
-        if ((TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d)) || (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
+        ((QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.a.jdField_a_of_type_JavaLangString)).a().deleteObserver(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
+        return;
+      }
+      catch (AccountNotMatchException paramString1)
+      {
+        paramString1.printStackTrace();
+        return;
+      }
+      paramString1 = AIOImageProviderService.a(this.a).iterator();
+      Object localObject;
+      for (;;)
+      {
+        if (paramString1.hasNext())
         {
-          this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d = paramHashMap.nickname;
-          this.a.d.setText(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.d);
-        }
-        this.a.p();
-      }
-    }
-    while (!QLog.isColorLevel())
-    {
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("BusinessChatPie", 2, "onGetQidianMasterInfo not current uin");
-      return;
-    }
-    QLog.d("BusinessChatPie", 2, "onGetQidianMasterInfo fail");
-  }
-  
-  protected void b(boolean paramBoolean, HashMap paramHashMap)
-  {
-    super.b(paramBoolean, paramHashMap);
-    if ((paramBoolean) && (paramHashMap != null)) {}
-    try
-    {
-      int i = Integer.parseInt(String.valueOf(paramHashMap.get("result")));
-      String.valueOf(paramHashMap.get("master_uin"));
-      long l1;
-      QidianHandler localQidianHandler;
-      long l2;
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != null) && (i == 1))
-      {
-        l1 = Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-        paramHashMap = ((QidianPubAccountBigDataHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(105)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-        localQidianHandler = (QidianHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(85);
-        l2 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin();
-        if (paramHashMap == null) {
-          break label148;
+          localObject = (FileManagerEntity)paramString1.next();
+          if (((FileManagerEntity)localObject).nSessionId == paramLong2)
+          {
+            paramString1 = (String)localObject;
+            if (paramBoolean)
+            {
+              paramString1 = (String)localObject;
+              if (TextUtils.isEmpty(((FileManagerEntity)localObject).getFilePath())) {
+                QLog.d("AIOImageProviderService", 2, "find tempEntity,cloudtype: " + ((FileManagerEntity)localObject).cloudType + ",filepath:" + ((FileManagerEntity)localObject).strFilePath + ",sessionid:" + ((FileManagerEntity)localObject).nSessionId);
+              }
+            }
+          }
         }
       }
-      label148:
-      for (i = paramHashMap.version;; i = 0)
+      for (paramString1 = null;; paramString1 = null)
       {
-        localQidianHandler.a(l1, l2, i);
+        if (paramString1 == null) {
+          break label331;
+        }
+        AIOImageProviderService.a(this.a).remove(paramString1);
+        localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack;
+        if (localObject == null) {
+          break;
+        }
+        if (paramBoolean)
+        {
+          ((IAIOImageProviderCallBack)localObject).a(paramLong1, paramString1.status, 20, 1, paramString1.getFilePath(), false);
+          this.a.a(paramLong1, paramString1.status, 20, paramString1.getFilePath());
+          return;
+        }
+        if ((paramInt2 == -7003) || (paramInt2 == -6101)) {
+          paramString1.status = 16;
+        }
+        ((IAIOImageProviderCallBack)localObject).a(paramLong1, paramString1.status, 20, 2, paramString2, false);
+        this.a.a(paramLong1, paramString1.status, 20, "I:E");
         return;
       }
-      return;
     }
-    catch (Exception paramHashMap) {}
   }
 }
 

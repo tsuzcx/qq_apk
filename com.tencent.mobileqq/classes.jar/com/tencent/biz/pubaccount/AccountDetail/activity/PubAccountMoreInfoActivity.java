@@ -19,7 +19,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
-import kpv;
+import kpg;
 import mqq.app.NewIntent;
 import mqq.observer.BusinessObserver;
 
@@ -39,9 +39,9 @@ public class PubAccountMoreInfoActivity
   private void c()
   {
     super.setContentView(2130968581);
-    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131362693));
-    setTitle(getResources().getString(2131430035));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131362694);
+    this.jdField_a_of_type_AndroidWidgetScrollView = ((ScrollView)super.findViewById(2131362711));
+    setTitle(getResources().getString(2131430052));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131362712);
     if (ThemeUtil.isInNightMode(this.app)) {
       if (this.jdField_a_of_type_AndroidViewView != null) {
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -103,7 +103,7 @@ public class PubAccountMoreInfoActivity
     this.jdField_a_of_type_MqqAppNewIntent = new NewIntent(super.getApplicationContext(), PublicAccountServlet.class);
     this.jdField_a_of_type_MqqAppNewIntent.putExtra("cmd", "get_detail_info");
     mobileqq_mp.GetPublicAccountDetailInfoRequest localGetPublicAccountDetailInfoRequest = new mobileqq_mp.GetPublicAccountDetailInfoRequest();
-    localGetPublicAccountDetailInfoRequest.versionInfo.set("7.6.0,3,3525");
+    localGetPublicAccountDetailInfoRequest.versionInfo.set("7.6.3,3,3560");
     localGetPublicAccountDetailInfoRequest.version.set(1);
     if (this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail != null) {
       localGetPublicAccountDetailInfoRequest.seqno.set(this.jdField_a_of_type_ComTencentMobileqqDataAccountDetail.seqno);
@@ -115,7 +115,7 @@ public class PubAccountMoreInfoActivity
         localGetPublicAccountDetailInfoRequest.uin.set((int)Long.parseLong(this.jdField_a_of_type_JavaLangString));
         label119:
         this.jdField_a_of_type_MqqAppNewIntent.putExtra("data", localGetPublicAccountDetailInfoRequest.toByteArray());
-        this.jdField_a_of_type_MqqObserverBusinessObserver = new kpv(this);
+        this.jdField_a_of_type_MqqObserverBusinessObserver = new kpg(this);
         this.jdField_a_of_type_MqqAppNewIntent.setObserver(this.jdField_a_of_type_MqqObserverBusinessObserver);
         this.app.startServlet(this.jdField_a_of_type_MqqAppNewIntent);
         return;

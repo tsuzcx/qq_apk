@@ -208,7 +208,7 @@ public class SmartDeviceUtil
   {
     ToServiceMsg localToServiceMsg = new ToServiceMsg("mobileqq.service", paramAppRuntime.getAccount(), "smart_device_proxy.cgi");
     paramBundle.putString("skey", ((TicketManager)paramAppRuntime.getManager(2)).getSkey(paramAppRuntime.getAccount()));
-    paramBundle.putString("version", "7.6.0");
+    paramBundle.putString("version", "7.6.3");
     Object localObject = new StringBuilder();
     Iterator localIterator = paramBundle.keySet().iterator();
     while (localIterator.hasNext())

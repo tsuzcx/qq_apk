@@ -1,15 +1,46 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.storyHome.QQStoryBaseFragment;
+import android.graphics.Bitmap;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.qqstory.shareGroup.icon.UrlListToBitmapListSegment;
+import java.util.Arrays;
 
 public class nrx
-  implements Runnable
+  implements Handler.Callback
 {
-  public nrx(QQStoryBaseFragment paramQQStoryBaseFragment) {}
+  private nrx(UrlListToBitmapListSegment paramUrlListToBitmapListSegment) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    ((UserManager)SuperManager.a(2)).c();
+    int k = 0;
+    switch (paramMessage.what)
+    {
+    default: 
+      return false;
+    case 1: 
+      UrlListToBitmapListSegment.a(this.a, new Error((Throwable)paramMessage.obj));
+      return true;
+    }
+    paramMessage = (Bitmap[])paramMessage.obj;
+    int m = paramMessage.length;
+    int i = 0;
+    for (;;)
+    {
+      int j = k;
+      if (i < m)
+      {
+        if (paramMessage[i] == null) {
+          j = 1;
+        }
+      }
+      else
+      {
+        if (j == 0) {
+          UrlListToBitmapListSegment.a(this.a, Arrays.asList(paramMessage));
+        }
+        return true;
+      }
+      i += 1;
+    }
   }
 }
 

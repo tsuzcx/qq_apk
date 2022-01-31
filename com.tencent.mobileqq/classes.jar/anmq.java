@@ -1,26 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.permission.ComplexPart;
-import dov.com.tencent.biz.qqstory.takevideo.permission.ComplexPart.Group;
-import dov.com.tencent.biz.qqstory.takevideo.permission.PermissionPart.PartCallback;
+import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
+import com.tencent.open.base.ToastUtil;
+import com.tencent.util.WeakReferenceHandler;
+import dov.com.qq.im.capture.music.MusicDownloadListener;
+import dov.com.qq.im.capture.music.humrecognition.view.BgmRecognitionProviderView;
 
 public class anmq
-  implements View.OnClickListener
+  extends MusicDownloadListener
 {
-  public anmq(ComplexPart paramComplexPart, ComplexPart.Group paramGroup) {}
+  public anmq(BgmRecognitionProviderView paramBgmRecognitionProviderView) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString) {}
+  
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Group.a()) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Group.b();
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart.a != null) {
-        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart.a.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart);
-      }
-      return;
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoPermissionComplexPart$Group.c();
+    ToastUtil.a().a("正在下载: " + this.a.a);
+  }
+  
+  public void a(String paramString, boolean paramBoolean, int paramInt)
+  {
+    if ((paramBoolean) && (this.a.a.a().equals(paramString))) {
+      BgmRecognitionProviderView.a(this.a).sendEmptyMessage(1003);
     }
   }
 }

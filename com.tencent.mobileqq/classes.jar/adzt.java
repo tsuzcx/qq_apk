@@ -1,18 +1,29 @@
-import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
+import com.tencent.mobileqq.nearby.NearbyProcessMonitor;
+import com.tencent.mobileqq.nearby.NearbyUtils;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
 
-public final class adzt
+class adzt
   implements Runnable
 {
-  public adzt(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5) {}
+  adzt(adzs paramadzs) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.reportClickEvent("CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, this.d, this.e);
+    WebProcessManager localWebProcessManager = (WebProcessManager)this.a.a.a.getManager(12);
+    if ((localWebProcessManager != null) && (localWebProcessManager.d())) {
+      localWebProcessManager.a(202, new adzu(this));
+    }
+    if (NearbyUtils.b()) {
+      NearbyUtils.a("Q.lebatab.", new Object[] { "preload nearby process/tool process" });
+    }
+    NearbyProcessMonitor.a(this.a.a.a.getAccount(), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adzt
  * JD-Core Version:    0.7.0.1
  */

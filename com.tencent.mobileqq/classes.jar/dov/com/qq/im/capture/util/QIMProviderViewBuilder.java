@@ -21,9 +21,9 @@ public class QIMProviderViewBuilder
   public static final int[] b;
   public static final int[] c;
   public static final int[] d;
-  public static final int[] e = { 104, 2130845385, 2130845385, 2131362490 };
-  public static final int[] f = { 105, 2130845382, 2130845382, 2131362491 };
-  public static final int[] g = { 107, 2130841782, 2130841782, 2131362492 };
+  public static final int[] e = { 104, 2130845513, 2130845513, 2131362497 };
+  public static final int[] f = { 105, 2130845510, 2130845510, 2131362498 };
+  public static final int[] g = { 107, 2130841819, 2130841819, 2131362499 };
   private int jdField_a_of_type_Int = 0;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean a;
@@ -33,10 +33,10 @@ public class QIMProviderViewBuilder
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 108, 2130845383, 2130841712, 2131362486 };
-    jdField_b_of_type_ArrayOfInt = new int[] { 101, 2130845384, 2130841792, 2131362487 };
-    jdField_c_of_type_ArrayOfInt = new int[] { 102, 2130845386, 2130841991, 2131362488 };
-    jdField_d_of_type_ArrayOfInt = new int[] { 103, 2130845387, 2130845387, 2131362489 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 108, 2130845511, 2130841749, 2131362493 };
+    jdField_b_of_type_ArrayOfInt = new int[] { 101, 2130845512, 2130841829, 2131362494 };
+    jdField_c_of_type_ArrayOfInt = new int[] { 102, 2130845514, 2130842028, 2131362495 };
+    jdField_d_of_type_ArrayOfInt = new int[] { 103, 2130845515, 2130845515, 2131362496 };
   }
   
   public QIMProviderViewBuilder(int paramInt)
@@ -89,18 +89,18 @@ public class QIMProviderViewBuilder
       }
       return paramContext;
       paramContext = new ComboProviderView(paramContext);
-      paramContext.setId(2131362414);
+      paramContext.setId(2131362417);
       continue;
       paramContext = new QIMFilterProviderView(paramContext);
-      paramContext.setId(2131362415);
+      paramContext.setId(2131362418);
       continue;
       paramContext = new StaticStickerProviderView(paramContext);
-      paramContext.setId(2131362416);
+      paramContext.setId(2131362419);
       continue;
       paramContext = new QIMPtvTemplateProviderView(paramContext);
       continue;
       paramContext = new MusicProviderView(paramContext);
-      paramContext.setId(2131362417);
+      paramContext.setId(2131362420);
       continue;
       paramContext = new AdvancedProviderView(paramContext);
       paramContext.setNeedTabBar(false);

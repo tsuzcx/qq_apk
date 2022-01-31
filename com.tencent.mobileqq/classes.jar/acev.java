@@ -1,29 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.widget.ActionSheet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiAdapter;
+import com.tencent.mobileqq.utils.VipUtils;
+import java.util.List;
 
 public class acev
-  implements DialogInterface.OnKeyListener
+  implements View.OnClickListener
 {
-  public acev(UniformDownloadActivity paramUniformDownloadActivity) {}
+  public acev(EmoticonMainPanel paramEmoticonMainPanel, String paramString) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void onClick(View paramView)
   {
-    boolean bool = false;
-    if (paramInt == 4)
+    EmoticonMainPanel.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel);
+    SpriteCommFunc.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "emoticon_panel", false);
+    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_JavaUtilList.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter != null))
     {
-      if (this.a.a != null)
-      {
-        this.a.a.dismiss();
-        this.a.a = null;
+      paramView = (EmotionPanelInfo)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_JavaUtilList.get(0);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.a(paramView);
+      if ((paramView != null) && ((paramView instanceof SystemAndEmojiAdapter))) {
+        ((SystemAndEmojiAdapter)paramView).d();
       }
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-      bool = true;
     }
-    return bool;
+    VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonMainPanel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "0X8008232", this.jdField_a_of_type_JavaLangString, 0, 0, new String[] { "0", "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
   }
 }
 

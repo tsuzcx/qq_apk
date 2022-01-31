@@ -1,26 +1,29 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emosm.view.DragSortAdapter;
-import com.tencent.mobileqq.emosm.view.DragSortListView.DropListener;
-import com.tencent.mobileqq.emoticon.EmojiListenerManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.DevlockPushActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class sjh
-  implements DragSortListView.DropListener
+  implements Runnable
 {
-  public sjh(EmosmActivity paramEmosmActivity) {}
+  public sjh(DevlockPushActivity paramDevlockPushActivity) {}
   
-  public void b_(int paramInt1, int paramInt2)
+  public void run()
   {
-    if (paramInt1 != paramInt2)
+    try
     {
-      EmoticonPackage localEmoticonPackage = (EmoticonPackage)this.a.a.getItem(paramInt1);
-      this.a.a.a(localEmoticonPackage);
-      this.a.a.b(true);
-      this.a.a.a(localEmoticonPackage, paramInt2);
-      EmojiListenerManager.a().a(localEmoticonPackage, paramInt1, paramInt2);
-      this.a.c = true;
-      ReportController.b(this.a.app, "CliOper", "", "", "EmosSetting", "EpMove", 0, 0, "", "", "", "");
+      if ((this.a.a != null) && (this.a.a.isShowing()))
+      {
+        this.a.a.dismiss();
+        this.a.a.cancel();
+      }
+      this.a.a = null;
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
     }
   }
 }

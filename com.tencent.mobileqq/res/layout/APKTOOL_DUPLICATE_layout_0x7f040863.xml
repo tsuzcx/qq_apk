@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02171e" android:paddingTop="2.0dip" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0759" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c057e" android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="50.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b12a7" />
+    <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0546" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26a8" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:lineSpacingExtra="4.0dip" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26d0" android:visibility="gone" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="15.0dip" android:layout_marginTop="1.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020444" />
+    <TextView android:textSize="14.0dip" android:textStyle="bold" android:textColor="#ffff4222" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26d1" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:text="评论失败" android:drawableRight="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021d62" />
 </LinearLayout>

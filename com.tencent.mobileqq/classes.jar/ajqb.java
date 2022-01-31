@@ -1,81 +1,75 @@
-import android.content.Context;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.TextView;
-import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.utils.TroopNameHelper;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import tencent.im.oidb.cmd0x899.oidb_0x899.memberlist;
 
 public class ajqb
-  extends BaseAdapter
+  extends TroopObserver
 {
-  public ajqb(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns) {}
+  public ajqb(TroopNameHelper paramTroopNameHelper) {}
   
-  public int getCount()
+  protected void a(String paramString, boolean paramBoolean, List paramList, int paramInt, long paramLong)
   {
-    if (this.a.jdField_a_of_type_ArrayOfJavaLangString != null) {
-      return this.a.jdField_a_of_type_ArrayOfJavaLangString.length;
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
-    }
-    paramViewGroup = paramView;
-    if (paramView == null)
+    this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, Long.valueOf(paramLong));
+    paramList = (ajqc)this.a.b.get(paramString);
+    if (paramList != null)
     {
-      paramViewGroup = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130968846, null);
-      paramView = new ajqg(this.a, null);
-      paramView.a = ((TextView)paramViewGroup.findViewById(2131364031));
-      paramViewGroup.setTag(paramView);
+      TroopNameHelper.a(this.a, paramList);
+      this.a.b.remove(paramString);
     }
-    paramView = (ajqg)paramViewGroup.getTag();
-    int i;
-    int j;
-    int k;
-    int m;
-    if (paramView.a != null)
+  }
+  
+  protected void a(boolean paramBoolean, long paramLong1, int paramInt1, List paramList, long paramLong2, int paramInt2, String paramString)
+  {
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      paramView.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-      paramView.a.setOnClickListener(new ajqf(this.a, paramInt));
-      i = paramView.a.getPaddingTop();
-      j = paramView.a.getPaddingLeft();
-      k = paramView.a.getPaddingRight();
-      m = paramView.a.getPaddingBottom();
-      if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
-        break label207;
+      localObject = new StringBuilder(150);
+      ((StringBuilder)localObject).append("onOIDB0X899_0_Ret").append("| isSuccess = ").append(paramBoolean).append("| troopuin = ").append(paramLong1).append("| nFlag = ").append(paramInt1).append("| strErorMsg = ").append(paramString);
+      QLog.i("TroopNameHelper", 2, ((StringBuilder)localObject).toString());
+    }
+    paramString = String.valueOf(paramLong1);
+    if ((paramInt1 == 1) && (paramBoolean) && (this.a.b.containsKey(paramString)))
+    {
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(paramString);
+      if (localObject != null) {}
+    }
+    else
+    {
+      return;
+    }
+    if (paramList == null) {}
+    for (paramInt1 = 0;; paramInt1 = paramList.size())
+    {
+      if (paramInt1 == 1)
+      {
+        paramList = (oidb_0x899.memberlist)paramList.get(0);
+        if ((paramList == null) || (!paramList.uint64_member_uin.has())) {
+          break;
+        }
+        paramList = String.valueOf(paramList.uint64_member_uin.get());
+        if ((paramList != null) && (!"".equals(paramList.trim()))) {
+          ((TroopInfo)localObject).troopowneruin = paramList.trim();
+        }
       }
-      paramView.a.setBackgroundResource(2130838703);
-    }
-    for (;;)
-    {
-      paramView.a.setPadding(j, i, k, m);
-      return paramViewGroup;
-      label207:
-      if (paramInt == 0) {
-        paramView.a.setBackgroundResource(2130838704);
-      } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
-        paramView.a.setBackgroundResource(2130838702);
+      this.a.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b((TroopInfo)localObject);
+      paramList = (ajqc)this.a.b.get(paramString);
+      if ((paramList == null) || (paramList.a)) {
+        break;
       }
+      TroopNameHelper.a(this.a, paramList);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajqb
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.open.pcpush;
 
-import aktw;
+import aljm;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -45,7 +45,7 @@ public class PCPushProxy
   {
     this.jdField_a_of_type_Int = 111;
     DownloadManager.a().a(this);
-    this.jdField_a_of_type_AndroidOsHandler = new aktw(this, ThreadManager.getSubThreadLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new aljm(this, ThreadManager.getSubThreadLooper());
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(10);
     jdField_a_of_type_JavaUtilList = new ArrayList(10);
     this.jdField_a_of_type_ComTencentOpenPcpushPCPushDBHelper = new PCPushDBHelper();

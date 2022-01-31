@@ -81,7 +81,7 @@ public class PanelIconLinearLayout
     this.jdField_a_of_type_Int = 100;
     setOrientation(0);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setBackgroundResource(2130845549);
+    setBackgroundResource(2130845677);
     jdField_b_of_type_Int = AIOUtils.a(40.0F, paramContext.getResources());
   }
   
@@ -203,32 +203,32 @@ public class PanelIconLinearLayout
     {
       if (ShortVideoUtils.f())
       {
-        AIOPanelUtiles.n[2] = 2130843964;
-        AIOPanelUtiles.m[5] = 2130843963;
-        AIOPanelUtiles.m[6] = 2130845606;
+        AIOPanelUtiles.n[2] = 2130844088;
+        AIOPanelUtiles.m[5] = 2130844087;
+        AIOPanelUtiles.m[6] = 2130845734;
       }
       for (;;)
       {
         this.jdField_a_of_type_JavaUtilArrayList.add(AIOPanelUtiles.n);
         return;
-        AIOPanelUtiles.n[2] = 2130843953;
-        AIOPanelUtiles.m[5] = 2130843952;
-        AIOPanelUtiles.m[6] = 2130845525;
+        AIOPanelUtiles.n[2] = 2130844077;
+        AIOPanelUtiles.m[5] = 2130844076;
+        AIOPanelUtiles.m[6] = 2130845653;
       }
     }
     if (ShortVideoUtils.f())
     {
-      AIOPanelUtiles.m[2] = 2130837693;
-      AIOPanelUtiles.m[5] = 2130845605;
-      AIOPanelUtiles.m[6] = 2130845606;
+      AIOPanelUtiles.m[2] = 2130837696;
+      AIOPanelUtiles.m[5] = 2130845733;
+      AIOPanelUtiles.m[6] = 2130845734;
     }
     for (;;)
     {
       this.jdField_a_of_type_JavaUtilArrayList.add(AIOPanelUtiles.m);
       return;
-      AIOPanelUtiles.m[2] = 2130837638;
-      AIOPanelUtiles.m[5] = 2130845524;
-      AIOPanelUtiles.m[6] = 2130845525;
+      AIOPanelUtiles.m[2] = 2130837641;
+      AIOPanelUtiles.m[5] = 2130845652;
+      AIOPanelUtiles.m[6] = 2130845653;
     }
   }
   
@@ -270,7 +270,7 @@ public class PanelIconLinearLayout
             break label594;
           }
           localRedDotImageView.setReddotXOffsetDp(15);
-          localRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130845924));
+          localRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130846052));
           localRedDotImageView.a(true);
         }
         label402:
@@ -280,7 +280,7 @@ public class PanelIconLinearLayout
             break label602;
           }
           localRedDotImageView.setReddotXOffsetDp(15);
-          localRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130845924));
+          localRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130846052));
           localRedDotImageView.a(true);
         }
         label459:
@@ -295,7 +295,7 @@ public class PanelIconLinearLayout
           break label610;
         }
         localRedDotImageView.setReddotXOffsetDp(15);
-        localRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130845924));
+        localRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130846052));
         localRedDotImageView.a(true);
       }
       for (;;)
@@ -324,7 +324,7 @@ public class PanelIconLinearLayout
           {
             localRedDotImageView.setReddotXOffsetDp(11);
             localRedDotImageView.setReddotYOffsetDp(8);
-            localRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130845451));
+            localRedDotImageView.setRedDotDrawable(getResources().getDrawable(2130845579));
             localRedDotImageView.a(true);
           }
           else if (!jdField_a_of_type_JavaLangBoolean.booleanValue())
@@ -887,25 +887,25 @@ public class PanelIconLinearLayout
     switch (PokeItemHelper.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
     {
     default: 
-      AIOPanelUtiles.A[2] = 2130837688;
+      AIOPanelUtiles.A[2] = 2130837691;
     }
     for (;;)
     {
       this.jdField_a_of_type_JavaUtilArrayList.add(AIOPanelUtiles.A);
       return;
-      AIOPanelUtiles.A[2] = 2130837688;
+      AIOPanelUtiles.A[2] = 2130837691;
       continue;
-      AIOPanelUtiles.A[2] = 2130837688;
+      AIOPanelUtiles.A[2] = 2130837691;
       continue;
-      AIOPanelUtiles.A[2] = 2130837637;
+      AIOPanelUtiles.A[2] = 2130837640;
       continue;
-      AIOPanelUtiles.A[2] = 2130837701;
+      AIOPanelUtiles.A[2] = 2130837704;
       continue;
-      AIOPanelUtiles.A[2] = 2130837699;
+      AIOPanelUtiles.A[2] = 2130837702;
       continue;
-      AIOPanelUtiles.A[2] = 2130837641;
+      AIOPanelUtiles.A[2] = 2130837644;
       continue;
-      AIOPanelUtiles.A[2] = 2130837700;
+      AIOPanelUtiles.A[2] = 2130837703;
     }
   }
   
@@ -1132,7 +1132,7 @@ public class PanelIconLinearLayout
         if (localView.getTag().equals(Integer.valueOf(paramInt)))
         {
           ((RedDotImageView)localView).setReddotXOffsetDp(15);
-          ((RedDotImageView)localView).setRedDotDrawable(getResources().getDrawable(2130845924));
+          ((RedDotImageView)localView).setRedDotDrawable(getResources().getDrawable(2130846052));
           ((RedDotImageView)localView).a(paramBoolean);
         }
       }

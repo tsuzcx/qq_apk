@@ -1,17 +1,32 @@
-import android.content.Context;
-import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.av.AVLog;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.VideoAppInterface;
 
 public class jdt
-  implements Runnable
+  implements MediaPlayer.OnCompletionListener
 {
   public jdt(VideoController paramVideoController) {}
   
-  public void run()
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    if (this.a.a().N) {
-      ((AudioManager)this.a.a.getSystemService("audio")).setSpeakerphoneOn(true);
+    AVLog.d(VideoController.jdField_a_of_type_JavaLangString, "onCompletion request");
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.release();
+    }
+    if (!this.a.a().g()) {
+      return;
+    }
+    paramMediaPlayer = this.a;
+    if (this.a.a().jdField_c_of_type_Long == 2L) {}
+    for (int i = 4;; i = 1)
+    {
+      paramMediaPlayer.a("OnCompletionListener", 2131230740, i, this.a.b);
+      this.a.a().a("OnCompletionListener", 6);
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(14), Integer.valueOf(this.a.a().z), this.a.a().jdField_c_of_type_JavaLangString });
+      return;
     }
   }
 }

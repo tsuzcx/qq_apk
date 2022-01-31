@@ -1,22 +1,16 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.view.View;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import javax.net.ssl.HandshakeCompletedEvent;
+import javax.net.ssl.HandshakeCompletedListener;
 
-public class ylt
-  implements Runnable
+public final class ylt
+  implements HandshakeCompletedListener
 {
-  public ylt(CmGameStartChecker paramCmGameStartChecker, CmGameStartChecker.StartCheckParam paramStartCheckParam, byte[] paramArrayOfByte) {}
+  public ylt(View paramView, long paramLong) {}
   
-  public void run()
+  public void handshakeCompleted(HandshakeCompletedEvent paramHandshakeCompletedEvent)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game == null) {
-      return;
-    }
-    String str = ApolloConstant.n + this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId + ".patch";
-    FileUtils.a(this.jdField_a_of_type_ArrayOfByte, str);
-    this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker.c(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam);
+    ((ApolloSurfaceView)this.jdField_a_of_type_AndroidViewView).queueEvent(new ylu(this));
   }
 }
 

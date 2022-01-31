@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.filemanager.core.FileUploader;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
 
 public class aclu
-  implements Runnable
+  extends FMObserver
 {
-  public aclu(FileUploader paramFileUploader) {}
+  public aclu(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
   
-  public void run()
+  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
   {
-    this.a.a(FileUploader.a(this.a));
+    super.a(paramString1, paramString2, paramInteger, paramString3, paramBoolean);
   }
 }
 

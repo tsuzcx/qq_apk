@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.facetoface;
 
-import acbi;
-import acbj;
-import acbk;
-import acbl;
-import acbm;
-import acbn;
+import aclf;
+import aclg;
+import aclh;
+import acli;
+import aclj;
+import aclk;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
@@ -54,7 +54,7 @@ public class Face2FaceAddFriendAnim
   int jdField_e_of_type_Int = 0;
   List jdField_e_of_type_JavaUtilList;
   int jdField_f_of_type_Int = -1;
-  List jdField_f_of_type_JavaUtilList = Arrays.asList(new Integer[] { Integer.valueOf(2131363849), Integer.valueOf(2131363850), Integer.valueOf(2131363851), Integer.valueOf(2131363852), Integer.valueOf(2131363853), Integer.valueOf(2131363854), Integer.valueOf(2131363855), Integer.valueOf(2131363856), Integer.valueOf(2131363857), Integer.valueOf(2131363858) });
+  List jdField_f_of_type_JavaUtilList = Arrays.asList(new Integer[] { Integer.valueOf(2131363872), Integer.valueOf(2131363873), Integer.valueOf(2131363874), Integer.valueOf(2131363875), Integer.valueOf(2131363876), Integer.valueOf(2131363877), Integer.valueOf(2131363878), Integer.valueOf(2131363879), Integer.valueOf(2131363880), Integer.valueOf(2131363881) });
   int g;
   public int h = 0;
   public int i = 0;
@@ -136,9 +136,9 @@ public class Face2FaceAddFriendAnim
       RotateAnimation localRotateAnimation = new RotateAnimation(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, 1, 0.5F, 1, 0.5F);
       localRotateAnimation.setDuration(l);
       localRotateAnimation.setFillAfter(true);
-      localRotateAnimation.setInterpolator(new acbm(this));
+      localRotateAnimation.setInterpolator(new aclj(this));
       this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localRotateAnimation);
-      localRotateAnimation.setAnimationListener(new acbk(this, paramInt, paramBoolean));
+      localRotateAnimation.setAnimationListener(new aclh(this, paramInt, paramBoolean));
       return;
     }
   }
@@ -150,11 +150,11 @@ public class Face2FaceAddFriendAnim
     }
     this.jdField_c_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
     this.jdField_d_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().heightPixels;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363845));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363868));
     if ((paramInt == 1) && (!TextUtils.isEmpty(paramString)))
     {
-      ((ImageView)paramView.findViewById(2131363843)).setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839053);
+      ((ImageView)paramView.findViewById(2131363866)).setVisibility(4);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839057);
       paramQQAppInterface = paramQQAppInterface.a(paramString, (byte)3, false, false);
       if (paramQQAppInterface != null) {
         break label476;
@@ -164,7 +164,7 @@ public class Face2FaceAddFriendAnim
     label476:
     for (;;)
     {
-      paramString = (ImageView)paramView.findViewById(2131363844);
+      paramString = (ImageView)paramView.findViewById(2131363867);
       paramString.setImageBitmap(paramQQAppInterface);
       paramString.setVisibility(0);
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -225,8 +225,8 @@ public class Face2FaceAddFriendAnim
         localAnimationSet.addAnimation(localAlphaAnimation);
         localAnimationSet.setDuration(1000L);
         localAnimationSet.setFillAfter(true);
-        localAnimationSet.setInterpolator(new acbn(this));
-        localAnimationSet.setAnimationListener(new acbj(this));
+        localAnimationSet.setInterpolator(new aclk(this));
+        localAnimationSet.setAnimationListener(new aclg(this));
         if (localObject != null) {
           ((Face2FaceFriendBubbleView)localObject).startAnimation(localAnimationSet);
         }
@@ -373,8 +373,8 @@ public class Face2FaceAddFriendAnim
         boolean bool = this.jdField_b_of_type_Boolean;
         localObject2 = new TranslateAnimation(n, 0.0F, i1, 0.0F);
         ((TranslateAnimation)localObject2).setDuration(400L);
-        ((TranslateAnimation)localObject2).setInterpolator(new acbn(this));
-        ((TranslateAnimation)localObject2).setAnimationListener(new acbi(this, paramFace2FaceUserData, m, d1, bool, paramBoolean3, paramFace2FaceUserData, paramBoolean1, paramBoolean2, (Face2FaceFriendBubbleView)localObject1, paramInt));
+        ((TranslateAnimation)localObject2).setInterpolator(new aclk(this));
+        ((TranslateAnimation)localObject2).setAnimationListener(new aclf(this, paramFace2FaceUserData, m, d1, bool, paramBoolean3, paramFace2FaceUserData, paramBoolean1, paramBoolean2, (Face2FaceFriendBubbleView)localObject1, paramInt));
         ((Face2FaceFriendBubbleView)localObject1).startAnimation((Animation)localObject2);
         localObject1 = paramFace2FaceUserData.e;
         if ((paramFace2FaceUserData instanceof Face2FaceGroupProfile)) {
@@ -526,9 +526,9 @@ public class Face2FaceAddFriendAnim
       this.jdField_a_of_type_AndroidViewAnimationRotateAnimation = new RotateAnimation(f1, this.jdField_b_of_type_Float, 1, 0.5F, 1, 0.5F);
       this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setDuration(l);
       this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setFillAfter(true);
-      this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setInterpolator(new acbm(this));
+      this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setInterpolator(new aclj(this));
       this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationRotateAnimation);
-      this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setAnimationListener(new acbl(this));
+      this.jdField_a_of_type_AndroidViewAnimationRotateAnimation.setAnimationListener(new acli(this));
       return;
       this.jdField_a_of_type_Boolean = true;
       this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + m);

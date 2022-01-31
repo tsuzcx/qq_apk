@@ -38,16 +38,16 @@ public class ARMapOpenPOIDialog
   
   public ARMapOpenPOIDialog(Context paramContext)
   {
-    super(paramContext, 2131624515);
+    super(paramContext, 2131624516);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    setContentView(2130970207);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131363039);
-    this.c = ((TextView)findViewById(2131362933));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369625));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369630));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369626));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363787));
-    this.d = ((TextView)findViewById(2131369629));
+    setContentView(2130970223);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131363057);
+    this.c = ((TextView)findViewById(2131362951));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369702));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369707));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369703));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363810));
+    this.d = ((TextView)findViewById(2131369706));
     this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.d.setOnClickListener(this);
   }
@@ -66,7 +66,7 @@ public class ARMapOpenPOIDialog
       if (!TextUtils.isEmpty(paramItemInfo.jdField_b_of_type_JavaLangString))
       {
         localObject = new GradientDrawable();
-        ((GradientDrawable)localObject).setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493212));
+        ((GradientDrawable)localObject).setColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493213));
         ((GradientDrawable)localObject).setShape(1);
         i = AIOUtils.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
         ((GradientDrawable)localObject).setSize(i, i);
@@ -145,14 +145,14 @@ public class ARMapOpenPOIDialog
   public void onClick(View paramView)
   {
     Activity localActivity = (Activity)this.jdField_a_of_type_AndroidContentContext;
-    if (paramView.getId() == 2131369630) {
+    if (paramView.getId() == 2131369707) {
       if (!localActivity.isFinishing())
       {
         dismiss();
         localActivity.finish();
       }
     }
-    while (paramView.getId() != 2131369629) {
+    while (paramView.getId() != 2131369706) {
       return;
     }
     Intent localIntent = new Intent(localActivity, QQBrowserActivity.class);

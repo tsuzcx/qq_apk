@@ -35,12 +35,12 @@ public class MessageResultAdapter
     MessageRecord localMessageRecord;
     if (paramView == null)
     {
-      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130969074, null);
+      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2130969073, null);
       paramViewGroup = new BaseMessageResultAdapter.MessageHolder();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363873));
-      paramViewGroup.b = ((TextView)localView.findViewById(2131363878));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362701));
-      paramViewGroup.c = ((TextView)localView.findViewById(2131363183));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363896));
+      paramViewGroup.b = ((TextView)localView.findViewById(2131363901));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362719));
+      paramViewGroup.c = ((TextView)localView.findViewById(2131363201));
       localView.setTag(paramViewGroup);
       localMessageRecord = localMessageItem.a;
       paramViewGroup.b.setText(localMessageItem.a(localMessageRecord.msg));
@@ -63,7 +63,7 @@ public class MessageResultAdapter
         break label288;
       }
       paramView = AnonymousChatHelper.a(localMessageRecord);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131430270) + paramView.jdField_b_of_type_JavaLangString);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131430287) + paramView.jdField_b_of_type_JavaLangString);
       paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(URLDrawable.getDrawable(AnonymousChatHelper.a(paramView.jdField_b_of_type_Int)));
       paramViewGroup.c.setText(localMessageItem.a(localMessageRecord.time));
       return localView;
@@ -76,7 +76,7 @@ public class MessageResultAdapter
     if (localObject != null)
     {
       paramView = ((TroopBusinessUtil.TroopBusinessMessage)localObject).c;
-      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839128);
+      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130839132);
       localObject = URLDrawable.getDrawable(((TroopBusinessUtil.TroopBusinessMessage)localObject).jdField_a_of_type_JavaLangString, localDrawable, localDrawable);
       ((URLDrawable)localObject).setTag(URLDrawableDecodeHandler.a(100, 100, 6));
       ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.a);

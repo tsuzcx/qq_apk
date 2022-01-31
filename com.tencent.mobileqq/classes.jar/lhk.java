@@ -1,14 +1,29 @@
-import android.widget.Button;
+import android.view.View;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.VideoReporter;
 import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class lhk
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public lhk(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
+  public lhk(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    ReadInJoyCameraCaptureActivity.a(this.a).setVisibility(0);
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      PublicAccountReportUtils.a(null, "", "0X80081D2", "0X80081D2", 0, 0, "", "", "", VideoReporter.a(ReadInJoyCameraCaptureActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity)), false);
+      ReadInJoyCameraCaptureActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity, 8);
+      ReadInJoyCameraCaptureActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity);
+      ReadInJoyCameraCaptureActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCaptureReadInJoyCameraCaptureActivity);
+    }
   }
 }
 

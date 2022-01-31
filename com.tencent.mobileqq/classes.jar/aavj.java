@@ -1,59 +1,51 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.armap.ConversationARMap;
-import com.tencent.mobileqq.armap.config.ARMapConfigManager;
-import com.tencent.mobileqq.armap.wealthgod.ARMapLoadingActivity;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashView.ARMapLoadingLaunchListener;
-import com.tencent.mobileqq.armap.wealthgod.WealthGodInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ARMapHongBaoListView;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppInfo.AppDesc;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.AppPathInfo;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.UpdateAppByNameTask.Result;
+import java.util.HashMap;
 
-public class aavj
-  implements ARMapSplashView.ARMapLoadingLaunchListener
+class aavj
+  implements Runnable
 {
-  public aavj(ConversationARMap paramConversationARMap) {}
+  aavj(aavi paramaavi, ArkLocalAppMgr.UpdateAppByNameTask paramUpdateAppByNameTask, aavx paramaavx) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConversationARMap", 2, "onStartARMapLoading");
+    int i = this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_b_of_type_Int;
+    ??? = this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_a_of_type_JavaLangString;
+    if (i == 0) {
+      if (ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo.a.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Aavx.c) >= 0) {
+        ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("updateAppByName success, result=%s, app-name=%s, expect-ver=%s, local-ver=%s", new Object[] { ArkLocalAppMgr.UpdateAppByNameTask.Result.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Aavx.c, this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo.a.jdField_b_of_type_JavaLangString }));
+      }
     }
-    Object localObject = (ARMapConfigManager)this.a.jdField_a_of_type_ComTencentMobileqqActivityConversation.a.getManager(189);
-    ((ARMapConfigManager)localObject).c();
-    if (this.a.jdField_a_of_type_AndroidOsHandler != null) {
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(2004);
-    }
-    Intent localIntent = new Intent(this.a.jdField_a_of_type_AndroidAppActivity, ARMapLoadingActivity.class);
-    localIntent.putExtra("extra_need_completed_response", true);
-    localIntent.putExtra("entrance_from", 0);
-    this.a.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-    this.a.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 0);
-    if (this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView != null) {
-      this.a.jdField_a_of_type_ComTencentWidgetARMapHongBaoListView.setEnableTouch(true);
-    }
-    if (((ARMapConfigManager)localObject).a() != null) {}
-    for (localObject = "" + ((ARMapConfigManager)localObject).a().a;; localObject = "")
+    for (;;)
     {
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityConversation.a, "dc01440", "", "", "0X800783D", "0X800783D", 0, 0, "", "", "" + (String)localObject, "");
-      return;
+      this.jdField_a_of_type_Aavx.jdField_a_of_type_Int = i;
+      this.jdField_a_of_type_Aavx.jdField_a_of_type_JavaLangString = ((String)???);
+      if (i == 0) {
+        this.jdField_a_of_type_Aavx.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo = this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo;
+      }
+      synchronized (ArkLocalAppMgr.a(this.jdField_a_of_type_Aavi.a))
+      {
+        ArkLocalAppMgr.a(this.jdField_a_of_type_Aavi.a).put(this.jdField_a_of_type_Aavx.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Aavx.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo);
+        ArkLocalAppMgr.a(this.jdField_a_of_type_Aavi.a, this.jdField_a_of_type_Aavx);
+        return;
+        i = 6;
+        ??? = null;
+        ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("updateAppByName fail, invalid app version, result=%s, app-name=%s, expect-ver=%s, local-ver=%s", new Object[] { ArkLocalAppMgr.UpdateAppByNameTask.Result.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Aavx.c, this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_b_of_type_ComTencentMobileqqArkArkLocalAppMgr$AppPathInfo.a.jdField_b_of_type_JavaLangString }));
+        continue;
+        String str = this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$UpdateAppByNameTask.jdField_b_of_type_JavaLangString;
+        if (??? != null)
+        {
+          localObject2 = ???;
+          ArkAppCenter.b("ArkApp.ArkLocalAppMgr", String.format("updateAppByName fail, retCode=%d, app-name=%s, msg=%s", new Object[] { Integer.valueOf(i), str, localObject2 }));
+          continue;
+        }
+        Object localObject2 = "unknown";
+      }
     }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConversationARMap", 2, "onStartARMapLoadingCompleted");
-    }
-    if (ConversationARMap.a(this.a) != null) {
-      ConversationARMap.a(this.a).setWealthGodOffset(1.0F);
-    }
-    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 0L);
   }
 }
 

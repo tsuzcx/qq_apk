@@ -1,38 +1,53 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.common.galleryactivity.AnimationUtils;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.nearby.now.model.PicFeedUploadInfo;
+import com.tencent.mobileqq.nearby.now.protocol.CsTask.Callback;
+import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader;
+import com.tencent.mobileqq.nearby.now.send.uploader.ImageFeedsUploader.IFetchFeedListener;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.ilive_feeds_write.AddFeedRsp;
 
-class aevn
-  implements ActionSheet.OnButtonClickListener
+public class aevn
+  implements CsTask.Callback
 {
-  aevn(aevm paramaevm, View paramView, PicInfo paramPicInfo, ActionSheet paramActionSheet) {}
+  public aevn(ImageFeedsUploader paramImageFeedsUploader, ImageFeedsUploader.IFetchFeedListener paramIFetchFeedListener, PicFeedUploadInfo paramPicFeedUploadInfo, int paramInt) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    int i = paramInt;
-    if (this.jdField_a_of_type_Aevm.jdField_a_of_type_Int == 0) {
-      i = paramInt + 1;
-    }
-    switch (i)
+    paramBundle = new ilive_feeds_write.AddFeedRsp();
+    try
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (paramBundle.ret.get() != 0) {
+        if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$IFetchFeedListener != null) {
+          this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$IFetchFeedListener.a("");
+        }
+      }
+      while (this.jdField_a_of_type_Int == 3)
+      {
+        ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader).jdField_a_of_type_Int = paramBundle.ret.get();
+        ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader, ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader));
+        return;
+        if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$IFetchFeedListener != null) {
+          this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$IFetchFeedListener.a(new String(paramBundle.feed_id.get().toByteArray()));
+        }
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelPicFeedUploadInfo.feedId = new String(paramBundle.feed_id.get().toByteArray());
+      }
       return;
-      this.jdField_a_of_type_Aevm.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Aevm.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView, 0);
-      NearbyProfileEditTribePanel.a(this.jdField_a_of_type_Aevm.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel);
-      continue;
-      paramView = AnimationUtils.a(this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_Aevm.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.a(this.jdField_a_of_type_Aevm.jdField_a_of_type_Int, paramView, this.jdField_a_of_type_Aevm.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.jdField_a_of_type_JavaUtilArrayList);
-      continue;
-      NearbyProfileEditTribePanel.a(this.jdField_a_of_type_Aevm.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel, this.jdField_a_of_type_ComTencentMobileqqNearbyPicbrowserPicInfo, this.jdField_a_of_type_AndroidViewView);
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+      if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$IFetchFeedListener != null) {
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$IFetchFeedListener.a("");
+      }
+      if (this.jdField_a_of_type_Int == 3)
+      {
+        ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader).jdField_a_of_type_Int = -1005;
+        ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader, ImageFeedsUploader.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader));
+      }
     }
   }
 }

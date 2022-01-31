@@ -1,79 +1,34 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.troop.homework.HomeworkInfo;
-import com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.AbsPublishActivity;
+import com.tencent.mobileqq.troop.widget.PublishItemBar;
+import com.tencent.mobileqq.troop.widget.PublishItemContainer;
 
 public class aitj
-  extends TroopObserver
+  implements Animation.AnimationListener
 {
-  public aitj(SubmitHomeWorkFragment paramSubmitHomeWorkFragment) {}
+  public aitj(AbsPublishActivity paramAbsPublishActivity, Animation paramAnimation) {}
   
-  public void a(boolean paramBoolean, HomeworkInfo paramHomeworkInfo)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    super.a(paramBoolean, paramHomeworkInfo);
-    this.a.b();
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("获取作业信息");
-      if (!paramBoolean) {
-        break label124;
-      }
-    }
-    for (String str = "成功";; str = "失败")
-    {
-      QLog.d("SubmitHomeWorkFragment", 2, str);
-      if ((!paramBoolean) || (paramHomeworkInfo == null) || (paramHomeworkInfo.b == null)) {
-        break;
-      }
-      SubmitHomeWorkFragment.a(this.a, paramHomeworkInfo);
-      paramHomeworkInfo = paramHomeworkInfo.b;
-      try
-      {
-        paramHomeworkInfo = new JSONObject(paramHomeworkInfo).getJSONArray("c");
-        paramHomeworkInfo = new JSONObject().put("c", paramHomeworkInfo).toString();
-        SubmitHomeWorkFragment.a(this.a, paramHomeworkInfo);
-        return;
-      }
-      catch (Exception paramHomeworkInfo)
-      {
-        label124:
-        SubmitHomeWorkFragment.a(this.a, 3, null, null, null);
-        return;
-      }
-    }
-    SubmitHomeWorkFragment.a(this.a, 3, null, null, null);
-    SubmitHomeWorkFragment.a(this.a, null);
-    this.a.getActivity().finish();
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemBar.setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.b.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.b.clearAnimation();
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.clearAnimation();
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemContainer.a();
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.c.clearAnimation();
+    this.jdField_a_of_type_ComTencentMobileqqTroopActivityAbsPublishActivity.jdField_a_of_type_ComTencentMobileqqTroopWidgetPublishItemBar.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
   }
   
-  public void b(boolean paramBoolean, int paramInt)
-  {
-    super.b(paramBoolean, paramInt);
-    this.a.b();
-    if (paramBoolean)
-    {
-      SubmitHomeWorkFragment.a(this.a);
-      return;
-    }
-    if (paramInt == 1002)
-    {
-      SubmitHomeWorkFragment.a(this.a, 2, null, null, null);
-      return;
-    }
-    if (paramInt == 10022)
-    {
-      SubmitHomeWorkFragment.a(this.a, 1, null, null, null);
-      return;
-    }
-    SubmitHomeWorkFragment.a(this.a, 3, null, null, null);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aitj
  * JD-Core Version:    0.7.0.1
  */

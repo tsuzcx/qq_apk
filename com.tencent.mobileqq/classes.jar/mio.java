@@ -1,29 +1,32 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.ScaleAnimation;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshRes;
+import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
 public class mio
-  extends AnimateUtils.AnimationAdapter
+  implements Runnable
 {
-  public mio(ReadinjoyTabFrame paramReadinjoyTabFrame, View paramView1, View paramView2) {}
+  public mio(ReadInJoyListViewGroup paramReadInJoyListViewGroup, RefreshData paramRefreshData, ReadInJoyRefreshManager paramReadInJoyRefreshManager, SkinData paramSkinData, ReadInJoySkinManager paramReadInJoySkinManager) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    paramAnimation = new ScaleAnimation(1.1F, 1.0F, 1.1F, 1.0F, 1, 0.5F, 1, 0.5F);
-    paramAnimation.setDuration(166L);
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame).startAnimation(paramAnimation);
-    paramAnimation.setAnimationListener(new mip(this));
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.jdField_a_of_type_AndroidViewView.setAlpha(1.0F);
-    this.b.setAlpha(1.0F);
-    ReadinjoyTabFrame.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabFrame).setAlpha(1.0F);
+    int i = (int)(System.currentTimeMillis() / 1000L);
+    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData != null) && (i >= this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.beginTime) && (i <= this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.endTime) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.isShown) && (RefreshRes.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.id)) && (RefreshRes.a() != 0))
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager.a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinRefreshData.id);
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoyRefreshManager.a(true);
+      RefreshRes.a();
+      ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).sendEmptyMessage(1);
+    }
+    while ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData == null) || (i < this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData.beginTime) || (i > this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData.endTime) || (!CommonSkinRes.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData.id)) || (CommonSkinRes.b() == 0)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinReadInJoySkinManager.a(1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinSkinData.id);
+    CommonSkinRes.a();
+    ReadInJoyListViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyListViewGroup).sendEmptyMessage(1);
   }
 }
 

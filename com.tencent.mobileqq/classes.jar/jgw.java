@@ -1,88 +1,60 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Handler.Callback;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.av.AVLog;
-import com.tencent.av.business.manager.report.VideoNodeConstant;
-import com.tencent.av.business.manager.report.VideoNodeManager;
-import com.tencent.mobileqq.statistics.DcReportUtil;
-import java.util.Map;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.camera.VcCamera;
+import com.tencent.qphone.base.util.QLog;
 
-public final class jgw
-  implements Handler.Callback
+public class jgw
+  implements Runnable
 {
-  public boolean handleMessage(Message paramMessage)
+  private boolean jdField_a_of_type_Boolean = true;
+  
+  public jgw(CameraUtils paramCameraUtils) {}
+  
+  public void a(boolean paramBoolean)
   {
-    Bundle localBundle = paramMessage.getData();
-    switch (paramMessage.what)
-    {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public void run()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraUtils", 2, "closeCamera begin.");
     }
-    do
+    CameraUtils.a(this.jdField_a_of_type_ComTencentAvCameraCameraUtils).a(new Object[] { Integer.valueOf(3) });
+    if (this.jdField_a_of_type_ComTencentAvCameraCameraUtils.jdField_a_of_type_ComTencentAvCameraVcCamera != null) {
+      this.jdField_a_of_type_ComTencentAvCameraCameraUtils.jdField_a_of_type_ComTencentAvCameraVcCamera.c();
+    }
+    if (this.jdField_a_of_type_ComTencentAvCameraCameraUtils.jdField_a_of_type_ComTencentAvVideoController != null)
     {
-      do
+      this.jdField_a_of_type_ComTencentAvCameraCameraUtils.b("CloseCameraRunnable.run");
+      if (this.jdField_a_of_type_ComTencentAvCameraCameraUtils.jdField_a_of_type_ComTencentAvVideoController.a().d != 2) {
+        break label218;
+      }
+      if (this.jdField_a_of_type_Boolean)
       {
-        long l1;
-        int i;
-        long l2;
-        boolean bool;
-        do
+        this.jdField_a_of_type_ComTencentAvCameraCameraUtils.jdField_a_of_type_ComTencentAvVideoController.a().f = false;
+        if (!this.jdField_a_of_type_ComTencentAvCameraCameraUtils.jdField_a_of_type_ComTencentAvVideoController.a().g)
         {
-          do
-          {
-            return false;
-            VideoNodeManager.c();
-            VideoNodeManager.a(24, VideoNodeManager.b());
-            VideoNodeManager.a().sendEmptyMessageDelayed(1, 5000L);
-            return false;
-            l1 = localBundle.getLong("roomId");
-            i = localBundle.getInt("node");
-            l2 = localBundle.getLong("value");
-            bool = localBundle.getBoolean("isNode");
-            VideoNodeManager.a(i, true);
-          } while (VideoNodeManager.a(i, true, bool));
-          if ((bool) && (VideoNodeManager.a(33, true)))
-          {
-            AVLog.b("VideoNodeManager", "--> TempSeesion THE node_session_close has write !!  this node  be rejected !!   node = " + VideoNodeConstant.a(i));
-            return false;
-          }
-          VideoNodeManager.a(i + "", l2 + "", bool);
-          VideoNodeManager.a(i, l2, true);
-          AVLog.b("VideoNodeManager", "reportToTempSeesionRecord ,roomId = " + l1 + "  node = " + VideoNodeConstant.a(i) + ", value = " + l2 + "   isNode = " + bool);
-          return false;
-          l1 = localBundle.getLong("roomId");
-          i = localBundle.getInt("node");
-          l2 = localBundle.getLong("value");
-          bool = localBundle.getBoolean("isNode");
-          VideoNodeManager.a(i, false);
-        } while (VideoNodeManager.a(i, false, bool));
-        if ((bool) && (VideoNodeManager.a(33, false)))
-        {
-          AVLog.b("VideoNodeManager", "--> THE node_session_close has write !!  this node  be rejected !!   node = " + VideoNodeConstant.a(i));
-          return false;
+          this.jdField_a_of_type_ComTencentAvCameraCameraUtils.jdField_a_of_type_ComTencentAvVideoController.a().d = 1;
+          this.jdField_a_of_type_ComTencentAvCameraCameraUtils.jdField_a_of_type_ComTencentAvVideoController.c(1);
+          this.jdField_a_of_type_ComTencentAvCameraCameraUtils.jdField_a_of_type_ComTencentAvVideoController.a().Q = true;
         }
-        if (VideoNodeManager.a(i)) {
-          AVLog.a("VideoNodeManager", "reportToHandler  roomId = " + l1 + "  node = " + VideoNodeConstant.a(i) + ",  value = " + l2 + "   isNode = " + bool);
-        }
-        VideoNodeManager.b(i + "", l2 + "", bool);
-        VideoNodeManager.a(i, l2, false);
-        return false;
-        paramMessage = VideoNodeManager.a();
-        if (!TextUtils.isEmpty(paramMessage))
-        {
-          AVLog.a("VideoNodeManager", "--> handleMessage() what = MSG_REPORT_TO_SERVER detail = " + paramMessage);
-          DcReportUtil.a(null, "dc03209", paramMessage);
-          VideoNodeManager.e();
-        }
-      } while ((VideoNodeManager.a() == null) || (VideoNodeManager.a().size() == 0));
-      VideoNodeManager.j();
-      return false;
-      paramMessage = VideoNodeManager.b();
-      AVLog.b("VideoNodeManager", "--> handleMessage() what = MSG_REPORT_TEMP_RECORD_TO_SERVER detail = " + paramMessage);
-    } while (TextUtils.isEmpty(paramMessage));
-    DcReportUtil.a(null, "dc03209", paramMessage);
-    VideoNodeManager.f();
-    return false;
+      }
+    }
+    for (;;)
+    {
+      CameraUtils.a(this.jdField_a_of_type_ComTencentAvCameraCameraUtils).a(new Object[] { Integer.valueOf(4), Boolean.valueOf(true) });
+      this.jdField_a_of_type_ComTencentAvCameraCameraUtils.f();
+      if (QLog.isColorLevel()) {
+        QLog.d("CameraUtils", 2, "closeCamera end.");
+      }
+      return;
+      label218:
+      if ((this.jdField_a_of_type_ComTencentAvCameraCameraUtils.jdField_a_of_type_ComTencentAvVideoController.a().d == 4) && (!this.jdField_a_of_type_ComTencentAvCameraCameraUtils.jdField_a_of_type_ComTencentAvVideoController.a().g)) {
+        this.jdField_a_of_type_ComTencentAvCameraCameraUtils.jdField_a_of_type_ComTencentAvVideoController.a().d = 3;
+      }
+    }
   }
 }
 

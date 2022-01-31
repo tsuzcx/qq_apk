@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acna;
+import acwx;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.app.FMObserver;
@@ -22,7 +22,7 @@ public class OfflineVideoThumbDownLoader
   public OfflineVideoThumbDownLoader(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new acna(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new acwx(this);
     paramQQAppInterface.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
   }
   

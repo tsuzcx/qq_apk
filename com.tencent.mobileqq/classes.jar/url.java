@@ -1,22 +1,26 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgLayout;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleResHelper;
 
 public class url
-  implements ArkAppCenter.OnGetAppIcon
+  implements Runnable
 {
-  public url(ArkAppItemBubbleBuilder.Holder paramHolder1, ArkAppItemBubbleBuilder.Holder paramHolder2) {}
+  public url(DoodleMsgLayout paramDoodleMsgLayout) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void run()
   {
-    if (paramBitmap != null)
-    {
-      this.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+    Drawable localDrawable1 = DoodleResHelper.a().a(1, DoodleMsgLayout.a(this.a), true);
+    if (localDrawable1 != null) {
+      ((URLDrawable)localDrawable1).setIndividualPause(true);
     }
+    Drawable localDrawable2 = DoodleResHelper.a().a(2, DoodleMsgLayout.a(this.a), false);
+    if (localDrawable2 != null) {
+      ((URLDrawable)localDrawable2).startDownload();
+    }
+    new Handler(Looper.getMainLooper()).post(new urm(this, localDrawable1, localDrawable2));
   }
 }
 

@@ -1,18 +1,25 @@
-import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.mobileqq.app.PublicAccountHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import msf.msgsvc.msg_svc.PbSendMsgReq;
 
 public class zgv
-  implements Runnable
+  extends SendMessageHandler.SendMessageRunnable
 {
-  public zgv(PublicAccountHandler paramPublicAccountHandler) {}
+  public zgv(MessageHandler paramMessageHandler, msg_svc.PbSendMsgReq paramPbSendMsgReq, int paramInt, long paramLong) {}
   
   public void run()
   {
-    EcShopAssistantManager localEcShopAssistantManager = (EcShopAssistantManager)this.a.b.getManager(87);
-    if (localEcShopAssistantManager != null) {
-      localEcShopAssistantManager.a(null, "FollowList");
-    }
+    ToServiceMsg localToServiceMsg = this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a("MessageSvc.PbReceiptRead", null);
+    localToServiceMsg.putWupBuffer(this.jdField_a_of_type_MsfMsgsvcMsg_svc$PbSendMsgReq.toByteArray());
+    localToServiceMsg.extraData.putLong("msgSeq", this.jdField_a_of_type_Int);
+    localToServiceMsg.extraData.putInt("msgtype", 2);
+    localToServiceMsg.extraData.putString("uin", Long.toString(this.jdField_a_of_type_Long));
+    localToServiceMsg.extraData.putLong("timeOut", this.c);
+    localToServiceMsg.extraData.putInt("retryIndex", this.b);
+    localToServiceMsg.setTimeout(this.c);
+    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b(localToServiceMsg);
   }
 }
 

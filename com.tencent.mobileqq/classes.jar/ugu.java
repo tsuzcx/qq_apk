@@ -1,11 +1,18 @@
-import android.graphics.drawable.Drawable;
+import android.app.Dialog;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
 
 public class ugu
+  implements Runnable
 {
-  public int a;
-  public Drawable a;
-  public String a;
-  public boolean a;
+  public ugu(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
+  
+  public void run()
+  {
+    if ((this.a.a != null) && (this.a.a.isShowing()) && (!this.a.isFinishing())) {
+      this.a.a.dismiss();
+    }
+    this.a.a = null;
+  }
 }
 
 

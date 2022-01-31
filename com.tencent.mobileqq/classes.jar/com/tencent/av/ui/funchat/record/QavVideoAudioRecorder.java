@@ -9,7 +9,7 @@ import com.tencent.mobileqq.richmedia.mediacodec.encoder.EncodeInputSurface;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import kdy;
+import kdj;
 
 @TargetApi(18)
 public class QavVideoAudioRecorder
@@ -23,7 +23,7 @@ public class QavVideoAudioRecorder
   private EncodeInputSurface jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeInputSurface;
   private ByteArrayOutputStream jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream(32768);
   private String jdField_a_of_type_JavaLangString;
-  private kdy jdField_a_of_type_Kdy;
+  private kdj jdField_a_of_type_Kdj;
   private volatile boolean jdField_a_of_type_Boolean;
   private long b;
   private long c;
@@ -32,7 +32,7 @@ public class QavVideoAudioRecorder
   {
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
     this.jdField_a_of_type_AndroidOsHandlerThread.setPriority(10);
-    this.jdField_a_of_type_Kdy = new kdy(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    this.jdField_a_of_type_Kdj = new kdj(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
     this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordEncoder = new QavRecordEncoder(this);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEncodeInputSurface = new EncodeInputSurface();
   }
@@ -166,7 +166,7 @@ public class QavVideoAudioRecorder
   {
     Message localMessage = Message.obtain();
     localMessage.what = 1;
-    this.jdField_a_of_type_Kdy.sendMessage(localMessage);
+    this.jdField_a_of_type_Kdj.sendMessage(localMessage);
   }
   
   public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong)
@@ -174,11 +174,11 @@ public class QavVideoAudioRecorder
     if (QLog.isColorLevel()) {
       QLog.d("QavVideoAudioRecorder", 2, "videoFrameAvailable timestampNanos = " + paramLong + " ; textureId = " + paramInt2 + " ; EGLContext = " + EGL14.eglGetCurrentContext());
     }
-    this.jdField_a_of_type_Kdy.removeMessages(2);
+    this.jdField_a_of_type_Kdj.removeMessages(2);
     Message localMessage = Message.obtain();
     localMessage.what = 2;
     localMessage.obj = new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), paramArrayOfFloat1, paramArrayOfFloat2, Long.valueOf(paramLong) };
-    this.jdField_a_of_type_Kdy.sendMessage(localMessage);
+    this.jdField_a_of_type_Kdj.sendMessage(localMessage);
   }
   
   public void a(EncodeConfig paramEncodeConfig, QavRecordListener paramQavRecordListener)
@@ -190,7 +190,7 @@ public class QavVideoAudioRecorder
     paramQavRecordListener = Message.obtain();
     paramQavRecordListener.obj = paramEncodeConfig;
     paramQavRecordListener.what = 0;
-    this.jdField_a_of_type_Kdy.sendMessage(paramQavRecordListener);
+    this.jdField_a_of_type_Kdj.sendMessage(paramQavRecordListener);
   }
   
   public void a(byte[] paramArrayOfByte, long paramLong)
@@ -216,7 +216,7 @@ public class QavVideoAudioRecorder
         Message localMessage = Message.obtain();
         localMessage.what = 3;
         localMessage.obj = new Object[] { paramArrayOfByte, Long.valueOf(paramLong) };
-        this.jdField_a_of_type_Kdy.sendMessage(localMessage);
+        this.jdField_a_of_type_Kdj.sendMessage(localMessage);
         return;
       }
       try
@@ -233,7 +233,7 @@ public class QavVideoAudioRecorder
         paramArrayOfByte = Message.obtain();
         paramArrayOfByte.what = 3;
         paramArrayOfByte.obj = new Object[] { this.jdField_a_of_type_JavaIoByteArrayOutputStream.toByteArray(), Long.valueOf(this.c) };
-        this.jdField_a_of_type_Kdy.sendMessage(paramArrayOfByte);
+        this.jdField_a_of_type_Kdj.sendMessage(paramArrayOfByte);
         this.jdField_a_of_type_JavaIoByteArrayOutputStream.reset();
         return;
       }

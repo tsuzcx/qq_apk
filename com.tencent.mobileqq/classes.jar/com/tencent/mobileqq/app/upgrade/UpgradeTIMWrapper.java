@@ -17,12 +17,12 @@ import java.io.File;
 import java.io.UnsupportedEncodingException;
 import mqq.app.MobileQQ;
 import org.xmlpull.v1.XmlPullParser;
-import ztm;
+import zws;
 
 public class UpgradeTIMWrapper
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ztm();
+  public static final Parcelable.Creator CREATOR = new zws();
   public int a;
   public String a;
   public String b;

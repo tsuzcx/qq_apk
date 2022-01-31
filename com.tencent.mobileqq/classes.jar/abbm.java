@@ -1,21 +1,15 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashBgView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abbm
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnDismissListener
 {
-  public abbm(ARMapSplashBgView paramARMapSplashBgView) {}
+  public abbm(ARMapActivity paramARMapActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    if (ARMapSplashBgView.a(this.a) != null)
-    {
-      ARMapSplashBgView.a(this.a).setPivotY(ARMapSplashBgView.a(this.a).getHeight() * 0.7F);
-      ARMapSplashBgView.a(this.a).setRotation(paramValueAnimator.floatValue() * ARMapSplashBgView.b(this.a));
-    }
+    ARMapActivity.q(this.a);
   }
 }
 

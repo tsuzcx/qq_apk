@@ -1,21 +1,30 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.playmode.child.SelectVideosPlayMode;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.common.util.NetworkUtil;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.playmode.child.MsgTabPlayMode;
+import com.tencent.biz.qqstory.playmode.util.MsgTabVideoDataProvider;
+import com.tencent.biz.qqstory.playmode.util.MsgTabVideoDataProvider.MsgTabVideoDataEvent;
+import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
+import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter.VideoViewHolder;
 import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.widget.QQToast;
 
-class njt
-  implements Runnable
+public class njt
+  implements View.OnClickListener
 {
-  njt(njs paramnjs, ArrayList paramArrayList) {}
+  public njt(MsgTabPlayMode paramMsgTabPlayMode, MsgTabVideoDataProvider.MsgTabVideoDataEvent paramMsgTabVideoDataEvent, int paramInt, VideoPlayerPagerAdapter.VideoViewHolder paramVideoViewHolder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Njs.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.a.setVisibility(8);
-    this.jdField_a_of_type_Njs.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.a(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Njs.a.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter.notifyDataSetChanged();
-    this.jdField_a_of_type_Njs.a.jdField_a_of_type_AndroidOsHandler.post(new nju(this));
+    if (!NetworkUtil.a(VideoPlayModeBase.a()))
+    {
+      QQToast.a(VideoPlayModeBase.a(), 1, 2131430298, 0).a();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.a.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider$MsgTabVideoDataEvent.a, this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilMsgTabVideoDataProvider$MsgTabVideoDataEvent.b, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
+    this.jdField_a_of_type_ComTencentBizQqstoryVideoplayerVideoPlayerPagerAdapter$VideoViewHolder.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
   }
 }
 

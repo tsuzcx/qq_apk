@@ -1,31 +1,29 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoPoiSearch;
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.util.InputMethodUtil;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import java.util.ArrayList;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
+import com.tencent.biz.qqstory.network.request.GetLocationRequest;
+import com.tencent.biz.qqstory.network.response.GetLocationResponse;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoFilterNeo;
 
 public class oeq
-  implements AbsListView.OnScrollListener
+  implements CmdTaskManger.CommandCallback
 {
-  int jdField_a_of_type_Int = 0;
+  public oeq(EditVideoFilterNeo paramEditVideoFilterNeo) {}
   
-  public oeq(EditVideoPoiSearch paramEditVideoPoiSearch) {}
-  
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void a(@NonNull GetLocationRequest paramGetLocationRequest, @Nullable GetLocationResponse paramGetLocationResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (paramInt == 1) {
-      InputMethodUtil.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a().a());
-    }
-    while ((paramInt != 0) || (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a == null) || (this.jdField_a_of_type_Int < this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch.a.size())) {
+    SLog.b("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress Cmd Respond.");
+    if ((paramErrorMessage.isSuccess()) && (paramGetLocationResponse != null))
+    {
+      SLog.a("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond success : %s .", paramGetLocationResponse.toString());
+      paramGetLocationRequest = new AddressDataProvider.AddressInfo(paramGetLocationResponse.a, paramGetLocationResponse.c, paramGetLocationResponse.d, paramGetLocationResponse.e, paramGetLocationResponse.f, paramGetLocationRequest.d, paramGetLocationRequest.e);
+      this.a.a(0, paramGetLocationRequest);
       return;
     }
-    EditVideoPoiSearch.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPoiSearch);
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
+    SLog.e("Q.qqstory.publish.edit.EditVideoFilterNeo", "requestAddress onCmdRespond failed : %s .", new Object[] { paramErrorMessage.toString() });
   }
 }
 

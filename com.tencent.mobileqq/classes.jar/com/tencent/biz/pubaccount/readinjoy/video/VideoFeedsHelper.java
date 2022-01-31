@@ -13,6 +13,7 @@ import android.graphics.Point;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
@@ -34,12 +35,15 @@ import android.widget.TextView;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.common.ApiCompatibilityUtils;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
 import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager;
+import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.FeedsInfoUser;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCVideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 import com.tencent.image.URLDrawable;
@@ -55,19 +59,22 @@ import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.VersionUtils;
 import cooperation.readinjoy.ReadInJoyHelper;
+import java.lang.reflect.Method;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.List;
-import mau;
-import mav;
-import maw;
-import max;
-import may;
-import maz;
-import mba;
-import mbb;
-import mbc;
-import mbd;
-import mbe;
+import mbx;
+import mby;
+import mbz;
+import mca;
+import mcb;
+import mcc;
+import mcd;
+import mce;
+import mcf;
+import mcg;
+import mch;
+import mci;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
@@ -109,9 +116,9 @@ public class VideoFeedsHelper
     if (paramBaseArticleInfo.busiType == 6)
     {
       if (ReadInJoyBaseAdapter.f((ArticleInfo)paramBaseArticleInfo)) {
-        return Long.valueOf(paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.a);
+        return Long.valueOf(paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$FeedsInfoUser.jdField_a_of_type_Long);
       }
-      return Long.valueOf(paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.a);
+      return Long.valueOf(paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.jdField_a_of_type_Long);
     }
     return Long.valueOf(paramBaseArticleInfo.thirdUin);
   }
@@ -139,11 +146,8 @@ public class VideoFeedsHelper
   
   public static String a(BaseArticleInfo paramBaseArticleInfo)
   {
-    if (paramBaseArticleInfo.busiType == 1) {
-      return paramBaseArticleInfo.mSubscribeName;
-    }
-    if (paramBaseArticleInfo.busiType == 6) {
-      return paramBaseArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.b;
+    if ((paramBaseArticleInfo.busiType == 1) || (paramBaseArticleInfo.busiType == 6)) {
+      return paramBaseArticleInfo.getSubscribeName();
     }
     return paramBaseArticleInfo.thirdUinName;
   }
@@ -175,7 +179,7 @@ public class VideoFeedsHelper
   {
     int i = "流量不足？试试大王卡免流量播放".indexOf("大王卡");
     SpannableString localSpannableString = new SpannableString("流量不足？试试大王卡免流量播放");
-    localSpannableString.setSpan(new maw(paramContext), i, i + 3, 33);
+    localSpannableString.setSpan(new mbz(paramContext), i, i + 3, 33);
     paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
     paramTextView.setText(localSpannableString);
   }
@@ -197,7 +201,7 @@ public class VideoFeedsHelper
       localTextView.setBackgroundDrawable(a(paramContext));
       int i = AIOUtils.a(16.0F, paramContext.getResources());
       localTextView.setPadding(i, 0, i, 0);
-      paramString = new Dialog(paramContext, 2131624719);
+      paramString = new Dialog(paramContext, 2131624720);
       paramString.setContentView(localTextView, new ViewGroup.LayoutParams(-2, DisplayUtil.a(paramContext, 40.0F)));
       paramString.getWindow().setBackgroundDrawable(new ColorDrawable(0));
       paramString.setCanceledOnTouchOutside(false);
@@ -210,7 +214,7 @@ public class VideoFeedsHelper
         paramString.show();
         label186:
         jdField_a_of_type_AndroidAppDialog = paramString;
-        jdField_a_of_type_AndroidOsHandler.postDelayed(new mav(), 1000L);
+        jdField_a_of_type_AndroidOsHandler.postDelayed(new mby(), 1000L);
         return;
       }
       catch (Exception paramContext)
@@ -247,7 +251,7 @@ public class VideoFeedsHelper
         localObjectAnimator.setRepeatCount(0);
         localObjectAnimator.start();
         paramView.setLayerType(2, null);
-        localObjectAnimator.addListener(new mba(paramView));
+        localObjectAnimator.addListener(new mce(paramView));
         localObjectAnimator.start();
         return;
       }
@@ -258,13 +262,13 @@ public class VideoFeedsHelper
     localObjectAnimator.setRepeatCount(0);
     localObjectAnimator.start();
     paramView.setLayerType(2, null);
-    localObjectAnimator.addListener(new mbb(paramView));
+    localObjectAnimator.addListener(new mcf(paramView));
     localObjectAnimator.start();
   }
   
   public static void a(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
-    paramView.postDelayed(new maz(paramView, paramInt1, paramInt2), paramInt3);
+    paramView.postDelayed(new mcd(paramView, paramInt1, paramInt2), paramInt3);
   }
   
   public static void a(ImageView paramImageView, int paramInt)
@@ -273,7 +277,7 @@ public class VideoFeedsHelper
     if (localDrawable != null) {
       if ((localDrawable instanceof URLDrawable))
       {
-        ((URLDrawable)localDrawable).setURLDrawableListener(new mau(paramInt));
+        ((URLDrawable)localDrawable).setURLDrawableListener(new mbx(paramInt));
         if (((URLDrawable)localDrawable).getCurrDrawable() != null) {
           ((URLDrawable)localDrawable).getCurrDrawable().mutate().setAlpha(paramInt);
         }
@@ -330,7 +334,7 @@ public class VideoFeedsHelper
     }
     for (;;)
     {
-      paramTextView.post(new mbe(paramTextView, localStringBuilder));
+      paramTextView.post(new mci(paramTextView, localStringBuilder));
       return;
       localStringBuilder.append(l);
       break;
@@ -347,13 +351,31 @@ public class VideoFeedsHelper
       {
         ArticleInfo localArticleInfo = new ArticleInfo();
         localArticleInfo.innerUniqueID = paramVideoInfo.g;
-        localArticleInfo.mTitle = paramVideoInfo.c;
+        localArticleInfo.mTitle = paramVideoInfo.jdField_c_of_type_JavaLangString;
         localArticleInfo.mSubscribeName = paramVideoInfo.k;
         localArticleInfo.mSubscribeID = paramVideoInfo.j;
-        localArticleInfo.mFirstPagePicUrl = paramVideoInfo.b;
+        localArticleInfo.mFirstPagePicUrl = paramVideoInfo.jdField_b_of_type_JavaLangString;
         localArticleInfo.mVideoDuration = paramVideoInfo.d;
         localArticleInfo.mVideoCoverUrl = paramVideoInfo.a();
         localArticleInfo.mVideoVid = paramVideoInfo.jdField_a_of_type_JavaLangString;
+        localArticleInfo.mFeedType = paramVideoInfo.jdField_f_of_type_Int;
+        localArticleInfo.mFeedId = paramVideoInfo.jdField_c_of_type_Long;
+        if (paramVideoInfo.jdField_b_of_type_Boolean)
+        {
+          localArticleInfo.mSocialFeedInfo = new SocializeFeedsInfo();
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo = new SocializeFeedsInfo.UGCFeedsInfo();
+          if (paramVideoInfo.j != null) {
+            localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.jdField_a_of_type_Long = Long.valueOf(paramVideoInfo.j).longValue();
+          }
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.jdField_a_of_type_Int = paramVideoInfo.jdField_f_of_type_Int;
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.b = new ArrayList();
+          SocializeFeedsInfo.UGCVideoInfo localUGCVideoInfo = new SocializeFeedsInfo.UGCVideoInfo();
+          localUGCVideoInfo.h = paramVideoInfo.jdField_f_of_type_JavaLangString;
+          localUGCVideoInfo.e = paramVideoInfo.jdField_c_of_type_JavaLangString;
+          localUGCVideoInfo.d = paramVideoInfo.jdField_b_of_type_JavaLangString;
+          localUGCVideoInfo.jdField_a_of_type_Long = paramVideoInfo.d;
+          localArticleInfo.mSocialFeedInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructSocializeFeedsInfo$UGCFeedsInfo.b.add(localUGCVideoInfo);
+        }
         paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo = localArticleInfo;
       }
       if (TextUtils.isEmpty(paramVideoInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.innerUniqueID)) {
@@ -372,9 +394,14 @@ public class VideoFeedsHelper
     ForwardUtils.a(paramQQAppInterface, null, paramQQAppInterface.getApplication().getApplicationContext(), localIntent, null);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
+  public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
   {
-    PublicAccountUtil.a(paramQQAppInterface, paramQQAppInterface.getApp(), paramString, new max(), true, 17);
+    if (paramBoolean)
+    {
+      ReadInJoyLogicEngine.a().a().a(paramQQAppInterface.getAccount(), paramString, true, new mca(paramString, paramBoolean));
+      return;
+    }
+    PublicAccountUtil.a(paramQQAppInterface, paramQQAppInterface.getApp(), paramString, new mcb(paramBoolean), true, 17);
   }
   
   public static void a(String paramString1, String paramString2, TextView paramTextView)
@@ -413,7 +440,7 @@ public class VideoFeedsHelper
   public static void a(AppRuntime paramAppRuntime, Activity paramActivity)
   {
     if (ReadInJoyAtlasManager.a(paramActivity, true)) {
-      DialogUtil.b(paramActivity, 230, paramActivity.getString(2131431760), paramActivity.getString(2131431761), 2131432998, 2131431762, new may(), null).setMessageCount(null).show();
+      DialogUtil.b(paramActivity, 230, paramActivity.getString(2131431777), paramActivity.getString(2131431778), 2131433015, 2131431779, new mcc(), null).setMessageCount(null).show();
     }
   }
   
@@ -483,7 +510,7 @@ public class VideoFeedsHelper
   public static boolean a(AppRuntime paramAppRuntime, VideoInfo paramVideoInfo)
   {
     float f2 = ReadInJoyHelper.c(paramAppRuntime);
-    int j = ReadInJoyHelper.H(paramAppRuntime);
+    int j = ReadInJoyHelper.J(paramAppRuntime);
     float f1 = f2;
     if (f2 < 0.0F) {
       f1 = 0.75F;
@@ -512,7 +539,7 @@ public class VideoFeedsHelper
       localObject = ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay();
       localPoint = new Point();
       if (Build.VERSION.SDK_INT < 17) {
-        break label158;
+        break label248;
       }
       ((Display)localObject).getRealSize(localPoint);
       jdField_a_of_type_Int = localPoint.x;
@@ -520,11 +547,38 @@ public class VideoFeedsHelper
     }
     for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoFeedsHelper", 2, "getScreenSize() screenWidth=" + jdField_a_of_type_Int + ", screenHeight=" + jdField_b_of_type_Int);
+      int k = jdField_a_of_type_Int;
+      int j = jdField_b_of_type_Int;
+      int i = j;
+      if (b())
+      {
+        i = j;
+        if (b(paramActivity))
+        {
+          paramActivity = a(paramActivity);
+          i = j;
+          if (paramActivity != null)
+          {
+            i = j;
+            if (paramActivity.length >= 2)
+            {
+              i = j;
+              if (paramActivity[0] > 0)
+              {
+                i = j;
+                if (paramActivity[1] > 0) {
+                  i = jdField_b_of_type_Int - paramActivity[1];
+                }
+              }
+            }
+          }
+        }
       }
-      return new int[] { jdField_a_of_type_Int, jdField_b_of_type_Int };
-      label158:
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoFeedsHelper", 2, "getScreenSize() screenWidth=" + jdField_a_of_type_Int + ", screenHeight=" + jdField_b_of_type_Int + ", width=" + k + ", height=" + i);
+      }
+      return new int[] { k, i };
+      label248:
       if (Build.VERSION.SDK_INT >= 15)
       {
         ((Display)localObject).getSize(localPoint);
@@ -538,6 +592,57 @@ public class VideoFeedsHelper
         jdField_a_of_type_Int = ((DisplayMetrics)localObject).widthPixels;
         jdField_b_of_type_Int = ((DisplayMetrics)localObject).heightPixels;
       }
+    }
+  }
+  
+  private static int[] a(Context paramContext)
+  {
+    int[] arrayOfInt = new int[2];
+    int[] tmp5_4 = arrayOfInt;
+    tmp5_4[0] = 0;
+    int[] tmp9_5 = tmp5_4;
+    tmp9_5[1] = 0;
+    tmp9_5;
+    for (;;)
+    {
+      try
+      {
+        paramContext = paramContext.getClassLoader();
+        if (paramContext == null) {
+          break label214;
+        }
+        paramContext = paramContext.loadClass("com.huawei.android.util.HwNotchSizeUtil");
+        if (paramContext == null) {
+          break label214;
+        }
+        Method localMethod = paramContext.getMethod("getNotchSize", new Class[0]);
+        if (localMethod == null) {
+          break label214;
+        }
+        paramContext = (int[])localMethod.invoke(paramContext, new Object[0]);
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoFeedsHelper", 2, "getNotchSizeInHW() ret=" + paramContext);
+        }
+      }
+      catch (Exception paramContext)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("VideoFeedsHelper", 2, "getNotchSizeInHW() Exception=" + paramContext.getMessage());
+      }
+      finally
+      {
+        paramContext = arrayOfInt;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("VideoFeedsHelper", 2, "getNotchSizeInHW() ret=" + arrayOfInt);
+        return arrayOfInt;
+      }
+      return paramContext;
+      label214:
+      paramContext = arrayOfInt;
     }
   }
   
@@ -568,27 +673,44 @@ public class VideoFeedsHelper
   
   public static Object[] a(Context paramContext, Activity paramActivity, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    int i = AIOUtils.a(paramContext.getResources().getDimension(2131559472) + 35.0F, paramContext.getResources());
+    int i = AIOUtils.a(paramContext.getResources().getDimension(2131559474) + 35.0F, paramContext.getResources());
     int j = AIOUtils.a(3.0F, paramContext.getResources());
     paramContext = a(paramActivity);
     int m = paramContext[0];
     int k = paramContext[1];
-    if ((paramInt1 == 0) || (paramInt2 == 0)) {
-      return new Object[] { Boolean.valueOf(false), Integer.valueOf(m) };
-    }
-    if (paramBoolean) {
-      return new Object[] { Boolean.valueOf(true), Integer.valueOf(k - j) };
-    }
-    if (paramInt1 < paramInt2)
+    if ((paramInt1 == 0) || (paramInt2 == 0))
     {
-      float f = paramInt2 / paramInt1;
-      paramInt1 = (int)(m * f);
-      if ((k - paramInt1) / 2.0F > i) {
-        return new Object[] { Boolean.valueOf(false), Integer.valueOf(paramInt1) };
-      }
-      return new Object[] { Boolean.valueOf(true), Integer.valueOf(k - j) };
+      paramContext = new Object[3];
+      paramContext[0] = Boolean.valueOf(false);
+      paramContext[1] = Integer.valueOf(m);
+      paramContext[2] = Boolean.valueOf(false);
     }
-    return new Object[] { Boolean.valueOf(false), Integer.valueOf((int)(paramInt2 / paramInt1 * m)) };
+    for (;;)
+    {
+      return paramContext;
+      boolean bool;
+      if (paramInt1 < paramInt2)
+      {
+        paramInt1 = (int)(paramInt2 / paramInt1 * m);
+        if ((k - paramInt1) / 2.0F > i)
+        {
+          paramContext = new Object[] { Boolean.valueOf(false), Integer.valueOf(paramInt1), Boolean.valueOf(false) };
+          bool = false;
+        }
+      }
+      while (paramBoolean)
+      {
+        return new Object[] { Boolean.valueOf(true), Integer.valueOf(k - j), Boolean.valueOf(bool) };
+        paramContext = new Object[] { Boolean.valueOf(true), Integer.valueOf(k - j), Boolean.valueOf(true) };
+        bool = true;
+        continue;
+        paramContext = new Object[3];
+        paramContext[0] = Boolean.valueOf(false);
+        paramContext[1] = Integer.valueOf((int)(paramInt2 / paramInt1 * m));
+        paramContext[2] = Boolean.valueOf(false);
+        bool = false;
+      }
+    }
   }
   
   public static int b(Activity paramActivity)
@@ -650,7 +772,7 @@ public class VideoFeedsHelper
         localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
         localAlphaAnimation.setDuration(paramInt2);
         localAlphaAnimation.setFillAfter(true);
-        localAlphaAnimation.setAnimationListener(new mbc());
+        localAlphaAnimation.setAnimationListener(new mcg());
         paramView.clearAnimation();
         paramView.startAnimation(localAlphaAnimation);
         return;
@@ -659,9 +781,55 @@ public class VideoFeedsHelper
     AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
     localAlphaAnimation.setDuration(paramInt2);
     localAlphaAnimation.setFillAfter(true);
-    localAlphaAnimation.setAnimationListener(new mbd(paramView));
+    localAlphaAnimation.setAnimationListener(new mch(paramView));
     paramView.clearAnimation();
     paramView.startAnimation(localAlphaAnimation);
+  }
+  
+  private static boolean b()
+  {
+    return "HUAWEI".equalsIgnoreCase(Build.MANUFACTURER);
+  }
+  
+  private static boolean b(Context paramContext)
+  {
+    for (boolean bool1 = false;; bool1 = false)
+    {
+      try
+      {
+        paramContext = paramContext.getClassLoader();
+        if (paramContext == null) {
+          continue;
+        }
+        paramContext = paramContext.loadClass("com.huawei.android.util.HwNotchSizeUtil");
+        if (paramContext == null) {
+          continue;
+        }
+        Method localMethod = paramContext.getMethod("hasNotchInScreen", new Class[0]);
+        if (localMethod == null) {
+          continue;
+        }
+        boolean bool2 = ((Boolean)localMethod.invoke(paramContext, new Object[0])).booleanValue();
+        bool1 = bool2;
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoFeedsHelper", 2, "hasNotchInHW() ret=" + bool1);
+        }
+      }
+      catch (Exception paramContext)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("VideoFeedsHelper", 2, "hasNotchInHW() Exception=" + paramContext.getMessage());
+      }
+      finally
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.d("VideoFeedsHelper", 2, "hasNotchInHW() ret=" + false);
+        return false;
+      }
+      return bool1;
+    }
   }
   
   public static String c(int paramInt)

@@ -44,8 +44,8 @@ public class RangeProcessor
     this.jdField_b_of_type_Float = paramFloat2;
     this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float * 0.5F);
     this.d = paramInt3;
-    paramFrameParent = a(((Context)localObject).getResources(), 2130845151, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
-    localObject = a(((Context)localObject).getResources(), 2130845153, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
+    paramFrameParent = a(((Context)localObject).getResources(), 2130845276, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
+    localObject = a(((Context)localObject).getResources(), 2130845278, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
     ColorDrawable localColorDrawable = new ColorDrawable(this.jdField_c_of_type_Int);
     localColorDrawable.setBounds(0, 0, (int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
     this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float, Bitmap.Config.RGB_565);

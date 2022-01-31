@@ -14,14 +14,14 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import zum;
-import zun;
-import zuo;
+import zxs;
+import zxt;
+import zxu;
 
 public class ARRecognition
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new zum();
+  public static final Parcelable.Creator CREATOR = new zxs();
   public int a;
   public long a;
   public int b;
@@ -97,30 +97,30 @@ public class ARRecognition
     }
     paramARCloudRecogResult = new ArrayList();
     if (bool1) {
-      paramARCloudRecogResult.add(new zuo(1L, a(paramArrayList, 1L)));
+      paramARCloudRecogResult.add(new zxu(1L, a(paramArrayList, 1L)));
     }
     if (bool3) {
-      paramARCloudRecogResult.add(new zuo(4L, a(paramArrayList, 4L)));
+      paramARCloudRecogResult.add(new zxu(4L, a(paramArrayList, 4L)));
     }
     if (bool2) {
-      paramARCloudRecogResult.add(new zuo(2L, a(paramArrayList, 2L)));
+      paramARCloudRecogResult.add(new zxu(2L, a(paramArrayList, 2L)));
     }
     if (bool4) {
-      paramARCloudRecogResult.add(new zuo(128L, a(paramArrayList, 128L)));
+      paramARCloudRecogResult.add(new zxu(128L, a(paramArrayList, 128L)));
     }
     if (bool5) {
-      paramARCloudRecogResult.add(new zuo(2048L, a(paramArrayList, 2048L)));
+      paramARCloudRecogResult.add(new zxu(2048L, a(paramArrayList, 2048L)));
     }
     paramArrayList = new StringBuilder();
     int i = 0;
     while (i < paramARCloudRecogResult.size())
     {
-      paramArrayList.append("(index:").append(i).append(",prority=" + ((zuo)paramARCloudRecogResult.get(i)).jdField_a_of_type_Long + ")\n");
+      paramArrayList.append("(index:").append(i).append(",prority=" + ((zxu)paramARCloudRecogResult.get(i)).jdField_a_of_type_Long + ")\n");
       i += 1;
     }
     QLog.i("AREngine_CommonConfigInfo", 1, "getCurrentPriorityHighestResult print result " + paramArrayList.toString());
-    Collections.sort(paramARCloudRecogResult, new zun());
-    localRecognitionResult.jdField_a_of_type_Long = ((zuo)paramARCloudRecogResult.get(0)).jdField_a_of_type_Long;
+    Collections.sort(paramARCloudRecogResult, new zxt());
+    localRecognitionResult.jdField_a_of_type_Long = ((zxu)paramARCloudRecogResult.get(0)).jdField_a_of_type_Long;
     if (paramARCloudRecogResult.size() == 1) {}
     for (bool1 = true;; bool1 = false)
     {

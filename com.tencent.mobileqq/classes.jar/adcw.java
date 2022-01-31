@@ -1,43 +1,21 @@
-import android.os.Bundle;
-import com.tencent.biz.ProtoUtils.AppProtocolObserver;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
-public final class adcw
-  extends ProtoUtils.AppProtocolObserver
+public class adcw
+  implements View.OnClickListener
 {
-  public adcw(NearbyAppInterface paramNearbyAppInterface) {}
+  public adcw(DefaultFileModel paramDefaultFileModel) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onClick(View paramView)
   {
-    boolean bool2 = false;
-    if (paramInt == 0) {
-      NearbySPUtil.b(this.a.getCurrentAccountUin(), false);
-    }
-    for (boolean bool1 = false;; bool1 = NearbySPUtil.b(this.a.getCurrentAccountUin()))
-    {
-      paramArrayOfByte = new HashMap();
-      paramArrayOfByte.put("param_reason", String.valueOf(paramInt));
-      paramBundle = StatisticCollector.a(BaseApplicationImpl.getContext());
-      String str = this.a.getCurrentAccountUin();
-      if (paramInt == 0) {
-        bool2 = true;
-      }
-      paramBundle.a(str, "oidb_0x91f", bool2, 0L, 0L, paramArrayOfByte, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.nearby", 2, "oidb_0x91f| visible:" + bool1 + "replyCode:" + paramInt);
-      }
-      return;
-    }
+    FileManagerUtil.a(this.a.a, this.a.b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adcw
  * JD-Core Version:    0.7.0.1
  */

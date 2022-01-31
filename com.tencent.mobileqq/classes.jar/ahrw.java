@@ -1,49 +1,30 @@
-import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.feedback.eup.CrashReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import android.text.TextUtils;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.search.activity.ContactSearchComponentActivity;
 
 public class ahrw
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public ahrw(StatisticCollector paramStatisticCollector) {}
+  public ahrw(ContactSearchComponentActivity paramContactSearchComponentActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    int i = StatisticCollector.a();
-    Object localObject1;
-    if (i > 0)
+    if ((paramMotionEvent.getAction() == 1) && (TextUtils.isEmpty(this.a.b)))
     {
-      localObject1 = BaseApplicationImpl.sApplication;
-      if (localObject1 == null) {}
-    }
-    try
-    {
-      localObject1 = ((Context)localObject1).getPackageManager().getPackageInfo(((Context)localObject1).getPackageName(), 0);
-      if ((localObject1 != null) && (((PackageInfo)localObject1).versionName != null))
-      {
-        localObject1 = ((PackageInfo)localObject1).versionName + "." + (((PackageInfo)localObject1).versionCode + i);
-        CrashReport.setProductVersion(BaseApplicationImpl.getApplication(), (String)localObject1);
-      }
-      return;
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
-      for (;;)
-      {
-        QLog.w("StatisticCollector", 1, "", localNameNotFoundException);
-        Object localObject2 = null;
+      paramView = this.a.getActivity();
+      if (paramView != null) {
+        paramView.finish();
       }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahrw
  * JD-Core Version:    0.7.0.1
  */

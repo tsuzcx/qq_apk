@@ -1,55 +1,30 @@
-import android.os.Message;
-import android.support.v4.app.FragmentActivity;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituPicData;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.mobileqq.transfile.TransProcessorHandler;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
 
-public class ljg
-  extends TransProcessorHandler
+class ljg
+  implements Runnable
 {
-  public ljg(ReadInJoyCommentComponentFragment paramReadInJoyCommentComponentFragment) {}
+  ljg(ljf paramljf) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
-    if ((localFileMsg == null) || (localFileMsg.b != 24) || (localFileMsg.c != 10)) {
-      return;
-    }
-    switch (paramMessage.what)
+    ZhituManager localZhituManager = ReadInJoyCommentComponentFragment.a(this.a.a);
+    if ((localZhituManager != null) && (ReadInJoyCommentComponentFragment.a(this.a.a)))
     {
-    default: 
-      return;
-    case 1003: 
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler send finished!");
-      }
-      break;
+      localZhituManager.c();
+      ReadInJoyCommentComponentFragment.a(this.a.a, false);
+      this.a.a.f.setSelected(false);
     }
-    try
+    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(ReadInJoyDeliverUGCActivity.a(this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData));
+    this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+    ReadInJoyCommentComponentFragment.a(this.a.a);
+    if (this.a.a.jdField_a_of_type_Boolean)
     {
-      ReadInJoyCommentComponentFragment.a(this.a).c = true;
-      ReadInJoyCommentComponentFragment.a(this.a).f = localFileMsg.i;
-      ReadInJoyCommentComponentFragment.a(this.a).g = localFileMsg.f;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler url=" + ReadInJoyCommentComponentFragment.a(this.a).f + ", md5=" + ReadInJoyCommentComponentFragment.a(this.a).g);
-      }
-      label172:
-      this.a.f();
-      ReadInJoyCommentComponentFragment.a(this.a).setResult(-1, ReadInJoyCommentComponentFragment.a(this.a));
-      ReadInJoyCommentComponentFragment.a(this.a).finish();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyCommentComponentFragment", 2, "mTransProcessorHandler send error or cancel!");
-      }
-      this.a.f();
-      this.a.a(1, this.a.getString(2131438866));
-      return;
-    }
-    catch (Exception paramMessage)
-    {
-      break label172;
+      this.a.a.g.setImageResource(2130840760);
+      ReadInJoyCommentComponentFragment.b(this.a.a, true);
     }
   }
 }

@@ -1,47 +1,50 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.ObjectAnimator;
-import com.tencent.mobileqq.app.SVIPHandler;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim;
-import com.tencent.mobileqq.bubble.BubbleInterActiveAnim.AnimHolder;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.RemoteArConfigManager;
+import com.tencent.mobileqq.armap.ShopScanActivity;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
 
 public class abed
-  extends AnimatorListenerAdapter
+  implements TVK_SDKMgr.InstallListener
 {
-  public abed(BubbleInterActiveAnim paramBubbleInterActiveAnim, ObjectAnimator paramObjectAnimator, BubbleInterActiveAnim.AnimHolder paramAnimHolder) {}
+  public abed(ShopScanActivity paramShopScanActivity) {}
   
-  public void onAnimationEnd(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator)
+  public void onInstallProgress(float paramFloat)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("BubbleInterActiveAnim", 2, "animHolder.animView.startAnimation!");
+      QLog.d("ShopScanActivity", 1, "video sdk, onInstallProgress, v=" + paramFloat + ", mVideoSdkInstallCancel=" + ShopScanActivity.c(this.a));
     }
-    if (this.jdField_a_of_type_AndroidAnimationObjectAnimator != null) {
-      this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder != null) && (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.a != null))
-    {
-      paramAnimator = "";
-      if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.a.istroop != 0) {
-        break label98;
-      }
-      paramAnimator = "1";
-    }
-    for (;;)
-    {
-      VasWebviewUtil.reportCommercialDrainage("", "Bubble", "Active_dync", paramAnimator, 1, 0, 0, "", String.valueOf(SVIPHandler.a(this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.a.vipBubbleID)), "");
+    if ((ShopScanActivity.a(this.a)) || (ShopScanActivity.c(this.a))) {
       return;
-      label98:
-      if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.a.istroop == 1) {
-        paramAnimator = "2";
-      } else if (this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInterActiveAnim$AnimHolder.a.istroop == 3000) {
-        paramAnimator = "3";
-      }
     }
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new abeh(this, paramFloat));
+  }
+  
+  public void onInstalledFailed(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShopScanActivity", 1, "video sdk, onInstalledFailed, i=" + paramInt + ", mVideoSdkInstallCancel=" + ShopScanActivity.c(this.a));
+    }
+    if ((ShopScanActivity.a(this.a)) || (ShopScanActivity.c(this.a))) {
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new abeg(this));
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShopScanActivity", 2, "video sdk, onInstalledSuccessed, mVideoSdkInstallCancel=" + ShopScanActivity.c(this.a));
+    }
+    if ((ShopScanActivity.a(this.a)) || (ShopScanActivity.c(this.a))) {
+      return;
+    }
+    if (!this.a.jdField_a_of_type_ComTencentMobileqqArRemoteArConfigManager.a())
+    {
+      this.a.jdField_a_of_type_AndroidOsHandler.post(new abee(this));
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new abef(this));
   }
 }
 

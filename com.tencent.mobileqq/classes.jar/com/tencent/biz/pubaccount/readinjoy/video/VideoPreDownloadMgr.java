@@ -16,9 +16,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import mea;
-import meb;
-import mee;
+import mff;
+import mfg;
+import mfj;
 
 public class VideoPreDownloadMgr
   implements VideoPluginInstall.OnVideoPluginInstallListener
@@ -55,10 +55,10 @@ public class VideoPreDownloadMgr
     f();
   }
   
-  private void a(String paramString1, String paramString2, int paramInt)
+  private void a(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
     if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "innerDoPreDownload() 正式开始预下载 vid=" + paramString2 + ", url=" + paramString1 + ", urlType=" + paramInt);
+      QLog.i(jdField_a_of_type_JavaLangString, 2, "innerDoPreDownload() 正式开始预下载 vid=" + paramString2 + ", url=" + paramString1 + ", urlType=" + paramInt1 + ", duration=" + paramInt2);
     }
     TVK_ICacheMgr localTVK_ICacheMgr = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr;
     if (localTVK_ICacheMgr == null) {
@@ -66,28 +66,31 @@ public class VideoPreDownloadMgr
         QLog.i(jdField_a_of_type_JavaLangString, 2, "innerDoPreDownload() start preload ERROR cacheMgr == null!");
       }
     }
-    label194:
-    label210:
+    label220:
+    label236:
     for (;;)
     {
       return;
       TVK_UserInfo localTVK_UserInfo = new TVK_UserInfo("", "");
-      if (1 == paramInt)
+      if (1 == paramInt1)
       {
         paramString2 = new TVK_PlayerVideoInfo(1, paramString2, "");
         paramString2.setConfigMap("cache_duration", "2");
         paramString2.setConfigMap("cache_servers_type", "20160519");
+        if (paramInt2 > 0) {
+          paramString2.setConfigMap("duration", String.valueOf(paramInt2));
+        }
         paramString2.addExtraParamsMap("shouq_bus_type", "bus_type_kandian_feeds");
         String str = VideoPlayUtils.a();
         if (paramString1 != null) {
-          break label194;
+          break label220;
         }
         localTVK_ICacheMgr.preLoadVideoById(this.jdField_a_of_type_AndroidContentContext, localTVK_UserInfo, paramString2, str);
       }
       for (;;)
       {
         if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreloadReportData == null) {
-          break label210;
+          break label236;
         }
         paramString1 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPreloadReportData;
         paramString1.g += 1;
@@ -101,7 +104,7 @@ public class VideoPreDownloadMgr
   
   private void a(List paramList)
   {
-    ThreadManager.post(new mee(this, paramList), 5, null, true);
+    ThreadManager.post(new mfj(this, paramList), 5, null, true);
   }
   
   private void f()
@@ -115,7 +118,7 @@ public class VideoPreDownloadMgr
     if (QLog.isColorLevel()) {
       QLog.i(jdField_a_of_type_JavaLangString, 2, "initSerialPreDownload() 设置mCacheMgr回调");
     }
-    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setPreloadCallback(new mea(this));
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr.setPreloadCallback(new mff(this));
   }
   
   private void g()
@@ -134,7 +137,7 @@ public class VideoPreDownloadMgr
   {
     List localList = this.jdField_a_of_type_JavaUtilList;
     if ((localList != null) && (localList.size() > 0)) {}
-    label61:
+    label64:
     while (!QLog.isColorLevel())
     {
       for (;;)
@@ -160,7 +163,8 @@ public class VideoPreDownloadMgr
           {
             VideoPreDownloadMgr.VideoPreDownloadParam localVideoPreDownloadParam1;
             VideoPreDownloadMgr.VideoPreDownloadParam localVideoPreDownloadParam2;
-            break label61;
+            int i;
+            break label64;
           }
           localException1 = localException1;
           localVideoPreDownloadParam1 = null;
@@ -172,9 +176,10 @@ public class VideoPreDownloadMgr
         }
       }
       this.jdField_b_of_type_JavaLangString = localVideoPreDownloadParam2.jdField_a_of_type_JavaLangString;
+      i = localVideoPreDownloadParam2.jdField_b_of_type_Int;
       if (2 == localVideoPreDownloadParam2.jdField_a_of_type_Int)
       {
-        ThirdVideoManager.a().a(localVideoPreDownloadParam2.jdField_a_of_type_JavaLangString, "PubAccountArticleCenter.GetUrlByVid", new meb(this));
+        ThirdVideoManager.a().a(localVideoPreDownloadParam2.jdField_a_of_type_JavaLangString, "PubAccountArticleCenter.GetUrlByVid", new mfg(this, i));
         return;
       }
       if (5 == localVideoPreDownloadParam2.jdField_a_of_type_Int)
@@ -188,7 +193,7 @@ public class VideoPreDownloadMgr
           h();
           return;
         }
-        a(localVideoPreDownloadParam2.jdField_a_of_type_JavaLangString, null, 0);
+        a(localVideoPreDownloadParam2.jdField_a_of_type_JavaLangString, null, 0, i);
         return;
       }
       if (a(null, localVideoPreDownloadParam2.jdField_a_of_type_JavaLangString))
@@ -200,7 +205,7 @@ public class VideoPreDownloadMgr
         h();
         return;
       }
-      a(null, localVideoPreDownloadParam2.jdField_a_of_type_JavaLangString, 0);
+      a(null, localVideoPreDownloadParam2.jdField_a_of_type_JavaLangString, 0, i);
       return;
     }
     QLog.i(jdField_a_of_type_JavaLangString, 2, "已完成预下载，队列为空");

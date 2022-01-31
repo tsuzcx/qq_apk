@@ -1,16 +1,17 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import java.util.List;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleOpController.DoodleOpListener;
 
-public final class anzd
-  implements Runnable
+public class anzd
+  implements DoodleOpController.DoodleOpListener
 {
-  public anzd(QQAppInterface paramQQAppInterface, List paramList, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource) {}
+  public anzd(DoodleLayout paramDoodleLayout) {}
   
-  public void run()
+  public void a()
   {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource, "new_qq_android_native_art_filter_");
+    if (this.a.a != null) {
+      this.a.a.n();
+    }
   }
 }
 

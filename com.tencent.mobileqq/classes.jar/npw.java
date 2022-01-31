@@ -1,15 +1,17 @@
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoOutputFrameListener;
 
-class npw
+public class npw
+  implements TVK_IMediaPlayer.OnVideoOutputFrameListener
 {
-  Button jdField_a_of_type_AndroidWidgetButton;
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
-  String jdField_a_of_type_JavaLangString;
+  public npw(VideoViewTVKImpl paramVideoViewTVKImpl) {}
   
-  npw(npv paramnpv) {}
+  public void OnVideoOutputFrame(TVK_IMediaPlayer paramTVK_IMediaPlayer, byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    SLog.a("VideoViewTVKImpl", "OnVideoOutputFrame width=%d height=%d rotation=%d %d", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
+  }
 }
 
 

@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.gesturelock.LockPatternView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.View;
 
 class sqw
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  sqw(sqv paramsqv) {}
+  sqw(sqv paramsqv, View paramView1, View paramView2, View paramView3, View paramView4, View paramView5) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.a.a.a.a();
+    float f1 = ((Float)paramValueAnimator.getAnimatedValue("txtAlpha")).floatValue();
+    float f2 = ((Float)paramValueAnimator.getAnimatedValue("redAlpha")).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setAlpha(f1);
+    this.b.setAlpha(f2);
+    this.c.setAlpha(f2);
+    this.d.setAlpha(1.0F);
+    this.e.setAlpha(1.0F);
   }
 }
 

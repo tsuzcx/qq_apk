@@ -43,13 +43,13 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.NewIntent;
-import ngm;
-import ngn;
-import ngo;
-import ngp;
-import ngq;
-import ngr;
-import ngs;
+import nhy;
+import nhz;
+import nia;
+import nib;
+import nic;
+import nid;
+import nie;
 
 public class QQStoryDiscoverSearchDialog
   extends Dialog
@@ -81,7 +81,7 @@ public class QQStoryDiscoverSearchDialog
     super.setCanceledOnTouchOutside(true);
     super.requestWindowFeature(1);
     super.getWindow().setSoftInputMode(36);
-    super.setContentView(2130970749);
+    super.setContentView(2130970797);
     paramOnCancelListener = super.getWindow().getAttributes();
     paramOnCancelListener.x = 0;
     paramOnCancelListener.y = 0;
@@ -100,29 +100,29 @@ public class QQStoryDiscoverSearchDialog
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131371762));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371763));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371764));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131371932));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371933));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371934));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368256));
+    this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)findViewById(2131368323));
     this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369739);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369816);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131368255));
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131368322));
     this.jdField_a_of_type_AndroidWidgetEditText.setHint("搜索认证帐号或栏目");
-    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new ngm(this));
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new nhy(this));
     this.jdField_a_of_type_AndroidWidgetEditText.setSelection(0);
     this.jdField_a_of_type_AndroidWidgetEditText.requestFocus();
-    Button localButton = (Button)findViewById(2131368254);
+    Button localButton = (Button)findViewById(2131368321);
     localButton.setVisibility(0);
     localButton.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentBizQqstoryPgcAdapterPgcSearchResultAdapter = new PgcSearchResultAdapter(this.jdField_a_of_type_AndroidAppActivity);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView = ((QQStoryPullToRefreshListView)findViewById(2131365642));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView = ((QQStoryPullToRefreshListView)findViewById(2131365669));
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryPgcAdapterPgcSearchResultAdapter);
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setOnItemClickListener(new ngn(this));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setOnTouchListener(new ngo(this));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setPullToRefreshListener(new ngp(this));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a.a(new ngq(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setOnItemClickListener(new nhz(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setOnTouchListener(new nia(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setPullToRefreshListener(new nib(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.a.a(new nic(this));
     StoryReportor.a("search", "clk", 0, 0, new String[0]);
   }
   
@@ -144,7 +144,7 @@ public class QQStoryDiscoverSearchDialog
     paramContext = new NewIntent(paramContext.getApplicationContext(), ProtoServlet.class);
     paramContext.putExtra("cmd", QQStoryHandler.j);
     paramContext.putExtra("data", localReqGetSearchFeedList.toByteArray());
-    paramContext.setObserver(new ngs(this));
+    paramContext.setObserver(new nie(this));
     paramAppInterface.startServlet(paramContext);
   }
   
@@ -320,7 +320,7 @@ public class QQStoryDiscoverSearchDialog
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetTextView.setText("未搜索到相关结果");
         this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(null);
-        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130841295), null, null);
+        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130841332), null, null);
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_a_of_type_ComTencentBizQqstoryPgcAdapterPgcSearchResultAdapter.a();
         StoryReportor.a("search", "invalid", 1, 0, new String[0]);
@@ -335,8 +335,8 @@ public class QQStoryDiscoverSearchDialog
         this.jdField_a_of_type_ComTencentBizQqstoryPgcAdapterPgcSearchResultAdapter.a();
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetTextView.setText("加载失败，点击重试");
-        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838588), null, null);
-        this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new ngr(this));
+        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838592), null, null);
+        this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new nid(this));
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
       }
       if (!QLog.isColorLevel()) {
@@ -377,7 +377,7 @@ public class QQStoryDiscoverSearchDialog
       {
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetTextView.setText("当前网络不可用，请检查你的网络设置");
-        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130843385), null, null);
+        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130843505), null, null);
         this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(null);
         this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
         return false;
@@ -404,12 +404,12 @@ public class QQStoryDiscoverSearchDialog
     {
     default: 
       return;
-    case 2131368256: 
+    case 2131368323: 
       this.jdField_a_of_type_AndroidWidgetEditText.setText("");
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryPullToRefreshListView.setVisibility(4);
       return;
-    case 2131368254: 
+    case 2131368321: 
       cancel();
       return;
     }

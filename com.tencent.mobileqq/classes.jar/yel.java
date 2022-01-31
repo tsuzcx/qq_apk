@@ -1,20 +1,22 @@
-import com.tencent.mobileqq.adapter.NewFriendMoreSysMsgAdapter;
-import com.tencent.mobileqq.newfriend.NewFriendMessage;
-import java.util.Comparator;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
 public class yel
-  implements Comparator
+  implements FMDialogUtil.FMDialogInterface
 {
-  public yel(NewFriendMoreSysMsgAdapter paramNewFriendMoreSysMsgAdapter) {}
+  public yel(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
   
-  public int a(NewFriendMessage paramNewFriendMessage1, NewFriendMessage paramNewFriendMessage2)
+  public void a()
   {
-    return (int)(paramNewFriendMessage2.a - paramNewFriendMessage1.a);
+    ShortVideoPreviewActivity.b(this.a);
+    this.a.setResult(-1);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yel
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import aczf;
+import adjc;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -42,7 +42,7 @@ public class QfileTabBarView
   RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   public BaseFileAssistantActivity a;
   QfileBaseTabView jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFileassistantQfileBaseTabView = null;
-  private TabBarView.OnTabChangeListener jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener = new aczf(this);
+  private TabBarView.OnTabChangeListener jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener = new adjc(this);
   public TabBarView a;
   String jdField_a_of_type_JavaLangString;
   HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
@@ -61,10 +61,10 @@ public class QfileTabBarView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = null;
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130970014, this);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130970028, this);
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = ((BaseFileAssistantActivity)paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131364569));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131368749));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView = ((TabBarView)findViewById(2131364593));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131368816));
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView.setOnTabChangeListener(this.jdField_a_of_type_ComTencentMobileqqWidgetTabBarView$OnTabChangeListener);
   }
   

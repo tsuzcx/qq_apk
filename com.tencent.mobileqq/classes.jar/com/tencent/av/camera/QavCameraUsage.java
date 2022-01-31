@@ -9,7 +9,7 @@ import android.os.Handler;
 import android.os.Looper;
 import java.util.Iterator;
 import java.util.List;
-import jhq;
+import jhb;
 
 public class QavCameraUsage
 {
@@ -74,7 +74,7 @@ public class QavCameraUsage
       if (!paramBoolean) {
         break;
       }
-      new Handler(Looper.getMainLooper()).post(new jhq(paramContext));
+      new Handler(Looper.getMainLooper()).post(new jhb(paramContext));
       return bool1;
     }
   }

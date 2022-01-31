@@ -1,11 +1,26 @@
-import com.tencent.av.gameplay.QavGPDownloadManager;
+import android.annotation.SuppressLint;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.gaudio.BaseGaInvite;
 
-public final class jig
-  implements Runnable
+@SuppressLint({"HandlerLeak"})
+public class jig
+  extends Handler
 {
-  public void run()
+  public jig(BaseGaInvite paramBaseGaInvite) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    QavGPDownloadManager.a().b();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      this.a.b();
+      return;
+    }
+    this.a.a("Msg");
+    super.sendEmptyMessageDelayed(1, 2000L);
   }
 }
 

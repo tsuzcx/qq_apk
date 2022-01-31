@@ -1,32 +1,43 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.TroopFileInfo;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
-import com.tencent.mobileqq.troop.utils.TroopFileManager;
+import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.OldHttpEngine;
+import com.tencent.mobileqq.transfile.OldHttpEngine.OldHttpCommunicatorListner;
+import com.tencent.mobileqq.transfile.RichMediaUtil;
+import com.tencent.qphone.base.util.QLog;
+import java.util.TimerTask;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class aiql
-  implements DialogInterface.OnClickListener
+  extends TimerTask
 {
-  public aiql(TroopFileItemOperation paramTroopFileItemOperation, TroopFileInfo paramTroopFileInfo) {}
+  public aiql(OldHttpEngine.OldHttpCommunicatorListner paramOldHttpCommunicatorListner, HttpNetReq paramHttpNetReq) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    switch (paramInt)
+    boolean bool = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine$OldHttpCommunicatorListner.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-    case 0: 
-    default: 
-      return;
+      int i;
+      if ((QLog.isColorLevel()) && (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq != null))
+      {
+        i = this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.g;
+        if (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.a != 1) {
+          break label71;
+        }
+      }
+      for (;;)
+      {
+        RichMediaUtil.a(i, bool, this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.f, this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.e, "scheduleRetry", "mIsCancelled is true 2");
+        return;
+        label71:
+        bool = false;
+      }
     }
-    if (TroopFileItemOperation.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation) != 0) {
-      TroopFileManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.a, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.b).b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo);
-    }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.a, "CliOper", "", "", "Grp", "Cancel_pause_upload", 0, 0, "", this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileItemOperation.b + "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine$OldHttpCommunicatorListner.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine.c(this.jdField_a_of_type_ComTencentMobileqqTransfileOldHttpEngine$OldHttpCommunicatorListner.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiql
  * JD-Core Version:    0.7.0.1
  */

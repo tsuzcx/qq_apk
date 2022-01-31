@@ -14,11 +14,15 @@ public final class oidb_0x6cf$ReqBody
   extends MessageMicro
 {
   static final MessageMicro.FieldMap __fieldMap__;
+  public final PBBytesField bytes_cookie = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField bytes_inner_id = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField bytes_req_web = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBEnumField enum_article_source = PBField.initEnum(0);
   public oidb_0x6cf.ReqAdvertisePara req_advertise_para = new oidb_0x6cf.ReqAdvertisePara();
   public final PBRepeatField rpt_bytes_redo_inner_id = PBField.initRepeat(PBBytesField.__repeatHelper__);
   public final PBRepeatField rpt_uint64_redo_article_id = PBField.initRepeat(PBUInt64Field.__repeatHelper__);
+  public oidb_0x6cf.FeedsIdInfo ugc_feeds_info = new oidb_0x6cf.FeedsIdInfo();
+  public final PBUInt32Field uint32_is_ugc = PBField.initUInt32(0);
   public final PBUInt32Field uint32_req_dislike_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_req_source = PBField.initUInt32(0);
   public final PBUInt32Field uint32_req_topic_id = PBField.initUInt32(0);
@@ -32,7 +36,9 @@ public final class oidb_0x6cf$ReqBody
   {
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48, 58, 64, 74, 80, 112, 120, 128 }, new String[] { "uint64_uin", "uint64_article_id", "bytes_inner_id", "enum_article_source", "uint32_want_count", "uint32_want_type", "req_advertise_para", "rpt_uint64_redo_article_id", "rpt_bytes_redo_inner_id", "uint32_req_source", "uint32_req_dislike_type", "uint32_req_topic_id", "uint32_req_vertical_video" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Long.valueOf(0L), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ReqBody.class);
+    ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
+    ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48, 58, 64, 74, 80, 112, 120, 128, 138, 144, 154, 162 }, new String[] { "uint64_uin", "uint64_article_id", "bytes_inner_id", "enum_article_source", "uint32_want_count", "uint32_want_type", "req_advertise_para", "rpt_uint64_redo_article_id", "rpt_bytes_redo_inner_id", "uint32_req_source", "uint32_req_dislike_type", "uint32_req_topic_id", "uint32_req_vertical_video", "ugc_feeds_info", "uint32_is_ugc", "bytes_req_web", "bytes_cookie" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Long.valueOf(0L), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), localByteStringMicro3, localByteStringMicro4 }, ReqBody.class);
   }
 }
 

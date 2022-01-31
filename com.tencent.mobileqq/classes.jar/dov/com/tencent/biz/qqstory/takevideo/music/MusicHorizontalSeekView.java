@@ -64,13 +64,13 @@ public class MusicHorizontalSeekView
     paramContext = paramContext.getResources();
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131493234));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131493235));
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131493762));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131493768));
     this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131493763));
+    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131493769));
     this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(this.n);
     super.setOnTouchListener(this);
   }

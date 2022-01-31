@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajdi;
-import ajdk;
-import ajdl;
-import ajdm;
-import ajdo;
-import ajdq;
-import ajdr;
+import ajrm;
+import ajro;
+import ajrp;
+import ajrq;
+import ajrs;
+import ajru;
+import ajrv;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -137,7 +137,7 @@ public class AvatarWallAdapter
     this.jdField_h_of_type_Boolean = true;
     this.jdField_e_of_type_Int = 2;
     this.jdField_f_of_type_Int = 6;
-    this.jdField_a_of_type_JavaUtilObserver = new ajdi(this);
+    this.jdField_a_of_type_JavaUtilObserver = new ajrm(this);
     this.jdField_i_of_type_Int = 10;
     this.jdField_j_of_type_Boolean = true;
     this.jdField_b_of_type_AndroidOsHandler = paramHandler;
@@ -217,30 +217,30 @@ public class AvatarWallAdapter
   public static String a(Context paramContext, int paramInt)
   {
     if (paramInt == 1) {
-      return paramContext.getString(2131430200);
-    }
-    if (paramInt == 2) {
-      return paramContext.getString(2131430201);
-    }
-    if (paramInt == 3) {
-      return paramContext.getString(2131430202);
-    }
-    if (paramInt == 5) {
-      return paramContext.getString(2131430203);
-    }
-    if (paramInt == 100) {
-      return paramContext.getString(2131430215);
-    }
-    if (paramInt == 101) {
-      return paramContext.getString(2131430216);
-    }
-    if (paramInt == 102) {
-      return paramContext.getString(2131430210);
-    }
-    if (paramInt == 103) {
       return paramContext.getString(2131430217);
     }
-    return paramContext.getString(2131430199);
+    if (paramInt == 2) {
+      return paramContext.getString(2131430218);
+    }
+    if (paramInt == 3) {
+      return paramContext.getString(2131430219);
+    }
+    if (paramInt == 5) {
+      return paramContext.getString(2131430220);
+    }
+    if (paramInt == 100) {
+      return paramContext.getString(2131430232);
+    }
+    if (paramInt == 101) {
+      return paramContext.getString(2131430233);
+    }
+    if (paramInt == 102) {
+      return paramContext.getString(2131430227);
+    }
+    if (paramInt == 103) {
+      return paramContext.getString(2131430234);
+    }
+    return paramContext.getString(2131430216);
   }
   
   public static void a(Activity paramActivity, int paramInt)
@@ -437,7 +437,7 @@ public class AvatarWallAdapter
   protected String a(int paramInt, boolean paramBoolean)
   {
     if (paramBoolean) {
-      paramInt = 2131430204;
+      paramInt = 2131430221;
     }
     for (;;)
     {
@@ -454,18 +454,18 @@ public class AvatarWallAdapter
           return localActivity.getString(paramInt);
           if (paramInt == 1)
           {
-            paramInt = 2131430205;
+            paramInt = 2131430222;
             break;
           }
           if (paramInt < 4)
           {
-            paramInt = 2131430206;
+            paramInt = 2131430223;
             break;
           }
           if (paramInt < 4) {
             break label86;
           }
-          paramInt = 2131430207;
+          paramInt = 2131430224;
           break;
           return null;
         }
@@ -496,7 +496,7 @@ public class AvatarWallAdapter
         }
       }
       if (((ArrayList)localObject).size() > 0) {
-        QQToast.a((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), 2131430566, 1).a();
+        QQToast.a((Context)this.jdField_a_of_type_MqqUtilWeakReference.get(), 2131430583, 1).a();
       }
       localObject = ((ArrayList)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
@@ -549,7 +549,7 @@ public class AvatarWallAdapter
       for (localObject1 = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();; localObject1 = null)
       {
         if (localObject1 != null) {
-          localObject1 = ((Activity)localObject1).getString(2131430343);
+          localObject1 = ((Activity)localObject1).getString(2131430360);
         }
         for (;;)
         {
@@ -584,10 +584,10 @@ public class AvatarWallAdapter
     while (paramInt1 > 0)
     {
       localObject = this.jdField_a_of_type_AndroidOsHandler;
-      ajdk localajdk = new ajdk(this, paramInt2);
+      ajro localajro = new ajro(this, paramInt2);
       int k = g;
       g = k + 1;
-      ((Handler)localObject).postDelayed(localajdk, k * 10);
+      ((Handler)localObject).postDelayed(localajro, k * 10);
       paramInt1 -= 1;
     }
   }
@@ -617,7 +617,7 @@ public class AvatarWallAdapter
             localObject2 = (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get();
             if (localObject2 != null)
             {
-              DialogUtil.a((Context)localObject2, 230, null, ((Activity)localObject2).getString(2131430219), null, ((Activity)localObject2).getString(2131430220), new DialogUtil.DialogOnClickAdapter(), null).show();
+              DialogUtil.a((Context)localObject2, 230, null, ((Activity)localObject2).getString(2131430236), null, ((Activity)localObject2).getString(2131430237), new DialogUtil.DialogOnClickAdapter(), null).show();
               this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit().putBoolean("has_shown_same_city_picture_uploaded_dialog", true).commit();
             }
           }
@@ -712,7 +712,7 @@ public class AvatarWallAdapter
         }
         ((TroopInfo)localObject2).mTroopPicList = localArrayList;
         ((TroopInfo)localObject2).mTroopVerifyingPics = localHashSet;
-        ThreadManager.post(new ajdl(this, (TroopManager)localObject1, (TroopInfo)localObject2), 8, null, false);
+        ThreadManager.post(new ajrp(this, (TroopManager)localObject1, (TroopInfo)localObject2), 8, null, false);
         return;
         localObject1 = a(paramInt2);
         if (localObject1 == null) {
@@ -738,7 +738,7 @@ public class AvatarWallAdapter
     if (paramBoolean)
     {
       localBorderURLImageView.setBorderWidth(DisplayUtil.a(paramContext, 2.0F));
-      localBorderURLImageView.setBorderColor(paramContext.getResources().getColor(2131493078));
+      localBorderURLImageView.setBorderColor(paramContext.getResources().getColor(2131493079));
       localImageView = paramViewHolder.jdField_a_of_type_AndroidWidgetImageView;
       localImageView.setVisibility(8);
       if (paramInt1 != 1) {
@@ -756,7 +756,7 @@ public class AvatarWallAdapter
       if (this.jdField_e_of_type_Int != 1) {
         break label154;
       }
-      localImageView.setBackgroundResource(2130841468);
+      localImageView.setBackgroundResource(2130841505);
       label132:
       localImageView.setLayoutParams(paramViewHolder);
       localImageView.setVisibility(0);
@@ -774,7 +774,7 @@ public class AvatarWallAdapter
           return;
           localBorderURLImageView.setBorderWidth(0);
           break;
-          localImageView.setBackgroundResource(2130841467);
+          localImageView.setBackgroundResource(2130841504);
           paramInt1 = (int)UITools.a(paramContext, 30.0F);
           paramViewHolder.width = paramInt1;
           paramViewHolder.height = paramInt1;
@@ -812,7 +812,7 @@ public class AvatarWallAdapter
                 if (paramViewHolder.jdField_a_of_type_AndroidGraphicsBitmap != null) {
                   break label343;
                 }
-                ThreadManager.post(new ajdm(this, paramString, this.jdField_c_of_type_Int, paramViewHolder, localBorderURLImageView), 8, null, true);
+                ThreadManager.post(new ajrq(this, paramString, this.jdField_c_of_type_Int, paramViewHolder, localBorderURLImageView), 8, null, true);
                 return;
               }
             }
@@ -830,7 +830,7 @@ public class AvatarWallAdapter
       localBorderURLImageView.setImageDrawable(null);
       return;
     } while (paramInt1 != 3);
-    ThreadManager.post(new ajdo(this, localBorderURLImageView, paramString), 8, null, false);
+    ThreadManager.post(new ajrs(this, localBorderURLImageView, paramString), 8, null, false);
   }
   
   protected void a(String paramString)
@@ -1014,7 +1014,7 @@ public class AvatarWallAdapter
         }
       }
     }
-    localActionSheet.a(new ajdq(this, paramActivity, localActionSheet));
+    localActionSheet.a(new ajru(this, paramActivity, localActionSheet));
     localActionSheet.show();
   }
   
@@ -1366,7 +1366,7 @@ public class AvatarWallAdapter
       if ((localActivity == null) || (Thread.currentThread() == localActivity.getMainLooper().getThread())) {
         break label155;
       }
-      localActivity.runOnUiThread(new ajdr(this, paramInt, localLayoutParams));
+      localActivity.runOnUiThread(new ajrv(this, paramInt, localLayoutParams));
       return;
       label123:
       if (!(localLayoutParams instanceof LinearLayout.LayoutParams)) {
@@ -1386,15 +1386,15 @@ public class AvatarWallAdapter
     QQCustomDialog localQQCustomDialog = DialogUtil.a(localActivity, 230);
     localQQCustomDialog.setTitle(null);
     if (paramBoolean) {
-      localQQCustomDialog.setMessage(localActivity.getResources().getString(2131435733));
+      localQQCustomDialog.setMessage(localActivity.getResources().getString(2131435750));
     }
     for (;;)
     {
-      localQQCustomDialog.setPositiveButton(localActivity.getResources().getString(2131430538), new DialogUtil.DialogOnClickAdapter());
-      localQQCustomDialog.setPositiveButtonContentDescription(localActivity.getResources().getString(2131430538));
+      localQQCustomDialog.setPositiveButton(localActivity.getResources().getString(2131430555), new DialogUtil.DialogOnClickAdapter());
+      localQQCustomDialog.setPositiveButtonContentDescription(localActivity.getResources().getString(2131430555));
       localQQCustomDialog.show();
       return;
-      localQQCustomDialog.setMessage(localActivity.getResources().getString(2131435732));
+      localQQCustomDialog.setMessage(localActivity.getResources().getString(2131435749));
     }
   }
   
@@ -1462,7 +1462,7 @@ public class AvatarWallAdapter
       do
       {
         return paramView;
-        paramViewGroup = LayoutInflater.from(paramViewGroup).inflate(2130969427, null);
+        paramViewGroup = LayoutInflater.from(paramViewGroup).inflate(2130969428, null);
         k = -1;
         localAvatarInfo = a(paramInt);
         paramView = paramViewGroup;
@@ -1479,9 +1479,9 @@ public class AvatarWallAdapter
         if (paramViewGroup.getTag() == null)
         {
           AvatarWallAdapter.ViewHolder localViewHolder = new AvatarWallAdapter.ViewHolder(this);
-          localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131366438));
+          localViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131366465));
           localViewHolder.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramViewGroup.findViewById(2131361845));
-          localViewHolder.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView = ((BorderURLImageView)paramViewGroup.findViewById(2131362749));
+          localViewHolder.jdField_a_of_type_ComTencentMobileqqTroopWidgetBorderURLImageView = ((BorderURLImageView)paramViewGroup.findViewById(2131362767));
           localObject = (AbsListView.LayoutParams)paramViewGroup.getLayoutParams();
           if (localObject == null)
           {
@@ -1515,7 +1515,7 @@ public class AvatarWallAdapter
             }
             if (((AvatarWallAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidViewView == null)
             {
-              ((AvatarWallAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidViewView = ((ViewStub)paramViewGroup.findViewById(2131366439)).inflate();
+              ((AvatarWallAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidViewView = ((ViewStub)paramViewGroup.findViewById(2131366466)).inflate();
               paramViewGroup.setTag(localObject);
             }
             ((AvatarWallAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -1571,7 +1571,7 @@ public class AvatarWallAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AvatarWallAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,31 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.widgets.QQMapRoutingHelper;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
 
-public class tgw
-  implements View.OnClickListener
+class tgw
+  implements Runnable
 {
-  public tgw(QQMapActivity paramQQMapActivity) {}
+  tgw(tgv paramtgv, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!NetworkUtil.d(this.a)) {
-      this.a.x();
+    if (this.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Tgv.a.b(2131434456, 2);
     }
-    for (;;)
+    do
     {
-      QQMapRoutingHelper.a("see_streetview");
       return;
-      if (NetworkUtil.a(this.a)) {
-        this.a.p();
-      } else {
-        DialogUtil.a(this.a, 230).setTitle(this.a.getString(2131436428)).setMessage(2131436427).setPositiveButton(2131436429, new tgy(this)).setNegativeButton(2131432998, new tgx(this)).show();
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        this.jdField_a_of_type_Tgv.a.b(2131427331, 2);
+        return;
       }
-    }
+    } while (this.jdField_a_of_type_Int != -1);
+    this.jdField_a_of_type_Tgv.a.b(2131427330, 1);
   }
 }
 

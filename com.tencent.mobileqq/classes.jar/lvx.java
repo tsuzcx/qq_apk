@@ -1,36 +1,23 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyActivityHelper;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentJump;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageDownListener;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
 public class lvx
-  implements View.OnClickListener
+  implements PublicAccountImageDownListener
 {
-  public lvx(ComponentJump paramComponentJump, ArticleInfo paramArticleInfo) {}
+  public lvx(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
   
-  public void onClick(View paramView)
+  public void a(URL paramURL, CloseableBitmap paramCloseableBitmap)
   {
-    int i = 0;
-    ReadInJoyActivityHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentJump.getContext(), this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoName, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoType, 1);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.hasChannelInfo()) {
-      i = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo.mChannelInfoId;
+    if (QLog.isColorLevel()) {
+      QLog.d("ComponentHeaderTopicRecommend", 2, "topic image view download success");
     }
-    try
-    {
-      paramView = new JSONObject();
-      paramView.put("feeds_channel_entrance", i);
-      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8006DF3", "0X8006DF3", 0, 0, "", "", "", paramView.toString(), false);
-      return;
-    }
-    catch (JSONException paramView)
-    {
-      paramView.printStackTrace();
-    }
+    ComponentHeaderTopicRecommend.a(this.a, paramCloseableBitmap.a());
   }
+  
+  public void a(URL paramURL, Throwable paramThrowable) {}
 }
 
 

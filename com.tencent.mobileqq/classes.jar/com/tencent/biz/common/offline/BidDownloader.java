@@ -22,9 +22,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import klq;
-import kls;
-import klt;
+import klb;
+import kld;
+import kle;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
@@ -409,14 +409,14 @@ public class BidDownloader
     if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
       return false;
     }
-    this.jdField_b_of_type_ComTencentBizCommonOfflineAsyncBack = new klq(this, l);
+    this.jdField_b_of_type_ComTencentBizCommonOfflineAsyncBack = new klb(this, l);
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
     return true;
   }
   
   public void b()
   {
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.c(new kls(this));
+    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.c(new kld(this));
   }
   
   public boolean b()
@@ -551,7 +551,7 @@ public class BidDownloader
       }
       return;
     }
-    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.c(new klt(this));
+    jdField_a_of_type_ComTencentBizCommonOfflineUtilIThreadManager.c(new kle(this));
   }
   
   public boolean handleMessage(Message paramMessage)

@@ -1,10 +1,17 @@
-import android.widget.TextView;
+import com.tencent.mobileqq.activity.messagesearch.C2CMessageResultAdapter;
+import com.tencent.mobileqq.activity.messagesearch.MessageItem;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class wre
+  implements Comparator
 {
-  public TextView a;
-  public wrd a;
-  public TextView b;
+  public wre(C2CMessageResultAdapter paramC2CMessageResultAdapter) {}
+  
+  public int a(MessageItem paramMessageItem1, MessageItem paramMessageItem2)
+  {
+    return (int)(paramMessageItem2.a.time - paramMessageItem1.a.time);
+  }
 }
 
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.binhai;
 
-import abds;
-import abdt;
+import abkt;
+import abku;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
@@ -61,34 +61,34 @@ public class BinHaiOpenRedPackDialog
   public BinHaiOpenRedPackDialog(Activity paramActivity, AppInterface paramAppInterface)
   {
     super(paramActivity, BinHaiMsgDialog.a());
-    setContentView(2130970181);
+    setContentView(2130970195);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362822));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369429));
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369437));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369435));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369431));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369430));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369432));
-    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369438));
-    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369441));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131362840));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369495));
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369503));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369501));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369497));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369496));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369498));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369504));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369507));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    findViewById(2131369433).setOnClickListener(this);
-    findViewById(2131369434).setOnClickListener(this);
-    findViewById(2131369436).setOnClickListener(this);
-    findViewById(2131369439).setOnClickListener(this);
-    findViewById(2131369440).setOnClickListener(this);
-    findViewById(2131369443).setOnClickListener(this);
-    findViewById(2131369427).setOnClickListener(this);
+    findViewById(2131369499).setOnClickListener(this);
+    findViewById(2131369500).setOnClickListener(this);
+    findViewById(2131369502).setOnClickListener(this);
+    findViewById(2131369505).setOnClickListener(this);
+    findViewById(2131369506).setOnClickListener(this);
+    findViewById(2131369509).setOnClickListener(this);
+    findViewById(2131369493).setOnClickListener(this);
     if (ImmersiveUtils.isSupporImmersive() == 1) {
-      findViewById(2131369425).setPadding(0, ImmersiveUtils.a(paramActivity), 0, 0);
+      findViewById(2131369491).setPadding(0, ImmersiveUtils.a(paramActivity), 0, 0);
     }
     if (BinHaiMsgDialog.a())
     {
-      findViewById(2131362822).setBackgroundColor(0);
-      findViewById(2131369425).setVisibility(8);
+      findViewById(2131362840).setBackgroundColor(0);
+      findViewById(2131369491).setVisibility(8);
     }
   }
   
@@ -147,7 +147,7 @@ public class BinHaiOpenRedPackDialog
     this.jdField_a_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(2, 0.0F, 2, 0.0F, 2, -1.0F, 2, 0.0F);
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setInterpolator(new BinHaiOpenRedPackDialog.MyOvershotInterpolator(this));
     this.jdField_a_of_type_AndroidViewAnimationAnimation.setDuration(800L);
-    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new abds(this));
+    this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(new abkt(this));
     int i = this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics().widthPixels;
     int j = this.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics().heightPixels;
     this.jdField_a_of_type_ComTencentMobileqqPortalSanHuaView = new SanHuaView(this.jdField_a_of_type_AndroidAppActivity, i / 2, j / 2);
@@ -157,7 +157,7 @@ public class BinHaiOpenRedPackDialog
   
   private void c()
   {
-    ThreadManager.getUIHandler().postDelayed(new abdt(this), 500L);
+    ThreadManager.getUIHandler().postDelayed(new abku(this), 500L);
   }
   
   protected void a()
@@ -264,7 +264,7 @@ public class BinHaiOpenRedPackDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.binhai.BinHaiOpenRedPackDialog
  * JD-Core Version:    0.7.0.1
  */

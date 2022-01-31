@@ -1,21 +1,26 @@
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.activity.ShortcutRouterActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RegisterNewBaseActivity;
 
 public class tpl
-  implements ChatActivityUtils.StartVideoListener
+  extends Handler
 {
-  public tpl(ShortcutRouterActivity paramShortcutRouterActivity) {}
+  public tpl(RegisterNewBaseActivity paramRegisterNewBaseActivity) {}
   
-  public void a()
+  public void handleMessage(Message paramMessage)
   {
-    this.a.finish();
-  }
-  
-  public void b() {}
-  
-  public void c()
-  {
-    this.a.finish();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.c();
+    String str = paramMessage.obj.toString();
+    paramMessage = str;
+    if (str == null) {
+      paramMessage = this.a.getString(2131434841);
+    }
+    this.a.a(paramMessage, 1);
   }
 }
 

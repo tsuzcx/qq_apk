@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troop.activity;
 
 import NearbyGroup.GroupInfo;
-import aigq;
-import aigr;
-import aigs;
-import aigt;
+import aiut;
+import aiuu;
+import aiuv;
+import aiuw;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
@@ -96,13 +96,13 @@ public class RecommendTroopAdapter
     }
     for (;;)
     {
-      paramView.setOnClickListener(new aigr(this, localGroupInfo));
+      paramView.setOnClickListener(new aiuu(this, localGroupInfo));
       if (((NearbyTroops.CustomViewHolder)localObject).b == null) {
         break;
       }
       ((NearbyTroops.CustomViewHolder)localObject).b.setVisibility(0);
       paramView.setTag(-3, Integer.valueOf(((NearbyTroops.CustomViewHolder)localObject).b.getWidth()));
-      ((NearbyTroops.CustomViewHolder)localObject).d.setOnClickListener(new aigs(this, paramRecommendTroopItem));
+      ((NearbyTroops.CustomViewHolder)localObject).d.setOnClickListener(new aiuv(this, paramRecommendTroopItem));
       return;
       localGroupInfo.strIntro = paramRecommendTroopItem.recommendReason;
       break label59;
@@ -148,7 +148,7 @@ public class RecommendTroopAdapter
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    RecommendTroopManagerImp.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, 2, paramString, new aigt(this));
+    RecommendTroopManagerImp.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, 2, paramString, new aiuw(this));
     a(paramString);
     if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
       this.jdField_a_of_type_ComTencentMobileqqActivityContactTroopBaseTroopView$ITroopContext.a().sendEmptyMessage(100);
@@ -187,14 +187,14 @@ public class RecommendTroopAdapter
     if (paramView == null) {
       return localView;
     }
-    localView.setOnClickListener(new aigq(this));
+    localView.setOnClickListener(new aiut(this));
     a(localView, paramView);
     return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.RecommendTroopAdapter
  * JD-Core Version:    0.7.0.1
  */

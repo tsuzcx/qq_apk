@@ -1,28 +1,20 @@
-import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
-import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import com.tencent.mobileqq.search.fragment.PublicAcntSearchFragment;
 
 public class ahtm
-  implements View.OnLongClickListener
+  implements Runnable
 {
-  public ahtm(StructMsgForGeneralShare paramStructMsgForGeneralShare, OnLongClickAndTouchListener paramOnLongClickAndTouchListener) {}
+  public ahtm(PublicAcntSearchFragment paramPublicAcntSearchFragment) {}
   
-  public boolean onLongClick(View paramView)
+  public void run()
   {
-    StructMsgForGeneralShare.clickedItemIndex = 0;
-    AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)paramView.getTag();
-    if (!TextUtils.isEmpty(localAbsStructMsgElement.s)) {
-      StructMsgForGeneralShare.clickedItemIndex = Integer.valueOf(localAbsStructMsgElement.s).intValue();
-    }
-    return this.jdField_a_of_type_ComTencentMobileqqActivityAioOnLongClickAndTouchListener.onLongClick(paramView);
+    this.a.c.setVisibility(0);
+    this.a.b(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahtm
  * JD-Core Version:    0.7.0.1
  */

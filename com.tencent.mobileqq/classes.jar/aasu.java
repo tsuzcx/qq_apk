@@ -1,15 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import android.widget.HorizontalScrollView;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.ark.ArkAiScrollBar;
 
-class aasu
-  implements DialogInterface.OnDismissListener
+public class aasu
+  implements Runnable
 {
-  aasu(aasr paramaasr) {}
+  public aasu(ArkAiScrollBar paramArkAiScrollBar) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    ARMapActivity.a(this.a.a, null);
+    int j = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getMeasuredWidth() - this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.getWidth();
+    int i = j;
+    if (j < 0) {
+      i = 0;
+    }
+    this.a.jdField_a_of_type_AndroidWidgetHorizontalScrollView.scrollTo(i, 0);
   }
 }
 

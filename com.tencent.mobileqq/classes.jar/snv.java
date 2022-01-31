@@ -1,29 +1,21 @@
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
-import com.tencent.mobileqq.dinifly.LottieComposition;
-import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
 
-class snv
-  implements OnCompositionLoadedListener
+public class snv
+  extends FriendListObserver
 {
-  snv(snu paramsnu) {}
+  public snv(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onCompositionLoaded(@Nullable LottieComposition paramLottieComposition)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    if (paramLottieComposition == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("MedalWallMng", 2, "onCompositionLoaded failed!");
-      }
-      return;
+    if (paramBoolean) {
+      ForwardRecentActivity.b(this.a);
     }
-    this.a.a.post(new snw(this, paramLottieComposition));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     snv
  * JD-Core Version:    0.7.0.1
  */

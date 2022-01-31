@@ -1,16 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySelfActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
 
 public class leq
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public leq(ReadInJoySelfActivity paramReadInJoySelfActivity) {}
+  public leq(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.a.a != null) {
-      this.a.a.g();
-    }
+    ReadInJoySettingActivity.b(this.a, paramBoolean);
+    ReadInJoySettingActivity.a(this.a, ReadInJoySettingActivity.b(this.a));
   }
 }
 

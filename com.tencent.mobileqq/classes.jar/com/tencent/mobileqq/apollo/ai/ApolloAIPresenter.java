@@ -28,8 +28,8 @@ import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.mobileqq.vip.DownloaderFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
-import ylg;
-import ylh;
+import yom;
+import yon;
 
 public class ApolloAIPresenter
   implements IApolloAIListener, QQRecorder.OnQQRecorderListener
@@ -38,9 +38,9 @@ public class ApolloAIPresenter
   private Context jdField_a_of_type_AndroidContentContext;
   private IApolloAIView jdField_a_of_type_ComTencentMobileqqApolloAiIApolloAIView;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new ylh(this, ThreadManager.getSubThreadLooper());
+  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new yon(this, ThreadManager.getSubThreadLooper());
   private QQRecorder jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder;
-  VasExtensionObserver jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver = new ylg(this);
+  VasExtensionObserver jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver = new yom(this);
   private boolean jdField_a_of_type_Boolean;
   private boolean b;
   

@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.PtvTemplateAdapter;
 
-class xpy
+public class xpy
   implements Runnable
 {
-  xpy(xpx paramxpx) {}
+  public xpy(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
   public void run()
   {
-    this.a.a.a();
+    this.a.a.notifyDataSetChanged();
   }
 }
 

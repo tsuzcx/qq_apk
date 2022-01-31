@@ -1,30 +1,20 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.storage.StorageReport;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
-public class tmv
-  implements ActionMode.Callback
+class tmv
+  implements Runnable
 {
-  public tmv(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  tmv(tmu paramtmu) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void run()
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    paramMenu.clear();
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    QQSettingMsgHistoryActivity.a(this.a.a, this.a.a.app);
+    StorageReport.a().a(true);
+    this.a.a.a.sendEmptyMessageDelayed(0, 1000L);
+    SharedPreUtils.a(this.a.a.app.c());
   }
 }
 

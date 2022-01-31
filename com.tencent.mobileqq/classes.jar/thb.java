@@ -1,17 +1,44 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import android.widget.ToggleButton;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.profile.ProfileLabelInfo;
+import com.tencent.mobileqq.profile.view.ProfileLabelCallBack;
+import com.tencent.mobileqq.profile.view.ProfileLabelPanel.LabelStatusManager;
 import com.tencent.mobileqq.statistics.ReportController;
+import java.util.List;
 
 public class thb
-  implements View.OnClickListener
+  implements ProfileLabelCallBack
 {
-  public thb(QQMapActivity paramQQMapActivity) {}
+  public thb(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void onClick(View paramView)
+  public void a(ProfileLabelInfo paramProfileLabelInfo, ToggleButton paramToggleButton, Boolean paramBoolean)
   {
-    this.a.u();
-    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "sdk_locate", "click_send", 0, 0, "", "", "", "");
+    if (paramBoolean.booleanValue())
+    {
+      if ((this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) || (this.a.a(this.a.jdField_a_of_type_JavaUtilList)))
+      {
+        if (this.a.a(this.a.jdField_a_of_type_JavaUtilList)) {
+          this.a.b(2131435806);
+        }
+        return;
+      }
+      ReportController.b(this.a.app, "CliOper", "", "", "card_mall", "0X80066C7", 0, 0, "1", "", "", "");
+      this.a.jdField_a_of_type_JavaUtilList.add(paramProfileLabelInfo);
+    }
+    for (;;)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileLabelPanel$LabelStatusManager.c(paramProfileLabelInfo, paramToggleButton);
+      this.a.a(this.a.jdField_a_of_type_JavaUtilList.size());
+      if (this.a.jdField_a_of_type_Thf == null) {
+        break;
+      }
+      this.a.jdField_a_of_type_Thf.notifyDataSetChanged();
+      return;
+      if (!this.a.a(paramProfileLabelInfo.labelId, this.a.jdField_a_of_type_JavaUtilList)) {
+        break;
+      }
+      this.a.a(paramProfileLabelInfo, this.a.jdField_a_of_type_JavaUtilList);
+    }
   }
 }
 

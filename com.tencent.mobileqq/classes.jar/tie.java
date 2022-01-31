@@ -1,25 +1,19 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.VipInfoHandler;
-import com.tencent.qphone.base.util.QLog;
-import mqq.manager.TicketManager;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBroadcastActivity;
 
-public class tie
-  implements Runnable
+class tie
+  implements View.OnClickListener
 {
-  public tie(QQSettingMe paramQQSettingMe) {}
+  tie(tib paramtib, SharedPreferences paramSharedPreferences, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (!QQSettingMe.d(this.a)) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "updateVipInfo");
-    }
-    String str1 = this.a.a.getCurrentAccountUin();
-    String str2 = ((TicketManager)this.a.a.getManager(2)).getSkey(str1);
-    ((VipInfoHandler)this.a.a.a(27)).a(str2, str1);
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
+    this.jdField_a_of_type_Tib.a.a.sendEmptyMessageDelayed(1010, 1000L);
   }
 }
 

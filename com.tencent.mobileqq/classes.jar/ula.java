@@ -1,13 +1,26 @@
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class ula
+class ula
   implements Runnable
 {
-  public ula(XBubbleAnimation paramXBubbleAnimation) {}
+  ula(ukz paramukz, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo) {}
   
   public void run()
   {
-    this.a.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomizeStrategyFactory", 2, "ThemeAnimStrategy");
+    }
+    if ((ukz.a(this.jdField_a_of_type_Ukz) == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.templateId)))
+    {
+      CustomizeStrategyFactory.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo);
+      return;
+    }
+    String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioCustomizeStrategyFactory$RedPacketInfo.templateId + ".zip";
+    ukz.a(this.jdField_a_of_type_Ukz).a(str, "", new ulb(this));
   }
 }
 

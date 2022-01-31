@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.doutu.combo;
 
-import abro;
-import abrp;
+import abyp;
+import abyq;
 import android.annotation.TargetApi;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapFactory.Options;
@@ -66,7 +66,7 @@ public class ComboResource
       if (!jdField_a_of_type_Boolean)
       {
         jdField_a_of_type_Boolean = true;
-        ThreadManager.post(new abro(), 5, null, false);
+        ThreadManager.post(new abyp(), 5, null, false);
       }
       return null;
     }
@@ -84,7 +84,7 @@ public class ComboResource
         if (!jdField_a_of_type_Boolean)
         {
           jdField_a_of_type_Boolean = true;
-          ThreadManager.post(new abrp(), 5, null, false);
+          ThreadManager.post(new abyq(), 5, null, false);
         }
         return null;
       }
@@ -172,7 +172,7 @@ public class ComboResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.combo.ComboResource
  * JD-Core Version:    0.7.0.1
  */

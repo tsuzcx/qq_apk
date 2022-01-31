@@ -1,19 +1,23 @@
-import com.tencent.biz.pubaccount.util.PublicTracker;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.widget.XListView.DrawFinishedListener;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class vvq
-  implements XListView.DrawFinishedListener
+  implements Runnable
 {
-  public vvq(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vvq(MultiForwardChatPie paramMultiForwardChatPie, CharSequence paramCharSequence) {}
   
-  public void a()
+  public void run()
   {
-    if ((!this.a.ag) && (this.a.ah))
-    {
-      this.a.ag = true;
-      PublicTracker.a("SUBSCRIPT_AIO_COST", null);
-    }
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(8);
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.d.setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.g);
+    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.b, this.jdField_a_of_type_JavaLangCharSequence);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.y();
   }
 }
 

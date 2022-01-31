@@ -1,6 +1,4 @@
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.stickerbubble.PEPanelHelper;
-import com.tencent.qphone.base.util.QLog;
 
 public class rpk
   implements Runnable
@@ -9,10 +7,7 @@ public class rpk
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.aio.BaseChatPie", 2, "checkPESourceDowned onShow First");
-    }
-    PEPanelHelper.a();
+    this.a.A = false;
   }
 }
 

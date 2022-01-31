@@ -1,8 +1,8 @@
 package cooperation.qzone.report.lp;
 
-import amip;
-import amiq;
-import amir;
+import amyu;
+import amyv;
+import amyw;
 import android.os.Bundle;
 import android.os.Looper;
 import android.os.SystemClock;
@@ -231,7 +231,7 @@ public class MachinelearningReport
   {
     if ((Looper.myLooper() != null) && (Looper.myLooper() == Looper.getMainLooper()))
     {
-      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new amiq(this, paramInt, paramLpReportInfo));
+      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new amyv(this, paramInt, paramLpReportInfo));
       return;
     }
     report(paramInt, paramLpReportInfo);
@@ -282,7 +282,7 @@ public class MachinelearningReport
   public void reportToDC02153(LpReport_PicInfo_dc02153 paramLpReport_PicInfo_dc02153)
   {
     if ((Looper.myLooper() != null) && (Looper.myLooper() == Looper.getMainLooper())) {
-      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new amip(this, paramLpReport_PicInfo_dc02153));
+      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new amyu(this, paramLpReport_PicInfo_dc02153));
     }
     while (paramLpReport_PicInfo_dc02153 == null) {
       return;
@@ -313,7 +313,7 @@ public class MachinelearningReport
     }
     if ((Looper.myLooper() != null) && (Looper.myLooper() == Looper.getMainLooper()))
     {
-      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new amir(this));
+      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new amyw(this));
       return;
     }
     report();

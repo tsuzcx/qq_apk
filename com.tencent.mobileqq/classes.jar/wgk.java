@@ -1,36 +1,29 @@
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendBaseBuilder;
-import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
-import com.tencent.widget.SwipTextViewMenuBuilder;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.apollo.script.SpriteCommFunc;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForApollo;
+import com.tencent.mobileqq.persistence.qslowtable.QSlowTableManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class wgk
-  extends SwipTextViewMenuBuilder
+class wgk
+  implements Runnable
 {
-  public wgk(NewFriendBaseBuilder paramNewFriendBaseBuilder, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
-  {
-    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
-  }
+  wgk(wgj paramwgj) {}
   
-  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
+  public void run()
   {
-    paramInt = 1;
-    if ((paramArrayOfSwipRightMenuItem == null) || (paramArrayOfSwipRightMenuItem.length <= 0)) {}
-    for (;;)
-    {
-      return;
-      int i = this.a.a();
-      if ((paramArrayOfSwipRightMenuItem.length < 0) && ((i & 0xF) == 1))
-      {
-        paramArrayOfSwipRightMenuItem[0].b = 0;
-        paramArrayOfSwipRightMenuItem[0].a = 0;
-      }
-      while (paramInt < paramArrayOfSwipRightMenuItem.length)
-      {
-        paramArrayOfSwipRightMenuItem[paramInt].b = -1;
-        paramArrayOfSwipRightMenuItem[paramInt].a = -1;
-        paramInt += 1;
-        continue;
-        paramInt = 0;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("chatHistory.troop.msgList", 2, "do delete uniseq=" + this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq + ",id=" + this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getId());
+    }
+    QSlowTableManager localQSlowTableManager = (QSlowTableManager)this.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.a.getManager(200);
+    if (localQSlowTableManager != null) {
+      localQSlowTableManager.a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, false);
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.a.a().a(this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage, true);
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataChatMessage instanceof MessageForApollo)) {
+      SpriteCommFunc.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListForTroopFragment.a, "chat_history_start_del_msg");
     }
   }
 }

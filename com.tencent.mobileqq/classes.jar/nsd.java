@@ -1,28 +1,33 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.comment.StoryInputBarView;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController.QQStoryMainView;
-import com.tencent.biz.qqstory.storyHome.StoryHomePushYellowBarHandler;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.network.handler.DateCollectionListPageLoader.GetCollectionListEvent;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.QQUIEventReceiver;
 
 public class nsd
-  implements Runnable
+  extends QQUIEventReceiver
 {
-  public nsd(QQStoryMainController paramQQStoryMainController) {}
-  
-  public void run()
+  public nsd(QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity)
   {
-    if (QQStoryMainController.a(this.a)) {
+    super(paramQQStoryShareGroupProfileActivity);
+  }
+  
+  public void a(@NonNull QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity, @NonNull DateCollectionListPageLoader.GetCollectionListEvent paramGetCollectionListEvent)
+  {
+    if (!TextUtils.equals(paramQQStoryShareGroupProfileActivity.jdField_a_of_type_JavaLangString, paramGetCollectionListEvent.jdField_a_of_type_JavaLangString)) {}
+    while ((paramGetCollectionListEvent.b) && (paramQQStoryShareGroupProfileActivity.jdField_a_of_type_Boolean)) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView = this.a.a();
-    this.a.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.setInputViewHideListener(this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeStoryHomePushYellowBarHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.a(), this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView);
-    QQStoryMainController.a(this.a, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController$QQStoryMainView.a());
-    QQStoryMainController.a(this.a, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController$QQStoryMainView.a());
-    QQStoryMainController.a(this.a).setVisibility(8);
-    QQStoryMainController.a(this.a).setVisibility(8);
-    QQStoryMainController.a(this.a.jdField_a_of_type_AndroidAppActivity, "mainHallConfig", QQStoryMainController.a(this.a), QQStoryMainController.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "onGetShareGroupVideos: 是否来自缓存=" + paramGetCollectionListEvent.b + " groupId=" + paramQQStoryShareGroupProfileActivity.b + ", event=" + paramGetCollectionListEvent.toString());
+    }
+    QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramGetCollectionListEvent);
+  }
+  
+  public Class acceptEventClass()
+  {
+    return DateCollectionListPageLoader.GetCollectionListEvent.class;
   }
 }
 

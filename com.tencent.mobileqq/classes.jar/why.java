@@ -1,41 +1,49 @@
 import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import java.net.URLEncoder;
+import android.view.Window;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class why
   implements View.OnClickListener
 {
-  public why(ShowExternalTroopListActivity paramShowExternalTroopListActivity) {}
+  public why(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
   public void onClick(View paramView)
   {
-    if (!NetworkUtil.g(this.a.jdField_a_of_type_AndroidAppActivity))
+    if ((TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText())) || (this.a.f == ClassificationSearchActivity.c))
     {
-      QQToast.a(this.a, 1, this.a.getString(2131430140), 0).b(this.a.getTitleBarHeight());
+      paramView = (InputMethodManager)this.a.getSystemService("input_method");
+      if ((paramView != null) && (paramView.isActive())) {
+        paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
+      }
+      this.a.setResult(0);
+      this.a.finish();
+      if ((this.a.f == ClassificationSearchActivity.d) || (this.a.f == ClassificationSearchActivity.e)) {
+        this.a.sendBroadcast(new Intent("com.tencent.mobileqq.search.cancel"));
+      }
       return;
     }
-    paramView = ((TextView)paramView).getText().toString();
-    Object localObject = new Intent(this.a.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-    ((Intent)localObject).putExtra("url", "http://qqweb.qq.com/m/relativegroup/index.html?_bid=165&_wv=4194304&source=qun_tag&keyword=" + URLEncoder.encode(paramView));
-    ((Intent)localObject).putExtra("hide_operation_bar", true);
-    ((Intent)localObject).putExtra("hide_more_button", true);
-    this.a.startActivity((Intent)localObject);
-    localObject = this.a.app;
-    String str = this.a.jdField_a_of_type_JavaLangString;
-    if (this.a.jdField_a_of_type_Boolean) {}
-    for (paramView = "0";; paramView = "1")
+    paramView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) && (!TextUtils.isEmpty(paramView.trim())))
     {
-      ReportController.b((QQAppInterface)localObject, "P_CliOper", "Grp_join", "", "person_data", "Clk_quntag", 0, 0, str, paramView, "", "");
+      this.a.a(paramView);
+      ClassificationSearchActivity.a(this.a, paramView);
+      PublicAccountReportUtils.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramView, "", true);
       return;
     }
+    if (this.a.f == ClassificationSearchActivity.d)
+    {
+      PublicAccountReportUtils.a(null, "", "0X800742D", "0X800742D", 0, 0, paramView, "", "", "");
+      ClassificationSearchActivity.a(this.a, paramView);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramView, false);
   }
 }
 

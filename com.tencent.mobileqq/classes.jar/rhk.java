@@ -1,37 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.AddAccountActivity;
 
 public class rhk
-  implements ActionSheet.OnButtonClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public rhk(AddRequestActivity paramAddRequestActivity, ActionSheet paramActionSheet) {}
+  public rhk(AddAccountActivity paramAddAccountActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (NetworkUtil.d(BaseApplication.getContext()))
-      {
-        long l = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.getCurrentAccountUin()).longValue();
-        this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.jdField_a_of_type_ComTencentMobileqqAppCardHandler.a(l, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.jdField_a_of_type_JavaLangString).longValue(), 1);
-      }
-      else
-      {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131434794, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
-      }
-    }
+    AddAccountActivity.b(this.a, false);
   }
 }
 

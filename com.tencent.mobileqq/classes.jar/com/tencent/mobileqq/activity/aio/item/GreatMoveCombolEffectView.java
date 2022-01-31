@@ -25,7 +25,7 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Vector;
-import uwy;
+import vaa;
 
 public class GreatMoveCombolEffectView
   extends View
@@ -91,7 +91,7 @@ public class GreatMoveCombolEffectView
       this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = paramContext.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
       this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 = paramContext.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1;
     }
-    setOnTouchListener(new uwy(this));
+    setOnTouchListener(new vaa(this));
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     d();
     paramContext = new HandlerThread("decode");

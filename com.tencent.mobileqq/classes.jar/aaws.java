@@ -1,22 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.ArkGetLocationCallback;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IPassiveSearchIntentByServerHandler;
 
-class aaws
-  implements View.OnClickListener
+public final class aaws
+  implements ArkAppLocationManager.ArkGetLocationCallback
 {
-  aaws(aawr paramaawr) {}
+  public aaws(String paramString, Object paramObject, ArkMessageServerLogic.IPassiveSearchIntentByServerHandler paramIPassiveSearchIntentByServerHandler) {}
   
-  public void onClick(View paramView)
+  public void a(String paramString, double paramDouble1, double paramDouble2)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback.a(this.a.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo);
-    }
-    ShopScanActivity.d(this.a.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity);
-    ShopScanActivity.c(this.a.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity);
-    this.a.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.c.setOnClickListener(this.a.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity);
+    aawy localaawy = new aawy(null);
+    localaawy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localaawy.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangObject;
+    localaawy.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IPassiveSearchIntentByServerHandler = this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IPassiveSearchIntentByServerHandler;
+    ThreadManager.post(new aawt(this, localaawy, paramString, paramDouble1, paramDouble2), 5, null, true);
   }
 }
 

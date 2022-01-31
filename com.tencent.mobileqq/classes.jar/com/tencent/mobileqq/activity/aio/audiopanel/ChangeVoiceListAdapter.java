@@ -71,7 +71,7 @@ public class ChangeVoiceListAdapter
         if (paramView == null) {
           paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
         }
-        ((LinearLayout)localObject1).addView(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970167, null), (ViewGroup.LayoutParams)localObject2);
+        ((LinearLayout)localObject1).addView(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970181, null), (ViewGroup.LayoutParams)localObject2);
         i += 1;
         paramView = paramViewGroup;
       }

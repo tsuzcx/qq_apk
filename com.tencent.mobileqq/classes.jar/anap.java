@@ -1,38 +1,39 @@
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.graphics.Bitmap;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.util.GifAntishakeModule;
+import cooperation.qzone.vision.PhotoUtil;
+import java.util.ArrayList;
+import java.util.concurrent.CountDownLatch;
 
-final class anap
+public class anap
   implements Runnable
 {
-  anap(String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, long paramLong1, long paramLong2, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack) {}
+  public anap(GifAntishakeModule paramGifAntishakeModule, ArrayList paramArrayList, int paramInt, CountDownLatch paramCountDownLatch, Bitmap paramBitmap, boolean[] paramArrayOfBoolean) {}
   
   public void run()
   {
-    try
+    Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int);
+    if (localBitmap == null)
     {
-      try
-      {
-        int i = anao.a(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.c, this.d, this.e, this.f, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long);
-        if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack != null) {
-          this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(i, "", this.jdField_b_of_type_JavaLangString);
-        }
-        return;
-      }
-      finally {}
+      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
       return;
     }
-    catch (Exception localException)
+    if (this.jdField_a_of_type_Int != 0)
     {
-      SLog.c("CropVideoActivity", "do composite exception", localException);
-      if (this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(940001, localException.getMessage(), "");
+      float f = PhotoUtil.getImageSimilarity(this.jdField_a_of_type_AndroidGraphicsBitmap, localBitmap);
+      if (QLog.isColorLevel()) {
+        QLog.d("QzoneVision", 2, "第一帧与第" + (this.jdField_a_of_type_Int + 1) + "帧的相似度为" + f);
+      }
+      if ((localBitmap.getWidth() == this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) && (localBitmap.getHeight() == this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) && (f > GifAntishakeModule.a(this.jdField_a_of_type_CooperationQzoneUtilGifAntishakeModule))) {
+        this.jdField_a_of_type_ArrayOfBoolean[this.jdField_a_of_type_Int] = true;
       }
     }
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anap
  * JD-Core Version:    0.7.0.1
  */

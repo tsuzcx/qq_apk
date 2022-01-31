@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.precover;
 
-import afzc;
+import agne;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.PrecoverResource;
@@ -35,7 +35,7 @@ public class PrecoverResDownloader
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new afzc();
+    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new agne();
   }
   
   public PrecoverResDownloader(QQAppInterface paramQQAppInterface, PrecoverManager paramPrecoverManager)
@@ -499,7 +499,7 @@ public class PrecoverResDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.precover.PrecoverResDownloader
  * JD-Core Version:    0.7.0.1
  */

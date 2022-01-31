@@ -4,7 +4,7 @@ import com.tencent.TMG.channel.AVAppChannel.CsCmdCallback;
 import com.tencent.TMG.channel.KSAppChannel;
 import com.tencent.TMG.sdk.AVContext.StartParam;
 import com.tencent.qqavopensdk.PBuffer.SSOTunnelEvent;
-import ysg;
+import yvm;
 
 public class SSOChannel
   extends KSAppChannel
@@ -44,7 +44,7 @@ public class SSOChannel
       com.tencent.qphone.base.util.QLog.e(jdField_a_of_type_JavaLangString, 1, "requestAppCmd enter");
       if ((this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam instanceof AVEngineStartParams))
       {
-        SSOTunnelEvent.a().a(paramArrayOfByte, "", this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier, this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId, ((AVEngineStartParams)this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int, ((AVEngineStartParams)this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long, new ysg(this, paramArrayOfByte, paramCsCmdCallback));
+        SSOTunnelEvent.a().a(paramArrayOfByte, "", this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier, this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId, ((AVEngineStartParams)this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int, ((AVEngineStartParams)this.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long, new yvm(this, paramArrayOfByte, paramCsCmdCallback));
         return true;
       }
       return false;

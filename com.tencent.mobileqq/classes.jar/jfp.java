@@ -1,16 +1,23 @@
 import com.tencent.av.AVLog;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.camera.QavCameraUsage;
+import com.tencent.av.business.manager.EffectConfigBase.IEffectConfigCallback;
+import com.tencent.av.business.manager.magicface.MagicFaceDataEntity;
+import com.tencent.av.business.manager.pendant.PendantItem;
 
 public class jfp
-  implements Runnable
+  implements EffectConfigBase.IEffectConfigCallback
 {
-  public jfp(VideoAppInterface paramVideoAppInterface) {}
+  public jfp(MagicFaceDataEntity paramMagicFaceDataEntity) {}
   
-  public void run()
+  public void a(PendantItem paramPendantItem) {}
+  
+  public void a(PendantItem paramPendantItem, int paramInt) {}
+  
+  public void a(PendantItem paramPendantItem, boolean paramBoolean)
   {
-    AVLog.d(VideoAppInterface.c(), "CameraUsageRunnable: ");
-    QavCameraUsage.a(this.a.getApplication(), false);
+    AVLog.c("MagicFaceDataEntity", "onDownloadFinish: " + paramPendantItem.toString() + "|" + paramBoolean);
+    if (paramBoolean) {
+      MagicFaceDataEntity.a(this.a, paramPendantItem);
+    }
   }
 }
 

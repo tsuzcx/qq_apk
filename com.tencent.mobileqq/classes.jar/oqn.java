@@ -1,20 +1,24 @@
-import com.tencent.biz.qrcode.CodeMaskManager;
-import com.tencent.biz.qrcode.CodeMaskManager.Callback;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.view.segment.SegmentList;
+import com.tencent.biz.qqstory.view.segment.SegmentManager;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class oqn
-  implements Runnable
+  extends SimpleJob
 {
-  public oqn(CodeMaskManager paramCodeMaskManager, oqo paramoqo, CodeMaskManager.Callback paramCallback) {}
+  public oqn(SegmentList paramSegmentList) {}
   
-  public void run()
+  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
   {
-    if (this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager.a) {}
-    while (!this.jdField_a_of_type_Oqo.a.compareAndSet(false, true)) {
-      return;
+    this.a.a.f();
+    if (SegmentList.a(this.a)) {
+      return null;
     }
-    this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback.a(CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager));
-    CodeMaskManager.a(this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager);
+    SegmentList.a(this.a).sendMessage(SegmentList.a(this.a).obtainMessage(2));
+    return null;
   }
 }
 

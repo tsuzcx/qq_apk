@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite;
 
-import aixo;
+import ajls;
 import android.graphics.drawable.AnimationDrawable;
 import android.text.TextUtils;
 import android.view.View;
@@ -19,7 +19,7 @@ import org.json.JSONObject;
 public class ReciteResultSubViewHolder
   extends ReciteSubViewHolderBase
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130841364, 2130841363, 2130841361 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2130841401, 2130841400, 2130841398 };
   private static final String[] jdField_a_of_type_ArrayOfJavaLangString = { "完美", "优秀", "良好" };
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -35,15 +35,15 @@ public class ReciteResultSubViewHolder
   public ReciteResultSubViewHolder(View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368399));
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131368420);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368415));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368416));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368410));
-    this.d = ((TextView)paramView.findViewById(2131368411));
-    this.e = ((TextView)paramView.findViewById(2131368422));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368421));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365250));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368466));
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131368487);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368482));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368483));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368477));
+    this.d = ((TextView)paramView.findViewById(2131368478));
+    this.e = ((TextView)paramView.findViewById(2131368489));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368488));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131365272));
   }
   
   private void a()
@@ -60,39 +60,39 @@ public class ReciteResultSubViewHolder
     localAnimationDrawable.selectDrawable(0);
   }
   
-  public void a(View paramView, HWReciteItem paramHWReciteItem, aixo paramaixo)
+  public void a(View paramView, HWReciteItem paramHWReciteItem, ajls paramajls)
   {
-    paramaixo = (HWReciteInfo)paramaixo.a;
+    paramajls = (HWReciteInfo)paramajls.a;
     switch (paramView.getId())
     {
     default: 
-    case 2131368419: 
-    case 2131368420: 
+    case 2131368486: 
+    case 2131368487: 
       do
       {
         return;
-        ReciteFragment.a(paramView.getContext(), paramaixo.a().toString(), paramaixo.jdField_c_of_type_Int);
+        ReciteFragment.a(paramView.getContext(), paramajls.a().toString(), paramajls.jdField_c_of_type_Int);
         return;
-        if (paramaixo.jdField_a_of_type_Boolean)
+        if (paramajls.jdField_a_of_type_Boolean)
         {
           paramHWReciteItem.b();
           b();
           return;
         }
-      } while (TextUtils.isEmpty(paramaixo.jdField_d_of_type_JavaLangString));
+      } while (TextUtils.isEmpty(paramajls.jdField_d_of_type_JavaLangString));
       if (QLog.isColorLevel()) {
-        QLog.d("ReciteResultSubViewHolder", 2, new Object[] { "onItemViewClick, play audio, filePath = ", paramaixo.jdField_d_of_type_JavaLangString });
+        QLog.d("ReciteResultSubViewHolder", 2, new Object[] { "onItemViewClick, play audio, filePath = ", paramajls.jdField_d_of_type_JavaLangString });
       }
-      paramHWReciteItem.e(paramaixo);
+      paramHWReciteItem.e(paramajls);
       a();
-      TroopReportor.a("Grp_edu", "Grp_recite", "Finish_Recite_Play_Clk", 0, 0, new String[] { paramaixo.jdField_f_of_type_JavaLangString });
+      TroopReportor.a("Grp_edu", "Grp_recite", "Finish_Recite_Play_Clk", 0, 0, new String[] { paramajls.jdField_f_of_type_JavaLangString });
       return;
     }
     this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-    paramHWReciteItem.b(paramaixo);
+    paramHWReciteItem.b(paramajls);
   }
   
-  public void a(HWReciteItem paramHWReciteItem, aixo paramaixo, HWReciteInfo paramHWReciteInfo, int paramInt)
+  public void a(HWReciteItem paramHWReciteItem, ajls paramajls, HWReciteInfo paramHWReciteInfo, int paramInt)
   {
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
     if (TextUtils.isEmpty(paramHWReciteInfo.jdField_c_of_type_JavaLangString))
@@ -128,9 +128,9 @@ public class ReciteResultSubViewHolder
     }
     for (;;)
     {
-      paramHWReciteItem.b(this.jdField_a_of_type_AndroidViewView, paramaixo);
-      paramHWReciteItem.b(this.jdField_b_of_type_AndroidViewView, paramaixo);
-      paramHWReciteItem.b(this.jdField_c_of_type_AndroidWidgetImageView, paramaixo);
+      paramHWReciteItem.b(this.jdField_a_of_type_AndroidViewView, paramajls);
+      paramHWReciteItem.b(this.jdField_b_of_type_AndroidViewView, paramajls);
+      paramHWReciteItem.b(this.jdField_c_of_type_AndroidWidgetImageView, paramajls);
       return;
       this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
       this.e.setVisibility(8);
@@ -154,7 +154,7 @@ public class ReciteResultSubViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.recite.ReciteResultSubViewHolder
  * JD-Core Version:    0.7.0.1
  */

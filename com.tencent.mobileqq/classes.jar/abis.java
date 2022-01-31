@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.campuscircle.CampusCirclePublishActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.armap.wealthgod.ARMapSplashEntryView;
 
 public class abis
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public abis(CampusCirclePublishActivity paramCampusCirclePublishActivity, String paramString) {}
+  public abis(ARMapSplashEntryView paramARMapSplashEntryView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCirclePublishActivity.app, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
+    ARMapSplashEntryView.a(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    ARMapSplashEntryView.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abis
  * JD-Core Version:    0.7.0.1
  */

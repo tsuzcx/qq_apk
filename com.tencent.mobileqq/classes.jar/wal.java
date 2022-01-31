@@ -1,41 +1,58 @@
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.tips.TipsManager;
-import com.tencent.mobileqq.activity.aio.tips.VipFunCallTipsBar;
+import com.tencent.biz.helper.TroopCardAppInfoHelper.IGetAppInfoCB;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vas.IndividuationUrlHelper;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.data.TroopAppInfo;
+import com.tencent.mobileqq.troop.utils.TroopAioNotifyManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class wal
-  implements View.OnClickListener
+  implements TroopCardAppInfoHelper.IGetAppInfoCB
 {
-  private long jdField_a_of_type_Long;
+  public wal(TroopChatPie paramTroopChatPie) {}
   
-  public wal(VipFunCallTipsBar paramVipFunCallTipsBar) {}
-  
-  public void onClick(View paramView)
+  public void a()
   {
-    long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 200L) {
-      return;
+    if ((ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) != null) || (QLog.isColorLevel())) {
+      QLog.d(".troop.notify_feeds.aio", 2, "getAppIds onFailed, reqNotifyItems");
     }
-    this.jdField_a_of_type_Long = l;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsVipFunCallTipsBar.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a();
-    paramView = new Intent(VipFunCallTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsVipFunCallTipsBar), QQBrowserActivity.class);
-    paramView.putExtra("hide_left_button", false);
-    paramView.putExtra("show_right_close_button", false);
-    paramView.putExtra("startOpenPageTime", System.currentTimeMillis());
-    String str = IndividuationUrlHelper.a(VipFunCallTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsVipFunCallTipsBar), "call", "mvip.gongneng.anroid.individuation.web");
-    VasWebviewUtil.openQQBrowserWithoutAD(VipFunCallTipsBar.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsVipFunCallTipsBar), str, 524288L, paramView, false, -1);
-    VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsVipFunCallTipsBar.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "QQVIPFUNCALL", "0X8004D8C", "0X8004D8C", 4, 0, new String[0]);
-    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsVipFunCallTipsBar.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().edit();
-    paramView.putInt("funcall_tip_" + this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsVipFunCallTipsBar.jdField_a_of_type_JavaLangString, 4);
-    paramView.commit();
+    TroopAioNotifyManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+  }
+  
+  public void a(ArrayList paramArrayList)
+  {
+    if (ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()) != null) {}
+    ArrayList localArrayList;
+    do
+    {
+      return;
+      localArrayList = new ArrayList();
+      localArrayList.add(Long.valueOf(1L));
+      localArrayList.add(Long.valueOf(2L));
+      localArrayList.add(Long.valueOf(1101236949L));
+      localArrayList.add(Long.valueOf(1101484419L));
+      localArrayList.add(Long.valueOf(1102858908L));
+      localArrayList.add(Long.valueOf(1106611799L));
+      localArrayList.add(Long.valueOf(1104445552L));
+      localArrayList.add(Long.valueOf(1106717414L));
+      if ((paramArrayList != null) && (paramArrayList.size() > 0))
+      {
+        paramArrayList = paramArrayList.iterator();
+        while (paramArrayList.hasNext()) {
+          localArrayList.add(Long.valueOf(((TroopAppInfo)paramArrayList.next()).appId));
+        }
+      }
+      paramArrayList = (TroopHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    } while (paramArrayList == null);
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.notify_feeds.aio", 2, "send_oidb_0x8c9_2, appIds.size=" + localArrayList.size());
+    }
+    paramArrayList.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, localArrayList, false);
   }
 }
 

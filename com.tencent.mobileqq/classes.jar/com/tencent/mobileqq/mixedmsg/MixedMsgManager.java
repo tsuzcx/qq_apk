@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.mixedmsg;
 
-import adtz;
-import adua;
-import adub;
-import aduc;
-import adud;
-import adue;
-import aduf;
+import aehf;
+import aehg;
+import aehh;
+import aehi;
+import aehj;
+import aehk;
+import aehl;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
@@ -95,7 +95,7 @@ public class MixedMsgManager
           paramString2 = a(paramQQAppInterface, paramString2, null, paramString1, paramInt);
           if (paramString2 != null)
           {
-            ThreadManager.post(new adue(paramString2), 8, null, true);
+            ThreadManager.post(new aehk(paramString2), 8, null, true);
             paramString2.subMsgId = localArrayList.size();
             localArrayList.add(paramString2);
           }
@@ -275,7 +275,7 @@ public class MixedMsgManager
           if (k >= j) {
             break label512;
           }
-          paramString = new adub(this, paramQQAppInterface, paramString, paramInt, paramMessageForMixedMsg);
+          paramString = new aehh(this, paramQQAppInterface, paramString, paramInt, paramMessageForMixedMsg);
           paramQQAppInterface.a().b(paramMessageForMixedMsg, paramString);
           if (QLog.isColorLevel()) {
             QLog.d("MixedMsgManager", 2, "packAndSendMsg, richTextLength < " + j + ", send by normal message");
@@ -314,7 +314,7 @@ public class MixedMsgManager
   {
     PicReq localPicReq = PicBusiManager.a(8, 7);
     localPicReq.a(paramArrayList);
-    localPicReq.a(new adua(this, paramMessageForMixedMsg, paramQQAppInterface, paramString, paramInt));
+    localPicReq.a(new aehg(this, paramMessageForMixedMsg, paramQQAppInterface, paramString, paramInt));
     PicBusiManager.a(localPicReq, paramQQAppInterface);
   }
   
@@ -435,7 +435,7 @@ public class MixedMsgManager
   
   public void a(SessionInfo paramSessionInfo, MessageForMixedMsg paramMessageForMixedMsg, boolean paramBoolean)
   {
-    paramSessionInfo = new adtz(this, paramSessionInfo, paramMessageForMixedMsg, paramBoolean);
+    paramSessionInfo = new aehf(this, paramSessionInfo, paramMessageForMixedMsg, paramBoolean);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(paramSessionInfo);
   }
   
@@ -475,7 +475,7 @@ public class MixedMsgManager
             if (FileUtil.a(str))
             {
               paramString1.put(str, Integer.valueOf(paramSourceMsgInfo.subMsgId));
-              a(paramQQAppInterface, paramSourceMsgInfo, paramBoolean, new aduf(this, paramArrayList1, paramString1, str, paramArrayList2));
+              a(paramQQAppInterface, paramSourceMsgInfo, paramBoolean, new aehl(this, paramArrayList1, paramString1, str, paramArrayList2));
             }
           }
           paramInt += 1;
@@ -519,8 +519,8 @@ public class MixedMsgManager
       {
         return;
         this.jdField_a_of_type_Long = System.currentTimeMillis();
-        paramString = new aduc(this, paramQQAppInterface, paramMessageForMixedMsg, paramString, paramInt);
-        paramBoolean = a(paramQQAppInterface, arrayOfByte, paramQQAppInterface.getCurrentAccountUin(), paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.istroop, paramMessageForMixedMsg.uniseq, 1035, new adud(this, paramQQAppInterface, paramMessageForMixedMsg, paramString, paramBoolean));
+        paramString = new aehi(this, paramQQAppInterface, paramMessageForMixedMsg, paramString, paramInt);
+        paramBoolean = a(paramQQAppInterface, arrayOfByte, paramQQAppInterface.getCurrentAccountUin(), paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.istroop, paramMessageForMixedMsg.uniseq, 1035, new aehj(this, paramQQAppInterface, paramMessageForMixedMsg, paramString, paramBoolean));
         if (!paramBoolean) {
           break;
         }
@@ -559,7 +559,7 @@ public class MixedMsgManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.mixedmsg.MixedMsgManager
  * JD-Core Version:    0.7.0.1
  */

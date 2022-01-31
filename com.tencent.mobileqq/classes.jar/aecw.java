@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import java.util.ArrayList;
+import com.tencent.mobileqq.lyric.widget.LyricViewController;
+import com.tencent.mobileqq.lyric.widget.LyricViewInternal;
+import com.tencent.mobileqq.lyric.widget.LyricViewScroll;
 
-class aecw
+public class aecw
   implements Runnable
 {
-  aecw(aecv paramaecv, boolean paramBoolean, int paramInt, ArrayList paramArrayList) {}
+  public aecw(LyricViewController paramLyricViewController) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Aecv.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaUtilArrayList);
+    LyricViewController.a(this.a).a(this.a.a.a());
   }
 }
 

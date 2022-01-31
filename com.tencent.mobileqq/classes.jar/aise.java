@@ -1,22 +1,38 @@
-import android.os.Handler;
-import com.tencent.mobileqq.troop.homework.config.BeginnerGuideDownloadManager;
+import com.tencent.mobileqq.transfile.dns.InnerDns;
 import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCConnection;
+import eipc.EIPCOnGetConnectionListener;
 
 public class aise
-  implements Runnable
+  implements EIPCOnGetConnectionListener
 {
-  public aise(BeginnerGuideDownloadManager paramBeginnerGuideDownloadManager, Handler paramHandler, int paramInt, boolean paramBoolean) {}
+  public aise(InnerDns paramInnerDns) {}
   
-  public void run()
+  public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    if ((!BeginnerGuideDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkConfigBeginnerGuideDownloadManager, this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean)) && (QLog.isColorLevel())) {
-      QLog.d("BeginnerGuideDownloadManager", 2, "postDownload return false");
+    if (paramEIPCConnection != null) {
+      InnerDns.a(this.a, paramEIPCConnection.procName);
+    }
+    InnerDns.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d("InnerDns", 2, "onConnectBind");
+    }
+  }
+  
+  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
+  {
+    if (paramEIPCConnection != null) {
+      InnerDns.a(this.a, paramEIPCConnection.procName);
+    }
+    InnerDns.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("InnerDns", 2, "onConnectUnbind");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aise
  * JD-Core Version:    0.7.0.1
  */

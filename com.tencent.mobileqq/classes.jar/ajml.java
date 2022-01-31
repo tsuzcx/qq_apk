@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.troop.troop_apps.entry.ui.BulkSendMessageFragment;
 
-class ajml
+public class ajml
   implements Runnable
 {
-  ajml(ajmj paramajmj, Exception paramException) {}
+  public ajml(BulkSendMessageFragment paramBulkSendMessageFragment) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ajmj.a.dismiss();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.FrdProfileCard", 2, "safetyReport exception1" + this.jdField_a_of_type_JavaLangException.getMessage());
-    }
+    this.a.b.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajml
  * JD-Core Version:    0.7.0.1
  */

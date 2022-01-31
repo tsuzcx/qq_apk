@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.lightReply;
 
-import adop;
-import adoq;
-import ador;
-import adot;
-import adou;
-import adox;
+import aebv;
+import aebw;
+import aebx;
+import aebz;
+import aeca;
+import aecd;
 import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -19,10 +19,12 @@ import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageForTroopFile;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -152,7 +154,7 @@ public class LightReplyMenuManager
       localAnimatorSet.playTogether(new Animator[] { localObjectAnimator1, localObjectAnimator2 });
       localAnimatorSet.setTarget(paramLinearLayout);
       localAnimatorSet.setDuration(400L);
-      localObjectAnimator1.addListener(new adou(this));
+      localObjectAnimator1.addListener(new aeca(this));
       localAnimatorSet.start();
     }
   }
@@ -187,7 +189,7 @@ public class LightReplyMenuManager
   {
     if ((this.jdField_a_of_type_AndroidWidgetLinearLayout != null) && (!this.jdField_c_of_type_Boolean))
     {
-      ThreadManager.getUIHandler().post(new adot(this));
+      ThreadManager.getUIHandler().post(new aebz(this));
       this.jdField_c_of_type_Boolean = true;
     }
   }
@@ -219,12 +221,12 @@ public class LightReplyMenuManager
       this.f = (-this.g);
       PicItemBuilder.e();
       this.jdField_d_of_type_Boolean = paramBoolean;
-      localObject = (LinearLayout)paramViewGroup.findViewById(2131363015);
+      localObject = (LinearLayout)paramViewGroup.findViewById(2131363033);
       if (localObject == null) {
-        break label419;
+        break label418;
       }
       this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localObject);
-      LightReplyMenuHorizontalListView localLightReplyMenuHorizontalListView = (LightReplyMenuHorizontalListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363016);
+      LightReplyMenuHorizontalListView localLightReplyMenuHorizontalListView = (LightReplyMenuHorizontalListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363034);
       this.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyAdapter = ((LightReplyAdapter)localLightReplyMenuHorizontalListView.a());
       if (this.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyAdapter == null)
       {
@@ -239,7 +241,7 @@ public class LightReplyMenuManager
         localObject = localLightReplyMenuHorizontalListView;
       }
       label206:
-      ((LightReplyMenuHorizontalListView)localObject).setOnItemClickListener(new adoq(this, paramBoolean, paramString, paramLightReplyEmotionClickListener, paramContext, paramInt1, paramLong, paramInt2));
+      ((LightReplyMenuHorizontalListView)localObject).setOnItemClickListener(new aebw(this, paramBoolean, paramString, paramLightReplyEmotionClickListener, paramContext, paramInt1, paramLong, paramInt2));
       paramLightReplyEmotionClickListener = new RelativeLayout.LayoutParams(-2, -2);
       paramLightReplyEmotionClickListener.addRule(14);
       paramLightReplyEmotionClickListener.topMargin = paramInt4;
@@ -249,8 +251,8 @@ public class LightReplyMenuManager
       }
       if (!this.jdField_a_of_type_Boolean)
       {
-        if (this.jdField_e_of_type_Int >= 2) {
-          break label497;
+        if (this.jdField_e_of_type_Int >= 0) {
+          break label496;
         }
         this.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect.a(paramContext);
         this.jdField_e_of_type_Int += 1;
@@ -258,18 +260,19 @@ public class LightReplyMenuManager
           QLog.d("LightReplyMenuManager", 2, "faceDetector not init, now init and countOfInitFaceDetect is " + this.jdField_e_of_type_Int);
         }
       }
-      label358:
+      label357:
       if ((paramDrawable == null) || (!this.jdField_a_of_type_Boolean)) {
-        break label559;
+        break label710;
       }
     }
-    label419:
-    label559:
+    label418:
+    label705:
+    label710:
     for (paramInt1 = 1;; paramInt1 = 0)
     {
       if (paramInt1 != 0)
       {
-        paramContext = new ador(this, paramContext, paramBoolean, paramString);
+        paramContext = new aebx(this, paramContext, paramBoolean, paramString);
         this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect.a(paramDrawable, paramContext);
         break;
         this.f = (this.g + this.h);
@@ -278,27 +281,50 @@ public class LightReplyMenuManager
           QLog.d("LightReplyMenuManager", 2, "showLightReplyLayout : replymenuLayout is null");
         }
         this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)View.inflate(paramContext, 2130968653, null));
-        localObject = (LightReplyMenuHorizontalListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363016);
+        localObject = (LightReplyMenuHorizontalListView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131363034);
         this.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyAdapter = new LightReplyAdapter(paramContext);
         ((LightReplyMenuHorizontalListView)localObject).setAdapter(this.jdField_a_of_type_ComTencentMobileqqLightReplyLightReplyAdapter);
         this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
         break label206;
-        label497:
+        label496:
         if (!QLog.isColorLevel()) {
-          break label358;
+          break label357;
         }
         QLog.d("LightReplyMenuManager", 2, "faceDetector reached max try count");
-        break label358;
+        break label357;
+      }
+      if (this.jdField_b_of_type_JavaUtilList.size() == 0)
+      {
+        QQToast.a(paramContext, -1, "出错了，请稍后重试！", 0).b(paramContext.getResources().getDimensionPixelSize(2131558448));
+        QLog.e("LightReplyMenuManager", 1, "no reply face data");
+        e();
+        break;
       }
       b(false);
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
       this.jdField_e_of_type_Boolean = true;
-      a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
-      if (!QLog.isColorLevel()) {
-        break;
+      paramViewGroup = a(this.jdField_c_of_type_JavaUtilList);
+      if (paramBoolean)
+      {
+        paramContext = BaseApplicationImpl.getApplication().getRuntime();
+        if (!(paramContext instanceof QQAppInterface)) {
+          break label705;
+        }
       }
-      QLog.d("LightReplyMenuManager", 2, "not need faceDetect, use no face");
-      break;
+      for (paramContext = (QQAppInterface)paramContext;; paramContext = null)
+      {
+        ReportController.b(paramContext, "dc00899", "Grp_replyPic", "", "Emoji_box", "exp", 0, 0, paramString, paramViewGroup, "0", "");
+        for (;;)
+        {
+          a(this.jdField_a_of_type_AndroidWidgetLinearLayout);
+          if (!QLog.isColorLevel()) {
+            break;
+          }
+          QLog.d("LightReplyMenuManager", 2, "not need faceDetect, use no face");
+          break;
+          ReportController.b(null, "dc00899", "Grp_replyPic", "", "Emoji_box", "exp", 0, 0, paramString, paramViewGroup, "1", "");
+        }
+      }
     }
   }
   
@@ -312,7 +338,7 @@ public class LightReplyMenuManager
       if (QLog.isColorLevel()) {
         QLog.d("LightReplyMenuManager", 2, "read path" + str2);
       }
-      ThreadManager.post(new adop(this, str2), 5, null, false);
+      ThreadManager.post(new aebv(this, str2), 5, null, false);
     }
   }
   
@@ -348,20 +374,20 @@ public class LightReplyMenuManager
     //   0: iconst_0
     //   1: istore_3
     //   2: aload_1
-    //   3: invokestatic 477	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   3: invokestatic 504	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   6: ifne +363 -> 369
     //   9: new 155	org/json/JSONObject
     //   12: dup
     //   13: aload_1
-    //   14: invokespecial 480	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   14: invokespecial 507	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   17: astore 5
     //   19: aload 5
-    //   21: ldc_w 482
-    //   24: invokevirtual 486	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   21: ldc_w 509
+    //   24: invokevirtual 513	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   27: astore 6
     //   29: aload 5
-    //   31: ldc_w 488
-    //   34: invokevirtual 486	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   31: ldc_w 515
+    //   34: invokevirtual 513	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
     //   37: astore 7
     //   39: getstatic 30	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   42: astore 4
@@ -369,40 +395,40 @@ public class LightReplyMenuManager
     //   46: monitorenter
     //   47: aload_0
     //   48: aload 5
-    //   50: ldc_w 490
-    //   53: invokevirtual 494	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   56: putfield 496	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_a_of_type_Int	I
+    //   50: ldc_w 517
+    //   53: invokevirtual 521	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   56: putfield 523	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_a_of_type_Int	I
     //   59: aload_0
     //   60: aload 5
-    //   62: ldc_w 498
+    //   62: ldc_w 525
     //   65: sipush 400
-    //   68: invokevirtual 501	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   68: invokevirtual 528	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   71: putfield 45	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_b_of_type_Int	I
     //   74: aload_0
     //   75: aload 5
-    //   77: ldc_w 503
+    //   77: ldc_w 530
     //   80: sipush 400
-    //   83: invokevirtual 501	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   83: invokevirtual 528	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
     //   86: putfield 47	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_c_of_type_Int	I
     //   89: aload_0
     //   90: getfield 43	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   93: invokevirtual 506	java/util/HashMap:clear	()V
+    //   93: invokevirtual 533	java/util/HashMap:clear	()V
     //   96: aload_0
     //   97: getfield 36	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   100: invokeinterface 507 1 0
+    //   100: invokeinterface 534 1 0
     //   105: aload_0
     //   106: getfield 38	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   109: invokeinterface 507 1 0
+    //   109: invokeinterface 534 1 0
     //   114: aload_0
     //   115: aload 6
     //   117: aload_0
     //   118: getfield 36	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   121: invokespecial 509	com/tencent/mobileqq/lightReply/LightReplyMenuManager:a	(Lorg/json/JSONArray;Ljava/util/List;)V
+    //   121: invokespecial 536	com/tencent/mobileqq/lightReply/LightReplyMenuManager:a	(Lorg/json/JSONArray;Ljava/util/List;)V
     //   124: aload_0
     //   125: aload 7
     //   127: aload_0
     //   128: getfield 38	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   131: invokespecial 509	com/tencent/mobileqq/lightReply/LightReplyMenuManager:a	(Lorg/json/JSONArray;Ljava/util/List;)V
+    //   131: invokespecial 536	com/tencent/mobileqq/lightReply/LightReplyMenuManager:a	(Lorg/json/JSONArray;Ljava/util/List;)V
     //   134: aload 4
     //   136: monitorexit
     //   137: invokestatic 187	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
@@ -412,81 +438,81 @@ public class LightReplyMenuManager
     //   146: new 371	java/lang/StringBuilder
     //   149: dup
     //   150: invokespecial 372	java/lang/StringBuilder:<init>	()V
-    //   153: ldc_w 511
+    //   153: ldc_w 538
     //   156: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   159: aload_0
     //   160: getfield 43	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   163: invokevirtual 512	java/util/HashMap:size	()I
+    //   163: invokevirtual 539	java/util/HashMap:size	()I
     //   166: invokevirtual 381	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   169: ldc_w 514
+    //   169: ldc_w 541
     //   172: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   175: aload_0
     //   176: getfield 36	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_a_of_type_JavaUtilList	Ljava/util/List;
     //   179: invokeinterface 227 1 0
     //   184: invokevirtual 381	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   187: ldc_w 516
+    //   187: ldc_w 543
     //   190: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   193: aload_0
     //   194: getfield 38	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_b_of_type_JavaUtilList	Ljava/util/List;
     //   197: invokeinterface 227 1 0
     //   202: invokevirtual 381	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   205: ldc_w 490
+    //   205: ldc_w 517
     //   208: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   211: aload_0
-    //   212: getfield 496	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_a_of_type_Int	I
+    //   212: getfield 523	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_a_of_type_Int	I
     //   215: invokevirtual 381	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
     //   218: invokevirtual 382	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   221: invokestatic 194	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   224: iload_2
     //   225: ifeq +114 -> 339
-    //   228: invokestatic 410	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   231: invokevirtual 414	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   234: invokevirtual 419	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
+    //   228: invokestatic 414	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   231: invokevirtual 418	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
+    //   234: invokevirtual 446	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
     //   237: astore 4
     //   239: new 371	java/lang/StringBuilder
     //   242: dup
     //   243: invokespecial 372	java/lang/StringBuilder:<init>	()V
-    //   246: invokestatic 410	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   249: invokevirtual 430	com/tencent/common/app/BaseApplicationImpl:getFilesDir	()Ljava/io/File;
-    //   252: invokevirtual 435	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   246: invokestatic 414	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   249: invokevirtual 457	com/tencent/common/app/BaseApplicationImpl:getFilesDir	()Ljava/io/File;
+    //   252: invokevirtual 462	java/io/File:getAbsolutePath	()Ljava/lang/String;
     //   255: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   258: getstatic 438	java/io/File:separator	Ljava/lang/String;
+    //   258: getstatic 465	java/io/File:separator	Ljava/lang/String;
     //   261: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   264: aload 4
     //   266: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   269: ldc_w 440
+    //   269: ldc_w 467
     //   272: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   275: ldc_w 442
+    //   275: ldc_w 469
     //   278: invokevirtual 378	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   281: invokevirtual 382	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   284: astore 5
-    //   286: new 432	java/io/File
+    //   286: new 459	java/io/File
     //   289: dup
     //   290: aload 5
-    //   292: invokespecial 517	java/io/File:<init>	(Ljava/lang/String;)V
+    //   292: invokespecial 544	java/io/File:<init>	(Ljava/lang/String;)V
     //   295: astore 6
     //   297: aload 6
-    //   299: invokevirtual 520	java/io/File:exists	()Z
+    //   299: invokevirtual 547	java/io/File:exists	()Z
     //   302: ifeq +20 -> 322
     //   305: getstatic 30	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
     //   308: astore 4
     //   310: aload 4
     //   312: monitorenter
     //   313: aload 6
-    //   315: invokevirtual 523	java/io/File:delete	()Z
+    //   315: invokevirtual 550	java/io/File:delete	()Z
     //   318: pop
     //   319: aload 4
     //   321: monitorexit
-    //   322: new 525	adov
+    //   322: new 552	aecb
     //   325: dup
     //   326: aload_0
     //   327: aload 5
     //   329: aload_1
-    //   330: invokespecial 528	adov:<init>	(Lcom/tencent/mobileqq/lightReply/LightReplyMenuManager;Ljava/lang/String;Ljava/lang/String;)V
+    //   330: invokespecial 555	aecb:<init>	(Lcom/tencent/mobileqq/lightReply/LightReplyMenuManager;Ljava/lang/String;Ljava/lang/String;)V
     //   333: iconst_5
     //   334: aconst_null
     //   335: iconst_0
-    //   336: invokestatic 452	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
+    //   336: invokestatic 479	com/tencent/mobileqq/app/ThreadManager:post	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
     //   339: iconst_1
     //   340: istore_2
     //   341: iload_2
@@ -503,7 +529,7 @@ public class LightReplyMenuManager
     //   355: ifeq -14 -> 341
     //   358: ldc 189
     //   360: iconst_2
-    //   361: ldc_w 530
+    //   361: ldc_w 557
     //   364: invokestatic 194	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
     //   367: iconst_0
     //   368: ireturn
@@ -513,7 +539,7 @@ public class LightReplyMenuManager
     //   376: monitorenter
     //   377: aload_0
     //   378: iconst_0
-    //   379: putfield 496	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_a_of_type_Int	I
+    //   379: putfield 523	com/tencent/mobileqq/lightReply/LightReplyMenuManager:jdField_a_of_type_Int	I
     //   382: aload 4
     //   384: monitorexit
     //   385: goto -161 -> 224
@@ -552,7 +578,7 @@ public class LightReplyMenuManager
   {
     d();
     if (this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect.b();
+      this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect.a();
     }
     this.jdField_a_of_type_ComTencentMobileqqLightReplyFacePicDectect = null;
     this.jdField_e_of_type_Int = 0;
@@ -579,7 +605,7 @@ public class LightReplyMenuManager
   public void d()
   {
     if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      ThreadManager.getUIHandler().post(new adox(this));
+      ThreadManager.getUIHandler().post(new aecd(this));
     }
   }
   
@@ -609,7 +635,7 @@ public class LightReplyMenuManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.lightReply.LightReplyMenuManager
  * JD-Core Version:    0.7.0.1
  */

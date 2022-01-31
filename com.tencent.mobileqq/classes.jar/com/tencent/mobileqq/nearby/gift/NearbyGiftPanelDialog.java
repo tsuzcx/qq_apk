@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.gift;
 
-import aecm;
+import aeps;
 import android.content.Context;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
@@ -71,7 +71,7 @@ public class NearbyGiftPanelDialog
     if (paramBoolean) {}
     for (int i = 4;; i = 3)
     {
-      localTroopGiftManager.a("OidbSvc.0x7f8", 2040, paramInt2, str, 2, i, 0, new aecm(this, localTroopGiftManager, l, localAIOAnimationControlManager, paramInt1));
+      localTroopGiftManager.a("OidbSvc.0x7f8", 2040, paramInt2, str, 2, i, 0, new aeps(this, localTroopGiftManager, l, localAIOAnimationControlManager, paramInt1));
       return;
     }
   }

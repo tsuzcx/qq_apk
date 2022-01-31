@@ -1,26 +1,15 @@
-import android.telephony.PhoneStateListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class mfa
-  extends PhoneStateListener
+  implements Runnable
 {
-  public mfa(VideoVolumeControl paramVideoVolumeControl) {}
+  public mfa(VideoPlayerWrapper paramVideoPlayerWrapper, TVK_IMediaPlayer paramTVK_IMediaPlayer) {}
   
-  public void onCallStateChanged(int paramInt, String paramString)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoVolumeControl", 2, "onCallStateChanged:" + paramInt);
-    }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.d(true);
-      return;
-    }
-    this.a.d(true);
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.release();
   }
 }
 

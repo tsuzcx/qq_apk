@@ -17,15 +17,15 @@ import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
-import jop;
-import joq;
+import joa;
+import job;
 import mqq.app.BaseActivity;
 
 public class SmallScreenDialogActivity
   extends BaseActivity
   implements DialogInterface.OnClickListener
 {
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jop(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new joa(this);
   VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   private QQCustomDialog b;
@@ -35,16 +35,16 @@ public class SmallScreenDialogActivity
     QQCustomDialog localQQCustomDialog;
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
     {
-      localQQCustomDialog = DialogUtil.a(this, 230).setMessage(2131429401).setNegativeButton(2131432998, this);
+      localQQCustomDialog = DialogUtil.a(this, 230).setMessage(2131429407).setNegativeButton(2131433015, this);
       if (!b()) {
         break label76;
       }
     }
     label76:
-    for (int i = 2131429415;; i = 2131429414)
+    for (int i = 2131429421;; i = 2131429420)
     {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = localQQCustomDialog.setPositiveButton(i, this);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131429402);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131429408);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCanceledOnTouchOutside(false);
       return this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
@@ -55,8 +55,8 @@ public class SmallScreenDialogActivity
   {
     if (this.b == null)
     {
-      this.b = DialogUtil.a(this, 230).setMessage(2131429403).setNegativeButton(2131432998, this).setPositiveButton(2131433499, this);
-      this.b.setTitle(2131429404);
+      this.b = DialogUtil.a(this, 230).setMessage(2131429409).setNegativeButton(2131433015, this).setPositiveButton(2131433516, this);
+      this.b.setTitle(2131429410);
       this.b.setCancelable(false);
       this.b.setCanceledOnTouchOutside(false);
     }
@@ -221,7 +221,7 @@ public class SmallScreenDialogActivity
       if (QLog.isColorLevel()) {
         QLog.e("SmallScreenDialogActivity", 2, "showDialog ", localBadTokenException);
       }
-      getWindow().getDecorView().post(new joq(this, paramQQCustomDialog));
+      getWindow().getDecorView().post(new job(this, paramQQCustomDialog));
     }
   }
   

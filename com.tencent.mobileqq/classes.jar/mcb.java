@@ -1,18 +1,16 @@
-import android.view.View;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.mobileqq.app.PublicAccountObserver;
+import com.tencent.qphone.base.util.QLog;
 
-public class mcb
-  implements Runnable
+public final class mcb
+  extends PublicAccountObserver
 {
-  public mcb(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public mcb(boolean paramBoolean) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString)
   {
-    VideoFeedsPlayActivity.b(this.a).setVisibility(8);
-    VideoFeedsPlayActivity.b(this.a).findViewById(2131365627).setVisibility(8);
-    VideoFeedsPlayActivity.b(this.a).findViewById(2131365561).setVisibility(8);
-    VideoFeedsPlayActivity.b(this.a).findViewById(2131365562).setVisibility(8);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoFeedsHelper", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean + ", isUGC=" + this.a);
+    }
   }
 }
 

@@ -1,7 +1,5 @@
 package cooperation.qzone.widget;
 
-import amnx;
-import amny;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -29,6 +27,8 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import anec;
+import aned;
 import com.tencent.mobileqq.businessCard.helpers.ViewHelper;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -40,7 +40,7 @@ public class QzoneGuideBubbleHelper
   private int jdField_a_of_type_Int = 0;
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
   private QzoneBubblePopWindow jdField_a_of_type_CooperationQzoneWidgetQzoneBubblePopWindow;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new amnx(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new anec(this);
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
   private static Rect a(View paramView)
@@ -75,7 +75,7 @@ public class QzoneGuideBubbleHelper
       return null;
     }
     paramContext = (ViewGroup)((Activity)paramContext).getWindow().getDecorView();
-    FrameLayout localFrameLayout = (FrameLayout)paramContext.findViewById(2131362632);
+    FrameLayout localFrameLayout = (FrameLayout)paramContext.findViewById(2131362649);
     if (localFrameLayout == null) {
       return (FrameLayout)paramContext.findViewById(16908290);
     }
@@ -104,7 +104,7 @@ public class QzoneGuideBubbleHelper
       this.jdField_a_of_type_CooperationQzoneWidgetQzoneBubblePopWindow.setHeight(-2);
       this.jdField_a_of_type_CooperationQzoneWidgetQzoneBubblePopWindow.setTouchable(paramBoolean);
       if (paramBoolean) {
-        paramViewGroup.setOnTouchListener(new amny(this));
+        paramViewGroup.setOnTouchListener(new aned(this));
       }
       this.jdField_a_of_type_CooperationQzoneWidgetQzoneBubblePopWindow.setOutsideTouchable(true);
       this.jdField_a_of_type_CooperationQzoneWidgetQzoneBubblePopWindow.setBackgroundDrawable(new ColorDrawable(0));
@@ -129,11 +129,11 @@ public class QzoneGuideBubbleHelper
       return null;
     }
     TextView localTextView = new TextView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    localTextView.setId(2131362634);
+    localTextView.setId(2131362651);
     localTextView.setTextColor(-1);
     localTextView.setTextSize(paramFloat);
     localTextView.setText(paramString);
-    int n = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131560305);
+    int n = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131560323);
     if (paramCompoundDrawableInfo != null)
     {
       paramString = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources().getDrawable(paramCompoundDrawableInfo.jdField_a_of_type_Int);
@@ -144,8 +144,8 @@ public class QzoneGuideBubbleHelper
         localTextView.setCompoundDrawablePadding(paramCompoundDrawableInfo.d);
       }
     }
-    int i = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131560306);
-    int j = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131560307);
+    int i = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131560324);
+    int j = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131560325);
     localTextView.setPadding(j, i, j, i);
     localTextView.setGravity(17);
     if (paramInt4 > 0)
@@ -153,18 +153,18 @@ public class QzoneGuideBubbleHelper
       localTextView.setMaxLines(paramInt4);
       localTextView.setEllipsize(TextUtils.TruncateAt.valueOf("END"));
     }
-    i = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131560308);
+    i = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131560326);
     a(localTextView, a(i, 0.0F, paramInt2));
     paramString = new TriangleView((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), paramInt1, paramInt2);
-    paramString.setId(2131362635);
+    paramString.setId(2131362652);
     paramCompoundDrawableInfo = new RelativeLayout.LayoutParams(-2, -2);
-    int k = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131560309);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(k, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131560310));
+    int k = ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131560327);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(k, ((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getApplicationContext().getResources().getDimensionPixelSize(2131560328));
     int m;
     if (paramInt1 == 0)
     {
       paramCompoundDrawableInfo.addRule(10);
-      localLayoutParams.addRule(3, 2131362634);
+      localLayoutParams.addRule(3, 2131362651);
       paramCompoundDrawableInfo.addRule(14);
       localLayoutParams.leftMargin = paramInt3;
       paramViewGroup.addView(localTextView, paramCompoundDrawableInfo);
@@ -199,7 +199,7 @@ public class QzoneGuideBubbleHelper
         if (paramInt1 != 1) {
           break;
         }
-        paramCompoundDrawableInfo.addRule(3, 2131362635);
+        paramCompoundDrawableInfo.addRule(3, 2131362652);
         break;
         label654:
         paramInt4 = paramView.bottom + n;
@@ -274,7 +274,7 @@ public class QzoneGuideBubbleHelper
         } while (this.jdField_a_of_type_JavaLangRefWeakReference == null);
         localFrameLayout = a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
       } while (localFrameLayout == null);
-      localView = localFrameLayout.findViewById(2131362633);
+      localView = localFrameLayout.findViewById(2131362650);
     } while (localView == null);
     localFrameLayout.removeViewInLayout(localView);
   }
@@ -343,7 +343,7 @@ public class QzoneGuideBubbleHelper
       }
       paramView = a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
     } while (paramView == null);
-    paramActivity.setId(2131362633);
+    paramActivity.setId(2131362650);
     paramString = (FrameLayout.LayoutParams)paramActivity.getLayoutParams();
     paramString.leftMargin = Math.max(paramInt4, ViewUtils.a(12.0F));
     paramString.topMargin = paramInt1;

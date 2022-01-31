@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.musicgene;
 
-import adxs;
-import adxt;
+import aeky;
+import aekz;
 import android.os.Message;
 import android.os.RemoteException;
 import android.text.TextUtils;
@@ -143,10 +143,10 @@ public class MusicPlayerActivity$MusicPlayerObserver
           if (localObject1 == null) {
             continue;
           }
-          paramObject = new adxt(l2, (String)localObject4, (String)localObject3, (String)localObject8, (String)localObject6, (String)localObject5, paramBoolean);
+          paramObject = new aekz(l2, (String)localObject4, (String)localObject3, (String)localObject8, (String)localObject6, (String)localObject5, paramBoolean);
           localObject9 = MusicPlayerActivity.a(localMusicPlayerActivity, (SongInfo)localObject1);
           MusicPlayerActivity.b().put(localObject9, paramObject);
-          paramObject = new adxs((String)localObject4, (String)localObject3, (String)localObject5, (String)localObject6, (String)localObject8, "http://qzonestyle.gtimg.cn/ac/qzone/applogo/16/308/100497308_16.gif");
+          paramObject = new aeky((String)localObject4, (String)localObject3, (String)localObject5, (String)localObject6, (String)localObject8, "http://qzonestyle.gtimg.cn/ac/qzone/applogo/16/308/100497308_16.gif");
           localObject6 = Message.obtain(MusicPlayerActivity.a(localMusicPlayerActivity), 51);
           if (!bool2) {
             continue;
@@ -258,7 +258,7 @@ public class MusicPlayerActivity$MusicPlayerObserver
             if ((paramObject instanceof Integer))
             {
               paramInt = ((Integer)paramObject).intValue();
-              Message.obtain(MusicPlayerActivity.a(localMusicPlayerActivity), 54, 2131438461, paramInt, MusicPlayerActivity.a(localMusicPlayerActivity)).sendToTarget();
+              Message.obtain(MusicPlayerActivity.a(localMusicPlayerActivity), 54, 2131438479, paramInt, MusicPlayerActivity.a(localMusicPlayerActivity)).sendToTarget();
               return;
             }
           }
@@ -283,7 +283,7 @@ public class MusicPlayerActivity$MusicPlayerObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicPlayerActivity.MusicPlayerObserver
  * JD-Core Version:    0.7.0.1
  */

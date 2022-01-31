@@ -1,16 +1,23 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.RecommendAndAdCallback;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyBBCircleFragment;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
 
-public class mkz
-  implements FastWebRequestUtil.RecommendAndAdCallback
+class mkz
+  implements Animation.AnimationListener
 {
-  public mkz(FastWebActivity paramFastWebActivity) {}
+  mkz(mky parammky) {}
   
-  public void a(boolean paramBoolean, String paramString, List paramList1, List paramList2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.runOnUiThread(new mla(this, paramBoolean, paramString, paramList1, paramList2));
+    if (this.a.a != null) {
+      PublicFragmentActivity.a(this.a.a, ReadInJoyBBCircleFragment.class);
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

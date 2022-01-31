@@ -8,7 +8,7 @@ public class lpk
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().c(this.jdField_a_of_type_Int);
+    ReadInJoyLogicEngineEventDispatcher.a().b(this.jdField_a_of_type_Int);
   }
 }
 

@@ -1,15 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.specialcare.VipSpecialCareHandler;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Gxzb;
 
-public class abub
-  extends VipSpecialCareHandler
+public final class abub
+  implements Parcelable.Creator
 {
-  public abub(MessengerService paramMessengerService) {}
-  
-  public void a(Bundle paramBundle)
+  public IPSiteModel.Gxzb a(Parcel paramParcel)
   {
-    this.a.a(paramBundle);
+    IPSiteModel.Gxzb localGxzb = new IPSiteModel.Gxzb();
+    localGxzb.appid = paramParcel.readInt();
+    localGxzb.appName = paramParcel.readString();
+    localGxzb.cover = paramParcel.readString();
+    localGxzb.feeType = paramParcel.readInt();
+    localGxzb.id = paramParcel.readString();
+    localGxzb.name = paramParcel.readString();
+    return localGxzb;
+  }
+  
+  public IPSiteModel.Gxzb[] a(int paramInt)
+  {
+    return new IPSiteModel.Gxzb[paramInt];
   }
 }
 

@@ -1,14 +1,19 @@
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase.GetFeedFeatureReceiver;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.pgc.adapter.PgcSearchResultAdapter;
+import com.tencent.image.URLImageView;
 
 public class nif
-  implements Runnable
 {
-  public nif(FeedsPlayModeBase.GetFeedFeatureReceiver paramGetFeedFeatureReceiver, FeedsPlayModeBase paramFeedsPlayModeBase) {}
+  public TextView a;
+  public URLImageView a;
+  public TextView b;
   
-  public void run()
+  public nif(PgcSearchResultAdapter paramPgcSearchResultAdapter, View paramView)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.v();
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362754));
+    this.b = ((TextView)paramView.findViewById(2131362673));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131371694));
   }
 }
 

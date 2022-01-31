@@ -1,13 +1,27 @@
-import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
+import com.tencent.qphone.base.util.QLog;
 
 public class xrb
-  implements Runnable
+  implements Camera.AutoFocusCallback
 {
-  public xrb(VideoFilterViewPager paramVideoFilterViewPager) {}
+  public xrb(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    VideoFilterViewPager.a(this.a).onPageSelected(this.a.getCurrentItem());
+    if (QLog.isColorLevel()) {
+      QLog.d(".photo", 2, "single tap focus " + paramBoolean);
+    }
+    NewFlowCameraReporter.a(paramBoolean);
+    if (paramBoolean)
+    {
+      NewFlowCameraActivity.h(this.a, true);
+      return;
+    }
+    this.a.a.f();
   }
 }
 

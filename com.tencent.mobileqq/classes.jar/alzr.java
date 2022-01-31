@@ -1,15 +1,47 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import cooperation.qqfav.widget.QfavJumpActivity;
+import android.view.View;
+import com.tencent.widget.AbsListView;
 
 public class alzr
-  implements DialogInterface.OnClickListener
+  extends amac
+  implements Runnable
 {
-  public alzr(QfavJumpActivity paramQfavJumpActivity) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private alzr(AbsListView paramAbsListView)
   {
-    this.a.finish();
+    super(paramAbsListView, null);
+  }
+  
+  public void run()
+  {
+    View localView;
+    if ((this.a.isPressed()) && (this.a.mSelectedPosition >= 0))
+    {
+      int i = this.a.mSelectedPosition;
+      int j = this.a.mFirstPosition;
+      localView = this.a.getChildAt(i - j);
+      if (this.a.mDataChanged) {
+        break label108;
+      }
+      if (!a()) {
+        break label128;
+      }
+    }
+    label128:
+    for (boolean bool = this.a.performLongPress(localView, this.a.mSelectedPosition, this.a.mSelectedRowId);; bool = false)
+    {
+      if (bool)
+      {
+        this.a.setPressed(false);
+        localView.setPressed(false);
+      }
+      label108:
+      do
+      {
+        return;
+        this.a.setPressed(false);
+      } while (localView == null);
+      localView.setPressed(false);
+      return;
+    }
   }
 }
 

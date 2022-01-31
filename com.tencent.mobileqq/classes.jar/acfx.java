@@ -1,24 +1,27 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.widget.QfilePinnedHeaderExpandableListView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
-public class acfx
-  implements Runnable
+class acfx
+  implements AbsListView.OnScrollListener
 {
-  public acfx(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView, int paramInt) {}
+  acfx(acfw paramacfw) {}
   
-  public void run()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileBaseCloudFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityFMActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileBaseCloudFileTabView);
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileBaseCloudFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView != null) && (QfileBaseCloudFileTabView.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileBaseCloudFileTabView)))
+    if (paramInt == 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i(QfileBaseCloudFileTabView.jdField_a_of_type_JavaLangString, 2, "setSelect[" + this.jdField_a_of_type_Int + "] success mFileListView");
+      URLDrawable.resume();
+      if (this.a.jdField_a_of_type_Acfv.jdField_a_of_type_Int == 1) {
+        EmotionPanelViewPagerAdapter.a(this.a.jdField_a_of_type_Acfv.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter, this.a.jdField_a_of_type_JavaUtilList, this.a.jdField_a_of_type_Acfv.jdField_a_of_type_ComTencentWidgetListView);
       }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityCloudfileQfileBaseCloudFileTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfilePinnedHeaderExpandableListView.a(this.jdField_a_of_type_Int);
+      return;
     }
+    URLDrawable.pause();
   }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

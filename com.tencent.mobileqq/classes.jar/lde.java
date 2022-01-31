@@ -1,19 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.qphone.base.util.QLog;
 
-public class lde
-  implements Runnable
+class lde
+  implements AsyncBack
 {
-  public lde(ReadInJoyFeedsActivity paramReadInJoyFeedsActivity) {}
+  lde(ldc paramldc) {}
   
-  public void run()
+  public void a(int paramInt) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    QQMessageFacade localQQMessageFacade = this.a.app.a();
-    if (localQQMessageFacade != null)
-    {
-      int i = localQQMessageFacade.b();
-      this.a.a(i);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyNewFeedsActivity", 2, "load 2464 html web resource finish");
     }
   }
 }

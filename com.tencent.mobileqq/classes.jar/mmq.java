@@ -1,13 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
 
 class mmq
   implements Runnable
 {
-  mmq(mmp parammmp) {}
+  mmq(mmp parammmp, boolean paramBoolean, FastWebArticleInfo paramFastWebArticleInfo) {}
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().c();
+    try
+    {
+      if (this.jdField_a_of_type_Boolean)
+      {
+        FastWebActivity.a(this.jdField_a_of_type_Mmp.a, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebUtilFastWebArticleInfo);
+        FastWebActivity.a(this.jdField_a_of_type_Mmp.a);
+        return;
+      }
+      FastWebActivity.b(this.jdField_a_of_type_Mmp.a);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+    }
   }
 }
 

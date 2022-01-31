@@ -1,31 +1,26 @@
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppSchemeCenter.TelSchemeHandler;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.widget.PopupWindow;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ar.config.SplashPopupWin;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class aajq
-  implements Runnable
+  implements IMediaPlayer.OnPreparedListener
 {
-  public aajq(ArkAppSchemeCenter.TelSchemeHandler paramTelSchemeHandler, String paramString) {}
+  public aajq(SplashPopupWin paramSplashPopupWin, PopupWindow paramPopupWindow, TextureVideoView paramTextureVideoView) {}
   
-  public void run()
+  public void a_(IMediaPlayer paramIMediaPlayer)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(BaseActivity.sTopActivity, this.jdField_a_of_type_JavaLangString);
-    TextView localTextView = (TextView)localQQCustomDialog.findViewById(2131362758);
-    localTextView.setGravity(17);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
-    localLayoutParams.gravity = 17;
-    localTextView.setLayoutParams(localLayoutParams);
-    localQQCustomDialog.setPositiveButton(2131435075, new aajr(this, localQQCustomDialog));
-    localQQCustomDialog.setNegativeButton(2131432998, new aajs(this, localQQCustomDialog));
-    try
-    {
-      localQQCustomDialog.show();
-      return;
+    QLog.w("WorldCupMgr", 1, "SplashPopupWin, 视频加载完毕, popupWindow[" + this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing() + "], getDuration[" + paramIMediaPlayer.a() + "]");
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.start();
+    if (SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin) == null) {
+      SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin, new aajr(this));
     }
-    catch (Exception localException) {}
+    ThreadManager.getUIHandler().removeCallbacks(SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin));
+    ThreadManager.getUIHandler().postDelayed(SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin), paramIMediaPlayer.a() - 3000);
   }
 }
 

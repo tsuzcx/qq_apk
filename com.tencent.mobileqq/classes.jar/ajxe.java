@@ -1,18 +1,26 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.mobileqq.vipgift.VipGiftManager;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.trooppiceffects.view.PhantomPicView;
 
-public class ajxe
-  implements AsyncBack
+class ajxe
+  implements Animator.AnimatorListener
 {
-  public ajxe(VipGiftManager paramVipGiftManager) {}
+  ajxe(ajxd paramajxd) {}
   
-  public void a(int paramInt) {}
+  public void onAnimationCancel(Animator paramAnimator) {}
   
-  public void a(String paramString, int paramInt) {}
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    this.a.a.c();
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajxe
  * JD-Core Version:    0.7.0.1
  */

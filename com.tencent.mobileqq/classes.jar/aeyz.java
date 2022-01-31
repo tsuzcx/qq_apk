@@ -1,34 +1,77 @@
-import android.view.View;
-import java.lang.ref.SoftReference;
-import java.util.concurrent.Future;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnDownloadListener;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnDownloadCallbackListener;
+import java.io.File;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class aeyz
+public class aeyz
+  implements TVK_IMediaPlayer.OnDownloadCallbackListener
 {
-  public final int a;
-  public final Integer a;
-  public Long a;
-  public final Object a;
-  public final String a;
-  public SoftReference a;
-  public Future a;
-  public SoftReference b;
-  public SoftReference c;
+  public aeyz(VideoViewTVKImpl paramVideoViewTVKImpl, String paramString1, String paramString2, String paramString3) {}
   
-  public aeyz(String paramString, View paramView1, View paramView2, Object paramObject, int paramInt1, int paramInt2, long paramLong)
+  public void OnDownloadCallback(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView1);
-    if (paramView2 != null) {}
-    for (paramString = new SoftReference(paramView2);; paramString = null)
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.a != null) {}
+    for (;;)
     {
-      this.b = paramString;
-      this.jdField_a_of_type_JavaLangObject = paramObject;
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_a_of_type_JavaLangInteger = Integer.valueOf(paramInt2);
-      this.c = null;
-      this.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
-      this.jdField_a_of_type_JavaUtilConcurrentFuture = null;
+      try
+      {
+        paramString = new JSONObject(paramString);
+        i = paramString.getInt("callBackType");
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback callBackType=" + i);
+        }
+        if (i != 7) {
+          break label313;
+        }
+        if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+          break label312;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback success , vid = " + this.b);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.a.a(this.b, this.c, new File(this.jdField_a_of_type_JavaLangString));
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        if (!QLog.isColorLevel()) {
+          break label312;
+        }
+      }
+      int i = paramString.getInt("errorCode");
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback errorCode=" + i);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.a.a(this.b, this.c, i);
       return;
+      QLog.d("VideoViewTVKImpl", 2, "OnDownloadCallback JSONException=" + paramString.getMessage());
+      return;
+      label312:
+      label313:
+      do
+      {
+        long l1;
+        if (i == 2)
+        {
+          l1 = paramString.getLong("fileSize");
+          long l2 = paramString.getLong("offset");
+          this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.a.a(this.b, this.c, l1, l2);
+          return;
+        }
+        if (i == 1)
+        {
+          l1 = paramString.getLong("fileSize");
+          this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTVKImpl.a.a(this.b, this.c, l1);
+        }
+        return;
+        if (i == 4) {
+          break;
+        }
+      } while (i != 5);
     }
   }
 }

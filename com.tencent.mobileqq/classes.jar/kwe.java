@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebChromeClient;
-import com.tencent.smtt.export.external.interfaces.JsResult;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
 
 public class kwe
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public kwe(CustomWebChromeClient paramCustomWebChromeClient, JsResult paramJsResult) {}
+  public kwe(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsResult.confirm();
+    ReadInJoyNativeAdFragment.a(this.a).dismiss();
+    ReadInJoyNativeAdFragment.b(this.a);
   }
 }
 

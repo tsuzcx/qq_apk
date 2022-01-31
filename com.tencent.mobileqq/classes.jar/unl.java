@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel;
+import android.view.View;
+import android.view.animation.Animation;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.anim.ComboAnimation3;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
 public class unl
-  implements Runnable
+  extends AnimateUtils.AnimationAdapter
 {
-  public unl(PressToSpeakPanel paramPressToSpeakPanel) {}
+  public unl(ComboAnimation3 paramComboAnimation3) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.f();
+    if ((ComboAnimation3.a(this.a) != null) && (ComboAnimation3.a(this.a).isShown())) {
+      this.a.a.post(new unm(this));
+    }
   }
 }
 

@@ -11,9 +11,9 @@ import android.widget.TextView;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.widget.XListView;
 import java.util.List;
-import nmc;
-import nmd;
-import nme;
+import nno;
+import nnp;
+import nnq;
 
 public class MyVideoVisibleTroopPageView
   extends RelativeLayout
@@ -28,27 +28,27 @@ public class MyVideoVisibleTroopPageView
   {
     super(paramContext);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidContentContext, new nme(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidContentContext, new nnq(this));
     this.jdField_a_of_type_AndroidAppDialog = paramDialog;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    LayoutInflater.from(paramContext).inflate(2130970851, this, true);
-    paramDialog = new nmc(this);
+    LayoutInflater.from(paramContext).inflate(2130970899, this, true);
+    paramDialog = new nno(this);
     if ((paramList != null) && (!paramList.isEmpty()))
     {
-      XListView localXListView = (XListView)findViewById(2131364021);
+      XListView localXListView = (XListView)findViewById(2131364045);
       paramContext = new MyVideoVisibleTroopPageView.TroopListAdapter(this, paramContext);
       this.jdField_a_of_type_ComTencentMobileqqAppTroopManager = paramTroopManager;
       paramContext.a(paramList);
       localXListView.setAdapter(paramContext);
       localXListView.setVisibility(0);
-      localXListView.setOnScrollListener(new nmd(this));
+      localXListView.setOnScrollListener(new nnp(this));
       localXListView.setOnTouchListener(paramDialog);
       return;
     }
-    paramContext = (TextView)findViewById(2131368953);
-    paramList = findViewById(2131371985);
+    paramContext = (TextView)findViewById(2131369019);
+    paramList = findViewById(2131372158);
     paramContext.setText("没有可见的群");
-    paramContext.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130843288), null, null);
+    paramContext.setCompoundDrawablesWithIntrinsicBounds(null, getResources().getDrawable(2130843404), null, null);
     paramList.setVisibility(0);
     paramList.setOnTouchListener(paramDialog);
   }

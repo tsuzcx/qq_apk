@@ -1,24 +1,15 @@
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.ServerCheckCallback;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import com.tencent.mobileqq.data.RecommendCommonMessage;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
+import com.tencent.mobileqq.ark.ArkActionAppMgr;
+import com.tencent.mobileqq.ark.ArkActionAppMgr.IUpdateActionAppCallback;
 
 public class aarc
-  implements ArkMessageServerLogic.ServerCheckCallback
+  implements ArkActionAppMgr.IUpdateActionAppCallback
 {
-  public aarc(ArkRecommendLogic paramArkRecommendLogic, RecommendCommonMessage paramRecommendCommonMessage, WeakReference paramWeakReference) {}
+  public aarc(ArkActionAppMgr paramArkActionAppMgr) {}
   
-  public void a(ArrayList paramArrayList)
+  public void a(boolean paramBoolean, Object paramObject, String paramString1, String paramString2, long paramLong1, long paramLong2)
   {
-    if (paramArrayList != null) {
-      ArkRecommendLogic.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendLogic, paramArrayList, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage, this.jdField_a_of_type_JavaLangRefWeakReference, 4);
-    }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("ArkApp.ArkRecommendLogic", 2, "ContextItem is null.");
+    paramObject = (aarg)paramObject;
+    ArkActionAppMgr.a(this.a, paramObject);
   }
 }
 

@@ -1,42 +1,25 @@
-import android.content.Context;
-import android.view.animation.Interpolator;
-import android.widget.Scroller;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager;
-import com.tencent.mobileqq.nearby.widget.AvatarWallViewPager.RollViewPager;
-import java.lang.reflect.Field;
+import com.tencent.mobileqq.nearby.now.datasource.CommentsDataSource.PublishCommentCallback;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
+import com.tencent.mobileqq.nearby.now.view.CommentsView;
+import com.tencent.mobileqq.nearby.now.view.presenter.CommentsPresenterImpl;
 
 public class aezi
-  extends Scroller
+  implements CommentsDataSource.PublishCommentCallback
 {
-  public aezi(AvatarWallViewPager paramAvatarWallViewPager, Context paramContext, Interpolator paramInterpolator)
-  {
-    super(paramContext, paramInterpolator);
-  }
+  public aezi(CommentsPresenterImpl paramCommentsPresenterImpl) {}
   
-  public void a()
+  public void a(Comments.Comment paramComment)
   {
-    try
-    {
-      Field localField = AvatarWallViewPager.RollViewPager.class.getDeclaredField("mScroller");
-      localField.setAccessible(true);
-      localField.set(this.a.a, this);
-      localField.setAccessible(false);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+    if (CommentsPresenterImpl.a(this.a) != null) {
+      CommentsPresenterImpl.a(this.a).a(paramComment);
     }
   }
   
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  public void a(Comments.Comment paramComment, int paramInt)
   {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
-  }
-  
-  public void startScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
-  {
-    super.startScroll(paramInt1, paramInt2, paramInt3, paramInt4, this.a.d);
+    if (CommentsPresenterImpl.a(this.a) != null) {
+      CommentsPresenterImpl.a(this.a).a(paramComment, paramInt);
+    }
   }
 }
 

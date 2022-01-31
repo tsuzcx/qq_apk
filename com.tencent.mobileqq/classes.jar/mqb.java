@@ -1,55 +1,31 @@
-import com.tencent.biz.pubaccount.readinjoySearch.ReadInJoyNewSearchActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
-import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
+import com.tencent.mobileqq.app.UniteSearchObserver;
+import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class mqb
-  implements Runnable
+  extends UniteSearchObserver
 {
-  public mqb(ReadInJoyNewSearchActivity paramReadInJoyNewSearchActivity, String paramString) {}
+  public mqb(ReadInJoyFeedsHeaderViewController paramReadInJoyFeedsHeaderViewController) {}
   
-  public void run()
+  public void a(int paramInt1, String paramString, int paramInt2)
   {
-    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySearchReadInJoyNewSearchActivity.app.getEntityManagerFactory().createEntityManager();
-    List localList = localEntityManager.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
-    ReadInJoySearchHistoryEntity localReadInJoySearchHistoryEntity;
-    if (localList != null)
-    {
-      Iterator localIterator = localList.iterator();
-      while (localIterator.hasNext())
-      {
-        localReadInJoySearchHistoryEntity = (ReadInJoySearchHistoryEntity)localIterator.next();
-        if (localReadInJoySearchHistoryEntity.keyWord.equals(this.jdField_a_of_type_JavaLangString)) {
-          localEntityManager.b(localReadInJoySearchHistoryEntity);
-        }
-      }
+    if (QLog.isColorLevel()) {
+      QLog.e("ReadInJoyFeedsHeaderVie", 2, "handleKandianSearchHotwordError, resultCode = " + paramInt1 + "， errorMsg = " + paramString + ", fromType = " + paramInt2);
     }
-    for (;;)
+  }
+  
+  public void a(List paramList, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyFeedsHeaderVie", 2, "handleKandianSearchHotwordResult, result = " + paramList + ", fromType = " + paramInt);
+    }
+    if (((this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel == null) || (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a == null) || (this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel.a.size() == 0)) && (paramList != null) && (paramList.size() > 0) && ((paramList.get(0) instanceof HotWordSearchEntryDataModel)))
     {
-      if (localReadInJoySearchHistoryEntity != null) {
-        localList.remove(localReadInJoySearchHistoryEntity);
-      }
-      if (localList.size() == 20)
-      {
-        localEntityManager.b((Entity)localList.get(localList.size() - 1));
-        localList.remove(localList.size() - 1);
-      }
-      for (;;)
-      {
-        localReadInJoySearchHistoryEntity = new ReadInJoySearchHistoryEntity();
-        localReadInJoySearchHistoryEntity.keyWord = this.jdField_a_of_type_JavaLangString;
-        localReadInJoySearchHistoryEntity.timestamp = System.currentTimeMillis();
-        localEntityManager.a(localReadInJoySearchHistoryEntity);
-        localEntityManager.a();
-        return;
-        new ArrayList();
-      }
-      localReadInJoySearchHistoryEntity = null;
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchModelHotWordSearchEntryDataModel = ((HotWordSearchEntryDataModel)paramList.get(0));
+      ReadInJoyFeedsHeaderViewController.jdField_a_of_type_Int = 0;
+      this.a.e();
     }
   }
 }

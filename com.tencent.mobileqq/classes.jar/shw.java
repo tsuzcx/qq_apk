@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.activity.DiscussionMemberActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 
-public class shw
-  extends FriendListObserver
+class shw
+  implements Runnable
 {
-  public shw(DiscussionMemberActivity paramDiscussionMemberActivity) {}
+  shw(shq paramshq) {}
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.notifyDataSetChanged();
+    if (this.a.a.a != null)
+    {
+      this.a.a.a.a();
+      this.a.a.a.a(-1, null);
     }
   }
 }

@@ -1,12 +1,28 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.widget.InterestLabelTextView;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
 
 public class ssp
+  implements IphonePickerView.PickerViewAdapter
 {
-  public ImageView a;
-  public TextView a;
-  public InterestLabelTextView a;
+  public ssp(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  
+  public int getColumnCount()
+  {
+    return 1;
+  }
+  
+  public int getRowCount(int paramInt)
+  {
+    return 2;
+  }
+  
+  public String getText(int paramInt1, int paramInt2)
+  {
+    if (paramInt2 == 0) {
+      return this.a.getString(2131433941);
+    }
+    return this.a.getString(2131433942);
+  }
 }
 
 

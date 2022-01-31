@@ -1,23 +1,37 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
-import dov.com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailProgress;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.utils.MediaUtil;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.utils.MediaUtil.FrameWithoutBlackResult;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.network.request.GetPoiFacesRequest;
+import com.tencent.biz.qqstory.network.response.GetPoiFacesResponse;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
+import java.lang.ref.WeakReference;
+import java.util.Collections;
 
-public final class anxp
-  implements Callbacks.Callback
+public class anxp
+  implements CmdTaskManger.CommandCallback
 {
-  public anxp(MediaUtil.FrameWithoutBlackResult paramFrameWithoutBlackResult) {}
+  public anxp(DoodleEmojiManager paramDoodleEmojiManager, WeakReference paramWeakReference) {}
   
-  public Void a(Boolean paramBoolean, MediaCodecThumbnailGenerator.ThumbnailProgress paramThumbnailProgress)
+  public void a(@NonNull GetPoiFacesRequest paramGetPoiFacesRequest, @Nullable GetPoiFacesResponse paramGetPoiFacesResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (paramThumbnailProgress.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    if (paramGetPoiFacesResponse == null)
     {
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = paramThumbnailProgress.jdField_a_of_type_AndroidGraphicsBitmap;
-      this.a.jdField_a_of_type_Long = paramThumbnailProgress.jdField_a_of_type_Long;
-      QLog.e(MediaUtil.a(), 2, "MediaCodecThumbnailGenerator progress " + paramThumbnailProgress.jdField_a_of_type_Long);
+      paramGetPoiFacesRequest = (DoodleEmojiManager.POIPostersRequestCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (paramGetPoiFacesRequest != null) {
+        paramGetPoiFacesRequest.a(paramErrorMessage.errorCode, Collections.EMPTY_LIST);
+      }
+      return;
     }
-    return null;
+    paramGetPoiFacesRequest = (DoodleEmojiManager.POIPostersRequestCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramGetPoiFacesRequest != null)
+    {
+      paramGetPoiFacesRequest.a(0, paramGetPoiFacesResponse.a);
+      return;
+    }
+    SLog.c("DoodleEmojiManager", "requestPoiFaces callback is null");
   }
 }
 

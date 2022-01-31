@@ -1,27 +1,56 @@
-import android.text.TextUtils;
+import android.animation.ObjectAnimator;
+import android.animation.PropertyValuesHolder;
+import android.view.MotionEvent;
 import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.animation.DecelerateInterpolator;
+import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout12;
+import com.tencent.qphone.base.util.QLog;
 
-class aiis
-  implements Runnable
+public class aiis
+  implements View.OnTouchListener
 {
-  aiis(aiir paramaiir) {}
+  public aiis(StructMsgItemLayout12 paramStructMsgItemLayout12, View paramView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a.jdField_b_of_type_AndroidViewView == null) {}
-    do
+    switch (paramMotionEvent.getAction())
     {
-      return;
-      this.a.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
-    } while ((this.a.a.jdField_b_of_type_AndroidWidgetTextView == null) || (TextUtils.isEmpty(this.a.a.jdField_b_of_type_AndroidWidgetTextView.getText())));
-    this.a.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
+    for (;;)
+    {
+      return false;
+      if (!this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.b)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.b = true;
+        ObjectAnimator localObjectAnimator = (ObjectAnimator)paramView.getTag(2131362147);
+        paramMotionEvent = localObjectAnimator;
+        if (localObjectAnimator == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("StructMsgItemLayout12", 2, "animator is null");
+          }
+          paramMotionEvent = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 0.9F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 0.95F }) });
+          paramMotionEvent.setInterpolator(new DecelerateInterpolator(2.0F));
+          paramMotionEvent.setDuration(100L);
+          paramView.setTag(2131362147, paramMotionEvent);
+        }
+        paramMotionEvent.start();
+      }
+      return true;
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.a.onClick(this.jdField_a_of_type_AndroidViewView);
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.b = false;
+      paramView = (ObjectAnimator)paramView.getTag(2131362147);
+      if (paramView != null) {
+        paramView.reverse();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiis
  * JD-Core Version:    0.7.0.1
  */

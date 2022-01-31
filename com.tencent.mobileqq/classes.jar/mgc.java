@@ -1,18 +1,22 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoUploadManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import tencent.im.msg.im_msg_body.RichText;
 
-class mgc
-  implements Runnable
+public class mgc
+  implements UpCallBack
 {
-  mgc(mga parammga) {}
+  public mgc(VideoUploadManager paramVideoUploadManager) {}
   
-  public void run()
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    this.a.a.notifyDataSetChanged();
-    if ((!this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a()) && (!this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.c())) {
-      ReadInJoyBaseAdapter.a(this.a.a, this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyXListView, 0);
-    }
+    return null;
   }
+  
+  public void a(UpCallBack.SendResult paramSendResult) {}
+  
+  public void b(UpCallBack.SendResult paramSendResult) {}
 }
 
 

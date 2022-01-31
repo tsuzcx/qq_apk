@@ -1,17 +1,15 @@
-import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
-import dov.com.tencent.mobileqq.shortvideo.QIMPtvTemplateManager;
-import java.util.List;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.base.BaseLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import java.util.Comparator;
 
 public class anyq
-  implements Runnable
+  implements Comparator
 {
-  public anyq(QIMPtvTemplateManager paramQIMPtvTemplateManager, List paramList) {}
+  public anyq(DoodleLayout paramDoodleLayout) {}
   
-  public void run()
+  public int a(BaseLayer paramBaseLayer1, BaseLayer paramBaseLayer2)
   {
-    if (PtvFilterSoLoad.b()) {
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoQIMPtvTemplateManager.b(this.jdField_a_of_type_JavaUtilList);
-    }
+    return paramBaseLayer2.f_() - paramBaseLayer1.f_();
   }
 }
 

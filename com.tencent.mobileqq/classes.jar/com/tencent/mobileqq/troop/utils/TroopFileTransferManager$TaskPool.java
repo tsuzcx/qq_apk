@@ -40,10 +40,10 @@ public class TroopFileTransferManager$TaskPool
     //   33: aload_0
     //   34: monitorexit
     //   35: return
-    //   36: new 40	ajbh
+    //   36: new 40	ajpl
     //   39: dup
     //   40: aload_0
-    //   41: invokespecial 43	ajbh:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskPool;)V
+    //   41: invokespecial 43	ajpl:<init>	(Lcom/tencent/mobileqq/troop/utils/TroopFileTransferManager$TaskPool;)V
     //   44: iconst_5
     //   45: aconst_null
     //   46: iconst_1
@@ -66,7 +66,7 @@ public class TroopFileTransferManager$TaskPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileTransferManager.TaskPool
  * JD-Core Version:    0.7.0.1
  */

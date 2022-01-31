@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajbo;
-import ajbp;
-import ajbq;
-import ajbr;
-import ajbs;
-import ajbt;
-import ajbu;
+import ajps;
+import ajpt;
+import ajpu;
+import ajpv;
+import ajpw;
+import ajpx;
+import ajpy;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
@@ -179,7 +179,7 @@ public class TroopGiftManager
           }
           paramInt4 = AppSetting.jdField_a_of_type_Int;
           localReqBody.bytes_user_ip.set(ByteStringMicro.copyFrom(paramString2.getBytes()), true);
-          localReqBody.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.0.3525".getBytes()), true);
+          localReqBody.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.3.3560".getBytes()), true);
           localReqBody.uint32_client.set(1, true);
           localReqBody.uint32_instance_id.set(paramInt4, true);
           localReqBody.setHasFlag(true);
@@ -224,7 +224,7 @@ public class TroopGiftManager
           if (QLog.isColorLevel()) {
             QLog.i(".troop.send_gift", 2, "send_oidb_0x6b6. serviceType=" + paramInt2);
           }
-          ProtoUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajbo(this, paramTroopGiftCallback), localReqBody.toByteArray(), paramString1 + "_" + paramInt2, paramInt1, paramInt2, paramString2, paramLong);
+          ProtoUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajps(this, paramTroopGiftCallback), localReqBody.toByteArray(), paramString1 + "_" + paramInt2, paramInt1, paramInt2, paramString2, paramLong);
           return;
           if (paramInt2 != 11) {
             continue;
@@ -332,7 +332,7 @@ public class TroopGiftManager
     }
     paramInt3 = AppSetting.jdField_a_of_type_Int;
     localReqBody.bytes_user_ip.set(ByteStringMicro.copyFrom(paramString2.getBytes()), true);
-    localReqBody.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.0.3525".getBytes()), true);
+    localReqBody.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.3.3560".getBytes()), true);
     localReqBody.uint32_client.set(1, true);
     localReqBody.uint32_instance_id.set(paramInt3, true);
     localReqBody.uint32_business_id.set(paramInt2, true);
@@ -355,7 +355,7 @@ public class TroopGiftManager
       if (QLog.isColorLevel()) {
         QLog.i(".troop.send_gift", 2, "send_oidb_0x6c3. serviceType=" + paramInt4);
       }
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajbp(this, paramTroopGiftCallback), localReqBody.toByteArray(), paramString1 + "_" + paramInt4, paramInt1, paramInt4, paramString2, paramLong);
+      ProtoUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajpt(this, paramTroopGiftCallback), localReqBody.toByteArray(), paramString1 + "_" + paramInt4, paramInt1, paramInt4, paramString2, paramLong);
       return;
     }
   }
@@ -399,7 +399,7 @@ public class TroopGiftManager
           if (QLog.isColorLevel()) {
             QLog.i(".troop.send_gift", 2, "send_oidb_0x6c2. serviceType=" + paramInt3);
           }
-          ProtoUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajbr(this, paramTroopGiftCallback, paramString1, paramString2), localReqBody.toByteArray(), "OidbSvc.0x6c2_" + paramInt3, 1730, paramInt3, (Bundle)localObject, paramLong);
+          ProtoUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajpv(this, paramTroopGiftCallback, paramString1, paramString2), localReqBody.toByteArray(), "OidbSvc.0x6c2_" + paramInt3, 1730, paramInt3, (Bundle)localObject, paramLong);
           return;
         }
       }
@@ -427,7 +427,7 @@ public class TroopGiftManager
       long l = Long.parseLong(paramString1);
       oidb_0x962.ClientInfo localClientInfo = new oidb_0x962.ClientInfo();
       localClientInfo.uint32_client_type.set(1, true);
-      localClientInfo.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.0.3525".getBytes()), true);
+      localClientInfo.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.3.3560".getBytes()), true);
       paramString1 = new oidb_0x962.ReqBody();
       paramString1.uint64_group_code.set(l, true);
       paramString1.bytes_id.set(ByteStringMicro.copyFrom(paramString2.getBytes()), true);
@@ -437,7 +437,7 @@ public class TroopGiftManager
       paramString1.uint32_cmd.set(paramInt3, true);
       paramString2 = new Bundle();
       paramString2.putInt("subCmd", paramInt3);
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajbs(this, paramTroopGiftCallback), paramString1.toByteArray(), "OidbSvc.0x962_" + paramInt3, 2402, 1, paramString2, 500L);
+      ProtoUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajpw(this, paramTroopGiftCallback), paramString1.toByteArray(), "OidbSvc.0x962_" + paramInt3, 2402, 1, paramString2, 500L);
       return;
     }
     catch (Exception paramString2)
@@ -494,7 +494,7 @@ public class TroopGiftManager
           break label423;
         }
         paramInt2 = 1;
-        ProtoUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajbq(this, paramTroopGiftCallback, paramString2, paramString3), localReqBody.toByteArray(), paramString1 + "_" + paramInt2, paramInt1, paramInt2, (Bundle)localObject, paramLong);
+        ProtoUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajpu(this, paramTroopGiftCallback, paramString2, paramString3), localReqBody.toByteArray(), paramString1 + "_" + paramInt2, paramInt1, paramInt2, (Bundle)localObject, paramLong);
         return;
       }
       catch (NumberFormatException paramString1) {}
@@ -554,11 +554,11 @@ public class TroopGiftManager
     }
     cmd0x9e9.ReqBody localReqBody = new cmd0x9e9.ReqBody();
     cmd0x9e9.User localUser = new cmd0x9e9.User();
-    localUser.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.0.3525".getBytes()), true);
+    localUser.bytes_version.set(ByteStringMicro.copyFrom("V 7.6.3.3560".getBytes()), true);
     localUser.uint32_client.set(1, true);
     localUser.uint32_portal.set(paramInt, true);
     localReqBody.msg_user.set(localUser, true);
-    ProtoUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajbt(this, paramTroopGiftCallback), localReqBody.toByteArray(), "OidbSvc.0x9e9_0", 2537, 0);
+    ProtoUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajpx(this, paramTroopGiftCallback), localReqBody.toByteArray(), "OidbSvc.0x9e9_0", 2537, 0);
   }
   
   public void a(String paramString1, int paramInt1, int paramInt2, int paramInt3, String paramString2, int paramInt4, int paramInt5, int paramInt6, int paramInt7, TroopGiftCallback paramTroopGiftCallback)
@@ -641,7 +641,7 @@ public class TroopGiftManager
       long l = Long.parseLong(paramString);
       paramString = new oidb_0xa48.ReqBody();
       paramString.uint64_groupcode.set(l, true);
-      ProtoUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajbu(this, paramTroopGiftCallback), paramString.toByteArray(), "OidbSvc.0xa48_1", 2632, 1, new Bundle(), 6000L);
+      ProtoUtils.a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, new ajpy(this, paramTroopGiftCallback), paramString.toByteArray(), "OidbSvc.0xa48_1", 2632, 1, new Bundle(), 6000L);
       return;
     }
     catch (Exception paramString)
@@ -733,7 +733,7 @@ public class TroopGiftManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopGiftManager
  * JD-Core Version:    0.7.0.1
  */

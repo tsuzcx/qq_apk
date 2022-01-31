@@ -1,18 +1,34 @@
-import android.app.Dialog;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.utils.DialogUtil;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
-class sed
+public class sed
   implements Runnable
 {
-  sed(sec paramsec, String paramString1, String paramString2, String paramString3) {}
+  public sed(ChatSettingForTroop paramChatSettingForTroop, Intent paramIntent) {}
   
   public void run()
   {
-    see localsee = new see(this);
-    this.jdField_a_of_type_Sec.a.a = DialogUtil.a(this.jdField_a_of_type_Sec.a.a(), 230, this.b, this.c, "退出登录", "立即验证", localsee, localsee);
-    this.jdField_a_of_type_Sec.a.a.setCancelable(false);
-    this.jdField_a_of_type_Sec.a.a.show();
+    try
+    {
+      ArrayList localArrayList = this.jdField_a_of_type_AndroidContentIntent.getExtras().getStringArrayList("param_admins");
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.coverAdministrators(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, localArrayList);
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.jdField_a_of_type_AndroidOsHandler.post(new see(this));
+      return;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("Q.chatopttroop", 2, localException, new Object[0]);
+        }
+      }
+    }
   }
 }
 

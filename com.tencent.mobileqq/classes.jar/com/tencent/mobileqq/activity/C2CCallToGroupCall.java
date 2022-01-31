@@ -13,8 +13,8 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.search.presenter.ContactSearchResultPresenter.OnActionListener;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import java.util.ArrayList;
-import rrp;
-import rrq;
+import run;
+import ruo;
 
 public class C2CCallToGroupCall
   extends BaseActivity
@@ -28,7 +28,7 @@ public class C2CCallToGroupCall
   public QQAppInterface a;
   public QQProgressDialog a;
   public String a;
-  Thread jdField_a_of_type_JavaLangThread = new rrq(this);
+  Thread jdField_a_of_type_JavaLangThread = new ruo(this);
   public int b;
   public String b;
   private int c;
@@ -50,7 +50,7 @@ public class C2CCallToGroupCall
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new rrp(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver = new run(this);
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppDiscussionObserver);
     }
@@ -85,7 +85,7 @@ public class C2CCallToGroupCall
     if (paramBoolean)
     {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(paramContext, this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131558448));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131433967);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131433984);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     }
     this.jdField_a_of_type_JavaLangThread.setName("PhoneContactSelectActivity_addDiscussion");

@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceHolder.Callback;
 import com.tencent.qphone.base.util.QLog;
-import zty;
+import zxe;
 
 @TargetApi(14)
 public class ARGLSurfaceView
@@ -20,7 +20,7 @@ public class ARGLSurfaceView
   {
     super(paramContext);
     QLog.i("AREngine_ARGLSurfaceView", 1, "create ARGLSurfaceView. context = " + paramContext + ", holderCallback = " + paramCallback + ", surfaceViewCallback = " + paramARGLSurfaceViewCallback);
-    setEGLContextFactory(new zty(this));
+    setEGLContextFactory(new zxe(this));
     setEGLContextClientVersion(2);
     setEGLConfigChooser(8, 8, 8, 8, 16, 0);
     getHolder().addCallback(paramCallback);

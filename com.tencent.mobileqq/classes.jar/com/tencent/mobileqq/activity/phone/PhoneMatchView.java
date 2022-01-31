@@ -12,8 +12,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
-import wsb;
-import wsc;
+import wvg;
+import wvh;
 
 @SuppressLint({"ViewConstructor"})
 public class PhoneMatchView
@@ -26,13 +26,13 @@ public class PhoneMatchView
   public PhoneMatchView(Context paramContext, int paramInt)
   {
     super(paramContext, paramInt);
-    a(2130969169, true);
+    a(2130969168, true);
     j();
   }
   
   private void j()
   {
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131365463));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)a(2131365485));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
   }
   
@@ -40,17 +40,17 @@ public class PhoneMatchView
   {
     if (!NetworkUtil.d(getContext()))
     {
-      b(2131434596);
+      b(2131434613);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wsb(this);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wvg(this);
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new wsc(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(new wvh(this));
     QQToast.a(BaseApplicationImpl.sApplication, "特征码匹配中。", 0).a();
-    a(2131434436, 1000L, true);
+    a(2131434453, 1000L, true);
   }
   
   protected void a()
@@ -60,7 +60,7 @@ public class PhoneMatchView
     if (this.jdField_a_of_type_Int == 2)
     {
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437153);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131437170);
       return;
     }
     if (this.jdField_a_of_type_Int == 3)

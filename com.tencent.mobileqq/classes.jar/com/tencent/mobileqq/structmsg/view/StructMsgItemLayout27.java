@@ -74,7 +74,7 @@ public class StructMsgItemLayout27
       }
       localLinearLayout.addView(localBubbleViewLayout);
       localObject3 = new RelativeLayout(paramContext);
-      ((RelativeLayout)localObject3).setId(2131369354);
+      ((RelativeLayout)localObject3).setId(2131369420);
       paramView = new RelativeLayout.LayoutParams(-1, -2);
       localBubbleViewLayout.addView((View)localObject3, 0);
       if (!this.jdField_a_of_type_Boolean) {
@@ -83,7 +83,7 @@ public class StructMsgItemLayout27
       if (this.e != 1) {
         break label467;
       }
-      ((RelativeLayout)localObject3).setBackgroundResource(2130842127);
+      ((RelativeLayout)localObject3).setBackgroundResource(2130842164);
       localBubbleViewLayout.a(false);
       localBubbleViewLayout.b(false);
       ((RelativeLayout)localObject3).setLayoutParams(paramView);
@@ -110,12 +110,12 @@ public class StructMsgItemLayout27
     for (;;)
     {
       ((RelativeLayout.LayoutParams)localObject5).addRule(12);
-      ((RelativeLayout.LayoutParams)localObject5).addRule(3, 2131369354);
+      ((RelativeLayout.LayoutParams)localObject5).addRule(3, 2131369420);
       ((TextView)localObject2).setLayoutParams((ViewGroup.LayoutParams)localObject5);
       ((TextView)localObject2).setPadding(i, j, i, j);
       ((TextView)localObject2).setSingleLine();
       ((TextView)localObject2).setEllipsize(TextUtils.TruncateAt.END);
-      ((TextView)localObject2).setBackgroundColor(localResources.getColor(2131492968));
+      ((TextView)localObject2).setBackgroundColor(localResources.getColor(2131492969));
       localBubbleViewLayout.addView((View)localObject2);
       break label233;
       localLinearLayout = new LinearLayout(paramContext);
@@ -126,7 +126,7 @@ public class StructMsgItemLayout27
       localBubbleViewLayout.setLayoutParams(new LinearLayout.LayoutParams(BaseChatItemLayout.d - AIOUtils.a(20.0F, localResources), -2));
       break label101;
       label467:
-      ((RelativeLayout)localObject3).setBackgroundResource(2130842128);
+      ((RelativeLayout)localObject3).setBackgroundResource(2130842165);
       break label203;
       label477:
       if (bool)
@@ -140,7 +140,7 @@ public class StructMsgItemLayout27
           break label634;
         }
         ((RelativeLayout.LayoutParams)localObject4).addRule(9);
-        ((RelativeLayout.LayoutParams)localObject4).addRule(0, 2131369354);
+        ((RelativeLayout.LayoutParams)localObject4).addRule(0, 2131369420);
         paramView.setLayoutParams((ViewGroup.LayoutParams)localObject4);
         paramView.setId(2131362368);
         if (localBubbleViewLayout.jdField_a_of_type_Boolean != bool) {
@@ -149,8 +149,8 @@ public class StructMsgItemLayout27
         if (this.e != 1) {
           break label652;
         }
-        ((RelativeLayout)localObject3).setBackgroundResource(2130842120);
-        paramView.setImageDrawable(localResources.getDrawable(2130842123));
+        ((RelativeLayout)localObject3).setBackgroundResource(2130842157);
+        paramView.setImageDrawable(localResources.getDrawable(2130842160));
       }
       for (;;)
       {
@@ -165,11 +165,11 @@ public class StructMsgItemLayout27
         break label488;
         label634:
         ((RelativeLayout.LayoutParams)localObject4).addRule(11);
-        ((RelativeLayout.LayoutParams)localObject4).addRule(1, 2131369354);
+        ((RelativeLayout.LayoutParams)localObject4).addRule(1, 2131369420);
         break label536;
         label652:
-        ((RelativeLayout)localObject3).setBackgroundResource(2130842121);
-        paramView.setImageDrawable(localResources.getDrawable(2130842122));
+        ((RelativeLayout)localObject3).setBackgroundResource(2130842158);
+        paramView.setImageDrawable(localResources.getDrawable(2130842159));
       }
       label673:
       ((RelativeLayout.LayoutParams)localObject5).setMargins(0, 0, 0, 0);
@@ -186,7 +186,7 @@ public class StructMsgItemLayout27
         localObject2 = Calendar.getInstance();
         ((Calendar)localObject2).setTimeInMillis(l * 1000L);
         localObject5 = new TextView(paramContext);
-        ((TextView)localObject5).setId(2131366837);
+        ((TextView)localObject5).setId(2131366704);
         RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(AIOUtils.a(68.0F, localResources), AIOUtils.a(18.0F, localResources));
         localLayoutParams.addRule(14);
         if (!this.jdField_a_of_type_Boolean) {
@@ -203,7 +203,7 @@ public class StructMsgItemLayout27
         ((TextView)localObject5).setTextSize(14.0F);
         if (this.e == 1)
         {
-          ((TextView)localObject5).setTextColor(localResources.getColor(2131493167));
+          ((TextView)localObject5).setTextColor(localResources.getColor(2131493168));
         }
         else
         {
@@ -227,13 +227,13 @@ public class StructMsgItemLayout27
         break;
         label1066:
         RelativeLayout localRelativeLayout = new RelativeLayout(paramContext);
-        localRelativeLayout.setId(2131369355);
+        localRelativeLayout.setId(2131369421);
         paramBundle = new RelativeLayout.LayoutParams(-2, -2);
         paramBundle.addRule(14);
         if (this.jdField_a_of_type_Boolean) {}
         for (paramBundle.topMargin = AIOUtils.a(9.0F, localResources);; paramBundle.topMargin = AIOUtils.a(7.0F, localResources))
         {
-          paramBundle.addRule(3, 2131366837);
+          paramBundle.addRule(3, 2131366704);
           localRelativeLayout.setLayoutParams(paramBundle);
           ((RelativeLayout)localObject3).addView(localRelativeLayout);
           localObject3 = new RelativeLayout.LayoutParams(AIOUtils.a(52.0F, localResources), AIOUtils.a(52.0F, localResources));
@@ -241,18 +241,18 @@ public class StructMsgItemLayout27
           if (localObject1 == null) {
             paramBundle = new LinearLayout(paramContext);
           }
-          paramBundle.setId(2131369356);
+          paramBundle.setId(2131369422);
           paramBundle.setGravity(5);
           paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject3);
           localRelativeLayout.addView(paramBundle);
           localObject1 = new RelativeLayout.LayoutParams(AIOUtils.a(52.0F, localResources), AIOUtils.a(52.0F, localResources));
-          ((RelativeLayout.LayoutParams)localObject1).addRule(1, 2131369356);
+          ((RelativeLayout.LayoutParams)localObject1).addRule(1, 2131369422);
           ((RelativeLayout.LayoutParams)localObject1).leftMargin = AIOUtils.a(15.0F, localResources);
           paramBundle = paramView;
           if (paramView == null) {
             paramBundle = new LinearLayout(paramContext);
           }
-          paramBundle.setId(2131364582);
+          paramBundle.setId(2131364606);
           paramBundle.setGravity(3);
           paramBundle.setLayoutParams((ViewGroup.LayoutParams)localObject1);
           localRelativeLayout.addView(paramBundle);
@@ -273,7 +273,7 @@ public class StructMsgItemLayout27
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout27
  * JD-Core Version:    0.7.0.1
  */

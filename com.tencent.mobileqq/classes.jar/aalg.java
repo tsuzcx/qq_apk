@@ -1,28 +1,24 @@
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppDataReport;
+import com.tencent.mobileqq.ar.arcloud.pb.ARRelationShipUploadRusult.UploadPicExtInfo;
+import com.tencent.mobileqq.arcard.ARBlessWordFragment;
+import com.tencent.mobileqq.arcard.ARCardUtils;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.PBBytesField;
 
 class aalg
-  implements aalq
+  implements Runnable
 {
-  aalg(aalb paramaalb, aalo paramaalo, aalq paramaalq, String paramString) {}
+  aalg(aalf paramaalf, ARRelationShipUploadRusult.UploadPicExtInfo paramUploadPicExtInfo) {}
   
-  public void a(boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateDict, incremental update success, name=%s", new Object[] { this.jdField_a_of_type_Aalo.jdField_a_of_type_JavaLangString }));
-      ArkAppDataReport.a(this.jdField_a_of_type_Aalo.jdField_a_of_type_JavaLangString, 4);
-      this.jdField_a_of_type_Aalq.a(true);
-      return;
-    }
-    ArkAppCenter.b("ArkApp.Dict.Update", String.format("updateDict, incremental update fail, try full update, name=%s", new Object[] { this.jdField_a_of_type_Aalo.jdField_a_of_type_JavaLangString }));
-    ArkAppDataReport.a(this.jdField_a_of_type_Aalo.jdField_a_of_type_JavaLangString, 1);
-    aalb.a(this.jdField_a_of_type_Aalb, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aalo, new aalh(this));
+    this.jdField_a_of_type_Aalf.a.b();
+    String str = this.jdField_a_of_type_ComTencentMobileqqArArcloudPbARRelationShipUploadRusult$UploadPicExtInfo.bytes_download_url.get().toStringUtf8();
+    ARCardUtils.a(this.jdField_a_of_type_Aalf.a.getActivity(), 0, str, "", 2, ARBlessWordFragment.a(this.jdField_a_of_type_Aalf.a), ARBlessWordFragment.b(this.jdField_a_of_type_Aalf.a), ARBlessWordFragment.c(this.jdField_a_of_type_Aalf.a), ARBlessWordFragment.d(this.jdField_a_of_type_Aalf.a), ARBlessWordFragment.e(this.jdField_a_of_type_Aalf.a), ARBlessWordFragment.f(this.jdField_a_of_type_Aalf.a), ARBlessWordFragment.g(this.jdField_a_of_type_Aalf.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aalg
  * JD-Core Version:    0.7.0.1
  */

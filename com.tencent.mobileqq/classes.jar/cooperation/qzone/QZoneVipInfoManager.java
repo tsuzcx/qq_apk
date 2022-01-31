@@ -2,7 +2,7 @@ package cooperation.qzone;
 
 import NS_MOBILE_COMM.combine_diamond_info;
 import NS_MOBILE_COMM.star_info;
-import amcj;
+import amsn;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -29,7 +29,7 @@ public class QZoneVipInfoManager
     {
       this.jdField_a_of_type_AndroidContentSharedPreferences = localBaseApplicationImpl.getSharedPreferences("QZONE_VIP_INFO", i);
       if (this.jdField_a_of_type_AndroidContentSharedPreferences != null) {
-        this.jdField_a_of_type_AndroidContentSharedPreferences.registerOnSharedPreferenceChangeListener(new amcj(this));
+        this.jdField_a_of_type_AndroidContentSharedPreferences.registerOnSharedPreferenceChangeListener(new amsn(this));
       }
       return;
     }

@@ -1,26 +1,70 @@
-import android.app.Activity;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.View;
+import com.tencent.biz.qqstory.model.lbs.LbsManager.POIListRequestSession;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoi;
+import com.tencent.mobileqq.activity.Contacts.OverScrollViewTag;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.PullRefreshHeader;
+import com.tencent.widget.ListView;
+import com.tencent.widget.OverScrollViewListener;
 
-class ogd
-  implements MediaScanner.OnMediaInfoScannerListener
+public class ogd
+  implements OverScrollViewListener
 {
-  ogd(ogc paramogc, String paramString) {}
+  public ogd(EditVideoPoi paramEditVideoPoi) {}
   
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public void a(int paramInt, View paramView, ListView paramListView)
   {
-    if (QQStoryFlowCallback.a(this.jdField_a_of_type_Ogc.a.a.a, paramLocalMediaInfo))
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
     {
-      paramLocalMediaInfo.addedDate = 0L;
-      this.jdField_a_of_type_Ogc.a.a.a.runOnUiThread(new oge(this, paramLocalMediaInfo));
-    }
-    while (!QLog.isColorLevel()) {
+      paramView.c(l);
       return;
     }
-    QLog.d("SlideShowPhotoListManager", 2, "isValidMedia, false:" + paramLocalMediaInfo.toString());
   }
+  
+  public boolean a(int paramInt, View paramView, ListView paramListView)
+  {
+    paramListView = (PullRefreshHeader)paramView;
+    long l;
+    if (this.a.jdField_a_of_type_Long == 0L)
+    {
+      l = System.currentTimeMillis();
+      paramListView.a(l);
+      if (!NetworkUtil.g(this.a.a())) {
+        break label118;
+      }
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession != null) {
+        this.a.jdField_a_of_type_ComTencentBizQqstoryModelLbsLbsManager$POIListRequestSession.a();
+      }
+      this.a.e();
+      new Handler(Looper.getMainLooper()).postDelayed(new oge(this), 300L);
+    }
+    for (;;)
+    {
+      ((Contacts.OverScrollViewTag)paramView.getTag()).a = true;
+      return true;
+      l = this.a.jdField_a_of_type_Long;
+      break;
+      label118:
+      new Handler(Looper.getMainLooper()).postDelayed(new ogf(this), 300L);
+    }
+  }
+  
+  public void b(int paramInt, View paramView, ListView paramListView)
+  {
+    paramView = (PullRefreshHeader)paramView;
+    if (this.a.jdField_a_of_type_Long == 0L) {}
+    for (long l = System.currentTimeMillis();; l = this.a.jdField_a_of_type_Long)
+    {
+      paramView.b(l);
+      return;
+    }
+  }
+  
+  public void c(int paramInt, View paramView, ListView paramListView) {}
 }
 
 

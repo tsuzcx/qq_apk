@@ -1,35 +1,19 @@
-import android.os.Handler;
-import android.text.Editable;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.ark.ArkRecommendController;
-import com.tencent.mobileqq.ark.ArkRecommendLogic;
-import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.XEditTextEx;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
+import com.tencent.mobileqq.music.QQPlayerService;
 
 public class aaqk
   implements Runnable
 {
-  public aaqk(ArkRecommendController paramArkRecommendController) {}
+  public aaqk(ArkAppMusicModule paramArkAppMusicModule) {}
   
   public void run()
   {
-    ArkRecommendController.a(this.a, null);
-    Object localObject = ArkRecommendController.a(this.a).a.getEditableText();
-    if ((ArkRecommendController.a(this.a) == null) || (ArkRecommendController.a(this.a).a == null) || (ArkRecommendController.a(this.a).a.getText() == null) || (localObject == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ArkRecommendController", 2, "mChatPie is null or input ctrl is null");
-      }
+    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+    if ((localBaseActivity instanceof FragmentActivity)) {
+      QQPlayerService.c(localBaseActivity);
     }
-    String str;
-    do
-    {
-      return;
-      str = ArkRecommendController.a(this.a).a.getText().toString();
-    } while (str.length() > 80);
-    localObject = (AtTroopMemberSpan[])((Editable)localObject).getSpans(0, localObject.toString().length(), AtTroopMemberSpan.class);
-    ArkRecommendController.a(this.a);
-    ArkRecommendLogic.a().post(new aaql(this, str, (AtTroopMemberSpan[])localObject));
   }
 }
 

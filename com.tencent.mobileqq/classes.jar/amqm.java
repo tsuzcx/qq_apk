@@ -1,15 +1,41 @@
-import android.os.Bundle;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqpim.QQPimDefineList;
+import cooperation.qqpim.QQPimGetTipsInfoIPC;
+import cooperation.qqpim.QQPimPluginLoadRunnable.IPluginLoadListener;
+import cooperation.qqpim.QQPimPluginProxyService;
 
-class amqm
-  implements Runnable
+public class amqm
+  implements QQPimPluginLoadRunnable.IPluginLoadListener
 {
-  amqm(amqk paramamqk, Bundle paramBundle) {}
+  public amqm(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC) {}
   
-  public void run()
+  public void a()
   {
-    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
-    this.jdField_a_of_type_Amqk.a.a(localBundle);
+    if (QLog.isColorLevel()) {
+      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.hasInstalled() ");
+    }
+    QQPimPluginProxyService.a(QQPimGetTipsInfoIPC.a(this.a));
+  }
+  
+  public void a(float paramFloat)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.downloading() " + paramFloat);
+    }
+  }
+  
+  public void a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.downloadError() " + paramInt);
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.downloadBegin()");
+    }
   }
 }
 

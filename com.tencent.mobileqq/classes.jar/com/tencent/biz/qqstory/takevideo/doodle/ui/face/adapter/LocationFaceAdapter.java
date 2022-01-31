@@ -10,7 +10,7 @@ import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePanel.OnFaceSelected
 import com.tencent.biz.qqstory.takevideo.doodle.ui.face.LocationFacePackage;
 import com.tencent.biz.qqstory.takevideo.doodle.ui.face.LocationFacePackage.Item;
 import java.util.List;
-import oix;
+import okh;
 
 public class LocationFaceAdapter
   extends BaseFaceListAdapter
@@ -27,7 +27,7 @@ public class LocationFaceAdapter
       return paramView;
     }
     if (paramView == null) {}
-    for (paramView = new oix(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((LocationFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), ((LocationFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), this);; paramView = (oix)paramView)
+    for (paramView = new okh(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((LocationFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), ((LocationFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), this);; paramView = (okh)paramView)
     {
       paramView.a((LocationFacePackage)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage, paramInt, getCount());
       return paramView;

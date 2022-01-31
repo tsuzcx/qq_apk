@@ -46,8 +46,8 @@ public class RecentItemTroopBarAssitant
     if ((this.jdField_c_of_type_Int > 0) && (!SubscriptRecommendController.d((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()))) {
       if (this.jdField_c_of_type_Int <= 99)
       {
-        this.jdField_d_of_type_JavaLangCharSequence = String.format(paramContext.getString(2131430054), new Object[] { Integer.valueOf(this.jdField_c_of_type_Int) });
-        this.e = paramContext.getResources().getColor(2131494281);
+        this.jdField_d_of_type_JavaLangCharSequence = String.format(paramContext.getString(2131430071), new Object[] { Integer.valueOf(this.jdField_c_of_type_Int) });
+        this.e = paramContext.getResources().getColor(2131494288);
       }
     }
     for (;;)
@@ -56,7 +56,7 @@ public class RecentItemTroopBarAssitant
         this.jdField_c_of_type_JavaLangString = "";
       }
       return;
-      this.jdField_d_of_type_JavaLangCharSequence = paramContext.getString(2131430059);
+      this.jdField_d_of_type_JavaLangCharSequence = paramContext.getString(2131430076);
       break;
       this.jdField_d_of_type_JavaLangCharSequence = "";
     }
@@ -97,7 +97,7 @@ public class RecentItemTroopBarAssitant
       ((TroopBarAssistantManager)localObject5).jdField_a_of_type_Int = this.jdField_c_of_type_Int;
       localObject1 = SubscriptRecommendController.b(paramQQAppInterface);
       if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-      for (localMsgSummary.b = paramContext.getString(2131430064);; localMsgSummary.b = ((CharSequence)localObject1))
+      for (localMsgSummary.b = paramContext.getString(2131430081);; localMsgSummary.b = ((CharSequence)localObject1))
       {
         this.jdField_a_of_type_Long = ((TroopBarAssistantManager)localObject5).a(paramQQAppInterface);
         a(paramQQAppInterface);
@@ -109,7 +109,7 @@ public class RecentItemTroopBarAssitant
           if (this.jdField_c_of_type_Int != 0) {
             break label941;
           }
-          localObject2 = paramContext.getString(2131430053);
+          localObject2 = paramContext.getString(2131430070);
           if (this.jdField_c_of_type_JavaLangCharSequence != null) {
             break;
           }
@@ -266,18 +266,18 @@ public class RecentItemTroopBarAssitant
         break label148;
         if (this.jdField_c_of_type_Int == 1)
         {
-          this.jdField_d_of_type_JavaLangString = String.format(paramContext.getString(2131430052), new Object[] { localObject1, "一", this.jdField_c_of_type_JavaLangString });
+          this.jdField_d_of_type_JavaLangString = String.format(paramContext.getString(2131430069), new Object[] { localObject1, "一", this.jdField_c_of_type_JavaLangString });
           break label177;
         }
         if (this.jdField_c_of_type_Int == 2)
         {
-          this.jdField_d_of_type_JavaLangString = String.format(paramContext.getString(2131430052), new Object[] { localObject1, "两", this.jdField_c_of_type_JavaLangString });
+          this.jdField_d_of_type_JavaLangString = String.format(paramContext.getString(2131430069), new Object[] { localObject1, "两", this.jdField_c_of_type_JavaLangString });
           break label177;
         }
         if (this.jdField_c_of_type_Int <= 0) {
           break label177;
         }
-        this.jdField_d_of_type_JavaLangString = String.format(paramContext.getString(2131430052), new Object[] { localObject1, Integer.toString(this.jdField_c_of_type_Int), this.jdField_c_of_type_JavaLangString });
+        this.jdField_d_of_type_JavaLangString = String.format(paramContext.getString(2131430069), new Object[] { localObject1, Integer.toString(this.jdField_c_of_type_Int), this.jdField_c_of_type_JavaLangString });
         break label177;
       }
     }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.arcard;
 
-import aafe;
-import aafl;
+import aamf;
+import aamm;
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
@@ -69,7 +69,7 @@ public class ARCardShareHelper
     ((BitmapFactory.Options)localObject1).inJustDecodeBounds = false;
     try
     {
-      localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidAppActivity.getResources(), 2130842183, (BitmapFactory.Options)localObject1);
+      localObject1 = BitmapFactory.decodeResource(this.jdField_a_of_type_AndroidAppActivity.getResources(), 2130842220, (BitmapFactory.Options)localObject1);
       if (localObject1 == null) {
         return paramBitmap;
       }
@@ -199,7 +199,7 @@ public class ARCardShareHelper
     }
     for (;;)
     {
-      String str3 = ((ScanTorchActivity)this.jdField_a_of_type_AndroidAppActivity).b();
+      String str3 = ((ScanTorchActivity)this.jdField_a_of_type_AndroidAppActivity).e();
       String str2 = str3;
       if (str3.length() > 6) {
         str2 = str3.substring(0, 5) + "...";
@@ -237,28 +237,28 @@ public class ARCardShareHelper
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430091);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838332;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430108);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838336;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.c = 2;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430097);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838333;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430114);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838337;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.c = 3;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430109);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838336;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430126);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838340;
     localActionSheetItem.c = 9;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430110);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838330;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430127);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838334;
     localActionSheetItem.c = 10;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
@@ -292,7 +292,7 @@ public class ARCardShareHelper
         this.jdField_a_of_type_AndroidGraphicsBitmap = null;
       }
       localObject1 = this.jdField_a_of_type_AndroidGraphicsBitmap.copy(this.jdField_a_of_type_AndroidGraphicsBitmap.getConfig(), true);
-      localBitmap = ARCardUtils.a(((ScanTorchActivity)this.jdField_a_of_type_AndroidAppActivity).c());
+      localBitmap = ARCardUtils.a(((ScanTorchActivity)this.jdField_a_of_type_AndroidAppActivity).g());
       i = localBitmap.getHeight();
       if (i == 100) {
         break label344;
@@ -306,7 +306,7 @@ public class ARCardShareHelper
     label344:
     for (;;)
     {
-      localObject2 = ((ScanTorchActivity)this.jdField_a_of_type_AndroidAppActivity).b();
+      localObject2 = ((ScanTorchActivity)this.jdField_a_of_type_AndroidAppActivity).e();
       localBitmap = a(localBitmap);
       localObject2 = a((String)localObject2);
       RubberStampConfig localRubberStampConfig1 = new RubberStampConfig.RubberStampConfigBuilder().a(localBitmap).a(0, 40, 828).a();
@@ -373,12 +373,12 @@ public class ARCardShareHelper
   {
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
     {
-      aafe localaafe = new aafe(this);
-      paramOnDismissListener = new aafl(this, paramOnDismissListener);
+      aamf localaamf = new aamf(this);
+      paramOnDismissListener = new aamm(this, paramOnDismissListener);
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder((Activity)this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(this.jdField_a_of_type_AndroidContentContext.getString(2131433083));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(this.jdField_a_of_type_AndroidContentContext.getString(2131433100));
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(a(this.jdField_a_of_type_AndroidContentContext));
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(localaafe);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(localaamf);
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(paramOnDismissListener);
     }
     try
@@ -457,7 +457,7 @@ public class ARCardShareHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.arcard.ARCardShareHelper
  * JD-Core Version:    0.7.0.1
  */

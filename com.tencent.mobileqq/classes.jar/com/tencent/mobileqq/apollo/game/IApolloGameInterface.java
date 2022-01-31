@@ -8,6 +8,8 @@ public abstract interface IApolloGameInterface
   
   public abstract void b();
   
+  public abstract void b(String paramString1, String paramString2);
+  
   public abstract void c();
   
   public abstract void d();

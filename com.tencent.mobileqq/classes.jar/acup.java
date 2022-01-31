@@ -1,21 +1,20 @@
-import android.view.View;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.PreviewSimpleFilePresenter;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
+import com.tencent.mobileqq.filemanager.core.DiscPicThumbDownloader;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
 
 public class acup
-  implements FileManagerUtil.TipsClickedInterface
+  implements Runnable
 {
-  public acup(PreviewSimpleFilePresenter paramPreviewSimpleFilePresenter) {}
+  public acup(DiscPicThumbDownloader paramDiscPicThumbDownloader, FileManagerEntity paramFileManagerEntity) {}
   
-  public void a(View paramView)
+  public void run()
   {
-    this.a.a.g();
+    FilePicURLDrawlableHelper.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acup
  * JD-Core Version:    0.7.0.1
  */

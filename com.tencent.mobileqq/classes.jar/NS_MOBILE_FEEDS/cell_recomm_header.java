@@ -9,6 +9,7 @@ import java.util.Map;
 public final class cell_recomm_header
   extends JceStruct
 {
+  static s_button cache_left_top_button = new s_button();
   static Map cache_mapCoverUrl = new HashMap();
   public String action_type = "";
   public String action_url = "";
@@ -18,6 +19,7 @@ public final class cell_recomm_header
   public int icon_height;
   public int icon_width;
   public String left_title = "";
+  public s_button left_top_button;
   public Map mapCoverUrl;
   public long recomm_uin;
   public String right_title = "";
@@ -30,7 +32,7 @@ public final class cell_recomm_header
   
   public cell_recomm_header() {}
   
-  public cell_recomm_header(String paramString1, byte paramByte, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, Map paramMap, long paramLong, String paramString5, String paramString6)
+  public cell_recomm_header(String paramString1, byte paramByte, String paramString2, String paramString3, int paramInt1, int paramInt2, String paramString4, Map paramMap, long paramLong, String paramString5, String paramString6, s_button params_button)
   {
     this.left_title = paramString1;
     this.btn_type = paramByte;
@@ -43,6 +45,7 @@ public final class cell_recomm_header
     this.recomm_uin = paramLong;
     this.action_url = paramString5;
     this.action_type = paramString6;
+    this.left_top_button = params_button;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -58,6 +61,7 @@ public final class cell_recomm_header
     this.recomm_uin = paramJceInputStream.read(this.recomm_uin, 8, false);
     this.action_url = paramJceInputStream.readString(9, false);
     this.action_type = paramJceInputStream.readString(10, false);
+    this.left_top_button = ((s_button)paramJceInputStream.read(cache_left_top_button, 11, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -86,6 +90,9 @@ public final class cell_recomm_header
     }
     if (this.action_type != null) {
       paramJceOutputStream.write(this.action_type, 10);
+    }
+    if (this.left_top_button != null) {
+      paramJceOutputStream.write(this.left_top_button, 11);
     }
   }
 }

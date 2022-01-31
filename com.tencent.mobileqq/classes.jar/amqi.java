@@ -1,24 +1,29 @@
-import android.os.Bundle;
-import com.tencent.open.wadl.WLog;
-import cooperation.wadl.ipc.WadlProxyServiceManager;
-import mqq.observer.BusinessObserver;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface.Stub;
+import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
 
 public class amqi
-  implements BusinessObserver
+  implements ServiceConnection
 {
-  public amqi(WadlProxyServiceManager paramWadlProxyServiceManager, String paramString) {}
+  public amqi(QQIndividualityRemoteProxy paramQQIndividualityRemoteProxy) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    paramInt = paramBundle.getInt("extra_result_code");
-    String str = paramBundle.getString("extra_result_err_msg");
-    paramBundle = paramBundle.getString("extra_cmd");
-    if (!paramBoolean)
+    this.a.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface = IQQIndividualityRemoteProxyInterface.Stub.a(paramIBinder);
+    if (this.a.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface != null)
     {
-      WLog.a("WadlProxyServiceManager", "onReportDownloadEvent fail operId=" + this.jdField_a_of_type_JavaLangString + ",cmd=" + paramBundle + ",errCode=" + paramInt + ",errMsg=" + str);
-      return;
+      paramComponentName = new amqj(this);
+      paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
+      paramComponentName.start();
     }
-    WLog.b("WadlProxyServiceManager", "onReportDownloadEvent success operId=" + this.jdField_a_of_type_JavaLangString + ",cmd=" + paramBundle);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    this.a.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface = null;
+    this.a.jdField_a_of_type_Boolean = false;
   }
 }
 

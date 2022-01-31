@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f28" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f62" android:background="@android:color/transparent" android:paddingLeft="13.5dip" android:paddingTop="13.5dip" android:paddingRight="13.5dip" android:paddingBottom="13.5dip" android:layout_width="40.0dip" android:layout_height="40.0dip" android:scaleType="centerCrop" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f29" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:scaleType="fitXY" android:layout_alignParentBottom="true" />
+    <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2f2a" android:layout_width="50.0dip" android:layout_height="fill_parent" android:layout_alignParentRight="true" android:contentDescription="@string/close" />
 </RelativeLayout>

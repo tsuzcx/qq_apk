@@ -1,29 +1,30 @@
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils.StartVideoListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
-public final class rsz
-  implements DialogInterface.OnClickListener
+class rsz
+  implements Runnable
 {
-  public rsz(QQAppInterface paramQQAppInterface, Context paramContext, ChatActivityUtils.StartVideoListener paramStartVideoListener, int paramInt) {}
+  rsz(rsy paramrsy, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 2, 12);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener.a();
-    }
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (this.jdField_a_of_type_Int == 6) {}
-    for (paramInt = 1;; paramInt = 4)
+    if (this.jdField_a_of_type_Int > 2)
     {
-      ReportController.b(paramDialogInterface, "CliOper", "", "", "0X80063F9", "0X80063F9", paramInt, 0, "", "", "", "");
-      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.aio.BaseChatPie", 1, new Object[] { "ForwardWXforTroop failed! result: ", Integer.valueOf(this.jdField_a_of_type_Int), ", type: ", Integer.valueOf(this.jdField_a_of_type_Rsy.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) });
+      }
+      QQToast.a(this.jdField_a_of_type_Rsy.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Rsy.a.jdField_a_of_type_AndroidContentContext.getString(2131438946), 0).b(this.jdField_a_of_type_Rsy.a.a());
+    }
+    if ((this.jdField_a_of_type_Int == 0) && (BaseChatItemLayout.a)) {
+      this.jdField_a_of_type_Rsy.a.a(false, null, false);
+    }
+    if (this.jdField_a_of_type_Rsy.a.c != null) {
+      this.jdField_a_of_type_Rsy.a.c.dismiss();
     }
   }
 }

@@ -1,55 +1,83 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import com.tencent.av.app.PstnSessionInfo;
-import com.tencent.av.utils.PstnUtils;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.qcall.QCallFacade;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
-import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.ar.ARScanFragment;
+import com.tencent.mobileqq.ar.IArFaceResourceListener;
+import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.arengine.ARLocalControl;
+import com.tencent.mobileqq.ar.arengine.ARLocalFaceRecog;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public final class agfw
-  implements ActionSheet.OnButtonClickListener
+public class agfw
+  implements IArFaceResourceListener
 {
-  public agfw(ActionSheet paramActionSheet, int[] paramArrayOfInt, int paramInt1, QQAppInterface paramQQAppInterface, Context paramContext, PstnSessionInfo paramPstnSessionInfo, int paramInt2, String paramString) {}
+  public agfw(ScanTorchActivity paramScanTorchActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanTorchActivity", 2, String.format("onFaceDownloadSuccess type=%s", new Object[] { Integer.valueOf(paramInt) }));
+    }
+    switch (paramInt)
     {
-    default: 
-    case 0: 
-      do
-      {
-        return;
-        if ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2))
-        {
-          ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvAppPstnSessionInfo, this.b);
-          return;
-        }
-      } while (this.jdField_a_of_type_Int != 5);
-      PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 1, 3);
+    }
+    for (;;)
+    {
+      if ((ScanTorchActivity.d(this.a)) && (ScanTorchActivity.e(this.a)) && (this.a.a != null) && (this.a.a.a != null) && (this.a.a.a.a != null) && (this.a.a.a.a.a != null)) {
+        this.a.a.a.a.a.a();
+      }
+      ScanTorchActivity.e(this.a);
+      ScanTorchActivity.f(this.a);
       return;
+      ScanTorchActivity.c(this.a, true);
+      ScanTorchActivity.d(this.a, false);
+      ScanTorchActivity.a(this.a, 100);
+      continue;
+      ScanTorchActivity.e(this.a, true);
+      ScanTorchActivity.f(this.a, false);
+      ScanTorchActivity.b(this.a, 100);
     }
-    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    if ((!MobileIssueSettings.a) && (KapalaiAdapterUtil.a().a())) {
-      KapalaiAdapterUtil.a().a(paramView);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanTorchActivity", 2, String.format("onFaceDownloadProcess type=%s process=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     }
-    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
-    long l = MessageCache.a();
-    paramView.a(this.jdField_a_of_type_JavaLangString, 26, -1, l, this.jdField_a_of_type_JavaLangString);
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      ScanTorchActivity.e(this.a);
+      return;
+      ScanTorchActivity.a(this.a, paramInt2);
+      continue;
+      ScanTorchActivity.b(this.a, paramInt2);
+    }
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ScanTorchActivity", 2, String.format("onFaceDownloadError type=%s error=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
+    }
+    switch (paramInt1)
+    {
+    }
+    for (;;)
+    {
+      ScanTorchActivity.f(this.a);
+      return;
+      ScanTorchActivity.c(this.a, false);
+      ScanTorchActivity.d(this.a, false);
+      continue;
+      ScanTorchActivity.e(this.a, false);
+      ScanTorchActivity.f(this.a, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agfw
  * JD-Core Version:    0.7.0.1
  */

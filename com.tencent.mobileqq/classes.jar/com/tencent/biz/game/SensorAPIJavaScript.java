@@ -54,18 +54,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import kmz;
-import kna;
-import knb;
-import knc;
-import knd;
-import kne;
-import knf;
-import kng;
-import knh;
-import kni;
-import knj;
-import knk;
+import kmk;
+import kml;
+import kmm;
+import kmn;
+import kmo;
+import kmp;
+import kmq;
+import kmr;
+import kms;
+import kmt;
+import kmu;
+import kmv;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -124,7 +124,7 @@ public class SensorAPIJavaScript
     if (Looper.myLooper() == null) {
       Looper.prepare();
     }
-    this.jdField_a_of_type_AndroidOsHandler = new kmz(this);
+    this.jdField_a_of_type_AndroidOsHandler = new kmk(this);
   }
   
   public static MSFToWebViewConnector getMsfToWebViewConnector()
@@ -137,7 +137,7 @@ public class SensorAPIJavaScript
     if (paramTroopMemberApiClient == null) {
       return;
     }
-    paramTroopMemberApiClient.f(new knh(paramActivity, paramBoolean, paramString));
+    paramTroopMemberApiClient.f(new kms(paramActivity, paramBoolean, paramString));
   }
   
   /* Error */
@@ -476,12 +476,12 @@ public class SensorAPIJavaScript
     if (QLog.isDevelopLevel()) {
       QLog.d("SensorApi", 4, "start checkWifiStatus");
     }
-    new kna(this, this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), paramString).start();
+    new kml(this, this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), paramString).start();
   }
   
   public void checkUpdate(String paramString1, String paramString2)
   {
-    HtmlOffline.a(paramString1, this.mRuntime.a(), new knj(this, paramString2), false);
+    HtmlOffline.a(paramString1, this.mRuntime.a(), new kmu(this, paramString2), false);
   }
   
   /* Error */
@@ -598,7 +598,7 @@ public class SensorAPIJavaScript
     //   217: aload_0
     //   218: iconst_1
     //   219: putfield 271	com/tencent/biz/game/SensorAPIJavaScript:jdField_c_of_type_Boolean	Z
-    //   222: new 304	knm
+    //   222: new 304	kmx
     //   225: dup
     //   226: aload_0
     //   227: aload 5
@@ -607,7 +607,7 @@ public class SensorAPIJavaScript
     //   232: iload_2
     //   233: aload_3
     //   234: aload 6
-    //   236: invokespecial 307	knm:<init>	(Lcom/tencent/biz/game/SensorAPIJavaScript;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLandroid/net/wifi/WifiManager;Ljava/lang/String;)V
+    //   236: invokespecial 307	kmx:<init>	(Lcom/tencent/biz/game/SensorAPIJavaScript;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;ZLandroid/net/wifi/WifiManager;Ljava/lang/String;)V
     //   239: invokevirtual 223	java/lang/Thread:start	()V
     //   242: return
     // Local variable table:
@@ -647,12 +647,12 @@ public class SensorAPIJavaScript
     paramString2.add(paramString1);
     paramString2 = new HashMap(paramString2.size());
     paramString2.put(paramString1, "0");
-    HtmlOffline.a(this.mRuntime.a(), paramString2, new kni(this, paramString4), true, true, false);
+    HtmlOffline.a(this.mRuntime.a(), paramString2, new kmt(this, paramString4), true, true, false);
   }
   
   public final String getClientInfo()
   {
-    return "{\"qqVersion\":\"" + qqVersion() + "\",\"qqBuild\":\"" + "3525" + "\"}";
+    return "{\"qqVersion\":\"" + qqVersion() + "\",\"qqBuild\":\"" + "3560" + "\"}";
   }
   
   public boolean getCurrentSong(String paramString)
@@ -669,7 +669,7 @@ public class SensorAPIJavaScript
           paramString = paramString.optString("callback");
           if (!TextUtils.isEmpty(paramString))
           {
-            this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a().c(new knd(this, paramString));
+            this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a().c(new kmo(this, paramString));
             return true;
           }
         }
@@ -814,7 +814,7 @@ public class SensorAPIJavaScript
           paramString = paramString.optString("callback");
           if (!TextUtils.isEmpty(paramString))
           {
-            this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a().b(new knc(this, paramString));
+            this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a().b(new kmn(this, paramString));
             return true;
           }
         }
@@ -842,7 +842,7 @@ public class SensorAPIJavaScript
           paramString = paramString.optString("callback");
           if (!TextUtils.isEmpty(paramString))
           {
-            this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a().a(new knb(this, paramString));
+            this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a().a(new kmm(this, paramString));
             return true;
           }
         }
@@ -1100,7 +1100,7 @@ public class SensorAPIJavaScript
         }
       } while (!preloadVoice(paramString1, paramString2, null));
       if (Build.VERSION.SDK_INT >= 8) {
-        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new kne(this, paramString2));
+        this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new kmp(this, paramString2));
       }
       int m;
       do
@@ -1110,7 +1110,7 @@ public class SensorAPIJavaScript
           return true;
           m = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2)).intValue();
           if (this.jdField_a_of_type_AndroidOsHandler != null) {
-            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new knf(this, m, paramString2), 200L);
+            this.jdField_a_of_type_AndroidOsHandler.postDelayed(new kmq(this, m, paramString2), 200L);
           }
         }
         m = ((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(paramString2)).intValue();
@@ -1232,7 +1232,7 @@ public class SensorAPIJavaScript
       if (QLog.isColorLevel()) {
         QLog.d("Sensor", 2, "meizu mx2 returnToAIO");
       }
-      new Handler().postDelayed(new kng(this), 400L);
+      new Handler().postDelayed(new kmr(this), 400L);
       return;
     }
     returnToAio(this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient, this.jdField_a_of_type_AndroidAppActivity, "", false);
@@ -1412,7 +1412,7 @@ public class SensorAPIJavaScript
       }
       return;
     }
-    jdField_a_of_type_ComTencentBizGameMSFToWebViewConnector.a(paramString1, paramString2, localAppInterface, this.jdField_a_of_type_AndroidAppActivity, new knk(this));
+    jdField_a_of_type_ComTencentBizGameMSFToWebViewConnector.a(paramString1, paramString2, localAppInterface, this.jdField_a_of_type_AndroidAppActivity, new kmv(this));
   }
   
   public final void stopAccelerometer()

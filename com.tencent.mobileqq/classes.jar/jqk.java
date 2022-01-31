@@ -1,37 +1,17 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.ControlUIObserver;
+import com.tencent.av.ui.BaseInviteFloatBarUICtr;
+import com.tencent.qphone.base.util.QLog;
 
 public class jqk
   implements Runnable
 {
-  public jqk(AVActivity paramAVActivity) {}
+  public jqk(BaseInviteFloatBarUICtr paramBaseInviteFloatBarUICtr) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController == null) {}
-    while ((this.a.jdField_a_of_type_ComTencentAvVideoController.a() == null) || (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().T)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.a, 2, "timeout~ mPeerUin:" + this.a.c);
     }
-    this.a.jdField_a_of_type_ComTencentAvVideoController.a(this.a.jdField_a_of_type_ComTencentAvVideoController.a().c, 1);
-    this.a.jdField_a_of_type_ComTencentAvVideoController.b(229);
-    int i = this.a.jdField_a_of_type_ComTencentAvVideoController.a().d;
-    this.a.jdField_a_of_type_ComTencentAvVideoController.c(this.a.jdField_a_of_type_ComTencentAvVideoController.a().c, 21);
-    if (i == 1) {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().d = 3;
-    }
-    for (;;)
-    {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().i = 3000;
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().g = false;
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().E = 0;
-      this.a.jdField_a_of_type_ComTencentAvUiControlUIObserver.b();
-      return;
-      if (i == 2) {
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().d = 4;
-      }
-    }
+    this.a.d();
   }
 }
 

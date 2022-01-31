@@ -1,38 +1,18 @@
-import com.tencent.mobileqq.armap.ipc.ArMapIPCProxy;
-import com.tencent.mobileqq.armap.ipc.IPCConstants;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.armap.ARMapActivity;
 import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCConnection;
-import eipc.EIPCOnGetConnectionListener;
-import eipc.EIPCResult;
 
-public class aayy
-  implements EIPCOnGetConnectionListener
+class aayy
+  implements DialogInterface.OnDismissListener
 {
-  public aayy(ArMapIPCProxy paramArMapIPCProxy) {}
+  aayy(aayw paramaayw) {}
   
-  public void onConnectBind(EIPCConnection paramEIPCConnection)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    paramEIPCConnection = paramEIPCConnection.procName;
-    if (paramEIPCConnection.equals(IPCConstants.a))
-    {
-      this.a.a = true;
-      this.a.a(IPCConstants.c, EIPCResult.createResult(0, null));
-    }
+    ARMapActivity.a(this.a.a, null);
     if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPCProxy", 2, "onConnectBind " + paramEIPCConnection);
-    }
-  }
-  
-  public void onConnectUnbind(EIPCConnection paramEIPCConnection)
-  {
-    paramEIPCConnection = paramEIPCConnection.procName;
-    if (paramEIPCConnection.equals(IPCConstants.a))
-    {
-      this.a.a = false;
-      this.a.a(IPCConstants.c, EIPCResult.createResult(-102, null));
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("ArMapIPCProxy", 2, "onConnectUnbind " + paramEIPCConnection);
+      QLog.d("ARMapActivity", 2, "onGetLBSPoiList clicked");
     }
   }
 }

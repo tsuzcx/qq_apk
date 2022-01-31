@@ -29,7 +29,7 @@ public class StoryListLoadMoreView
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131494207));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131494214));
   }
   
   public int a()

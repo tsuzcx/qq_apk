@@ -1,26 +1,24 @@
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.InnerFrameManager;
-import com.tencent.open.agent.GroupListOpenFrame;
-import com.tencent.open.agent.GroupListOpenFrame.GroupListAdapter;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.sonic.SonicJsPlugin;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sonic.sdk.SonicDiffDataCallback;
 
 public class akmm
-  implements View.OnClickListener
+  implements SonicDiffDataCallback
 {
-  public akmm(GroupListOpenFrame.GroupListAdapter paramGroupListAdapter, int paramInt, String paramString) {}
+  public akmm(SonicJsPlugin paramSonicJsPlugin, CustomWebView paramCustomWebView, String paramString) {}
   
-  public void onClick(View paramView)
+  public void callback(String paramString)
   {
-    paramView = new Bundle();
-    paramView.putInt("group_index", this.jdField_a_of_type_Int);
-    paramView.putString("group_name", this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentOpenAgentGroupListOpenFrame$GroupListAdapter.a.a.a(1, paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("SonicSdkImpl_SonicJsPlugin", 2, "getDiffData callback updated data: " + paramString.toString());
+    }
+    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.a(this.jdField_a_of_type_JavaLangString, new String[] { paramString });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akmm
  * JD-Core Version:    0.7.0.1
  */

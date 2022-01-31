@@ -1,82 +1,64 @@
-import android.support.v4.app.FragmentManager;
+import android.util.Pair;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
-import com.tencent.mobileqq.activity.Contacts;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.activity.MainFragment;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.List;
-import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.AttributeList;
 
-public final class lmr
+public class lmr
   implements Runnable
 {
+  public lmr(ReadinjoySPEventReport paramReadinjoySPEventReport, int paramInt, List paramList) {}
+  
   public void run()
   {
-    ArrayList localArrayList;
-    oidb_cmd0x80a.AttributeList localAttributeList;
-    if (ReadinjoySPEventReport.b(8))
+    for (;;)
     {
-      localArrayList = new ArrayList();
-      localAttributeList = new oidb_cmd0x80a.AttributeList();
-      localAttributeList.att_id.set(1);
-      localAttributeList.att_name.set("DTHasRed");
-      PBStringField localPBStringField = localAttributeList.att_value;
-      if (!ReadinjoySPEventReport.b()) {
-        break label191;
-      }
-      localObject = String.valueOf(1);
-      localPBStringField.set((String)localObject);
-      localArrayList.add(localAttributeList);
-      localObject = BaseActivity.sTopActivity;
-      if ((localObject != null) && ((localObject instanceof SplashActivity)))
+      long l2;
+      try
       {
-        localObject = (MainFragment)((SplashActivity)localObject).getSupportFragmentManager().findFragmentByTag(MainFragment.class.getName());
-        if (localObject == null) {
-          break label259;
+        int i = ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).size();
+        if (i > ReadInJoyHelper.d(ReadInJoyUtils.a()))
+        {
+          l1 = i - ReadInJoyHelper.d(ReadInJoyUtils.a());
+          l2 = l1 - 1L;
+          if (l1 > 0L)
+          {
+            if (ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).size() <= 1) {
+              break label301;
+            }
+            ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).remove(1);
+            l1 = l2;
+            continue;
+          }
         }
-      }
-    }
-    label259:
-    for (Object localObject = ((MainFragment)localObject).b();; localObject = null)
-    {
-      if (localObject != null)
-      {
-        if (!((String)localObject).equals(Conversation.class.getName())) {
-          break label199;
+        if (i == 0) {
+          ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L), Integer.valueOf(0)));
         }
-        localObject = "1";
-      }
-      for (;;)
-      {
-        localAttributeList = new oidb_cmd0x80a.AttributeList();
-        localAttributeList.att_id.set(2);
-        localAttributeList.att_name.set("tab");
-        localAttributeList.att_value.set((String)localObject);
-        localArrayList.add(localAttributeList);
-        PublicAccountUtil.a(8, "InForeground", localArrayList);
-        ReadinjoySPEventReport.a(System.currentTimeMillis());
+        ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).add(new Pair(Long.valueOf(System.currentTimeMillis() / 1000L - ((Long)((Pair)ReadinjoySPEventReport.c(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport).get(0)).first).longValue()), Integer.valueOf(this.jdField_a_of_type_Int)));
+        QLog.d(ReadinjoySPEventReport.class.getSimpleName(), 2, "add aio enter or out info, type : " + this.jdField_a_of_type_Int);
+        if (this.jdField_a_of_type_JavaUtilList != null) {
+          ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, this.jdField_a_of_type_JavaUtilList));
+        }
+        if ((this.jdField_a_of_type_Int != 0) || (!ReadinjoySPEventReport.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport))) {
+          break;
+        }
+        ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, false);
+        if (ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport) != null)
+        {
+          ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport);
+          return;
+        }
+        ReadinjoySPEventReport.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadinjoySPEventReport, 0);
         return;
-        label191:
-        localObject = String.valueOf(0);
-        break;
-        label199:
-        if (((String)localObject).equals(Contacts.class.getName())) {
-          localObject = "2";
-        } else if (((String)localObject).equals(Leba.class.getName())) {
-          localObject = "4";
-        } else if (((String)localObject).equals(ReadinjoyTabFrame.class.getName())) {
-          localObject = "3";
-        } else {
-          localObject = "0";
-        }
       }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return;
+      }
+      label301:
+      long l1 = l2;
     }
   }
 }

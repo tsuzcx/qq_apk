@@ -1,26 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.debug.ArkIDESettingFragment;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import com.tencent.ark.ark.Application;
+import com.tencent.mobileqq.ark.ArkAiAppCenter;
 
 public class aarn
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aarn(ArkIDESettingFragment paramArkIDESettingFragment) {}
+  public aarn(ArkAiAppCenter paramArkAiAppCenter, String[] paramArrayOfString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = (ActionSheet)ActionSheetHelper.a(BaseActivity.sTopActivity, null);
-    paramView.a(BaseActivity.sTopActivity.getString(2131438820));
-    paramView.a(2131438822, 3);
-    paramView.c(2131438824);
-    paramView.setOnDismissListener(new aaro(this, paramView));
-    paramView.a(new aarp(this, paramView));
-    if (!paramView.isShowing()) {
-      paramView.show();
-    }
+    ark.Application.SetUrlCheckingList(this.jdField_a_of_type_ArrayOfJavaLangString, 1);
   }
 }
 

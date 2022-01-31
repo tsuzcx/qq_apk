@@ -1,25 +1,21 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditRecognitionPart;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoTag;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.mobileqq.widget.QQToast;
+import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
 
 public class anbw
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public anbw(EditRecognitionPart paramEditRecognitionPart) {}
+  public anbw(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    dov.com.qq.im.capture.view.MusicProviderView.a = false;
-    this.a.a.a.a(this.a.a.a());
-    EditRecognitionPart.a(this.a);
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin$PluginRuntime.a().getContext(), "抱歉，你未安装微信客户端，无法进行微信分享", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anbw
  * JD-Core Version:    0.7.0.1
  */

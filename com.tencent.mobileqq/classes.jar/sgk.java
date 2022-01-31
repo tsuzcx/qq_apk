@@ -1,10 +1,15 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.mobileqq.activity.Conversation;
 
 public class sgk
-  extends Handler
+  implements Runnable
 {
-  public sgk(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
+  public sgk(Conversation paramConversation) {}
+  
+  public void run()
+  {
+    PublicAccountManager.a().a(this.a.a);
+  }
 }
 
 

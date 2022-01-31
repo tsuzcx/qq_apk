@@ -17,10 +17,12 @@ import com.tencent.biz.qrcode.ipc.QrMainProcManager;
 import com.tencent.biz.qrcode.ipc.ScannerParams;
 import com.tencent.biz.widgets.ScannerView.FileDecodeListener;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.ar.ARScanAR;
 import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
 import com.tencent.mobileqq.binhai.BinHaiHandler;
+import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.nearby.NearbyFakeActivity;
 import com.tencent.mobileqq.ocr.data.OcrConfig;
 import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
@@ -31,24 +33,24 @@ import com.tencent.mobileqq.webprocess.WebProcessReceiver;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qwallet.plugin.QWalletHelper;
-import oss;
-import osu;
-import osv;
-import osw;
+import oum;
+import ouo;
+import oup;
+import ouq;
 
 public class ScannerActivity
   extends BaseActivity
 {
   public static boolean a;
   private long jdField_a_of_type_Long;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new osw(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new ouq(this);
   private Handler jdField_a_of_type_AndroidOsHandler;
   private View jdField_a_of_type_AndroidViewView;
   private PreCallUpToolProc jdField_a_of_type_ComTencentBizQrcodeIpcPreCallUpToolProc;
-  private QrHandleResultCallBack jdField_a_of_type_ComTencentBizQrcodeIpcQrHandleResultCallBack = new osu(this);
+  private QrHandleResultCallBack jdField_a_of_type_ComTencentBizQrcodeIpcQrHandleResultCallBack = new ouo(this);
   private QrImageScan jdField_a_of_type_ComTencentBizQrcodeIpcQrImageScan;
   public ScannerParams a;
-  private ScannerView.FileDecodeListener jdField_a_of_type_ComTencentBizWidgetsScannerView$FileDecodeListener = new oss(this);
+  private ScannerView.FileDecodeListener jdField_a_of_type_ComTencentBizWidgetsScannerView$FileDecodeListener = new oum(this);
   public ARScanAR a;
   public OcrConfig a;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
@@ -69,6 +71,21 @@ public class ScannerActivity
   public ScannerActivity()
   {
     this.jdField_b_of_type_Long = -1L;
+  }
+  
+  private String a(String paramString)
+  {
+    FriendsManager localFriendsManager = (FriendsManager)this.app.getManager(50);
+    if (localFriendsManager == null) {}
+    do
+    {
+      return "";
+      paramString = localFriendsManager.a(paramString);
+      if (paramString == null) {
+        return "";
+      }
+    } while (paramString.strProvince == null);
+    return "" + paramString.strProvince;
   }
   
   private void a(String paramString)
@@ -144,7 +161,7 @@ public class ScannerActivity
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_Boolean = localIntent.getBooleanExtra("scanForResult", false);
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_b_of_type_Boolean = localIntent.getBooleanExtra("finishAfterSucc", false);
       this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.i = false;
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131367509);
+      this.jdField_a_of_type_AndroidViewView = findViewById(2131367577);
       ViewCompat.setImportantForAccessibility(this.jdField_a_of_type_AndroidViewView, 2);
       if (("Conversation".equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString)) || ("web-ar".equals(this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString))) {
         this.h = true;
@@ -190,7 +207,7 @@ public class ScannerActivity
       this.jdField_a_of_type_ComTencentBizQrcodeIpcPreCallUpToolProc = new PreCallUpToolProc(this);
     }
     QLog.d("ScannerActivity", 2, "launchAr time pre: " + (System.currentTimeMillis() - l));
-    this.jdField_a_of_type_ComTencentBizQrcodeIpcPreCallUpToolProc.a("qr", 5000L, new osv(this, l));
+    this.jdField_a_of_type_ComTencentBizQrcodeIpcPreCallUpToolProc.a("qr", 5000L, new oup(this, l));
   }
   
   public void b()
@@ -225,7 +242,7 @@ public class ScannerActivity
     if (this.jdField_a_of_type_ComTencentMobileqqArARScanAR != null)
     {
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqArARScanAR.e)) {
-        break label629;
+        break label632;
       }
       localIntent.putExtra("icon_text", "QQ-AR");
     }
@@ -245,6 +262,7 @@ public class ScannerActivity
       }
       localIntent.putExtra("key_ar_config", this.jdField_a_of_type_ComTencentMobileqqArARScanAR);
       localIntent.putExtra("CurrentNickname", this.app.getCurrentNickname());
+      localIntent.putExtra("CurrentLocInfo", a(this.app.c()));
       localIntent.putExtra("from_qr", true);
       localIntent.putExtra("ar_enabled", this.h);
       localIntent.putExtra("from", this.jdField_a_of_type_ComTencentBizQrcodeIpcScannerParams.jdField_a_of_type_JavaLangString);
@@ -264,18 +282,15 @@ public class ScannerActivity
       }
       Bundle localBundle = getIntent().getBundleExtra("ARRelationShipPromotion");
       localObject = localBundle;
-      if (localBundle == null)
-      {
+      if (localBundle == null) {
         localObject = new Bundle();
-        ((Bundle)localObject).putBoolean("hasPromotion", false);
-        ((Bundle)localObject).putBoolean("IsFromH5", false);
       }
       localIntent.putExtra("ARRelationShipPromotion", (Bundle)localObject);
       startActivityForResult(localIntent, 10);
       overridePendingTransition(0, 0);
       this.jdField_b_of_type_Boolean = true;
       return;
-      label629:
+      label632:
       localIntent.putExtra("icon_text", this.jdField_a_of_type_ComTencentMobileqqArARScanAR.e);
     }
   }
@@ -411,7 +426,7 @@ public class ScannerActivity
     this.mNeedStatusTrans = true;
     this.mActNeedImmersive = false;
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969698);
+    super.setContentView(2130969712);
     e();
     this.f = false;
     this.jdField_c_of_type_Boolean = false;

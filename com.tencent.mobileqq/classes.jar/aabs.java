@@ -1,17 +1,43 @@
-import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.mobileqq.ar.arengine.AREngineCallback;
-import com.tencent.mobileqq.ar.model.ArVideoResourceInfo;
+import android.annotation.TargetApi;
+import android.graphics.SurfaceTexture;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.qphone.base.util.QLog;
 
-public class aabs
+class aabs
   implements Runnable
 {
-  public aabs(AREngine paramAREngine, ArVideoResourceInfo paramArVideoResourceInfo, ARRenderMangerInnerCallback paramARRenderMangerInnerCallback) {}
+  aabs(aabq paramaabq) {}
   
+  @TargetApi(11)
   public void run()
   {
-    if ((AREngine.d(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine)) && (AREngine.e(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) == 2) && (AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine) != null)) {
-      AREngine.a(this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine).a(this.jdField_a_of_type_ComTencentMobileqqArModelArVideoResourceInfo, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderMangerInnerCallback);
+    try
+    {
+      aabq.a(this.a).updateTexImage();
+      aabq.a(this.a).getTransformMatrix(aabq.a(this.a));
+      if (ScanTorchActivity.i)
+      {
+        aabq localaabq = this.a;
+        localaabq.b += 1L;
+        if (this.a.b >= 30L)
+        {
+          this.a.b = 0L;
+          long l = System.currentTimeMillis();
+          float f = 30000.0F / (float)(l - this.a.a);
+          this.a.a = l;
+          QLog.d("render", 2, "video fetch=" + f);
+        }
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          localThrowable.printStackTrace();
+        }
+      }
     }
   }
 }

@@ -20,9 +20,9 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.MqqWeakReferenceHandler;
 import com.tencent.widget.XListView;
-import tpp;
-import tpq;
-import tpr;
+import tsp;
+import tsq;
+import tsr;
 
 public class SigCommentListActivity
   extends IphoneTitleBarActivity
@@ -33,7 +33,7 @@ public class SigCommentListActivity
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public SigCommentSessionListAdapter a;
-  SignatureObserver jdField_a_of_type_ComTencentMobileqqAppSignatureObserver = new tpp(this);
+  SignatureObserver jdField_a_of_type_ComTencentMobileqqAppSignatureObserver = new tsp(this);
   private MqqWeakReferenceHandler jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler;
   XListView jdField_a_of_type_ComTencentWidgetXListView;
   
@@ -42,7 +42,7 @@ public class SigCommentListActivity
     if (paramInt == 1) {
       try
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ColorStateList.createFromXml(getResources(), getResources().getXml(2131494262)));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ColorStateList.createFromXml(getResources(), getResources().getXml(2131494269)));
         this.jdField_a_of_type_AndroidWidgetTextView.setText("正在加载互动记录...");
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(true, true);
@@ -60,9 +60,9 @@ public class SigCommentListActivity
     }
     try
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ColorStateList.createFromXml(getResources(), getResources().getXml(2131494262)));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ColorStateList.createFromXml(getResources(), getResources().getXml(2131494269)));
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setVisible(false, false);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845946);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846074);
       if (paramInt == 3)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setText("暂无交互记录");
@@ -81,9 +81,9 @@ public class SigCommentListActivity
     }
     try
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ColorStateList.createFromXml(getResources(), getResources().getXml(2131494162)));
-      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new tpq(this));
-      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new tpr(this));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(ColorStateList.createFromXml(getResources(), getResources().getXml(2131494169)));
+      this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new tsq(this));
+      this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new tsr(this));
       return;
     }
     catch (Exception localException3)
@@ -116,20 +116,20 @@ public class SigCommentListActivity
       return;
       localObject = this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(1, 1, 0);
       this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendMessageDelayed((Message)localObject, 1000L);
-      this.jdField_a_of_type_ComTencentMobileqqAdapterSigCommentSessionListAdapter.a(2131437869);
+      this.jdField_a_of_type_ComTencentMobileqqAdapterSigCommentSessionListAdapter.a(2131437886);
     }
   }
   
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970974);
+    super.setContentView(2130971022);
     super.setTitle("互动记录");
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130971536, this.jdField_a_of_type_ComTencentWidgetXListView, false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365660));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366651));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838596);
-    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131372427));
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this).inflate(2130971584, this.jdField_a_of_type_ComTencentWidgetXListView, false);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365687));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366675));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130838600);
+    this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)findViewById(2131372599));
     this.jdField_a_of_type_ComTencentWidgetXListView.setScrollbarFadingEnabled(true);
     this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
     this.jdField_a_of_type_ComTencentMobileqqAdapterSigCommentSessionListAdapter = new SigCommentSessionListAdapter(this, this.app, this.jdField_a_of_type_ComTencentWidgetXListView, this.jdField_a_of_type_AndroidViewView);
@@ -187,7 +187,7 @@ public class SigCommentListActivity
       stopTitleProgress();
     } while (1 != paramMessage.arg1);
     if (isResume()) {
-      QQToast.a(this, 0, getResources().getString(2131437867), 0).b(getTitleBarHeight());
+      QQToast.a(this, 0, getResources().getString(2131437884), 0).b(getTitleBarHeight());
     }
     a(2);
     return true;

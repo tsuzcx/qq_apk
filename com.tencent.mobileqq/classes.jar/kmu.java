@@ -1,14 +1,29 @@
-import com.tencent.biz.flatbuffers.FlatBuffersParser;
-import java.io.File;
+import android.text.TextUtils;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.game.SensorAPIJavaScript;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class kmu
-  implements Runnable
+public class kmu
+  implements AsyncBack
 {
-  public kmu(File paramFile, boolean paramBoolean) {}
+  public kmu(SensorAPIJavaScript paramSensorAPIJavaScript, String paramString) {}
   
-  public void run()
+  public void a(int paramInt) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    FlatBuffersParser.a(this.jdField_a_of_type_JavaIoFile, this.jdField_a_of_type_Boolean);
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString))) {}
+    try
+    {
+      paramString = new JSONObject(paramString);
+      this.jdField_a_of_type_ComTencentBizGameSensorAPIJavaScript.callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString.toString() });
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
   }
 }
 

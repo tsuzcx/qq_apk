@@ -42,23 +42,23 @@ import cooperation.qzone.QZoneShareManager;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
-import zbs;
-import zbt;
-import zbu;
-import zbv;
-import zbw;
-import zbx;
-import zby;
+import zey;
+import zez;
+import zfa;
+import zfb;
+import zfc;
+import zfd;
+import zfe;
 
 public class HotChatHelper
 {
   public static Dialog a(Activity paramActivity, View.OnClickListener paramOnClickListener)
   {
-    paramActivity = new Dialog(paramActivity, 2131624515);
-    paramActivity.setContentView(2130970337);
-    Button localButton1 = (Button)paramActivity.findViewById(2131370137);
-    Button localButton2 = (Button)paramActivity.findViewById(2131370139);
-    localButton1.setOnClickListener(new zbs(paramActivity));
+    paramActivity = new Dialog(paramActivity, 2131624516);
+    paramActivity.setContentView(2130970366);
+    Button localButton1 = (Button)paramActivity.findViewById(2131370248);
+    Button localButton2 = (Button)paramActivity.findViewById(2131370250);
+    localButton1.setOnClickListener(new zey(paramActivity));
     paramActivity.setCanceledOnTouchOutside(true);
     localButton2.setOnClickListener(paramOnClickListener);
     paramActivity.show();
@@ -109,11 +109,11 @@ public class HotChatHelper
   {
     int i = paramActivity.getRequestedOrientation();
     paramActivity.setRequestedOrientation(1);
-    paramQQAppInterface = DialogUtil.a(paramActivity, 0, 2130969488, paramActivity.getString(2131437319), null, paramActivity.getString(2131437750), paramActivity.getString(2131437749), new zbt(paramActivity, paramQQAppInterface), new zbu(paramQQAppInterface));
-    paramQQAppInterface.setOnDismissListener(new zbv(paramActivity, i));
+    paramQQAppInterface = DialogUtil.a(paramActivity, 0, 2130969489, paramActivity.getString(2131437336), null, paramActivity.getString(2131437767), paramActivity.getString(2131437766), new zez(paramActivity, paramQQAppInterface), new zfa(paramQQAppInterface));
+    paramQQAppInterface.setOnDismissListener(new zfb(paramActivity, i));
     paramQQAppInterface.getBtnight().setTypeface(Typeface.DEFAULT_BOLD);
-    paramQQAppInterface.setMessageCount(paramActivity.getString(2131437320));
-    paramQQAppInterface.setPreviewImage(paramActivity.getResources().getDrawable(2130840594), true, 1);
+    paramQQAppInterface.setMessageCount(paramActivity.getString(2131437337));
+    paramQQAppInterface.setPreviewImage(paramActivity.getResources().getDrawable(2130840600), true, 1);
     paramQQAppInterface.show();
     return paramQQAppInterface;
   }
@@ -126,12 +126,12 @@ public class HotChatHelper
     }
     int i = localBaseActivity.getRequestedOrientation();
     localBaseActivity.setRequestedOrientation(1);
-    paramHotChatInfo = DialogUtil.b(localBaseActivity, 230, localBaseActivity.getString(2131437322), localBaseActivity.getString(2131437321), 2131432998, 2131433502, paramOnClickListener, new zbw());
-    paramOnClickListener = (TextView)paramHotChatInfo.findViewById(2131362758);
+    paramHotChatInfo = DialogUtil.b(localBaseActivity, 230, localBaseActivity.getString(2131437339), localBaseActivity.getString(2131437338), 2131433015, 2131433519, paramOnClickListener, new zfc());
+    paramOnClickListener = (TextView)paramHotChatInfo.findViewById(2131362776);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 17;
     paramOnClickListener.setLayoutParams(localLayoutParams);
-    paramHotChatInfo.setOnDismissListener(new zbx(localBaseActivity, i));
+    paramHotChatInfo.setOnDismissListener(new zfd(localBaseActivity, i));
     paramHotChatInfo.show();
     return paramHotChatInfo;
   }
@@ -144,9 +144,9 @@ public class HotChatHelper
   public static void a(int paramInt, QQAppInterface paramQQAppInterface, BaseActivity paramBaseActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
     paramString5 = new ShareActionSheetBuilder(paramBaseActivity);
-    paramString5.a(paramBaseActivity.getString(2131433083));
+    paramString5.a(paramBaseActivity.getString(2131433100));
     paramString5.a(a(paramBaseActivity));
-    paramString5.a(new zby(paramString5, paramInt, paramQQAppInterface, paramBaseActivity, paramString1, paramString6, paramString3, paramString4, paramString7, paramString2, paramString8));
+    paramString5.a(new zfe(paramString5, paramInt, paramQQAppInterface, paramBaseActivity, paramString1, paramString6, paramString3, paramString4, paramString7, paramString2, paramString8));
     try
     {
       paramString5.a();
@@ -168,7 +168,7 @@ public class HotChatHelper
     }
     paramString1 = paramBaseActivity;
     if (paramBaseActivity == null) {
-      paramString1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130842553);
+      paramString1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130842645);
     }
     WXShareHelper.a().b(String.valueOf(l), paramString2, paramString1, paramString3, paramString5);
   }
@@ -202,10 +202,10 @@ public class HotChatHelper
       return;
       if (paramHotChatInfo.state == 1)
       {
-        a(paramQQAppInterface, paramHotChatInfo, paramQQAppInterface.getApp().getString(2131437316), true);
+        a(paramQQAppInterface, paramHotChatInfo, paramQQAppInterface.getApp().getString(2131437333), true);
         return;
       }
-      a(paramQQAppInterface, paramHotChatInfo, paramQQAppInterface.getApp().getString(2131437306), true);
+      a(paramQQAppInterface, paramHotChatInfo, paramQQAppInterface.getApp().getString(2131437323), true);
       RecentUserProxy localRecentUserProxy = paramQQAppInterface.a().a();
       RecentUser localRecentUser = localRecentUserProxy.a(paramHotChatInfo.troopUin, 1);
       if (localRecentUser != null) {
@@ -268,28 +268,28 @@ public class HotChatHelper
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430091);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838332;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430108);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838336;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.c = 2;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430097);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838333;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430114);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838337;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.c = 3;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430109);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838336;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430126);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838340;
     localActionSheetItem.c = 9;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430110);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838330;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430127);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838334;
     localActionSheetItem.c = 10;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
@@ -330,7 +330,7 @@ public class HotChatHelper
     }
     paramString1 = paramBaseActivity;
     if (paramBaseActivity == null) {
-      paramString1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130842553);
+      paramString1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130842645);
     }
     if (paramString2.startsWith("邀请加入QQ热聊：")) {}
     for (paramBaseActivity = paramString2 + "。立即加入，一起热聊！";; paramBaseActivity = paramString2)

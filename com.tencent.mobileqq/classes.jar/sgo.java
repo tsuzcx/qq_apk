@@ -1,17 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import com.tencent.mobileqq.activity.Conversation;
 
 class sgo
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  sgo(sgn paramsgn) {}
+  sgo(sgn paramsgn, boolean paramBoolean) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.a();
-    DevlockQuickLoginActivity.b(this.a.a);
-    DevlockQuickLoginActivity.b(this.a.a, 0, 2131034135);
+    this.jdField_a_of_type_Sgn.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(this.jdField_a_of_type_Sgn.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Sgn.jdField_a_of_type_Boolean);
   }
 }
 

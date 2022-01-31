@@ -1,53 +1,38 @@
 import android.content.Context;
-import android.content.Intent;
-import android.os.IBinder;
-import com.tencent.biz.huanjiplugin.HuanjiPluginProxy;
-import com.tencent.biz.huanjiplugin.HuanjiPluginStartListener;
-import com.tencent.biz.huanjiplugin.TranslucentActivty;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.lebasearch.Utils;
+import com.tencent.biz.troop.TroopMemberApiClient;
+import com.tencent.mobileqq.app.BusinessObserver;
 
-public class knr
-  implements OnPluginInstallListener
+public final class knr
+  implements DialogInterface.OnClickListener
 {
-  public knr(HuanjiPluginProxy paramHuanjiPluginProxy) {}
+  public knr(int paramInt, BusinessObserver paramBusinessObserver, Context paramContext, TroopMemberApiClient paramTroopMemberApiClient, long paramLong) {}
   
-  public IBinder asBinder()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return null;
-  }
-  
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2)
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizHuanjipluginHuanjiPluginStartListener != null)
+    switch (paramInt)
     {
-      float f = paramInt1 / paramInt2;
-      this.a.jdField_a_of_type_ComTencentBizHuanjipluginHuanjiPluginStartListener.a(0, 1, (int)(f * 100.0F));
+    default: 
+      return;
+    case 1: 
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.onUpdate(17, false, null);
+        paramDialogInterface.dismiss();
+        return;
+      }
+      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver, this.jdField_a_of_type_Long, false);
+      return;
     }
-  }
-  
-  public void onInstallError(String paramString, int paramInt)
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizHuanjipluginHuanjiPluginStartListener != null) {
-      this.a.jdField_a_of_type_ComTencentBizHuanjipluginHuanjiPluginStartListener.a(paramInt, "Install Error");
-    }
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    if (this.a.jdField_a_of_type_ComTencentBizHuanjipluginHuanjiPluginStartListener != null) {
-      this.a.jdField_a_of_type_ComTencentBizHuanjipluginHuanjiPluginStartListener.a(3, 4, 100);
-    }
-    if (this.a.jdField_a_of_type_Int == 2)
+    if (this.jdField_a_of_type_Int == 1)
     {
-      paramString = new Intent(BaseApplicationImpl.getApplication().getApplicationContext(), TranslucentActivty.class);
-      paramString.addFlags(268435456);
-      paramString.putExtras(paramString);
-      paramString.putExtra("startParam", this.a.jdField_a_of_type_JavaLangString);
-      BaseApplicationImpl.getApplication().getApplicationContext().startActivity(paramString);
+      Utils.sendPluginSetMessage(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient, this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver, this.jdField_a_of_type_Long, true);
+      return;
     }
+    this.jdField_a_of_type_ComTencentMobileqqAppBusinessObserver.onUpdate(17, false, null);
+    paramDialogInterface.dismiss();
   }
 }
 

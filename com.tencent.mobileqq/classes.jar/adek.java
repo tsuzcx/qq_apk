@@ -1,41 +1,34 @@
-import android.text.TextUtils;
-import android.widget.Button;
-import com.tencent.mobileqq.freshnews.QQInputView;
-import com.tencent.mobileqq.freshnews.QQInputView.IQQInputCallback;
-import com.tencent.widget.XEditTextEx;
+import android.view.View;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewListener;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.PictureFilePresenter;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.PictureFileViewer;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class adek
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  public adek(QQInputView paramQQInputView) {}
+  public adek(PictureFilePresenter paramPictureFilePresenter) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    String str1 = null;
-    String str2;
-    if (QQInputView.a(this.a) != null)
+    paramAdapterView = this.a;
+    if (!PictureFilePresenter.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
     {
-      str2 = QQInputView.a(this.a).a();
-      str1 = QQInputView.a(this.a).b();
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(str2))
-      {
-        QQInputView.a(this.a).setText(str2);
-        QQInputView.a(this.a).setSelection(str2.length());
-        QQInputView.a(this.a).setEnabled(true);
-        QQInputView.a(this.a).setSelected(true);
+      PictureFilePresenter.a(paramAdapterView, bool);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewListener.a(PictureFilePresenter.a(this.a));
       }
-      while (TextUtils.isEmpty(str1)) {
-        return;
+      if (!PictureFilePresenter.a(this.a)) {
+        break;
       }
-      QQInputView.a(this.a).setHint(str1);
-      QQInputView.a(this.a).setEnabled(false);
-      QQInputView.a(this.a).setSelected(false);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.a(false);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.b(false);
       return;
-      str2 = null;
     }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerPictureFileViewer.a(true);
+    this.a.b();
   }
 }
 

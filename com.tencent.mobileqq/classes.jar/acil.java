@@ -1,116 +1,79 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ViewHolder;
+import android.text.SpannableString;
+import android.text.style.ImageSpan;
+import android.view.LayoutInflater;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.extendfriend.bean.GroupInfo.Label;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendGroupFragment;
+import com.tencent.widget.RoundBGTextView;
+import java.util.ArrayList;
 import java.util.List;
 
 public class acil
-  extends FMObserver
+  extends RecyclerView.Adapter
 {
-  public acil(QfileBaseRecentFileTabView paramQfileBaseRecentFileTabView) {}
+  private List jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  protected void a(int paramInt, long paramLong, String paramString)
+  public acil(ExtendFriendGroupFragment paramExtendFriendGroupFragment, List paramList)
   {
-    super.a(paramInt, paramLong, paramString);
-    FileManagerUtil.a(paramLong, paramInt, paramString);
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
   }
   
-  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  public acim a(ViewGroup paramViewGroup, int paramInt)
   {
-    FileManagerEntity localFileManagerEntity = QfileBaseRecentFileTabView.F(this.a).a().a(paramLong1, paramString, paramInt, paramLong2);
-    if (localFileManagerEntity == null)
+    paramViewGroup = (ViewGroup)LayoutInflater.from(paramViewGroup.getContext()).inflate(2130970333, paramViewGroup, false);
+    return new acim(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment, paramViewGroup);
+  }
+  
+  public void a(List paramList)
+  {
+    this.jdField_a_of_type_JavaUtilList.clear();
+    if (paramList != null) {
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+    }
+  }
+  
+  public int getItemCount()
+  {
+    return this.jdField_a_of_type_JavaUtilList.size();
+  }
+  
+  public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
+  {
+    paramViewHolder = (acim)paramViewHolder;
+    Object localObject = (GroupInfo.Label)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    if ((((GroupInfo.Label)localObject).labelType == 2001) || ((((GroupInfo.Label)localObject).labelType >= 1000) && (((GroupInfo.Label)localObject).labelType < 2000))) {}
+    for (paramInt = 1; paramInt != 0; paramInt = 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e(QfileBaseRecentFileTabView.a, 2, "OnFileCome,but query FileEntity null,uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + "], strUin[" + FileManagerUtil.e(paramString) + "], peerType[" + paramInt + "]");
-      }
+      paramViewHolder.a.setVisibility(8);
       return;
     }
-    this.a.b(localFileManagerEntity);
-    QfileBaseRecentFileTabView.G(this.a).a().c(localFileManagerEntity);
-    QfileBaseRecentFileTabView.d(this.a, new acio(this));
-  }
-  
-  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
-  {
-    super.a(paramLong, paramString1, paramInt, paramString2);
-    FileManagerUtil.a(paramLong);
-    this.a.i();
-  }
-  
-  protected void a(ThumbnailInfo paramThumbnailInfo)
-  {
-    if (paramThumbnailInfo == null) {}
-    FileManagerEntity localFileManagerEntity;
-    do
+    paramViewHolder.a.setVisibility(0);
+    paramViewHolder.a.setTextColor(((GroupInfo.Label)localObject).textColor);
+    paramViewHolder.a.setBgColor(((GroupInfo.Label)localObject).bgColor);
+    if (((GroupInfo.Label)localObject).labelType == 1)
     {
-      do
-      {
-        return;
-      } while (!(paramThumbnailInfo.a instanceof FileManagerEntity));
-      localFileManagerEntity = (FileManagerEntity)paramThumbnailInfo.a;
-    } while ((paramThumbnailInfo.b == null) || (paramThumbnailInfo.b.length() <= 0));
-    localFileManagerEntity.strThumbPath = paramThumbnailInfo.b;
-    QfileBaseRecentFileTabView.B(this.a).a().c(localFileManagerEntity);
-    this.a.i();
-  }
-  
-  protected void a(Boolean paramBoolean, List paramList)
-  {
-    QfileBaseRecentFileTabView.a(this.a, paramBoolean, paramList);
-  }
-  
-  protected void a(Integer paramInteger, long paramLong, String paramString)
-  {
-    QfileBaseRecentFileTabView.e(this.a, new acip(this));
-    FileManagerUtil.a(paramLong, paramInteger.intValue(), paramString);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
-  {
-    QfileBaseRecentFileTabView.b(this.a, new acim(this));
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    FileManagerEntity localFileManagerEntity = QfileBaseRecentFileTabView.C(this.a).a().a(paramLong1, paramString1, paramInt1, paramLong2);
-    if (localFileManagerEntity == null)
-    {
-      QLog.e(QfileBaseRecentFileTabView.a, 1, "OnFileCome,but query FileEntity null,uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + "], strUin[" + FileManagerUtil.e(paramString1) + "], peerType[" + paramInt1 + "]");
+      localObject = new SpannableString("[icon]" + " " + ((GroupInfo.Label)localObject).labelName);
+      if (this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.a == null) {
+        this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.a = this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.getResources().getDrawable(2130841440);
+      }
+      paramInt = (int)(paramViewHolder.a.a() * 0.8D + 0.5D);
+      this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.a.setBounds(0, 0, paramInt, paramInt);
+      ((SpannableString)localObject).setSpan(new ImageSpan(this.jdField_a_of_type_ComTencentMobileqqExtendfriendFragmentExtendFriendGroupFragment.a, 1), 0, "[icon]".length(), 17);
+      paramViewHolder.a.setText((CharSequence)localObject);
       return;
     }
-    if (!paramBoolean)
-    {
-      localFileManagerEntity.bDelInFM = false;
-      FileManagerUtil.a(paramLong2, paramInt2, paramString2);
-    }
-    for (;;)
-    {
-      if ((this.a.b == null) || (this.a.b.trim().length() == 0) || (localFileManagerEntity.getCloudType() != 2)) {
-        this.a.b(localFileManagerEntity);
-      }
-      QfileBaseRecentFileTabView.D(this.a).a().c(localFileManagerEntity);
-      QfileBaseRecentFileTabView.c(this.a, new acin(this, paramLong2));
-      return;
-      paramInt1 = localFileManagerEntity.nOpType;
-      if ((paramInt1 == 4) || (paramInt1 == 20) || (paramInt1 == 6)) {
-        FileManagerUtil.a(paramLong2);
-      }
-    }
-  }
-  
-  protected void b()
-  {
-    super.b();
-    QfileBaseRecentFileTabView.f(this.a, new aciq(this));
+    paramViewHolder.a.setText(((GroupInfo.Label)localObject).labelName);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acil
  * JD-Core Version:    0.7.0.1
  */

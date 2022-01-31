@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.data;
 
-import aipa;
+import ajde;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.os.Looper;
@@ -610,7 +610,7 @@ public class TroopAndDiscMsgProxy
   
   protected void a(String paramString, int paramInt, boolean paramBoolean)
   {
-    ThreadManager.post(new Thread(new aipa(this, paramBoolean), "report_troop_aio_break"), 5, null, true);
+    ThreadManager.post(new Thread(new ajde(this, paramBoolean), "report_troop_aio_break"), 5, null, true);
   }
   
   public MessageRecord b(String paramString, int paramInt, long paramLong1, long paramLong2, long paramLong3)
@@ -859,7 +859,7 @@ public class TroopAndDiscMsgProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAndDiscMsgProxy
  * JD-Core Version:    0.7.0.1
  */

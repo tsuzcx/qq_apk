@@ -15,12 +15,12 @@ import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
-import jzm;
-import jzn;
-import jzo;
-import jzp;
-import jzq;
-import jzr;
+import jyx;
+import jyy;
+import jyz;
+import jza;
+import jzb;
+import jzc;
 
 public class QAVPtvTemplateAdapter
   extends BaseAdapter
@@ -33,8 +33,8 @@ public class QAVPtvTemplateAdapter
   private View jdField_a_of_type_AndroidViewView;
   public QAVPtvTemplateAdapter.IEffectCallback a;
   QAVPtvTemplateAdapter.IItemDownloadMgr jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter$IItemDownloadMgr;
-  private QavListItemBase.IClickCallback jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback = new jzo(this);
-  private QavListItemBase.IDownloadCallback jdField_a_of_type_ComTencentAvUiQavListItemBase$IDownloadCallback = new jzp(this);
+  private QavListItemBase.IClickCallback jdField_a_of_type_ComTencentAvUiQavListItemBase$IClickCallback = new jyz(this);
+  private QavListItemBase.IDownloadCallback jdField_a_of_type_ComTencentAvUiQavListItemBase$IDownloadCallback = new jza(this);
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   public HorizontalListView a;
   public ArrayList a;
@@ -122,7 +122,7 @@ public class QAVPtvTemplateAdapter
     for (;;)
     {
       return;
-      View localView = paramView.findViewById(2131366237);
+      View localView = paramView.findViewById(2131366264);
       if (paramItemInfo == null) {
         paramView.setContentDescription(null);
       }
@@ -168,7 +168,7 @@ public class QAVPtvTemplateAdapter
     this.jdField_a_of_type_Int = a(paramFloat1);
     this.jdField_b_of_type_Int = a(this.jdField_a_of_type_AndroidContentResResources, paramFloat1, paramFloat2);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView = paramHorizontalListView;
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.addOnLayoutChangeListener(new jzm(this));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.addOnLayoutChangeListener(new jyx(this));
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     if ((paramArrayList != null) && (!paramArrayList.isEmpty())) {
       this.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayList);
@@ -176,7 +176,7 @@ public class QAVPtvTemplateAdapter
     if (AudioHelper.a(0) == 1) {
       QLog.d("QAVPtvTemplateAdapter", 4, String.format("initAdapter, mTemplateList[%s]", new Object[] { Integer.valueOf(this.jdField_a_of_type_JavaUtilArrayList.size()) }));
     }
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(new jzn(this));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnScrollStateChangedListener(new jyy(this));
   }
   
   public void a(String paramString, int paramInt)
@@ -186,7 +186,7 @@ public class QAVPtvTemplateAdapter
   
   public void a(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.post(new jzq(this, paramString, paramBoolean));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.post(new jzb(this, paramString, paramBoolean));
   }
   
   public void a(ArrayList paramArrayList)
@@ -398,7 +398,7 @@ public class QAVPtvTemplateAdapter
   
   void c(String paramString, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.post(new jzr(this, paramString, paramInt));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView.post(new jzc(this, paramString, paramInt));
   }
   
   public int getCount()

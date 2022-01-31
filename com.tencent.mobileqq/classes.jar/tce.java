@@ -1,139 +1,76 @@
-import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Map;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
+import com.tencent.mobileqq.activity.NearbyActivity;
+import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
+import com.tencent.mobileqq.fragment.CommonTabFragment;
+import com.tencent.mobileqq.fragment.HotChatFragment;
+import com.tencent.mobileqq.fragment.NearbyBaseFragment;
+import com.tencent.mobileqq.fragment.NearbyHybridFragment;
+import com.tencent.mobileqq.fragment.NowLiveFragment;
+import java.util.ArrayList;
 
 public class tce
-  extends CardObserver
+  extends FragmentPagerAdapter
 {
-  public tce(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
+  public HotChatFragment a;
+  public NearbyHybridFragment a;
+  public NowLiveFragment a;
   
-  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  public tce(NearbyActivity paramNearbyActivity, FragmentManager paramFragmentManager)
   {
-    if (!this.a.app.getCurrentAccountUin().equals(paramString)) {
-      return;
-    }
-    if (!paramBoolean1) {
-      this.a.a(2131436049, 1);
-    }
-    if (paramBoolean2)
-    {
-      PermisionPrivacyActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), paramBoolean3);
-      return;
-    }
-    PermisionPrivacyActivity.a(this.a, PermisionPrivacyActivity.a(this.a), paramBoolean3);
+    super(paramFragmentManager);
   }
   
-  protected void a(boolean paramBoolean, short paramShort1, short paramShort2)
+  public int getCount()
   {
-    switch (paramShort1)
-    {
-    }
-    do
-    {
-      return;
-    } while (paramBoolean);
-    this.a.runOnUiThread(new tcg(this));
+    return this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a.size();
   }
   
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  public Fragment getItem(int paramInt)
   {
-    if ((paramBoolean1) && (!this.a.isFinishing()))
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a(paramInt);
+    Object localObject2 = localObject1;
+    NearbyActivity.TabInfo localTabInfo;
+    if (localObject1 == null)
     {
-      if (paramBoolean2) {
-        break label103;
+      localTabInfo = (NearbyActivity.TabInfo)this.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.a.get(paramInt);
+      if (localTabInfo.b != 2) {
+        break label82;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText("已启用");
+      if (this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment == null) {
+        this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment = new NowLiveFragment();
+      }
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentNowLiveFragment;
     }
     for (;;)
     {
-      if (QLog.isColorLevel())
+      localObject2 = localObject1;
+      if (localObject1 != null)
       {
-        Card localCard = ((FriendsManager)this.a.app.getManager(50)).b(this.a.app.getCurrentAccountUin());
-        QLog.d("interactive", 2, "PermisionPrivacyActivity onGetCalReactiveDays isAllow= " + paramBoolean2 + "card.allowCalInteractive=" + localCard.allowCalInteractive);
+        ((NearbyBaseFragment)localObject1).a(localTabInfo);
+        localObject2 = localObject1;
       }
-      return;
-      label103:
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText("未启用");
-    }
-  }
-  
-  protected void a(boolean paramBoolean, short[] paramArrayOfShort, Map paramMap)
-  {
-    if ((paramBoolean) && (paramMap != null) && (paramMap.size() > 0) && (paramMap.containsKey(Short.valueOf((short)-23447))))
-    {
-      short s = ((Short)paramMap.get(Short.valueOf((short)-23447))).shortValue();
-      this.a.runOnUiThread(new tcf(this, s));
-    }
-  }
-  
-  protected void b(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
-  {
-    if (!this.a.app.getCurrentAccountUin().equals(paramString)) {
-      return;
-    }
-    PermisionPrivacyActivity.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a(), paramBoolean2);
-    PermisionPrivacyActivity.a(this.a, PermisionPrivacyActivity.a(this.a), paramBoolean3);
-  }
-  
-  protected void c(boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder;
-    if ((paramBoolean) && (!this.a.isFinishing()))
-    {
-      Card localCard = ((FriendsManager)this.a.app.getManager(50)).b(this.a.app.getCurrentAccountUin());
-      if (localCard.allowCalInteractive) {
-        break label105;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText("已启用");
-      if (QLog.isColorLevel())
+      return localObject2;
+      label82:
+      if (localTabInfo.b == 3)
       {
-        localStringBuilder = new StringBuilder().append("PermisionPrivacyActivity onSetCalReactiveDays isAllow= ");
-        if (localCard.allowCalInteractive) {
-          break label120;
+        if (this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment == null) {
+          this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment = new HotChatFragment();
         }
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentHotChatFragment;
       }
-    }
-    label105:
-    label120:
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      QLog.d("interactive", 2, paramBoolean);
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSimpleItem.setRightText("未启用");
-      break;
-    }
-  }
-  
-  protected void d(boolean paramBoolean)
-  {
-    Card localCard = ((FriendsManager)this.a.app.getManager(50)).b(this.a.app.getCurrentAccountUin());
-    PermisionPrivacyActivity.a(this.a, this.a.c.a(), localCard.allowPeopleSee);
-  }
-  
-  protected void j(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1) {
-      PermisionPrivacyActivity.a(this.a, this.a.c.a(), paramBoolean2);
-    }
-  }
-  
-  protected void k(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (!this.a.isFinishing())) {
-      PermisionPrivacyActivity.a(this.a, this.a.h.a(), paramBoolean2);
-    }
-  }
-  
-  protected void l(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (!this.a.isFinishing()) {
-      PermisionPrivacyActivity.a(this.a, this.a.h.a(), paramBoolean2);
+      else if (localTabInfo.b == 4)
+      {
+        localObject1 = new CommonTabFragment();
+      }
+      else if (localTabInfo.b == 5)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment == null) {
+          this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment = new NearbyHybridFragment();
+        }
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqFragmentNearbyHybridFragment;
+      }
     }
   }
 }

@@ -1,14 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoModule;
+import com.tencent.qphone.base.remote.ToServiceMsg;
 
 public class lrp
   implements Runnable
 {
-  public lrp(SubscriptionInfoModule paramSubscriptionInfoModule, int paramInt1, int paramInt2) {}
+  public lrp(ReadInJoyUserInfoModule paramReadInJoyUserInfoModule, ToServiceMsg paramToServiceMsg) {}
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Int, this.b);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoModule.a(this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg);
   }
 }
 

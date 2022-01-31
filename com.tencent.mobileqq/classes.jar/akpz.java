@@ -1,27 +1,32 @@
-import com.tencent.open.business.base.OpenConfig;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.PushReportController;
+import com.tencent.mobileqq.utils.QQUtils;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class akpz
   implements Runnable
 {
-  public akpz(OpenConfig paramOpenConfig) {}
+  public akpz(SwiftBrowserStatistics paramSwiftBrowserStatistics, AppRuntime paramAppRuntime) {}
   
   public void run()
   {
-    String str = this.a.a("com.tencent.open.config.json");
-    try
+    if (!PushReportController.a)
     {
-      this.a.a = new JSONObject(str);
-      OpenConfig.a(this.a, true);
-      return;
+      boolean bool = QQUtils.a(BaseApplicationImpl.getApplication());
+      if (QLog.isColorLevel()) {
+        QLog.d("SwiftBrowserStatistics", 1, new Object[] { "reportPushEvent isScreenLock=", Boolean.valueOf(bool), ",isBackground=", Boolean.valueOf(this.jdField_a_of_type_MqqAppAppRuntime.isBackground_Stop) });
+      }
+      if ((bool) || (this.jdField_a_of_type_MqqAppAppRuntime.isBackground_Stop)) {
+        SwiftBrowserStatistics.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserStatistics);
+      }
     }
-    catch (JSONException localJSONException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akpz
  * JD-Core Version:    0.7.0.1
  */

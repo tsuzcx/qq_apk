@@ -1,22 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.animation.AnimatorFactory.AnimatorListener;
+import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorFlowCount;
 
 public final class anie
-  implements ValueAnimator.AnimatorUpdateListener
+  implements IHttpCommunicatorFlowCount
 {
-  public anie(AnimatorFactory.AnimatorListener paramAnimatorListener) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
-  {
-    if (this.a != null) {
-      this.a.a(paramValueAnimator);
-    }
-  }
+  public void countFlow(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anie
  * JD-Core Version:    0.7.0.1
  */

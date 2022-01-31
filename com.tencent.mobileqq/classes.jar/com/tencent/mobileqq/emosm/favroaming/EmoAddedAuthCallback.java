@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emosm.favroaming;
 
-import abry;
+import abza;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -114,20 +114,20 @@ public class EmoAddedAuthCallback
     for (;;)
     {
       return true;
-      paramMessage = new abry(this);
+      paramMessage = new abza(this);
       if (((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) && (!((BaseActivity)this.jdField_a_of_type_AndroidContentContext).isFinishing()))
       {
-        paramMessage = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 0, "温馨提示", this.jdField_a_of_type_AndroidContentContext.getString(2131434480), "取消", "立即开通", paramMessage, paramMessage);
+        paramMessage = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 0, "温馨提示", this.jdField_a_of_type_AndroidContentContext.getString(2131434497), "取消", "立即开通", paramMessage, paramMessage);
         if (paramMessage != null)
         {
           paramMessage.show();
           continue;
           if (this.jdField_a_of_type_AndroidContentContext != null)
           {
-            QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131434479, 0).b(2131558448);
+            QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131434496, 0).b(2131558448);
             continue;
             if (this.jdField_a_of_type_AndroidContentContext != null) {
-              QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131434478, 0).b(2131558448);
+              QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2131434495, 0).b(2131558448);
             }
           }
         }

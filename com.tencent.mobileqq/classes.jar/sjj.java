@@ -1,28 +1,21 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.FaceDrawable;
 
 public class sjj
-  implements TabBarView.OnTabChangeListener
+  implements Runnable
 {
-  public sjj(EmosmActivity paramEmosmActivity) {}
+  public sjj(DevlockQuickLoginActivity paramDevlockQuickLoginActivity) {}
   
-  public void onTabSelected(int paramInt1, int paramInt2)
+  public void run()
   {
-    if (paramInt1 == paramInt2) {
+    if (this.a.app == null) {
       return;
     }
-    if (paramInt2 == 0) {
-      this.a.b = 1;
-    }
-    for (;;)
-    {
-      this.a.c = false;
-      this.a.runOnUiThread(this.a.a);
-      return;
-      if (paramInt2 == 1) {
-        this.a.b = 2;
-      }
-    }
+    Object localObject = this.a.app.getCurrentAccountUin();
+    localObject = FaceDrawable.a(this.a.app, 3, (String)localObject);
+    this.a.runOnUiThread(new sjk(this, (Drawable)localObject));
   }
 }
 

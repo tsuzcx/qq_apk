@@ -1,39 +1,33 @@
-import com.tencent.biz.qqstory.comment.FeedLikeLego;
-import com.tencent.biz.qqstory.database.LikeEntry;
-import com.tencent.biz.qqstory.model.LikeManager;
-import com.tencent.biz.qqstory.model.UserManager;
-import com.tencent.biz.qqstory.model.item.QQUserUIItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
+import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoTaskInfo;
+import com.tencent.biz.qqstory.model.StoryManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
-import mqq.os.MqqHandler;
 
 public class nar
-  implements Runnable
+  extends SimpleJob
 {
-  public nar(FeedLikeLego paramFeedLikeLego, UserManager paramUserManager, String paramString, LikeEntry paramLikeEntry) {}
+  public nar(StoryVideoUploadManager paramStoryVideoUploadManager) {}
   
-  public void run()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    QQUserUIItem localQQUserUIItem = this.jdField_a_of_type_ComTencentBizQqstoryModelUserManager.b(this.jdField_a_of_type_JavaLangString);
-    LikeEntry localLikeEntry;
-    if (localQQUserUIItem != null)
-    {
-      localLikeEntry = this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry;
-      if (!localQQUserUIItem.isVip) {
-        break label104;
-      }
+    paramVarArgs = ((StoryManager)SuperManager.a(5)).a();
+    paramJobContext = new ArrayList(paramVarArgs.size());
+    paramVarArgs = paramVarArgs.iterator();
+    while (paramVarArgs.hasNext()) {
+      paramJobContext.add(new StoryVideoTaskInfo((StoryVideoItem)paramVarArgs.next()));
     }
-    label104:
-    for (long l = 2L;; l = 0L)
-    {
-      localLikeEntry.role = l;
-      this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
-      this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_ComTencentBizQqstoryModelLikeManager.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabaseLikeEntry);
-      this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-      ThreadManager.getUIHandler().post(new nas(this));
-      return;
-    }
+    this.a.a(paramJobContext);
+    SLog.c("Q.qqstory.publish.upload:StoryVideoUploadManager", "had load local task size " + paramJobContext.size());
+    return null;
   }
 }
 

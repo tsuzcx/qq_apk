@@ -545,7 +545,7 @@ public class EmojiJsPlugin
         if (QLog.isColorLevel()) {
           QLog.i(TAG, 2, "startDownloadEmoji non wifi net");
         }
-        localObject = DialogUtil.a(this.mRuntime.a(), 230).a(this.mRuntime.a().getString(2131436241)).b(this.mRuntime.a().getString(2131436242)).a(this.mRuntime.a().getString(2131436243), new EmojiJsPlugin.6(this, paramString)).c(this.mRuntime.a().getString(2131436244), new EmojiJsPlugin.5(this, paramInt1, paramInt2, paramInt3, paramString));
+        localObject = DialogUtil.a(this.mRuntime.a(), 230).a(this.mRuntime.a().getString(2131436258)).b(this.mRuntime.a().getString(2131436259)).a(this.mRuntime.a().getString(2131436260), new EmojiJsPlugin.6(this, paramString)).c(this.mRuntime.a().getString(2131436261), new EmojiJsPlugin.5(this, paramInt1, paramInt2, paramInt3, paramString));
         ((QQCustomDialogThreeBtns)localObject).setOnKeyListener(new EmojiJsPlugin.7(this, (QQCustomDialogThreeBtns)localObject, paramString));
         ((QQCustomDialogThreeBtns)localObject).setCanceledOnTouchOutside(false);
         ((QQCustomDialogThreeBtns)localObject).show();
@@ -1410,7 +1410,7 @@ public class EmojiJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiJsPlugin
  * JD-Core Version:    0.7.0.1
  */

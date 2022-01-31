@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import acwv;
-import acww;
-import acwx;
+import adgs;
+import adgt;
+import adgu;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
@@ -48,22 +48,22 @@ public class FMDialogUtil
   
   public static void a(Context paramContext, String paramString, CharSequence paramCharSequence, FMDialogUtil.FMDialogInterface paramFMDialogInterface)
   {
-    acwv localacwv = new acwv(paramFMDialogInterface);
-    paramFMDialogInterface = new acww(paramFMDialogInterface);
+    adgs localadgs = new adgs(paramFMDialogInterface);
+    paramFMDialogInterface = new adgt(paramFMDialogInterface);
     Looper localLooper = Looper.getMainLooper();
     if (Thread.currentThread() != localLooper.getThread()) {
-      new Handler(localLooper).post(new acwx(paramCharSequence, paramContext, paramString, localacwv, paramFMDialogInterface));
+      new Handler(localLooper).post(new adgu(paramCharSequence, paramContext, paramString, localadgs, paramFMDialogInterface));
     }
     do
     {
       return;
       if ((paramCharSequence instanceof String))
       {
-        DialogUtil.b(paramContext, 230, paramString, (String)paramCharSequence, 2131428127, 2131428128, localacwv, paramFMDialogInterface).show();
+        DialogUtil.b(paramContext, 230, paramString, (String)paramCharSequence, 2131428127, 2131428128, localadgs, paramFMDialogInterface).show();
         return;
       }
     } while (!(paramCharSequence instanceof SpannableString));
-    DialogUtil.a(paramContext, 230, paramString, paramCharSequence, 2131428127, 2131428128, localacwv, paramFMDialogInterface).show();
+    DialogUtil.a(paramContext, 230, paramString, paramCharSequence, 2131428127, 2131428128, localadgs, paramFMDialogInterface).show();
   }
 }
 

@@ -1,27 +1,15 @@
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForReplyText;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import mqq.os.MqqHandler;
+import android.content.Context;
+import android.content.res.Resources;
+import com.tencent.mobileqq.widget.QQToast;
 
-class vbc
+public final class vbc
   implements Runnable
 {
-  vbc(vbb paramvbb, MessageForReplyText paramMessageForReplyText, View paramView) {}
+  public vbc(Context paramContext, String paramString) {}
   
   public void run()
   {
-    ChatMessage localChatMessage = (ChatMessage)this.jdField_a_of_type_Vbb.a.a.a().c(this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.istroop, this.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText.mSourceMsgInfo.mSourceMsgSeq);
-    if ((localChatMessage != null) && (localChatMessage.msgtype != -2006) && (localChatMessage.isValid) && (localChatMessage.msgtype != -2032))
-    {
-      ThreadManager.getUIHandler().post(new vbd(this, localChatMessage));
-      return;
-    }
-    ThreadManager.getUIHandler().post(new vbe(this));
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext(), this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131558448));
   }
 }
 

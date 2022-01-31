@@ -1,16 +1,15 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.MediaPlayerWrapper;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnBufferingUpdateListener;
 
 public class npg
-  implements MediaPlayer.OnPreparedListener
+  implements IMediaPlayer.OnBufferingUpdateListener
 {
-  public npg(MediaPlayerWrapper paramMediaPlayerWrapper, IMediaPlayer.OnPreparedListener paramOnPreparedListener) {}
+  public npg(TextureVideoView paramTextureVideoView) {}
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public void a(IMediaPlayer paramIMediaPlayer, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener.a_(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperMediaPlayerWrapper);
+    this.a.f = paramInt;
   }
 }
 

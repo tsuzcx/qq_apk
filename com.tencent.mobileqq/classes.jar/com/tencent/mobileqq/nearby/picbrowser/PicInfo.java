@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.picbrowser;
 
-import aeop;
+import afbv;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -15,7 +15,7 @@ import org.json.JSONObject;
 public class PicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aeop();
+  public static final Parcelable.Creator CREATOR = new afbv();
   public int a;
   public String a;
   public String b;

@@ -1,31 +1,29 @@
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentComponentFragment;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.FetchCommentObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class ljl
-  implements Runnable
+public class ljl
+  implements ArticleCommentModule.FetchCommentObserver
 {
-  ljl(ljk paramljk) {}
+  public ljl(ReadInJoyCommentListAdapter paramReadInJoyCommentListAdapter) {}
   
-  public void run()
+  public void a(ArticleInfo paramArticleInfo)
   {
-    ZhituManager localZhituManager = ReadInJoyCommentComponentFragment.a(this.a.a);
-    if ((localZhituManager != null) && (ReadInJoyCommentComponentFragment.a(this.a.a)))
-    {
-      localZhituManager.c();
-      ReadInJoyCommentComponentFragment.a(this.a.a, false);
-      this.a.a.f.setSelected(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyCommentListView", 2, "first comment bottom refresh success");
     }
-    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(ReadInJoyDeliverUGCActivity.a(this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicData));
-    this.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    ReadInJoyCommentComponentFragment.a(this.a.a);
-    if (this.a.a.jdField_a_of_type_Boolean)
-    {
-      this.a.a.g.setImageResource(2130840737);
-      ReadInJoyCommentComponentFragment.b(this.a.a, true);
+    ReadInJoyCommentListAdapter.a(this.a).a(true);
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyCommentListView", 2, "first comment bottom refresh failed ,err code =" + paramInt + "err msg = " + paramString);
     }
+    ReadInJoyCommentListAdapter.a(this.a).a();
   }
 }
 

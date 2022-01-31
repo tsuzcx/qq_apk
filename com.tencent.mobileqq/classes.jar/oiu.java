@@ -1,19 +1,12 @@
-import android.view.ViewGroup;
-import android.widget.ListView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.BaseFaceListAdapter;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class oiu
-  implements Runnable
+public final class oiu
+  implements FilenameFilter
 {
-  public oiu(FaceListPage paramFaceListPage) {}
-  
-  public void run()
+  public boolean accept(File paramFile, String paramString)
   {
-    FaceListPage.a(this.a).setVisibility(4);
-    FaceListPage.b(this.a).setVisibility(4);
-    FaceListPage.a(this.a).setVisibility(0);
-    FaceListPage.a(this.a).notifyDataSetChanged();
+    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp"));
   }
 }
 

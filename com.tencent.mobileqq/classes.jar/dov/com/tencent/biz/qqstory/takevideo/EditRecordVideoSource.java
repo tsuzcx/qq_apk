@@ -1,16 +1,16 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import anbx;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import ansc;
 import java.io.File;
 
 public class EditRecordVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator CREATOR = new anbx();
+  public static final Parcelable.Creator CREATOR = new ansc();
   public final float a;
   public final int a;
   public final long a;

@@ -1,18 +1,39 @@
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordHelper;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
-import com.tencent.mobileqq.troop.org.pb.oidb_0x496.AioKeyword;
+import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class zkx
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public zkx(TroopHandler paramTroopHandler, oidb_0x496.AioKeyword paramAioKeyword) {}
+  public zkx(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    ((TroopAioKeywordTipManager)this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b.getManager(224)).a(TroopAioKeywordHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$AioKeyword), TroopAioKeywordHelper.b(this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$AioKeyword));
-    TroopAioKeywordHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.b, this.jdField_a_of_type_ComTencentMobileqqTroopOrgPbOidb_0x496$AioKeyword);
+    if (this.a.l) {
+      QLog.i("QQAppInterface", 1, "qzoneBrocastReceiver release() has been called  ,return ", null);
+    }
+    do
+    {
+      int i;
+      do
+      {
+        return;
+        paramContext = paramIntent.getAction();
+        if (!"com.tencent.qzone.cleanunreadcount".equals(paramContext)) {
+          break;
+        }
+        i = paramIntent.getIntExtra("clean_unread_feed_type", -1);
+        paramContext = (QZoneManagerImp)this.a.getManager(9);
+      } while ((paramContext == null) || (i == -1));
+      paramContext.a(i, 0L, new ArrayList(), null, false, false, "");
+      return;
+    } while (!"com.tecent.qzone.clearAlbumRedTouch".equals(paramContext));
+    ((QzoneAlbumRedTouchManager)this.a.getManager(103)).b();
   }
 }
 

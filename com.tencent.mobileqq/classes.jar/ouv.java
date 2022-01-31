@@ -1,29 +1,31 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.MessageRecord;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.text.TextUtils;
+import com.tencent.biz.qrcode.ipc.PreCallUpToolProc;
+import com.tencent.biz.qrcode.ipc.PreCallUpToolProc.Callback;
+import com.tencent.qphone.base.util.QLog;
 
-class ouv
-  implements Runnable
+public class ouv
+  extends BroadcastReceiver
 {
-  ouv(ouo paramouo, TroopManager paramTroopManager, String paramString1, String paramString2, Bundle paramBundle, int paramInt) {}
+  public ouv(PreCallUpToolProc paramPreCallUpToolProc) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, this.b);
-    if (localMessageRecord != null)
-    {
-      this.jdField_a_of_type_AndroidOsBundle.putLong("lastMsgTime", localMessageRecord.time);
-      this.jdField_a_of_type_AndroidOsBundle.putString("lastMsgContent", localMessageRecord.msg);
-      this.jdField_a_of_type_AndroidOsBundle.putInt("seq", this.jdField_a_of_type_Int);
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("PreCallUpToolProc", 2, String.format("onReceive action=%s", new Object[] { paramContext }));
     }
-    for (;;)
+    if (("com.tencent.mobileqq.armap.ACTION_START_THREAD_COMPLETED".equals(paramContext)) && (TextUtils.equals(paramIntent.getStringExtra("from"), PreCallUpToolProc.a(this.a))))
     {
-      this.jdField_a_of_type_Ouo.a.a(73, this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      this.jdField_a_of_type_AndroidOsBundle.putLong("lastMsgTime", 0L);
-      this.jdField_a_of_type_AndroidOsBundle.putString("lastMsgContent", "");
-      this.jdField_a_of_type_AndroidOsBundle.putInt("seq", this.jdField_a_of_type_Int);
+      if (PreCallUpToolProc.a(this.a) != null) {
+        PreCallUpToolProc.a(this.a).removeMessages(108);
+      }
+      if (PreCallUpToolProc.a(this.a) != null) {
+        PreCallUpToolProc.a(this.a).a();
+      }
     }
   }
 }

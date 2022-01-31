@@ -13,9 +13,9 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.List;
-import klh;
-import kli;
-import klj;
+import kks;
+import kkt;
+import kku;
 import tencent.im.troop_search_searchtab.searchtab.Card;
 import tencent.im.troop_search_searchtab.searchtab.TitleBar;
 
@@ -33,21 +33,21 @@ public class TroopCardXingquBuluo
   public TroopCardXingquBuluo(ContactBaseView.IAddContactContext paramIAddContactContext)
   {
     super(paramIAddContactContext);
-    this.jdField_a_of_type_AndroidWidgetBaseAdapter = new klj(this);
+    this.jdField_a_of_type_AndroidWidgetBaseAdapter = new kku(this);
   }
   
   private void f()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366386));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366389));
-    this.b = ((TextView)findViewById(2131366387));
-    this.jdField_a_of_type_ComTencentBizWidgetsGridViewForScrollView = ((GridViewForScrollView)findViewById(2131366391));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131366413));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131366416));
+    this.b = ((TextView)findViewById(2131366414));
+    this.jdField_a_of_type_ComTencentBizWidgetsGridViewForScrollView = ((GridViewForScrollView)findViewById(2131366418));
     this.jdField_a_of_type_ComTencentBizWidgetsGridViewForScrollView.setAdapter(this.jdField_a_of_type_AndroidWidgetBaseAdapter);
   }
   
   private void g()
   {
-    this.jdField_a_of_type_ComTencentBizWidgetsGridViewForScrollView.setOnItemClickListener(new klh(this));
+    this.jdField_a_of_type_ComTencentBizWidgetsGridViewForScrollView.setOnItemClickListener(new kks(this));
   }
   
   private void h()
@@ -59,13 +59,13 @@ public class TroopCardXingquBuluo
   {
     this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.str_transfer_desc.get());
-    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new kli(this));
+    this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new kkt(this));
   }
   
   public void a()
   {
     super.a();
-    setContentView(2130969414);
+    setContentView(2130969415);
     f();
     g();
   }
@@ -86,7 +86,7 @@ public class TroopCardXingquBuluo
       if (!TextUtils.isEmpty(((searchtab.TitleBar)this.jdField_a_of_type_TencentImTroop_search_searchtabSearchtab$Card.title_bar.get()).str_icon_url.get())) {
         break label178;
       }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846196);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846324);
       if ((!TextUtils.isEmpty(paramCard.str_transfer_desc.get())) && (!TextUtils.isEmpty(paramCard.str_transfer_url.get()))) {
         break label211;
       }

@@ -1,12 +1,17 @@
-import com.tencent.av.app.GAudioUIObserver;
-import com.tencent.av.smallscreen.SmallScreenService;
+import android.view.View;
+import com.tencent.av.smallscreen.SmallScreenVideoLayerUI;
 
 public class jpd
-  extends GAudioUIObserver
+  implements Runnable
 {
-  public jpd(SmallScreenService paramSmallScreenService) {}
+  public jpd(SmallScreenVideoLayerUI paramSmallScreenVideoLayerUI) {}
   
-  protected void a(long paramLong, int paramInt, String paramString) {}
+  public void run()
+  {
+    if (SmallScreenVideoLayerUI.a(this.a) != null) {
+      SmallScreenVideoLayerUI.b(this.a).findViewById(2131366257).setVisibility(8);
+    }
+  }
 }
 
 

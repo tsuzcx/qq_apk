@@ -1,21 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingTop="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:gravity="center" android:layout_gravity="center" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00a0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d05" android:text="天天酷跑钻石 × 200" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0088" />
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <RelativeLayout android:gravity="top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d06" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true">
-            <TextView android:textSize="25.0sp" android:textStyle="bold" android:textColor="#ff333333" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d07" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="10.0dip" android:text="￥" />
-            <TextView android:textSize="50.0sp" android:textStyle="bold" android:textColor="#ff333333" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d08" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="19.50" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0d07" />
-            <TextView android:textSize="16.0sp" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d09" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="10.0dip" android:text="Q币" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0d08" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a0d08" />
-        </RelativeLayout>
-        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d0a" android:text="溢价" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0d06" style="@style/APKTOOL_DUPLICATE_style_0x7f0e008a" />
-        <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d0b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="￥10.00" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0d06" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0d0a" style="@style/APKTOOL_DUPLICATE_style_0x7f0e008b" />
-    </RelativeLayout>
-    <LinearLayout android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d0c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content">
-        <TextView android:textSize="16.0sp" android:textColor="#ffff8444" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d0d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="QQ钱包立减优惠5.00元" android:textAlignment="center" />
-        <ImageView android:layout_gravity="center_vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020729" android:layout_width="7.0dip" android:layout_height="13.0dip" android:layout_marginLeft="4.0dip" />
-    </LinearLayout>
-    <LinearLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
-        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d0e" android:visibility="gone" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00a8" />
+    <ImageView style="@style/APKTOOL_DUPLICATE_style_0x7f0e00a1" />
+    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d25" android:visibility="gone" android:text="交易失败" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00a2" />
+    <TextView android:gravity="left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d26" android:paddingBottom="20.0dip" android:text="当前QQ卡余额不足，无法完成充值。请换张卡后重试。" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00a3" />
+    <com.pay.ui.common.APComponentFollow android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d27" android:tag="mode=small" android:paddingBottom="0.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout style="@style/APKTOOL_DUPLICATE_style_0x7f0e00a4">
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d28" android:text="未发送" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00a6" />
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d29" android:text="成功发送" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00a7" />
     </LinearLayout>
 </LinearLayout>

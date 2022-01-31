@@ -1,31 +1,17 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnInfoListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
-class nof
-  implements Runnable
+public class nof
+  extends AnimatorListenerAdapter
 {
-  nof(noe paramnoe, int paramInt, Object paramObject) {}
+  public nof(StoryPlayVideoActivity paramStoryPlayVideoActivity, CircularRevealCompatLayout paramCircularRevealCompatLayout) {}
   
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    int i;
-    if (this.jdField_a_of_type_Noe.a.a != null)
-    {
-      i = this.jdField_a_of_type_Int;
-      if (this.jdField_a_of_type_Int != 21) {
-        break label58;
-      }
-      i = 2;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Noe.a.a.a(this.jdField_a_of_type_Noe.a, i, this.jdField_a_of_type_JavaLangObject);
-      return;
-      label58:
-      if (this.jdField_a_of_type_Int == 22) {
-        i = 3;
-      }
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.setVisibility(4);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoStoryPlayVideoActivity.finish();
   }
 }
 

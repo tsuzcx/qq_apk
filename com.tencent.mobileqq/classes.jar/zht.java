@@ -1,18 +1,15 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.NearbyGrayTipsManager;
+import com.tencent.mobileqq.app.NearbyGrayTipsManager.FaceScoreWording;
 
 public class zht
   implements Runnable
 {
-  public zht(QQAppInterface paramQQAppInterface) {}
+  public zht(NearbyGrayTipsManager.FaceScoreWording paramFaceScoreWording1, NearbyGrayTipsManager.FaceScoreWording paramFaceScoreWording2) {}
   
   public void run()
   {
-    AdvertisementVideoPreloadManager localAdvertisementVideoPreloadManager = (AdvertisementVideoPreloadManager)this.a.getManager(237);
-    if (localAdvertisementVideoPreloadManager != null) {
-      localAdvertisementVideoPreloadManager.a(1);
-    }
-    this.a.D();
+    String str = NearbyGrayTipsManager.FaceScoreWording.getPath(this.a.id);
+    NearbyGrayTipsManager.a(this.a, str);
   }
 }
 

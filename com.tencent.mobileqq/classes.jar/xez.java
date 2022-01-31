@@ -1,31 +1,13 @@
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.model.PhoneContactManager.IPhoneContactListener;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgPayManager;
 
 public class xez
-  implements PhoneContactManager.IPhoneContactListener
+  implements Runnable
 {
-  public xez(BannerManager paramBannerManager) {}
+  public xez(GoldMsgPayManager paramGoldMsgPayManager) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    BannerManager.a(this.a).removeMessages(11);
-    BannerManager.a(this.a).sendEmptyMessageDelayed(11, 1000L);
-  }
-  
-  public void a(long paramLong) {}
-  
-  public void a(boolean paramBoolean, int paramInt) {}
-  
-  public void b(int paramInt) {}
-  
-  public void c(int paramInt)
-  {
-    if ((paramInt & 0x1) != 0)
-    {
-      BannerManager.a(this.a).removeMessages(11);
-      BannerManager.a(this.a).sendEmptyMessageDelayed(11, 1000L);
-    }
+    this.a.a();
   }
 }
 

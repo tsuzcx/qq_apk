@@ -1,14 +1,18 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable;
+import com.tencent.qphone.base.util.QLog;
 
-class aabj
+public class aabj
   implements Runnable
 {
-  aabj(aabi paramaabi) {}
+  public aabj(Interactive3DRenderable paramInteractive3DRenderable, int paramInt, float paramFloat1, float paramFloat2, long paramLong) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, "下载资源失败,请重试！", 1).a();
+    Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable).native_onTouchEnd(this.jdField_a_of_type_Int, this.jdField_a_of_type_Float, this.b, 1, this.jdField_a_of_type_Long, Interactive3DRenderable.a(this.jdField_a_of_type_ComTencentMobileqqArARRenderModelInteractive3DRenderable).mCurrentActiveId);
+    if (QLog.isColorLevel()) {
+      QLog.d("AREngine_Interactive3DRenderable", 2, "ACTION_UP native_onTouchEnd");
+    }
   }
 }
 

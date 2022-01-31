@@ -6,7 +6,7 @@ import com.tencent.mobileqq.app.HotChatObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import znr;
+import zqx;
 
 public class GetJoinedHotChatListStep
   extends AsyncStep
@@ -20,7 +20,7 @@ public class GetJoinedHotChatListStep
     }
     HotChatHandler localHotChatHandler = (HotChatHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.a(35);
     localHotChatHandler.c();
-    this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new znr(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new zqx(this, null);
     this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.b.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver);
     localHotChatHandler.b();
     return 2;

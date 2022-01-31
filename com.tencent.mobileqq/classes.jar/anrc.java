@@ -1,36 +1,18 @@
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalGifSource;
 
-class anrc
-  implements Runnable
+public final class anrc
+  implements Parcelable.Creator
 {
-  anrc(anqz paramanqz) {}
-  
-  public void run()
+  public EditLocalGifSource a(Parcel paramParcel)
   {
-    boolean bool = CameraCompatibleList.a(CameraCompatibleList.y);
-    if (bool)
-    {
-      RMVideoStateMgr.a().a(1102, "已经获取权限，需要重新进入打开摄像头", true);
-      return;
-    }
-    try
-    {
-      if ((!this.a.d) && (this.a.f)) {
-        RMVideoStateMgr.a().a(1102, "初始化失败,code=1102", true);
-      }
-      RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-      if (QLog.isColorLevel()) {
-        QLog.e("RMVideoInitState", 2, "[ERR_CODE_INIT_TIMEOUT]初始化失败,code=1102 mIsReadAVCodec=" + this.a.a + " mIsReadCamera=" + this.a.b + " black=" + bool + " rmStateMgr.mIsAudioReady=" + localRMVideoStateMgr.d + " rmStateMgr.mVideoCacheDir=" + localRMVideoStateMgr.a);
-      }
-      RMVideoStateMgr.b(null);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    return new EditLocalGifSource(paramParcel);
+  }
+  
+  public EditLocalGifSource[] a(int paramInt)
+  {
+    return new EditLocalGifSource[paramInt];
   }
 }
 

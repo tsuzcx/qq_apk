@@ -1,16 +1,19 @@
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ReadInJoyGlobalReporter;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
+import com.tencent.biz.pubaccount.util.PublicTracker;
+import com.tencent.widget.XListView.DrawFinishedListener;
 
 public class lcy
-  implements Runnable
+  implements XListView.DrawFinishedListener
 {
-  public lcy(ReadInJoyChannelActivity paramReadInJoyChannelActivity) {}
+  public lcy(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity) {}
   
-  public void run()
+  public void a()
   {
-    ReadInJoyGlobalReporter.a().a(true);
-    ReadInJoyGlobalReporter.a().a(this.a.app, NetConnInfoCenter.getServerTimeMillis(), -1, -1);
+    if ((!this.a.a) && (this.a.b))
+    {
+      this.a.a = true;
+      PublicTracker.a("subscribe_tab_cost", null);
+    }
   }
 }
 

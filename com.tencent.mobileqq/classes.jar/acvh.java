@@ -1,17 +1,9 @@
-import android.app.Activity;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnSeekCompleteListener;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSWorker.ChangeNewPath;
 
-public class acvh
-  implements TVK_IMediaPlayer.OnSeekCompleteListener
+class acvh
+  implements FileManagerRSWorker.ChangeNewPath
 {
-  public acvh(VideoFilePresenter paramVideoFilePresenter) {}
-  
-  public void onSeekComplete(TVK_IMediaPlayer paramTVK_IMediaPlayer)
-  {
-    this.a.a.runOnUiThread(new acvi(this));
-  }
+  acvh(acve paramacve, boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2) {}
 }
 
 

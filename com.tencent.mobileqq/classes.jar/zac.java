@@ -1,20 +1,4 @@
-import android.os.Handler;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.QIMNewFriendManager.IQIMNotifyNewFriendListener;
-
-public class zac
-  implements QIMNewFriendManager.IQIMNotifyNewFriendListener
-{
-  public zac(FrameHelperActivity paramFrameHelperActivity) {}
-  
-  public void a()
-  {
-    if (this.a.a.hasMessages(17)) {
-      this.a.a.removeMessages(17);
-    }
-    this.a.a.sendEmptyMessage(17);
-  }
-}
+public class zac {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar

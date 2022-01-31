@@ -1,16 +1,35 @@
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
+import android.os.Bundle;
+import cooperation.photoplus.PhotoPlusManager;
+import cooperation.photoplus.PhotoPlusModule;
+import cooperation.photoplus.sticker.Sticker;
+import eipc.EIPCResult;
+import java.util.Iterator;
+import java.util.List;
+import org.json.JSONArray;
 
 public class amls
   implements Runnable
 {
-  public amls(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, WebViewPlugin.PluginRuntime paramPluginRuntime) {}
+  public amls(PhotoPlusModule paramPhotoPlusModule, PhotoPlusManager paramPhotoPlusManager, int paramInt) {}
   
   public void run()
   {
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin$PluginRuntime.a().getContext(), "抱歉，你未安装微信客户端，无法进行微信分享", 0).a();
+    Object localObject = this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a();
+    JSONArray localJSONArray = new JSONArray();
+    if (localObject != null)
+    {
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        Sticker localSticker = (Sticker)((Iterator)localObject).next();
+        if (localSticker.toJsonObject() != null) {
+          localJSONArray.put(localSticker.toJsonObject());
+        }
+      }
+    }
+    localObject = new Bundle();
+    ((Bundle)localObject).putString("param_sticker_templates", localJSONArray.toString());
+    this.jdField_a_of_type_CooperationPhotoplusPhotoPlusModule.callbackResult(this.jdField_a_of_type_Int, EIPCResult.createSuccessResult((Bundle)localObject));
   }
 }
 

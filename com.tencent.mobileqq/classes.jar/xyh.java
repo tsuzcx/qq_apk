@@ -1,14 +1,26 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberBuddyListAdapter.ViewTag;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class xyh
-  extends SelectMemberBuddyListAdapter.ViewTag
+  implements View.OnClickListener
 {
-  public ImageView a;
-  public TextView a;
-  public TextView b;
-  public TextView c;
+  public xyh(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  
+  public void onClick(View paramView)
+  {
+    if (this.a.c) {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
+    }
+    for (;;)
+    {
+      this.a.finish();
+      this.a.overridePendingTransition(2131034129, 2131034130);
+      return;
+      ReportController.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
+    }
+  }
 }
 
 

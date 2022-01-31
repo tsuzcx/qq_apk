@@ -1,34 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 
-public class mhp
-  extends Handler
+class mhp
+  implements Runnable
 {
-  private WeakReference a;
+  mhp(mhf parammhf) {}
   
-  public mhp(ReadInJoyListViewGroup paramReadInJoyListViewGroup)
+  public void run()
   {
-    this.a = new WeakReference(paramReadInJoyListViewGroup);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    ReadInJoyListViewGroup localReadInJoyListViewGroup = (ReadInJoyListViewGroup)this.a.get();
-    if (localReadInJoyListViewGroup == null) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      }
-    } while (ReadInJoyListViewGroup.a(localReadInJoyListViewGroup) == null);
-    ReadInJoyListViewGroup.a(localReadInJoyListViewGroup).setAnimType(2);
-    localReadInJoyListViewGroup.m();
+    this.a.a.notifyDataSetChanged();
   }
 }
 

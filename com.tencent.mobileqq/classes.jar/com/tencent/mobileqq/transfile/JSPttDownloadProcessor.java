@@ -299,9 +299,9 @@ public class JSPttDownloadProcessor
     //   62	68	174	java/lang/Exception
   }
   
-  public void an_()
+  public void ap_()
   {
-    super.an_();
+    super.ap_();
     d(2001);
     f();
   }
@@ -416,7 +416,7 @@ public class JSPttDownloadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.JSPttDownloadProcessor
  * JD-Core Version:    0.7.0.1
  */

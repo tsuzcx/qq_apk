@@ -1,21 +1,15 @@
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.TranslateAnimation;
-import android.widget.ImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.apollo.store.ApolloStoreActivity;
 
-class yty
-  implements Runnable
+public class yty
+  implements DialogInterface.OnClickListener
 {
-  yty(ytx paramytx) {}
+  public yty(ApolloStoreActivity paramApolloStoreActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(1, -0.5F, 1, 0.5F, 1, -0.5F, 1, 0.5F);
-    localTranslateAnimation.setDuration(400L);
-    localTranslateAnimation.setRepeatCount(1);
-    localTranslateAnimation.setInterpolator(new AccelerateDecelerateInterpolator());
-    localTranslateAnimation.setAnimationListener(new ytz(this));
-    this.a.a.a.setVisibility(0);
-    this.a.a.a.startAnimation(localTranslateAnimation);
+    paramDialogInterface.dismiss();
   }
 }
 

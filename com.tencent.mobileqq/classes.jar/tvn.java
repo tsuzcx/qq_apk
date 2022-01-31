@@ -1,47 +1,36 @@
-import android.os.Bundle;
 import android.os.Handler;
-import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.List;
-import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.GbarInfo;
-import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.RspBody;
-import tencent.im.oidb.cmd0x6f6.oidb_cmd0x6f6.RspInfo;
+import android.os.Looper;
+import android.os.Message;
+import android.view.View;
+import com.tencent.mobileqq.activity.ThemeNoviceGuideActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.QLog;
 
 public class tvn
-  extends ProtoUtils.TroopProtocolObserver
+  extends Handler
 {
-  public tvn(TroopInfoActivity paramTroopInfoActivity) {}
-  
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public tvn(ThemeNoviceGuideActivity paramThemeNoviceGuideActivity, Looper paramLooper)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {}
-    for (;;)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    paramMessage = this.a.findViewById(2131375254);
+    if (paramMessage != null) {}
+    try
     {
+      paramMessage.setBackgroundResource(2130846225);
+      ReportController.b(this.a.app, "CliOper", "", this.a.app.getCurrentAccountUin(), "theme_mall", "theme_popup", 0, 0, "", "", "", "");
       return;
-      try
+    }
+    catch (OutOfMemoryError paramMessage)
+    {
+      for (;;)
       {
-        paramBundle = new oidb_cmd0x6f6.RspBody();
-        paramBundle.mergeFrom(paramArrayOfByte);
-        paramArrayOfByte = paramBundle.rpt_msg_rsp_info.get();
-        if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
-        {
-          paramArrayOfByte = (oidb_cmd0x6f6.RspInfo)paramArrayOfByte.get(0);
-          if ((paramArrayOfByte != null) && (paramArrayOfByte.uint32_result.get() == 0))
-          {
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId = paramArrayOfByte.stgbarinfo.uint32_bid.get();
-            this.a.c = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeId;
-            this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.tribeName = paramArrayOfByte.stgbarinfo.str_name.get().toStringUtf8();
-            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
-            return;
-          }
-        }
+        QLog.e("ThemeNoviceGuideActivity", 1, "handleMessage oom e = " + paramMessage);
       }
-      catch (Exception paramArrayOfByte) {}
     }
   }
 }

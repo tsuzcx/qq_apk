@@ -25,8 +25,8 @@ import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.atomic.AtomicBoolean;
 import org.json.JSONObject;
-import pai;
-import paj;
+import pcc;
+import pcd;
 
 public class OfflineWebResManager
 {
@@ -313,7 +313,7 @@ public class OfflineWebResManager
     for (int i = 1; i != 0; i = 0) {
       return;
     }
-    ThreadManager.post(new pai(this, localSharedPreferences), 5, null, false);
+    ThreadManager.post(new pcc(this, localSharedPreferences), 5, null, false);
   }
   
   public void a(int paramInt)
@@ -326,7 +326,7 @@ public class OfflineWebResManager
       QLog.i("OfflineWebResManager", 2, "now check update url, deley: " + paramInt);
     }
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-    ThreadManager.post(new paj(this, paramInt), 5, null, false);
+    ThreadManager.post(new pcd(this, paramInt), 5, null, false);
   }
   
   public void a(OfflineWebRes paramOfflineWebRes)

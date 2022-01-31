@@ -1,14 +1,16 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.QZoneHelper;
+import com.tencent.mobileqq.activity.contacts.fragment.FriendFragment;
+import com.tencent.mobileqq.app.MessageObserver;
 
-class wnm
-  implements Runnable
+public class wnm
+  extends MessageObserver
 {
-  wnm(wnl paramwnl, QQAppInterface paramQQAppInterface) {}
+  private wnm(FriendFragment paramFriendFragment) {}
   
-  public void run()
+  protected void f()
   {
-    QZoneHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "MainAssistObserver");
+    if (FriendFragment.b(this.a)) {
+      FriendFragment.a(this.a, 1400L, true);
+    }
   }
 }
 

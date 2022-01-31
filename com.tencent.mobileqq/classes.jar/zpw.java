@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.app.message.DatalineMessageManager;
-import com.tencent.mobileqq.data.DataLineMsgSet;
+import com.tencent.biz.bmqq.util.BmqqSegmentUtil;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.automator.step.AfterSyncMsg;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class zpw
   implements Runnable
 {
-  public zpw(DatalineMessageManager paramDatalineMessageManager, DataLineMsgSet paramDataLineMsgSet) {}
+  public zpw(AfterSyncMsg paramAfterSyncMsg) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageDatalineMessageManager.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgSet);
+    if (!BmqqSegmentUtil.a.get()) {
+      BmqqSegmentUtil.a(BaseApplicationImpl.getContext());
+    }
   }
 }
 

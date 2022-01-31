@@ -11,8 +11,8 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
 import java.util.zip.GZIPInputStream;
-import kol;
-import kom;
+import knw;
+import knx;
 import org.json.JSONObject;
 
 public class CgiHelper
@@ -113,9 +113,9 @@ public class CgiHelper
   
   public void a(long paramLong, CgiHelper.cigHelperCallback paramcigHelperCallback, HostInterface paramHostInterface)
   {
-    this.jdField_a_of_type_AndroidOsHandler = new kom(this);
+    this.jdField_a_of_type_AndroidOsHandler = new knx(this);
     this.jdField_a_of_type_ComTencentBizNowCgiHelper$cigHelperCallback = paramcigHelperCallback;
-    ThreadManager.executeOnNetWorkThread(new kol(this, paramLong, paramHostInterface));
+    ThreadManager.executeOnNetWorkThread(new knw(this, paramLong, paramHostInterface));
   }
 }
 

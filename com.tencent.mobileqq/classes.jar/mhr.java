@@ -1,13 +1,15 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNavigationAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 
 public class mhr
+  implements Runnable
 {
-  public View a;
-  public TextView a;
+  public mhr(ReadInJoyBaseAdapter paramReadInJoyBaseAdapter) {}
   
-  private mhr(ReadInJoyNavigationAdapter paramReadInJoyNavigationAdapter) {}
+  public void run()
+  {
+    VideoVolumeControl.a().c(false);
+  }
 }
 
 

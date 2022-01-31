@@ -1,13 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfoLoadObserver;
 
 public class ansy
-  implements DialogInterface.OnClickListener
+  extends PtvTemplateManager.DoodleInfoLoadObserver
 {
-  public ansy(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
+  public ansy(EditVideoDoodle paramEditVideoDoodle) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void a()
+  {
+    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
+    this.a.az_();
+  }
 }
 
 

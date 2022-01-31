@@ -1,22 +1,16 @@
-import android.widget.RelativeLayout;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
-import com.tencent.mobileqq.widget.BubbleImageView;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
+import com.tencent.mobileqq.ark.ArkAppInfo.TimeRecord;
 
 public class uuj
-  extends BaseBubbleBuilder.ViewHolder
+  implements Runnable
 {
-  public RelativeLayout a;
-  public URLDrawable a;
-  public BubbleImageView a;
-  public MessageProgressView a;
-  public RelativeLayout b;
-  public int e;
-  public int f;
+  public uuj(ArkAppContainer paramArkAppContainer) {}
   
-  public uuj(FileVideoItemBuilder paramFileVideoItemBuilder) {}
+  public void run()
+  {
+    this.a.a.a();
+    this.a.a.b();
+  }
 }
 
 

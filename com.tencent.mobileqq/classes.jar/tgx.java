@@ -1,12 +1,26 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
+import com.tencent.mobileqq.app.CardObserver;
 
-class tgx
-  implements DialogInterface.OnClickListener
+public class tgx
+  extends CardObserver
 {
-  tgx(tgw paramtgw) {}
+  public tgx(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  protected void g(boolean paramBoolean, Object paramObject)
+  {
+    if (paramBoolean)
+    {
+      this.a.setResult(-1);
+      this.a.b(2131434979);
+    }
+    for (;;)
+    {
+      this.a.a = false;
+      this.a.finish();
+      return;
+      this.a.b(2131434980);
+    }
+  }
 }
 
 

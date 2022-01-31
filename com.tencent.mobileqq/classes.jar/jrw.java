@@ -1,18 +1,44 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
-import com.tencent.av.utils.PstnUtils;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.config.ConfigInfo;
+import com.tencent.av.report.TraeConfigUpdate;
+import com.tencent.av.ui.ConfigInfoTips;
 
-class jrw
-  implements DialogInterface.OnClickListener
+public class jrw
+  extends BroadcastReceiver
 {
-  jrw(jrt paramjrt) {}
+  public jrw(ConfigInfoTips paramConfigInfoTips) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.finish();
-    PstnUtils.a(this.a.a.app, this.a.a, 1, 8);
+    paramContext = paramIntent.getAction();
+    if (paramContext.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_WRITE_CONFIG_INFO_TO_FILE"))
+    {
+      if (!ConfigInfoTips.a(this.a))
+      {
+        ConfigInfoTips.a(this.a, true);
+        if (ConfigInfoTips.b(this.a)) {
+          ConfigInfoTips.a(this.a);
+        }
+      }
+      paramContext = ConfigInfo.instance();
+      if (paramContext != null)
+      {
+        int i = paramContext.getSharpConfigVersionFromFile();
+        TraeConfigUpdate.a().a("update", i);
+      }
+    }
+    do
+    {
+      do
+      {
+        return;
+      } while ((!paramContext.equals("com.tencent.av.ui.ConfigInfoTips.ACTION_IS_GETTED_SHARP_CONFIG_PAYLOAD")) || (ConfigInfoTips.b(this.a)));
+      ConfigInfoTips.b(this.a, true);
+      ConfigInfoTips.a(this.a, paramIntent.getIntExtra("version", 0));
+    } while (!ConfigInfoTips.a(this.a));
+    ConfigInfoTips.a(this.a);
   }
 }
 

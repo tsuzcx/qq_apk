@@ -1,37 +1,93 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.widget.BubblePopupWindow;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.BlockingQueue;
 
 public class akwm
-  implements View.OnLongClickListener
+  extends Handler
 {
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new akwn(this);
-  public BubblePopupWindow a;
-  public String a;
+  private long a = 0L;
   
-  public akwm(QidianProfileCardActivity paramQidianProfileCardActivity)
+  private akwm(Looper paramLooper)
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    super(paramLooper);
   }
   
-  public boolean onLongClick(View paramView)
+  private void a(long paramLong)
   {
-    int i = paramView.getId();
-    this.jdField_a_of_type_JavaLangString = String.valueOf(paramView.getTag());
-    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(i, "复制");
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow = BubbleContextMenu.a(paramView, localQQCustomMenu, this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_ComTencentWidgetBubblePopupWindow.a(new akwo(this));
-    return true;
+    if (QLog.isColorLevel()) {
+      QLog.d("QQToast", 2, "scheduleNextToast to " + paramLong);
+    }
+    removeMessages(1);
+    sendEmptyMessageDelayed(1, paramLong);
+  }
+  
+  private void a(akwl paramakwl)
+  {
+    long l2 = 0L;
+    paramakwl = paramakwl.a();
+    long l1;
+    int i;
+    if (paramakwl != null)
+    {
+      paramakwl.a();
+      if (QQToast.a(paramakwl) == 0)
+      {
+        l1 = 2000L;
+        this.a = (System.currentTimeMillis() + l1);
+        i = 1;
+      }
+    }
+    for (;;)
+    {
+      if (!QQToast.a().isEmpty())
+      {
+        if (i != 0) {
+          l2 = 100L + l1;
+        }
+        a(l2);
+      }
+      return;
+      l1 = 3500L;
+      break;
+      i = 0;
+      l1 = 0L;
+    }
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    long l;
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("QQToast", 2, "MSG_SHOW_TOAST received");
+      }
+      l = System.currentTimeMillis();
+      if (l <= this.a + 100L) {
+        break;
+      }
+      paramMessage = (akwl)QQToast.a().poll();
+      if (paramMessage != null)
+      {
+        a(paramMessage);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.d("QQToast", 2, "MSG_SHOW_TOAST but no message to show");
+    return;
+    a(this.a - l + 100L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akwm
  * JD-Core Version:    0.7.0.1
  */

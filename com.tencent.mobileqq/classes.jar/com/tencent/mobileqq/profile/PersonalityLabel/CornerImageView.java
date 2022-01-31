@@ -11,6 +11,7 @@ import android.graphics.RectF;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import com.tencent.image.URLImageView;
+import com.tencent.util.VersionUtils;
 
 public class CornerImageView
   extends URLImageView
@@ -39,6 +40,13 @@ public class CornerImageView
   public CornerImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
+  }
+  
+  public void a()
+  {
+    if (!VersionUtils.h()) {
+      setLayerType(1, null);
+    }
   }
   
   protected void drawableStateChanged()
@@ -119,11 +127,13 @@ public class CornerImageView
   public void setRadius(float paramFloat)
   {
     this.jdField_a_of_type_ArrayOfFloat = new float[] { paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat, paramFloat };
+    a();
   }
   
   public void setRadius(float[] paramArrayOfFloat)
   {
     this.jdField_a_of_type_ArrayOfFloat = paramArrayOfFloat;
+    a();
   }
 }
 

@@ -1,17 +1,22 @@
-import android.os.Looper;
+import android.text.TextUtils;
+import com.squareup.okhttp.Response;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.DownloadResult.Content;
+import com.tencent.component.network.downloader.handler.ContentHandler;
+import com.tencent.component.network.utils.StringUtil;
+import org.apache.http.HttpResponse;
 
 public final class pjv
+  implements ContentHandler
 {
-  public static final pjw a;
-  
-  static
+  public boolean a(DownloadResult paramDownloadResult, HttpResponse paramHttpResponse, Response paramResponse)
   {
-    if (Looper.getMainLooper() != null) {}
-    for (Looper localLooper = Looper.getMainLooper();; localLooper = Looper.myLooper())
-    {
-      a = new pjw(localLooper);
-      return;
+    paramDownloadResult = paramDownloadResult.getContent().type;
+    if (TextUtils.isEmpty(paramDownloadResult)) {}
+    while (!StringUtil.a(paramDownloadResult, "image")) {
+      return false;
     }
+    return true;
   }
 }
 

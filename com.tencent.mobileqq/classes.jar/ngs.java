@@ -1,27 +1,32 @@
-import android.os.Bundle;
-import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.newshare.job.AddPollViewJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.AssertUtils;
 
 public class ngs
-  implements BusinessObserver
+  extends AddPollViewJob
 {
-  public ngs(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
-  
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public ngs(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem, ShareSinaData paramShareSinaData)
   {
-    if (paramBoolean) {}
-    try
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    String str = (String)a("result");
+    AssertUtils.a(str);
+    AssertUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d == null)
     {
-      paramBundle = paramBundle.getByteArray("data");
-      this.a.a(paramBundle);
-      return;
+      this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d = "";
+      SLog.c(this.b, "imageLocalPath is null", new Throwable());
     }
-    catch (Exception paramBundle)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("Q.qqstory.search", 2, QLog.getStackTraceString(paramBundle));
-    }
+    a("DownloadPic2FileJob_iiu", str);
+    a("DownloadPic2FileJob_isfp", this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
+    a("DownloadPic2FileJob_IN_ROUND", Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.a));
+    return true;
   }
 }
 

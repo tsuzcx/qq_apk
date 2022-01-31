@@ -1,17 +1,15 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell;
-import com.tencent.widget.KandianPopupWindow.OnUninterestConfirmListener;
-import java.util.ArrayList;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 
-public class lsz
-  implements KandianPopupWindow.OnUninterestConfirmListener
+class lsz
+  implements Runnable
 {
-  public lsz(FeedItemCell paramFeedItemCell) {}
+  lsz(lsy paramlsy) {}
   
-  public void a(View paramView, int paramInt, ArrayList paramArrayList, Object paramObject)
+  public void run()
   {
-    FeedItemCell.a(this.a, (IReadInJoyModel)this.a.a, paramInt, paramArrayList, paramObject);
+    ReadInJoyLogicEngine.a().a((int)OnTopicRecommendHeaderFollowClickListener.a(this.a.a).businessId, 0);
   }
 }
 

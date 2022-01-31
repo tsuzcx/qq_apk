@@ -1,25 +1,21 @@
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
-import com.tencent.mobileqq.activity.aio.photo.AIORichMediaData;
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack.Stub;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.item.ThumbItemBuilder;
 
-class viz
-  extends IAIOImageProviderCallBack.Stub
+public class viz
+  extends Handler
 {
-  viz(viy paramviy) {}
-  
-  public void a(long paramLong1, int paramInt1, int paramInt2, int paramInt3, long paramLong2, boolean paramBoolean)
+  public viz(ThumbItemBuilder paramThumbItemBuilder, Looper paramLooper)
   {
-    this.a.a.runOnUiThread(new vjb(this, paramLong1, paramInt1, paramInt2, paramInt3, paramLong2, paramBoolean));
+    super(paramLooper);
   }
   
-  public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString, boolean paramBoolean)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.a.runOnUiThread(new vja(this, paramBoolean, paramLong, paramInt1, paramInt2, paramInt3, paramString));
-  }
-  
-  public void a(AIORichMediaData[] paramArrayOfAIORichMediaData, int paramInt)
-  {
-    this.a.a.runOnUiThread(new vjc(this, paramArrayOfAIORichMediaData, paramInt));
+    if (paramMessage.what == ThumbItemBuilder.a) {
+      this.a.b();
+    }
   }
 }
 

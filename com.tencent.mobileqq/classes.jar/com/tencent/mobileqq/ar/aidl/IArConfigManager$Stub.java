@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.ar.aidl;
 
+import aaeq;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import zzw;
 
 public abstract class IArConfigManager$Stub
   extends Binder
@@ -25,7 +25,7 @@ public abstract class IArConfigManager$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IArConfigManager))) {
       return (IArConfigManager)localIInterface;
     }
-    return new zzw(paramIBinder);
+    return new aaeq(paramIBinder);
   }
   
   public IBinder asBinder()

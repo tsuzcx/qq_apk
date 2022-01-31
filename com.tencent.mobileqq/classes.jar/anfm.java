@@ -1,21 +1,18 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload;
-import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoHallowenUpload.Listener;
+import cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask;
 
 public class anfm
   implements Runnable
 {
-  public anfm(EditWebVideoHallowenUpload paramEditWebVideoHallowenUpload) {}
+  public anfm(TroopHomeworkHelper.UploadFileTask paramUploadFileTask) {}
   
   public void run()
   {
-    if (EditWebVideoHallowenUpload.a(this.a) != null) {
-      EditWebVideoHallowenUpload.a(this.a).b();
-    }
+    this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfm
  * JD-Core Version:    0.7.0.1
  */

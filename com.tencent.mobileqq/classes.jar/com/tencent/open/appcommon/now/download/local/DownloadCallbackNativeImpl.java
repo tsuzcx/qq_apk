@@ -1,6 +1,6 @@
 package com.tencent.open.appcommon.now.download.local;
 
-import akpj;
+import alez;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.open.appcommon.now.download.DownloadCenterImpl;
@@ -28,7 +28,7 @@ public class DownloadCallbackNativeImpl
   
   public void a(int paramInt)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new akpj(this, paramInt), 3000L);
+    ThreadManager.getSubThreadHandler().postDelayed(new alez(this, paramInt), 3000L);
   }
   
   public void a(DownloadNativeApi.IDownloadObserver paramIDownloadObserver)

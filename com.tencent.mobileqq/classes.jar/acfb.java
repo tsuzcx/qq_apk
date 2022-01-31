@@ -1,36 +1,17 @@
-import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.EmoticonHandler;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
 
 public class acfb
-  extends FMObserver
+  implements Runnable
 {
-  public acfb(VerifyPwdView paramVerifyPwdView) {}
+  public acfb(EmoticonMainPanel paramEmoticonMainPanel, EmoticonHandler paramEmoticonHandler, SharedPreferences paramSharedPreferences) {}
   
-  protected void a(int paramInt, String paramString)
+  public void run()
   {
-    FMToastUtil.a(paramString);
-  }
-  
-  protected void a(boolean paramBoolean)
-  {
-    if (!paramBoolean)
-    {
-      VerifyPwdView.a(this.a);
-      return;
-    }
-    VerifyPwdView.b(this.a);
-  }
-  
-  protected void b(int paramInt, String paramString)
-  {
-    FMToastUtil.a(paramString);
-    VerifyPwdView.c(this.a);
-  }
-  
-  protected void e()
-  {
-    VerifyPwdView.a(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqAppEmoticonHandler.c();
+    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("lastRequestTime", System.currentTimeMillis()).apply();
   }
 }
 

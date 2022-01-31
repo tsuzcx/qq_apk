@@ -1,22 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.AlbumUtil;
-
 public class wsx
-  implements View.OnClickListener
 {
-  public wsx(CameraPreviewActivity paramCameraPreviewActivity) {}
-  
-  public void onClick(View paramView)
-  {
-    if (this.a.b) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
-    }
-    this.a.finish();
-    AlbumUtil.a(this.a, true, false);
-  }
+  public int a;
+  public int b;
+  public int c;
+  public int d;
+  public int e;
+  public int f;
+  public int g = 600;
 }
 
 

@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.ptt.LSRecordPanel;
+import com.tencent.mobileqq.ar.arengine.ARCloudLBSLocationCheckResult;
+import com.tencent.mobileqq.ar.model.ArLBSActivity;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 public class agfa
   implements Runnable
 {
-  public agfa(LSRecordPanel paramLSRecordPanel) {}
+  public agfa(ScanTorchActivity paramScanTorchActivity, ARCloudLBSLocationCheckResult paramARCloudLBSLocationCheckResult, ArLBSActivity paramArLBSActivity) {}
   
   public void run()
   {
-    LSRecordPanel.b(this.a, false);
-    LSRecordPanel.a(this.a, "亲们，QQ没有使用麦克风权限呢");
-    LSRecordPanel.b(this.a, false);
+    ScanTorchActivity.a(this.jdField_a_of_type_ComTencentMobileqqOlympicActivityScanTorchActivity, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudLBSLocationCheckResult, this.jdField_a_of_type_ComTencentMobileqqArModelArLBSActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agfa
  * JD-Core Version:    0.7.0.1
  */

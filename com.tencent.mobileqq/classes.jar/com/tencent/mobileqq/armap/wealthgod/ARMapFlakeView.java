@@ -22,9 +22,9 @@ public class ARMapFlakeView
   Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   boolean jdField_a_of_type_Boolean = true;
-  int[] jdField_a_of_type_ArrayOfInt = { 2130842530, 2130842531, 2130842528, 2130842529 };
+  int[] jdField_a_of_type_ArrayOfInt = { 2130842622, 2130842623, 2130842620, 2130842621 };
   Bitmap[] jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = { null, null, null, null };
-  int jdField_b_of_type_Int = 2130842230;
+  int jdField_b_of_type_Int = 2130842277;
   long jdField_b_of_type_Long;
   int jdField_c_of_type_Int = 0;
   private long jdField_c_of_type_Long = 1200L;

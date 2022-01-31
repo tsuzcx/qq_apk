@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.activity.richmedia.view.CameraFilterGLView;
+import com.tencent.mobileqq.activity.richmedia.SaveVideoActivity;
 
 public class xtz
   implements Runnable
 {
-  public xtz(CameraFilterGLView paramCameraFilterGLView) {}
+  public xtz(SaveVideoActivity paramSaveVideoActivity, String paramString) {}
   
   public void run()
   {
-    if ((!CameraFilterGLView.a(this.a).a) || (CameraFilterGLView.a(this.a).a == 0)) {
-      return;
-    }
-    CameraFilterGLView.a(this.a).b = true;
-    CameraFilterGLView.a(this.a).c = false;
+    SaveVideoActivity.a(SaveVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSaveVideoActivity), SaveVideoActivity.a(SaveVideoActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSaveVideoActivity), this.jdField_a_of_type_JavaLangString));
   }
 }
 

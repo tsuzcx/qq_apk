@@ -1,32 +1,29 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import android.os.Message;
+import com.tencent.mobileqq.activity.ChatSettingActivity;
+import mqq.os.MqqHandler;
 
 public class sca
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public sca(ChatSettingForTroop paramChatSettingForTroop, ImageView paramImageView) {}
+  public sca(ChatSettingActivity paramChatSettingActivity, StringBuilder paramStringBuilder) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    int i;
-    if (paramMotionEvent.getAction() == 0)
+    Message localMessage = null;
+    Object localObject = localMessage;
+    if (this.jdField_a_of_type_JavaLangStringBuilder != null)
     {
-      i = 1;
-      paramView = this.jdField_a_of_type_AndroidWidgetImageView;
-      if (i == 0) {
-        break label36;
+      localObject = localMessage;
+      if (this.jdField_a_of_type_JavaLangStringBuilder.length() > 0) {
+        localObject = this.jdField_a_of_type_JavaLangStringBuilder.toString();
       }
     }
-    label36:
-    for (float f = 0.5F;; f = 1.0F)
+    if (ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, ChatSettingActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity), this.jdField_a_of_type_JavaLangStringBuilder) > 0)
     {
-      paramView.setAlpha(f);
-      return false;
-      i = 0;
-      break;
+      localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.a.obtainMessage();
+      localMessage.what = 18;
+      localMessage.obj = localObject;
+      localMessage.sendToTarget();
     }
   }
 }

@@ -1,41 +1,29 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageForMixedMsg;
+import com.tencent.mobileqq.mixedmsg.MixedMsgManager;
 
-class aehh
-  implements VideoCompositeHelper.VideoCompositeCallBack
+public class aehh
+  extends MessageObserver
 {
-  aehh(aehg paramaehg, PublishVideoEntry paramPublishVideoEntry) {}
+  public aehh(MixedMsgManager paramMixedMsgManager, QQAppInterface paramQQAppInterface, String paramString, int paramInt, MessageForMixedMsg paramMessageForMixedMsg) {}
   
-  public void a(int paramInt, String paramString1, String paramString2)
+  protected void a(boolean paramBoolean, MessageObserver.StatictisInfo paramStatictisInfo)
   {
-    if (paramInt != 0)
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.uniseq, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg.msgData);
+    if (paramBoolean)
     {
-      QLog.e("PublishActivity", 1, "composite video error! err=" + paramInt + " msg=" + paramString1);
+      MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, false);
       return;
     }
-    paramString1 = QQStoryContext.a().a().createEntityManager();
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.mLocalRawVideoDir = paramString2;
-    this.jdField_a_of_type_Aehg.a.a.a = paramString2;
-    this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.setStatus(1001);
-    paramString1.a(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-    if (!this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry.mLocalRawVideoDir.equals(SmallVideoSendFragment.a(this.jdField_a_of_type_Aehg.a).j)) {
-      FileUtils.a(SmallVideoSendFragment.a(this.jdField_a_of_type_Aehg.a).j, false);
-    }
-    ThreadManager.getUIHandler().post(new aehi(this));
+    MixedMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqMixedmsgMixedMsgManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageForMixedMsg, false, "send Msg fail : errCode = " + paramStatictisInfo.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aehh
  * JD-Core Version:    0.7.0.1
  */

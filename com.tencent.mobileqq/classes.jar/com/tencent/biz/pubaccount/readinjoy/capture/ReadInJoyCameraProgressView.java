@@ -10,9 +10,9 @@ import android.util.AttributeSet;
 import android.view.View;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.ArrayList;
-import lhy;
-import lhz;
-import lia;
+import lho;
+import lhp;
+import lhq;
 
 public class ReadInJoyCameraProgressView
   extends View
@@ -65,7 +65,7 @@ public class ReadInJoyCameraProgressView
       this.jdField_a_of_type_Float = f;
       this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
       if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.post(new lhy(this));
+        this.jdField_a_of_type_AndroidOsHandler.post(new lho(this));
       }
       return;
     }
@@ -93,7 +93,7 @@ public class ReadInJoyCameraProgressView
         if (this.jdField_a_of_type_AndroidOsHandler == null) {
           break label94;
         }
-        this.jdField_a_of_type_AndroidOsHandler.post(new lhz(this));
+        this.jdField_a_of_type_AndroidOsHandler.post(new lhp(this));
         return;
         f1 = f2;
         break;
@@ -159,7 +159,7 @@ public class ReadInJoyCameraProgressView
       if (this.jdField_a_of_type_AndroidOsHandler == null) {
         break;
       }
-      this.jdField_a_of_type_AndroidOsHandler.post(new lia(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new lhq(this));
       return;
       f = this.jdField_a_of_type_Float;
     }

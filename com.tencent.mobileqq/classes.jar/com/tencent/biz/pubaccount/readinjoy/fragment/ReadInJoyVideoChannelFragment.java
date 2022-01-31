@@ -20,7 +20,7 @@ import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.readinjoy.ReadInJoyHelper;
-import loc;
+import lob;
 
 public class ReadInJoyVideoChannelFragment
   extends ReadInJoyBaseFragment
@@ -203,7 +203,7 @@ public class ReadInJoyVideoChannelFragment
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController != null) {
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyChannelViewController.a(true);
     }
-    ThreadManager.executeOnSubThread(new loc(this));
+    ThreadManager.executeOnSubThread(new lob(this));
   }
   
   public void d()

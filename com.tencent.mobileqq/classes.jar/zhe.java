@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.app.QIMNewFriendManager;
-import com.tencent.mobileqq.data.QIMNotifyAddFriend;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.MessageRoamManager;
 
 public class zhe
-  implements Comparator
+  implements Runnable
 {
-  public zhe(QIMNewFriendManager paramQIMNewFriendManager) {}
+  public zhe(MessageRoamManager paramMessageRoamManager) {}
   
-  public int a(QIMNotifyAddFriend paramQIMNotifyAddFriend1, QIMNotifyAddFriend paramQIMNotifyAddFriend2)
+  public void run()
   {
-    return (int)(paramQIMNotifyAddFriend2.pushTime - paramQIMNotifyAddFriend1.pushTime);
+    this.a.n();
   }
 }
 

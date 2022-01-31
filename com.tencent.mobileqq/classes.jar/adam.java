@@ -1,31 +1,23 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.dataline.core.DirectForwarder;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.filemanager.data.FileInfo;
 
-class adam
-  implements FMDialogUtil.FMDialogInterface
+public final class adam
+  implements Parcelable.Creator
 {
-  adam(adal paramadal) {}
-  
-  public void a()
+  public FileInfo a(Parcel paramParcel)
   {
-    DirectForwarder.b(this.a.a.jdField_a_of_type_AndroidAppActivity, 0);
-    this.a.a.jdField_a_of_type_AndroidContentIntent.putExtra("NOCANCEL4DATALIN", true);
-    this.a.a.jdField_a_of_type_AndroidAppActivity.setResult(0, this.a.a.jdField_a_of_type_AndroidContentIntent);
-    this.a.a.jdField_a_of_type_AndroidAppActivity.finish();
+    return new FileInfo(paramParcel, null);
   }
   
-  public void b()
+  public FileInfo[] a(int paramInt)
   {
-    this.a.a.jdField_a_of_type_AndroidAppActivity.setResult(0, this.a.a.jdField_a_of_type_AndroidContentIntent);
-    this.a.a.jdField_a_of_type_AndroidAppActivity.finish();
+    return new FileInfo[paramInt];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adam
  * JD-Core Version:    0.7.0.1
  */

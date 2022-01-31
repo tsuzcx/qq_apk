@@ -1,30 +1,68 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.DeviceTextItemBuilder;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
 
 public class utb
-  extends ClickableSpan
 {
-  public utb(DeviceTextItemBuilder paramDeviceTextItemBuilder) {}
+  public uta a = new uta();
+  public uta b = new uta();
+  public uta c = new uta();
+  public uta d = new uta();
   
-  public void onClick(View paramView)
+  public void a()
   {
-    if (!NetworkUtil.d(this.a.a))
+    this.a.a(this.b);
+    this.c.a(this.d);
+    this.b.a(this.d);
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
+  {
+    this.a.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    this.b.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    this.c.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+  }
+  
+  public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, boolean paramBoolean)
+  {
+    if (paramBoolean)
     {
-      QQToast.a(this.a.a, "当前网络连接不可用，请确认后再使用", 2000).a();
+      this.a.a(this.b);
+      this.c.a(this.d);
+      this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
+      this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
       return;
     }
-    paramView = new Intent();
-    paramView.setFlags(268435456);
-    paramView.setAction("android.intent.action.VIEW");
-    paramView.putExtra("devlock_open_source", "SmartDeviceMsg");
-    paramView.setData(Uri.parse("mqqdevlock://devlock/open?"));
-    this.a.a.startActivity(paramView);
+    this.b.a((this.c.jdField_a_of_type_Float + paramFloat1) / 2.0F, (this.c.b + paramFloat2) / 2.0F, (this.c.c + paramFloat3) / 2.0F, (this.c.jdField_a_of_type_Long + paramLong) / 2L);
+    this.d.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+  }
+  
+  public void a(utb paramutb)
+  {
+    this.a.a(paramutb.a);
+    this.b.a(paramutb.b);
+    this.c.a(paramutb.c);
+    this.d.a(paramutb.d);
+  }
+  
+  public void b(utb paramutb)
+  {
+    if (paramutb.d == this.c)
+    {
+      this.a = paramutb.a;
+      this.c = paramutb.c;
+      this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
+    }
+    do
+    {
+      return;
+      if (this.d == paramutb.c)
+      {
+        this.d.a(paramutb.d);
+        this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
+        return;
+      }
+    } while (!QLog.isColorLevel());
+    QLog.e("TransPathJob", 2, "TransPathJob merge point error");
   }
 }
 

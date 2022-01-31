@@ -12,7 +12,7 @@ public final class e_nagative_fb_type
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aac.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_DROPLIST.e_nagative_fb_type
  * JD-Core Version:    0.7.0.1
  */

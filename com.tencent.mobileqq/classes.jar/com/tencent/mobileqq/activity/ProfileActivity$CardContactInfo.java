@@ -3,12 +3,12 @@ package com.tencent.mobileqq.activity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import tdl;
+import tgl;
 
 public class ProfileActivity$CardContactInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new tdl();
+  public static final Parcelable.Creator CREATOR = new tgl();
   public String a;
   public String b;
   public String c;

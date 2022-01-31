@@ -1,22 +1,21 @@
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
+import com.tencent.mobileqq.data.ApolloActionData;
+import java.util.Comparator;
 
 public class yvy
-  implements Runnable
+  implements Comparator
 {
-  public yvy(ApolloPanel paramApolloPanel) {}
+  public yvy(ApolloDaoManager paramApolloDaoManager) {}
   
-  public void run()
+  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
   {
-    try
-    {
-      this.a.e();
-      return;
+    if (paramApolloActionData2.version == paramApolloActionData1.version) {
+      return 0;
     }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("ApolloPanel", 1, "[reportTabExposure] failed, excetion2=", localThrowable);
+    if (paramApolloActionData2.version > paramApolloActionData1.version) {
+      return 1;
     }
+    return -1;
   }
 }
 

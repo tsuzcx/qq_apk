@@ -36,11 +36,11 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.InputStream;
 import org.xmlpull.v1.XmlPullParser;
-import zrj;
-import zrk;
-import zrl;
-import zrm;
-import zro;
+import zup;
+import zuq;
+import zur;
+import zus;
+import zuu;
 
 public class MsgNotifyPushDialog
   extends Dialog
@@ -102,8 +102,8 @@ public class MsgNotifyPushDialog
   @TargetApi(14)
   public MsgNotifyPushDialog(Context paramContext)
   {
-    super(paramContext, 2131624515);
-    super.getWindow().setWindowAnimations(2131624571);
+    super(paramContext, 2131624516);
+    super.getWindow().setWindowAnimations(2131624572);
     if (Build.VERSION.SDK_INT >= 14) {
       getWindow().setDimAmount(0.5F);
     }
@@ -380,7 +380,7 @@ public class MsgNotifyPushDialog
     jdField_a_of_type_ComTencentMobileqqVipDownloadTask.l = true;
     paramQQAppInterface = ((DownloaderFactory)paramQQAppInterface.getManager(46)).a(1);
     QLog.d(jdField_a_of_type_JavaLangString, 1, "start download ");
-    paramQQAppInterface.a(jdField_a_of_type_ComTencentMobileqqVipDownloadTask, new zro(str), null);
+    paramQQAppInterface.a(jdField_a_of_type_ComTencentMobileqqVipDownloadTask, new zuu(str), null);
     return false;
   }
   
@@ -389,11 +389,11 @@ public class MsgNotifyPushDialog
   {
     super.onCreate(paramBundle);
     super.setContentView(2130968857);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364054));
-    paramBundle = (TextView)findViewById(2131364010);
-    TextView localTextView = (TextView)findViewById(2131364055);
-    Button localButton = (Button)findViewById(2131364056);
-    ImageView localImageView = (ImageView)findViewById(2131363954);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131364078));
+    paramBundle = (TextView)findViewById(2131364034);
+    TextView localTextView = (TextView)findViewById(2131364079);
+    Button localButton = (Button)findViewById(2131364080);
+    ImageView localImageView = (ImageView)findViewById(2131363978);
     try
     {
       Bitmap localBitmap = BitmapFactory.decodeFile(String.format(jdField_c_of_type_JavaLangString + jdField_e_of_type_JavaLangString, new Object[] { Integer.valueOf(0) }));
@@ -401,9 +401,9 @@ public class MsgNotifyPushDialog
       paramBundle.setText(h);
       localTextView.setText(i);
       localButton.setText("马上设置");
-      localButton.setOnClickListener(new zrj(this));
-      localImageView.setOnClickListener(new zrk(this));
-      localImageView.setOnTouchListener(new zrl(this, localImageView));
+      localButton.setOnClickListener(new zup(this));
+      localImageView.setOnClickListener(new zuq(this));
+      localImageView.setOnTouchListener(new zur(this, localImageView));
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -419,7 +419,7 @@ public class MsgNotifyPushDialog
   {
     super.onWindowFocusChanged(paramBoolean);
     if (!this.jdField_e_of_type_Boolean) {
-      ThreadManager.post(new zrm(this), 10, null, true);
+      ThreadManager.post(new zus(this), 10, null, true);
     }
   }
 }

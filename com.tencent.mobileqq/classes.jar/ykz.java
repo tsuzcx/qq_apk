@@ -1,15 +1,19 @@
-import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.AioPushData;
+import android.view.View;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.apollo.ApolloRender;
 
 public final class ykz
   implements Runnable
 {
-  public ykz(AioPushData paramAioPushData, QQAppInterface paramQQAppInterface) {}
+  public ykz(ApolloRender paramApolloRender, View paramView, int paramInt) {}
   
   public void run()
   {
-    HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqDataAioPushData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.showAtLocation(this.jdField_a_of_type_AndroidViewView.getRootView(), 0, 0, this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.update(0, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getWidth(), this.jdField_a_of_type_ComTencentMobileqqApolloApolloRender.mEditWindow.getHeight());
   }
 }
 

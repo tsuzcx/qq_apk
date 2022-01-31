@@ -14,8 +14,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
 import java.util.Set;
-import kii;
-import kij;
+import kht;
+import khu;
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.StatusLine;
@@ -27,7 +27,7 @@ import org.apache.http.params.HttpConnectionParams;
 public class BaseDownloadAsyncTask
   extends AsyncTask
 {
-  private static final Handler jdField_a_of_type_AndroidOsHandler = new kij(null);
+  private static final Handler jdField_a_of_type_AndroidOsHandler = new khu(null);
   private String jdField_a_of_type_JavaLangString = BaseDownloadAsyncTask.class.getSimpleName();
   private HttpClient jdField_a_of_type_OrgApacheHttpClientHttpClient;
   boolean jdField_a_of_type_Boolean = false;
@@ -223,7 +223,7 @@ public class BaseDownloadAsyncTask
       localDownloadParams.jdField_a_of_type_ComTencentAvUtilsDownloadDownloadResult.jdField_b_of_type_Int = (localDownloadParams.jdField_a_of_type_Int - n);
       paramVarArgs = paramVarArgs + localDownloadParams.toString() + ", ";
       b(localDownloadParams);
-      jdField_a_of_type_AndroidOsHandler.obtainMessage(1, new kii(this, new DownloadParams[] { localDownloadParams })).sendToTarget();
+      jdField_a_of_type_AndroidOsHandler.obtainMessage(1, new kht(this, new DownloadParams[] { localDownloadParams })).sendToTarget();
       i = m;
       m = k;
       break;

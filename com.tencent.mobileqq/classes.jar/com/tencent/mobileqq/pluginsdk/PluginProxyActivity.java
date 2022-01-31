@@ -1301,20 +1301,17 @@ public abstract class PluginProxyActivity
       if (this.mPluginActivity != null) {
         this.mPluginActivity.IOnResume();
       }
-      if (enablePatternLock())
-      {
-        mAppForground = a(this);
-        if ((!mAppForground) && (!TextUtils.isEmpty(g)) && (isPatternLockOpened()) && (this.h)) {
-          startUnlockActivity(true);
-        }
-        if (!mAppForground)
-        {
-          mAppForground = true;
-          a(this, mAppForground);
-        }
-        this.mStopFlag = 0;
-        this.h = true;
+      mAppForground = a(this);
+      if ((enablePatternLock()) && (!mAppForground) && (!TextUtils.isEmpty(g)) && (isPatternLockOpened()) && (this.h)) {
+        startUnlockActivity(true);
       }
+      if (!mAppForground)
+      {
+        mAppForground = true;
+        a(this, mAppForground);
+      }
+      this.mStopFlag = 0;
+      this.h = true;
       if ((this.mPluginID != null) && (!this.mPluginID.equals("BuscardPlugin.apk"))) {}
       try
       {
@@ -1382,13 +1379,10 @@ public abstract class PluginProxyActivity
       this.mPluginActivity.IOnStop();
     }
     mAppForground = d();
-    if (enablePatternLock())
-    {
-      if (!mAppForground) {
-        a(this, mAppForground);
-      }
-      this.mStopFlag = 1;
+    if (!mAppForground) {
+      a(this, mAppForground);
     }
+    this.mStopFlag = 1;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)

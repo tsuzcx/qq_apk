@@ -1,20 +1,17 @@
-import java.util.List;
+import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoryDataPuller;
+import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
 
 public class nss
+  implements QQStoryPullToRefreshListView.PullToRefreshListener
 {
-  int jdField_a_of_type_Int;
-  String jdField_a_of_type_JavaLangString;
-  List jdField_a_of_type_JavaUtilList;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  public nss(StoryPickerFragment paramStoryPickerFragment) {}
   
-  public nss(boolean paramBoolean1, List paramList, int paramInt, boolean paramBoolean2, String paramString)
+  public void a()
   {
-    this.jdField_a_of_type_Boolean = paramBoolean1;
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Int = paramInt;
-    this.b = paramBoolean2;
-    this.jdField_a_of_type_JavaLangString = paramString;
+    if (this.a.a != null) {
+      this.a.a.d();
+    }
   }
 }
 

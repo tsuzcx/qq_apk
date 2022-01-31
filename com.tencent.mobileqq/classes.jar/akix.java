@@ -1,20 +1,32 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.TipsBar;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.qphone.base.util.QLog;
 
 public class akix
-  implements View.OnClickListener
+  extends Handler
 {
-  public akix(TipsBar paramTipsBar) {}
+  public akix(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public void onClick(View paramView)
+  public void handleMessage(Message paramMessage)
   {
-    this.a.removeAllViews();
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 0: 
+      QLog.d("HealthBusinessPlugin", 1, "plugin success");
+      return;
+    case 1: 
+      QLog.d("HealthBusinessPlugin", 1, "plugin fail");
+      return;
+    }
+    QLog.d("HealthBusinessPlugin", 1, String.format("plugin install %d", new Object[] { Integer.valueOf(this.a.c) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akix
  * JD-Core Version:    0.7.0.1
  */

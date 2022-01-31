@@ -1,24 +1,35 @@
-import android.view.MotionEvent;
+import android.database.DataSetObserver;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.app.FrameHelperActivity;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
 
 public class syp
-  implements View.OnTouchListener
+  extends DataSetObserver
 {
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public syp(LebaListMgrActivity paramLebaListMgrActivity) {}
+  
+  public void onChanged()
   {
-    switch (paramMotionEvent.getActionMasked())
+    int j = 0;
+    Object localObject = LebaListMgrActivity.a(this.a);
+    if (LebaListMgrActivity.a(this.a).getCount() > 0)
     {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      FrameHelperActivity.b(false);
-      return false;
+      i = 0;
+      ((TextView)localObject).setVisibility(i);
+      localObject = LebaListMgrActivity.a(this.a);
+      if (LebaListMgrActivity.a(this.a).a() <= 0) {
+        break label65;
+      }
     }
-    FrameHelperActivity.b(true);
-    return false;
+    label65:
+    for (int i = j;; i = 8)
+    {
+      ((View)localObject).setVisibility(i);
+      return;
+      i = 8;
+      break;
+    }
   }
 }
 

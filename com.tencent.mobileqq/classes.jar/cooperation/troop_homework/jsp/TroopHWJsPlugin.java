@@ -1,11 +1,5 @@
 package cooperation.troop_homework.jsp;
 
-import ampm;
-import ampn;
-import ampo;
-import ampp;
-import ampq;
-import ampr;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
@@ -17,6 +11,12 @@ import android.os.Handler;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import anfr;
+import anfs;
+import anft;
+import anfu;
+import anfv;
+import anfw;
 import com.tencent.av.camera.QavCameraUsage;
 import com.tencent.biz.troop.TroopMemberApiClient;
 import com.tencent.biz.troop.TroopMemberApiClient.Callback;
@@ -60,7 +60,7 @@ public class TroopHWJsPlugin
 {
   public static final String a;
   int jdField_a_of_type_Int = 540;
-  private Handler jdField_a_of_type_AndroidOsHandler = new ampn(this);
+  private Handler jdField_a_of_type_AndroidOsHandler = new anfs(this);
   TroopMemberApiClient jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
   ActionSheet jdField_a_of_type_ComTencentWidgetActionSheet = null;
   private TroopHWFileDownloadManager jdField_a_of_type_CooperationTroop_homeworkJspTroopHWFileDownloadManager;
@@ -1197,7 +1197,7 @@ public class TroopHWJsPlugin
       localBaseApplication = BaseApplicationImpl.getContext();
       localObject = new File(AppConstants.aP);
       if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs())) {
-        QQToast.a(localBaseApplication, 2131434753, 0).a();
+        QQToast.a(localBaseApplication, 2131434770, 0).a();
       }
       str = AppConstants.aP + System.currentTimeMillis() + ".jpg";
       localObject = Uri.fromFile(new File(str));
@@ -1214,7 +1214,7 @@ public class TroopHWJsPlugin
     catch (Exception paramActivity)
     {
       paramActivity.printStackTrace();
-      QQToast.a(localBaseApplication, 2131434776, 0).a();
+      QQToast.a(localBaseApplication, 2131434793, 0).a();
     }
     return str;
   }
@@ -1429,21 +1429,21 @@ public class TroopHWJsPlugin
       return;
     }
     ActionSheet localActionSheet = ActionSheet.a(this.mRuntime.a());
-    localActionSheet.a(2131436141, 1);
-    localActionSheet.a(2131436143, 1);
-    localActionSheet.c(2131432998);
-    localActionSheet.a(new ampm(this, paramInt, localActionSheet));
+    localActionSheet.a(2131436158, 1);
+    localActionSheet.a(2131436160, 1);
+    localActionSheet.c(2131433015);
+    localActionSheet.a(new anfr(this, paramInt, localActionSheet));
     localActionSheet.show();
     this.jdField_a_of_type_ComTencentWidgetActionSheet = localActionSheet;
   }
   
-  public TroopHWJsPlugin.UploadMediaEntry a(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt1, String paramString, Bitmap paramBitmap, ampr paramampr, int paramInt2)
+  public TroopHWJsPlugin.UploadMediaEntry a(TroopHWJsPlugin paramTroopHWJsPlugin, int paramInt1, String paramString, Bitmap paramBitmap, anfw paramanfw, int paramInt2)
   {
     paramTroopHWJsPlugin.getClass();
     TroopHWJsPlugin.UploadMediaEntry localUploadMediaEntry = new TroopHWJsPlugin.UploadMediaEntry(paramTroopHWJsPlugin);
     localUploadMediaEntry.jdField_a_of_type_Int = paramInt1;
-    localUploadMediaEntry.jdField_a_of_type_Ampr = paramampr;
-    localUploadMediaEntry.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask = new TroopHomeworkHelper.UploadFileTask(paramTroopHWJsPlugin.mRuntime.a(), paramString, paramampr.jdField_b_of_type_JavaLangString);
+    localUploadMediaEntry.jdField_a_of_type_Anfw = paramanfw;
+    localUploadMediaEntry.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask = new TroopHomeworkHelper.UploadFileTask(paramTroopHWJsPlugin.mRuntime.a(), paramString, paramanfw.jdField_b_of_type_JavaLangString);
     localUploadMediaEntry.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a(localUploadMediaEntry.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadCallback);
     localUploadMediaEntry.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
     localUploadMediaEntry.jdField_b_of_type_JavaLangString = paramString;
@@ -1593,7 +1593,7 @@ public class TroopHWJsPlugin
       callJs(this.jdField_b_of_type_JavaLangString, new String[] { localJSONObject.toString() });
       this.jdField_d_of_type_Int += 1;
       if (this.jdField_b_of_type_Boolean) {
-        ThreadManager.post(new ampo(this, paramString), 2, null, false);
+        ThreadManager.post(new anft(this, paramString), 2, null, false);
       }
       return;
     }
@@ -2188,12 +2188,12 @@ public class TroopHWJsPlugin
     //   1057: aload 4
     //   1059: invokevirtual 681	java/lang/String:equals	(Ljava/lang/Object;)Z
     //   1062: ifeq +25 -> 1087
-    //   1065: new 945	ampl
+    //   1065: new 945	anfq
     //   1068: dup
     //   1069: aload_0
     //   1070: aload_2
     //   1071: invokestatic 948	com/tencent/mobileqq/transfile/AbsDownloader:d	(Ljava/lang/String;)Ljava/lang/String;
-    //   1074: invokespecial 949	ampl:<init>	(Lcooperation/troop_homework/jsp/TroopHWJsPlugin;Ljava/lang/String;)V
+    //   1074: invokespecial 949	anfq:<init>	(Lcooperation/troop_homework/jsp/TroopHWJsPlugin;Ljava/lang/String;)V
     //   1077: bipush 8
     //   1079: aconst_null
     //   1080: iconst_0
@@ -2959,8 +2959,8 @@ public class TroopHWJsPlugin
               for (paramIntent = "";; paramIntent = paramIntent.getStringExtra("localPath"))
               {
                 this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_d_of_type_Int), paramIntent);
-                localObject1 = new ampr(this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString);
-                paramIntent = a(this, this.jdField_d_of_type_Int, paramIntent, null, (ampr)localObject1, 0);
+                localObject1 = new anfw(this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString);
+                paramIntent = a(this, this.jdField_d_of_type_Int, paramIntent, null, (anfw)localObject1, 0);
                 this.jdField_b_of_type_JavaUtilHashMap.put(Integer.valueOf(this.jdField_d_of_type_Int), paramIntent);
                 paramIntent.jdField_a_of_type_CooperationTroop_homeworkTroopHomeworkHelper$UploadFileTask.a();
                 this.jdField_d_of_type_Int += 1;
@@ -3056,7 +3056,7 @@ public class TroopHWJsPlugin
           } while (!QLog.isColorLevel());
           QLog.w("TroopHWJsPlugin", 2, "mJsCallback == " + this.jdField_b_of_type_JavaLangString + ", mTroopUin == " + this.jdField_e_of_type_JavaLangString);
           return;
-          ThreadManager.postImmediately(new ampq(this, new ampr(this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString), localHashMap2), null, false);
+          ThreadManager.postImmediately(new anfv(this, new anfw(this.jdField_b_of_type_JavaLangString, this.jdField_e_of_type_JavaLangString, this.jdField_d_of_type_JavaLangString), localHashMap2), null, false);
         } while (localHashMap1.size() <= 0);
         if (QLog.isColorLevel()) {
           QLog.e("TroopHWJsPlugin", 2, "pic selected! size = " + localHashMap1.size());
@@ -3082,7 +3082,7 @@ public class TroopHWJsPlugin
             }
           }
         }
-        ThreadManager.postImmediately(new ampp(this, localHashMap1), null, false);
+        ThreadManager.postImmediately(new anfu(this, localHashMap1), null, false);
         return;
         paramIntent = CheckArithHWResultFragment.a(paramIntent);
         try

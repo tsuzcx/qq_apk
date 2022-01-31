@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.hotpic;
 
-import adig;
-import adih;
-import adij;
-import adik;
-import adil;
-import adim;
-import adin;
-import adio;
-import adip;
-import adiq;
+import adsf;
+import adsg;
+import adsi;
+import adsj;
+import adsk;
+import adsl;
+import adsm;
+import adsn;
+import adso;
+import adsp;
 import android.content.Context;
 import android.os.Build.VERSION;
 import android.os.Handler;
@@ -82,7 +82,7 @@ public class VideoBaseItem
   
   private void b()
   {
-    ((IVideoViewBase)this.jdField_a_of_type_AndroidViewView).addViewCallBack(new adig(this));
+    ((IVideoViewBase)this.jdField_a_of_type_AndroidViewView).addViewCallBack(new adsf(this));
   }
   
   private void c()
@@ -111,7 +111,7 @@ public class VideoBaseItem
     return -1L;
   }
   
-  public adiq a()
+  public adsp a()
   {
     if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()))
     {
@@ -120,7 +120,7 @@ public class VideoBaseItem
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
       QLog.d("VideoBaseItem", 2, " you have paused Mediaplayer");
     }
-    return new adiq(this, this.jdField_c_of_type_Int, this.jdField_a_of_type_Long);
+    return new adsp(this, this.jdField_c_of_type_Int, this.jdField_a_of_type_Long);
   }
   
   public void a()
@@ -137,7 +137,7 @@ public class VideoBaseItem
     }
   }
   
-  public void a(adiq paramadiq)
+  public void a(adsp paramadsp)
   {
     if (this.jdField_c_of_type_Int != 3) {
       QLog.d("VideoBaseItem", 2, "you should check thi status.Have you stopped Mediaplayer");
@@ -183,14 +183,14 @@ public class VideoBaseItem
     if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) && (this.jdField_a_of_type_AndroidViewView != null))
     {
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createMediaPlayer(BaseApplicationImpl.getApplication(), (IVideoViewBase)this.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new adih(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new adij(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new adik(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnSeekCompleteListener(new adil(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnInfoListener(new adim(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnNetVideoInfoListener(new adin(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparingListener(new adio(this));
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnDownloadCallback(new adip(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new adsg(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new adsi(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new adsj(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnSeekCompleteListener(new adsk(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnInfoListener(new adsl(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnNetVideoInfoListener(new adsm(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparingListener(new adsn(this));
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnDownloadCallback(new adso(this));
     }
     this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(paramBoolean);
     this.jdField_a_of_type_JavaLangString = paramString2;
@@ -257,7 +257,7 @@ public class VideoBaseItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoBaseItem
  * JD-Core Version:    0.7.0.1
  */

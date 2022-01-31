@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.config;
 
-import aaxx;
+import abey;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.util.List;
 public class ARMapConfig$WealthGodConfig
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new aaxx();
+  public static final Parcelable.Creator CREATOR = new abey();
   public List actSchedule;
   public String countdownTips;
   public String curfewWarning;

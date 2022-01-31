@@ -1,138 +1,105 @@
-import LBS.Attr;
-import LBS.Cell;
-import LBS.GPS;
-import LBS.LBSInfo;
-import LBS.Wifi;
-import com.tencent.mobileqq.app.BizTroopHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoAttribute;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoCell;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoWifi;
-import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.remote.ToServiceMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import tencent.im.lbs.member_lbs.Cell;
-import tencent.im.lbs.member_lbs.GPS;
-import tencent.im.lbs.member_lbs.LBSInfo;
-import tencent.im.lbs.member_lbs.ReqBody;
-import tencent.im.lbs.member_lbs.Wifi;
+import android.content.Context;
+import android.content.res.Resources;
+import android.text.TextUtils.TruncateAt;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.tips.TipsBarTask;
 
 public class yxl
-  extends SosoInterface.OnLocationListener
+  implements TipsBarTask
 {
-  public yxl(BizTroopHandler paramBizTroopHandler, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
+  private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
+  private final TextView jdField_a_of_type_AndroidWidgetTextView;
+  
+  yxl(Context paramContext, View.OnClickListener paramOnClickListener)
   {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = new RelativeLayout(paramContext);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setClickable(true);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(-1);
+    Resources localResources = paramContext.getResources();
+    Object localObject = new ImageView(paramContext);
+    ((ImageView)localObject).setId(2131362444);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(15);
+    localLayoutParams.addRule(9);
+    localLayoutParams.leftMargin = AIOUtils.a(12.0F, localResources);
+    ((ImageView)localObject).setImageResource(2130838007);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView((View)localObject, localLayoutParams);
+    this.jdField_a_of_type_AndroidWidgetTextView = new TextView(paramContext);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131362445);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-16777216);
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
+    this.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText("");
+    this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
+    localObject = new RelativeLayout.LayoutParams(-2, AIOUtils.a(44.0F, localResources));
+    ((RelativeLayout.LayoutParams)localObject).addRule(15);
+    ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131362444);
+    ((RelativeLayout.LayoutParams)localObject).addRule(0, 2131362446);
+    ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.a(8.0F, localResources);
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = AIOUtils.a(8.0F, localResources);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
+    paramContext = new TextView(paramContext);
+    paramContext.setId(2131362446);
+    localObject = new RelativeLayout.LayoutParams(-2, -2);
+    ((RelativeLayout.LayoutParams)localObject).addRule(15);
+    ((RelativeLayout.LayoutParams)localObject).addRule(11);
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = AIOUtils.a(12.0F, localResources);
+    paramContext.setBackgroundResource(2130838063);
+    paramContext.setPadding(AIOUtils.a(8.0F, localResources), AIOUtils.a(4.0F, localResources), AIOUtils.a(8.0F, localResources), AIOUtils.a(4.0F, localResources));
+    paramContext.setText("快速加入");
+    paramContext.setTextSize(2, 14.0F);
+    paramContext.setTextColor(-16777216);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(paramContext, (ViewGroup.LayoutParams)localObject);
+    paramContext.setOnClickListener(paramOnClickListener);
   }
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public int a()
   {
-    if (QLog.isColorLevel())
-    {
-      localObject1 = new StringBuilder().append("ReportSelfLbsInfo, onLocationFinish errCode=").append(paramInt).append(", info.mLocation==null?");
-      if ((paramSosoLbsInfo != null) && (paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation != null)) {
-        break label198;
-      }
-    }
-    label198:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("Q.troopMemberDistance", 2, bool);
-      if ((paramInt != 0) || (paramSosoLbsInfo == null) || (paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation == null)) {
-        return;
-      }
-      localObject2 = new GPS((int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.c * 1000000.0D), (int)(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLocation.d * 1000000.0D), -1, 0);
-      localObject3 = new ArrayList();
-      if (paramSosoLbsInfo.jdField_a_of_type_JavaUtilArrayList == null) {
-        break;
-      }
-      localObject1 = paramSosoLbsInfo.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject4 = (SosoInterface.SosoCell)((Iterator)localObject1).next();
-        ((ArrayList)localObject3).add(new Cell((short)((SosoInterface.SosoCell)localObject4).jdField_a_of_type_Int, (short)((SosoInterface.SosoCell)localObject4).b, ((SosoInterface.SosoCell)localObject4).c, ((SosoInterface.SosoCell)localObject4).d, (short)((SosoInterface.SosoCell)localObject4).e));
-      }
-    }
-    Object localObject4 = new ArrayList();
-    Object localObject5;
-    if (paramSosoLbsInfo.b != null)
-    {
-      localObject1 = paramSosoLbsInfo.b.iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject5 = (SosoInterface.SosoWifi)((Iterator)localObject1).next();
-        ((ArrayList)localObject4).add(new Wifi(((SosoInterface.SosoWifi)localObject5).jdField_a_of_type_Long, (short)((SosoInterface.SosoWifi)localObject5).jdField_a_of_type_Int));
-      }
-    }
-    Object localObject1 = null;
-    if (paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute != null) {
-      localObject1 = new Attr(paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.a, paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.b, paramSosoLbsInfo.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoAttribute.c);
-    }
-    Object localObject3 = new LBSInfo((GPS)localObject2, (ArrayList)localObject4, (ArrayList)localObject3, (Attr)localObject1);
-    paramSosoLbsInfo = new ToServiceMsg("mobileqq.service", this.a.b.getCurrentAccountUin(), "GrpMemberLBS.ReportLBS");
-    localObject1 = new member_lbs.ReqBody();
-    Object localObject2 = new member_lbs.LBSInfo();
-    if (localObject3 != null)
-    {
-      if ((((LBSInfo)localObject3).stGps != null) && (((LBSInfo)localObject3).stGps.iLon != 0) && (((LBSInfo)localObject3).stGps.iLat != 0))
-      {
-        localObject4 = new member_lbs.GPS();
-        ((member_lbs.GPS)localObject4).int64_longitude.set(((LBSInfo)localObject3).stGps.iLon);
-        ((member_lbs.GPS)localObject4).int64_latitude.set(((LBSInfo)localObject3).stGps.iLat);
-        ((member_lbs.GPS)localObject4).uint32_gps_type.set(((LBSInfo)localObject3).stGps.eType);
-        ((member_lbs.LBSInfo)localObject2).msg_gps.set((MessageMicro)localObject4);
-      }
-      localObject4 = new ArrayList();
-      Object localObject6;
-      if (((LBSInfo)localObject3).vWifis != null)
-      {
-        localObject5 = ((LBSInfo)localObject3).vWifis.iterator();
-        while (((Iterator)localObject5).hasNext())
-        {
-          localObject6 = (Wifi)((Iterator)localObject5).next();
-          member_lbs.Wifi localWifi = new member_lbs.Wifi();
-          localWifi.int64_mac.set(((Wifi)localObject6).lMac);
-          localWifi.int32_rssi.set(((Wifi)localObject6).shRssi);
-          ((ArrayList)localObject4).add(localWifi);
-        }
-        ((member_lbs.LBSInfo)localObject2).rpt_msg_wifis.set((List)localObject4);
-      }
-      if (((LBSInfo)localObject3).vCells != null)
-      {
-        localObject4 = new ArrayList();
-        localObject3 = ((LBSInfo)localObject3).vCells.iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localObject5 = (Cell)((Iterator)localObject3).next();
-          localObject6 = new member_lbs.Cell();
-          ((member_lbs.Cell)localObject6).int32_mobile_country_code.set(((Cell)localObject5).shMcc);
-          ((member_lbs.Cell)localObject6).int32_mobile_network_code.set(((Cell)localObject5).shMnc);
-          ((member_lbs.Cell)localObject6).int32_location_area_code.set(((Cell)localObject5).iLac);
-          ((member_lbs.Cell)localObject6).int32_cell_id.set(((Cell)localObject5).iCellId);
-          ((member_lbs.Cell)localObject6).int32_rssi.set(((Cell)localObject5).shRssi);
-          ((ArrayList)localObject4).add(localObject6);
-        }
-        ((member_lbs.LBSInfo)localObject2).rpt_msg_cells.set((List)localObject4);
-      }
-    }
-    ((member_lbs.ReqBody)localObject1).msg_lbsinfo.set((MessageMicro)localObject2);
-    paramSosoLbsInfo.putWupBuffer(((member_lbs.ReqBody)localObject1).toByteArray());
-    this.a.b(paramSosoLbsInfo);
+    return 40;
+  }
+  
+  public View a(Object... paramVarArgs)
+  {
+    return this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+  }
+  
+  public void a(int paramInt, Object... paramVarArgs) {}
+  
+  public void a(long paramLong, String paramString)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format("%d人正在玩%s。", new Object[] { Long.valueOf(paramLong), paramString }));
+    this.jdField_a_of_type_AndroidWidgetTextView.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+    this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
+    this.jdField_a_of_type_AndroidWidgetTextView.setSelected(true);
+    this.jdField_a_of_type_AndroidWidgetTextView.setFocusable(true);
+    this.jdField_a_of_type_AndroidWidgetTextView.setFocusableInTouchMode(true);
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_AndroidWidgetTextView.setSelected(true);
+  }
+  
+  public int[] a()
+  {
+    return null;
+  }
+  
+  public int b()
+  {
+    return 15;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yxl
  * JD-Core Version:    0.7.0.1
  */

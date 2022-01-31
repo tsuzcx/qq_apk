@@ -1,23 +1,14 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.qcall.QCallFacade;
 
 public class agve
-  implements Runnable
+  extends DiscussionObserver
 {
-  public agve(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public agve(QCallFacade paramQCallFacade) {}
   
-  public void run()
+  protected void b(boolean paramBoolean, String paramString)
   {
-    EffectsCameraCaptureFragment.h(this.a, false);
-    if (EffectsCameraCaptureFragment.a(this.a) == null) {
-      return;
-    }
-    EffectsCameraCaptureFragment.a(this.a).removeView(EffectsCameraCaptureFragment.a(this.a));
-    EffectsCameraCaptureFragment.a(this.a).setVisibility(0);
-    EffectsCameraCaptureFragment.a(this.a).setEnabled(true);
-    this.a.a.a(null);
+    this.a.b(paramString, 3000);
   }
 }
 

@@ -20,9 +20,9 @@ import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import mqq.os.MqqHandler;
-import vzu;
-import vzv;
-import vzw;
+import wcz;
+import wda;
+import wdb;
 
 public class LightalkBlueTipsBar
   implements View.OnClickListener, TipsBarTask
@@ -44,7 +44,7 @@ public class LightalkBlueTipsBar
     this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager = paramTipsManager;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    ThreadManager.post(new vzu(this), 5, null, true);
+    ThreadManager.post(new wcz(this), 5, null, true);
   }
   
   public static boolean a()
@@ -69,11 +69,11 @@ public class LightalkBlueTipsBar
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
       this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130968649, null);
-      paramVarArgs = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362994);
+      paramVarArgs = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363012);
       if (this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable != null)
       {
         paramVarArgs.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable);
-        paramVarArgs = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362995);
+        paramVarArgs = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363013);
         if (this.jdField_a_of_type_JavaLangString == null) {
           break label316;
         }
@@ -83,7 +83,7 @@ public class LightalkBlueTipsBar
         paramVarArgs.setText(this.jdField_a_of_type_JavaLangString);
         paramVarArgs.setContentDescription(this.jdField_a_of_type_JavaLangString + "点击进入");
         paramVarArgs.setOnClickListener(this);
-        paramVarArgs = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362996);
+        paramVarArgs = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363014);
         if (AppSetting.b) {
           paramVarArgs.setContentDescription("关闭");
         }
@@ -114,7 +114,7 @@ public class LightalkBlueTipsBar
             if (QLog.isColorLevel()) {
               QLog.e("LightalkBlueTipsBar", 2, "decodeFile Failed!", localThrowable);
             }
-            this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = ((BitmapDrawable)this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842170));
+            this.jdField_a_of_type_AndroidGraphicsDrawableBitmapDrawable = ((BitmapDrawable)this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130842207));
             localThrowable.printStackTrace();
           }
         }
@@ -168,7 +168,7 @@ public class LightalkBlueTipsBar
       } while (!this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a(this, new Object[0]));
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800510F", "0X800510F", 0, 0, "" + (paramInt + 1), "", "", "");
     } while (!this.jdField_a_of_type_Boolean);
-    ThreadManager.getSubThreadHandler().post(new vzv(this));
+    ThreadManager.getSubThreadHandler().post(new wda(this));
   }
   
   public int[] a()
@@ -189,7 +189,7 @@ public class LightalkBlueTipsBar
     for (;;)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTipsManager.a();
-      ThreadManager.getSubThreadHandler().post(new vzw(this));
+      ThreadManager.getSubThreadHandler().post(new wdb(this));
       long l;
       do
       {

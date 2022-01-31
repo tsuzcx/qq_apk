@@ -1,80 +1,38 @@
-import android.bluetooth.BluetoothDevice;
-import android.bluetooth.BluetoothProfile;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.sharp.jni.TraeAudioManager;
-import com.tencent.sharp.jni.TraeAudioManager.DeviceConfigManager;
-import java.util.List;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.open.downloadnew.DownloadManager;
+import com.tencent.open.downloadnew.UpdateManager;
+import java.io.File;
 
-class alja
+public class alja
   implements Runnable
 {
-  alja(aliz paramaliz) {}
+  public alja(UpdateManager paramUpdateManager, String paramString, DownloadInfo paramDownloadInfo) {}
   
   public void run()
   {
-    if (this.a.jdField_a_of_type_AndroidBluetoothBluetoothProfile != null) {}
-    for (;;)
+    try
     {
-      try
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      if (localFile.exists())
       {
-        List localList = this.a.jdField_a_of_type_AndroidBluetoothBluetoothProfile.getConnectedDevices();
-        if (localList == null) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.w("TRAE", 2, "TRAEBluetoohProxy: HEADSET Connected devs:" + localList.size() + " _profile:" + this.a.jdField_a_of_type_AndroidBluetoothBluetoothProfile);
-        }
-        int i = 0;
-        if (i >= localList.size()) {
-          break;
-        }
-        BluetoothDevice localBluetoothDevice = (BluetoothDevice)localList.get(i);
-        int j = this.a.jdField_a_of_type_AndroidBluetoothBluetoothProfile.getConnectionState(localBluetoothDevice);
-        if (j == 2) {
-          this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a(localBluetoothDevice.getName());
-        }
-        if (QLog.isColorLevel()) {
-          QLog.w("TRAE", 2, "   " + i + " " + localBluetoothDevice.getName() + " ConnectionState:" + j);
-        }
-        i += 1;
-        continue;
-        str = null;
-      }
-      catch (Exception localException)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("TraeAudioManager", 2, "onServiceConnected.run e = " + localException);
-        }
-      }
-    }
-    if (this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager != null) {
-      if (this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager == null) {
-        break label346;
-      }
-    }
-    label346:
-    for (String str = this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a();; str = null)
-    {
-      if (TextUtils.isEmpty(str))
-      {
-        this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a("DEVICE_BLUETOOTHHEADSET", false);
+        long l = localFile.length();
+        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c = l;
+        DownloadManager.a().g(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo);
         return;
       }
-      if (this.a.a())
-      {
-        this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a("DEVICE_BLUETOOTHHEADSET", true);
-        this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager.a("DEVICE_BLUETOOTHHEADSET", true);
-        return;
-      }
-      this.a.jdField_a_of_type_ComTencentSharpJniTraeAudioManager$DeviceConfigManager.a("DEVICE_BLUETOOTHHEADSET", false);
+      LogUtility.c(UpdateManager.jdField_a_of_type_JavaLangString, "patchNewApk file not exists");
       return;
+    }
+    catch (Exception localException)
+    {
+      LogUtility.c(UpdateManager.jdField_a_of_type_JavaLangString, "patchNewApk>>>", localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alja
  * JD-Core Version:    0.7.0.1
  */

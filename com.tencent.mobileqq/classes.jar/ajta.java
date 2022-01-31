@@ -1,53 +1,25 @@
-import android.media.MediaPlayer;
-import android.os.Handler;
-import com.tencent.mobileqq.vas.ColorRingPlayer;
+import com.tencent.mobileqq.troop.utils.TroopRobotManager.Callback;
+import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel;
+import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel.RobotPanelItemData;
+import com.tencent.mobileqq.widget.QQToast;
+import tencent.im.oidb.cmd0x934.cmd0x934.RspBody;
 
 public class ajta
-  implements Runnable
+  implements TroopRobotManager.Callback
 {
-  public ajta(ColorRingPlayer paramColorRingPlayer) {}
+  public ajta(TroopAIORobotPanel paramTroopAIORobotPanel, TroopAIORobotPanel.RobotPanelItemData paramRobotPanelItemData) {}
   
-  public void run()
+  public void a(int paramInt, cmd0x934.RspBody paramRspBody)
   {
-    for (;;)
-    {
-      Object localObject1 = this.a.jdField_a_of_type_JavaLangObject;
-      boolean bool = false;
-      try
-      {
-        if (this.a.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-          bool = this.a.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying();
-        }
-        if ((this.a.jdField_a_of_type_AndroidMediaMediaPlayer == null) || (!bool)) {
-          break;
-        }
-        int i = this.a.jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
-        int j = this.a.jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
-        this.a.jdField_a_of_type_AndroidOsHandler.post(new ajtb(this, j, i));
-      }
-      catch (IllegalStateException localIllegalStateException)
-      {
-        for (;;)
-        {
-          this.a.jdField_a_of_type_AndroidMediaMediaPlayer = null;
-          this.a.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-        }
-      }
-      finally {}
-      try
-      {
-        Thread.sleep(50L);
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-      }
+    if (paramInt == 0) {
+      return;
     }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAIORobotPanel.getContext(), 1, "操作失败" + "", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajta
  * JD-Core Version:    0.7.0.1
  */

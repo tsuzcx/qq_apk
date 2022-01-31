@@ -1,29 +1,19 @@
-import com.tencent.mobileqq.activity.ConversationHotChatCtrl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.HotChatObserver;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.now.enter.widget.HongBao2018ListView.NowFloatViewCallBack;
 
 public class sge
-  extends HotChatObserver
+  implements HongBao2018ListView.NowFloatViewCallBack
 {
-  public sge(ConversationHotChatCtrl paramConversationHotChatCtrl, BaseActivity paramBaseActivity) {}
+  public sge(Conversation paramConversation) {}
   
-  public void a(String paramString1, boolean paramBoolean, String paramString2)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.removeObserver(this);
-    if (paramBoolean)
+    if (this.a.b != null)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a.isShowing())) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a.dismiss();
-      }
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, "已退出热聊房间。", 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
-      return;
+      this.a.g = true;
+      this.a.b.setVisibility(8);
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a.isShowing())) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a.dismiss();
-    }
-    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, "退出失败，请稍后重试。", 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
   }
 }
 

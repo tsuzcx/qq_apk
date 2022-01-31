@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.bubble;
 
-import abfd;
+import abme;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -106,7 +106,7 @@ public class VipBubbleDrawable
           break label261;
         }
         if (this.jdField_b_of_type_Boolean) {}
-        for (i = 2130845493;; i = 2130845657) {
+        for (i = 2130845621;; i = 2130845785) {
           for (;;)
           {
             localObject1 = new BitmapFactory.Options();
@@ -194,7 +194,7 @@ public class VipBubbleDrawable
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
       this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new abfd(this));
+    this.jdField_a_of_type_AndroidOsHandler.post(new abme(this));
   }
   
   public void draw(Canvas paramCanvas)

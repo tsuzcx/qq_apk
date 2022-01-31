@@ -1,11 +1,22 @@
-import com.tencent.component.network.utils.http.HttpUtil.RequestOptions;
+import android.graphics.Xfermode;
+import android.graphics.drawable.Drawable;
+import com.tencent.component.media.image.drawable.DrawableContainer;
+import com.tencent.component.media.image.drawable.XfermodeDrawable;
 
-public final class pih
-  extends ThreadLocal
+public class pih
+  extends phv
 {
-  protected HttpUtil.RequestOptions a()
+  public Xfermode a;
+  
+  public pih(Drawable paramDrawable, DrawableContainer paramDrawableContainer, Xfermode paramXfermode)
   {
-    return new HttpUtil.RequestOptions();
+    super(paramDrawable, paramDrawableContainer);
+    this.a = paramXfermode;
+  }
+  
+  public Drawable newDrawable()
+  {
+    return new XfermodeDrawable(this, null, null);
   }
 }
 

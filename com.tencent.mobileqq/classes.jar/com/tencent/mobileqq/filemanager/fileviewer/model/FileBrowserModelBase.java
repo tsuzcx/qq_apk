@@ -123,7 +123,7 @@ public abstract class FileBrowserModelBase
   public boolean a(FileBrowserModelBase.OnPreviewVideoOnlineListener paramOnPreviewVideoOnlineListener)
   {
     if (paramOnPreviewVideoOnlineListener != null) {
-      paramOnPreviewVideoOnlineListener.ab_();
+      paramOnPreviewVideoOnlineListener.ad_();
     }
     return false;
   }

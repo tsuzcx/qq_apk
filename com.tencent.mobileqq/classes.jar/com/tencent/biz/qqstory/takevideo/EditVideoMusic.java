@@ -31,10 +31,11 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Properties;
 import java.util.Timer;
-import odn;
-import odo;
-import odp;
-import odq;
+import off;
+import ofg;
+import ofh;
+import ofi;
+import ofj;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -47,10 +48,10 @@ public class EditVideoMusic
   public Handler a;
   public SparseArray a;
   EditVideoTag.TakeVideoTag jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoTag$TakeVideoTag;
-  protected AudioPlayer a;
+  public AudioPlayer a;
   public ArrayList a;
   protected Timer a;
-  protected odq a;
+  protected ofj a;
   public boolean a;
   private int b;
   protected boolean b;
@@ -64,7 +65,7 @@ public class EditVideoMusic
   public EditVideoMusic(@NonNull EditVideoPartManager paramEditVideoPartManager)
   {
     super(paramEditVideoPartManager);
-    this.jdField_a_of_type_AndroidOsHandler = new odp(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ofi(this);
   }
   
   private QQStoryMusicInfo a(EditVideoTag.TakeVideoTag paramTakeVideoTag)
@@ -222,7 +223,7 @@ public class EditVideoMusic
     if (localEditButtonExport != null)
     {
       if (paramInt == 0) {
-        localEditButtonExport.a(2130843462);
+        localEditButtonExport.a(2130843583);
       }
     }
     else {
@@ -230,10 +231,10 @@ public class EditVideoMusic
     }
     if ((3 == paramInt) || (2 == paramInt))
     {
-      localEditButtonExport.a(2130843461);
+      localEditButtonExport.a(2130843582);
       return;
     }
-    localEditButtonExport.a(2130843455);
+    localEditButtonExport.a(2130843576);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -312,7 +313,7 @@ public class EditVideoMusic
       }
       paramObject = new EditVideoMusicDialog(a(), this, this.c, (int)this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a()), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a, bool3, bool1);
       paramObject.setCanceledOnTouchOutside(true);
-      paramObject.setOnDismissListener(new odn(this));
+      paramObject.setOnDismissListener(new off(this));
       paramObject.setCancelable(true);
       paramObject.show();
       return;
@@ -510,7 +511,7 @@ public class EditVideoMusic
         for (;;)
         {
           return super.a(paramMessage);
-          this.jdField_a_of_type_AndroidOsHandler.post(new odo(this));
+          this.jdField_a_of_type_AndroidOsHandler.post(new ofg(this));
         }
       } while (paramMessage.arg1 != 32);
       n();
@@ -567,7 +568,7 @@ public class EditVideoMusic
       }
     }
     i();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = new AudioPlayer(a(), this);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer = new ofh(this, a(), this, localQQStoryMusicInfo);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a(3);
     if (paramInt >= 0) {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer.a(localQQStoryMusicInfo.g, paramInt);
@@ -577,8 +578,8 @@ public class EditVideoMusic
       if (this.c)
       {
         this.jdField_a_of_type_JavaUtilTimer = new Timer();
-        this.jdField_a_of_type_Odq = new odq(this, null);
-        this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_Odq, 5000L, 5000L);
+        this.jdField_a_of_type_Ofj = new ofj(this, null);
+        this.jdField_a_of_type_JavaUtilTimer.schedule(this.jdField_a_of_type_Ofj, 5000L, 5000L);
       }
       a().sendBroadcast(new Intent("action_music_start"));
       return;
@@ -665,10 +666,10 @@ public class EditVideoMusic
       this.jdField_a_of_type_JavaUtilTimer.cancel();
       this.jdField_a_of_type_JavaUtilTimer = null;
     }
-    if (this.jdField_a_of_type_Odq != null)
+    if (this.jdField_a_of_type_Ofj != null)
     {
-      this.jdField_a_of_type_Odq.cancel();
-      this.jdField_a_of_type_Odq = null;
+      this.jdField_a_of_type_Ofj.cancel();
+      this.jdField_a_of_type_Ofj = null;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAudioPlayer != null)
     {

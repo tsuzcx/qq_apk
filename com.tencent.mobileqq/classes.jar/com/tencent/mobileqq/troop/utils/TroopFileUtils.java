@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajbj;
-import ajbk;
+import ajpn;
+import ajpo;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.Resources;
@@ -143,7 +143,7 @@ public class TroopFileUtils
         ((SVIPHandler)paramQQAppInterface.a(13)).a(localMessageRecord);
       }
       paramString1.serial();
-      ThreadManager.post(new ajbj(paramQQAppInterface, localMessageRecord), 8, null, false);
+      ThreadManager.post(new ajpn(paramQQAppInterface, localMessageRecord), 8, null, false);
       QLog.i("TroopFile", 1, "Inser msg to AIO, msgInfo: mrUinseq[" + String.valueOf(localMessageRecord.uniseq) + "], selfuin[" + FileManagerUtil.e(localMessageRecord.selfuin) + "], frienduin[" + FileManagerUtil.e(localMessageRecord.frienduin) + "], senderuin[" + FileManagerUtil.e(localMessageRecord.senderuin) + "], issend[" + String.valueOf(localMessageRecord.issend) + "], istroop[" + String.valueOf(localMessageRecord.istroop) + "], shmsgseq[" + String.valueOf(localMessageRecord.shmsgseq) + "], msgUid[" + String.valueOf(localMessageRecord.msgUid) + "], time[" + String.valueOf(localMessageRecord.time) + "], vipBubbleID[" + String.valueOf(-1) + "]");
       return localMessageRecord.uniseq;
     }
@@ -343,10 +343,10 @@ public class TroopFileUtils
     paramLong = 1000L * paramLong;
     long l = System.currentTimeMillis();
     if (paramLong <= l) {
-      return paramContext.getString(2131429695);
+      return paramContext.getString(2131429701);
     }
     paramLong = (paramLong - l) / 86400000L;
-    return paramLong + 1L + paramContext.getString(2131429694);
+    return paramLong + 1L + paramContext.getString(2131429700);
   }
   
   public static String a(String paramString)
@@ -453,7 +453,7 @@ public class TroopFileUtils
       paramChatMessage.putInt("dataline_forward_type", 100);
       paramChatMessage.putString("dataline_forward_path", ((TroopFileStatusInfo)localObject).jdField_a_of_type_JavaLangString);
       paramQQAppInterface = (DataLineHandler)paramQQAppInterface.a(8);
-      localObject = new ajbk(paramContext);
+      localObject = new ajpo(paramContext);
       i = paramQQAppInterface.a().b(AppConstants.y, paramChatMessage, (DirectForwarder.CallBack)localObject);
     } while ((((DirectForwarder.CallBack)localObject).a) && (i != 0));
     DirectForwarder.b(paramContext, i);
@@ -837,7 +837,7 @@ public class TroopFileUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileUtils
  * JD-Core Version:    0.7.0.1
  */

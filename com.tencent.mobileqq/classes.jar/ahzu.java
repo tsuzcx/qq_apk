@@ -1,41 +1,21 @@
-import android.app.Dialog;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.theme.NightModeLogic;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
+import java.util.List;
 
-public class ahzu
-  implements View.OnClickListener
+public final class ahzu
+  implements Runnable
 {
-  public ahzu(NightModeLogic paramNightModeLogic) {}
+  public ahzu(QQAppInterface paramQQAppInterface, List paramList, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Bundle();
-    paramView.putInt("start_status", 2);
-    this.a.a(0, paramView);
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-    }
-    this.a.jdField_a_of_type_AndroidAppDialog = null;
-    try
-    {
-      paramView = new HashMap();
-      paramView.put("param_FailCode", "3");
-      StatisticCollector.a(this.a.jdField_a_of_type_MqqAppAppRuntime.getApplication().getApplicationContext()).a(((QQAppInterface)this.a.jdField_a_of_type_MqqAppAppRuntime).getAccount(), "VipNightThemeDialogClick", false, 1L, 0L, paramView, "", false);
-      return;
-    }
-    catch (Exception paramView) {}
+    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource, "new_qq_android_native_short_filter_");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahzu
  * JD-Core Version:    0.7.0.1
  */

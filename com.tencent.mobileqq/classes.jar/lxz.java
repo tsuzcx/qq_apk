@@ -1,18 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
 
-class lxz
-  implements DialogInterface.OnClickListener
+public final class lxz
+  implements Parcelable.Creator
 {
-  lxz(lxy paramlxy) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public TagInfo a(Parcel paramParcel)
   {
-    ForwardSdkShareOption.a(this.a.a, true, "shareToQQ", ReadInJoyDeliverVideoActivity.a(this.a.a));
-    this.a.a.moveTaskToBack(true);
-    this.a.a.finish();
+    return new TagInfo(paramParcel);
+  }
+  
+  public TagInfo[] a(int paramInt)
+  {
+    return new TagInfo[paramInt];
   }
 }
 

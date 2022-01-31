@@ -1,18 +1,32 @@
-import com.tencent.mobileqq.widget.RandomCoverView;
+import com.tencent.open.wadl.WLog;
+import com.tencent.open.wadl.WadlJsBridgeCallBack;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.sdk.WebView;
 
-public final class aljs
+public class aljs
   implements Runnable
 {
-  public aljs(RandomCoverView paramRandomCoverView, String paramString) {}
+  public aljs(WadlJsBridgeCallBack paramWadlJsBridgeCallBack, WebView paramWebView, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.getWidth(), this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.getHeight());
+    try
+    {
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        WLog.b(WadlJsBridgeCallBack.jdField_a_of_type_JavaLangString, "doJsCallback call:" + this.jdField_a_of_type_JavaLangString);
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      WLog.a(WadlJsBridgeCallBack.jdField_a_of_type_JavaLangString, "doJsCallback exception ", localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aljs
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap;
 
-import aawa;
+import abdb;
 import android.animation.ValueAnimator;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -93,7 +93,7 @@ public class RedPackRainCloudView
       }
     }
     Object localObject = ValueAnimator.ofInt(new int[] { (int)this.jdField_a_of_type_Long, (int)paramLong });
-    ((ValueAnimator)localObject).addUpdateListener(new aawa(this));
+    ((ValueAnimator)localObject).addUpdateListener(new abdb(this));
     ((ValueAnimator)localObject).setInterpolator(new DecelerateInterpolator());
     ((ValueAnimator)localObject).setDuration(400L);
     ((ValueAnimator)localObject).start();
@@ -102,12 +102,12 @@ public class RedPackRainCloudView
   
   private void c()
   {
-    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970213, this);
-    this.jdField_a_of_type_ComTencentMobileqqArmapSdCardImageAnimView = ((SdCardImageAnimView)findViewById(2131369658));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369657);
-    this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapFlakeView = ((ARMapFlakeView)findViewById(2131369656));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369659));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363787));
+    LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970229, this);
+    this.jdField_a_of_type_ComTencentMobileqqArmapSdCardImageAnimView = ((SdCardImageAnimView)findViewById(2131369735));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369734);
+    this.jdField_a_of_type_ComTencentMobileqqArmapWealthgodARMapFlakeView = ((ARMapFlakeView)findViewById(2131369733));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369736));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363810));
     this.jdField_a_of_type_Int = AIOUtils.a(68.0F, getResources());
     this.jdField_b_of_type_Int = AIOUtils.a(8.0F, getResources());
     this.jdField_c_of_type_Int = AIOUtils.a(20.0F, getResources());
@@ -338,7 +338,7 @@ public class RedPackRainCloudView
   {
     if ((!this.jdField_b_of_type_Boolean) || (this.jdField_c_of_type_Boolean))
     {
-      this.jdField_a_of_type_ComTencentMobileqqArmapSdCardImageAnimView.setImageResource(2130842249);
+      this.jdField_a_of_type_ComTencentMobileqqArmapSdCardImageAnimView.setImageResource(2130842296);
       this.jdField_b_of_type_AndroidWidgetTextView.setGravity(17);
       this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
       this.jdField_b_of_type_AndroidWidgetTextView.setPadding(this.jdField_a_of_type_Int, 0, this.jdField_b_of_type_Int, 0);

@@ -1,37 +1,44 @@
-import com.qq.taf.jce.HexUtil;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
-import com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager;
-import com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
-import com.tencent.util.MqqWeakReferenceHandler;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.EditVideoLabel;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.qqstory.takevideo.label.QQStoryAddVideoLabelViewPart;
 
 public class ofe
-  implements EncodeVideoTask.ResultListener
+  implements View.OnClickListener
 {
-  public ofe(EditWebVideoActivity paramEditWebVideoActivity) {}
+  public ofe(EditVideoLabel paramEditVideoLabel) {}
   
-  public void a(int paramInt)
+  public void onClick(View paramView)
   {
-    this.a.runOnUiThread(new off(this));
-  }
-  
-  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3)
-  {
-    int i = ((EditWebVideoPartManager)this.a.a).a;
-    EditWebVideoActivity.a(this.a, paramString1);
-    EditWebVideoActivity.a(this.a, paramArrayOfByte1);
-    EditWebVideoActivity.b(this.a, HexUtil.bytes2HexStr(EditWebVideoActivity.a(this.a)));
-    paramString1 = this.a;
-    if (i <= 0) {}
+    if (!TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.jdField_a_of_type_JavaLangString))
+    {
+      this.a.jdField_a_of_type_JavaLangString = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoLabelQQStoryAddVideoLabelViewPart.jdField_a_of_type_JavaLangString;
+      paramView = this.a.jdField_a_of_type_AndroidWidgetTextView.getText().toString();
+      if ((paramView.equals("##")) || (TextUtils.isEmpty(paramView)) || (!paramView.equals("# " + this.a.jdField_a_of_type_JavaLangString)))
+      {
+        EditVideoPartManager localEditVideoPartManager = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager;
+        if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a())
+        {
+          paramView = "2";
+          localEditVideoPartManager.a("use_custom_tag", 0, 0, new String[] { paramView });
+        }
+      }
+      else
+      {
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText("# " + this.a.jdField_a_of_type_JavaLangString);
+      }
+    }
     for (;;)
     {
-      EditWebVideoActivity.a(paramString1, paramInt3);
-      EditWebVideoActivity.c(this.a, paramString2);
-      EditWebVideoActivity.b(this.a, paramArrayOfByte2);
-      EditWebVideoActivity.b(this.a, paramInt1);
-      EditWebVideoActivity.c(this.a, paramInt2);
-      EditWebVideoActivity.a(this.a).sendEmptyMessage(1002);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
       return;
-      paramInt3 = i;
+      paramView = "1";
+      break;
+      this.a.jdField_a_of_type_JavaLangString = "";
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setText("");
     }
   }
 }

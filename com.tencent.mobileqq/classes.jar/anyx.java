@@ -1,87 +1,40 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.mobileqq.utils.FileUtils;
-import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterTools;
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoArtResourceMgr;
-import java.io.File;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
+import java.util.Map;
 
-public final class anyx
+public class anyx
   implements Runnable
 {
+  public anyx(DoodleLayout paramDoodleLayout, Map paramMap) {}
+  
   public void run()
   {
-    String str1 = ShortVideoArtResourceMgr.b();
-    String str2 = ShortVideoArtResourceMgr.a();
-    File[] arrayOfFile = new File(str1).listFiles();
-    int j;
-    Object localObject1;
-    int i;
-    Object localObject2;
-    Object localObject3;
-    int m;
-    if ((arrayOfFile != null) && (arrayOfFile.length > 2))
+    GestureHelper.ZoomItem localZoomItem;
+    if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b != null) && (this.jdField_a_of_type_JavaUtilMap != null))
     {
-      j = 2147483647;
-      localObject1 = "unknown";
-      int k = 0;
-      i = 0;
-      if (k < arrayOfFile.length)
-      {
-        if (arrayOfFile[k] == null) {}
-        for (;;)
-        {
-          k += 1;
-          break;
-          localObject2 = arrayOfFile[k].getName();
-          if (!str2.equalsIgnoreCase((String)localObject2))
-          {
-            localObject3 = anzj.a((String)localObject2);
-            m = ((anzk)localObject3).a();
-            if (m == 0) {
-              break label197;
-            }
-            VideoEnvironment.a("[executeClearArtFilterSoCache] errorCodec=" + m + " filename=" + (String)localObject2, null);
-            localObject2 = new File(str1 + (String)localObject2);
-            if ((((File)localObject2).exists()) && (((File)localObject2).isFile())) {
-              ((File)localObject2).delete();
-            }
-          }
-        }
-        label197:
-        localObject3 = ((anzk)localObject3).a();
+      localZoomItem = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b;
+      if (!(localZoomItem instanceof FaceLayer.FaceItem)) {
+        break label97;
       }
+      ((FaceLayer.FaceItem)localZoomItem).jdField_a_of_type_JavaUtilMap = this.jdField_a_of_type_JavaUtilMap;
     }
-    label419:
     for (;;)
     {
-      try
-      {
-        m = Integer.parseInt((String)localObject3);
-        if (m >= j) {
-          break label419;
-        }
-        j = m;
-        localObject1 = localObject2;
-        i += 1;
-      }
-      catch (NumberFormatException localNumberFormatException)
-      {
-        VideoEnvironment.a("[executeClearArtFilterSoCache] filename=" + (String)localObject2 + "  tempVersion=" + (String)localObject3, localNumberFormatException);
-      }
-      break;
-      VideoEnvironment.a("[executeClearArtFilterSoCache] deleteName=" + (String)localObject1 + "  validNumPendantCache=" + i + " leastVersion=" + j, null);
-      if (i >= 2)
-      {
-        localObject1 = new File(str1 + (String)localObject1);
-        if ((((File)localObject1).exists()) && (((File)localObject1).isFile()))
-        {
-          VideoEnvironment.a("[executeClearArtFilterSoCache] deletePath=" + ((File)localObject1).getAbsolutePath(), null);
-          ((File)localObject1).delete();
-        }
-      }
-      if (new File(VideoFilterTools.a).exists()) {
-        FileUtils.a(VideoFilterTools.a);
+      localZoomItem.i = 3;
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleEditView.a.b = null;
+      if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener != null) {
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleEventListener.o();
       }
       return;
+      label97:
+      if ((localZoomItem instanceof TextLayer.TextItem)) {
+        ((TextLayer.TextItem)localZoomItem).jdField_a_of_type_JavaUtilMap = this.jdField_a_of_type_JavaUtilMap;
+      }
     }
   }
 }

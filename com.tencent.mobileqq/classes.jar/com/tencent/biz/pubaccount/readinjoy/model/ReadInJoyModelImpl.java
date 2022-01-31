@@ -134,7 +134,7 @@ public class ReadInJoyModelImpl
   public int b()
   {
     if (this.jdField_b_of_type_Int == this.e - 1) {
-      return 71;
+      return 72;
     }
     return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.getItemViewType(this.jdField_b_of_type_Int + 1);
   }

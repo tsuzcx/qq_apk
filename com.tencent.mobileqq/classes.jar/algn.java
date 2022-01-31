@@ -1,33 +1,18 @@
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import android.widget.EditText;
-import com.tencent.qqconnect.wtlogin.Login;
+import com.tencent.open.downloadnew.DownloadManager;
 
-public class algn
-  implements View.OnFocusChangeListener
+public final class algn
+  implements Runnable
 {
-  public algn(Login paramLogin) {}
+  public algn(String paramString1, String paramString2, boolean paramBoolean) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void run()
   {
-    if (paramView == this.a.jdField_b_of_type_AndroidWidgetEditText)
-    {
-      if (true == paramBoolean) {
-        this.a.jdField_b_of_type_AndroidWidgetEditText.selectAll();
-      }
-      if (!paramBoolean) {
-        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
-      }
-    }
-    while ((paramView != this.a.jdField_a_of_type_AndroidWidgetEditText) || (paramBoolean)) {
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidViewView.setVisibility(4);
+    DownloadManager.a().b(this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     algn
  * JD-Core Version:    0.7.0.1
  */

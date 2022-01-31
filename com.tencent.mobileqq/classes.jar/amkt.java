@@ -1,27 +1,28 @@
-import android.app.AlertDialog;
-import android.app.AlertDialog.Builder;
-import android.view.Window;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.Intent;
+import android.os.AsyncTask;
+import com.tencent.common.app.BaseApplicationImpl;
+import cooperation.dingdong.DingdongPluginHelper;
+import cooperation.dingdong.DingdongPluginProxyBroadcastReceiver;
+import mqq.app.AppRuntime;
 
 public final class amkt
-  implements Runnable
+  extends AsyncTask
 {
-  public amkt(String paramString1, String paramString2) {}
+  public amkt(Intent paramIntent, int paramInt) {}
   
-  public void run()
+  protected Boolean a(Void... paramVarArgs)
   {
-    Object localObject = new AlertDialog.Builder(BaseApplication.getContext());
-    ((AlertDialog.Builder)localObject).setMessage(this.a).setTitle(this.b);
-    localObject = ((AlertDialog.Builder)localObject).create();
-    ((AlertDialog)localObject).getWindow().setType(2003);
-    try
+    return Boolean.valueOf(DingdongPluginHelper.a(BaseApplicationImpl.getApplication().getRuntime().getApplication()));
+  }
+  
+  protected void a(Boolean paramBoolean)
+  {
+    if (paramBoolean.booleanValue())
     {
-      ((AlertDialog)localObject).show();
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      paramBoolean = BaseApplicationImpl.getApplication().getRuntime();
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentIntent);
+      localIntent.putExtra("_inner_cmd_", this.jdField_a_of_type_Int);
+      DingdongPluginProxyBroadcastReceiver.a(paramBoolean, localIntent);
     }
   }
 }

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.ar;
 
+import aacs;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Xml;
@@ -11,7 +12,6 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.util.HashMap;
 import org.xmlpull.v1.XmlPullParser;
-import zxy;
 
 public class ArNativeSoLoader
 {
@@ -89,7 +89,7 @@ public class ArNativeSoLoader
     if ((!b) || (b1 != paramByte))
     {
       b = true;
-      ThreadManager.post(new zxy(paramString, paramByte, localSharedPreferences), 5, null, true);
+      ThreadManager.post(new aacs(paramString, paramByte, localSharedPreferences), 5, null, true);
     }
   }
   
@@ -120,9 +120,9 @@ public class ArNativeSoLoader
         return bool;
       }
       int i = localXmlPullParser.next();
-      if (localXmlPullParser.getName().equalsIgnoreCase("ArMapEngine738"))
+      if (localXmlPullParser.getName().equalsIgnoreCase("ArMapEngine7651"))
       {
-        paramHashMap.put("ArMapEngine738", localXmlPullParser.nextText());
+        paramHashMap.put("ArMapEngine7651", localXmlPullParser.nextText());
         break label104;
         ;;
         label104:

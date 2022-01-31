@@ -1,46 +1,40 @@
-import android.content.Context;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.text.SpannableString;
-import android.text.style.ImageSpan;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.widget.ProfileCardFavorItemDetailView;
+import android.media.MediaPlayer;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.vas.ColorRingPlayer;
 
-public class akhi
-  extends TextView
+class akhi
+  implements Runnable
 {
-  public akhi(ProfileCardFavorItemDetailView paramProfileCardFavorItemDetailView, Context paramContext, Drawable paramDrawable, String paramString, int paramInt)
+  akhi(akhh paramakhh, int paramInt1, int paramInt2) {}
+  
+  public void run()
   {
-    super(paramContext);
-    setTextSize(1, 11.0F);
-    setTextColor(-1);
-    if (paramDrawable != null)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    try
     {
-      paramProfileCardFavorItemDetailView = "[icon] " + paramString;
-      int i = (int)(AIOUtils.a(11.0F, getResources()) * 0.8D + 0.5D);
-      paramDrawable.setBounds(0, 0, i, i);
-      paramProfileCardFavorItemDetailView = new SpannableString(paramProfileCardFavorItemDetailView);
-      paramProfileCardFavorItemDetailView.setSpan(new ImageSpan(paramDrawable, 1), 0, 6, 17);
-    }
-    for (;;)
-    {
-      setText(paramProfileCardFavorItemDetailView);
-      paramProfileCardFavorItemDetailView = new GradientDrawable();
-      paramProfileCardFavorItemDetailView.setColor(paramInt);
-      paramProfileCardFavorItemDetailView.setCornerRadius(8.0F);
-      setBackgroundDrawable(paramProfileCardFavorItemDetailView);
-      setPadding(AIOUtils.a(4.0F, getResources()), 0, AIOUtils.a(4.0F, getResources()), 0);
-      setLayoutParams(new ViewGroup.LayoutParams(-2, AIOUtils.a(15.0F, getResources())));
+      if (this.jdField_a_of_type_Akhh.a.jdField_a_of_type_AndroidMediaMediaPlayer != null) {
+        bool1 = this.jdField_a_of_type_Akhh.a.jdField_a_of_type_AndroidMediaMediaPlayer.isPlaying();
+      }
+      if ((this.jdField_a_of_type_Akhh.a.jdField_a_of_type_AndroidMediaMediaPlayer != null) && (bool1)) {
+        this.jdField_a_of_type_Akhh.a.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(this.jdField_a_of_type_Int * 100 / this.b);
+      }
       return;
-      paramProfileCardFavorItemDetailView = new SpannableString(paramString);
+    }
+    catch (IllegalStateException localIllegalStateException)
+    {
+      for (;;)
+      {
+        this.jdField_a_of_type_Akhh.a.jdField_a_of_type_AndroidMediaMediaPlayer = null;
+        this.jdField_a_of_type_Akhh.a.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
+        bool1 = bool2;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhi
  * JD-Core Version:    0.7.0.1
  */

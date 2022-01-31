@@ -1,45 +1,15 @@
-import android.os.RemoteException;
-import com.tencent.av.service.IQQServiceLocationCallback;
-import com.tencent.av.service.LBSInfo;
-import com.tencent.mobileqq.app.LBSObserver;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenActivityPlugin;
+import com.tencent.av.smallscreen.SmallScreenUtils;
 
 public class jny
-  extends LBSObserver
+  implements Runnable
 {
-  private List a = new ArrayList();
+  public jny(SmallScreenActivityPlugin paramSmallScreenActivityPlugin) {}
   
-  public int a()
+  public void run()
   {
-    return this.a.size();
-  }
-  
-  public void a(IQQServiceLocationCallback paramIQQServiceLocationCallback)
-  {
-    if (paramIQQServiceLocationCallback != null) {
-      this.a.add(paramIQQServiceLocationCallback);
-    }
-  }
-  
-  protected void a(boolean paramBoolean, LBSInfo paramLBSInfo)
-  {
-    Iterator localIterator = this.a.iterator();
-    while (localIterator.hasNext())
-    {
-      IQQServiceLocationCallback localIQQServiceLocationCallback = (IQQServiceLocationCallback)localIterator.next();
-      try
-      {
-        localIQQServiceLocationCallback.a(paramBoolean, paramLBSInfo);
-      }
-      catch (RemoteException localRemoteException) {}
-      if (QLog.isColorLevel()) {
-        QLog.e("QQServiceForAV", 2, "Call onGetUserLocation fail", localRemoteException);
-      }
-    }
-    this.a.clear();
+    SmallScreenUtils.a(this.a.a.getApp());
   }
 }
 

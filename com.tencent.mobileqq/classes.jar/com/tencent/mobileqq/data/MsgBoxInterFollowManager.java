@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import abnw;
+import abux;
 import android.text.TextUtils;
 import appoint.define.appoint_define.RichText;
 import com.tencent.mobileqq.app.AppConstants;
@@ -100,7 +100,7 @@ public class MsgBoxInterFollowManager
         if (paramInt1 == 0) {
           break label437;
         }
-        ThreadManager.post(new abnw(this, localMessageForInteractAndFollow), 8, null, true);
+        ThreadManager.post(new abux(this, localMessageForInteractAndFollow), 8, null, true);
         return;
         paramString = AppConstants.ah;
         break;

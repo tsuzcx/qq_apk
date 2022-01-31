@@ -1,18 +1,20 @@
-import com.tencent.mobileqq.trooppiceffects.view.ShakePicView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
 
-class ajjc
-  implements Runnable
+public class ajjc
+  implements DialogInterface.OnClickListener
 {
-  ajjc(ajjb paramajjb) {}
+  public ajjc(ReciteRecordLayout paramReciteRecordLayout) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.c();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajjc
  * JD-Core Version:    0.7.0.1
  */

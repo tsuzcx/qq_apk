@@ -7,7 +7,7 @@ import com.tencent.biz.qqstory.network.request.GetMusicConfigRequest;
 import com.tencent.mobileqq.util.SharePreferenceUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
-import ojt;
+import old;
 
 public class GetMusicInfoListHandler
 {
@@ -31,7 +31,7 @@ public class GetMusicInfoListHandler
   public static void a(Context paramContext)
   {
     GetMusicConfigRequest localGetMusicConfigRequest = new GetMusicConfigRequest();
-    CmdTaskManger.a().a(localGetMusicConfigRequest, new ojt(paramContext));
+    CmdTaskManger.a().a(localGetMusicConfigRequest, new old(paramContext));
   }
   
   public static boolean a(Context paramContext)

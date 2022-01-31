@@ -28,8 +28,8 @@ import com.tencent.av.switchface.SwitchFaceTexture;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import jvi;
-import jvj;
+import jut;
+import juu;
 
 public class GLVideoView
   extends GLView
@@ -90,20 +90,20 @@ public class GLVideoView
     this.jdField_c_of_type_Int = 2147483647;
     this.jdField_d_of_type_Int = 0;
     this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_a_of_type_JavaLangRunnable = new jvj(this);
+    this.jdField_a_of_type_JavaLangRunnable = new juu(this);
     this.jdField_e_of_type_Int = 0;
     this.jdField_c_of_type_JavaLangString = ("GLVideoView_" + paramString);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentAvOpenglGlrendererGLPaint = new GLPaint();
     this.jdField_a_of_type_ComTencentAvOpenglTextureYUVTexture = new YuvFboTexture(this.jdField_a_of_type_AndroidContentContext, this, paramString);
-    this.jdField_a_of_type_ComTencentAvOpenglTextureYUVTexture.a(new jvi(this, paramVideoAppInterface));
+    this.jdField_a_of_type_ComTencentAvOpenglTextureYUVTexture.a(new jut(this, paramVideoAppInterface));
     this.jdField_a_of_type_AndroidWidgetImageView$ScaleType = ImageView.ScaleType.CENTER_INSIDE;
     this.jdField_b_of_type_AndroidGraphicsMatrix = new Matrix();
     this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_b_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_c_of_type_AndroidGraphicsRectF = new RectF();
-    this.jdField_d_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559765);
+    this.jdField_d_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559783);
   }
   
   private void a(GLCanvas paramGLCanvas, int paramInt)
@@ -1488,7 +1488,7 @@ public class GLVideoView
         break label108;
       }
       if (this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture == null) {
-        this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture = new ResourceTexture(this.jdField_a_of_type_AndroidContentContext, 2130840345);
+        this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture = new ResourceTexture(this.jdField_a_of_type_AndroidContentContext, 2130840351);
       }
       localGLRootView = a();
       if (localGLRootView != null) {
@@ -1541,7 +1541,7 @@ public class GLVideoView
   {
     this.k = paramBoolean;
     if (paramBoolean) {
-      this.jdField_e_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559929);
+      this.jdField_e_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getDimensionPixelSize(2131559947);
     }
   }
   

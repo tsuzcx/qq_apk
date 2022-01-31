@@ -1,19 +1,54 @@
-import com.tencent.biz.authorize.FlatBuffersConfig;
-import java.io.File;
+import android.content.Intent;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.common.offline.BidDownloader;
+import com.tencent.biz.common.offline.OfflineExpire;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
-public class kln
-  implements Runnable
+public final class kln
+  implements AsyncBack
 {
-  public kln(FlatBuffersConfig paramFlatBuffersConfig) {}
+  public kln(WeakReference paramWeakReference, String paramString1, int paramInt, String paramString2) {}
   
-  public void run()
+  public void a(int paramInt) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    if (this.a.a().exists())
+    paramString = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject;
+    if (paramString != null)
     {
-      this.a.a();
+      paramString = (PreDownloadController)paramString.getManager(192);
+      localObject = this.jdField_a_of_type_JavaLangString;
+      if (!BidDownloader.a(paramInt)) {
+        break label172;
+      }
+    }
+    label172:
+    for (long l = this.jdField_a_of_type_Int;; l = -1L)
+    {
+      paramString.a((String)localObject, l);
+      QLog.i(OfflineExpire.jdField_a_of_type_JavaLangString, 1, "finish predown bid=" + this.b + ", code=" + paramInt);
+      OfflineExpire.a();
+      if (OfflineExpire.b() == 0)
+      {
+        paramString = new Intent("com.tencent.process.tmdownloader.exit");
+        localObject = new ArrayList();
+        ((ArrayList)localObject).add("com.tencent.mobileqq:TMAssistantDownloadSDKService");
+        paramString.putStringArrayListExtra("procNameList", (ArrayList)localObject);
+        paramString.putExtra("verify", OfflineExpire.a((ArrayList)localObject, false));
+        if (QLog.isColorLevel()) {
+          QLog.d(OfflineExpire.jdField_a_of_type_JavaLangString, 2, "sendBroadcast to close TMAssistant sdk process");
+        }
+        BaseApplicationImpl.getContext().sendBroadcast(paramString);
+      }
       return;
     }
-    this.a.c();
   }
 }
 

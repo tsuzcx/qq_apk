@@ -1,16 +1,25 @@
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnPreparedListener;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnPreparedListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTextureImpl;
+import com.tencent.mobileqq.nearby.NearbyIconDecoder;
+import com.tencent.mobileqq.nearby.ipc.NearbyProcObserver;
+import java.util.List;
 
 public class aema
-  implements IMediaPlayer.OnPreparedListener
+  extends NearbyProcObserver
 {
-  public aema(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnPreparedListener paramOnPreparedListener) {}
+  public aema(NearbyIconDecoder paramNearbyIconDecoder) {}
   
-  public void a_(IMediaPlayer paramIMediaPlayer)
+  public void a(List paramList1, List paramList2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView$OnPreparedListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTextureImpl);
+    if ((paramList1 == null) || (paramList2 == null) || (paramList1.size() == 0) || (paramList1.size() != paramList2.size())) {}
+    for (;;)
+    {
+      return;
+      int i = 0;
+      while (i < paramList1.size())
+      {
+        this.a.a((String)paramList1.get(i), (String)paramList2.get(i));
+        i += 1;
+      }
+    }
   }
 }
 

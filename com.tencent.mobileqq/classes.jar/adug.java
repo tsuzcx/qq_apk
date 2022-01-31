@@ -1,55 +1,87 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.data.ChatBackgroundInfo;
-import com.tencent.mobileqq.model.ChatBackgroundManager;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.IPCDownloadListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.intervideo.IVPluginInfo;
+import com.tencent.mobileqq.intervideo.huayang.HuayangCrashReport;
+import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
+import com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher;
+import com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher.HuayangPluginLauncherListener;
+import com.tencent.mobileqq.intervideo.huayang.Monitor;
+import com.tencent.mobileqq.intervideo.huayang.MonitorConfig;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 public class adug
-  extends DownloadListener
+  implements Handler.Callback
 {
-  public adug(ChatBackgroundManager paramChatBackgroundManager, String paramString1, String paramString2)
-  {
-    super(paramString1, paramString2);
-  }
+  public adug(HuayangPluginLauncher paramHuayangPluginLauncher) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public boolean handleMessage(Message paramMessage)
   {
-    super.onDone(paramDownloadTask);
-    ChatBackgroundInfo localChatBackgroundInfo = (ChatBackgroundInfo)paramDownloadTask.a().get("chatbgInfo");
-    long l1 = paramDownloadTask.h;
-    long l2 = paramDownloadTask.g;
-    int i = paramDownloadTask.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatBackgroundManager", 2, "endDownload  id=" + paramDownloadTask.b() + "result =" + i);
-    }
-    if (i == 3) {
-      this.a.a(0, String.valueOf(paramDownloadTask.b()), l1 - l2);
-    }
-    for (i = 0;; i = 1)
+    switch (paramMessage.what)
     {
-      if ((this.a.a != null) && (paramDownloadTask.a().containsKey("callbackId"))) {
-        this.a.a.a(paramDownloadTask.b(), i, paramDownloadTask.a());
+    }
+    do
+    {
+      return false;
+      Object localObject = HuayangPluginLauncher.a(this.a).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((HuayangPluginLauncher.HuayangPluginLauncherListener)((Iterator)localObject).next()).a(paramMessage.arg1);
       }
-      return;
-      this.a.a(1, String.valueOf(paramDownloadTask.b()), 0L);
-      QLog.d("ChatBackgroundManager", 1, "chatbg downloadfail:id = " + paramDownloadTask.b() + ";result =" + i);
-    }
-  }
-  
-  public boolean onStart(DownloadTask paramDownloadTask)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatBackgroundManager", 2, "startDownload  id=" + paramDownloadTask.b());
-    }
-    super.onStart(paramDownloadTask);
-    return true;
+      localObject = HuayangPluginLauncher.a(this.a).iterator();
+      if (((Iterator)localObject).hasNext())
+      {
+        HuayangPluginLauncher.HuayangPluginLauncherListener localHuayangPluginLauncherListener = (HuayangPluginLauncher.HuayangPluginLauncherListener)((Iterator)localObject).next();
+        if (paramMessage.arg1 == 0) {}
+        for (boolean bool = true;; bool = false)
+        {
+          localHuayangPluginLauncherListener.a(bool, (Throwable)paramMessage.obj);
+          break;
+        }
+      }
+      localObject = new Intent(HuayangJsPlugin.a(HuayangPluginLauncher.a(this.a).c));
+      if (paramMessage.arg1 == 0)
+      {
+        if (HuayangJsPlugin.a(HuayangPluginLauncher.a(this.a).c)) {}
+        for (int i = 9;; i = 8)
+        {
+          ((Intent)localObject).putExtra("key_state", i);
+          HuayangPluginLauncher.a(this.a).sendBroadcast((Intent)localObject);
+          if (MonitorConfig.a.get(HuayangPluginLauncher.a(this.a)) == null) {
+            break;
+          }
+          Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginLauncher.a(this.a))).f));
+          return false;
+        }
+      }
+      if (HuayangJsPlugin.a(HuayangPluginLauncher.a(this.a).c)) {
+        Monitor.a("2691708");
+      }
+      for (;;)
+      {
+        HuayangCrashReport.a((Throwable)paramMessage.obj);
+        ((Intent)localObject).putExtra("key_state", 7);
+        HuayangPluginLauncher.a(this.a).sendBroadcast((Intent)localObject);
+        return false;
+        if (HuayangJsPlugin.b(HuayangPluginLauncher.a(this.a).c)) {
+          Monitor.a("2597726");
+        } else if (MonitorConfig.a.get(HuayangPluginLauncher.a(this.a)) != null) {
+          Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginLauncher.a(this.a))).e));
+        }
+      }
+      paramMessage = new Intent(HuayangJsPlugin.a(HuayangPluginLauncher.a(this.a).c));
+      paramMessage.putExtra("key_state", 6);
+      HuayangPluginLauncher.a(this.a).sendBroadcast(paramMessage);
+    } while (MonitorConfig.a.get(HuayangPluginLauncher.a(this.a)) == null);
+    Monitor.b(String.valueOf(((MonitorConfig)MonitorConfig.a.get(HuayangPluginLauncher.a(this.a))).d));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adug
  * JD-Core Version:    0.7.0.1
  */

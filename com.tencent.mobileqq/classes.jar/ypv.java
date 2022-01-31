@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
+import android.content.Intent;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.game.ApolloWebGameActivity;
+import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
 
 public class ypv
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public ypv(ApolloGameActivity paramApolloGameActivity) {}
+  public ypv(ApolloWebGameActivity paramApolloWebGameActivity, int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    if (ApolloWebGameActivity.a(this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloWebGameActivity).a().getRender() != null) {
+      ApolloRender.selectPhotoFromSystem(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
+    }
   }
 }
 

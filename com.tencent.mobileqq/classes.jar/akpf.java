@@ -1,31 +1,30 @@
-import android.app.Activity;
-import android.app.AlertDialog.Builder;
-import android.app.Dialog;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.open.base.LogUtility;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler;
+import java.util.concurrent.atomic.AtomicInteger;
 
-public final class akpf
+public class akpf
   implements Runnable
 {
-  public akpf(Bundle paramBundle, Activity paramActivity, int paramInt1, ApkUpdateDetail paramApkUpdateDetail, int paramInt2) {}
+  public akpf(SwiftBrowserOfflineHandler paramSwiftBrowserOfflineHandler, String paramString) {}
   
   public void run()
   {
-    Object localObject = new akpg(this);
-    akph localakph = new akph(this);
-    LogUtility.b("DownloadJSApi", "dialog create and show");
-    localObject = new AlertDialog.Builder(this.jdField_a_of_type_AndroidAppActivity).setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131428549)).setPositiveButton(2131428546, localakph).setNegativeButton(2131428547, (DialogInterface.OnClickListener)localObject).create();
-    ((Dialog)localObject).setCanceledOnTouchOutside(false);
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      ((Dialog)localObject).show();
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.b();
+    long l = System.currentTimeMillis();
+    if (SwiftBrowserOfflineHandler.c.get() == 3) {}
+    for (boolean bool = HtmlOffline.a(BaseApplicationImpl.getApplication().getApplicationContext(), this.jdField_a_of_type_JavaLangString, new akpg(this, l));; bool = false)
+    {
+      if (!bool) {
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.a();
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akpf
  * JD-Core Version:    0.7.0.1
  */

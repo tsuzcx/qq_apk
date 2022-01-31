@@ -1,12 +1,21 @@
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAlphaMaskView;
-import com.tencent.widget.GridView;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
 public class mya
+  extends Handler
 {
-  public TextView a;
-  public VideoFeedsAlphaMaskView a;
-  public GridView a;
+  public mya(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    PublicAccountImageCollectionMainActivity.b(this.a);
+  }
 }
 
 

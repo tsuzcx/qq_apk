@@ -1,23 +1,21 @@
-import android.os.Handler;
-import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import com.dataline.core.DirectForwarder;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
 
-public class adhp
-  implements Runnable
+class adhp
+  implements FMDialogUtil.FMDialogInterface
 {
-  public adhp(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
+  adhp(adho paramadho) {}
   
-  public void run()
+  public void a()
   {
-    if (this.a.b())
-    {
-      this.a.e();
-      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 100L);
-    }
+    DirectForwarder.b(this.a.a, 0);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adhp
  * JD-Core Version:    0.7.0.1
  */

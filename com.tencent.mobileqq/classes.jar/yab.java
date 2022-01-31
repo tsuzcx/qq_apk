@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.MessageForShortVideo;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 
-public class yab
-  implements Runnable
+public final class yab
+  implements Parcelable.Creator
 {
-  public yab(ShortVideoPlayActivity paramShortVideoPlayActivity) {}
-  
-  public void run()
+  public ResultRecord a(Parcel paramParcel)
   {
-    this.a.a.serial();
-    this.a.app.a().a(this.a.a.frienduin, this.a.a.istroop, this.a.a.uniseq, this.a.a.msgData);
+    return new ResultRecord(paramParcel, null);
+  }
+  
+  public ResultRecord[] a(int paramInt)
+  {
+    return new ResultRecord[paramInt];
   }
 }
 

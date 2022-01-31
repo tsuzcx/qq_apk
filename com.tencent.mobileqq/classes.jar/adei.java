@@ -1,32 +1,15 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.freshnews.BlockableEditTextView;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
+import java.util.TimerTask;
 
 public class adei
-  implements ActionMode.Callback
+  extends TimerTask
 {
-  public adei(BlockableEditTextView paramBlockableEditTextView) {}
+  public adei(MusicFilePresenter paramMusicFilePresenter) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void run()
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    if (BlockableEditTextView.a(this.a) == 0) {
-      return true;
-    }
-    return BlockableEditTextView.a(this.a);
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    this.a.a.runOnUiThread(new adej(this));
   }
 }
 

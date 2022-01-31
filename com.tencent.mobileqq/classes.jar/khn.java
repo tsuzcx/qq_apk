@@ -1,79 +1,37 @@
-import android.os.Build.VERSION;
-import android.os.Handler;
-import com.tencent.av.AVLog;
-import com.tencent.av.VideoController;
-import com.tencent.av.utils.SignalStrengthReport;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.managers.CUOpenCardGuideMng;
+import com.tencent.mobileqq.utils.QQUtils;
+import com.tencent.qphone.base.util.QLog;
 
-public class khn
+public final class khn
   implements Runnable
 {
-  public khn(SignalStrengthReport paramSignalStrengthReport) {}
+  public khn(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, boolean paramBoolean1, String paramString1, String paramString2, int paramInt, boolean paramBoolean2) {}
   
   public void run()
   {
-    int m = 0;
-    int n = SignalStrengthReport.e();
-    int i;
-    int j;
-    label22:
-    int k;
-    int i1;
-    if (n == 0)
-    {
-      i = 0;
-      if (n != 0) {
-        break label228;
-      }
-      j = 0;
-      k = j;
-      if (j == -1) {
-        k = 0;
-      }
-      i1 = Math.abs(k);
-      if (n != 1) {
-        break label256;
-      }
-      k = this.a.jdField_b_of_type_Int;
-      label51:
-      if (n != 0) {
-        break label261;
-      }
-      j = m;
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoMsgTools", 2, "addMessage");
+    }
+    if ((!this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isAppOnForeground(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())) || (QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Boolean);
     }
     for (;;)
     {
-      VideoController.a().a(n, j, k);
-      this.a.jdField_b_of_type_JavaLangString = ("networkType:" + n + " signalStrength:" + j + " pingResult:" + k);
-      AVLog.c("SignalStrengthReport", "setGatewayTestResult networkType:" + n + " | levelPercent:" + i + " | dbm:" + i1 + "| pingResult:" + this.a.jdField_b_of_type_Int);
-      if (this.a.a != null) {
-        this.a.a.postDelayed(this, 2000L);
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        CUOpenCardGuideMng.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_Int, this.jdField_b_of_type_Boolean, "qav");
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoMsgTools", 2, "addMessage end");
       }
       return;
-      if (n == 1)
-      {
-        i = this.a.c();
-        break;
-      }
-      i = this.a.b();
-      break;
-      label228:
-      if (n == 1)
-      {
-        j = this.a.d();
-        break label22;
-      }
-      j = this.a.a();
-      break label22;
-      label256:
-      k = 0;
-      break label51;
-      label261:
-      if (n == 1) {
-        j = i;
-      } else if (Build.VERSION.SDK_INT >= 23) {
-        j = i;
-      } else {
-        j = i1 + 1000;
+      QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+      if ((localQQMessageFacade != null) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin))) {
+        localQQMessageFacade.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_JavaLangString);
       }
     }
   }

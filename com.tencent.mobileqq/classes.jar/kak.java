@@ -1,13 +1,20 @@
-import com.tencent.av.ui.QavVideoRecordUICtrl;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.utils.UITools;
+import java.lang.ref.WeakReference;
 
 public class kak
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public kak(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
+  public kak(VideoControlUI paramVideoControlUI) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.b(3);
+    if (this.a.jdField_a_of_type_JavaLangRefWeakReference != null) {
+      UITools.a((AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get(), this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    }
   }
 }
 

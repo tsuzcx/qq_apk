@@ -1,28 +1,20 @@
-import android.os.Bundle;
-import com.tencent.av.utils.VideoMsgTools.4;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import android.view.View;
+import com.tencent.av.widget.stageview.StageEffectView;
+import java.util.Comparator;
 
 public class kie
-  implements Runnable
+  implements Comparator
 {
-  public kie(VideoMsgTools.4 param4, int paramInt, String paramString) {}
+  public kie(StageEffectView paramStageEffectView) {}
   
-  public void run()
+  public int a(Integer paramInteger1, Integer paramInteger2)
   {
-    Bundle localBundle = new Bundle();
-    if (this.jdField_a_of_type_Int == 3000) {}
-    for (int i = 1;; i = 10)
-    {
-      localBundle.putInt("MultiAVType", i);
-      if (this.jdField_a_of_type_ComTencentAvUtilsVideoMsgTools$4.jdField_a_of_type_Boolean) {
-        localBundle.putBoolean("isVideo", true);
-      }
-      localBundle.putBoolean("forceShowInviteBox", true);
-      localBundle.putBoolean("enableInvite", true);
-      ChatActivityUtils.a(this.jdField_a_of_type_ComTencentAvUtilsVideoMsgTools$4.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentAvUtilsVideoMsgTools$4.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, true, true, null, localBundle);
-      return;
+    paramInteger1 = (kim)this.a.getChildAt(paramInteger1.intValue()).getTag();
+    paramInteger2 = (kim)this.a.getChildAt(paramInteger2.intValue()).getTag();
+    if (paramInteger1.c < paramInteger2.c) {
+      return 1;
     }
+    return -1;
   }
 }
 

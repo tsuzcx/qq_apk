@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.tribe.fragment.TribeVideoPreviewFragment;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 
 class aiex
   implements Runnable
 {
-  aiex(aiev paramaiev) {}
+  aiex(aiev paramaiev, String paramString1, boolean paramBoolean, String paramString2) {}
   
   public void run()
   {
-    QQToast.a(this.a.a.getActivity(), 1, "保存至本地相册失败，请重试", 0).a();
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
+    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append(" dump");
+    if (this.jdField_a_of_type_Boolean) {}
+    for (String str = "成功，文件路径为" + this.b;; str = "失败")
+    {
+      QQToast.a(localBaseApplicationImpl, str, 2000).a();
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     aiex
  * JD-Core Version:    0.7.0.1
  */

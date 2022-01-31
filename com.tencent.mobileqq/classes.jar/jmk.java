@@ -1,37 +1,18 @@
-import android.os.Bundle;
-import android.os.Message;
-import com.tencent.av.redpacket.ui.RedPacketRollTextView;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.av.service.AVRedPacketConfig;
 
-public class jmk
-  implements Runnable
+public final class jmk
+  implements Parcelable.Creator
 {
-  public jmk(RedPacketRollTextView paramRedPacketRollTextView) {}
-  
-  public void run()
+  public AVRedPacketConfig a(Parcel paramParcel)
   {
-    while ((RedPacketRollTextView.b(this.a) != RedPacketRollTextView.c(this.a)) && (this.a.a)) {
-      try
-      {
-        if (RedPacketRollTextView.b(this.a) != RedPacketRollTextView.c(this.a)) {
-          RedPacketRollTextView.a(this.a, (RedPacketRollTextView.b(this.a) + 1) % 10);
-        }
-        int i = RedPacketRollTextView.b(this.a);
-        Message localMessage = RedPacketRollTextView.a(this.a).obtainMessage();
-        localMessage.what = 1;
-        Bundle localBundle = new Bundle();
-        localBundle.putString("content", Integer.toString(i % 10));
-        localMessage.setData(localBundle);
-        RedPacketRollTextView.a(this.a).sendMessage(localMessage);
-        Thread.sleep(RedPacketRollTextView.d(this.a));
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-      }
-    }
-    if (RedPacketRollTextView.a(this.a) != null) {
-      RedPacketRollTextView.a(this.a).b();
-    }
+    return new AVRedPacketConfig(paramParcel);
+  }
+  
+  public AVRedPacketConfig[] a(int paramInt)
+  {
+    return new AVRedPacketConfig[paramInt];
   }
 }
 

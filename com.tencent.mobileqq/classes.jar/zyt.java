@@ -1,62 +1,50 @@
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
-import com.tencent.mobileqq.ar.RemoteArConfigManager;
-import com.tencent.mobileqq.ar.aidl.IArFaceCallback.Stub;
+import com.tencent.mobileqq.ar.ARRecord.VideoEncoder.VideoEncoderCallback;
+import com.tencent.mobileqq.ar.ARRecord.VideoEncoderCore;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class zyt
-  extends IArFaceCallback.Stub
+  extends Handler
 {
-  public zyt(RemoteArConfigManager paramRemoteArConfigManager) {}
+  private WeakReference a;
   
-  public void a(int paramInt)
+  public zyt(Looper paramLooper, VideoEncoderCore paramVideoEncoderCore)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "download success " + paramInt);
-    }
-    if (RemoteArConfigManager.a(this.a) == null)
-    {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadSuccess error mHandler is null ");
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 6;
-    localMessage.arg1 = paramInt;
-    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
+    super(paramLooper);
+    this.a = new WeakReference(paramVideoEncoderCore);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "download process " + paramInt1 + " : " + paramInt2);
-    }
-    if (RemoteArConfigManager.a(this.a) == null)
+    if (this.a != null) {}
+    for (VideoEncoderCore localVideoEncoderCore = (VideoEncoderCore)this.a.get();; localVideoEncoderCore = null)
     {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadProcess error mHandler is null ");
+      switch (paramMessage.what)
+      {
+      }
+      do
+      {
+        do
+        {
+          return;
+        } while (localVideoEncoderCore == null);
+        paramMessage = (Object[])paramMessage.obj;
+        try
+        {
+          VideoEncoderCore.a(localVideoEncoderCore, (byte[])paramMessage[0], ((Long)paramMessage[1]).longValue(), false);
+          return;
+        }
+        catch (Exception paramMessage)
+        {
+          QLog.e("VideoEncoderCore", 1, "AudioEncodeHandler encode audio fail.", paramMessage);
+        }
+      } while (VideoEncoderCore.a(localVideoEncoderCore) == null);
+      VideoEncoderCore.a(localVideoEncoderCore).a(3);
       return;
     }
-    Message localMessage = Message.obtain();
-    localMessage.what = 7;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfig_RemoteArConfigManager", 2, "download error " + paramInt1 + " : " + paramInt2);
-    }
-    if (RemoteArConfigManager.a(this.a) == null)
-    {
-      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadError error mHandler is null ");
-      return;
-    }
-    Message localMessage = Message.obtain();
-    localMessage.what = 8;
-    localMessage.arg1 = paramInt1;
-    localMessage.arg2 = paramInt2;
-    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
   }
 }
 

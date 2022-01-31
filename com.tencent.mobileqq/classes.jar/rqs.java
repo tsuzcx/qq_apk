@@ -1,16 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import android.app.Dialog;
 import com.tencent.mobileqq.activity.BaseChatPie;
 
 public class rqs
-  implements View.OnTouchListener
+  implements Runnable
 {
   public rqs(BaseChatPie paramBaseChatPie) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    return true;
+    if ((this.a.e != null) && (this.a.e.isShowing())) {
+      this.a.e.dismiss();
+    }
+    while ((this.a.f == null) || (!this.a.f.isShowing())) {
+      return;
+    }
+    this.a.f.dismiss();
   }
 }
 

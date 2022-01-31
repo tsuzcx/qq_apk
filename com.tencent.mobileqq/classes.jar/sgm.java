@@ -1,15 +1,28 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.DevlockQuickLoginActivity;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.cur.DragFrameLayout;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.portal.PortalManager;
 
-class sgm
-  implements Runnable
+public class sgm
+  implements View.OnTouchListener
 {
-  sgm(sgl paramsgl, Drawable paramDrawable) {}
+  public sgm(Conversation paramConversation) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.jdField_a_of_type_Sgl.a.a.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    if (paramMotionEvent.getAction() == 1)
+    {
+      Conversation.a(this.a).removeView(Conversation.a(this.a));
+      paramView = (PortalManager)this.a.a.getManager(78);
+      if (paramView != null) {
+        paramView.a(this.a.a(), true);
+      }
+      Conversation.a(this.a, null);
+    }
+    return true;
   }
 }
 

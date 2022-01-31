@@ -1,23 +1,18 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import mqq.os.MqqHandler;
 
-class lyb
-  implements Runnable
+public class lyb
+  implements DialogInterface.OnDismissListener
 {
-  lyb(lya paramlya) {}
+  public lyb(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    WebProcessManager localWebProcessManager = (WebProcessManager)this.a.a.app.getManager(12);
-    if ((localWebProcessManager != null) && (localWebProcessManager.d()))
-    {
-      localWebProcessManager.a(-1, null);
-      if (QLog.isColorLevel()) {
-        QLog.d("allentest", 2, "sbbbb");
-      }
-    }
+    ReadInJoyDeliverUGCActivity.a(this.a, false);
+    ThreadManager.getUIHandler().postDelayed(new lyc(this), 300L);
   }
 }
 

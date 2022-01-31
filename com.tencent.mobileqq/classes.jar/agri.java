@@ -1,93 +1,39 @@
-import com.tencent.mobileqq.app.NumRedMsgHandler;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.redtouch.NumRedGetMsgCallback;
-import com.tencent.mobileqq.redtouch.NumRedMsgManager;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgBusi;
-import com.tencent.pb.getnumredmsg.NumRedMsg.NumMsgRspBody;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 public class agri
-  implements Runnable
+  extends AnimateUtils.AnimationAdapter
 {
-  public agri(NumRedMsgManager paramNumRedMsgManager, long[] paramArrayOfLong, NumRedGetMsgCallback paramNumRedGetMsgCallback, boolean paramBoolean, String paramString) {}
+  public agri(ProfileHeaderView paramProfileHeaderView, LinearLayout paramLinearLayout, View paramView) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int k = 0;
-    if ((this.jdField_a_of_type_ArrayOfLong.length < 1) || (this.jdField_a_of_type_ComTencentMobileqqRedtouchNumRedGetMsgCallback == null)) {
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(ProfileHeaderView.jdField_a_of_type_JavaLangString, 2, "ProfileHeaderView updateTips sideOutAnim onAnimationEnd");
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqRedtouchNumRedMsgManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRedtouchNumRedGetMsgCallback.a))) {
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchNumRedMsgManager.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqRedtouchNumRedGetMsgCallback.a), this.jdField_a_of_type_ComTencentMobileqqRedtouchNumRedGetMsgCallback);
-    }
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRedtouchNumRedMsgManager.a();
-    int j;
-    if (localObject != null)
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(this.jdField_a_of_type_AndroidViewView);
+    paramAnimation = AnimationUtils.loadAnimation(this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 2131034358);
+    paramAnimation.setFillAfter(true);
+    this.jdField_a_of_type_AndroidViewView.startAnimation(paramAnimation);
+    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.c < 4)
     {
-      localObject = ((NumRedMsg.NumMsgRspBody)localObject).rpt_num_red.get();
-      if (localObject != null)
-      {
-        i = 0;
-        if (i < this.jdField_a_of_type_ArrayOfLong.length)
-        {
-          j = 0;
-          for (;;)
-          {
-            if (j >= ((List)localObject).size()) {
-              break label355;
-            }
-            if (((NumRedMsg.NumMsgBusi)((List)localObject).get(j)).ui64_msgid.get() == this.jdField_a_of_type_ArrayOfLong[i])
-            {
-              localArrayList1.add(((List)localObject).get(j));
-              j = 1;
-              if (j == 0)
-              {
-                NumRedMsg.NumMsgBusi localNumMsgBusi = new NumRedMsg.NumMsgBusi();
-                localNumMsgBusi.ui64_msgid.set(this.jdField_a_of_type_ArrayOfLong[i]);
-                localArrayList2.add(localNumMsgBusi);
-              }
-              i += 1;
-              break;
-            }
-            j += 1;
-          }
-        }
-      }
-    }
-    for (int i = 0;; i = 1)
-    {
-      if (i != 0)
-      {
-        i = k;
-        while (i < this.jdField_a_of_type_ArrayOfLong.length)
-        {
-          localObject = new NumRedMsg.NumMsgBusi();
-          ((NumRedMsg.NumMsgBusi)localObject).ui64_msgid.set(this.jdField_a_of_type_ArrayOfLong[i]);
-          localArrayList2.add(localObject);
-          i += 1;
-        }
-      }
-      if ((localArrayList1.size() == this.jdField_a_of_type_ArrayOfLong.length) || (this.jdField_a_of_type_Boolean))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRedtouchNumRedGetMsgCallback.a(this.jdField_a_of_type_JavaLangString, localArrayList1);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqRedtouchNumRedMsgManager.jdField_a_of_type_ComTencentMobileqqAppNumRedMsgHandler.a(localArrayList2, this.jdField_a_of_type_ComTencentMobileqqRedtouchNumRedGetMsgCallback.a, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfLong);
-      return;
-      label355:
-      j = 0;
-      break;
+      paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView;
+      paramAnimation.c += 1;
+      paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.obtainMessage(ProfileHeaderView.d);
+      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.sendMessageDelayed(paramAnimation, 4000L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agri
  * JD-Core Version:    0.7.0.1
  */

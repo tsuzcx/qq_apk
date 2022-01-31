@@ -1,25 +1,15 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.qqstory.pgc.QQStoryDiscoverSearchDialog;
+import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
 
 public class nib
-  implements ActionSheet.OnButtonClickListener
+  implements QQStoryPullToRefreshListView.PullToRefreshListener
 {
-  public nib(FeedsPlayModeBase paramFeedsPlayModeBase, Boolean[] paramArrayOfBoolean, StoryVideoItem paramStoryVideoItem) {}
+  public nib(QQStoryDiscoverSearchDialog paramQQStoryDiscoverSearchDialog) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.a.dismiss();
-    if (paramView != null)
-    {
-      String str = this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.a.a(paramInt);
-      if (!TextUtils.isEmpty(str)) {
-        this.jdField_a_of_type_ArrayOfJavaLangBoolean[0] = Boolean.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildFeedsPlayModeBase.a(paramView, str, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem));
-      }
-    }
+    this.a.a = 1;
+    this.a.a(null);
   }
 }
 

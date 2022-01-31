@@ -1,22 +1,15 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.specialcare.SpecailCareListActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
-public class ycy
-  implements Animation.AnimationListener
+class ycy
+  implements Runnable
 {
-  public ycy(SpecailCareListActivity paramSpecailCareListActivity) {}
+  ycy(ycw paramycw) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.a.clearAnimation();
-    this.a.a.setVisibility(8);
+    this.a.a.setResult(0);
+    this.a.a.finish();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

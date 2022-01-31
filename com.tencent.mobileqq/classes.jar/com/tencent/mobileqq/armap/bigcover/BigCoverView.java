@@ -32,11 +32,11 @@ public class BigCoverView
   private void a(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970190, this);
-    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131365205);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131369496));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131369492));
-    this.b = ((TextView)paramContext.findViewById(2131369495));
+    paramContext = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970206, this);
+    this.jdField_a_of_type_AndroidViewView = paramContext.findViewById(2131365227);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext.findViewById(2131369573));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramContext.findViewById(2131369569));
+    this.b = ((TextView)paramContext.findViewById(2131369572));
   }
 }
 

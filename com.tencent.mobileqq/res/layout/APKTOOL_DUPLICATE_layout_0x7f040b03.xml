@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="35.0dip"
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="18.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a318a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a318b" android:paddingLeft="24.0dip" android:paddingTop="17.0dip" android:paddingRight="12.0dip" android:paddingBottom="2.0dip" android:layout_width="52.0dip" android:layout_height="35.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021b2f" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <ViewStub android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a149f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2c14" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ViewStub android:layout_gravity="center|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31d1" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <ViewStub android:layout_gravity="center|top" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31d2" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </LinearLayout>
+    <ViewStub android:layout_gravity="bottom|center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a31d3" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+</FrameLayout>

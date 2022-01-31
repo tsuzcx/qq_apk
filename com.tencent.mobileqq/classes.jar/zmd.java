@@ -1,15 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.VideoBroadcastReceiver;
+import com.tencent.mobileqq.app.RedpointHandler;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
 public class zmd
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public zmd(VideoBroadcastReceiver paramVideoBroadcastReceiver) {}
+  public zmd(RedpointHandler paramRedpointHandler, int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    RedpointHandler.b(this.jdField_a_of_type_ComTencentMobileqqAppRedpointHandler, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$SosoLbsInfo);
   }
 }
 

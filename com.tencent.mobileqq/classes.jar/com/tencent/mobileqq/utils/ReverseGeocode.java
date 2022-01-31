@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import ajrr;
+import akfy;
 import android.content.Context;
 import android.net.Proxy;
 import android.net.Uri;
@@ -14,12 +14,12 @@ public class ReverseGeocode
   private static final Uri a = Uri.parse("content://telephony/carriers/preferapn");
   
   /* Error */
-  private static ajrr a(Context paramContext)
+  private static akfy a(Context paramContext)
   {
     // Byte code:
-    //   0: new 27	ajrr
+    //   0: new 27	akfy
     //   3: dup
-    //   4: invokespecial 28	ajrr:<init>	()V
+    //   4: invokespecial 28	akfy:<init>	()V
     //   7: astore 5
     //   9: aload_0
     //   10: invokevirtual 34	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
@@ -96,14 +96,14 @@ public class ReverseGeocode
     //   148: astore_0
     //   149: aload 5
     //   151: aload_2
-    //   152: putfield 85	ajrr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   152: putfield 85	akfy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   155: aload_1
     //   156: astore_0
     //   157: aload 5
     //   159: aload 6
     //   161: invokestatic 79	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
     //   164: invokevirtual 82	java/lang/Integer:intValue	()I
-    //   167: putfield 88	ajrr:jdField_a_of_type_Int	I
+    //   167: putfield 88	akfy:jdField_a_of_type_Int	I
     //   170: aload_1
     //   171: ifnull +9 -> 180
     //   174: aload_1
@@ -122,12 +122,12 @@ public class ReverseGeocode
     //   199: astore_0
     //   200: aload 5
     //   202: ldc 96
-    //   204: putfield 85	ajrr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   204: putfield 85	akfy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   207: aload_1
     //   208: astore_0
     //   209: aload 5
     //   211: bipush 80
-    //   213: putfield 88	ajrr:jdField_a_of_type_Int	I
+    //   213: putfield 88	akfy:jdField_a_of_type_Int	I
     //   216: goto -46 -> 170
     //   219: astore_2
     //   220: aload_1
@@ -152,12 +152,12 @@ public class ReverseGeocode
     //   255: astore_0
     //   256: aload 5
     //   258: ldc 103
-    //   260: putfield 85	ajrr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   260: putfield 85	akfy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   263: aload_1
     //   264: astore_0
     //   265: aload 5
     //   267: bipush 80
-    //   269: putfield 88	ajrr:jdField_a_of_type_Int	I
+    //   269: putfield 88	akfy:jdField_a_of_type_Int	I
     //   272: goto -102 -> 170
     //   275: astore_1
     //   276: aload_0
@@ -178,12 +178,12 @@ public class ReverseGeocode
     //   305: astore_0
     //   306: aload 5
     //   308: ldc 103
-    //   310: putfield 85	ajrr:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   310: putfield 85	akfy:jdField_a_of_type_JavaLangString	Ljava/lang/String;
     //   313: aload_1
     //   314: astore_0
     //   315: aload 5
     //   317: bipush 80
-    //   319: putfield 88	ajrr:jdField_a_of_type_Int	I
+    //   319: putfield 88	akfy:jdField_a_of_type_Int	I
     //   322: goto -152 -> 170
     //   325: astore_0
     //   326: aconst_null
@@ -205,7 +205,7 @@ public class ReverseGeocode
     //   331	1	2	localException2	java.lang.Exception
     //   99	197	3	str2	String
     //   95	13	4	str3	String
-    //   7	309	5	localajrr	ajrr
+    //   7	309	5	localakfy	akfy
     //   77	83	6	str4	String
     // Exception table:
     //   from	to	target	type

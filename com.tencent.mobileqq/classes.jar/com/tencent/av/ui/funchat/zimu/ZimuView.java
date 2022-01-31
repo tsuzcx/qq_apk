@@ -55,7 +55,7 @@ public abstract class ZimuView
     paramContext = new DisplayMetrics();
     paramVideoAppInterface.getDefaultDisplay().getMetrics(paramContext);
     this.jdField_a_of_type_Float = paramContext.density;
-    setId(2131362516);
+    setId(2131362537);
     this.jdField_a_of_type_ComTencentAvBusinessManagerZimuEffectZimuManager = ((EffectZimuManager)this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(0));
     paramVideoAppInterface = a();
     this.jdField_a_of_type_ComTencentAvBusinessManagerZimuEffectZimuManager.b(paramVideoAppInterface);
@@ -161,7 +161,7 @@ public abstract class ZimuView
   
   protected int b()
   {
-    return 2131429583;
+    return 2131429589;
   }
   
   public void b()
@@ -280,7 +280,7 @@ public abstract class ZimuView
   void f()
   {
     String str1 = getContext().getResources().getString(b());
-    String str2 = getContext().getResources().getString(2131429584);
+    String str2 = getContext().getResources().getString(2131429590);
     a(new SentenceInfo(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount(), str1, str2, 2), true);
   }
   

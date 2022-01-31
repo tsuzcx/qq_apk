@@ -1,36 +1,29 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeed;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeedAdapter;
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.Utils;
+import com.tencent.commonsdk.cache.QQLruCache;
+import com.tencent.qphone.base.util.QLog;
 
-public class mqk
-  implements ActionSheet.OnButtonClickListener
+class mqk
+  extends QQLruCache
 {
-  public mqk(ServiceAccountFolderFeedAdapter paramServiceAccountFolderFeedAdapter, ServiceAccountFolderFeed paramServiceAccountFolderFeed, int paramInt, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  mqk(mqj parammqj, int paramInt1, int paramInt2)
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
+    super(paramInt1, paramInt2);
+  }
+  
+  protected int a(ImageRequest paramImageRequest, CloseableBitmap paramCloseableBitmap)
+  {
+    return Utils.a(paramCloseableBitmap.a());
+  }
+  
+  protected void a(boolean paramBoolean, ImageRequest paramImageRequest, CloseableBitmap paramCloseableBitmap1, CloseableBitmap paramCloseableBitmap2)
+  {
+    super.entryRemoved(paramBoolean, paramImageRequest, paramCloseableBitmap1, paramCloseableBitmap2);
+    if (QLog.isColorLevel()) {
+      Utils.a(mqj.a, "entryRemoved cache " + paramCloseableBitmap1 + " state:" + this.a.toString());
     }
-    ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter, this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed);
-    paramInt = this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.b;
-    int i = this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.jdField_a_of_type_Int != 1) {
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      long l = ServiceAccountFolderManager.a().a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed);
-      ReportController.b(ServiceAccountFolderFeedAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeedAdapter), "dc01160", "Pb_account_lifeservice", "" + this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, "0X80067F2", "0X80067F2", 0, 0, "" + (this.jdField_a_of_type_Int + 1), "" + l, "" + i, "" + paramInt);
-      break;
-    }
+    paramCloseableBitmap1.a();
   }
 }
 

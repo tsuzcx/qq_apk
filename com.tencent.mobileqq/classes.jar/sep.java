@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.BizTroopHandler;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.util.TroopReportor;
 
 public class sep
-  extends FMObserver
+  implements DialogInterface.OnClickListener
 {
-  public sep(Conversation paramConversation) {}
+  public sep(ChatSettingForTroop paramChatSettingForTroop, BizTroopHandler paramBizTroopHandler) {}
   
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a(8, paramString, -2147483648);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
-  {
-    this.a.a(8, paramString1, -2147483648);
+    this.jdField_a_of_type_ComTencentMobileqqAppBizTroopHandler.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopCode, false);
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app, "P_CliOper", "Grp_set", "", "Grp_data", "share_set_close", 0, 0, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin, "", "", "");
+    TroopReportor.a("Grp_set_new", "grpData_admin", "share_set_close", 0, 0, new String[] { this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin, TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a) });
   }
 }
 

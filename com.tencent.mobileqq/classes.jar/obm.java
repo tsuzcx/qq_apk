@@ -1,15 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.qqstory.takevideo.EditPicCropPart;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStepExector.ErrorHandler;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class obm
-  implements DialogInterface.OnClickListener
+  implements SimpleStepExector.ErrorHandler
 {
-  public obm(EditPicCropPart paramEditPicCropPart) {}
+  public obm(NewMyStorySegment paramNewMyStorySegment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(ErrorMessage paramErrorMessage)
   {
-    paramDialogInterface.dismiss();
+    SLog.e("NewMyStorySegment", "error occur when get friends data from server steps=%s,error=%s", new Object[] { paramErrorMessage.extraMsg, paramErrorMessage.getErrorMessage() });
+    new Handler(Looper.getMainLooper()).post(new obn(this));
   }
 }
 

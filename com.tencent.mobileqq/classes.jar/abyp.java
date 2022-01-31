@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.emoticon.EmotionPanelPayBackListener;
-import com.tencent.mobileqq.emoticonview.EmotionNeedDownloadAdapter;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.doutu.DoutuManager;
 
-public class abyp
-  extends EmotionPanelPayBackListener
+public final class abyp
+  implements Runnable
 {
-  public abyp(EmotionNeedDownloadAdapter paramEmotionNeedDownloadAdapter) {}
-  
-  public void a(int paramInt)
+  public void run()
   {
-    this.a.a(paramInt);
+    DoutuManager.a(BaseApplicationImpl.getApplication().getBaseContext());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abyp
  * JD-Core Version:    0.7.0.1
  */

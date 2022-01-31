@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 import java.util.Iterator;
 import java.util.List;
-import nvm;
+import nwz;
 
 public class MemoriesProfilePresenter$GetYearNodeListReceiver
   extends QQUIEventReceiver
@@ -31,7 +31,7 @@ public class MemoriesProfilePresenter$GetYearNodeListReceiver
         if (paramMemoriesProfilePresenter.a != null)
         {
           paramMemoriesProfilePresenter.a.videoCount = MemoriesProfilePresenter.a(paramMemoriesProfilePresenter);
-          ThreadManager.post(new nvm(this, paramMemoriesProfilePresenter), 5, null, false);
+          ThreadManager.post(new nwz(this, paramMemoriesProfilePresenter), 5, null, false);
         }
       }
     }

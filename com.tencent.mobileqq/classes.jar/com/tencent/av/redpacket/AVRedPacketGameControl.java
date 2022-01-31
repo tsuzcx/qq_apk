@@ -39,13 +39,13 @@ public class AVRedPacketGameControl
   
   private RedPacketGameView a()
   {
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131365339);
+    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131365361);
     Object localObject1 = null;
     Object localObject2;
     View localView;
     if (localViewGroup != null)
     {
-      localObject2 = (RedPacketGameView)localViewGroup.findViewById(2131362515);
+      localObject2 = (RedPacketGameView)localViewGroup.findViewById(2131362536);
       localObject1 = localObject2;
       if (localObject2 == null)
       {
@@ -56,7 +56,7 @@ public class AVRedPacketGameControl
         i = 0;
         ((RedPacketGameView)localObject1).setScoreMarginTop(i);
         localObject2 = new RelativeLayout.LayoutParams(-1, -1);
-        localView = localViewGroup.findViewById(2131365908);
+        localView = localViewGroup.findViewById(2131365935);
         if (localView == null) {
           break label124;
         }
@@ -106,8 +106,8 @@ public class AVRedPacketGameControl
   
   private void i()
   {
-    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131365339);
-    RedPacketGameView localRedPacketGameView = (RedPacketGameView)localViewGroup.findViewById(2131362515);
+    ViewGroup localViewGroup = (ViewGroup)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131365361);
+    RedPacketGameView localRedPacketGameView = (RedPacketGameView)localViewGroup.findViewById(2131362536);
     if (localRedPacketGameView != null)
     {
       localRedPacketGameView.e();
@@ -131,7 +131,7 @@ public class AVRedPacketGameControl
     }
     this.jdField_a_of_type_Int = 4;
     d();
-    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362515);
+    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362536);
     localRedPacketGameView.setVisibility(0);
     localRedPacketGameView.b(false);
     if (paramInt == 2) {
@@ -148,7 +148,7 @@ public class AVRedPacketGameControl
     try
     {
       long l1 = System.currentTimeMillis();
-      RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362515);
+      RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362536);
       if (localRedPacketGameView != null) {
         localRedPacketGameView.a(this.jdField_a_of_type_ComTencentAvRedpacketAVRedPacketManager);
       }
@@ -188,7 +188,7 @@ public class AVRedPacketGameControl
     }
     this.jdField_a_of_type_Int = 3;
     d();
-    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362515);
+    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362536);
     localRedPacketGameView.setVisibility(0);
     localRedPacketGameView.a(paramInt, paramList);
   }
@@ -200,7 +200,7 @@ public class AVRedPacketGameControl
     do
     {
       return;
-      localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362515);
+      localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362536);
       if (paramInt == AVRedPacketManager.jdField_a_of_type_Int)
       {
         localRedPacketGameView.b(paramBoolean);
@@ -228,7 +228,7 @@ public class AVRedPacketGameControl
     if (!c()) {
       return;
     }
-    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362515);
+    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362536);
     localRedPacketGameView.setVisibility(0);
     localRedPacketGameView.a(paramLocalFrameSyncInfo);
     c(paramLocalFrameSyncInfo);
@@ -238,7 +238,7 @@ public class AVRedPacketGameControl
   
   public boolean a()
   {
-    Object localObject = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362515);
+    Object localObject = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362536);
     if (this.jdField_a_of_type_Int == -1)
     {
       RedPacketGameView localRedPacketGameView = a();
@@ -278,7 +278,7 @@ public class AVRedPacketGameControl
     if (!c()) {
       return;
     }
-    ((RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362515)).b(paramLocalFrameSyncInfo);
+    ((RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362536)).b(paramLocalFrameSyncInfo);
   }
   
   public boolean b()
@@ -291,7 +291,7 @@ public class AVRedPacketGameControl
     if (!c()) {
       return;
     }
-    ((RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362515)).d();
+    ((RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362536)).d();
   }
   
   public void d()
@@ -314,7 +314,7 @@ public class AVRedPacketGameControl
     }
     this.jdField_a_of_type_Int = 2;
     d();
-    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362515);
+    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362536);
     localRedPacketGameView.setVisibility(0);
     localRedPacketGameView.a();
   }
@@ -330,7 +330,7 @@ public class AVRedPacketGameControl
     }
     this.jdField_a_of_type_Int = 2;
     d();
-    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362515);
+    RedPacketGameView localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362536);
     localRedPacketGameView.setVisibility(0);
     localRedPacketGameView.b();
   }
@@ -345,7 +345,7 @@ public class AVRedPacketGameControl
     do
     {
       return;
-      localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362515);
+      localRedPacketGameView = (RedPacketGameView)this.jdField_a_of_type_ComTencentAvUiAVActivity.findViewById(2131362536);
     } while (localRedPacketGameView == null);
     localRedPacketGameView.f();
   }

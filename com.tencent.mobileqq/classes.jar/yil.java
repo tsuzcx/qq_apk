@@ -1,31 +1,22 @@
-import com.tencent.mobileqq.apollo.utils.ApolloHttpCallBack;
-import com.tencent.mobileqq.apollo.utils.ApolloHttpUtil;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
+import com.tencent.qphone.base.util.QLog;
 
-public final class yil
+class yil
   implements Runnable
 {
-  public yil(String paramString1, String paramString2, String[] paramArrayOfString, ApolloHttpCallBack paramApolloHttpCallBack, boolean paramBoolean, String paramString3, String paramString4, String paramString5) {}
+  yil(yik paramyik) {}
   
   public void run()
   {
-    String str = this.jdField_a_of_type_JavaLangString.toUpperCase();
-    if (str.equals("GET")) {
-      ApolloHttpUtil.a(this.b, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpCallBack);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("SystemMsgListAdapter", 4, "onGetCampusInfo notify refresh list");
     }
-    while (!str.equals("POST")) {
-      return;
-    }
-    if (this.jdField_a_of_type_Boolean)
-    {
-      ApolloHttpUtil.a(this.b, this.c, this.d, this.e, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpCallBack);
-      return;
-    }
-    ApolloHttpUtil.a(this.b, this.c, this.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloHttpCallBack);
+    this.a.a.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yil
  * JD-Core Version:    0.7.0.1
  */

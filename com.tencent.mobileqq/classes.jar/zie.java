@@ -1,47 +1,24 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.HashMap;
-import org.xml.sax.Attributes;
-import org.xml.sax.helpers.DefaultHandler;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.PeakAppInterface;
+import com.tencent.mobileqq.richmedia.server.PeakAudioTransHandler;
+import com.tencent.qphone.base.util.QLog;
 
 public class zie
-  extends DefaultHandler
+  extends BroadcastReceiver
 {
-  private String jdField_a_of_type_JavaLangString;
-  private HashMap jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  public zie(PeakAppInterface paramPeakAppInterface) {}
   
-  public zie(QQAppInterface paramQQAppInterface) {}
-  
-  public HashMap a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    return this.jdField_a_of_type_JavaUtilHashMap;
-  }
-  
-  public void characters(char[] paramArrayOfChar, int paramInt1, int paramInt2)
-  {
-    paramArrayOfChar = new String(paramArrayOfChar, paramInt1, paramInt2);
-    if (this.jdField_a_of_type_JavaLangString != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.put(this.jdField_a_of_type_JavaLangString, paramArrayOfChar);
+    if ((paramIntent != null) && ("tencent.peak.q2v.AudioTransPush".equals(paramIntent.getAction())))
+    {
+      int i = paramIntent.getIntExtra("rsptype", 0);
+      paramContext = paramIntent.getByteArrayExtra("rspbody");
+      QLog.d("PeakAppInterface", 2, "ACTION_AUDIO_TRANS_PUSH rsptype=" + i + "|" + paramContext.length);
+      ((PeakAudioTransHandler)this.a.a(0)).a(i, paramContext);
     }
-  }
-  
-  public void endDocument()
-  {
-    super.endDocument();
-  }
-  
-  public void endElement(String paramString1, String paramString2, String paramString3)
-  {
-    this.jdField_a_of_type_JavaLangString = null;
-  }
-  
-  public void startDocument()
-  {
-    super.startDocument();
-  }
-  
-  public void startElement(String paramString1, String paramString2, String paramString3, Attributes paramAttributes)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString2;
   }
 }
 

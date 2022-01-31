@@ -6,6 +6,7 @@ public class NativeMonitorConfig
   private long countLimted = 1000L;
   private long memoryLimited = 5242880L;
   private int nativeMonitorOpened;
+  private String processBlackList;
   private String soWhiteList;
   private long switchFlag;
   private long timeLimited = 1000000L;
@@ -28,6 +29,11 @@ public class NativeMonitorConfig
   public int getNativeMonitorOpened()
   {
     return this.nativeMonitorOpened;
+  }
+  
+  public String getProcessBlackList()
+  {
+    return this.processBlackList;
   }
   
   public String getSoWhiteList()
@@ -70,6 +76,7 @@ public class NativeMonitorConfig
     localStringBuilder.append("|timeLimited:").append(this.timeLimited);
     localStringBuilder.append("|countLimited:").append(this.countLimted);
     localStringBuilder.append("|memoryLimited:").append(this.memoryLimited);
+    localStringBuilder.append("|processBlackList:").append(this.processBlackList);
     return localStringBuilder.toString();
   }
   
@@ -82,6 +89,7 @@ public class NativeMonitorConfig
     this.countLimted = paramNativeMonitorConfig.getCountLimted();
     this.memoryLimited = paramNativeMonitorConfig.getMemoryLimited();
     this.androidVersionBlackList = paramNativeMonitorConfig.getAndroidVersionBlackList();
+    this.processBlackList = paramNativeMonitorConfig.getProcessBlackList();
   }
 }
 

@@ -1,48 +1,19 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.RecommendCommonMessage;
+import java.lang.ref.WeakReference;
 
-class abvh
+public class abvh
   implements Runnable
 {
-  abvh(abue paramabue, QQAppInterface paramQQAppInterface, ArrayList paramArrayList, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public abvh(RecommendCommonMessage paramRecommendCommonMessage, WeakReference paramWeakReference) {}
   
   public void run()
   {
-    Bundle localBundle = new Bundle();
-    HashMap localHashMap = new HashMap();
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50);
-    if (localFriendsManager != null)
-    {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        Friends localFriends = localFriendsManager.c(str);
-        if (localFriends != null)
-        {
-          if (!TextUtils.isEmpty(localFriends.remark)) {
-            localHashMap.put(str, localFriends.remark);
-          } else if (!TextUtils.isEmpty(localFriends.name)) {
-            localHashMap.put(str, localFriends.name);
-          } else {
-            localHashMap.put(str, "");
-          }
-        }
-        else {
-          localHashMap.put(str, "");
-        }
-      }
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localQQAppInterface != null) {
+      localQQAppInterface.a().a(this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.uniseq, "extStr", this.jdField_a_of_type_ComTencentMobileqqDataRecommendCommonMessage.extStr);
     }
-    localBundle.putSerializable("friendsMap", localHashMap);
-    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

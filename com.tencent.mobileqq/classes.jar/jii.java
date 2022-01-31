@@ -1,133 +1,69 @@
-import android.text.TextUtils;
-import com.tencent.av.gameplay.QAVGamePlaySoConfigInfo;
-import com.tencent.av.gameplay.QavGPDownloader;
-import com.tencent.av.gameplay.QavGamePlayUtil;
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.NetworkCenter;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.av.VideoController.GAudioFriends;
+import com.tencent.av.app.GAudioUIObserver;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.gaudio.GaInviteActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class jii
+  extends GAudioUIObserver
 {
-  int jdField_a_of_type_Int = 0;
-  QAVGamePlaySoConfigInfo jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo = null;
-  HttpNetReq jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = 0;
+  public jii(GaInviteActivity paramGaInviteActivity) {}
   
-  public boolean a(QAVGamePlaySoConfigInfo paramQAVGamePlaySoConfigInfo)
+  protected void a()
   {
-    boolean bool;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      if ((this.jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo == paramQAVGamePlaySoConfigInfo) || (TextUtils.isEmpty(paramQAVGamePlaySoConfigInfo.b)) || (paramQAVGamePlaySoConfigInfo.b.equals(this.jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo.b))) {
-        break label273;
-      }
-      bool = true;
+    super.a();
+    this.a.a("onServiceConnected");
+  }
+  
+  protected void a(long paramLong, int paramInt)
+  {
+    super.c(paramLong);
+    if ((this.a.jdField_a_of_type_Long == paramLong) || (0L == paramLong)) {
+      this.a.finish();
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QavGPDownloadManager", 2, String.format("GPsoDownloadTask, mDownloading[%s], reDownload[%s]", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(bool) }));
-      }
-      if (!bool)
-      {
-        return this.jdField_a_of_type_Boolean;
-        bool = true;
-      }
-      else
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq != null)
-        {
-          Object localObject = BaseApplicationImpl.sApplication.getRuntime();
-          if ((localObject instanceof AppInterface))
-          {
-            localObject = ((AppInterface)localObject).getNetEngine(0);
-            if (localObject != null)
-            {
-              QLog.d("QavGPDownloadManager", 2, String.format("DownloadContrl, cancelReq[%s]", new Object[] { (String)this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq.a() }));
-              ((INetEngine)localObject).b(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
-            }
-          }
-        }
-        this.jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo = paramQAVGamePlaySoConfigInfo;
-        this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
-        this.jdField_a_of_type_Int = 0;
-        this.b = 0;
-        if (!QavGamePlayUtil.a(this.jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo)) {
-          this.jdField_a_of_type_Int += 1;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("QavGPDownloadManager", 2, String.format("DownloadContrl, isNeedDownload[%s], mInfo[%s]", new Object[] { Boolean.valueOf(false), this.jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo }));
-        }
-        if (this.jdField_a_of_type_Int == 0) {
-          return this.jdField_a_of_type_Boolean;
-        }
-        this.jdField_a_of_type_Boolean = a(this.jdField_a_of_type_ComTencentAvGameplayQAVGamePlaySoConfigInfo, 3);
-        return this.jdField_a_of_type_Boolean;
-        label273:
-        bool = false;
+  }
+  
+  protected void a(long paramLong, String paramString)
+  {
+    if ((this.a.jdField_a_of_type_Long == paramLong) && (this.a.c.equals(paramString))) {
+      this.a.finish();
+    }
+  }
+  
+  protected void a(long paramLong, ArrayList paramArrayList, int paramInt1, int paramInt2)
+  {
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext()) {
+      if (String.valueOf(((VideoController.GAudioFriends)paramArrayList.next()).jdField_a_of_type_Long).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getAccount())) {
+        this.a.finish();
       }
     }
   }
   
-  boolean a(QAVGamePlaySoConfigInfo paramQAVGamePlaySoConfigInfo, int paramInt)
+  protected void b(long paramLong1, long paramLong2, String paramString)
   {
-    String str2;
-    String str1;
-    String str3;
-    boolean bool2;
-    if (!QavGamePlayUtil.a(paramQAVGamePlaySoConfigInfo))
-    {
-      str2 = paramQAVGamePlaySoConfigInfo.jdField_a_of_type_JavaLangString;
-      str1 = paramQAVGamePlaySoConfigInfo.b;
-      str3 = QavGamePlayUtil.a() + str1;
-      if (paramInt < 0)
-      {
-        QLog.d("QavGPDownloadManager", 1, String.format("downloadRes, 下载死循环了. info[%s]", new Object[] { paramQAVGamePlaySoConfigInfo }));
-        QavGPDownloader.a(-3);
-        bool2 = false;
-        return bool2;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.a.jdField_b_of_type_JavaLangString + ".troopgroup_vedio.invite", 2, "groupId:" + paramLong1 + ", memUin:" + paramLong2 + ",invitedId:" + paramString + ", mInviterUin:" + this.a.jdField_b_of_type_Long + ", mGroupId:" + this.a.jdField_a_of_type_Long);
     }
-    else
-    {
-      QavGPDownloader.a(100);
-      return false;
+    if ((paramLong2 == this.a.jdField_b_of_type_Long) && (paramLong1 == this.a.jdField_a_of_type_Long)) {
+      this.a.finish();
     }
-    HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new jij(this, str1, paramQAVGamePlaySoConfigInfo, paramInt);
-    localHttpNetReq.a(str1);
-    localHttpNetReq.jdField_a_of_type_JavaLangString = str2;
-    localHttpNetReq.jdField_a_of_type_Int = 0;
-    localHttpNetReq.jdField_c_of_type_JavaLangString = new File(str3).getPath();
-    localHttpNetReq.jdField_c_of_type_Int = NetworkUtil.a(NetworkCenter.a().a());
-    paramQAVGamePlaySoConfigInfo = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramQAVGamePlaySoConfigInfo instanceof QQAppInterface))
-    {
-      paramQAVGamePlaySoConfigInfo = ((QQAppInterface)paramQAVGamePlaySoConfigInfo).getNetEngine(0);
-      if (paramQAVGamePlaySoConfigInfo != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = localHttpNetReq;
-        paramQAVGamePlaySoConfigInfo.a(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
-      }
+  }
+  
+  protected void g(long paramLong)
+  {
+    if (this.a.jdField_a_of_type_Long != paramLong) {
+      this.a.e();
     }
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (!bool1) {
-        QavGPDownloader.a(-2);
-      }
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("QavGPDownloadManager", 2, String.format("downloadRes, md5[%s], etr[%s]", new Object[] { str1, Boolean.valueOf(bool1) }));
-      return bool1;
+    this.a.finish();
+  }
+  
+  protected void h(long paramLong)
+  {
+    if (this.a.jdField_a_of_type_Long == paramLong) {
+      this.a.finish();
     }
   }
 }

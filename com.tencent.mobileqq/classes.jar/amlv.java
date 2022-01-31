@@ -1,26 +1,33 @@
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.widget.QQToast;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
+import android.app.Activity;
+import android.content.Context;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.IPluginManager.OnOpenPluginListener;
+import cooperation.plugin.IPluginManager.OnPluginReadyListener;
+import cooperation.plugin.IPluginManager.PluginParams;
 
-public class amlv
-  implements Runnable
+public final class amlv
+  implements IPluginManager.OnPluginReadyListener
 {
-  public amlv(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, int paramInt, String paramString) {}
+  public amlv(IPluginManager.OnOpenPluginListener paramOnOpenPluginListener) {}
   
-  public void run()
+  public void a(boolean paramBoolean, Context paramContext, IPluginManager.PluginParams paramPluginParams)
   {
-    try
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean) {
+      IPluginManager.b((Activity)paramContext, paramPluginParams);
+    }
+    for (;;)
     {
-      if ((this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin.a != null) && (this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin.a.mRuntime != null)) {
-        QQToast.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin.a.mRuntime.a(), this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, 0).a();
+      if (this.a != null) {
+        this.a.a(paramBoolean);
       }
       return;
-    }
-    catch (Exception localException)
-    {
-      QZLog.w("QZoneSharePictureJsPlugin", 1, localException, new Object[0]);
+      Toast.makeText(BaseApplicationImpl.getContext(), "加载失败", 0).show();
     }
   }
 }

@@ -1,14 +1,22 @@
-import android.app.Dialog;
-import com.tencent.biz.qqstory.takevideo.EditVideoSave;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.takevideo.VideoFragmentInfo;
 
 public class oew
-  implements Runnable
+  extends VideoFragmentInfo
 {
-  public oew(EditVideoSave paramEditVideoSave) {}
+  public Bitmap a;
+  public Bitmap b;
   
-  public void run()
+  public oew(int paramInt, Bitmap paramBitmap1, Bitmap paramBitmap2, Bitmap paramBitmap3)
   {
-    EditVideoSave.a(this.a).show();
+    super(paramInt, paramBitmap1);
+    this.b = paramBitmap2;
+    this.a = paramBitmap3;
+  }
+  
+  public oew(VideoFragmentInfo paramVideoFragmentInfo, Bitmap paramBitmap1, Bitmap paramBitmap2)
+  {
+    this(paramVideoFragmentInfo.jdField_c_of_type_Int, paramVideoFragmentInfo.jdField_c_of_type_AndroidGraphicsBitmap, paramBitmap1, paramBitmap2);
   }
 }
 

@@ -1,26 +1,31 @@
-import com.tencent.component.media.ImageManagerEnv;
-import com.tencent.component.media.image.ImageManager;
-import com.tencent.component.media.image.PoolParams;
-import com.tencent.component.media.image.PoolParams.BucketParams;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.TextView;
+import com.tencent.common.galleryactivity.AbstractGalleryScene;
+import com.tencent.common.galleryactivity.GalleryPageView;
 
 public class pff
-  implements PoolParams
+  implements Animation.AnimationListener
 {
-  public pff(ImageManager paramImageManager) {}
+  public pff(GalleryPageView paramGalleryPageView) {}
   
-  public PoolParams.BucketParams getBucketParams(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    return new PoolParams.BucketParams(16384, ImageManagerEnv.g().getDecodeThreadNum(ImageManager.a()) + 2);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
   }
   
-  public int getBucketPoolSize()
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
   {
-    return 1;
+    if (!this.a.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractGalleryScene.d()) {
+      this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pff
  * JD-Core Version:    0.7.0.1
  */

@@ -36,7 +36,7 @@ import com.tencent.widget.HorizontalListView.OnItemScrollEventListener;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
-import yek;
+import yhr;
 
 public class MayKnowAdapter
   extends BaseAdapter
@@ -44,7 +44,7 @@ public class MayKnowAdapter
 {
   private int jdField_a_of_type_Int;
   Activity jdField_a_of_type_AndroidAppActivity;
-  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new yek(this);
+  FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new yhr(this);
   FriendsManager jdField_a_of_type_ComTencentMobileqqAppFriendsManager;
   public MayknowRecommendManager a;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -208,13 +208,13 @@ public class MayKnowAdapter
     {
       localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2130968615, paramViewGroup, false);
       paramViewGroup = new MayKnowAdapter.MKRViewHolder();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362851));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362852));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131362869));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131362870));
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.getPaint();
-      paramViewGroup.b = ((TextView)localView.findViewById(2131362853));
-      paramViewGroup.c = ((TextView)localView.findViewById(2131362854));
-      paramViewGroup.d = ((TextView)localView.findViewById(2131362855));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131362850));
+      paramViewGroup.b = ((TextView)localView.findViewById(2131362871));
+      paramViewGroup.c = ((TextView)localView.findViewById(2131362872));
+      paramViewGroup.d = ((TextView)localView.findViewById(2131362873));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131362868));
       paramViewGroup.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       localView.setTag(paramViewGroup);
       localMayKnowRecommend = a(paramInt);
@@ -281,10 +281,10 @@ public class MayKnowAdapter
       {
         paramViewGroup.c.setVisibility(8);
         paramViewGroup.d.setVisibility(0);
-        paramViewGroup.d.setText(2131433031);
+        paramViewGroup.d.setText(2131433048);
         if (AppSetting.b)
         {
-          paramViewGroup.d.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131433031));
+          paramViewGroup.d.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131433048));
           localStringBuilder.append(",等待验证");
         }
       }
@@ -292,10 +292,10 @@ public class MayKnowAdapter
       {
         paramViewGroup.c.setVisibility(8);
         paramViewGroup.d.setVisibility(0);
-        paramViewGroup.d.setText(2131433017);
+        paramViewGroup.d.setText(2131433034);
         if (AppSetting.b)
         {
-          paramViewGroup.d.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131433017));
+          paramViewGroup.d.setContentDescription(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131433034));
           localStringBuilder.append(",已添加");
         }
       }
@@ -324,7 +324,7 @@ public class MayKnowAdapter
               if (TextUtils.isEmpty(((MayKnowRecommend)localObject).nick))
               {
                 paramView = ((MayKnowRecommend)localObject).uin;
-                paramView = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidAppActivity, 1, ((MayKnowRecommend)localObject).uin, null, 3045, this.jdField_a_of_type_Int, paramView, null, null, this.jdField_a_of_type_AndroidAppActivity.getString(2131435209), null);
+                paramView = AddFriendLogicActivity.a(this.jdField_a_of_type_AndroidAppActivity, 1, ((MayKnowRecommend)localObject).uin, null, 3045, this.jdField_a_of_type_Int, paramView, null, null, this.jdField_a_of_type_AndroidAppActivity.getString(2131435226), null);
                 paramView.putExtra("key_param_age_area", ProfileCardUtil.a(this.jdField_a_of_type_AndroidAppActivity, ((MayKnowRecommend)localObject).gender, ((MayKnowRecommend)localObject).age, ((MayKnowRecommend)localObject).country, ((MayKnowRecommend)localObject).province, ((MayKnowRecommend)localObject).city));
                 this.jdField_a_of_type_AndroidAppActivity.startActivity(paramView);
                 switch (this.b)

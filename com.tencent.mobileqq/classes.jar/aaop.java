@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.util.WeakReferenceHandler;
-import java.lang.ref.WeakReference;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.GetCurrentPositionCallback;
 
-public class aaop
-  implements Runnable
+class aaop
+  implements ArkAppEventObserverManager.GetCurrentPositionCallback
 {
-  public aaop(ArkLocalAppMgr paramArkLocalAppMgr, aaot paramaaot, aapa paramaapa) {}
+  aaop(aanw paramaanw, long paramLong) {}
   
-  public void run()
+  public void a(long paramLong)
   {
-    this.jdField_a_of_type_Aaot.a = NetworkUtil.g(BaseApplication.getContext());
-    ArkLocalAppMgr localArkLocalAppMgr = (ArkLocalAppMgr)ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr).get();
-    if (localArkLocalAppMgr != null) {
-      ArkLocalAppMgr.a(localArkLocalAppMgr).post(new aaoq(this));
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aanw.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
     }
+  }
+  
+  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
+  {
+    ArkAppDeviceModule.a(this.jdField_a_of_type_Aanw.a, this.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 

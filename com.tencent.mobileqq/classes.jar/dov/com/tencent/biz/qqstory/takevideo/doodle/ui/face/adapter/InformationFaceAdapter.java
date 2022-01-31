@@ -5,8 +5,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import ankk;
-import ankn;
+import aoap;
+import aoas;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -46,7 +46,7 @@ public class InformationFaceAdapter
       return paramView;
     }
     if (paramView == null) {}
-    for (paramView = new ankn(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((InfomationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), ((InfomationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), this);; paramView = (ankn)paramView) {
+    for (paramView = new aoas(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.getWidth(), ((InfomationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), ((InfomationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).a(), this);; paramView = (aoas)paramView) {
       try
       {
         paramView.a((InfomationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage, paramInt, getCount());
@@ -62,8 +62,8 @@ public class InformationFaceAdapter
   
   public void onClick(View paramView)
   {
-    ImageView localImageView = (ImageView)paramView.findViewById(2131371658);
-    QIMCommonLoadingView localQIMCommonLoadingView = (QIMCommonLoadingView)paramView.findViewById(2131371659);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131371828);
+    QIMCommonLoadingView localQIMCommonLoadingView = (QIMCommonLoadingView)paramView.findViewById(2131371829);
     int i = ((Integer)localImageView.getTag(2131362359)).intValue();
     InfomationFacePackage.Item localItem = (InfomationFacePackage.Item)((InfomationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).jdField_a_of_type_JavaUtilList.get(i);
     Boolean localBoolean = (Boolean)localImageView.getTag(2131362361);
@@ -86,7 +86,7 @@ public class InformationFaceAdapter
       a(localImageView, localBoolean, localItem);
       return;
     }
-    localQIMInformationPasterManager.a((InfomationFacePackage.Item)((InfomationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).jdField_a_of_type_JavaUtilList.get(i), new ankk(this, localQIMCommonLoadingView, localImageView));
+    localQIMInformationPasterManager.a((InfomationFacePackage.Item)((InfomationFacePackage)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceFacePackage).jdField_a_of_type_JavaUtilList.get(i), new aoap(this, localQIMCommonLoadingView, localImageView));
   }
 }
 

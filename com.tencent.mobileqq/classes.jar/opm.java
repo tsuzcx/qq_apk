@@ -1,38 +1,19 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.widget.LinearLayout.LayoutParams;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.view.widget.SlideTabViewPager;
-import com.tencent.biz.qqstory.view.widget.ViewPagerTapBlockView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
+import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer.OnCloseListener;
 
 public class opm
-  implements ViewPager.OnPageChangeListener
+  implements View.OnClickListener
 {
-  public opm(SlideTabViewPager paramSlideTabViewPager) {}
+  public opm(StoryVideoPlayer paramStoryVideoPlayer) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2)
+  public void onClick(View paramView)
   {
-    if (SlideTabViewPager.a(this.a) == 0)
+    if (this.a.a != null)
     {
-      LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)SlideTabViewPager.a(this.a).getLayoutParams();
-      SlideTabViewPager localSlideTabViewPager = this.a;
-      paramInt2 = SlideTabViewPager.b(this.a).getWidth();
-      SlideTabViewPager.a(localSlideTabViewPager, localLayoutParams.leftMargin + paramInt2);
-    }
-    paramInt2 = (int)(SlideTabViewPager.a(this.a, 12.5F) + SlideTabViewPager.a(this.a) * (paramInt1 + paramFloat));
-    SlideTabViewPager.a(this.a).setOffset(paramInt2);
-    paramInt2 = SlideTabViewPager.b(this.a).getWidth();
-    int i = SlideTabViewPager.a(this.a).getWidth();
-    paramInt1 = (int)(paramInt2 + (i - paramInt2) * (paramInt1 + paramFloat));
-    SlideTabViewPager.a(this.a).setBlockWidth(paramInt1);
-  }
-  
-  public void onPageSelected(int paramInt)
-  {
-    this.a.b(paramInt);
-    if (SlideTabViewPager.a(this.a) != null) {
-      onPageSelected(paramInt);
+      this.a.a.a(1);
+      this.a.e();
     }
   }
 }

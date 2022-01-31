@@ -1,63 +1,46 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoDownloadManager;
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoDownloadManager.VideoDownloadCallback;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.singleupdate.MD5FileUtil;
-import java.io.File;
-import java.io.IOException;
+import org.json.JSONObject;
 
-public class lim
-  implements INetEngine.INetEngineListener
+public final class lim
+  implements Runnable
 {
-  public lim(ReadInJoyVideoDownloadManager paramReadInJoyVideoDownloadManager) {}
+  public lim(ChannelCoverInfo paramChannelCoverInfo, String paramString1, String paramString2, String paramString3, String paramString4) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
+  public void run()
   {
-    int i = (int)((float)paramLong1 / (float)paramLong2 * 100.0F);
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyVideoDownloadManager", 2, "onUpdateProgeress() curOffset=" + paramLong1 + "，totalLen=" + paramLong2 + ", progress=" + i);
-    }
-    if (ReadInJoyVideoDownloadManager.a(this.a) != null) {
-      ReadInJoyVideoDownloadManager.a(this.a).a(i);
-    }
-  }
-  
-  public void a(NetResp paramNetResp)
-  {
-    if (paramNetResp.a == 0) {}
-    for (boolean bool = true;; bool = false)
+    str = "";
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReadInJoyVideoDownloadManager", 2, "onResult() resp.mResult=" + paramNetResp.a);
+      localObject = new JSONObject();
+      if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo != null) {
+        ((JSONObject)localObject).put("channel_id", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo.mChannelCoverId);
       }
-      Object localObject;
-      if (bool)
+      ((JSONObject)localObject).put("network_type", VideoReporter.a());
+      ((JSONObject)localObject).put("version", VideoReporter.jdField_a_of_type_JavaLangString);
+      ((JSONObject)localObject).put("os", "1");
+      ((JSONObject)localObject).put("imei", ReadInJoyUtils.f());
+      ((JSONObject)localObject).put("imsi", ReadInJoyUtils.g());
+      ((JSONObject)localObject).put("kandian_mode_new", VideoReporter.a());
+      ((JSONObject)localObject).put("kandian_mode", ReadInJoyUtils.e());
+      localObject = ((JSONObject)localObject).toString();
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        localObject = new File(ReadInJoyVideoDownloadManager.a(this.a));
-        paramNetResp = "";
-      }
-      try
-      {
-        localObject = MD5FileUtil.a((File)localObject);
-        paramNetResp = (NetResp)localObject;
-      }
-      catch (IOException localIOException)
-      {
-        for (;;)
+        Object localObject = str;
+        if (QLog.isColorLevel())
         {
-          localIOException.printStackTrace();
+          QLog.d("ChannelCoverView", 2, "ERROR Exception=" + localException.getMessage());
+          localObject = str;
         }
       }
-      ReadInJoyVideoDownloadManager.a(this.a, ReadInJoyVideoDownloadManager.a(this.a) + "_" + paramNetResp);
-      FileUtils.c(ReadInJoyVideoDownloadManager.a(this.a), ReadInJoyVideoDownloadManager.b(this.a));
-      if (ReadInJoyVideoDownloadManager.a(this.a) != null) {
-        ReadInJoyVideoDownloadManager.a(this.a).a(ReadInJoyVideoDownloadManager.c(this.a), ReadInJoyVideoDownloadManager.b(this.a), bool);
-      }
-      return;
     }
+    PublicAccountReportUtils.a(null, "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, this.b, this.c, this.d, (String)localObject, false);
   }
 }
 

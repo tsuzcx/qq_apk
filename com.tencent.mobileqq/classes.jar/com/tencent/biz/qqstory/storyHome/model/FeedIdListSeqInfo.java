@@ -17,37 +17,55 @@ public class FeedIdListSeqInfo
   public final int a;
   public long a;
   public final String a;
-  public boolean a;
+  public final boolean a;
+  public int b;
   public final String b;
+  public boolean b;
   public final String c;
   
   public FeedIdListSeqInfo(qqstory_struct.FeedSeqInfo paramFeedSeqInfo)
   {
+    this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_JavaLangString = paramFeedSeqInfo.feed_id.get().toStringUtf8();
     this.jdField_a_of_type_Int = paramFeedSeqInfo.seq.get();
-    this.b = paramFeedSeqInfo.union_id.get().toStringUtf8();
+    this.jdField_b_of_type_JavaLangString = paramFeedSeqInfo.union_id.get().toStringUtf8();
     this.c = String.valueOf(paramFeedSeqInfo.date.get());
-    try
-    {
-      this.jdField_a_of_type_Long = FeedManager.a().parse(this.c).getTime();
-      AssertUtils.a(this.jdField_a_of_type_JavaLangString);
-      return;
+    if (paramFeedSeqInfo.is_playable.has()) {
+      if (paramFeedSeqInfo.is_playable.get() != 1) {}
     }
-    catch (Exception paramFeedSeqInfo)
+    for (;;)
     {
-      for (;;)
+      this.jdField_a_of_type_Boolean = bool;
+      try
       {
-        SLog.c("Q.qqstory.home", "parse date " + this.c, paramFeedSeqInfo);
+        for (;;)
+        {
+          this.jdField_a_of_type_Long = FeedManager.a().parse(this.c).getTime();
+          AssertUtils.a(this.jdField_a_of_type_JavaLangString);
+          return;
+          bool = false;
+          break;
+          this.jdField_a_of_type_Boolean = true;
+        }
+      }
+      catch (Exception paramFeedSeqInfo)
+      {
+        for (;;)
+        {
+          SLog.c("Q.qqstory.home", "parse date " + this.c, paramFeedSeqInfo);
+        }
       }
     }
   }
   
   public FeedIdListSeqInfo(@NonNull String paramString1, int paramInt, String paramString2, String paramString3)
   {
+    this.jdField_b_of_type_Int = -1;
     this.jdField_a_of_type_JavaLangString = paramString1;
     this.jdField_a_of_type_Int = paramInt;
-    this.b = paramString2;
+    this.jdField_b_of_type_JavaLangString = paramString2;
     this.c = paramString3;
+    this.jdField_a_of_type_Boolean = true;
     try
     {
       this.jdField_a_of_type_Long = FeedManager.a().parse(paramString3).getTime();
@@ -68,8 +86,8 @@ public class FeedIdListSeqInfo
     qqstory_struct.FeedSeqInfo localFeedSeqInfo = new qqstory_struct.FeedSeqInfo();
     localFeedSeqInfo.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
     localFeedSeqInfo.seq.set(this.jdField_a_of_type_Int);
-    if (this.b != null) {
-      localFeedSeqInfo.union_id.set(ByteStringMicro.copyFromUtf8(this.b));
+    if (this.jdField_b_of_type_JavaLangString != null) {
+      localFeedSeqInfo.union_id.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
     }
     try
     {
@@ -96,7 +114,7 @@ public class FeedIdListSeqInfo
   
   public String toString()
   {
-    return "FeedIdListSeqInfo{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mSeq=" + this.jdField_a_of_type_Int + ", mUnionId='" + this.b + '\'' + ", date='" + this.c + '\'' + '}';
+    return "FeedIdListSeqInfo{feedId='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mSeq=" + this.jdField_a_of_type_Int + ", mUnionId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", date='" + this.c + '\'' + '}';
   }
 }
 

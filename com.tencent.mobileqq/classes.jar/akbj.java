@@ -1,53 +1,50 @@
-import android.content.res.Resources;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import com.tencent.mobileqq.utils.AntiFraudConfigFileUtil;
+import com.tencent.mobileqq.utils.HttpDownloadUtil;
+import com.tencent.mobileqq.utils.SecUtil;
+import java.io.File;
 
 public class akbj
-  implements View.OnClickListener
+  implements Runnable
 {
-  public akbj(SwiftBrowserScreenShotHandler paramSwiftBrowserScreenShotHandler) {}
+  public akbj(AntiFraudConfigFileUtil paramAntiFraudConfigFileUtil, String paramString1, String paramString2, String paramString3) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = "";
-    Object localObject = Uri.parse(this.a.jdField_a_of_type_JavaLangString);
-    try
-    {
-      localObject = ((Uri)localObject).getQueryParameter("article_id");
-      paramView = (View)localObject;
+    String str1 = this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil.a(this.jdField_a_of_type_JavaLangString);
+    File localFile = new File(str1);
+    Object localObject = localFile.getParent();
+    localObject = new File((String)localObject + "/download" + this.jdField_a_of_type_JavaLangString + ".xml");
+    if (((File)localObject).exists()) {
+      ((File)localObject).delete();
     }
-    catch (Exception localException)
+    if (HttpDownloadUtil.a(null, MsfSdkUtils.insertMtype("QPSingle", this.b), (File)localObject))
     {
-      for (;;)
-      {
-        localException.printStackTrace();
+      String str2 = SecUtil.getFileMd5(((File)localObject).getAbsolutePath());
+      if (!this.c.equalsIgnoreCase(str2)) {
+        AntiFraudConfigFileUtil.b(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil).putInt(this.c, 2);
       }
-      this.a.f(this.a.e);
     }
-    localObject = paramView;
-    if (paramView == null) {
-      localObject = "";
-    }
-    ReportController.b(null, "dc00899", "Pb_account_lifeservice", "", "0X8006A1D", "0X8006A1D", 0, 0, "", (String)localObject, "", "");
-    PublicAccountReportUtils.a("0X8006A1D", "", "", (String)localObject, "", "");
-    if (this.a.jdField_a_of_type_Boolean)
+    else
     {
-      this.a.b = true;
-      QQToast.a(BaseApplicationImpl.getContext(), 0, 2131438451, 0).b(BaseApplicationImpl.getContext().getResources().getDimensionPixelSize(2131558448));
       return;
     }
+    if (((File)localObject).renameTo(localFile))
+    {
+      AntiFraudConfigFileUtil.b(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil).putInt(this.c, 3);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil.a(this.jdField_a_of_type_JavaLangString, System.currentTimeMillis());
+      this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil.a(this.jdField_a_of_type_JavaLangString, this.c);
+      AntiFraudConfigFileUtil.b(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil, str1);
+      return;
+    }
+    AntiFraudConfigFileUtil.b(this.jdField_a_of_type_ComTencentMobileqqUtilsAntiFraudConfigFileUtil).putInt(this.c, 2);
+    ((File)localObject).delete();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akbj
  * JD-Core Version:    0.7.0.1
  */

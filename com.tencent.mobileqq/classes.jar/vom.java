@@ -1,52 +1,40 @@
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qidian.QidianManager;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import mqq.app.AccountNotMatchException;
 
 public class vom
-  implements View.OnClickListener
+  implements Runnable
 {
-  public vom(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  public vom(AIOImageProviderService paramAIOImageProviderService, long paramLong, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    boolean bool = true;
-    paramView = paramView.getTag();
-    if ((paramView == null) || (!(paramView instanceof Integer))) {
-      return;
-    }
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    switch (((Integer)paramView).intValue())
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_JavaUtilList;
+    if ((localObject == null) || (((List)localObject).size() == 0)) {}
+    do
     {
-    default: 
-      return;
-    case 1: 
-      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, true);
-      return;
-    case 2: 
-      ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (String)localObject, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, false);
-      return;
-    }
-    if (this.a.jdField_a_of_type_ComTencentQidianQidianManager.f(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
-    {
-      paramView = this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
-      localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-      String str = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131433681);
-      if (this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("param_return_addr") != null) {}
-      for (;;)
+      do
       {
-        ChatActivityUtils.a(paramView, (SessionInfo)localObject, str, bool);
         return;
-        bool = false;
+        localObject = AIOImageProviderService.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+      } while ((localObject == null) || (!MessageForPic.class.isInstance(localObject)));
+      localObject = (MessageForPic)localObject;
+      try
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AIOImageProviderService", 2, "payFlow,id:" + this.jdField_a_of_type_Long + ",subId:" + this.jdField_a_of_type_Int);
+        }
+        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getAppRuntime(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.jdField_a_of_type_JavaLangString);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a(localQQAppInterface, (MessageForPic)localObject);
+        return;
       }
-    }
-    this.a.ba();
+      catch (AccountNotMatchException localAccountNotMatchException) {}
+    } while (!QLog.isColorLevel());
+    QLog.d("AIOImageProviderService", 2, "no appRuntime");
   }
 }
 

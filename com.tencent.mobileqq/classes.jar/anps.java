@@ -1,19 +1,23 @@
-import android.content.Context;
-import android.view.OrientationEventListener;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.view.View;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
 
 public class anps
-  extends OrientationEventListener
+  implements Animator.AnimatorListener
 {
-  public anps(FlowCameraActivity2 paramFlowCameraActivity2, Context paramContext)
+  public anps(QIMProviderContainerView paramQIMProviderContainerView) {}
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    super(paramContext);
+    this.a.c.setVisibility(0);
   }
   
-  public void onOrientationChanged(int paramInt)
-  {
-    this.a.k = paramInt;
-  }
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

@@ -1,15 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.qrcode.activity.QRCardActivity;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
 public class oqy
-  implements DialogInterface.OnDismissListener
+  extends AccessibilityDelegateCompat
 {
-  public oqy(QRCardActivity paramQRCardActivity) {}
+  public oqy(LeftTabBarView paramLeftTabBarView) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    this.a.c = false;
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (LeftTabBarView.a(this.a, paramView) == LeftTabBarView.a(this.a)) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramAccessibilityNodeInfoCompat.setSelected(bool);
+      return;
+    }
+  }
+  
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    super.sendAccessibilityEvent(paramView, paramInt);
   }
 }
 

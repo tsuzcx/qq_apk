@@ -20,7 +20,7 @@ public class QQTranslucentBrowserActivity$QQTranslucentBrowserFragment
   public int c(Bundle paramBundle)
   {
     int i = super.c(paramBundle);
-    super.getActivity().getWindow().setBackgroundDrawableResource(2131492923);
+    super.getActivity().getWindow().setBackgroundDrawableResource(2131492924);
     if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a instanceof RefreshView)) {
       ((RefreshView)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a).a(false);
     }

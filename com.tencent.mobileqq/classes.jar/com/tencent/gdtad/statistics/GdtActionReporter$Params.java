@@ -12,16 +12,17 @@ public class GdtActionReporter$Params
   public GdtActionReporter$Params()
   {
     this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Long = -2147483648L;
   }
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentGdtadAditemGdtAd != null) && (this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.statistics != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getUrlForAction())) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getTraceId())) && (this.jdField_a_of_type_Int != 0) && (this.jdField_a_of_type_Long >= 0L);
+    return (this.jdField_a_of_type_ComTencentGdtadAditemGdtAd != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getUrlForAction())) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentGdtadAditemGdtAd.getTraceId())) && (this.jdField_a_of_type_Int != 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtActionReporter.Params
  * JD-Core Version:    0.7.0.1
  */

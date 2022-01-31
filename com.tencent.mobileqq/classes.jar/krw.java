@@ -1,20 +1,24 @@
-import android.content.Intent;
-import android.net.Uri;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
-import com.tencent.mobileqq.app.BaseActivity;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.AccountDetailActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class krw
-  implements View.OnClickListener
+  implements Runnable
 {
-  public krw(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, String paramString) {}
+  public krw(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-    ((BaseActivity)this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.a.get()).startActivity(paramView);
+    if (QLog.isColorLevel()) {
+      QLog.d("com.tencent.biz.pubaccount.AccountDetailActivity", 2, "initData loadDatabase");
+    }
+    AccountDetailActivity localAccountDetailActivity = this.a;
+    if (!this.a.e()) {}
+    for (boolean bool = true;; bool = false)
+    {
+      localAccountDetailActivity.e = bool;
+      AccountDetailActivity.b(this.a, new krx(this));
+      return;
+    }
   }
 }
 

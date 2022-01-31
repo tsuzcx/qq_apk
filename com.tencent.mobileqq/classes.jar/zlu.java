@@ -1,11 +1,18 @@
+import java.util.Comparator;
+
 public class zlu
+  implements Comparator
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public int c;
+  public int a(zlt paramzlt1, zlt paramzlt2)
+  {
+    if (paramzlt1.b < paramzlt2.b) {
+      return -1;
+    }
+    if (paramzlt1.b > paramzlt2.b) {
+      return 1;
+    }
+    return 0;
+  }
 }
 
 

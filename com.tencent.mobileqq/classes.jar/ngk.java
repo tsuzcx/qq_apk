@@ -1,25 +1,40 @@
-import android.content.Context;
-import android.util.SparseArray;
-import android.util.SparseIntArray;
-import com.tencent.biz.qqstory.notification.StoryMsgNotification;
-import com.tencent.mobileqq.msf.sdk.QNotificationManager;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.newshare.job.AddPollViewJob;
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import java.io.File;
+import java.net.URI;
+import java.net.URISyntaxException;
 
 public class ngk
-  implements Runnable
+  extends AddPollViewJob
 {
-  public ngk(StoryMsgNotification paramStoryMsgNotification, Context paramContext) {}
-  
-  public void run()
+  public ngk(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem)
   {
-    StoryMsgNotification.jdField_a_of_type_AndroidUtilSparseArray.clear();
-    QNotificationManager localQNotificationManager = new QNotificationManager(this.jdField_a_of_type_AndroidContentContext);
-    int j = StoryMsgNotification.jdField_a_of_type_AndroidUtilSparseIntArray.size();
-    int i = 0;
-    while (i < j)
+    super(paramStoryVideoItem);
+  }
+  
+  public boolean b()
+  {
+    Object localObject = (String)a("result");
+    try
     {
-      localQNotificationManager.cancel("StoryMsgNotification", StoryMsgNotification.jdField_a_of_type_AndroidUtilSparseIntArray.get(StoryMsgNotification.jdField_a_of_type_AndroidUtilSparseIntArray.keyAt(i)));
-      i += 1;
+      localObject = new URI((String)localObject);
+      if ("file".equals(((URI)localObject).getScheme()))
+      {
+        localObject = new File((URI)localObject);
+        if (((File)localObject).exists())
+        {
+          a("UploadImageJob_in_image_file_path", ((File)localObject).getAbsolutePath());
+          return true;
+        }
+      }
     }
+    catch (URISyntaxException localURISyntaxException)
+    {
+      SLog.c(this.b, "Error: 保存投票失败", localURISyntaxException);
+    }
+    return false;
   }
 }
 

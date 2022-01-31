@@ -1,53 +1,136 @@
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.Drawable.ConstantState;
+import android.os.Looper;
+import android.os.SystemClock;
 import android.support.annotation.NonNull;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.playmode.child.SelectVideosPlayMode.SelectedVideosEvent;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment;
-import com.tencent.biz.qqstory.shareGroup.widget.StoryPickerListAdapter;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
-import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem.FakeVideoUIItem;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.ArrayList;
+import com.tencent.biz.qqstory.shareGroup.icon.IconLog;
+import com.tribe.async.reactive.Stream;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.List;
+import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class nrl
-  extends QQUIEventReceiver
+  extends Drawable.ConstantState
 {
-  public nrl(@NonNull StoryPickerFragment paramStoryPickerFragment)
+  private long jdField_a_of_type_Long;
+  @NonNull
+  private Context jdField_a_of_type_AndroidContentContext;
+  private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  @NonNull
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+  private Error jdField_a_of_type_JavaLangError;
+  @NonNull
+  public final String a;
+  private final CopyOnWriteArraySet jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet = new CopyOnWriteArraySet();
+  private AtomicBoolean jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
+  @NonNull
+  private nrp jdField_a_of_type_Nrp;
+  private volatile boolean jdField_a_of_type_Boolean;
+  private String b = "story.icon.ShareGroupDrawableState";
+  
+  public nrl(String paramString, Context paramContext, Drawable paramDrawable)
   {
-    super(paramStoryPickerFragment);
+    if ((paramString == null) || (paramContext == null) || (paramDrawable == null)) {
+      throw new IllegalArgumentException("params should not be null");
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramDrawable;
+    this.b = (this.b + "[" + System.identityHashCode(this) + "]");
   }
   
-  public void a(@NonNull StoryPickerFragment paramStoryPickerFragment, @NonNull SelectVideosPlayMode.SelectedVideosEvent paramSelectedVideosEvent)
+  private void a(boolean paramBoolean)
   {
-    paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.clear();
-    paramStoryPickerFragment.jdField_a_of_type_JavaUtilLinkedHashSet.addAll(paramSelectedVideosEvent.jdField_a_of_type_JavaUtilArrayList);
-    List localList = paramStoryPickerFragment.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerListAdapter.a();
-    int i = 0;
-    while (i < localList.size())
+    if (Looper.getMainLooper() == Looper.myLooper())
     {
-      Iterator localIterator = ((VideoCollectionItem)localList.get(i)).collectionVideoUIItemList.iterator();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
       while (localIterator.hasNext())
       {
-        VideoCollectionItem.FakeVideoUIItem localFakeVideoUIItem = (VideoCollectionItem.FakeVideoUIItem)localIterator.next();
-        if (paramSelectedVideosEvent.jdField_a_of_type_JavaUtilArrayList.contains(localFakeVideoUIItem.jdField_a_of_type_JavaLangString)) {
-          localFakeVideoUIItem.jdField_a_of_type_Boolean = true;
-        } else {
-          localFakeVideoUIItem.jdField_a_of_type_Boolean = false;
+        nro localnro = (nro)localIterator.next();
+        if (nro.a(localnro))
+        {
+          if (paramBoolean) {
+            localnro.a(this);
+          } else {
+            localnro.b(this);
+          }
+        }
+        else
+        {
+          IconLog.a(this.b, "remove invalid callback %s", this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet);
+          this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.remove(localnro);
         }
       }
-      i += 1;
     }
-    paramStoryPickerFragment.d();
-    if (paramSelectedVideosEvent.jdField_a_of_type_Boolean) {
-      paramStoryPickerFragment.e.performClick();
-    }
+    throw new IllegalStateException("notifyCallBack should be at Main-Thread");
   }
   
-  public Class acceptEventClass()
+  private void b(boolean paramBoolean)
   {
-    return SelectVideosPlayMode.SelectedVideosEvent.class;
+    if ((!this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.getAndSet(true)) || (paramBoolean))
+    {
+      IconLog.a(this.b, "startLoad");
+      this.jdField_a_of_type_Nrp.a(this).subscribe(new nrm(this));
+    }
+    while ((this.jdField_a_of_type_JavaLangError == null) || (Math.abs(this.jdField_a_of_type_Long - SystemClock.uptimeMillis()) <= 10000L)) {
+      return;
+    }
+    IconLog.b(this.b, "load again, oldError=%s", this.jdField_a_of_type_JavaLangError);
+    this.jdField_a_of_type_JavaLangError = null;
+    b(true);
+  }
+  
+  public Bitmap a()
+  {
+    return this.jdField_a_of_type_AndroidGraphicsBitmap;
+  }
+  
+  public Drawable a()
+  {
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      return new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
+    return null;
+  }
+  
+  public Error a()
+  {
+    return this.jdField_a_of_type_JavaLangError;
+  }
+  
+  public void a()
+  {
+    IconLog.b(this.b, "recycle");
+    this.jdField_a_of_type_Boolean = true;
+  }
+  
+  public void a(nrn paramnrn)
+  {
+    this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.add(new nro(paramnrn));
+  }
+  
+  public void a(@NonNull nrp paramnrp)
+  {
+    this.jdField_a_of_type_Nrp = paramnrp;
+  }
+  
+  public void b()
+  {
+    b(false);
+  }
+  
+  public int getChangingConfigurations()
+  {
+    return 0;
+  }
+  
+  @NonNull
+  public Drawable newDrawable()
+  {
+    return new nrq(this, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
   }
 }
 

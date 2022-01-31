@@ -1,28 +1,21 @@
-import android.content.res.Resources;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.redbag.GuideTip2;
-import com.tencent.qphone.base.util.QLog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.utils.AvAddFriendHelper;
+import com.tencent.av.utils.AvAddFriendHelper.IAvAddFriendCallBack;
 
 public class kfq
-  implements View.OnTouchListener
+  extends BroadcastReceiver
 {
-  public kfq(GuideTip2 paramGuideTip2) {}
+  public kfq(AvAddFriendHelper paramAvAddFriendHelper) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    try
+    if (paramIntent.getAction().equals("tencent.video.q2v.AddfrindMsg"))
     {
-      QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getResources().getResourceName(paramView.getId()) + "]");
-      this.a.a(false, 3);
-      return true;
-    }
-    catch (Exception paramMotionEvent)
-    {
-      for (;;)
-      {
-        QLog.w(this.a.i, 1, "OnTouch Close, view[" + paramView.getId() + "]");
+      paramContext = paramIntent.getStringExtra("peerUin");
+      if (this.a.a != null) {
+        this.a.a.a(paramContext);
       }
     }
   }

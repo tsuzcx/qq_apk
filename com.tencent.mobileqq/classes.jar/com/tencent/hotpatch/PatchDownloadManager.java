@@ -26,7 +26,7 @@ import java.io.File;
 import java.util.HashMap;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.manager.Manager;
-import qkx;
+import qnn;
 
 public class PatchDownloadManager
   implements Handler.Callback, INetEngine.IBreakDownFix, INetEngine.INetEngineListener, Manager
@@ -43,8 +43,8 @@ public class PatchDownloadManager
   
   private void b(NetResp paramNetResp)
   {
-    qkx localqkx = (qkx)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
-    if ((localqkx == null) || (localqkx.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig == null))
+    qnn localqnn = (qnn)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
+    if ((localqnn == null) || (localqnn.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig == null))
     {
       QLog.d("PatchLogTag", 1, "PatchDownloadManager doOnResp requestData is null");
       return;
@@ -55,7 +55,7 @@ public class PatchDownloadManager
       return;
     }
     long l1 = SystemClock.elapsedRealtime();
-    long l2 = localqkx.jdField_a_of_type_Long;
+    long l2 = localqnn.jdField_a_of_type_Long;
     String str1;
     int i;
     label115:
@@ -63,14 +63,14 @@ public class PatchDownloadManager
     String str3;
     if (PatchCommonUtil.c())
     {
-      str1 = "androidN7z_" + localqkx.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig.c;
+      str1 = "androidN7z_" + localqnn.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig.c;
       if (!PatchCommonUtil.c()) {
         break label392;
       }
-      i = ((DexPatchConfigArtAfterN)localqkx.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig).c;
+      i = ((DexPatchConfigArtAfterN)localqnn.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig).c;
       QLog.d("PatchLogTag", 1, "PatchDownloadManager doOnResp reslut=" + paramNetResp.jdField_a_of_type_Int + ", mTotalFileLen=" + paramNetResp.jdField_a_of_type_Long + ", downloadPatchSize=" + i + ", cost time=" + (l1 - l2));
-      str2 = PatchCommonUtil.a(localqkx.jdField_a_of_type_JavaLangString, str1);
-      str3 = PatchCommonUtil.a(localqkx.jdField_a_of_type_JavaLangString, localqkx.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig.c);
+      str2 = PatchCommonUtil.a(localqnn.jdField_a_of_type_JavaLangString, str1);
+      str3 = PatchCommonUtil.a(localqnn.jdField_a_of_type_JavaLangString, localqnn.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig.c);
     }
     for (;;)
     {
@@ -81,12 +81,12 @@ public class PatchDownloadManager
         }
         boolean bool = true;
         if (PatchCommonUtil.c()) {
-          bool = PatchFileManager.a((DexPatchConfigArtAfterN)localqkx.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig);
+          bool = PatchFileManager.a((DexPatchConfigArtAfterN)localqnn.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig);
         }
         if (!bool) {
           break label701;
         }
-        bool = PatchChecker.a(localqkx.jdField_a_of_type_JavaLangString, localqkx.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig.c);
+        bool = PatchChecker.a(localqnn.jdField_a_of_type_JavaLangString, localqnn.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig.c);
         if (!bool) {
           break label404;
         }
@@ -102,10 +102,10 @@ public class PatchDownloadManager
         PatchReporter.a(BaseApplicationImpl.sApplication, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "actPatchDownload", 202, str1);
         return;
       }
-      str1 = localqkx.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig.c;
+      str1 = localqnn.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig.c;
       break;
       label392:
-      i = localqkx.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig.b;
+      i = localqnn.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig.b;
       break label115;
       label404:
       paramNetResp = new File(str3);
@@ -129,7 +129,7 @@ public class PatchDownloadManager
       }
       if ((paramNetResp.b == 9039) || (paramNetResp.b == 9040))
       {
-        paramNetResp = new File(PatchCommonUtil.a(localqkx.jdField_a_of_type_JavaLangString, "")).listFiles();
+        paramNetResp = new File(PatchCommonUtil.a(localqnn.jdField_a_of_type_JavaLangString, "")).listFiles();
         if (paramNetResp != null)
         {
           j = paramNetResp.length;
@@ -148,9 +148,9 @@ public class PatchDownloadManager
       }
       else
       {
-        if (localqkx.jdField_a_of_type_Int < 3)
+        if (localqnn.jdField_a_of_type_Int < 3)
         {
-          a(localqkx.jdField_a_of_type_Int, localqkx.jdField_a_of_type_JavaLangString, localqkx.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig);
+          a(localqnn.jdField_a_of_type_Int, localqnn.jdField_a_of_type_JavaLangString, localqnn.jdField_a_of_type_ComTencentHotpatchConfigBasePatchConfig);
           return;
         }
         paramNetResp = new File(str2);
@@ -184,7 +184,7 @@ public class PatchDownloadManager
     localHttpNetReq.jdField_a_of_type_JavaLangString = paramBasePatchConfig.d;
     localHttpNetReq.jdField_a_of_type_Int = 0;
     localHttpNetReq.c = PatchCommonUtil.a(paramString, str);
-    localHttpNetReq.a(new qkx(this, paramInt + 1, SystemClock.elapsedRealtime(), paramString, paramBasePatchConfig));
+    localHttpNetReq.a(new qnn(this, paramInt + 1, SystemClock.elapsedRealtime(), paramString, paramBasePatchConfig));
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(str, localHttpNetReq);
     localINetEngine.a(localHttpNetReq);
   }
@@ -238,7 +238,7 @@ public class PatchDownloadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.hotpatch.PatchDownloadManager
  * JD-Core Version:    0.7.0.1
  */

@@ -41,8 +41,8 @@ import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 import com.tencent.qphone.base.util.QLog;
-import vag;
-import vah;
+import vdi;
+import vdj;
 
 public class QQStoryCommentItemBuilder
   extends BaseBubbleBuilder
@@ -57,7 +57,7 @@ public class QQStoryCommentItemBuilder
   public QQStoryCommentItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vag(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new vdi(this);
   }
   
   public int a(ChatMessage paramChatMessage)
@@ -73,20 +73,20 @@ public class QQStoryCommentItemBuilder
     paramChatMessage = paramView;
     if (paramView == null)
     {
-      paramChatMessage = LayoutInflater.from((Context)localObject).inflate(2130970815, null);
-      paramViewHolder.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramChatMessage.findViewById(2131371896));
-      paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramChatMessage.findViewById(2131371895));
-      paramViewHolder.jdField_b_of_type_AndroidViewView = paramChatMessage.findViewById(2131368264);
-      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramChatMessage.findViewById(2131364453));
-      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131363360));
-      paramViewHolder.c = ((TextView)paramChatMessage.findViewById(2131366837));
-      paramViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131366842));
+      paramChatMessage = LayoutInflater.from((Context)localObject).inflate(2130970863, null);
+      paramViewHolder.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramChatMessage.findViewById(2131372066));
+      paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramChatMessage.findViewById(2131372065));
+      paramViewHolder.jdField_b_of_type_AndroidViewView = paramChatMessage.findViewById(2131368331);
+      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramChatMessage.findViewById(2131364477));
+      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131363378));
+      paramViewHolder.c = ((TextView)paramChatMessage.findViewById(2131366704));
+      paramViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131366884));
     }
     paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramBaseChatItemLayout.comment);
     if (paramBaseChatItemLayout.displayType == 0)
     {
       paramView = ThumbnailUrlHelper.a(paramBaseChatItemLayout.coverUrl);
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843307);
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843423);
       if (HttpUtil.a(paramView))
       {
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
@@ -109,7 +109,7 @@ public class QQStoryCommentItemBuilder
     }
     for (;;)
     {
-      paramViewHolder.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new vah(this, paramOnLongClickAndTouchListener));
+      paramViewHolder.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new vdj(this, paramOnLongClickAndTouchListener));
       paramChatMessage.setOnTouchListener(paramOnLongClickAndTouchListener);
       paramChatMessage.setOnLongClickListener(paramOnLongClickAndTouchListener);
       return paramChatMessage;
@@ -138,11 +138,11 @@ public class QQStoryCommentItemBuilder
     default: 
       super.a(paramInt, paramContext, paramChatMessage);
       return;
-    case 2131375336: 
+    case 2131375567: 
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       StoryReportor.a("story_grp", "press_aio", 0, 0, new String[] { "4", "", "", "" });
       return;
-    case 2131375342: 
+    case 2131375573: 
       if (localMessageForQQStoryComment.comment != null) {}
       try
       {
@@ -159,7 +159,7 @@ public class QQStoryCommentItemBuilder
           }
         }
       }
-    case 2131363499: 
+    case 2131363517: 
       paramContext = new Bundle();
       paramContext.putInt("forward_type", -1);
       paramContext.putString("forward_text", localMessageForQQStoryComment.comment);
@@ -221,8 +221,8 @@ public class QQStoryCommentItemBuilder
   public QQCustomMenuItem[] a(View paramView)
   {
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131375342, this.jdField_a_of_type_AndroidContentContext.getString(2131435065), 2130838301);
-    localQQCustomMenu.a(2131363499, this.jdField_a_of_type_AndroidContentContext.getString(2131435066), 2130838309);
+    localQQCustomMenu.a(2131375573, this.jdField_a_of_type_AndroidContentContext.getString(2131435082), 2130838305);
+    localQQCustomMenu.a(2131363517, this.jdField_a_of_type_AndroidContentContext.getString(2131435083), 2130838313);
     paramView = ((BaseBubbleBuilder.ViewHolder)AIOUtils.a(paramView)).a;
     super.a(localQQCustomMenu, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramView);
     BaseBubbleBuilder.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext);

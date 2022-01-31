@@ -1,96 +1,68 @@
-import KQQ.HttpUploadReq;
-import KQQ.UploadInfo;
-import com.tencent.common.config.AppSetting;
-import com.tencent.qphone.base.util.Cryptor;
-import com.tencent.qphone.base.util.QLog;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.StatusLine;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.methods.HttpUriRequest;
-import org.apache.http.entity.ByteArrayEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.util.EntityUtils;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.DatalineMessageManager;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.utils.httputils.PkgTools;
+import com.tencent.qphone.base.remote.FromServiceMsg;
+import tencent.im.cs.cmd0x346.cmd0x346.FileInfo;
+import tencent.im.cs.cmd0x346.cmd0x346.FileQueryRsp;
+import tencent.im.cs.cmd0x346.cmd0x346.RspBody;
 
-public final class zco
+public class zco
   implements Runnable
 {
-  public zco(byte[] paramArrayOfByte, String paramString) {}
+  public zco(DataLineHandler paramDataLineHandler, FromServiceMsg paramFromServiceMsg, int paramInt, long paramLong) {}
   
   public void run()
   {
-    boolean bool3 = false;
-    boolean bool1 = false;
-    boolean bool2 = bool3;
-    try
+    cmd0x346.RspBody localRspBody = new cmd0x346.RspBody();
+    if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg == null) {}
+    for (;;)
     {
-      Object localObject1 = new UploadInfo();
-      bool2 = bool3;
-      ((UploadInfo)localObject1).lAppID = AppSetting.a;
-      bool2 = bool3;
-      ((UploadInfo)localObject1).lFromMID = 9901L;
-      bool2 = bool3;
-      ((UploadInfo)localObject1).lToMID = 0L;
-      bool2 = bool3;
-      ((UploadInfo)localObject1).shType = 2;
-      bool2 = bool3;
-      ((UploadInfo)localObject1).vSignature = "NoSignature".getBytes();
-      bool2 = bool3;
-      localObject1 = ((UploadInfo)localObject1).toByteArray();
-      bool2 = bool3;
-      Object localObject2 = new Cryptor().encrypt((byte[])localObject1, this.jdField_a_of_type_ArrayOfByte);
-      bool2 = bool3;
-      localObject1 = new HttpUploadReq();
-      bool2 = bool3;
-      ((HttpUploadReq)localObject1).vEncryptUploadInfo = ((byte[])localObject2);
-      bool2 = bool3;
-      ((HttpUploadReq)localObject1).vFileData = this.jdField_a_of_type_JavaLangString.getBytes();
-      int i = 0;
-      for (;;)
-      {
-        bool2 = bool1;
-        if (bool1) {
-          break;
-        }
-        bool2 = bool1;
-        if (i >= 3) {
-          break;
-        }
-        bool2 = bool1;
-        localObject2 = new HttpPost("http://bugtrace.3g.qq.com/upload/1/0");
-        bool2 = bool1;
-        ((HttpPost)localObject2).setEntity(new ByteArrayEntity(((HttpUploadReq)localObject1).toByteArray()));
-        bool2 = bool1;
-        localObject2 = new DefaultHttpClient().execute((HttpUriRequest)localObject2);
-        bool3 = bool1;
-        bool2 = bool1;
-        if (((HttpResponse)localObject2).getStatusLine().getStatusCode() == 200)
-        {
-          bool2 = bool1;
-          localObject2 = ((HttpResponse)localObject2).getEntity();
-          bool3 = bool1;
-          if (localObject2 != null)
-          {
-            bool2 = bool1;
-            localObject2 = EntityUtils.toString((HttpEntity)localObject2);
-            bool2 = bool1;
-            bool3 = Pattern.compile("ret\\s*=\\s*0", 2).matcher((CharSequence)localObject2).find();
-          }
-        }
-        i += 1;
-        bool1 = bool3;
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.b.a().a(this.jdField_a_of_type_Int).a(this.jdField_a_of_type_Long);
+      if (localObject != null) {
+        break;
       }
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("DexLoad", 2, "upload result: " + bool2 + ", " + this.jdField_a_of_type_JavaLangString);
+      localObject = null;
+      if (this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer() != null)
+      {
+        int i = this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer().length - 4;
+        if (i >= 0)
+        {
+          localObject = new byte[i];
+          PkgTools.a((byte[])localObject, 0, this.jdField_a_of_type_ComTencentQphoneBaseRemoteFromServiceMsg.getWupBuffer(), 4, i);
+        }
+      }
+      else if (localObject != null)
+      {
+        try
+        {
+          localRspBody.mergeFrom((byte[])localObject);
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          localInvalidProtocolBufferMicroException.printStackTrace();
+        }
       }
     }
+    if (localRspBody.msg_file_query_rsp.int32_ret_code.get() == 0)
+    {
+      localRspBody.msg_file_query_rsp.msg_file_info.str_file_name.get();
+      localRspBody.msg_file_query_rsp.msg_file_info.uint64_file_size.get();
+      localInvalidProtocolBufferMicroException.md5 = localRspBody.msg_file_query_rsp.msg_file_info.bytes_10m_md5.get().toByteArray();
+      this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.b.a().a(this.jdField_a_of_type_Int).a(localInvalidProtocolBufferMicroException.msgId, localInvalidProtocolBufferMicroException.serverPath, localInvalidProtocolBufferMicroException.md5);
+      this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler.a(localInvalidProtocolBufferMicroException);
+      return;
+    }
+    DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, localInvalidProtocolBufferMicroException);
   }
 }
 

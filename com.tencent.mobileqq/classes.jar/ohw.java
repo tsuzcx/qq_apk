@@ -1,77 +1,27 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceAndTextItem;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.LayerEventListener;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextFaceEditLayer.LayerListener;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.LayerListener;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView.DoodleEditViewListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
+import com.tencent.biz.qqstory.takevideo.artfilter.ArtFilterItemView;
 
 public class ohw
-  implements TextFaceEditLayer.LayerListener
+  implements Animation.AnimationListener
 {
-  public ohw(DoodleEditView paramDoodleEditView) {}
+  public ohw(ArtFilterItemView paramArtFilterItemView, EditVideoArtFilter paramEditVideoArtFilter) {}
   
-  public void a(GestureHelper.ZoomItem paramZoomItem)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((paramZoomItem instanceof TextLayer.TextItem))
-    {
-      paramZoomItem = (TextLayer)this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.a("TextLayer");
-      if (paramZoomItem != null) {
-        paramZoomItem.a();
-      }
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.a = false;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoArtfilterArtFilterItemView.setVisibility(8);
     }
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerTextFaceEditLayer.b();
+    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter.a(true);
+    }
   }
   
-  public void a(GestureHelper.ZoomItem paramZoomItem, int paramInt1, int paramInt2)
-  {
-    if ((paramZoomItem instanceof TextLayer.TextItem))
-    {
-      SLog.b("DoodleEditView", "click the TextItem:" + paramZoomItem);
-      paramZoomItem = (TextLayer)this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.a("TextLayer");
-      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerTextFaceEditLayer.b();
-      if ((paramZoomItem != null) && (paramZoomItem.a != null))
-      {
-        paramZoomItem.d();
-        paramZoomItem.a.a();
-      }
-    }
-    FaceLayer localFaceLayer;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (!(paramZoomItem instanceof FaceLayer.FaceItem));
-        SLog.b("DoodleEditView", "click the FaceAndTextItem:" + paramZoomItem);
-        paramZoomItem.d = false;
-        localFaceLayer = (FaceLayer)this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout.a.a("FaceLayer");
-        FaceLayer.FaceItem localFaceItem = (FaceLayer.FaceItem)paramZoomItem;
-        if (localFaceLayer != null) {
-          localFaceLayer.jdField_a_of_type_JavaUtilList.add(localFaceItem);
-        }
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerTextFaceEditLayer.b();
-        this.a.setVisibility(8);
-      } while (DoodleEditView.a(this.a) == null);
-      if (!(paramZoomItem instanceof FaceLayer.FaceAndTextItem)) {
-        break;
-      }
-    } while ((localFaceLayer == null) || (localFaceLayer.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerFaceLayer$LayerEventListener == null));
-    localFaceLayer.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerFaceLayer$LayerEventListener.a((FaceLayer.FaceAndTextItem)paramZoomItem);
-    return;
-    DoodleEditView.a(this.a).a(paramZoomItem);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

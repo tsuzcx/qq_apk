@@ -1,56 +1,39 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.ApolloGameManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-public class acbw
-  implements View.OnClickListener
+class acbw
+  implements Runnable
 {
-  public acbw(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
+  acbw(acbg paramacbg, String paramString, Bundle paramBundle, MessengerService paramMessengerService, QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.f())
+    try
     {
-      FMDataCache.b();
-      this.a.e(false);
-      if (this.a.c())
+      Object localObject = new JSONObject(this.jdField_a_of_type_JavaLangString).getJSONArray("gameList");
+      ArrayList localArrayList = new ArrayList();
+      if ((localObject != null) && (((JSONArray)localObject).length() > 0))
       {
-        this.a.setResult(5);
-        this.a.finish();
-        return;
+        int i = 0;
+        while (i < ((JSONArray)localObject).length())
+        {
+          localArrayList.add(Integer.valueOf(((JSONArray)localObject).getInt(i)));
+          i += 1;
+        }
+        localObject = new acbx(this);
+        ApolloGameManager localApolloGameManager = (ApolloGameManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(210);
+        localApolloGameManager.a = new WeakReference(localObject);
+        localApolloGameManager.a("android.web", "apollo_aio_game.add_games_to_user_gamepanel", localArrayList);
       }
-      this.a.rightViewText.setVisibility(0);
-      this.a.rightViewText.setText(2131428089);
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar.setVisibility(8);
-      this.a.setTitle(this.a.b);
-      this.a.b();
-      this.a.a();
-      if (this.a.jdField_a_of_type_Int == 1) {
-        this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      }
-      this.a.b(false);
       return;
     }
-    if (BaseFileAssistantActivity.a(this.a) != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("BaseFileAssistantActivity<FileAssistant>", 2, "onRightEditClick");
-      }
-      BaseFileAssistantActivity.a(this.a).g();
-    }
-    FMDataCache.b();
-    this.a.e(true);
-    this.a.rightViewText.setVisibility(0);
-    this.a.rightViewText.setText(2131428127);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetQfileEditBottomBar.setVisibility(0);
-    this.a.b();
-    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.b(true);
+    catch (Exception localException) {}
   }
 }
 

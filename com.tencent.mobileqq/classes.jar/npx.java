@@ -1,26 +1,44 @@
-import android.content.Context;
-import android.view.View;
-import com.tencent.biz.qqstory.shareGroup.addvideo.AddVideoController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.VideoServerInfoManager;
+import com.tencent.biz.qqstory.base.download.DownloadUrlManager;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.DebugInfo;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_PlayerVideoInfo;
+import com.tencent.util.URLUtil;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import mqq.os.MqqHandler;
 
 public class npx
-  implements ActionSheet.OnButtonClickListener
+  extends SimpleJob
 {
-  public npx(AddVideoController paramAddVideoController, ActionSheet paramActionSheet, Context paramContext, int paramInt1, String paramString1, String paramString2, long paramLong, int paramInt2, int paramInt3) {}
+  public npx(VideoViewTVKImpl paramVideoViewTVKImpl, VideoServerInfoManager paramVideoServerInfoManager, PlayModeUtils.DebugInfo paramDebugInfo, String paramString, DownloadUrlManager paramDownloadUrlManager, TVK_PlayerVideoInfo paramTVK_PlayerVideoInfo) {}
   
-  public void OnClick(View paramView, int paramInt)
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.d();
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupAddvideoAddVideoController.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, true, this.jdField_b_of_type_Int, this.c);
-      return;
+    if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c)) {
+      return null;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupAddvideoAddVideoController.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_b_of_type_Int, this.c);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c.contains("qqstocdnd"))
+    {
+      paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager.a();
+      SLog.a("VideoViewTVKImpl", "get url key:%s", paramJobContext);
+      if (TextUtils.isEmpty(paramJobContext)) {
+        break label90;
+      }
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c = URLUtil.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTVKImpl.c, "authkey", paramJobContext);
+    }
+    for (;;)
+    {
+      ThreadManager.getUIHandler().post(new npz(this));
+      return null;
+      label90:
+      ThreadManager.getUIHandler().post(new npy(this));
+    }
   }
 }
 

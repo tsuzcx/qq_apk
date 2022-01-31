@@ -1,10 +1,10 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import anax;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import anrc;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import java.io.File;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class EditLocalGifSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator CREATOR = new anax();
+  public static final Parcelable.Creator CREATOR = new anrc();
   @NonNull
   public long a;
   @NonNull

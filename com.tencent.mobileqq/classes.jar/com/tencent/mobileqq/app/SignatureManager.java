@@ -67,10 +67,10 @@ import java.util.concurrent.locks.ReentrantLock;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import zjs;
-import zjt;
-import zju;
-import zjv;
+import zmy;
+import zmz;
+import zna;
+import znb;
 
 public class SignatureManager
   implements Handler.Callback, Manager
@@ -88,12 +88,12 @@ public class SignatureManager
   public static final String d;
   public static String e;
   public int a;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new zjs(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new zmy(this);
   public Handler a;
   public QQAppInterface a;
   private PreDownloadController jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController;
   public SignatureTemplateInfo a;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new zjt(this);
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new zmz(this);
   private DownloaderInterface jdField_a_of_type_ComTencentMobileqqVipDownloaderInterface;
   public AtomicInteger a;
   public MqqHandler a;
@@ -175,7 +175,7 @@ public class SignatureManager
       paramInt = DisplayUtil.a(paramQQAppInterface.getApplication().getApplicationContext(), 2.0F);
       break;
       label252:
-      paramStatusManager = BitmapManager.a(paramResources, 2130845328);
+      paramStatusManager = BitmapManager.a(paramResources, 2130845456);
       break label112;
     }
     label276:
@@ -231,7 +231,7 @@ public class SignatureManager
       return paramQQAppInterface;
       i = Color.parseColor("#ffa8a8a8");
       break;
-      paramStatusManager = BitmapManager.a(paramResources, 2130845328);
+      paramStatusManager = BitmapManager.a(paramResources, 2130845456);
       break label150;
     }
   }
@@ -258,7 +258,7 @@ public class SignatureManager
     if (paramQQAppInterface.getCurrentAccountUin().equals(paramString)) {
       return true;
     }
-    ThreadManager.post(new zju(paramRichStatus, paramQQAppInterface, paramString), 8, null, false);
+    ThreadManager.post(new zna(paramRichStatus, paramQQAppInterface, paramString), 8, null, false);
     return true;
   }
   
@@ -376,7 +376,7 @@ public class SignatureManager
             return localObject3;
             if (j != 0)
             {
-              j = 2130844088;
+              j = 2130844212;
               label222:
               i = j;
               if (localSignatureTemplateInfo == null) {
@@ -413,10 +413,10 @@ public class SignatureManager
               i = j;
               localObject1 = localObject2;
               break;
-              j = 2130844087;
+              j = 2130844211;
               break label222;
             }
-            j = 2130844099;
+            j = 2130844223;
             i = j;
             if (localSignatureTemplateInfo == null) {
               break;
@@ -440,11 +440,11 @@ public class SignatureManager
               break label1490;
             }
             a(localSignatureTemplateInfo.jdField_a_of_type_JavaLangString, localSignatureTemplateInfo.jdField_a_of_type_ArrayOfComTencentMobileqqVasSignatureTemplateInfo$DynamicItem[0].jdField_a_of_type_JavaLangString, 16);
-            i = 2130844087;
+            i = 2130844211;
             continue;
             if (j != 0)
             {
-              j = 2130844088;
+              j = 2130844212;
               if ((localSignatureTemplateInfo == null) || (localSignatureTemplateInfo.jdField_a_of_type_ComTencentMobileqqVasSignatureTemplateInfo$ImageItem == null)) {
                 break label1484;
               }
@@ -485,11 +485,11 @@ public class SignatureManager
               i = j;
               localObject1 = localObject2;
               break label199;
-              j = 2130844087;
+              j = 2130844211;
               break label513;
               if (j != 0)
               {
-                j = 2130844088;
+                j = 2130844212;
                 i = j;
                 if (localSignatureTemplateInfo == null) {
                   break label1478;
@@ -524,12 +524,12 @@ public class SignatureManager
                 i = j;
                 localObject1 = localObject2;
                 break;
-                j = 2130844087;
+                j = 2130844211;
                 break label664;
               }
               if (j != 0)
               {
-                j = 2130844088;
+                j = 2130844212;
                 i = j;
                 if (localSignatureTemplateInfo == null) {
                   break label1478;
@@ -565,12 +565,12 @@ public class SignatureManager
                 i = j;
                 localObject1 = localObject2;
                 break;
-                j = 2130844087;
+                j = 2130844211;
                 break label829;
               }
               if (j != 0)
               {
-                j = 2130844088;
+                j = 2130844212;
                 label994:
                 i = j;
                 if (localSignatureTemplateInfo == null) {
@@ -607,15 +607,15 @@ public class SignatureManager
                 i = j;
                 localObject1 = localObject2;
                 break;
-                j = 2130844087;
+                j = 2130844211;
                 break label994;
               }
               if (localSignatureTemplateInfo != null)
               {
                 localObject1 = localSignatureTemplateInfo.j;
-                i = 2130844088;
+                i = 2130844212;
                 break label199;
-                j = 2130844104;
+                j = 2130844228;
                 i = j;
                 if (localSignatureTemplateInfo == null) {
                   break;
@@ -623,7 +623,7 @@ public class SignatureManager
                 localObject1 = localSignatureTemplateInfo.l;
                 i = j;
                 break label199;
-                j = 2130844105;
+                j = 2130844229;
                 i = j;
                 if (localSignatureTemplateInfo == null) {
                   break;
@@ -685,7 +685,7 @@ public class SignatureManager
                 }
               }
             }
-            i = 2130844088;
+            i = 2130844212;
             localObject1 = null;
             break label199;
             break label199;
@@ -693,10 +693,10 @@ public class SignatureManager
             break label199;
           }
           label1490:
-          i = 2130844087;
+          i = 2130844211;
           continue;
           label1498:
-          i = 2130844087;
+          i = 2130844211;
           localObject1 = null;
         }
       }
@@ -749,7 +749,7 @@ public class SignatureManager
         if (QLog.isColorLevel()) {
           QLog.d("SignatureManager", 2, "getInfoByTemplateId reading template " + paramString + " from file");
         }
-        ThreadManager.post(new zjv(this, i), 8, null, true);
+        ThreadManager.post(new znb(this, i), 8, null, true);
         return localSignatureTemplateInfo;
       }
       localObject = localSignatureTemplateInfo;

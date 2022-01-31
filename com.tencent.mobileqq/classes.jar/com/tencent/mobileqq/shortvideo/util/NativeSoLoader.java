@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import ahpo;
+import aidq;
 import android.content.Context;
 import android.content.SharedPreferences;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -124,7 +124,7 @@ public class NativeSoLoader
       }
       return jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
       label77:
-      ThreadManager.post(new ahpo(), 8, null, false);
+      ThreadManager.post(new aidq(), 8, null, false);
     }
   }
 }

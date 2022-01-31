@@ -1,27 +1,24 @@
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.LineLayer.LayerEventListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
+import com.tencent.biz.qqstory.takevideo.dancemachine.VideoSharer;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class oib
-  implements LineLayer.LayerEventListener
+class oib
+  implements Runnable
 {
-  public oib(DoodleLayout paramDoodleLayout) {}
+  oib(oia paramoia, int paramInt) {}
   
-  public void a(Bitmap paramBitmap, boolean paramBoolean)
+  public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.a(paramBitmap, paramBoolean);
+    String str = "";
+    if (this.jdField_a_of_type_Int == -1) {
+      str = "分享失败";
     }
-  }
-  
-  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
-  {
-    if (this.a.a != null)
+    for (;;)
     {
-      SLog.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
-      this.a.a.a(paramArrayOfByte);
+      QQToast.a(this.jdField_a_of_type_Oia.a.a, 1, str, 0).a();
+      return;
+      if (this.jdField_a_of_type_Int == -2) {
+        str = "你未安装微博客户端，无法分享。";
+      }
     }
   }
 }

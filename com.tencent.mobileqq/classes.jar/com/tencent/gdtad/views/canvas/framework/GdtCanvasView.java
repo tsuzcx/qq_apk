@@ -2,43 +2,54 @@ package com.tencent.gdtad.views.canvas.framework;
 
 import android.app.Activity;
 import android.content.Context;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.log.GdtLog;
 import com.tencent.gdtad.statistics.GdtActionReporter;
+import com.tencent.gdtad.statistics.GdtActionReporter.Params;
 import com.tencent.gdtad.statistics.GdtTimeStatistics;
-import com.tencent.gdtad.views.GdtViewLoadListener;
 import com.tencent.gdtad.views.canvas.GdtCanvasData;
+import com.tencent.gdtad.views.canvas.components.GdtCanvasComponentData;
 import java.lang.ref.WeakReference;
-import qjv;
+import java.util.HashSet;
+import java.util.Set;
+import qmj;
 
 public class GdtCanvasView
   extends FrameLayout
-  implements GdtViewLoadListener
+  implements GdtCanvasViewListener
 {
-  private GdtTimeStatistics jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics = new GdtTimeStatistics();
+  protected GdtTimeStatistics a;
   private GdtCanvasData jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData;
   private GdtCanvasViewPager jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasViewPager;
+  private Set jdField_a_of_type_JavaUtilSet = new HashSet();
   private boolean jdField_a_of_type_Boolean;
+  private GdtTimeStatistics jdField_b_of_type_ComTencentGdtadStatisticsGdtTimeStatistics = new GdtTimeStatistics();
+  private boolean jdField_b_of_type_Boolean;
+  private boolean c = true;
   
   public GdtCanvasView(Context paramContext)
   {
     super(paramContext);
-    d();
+    this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics = new GdtTimeStatistics();
+    e();
   }
   
   public GdtCanvasView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    d();
+    this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics = new GdtTimeStatistics();
+    e();
   }
   
   public GdtCanvasView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    d();
+    this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics = new GdtTimeStatistics();
+    e();
   }
   
   private Activity a()
@@ -52,47 +63,118 @@ public class GdtCanvasView
   private void a(long paramLong, boolean paramBoolean)
   {
     if ((paramLong < 0L) || (this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData == null) || (!this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.isValid())) {
-      GdtLog.d("GdtCanvasView", "reportLoadTime error");
+      GdtLog.d("GdtCanvasView", "reportLoadTimeForAction error");
     }
-    while (this.jdField_a_of_type_Boolean) {
+    while (this.jdField_b_of_type_Boolean) {
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    GdtAd localGdtAd = this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.ad;
-    if (paramBoolean) {}
+    this.jdField_b_of_type_Boolean = true;
+    GdtActionReporter.Params localParams = new GdtActionReporter.Params();
+    GdtAd localGdtAd;
+    if (a() != null)
+    {
+      localGdtAd = a().ad;
+      localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = localGdtAd;
+      if (!paramBoolean) {
+        break label107;
+      }
+    }
+    label107:
     for (int i = 3;; i = 4)
     {
-      GdtActionReporter.a(GdtActionReporter.a(localGdtAd, i, paramLong));
+      localParams.jdField_a_of_type_Int = i;
+      localParams.jdField_a_of_type_Long = paramLong;
+      GdtActionReporter.a(localParams);
       return;
+      localGdtAd = null;
+      break;
     }
-  }
-  
-  private void d()
-  {
-    inflate(getContext(), 2130969006, this);
-    findViewById(2131362850).setOnClickListener(new qjv(this));
   }
   
   private void e()
   {
+    d();
+    inflate(getContext(), 2130969005, this);
+    findViewById(2131362868).setOnClickListener(new qmj(this));
+  }
+  
+  private void f()
+  {
     if ((this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData == null) || (!this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.isValid()))
     {
-      GdtLog.d("GdtCanvasView", "reportStayTime error");
+      GdtLog.d("GdtCanvasView", "reportStayTimeForAction error");
       return;
     }
-    GdtActionReporter.a(GdtActionReporter.a(this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData.ad, 7, this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics.a()));
+    GdtActionReporter.Params localParams = new GdtActionReporter.Params();
+    if (a() != null) {}
+    for (GdtAd localGdtAd = a().ad;; localGdtAd = null)
+    {
+      localParams.jdField_a_of_type_ComTencentGdtadAditemGdtAd = localGdtAd;
+      localParams.jdField_a_of_type_Int = 7;
+      localParams.jdField_a_of_type_Long = this.jdField_b_of_type_ComTencentGdtadStatisticsGdtTimeStatistics.a();
+      GdtActionReporter.a(localParams);
+      return;
+    }
+  }
+  
+  protected long a()
+  {
+    long l = -2147483648L;
+    if (this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics != null)
+    {
+      this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics.b();
+      l = this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics.a();
+    }
+    this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics = null;
+    return l;
+  }
+  
+  public GdtCanvasData a()
+  {
+    return this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData;
   }
   
   public void a()
   {
     this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasViewPager.c();
-    e();
-    a(this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics.a(), false);
+    f();
+    a(this.jdField_b_of_type_ComTencentGdtadStatisticsGdtTimeStatistics.a(), false);
   }
   
-  public void a(GdtCanvasViewPager paramGdtCanvasViewPager, long paramLong, boolean paramBoolean)
+  public void a(GdtCanvasComponentData paramGdtCanvasComponentData, long paramLong, boolean paramBoolean)
   {
-    a(paramLong, paramBoolean);
+    if ((paramGdtCanvasComponentData == null) || (!paramGdtCanvasComponentData.isValid())) {
+      GdtLog.d("GdtCanvasView", "onLoaded error");
+    }
+    label191:
+    for (;;)
+    {
+      return;
+      if ((this.jdField_a_of_type_Boolean) || (!paramBoolean) || (a() == null) || (!a().isValid())) {}
+      for (;;)
+      {
+        if ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_JavaUtilSet == null)) {
+          break label191;
+        }
+        this.c &= paramBoolean;
+        this.jdField_a_of_type_JavaUtilSet.add(paramGdtCanvasComponentData.id);
+        if (this.jdField_a_of_type_JavaUtilSet.size() != a().getSizeOfComponents()) {
+          break;
+        }
+        a(a(), this.c);
+        return;
+        Object localObject = a().getPage(0);
+        if ((localObject != null) && (((GdtCanvasPageData)localObject).isValid()))
+        {
+          localObject = ((GdtCanvasPageData)localObject).getComponent(0);
+          if ((localObject != null) && (((GdtCanvasComponentData)localObject).isValid()) && (TextUtils.equals(paramGdtCanvasComponentData.id, ((GdtCanvasComponentData)localObject).id)))
+          {
+            GdtCanvasDMPReportUtil.a(a());
+            this.jdField_a_of_type_Boolean = true;
+          }
+        }
+      }
+    }
   }
   
   public boolean a()
@@ -111,13 +193,20 @@ public class GdtCanvasView
   public void b()
   {
     this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasViewPager.e();
-    this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics.a();
+    this.jdField_b_of_type_ComTencentGdtadStatisticsGdtTimeStatistics.a();
   }
   
   public void c()
   {
     this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasViewPager.d();
-    this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics.b();
+    this.jdField_b_of_type_ComTencentGdtadStatisticsGdtTimeStatistics.b();
+  }
+  
+  protected void d()
+  {
+    if (this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics != null) {
+      this.jdField_a_of_type_ComTencentGdtadStatisticsGdtTimeStatistics.a();
+    }
   }
   
   public void setData(GdtCanvasData paramGdtCanvasData)
@@ -126,14 +215,13 @@ public class GdtCanvasView
       return;
     }
     this.jdField_a_of_type_ComTencentGdtadViewsCanvasGdtCanvasData = paramGdtCanvasData;
-    this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasViewPager = ((GdtCanvasViewPager)findViewById(2131363096));
+    this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasViewPager = ((GdtCanvasViewPager)findViewById(2131363114));
     this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasViewPager.a(new WeakReference(this));
-    this.jdField_a_of_type_ComTencentGdtadViewsCanvasFrameworkGdtCanvasViewPager.a(paramGdtCanvasData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.views.canvas.framework.GdtCanvasView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,42 @@
-import com.tencent.av.business.manager.report.VideoNodeReporter;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class jha
-  implements Runnable
+  extends Handler
 {
-  public jha(VideoNodeReporter paramVideoNodeReporter, long paramLong1, int paramInt, long paramLong2) {}
+  WeakReference a;
   
-  public void run()
+  public jha(CameraUtils paramCameraUtils, Looper paramLooper)
   {
-    VideoNodeReporter.a(this.jdField_a_of_type_ComTencentAvBusinessManagerReportVideoNodeReporter, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.b);
+    super(paramLooper);
+    this.a = new WeakReference(paramCameraUtils);
+  }
+  
+  public void a()
+  {
+    removeMessages(1);
+  }
+  
+  public void a(String paramString, int paramInt1, int paramInt2)
+  {
+    QLog.w("CameraUtils", 1, "sendReopenCameraMsg[" + paramString + "], size[" + paramInt1 + ", " + paramInt2 + "], subthread[" + getLooper().getThread().getId() + "]");
+    a();
+    paramString = obtainMessage(1);
+    paramString.arg1 = paramInt1;
+    paramString.arg2 = paramInt2;
+    sendMessageDelayed(paramString, 1000L);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if ((this.a != null) && (this.a.get() != null) && (paramMessage != null) && (paramMessage.what == 1)) {
+      CameraUtils.a((CameraUtils)this.a.get(), paramMessage.arg1, paramMessage.arg2);
+    }
+    super.handleMessage(paramMessage);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.open.adapter;
 
-import akjz;
+import akzp;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -57,7 +57,7 @@ public class OpenAppClient
       String str3 = "_" + paramContext;
       if (DownloadApi.a(paramContext))
       {
-        new Handler(Looper.getMainLooper()).post(new akjz(paramContext, (String)localObject, str1, str3, str2, paramString1, paramString2, paramInt));
+        new Handler(Looper.getMainLooper()).post(new akzp(paramContext, (String)localObject, str1, str3, str2, paramString1, paramString2, paramInt));
         return null;
       }
       return IntentFactory.a(paramString1, paramString2, paramInt);
@@ -552,11 +552,11 @@ public class OpenAppClient
     //   64: iconst_m1
     //   65: istore_2
     //   66: goto -39 -> 27
-    //   69: new 383	akka
+    //   69: new 383	akzq
     //   72: dup
     //   73: aload_0
     //   74: aload_1
-    //   75: invokespecial 385	akka:<init>	(Landroid/content/Context;Ljava/util/HashMap;)V
+    //   75: invokespecial 385	akzq:<init>	(Landroid/content/Context;Ljava/util/HashMap;)V
     //   78: invokestatic 174	com/tencent/mobileqq/app/ThreadManager:executeOnSubThread	(Ljava/lang/Runnable;)V
     //   81: iconst_1
     //   82: ireturn

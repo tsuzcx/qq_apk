@@ -1,15 +1,31 @@
-import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnBufferingUpdateListener;
+import android.os.Handler;
+import com.tencent.biz.qqstory.playvideo.ProgressControler;
+import com.tencent.biz.qqstory.playvideo.player.IVideoView;
+import java.lang.ref.WeakReference;
 
 public class nnt
-  implements IMediaPlayer.OnBufferingUpdateListener
+  implements Runnable
 {
-  public nnt(TextureVideoView paramTextureVideoView) {}
+  public nnt(ProgressControler paramProgressControler) {}
   
-  public void a(IMediaPlayer paramIMediaPlayer, int paramInt)
+  public void run()
   {
-    this.a.f = paramInt;
+    if (this.a.jdField_a_of_type_Boolean) {}
+    IVideoView localIVideoView;
+    do
+    {
+      do
+      {
+        return;
+      } while (this.a.jdField_a_of_type_JavaLangRefWeakReference == null);
+      localIVideoView = (IVideoView)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    } while (localIVideoView == null);
+    if (localIVideoView.b() > 0L)
+    {
+      this.a.a(this.a.jdField_a_of_type_Int, localIVideoView.a(), localIVideoView.b(), localIVideoView);
+      return;
+    }
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this, 50L);
   }
 }
 

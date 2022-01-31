@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.BadgeUtils;
+import com.tencent.mobileqq.app.NearbyGrayTipsManager;
+import com.tencent.mobileqq.data.MessageRecord;
+import java.util.Comparator;
 
 public class zhs
-  implements Runnable
+  implements Comparator
 {
-  public zhs(QQAppInterface paramQQAppInterface) {}
+  public zhs(NearbyGrayTipsManager paramNearbyGrayTipsManager) {}
   
-  public void run()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    if ((!this.a.isLogin()) || (this.a.l)) {}
-    for (int i = 0;; i = this.a.f())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QQAppInterface", 2, String.format("unread: %d islogin: %s isReleased: %s", new Object[] { Integer.valueOf(i), Boolean.valueOf(this.a.isLogin()), Boolean.valueOf(this.a.l) }));
-      }
-      BadgeUtils.a(QQAppInterface.l(this.a), i);
-      return;
+    if (paramMessageRecord1.time < paramMessageRecord2.time) {
+      return 1;
     }
+    if (paramMessageRecord1.time > paramMessageRecord2.time) {
+      return -1;
+    }
+    return 0;
   }
 }
 

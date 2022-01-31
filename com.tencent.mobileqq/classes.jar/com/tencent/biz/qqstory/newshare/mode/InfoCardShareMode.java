@@ -20,7 +20,7 @@ public class InfoCardShareMode
   
   static
   {
-    jdField_a_of_type_JavaLangString = "src_type=internal&version=1&uin=%s&usertype=%s&unionid=%s&fromId=%s&storysharefrom=%s" + StoryApi.a(2131432069);
+    jdField_a_of_type_JavaLangString = "src_type=internal&version=1&uin=%s&usertype=%s&unionid=%s&fromId=%s&storysharefrom=%s" + StoryApi.a(2131432086);
     b = "mqqapi://qstory/infoCard?" + jdField_a_of_type_JavaLangString;
     jdField_c_of_type_JavaLangString = "http://story.now.qq.com/mobile/transfer.html?" + jdField_a_of_type_JavaLangString + "&actionnamekey=3&one_page=0";
   }
@@ -37,7 +37,7 @@ public class InfoCardShareMode
       this.l = paramQQUserUIItem.uid;
       this.e = (paramQQUserUIItem.nickName + "的" + "日迹");
       this.g = ("[日迹]分享" + paramQQUserUIItem.nickName + "的" + "日迹");
-      this.h = (paramQQUserUIItem.nickName + "的" + "日迹" + "[来自" + "日迹" + "，请使用新版手机" + StoryApi.a(2131432068) + "查看]");
+      this.h = (paramQQUserUIItem.nickName + "的" + "日迹" + "[来自" + "日迹" + "，请使用新版手机" + StoryApi.a(2131432085) + "查看]");
       if (paramQQUserUIItem.videoCount > 0) {
         break label284;
       }

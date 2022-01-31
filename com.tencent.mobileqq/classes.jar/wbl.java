@@ -1,20 +1,35 @@
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.activity.bless.BlessActivity.AnimationDrawable2;
-import com.tencent.mobileqq.activity.bless.BlessActivity.IAnimationFinishListener;
-import com.tencent.mobileqq.activity.bless.BlessManager;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import com.tencent.mobileqq.activity.aio.tips.TroopAssistTipsBar;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class wbl
-  implements BlessActivity.IAnimationFinishListener
+  implements Runnable
 {
-  public wbl(BlessActivity paramBlessActivity) {}
+  public wbl(TroopChatPie paramTroopChatPie, boolean paramBoolean) {}
   
-  public void a()
+  public void run()
   {
-    if (BlessActivity.a(this.a) < this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessManager.m())
+    try
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.a();
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$AnimationDrawable2.start();
-      BlessActivity.b(this.a);
+      Thread.sleep(700L);
+      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.aa) && (!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) == 3) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTroopAssistTipsBar == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioTipsTroopAssistTipsBar.a())))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie.aa = true;
+        TroopChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildTroopChatPie).post(new wbm(this));
+      }
+      return;
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, QLog.getStackTraceString(localInterruptedException));
+        }
+      }
     }
   }
 }

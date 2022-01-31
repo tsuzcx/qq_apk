@@ -1,17 +1,16 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import mqq.os.MqqHandler;
 
 public class mro
   implements Runnable
 {
-  public mro(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
+  public mro(ServiceAccountFolderActivity paramServiceAccountFolderActivity, ServiceAccountFolderManager paramServiceAccountFolderManager) {}
   
   public void run()
   {
-    ((PublicAccountDataManager)this.a.app.getManager(55)).a();
-    TroopBarAssistantManager.a().c(this.a.app);
+    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderManager.b(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivity.app);
+    ServiceAccountFolderActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderActivity).sendEmptyMessage(100);
   }
 }
 

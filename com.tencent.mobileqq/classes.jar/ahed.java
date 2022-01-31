@@ -1,26 +1,18 @@
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
 
-public class ahed
-  extends ClickableSpan
+class ahed
+  implements Runnable
 {
-  public ahed(UniteSearchActivity paramUniteSearchActivity) {}
+  ahed(ahec paramahec, ReceiptMessageDetailFragment paramReceiptMessageDetailFragment) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.openContextMenu(this.a.a);
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setUnderlineText(false);
+    ReceiptMessageDetailFragment.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMessageDetailFragment);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahed
  * JD-Core Version:    0.7.0.1
  */

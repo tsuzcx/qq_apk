@@ -23,9 +23,9 @@ public class DeviceInfoUtil
     // Byte code:
     //   0: getstatic 26	cooperation/qzone/sim/DeviceInfoUtil:jdField_a_of_type_Boolean	Z
     //   3: ifne +17 -> 20
-    //   6: new 28	amjw
+    //   6: new 28	anab
     //   9: dup
-    //   10: invokespecial 29	amjw:<init>	()V
+    //   10: invokespecial 29	anab:<init>	()V
     //   13: invokestatic 35	cooperation/qzone/util/NetworkState:addListener	(Lcooperation/qzone/util/NetworkState$NetworkStateListener;)V
     //   16: iconst_1
     //   17: putstatic 26	cooperation/qzone/sim/DeviceInfoUtil:jdField_a_of_type_Boolean	Z

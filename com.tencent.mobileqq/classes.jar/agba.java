@@ -1,22 +1,51 @@
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.OCRRecognitionResultActivity;
+import com.tencent.mobileqq.widget.QQToast;
+
 public class agba
+  implements TextWatcher
 {
-  public float a;
-  public int a;
-  public int b;
-  public int c;
+  public agba(OCRRecognitionResultActivity paramOCRRecognitionResultActivity) {}
   
-  public agba(int paramInt1, float paramFloat, int paramInt2, int paramInt3)
+  public void afterTextChanged(Editable paramEditable)
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Float = paramFloat;
-    this.b = paramInt2;
-    this.c = paramInt3;
+    int i = 3400;
+    if (paramEditable.toString().trim().length() == 0)
+    {
+      OCRRecognitionResultActivity.a(this.a);
+      return;
+    }
+    int j;
+    if (paramEditable.length() > 3400)
+    {
+      j = OCRRecognitionResultActivity.a(this.a).getSelectionStart();
+      OCRRecognitionResultActivity.a(this.a).setText(paramEditable.subSequence(0, 3400));
+      if (j <= 3400) {
+        break label131;
+      }
+    }
+    for (;;)
+    {
+      OCRRecognitionResultActivity.a(this.a).setSelection(i);
+      if (OCRRecognitionResultActivity.b(this.a)) {
+        QQToast.a(this.a, 1, "字数超过上限", 0).a();
+      }
+      for (;;)
+      {
+        OCRRecognitionResultActivity.b(this.a);
+        return;
+        OCRRecognitionResultActivity.a(this.a, true);
+      }
+      label131:
+      i = j;
+    }
   }
   
-  public String toString()
-  {
-    return super.toString();
-  }
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

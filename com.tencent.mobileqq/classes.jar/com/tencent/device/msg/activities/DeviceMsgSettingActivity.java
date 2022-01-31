@@ -21,9 +21,9 @@ import java.util.Iterator;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import pyw;
-import pyy;
-import pyz;
+import qaq;
+import qas;
+import qat;
 
 public class DeviceMsgSettingActivity
   extends IphoneTitleBarActivity
@@ -67,7 +67,7 @@ public class DeviceMsgSettingActivity
         paramString = "set_device_property";
       }
     }
-    SmartDeviceUtil.a(paramString, localBundle, i, null, this.app, new pyy(this));
+    SmartDeviceUtil.a(paramString, localBundle, i, null, this.app, new qas(this));
   }
   
   private void b()
@@ -91,12 +91,12 @@ public class DeviceMsgSettingActivity
         str1 = "get_device_property";
       }
     }
-    SmartDeviceUtil.a(str1, localBundle, i, null, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new pyw(this));
+    SmartDeviceUtil.a(str1, localBundle, i, null, this.jdField_a_of_type_ComTencentCommonAppAppInterface, new qaq(this));
   }
   
   private void c()
   {
-    Object localObject = (TextView)super.findViewById(2131364207);
+    Object localObject = (TextView)super.findViewById(2131364231);
     if (localObject != null)
     {
       if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
@@ -105,7 +105,7 @@ public class DeviceMsgSettingActivity
     }
     else
     {
-      localObject = super.findViewById(2131364208);
+      localObject = super.findViewById(2131364232);
       if (localObject != null)
       {
         if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0) {
@@ -116,7 +116,7 @@ public class DeviceMsgSettingActivity
     }
     for (;;)
     {
-      localObject = super.findViewById(2131364205);
+      localObject = super.findViewById(2131364229);
       if (localObject != null)
       {
         if (this.jdField_a_of_type_JavaUtilArrayList.size() != 0) {
@@ -143,10 +143,10 @@ public class DeviceMsgSettingActivity
     int i = 0;
     if (i < j)
     {
-      pyz localpyz = (pyz)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+      qat localqat = (qat)this.jdField_a_of_type_JavaUtilArrayList.get(i);
       FormSwitchItem localFormSwitchItem = new FormSwitchItem(this, null);
       localFormSwitchItem.setBgType(0);
-      localFormSwitchItem.setText(localpyz.jdField_a_of_type_JavaLangString);
+      localFormSwitchItem.setText(localqat.jdField_a_of_type_JavaLangString);
       localFormSwitchItem.setFocusable(true);
       label76:
       Switch localSwitch;
@@ -154,8 +154,8 @@ public class DeviceMsgSettingActivity
       {
         localFormSwitchItem.setBgType(0);
         localSwitch = localFormSwitchItem.a();
-        localSwitch.setTag(Integer.valueOf(localpyz.jdField_a_of_type_Int));
-        if (localpyz.b != 1) {
+        localSwitch.setTag(Integer.valueOf(localqat.jdField_a_of_type_Int));
+        if (localqat.b != 1) {
           break label173;
         }
       }
@@ -194,7 +194,7 @@ public class DeviceMsgSettingActivity
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = ((AppInterface)super.getAppRuntime());
     this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog = new QQProgressDialog(this, super.getTitleBarHeight());
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131364209));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131364233));
     this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131427801);
     if ((!super.isFinishing()) && (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
@@ -215,10 +215,10 @@ public class DeviceMsgSettingActivity
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (pyz)localIterator.next();
-      if (((pyz)localObject).jdField_a_of_type_Int == j)
+      Object localObject = (qat)localIterator.next();
+      if (((qat)localObject).jdField_a_of_type_Int == j)
       {
-        int k = ((pyz)localObject).b;
+        int k = ((qat)localObject).b;
         long l;
         if (paramBoolean)
         {
@@ -245,7 +245,7 @@ public class DeviceMsgSettingActivity
           try
           {
             label164:
-            localObject = new JSONObject().put("id", ((pyz)localObject).jdField_a_of_type_Int);
+            localObject = new JSONObject().put("id", ((qat)localObject).jdField_a_of_type_Int);
             if (!paramBoolean) {
               break label218;
             }

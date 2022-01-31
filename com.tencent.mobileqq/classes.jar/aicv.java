@@ -1,70 +1,47 @@
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine.IBreakDownFix;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import com.tencent.mobileqq.transfile.ShortVideoDownloadProcessor;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.HashMap;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class aicv
-  implements INetEngine.IBreakDownFix
+  extends BroadcastReceiver
 {
-  public aicv(ShortVideoDownloadProcessor paramShortVideoDownloadProcessor) {}
+  public aicv(RedBagVideoManager paramRedBagVideoManager) {}
   
-  public void a(NetReq paramNetReq, NetResp paramNetResp)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramNetReq == null) || (paramNetResp == null)) {}
-    label8:
-    HttpNetReq localHttpNetReq;
-    do
+    if (paramIntent == null) {}
+    for (;;)
     {
-      do
+      return;
+      paramContext = paramIntent.getStringExtra("event");
+      if (paramContext != null)
       {
-        do
-        {
-          break label8;
-          do
+        paramIntent = paramIntent.getStringExtra("data");
+        if ((paramIntent != null) && (paramContext.equals("ShortVideoHongbaoInfoUpdate"))) {
+          try
           {
-            return;
-          } while (!(paramNetReq instanceof HttpNetReq));
-          localHttpNetReq = (HttpNetReq)paramNetReq;
-          if (ShortVideoDownloadProcessor.a(this.a))
-          {
-            File localFile = new File(paramNetReq.d);
-            if (paramNetResp.c == localFile.length())
+            paramContext = new JSONObject(paramIntent);
+            paramIntent = paramContext.optString("shortVideoId");
+            boolean bool = paramContext.optBoolean("isPaid");
+            if ((RedBagVideoManager.a(this.a) != null) && (RedBagVideoManager.a(this.a).g != 1) && (bool) && (RedBagVideoManager.a(this.a).c.equals(paramIntent)))
             {
-              paramNetResp.c = 0L;
-              if (QLog.isColorLevel()) {
-                QLog.e("ShortVideoDownloadProcessor", 2, "fixProgressiveRange, mStartDownOffset = " + paramNetReq.jdField_a_of_type_Long);
-              }
+              new aidl(this.a).execute(new String[0]);
+              return;
             }
           }
-          localHttpNetReq.jdField_a_of_type_Long += paramNetResp.c;
-          if (0L != localHttpNetReq.b) {
-            break;
-          }
-          paramNetResp.c = 0L;
-          paramNetReq = "bytes=" + localHttpNetReq.jdField_a_of_type_Long + "-";
-          localHttpNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetReq);
-          paramNetReq = localHttpNetReq.jdField_a_of_type_JavaLangString;
-        } while (!paramNetReq.contains("range="));
-        paramNetReq = paramNetReq.substring(0, paramNetReq.lastIndexOf("range="));
-        localHttpNetReq.jdField_a_of_type_JavaLangString = (paramNetReq + "range=" + localHttpNetReq.jdField_a_of_type_Long);
-        return;
-      } while ((localHttpNetReq.jdField_a_of_type_Long <= 0L) || (localHttpNetReq.b <= 0L) || (localHttpNetReq.jdField_a_of_type_Long >= localHttpNetReq.b));
-      paramNetResp.c = 0L;
-      paramNetReq = "bytes=" + localHttpNetReq.jdField_a_of_type_Long + "-" + localHttpNetReq.b;
-      localHttpNetReq.jdField_a_of_type_JavaUtilHashMap.put("Range", paramNetReq);
-      paramNetReq = localHttpNetReq.jdField_a_of_type_JavaLangString;
-    } while (!paramNetReq.contains("range="));
-    paramNetReq = paramNetReq.substring(0, paramNetReq.lastIndexOf("range="));
-    localHttpNetReq.jdField_a_of_type_JavaLangString = (paramNetReq + "range=" + localHttpNetReq.jdField_a_of_type_Long + "-" + localHttpNetReq.b);
+          catch (JSONException paramContext) {}
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aicv
  * JD-Core Version:    0.7.0.1
  */

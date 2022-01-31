@@ -1,21 +1,41 @@
-import com.tencent.mobileqq.ar.ScanEntranceReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderManagerImpl;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderResourceInfo;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenerArumentManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class zyz
   implements Runnable
 {
-  public zyz(ScanEntranceReport paramScanEntranceReport, boolean paramBoolean1, long paramLong1, long paramLong2, boolean paramBoolean2, long paramLong3) {}
+  public zyz(ARRenderManagerImpl paramARRenderManagerImpl, ARBaseRender paramARBaseRender, ARRenderResourceInfo paramARRenderResourceInfo) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("first_init", String.valueOf(this.jdField_a_of_type_Boolean));
-    localHashMap.put("init_delay", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("init_time", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("download_resource", String.valueOf(this.jdField_b_of_type_Boolean));
-    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_ar_init", true, this.c, 0L, localHashMap, "");
+    ARBaseRender localARBaseRender = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
+    ARRenderManagerImpl localARRenderManagerImpl = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl;
+    int i = ARRenderManagerImpl.jdField_a_of_type_Int;
+    localARRenderManagerImpl = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl;
+    localARBaseRender.a_(i, ARRenderManagerImpl.b);
+    localARBaseRender = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
+    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender = this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender;
+    if (QLog.isColorLevel()) {
+      QLog.d("HSRender", 2, "onARStateChanged, queueEvent");
+    }
+    if ((localARBaseRender != null) && (localARBaseRender != this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender)) {
+      localARBaseRender.d();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender == null) {
+      return;
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Int == 5) && ((this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Long == 2L) || (this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo.jdField_a_of_type_Long == 2048L))) {}
+    for (boolean bool = true;; bool = false)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.a();
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenerArumentManager.a(bool, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderResourceInfo);
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.a();
+      this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARRenderManagerImpl.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.b();
+      return;
+    }
   }
 }
 

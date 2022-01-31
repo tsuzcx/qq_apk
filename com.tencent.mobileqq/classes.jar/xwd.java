@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
+import com.tencent.mobileqq.activity.richmedia.subtitles.RDBaseDataManager;
 
-class xwd
-  implements DialogInterface.OnClickListener
+public class xwd
+  implements Runnable
 {
-  xwd(xwa paramxwa) {}
+  public xwd(RDBaseDataManager paramRDBaseDataManager, xvw paramxvw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.a.a();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaSubtitlesRDBaseDataManager.a(this.jdField_a_of_type_Xvw.a, 1, null, null);
   }
 }
 

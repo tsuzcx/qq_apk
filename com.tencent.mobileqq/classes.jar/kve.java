@@ -1,13 +1,30 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import mqq.os.MqqHandler;
 
 class kve
-  implements Runnable
+  implements TVK_SDKMgr.InstallListener
 {
   kve(kvd paramkvd) {}
   
-  public void run()
+  public void onInstallProgress(float paramFloat) {}
+  
+  public void onInstalledFailed(int paramInt)
   {
-    this.a.a.a(1);
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverView", 2, "installSDK onInstalledFailed arg0=" + paramInt);
+    }
+    this.a.a.b = false;
+  }
+  
+  public void onInstalledSuccessed()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("VideoCoverView", 2, "installSDK onInstalledSuccessed");
+    }
+    this.a.a.b = true;
+    ThreadManager.getUIHandler().post(new kvf(this));
   }
 }
 

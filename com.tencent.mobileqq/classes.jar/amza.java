@@ -1,20 +1,22 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.qq.im.capture.view.MusicProviderView;
+import com.tencent.mobileqq.app.ThreadManager;
+import cooperation.qzone.share.QZoneShareActivity;
+import mqq.os.MqqHandler;
 
 public class amza
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public amza(MusicProviderView paramMusicProviderView) {}
+  public amza(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    int i = this.a.b();
+    int j = this.a.a();
+    ThreadManager.getUIHandler().post(new amzb(this, i - j));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amza
  * JD-Core Version:    0.7.0.1
  */

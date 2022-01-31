@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.dc;
 
-import agzf;
-import agzg;
+import ahnh;
+import ahni;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -14,7 +14,7 @@ public class DCAIOPreview
   implements ReportEvent
 {
   private SparseArray a = new SparseArray();
-  private Handler jdField_b_of_type_AndroidOsHandler = new agzf(this, a());
+  private Handler jdField_b_of_type_AndroidOsHandler = new ahnh(this, a());
   private String jdField_b_of_type_JavaLangString;
   
   public DCAIOPreview(Context paramContext)
@@ -39,16 +39,16 @@ public class DCAIOPreview
     this.jdField_b_of_type_JavaLangString = "other";
   }
   
-  private agzg a(int paramInt)
+  private ahni a(int paramInt)
   {
-    agzg localagzg2 = (agzg)this.a.get(paramInt);
-    agzg localagzg1 = localagzg2;
-    if (localagzg2 == null)
+    ahni localahni2 = (ahni)this.a.get(paramInt);
+    ahni localahni1 = localahni2;
+    if (localahni2 == null)
     {
-      localagzg1 = new agzg(paramInt, this.jdField_b_of_type_JavaLangString);
-      this.a.put(paramInt, localagzg1);
+      localahni1 = new ahni(paramInt, this.jdField_b_of_type_JavaLangString);
+      this.a.put(paramInt, localahni1);
     }
-    return localagzg1;
+    return localahni1;
   }
   
   public void a()
@@ -58,14 +58,14 @@ public class DCAIOPreview
   
   public void a(int paramInt)
   {
-    agzg.a(a(paramInt));
+    ahni.a(a(paramInt));
   }
   
   public void a(int paramInt, long paramLong1, long paramLong2)
   {
-    agzg localagzg = (agzg)this.a.get(paramInt);
+    ahni localahni = (ahni)this.a.get(paramInt);
     String str;
-    if (localagzg != null)
+    if (localahni != null)
     {
       paramInt = PhotoUtils.a(paramLong1, paramLong2);
       str = null;
@@ -75,7 +75,7 @@ public class DCAIOPreview
     }
     for (;;)
     {
-      agzg.b(localagzg, str);
+      ahni.b(localahni, str);
       return;
       str = "long";
       continue;
@@ -91,32 +91,32 @@ public class DCAIOPreview
   
   public void a(int paramInt, String paramString)
   {
-    agzg localagzg = (agzg)this.a.get(paramInt);
-    if (localagzg != null) {
-      agzg.d(localagzg, paramString);
+    ahni localahni = (ahni)this.a.get(paramInt);
+    if (localahni != null) {
+      ahni.d(localahni, paramString);
     }
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    agzg localagzg = (agzg)this.a.get(paramInt);
-    if (localagzg != null) {
-      agzg.a(localagzg, paramBoolean);
+    ahni localahni = (ahni)this.a.get(paramInt);
+    if (localahni != null) {
+      ahni.a(localahni, paramBoolean);
     }
   }
   
   public void b(int paramInt)
   {
-    agzg localagzg = (agzg)this.a.get(paramInt);
-    if ((localagzg != null) && (agzg.a(localagzg))) {
-      agzg.b(localagzg);
+    ahni localahni = (ahni)this.a.get(paramInt);
+    if ((localahni != null) && (ahni.a(localahni))) {
+      ahni.b(localahni);
     }
   }
   
   public void b(int paramInt, boolean paramBoolean)
   {
-    agzg localagzg = (agzg)this.a.get(paramInt);
-    if (localagzg != null) {
+    ahni localahni = (ahni)this.a.get(paramInt);
+    if (localahni != null) {
       if (!paramBoolean) {
         break label33;
       }
@@ -124,24 +124,24 @@ public class DCAIOPreview
     label33:
     for (String str = "dynamic";; str = "static")
     {
-      agzg.c(localagzg, str);
+      ahni.c(localahni, str);
       return;
     }
   }
   
   public void c(int paramInt)
   {
-    agzg localagzg = (agzg)this.a.get(paramInt);
-    if ((localagzg != null) && (agzg.a(localagzg))) {
-      agzg.c(localagzg);
+    ahni localahni = (ahni)this.a.get(paramInt);
+    if ((localahni != null) && (ahni.a(localahni))) {
+      ahni.c(localahni);
     }
   }
   
   public void d(int paramInt)
   {
-    agzg localagzg = (agzg)this.a.get(paramInt);
-    if ((localagzg != null) && (agzg.a(localagzg))) {
-      agzg.a(localagzg, "sender");
+    ahni localahni = (ahni)this.a.get(paramInt);
+    if ((localahni != null) && (ahni.a(localahni))) {
+      ahni.a(localahni, "sender");
     }
   }
 }

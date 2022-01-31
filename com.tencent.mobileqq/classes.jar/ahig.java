@@ -1,42 +1,41 @@
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
-import java.util.ArrayList;
+import android.app.Activity;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
+import com.tencent.mobileqq.widget.QQToast;
 
-class ahig
-  extends FriendListObserver
+public class ahig
+  implements Runnable
 {
-  ahig(ahif paramahif) {}
+  public ahig(CameraCaptureFragment paramCameraCaptureFragment, int paramInt) {}
   
-  protected void onSearchFriendResult(boolean paramBoolean1, int paramInt1, Object paramObject, int paramInt2, String paramString, boolean paramBoolean2, long paramLong)
+  public void run()
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver != null) {
-      NetSearchEngine.a(this.a.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
-    }
-    if (ahif.a(this.a)) {}
-    do
+    switch (this.jdField_a_of_type_Int)
     {
+    default: 
+    case 101: 
+    case 104: 
+      FragmentActivity localFragmentActivity;
       do
       {
-        do
-        {
-          return;
-        } while ((paramInt1 != 88) || (paramBoolean2));
-        if (!paramBoolean1) {
-          break;
-        }
-      } while (!(paramObject instanceof ArrayList));
-      ThreadManager.post(new ahih(this.a.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine, ahif.a(this.a), (ArrayList)paramObject, ahif.a(this.a)), 10, null, true);
+        return;
+        QQToast.a(BaseApplicationImpl.getApplication(), "录制出现异常，请重试", 1).a();
+        localFragmentActivity = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.getActivity();
+      } while ((localFragmentActivity == null) || (localFragmentActivity.isFinishing()));
+      localFragmentActivity.finish();
       return;
-    } while (ahif.a(this.a) == null);
-    ahif.a(this.a).a(null, 1);
+    case 102: 
+      QQToast.a(BaseApplicationImpl.getContext(), "拍摄时间过短，请重新拍摄。", 0).a();
+      this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.z_();
+      return;
+    }
+    QQToast.a(BaseApplicationImpl.getContext(), "拍照出现异常，请重试", 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahig
  * JD-Core Version:    0.7.0.1
  */

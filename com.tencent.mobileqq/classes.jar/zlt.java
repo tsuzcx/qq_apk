@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.app.TroopManager;
+import java.util.concurrent.atomic.AtomicBoolean;
+import msf.msgcomm.msg_comm.Msg;
 
 public class zlt
-  implements Runnable
 {
-  public zlt(TroopManager paramTroopManager, String paramString1, String paramString2, String paramString3) {}
+  public long a;
+  public AtomicBoolean a;
+  public msg_comm.Msg a;
+  public long b;
   
-  public void run()
+  public zlt(msg_comm.Msg paramMsg, long paramLong1, long paramLong2)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, -100, null, null, -100, -100, -100, -100L, -100L);
+    this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg = paramMsg;
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
   }
 }
 

@@ -1,6 +1,6 @@
 package com.tencent.open.downloadnew;
 
-import akqy;
+import algo;
 import android.content.Intent;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -12,7 +12,7 @@ import org.json.JSONObject;
 public class DownloadInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new akqy();
+  public static final Parcelable.Creator CREATOR = new algo();
   protected static final String a;
   public int a;
   public long a;

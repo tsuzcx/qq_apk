@@ -1,19 +1,51 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.armap.ARMapManager;
+import com.tencent.mobileqq.utils.Base64Util;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-class abby
-  implements Runnable
+public class abby
+  extends BroadcastReceiver
 {
-  abby(abbx paramabbx, Drawable paramDrawable) {}
+  private abby(ARMapManager paramARMapManager) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (("KEY_SPLASH_BG_WEALTH_GOD_SLEEP".equals(this.jdField_a_of_type_Abbx.jdField_a_of_type_JavaLangString)) || ("KEY_SPLASH_BG_WEALTH_GOD_WORK".equals(this.jdField_a_of_type_Abbx.jdField_a_of_type_JavaLangString)) || ("KEY_SPLASH_BG_WEALTH_GOD_BAOXIANG".equals(this.jdField_a_of_type_Abbx.jdField_a_of_type_JavaLangString)))
-    {
-      this.jdField_a_of_type_Abbx.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      return;
+    int i = paramIntent.getIntExtra("portal_type_key", -1);
+    paramIntent.getIntExtra("bc_seq", -1);
+    paramContext = paramIntent.getStringExtra("portal_agrs");
+    if (QLog.isColorLevel()) {
+      QLog.i("ARMapManager", 2, "JSBroadcastReceiver, " + paramIntent.getExtras());
     }
-    this.jdField_a_of_type_Abbx.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    switch (i)
+    {
+    }
+    do
+    {
+      for (;;)
+      {
+        return;
+        try
+        {
+          if (!TextUtils.isEmpty(paramContext))
+          {
+            paramContext = new JSONObject(paramContext).getString("stid");
+            if (!TextUtils.isEmpty(paramContext))
+            {
+              new String(Base64Util.decode(paramContext, 0));
+              paramContext = BaseActivity.sTopActivity;
+              return;
+            }
+          }
+        }
+        catch (Exception paramContext) {}
+      }
+    } while (!QLog.isColorLevel());
+    QLog.i("ARMapManager", 2, "", paramContext);
   }
 }
 

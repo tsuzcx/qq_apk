@@ -1,22 +1,23 @@
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import com.tencent.biz.pubaccount.Advertisement.view.AdControlView;
 
 public class kux
-  implements Runnable
+  extends AnimatorListenerAdapter
 {
-  public kux(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
+  public kux(AdControlView paramAdControlView) {}
   
-  public void run()
+  public void onAnimationCancel(Animator paramAnimator)
   {
-    try
-    {
-      TVK_SDKMgr.installPlugin(AdvertisementVideoPreloadManager.a(this.a), new kuy(this));
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      AdvertisementVideoPreloadManager.c("installSDK t==" + localThrowable.toString());
-    }
+    super.onAnimationCancel(paramAnimator);
+    this.a.b = false;
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    super.onAnimationEnd(paramAnimator);
+    this.a.b = false;
+    this.a.setVisibility(4);
   }
 }
 

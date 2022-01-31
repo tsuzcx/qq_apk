@@ -1,27 +1,15 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import mqq.os.MqqHandler;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.utils.ContactUtils.OnGetTroopMemberNameCallback;
 
-public class sfe
-  extends BroadcastReceiver
+class sfe
+  implements ContactUtils.OnGetTroopMemberNameCallback
 {
-  public sfe(Conversation paramConversation) {}
+  sfe(sfd paramsfd, TextView paramTextView) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(String paramString)
   {
-    paramContext = paramIntent.getStringExtra("wording");
-    int i = paramIntent.getIntExtra("timetowait", 360000);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.jdField_a_of_type_Int = i;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.jdField_a_of_type_JavaLangString = paramContext;
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(16, 2);
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(-1, null);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class).postDelayed(new sff(this), i);
-    ReportController.b(null, "P_CliOper", "Safe_SecurityDetect", "", "SecurityDetect_PushBanner", "showBanner", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Sfd.a.runOnUiThread(new sff(this, paramString));
   }
 }
 

@@ -1,13 +1,17 @@
-import com.tencent.mobileqq.activity.KPLProfileCardActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
 
 public class stj
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public stj(KPLProfileCardActivity paramKPLProfileCardActivity) {}
+  public stj(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    KPLProfileCardActivity.a(this.a, this.a.a);
+    paramDialogInterface.dismiss();
+    FriendProfileMoreInfoActivity.a(this.a, true);
+    this.a.a("0X80081E6", 2);
   }
 }
 

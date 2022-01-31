@@ -1,18 +1,17 @@
-import android.content.Context;
-import android.view.Window;
-import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.widget.ActionSheet;
+import com.tencent.av.opengl.ui.animation.GLAnimation.AnimationListenerGL;
+import com.tencent.av.ui.GLVideoView;
+import com.tencent.av.ui.VideoLayerUI;
 
 public class kbw
-  extends ActionSheet
+  implements GLAnimation.AnimationListenerGL
 {
-  public kbw(VideoInviteActivity paramVideoInviteActivity, Context paramContext)
+  public kbw(VideoLayerUI paramVideoLayerUI, GLVideoView paramGLVideoView, boolean paramBoolean) {}
+  
+  public void a()
   {
-    super(paramContext);
-    super.getWindow().addFlags(524288);
-    super.getWindow().addFlags(128);
-    super.getWindow().addFlags(1024);
-    super.getWindow().addFlags(2097152);
+    this.jdField_a_of_type_ComTencentAvUiGLVideoView.k(true);
+    this.jdField_a_of_type_ComTencentAvUiGLVideoView.d(this.jdField_a_of_type_Boolean);
+    VideoLayerUI.a(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, this.jdField_a_of_type_ComTencentAvUiGLVideoView, this.jdField_a_of_type_Boolean);
   }
 }
 

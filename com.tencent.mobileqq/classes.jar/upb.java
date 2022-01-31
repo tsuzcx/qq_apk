@@ -1,25 +1,13 @@
-import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.doodle.DoodleResHelper;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResCallback;
+import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgNumAnim;
 
 public class upb
   implements Runnable
 {
-  public upb(DoodleResHelper paramDoodleResHelper, int paramInt1, int paramInt2, View paramView, ScribbleResMgr.ResCallback paramResCallback) {}
+  public upb(GoldMsgNumAnim paramGoldMsgNumAnim) {}
   
   public void run()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (this.jdField_a_of_type_Int == 0) {
-      ScribbleResMgr.a(localQQAppInterface).a(localQQAppInterface, 3, this.b, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr$ResCallback);
-    }
-    while ((this.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Int != 2)) {
-      return;
-    }
-    ScribbleResMgr.a(localQQAppInterface).a(localQQAppInterface, 4, this.b, this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqScribbleScribbleResMgr$ResCallback);
+    this.a.a();
   }
 }
 

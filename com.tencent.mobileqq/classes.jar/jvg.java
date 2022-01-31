@@ -1,24 +1,17 @@
-import com.tencent.av.ui.GAudioMembersCtrlActivity;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.MultiIncomingCallUICtr;
 
-public class jvg
+class jvg
   implements Runnable
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  boolean jdField_a_of_type_Boolean;
-  int b;
-  
-  public jvg(GAudioMembersCtrlActivity paramGAudioMembersCtrlActivity, int paramInt1, long paramLong, boolean paramBoolean, int paramInt2)
-  {
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    this.b = paramInt2;
-  }
+  jvg(jvf paramjvf, long paramLong) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvUiGAudioMembersCtrlActivity.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean, this.b);
+    this.jdField_a_of_type_Jvf.a.jdField_a_of_type_ComTencentAvAppSessionInfo.an = true;
+    if (this.jdField_a_of_type_Jvf.a.b == 1) {
+      this.jdField_a_of_type_Jvf.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Long);
+    }
   }
 }
 

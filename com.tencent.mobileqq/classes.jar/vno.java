@@ -1,17 +1,28 @@
-import com.tencent.ark.ArkDebugger;
-import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
+import java.io.File;
+import mqq.os.MqqHandler;
 
-class vno
+public class vno
   implements Runnable
 {
-  vno(vnn paramvnn) {}
+  public vno(AIOGalleryScene paramAIOGalleryScene, File paramFile, ActionSheet paramActionSheet) {}
   
   public void run()
   {
-    ArkDebugger.Listen("127.0.0.1", 23333L, 600000L, ArkAppCenter.f());
-    QQToast.a(this.a.a.a.a.a, "已经开启监听，可以连接调试...", 0).a();
+    try
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.h != null) && (this.jdField_a_of_type_JavaIoFile != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.h.equals(this.jdField_a_of_type_JavaIoFile.getPath())) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene.a(this.jdField_a_of_type_JavaIoFile).booleanValue()) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing())) {
+        ThreadManager.getUIHandler().post(new vnp(this));
+      }
+      return;
+    }
+    catch (Exception localException)
+    {
+      QLog.i("AIOGalleryScene", 1, "add qr action sheet error: " + localException.getMessage());
+    }
   }
 }
 

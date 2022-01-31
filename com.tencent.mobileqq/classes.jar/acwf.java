@@ -1,20 +1,26 @@
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr;
 
-public class acwf
-  implements CUKingCardHelper.CUKingDialogListener
+class acwf
+  implements Runnable
 {
-  public acwf(FileModel paramFileModel, FMDialogUtil.FMDialogInterface paramFMDialogInterface) {}
+  acwf(acwe paramacwe) {}
   
-  public void callback(int paramInt)
+  public void run()
   {
-    if ((paramInt == 1) || (paramInt == 2))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface.a();
-      return;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("FileVideoManager<FileAssistant>.FVBlock", 1, "[" + this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] chang thread[" + this.a.a.d + "]");
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFMDialogUtil$FMDialogInterface.b();
+    if (this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr != null)
+    {
+      this.a.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(this.a.a.d);
+      if (QLog.isDevelopLevel()) {
+        QLog.i("FileVideoManager<FileAssistant>.FVBlock", 1, "[" + this.a.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] block is full stop downloadId[" + this.a.a.d + "]");
+      }
+      this.a.a.d = -1;
+    }
   }
 }
 

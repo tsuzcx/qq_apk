@@ -2,7 +2,9 @@ package com.tencent.mobileqq.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
+import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.biz.eqq.CrmUtils;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
@@ -123,20 +126,38 @@ public class ForwardSelectionFriendListAdapter
         {
           localArrayList.addAll((Collection)localObject);
           localObject = localArrayList.iterator();
-          while (((Iterator)localObject).hasNext()) {
+          label329:
+          while (((Iterator)localObject).hasNext())
+          {
             try
             {
               Friends localFriends = (Friends)((Iterator)localObject).next();
               if ((CrmUtils.a(localFriends.cSpecialFlag)) || (QidianManager.b(localFriends.cSpecialFlag))) {
                 ((Iterator)localObject).remove();
               }
-              if (Utils.b(localFriends.uin)) {
-                ((Iterator)localObject).remove();
+              if (!Utils.b(localFriends.uin)) {
+                break label251;
               }
+              ((Iterator)localObject).remove();
             }
             catch (Exception localException)
             {
               localException.printStackTrace();
+            }
+            continue;
+            label251:
+            if ((TextUtils.equals(localException.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) && (this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof ForwardFriendListActivity)))
+            {
+              Intent localIntent = ((ForwardFriendListActivity)this.jdField_a_of_type_AndroidContentContext).getIntent();
+              if (localIntent != null) {}
+              for (boolean bool = localIntent.getBooleanExtra("choose_friend_isForConfess", false);; bool = false)
+              {
+                if (!bool) {
+                  break label329;
+                }
+                ((Iterator)localObject).remove();
+                break;
+              }
             }
           }
         }
@@ -162,10 +183,10 @@ public class ForwardSelectionFriendListAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971439, paramViewGroup, false);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130971487, paramViewGroup, false);
       paramViewGroup = new ForwardSelectionFriendListAdapter.ViewTag();
-      paramViewGroup.c = ((ImageView)paramView.findViewById(2131362701));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363873));
+      paramViewGroup.c = ((ImageView)paramView.findViewById(2131362719));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363896));
       if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
         paramView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
       }
@@ -216,8 +237,8 @@ public class ForwardSelectionFriendListAdapter
     {
       paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968807, paramViewGroup, false);
       paramViewGroup = new ForwardSelectionFriendListAdapter.GroupViewTag();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363819));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131363820));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363842));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131363843));
       paramView.setTag(paramViewGroup);
       paramView.setOnClickListener(this);
     }

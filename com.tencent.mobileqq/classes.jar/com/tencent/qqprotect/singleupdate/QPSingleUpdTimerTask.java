@@ -1,6 +1,6 @@
 package com.tencent.qqprotect.singleupdate;
 
-import alio;
+import alye;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.TimerTask;
 
@@ -9,7 +9,7 @@ public class QPSingleUpdTimerTask
 {
   public void run()
   {
-    ThreadManager.post(new alio(this), 5, null, true);
+    ThreadManager.post(new alye(this), 5, null, true);
   }
 }
 

@@ -1,17 +1,14 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.base.DoodleStrategy;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
-import java.util.List;
+import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class anjd
-  implements DoodleStrategy
+  implements Runnable
 {
-  public anjd(DoodleLayout paramDoodleLayout) {}
+  public anjd(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void a(List paramList, DoodleView paramDoodleView)
+  public void run()
   {
-    paramList.add(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerVoteLayer);
-    paramList.add(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleLayerInteractPasterLayer);
+    CaptureUtil.b();
   }
 }
 

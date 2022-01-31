@@ -1,12 +1,21 @@
-import com.tencent.biz.qqstory.base.QQStoryHandler;
-import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeWatchedRequest;
+import android.view.View;
+import android.widget.ImageButton;
+import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
+import com.tencent.mobileqq.richmedia.capture.view.ProviderContainerView.ContainerViewListener;
 
-public final class omm
-  extends MsgTabNodeWatchedRequest
+public class omm
+  implements ProviderContainerView.ContainerViewListener
 {
-  public String a()
+  public omm(StoryLocalPublishPart paramStoryLocalPublishPart) {}
+  
+  public void a(View paramView, int paramInt)
   {
-    return QQStoryHandler.n;
+    StoryLocalPublishPart.a(this.a).setVisibility(8);
+  }
+  
+  public void y_()
+  {
+    StoryLocalPublishPart.a(this.a).setVisibility(0);
   }
 }
 

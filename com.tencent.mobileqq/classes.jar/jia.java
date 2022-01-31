@@ -1,21 +1,20 @@
-import com.tencent.av.core.IVideoEventListener;
-import com.tencent.av.core.VcControllerImpl;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import java.util.Vector;
 
 public class jia
-  implements Runnable
 {
-  public jia(VcControllerImpl paramVcControllerImpl) {}
+  public long a;
+  public Vector a;
   
-  public void run()
+  public jia(AVNotifyCenter paramAVNotifyCenter)
   {
-    if (this.a.mEventListener != null) {
-      this.a.mEventListener.b(this.a.mPreviewW, this.a.mPreviewH);
-    }
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_JavaUtilVector = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     jia
  * JD-Core Version:    0.7.0.1
  */

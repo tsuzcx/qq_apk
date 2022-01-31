@@ -1,53 +1,16 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 
-public class acmn
-  implements FileVideoManager.FileVideoManagerCallback
+class acmn
+  implements DialogInterface.OnClickListener
 {
-  public acmn(FileVideoManager.VideoControl paramVideoControl, FileManagerEntity paramFileManagerEntity, boolean paramBoolean) {}
+  acmn(acmj paramacmj) {}
   
-  public void a(int paramInt, String paramString)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]on Error[" + paramInt + "]msg[" + paramString + "]");
-    }
-    Object localObject;
-    if ((paramInt == -25081) || (paramInt == -6101) || (paramInt == -7003))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status = 16;
-      localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      ((QQAppInterface)localObject).a().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-      FMToastUtil.a(2131428190);
-      ((QQAppInterface)localObject).a().a(true, 3, null);
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      localObject = (FileVideoManager.FileVideoManagerCallback)this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject != null) {
-        ((FileVideoManager.FileVideoManagerCallback)localObject).a(paramInt, paramString);
-      }
-    }
+    FileManagerReporter.a("0X80052CF");
   }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]onGetUrlCookies");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity, this.jdField_a_of_type_Boolean);
-  }
-  
-  public void ac_() {}
-  
-  public void ad_() {}
 }
 
 

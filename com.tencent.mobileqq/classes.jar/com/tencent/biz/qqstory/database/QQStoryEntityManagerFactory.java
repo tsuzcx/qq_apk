@@ -1,7 +1,9 @@
 package com.tencent.biz.qqstory.database;
 
 import android.database.Cursor;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabHaloEntity;
 import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeEntity;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeRecommendActivityReadEntity;
 import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeVidListEntity;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.app.SQLiteOpenHelper;
@@ -108,15 +110,17 @@ public class QQStoryEntityManagerFactory
     paramSQLiteDatabase.execSQL(TableBuilder.a(ShareGroupListEntry.class.getSimpleName()));
     paramSQLiteDatabase.execSQL(TableBuilder.a(DiscoverBannerVideoEntry.class.getSimpleName()));
     paramSQLiteDatabase.execSQL(TableBuilder.a(MsgTabNodeEntity.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.a(MsgTabHaloEntity.class.getSimpleName()));
     paramSQLiteDatabase.execSQL(TableBuilder.a(MsgTabNodeVidListEntity.class.getSimpleName()));
     paramSQLiteDatabase.execSQL(TableBuilder.a(DownloadingUrlEntry.class.getSimpleName()));
+    paramSQLiteDatabase.execSQL(TableBuilder.a(MsgTabNodeRecommendActivityReadEntity.TABLE_NAME));
   }
   
   public SQLiteOpenHelper build(String paramString)
   {
     if (this.dbHelper == null)
     {
-      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, "qqstory_" + paramString + ".db", null, 149);
+      this.mInnerDbHelper = new QQEntityManagerFactory.SQLiteOpenHelperImpl(this, "qqstory_" + paramString + ".db", null, 157);
       this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
     }
     return this.dbHelper;
@@ -140,8 +144,10 @@ public class QQStoryEntityManagerFactory
     paramSQLiteDatabase.execSQL(TableBuilder.a(new ShareGroupListEntry()));
     paramSQLiteDatabase.execSQL(TableBuilder.a(new DiscoverBannerVideoEntry()));
     paramSQLiteDatabase.execSQL(TableBuilder.a(new MsgTabNodeEntity()));
+    paramSQLiteDatabase.execSQL(TableBuilder.a(new MsgTabHaloEntity()));
     paramSQLiteDatabase.execSQL(TableBuilder.a(new MsgTabNodeVidListEntity()));
     paramSQLiteDatabase.execSQL(TableBuilder.a(new DownloadingUrlEntry()));
+    paramSQLiteDatabase.execSQL(TableBuilder.a(new MsgTabNodeRecommendActivityReadEntity()));
   }
   
   protected String getPackageName()
@@ -220,6 +226,15 @@ public class QQStoryEntityManagerFactory
     {
       paramSQLiteDatabase.execSQL(TableBuilder.a(MemoryInfoEntry.class.getSimpleName()));
       paramSQLiteDatabase.execSQL(TableBuilder.a(new MemoryInfoEntry()));
+    }
+    if (paramInt1 < 157)
+    {
+      paramSQLiteDatabase.execSQL(TableBuilder.a(MsgTabNodeRecommendActivityReadEntity.TABLE_NAME));
+      paramSQLiteDatabase.execSQL(TableBuilder.a(new MsgTabNodeRecommendActivityReadEntity()));
+      paramSQLiteDatabase.execSQL(TableBuilder.a(MsgTabNodeEntity.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.a(new MsgTabNodeEntity()));
+      paramSQLiteDatabase.execSQL(TableBuilder.a(MsgTabNodeVidListEntity.class.getSimpleName()));
+      paramSQLiteDatabase.execSQL(TableBuilder.a(new MsgTabNodeVidListEntity()));
     }
     a("com.tencent.biz.qqstory.database", paramSQLiteDatabase);
   }

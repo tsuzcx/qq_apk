@@ -7,8 +7,8 @@ import android.view.ViewGroup;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import java.util.List;
-import mhs;
-import mht;
+import miz;
+import mja;
 
 public class ReadInJoyNavigationGridview
   extends LinearLayout
@@ -19,26 +19,26 @@ public class ReadInJoyNavigationGridview
   private ReadInJoyNavigationAdapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationAdapter;
   private ReadInJoyNavigationGridview.NaviMaskTouchListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview$NaviMaskTouchListener;
   private List jdField_a_of_type_JavaUtilList;
-  private mht jdField_a_of_type_Mht;
+  private mja jdField_a_of_type_Mja;
   private boolean jdField_a_of_type_Boolean;
   
   public ReadInJoyNavigationGridview(Context paramContext, ReadInJoyNavigationGridview.NaviMaskTouchListener paramNaviMaskTouchListener)
   {
     super(paramContext);
     a(paramContext);
-    this.jdField_a_of_type_Mht = new mht(this);
+    this.jdField_a_of_type_Mja = new mja(this);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationGridview$NaviMaskTouchListener = paramNaviMaskTouchListener;
     this.jdField_a_of_type_Boolean = false;
   }
   
   private void a(Context paramContext)
   {
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2130969631, this));
-    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367205));
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367204);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(paramContext).inflate(2130969639, this));
+    this.jdField_a_of_type_AndroidWidgetGridView = ((GridView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367253));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131367252);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationAdapter = new ReadInJoyNavigationAdapter(paramContext);
     this.jdField_a_of_type_AndroidWidgetGridView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNavigationAdapter);
-    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new mhs(this));
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(new miz(this));
   }
   
   private void b()
@@ -67,7 +67,7 @@ public class ReadInJoyNavigationGridview
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_JavaUtilList = null;
-    this.jdField_a_of_type_Mht.removeMessages(1);
+    this.jdField_a_of_type_Mja.removeMessages(1);
   }
   
   public boolean a()
@@ -83,7 +83,7 @@ public class ReadInJoyNavigationGridview
   public void setNaviBarAdapterDataSet(List paramList)
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
-    this.jdField_a_of_type_Mht.sendEmptyMessage(1);
+    this.jdField_a_of_type_Mja.sendEmptyMessage(1);
   }
 }
 

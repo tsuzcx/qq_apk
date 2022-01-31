@@ -1,22 +1,13 @@
-import android.os.Handler.Callback;
-import android.os.Message;
-import com.tencent.mobileqq.armap.ARMapActivity;
+import com.tencent.mobileqq.ark.ArkAppCGI;
 
 public class aata
-  implements Handler.Callback
+  implements aath
 {
-  public aata(ARMapActivity paramARMapActivity) {}
+  public aata(ArkAppCGI paramArkAppCGI) {}
   
-  public boolean handleMessage(Message paramMessage)
+  public void a(aati paramaati, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.k();
-    }
+    ArkAppCGI.a(this.a, (aato)paramaati, paramBoolean, paramArrayOfByte);
   }
 }
 

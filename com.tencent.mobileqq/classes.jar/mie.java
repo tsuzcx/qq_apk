@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyXListView;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
 
 public class mie
-  extends ThreadLocal
+  implements Runnable
 {
-  public mie(ReadInJoyXListView paramReadInJoyXListView) {}
+  public mie(ReadInJoyHeadImageView paramReadInJoyHeadImageView, ReadInJoyUserInfo paramReadInJoyUserInfo) {}
   
-  protected Boolean a()
+  public void run()
   {
-    return Boolean.valueOf(false);
+    ReadInJoyHeadImageView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructReadInJoyUserInfo);
   }
 }
 

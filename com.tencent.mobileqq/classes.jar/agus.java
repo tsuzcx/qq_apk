@@ -1,28 +1,55 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.DiscussionObserver;
+import com.tencent.mobileqq.app.GroupIconHelper;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class agus
-  implements Animation.AnimationListener
+  extends DiscussionObserver
 {
-  public agus(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  public agus(QCallDetailActivity paramQCallDetailActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    if (EffectsCameraCaptureFragment.d(this.a) != null)
-    {
-      EffectsCameraCaptureFragment.d(this.a).clearAnimation();
-      EffectsCameraCaptureFragment.d(this.a).setVisibility(8);
+    if ((((ArrayList)paramObject).indexOf(QCallDetailActivity.a(this.a)) != -1) && (paramBoolean) && (QCallDetailActivity.a(this.a) == 3000)) {
+      this.a.a(QCallDetailActivity.a(this.a));
     }
-    this.a.h = false;
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    this.a.h = true;
+    if ((QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a).equals(paramString)) && (QCallDetailActivity.a(this.a) == 3000)) {
+      this.a.a(paramString);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("QCallDetailActivity", 2, " === onUpdateDiscussionFaceIcon isSuccess | " + paramBoolean1 + ", disUin | " + paramString + ",isComplete | " + paramBoolean2);
+    }
+    if ((paramBoolean1) && (paramBoolean2) && (QCallDetailActivity.a(this.a) != null) && (QCallDetailActivity.a(this.a) == 3000))
+    {
+      String str = paramString;
+      if (GroupIconHelper.a(paramString)) {
+        str = GroupIconHelper.b(paramString);
+      }
+      if (QCallDetailActivity.a(this.a).equals(str))
+      {
+        this.a.a(QCallDetailActivity.a(this.a));
+        if (QLog.isColorLevel()) {
+          QLog.i("QCallDetailActivity", 2, "==== onUpdateDiscussionFaceIcon updateUin ===");
+        }
+      }
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if ((paramBoolean) && (!TextUtils.isEmpty(QCallDetailActivity.a(this.a))) && (QCallDetailActivity.a(this.a).equals(paramString)) && (!this.a.isFinishing())) {
+      this.a.finish();
+    }
   }
 }
 

@@ -1,23 +1,20 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
-public class aclb
-  implements Runnable
+class aclb
+  implements DialogInterface.OnClickListener
 {
-  public aclb(FileManagerDataCenter paramFileManagerDataCenter) {}
+  aclb(acla paramacla) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.a != null) && (this.a.a.getApp() != null) && (FileManagerDataCenter.a(this.a) != null)) {
-      this.a.a.getApp().unregisterReceiver(FileManagerDataCenter.a(this.a));
-    }
-    FileManagerDataCenter.a(this.a, null);
+    Face2FaceAddFriendActivity.e(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aclb
  * JD-Core Version:    0.7.0.1
  */

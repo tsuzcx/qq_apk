@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.fileviewer;
 
-import acsj;
+import adcg;
 import android.app.Activity;
 import android.content.Intent;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -35,7 +35,7 @@ public class TroopFileViewerParamParser
   
   public FileBrowserManager.IModelCreater a(BaseActivity paramBaseActivity)
   {
-    return new acsj(this, paramBaseActivity);
+    return new adcg(this, paramBaseActivity);
   }
   
   public List a()

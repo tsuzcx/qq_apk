@@ -1,14 +1,23 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.KPLProfileCardActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class swj
+public class swj
+  implements View.OnTouchListener
 {
-  ImageView jdField_a_of_type_AndroidWidgetImageView;
-  ProgressBar jdField_a_of_type_AndroidWidgetProgressBar;
-  TextView jdField_a_of_type_AndroidWidgetTextView;
+  public swj(KPLProfileCardActivity paramKPLProfileCardActivity) {}
   
-  swj(swi paramswi) {}
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  {
+    if (!this.a.a)
+    {
+      ReportController.b(this.a.app, "dc00898", "", "", "0X8008438", "0X8008438", 0, 0, "", "", "", "");
+      this.a.a = true;
+    }
+    return false;
+  }
 }
 
 

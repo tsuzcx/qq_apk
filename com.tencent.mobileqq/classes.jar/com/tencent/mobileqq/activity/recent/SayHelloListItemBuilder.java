@@ -50,19 +50,19 @@ public class SayHelloListItemBuilder
     if (paramViewGroup == null)
     {
       paramViewGroup = new SayHelloListItemBuilder.SayHelloListItemHolder();
-      paramView = super.a(paramContext, 2130970540, paramViewGroup);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371062));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363873));
-      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131363189));
-      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131364847));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365193));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364842));
-      paramViewGroup.c = ((TextView)paramView.findViewById(2131369869));
-      paramViewGroup.d = ((TextView)paramView.findViewById(2131369870));
-      paramViewGroup.e = ((TextView)paramView.findViewById(2131364844));
-      paramViewGroup.f = ((TextView)paramView.findViewById(2131370392));
-      paramViewGroup.g = ((TextView)paramView.findViewById(2131365189));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131365182));
+      paramView = super.a(paramContext, 2130970584, paramViewGroup);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371226));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363896));
+      paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131363207));
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131364869));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365215));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364864));
+      paramViewGroup.c = ((TextView)paramView.findViewById(2131369946));
+      paramViewGroup.d = ((TextView)paramView.findViewById(2131369947));
+      paramViewGroup.e = ((TextView)paramView.findViewById(2131364866));
+      paramViewGroup.f = ((TextView)paramView.findViewById(2131370533));
+      paramViewGroup.g = ((TextView)paramView.findViewById(2131365211));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131365204));
       paramView.setTag(paramViewGroup);
       if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) {
         paramViewGroup.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a());
@@ -128,7 +128,7 @@ public class SayHelloListItemBuilder
       switch (paramRecentSayHelloListItem.l)
       {
       default: 
-        i = 2130839244;
+        i = 2130839248;
         paramSayHelloListItemHolder.c.setBackgroundDrawable(TroopUtils.a(paramSayHelloListItemHolder.c.getResources(), Color.parseColor("#ff9cc4f7")));
         j = 0;
       }
@@ -166,8 +166,8 @@ public class SayHelloListItemBuilder
         if (paramRecentSayHelloListItem.j != 1) {
           break label1027;
         }
-        paramSayHelloListItemHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839484);
-        paramSayHelloListItemHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColorStateList(2131494295));
+        paramSayHelloListItemHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839489);
+        paramSayHelloListItemHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColorStateList(2131494302));
         i += 1;
         label261:
         if (!paramRecentSayHelloListItem.jdField_d_of_type_Boolean) {
@@ -177,7 +177,7 @@ public class SayHelloListItemBuilder
           paramSayHelloListItemHolder.f.setVisibility(0);
         }
         paramSayHelloListItemHolder.f.setText("LV" + paramRecentSayHelloListItem.o);
-        paramContext = paramSayHelloListItemHolder.f.getContext().getResources().getDrawable(2130842744);
+        paramContext = paramSayHelloListItemHolder.f.getContext().getResources().getDrawable(2130842843);
         localObject = NearbyFlowerUtil.a(paramSayHelloListItemHolder.f.getContext());
         m = Color.parseColor("#FFCC59");
         j = m;
@@ -240,7 +240,7 @@ public class SayHelloListItemBuilder
           return;
           paramSayHelloListItemHolder.c.setText("");
           break;
-          j = 2130839482;
+          j = 2130839487;
           paramSayHelloListItemHolder.c.setBackgroundDrawable(TroopUtils.a(paramSayHelloListItemHolder.c.getResources(), Color.parseColor("#ff9cc4f7")));
           i = j;
           if (!AppSetting.b) {
@@ -251,7 +251,7 @@ public class SayHelloListItemBuilder
           i = j;
           j = m;
           break label97;
-          j = 2130839480;
+          j = 2130839485;
           paramSayHelloListItemHolder.c.setBackgroundDrawable(TroopUtils.a(paramSayHelloListItemHolder.c.getResources(), Color.parseColor("#ffffb4c8")));
           i = j;
           if (!AppSetting.b) {
@@ -280,7 +280,7 @@ public class SayHelloListItemBuilder
           label963:
           j = i + 1;
           paramSayHelloListItemHolder.e.setText((CharSequence)localObject);
-          paramSayHelloListItemHolder.e.setBackgroundResource(2130842797);
+          paramSayHelloListItemHolder.e.setBackgroundResource(2130842896);
           paramSayHelloListItemHolder.e.setVisibility(0);
           i = j;
           if (!AppSetting.b) {
@@ -290,10 +290,10 @@ public class SayHelloListItemBuilder
           i = j;
           break label205;
           label1027:
-          paramSayHelloListItemHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839485);
+          paramSayHelloListItemHolder.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130839490);
           break label238;
           label1040:
-          paramSayHelloListItemHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColorStateList(2131494250));
+          paramSayHelloListItemHolder.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColorStateList(2131494257));
           paramSayHelloListItemHolder.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
           break label261;
           label1069:
@@ -375,7 +375,7 @@ public class SayHelloListItemBuilder
           localSayHelloListItemHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramDrawable);
           localSayHelloListItemHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(null, null);
           if (paramRecentBaseData.a == 4) {
-            localSayHelloListItemHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(paramContext.getResources().getDrawable(2130838697), null);
+            localSayHelloListItemHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawables(paramContext.getResources().getDrawable(2130838701), null);
           }
           localObject = localRecentSayHelloListItem.jdField_c_of_type_JavaLangString;
           localCharSequence = localSayHelloListItemHolder.jdField_a_of_type_AndroidWidgetTextView.getText();
@@ -435,7 +435,7 @@ public class SayHelloListItemBuilder
             }
             else if (i == 3)
             {
-              j = 2130845928;
+              j = 2130846056;
               if ((paramRecentBaseData instanceof RecentTroopAssistantItem)) {}
               localSayHelloListItemHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(1);
               k = 99;
@@ -443,7 +443,7 @@ public class SayHelloListItemBuilder
             }
             else
             {
-              j = 2130845927;
+              j = 2130846055;
               localSayHelloListItemHolder.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0);
               k = 99;
               i = 3;

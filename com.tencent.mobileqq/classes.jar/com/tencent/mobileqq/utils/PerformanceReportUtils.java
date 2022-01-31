@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.utils;
 
-import ajph;
-import ajpi;
-import ajpj;
+import akdo;
+import akdp;
+import akdq;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -68,12 +68,12 @@ public class PerformanceReportUtils
     AvatarPendantManager.b = false;
     BubbleManager.a = false;
     BubbleDiyFetcher.a().d();
-    ThreadManager.executeOnSubThread(new ajpj());
+    ThreadManager.executeOnSubThread(new akdq());
   }
   
   public static void a(Context paramContext, String paramString, int paramInt, long paramLong)
   {
-    ThreadManager.post(new ajph(paramInt, paramLong, paramString), 8, null, false);
+    ThreadManager.post(new akdo(paramInt, paramLong, paramString), 8, null, false);
   }
   
   public static void a(Intent paramIntent, int paramInt, String paramString)
@@ -89,7 +89,7 @@ public class PerformanceReportUtils
   
   public static void a(String paramString1, int paramInt, String paramString2)
   {
-    new ajpi(paramString1, paramInt, paramString2).execute(new Void[0]);
+    new akdp(paramString1, paramInt, paramString2).execute(new Void[0]);
   }
   
   public static void a(String paramString, long paramLong)

@@ -1,19 +1,15 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.StoryBoss;
-import com.tribe.async.async.FutureListener.SimpleFutureListener;
-import com.tribe.async.async.JobController.DoneEvent;
-import com.tribe.async.async.Worker;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
 
-public class myh
-  extends FutureListener.SimpleFutureListener
+class myh
+  implements Runnable
 {
-  public myh(StoryBoss paramStoryBoss, Worker paramWorker) {}
+  myh(mye parammye) {}
   
-  public void onFutureDone(@Nullable Object paramObject)
+  public void run()
   {
-    Dispatchers.get().dispatch(new JobController.DoneEvent(this.jdField_a_of_type_ComTribeAsyncAsyncWorker));
+    if (PublicAccountImageCollectionMainActivity.a(this.a.a) != null) {
+      PublicAccountImageCollectionMainActivity.a(this.a.a).a(PublicAccountImageCollectionMainActivity.d(this.a.a));
+    }
   }
 }
 

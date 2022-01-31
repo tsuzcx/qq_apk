@@ -1,15 +1,16 @@
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.armap.ARMapOpenRedPackDialog;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkActionAppMgr.IGetAppNameByActionCallback;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import java.util.Set;
 
 public class aauz
-  implements Runnable
+  implements ArkActionAppMgr.IGetAppNameByActionCallback
 {
-  public aauz(ARMapOpenRedPackDialog paramARMapOpenRedPackDialog) {}
+  public aauz(ArkLocalAppMgr paramArkLocalAppMgr, aavw paramaavw) {}
   
-  public void run()
+  public void a(Object paramObject, Set paramSet)
   {
-    ARMapOpenRedPackDialog.a(this.a).setVisibility(0);
-    ARMapOpenRedPackDialog.a(this.a).startAnimation(ARMapOpenRedPackDialog.a(this.a));
+    ThreadManager.post(new aava(this, paramSet), 5, null, true);
   }
 }
 

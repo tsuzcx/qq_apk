@@ -1,17 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.Comments.Comment;
 
-class aetm
-  implements DialogInterface.OnClickListener
+public final class aetm
+  implements Parcelable.Creator
 {
-  aetm(aetj paramaetj, QQCustomDialog paramQQCustomDialog) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public Comments.Comment a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-    this.jdField_a_of_type_Aetj.a.f();
+    return new Comments.Comment(paramParcel);
+  }
+  
+  public Comments.Comment[] a(int paramInt)
+  {
+    return new Comments.Comment[paramInt];
   }
 }
 

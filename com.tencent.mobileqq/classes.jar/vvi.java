@@ -1,24 +1,14 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.common.offline.AsyncCallBack;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
 
 public class vvi
-  implements Runnable
+  implements AsyncCallBack
 {
-  public vvi(PublicAccountChatPie paramPublicAccountChatPie, FrameLayout paramFrameLayout) {}
+  public vvi(HotChatPie paramHotChatPie) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.delmsg", 2, "hor anim onAnimationEnd() is called,time is:" + System.currentTimeMillis());
-    }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.p != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.p.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildPublicAccountChatPie.p = null;
-    }
+    HotChatPie.a(this.a, 0, 10);
   }
 }
 

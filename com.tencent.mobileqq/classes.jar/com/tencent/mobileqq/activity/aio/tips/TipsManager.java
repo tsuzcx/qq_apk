@@ -29,15 +29,15 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Observer;
 import mqq.os.MqqHandler;
-import wac;
-import wad;
-import wae;
+import wdh;
+import wdi;
+import wdj;
 
 public class TipsManager
   implements Handler.Callback, TipsConstants
 {
   int jdField_a_of_type_Int = DisplayUtil.a(BaseApplicationImpl.getContext(), 50.0F);
-  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new wae(this);
+  Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new wdj(this);
   public Animation a;
   public ImageView a;
   public RelativeLayout a;
@@ -377,8 +377,8 @@ public class TipsManager
       }
       return;
     }
-    wad localwad = new wad(this);
-    this.jdField_a_of_type_MqqOsMqqHandler.post(localwad);
+    wdi localwdi = new wdi(this);
+    this.jdField_a_of_type_MqqOsMqqHandler.post(localwdi);
   }
   
   public void a(int paramInt, Object... paramVarArgs)
@@ -424,7 +424,7 @@ public class TipsManager
     }
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(paramOnClickListener);
     if (this.jdField_b_of_type_AndroidWidgetRelativeLayout == null) {
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentWidgetXPanelContainer.findViewById(2131363474));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentWidgetXPanelContainer.findViewById(2131363492));
     }
     if (this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131362325) == null) {
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
@@ -504,7 +504,7 @@ public class TipsManager
           QLog.d("TipsManager", 2, "showTipsBar() success: from " + a(paramTipsBarTask.b()));
         }
         return true;
-        paramVarArgs = new wac(this, paramTipsBarTask, paramVarArgs);
+        paramVarArgs = new wdh(this, paramTipsBarTask, paramVarArgs);
         this.jdField_a_of_type_MqqOsMqqHandler.post(paramVarArgs);
       }
     }
@@ -535,7 +535,7 @@ public class TipsManager
   
   public void c()
   {
-    int j = 2131368210;
+    int j = 2131368277;
     int i = 2131361993;
     if ((this.jdField_a_of_type_ComTencentImageURLImageView == null) || (this.jdField_b_of_type_AndroidWidgetRelativeLayout == null) || (this.jdField_a_of_type_AndroidWidgetRelativeLayout == null)) {
       return;
@@ -543,7 +543,7 @@ public class TipsManager
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
     localLayoutParams.addRule(11);
     View localView1 = this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131361993);
-    View localView2 = this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131368210);
+    View localView2 = this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131368277);
     if ((localView1 != null) && (localView1.getVisibility() == 0)) {}
     for (;;)
     {
@@ -581,8 +581,8 @@ public class TipsManager
       {
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(null);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363211));
-        this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363212));
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363229));
+        this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131363230));
         if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
           this.jdField_a_of_type_AndroidWidgetImageView.clearAnimation();
         }

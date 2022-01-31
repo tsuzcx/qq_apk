@@ -1,16 +1,20 @@
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.mobileqq.data.ApolloGameData;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.apollo.game.ApolloFragmentManager;
+import com.tencent.mobileqq.apollo.game.ApolloGameView;
 
 public class ypp
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ypp(ApolloGameActivity paramApolloGameActivity) {}
+  public ypp(ApolloGameView paramApolloGameView, ImageView paramImageView) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ApolloGameUtil.a(this.a, ApolloGameActivity.a(this.a).game.gameId, null, ApolloGameActivity.a(this.a).mGameType, ApolloGameActivity.a(this.a));
+    ApolloFragmentManager.a().a(null);
+    if (ApolloFragmentManager.a().a() <= 1) {
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+    }
   }
 }
 

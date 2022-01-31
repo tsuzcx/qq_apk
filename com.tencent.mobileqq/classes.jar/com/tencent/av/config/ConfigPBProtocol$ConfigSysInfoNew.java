@@ -2,21 +2,21 @@ package com.tencent.av.config;
 
 import java.util.ArrayList;
 import java.util.List;
-import jhs;
-import jht;
-import jhu;
-import jhv;
-import jhw;
+import jhd;
+import jhe;
+import jhf;
+import jhg;
+import jhh;
 
 public class ConfigPBProtocol$ConfigSysInfoNew
 {
   String jdField_a_of_type_JavaLangString = "";
   List jdField_a_of_type_JavaUtilList = new ArrayList();
-  jhs jdField_a_of_type_Jhs = new jhs(this);
-  jht jdField_a_of_type_Jht = new jht(this);
-  jhu jdField_a_of_type_Jhu = new jhu(this);
-  jhv jdField_a_of_type_Jhv = new jhv(this);
-  jhw jdField_a_of_type_Jhw = new jhw(this);
+  jhd jdField_a_of_type_Jhd = new jhd(this);
+  jhe jdField_a_of_type_Jhe = new jhe(this);
+  jhf jdField_a_of_type_Jhf = new jhf(this);
+  jhg jdField_a_of_type_Jhg = new jhg(this);
+  jhh jdField_a_of_type_Jhh = new jhh(this);
   boolean jdField_a_of_type_Boolean = true;
   String b = "";
   

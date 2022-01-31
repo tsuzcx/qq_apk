@@ -16,7 +16,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import yom;
+import yrs;
 
 public class CmGameOpenIdFinder
 {
@@ -101,7 +101,7 @@ public class CmGameOpenIdFinder
     Bundle localBundle = new Bundle();
     localBundle.putInt("type", paramInt);
     localBundle.putString("uin", paramString1);
-    paramString1 = new yom(paramString2, paramLong);
+    paramString1 = new yrs(paramString2, paramLong);
     QIPCClientHelper.getInstance().callServer("cm_game_module", "action_get_accountInfo", localBundle, paramString1);
   }
   

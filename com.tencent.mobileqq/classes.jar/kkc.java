@@ -1,19 +1,23 @@
-import android.view.View;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.LinearLayout;
-import com.tencent.biz.PoiMapActivity;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.QQAppInterface;
+import mqq.app.MobileQQ;
 
-class kkc
+public final class kkc
   implements Runnable
 {
-  kkc(kkb paramkkb) {}
+  public kkc(QQAppInterface paramQQAppInterface, long paramLong) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentBizPoiMapActivity.b = false;
-    this.a.jdField_a_of_type_ComTencentBizPoiMapActivity.a.startAnimation(this.a.jdField_a_of_type_AndroidViewAnimationTranslateAnimation);
-    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_ComTencentBizPoiMapActivity.getWindow().peekDecorView().getWindowToken(), 0);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "RedTouchExManager_GetTime", 0);
+    if (localObject != null)
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      ((SharedPreferences.Editor)localObject).putLong("last_get_time", System.currentTimeMillis() / 1000L);
+      ((SharedPreferences.Editor)localObject).putLong("interval_time", this.jdField_a_of_type_Long);
+      ((SharedPreferences.Editor)localObject).commit();
+    }
   }
 }
 

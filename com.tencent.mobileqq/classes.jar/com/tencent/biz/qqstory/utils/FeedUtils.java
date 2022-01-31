@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.utils;
 
 import com.tencent.biz.qqstory.channel.CmdTaskManger;
-import omm;
+import oog;
 
 public class FeedUtils
 {
@@ -48,12 +48,12 @@ public class FeedUtils
       AssertUtils.a("unLikeRecommendFeed failed, because recommendId=" + paramLong, new Object[0]);
       return;
     }
-    omm localomm = new omm();
-    localomm.b = paramString;
-    localomm.c = paramInt;
-    localomm.a = paramLong;
-    localomm.d = 1;
-    CmdTaskManger.a().a(localomm, null);
+    oog localoog = new oog();
+    localoog.b = paramString;
+    localoog.c = paramInt;
+    localoog.a = paramLong;
+    localoog.d = 1;
+    CmdTaskManger.a().a(localoog, null);
   }
 }
 

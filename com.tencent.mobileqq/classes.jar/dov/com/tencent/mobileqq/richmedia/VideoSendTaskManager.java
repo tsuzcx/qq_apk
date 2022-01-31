@@ -3,9 +3,9 @@ package dov.com.tencent.mobileqq.richmedia;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.TextUtils;
-import anut;
-import anuu;
-import anuw;
+import aoky;
+import aokz;
+import aolb;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.SVIPHandler;
@@ -125,7 +125,7 @@ public class VideoSendTaskManager
   
   private void a(HashMap paramHashMap)
   {
-    ThreadManager.post(new anut(this, paramHashMap), 5, null, true);
+    ThreadManager.post(new aoky(this, paramHashMap), 5, null, true);
   }
   
   public void a(QQAppInterface paramQQAppInterface, String paramString)
@@ -143,7 +143,7 @@ public class VideoSendTaskManager
   public void a(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle)
   {
     TransFileController localTransFileController = paramQQAppInterface.a();
-    TransferRequest localTransferRequest = a(new anuu(this, paramQQAppInterface, paramString));
+    TransferRequest localTransferRequest = a(new aokz(this, paramQQAppInterface, paramString));
     paramQQAppInterface = a(paramQQAppInterface, paramBundle);
     paramQQAppInterface.uniseq = Long.parseLong(paramString);
     localTransferRequest.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramQQAppInterface;
@@ -297,7 +297,7 @@ public class VideoSendTaskManager
       if (ShortVideoUploadProcessor.class.isInstance(paramQQAppInterface)) {
         ((ShortVideoUploadProcessor)paramQQAppInterface).a(str1, ((MessageForShortVideo)localObject).videoFileTime);
       }
-      this.jdField_a_of_type_MqqOsMqqHandler.post(new anuw(this, paramString));
+      this.jdField_a_of_type_MqqOsMqqHandler.post(new aolb(this, paramString));
       return;
     }
     finally {}

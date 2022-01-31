@@ -1,23 +1,19 @@
-import cooperation.qzone.font.FontManager;
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.widget.VerticalGallery;
 
 public class ameb
-  implements FileFilter
+  implements Runnable
 {
-  public ameb(FontManager paramFontManager) {}
+  public ameb(VerticalGallery paramVerticalGallery) {}
   
-  public boolean accept(File paramFile)
+  public void run()
   {
-    paramFile = paramFile.getName();
-    boolean bool1 = paramFile.endsWith(".ftf");
-    boolean bool2 = paramFile.endsWith(".ttf");
-    return (bool1) || (bool2);
+    VerticalGallery.a(this.a, false);
+    this.a.selectionChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ameb
  * JD-Core Version:    0.7.0.1
  */

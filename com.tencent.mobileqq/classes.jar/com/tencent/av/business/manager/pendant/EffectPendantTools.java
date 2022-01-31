@@ -25,8 +25,8 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.BitSet;
 import java.util.List;
-import jgu;
-import jgv;
+import jgf;
+import jgg;
 
 public class EffectPendantTools
   extends EffectConfigBase
@@ -35,7 +35,7 @@ public class EffectPendantTools
   private EffectPendantTips jdField_a_of_type_ComTencentAvBusinessManagerPendantEffectPendantTips = null;
   private PendantItem jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem;
   private VideoFilterList jdField_a_of_type_ComTencentMobileqqShortvideoPtvfilterVideoFilterList;
-  final DecryptListener jdField_a_of_type_ComTencentTtpicUtilDecryptListener = new jgu(this);
+  final DecryptListener jdField_a_of_type_ComTencentTtpicUtilDecryptListener = new jgf(this);
   private boolean jdField_a_of_type_Boolean = false;
   private int b;
   private String c;
@@ -268,7 +268,7 @@ public class EffectPendantTools
       }
       bool2 = bool1;
     } while (localFile.exists());
-    ThreadManager.post(new jgv(this, (File)localObject, paramPendantItem), 5, null, false);
+    ThreadManager.post(new jgg(this, (File)localObject, paramPendantItem), 5, null, false);
     return false;
   }
   

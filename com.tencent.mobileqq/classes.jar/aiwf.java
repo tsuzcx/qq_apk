@@ -1,38 +1,26 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem.ImageViewHolder;
-import com.tencent.mobileqq.widget.MessageProgressView;
-import java.lang.ref.WeakReference;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
-class aiwf
-  implements Runnable
+public class aiwf
+  implements Animation.AnimationListener
 {
-  aiwf(aiwd paramaiwd, int paramInt) {}
+  public aiwf(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Aiwd.a).e = this.jdField_a_of_type_Int;
-    Object localObject = (XMediaEditor)ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Aiwd.a).get();
-    if (localObject != null)
-    {
-      localObject = ((XMediaEditor)localObject).findViewHolderForLayoutPosition(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Aiwd.a).c);
-      if ((localObject instanceof ImageItem.ImageViewHolder))
-      {
-        localObject = (ImageItem.ImageViewHolder)localObject;
-        if (ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Aiwd.a).d.equals(((ImageItem.ImageViewHolder)localObject).a.getTag()))
-        {
-          ((ImageItem.ImageViewHolder)localObject).a.setVisibility(0);
-          ((ImageItem.ImageViewHolder)localObject).a.setDrawStatus(1);
-          ((ImageItem.ImageViewHolder)localObject).a.setAnimProgress(ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Aiwd.a).e, ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_Aiwd.a).d);
-        }
-      }
-    }
+    this.a.l = false;
+    paramAnimation.setAnimationListener(null);
+    this.a.finish();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiwf
  * JD-Core Version:    0.7.0.1
  */

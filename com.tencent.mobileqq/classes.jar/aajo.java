@@ -1,25 +1,19 @@
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
-import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ar.config.WorldCupConfigInfo;
+import com.tencent.mobileqq.ar.config.WorldCupMgr;
 import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
 
-class aajo
-  implements Runnable
+public class aajo
 {
-  aajo(aajm paramaajm, SongInfo paramSongInfo) {}
-  
-  public void run()
-  {
-    Iterator localIterator = ArkAppMusicModule.a.iterator();
-    while (localIterator.hasNext())
-    {
-      ArkAppMusicModule localArkAppMusicModule = (ArkAppMusicModule)((WeakReference)localIterator.next()).get();
-      if (localArkAppMusicModule != null) {
-        localArkAppMusicModule.a(this.jdField_a_of_type_ComTencentMobileqqMusicSongInfo);
-      }
-    }
-  }
+  public QQAppInterface a;
+  public WorldCupConfigInfo a;
+  public WorldCupMgr a;
+  public String a;
+  public WeakReference a = new WeakReference(null);
+  public WeakReference b = new WeakReference(null);
+  public WeakReference c = new WeakReference(null);
+  public WeakReference d = new WeakReference(null);
+  public WeakReference e = new WeakReference(null);
 }
 
 

@@ -1,17 +1,49 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAiAppPanel;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.content.res.Resources;
+import com.tencent.mobileqq.utils.AudioHelper;
 
-public class aakq
-  implements View.OnClickListener
+public abstract class aakq
 {
-  public aakq(ArkAiAppPanel paramArkAiAppPanel) {}
+  final long a = AudioHelper.a();
+  public int g = 1;
   
-  public void onClick(View paramView)
+  abstract void a();
+  
+  final void a(boolean paramBoolean)
   {
-    ArkAppCenter.a().post(new aakr(this));
+    if (paramBoolean)
+    {
+      this.g = 20;
+      return;
+    }
+    this.g = 36;
+  }
+  
+  public final boolean a()
+  {
+    return (this.g != 20) && (this.g != 2);
+  }
+  
+  abstract boolean a(Resources paramResources);
+  
+  public final void b()
+  {
+    this.g = 2;
+  }
+  
+  public final boolean b()
+  {
+    return (this.g & 0x2) == 2;
+  }
+  
+  public final void c()
+  {
+    this.g = 1;
+    a();
+  }
+  
+  public final boolean c()
+  {
+    return (this.g & 0x14) == 20;
   }
 }
 

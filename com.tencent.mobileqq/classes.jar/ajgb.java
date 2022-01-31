@@ -1,97 +1,65 @@
-import android.content.Context;
-import android.support.v4.view.ViewCompat;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.widget.TroopMoreDetailView;
-import com.tencent.mobileqq.util.FaceDrawable;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.List;
+import android.graphics.Bitmap;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.mobileqq.troop.homework.arithmetic.ui.BaseScaleAndMoveBitmapView;
 
 public class ajgb
-  implements Runnable
+  extends GestureDetector.SimpleOnGestureListener
 {
-  private final WeakReference a;
+  private ajgb(BaseScaleAndMoveBitmapView paramBaseScaleAndMoveBitmapView) {}
   
-  public ajgb(TroopMoreDetailView paramTroopMoreDetailView)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    this.a = new WeakReference(paramTroopMoreDetailView);
-  }
-  
-  public void run()
-  {
-    int i = 6;
-    TroopMoreDetailView localTroopMoreDetailView = (TroopMoreDetailView)this.a.get();
-    if (localTroopMoreDetailView == null) {}
-    Object localObject1;
-    QQAppInterface localQQAppInterface;
-    do
+    float f2 = 0.0F;
+    BaseScaleAndMoveBitmapView.a(this.a, false);
+    float f3 = this.a.jdField_a_of_type_Float - paramFloat1 / this.a.c;
+    float f4 = this.a.b;
+    float f5 = paramFloat2 / this.a.c;
+    float f1;
+    if ((paramFloat1 < 0.0F) && (this.a.a(0.0F) >= 0.0F))
     {
-      do
-      {
-        do
-        {
-          return;
-          localObject1 = TroopMoreDetailView.a(localTroopMoreDetailView);
-        } while (localObject1 == null);
-        localQQAppInterface = TroopMoreDetailView.a(localTroopMoreDetailView);
-      } while ((localQQAppInterface == null) || (localTroopMoreDetailView.jdField_a_of_type_ArrayOfAndroidViewView == null));
-      localObject3 = localTroopMoreDetailView.jdField_a_of_type_ArrayOfAndroidViewView[6];
-    } while (localObject3 == null);
-    int k = localTroopMoreDetailView.jdField_a_of_type_JavaUtilArrayList.size();
-    if (k == 0)
-    {
-      ((View)localObject3).setVisibility(8);
-      return;
+      f1 = 0.0F;
+      if (this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c > this.a.getHeight()) {
+        break label247;
+      }
+      paramFloat1 = (this.a.getHeight() - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() * this.a.c) / 2.0F / this.a.c;
     }
-    ((LinearLayout)((View)localObject3).findViewById(2131371418)).setVisibility(0);
-    Object localObject2 = (TextView)((View)localObject3).findViewById(2131371419);
-    ((TextView)localObject2).setText("共" + k + "人");
-    Object localObject3 = (TextView)((View)localObject3).findViewById(2131365855);
-    int j = (localTroopMoreDetailView.jdField_a_of_type_AndroidUtilDisplayMetrics.widthPixels - ((TextView)localObject3).getMeasuredWidth() - UIUtils.a((Context)localObject1, 27.0F) - ((TextView)localObject2).getMeasuredWidth() - UIUtils.a((Context)localObject1, 24.0F)) / UIUtils.a((Context)localObject1, 52.0F);
-    if (j > 6) {}
     for (;;)
     {
-      j = 0;
-      label209:
-      if (j < i - 1)
-      {
-        localObject1 = (ImageView)localTroopMoreDetailView.jdField_a_of_type_JavaUtilList.get(j);
-        if (j >= k) {
-          break label338;
-        }
-        localObject2 = (String)localTroopMoreDetailView.jdField_a_of_type_JavaUtilArrayList.get(j);
-        ((ImageView)localObject1).setVisibility(0);
-        ((ImageView)localObject1).setBackgroundDrawable(FaceDrawable.a(localQQAppInterface, 1, (String)localObject2, 3));
-        ((ImageView)localObject1).setTag(localObject2);
-        ((ImageView)localObject1).setOnClickListener(new ajgc(this, localTroopMoreDetailView));
-        if (AppSetting.b)
-        {
-          ((ImageView)localObject1).setContentDescription("图片" + (j + 1));
-          ViewCompat.setImportantForAccessibility((View)localObject1, 1);
-        }
-      }
-      for (;;)
-      {
-        j += 1;
-        break label209;
+      this.a.jdField_a_of_type_Float = f1;
+      this.a.b = paramFloat1;
+      this.a.invalidate();
+      return true;
+      f1 = f3;
+      if (paramFloat1 <= 0.0F) {
         break;
-        label338:
-        ((ImageView)localObject1).setVisibility(8);
       }
-      i = j;
+      f1 = f3;
+      if (this.a.a(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth()) > this.a.getWidth()) {
+        break;
+      }
+      f1 = this.a.getWidth() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
+      break;
+      label247:
+      if (paramFloat2 < 0.0F)
+      {
+        paramFloat1 = f2;
+        if (this.a.b(0.0F) >= 0.0F) {}
+      }
+      else if ((paramFloat2 > 0.0F) && (this.a.b(this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight()) <= this.a.getHeight()))
+      {
+        paramFloat1 = this.a.getHeight() / this.a.c - this.a.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
+      }
+      else
+      {
+        paramFloat1 = f4 - f5;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajgb
  * JD-Core Version:    0.7.0.1
  */

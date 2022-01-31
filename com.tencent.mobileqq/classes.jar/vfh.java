@@ -1,33 +1,54 @@
-import android.view.View;
-import android.view.ViewGroup;
-import java.lang.ref.SoftReference;
+import android.content.Context;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder.Holder;
+import com.tencent.mobileqq.data.MessageForScribble;
+import com.tencent.mobileqq.widget.MessageProgressView;
+import java.lang.ref.WeakReference;
 
 public class vfh
+  implements Runnable
 {
-  public String a;
-  SoftReference a;
-  SoftReference b;
+  private WeakReference a;
+  private WeakReference b;
+  private WeakReference c;
+  private WeakReference d;
   
-  public vfh(String paramString, View paramView, ViewGroup paramViewGroup)
+  public vfh(MessageForScribble paramMessageForScribble, ScribbleItemBuilder.Holder paramHolder, Handler paramHandler, Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView);
-    this.b = new SoftReference(paramViewGroup);
+    this.a = new WeakReference(paramMessageForScribble);
+    this.b = new WeakReference(paramHolder);
+    this.c = new WeakReference(paramHandler);
+    this.d = new WeakReference(paramContext);
   }
   
-  public View a()
+  public void run()
   {
-    return (View)this.jdField_a_of_type_JavaLangRefSoftReference.get();
-  }
-  
-  public ViewGroup a()
-  {
-    return (ViewGroup)this.b.get();
-  }
-  
-  public void a(ViewGroup paramViewGroup)
-  {
-    this.b = new SoftReference(paramViewGroup);
+    if (this.a != null) {}
+    for (MessageForScribble localMessageForScribble = (MessageForScribble)this.a.get();; localMessageForScribble = null)
+    {
+      if (this.b != null) {}
+      for (ScribbleItemBuilder.Holder localHolder = (ScribbleItemBuilder.Holder)this.b.get();; localHolder = null)
+      {
+        if (this.c != null) {}
+        for (Handler localHandler = (Handler)this.c.get();; localHandler = null)
+        {
+          if (this.d != null) {}
+          for (Context localContext = (Context)this.d.get();; localContext = null)
+          {
+            if ((localMessageForScribble == null) || (localHandler == null) || (localHolder == null) || (localContext == null)) {}
+            do
+            {
+              return;
+              ScribbleItemBuilder.a(localMessageForScribble);
+              ScribbleItemBuilder.a(localMessageForScribble, localHolder, localMessageForScribble.mUiProgress, false, localContext, localHandler);
+            } while (!localHolder.a.isShown());
+            localHandler.postDelayed(localMessageForScribble.mUpdateProgressRunnable, 50L);
+            return;
+          }
+        }
+      }
+    }
   }
 }
 

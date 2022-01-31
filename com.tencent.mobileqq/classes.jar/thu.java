@@ -1,26 +1,16 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PublicAccountListActivity;
 
 public class thu
-  implements Runnable
+  implements View.OnClickListener
 {
-  public thu(QQSettingMe paramQQSettingMe) {}
+  public thu(PublicAccountListActivity paramPublicAccountListActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    boolean bool = ApolloGameUtil.a(this.a.a);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, new Object[] { "[updateCmshowStatus] isApolloUser=", Boolean.valueOf(bool) });
-    }
-    if (bool) {
-      this.a.m();
-    }
-    this.a.c();
-    if (bool) {
-      this.a.d();
-    }
-    this.a.e();
+    this.a.a.cancel();
   }
 }
 

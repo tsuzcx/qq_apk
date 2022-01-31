@@ -3,7 +3,7 @@ package dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget;
 import android.content.Context;
 import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
-import anli;
+import aobn;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +27,7 @@ public class FaceViewPager
   private void a()
   {
     this.a = new ArrayList();
-    setOnPageChangeListener(new anli(this));
+    setOnPageChangeListener(new aobn(this));
   }
   
   public void a(FaceViewPager.PageChangedObserver paramPageChangedObserver)

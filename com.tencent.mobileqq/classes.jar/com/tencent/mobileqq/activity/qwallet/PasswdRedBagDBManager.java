@@ -1146,43 +1146,43 @@ public class PasswdRedBagDBManager
     //   125: aload 22
     //   127: ldc 51
     //   129: invokeinterface 69 2 0
-    //   134: istore 8
+    //   134: istore 13
     //   136: aload 22
     //   138: ldc 121
     //   140: invokeinterface 69 2 0
-    //   145: istore_2
-    //   146: aload 22
-    //   148: ldc 123
-    //   150: invokeinterface 69 2 0
-    //   155: istore_1
-    //   156: aload 22
-    //   158: ldc 125
-    //   160: invokeinterface 69 2 0
-    //   165: istore 4
-    //   167: aload 22
-    //   169: ldc 127
-    //   171: invokeinterface 69 2 0
-    //   176: istore 7
-    //   178: aload 22
-    //   180: ldc 57
-    //   182: invokeinterface 69 2 0
-    //   187: istore 6
-    //   189: aload 22
-    //   191: ldc 53
-    //   193: invokeinterface 69 2 0
-    //   198: istore 11
+    //   145: istore 11
+    //   147: aload 22
+    //   149: ldc 123
+    //   151: invokeinterface 69 2 0
+    //   156: istore_1
+    //   157: aload 22
+    //   159: ldc 125
+    //   161: invokeinterface 69 2 0
+    //   166: istore 5
+    //   168: aload 22
+    //   170: ldc 127
+    //   172: invokeinterface 69 2 0
+    //   177: istore 12
+    //   179: aload 22
+    //   181: ldc 57
+    //   183: invokeinterface 69 2 0
+    //   188: istore 10
+    //   190: aload 22
+    //   192: ldc 53
+    //   194: invokeinterface 69 2 0
+    //   199: istore_2
     //   200: aload 22
     //   202: ldc 55
     //   204: invokeinterface 69 2 0
-    //   209: istore 9
+    //   209: istore 7
     //   211: aload 22
     //   213: ldc 129
     //   215: invokeinterface 69 2 0
-    //   220: istore 5
+    //   220: istore 8
     //   222: aload 22
     //   224: ldc 131
     //   226: invokeinterface 69 2 0
-    //   231: istore 12
+    //   231: istore 4
     //   233: aload 22
     //   235: ldc 135
     //   237: invokeinterface 69 2 0
@@ -1192,63 +1192,63 @@ public class PasswdRedBagDBManager
     //   250: ifeq +237 -> 487
     //   253: aload_0
     //   254: getfield 32	com/tencent/mobileqq/activity/qwallet/PasswdRedBagDBManager:jdField_a_of_type_ComTencentMobileqqActivityQwalletPasswdRedBagManager	Lcom/tencent/mobileqq/activity/qwallet/PasswdRedBagManager;
-    //   257: astore 25
+    //   257: astore 23
     //   259: aload 22
-    //   261: iload 8
+    //   261: iload 13
     //   263: invokeinterface 80 2 0
-    //   268: astore 23
+    //   268: astore 26
     //   270: aload 22
-    //   272: iload_2
-    //   273: invokeinterface 80 2 0
-    //   278: astore 24
-    //   280: aload 22
-    //   282: iload 7
-    //   284: invokeinterface 80 2 0
-    //   289: astore 26
-    //   291: aload 22
-    //   293: iload_1
-    //   294: invokeinterface 162 2 0
-    //   299: lstore 18
-    //   301: aload 22
-    //   303: iload 4
-    //   305: invokeinterface 162 2 0
-    //   310: lstore 16
-    //   312: aload 22
-    //   314: iload 9
-    //   316: invokeinterface 144 2 0
-    //   321: istore 10
-    //   323: aload 22
-    //   325: iload 11
+    //   272: iload 11
+    //   274: invokeinterface 80 2 0
+    //   279: astore 25
+    //   281: aload 22
+    //   283: iload 12
+    //   285: invokeinterface 80 2 0
+    //   290: astore 24
+    //   292: aload 22
+    //   294: iload_1
+    //   295: invokeinterface 162 2 0
+    //   300: lstore 18
+    //   302: aload 22
+    //   304: iload 5
+    //   306: invokeinterface 162 2 0
+    //   311: lstore 16
+    //   313: aload 22
+    //   315: iload 7
+    //   317: invokeinterface 144 2 0
+    //   322: istore 9
+    //   324: aload 22
+    //   326: iload_2
     //   327: invokeinterface 144 2 0
-    //   332: istore 13
+    //   332: istore 6
     //   334: aload 22
-    //   336: iload 6
+    //   336: iload 10
     //   338: invokeinterface 80 2 0
     //   343: astore 21
     //   345: aload 22
-    //   347: iload 5
+    //   347: iload 8
     //   349: invokeinterface 144 2 0
     //   354: iconst_1
     //   355: if_icmpne +120 -> 475
     //   358: iconst_1
     //   359: istore 14
     //   361: aload 22
-    //   363: iload 12
+    //   363: iload 4
     //   365: invokeinterface 144 2 0
     //   370: iconst_1
     //   371: if_icmpne +110 -> 481
     //   374: iconst_1
     //   375: istore 15
-    //   377: aload 25
-    //   379: aload 23
-    //   381: aload 24
-    //   383: aload 26
+    //   377: aload 23
+    //   379: aload 26
+    //   381: aload 25
+    //   383: aload 24
     //   385: lload 18
     //   387: invokestatic 286	java/lang/String:valueOf	(J)Ljava/lang/String;
     //   390: lload 16
-    //   392: iload 10
+    //   392: iload 9
     //   394: invokestatic 325	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   397: iload 13
+    //   397: iload 6
     //   399: invokestatic 325	java/lang/String:valueOf	(I)Ljava/lang/String;
     //   402: aload 21
     //   404: iload 14
@@ -1329,23 +1329,23 @@ public class PasswdRedBagDBManager
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	579	0	this	PasswdRedBagDBManager
-    //   155	139	1	i	int
-    //   145	128	2	j	int
+    //   156	139	1	i	int
+    //   199	128	2	j	int
     //   242	169	3	k	int
-    //   165	139	4	m	int
-    //   220	128	5	n	int
-    //   187	150	6	i1	int
-    //   176	107	7	i2	int
-    //   134	128	8	i3	int
-    //   209	106	9	i4	int
-    //   321	72	10	i5	int
-    //   198	128	11	i6	int
-    //   231	133	12	i7	int
-    //   332	66	13	i8	int
+    //   231	133	4	m	int
+    //   166	139	5	n	int
+    //   332	66	6	i1	int
+    //   209	107	7	i2	int
+    //   220	128	8	i3	int
+    //   322	71	9	i4	int
+    //   188	149	10	i5	int
+    //   145	128	11	i6	int
+    //   177	107	12	i7	int
+    //   134	128	13	i8	int
     //   23	454	14	bool1	boolean
     //   375	108	15	bool2	boolean
-    //   310	81	16	l1	long
-    //   299	87	18	l2	long
+    //   311	80	16	l1	long
+    //   300	86	18	l2	long
     //   1	535	20	localObject1	Object
     //   4	454	21	localObject2	Object
     //   510	31	21	localObject3	Object
@@ -1355,12 +1355,12 @@ public class PasswdRedBagDBManager
     //   16	545	22	localObject7	Object
     //   569	1	22	localException1	Exception
     //   574	1	22	localException2	Exception
-    //   268	112	23	str1	String
+    //   257	121	23	localPasswdRedBagManager	PasswdRedBagManager
     //   422	7	23	localException3	Exception
     //   556	7	23	localObject8	Object
-    //   278	104	24	str2	String
-    //   257	121	25	localPasswdRedBagManager	PasswdRedBagManager
-    //   289	95	26	str3	String
+    //   290	94	24	str1	String
+    //   279	103	25	str2	String
+    //   268	112	26	str3	String
     // Exception table:
     //   from	to	target	type
     //   125	243	422	java/lang/Exception

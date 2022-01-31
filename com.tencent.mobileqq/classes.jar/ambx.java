@@ -1,36 +1,77 @@
+import android.content.res.Resources;
 import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import common.config.service.QzoneConfig;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
-import cooperation.qzone.plugin.OnQZonePluginInstallListner.Stub;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.portal.HongBaoPendantHolder;
+import com.tencent.widget.HongBaoListView;
+import com.tencent.widget.HongBaoListViewListener;
 
 public class ambx
-  extends OnQZonePluginInstallListner.Stub
+  implements Handler.Callback
 {
-  public ambx(QZoneLiveVideoDownLoadActivtyV2 paramQZoneLiveVideoDownLoadActivtyV2) {}
+  public ambx(HongBaoListView paramHongBaoListView) {}
   
-  public void a(String paramString) {}
-  
-  public void a(String paramString, float paramFloat, long paramLong) {}
-  
-  public void a(String paramString, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    QLog.w("QZoneLiveVideoDownLoadActivtyV2", 1, "[onInstallError] pluginId=" + paramString + ", errorCode=" + paramInt);
-    paramString = this.a.a.obtainMessage();
-    paramString.what = 1010;
-    if (8 == paramInt) {}
-    for (paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadErrorNoSpace", "内部存储空间不足，下载失败");; paramString.obj = QzoneConfig.getInstance().getConfig("QZoneTextSetting", "ToastPluginDownloadError", "插件下载失败"))
+    switch (paramMessage.what)
     {
-      this.a.a.sendMessage(paramString);
-      return;
     }
+    do
+    {
+      do
+      {
+        do
+        {
+          do
+          {
+            return false;
+            this.a.setIsShowingPreguide(true);
+            this.a.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder.a(this.a.f / 5, 300L);
+            this.a.springBackTo(-this.a.f);
+            if (this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener != null) {
+              this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener.b(false);
+            }
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, 2000L);
+            this.a.invalidate();
+            return false;
+            this.a.a(300L);
+            this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 300L);
+          } while (this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener == null);
+          this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener.a(false);
+          return false;
+          this.a.setIsShowingPreguide(true);
+          i = this.a.f / 2;
+          this.a.setSpringbackOffset(-this.a.f);
+          if (paramMessage.arg1 != 0) {
+            i = paramMessage.arg1;
+          }
+          this.a.springBackTo(-i);
+          this.a.jdField_a_of_type_ComTencentMobileqqPortalHongBaoPendantHolder.a(this.a.f / 5, 300L);
+          this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 2000L);
+        } while (this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener == null);
+        this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener.b(false);
+        return false;
+        this.a.a(300L);
+        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(7, 300L);
+      } while (this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener == null);
+      this.a.jdField_a_of_type_ComTencentWidgetHongBaoListViewListener.a(false);
+      return false;
+      this.a.setIsShowingPreguide(false);
+      this.a.setSpringbackOffset(0);
+      return false;
+      if (!this.a.isStackFromBottom()) {
+        this.a.setStackFromBottom(true);
+      }
+      this.a.setStackFromBottom(false);
+    } while (this.a.k);
+    int i = (int)this.a.getResources().getDimension(2131559588);
+    this.a.springBackTo(-i);
+    return false;
   }
-  
-  public void b(String paramString) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ambx
  * JD-Core Version:    0.7.0.1
  */

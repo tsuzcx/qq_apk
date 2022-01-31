@@ -1,23 +1,22 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.SubLoginActivity;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.SendMultiPictureHelper;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class trm
-  extends MqqHandler
+  implements DialogInterface.OnClickListener
 {
-  public trm(SubLoginActivity paramSubLoginActivity) {}
+  public trm(SendMultiPictureHelper paramSendMultiPictureHelper) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
+    if (!this.a.jdField_a_of_type_Boolean)
     {
-    default: 
-      return;
-    case 1982: 
-      this.a.finish();
-      return;
+      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+      this.a.b = true;
+      SendMultiPictureHelper.a(this.a);
+      this.a.b();
     }
-    this.a.c();
   }
 }
 

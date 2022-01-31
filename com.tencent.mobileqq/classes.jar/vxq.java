@@ -1,30 +1,34 @@
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
-import com.tencent.mobileqq.widget.navbar.NavBarAIO;
+import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.PublicAccountManager;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class vxq
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public vxq(TroopChatPie paramTroopChatPie) {}
+  public vxq(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.d.setBackgroundResource(2130841202);
-    this.a.a.setBackgroundResource(2130841208);
-    this.a.q.setVisibility(8);
-    this.a.r.setVisibility(8);
-    this.a.o.setVisibility(0);
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.q.setVisibility(0);
-    this.a.r.setVisibility(0);
+    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
+    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
+    if (this.a.b != null) {
+      this.a.b.setVisibility(0);
+    }
+    if (this.a.j != null) {
+      this.a.j.setVisibility(0);
+    }
+    if (this.a.k != null) {
+      this.a.k.setVisibility(0);
+    }
+    this.a.ap();
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.b(this.a.a()) != 0) {
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC5", "0X8005EC5", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
+    }
   }
 }
 

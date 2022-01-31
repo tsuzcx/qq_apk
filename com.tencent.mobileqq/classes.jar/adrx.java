@@ -1,22 +1,23 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.managers.TimJumpLoginManager;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
+import com.tencent.qphone.base.util.QLog;
 
-public class adrx
-  implements DialogInterface.OnClickListener
+class adrx
+  implements Runnable
 {
-  public adrx(TimJumpLoginManager paramTimJumpLoginManager) {}
+  adrx(adrw paramadrw) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    ReportController.b(TimJumpLoginManager.a(this.a), "dc00898", "", "", "0X80085DB", "0X80085DB", 0, 0, "", "", "", "");
+    PresenceInterfaceImpl.a(this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl, true);
+    PresenceInterfaceImpl.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+    this.a.jdField_a_of_type_ComTencentMobileqqHotpicPresenceInterfaceImpl.a.b(-11);
+    QLog.d("PresenceInterfaceImpl", 2, "saveUserPermission false");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adrx
  * JD-Core Version:    0.7.0.1
  */

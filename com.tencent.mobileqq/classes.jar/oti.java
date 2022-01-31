@@ -1,28 +1,21 @@
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnCancelListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
 
 public class oti
-  implements TVK_IMediaPlayer.OnVideoPreparedListener
+  implements DialogInterface.OnCancelListener
 {
-  public oti(TribeVideoPlugin paramTribeVideoPlugin, otu paramotu) {}
+  public oti(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
+  public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (paramTVK_IMediaPlayer.getCurrentPostion() == 0L) {
-      ReportController.b(null, "dc00899", "BizTechReport", ((BaseActivity)TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin)).getCurrentAccountUin(), "tribe_video", "video_prepared_time", 0, 0, Long.toString(System.currentTimeMillis() - otu.a(this.jdField_a_of_type_Otu)), Integer.toString(NetworkUtil.b(TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin))), "", "");
+    if (this.a.d) {
+      return;
     }
-    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
-    {
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(5, otu.a(this.jdField_a_of_type_Otu));
-      paramTVK_IMediaPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
-      paramTVK_IMediaPlayer.obj = otu.a(this.jdField_a_of_type_Otu);
-      paramTVK_IMediaPlayer.what = 5;
-      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramTVK_IMediaPlayer);
-    }
+    this.a.h = -1;
+    this.a.d = true;
+    QRDisplayActivity.a(this.a).b();
   }
 }
 

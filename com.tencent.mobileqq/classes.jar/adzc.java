@@ -1,33 +1,44 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager;
-import com.tencent.mobileqq.nearby.NearbyLikeLimitManager.LimitInfo;
+import android.os.Handler;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.leba.LebaFeedsVideoSdkInstaller;
+import com.tencent.mobileqq.leba.LebaFeedsVideoSdkInstaller.OnVideoPluginInstallListener;
 
 public class adzc
-  implements DialogInterface.OnClickListener
+  implements Handler.Callback
 {
-  public adzc(NearbyLikeLimitManager paramNearbyLikeLimitManager, Activity paramActivity, QQAppInterface paramQQAppInterface, String paramString) {}
+  public adzc(LebaFeedsVideoSdkInstaller paramLebaFeedsVideoSdkInstaller) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyLikeLimitManager.a;
-    if ((paramDialogInterface != null) && (!TextUtils.isEmpty(paramDialogInterface.b)))
+    switch (paramMessage.what)
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      localIntent.putExtra("url", paramDialogInterface.b);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
+    default: 
+    case 0: 
+    case 1: 
+      do
+      {
+        do
+        {
+          return true;
+          LebaFeedsVideoSdkInstaller.a(this.a, false);
+          LebaFeedsVideoSdkInstaller.a(this.a).removeMessages(0);
+        } while (LebaFeedsVideoSdkInstaller.a(this.a) == null);
+        LebaFeedsVideoSdkInstaller.a(this.a).c(true);
+        return true;
+        LebaFeedsVideoSdkInstaller.a(this.a, false);
+        LebaFeedsVideoSdkInstaller.a(this.a).removeMessages(1);
+      } while (LebaFeedsVideoSdkInstaller.a(this.a) == null);
+      LebaFeedsVideoSdkInstaller.a(this.a).c(false);
+      return true;
     }
-    NearbyLikeLimitManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "clk_up", this.jdField_a_of_type_JavaLangString);
+    LebaFeedsVideoSdkInstaller.a(this.a, true);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adzc
  * JD-Core Version:    0.7.0.1
  */

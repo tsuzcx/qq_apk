@@ -1,22 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.playmode.child.NewDiscoverBannerPlayMode;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class niq
-  implements View.OnClickListener
+  extends FriendListObserver
 {
-  public niq(NewDiscoverBannerPlayMode paramNewDiscoverBannerPlayMode) {}
+  public niq(VideoPlayModeBase paramVideoPlayModeBase) {}
   
-  public void onClick(View paramView)
-  {
-    ThreadManager.post(new nir(this), 8, null, true);
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(0);
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(8);
-  }
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean) {}
 }
 
 

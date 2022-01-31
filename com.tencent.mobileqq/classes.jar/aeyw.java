@@ -1,8 +1,32 @@
-import com.tencent.mobileqq.nearby.redtouch.RedTouchItem;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnInfoListener;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTVKImpl;
 
-public abstract interface aeyw
+class aeyw
+  implements Runnable
 {
-  public abstract void a(RedTouchItem paramRedTouchItem, int paramInt);
+  aeyw(aeyv paramaeyv, int paramInt, Object paramObject) {}
+  
+  public void run()
+  {
+    int i;
+    if (this.jdField_a_of_type_Aeyv.a.a != null)
+    {
+      i = this.jdField_a_of_type_Int;
+      if (this.jdField_a_of_type_Int != 21) {
+        break label58;
+      }
+      i = 2;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_Aeyv.a.a.a(this.jdField_a_of_type_Aeyv.a, i, this.jdField_a_of_type_JavaLangObject);
+      return;
+      label58:
+      if (this.jdField_a_of_type_Int == 22) {
+        i = 3;
+      }
+    }
+  }
 }
 
 

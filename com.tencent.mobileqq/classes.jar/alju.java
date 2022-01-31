@@ -1,28 +1,49 @@
-import android.widget.ImageView.ScaleType;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.widget.RandomCoverView;
-import com.tencent.widget.UpSideDownDrawable;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.open.wadl.WLog;
+import com.tencent.open.wadl.WadlJsBridgeService;
+import cooperation.wadl.ipc.WadlParams;
+import cooperation.wadl.ipc.WadlProxyServiceUtil;
+import cooperation.wadl.ipc.WadlProxyServiceWrap;
 
 public final class alju
-  implements Runnable
+  extends Handler
 {
-  public alju(RandomCoverView paramRandomCoverView, UpSideDownDrawable paramUpSideDownDrawable, boolean paramBoolean) {}
-  
-  public void run()
+  public alju(WadlJsBridgeService paramWadlJsBridgeService, Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setScaleType(ImageView.ScaleType.FIT_CENTER);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRandomCoverView.a().setImageDrawable(this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable);
-    if (this.jdField_a_of_type_Boolean)
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    String str = (String)paramMessage.obj;
+    WLog.b(WadlJsBridgeService.a(), "The obj field of msg:" + paramMessage.what + "," + paramMessage.obj);
+    switch (paramMessage.what)
     {
-      this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable.d();
+    case 2: 
+    case 3: 
+    default: 
+    case 0: 
+    case 4: 
+      for (;;)
+      {
+        this.a.stopSelf(paramMessage.arg1);
+        return;
+        WadlProxyServiceUtil.a().b(4, str);
+      }
+    case 5: 
+      WadlProxyServiceUtil.a().a(4, str);
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetUpSideDownDrawable.b();
+    paramMessage = new WadlParams(str, "");
+    paramMessage.c = 4;
+    WadlProxyServiceUtil.a().c(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alju
  * JD-Core Version:    0.7.0.1
  */

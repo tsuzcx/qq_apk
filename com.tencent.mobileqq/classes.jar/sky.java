@@ -1,30 +1,21 @@
-import com.tencent.mobileqq.activity.ForwardRecentActivity;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import java.util.ArrayList;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.DiscussionMemberActivity;
 
 public class sky
-  extends TroopObserver
+  implements View.OnClickListener
 {
-  public sky(ForwardRecentActivity paramForwardRecentActivity) {}
+  public sky(DiscussionMemberActivity paramDiscussionMemberActivity, Dialog paramDialog) {}
   
-  protected void a(boolean paramBoolean1, byte paramByte, TroopInfo paramTroopInfo, boolean paramBoolean2)
+  public void onClick(View paramView)
   {
-    if (paramBoolean1) {
-      ForwardRecentActivity.b(this.a);
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, ArrayList paramArrayList, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (paramArrayList != null) && (paramArrayList.size() > 0) && (paramBoolean2)) {
-      ForwardRecentActivity.b(this.a);
-    }
+    this.jdField_a_of_type_AndroidAppDialog.cancel();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     sky
  * JD-Core Version:    0.7.0.1
  */

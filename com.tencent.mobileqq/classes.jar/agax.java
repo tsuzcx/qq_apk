@@ -1,16 +1,24 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ocr.OCRHandler;
+import com.tencent.mobileqq.ocr.OCRManager;
+import com.tencent.mobileqq.ocr.OCRObserver;
+import java.util.List;
 
-class agax
-  implements Runnable
+public class agax
+  extends OCRObserver
 {
-  agax(agas paramagas, long paramLong) {}
+  public agax(OCRManager paramOCRManager) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString, List paramList)
   {
-    String str = ShareHelper.a(this.jdField_a_of_type_Agas.a);
-    ThreadManager.getUIHandler().post(new agay(this, str));
+    paramList = this.a.a(paramList);
+    OCRHandler localOCRHandler = (OCRHandler)this.a.a.a(113);
+    if (paramBoolean) {}
+    for (int i = 0;; i = -1)
+    {
+      localOCRHandler.a(3, paramBoolean, new Object[] { Integer.valueOf(i), paramString, paramList });
+      return;
+    }
   }
 }
 

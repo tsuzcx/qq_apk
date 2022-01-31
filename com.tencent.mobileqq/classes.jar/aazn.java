@@ -1,16 +1,15 @@
-import com.tencent.mobileqq.armap.POIInfo;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog;
-import com.tencent.mobileqq.armap.map.ARGridMapViewDialog.LbsRedBagExtraData;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
-class aazn
-  implements Runnable
+public class aazn
+  implements DialogInterface.OnDismissListener
 {
-  aazn(aazm paramaazm, POIInfo paramPOIInfo, ARGridMapViewDialog.LbsRedBagExtraData paramLbsRedBagExtraData, List paramList, int paramInt1, int paramInt2) {}
+  public aazn(ARMapActivity paramARMapActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    ARGridMapViewDialog.a(this.jdField_a_of_type_Aazm.a, this.jdField_a_of_type_ComTencentMobileqqArmapPOIInfo, this.jdField_a_of_type_ComTencentMobileqqArmapMapARGridMapViewDialog$LbsRedBagExtraData.b, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Int, this.b);
+    ARMapActivity.f(this.a, false);
   }
 }
 

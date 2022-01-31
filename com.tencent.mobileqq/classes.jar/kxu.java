@@ -1,15 +1,19 @@
-import android.content.Context;
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import com.tencent.biz.pubaccount.PublicAccountBrowser.PublicAccountBrowserFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentFactory;
 
 public class kxu
-  implements Runnable
+  implements SwiftBrowserComponentsProvider.SwiftBrowserComponentFactory
 {
-  public kxu(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView, Context paramContext) {}
+  public kxu(PublicAccountBrowser.PublicAccountBrowserFragment paramPublicAccountBrowserFragment) {}
   
-  public void run()
+  public Object a(int paramInt)
   {
-    TVK_SDKMgr.installPlugin(this.jdField_a_of_type_AndroidContentContext, new kxv(this));
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    }
+    return new kxy(this.a);
   }
 }
 

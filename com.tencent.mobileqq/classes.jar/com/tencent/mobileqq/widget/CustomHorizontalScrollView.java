@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import akfg;
+import aktn;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
@@ -31,7 +31,7 @@ public class CustomHorizontalScrollView
   {
     super(paramContext);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangRunnable = new akfg(this);
+    this.jdField_a_of_type_JavaLangRunnable = new aktn(this);
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
     this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Float * 70.0F + 0.5D));
@@ -42,7 +42,7 @@ public class CustomHorizontalScrollView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaLangRunnable = new akfg(this);
+    this.jdField_a_of_type_JavaLangRunnable = new aktn(this);
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
     this.jdField_a_of_type_Float = getResources().getDisplayMetrics().density;
     this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Float * 70.0F + 0.5D));
@@ -93,7 +93,7 @@ public class CustomHorizontalScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CustomHorizontalScrollView
  * JD-Core Version:    0.7.0.1
  */

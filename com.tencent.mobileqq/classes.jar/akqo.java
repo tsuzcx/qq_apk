@@ -1,27 +1,48 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.open.appcircle.st.AppCircleReportManager;
-import com.tencent.open.downloadnew.DownloadApi;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper;
+import com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper.IdleTask;
+import java.util.ArrayList;
 
-public final class akqo
-  implements DialogInterface.OnClickListener
+public class akqo
+  implements MessageQueue.IdleHandler
 {
-  public akqo(Bundle paramBundle, int paramInt, ApkUpdateDetail paramApkUpdateDetail) {}
+  public akqo(SwiftBrowserIdleTaskHelper paramSwiftBrowserIdleTaskHelper) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public boolean queueIdle()
   {
-    DownloadApi.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
-    ReportController.b(null, "dc00898", "", "", "0X8008F7C", "0X8008F7C", 0, 0, "", "", "", "");
-    paramDialogInterface = System.currentTimeMillis() / 1000L + "|" + 101;
-    AppCircleReportManager.a().a(25, paramDialogInterface);
+    Object localObject;
+    int i;
+    if (!SwiftBrowserIdleTaskHelper.a().isEmpty())
+    {
+      localObject = (SwiftBrowserIdleTaskHelper.IdleTask)SwiftBrowserIdleTaskHelper.a().remove(0);
+      i = ((SwiftBrowserIdleTaskHelper.IdleTask)localObject).a();
+      if (2 == i) {
+        SwiftBrowserIdleTaskHelper.a().add(localObject);
+      }
+    }
+    else
+    {
+      label38:
+      localObject = this.a;
+      if (SwiftBrowserIdleTaskHelper.a().isEmpty()) {
+        break label75;
+      }
+    }
+    label75:
+    for (boolean bool = true;; bool = false)
+    {
+      ((SwiftBrowserIdleTaskHelper)localObject).a = bool;
+      return this.a.a;
+      if (1 != i) {
+        break;
+      }
+      break label38;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akqo
  * JD-Core Version:    0.7.0.1
  */

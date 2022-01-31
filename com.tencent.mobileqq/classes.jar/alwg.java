@@ -1,20 +1,36 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.view.View;
+import com.tencent.qqconnect.wtlogin.Login;
 
-public final class alwg
-  implements DialogInterface.OnClickListener
+public class alwg
+  implements TextWatcher
 {
-  public alwg(DialogInterface.OnClickListener paramOnClickListener) {}
+  public alwg(Login paramLogin) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void afterTextChanged(Editable paramEditable) {}
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    this.a.onClick(paramDialogInterface, paramInt);
-    paramDialogInterface.dismiss();
+    if (paramInt3 < 2)
+    {
+      this.a.jdField_b_of_type_Boolean = false;
+      if (paramCharSequence.length() == 0) {
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(4);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.jdField_b_of_type_AndroidViewView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alwg
  * JD-Core Version:    0.7.0.1
  */

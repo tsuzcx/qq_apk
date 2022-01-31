@@ -1,22 +1,24 @@
-import android.util.Property;
-import dov.com.tencent.biz.qqstory.takevideo.speedpicker.GroundDrawable;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager.DynamicTextResDownloader;
+import dov.com.qq.im.capture.text.DynamicTextConfigManager.IDynamicTextResDownloadCallback;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class annt
-  extends Property
+  implements Runnable
 {
-  public annt(GroundDrawable paramGroundDrawable, Class paramClass, String paramString)
-  {
-    super(paramClass, paramString);
-  }
+  public annt(DynamicTextConfigManager paramDynamicTextConfigManager, DynamicTextConfigManager.DynamicTextConfigBean paramDynamicTextConfigBean, DynamicTextConfigManager.IDynamicTextResDownloadCallback paramIDynamicTextResDownloadCallback) {}
   
-  public Float a(GroundDrawable paramGroundDrawable)
+  public void run()
   {
-    return Float.valueOf(GroundDrawable.b(paramGroundDrawable));
-  }
-  
-  public void a(GroundDrawable paramGroundDrawable, Float paramFloat)
-  {
-    GroundDrawable.a(paramGroundDrawable, paramFloat);
+    Iterator localIterator = this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$DynamicTextConfigBean.fontInfos.iterator();
+    while (localIterator.hasNext())
+    {
+      DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo localDynamicTextFontInfo = (DynamicTextConfigManager.DynamicTextConfigBean.DynamicTextFontInfo)localIterator.next();
+      DynamicTextConfigManager.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager).a(localDynamicTextFontInfo, this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextConfigManager$IDynamicTextResDownloadCallback);
+    }
   }
 }
 

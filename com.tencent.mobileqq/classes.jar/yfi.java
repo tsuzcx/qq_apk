@@ -1,21 +1,31 @@
-import com.tencent.mobileqq.adapter.TroopListAdapter2;
-import java.util.List;
+import com.tencent.mobileqq.activity.specialcare.QQSpecialFriendSettingActivity;
+import com.tencent.mobileqq.app.QvipSpecialCareObserver;
+import com.tencent.qphone.base.util.QLog;
 
-class yfi
-  implements Runnable
+public class yfi
+  extends QvipSpecialCareObserver
 {
-  yfi(yfh paramyfh, List paramList) {}
+  public yfi(QQSpecialFriendSettingActivity paramQQSpecialFriendSettingActivity) {}
   
-  public void run()
+  public void a(Object paramObject)
   {
-    this.jdField_a_of_type_Yfh.a.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_Yfh.a.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-    TroopListAdapter2.a(this.jdField_a_of_type_Yfh.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQSpecialFriendSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
+    }
+    if (paramObject != null) {
+      this.a.stopTitleProgress();
+    }
+    switch (((Integer)paramObject).intValue())
+    {
+    default: 
+      return;
+    }
+    QQSpecialFriendSettingActivity.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     yfi
  * JD-Core Version:    0.7.0.1
  */

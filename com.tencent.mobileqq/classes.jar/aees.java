@@ -1,21 +1,34 @@
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.nearby.now.SmallVideoFragment;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
+import android.view.View;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import com.tencent.qphone.base.util.BaseApplication;
 
-public class aees
-  implements AudioManager.OnAudioFocusChangeListener
+class aees
+  implements Runnable
 {
-  public aees(SmallVideoFragment paramSmallVideoFragment) {}
+  aees(aeeq paramaeeq, ActionGlobalData paramActionGlobalData) {}
   
-  public void onAudioFocusChange(int paramInt)
+  public void run()
   {
-    if (((paramInt == -1) || (paramInt == -2) || (paramInt == -3)) && (SmallVideoFragment.a(this.a))) {
-      this.a.b();
+    
+    if (this.jdField_a_of_type_Aeeq.jdField_a_of_type_Int == 1)
+    {
+      ((View)this.jdField_a_of_type_Aeeq.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.b).setBackgroundColor(0);
+      this.jdField_a_of_type_Aeeq.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.g();
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData != null) && ("gravity".equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.c)) && (PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getContext()).getBoolean(BaseApplicationImpl.getContext().getString(2131433581), false))) {
+      this.jdField_a_of_type_Aeeq.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.aB();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aees
  * JD-Core Version:    0.7.0.1
  */

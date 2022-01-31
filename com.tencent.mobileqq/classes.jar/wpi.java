@@ -1,24 +1,15 @@
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.AnimationScrollListener;
-import com.tencent.widget.AbsListView;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.emogroupstore.FilterAdapter;
 
 public class wpi
-  extends AvatarPendantActivity.AnimationScrollListener
 {
-  public wpi(AvatarPendantActivity paramAvatarPendantActivity)
-  {
-    super(paramAvatarPendantActivity);
-  }
+  public ImageView a;
+  public TextView a;
+  public ImageView b;
+  public TextView b;
   
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (this.a.e == AvatarPendantActivity.d) {}
-    while (Build.VERSION.SDK_INT < 14) {
-      return;
-    }
-    this.a.b();
-  }
+  private wpi(FilterAdapter paramFilterAdapter) {}
 }
 
 

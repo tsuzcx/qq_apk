@@ -1,15 +1,17 @@
-import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.qphone.base.util.QLog;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
 
 public class keo
-  implements kgd
+  implements MenuItem.OnMenuItemClickListener
 {
-  public keo(AVRedBagMgr paramAVRedBagMgr) {}
+  public keo(AVRedBagMgr.TestFlag paramTestFlag, VideoAppInterface paramVideoAppInterface) {}
   
-  public void a()
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    QLog.w("AVRedBag", 1, "mResultUI 关闭了");
-    this.a.a = null;
+    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(112) });
+    return false;
   }
 }
 

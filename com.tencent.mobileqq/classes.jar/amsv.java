@@ -1,20 +1,21 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qzone.LocalMultiProcConfig;
 
-public class amsv
-  implements Runnable
+public final class amsv
+  implements DialogInterface.OnClickListener
 {
-  public amsv(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    QLog.d("VERSION_CODES", 2, "onVideoCaptured. mDanceRestartToRecord = true  restart to record.");
-    this.a.e();
+    if (LocalMultiProcConfig.getBool("qz_safe_mode_no_tip", false)) {
+      LocalMultiProcConfig.putBool("comboqz_protect_enable", false);
+    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amsv
  * JD-Core Version:    0.7.0.1
  */

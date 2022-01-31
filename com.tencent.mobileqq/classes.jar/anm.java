@@ -1,14 +1,16 @@
-import com.qq.im.poi.LbsPackListActivity;
-import com.tencent.widget.HorizontalListView.OnScrollLinstener;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.qq.im.poi.LbsPackPoiListActivity;
 
 public class anm
-  implements HorizontalListView.OnScrollLinstener
+  implements View.OnClickListener
 {
-  public anm(LbsPackListActivity paramLbsPackListActivity) {}
+  public anm(LbsPackPoiListActivity paramLbsPackPoiListActivity) {}
   
-  public void a()
+  public void onClick(View paramView)
   {
-    this.a.a();
+    LbsPackPoiListActivity.a(this.a).cancel();
   }
 }
 

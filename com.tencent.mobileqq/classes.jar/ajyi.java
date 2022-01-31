@@ -1,33 +1,50 @@
-import android.os.Build.VERSION;
-import android.util.DisplayMetrics;
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.biz.webviewplugin.Hole;
-import com.tencent.mobileqq.webview.swift.SwiftFloatViewUI;
+import android.os.Bundle;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.unifiedebug.UnifiedDebugReporter;
+import com.tencent.pb.unifiedebug.RemoteDebugReportMsg.RemoteLogRsp;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
 public class ajyi
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements BusinessObserver
 {
-  public ajyi(SwiftFloatViewUI paramSwiftFloatViewUI, View paramView, DisplayMetrics paramDisplayMetrics) {}
+  public ajyi(UnifiedDebugReporter paramUnifiedDebugReporter) {}
   
-  public void onGlobalLayout()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (Build.VERSION.SDK_INT >= 16) {
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-    }
-    for (;;)
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_ComTencentBizWebviewpluginHole.setHole((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidViewView.getLeft() + this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidViewView.getRight()) / 2 - 1, (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidViewView.getTop() + this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_AndroidViewView.getBottom()) / 2 - 1, (int)(30.0F * this.jdField_a_of_type_AndroidUtilDisplayMetrics.density));
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftFloatViewUI.jdField_a_of_type_ComTencentBizWebviewpluginHole.invalidate();
-      return;
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+      paramBundle = paramBundle.getByteArray("extra_data");
+      if (paramBundle == null) {}
     }
+    while (!QLog.isColorLevel()) {
+      try
+      {
+        RemoteDebugReportMsg.RemoteLogRsp localRemoteLogRsp = new RemoteDebugReportMsg.RemoteLogRsp();
+        localRemoteLogRsp.mergeFrom(paramBundle);
+        if (localRemoteLogRsp.i32_ret.has())
+        {
+          paramInt = localRemoteLogRsp.i32_ret.get();
+          if (QLog.isColorLevel()) {
+            QLog.d("UnifiedDebugReporter", 2, "onReceive: retCode=" + paramInt);
+          }
+        }
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        while (!QLog.isColorLevel()) {}
+        QLog.e("UnifiedDebugReporter", 2, "onReceive: exception=" + paramBundle.getMessage());
+        return;
+      }
+    }
+    QLog.e("UnifiedDebugReporter", 2, "onReceive: isSuccess=" + paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajyi
  * JD-Core Version:    0.7.0.1
  */

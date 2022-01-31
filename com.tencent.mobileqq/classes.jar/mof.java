@@ -1,34 +1,53 @@
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyAdVideoReportData;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import com.tencent.biz.common.util.HttpUtil;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebShareUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
+import java.io.IOException;
+import java.util.Map;
 
 public class mof
   implements Runnable
 {
-  public mof(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
+  public mof(FastWebShareUtils paramFastWebShareUtils, String paramString, Map paramMap, AppInterface paramAppInterface, Runnable paramRunnable) {}
   
   public void run()
   {
-    if ((FastWebVideoFeedsPlayManager.a(this.a) != null) && (FastWebVideoFeedsPlayManager.a(this.a).c() == 5))
+    label142:
+    try
     {
-      FastWebVideoFeedsPlayManager.a(this.a).e();
-      FastWebVideoFeedsPlayManager.a(this.a, 8);
-      if ((FastWebVideoFeedsPlayManager.a(this.a) == null) || (FastWebVideoFeedsPlayManager.a(this.a).c.getVisibility() != 0)) {
-        break label104;
+      localObject = HttpUtil.a(BaseApplicationImpl.getContext(), MsfSdkUtils.insertMtype("GameCenter", this.jdField_a_of_type_JavaLangString), "GET", null, null);
+      if (localObject == null) {
+        break label120;
       }
-      this.a.a(3);
+      localObject = BitmapFactory.decodeByteArray((byte[])localObject, 0, localObject.length);
+      if (localObject == null) {
+        break label120;
+      }
+      int i = ((Bitmap)localObject).getWidth();
+      int j = ((Bitmap)localObject).getHeight();
+      if (i * j <= 8000) {
+        break label142;
+      }
+      double d = Math.sqrt(8000.0D / (i * j));
+      Bitmap localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject, (int)(i * d), (int)(j * d), true);
+      ((Bitmap)localObject).recycle();
+      localObject = localBitmap;
     }
-    for (;;)
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      if (FastWebVideoFeedsPlayManager.c(this.a)) {
-        FastWebVideoFeedsPlayManager.a(this.a).a.f = ReadinjoyAdVideoReportData.b;
-      }
-      return;
-      label104:
-      this.a.a(4);
+      Object localObject;
+      break label120;
     }
+    catch (IOException localIOException)
+    {
+      label120:
+      for (;;) {}
+    }
+    this.jdField_a_of_type_JavaUtilMap.put("image", localObject);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.runOnUiThread(this.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

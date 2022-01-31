@@ -1,19 +1,23 @@
-import android.widget.ImageView;
-import dov.com.qq.im.capture.adapter.ComboProviderGridAdapter;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qzone.model.MapParcelable;
 
-public class amur
-  implements Runnable
+public final class amur
+  implements Parcelable.Creator
 {
-  public amur(ComboProviderGridAdapter paramComboProviderGridAdapter, ImageView paramImageView) {}
-  
-  public void run()
+  public MapParcelable a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
+    return new MapParcelable(paramParcel.readHashMap(getClass().getClassLoader()));
+  }
+  
+  public MapParcelable[] a(int paramInt)
+  {
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amur
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderFactory;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
+import com.tencent.mobileqq.apollo.process.CmGameUtil;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public final class yrg
-  implements Runnable
+  implements EIPCResultCallback
 {
-  public yrg(DownloadTask paramDownloadTask) {}
+  public yrg(long paramLong) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    DownloaderFactory.a(this.a, null);
+    paramEIPCResult = paramEIPCResult.data.getString("respData");
+    CmGameUtil.a().callbackFromRequest(this.a, 0, "cs.check_pubAccount_state.local", paramEIPCResult);
   }
 }
 

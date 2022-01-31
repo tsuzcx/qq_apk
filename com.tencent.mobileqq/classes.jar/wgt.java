@@ -1,28 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.contact.newfriend.SystemMsgListView;
-import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.chathistory.TroopMemberHistoryFragment;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class wgt
-  implements DialogInterface.OnClickListener
+  implements AbsListView.OnScrollListener
 {
-  public wgt(SystemMsgListView paramSystemMsgListView) {}
+  private int jdField_a_of_type_Int;
+  private int b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public wgt(TroopMemberHistoryFragment paramTroopMemberHistoryFragment) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if (paramInt == 1)
-    {
-      paramDialogInterface = new Intent(this.a.getContext(), BindNumberActivity.class);
-      paramDialogInterface.putExtra("kSrouce", 17);
-      this.a.a(paramDialogInterface, 230);
-      ReportController.b(this.a.a, "dc00898", "", "", "0X80077C9", "0X80077C9", 0, 0, "", "", "", "");
-    }
-    while (paramInt != 0) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.c) || (this.b <= 0)) {}
+    while ((paramInt != 0) || (this.b > this.jdField_a_of_type_Int)) {
       return;
     }
-    ReportController.b(this.a.a, "dc00898", "", "", "0X80077CA", "0X80077CA", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.a(21);
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.b = this.jdField_a_of_type_ComTencentMobileqqActivityChathistoryTroopMemberHistoryFragment.jdField_a_of_type_Wgy.getCount();
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2);
   }
 }
 

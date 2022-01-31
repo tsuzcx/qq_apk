@@ -1,28 +1,34 @@
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.utils.ImageUtil;
 
-public class ajyo
-  implements TouchWebView.OnScrollChangedListener
+public final class ajyo
+  implements DownloadParams.DecodeHandler
 {
-  public ajyo(SwiftIphoneTitleBarUI paramSwiftIphoneTitleBarUI) {}
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    this.a.b = paramInt2;
-    this.a.a(this.a.b, this.a.f);
-    paramView = this.a.a.a();
-    if ((paramView != null) && (!TextUtils.isEmpty(this.a.d))) {
-      paramView.a(this.a.d, new String[] { String.valueOf(paramInt1), String.valueOf(paramInt2), String.valueOf(paramInt3), String.valueOf(paramInt4) });
+    if (paramBitmap == null) {
+      paramDownloadParams = null;
     }
+    Object localObject;
+    do
+    {
+      do
+      {
+        return paramDownloadParams;
+        localObject = paramDownloadParams.tag;
+        paramDownloadParams = paramBitmap;
+      } while (!(localObject instanceof int[]));
+      paramDownloadParams = paramBitmap;
+    } while (((int[])localObject).length != 2);
+    paramDownloadParams = (int[])localObject;
+    return ImageUtil.d(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajyo
  * JD-Core Version:    0.7.0.1
  */

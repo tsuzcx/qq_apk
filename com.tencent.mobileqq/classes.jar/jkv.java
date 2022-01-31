@@ -1,26 +1,42 @@
-import com.tencent.av.random.RandomController;
-import com.tencent.av.random.RandomWebProtocol;
-import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
 public class jkv
-  implements Runnable
 {
-  public jkv(RandomController paramRandomController) {}
+  int jdField_a_of_type_Int;
+  String jdField_a_of_type_JavaLangString;
+  JSONObject jdField_a_of_type_OrgJsonJSONObject;
+  int b;
+  int c = 7000;
+  int d = 1000;
+  public int e = 0;
   
-  public void run()
+  void a(String paramString)
   {
-    if (RandomController.c(this.a))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("RandomController", 2, "mRandomPushTimeoutRunnable trigger, request room owner!");
+      paramString = new JSONObject(paramString).optJSONObject("result");
+      this.jdField_a_of_type_Int = paramString.optInt("rsptype", 0);
+      this.b = paramString.optInt("retcode", -1);
+      this.jdField_a_of_type_JavaLangString = paramString.optString("errmsg");
+      this.jdField_a_of_type_OrgJsonJSONObject = paramString.optJSONObject("rspbody");
+      paramString = paramString.optString("remain");
+      try
+      {
+        this.e = Integer.valueOf(paramString).intValue();
+        return;
       }
-      RandomController.a(this.a).a(RandomController.b(this.a), this.a.a);
-      this.a.a();
-    }
-    while (!QLog.isColorLevel()) {
+      catch (NumberFormatException paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
       return;
     }
-    QLog.d("RandomController", 2, "mRoomOwnerEnable == false");
+    catch (Exception paramString)
+    {
+      this.b = 14;
+      paramString.printStackTrace();
+    }
   }
 }
 

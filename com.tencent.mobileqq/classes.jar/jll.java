@@ -1,62 +1,101 @@
-import android.graphics.Bitmap;
-import com.tencent.av.random.RandomWebProtocol;
-import com.tencent.mobileqq.activity.ChatActivityUtils;
-import com.tencent.mobileqq.utils.HexUtil;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.os.Handler;
+import android.os.RemoteException;
+import com.tencent.av.redpacket.config.AVRedPacketConfigManager;
+import com.tencent.av.service.IAVRedPacketCallback;
+import com.tencent.av.ui.funchat.record.QavRecordDpc;
+import com.tencent.av.ui.funchat.record.QavRecordReporter;
+import com.tencent.av.ui.funchat.record.QavRecordUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import java.io.File;
 
 public class jll
-  extends jlk
+  implements Runnable
 {
-  public Bitmap a;
-  public byte[] a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public int f;
-  String f;
-  int g;
-  int h;
+  public jll(AVRedPacketConfigManager paramAVRedPacketConfigManager, int paramInt1, String paramString1, String paramString2, int paramInt2, String paramString3) {}
   
-  jll()
+  public void run()
   {
-    this.jdField_f_of_type_Int = -1;
-  }
-  
-  void a(String paramString)
-  {
-    super.a(paramString);
-    if ((1 == this.jdField_a_of_type_Int) && (this.jdField_a_of_type_OrgJsonJSONObject != null))
-    {
-      if (this.jdField_b_of_type_Int != 0) {
-        break label205;
-      }
-      this.jdField_f_of_type_Int = this.jdField_a_of_type_OrgJsonJSONObject.optInt("ismask", -1);
-      this.g = this.jdField_a_of_type_OrgJsonJSONObject.optInt("peer_gender");
-      this.c = HexUtil.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_ennick", null));
-      this.d = HexUtil.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("ensessionname", null));
-      this.e = this.jdField_a_of_type_OrgJsonJSONObject.optString("headurl", null);
-      if (!this.jdField_a_of_type_OrgJsonJSONObject.optBoolean("oldproto", false)) {
-        break label164;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.w("RandomWebProtocol", 2, "[1v1] parse method is oldproto");
-      }
-      this.jdField_b_of_type_JavaLangString = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_enuin", null));
-      this.jdField_a_of_type_ArrayOfByte = RandomWebProtocol.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("vaskey", null));
+    QLog.d("AVRedPacketConfigManger", 1, "onDownloadFinish,subHandler runnable start,threadName = " + Thread.currentThread().getName());
+    boolean bool;
+    if (this.jdField_a_of_type_Int == 0) {
+      bool = true;
     }
-    label164:
-    label205:
-    while (this.jdField_b_of_type_Int != 1)
+    for (;;)
     {
-      return;
-      this.jdField_b_of_type_JavaLangString = ChatActivityUtils.a(RandomWebProtocol.a(), HexUtil.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("peer_enuin", null)));
-      this.jdField_a_of_type_ArrayOfByte = HexUtil.a(this.jdField_a_of_type_OrgJsonJSONObject.optString("vaskey", null));
-      return;
+      File localFile = new File(this.jdField_a_of_type_JavaLangString);
+      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("avredpacket_sp", 4);
+      if ((bool) && (localFile.exists()))
+      {
+        long l1 = localSharedPreferences.getLong(this.jdField_b_of_type_JavaLangString, -1L);
+        long l2 = localFile.lastModified();
+        if ((l1 != -1L) && (l1 != l2)) {
+          localSharedPreferences.edit().putInt("pcm_" + this.jdField_b_of_type_JavaLangString, 0).commit();
+        }
+        if ((this.jdField_b_of_type_Int == 2) && (l1 != l2))
+        {
+          QavRecordDpc localQavRecordDpc = QavRecordDpc.a();
+          if ((localQavRecordDpc == null) || (localQavRecordDpc.g != 1) || (!QavRecordUtils.a(this.jdField_b_of_type_JavaLangString))) {
+            break label620;
+          }
+          AVRedPacketConfigManager.a(this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager).removeMessages(100);
+          AVRedPacketConfigManager.a(this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager).sendEmptyMessageDelayed(100, 60000L);
+          l2 = System.currentTimeMillis();
+          QavRecordUtils.a(this.jdField_a_of_type_JavaLangString);
+          long l3 = System.currentTimeMillis();
+          AVRedPacketConfigManager.a(this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager).removeMessages(100);
+          QavRecordReporter.a(l3 - l2);
+        }
+        label262:
+        l2 = localFile.lastModified();
+        localSharedPreferences.edit().putLong(this.jdField_b_of_type_JavaLangString, l2).commit();
+        if (QLog.isColorLevel()) {
+          QLog.d("AVRedPacketConfigManger", 2, "onDownloadFinish,url =   " + this.c + ",md5 = " + this.jdField_b_of_type_JavaLangString + ",errCode = " + this.jdField_a_of_type_Int + ",path = " + this.jdField_a_of_type_JavaLangString + ",modifyTime = " + l2 + ", spModifiedTime=" + l1);
+        }
+      }
+      if (this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_ComTencentAvServiceIAVRedPacketCallback != null)
+      {
+        if (this.jdField_b_of_type_Int != 1) {
+          break label631;
+        }
+        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_Boolean = true;
+        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+        label419:
+        if (QLog.isColorLevel()) {
+          QLog.d("AVRedPacketConfigManger", 2, "onDownloadFinish,url =   " + this.c + ",md5 = " + this.jdField_b_of_type_JavaLangString + ",errCode = " + this.jdField_a_of_type_Int + ",path = " + this.jdField_a_of_type_JavaLangString + ",downloadBgMusicFinish = " + this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.c + ",downloadResFinish = " + this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_Boolean + ",downloadCallBack = " + this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_ComTencentAvServiceIAVRedPacketCallback);
+        }
+        if ((!this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.c)) {}
+      }
+      try
+      {
+        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_ComTencentAvServiceIAVRedPacketCallback.a(bool, this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_JavaLangString);
+        if (bool) {
+          localSharedPreferences.edit().putBoolean("res_exist", true).commit();
+        }
+        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_ComTencentAvServiceIAVRedPacketCallback = null;
+        return;
+        bool = false;
+        continue;
+        label620:
+        QLog.i("AVRedPacketConfigManger", 1, "convertMp3ToPcm dpc != 1 or is rubbish device");
+        break label262;
+        label631:
+        if (this.jdField_b_of_type_Int != 2) {
+          break label419;
+        }
+        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.c = true;
+        this.jdField_a_of_type_ComTencentAvRedpacketConfigAVRedPacketConfigManager.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      }
+      catch (RemoteException localRemoteException)
+      {
+        for (;;)
+        {
+          localRemoteException.printStackTrace();
+        }
+      }
     }
-    this.h = Math.max(this.jdField_a_of_type_OrgJsonJSONObject.optInt("waittime"), 200);
-    this.jdField_f_of_type_JavaLangString = this.jdField_a_of_type_OrgJsonJSONObject.optString("uniqkey", null);
   }
 }
 

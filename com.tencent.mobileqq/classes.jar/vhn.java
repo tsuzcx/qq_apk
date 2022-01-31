@@ -1,17 +1,12 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite.OnOnPlayedListener;
+import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
+import com.tencent.widget.PopupMenuDialog.OnDismissListener;
 
 public class vhn
-  implements VideoSprite.OnOnPlayedListener
+  implements PopupMenuDialog.OnDismissListener
 {
-  public vhn(TroopSignItemBuilder.TroopSignVideoItemBuilder paramTroopSignVideoItemBuilder, TroopSignItemBuilder.TroopSignVideoItemBuilder.SignVideoItemHolder paramSignVideoItemHolder) {}
+  public vhn(StructingMsgItemBuilder paramStructingMsgItemBuilder) {}
   
-  public void a()
-  {
-    TroopSignItemBuilder.TroopSignVideoItemBuilder.c().postDelayed(new vho(this), 100L);
-  }
+  public void a() {}
 }
 
 

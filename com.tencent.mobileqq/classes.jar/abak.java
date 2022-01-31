@@ -1,22 +1,13 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.armap.map.LbsPackShareDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abak
-  implements Animation.AnimationListener
+  implements DialogInterface.OnDismissListener
 {
-  public abak(LbsPackShareDialog paramLbsPackShareDialog) {}
+  public abak(ARMapActivity paramARMapActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
-  {
-    this.a.a.setVisibility(8);
-    this.a.dismiss();
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

@@ -59,9 +59,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import uqy;
-import uqz;
-import ura;
+import uua;
+import uub;
+import uuc;
 
 public class ArkAppBabyQItemBubbleBuilder
   extends TextItemBuilder
@@ -340,7 +340,7 @@ public class ArkAppBabyQItemBubbleBuilder
     switch (paramInt)
     {
     default: 
-    case 2131363499: 
+    case 2131363517: 
       do
       {
         return;
@@ -357,7 +357,7 @@ public class ArkAppBabyQItemBubbleBuilder
       paramChatMessage.putExtras(paramContext);
       ForwardBaseOption.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramChatMessage, 21);
       return;
-    case 2131375336: 
+    case 2131375567: 
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
     }
@@ -373,10 +373,10 @@ public class ArkAppBabyQItemBubbleBuilder
     do
     {
       return;
-      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433618);
-      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433619);
+      str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131433635);
+      str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131433636);
     } while (!paramView.isSendFromLocal());
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new uqz(this, paramView), new ura(this)).show();
+    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, str1, str2, new uub(this, paramView), new uuc(this)).show();
   }
   
   protected void a(BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, ChatMessage paramChatMessage, BubbleInfo paramBubbleInfo)
@@ -389,13 +389,13 @@ public class ArkAppBabyQItemBubbleBuilder
       paramChatMessage = paramView.e;
       if (bool)
       {
-        paramViewHolder = localResources.getColorStateList(2131494223);
+        paramViewHolder = localResources.getColorStateList(2131494230);
         paramChatMessage.setTextColor(paramViewHolder);
         paramView = paramView.e;
         if (!bool) {
           break label99;
         }
-        paramViewHolder = localResources.getColorStateList(2131494222);
+        paramViewHolder = localResources.getColorStateList(2131494229);
         label81:
         paramView.setLinkTextColor(paramViewHolder);
       }
@@ -404,9 +404,9 @@ public class ArkAppBabyQItemBubbleBuilder
     do
     {
       return;
-      paramViewHolder = localResources.getColorStateList(2131494220);
+      paramViewHolder = localResources.getColorStateList(2131494227);
       break;
-      paramViewHolder = localResources.getColorStateList(2131494221);
+      paramViewHolder = localResources.getColorStateList(2131494228);
       break label81;
       if (paramBubbleInfo.jdField_b_of_type_Int == 0)
       {
@@ -415,7 +415,7 @@ public class ArkAppBabyQItemBubbleBuilder
           break label261;
         }
       }
-      for (paramViewHolder = localResources.getColorStateList(2131494221);; paramViewHolder = ColorStateList.valueOf(paramBubbleInfo.c))
+      for (paramViewHolder = localResources.getColorStateList(2131494228);; paramViewHolder = ColorStateList.valueOf(paramBubbleInfo.c))
       {
         paramView.e.setLinkTextColor(paramViewHolder);
         if (!(paramView.e instanceof ETTextView)) {
@@ -478,7 +478,7 @@ public class ArkAppBabyQItemBubbleBuilder
       a(paramViewHolder, paramBaseChatItemLayout, paramChatMessage, paramViewHolder.jdField_a_of_type_ComTencentMobileqqBubbleBubbleInfo);
       a(paramViewHolder, paramChatMessage);
       if ((paramInt1 == paramInt2 - 1) && (paramChatMessage.mAnimFlag)) {
-        jdField_a_of_type_AndroidOsHandler.post(new uqy(this, paramViewHolder, paramChatMessage));
+        jdField_a_of_type_AndroidOsHandler.post(new uua(this, paramViewHolder, paramChatMessage));
       }
       paramChatMessage.mAnimFlag = false;
     } while (paramViewHolder.jdField_a_of_type_AndroidViewView == null);
@@ -549,7 +549,7 @@ public class ArkAppBabyQItemBubbleBuilder
     for (int j = i;; j = 0)
     {
       if (j != 0) {
-        localQQCustomMenu.a(2131363499, this.jdField_a_of_type_AndroidContentContext.getString(2131435066), 2130838309);
+        localQQCustomMenu.a(2131363517, this.jdField_a_of_type_AndroidContentContext.getString(2131435083), 2130838313);
       }
       ChatActivityFacade.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
       super.b(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext);

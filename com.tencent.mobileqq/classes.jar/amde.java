@@ -1,31 +1,30 @@
-import com.tencent.mobileqq.pluginsdk.PluginBaseInfo;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
-import cooperation.qzone.plugin.IQZonePluginManager;
+import android.os.Handler;
+import android.os.Message;
+import android.os.SystemClock;
+import com.tencent.widget.ProgressPieView;
 
 public class amde
-  implements Runnable
+  extends Handler
 {
-  public amde(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity, PluginBaseInfo paramPluginBaseInfo) {}
+  long jdField_a_of_type_Long;
   
-  public void run()
+  public amde(ProgressPieView paramProgressPieView) {}
+  
+  public void handleMessage(Message paramMessage)
   {
-    try
+    int i = (int)(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long);
+    if (i < this.jdField_a_of_type_ComTencentWidgetProgressPieView.a)
     {
-      if (QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity) != null) {
-        QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity).a(this.jdField_a_of_type_ComTencentMobileqqPluginsdkPluginBaseInfo.mID, null, QzoneVerticalVideoDownloadActivity.a(this.jdField_a_of_type_CooperationQzoneQzoneVerticalVideoDownloadActivity));
-      }
+      this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(i);
+      sendEmptyMessageDelayed(0, 1L);
       return;
     }
-    catch (Exception localException)
-    {
-      QLog.e("QzoneVerticalVideoDownloadActivity", 1, localException, new Object[0]);
-    }
+    this.jdField_a_of_type_ComTencentWidgetProgressPieView.setProgress(this.jdField_a_of_type_ComTencentWidgetProgressPieView.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amde
  * JD-Core Version:    0.7.0.1
  */

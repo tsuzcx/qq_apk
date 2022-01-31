@@ -1,31 +1,73 @@
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import java.util.ArrayList;
-import java.util.List;
-import tencent.im.oidb.cmd0x5eb.oidb_0x5eb.ReqBody;
-import tencent.im.oidb.cmd0x66b.Oidb_0x66b.ReqBody;
+import com.tencent.mobileqq.app.ContactSorter;
+import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.data.Friends;
+import com.tencent.mobileqq.data.Groups;
+import com.tencent.mobileqq.data.PublicAccountInfo;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.persistence.Entity;
+import java.util.Comparator;
 
-public class zca
-  implements Runnable
+public final class zca
+  implements Comparator
 {
-  public zca(HotChatManager paramHotChatManager) {}
-  
-  public void run()
+  public int a(Entity paramEntity1, Entity paramEntity2)
   {
-    CardHandler localCardHandler = (CardHandler)this.a.a.a(2);
-    oidb_0x5eb.ReqBody localReqBody = new oidb_0x5eb.ReqBody();
-    Oidb_0x66b.ReqBody localReqBody1 = new Oidb_0x66b.ReqBody();
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(Long.valueOf(Long.parseLong(this.a.a.getCurrentAccountUin())));
-    localReqBody.rpt_uint64_uins.set(localArrayList);
-    localReqBody1.bytes_reqbody_5eb.set(ByteStringMicro.copyFrom(localReqBody.toByteArray()));
-    localReqBody1.uint32_req_pansocialinfo.set(1);
-    localCardHandler.a(localReqBody1);
+    int i = 0;
+    if ((paramEntity1 instanceof Groups))
+    {
+      paramEntity1 = (Groups)paramEntity1;
+      paramEntity2 = (Groups)paramEntity2;
+      return paramEntity1.seqid - paramEntity2.seqid;
+    }
+    Object localObject = "-";
+    String str = "-";
+    int j;
+    if ((paramEntity1 instanceof Friends))
+    {
+      paramEntity1 = (Friends)paramEntity1;
+      localObject = (Friends)paramEntity2;
+      j = paramEntity1.mComparePartInt;
+      paramEntity2 = paramEntity1.mCompareSpell;
+      i = ((Friends)localObject).mComparePartInt;
+      paramEntity1 = ((Friends)localObject).mCompareSpell;
+    }
+    for (;;)
+    {
+      return ContactSorter.a(j, paramEntity2, i, paramEntity1);
+      if ((paramEntity1 instanceof TroopInfo))
+      {
+        paramEntity1 = (TroopInfo)paramEntity1;
+        localObject = (TroopInfo)paramEntity2;
+        j = paramEntity1.mComparePartInt;
+        i = ((TroopInfo)localObject).mComparePartInt;
+        paramEntity2 = paramEntity1.mCompareSpell;
+        paramEntity1 = ((TroopInfo)localObject).mCompareSpell;
+      }
+      else if ((paramEntity1 instanceof DiscussionInfo))
+      {
+        paramEntity1 = (DiscussionInfo)paramEntity1;
+        localObject = (DiscussionInfo)paramEntity2;
+        j = paramEntity1.mComparePartInt;
+        i = ((DiscussionInfo)localObject).mComparePartInt;
+        paramEntity2 = paramEntity1.mCompareSpell;
+        paramEntity1 = ((DiscussionInfo)localObject).mCompareSpell;
+      }
+      else if ((paramEntity1 instanceof PublicAccountInfo))
+      {
+        paramEntity1 = (PublicAccountInfo)paramEntity1;
+        localObject = (PublicAccountInfo)paramEntity2;
+        j = paramEntity1.mComparePartInt;
+        i = ((PublicAccountInfo)localObject).mComparePartInt;
+        paramEntity2 = paramEntity1.mCompareSpell;
+        paramEntity1 = ((PublicAccountInfo)localObject).mCompareSpell;
+      }
+      else
+      {
+        j = 0;
+        paramEntity1 = str;
+        paramEntity2 = (Entity)localObject;
+      }
+    }
   }
 }
 

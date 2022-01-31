@@ -1,14 +1,6 @@
-import com.tencent.mobileqq.armap.SdCardImageAnimView;
-
-public class aawc
-  implements Runnable
+public abstract interface aawc
 {
-  public aawc(SdCardImageAnimView paramSdCardImageAnimView) {}
-  
-  public void run()
-  {
-    SdCardImageAnimView.b(this.a);
-  }
+  public abstract void a(String[] paramArrayOfString);
 }
 
 

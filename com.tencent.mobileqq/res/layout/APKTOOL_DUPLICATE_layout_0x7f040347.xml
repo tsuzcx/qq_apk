@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020435" android:layout_width="fill_parent" android:layout_height="77.0dip"
+<merge android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11f8" android:layout_width="38.0dip" android:layout_height="57.0dip" android:layout_marginLeft="14.0dip" android:scaleType="fitXY" />
-    <RelativeLayout android:layout_width="wrap_content" android:layout_height="57.0dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip">
-        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a11f9">
-            <TextView android:textSize="13.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0024" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11fa" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="@null" android:maxLines="2" />
-        </LinearLayout>
-        <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11f9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-            <TextView android:textSize="13.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0024" android:ellipsize="end" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b28b4" android:singleLine="true" />
-            <TextView android:textSize="12.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0024" android:ellipsize="end" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a11fb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:text="@null" android:singleLine="true" />
-        </LinearLayout>
-    </RelativeLayout>
-</LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1211" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020439" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0394" android:layout_marginTop="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0280" android:baselineAligned="false">
+        <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a120d" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0396" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0396" android:layout_marginLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d038f" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022274" />
+        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d038b" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0546" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a120e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@null" />
+    </LinearLayout>
+    <com.tencent.biz.widgets.GridViewForScrollView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1212" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@null" android:numColumns="2" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1211" />
+    <com.tencent.mobileqq.widget.RightArrowTextView android:textSize="14.0dip" android:textColor="#ff777777" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1210" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020439" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0394" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b200a" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1212" />
+</merge>

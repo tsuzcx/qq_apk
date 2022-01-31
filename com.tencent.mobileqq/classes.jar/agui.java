@@ -1,18 +1,13 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.fragment.CaptureSoDownloadFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
 
-public class agui
+class agui
   implements Runnable
 {
-  public agui(CaptureSoDownloadFragment paramCaptureSoDownloadFragment, String paramString) {}
+  agui(aguh paramaguh) {}
   
   public void run()
   {
-    CaptureSoDownloadFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCaptureSoDownloadFragment).setText(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("CaptureSoDownloadFragment", 2, "setTipsTextData: textData=" + this.jdField_a_of_type_JavaLangString);
-    }
+    this.a.a.a(false);
   }
 }
 

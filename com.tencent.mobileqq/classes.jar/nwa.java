@@ -1,16 +1,17 @@
-import com.tencent.biz.qqstory.storyHome.memory.model.StoryQQ2UidConverter;
-import com.tencent.biz.qqstory.storyHome.memory.model.StoryQQ2UidConverter.StoryQQ2UidCallback;
+import com.tencent.biz.qqstory.model.item.HotTopicInfoItem;
+import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
+import com.tencent.biz.qqstory.storyHome.discover.view.IDiscoverView;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
-class nwa
+public class nwa
   implements Runnable
 {
-  nwa(nvz paramnvz, String paramString) {}
+  public nwa(DiscoverPresenter paramDiscoverPresenter, HotTopicInfoItem paramHotTopicInfoItem) {}
   
   public void run()
   {
-    if (StoryQQ2UidConverter.a(this.jdField_a_of_type_Nvz.a) != null) {
-      StoryQQ2UidConverter.a(this.jdField_a_of_type_Nvz.a).a(this.jdField_a_of_type_JavaLangString, false);
-    }
+    DiscoverPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter).a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemHotTopicInfoItem);
+    SLog.b("Q.qqstory.discover.DiscoverPresenter", "topic %d info %s", Long.valueOf(DiscoverPresenter.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverViewDiscoverPresenter)), this.jdField_a_of_type_ComTencentBizQqstoryModelItemHotTopicInfoItem);
   }
 }
 

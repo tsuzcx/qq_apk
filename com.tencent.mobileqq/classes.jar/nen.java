@@ -1,61 +1,36 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Canvas;
-import android.graphics.Matrix;
-import android.graphics.drawable.BitmapDrawable;
-import android.view.View;
-import android.view.View.MeasureSpec;
-import android.view.ViewGroup;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.FrameLayout;
-import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.job.AddInteractViewJob;
-import com.tencent.biz.qqstory.shareGroup.icon.UrlBitmapDownloader.Listener;
-import com.tencent.biz.qqstory.utils.BitmapUtils;
-import com.tencent.biz.qqstory.widget.InteractContainerLayout;
-import com.tencent.common.app.BaseApplicationImpl;
-import java.io.File;
-import java.net.URI;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.base.QQStoryHandler;
+import com.tencent.biz.qqstory.base.QQStoryManager;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabCheckActiveRequest;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabCheckActiveRequest.MsgTabCheckActiveResponse;
+import com.tencent.qphone.base.util.QLog;
 
 public class nen
-  implements UrlBitmapDownloader.Listener
+  implements CmdTaskManger.CommandCallback
 {
-  public nen(AddInteractViewJob paramAddInteractViewJob) {}
+  public nen(MsgTabStoryNodeConfigManager paramMsgTabStoryNodeConfigManager, QQStoryHandler paramQQStoryHandler, QQStoryManager paramQQStoryManager) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void a(@NonNull MsgTabCheckActiveRequest paramMsgTabCheckActiveRequest, @Nullable MsgTabCheckActiveRequest.MsgTabCheckActiveResponse paramMsgTabCheckActiveResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    paramString = BaseApplicationImpl.getContext();
-    Object localObject = new InteractContainerLayout(paramString);
-    ((InteractContainerLayout)localObject).a(this.a.a);
-    FrameLayout localFrameLayout = new FrameLayout(paramString);
-    localFrameLayout.setBackgroundDrawable(new BitmapDrawable(paramString.getResources(), paramBitmap));
-    localFrameLayout.setLayoutParams(new ViewGroup.LayoutParams(paramBitmap.getWidth(), paramBitmap.getHeight()));
-    localFrameLayout.addView((View)localObject, new FrameLayout.LayoutParams(-1, -1));
-    localFrameLayout.measure(View.MeasureSpec.makeMeasureSpec(paramBitmap.getWidth(), 1073741824), View.MeasureSpec.makeMeasureSpec(paramBitmap.getHeight(), 1073741824));
-    localFrameLayout.layout(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-    ((InteractContainerLayout)localObject).a(this.a.a);
-    localObject = Bitmap.createBitmap(paramBitmap.getWidth(), paramBitmap.getHeight(), paramBitmap.getConfig());
-    Canvas localCanvas = new Canvas((Bitmap)localObject);
-    localCanvas.drawBitmap(paramBitmap, new Matrix(), null);
-    localFrameLayout.draw(localCanvas);
-    paramString = paramString.getCacheDir().getAbsolutePath() + "/" + System.currentTimeMillis() + ".png";
-    if (BitmapUtils.a((Bitmap)localObject, paramString)) {
-      this.a.a("result", new File(paramString).toURI().toString());
-    }
-    for (;;)
+    if ((paramErrorMessage.isFail()) || (paramMsgTabCheckActiveResponse == null))
     {
-      ((Bitmap)localObject).recycle();
-      AddInteractViewJob.a(this.a, true);
+      QLog.w("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 1, "get active fail" + paramErrorMessage.getErrorMessage());
       return;
-      this.a.a("result", this.a.a.mVideoThumbnailUrl);
     }
-  }
-  
-  public void a(String paramString, Throwable paramThrowable)
-  {
-    this.a.a("result", this.a.a.mVideoThumbnailUrl);
-    AddInteractViewJob.b(this.a, true);
+    if (paramMsgTabCheckActiveResponse.b == 1)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager.a(true);
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryHandler.b(2);
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager.a = 2;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "active value is " + paramMsgTabCheckActiveResponse.b);
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a(paramMsgTabCheckActiveResponse.a);
   }
 }
 

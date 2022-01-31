@@ -1,11 +1,15 @@
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
+import com.tencent.biz.qqstory.newshare.model.Job;
+import com.tencent.biz.qqstory.newshare.model.JobExecutor;
 
 public class nhl
   implements Runnable
 {
-  public nhl(VideoPlayModeBase paramVideoPlayModeBase) {}
+  public nhl(JobExecutor paramJobExecutor, Job paramJob) {}
   
-  public void run() {}
+  public void run()
+  {
+    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob.a(this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelJob.b());
+  }
 }
 
 

@@ -1,25 +1,39 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.utils.AudioUtil;
 
-public class akbq
-  implements TroopMemberApiClient.Callback
+public final class akbq
+  implements MediaPlayer.OnCompletionListener
 {
-  public akbq(SwiftBrowserShareMenuHandler paramSwiftBrowserShareMenuHandler) {}
+  public akbq(MediaPlayer.OnCompletionListener paramOnCompletionListener, Handler paramHandler) {}
   
-  public void a(Bundle paramBundle)
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    int i = paramBundle.getInt("fontSize", 1);
-    if (i != this.a.b)
+    if (AudioUtil.b() == 0)
     {
-      this.a.b = i;
-      this.a.b(this.a.b);
+      if (this.jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener != null)
+      {
+        if ((this.jdField_a_of_type_AndroidOsHandler == null) || (this.jdField_a_of_type_AndroidOsHandler.getLooper() == Looper.myLooper()))
+        {
+          this.jdField_a_of_type_AndroidMediaMediaPlayer$OnCompletionListener.onCompletion(AudioUtil.a);
+          return;
+        }
+        AudioUtil.a();
+        this.jdField_a_of_type_AndroidOsHandler.post(new akbr(this));
+        return;
+      }
+      AudioUtil.a();
+      return;
     }
+    AudioUtil.c();
+    AudioUtil.a.start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akbq
  * JD-Core Version:    0.7.0.1
  */

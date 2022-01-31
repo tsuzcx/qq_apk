@@ -15,8 +15,8 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.SwipPinnedHeaderExpandableListView;
-import wkb;
-import wkc;
+import wng;
+import wnh;
 
 public class DiscussionFragment
   extends ContactsBaseFragment
@@ -24,7 +24,7 @@ public class DiscussionFragment
 {
   public ContactsDisAdapter a;
   protected SwipPinnedHeaderExpandableListView a;
-  protected wkc a;
+  protected wnh a;
   public boolean c;
   
   private void h()
@@ -58,14 +58,14 @@ public class DiscussionFragment
     {
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView = new TroopFragment.ContactsPinnedHeaderExpandableListView(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setId(2131362391);
-      this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setSelector(2131492923);
+      this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setSelector(2131492924);
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setNeedCheckSpringback(true);
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setGroupIndicator(null);
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.setDivider(null);
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.mForContacts = true;
       paramLayoutInflater = paramLayoutInflater.inflate(2130968823, this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView, false);
-      paramBundle = (TextView)paramLayoutInflater.findViewById(2131363924);
-      paramBundle.setText(2131438928);
+      paramBundle = (TextView)paramLayoutInflater.findViewById(2131363947);
+      paramBundle.setText(2131438956);
       paramLayoutInflater.setContentDescription(paramBundle.getText());
       paramLayoutInflater.setOnClickListener(this);
       this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.addHeaderView(paramLayoutInflater);
@@ -106,7 +106,7 @@ public class DiscussionFragment
     if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsAdapterContactsDisAdapter == null) {
       h();
     }
-    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.postDelayed(new wkb(this), 200L);
+    this.jdField_a_of_type_ComTencentWidgetSwipPinnedHeaderExpandableListView.postDelayed(new wng(this), 200L);
   }
   
   public void b()
@@ -144,18 +144,18 @@ public class DiscussionFragment
   
   protected void d()
   {
-    if (this.jdField_a_of_type_Wkc == null) {
-      this.jdField_a_of_type_Wkc = new wkc(this, null);
+    if (this.jdField_a_of_type_Wnh == null) {
+      this.jdField_a_of_type_Wnh = new wnh(this, null);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Wkc);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Wnh);
     }
   }
   
   protected void e()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_Wkc != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Wkc);
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_Wnh != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_Wnh);
     }
   }
   

@@ -1,42 +1,54 @@
-import android.content.IntentFilter;
-import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.QNotificationManager;
-import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.RegisterSendUpSms;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.AccountObserver;
 
 public class tqj
-  implements Runnable
+  extends AccountObserver
 {
-  public tqj(SplashActivity paramSplashActivity) {}
+  public tqj(RegisterSendUpSms paramRegisterSendUpSms) {}
   
-  public void run()
+  public void onRegisterQuerySmsStatResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    try
-    {
-      QNotificationManager localQNotificationManager = new QNotificationManager(this.a);
-      localQNotificationManager.cancel("SplashActivity", 120);
-      QZoneManagerImp localQZoneManagerImp = (QZoneManagerImp)this.a.app.getManager(9);
-      if (localQZoneManagerImp != null) {
-        localQZoneManagerImp.a(1, 0);
-      }
-      localQNotificationManager.cancel("SplashActivity", 121);
-      localQNotificationManager.cancel("SplashActivity", 122);
-      localQNotificationManager.cancel("SplashActivity", 123);
-      localQNotificationManager.cancel("SplashActivity", 129);
-      localQNotificationManager.cancel("SplashActivity", 144);
-      localQNotificationManager.cancel("SplashActivity", 193);
-      localQNotificationManager.cancel("SplashActivity", 194);
-      localQNotificationManager.cancel("SplashActivity", 211);
-      SplashActivity.a(this.a, new tqk(this));
-      this.a.registerReceiver(SplashActivity.a(this.a), new IntentFilter("before_account_change"));
+    RegisterSendUpSms.c(this.a, paramInt1);
+    if (QLog.isColorLevel()) {
+      QLog.d("RegisterSendUpSms", 2, "onRegisterQuerySmsStatResp isSuccess=" + paramBoolean + ", code=" + paramInt1 + ", uin=" + paramString1 + ", nick=" + paramString2 + ", faceUrl=" + paramString3 + ", errmsg=" + paramString4);
+    }
+    if (paramInt1 == 4) {
       return;
     }
-    catch (Exception localException) {}
+    RegisterSendUpSms.a(this.a).setEnabled(true);
+    if (paramInt1 == 0)
+    {
+      RegisterSendUpSms.a(this.a).setText("验证成功");
+      RegisterSendUpSms.a(this.a, paramString1);
+      RegisterSendUpSms.b(this.a, paramString2);
+      RegisterSendUpSms.c(this.a, paramString3);
+      RegisterSendUpSms.a(this.a);
+      return;
+    }
+    paramString1 = paramString4;
+    if (paramInt1 == -1) {}
+    try
+    {
+      paramString1 = new String(paramArrayOfByte, "utf-8");
+      QQToast.a(this.a, paramString1.trim(), 0).b(this.a.getTitleBarHeight());
+      return;
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      for (;;)
+      {
+        paramArrayOfByte.printStackTrace();
+        paramString1 = paramString4;
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tqj
  * JD-Core Version:    0.7.0.1
  */

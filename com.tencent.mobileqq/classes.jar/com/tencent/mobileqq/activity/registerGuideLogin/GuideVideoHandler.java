@@ -20,7 +20,7 @@ import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import mqq.os.MqqHandler;
-import xio;
+import xlv;
 
 public class GuideVideoHandler
   implements IMediaPlayer.OnCompletionListener, IMediaPlayer.OnErrorListener, IMediaPlayer.OnInfoListener, IMediaPlayer.OnPreparedListener
@@ -147,7 +147,7 @@ public class GuideVideoHandler
       return;
     }
     this.jdField_e_of_type_Boolean = true;
-    ThreadManager.postImmediately(new xio(this, paramContext, paramInt, paramMqqHandler), null, false);
+    ThreadManager.postImmediately(new xlv(this, paramContext, paramInt, paramMqqHandler), null, false);
   }
   
   public void a(IMediaPlayer paramIMediaPlayer)

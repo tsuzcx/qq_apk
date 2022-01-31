@@ -1,143 +1,82 @@
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.webviewplugin.NewReportPlugin;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.open.base.MD5Utils;
-import com.tencent.open.base.http.HttpBaseUtil;
-import com.tencent.open.base.http.HttpBaseUtil.Statistic;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.troop.robot.RobotResourcesManager;
+import com.tencent.mobileqq.troop.robot.RobotResourcesManager.LoadResourceCallback;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.HashMap;
 
-public final class ajmf
-  implements Runnable
+public class ajmf
+  extends DownloadListener
 {
-  public ajmf(int paramInt, String paramString1, String paramString2, String paramString3, BaseActivity paramBaseActivity, QQProgressDialog paramQQProgressDialog) {}
+  public ajmf(RobotResourcesManager paramRobotResourcesManager) {}
   
-  public void run()
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    Object localObject = "";
-    for (;;)
+    String str = paramDownloadTask.a().getString("resId");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.robot.RobotResourcesManager", 2, "onDown task; errCode = " + paramDownloadTask.a + " url = " + paramDownloadTask.c);
+    }
+    RobotResourcesManager.LoadResourceCallback localLoadResourceCallback = (RobotResourcesManager.LoadResourceCallback)this.a.b.get(str);
+    if (paramDownloadTask.a == 0)
     {
-      StringBuilder localStringBuilder;
-      try
-      {
-        switch (this.jdField_a_of_type_Int)
-        {
-        default: 
-          localStringBuilder = new StringBuilder();
-          localStringBuilder.append("system=android");
-          localStringBuilder.append("&");
-          localStringBuilder.append("version=7.6.0");
-          localStringBuilder.append("&");
-          localStringBuilder.append("uintype=1");
-          localStringBuilder.append("&");
-          localStringBuilder.append("eviluin=" + this.jdField_a_of_type_JavaLangString);
-          localStringBuilder.append("&");
-          localStringBuilder.append("appname=KQQ");
-          localStringBuilder.append("&");
-          localStringBuilder.append("appid=2400002");
-          localStringBuilder.append("&");
-          localStringBuilder.append("subapp=" + (String)localObject);
-          localStringBuilder.append("&");
-          if (this.jdField_a_of_type_Int == 10000)
-          {
-            localStringBuilder.append("scene=10028");
-            if (this.jdField_a_of_type_Int == 11011) {
-              localStringBuilder.append("&groupid=").append(this.b);
-            }
-            localStringBuilder.append("&");
-            if (!TextUtils.isEmpty(this.c)) {
-              break label772;
-            }
-            localStringBuilder.append("srv_para=" + ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.app, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int));
-            if (this.jdField_a_of_type_Int != 1102)
-            {
-              str2 = "abcdabcdabcdabcd";
-              localObject = str2;
-            }
-          }
-          break;
-        }
-      }
-      catch (Exception localException1)
-      {
-        String str2;
-        String str3;
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new ajmh(this, localException1));
-        return;
-      }
-      try
-      {
-        str3 = HttpBaseUtil.a("http://jubao.qq.com/uniform_impeach/impeach_cryptokey", "GET", new Bundle()).jdField_a_of_type_JavaLangString;
-        localObject = str2;
-        QLog.d("cryptograph", 1, "get cryptograph step1 : get response=" + str3);
-        localObject = str2;
-        str2 = NewReportPlugin.a(str3);
-        localObject = str2;
-        QLog.d("cryptograph", 1, "get cryptograph step2 : get encryptedKey=" + str2);
-        localObject = str2;
-      }
-      catch (Exception localException2)
-      {
-        QLog.d("cryptograph", 1, "get cryptograph exception" + localException2.getMessage());
-        continue;
-        if (this.jdField_a_of_type_Int != 10000) {
-          continue;
-        }
-        localStringBuilder.append("|groupid:" + this.b);
-        localStringBuilder.append("|SubEntrence:4");
-        continue;
-      }
-      localObject = NewReportPlugin.a("d41d8cd98f00b204e9800998ecf8427e", (String)localObject);
-      QLog.d("cryptograph", 1, "get cryptograph step3 : get decryptedKey=" + (String)localObject);
-      localObject = MD5Utils.d("android_7.6.0_" + this.jdField_a_of_type_Int + "_" + (String)localObject);
-      localObject = MD5Utils.d(this.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getCurrentAccountUin() + "_" + (String)localObject);
-      QLog.d("cryptograph", 1, "get cryptograph step4 : get cryptograph=" + (String)localObject);
-      localStringBuilder.append("&cryptograph=" + (String)localObject);
-      if ((this.jdField_a_of_type_Int == 1101) || (this.jdField_a_of_type_Int == 10026) || (this.jdField_a_of_type_Int == 10027))
-      {
-        if (!TextUtils.isEmpty(this.b)) {
-          localStringBuilder.append("|groupid:" + this.b);
-        }
-        localObject = localStringBuilder.toString();
-        QLog.d("cryptograph", 1, "postData=" + (String)localObject);
-        this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.runOnUiThread(new ajmg(this, (String)localObject));
-        return;
-        localStringBuilder.append("scene=" + this.jdField_a_of_type_Int);
-        continue;
-        label772:
-        localStringBuilder.append("srv_para=" + this.c);
-      }
-      else
-      {
-        continue;
-        String str1 = "c2c";
-        continue;
-        str1 = "group";
-        continue;
-        str1 = "group_info";
-        continue;
-        str1 = "invite_togroup";
-        continue;
-        str1 = "discuss";
-        continue;
-        str1 = "nearby_info";
-        continue;
-        str1 = "c2c_chat";
-        continue;
-        str1 = "c2c_info";
-        continue;
-        str1 = "nearby_chat";
-        continue;
-        str1 = "person_in_group";
+      paramDownloadTask = new File(this.a.b(str));
+      if (!paramDownloadTask.exists()) {
+        break label234;
       }
     }
+    for (;;)
+    {
+      int i;
+      try
+      {
+        FileUtils.a(paramDownloadTask.getAbsolutePath(), AppConstants.cd, false);
+        i = 1;
+        if (i != 0)
+        {
+          this.a.a.put(str, Integer.valueOf(3));
+          if (localLoadResourceCallback != null) {
+            localLoadResourceCallback.a(0);
+          }
+          this.a.b.remove(str);
+          return;
+        }
+      }
+      catch (Exception paramDownloadTask)
+      {
+        paramDownloadTask = paramDownloadTask;
+        paramDownloadTask.printStackTrace();
+        return;
+      }
+      finally {}
+      this.a.a.put(str, Integer.valueOf(4));
+      if (localLoadResourceCallback != null)
+      {
+        localLoadResourceCallback.a(-1);
+        continue;
+        this.a.a.put(str, Integer.valueOf(4));
+        if (localLoadResourceCallback != null)
+        {
+          localLoadResourceCallback.a(-1);
+          continue;
+          label234:
+          i = 0;
+        }
+      }
+    }
+  }
+  
+  public boolean onStart(DownloadTask paramDownloadTask)
+  {
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajmf
  * JD-Core Version:    0.7.0.1
  */

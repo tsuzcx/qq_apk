@@ -1,19 +1,46 @@
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.nearby.now.send.capturepart.QQNowVideoFlowCallback;
-
-class wui
-  implements MediaScanner.OnMediaInfoScannerListener
+public class wui
 {
-  wui(wuf paramwuf, int paramInt) {}
+  public String a;
+  public boolean a;
+  public String b;
+  public String c;
+  public String d;
   
-  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
+  public wui(String paramString)
   {
-    this.jdField_a_of_type_Wuf.a.d();
-    if (QQNowVideoFlowCallback.a(this.jdField_a_of_type_Wuf.a, paramLocalMediaInfo)) {
-      this.jdField_a_of_type_Wuf.a.a(paramLocalMediaInfo, this.jdField_a_of_type_Int);
+    String[] arrayOfString = paramString.split(" ");
+    if (arrayOfString.length == 1)
+    {
+      this.jdField_a_of_type_JavaLangString = arrayOfString[0];
+      this.jdField_a_of_type_Boolean = true;
+      return;
     }
+    if (arrayOfString.length == 4)
+    {
+      this.b = arrayOfString[0];
+      this.c = arrayOfString[1];
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaLangString = arrayOfString[3];
+      return;
+    }
+    if (arrayOfString.length > 4)
+    {
+      int j = arrayOfString.length;
+      paramString = "";
+      int i = 0;
+      while (i < j - 4)
+      {
+        paramString = paramString + arrayOfString[i] + " ";
+        i += 1;
+      }
+      this.d = paramString;
+      this.b = arrayOfString[(j - 4)];
+      this.c = arrayOfString[(j - 3)];
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaLangString = arrayOfString[(j - 1)];
+      return;
+    }
+    throw new RuntimeException("format error!");
   }
 }
 

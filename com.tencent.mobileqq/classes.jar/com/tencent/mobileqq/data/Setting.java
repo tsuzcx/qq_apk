@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.data;
 
-import aboh;
+import abvi;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -11,7 +11,7 @@ public class Setting
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aboh();
+  public static final Parcelable.Creator CREATOR = new abvi();
   public byte bFaceFlags;
   public byte bHeadType;
   public byte bSourceType;

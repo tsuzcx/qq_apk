@@ -1,16 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class wfm
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public wfm(SearchBaseActivity paramSearchBaseActivity) {}
+  public wfm(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.setResult(1);
-    this.a.finish();
+    if (!NetworkUtil.g(this.a.getApplicationContext())) {
+      QQToast.a(this.a, 2131437530, 1).a();
+    }
+    for (;;)
+    {
+      paramDialogInterface.dismiss();
+      return;
+      this.a.W_();
+    }
   }
 }
 

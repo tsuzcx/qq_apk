@@ -53,9 +53,9 @@ import tencent.im.oidb.cmd0x9fb.oidb_0x9fb.RgroupInfo;
 import tencent.im.oidb.cmd0x9fb.oidb_0x9fb.RspBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 import tencent.qun.group_activity.group_activity.GroupAct;
-import zit;
-import ziu;
-import ziv;
+import zlz;
+import zma;
+import zmb;
 
 public class RecommendTroopManagerImp
   implements Manager
@@ -141,7 +141,7 @@ public class RecommendTroopManagerImp
         }
         if ((paramArrayOfByte.uint32_result.get() == 0) && (paramInt != 1) && (paramInt == 2))
         {
-          ThreadManager.post(new ziu(this, paramLong, paramArrayOfByte), 8, null, true);
+          ThreadManager.post(new zma(this, paramLong, paramArrayOfByte), 8, null, true);
           return;
         }
       }
@@ -222,7 +222,7 @@ public class RecommendTroopManagerImp
     if ((paramAppInterface == null) || (TextUtils.isEmpty(paramString))) {
       return;
     }
-    ThreadManager.post(new ziv(paramAppInterface, paramInt, paramString), 5, null, true);
+    ThreadManager.post(new zmb(paramAppInterface, paramInt, paramString), 5, null, true);
   }
   
   public static void a(AppInterface paramAppInterface, int paramInt, String paramString, BusinessObserver paramBusinessObserver)
@@ -495,7 +495,7 @@ public class RecommendTroopManagerImp
   
   public void a(long paramLong, int paramInt)
   {
-    a(2, paramLong, paramInt, new zit(this, paramLong));
+    a(2, paramLong, paramInt, new zlz(this, paramLong));
   }
   
   public void a(String paramString)

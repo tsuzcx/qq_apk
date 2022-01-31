@@ -1,19 +1,28 @@
-import android.animation.ValueAnimator;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.animation.AnimatorFactory.SimpleAnimatorListener;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
 
 public class oja
-  extends AnimatorFactory.SimpleAnimatorListener
+  implements View.OnClickListener
 {
-  public oja(ElasticImageView paramElasticImageView) {}
+  public oja(EditTextDialog paramEditTextDialog) {}
   
-  public void a(ValueAnimator paramValueAnimator)
+  public void onClick(View paramView)
   {
-    this.a.d = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    ElasticImageView.a(this.a, this.a.d);
-    SLog.b("ElasticImageView", "updateAnimator:" + this.a.d);
-    ElasticImageView.a(this.a);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setText(this.a.jdField_a_of_type_JavaLangString);
+    this.a.jdField_a_of_type_AndroidWidgetEditText.setTextColor(this.a.d);
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerModelTextInfo.a = this.a.d;
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleLayerModelTextInfo.d = this.a.e;
+    this.a.dismiss();
+    if ((this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a == 3)) {
+      LpReportInfo_pf00064.allReport(615, 3, 3);
+    }
+    VideoEditReport.a("0X80076C5");
+    VideoEditReport.b("0X80075D9");
   }
 }
 

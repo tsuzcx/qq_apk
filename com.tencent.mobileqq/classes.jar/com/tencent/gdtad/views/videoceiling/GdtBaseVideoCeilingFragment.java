@@ -74,8 +74,8 @@ public abstract class GdtBaseVideoCeilingFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969007, paramViewGroup, false);
-    this.a = ((GdtVideoCeilingView)paramLayoutInflater.findViewById(2131364661));
+    paramLayoutInflater = paramLayoutInflater.inflate(2130969006, paramViewGroup, false);
+    this.a = ((GdtVideoCeilingView)paramLayoutInflater.findViewById(2131364683));
     this.a.a(paramBundle);
     if ((getArguments() != null) && ((getArguments().getSerializable("data") instanceof GdtVideoCeilingData))) {
       this.a.setData((GdtVideoCeilingData)getArguments().getSerializable("data"));
@@ -109,7 +109,7 @@ public abstract class GdtBaseVideoCeilingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.views.videoceiling.GdtBaseVideoCeilingFragment
  * JD-Core Version:    0.7.0.1
  */

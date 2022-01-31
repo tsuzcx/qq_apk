@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.dating.widget;
 
-import abqw;
+import abxx;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Handler;
@@ -80,7 +80,7 @@ public class InputBar
         return;
       }
     } while ((paramInt2 == this.d) || (paramInt2 == this.g));
-    getHandler().post(new abqw(this, paramInt2));
+    getHandler().post(new abxx(this, paramInt2));
     this.d = paramInt2;
   }
   

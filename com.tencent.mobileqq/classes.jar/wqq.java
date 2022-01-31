@@ -1,19 +1,34 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.phone.ContactListView;
-import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.activity.SplashActivity;
+import com.tencent.mobileqq.activity.main.MainAssistObserver;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.observer.QZoneObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class wqq
-  extends FriendListObserver
+  extends QZoneObserver
 {
-  public wqq(ContactListView paramContactListView) {}
+  public wqq(MainAssistObserver paramMainAssistObserver) {}
   
-  protected void onAddFriend(String paramString) {}
-  
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  protected void a(boolean paramBoolean1, boolean paramBoolean2, long paramLong)
   {
-    if ((paramBoolean1) && (paramBoolean2) && (!paramBoolean3)) {
-      this.a.j();
+    if ((paramBoolean1) && (paramBoolean2))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MainActivity", 2, "inform onGetQZoneFeedCountFin");
+      }
+      if ((this.a.a != null) && (this.a.a.app != null)) {}
     }
+    else
+    {
+      return;
+    }
+    QQAppInterface localQQAppInterface = this.a.a.app;
+    if (!GuardManager.a.a()) {
+      ThreadManager.post(new wqr(this, localQQAppInterface), 8, null, false);
+    }
+    this.a.g();
   }
 }
 

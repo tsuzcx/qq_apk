@@ -28,6 +28,11 @@ public class PicUploadInfo$Builder
     this.jdField_g_of_type_JavaLangString = paramString;
   }
   
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_g_of_type_Boolean = paramBoolean;
+  }
+  
   public void b(int paramInt)
   {
     this.jdField_f_of_type_Int = paramInt;

@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameCmdChannel.IRequestHandler;
-import java.util.Comparator;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
 
 public class ynv
-  implements Comparator
+  implements Runnable
 {
-  public ynv(CmGameCmdChannel paramCmGameCmdChannel) {}
+  public ynv(HotChatCenterFragment paramHotChatCenterFragment) {}
   
-  public int a(CmGameCmdChannel.IRequestHandler paramIRequestHandler1, CmGameCmdChannel.IRequestHandler paramIRequestHandler2)
+  public void run()
   {
-    return paramIRequestHandler1.a() - paramIRequestHandler2.a();
+    this.a.b();
   }
 }
 

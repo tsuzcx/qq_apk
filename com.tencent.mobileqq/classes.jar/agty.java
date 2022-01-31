@@ -1,42 +1,50 @@
-import android.app.Activity;
 import android.content.Context;
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.av.app.PstnSessionInfo;
+import com.tencent.av.utils.PstnUtils;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qcall.QCallFacade;
+import com.tencent.mobileqq.service.message.MessageCache;
+import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
+import com.tencent.mobileqq.utils.kapalaiadapter.MobileIssueSettings;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-public class agty
-  implements Runnable
+public final class agty
+  implements ActionSheet.OnButtonClickListener
 {
-  public agty(CameraCaptureFragment paramCameraCaptureFragment, String paramString) {}
+  public agty(ActionSheet paramActionSheet, int[] paramArrayOfInt, int paramInt1, QQAppInterface paramQQAppInterface, Context paramContext, PstnSessionInfo paramPstnSessionInfo, int paramInt2, String paramString) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment.getActivity();
-    if (localObject == null) {}
-    do
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    switch (this.jdField_a_of_type_ArrayOfInt[paramInt])
     {
-      for (;;)
+    default: 
+    case 0: 
+      do
       {
         return;
-        QLog.e("CameraCaptureFragment", 2, "onCameraStarted error = " + this.jdField_a_of_type_JavaLangString);
-        String str = ((Activity)localObject).getString(2131428347);
-        localObject = DialogUtil.a((Context)localObject, 230).setMessage(str).setPositiveButton(((Activity)localObject).getString(2131428346), new agtz(this, (Activity)localObject));
-        try
+        if ((this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2))
         {
-          ((QQCustomDialog)localObject).setCancelable(false);
-          if (!CameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment))
-          {
-            ((QQCustomDialog)localObject).show();
-            CameraCaptureFragment.b(this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureFragmentCameraCaptureFragment, true);
-            return;
-          }
+          ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentAvAppPstnSessionInfo, this.b);
+          return;
         }
-        catch (WindowManager.BadTokenException localBadTokenException) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("CameraCaptureFragment", 2, "", localBadTokenException);
+      } while (this.jdField_a_of_type_Int != 5);
+      PstnUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, 1, 3);
+      return;
+    }
+    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    if ((!MobileIssueSettings.a) && (KapalaiAdapterUtil.a().a())) {
+      KapalaiAdapterUtil.a().a(paramView);
+    }
+    this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+    paramView = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a();
+    long l = MessageCache.a();
+    paramView.a(this.jdField_a_of_type_JavaLangString, 26, -1, l, this.jdField_a_of_type_JavaLangString);
   }
 }
 

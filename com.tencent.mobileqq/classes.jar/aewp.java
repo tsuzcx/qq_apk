@@ -1,30 +1,47 @@
-import android.view.View;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.profilecard.moment.BaseMomentItemBuilder;
-import com.tencent.mobileqq.nearby.profilecard.moment.BaseMomentItemBuilder.MomentViewHolder;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.data.MomentFeedInfo;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Bundle;
+import com.tencent.mobileqq.nearby.now.protocol.CsTask.Callback;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
+import com.tencent.mobileqq.pb.ByteStringMicro;
+import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
+import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.pb.now.ilive_feeds_write.AddFeedRsp;
+import com.tencent.qphone.base.util.QLog;
 
 public class aewp
-  implements ActionSheet.OnButtonClickListener
+  implements CsTask.Callback
 {
-  public aewp(BaseMomentItemBuilder paramBaseMomentItemBuilder, BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder, String[] paramArrayOfString, String paramString, ActionSheet paramActionSheet) {}
+  public aewp(VideoFeedsUploader paramVideoFeedsUploader) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (!NetworkUtil.g(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_AndroidContentContext)) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_AndroidContentContext, 1, "网络异常，无法操作", 0).a();
-    }
-    for (;;)
+    paramBundle = new ilive_feeds_write.AddFeedRsp();
+    try
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      paramBundle.mergeFrom(paramArrayOfByte);
+      if (paramBundle.ret.get() != 0)
+      {
+        VideoFeedsUploader.a(this.a).a = paramBundle.ret.get();
+        VideoFeedsUploader.a(this.a).i = new String(paramBundle.err_msg.get().toByteArray());
+        VideoFeedsUploader.a(this.a, VideoFeedsUploader.a(this.a));
+        return;
+      }
+      VideoFeedsUploader.a(this.a).a = 0;
+      VideoFeedsUploader.a(this.a).d = new String(paramBundle.feed_id.get().toByteArray());
+      if (QLog.isColorLevel()) {
+        QLog.i("VideoFeedsUploader", 2, "feedId=" + VideoFeedsUploader.a(this.a).d);
+      }
+      VideoFeedsUploader.d(this.a);
+      VideoFeedsUploader.a(this.a, 100, 0);
+      VideoFeedsUploader.a(this.a, VideoFeedsUploader.a(this.a));
       return;
-      paramView = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder.a.c;
-      ((NearbyMomentManager)this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(262)).a(paramView, this.jdField_a_of_type_ArrayOfJavaLangString[paramInt], this.jdField_a_of_type_JavaLangString, new aewq(this, paramView));
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      VideoFeedsUploader.a(this.a).a = -1005;
+      VideoFeedsUploader.a(this.a, VideoFeedsUploader.a(this.a));
+      paramArrayOfByte.printStackTrace();
     }
   }
 }

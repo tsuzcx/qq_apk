@@ -1,36 +1,22 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.ClipboardManager;
-import android.view.View;
-import com.tencent.mobileqq.structmsg.StructMsgClickHandler;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.UniteSearchHandler;
+import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
+import mqq.os.MqqHandler;
 
-public final class ahtg
-  implements ActionSheet.OnButtonClickListener
+public class ahtg
+  implements Runnable
 {
-  public ahtg(String paramString, Context paramContext) {}
+  public ahtg(HotWordsForSubBussFragment paramHotWordsForSubBussFragment, boolean paramBoolean) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      StructMsgClickHandler.a().dismiss();
-      return;
-      paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-      this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-      continue;
-      ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
-    }
+    byte[] arrayOfByte = this.jdField_a_of_type_ComTencentMobileqqSearchFragmentHotWordsForSubBussFragment.a.a(UniteSearchHandler.a);
+    ThreadManager.getUIHandler().post(new ahth(this, arrayOfByte));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahtg
  * JD-Core Version:    0.7.0.1
  */

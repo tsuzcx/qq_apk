@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.activity.StructMsgObserver;
-import com.tencent.mobileqq.activity.WebAccelerator;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.activity.RewardNoticeActivity;
 
 public class tqr
-  implements Runnable
+  implements Handler.Callback
 {
-  public tqr(StructMsgObserver paramStructMsgObserver, String paramString1, int paramInt, String paramString2, String paramString3) {}
+  public tqr(RewardNoticeActivity paramRewardNoticeActivity) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    WebAccelerator.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.c);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      paramMessage = new tqs(this);
+      this.a.a(this.a.a, paramMessage, 4.0F, 500L, 4);
+    }
   }
 }
 

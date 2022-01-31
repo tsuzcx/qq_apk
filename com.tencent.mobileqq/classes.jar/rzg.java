@@ -1,55 +1,16 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class rzg
-  extends CardObserver
+  implements View.OnClickListener
 {
-  public rzg(ChatSettingActivity paramChatSettingActivity) {}
+  public rzg(ChatHistory paramChatHistory) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
-    {
-      if ((paramBoolean) && (paramObject != null))
-      {
-        if ((ChatSettingActivity.a(this.a) == 0) && (ChatSettingActivity.b(this.a).equals(paramObject.uin)))
-        {
-          String str = ContactUtils.a(this.a.app, ChatSettingActivity.b(this.a));
-          if ((!TextUtils.isEmpty(str)) && (!str.equals(ChatSettingActivity.f(this.a)))) {
-            ChatSettingActivity.c(this.a, str);
-          }
-        }
-        if ((this.a.f != null) && (!TextUtils.isEmpty(ChatSettingActivity.b(this.a))) && (ChatSettingActivity.b(this.a).equals(paramObject.uin))) {
-          ChatSettingActivity.a(this.a, ChatSettingActivity.a(this.a, ChatSettingActivity.b(this.a)), this.a.f);
-        }
-      }
-      return;
-    }
-  }
-  
-  protected void b(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.b != null) && (paramBoolean2 != this.a.b.a()))
-    {
-      this.a.b.setOnCheckedChangeListener(null);
-      this.a.b.setChecked(paramBoolean2);
-      this.a.b.setOnCheckedChangeListener(this.a);
-    }
-  }
-  
-  protected void c(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (this.a.b != null) && (paramBoolean2 != this.a.b.a()))
-    {
-      this.a.b.setOnCheckedChangeListener(null);
-      this.a.b.setChecked(paramBoolean2);
-      this.a.b.setOnCheckedChangeListener(this.a);
-    }
+    this.a.startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
   }
 }
 

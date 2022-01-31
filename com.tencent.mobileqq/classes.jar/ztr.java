@@ -1,22 +1,23 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.app.utils.DingdongPluginBizObserver.TempLiteMailIndexInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.OnLinePushMessageProcessor;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import mqq.observer.SubAccountObserver;
 
-public final class ztr
-  implements Parcelable.Creator
+public class ztr
+  extends SubAccountObserver
 {
-  public DingdongPluginBizObserver.TempLiteMailIndexInfo a(Parcel paramParcel)
-  {
-    DingdongPluginBizObserver.TempLiteMailIndexInfo localTempLiteMailIndexInfo = new DingdongPluginBizObserver.TempLiteMailIndexInfo();
-    localTempLiteMailIndexInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localTempLiteMailIndexInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localTempLiteMailIndexInfo.jdField_a_of_type_Long = paramParcel.readLong();
-    return localTempLiteMailIndexInfo;
-  }
+  public ztr(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, SubAccountManager paramSubAccountManager) {}
   
-  public DingdongPluginBizObserver.TempLiteMailIndexInfo[] a(int paramInt)
+  protected void onGetKeyBack(String paramString1, String paramString2, String paramString3)
   {
-    return new DingdongPluginBizObserver.TempLiteMailIndexInfo[paramInt];
+    if ((paramString3 == null) || (this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor.a == null) || (paramString1 == null)) {}
+    while (!paramString1.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor.a.getAccount())) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqSubaccountDatamanagerSubAccountManager.a(paramString2, paramString3, true);
+    SubAccountControll.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor.a, (byte)1, paramString2);
+    SubAccountControll.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageOnLinePushMessageProcessor.a, paramString2, false);
   }
 }
 

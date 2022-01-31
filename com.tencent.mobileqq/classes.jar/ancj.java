@@ -1,32 +1,22 @@
-import android.graphics.Rect;
-import android.view.TouchDelegate;
-import android.view.View;
-import android.widget.Button;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
 
 public class ancj
   implements Runnable
 {
-  public ancj(EditVideoButton paramEditVideoButton) {}
+  public ancj(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin) {}
   
   public void run()
   {
-    Object localObject = new Rect();
-    EditVideoButton.a(this.a).setEnabled(true);
-    EditVideoButton.a(this.a).getHitRect((Rect)localObject);
-    if (this.a.a != null)
-    {
-      ((Rect)localObject).top -= UIUtils.a(this.a.a(), 8.0F);
-      ((Rect)localObject).bottom += UIUtils.a(this.a.a(), 8.0F);
-    }
-    localObject = new TouchDelegate((Rect)localObject, EditVideoButton.a(this.a));
-    ((View)EditVideoButton.a(this.a).getParent()).setTouchDelegate((TouchDelegate)localObject);
+    QzoneDynamicAlbumPlugin.a(QzoneDynamicAlbumPlugin.a());
+    RemoteHandleManager.a().a().a("0");
+    RemoteHandleManager.a().a().c("0");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancj
  * JD-Core Version:    0.7.0.1
  */

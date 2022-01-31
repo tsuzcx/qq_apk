@@ -1,38 +1,38 @@
-import android.animation.ObjectAnimator;
-import android.animation.PropertyValuesHolder;
-import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.view.animation.Animation;
-import android.view.animation.AnimationSet;
-import android.view.animation.TranslateAnimation;
-import android.widget.TextView;
-import com.tencent.mobileqq.apollo.store.ApolloGuestsStateActivity;
+import com.tencent.TMG.sdk.AVContext;
+import com.tencent.TMG.sdk.AVRoomMulti;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import java.util.ArrayList;
 
-class yqh
+public class yqh
   implements Runnable
 {
-  yqh(yqg paramyqg) {}
+  public yqh(CmGameAvHandler paramCmGameAvHandler, Boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.a.a.jdField_a_of_type_AndroidViewView != null)
+    if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
+      if (CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler).size() > 0)
+      {
+        localObject = BaseApplicationImpl.getApplication().getRuntime();
+        if ((localObject == null) || (!(localObject instanceof QQAppInterface))) {
+          break label115;
+        }
+      }
+    }
+    label115:
+    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
     {
-      TextView localTextView = (TextView)this.a.a.jdField_a_of_type_AndroidViewView.findViewById(2131363178);
-      localTextView.setVisibility(0);
-      Object localObject1 = new AlphaAnimation(1.0F, 0.0F);
-      Object localObject2 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -50.0F);
-      AnimationSet localAnimationSet = new AnimationSet(true);
-      localAnimationSet.addAnimation((Animation)localObject1);
-      localAnimationSet.addAnimation((Animation)localObject2);
-      localAnimationSet.setDuration(1000L);
-      localAnimationSet.setFillAfter(true);
-      localObject1 = PropertyValuesHolder.ofFloat("scaleX", new float[] { 1.0F });
-      localObject2 = PropertyValuesHolder.ofFloat("scaleY", new float[] { 1.0F });
-      PropertyValuesHolder localPropertyValuesHolder = PropertyValuesHolder.ofFloat("alpha", new float[] { 1.0F, 0.5F });
-      ApolloGuestsStateActivity.a(this.a.a, ObjectAnimator.ofPropertyValuesHolder(this.a.a.jdField_a_of_type_AndroidWidgetButton, new PropertyValuesHolder[] { localObject1, localObject2, localPropertyValuesHolder }));
-      ApolloGuestsStateActivity.a(this.a.a).setDuration(500L);
-      localTextView.startAnimation(localAnimationSet);
-      ApolloGuestsStateActivity.a(this.a.a).start();
+      if (localObject == null) {
+        return;
+      }
+      localObject = ((QQAppInterface)localObject).c();
+      CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler, (String[])CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler).toArray(new String[CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler).size()]), (String)localObject);
+      return;
+      AVManager.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new yqi(this));
+      return;
     }
   }
 }

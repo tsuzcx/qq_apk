@@ -1,24 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
-import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
 
-public class lgw
-  implements View.OnClickListener
+class lgw
+  implements Runnable
 {
-  public lgw(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
+  lgw(lgv paramlgv) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((ReadInJoyDeliverBiuActivity.d(this.a)) && ((!ReadInJoyDeliverBiuActivity.e(this.a)) || (ReadInJoyDeliverBiuActivity.m(this.a) != -1)))
-    {
-      this.a.c(ReadInJoyDeliverBiuActivity.n(this.a));
-      return;
-    }
-    this.a.finish();
-    PublicAccountReportUtils.a(null, "", "0X8008661", "0X8008661", 0, 0, ReadInJoyDeliverBiuActivity.n(this.a) + "", "", "", ReadInJoyBaseDeliverActivity.a(), false);
-    ReadInJoyDeliverBiuActivity.a(this.a, false);
+    ReadInJoyCameraCaptureActivity.b(this.a.a, 9);
+    ReadInJoyCameraCaptureActivity.a(this.a.a);
+    ReadInJoyCameraCaptureActivity.c(this.a.a);
   }
 }
 

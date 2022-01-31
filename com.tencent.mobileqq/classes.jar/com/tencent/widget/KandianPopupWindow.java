@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import almt;
+import amcj;
 import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -54,8 +54,8 @@ public class KandianPopupWindow
   public KandianPopupWindow(Activity paramActivity)
   {
     super(paramActivity);
-    this.jdField_a_of_type_ArrayOfInt = new int[] { 2131366860, 2131366863, 2131366866, 2131366869 };
-    this.jdField_b_of_type_ArrayOfInt = new int[] { 2131366861, 2131366862, 2131366864, 2131366865, 2131366867, 2131366868, 2131366870, 2131366871 };
+    this.jdField_a_of_type_ArrayOfInt = new int[] { 2131366902, 2131366905, 2131366908, 2131366911 };
+    this.jdField_b_of_type_ArrayOfInt = new int[] { 2131366903, 2131366904, 2131366906, 2131366907, 2131366909, 2131366910, 2131366912, 2131366913 };
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
   }
   
@@ -71,7 +71,7 @@ public class KandianPopupWindow
   
   private void b()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131428468));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131428474));
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
   }
   
@@ -142,19 +142,19 @@ public class KandianPopupWindow
   {
     this.d = ((int)DeviceInfoUtil.j());
     this.e = ((int)DeviceInfoUtil.k());
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2130969542, null);
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidAppActivity.getSystemService("layout_inflater")).inflate(2130969549, null);
     setContentView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366856));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131366875));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131366898));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131366917));
     this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366858);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366859));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131366873));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366900);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366901));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131366915));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366872));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366857));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366874));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366914));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366899));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366916));
     this.jdField_a_of_type_ArrayOfAndroidViewView = new View[this.jdField_a_of_type_ArrayOfInt.length];
     int i = 0;
     while (i < this.jdField_a_of_type_ArrayOfInt.length)
@@ -172,7 +172,7 @@ public class KandianPopupWindow
     }
     setHeight(-2);
     setBackgroundDrawable(new ColorDrawable(0));
-    setOnDismissListener(new almt(this));
+    setOnDismissListener(new amcj(this));
     setTouchable(true);
     setFocusable(true);
     setOutsideTouchable(false);
@@ -206,7 +206,7 @@ public class KandianPopupWindow
       int k = paramOnUninterestConfirmListener[1];
       int m = paramView.getHeight();
       i = paramOnUninterestConfirmListener[1];
-      i = (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131559684);
+      i = (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131559702);
       n = this.jdField_b_of_type_Int - paramOnUninterestConfirmListener[0] - paramView.getWidth() / 2 + i;
       if (QLog.isColorLevel()) {
         QLog.d("KandianPopupWindow", 2, "marginRight = " + n);
@@ -214,7 +214,7 @@ public class KandianPopupWindow
       if (j - (k + m) > this.jdField_c_of_type_Int) {
         if (n > this.jdField_b_of_type_Int * 0.1D)
         {
-          setAnimationStyle(2131624705);
+          setAnimationStyle(2131624706);
           this.jdField_b_of_type_AndroidWidgetImageView.setPadding(0, 0, n, 0);
           this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
           this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
@@ -230,10 +230,10 @@ public class KandianPopupWindow
     {
       com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.jdField_a_of_type_Boolean = true;
       return;
-      setAnimationStyle(2131624704);
+      setAnimationStyle(2131624705);
       break;
       if (n > this.jdField_b_of_type_Int * 0.1D) {
-        setAnimationStyle(2131624703);
+        setAnimationStyle(2131624704);
       }
       for (;;)
       {
@@ -247,10 +247,10 @@ public class KandianPopupWindow
         }
         QLog.d("KandianPopupWindow", 2, "show x = " + i + ", show y = " + j);
         break;
-        setAnimationStyle(2131624702);
+        setAnimationStyle(2131624703);
       }
-      setAnimationStyle(2131624706);
-      showAtLocation(paramView, 0, paramOnUninterestConfirmListener[0] + paramView.getWidth() / 2 - AIOUtils.a(10.5F, this.jdField_a_of_type_AndroidAppActivity.getResources()) - (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131559683), paramOnUninterestConfirmListener[1] + paramView.getHeight() / 2 - this.jdField_c_of_type_Int / 2);
+      setAnimationStyle(2131624707);
+      showAtLocation(paramView, 0, paramOnUninterestConfirmListener[0] + paramView.getWidth() / 2 - AIOUtils.a(10.5F, this.jdField_a_of_type_AndroidAppActivity.getResources()) - (int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131559701), paramOnUninterestConfirmListener[1] + paramView.getHeight() / 2 - this.jdField_c_of_type_Int / 2);
     }
   }
   
@@ -273,7 +273,7 @@ public class KandianPopupWindow
       this.jdField_b_of_type_Boolean = true;
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_b_of_type_AndroidWidgetButton.setVisibility(0);
-      this.jdField_b_of_type_Int = ((int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131559683));
+      this.jdField_b_of_type_Int = ((int)this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131559701));
       setWidth(this.jdField_b_of_type_Int);
       d();
       return true;
@@ -282,7 +282,7 @@ public class KandianPopupWindow
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
-    this.jdField_b_of_type_Int = ((int)(this.d - this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131559684) * 2.0F));
+    this.jdField_b_of_type_Int = ((int)(this.d - this.jdField_a_of_type_AndroidAppActivity.getResources().getDimension(2131559702) * 2.0F));
     setWidth(this.jdField_b_of_type_Int);
     if (this.jdField_a_of_type_JavaUtilArrayList == null) {
       this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
@@ -301,7 +301,7 @@ public class KandianPopupWindow
     int i;
     switch (paramView.getId())
     {
-    case 2131366874: 
+    case 2131366916: 
     default: 
       i = 0;
       label34:
@@ -327,7 +327,7 @@ public class KandianPopupWindow
         if (this.jdField_b_of_type_JavaUtilArrayList.size() != 0) {
           break label203;
         }
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131428468));
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getString(2131428474));
         this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
         return;
         if (this.jdField_a_of_type_ComTencentWidgetKandianPopupWindow$OnUninterestConfirmListener != null) {
@@ -342,7 +342,7 @@ public class KandianPopupWindow
         this.jdField_b_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_JavaUtilArrayList.get(i));
       }
       label203:
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(this.jdField_a_of_type_AndroidAppActivity.getString(2131428469), new Object[] { Integer.valueOf(this.jdField_b_of_type_JavaUtilArrayList.size()) }));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(String.format(this.jdField_a_of_type_AndroidAppActivity.getString(2131428475), new Object[] { Integer.valueOf(this.jdField_b_of_type_JavaUtilArrayList.size()) }));
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
       return;
       i = -1;
@@ -351,7 +351,7 @@ public class KandianPopupWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.KandianPopupWindow
  * JD-Core Version:    0.7.0.1
  */

@@ -16,10 +16,10 @@ import com.tencent.mobileqq.widget.PinnedDividerListView;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import jut;
-import juu;
-import juv;
-import juw;
+import jue;
+import juf;
+import jug;
+import juh;
 
 public class GAudioMemberListCtrl
 {
@@ -33,7 +33,7 @@ public class GAudioMemberListCtrl
   private PinnedDividerListView jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView;
   public WeakReference a;
   public ArrayList a;
-  private juv jdField_a_of_type_Juv;
+  private jug jdField_a_of_type_Jug;
   
   @TargetApi(9)
   public GAudioMemberListCtrl(Context paramContext, VideoAppInterface paramVideoAppInterface, PinnedDividerListView paramPinnedDividerListView, long paramLong, int paramInt)
@@ -45,7 +45,7 @@ public class GAudioMemberListCtrl
     this.jdField_a_of_type_AndroidViewLayoutInflater = null;
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new jut(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new jue(this);
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramContext);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = paramPinnedDividerListView;
     this.jdField_a_of_type_Long = paramLong;
@@ -60,9 +60,9 @@ public class GAudioMemberListCtrl
       return;
     }
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get());
-    this.jdField_a_of_type_Juv = new juv(this, null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Juv);
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130840243);
+    this.jdField_a_of_type_Jug = new jug(this, null);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_Jug);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130840249);
   }
   
   private int a(long paramLong)
@@ -70,7 +70,7 @@ public class GAudioMemberListCtrl
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      if (((juu)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Long == paramLong) {
+      if (((juf)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Long == paramLong) {
         return i;
       }
       i += 1;
@@ -96,15 +96,15 @@ public class GAudioMemberListCtrl
       while (i < paramArrayList.size())
       {
         VideoController.GAudioFriends localGAudioFriends = (VideoController.GAudioFriends)paramArrayList.get(i);
-        juu localjuu = new juu(this, null);
-        localjuu.jdField_a_of_type_Long = localGAudioFriends.jdField_a_of_type_Long;
-        localjuu.jdField_a_of_type_Boolean = localGAudioFriends.jdField_a_of_type_Boolean;
-        localjuu.jdField_a_of_type_Int = localGAudioFriends.c;
-        localjuu.jdField_b_of_type_Int = localGAudioFriends.d;
-        localjuu.jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo = localGAudioFriends.jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo;
-        localjuu.c = localGAudioFriends.e;
-        localjuu.d = localGAudioFriends.f;
-        this.jdField_a_of_type_JavaUtilArrayList.add(localjuu);
+        juf localjuf = new juf(this, null);
+        localjuf.jdField_a_of_type_Long = localGAudioFriends.jdField_a_of_type_Long;
+        localjuf.jdField_a_of_type_Boolean = localGAudioFriends.jdField_a_of_type_Boolean;
+        localjuf.jdField_a_of_type_Int = localGAudioFriends.c;
+        localjuf.jdField_b_of_type_Int = localGAudioFriends.d;
+        localjuf.jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo = localGAudioFriends.jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo;
+        localjuf.c = localGAudioFriends.e;
+        localjuf.d = localGAudioFriends.f;
+        this.jdField_a_of_type_JavaUtilArrayList.add(localjuf);
         i += 1;
       }
     }
@@ -126,8 +126,8 @@ public class GAudioMemberListCtrl
         boolean bool1 = bool2;
         if (j < k)
         {
-          juu localjuu = (juu)this.jdField_a_of_type_JavaUtilArrayList.get(j);
-          if ((localjuu != null) && (!localjuu.jdField_b_of_type_Boolean)) {
+          juf localjuf = (juf)this.jdField_a_of_type_JavaUtilArrayList.get(j);
+          if ((localjuf != null) && (!localjuf.jdField_b_of_type_Boolean)) {
             bool1 = true;
           }
         }
@@ -137,7 +137,7 @@ public class GAudioMemberListCtrl
             QLog.d("GAudioMemberListCtrl", 2, "refreshHeadbitmap-->minIndex=" + i + ",maxIndex=" + k + ",needRefresh=" + bool1);
           }
           if (bool1) {
-            this.jdField_a_of_type_Juv.notifyDataSetChanged();
+            this.jdField_a_of_type_Jug.notifyDataSetChanged();
           }
           return;
         }
@@ -154,7 +154,7 @@ public class GAudioMemberListCtrl
         QLog.e("GAudioMemberListCtrl", 2, "notifyDataSetChanged-->this member not in infoList.uin=" + paramLong + ",isMicOff=" + paramBoolean);
       }
     }
-    juu localjuu;
+    juf localjuf;
     Object localObject;
     do
     {
@@ -171,10 +171,10 @@ public class GAudioMemberListCtrl
                 do
                 {
                   return;
-                  localjuu = (juu)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-                  localjuu.c = paramBoolean;
-                  localjuu.jdField_a_of_type_Int = paramInt1;
-                  localjuu.jdField_b_of_type_Int = paramInt2;
+                  localjuf = (juf)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+                  localjuf.c = paramBoolean;
+                  localjuf.jdField_a_of_type_Int = paramInt1;
+                  localjuf.jdField_b_of_type_Int = paramInt2;
                   paramInt1 = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getFirstVisiblePosition();
                   paramInt2 = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getLastVisiblePosition();
                 } while ((i < paramInt1) || (i > paramInt2));
@@ -193,21 +193,21 @@ public class GAudioMemberListCtrl
           } while (!QLog.isColorLevel());
           QLog.e("GAudioMemberListCtrl", 2, "notifyDataSetChanged-->can not get tag from uin-->index=" + i + ",uin=" + paramLong + ",isMicOff=" + paramBoolean);
           return;
-          localObject = (juw)((View)localObject).getTag();
+          localObject = (juh)((View)localObject).getTag();
         } while (localObject == null);
-        if (localjuu.c) {
-          ((juw)localObject).jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+        if (localjuf.c) {
+          ((juh)localObject).jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
         }
-        if (!localjuu.c) {
+        if (!localjuf.c) {
           break;
         }
-      } while ((((juw)localObject).jdField_a_of_type_Int != -1) && (((juw)localObject).jdField_a_of_type_Int != 0));
-      a(((juw)localObject).jdField_b_of_type_AndroidWidgetImageView, localjuu.c);
-      ((juw)localObject).jdField_a_of_type_Int = 1;
+      } while ((((juh)localObject).jdField_a_of_type_Int != -1) && (((juh)localObject).jdField_a_of_type_Int != 0));
+      a(((juh)localObject).jdField_b_of_type_AndroidWidgetImageView, localjuf.c);
+      ((juh)localObject).jdField_a_of_type_Int = 1;
       return;
-    } while ((((juw)localObject).jdField_a_of_type_Int != -1) && (((juw)localObject).jdField_a_of_type_Int != 1));
-    a(((juw)localObject).jdField_b_of_type_AndroidWidgetImageView, localjuu.c);
-    ((juw)localObject).jdField_a_of_type_Int = 0;
+    } while ((((juh)localObject).jdField_a_of_type_Int != -1) && (((juh)localObject).jdField_a_of_type_Int != 1));
+    a(((juh)localObject).jdField_b_of_type_AndroidWidgetImageView, localjuf.c);
+    ((juh)localObject).jdField_a_of_type_Int = 0;
   }
   
   public void a(long paramLong, boolean paramBoolean)
@@ -231,11 +231,11 @@ public class GAudioMemberListCtrl
             do
             {
               return;
-              localObject = (juu)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-              ((juu)localObject).jdField_a_of_type_Boolean = paramBoolean;
-              if (((juu)localObject).c)
+              localObject = (juf)this.jdField_a_of_type_JavaUtilArrayList.get(i);
+              ((juf)localObject).jdField_a_of_type_Boolean = paramBoolean;
+              if (((juf)localObject).c)
               {
-                ((juu)localObject).jdField_a_of_type_Boolean = false;
+                ((juf)localObject).jdField_a_of_type_Boolean = false;
                 paramBoolean = false;
               }
               j = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getFirstVisiblePosition();
@@ -261,25 +261,25 @@ public class GAudioMemberListCtrl
       } while (!QLog.isColorLevel());
       QLog.e("GAudioMemberListCtrl", 2, "notifyDataSetChanged-->can not get tag from uin-->index=" + i + ",uin=" + paramLong + ",isSpeak=" + paramBoolean);
       return;
-      localObject = (juw)((View)localObject).getTag();
+      localObject = (juh)((View)localObject).getTag();
     } while (localObject == null);
-    if ((paramBoolean) && (((juw)localObject).jdField_b_of_type_Boolean))
+    if ((paramBoolean) && (((juh)localObject).jdField_b_of_type_Boolean))
     {
-      ((juw)localObject).jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
+      ((juh)localObject).jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, null);
       return;
     }
-    ((juw)localObject).jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+    ((juh)localObject).jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
   }
   
   public void a(ImageView paramImageView, boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      paramImageView.setImageResource(2130840109);
+      paramImageView.setImageResource(2130840115);
       paramImageView.setContentDescription("取消静音");
       return;
     }
-    paramImageView.setImageResource(2130840110);
+    paramImageView.setImageResource(2130840116);
     paramImageView.setContentDescription("静音");
   }
   
@@ -288,7 +288,7 @@ public class GAudioMemberListCtrl
     if (paramArrayList != null)
     {
       b(paramArrayList);
-      this.jdField_a_of_type_Juv.notifyDataSetChanged();
+      this.jdField_a_of_type_Jug.notifyDataSetChanged();
     }
   }
   
@@ -302,7 +302,7 @@ public class GAudioMemberListCtrl
       i += 1;
     }
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = null;
-    this.jdField_a_of_type_Juv = null;
+    this.jdField_a_of_type_Jug = null;
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
     this.jdField_a_of_type_ComTencentAvVideoController = null;
     this.jdField_a_of_type_AndroidViewLayoutInflater = null;
@@ -327,7 +327,7 @@ public class GAudioMemberListCtrl
       }
       return;
     }
-    ((juu)this.jdField_a_of_type_JavaUtilArrayList.get(i)).d = paramBoolean;
+    ((juf)this.jdField_a_of_type_JavaUtilArrayList.get(i)).d = paramBoolean;
   }
 }
 

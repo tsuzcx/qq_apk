@@ -1,16 +1,31 @@
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
+import android.content.Context;
+import com.tencent.mobileqq.activity.recent.OnRecentUserOpsListener;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.activity.recent.RecentBaseData;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.XListView;
+import java.util.List;
 
 public class yog
-  implements Runnable
+  extends RecentAdapter
 {
-  public yog(CmGameLauncher paramCmGameLauncher, ApolloCmdChannel paramApolloCmdChannel) {}
-  
-  public void run()
+  public yog(HotChatCenterFragment paramHotChatCenterFragment, Context paramContext, QQAppInterface paramQQAppInterface, XListView paramXListView, OnRecentUserOpsListener paramOnRecentUserOpsListener, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel.requestData(CmGameLauncher.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher).getLuaState(), "cs.make_room_min.local", "{}", true, true);
+    super(paramContext, paramQQAppInterface, paramXListView, paramOnRecentUserOpsListener, paramInt);
+  }
+  
+  public void a(RecentBaseData paramRecentBaseData, String paramString)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqApolloActivityHotChatCenterFragment.a(paramRecentBaseData, paramString);
+  }
+  
+  public void b(RecentBaseData paramRecentBaseData, String paramString)
+  {
+    if (this.jdField_a_of_type_JavaUtilList != null)
+    {
+      this.jdField_a_of_type_JavaUtilList.remove(paramRecentBaseData);
+      notifyDataSetChanged();
     }
   }
 }

@@ -1,30 +1,45 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.ui.QavPanel;
-import com.tencent.av.ui.QavPanelSoundWaveView;
+import android.text.TextUtils;
+import com.tencent.av.ui.SysCallTransparentActivity;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 public class kac
-  extends BroadcastReceiver
+  implements Runnable
 {
-  public kac(QavPanel paramQavPanel) {}
+  public kac(SysCallTransparentActivity paramSysCallTransparentActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    do
-    {
-      do
-      {
-        return;
-        if (!"android.intent.action.SCREEN_ON".equals(paramIntent.getAction())) {
-          break;
-        }
-      } while ((this.a.a == null) || (!this.a.c));
-      this.a.a.f();
+    if (this.a.jdField_a_of_type_Int == 1) {
+      DialogUtil.a(this.a, this.a.jdField_a_of_type_JavaLangString, this.a.b, 2131428675, 2131428676, new kad(this), null).show();
+    }
+    while ((this.a.jdField_a_of_type_Int != 2) && (this.a.jdField_a_of_type_Int != 3)) {
       return;
-    } while ((!"android.intent.action.SCREEN_OFF".equals(paramIntent.getAction())) || (this.a.a == null));
-    this.a.a.g();
+    }
+    int i;
+    SysCallTransparentActivity localSysCallTransparentActivity;
+    String str2;
+    String str3;
+    String str4;
+    if (this.a.jdField_a_of_type_Int == 2)
+    {
+      i = 1;
+      localSysCallTransparentActivity = this.a;
+      str2 = this.a.jdField_a_of_type_JavaLangString;
+      str3 = this.a.b;
+      str4 = this.a.getString(2131428675);
+      if (!TextUtils.isEmpty(this.a.c)) {
+        break label181;
+      }
+    }
+    label181:
+    for (String str1 = this.a.getString(2131429561);; str1 = this.a.c)
+    {
+      DialogUtil.a(localSysCallTransparentActivity, 230, str2, str3, str4, str1, new kae(this, i), new kaf(this)).show();
+      return;
+      i = 2;
+      break;
+    }
   }
 }
 

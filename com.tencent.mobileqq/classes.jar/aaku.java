@@ -1,23 +1,18 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ark.ArkAiBubbleView;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.model.ArFeatureInfo;
 
-public class aaku
-  implements ArkAppCenter.OnGetAppIcon
+public final class aaku
+  implements Parcelable.Creator
 {
-  public aaku(ArkAiBubbleView paramArkAiBubbleView) {}
-  
-  public void a(String paramString, Bitmap paramBitmap)
+  public ArFeatureInfo a(Parcel paramParcel)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqArkArkAiScrollBar == null)
-    {
-      ArkAppCenter.a(paramString);
-      return;
-    }
-    this.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
-    this.a.jdField_a_of_type_Boolean = true;
+    return new ArFeatureInfo(paramParcel);
+  }
+  
+  public ArFeatureInfo[] a(int paramInt)
+  {
+    return new ArFeatureInfo[paramInt];
   }
 }
 

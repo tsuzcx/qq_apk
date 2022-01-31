@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import ajnp;
-import ajnq;
+import akbv;
+import akbw;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -208,7 +208,7 @@ public final class AvatarPendantUtil
         bool1 = false;
         continue;
       }
-      paramQQAppInterface = new ajnp(paramQQAppInterface);
+      paramQQAppInterface = new akbv(paramQQAppInterface);
       if ((bool2) || (bool1))
       {
         ThreadManager.post(paramQQAppInterface, 8, null, false);
@@ -252,7 +252,7 @@ public final class AvatarPendantUtil
       if (QLog.isColorLevel()) {
         QLog.d("AvatarPendantUtil", 2, "preloadWebProcess, startWebProcess");
       }
-      paramQQAppInterface.a(-1, new ajnq(paramPreloadProcHitSession));
+      paramQQAppInterface.a(-1, new akbw(paramPreloadProcHitSession));
       return;
     } while (!QLog.isColorLevel());
     QLog.d("AvatarPendantUtil", 2, "preloadWebProcess, web process alive aready");

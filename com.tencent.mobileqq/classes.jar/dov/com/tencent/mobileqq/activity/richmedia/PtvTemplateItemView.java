@@ -69,7 +69,7 @@ public class PtvTemplateItemView
     ((RelativeLayout.LayoutParams)localObject).addRule(13);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentImageURLImageView, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130841992);
+    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130842029);
     this.jdField_a_of_type_AndroidWidgetImageView.setMinimumWidth(i);
     this.jdField_a_of_type_AndroidWidgetImageView.setMinimumHeight(i);
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
@@ -110,7 +110,7 @@ public class PtvTemplateItemView
     }
     if (paramInt < 0)
     {
-      this.b.setImageResource(2130843090);
+      this.b.setImageResource(2130843189);
       this.b.setVisibility(0);
       return;
     }
@@ -143,7 +143,7 @@ public class PtvTemplateItemView
       paramIPtvTemplateItemCallback = URLDrawable.URLDrawableOptions.obtain();
       paramInt1 = AIOUtils.a(60.0F, getResources());
       GradientDrawable localGradientDrawable = new GradientDrawable();
-      localGradientDrawable.setColor(getResources().getColor(2131493212));
+      localGradientDrawable.setColor(getResources().getColor(2131493213));
       localGradientDrawable.setShape(1);
       localGradientDrawable.setSize(paramInt1, paramInt1);
       paramIPtvTemplateItemCallback.mRequestWidth = paramInt1;
@@ -167,7 +167,7 @@ public class PtvTemplateItemView
         if (!((QIMPtvTemplateManager)QIMManager.a(3)).a(3, paramPtvTemplateInfo.categoryId, paramPtvTemplateInfo.id)) {
           break label453;
         }
-        this.b.setImageResource(2130843091);
+        this.b.setImageResource(2130843190);
         this.b.setVisibility(0);
       }
     }
@@ -180,7 +180,7 @@ public class PtvTemplateItemView
       }
       this.b.setVisibility(8);
       this.c.setVisibility(0);
-      this.c.setImageResource(2130843097);
+      this.c.setImageResource(2130843196);
       WeishiGuideUtils.a(paramPtvTemplateInfo);
       return;
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
@@ -191,10 +191,10 @@ public class PtvTemplateItemView
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
       if (paramPtvTemplateInfo.id.equals(paramString))
       {
-        this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130843092);
+        this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130843191);
         break;
       }
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130843093);
+      this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130843192);
       break;
       label453:
       if ((paramPtvTemplateInfo.usable) || (paramPtvTemplateInfo.id.equals("0")))
@@ -203,7 +203,7 @@ public class PtvTemplateItemView
       }
       else if (!paramPtvTemplateInfo.downloading)
       {
-        this.b.setImageResource(2130843090);
+        this.b.setImageResource(2130843189);
         this.b.setVisibility(0);
       }
     }

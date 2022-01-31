@@ -1,27 +1,24 @@
-import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.contact.troop.TroopView;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseActivity;
+import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
 
 public class wio
-  extends BizTroopObserver
+  implements View.OnClickListener
 {
-  public wio(TroopView paramTroopView) {}
+  public wio(SearchBaseActivity paramSearchBaseActivity) {}
   
-  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
+  public void onClick(View paramView)
   {
-    if (paramInt2 == 0) {
-      this.a.j();
-    }
-    while (this.a.b()) {
+    if (TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText()))
+    {
+      this.a.setResult(0);
+      this.a.finish();
       return;
     }
-    paramString1 = paramString2;
-    if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = this.a.getResources().getString(2131435563);
-    }
-    QQToast.a(this.a.a(), 1, paramString1, 0).a();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString(), false);
   }
 }
 

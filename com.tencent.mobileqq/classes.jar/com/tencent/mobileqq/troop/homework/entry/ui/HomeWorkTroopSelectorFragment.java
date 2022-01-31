@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
-import aish;
-import aisi;
-import aisj;
+import ajgl;
+import ajgm;
+import ajgn;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,7 +29,7 @@ public class HomeWorkTroopSelectorFragment
   extends IphoneTitleBarFragment
   implements Runnable
 {
-  private aisj jdField_a_of_type_Aisj;
+  private ajgn jdField_a_of_type_Ajgn;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private TroopInfo jdField_a_of_type_ComTencentMobileqqDataTroopInfo;
   private ListView jdField_a_of_type_ComTencentWidgetListView;
@@ -53,20 +53,20 @@ public class HomeWorkTroopSelectorFragment
   {
     if (this.jdField_a_of_type_ComTencentWidgetListView != null)
     {
-      this.jdField_a_of_type_Aisj = new aisj(getActivity(), paramList, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Aisj);
+      this.jdField_a_of_type_Ajgn = new ajgn(getActivity(), paramList, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo, this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_ComTencentWidgetListView.setAdapter(this.jdField_a_of_type_Ajgn);
     }
   }
   
   protected int a()
   {
-    return 2130969902;
+    return 2130969916;
   }
   
   protected void a(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.e.findViewById(2131368395));
+    this.jdField_a_of_type_ComTencentWidgetListView = ((ListView)this.e.findViewById(2131368462));
     this.jdField_a_of_type_ComTencentWidgetListView.setDivider(null);
     this.jdField_a_of_type_ComTencentWidgetListView.setDividerHeight(0);
     if (getActivity() == null) {}
@@ -80,7 +80,7 @@ public class HomeWorkTroopSelectorFragment
       return;
     }
     this.jdField_a_of_type_Boolean = true;
-    b(2131430627, new aish(this));
+    b(2131430644, new ajgl(this));
     a("我管理的群");
     paramLayoutInflater = getArguments();
     if (paramLayoutInflater != null)
@@ -142,12 +142,12 @@ public class HomeWorkTroopSelectorFragment
       }
       i += 1;
     }
-    ThreadManager.getUIHandler().post(new aisi(this, localLinkedList));
+    ThreadManager.getUIHandler().post(new ajgm(this, localLinkedList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.HomeWorkTroopSelectorFragment
  * JD-Core Version:    0.7.0.1
  */

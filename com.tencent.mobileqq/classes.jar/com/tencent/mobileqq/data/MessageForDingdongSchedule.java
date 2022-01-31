@@ -26,7 +26,7 @@ public class MessageForDingdongSchedule
   private String getTipsByType(int paramInt)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    String str = localQQAppInterface.getApplication().getString(2131438294);
+    String str = localQQAppInterface.getApplication().getString(2131438312);
     if (6 == this.notificationType) {
       return localQQAppInterface.getApplication().getString(2131428066);
     }

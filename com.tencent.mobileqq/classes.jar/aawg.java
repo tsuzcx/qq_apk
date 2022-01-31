@@ -1,29 +1,31 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.ar.ARScanFragment;
-import com.tencent.mobileqq.ar.ARTarget;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArWebInfo;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.ark.ArkMediaPlayer;
 
 public class aawg
   implements Runnable
 {
-  public aawg(ShopScanActivity paramShopScanActivity, ARTarget paramARTarget) {}
+  public aawg(ArkMediaPlayer paramArkMediaPlayer) {}
   
   public void run()
   {
-    ShopScanActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity, true);
-    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_a_of_type_ComTencentMobileqqArARScanFragment.e(true);
-    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    ShopScanActivity.c(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity);
-    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.jdField_a_of_type_ComTencentMobileqqArARScanFragment.a(false);
-    if ((this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.g) && (this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.i))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.d();
+    if (ArkMediaPlayer.a(this.a)) {
       return;
     }
-    ShopScanActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity, this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.a.a);
-    this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity.h = true;
+    ArkMediaPlayer.a(this.a, true);
+    if (ArkMediaPlayer.a(this.a) == ArkMediaPlayer.b(this.a)) {
+      this.a.Play();
+    }
+    for (;;)
+    {
+      ArkMediaPlayer.a(this.a, ArkMediaPlayer.f(this.a));
+      return;
+      if (ArkMediaPlayer.a(this.a) == ArkMediaPlayer.c(this.a)) {
+        this.a.Stop();
+      } else if (ArkMediaPlayer.a(this.a) == ArkMediaPlayer.d(this.a)) {
+        this.a.Resume();
+      } else if (ArkMediaPlayer.a(this.a) == ArkMediaPlayer.e(this.a)) {
+        this.a.Pause();
+      }
+    }
   }
 }
 

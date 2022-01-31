@@ -1,29 +1,15 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.SetCookiesCallback;
+import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.open.downloadnew.DownloadInfo;
 
 public class kwl
-  implements SwiftBrowserCookieMonster.SetCookiesCallback
+  implements Runnable
 {
-  public kwl(CustomWebView paramCustomWebView, kwp paramkwp) {}
+  public kwl(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment, DownloadInfo paramDownloadInfo) {}
   
-  public void a(String paramString, Bundle paramBundle, long paramLong)
+  public void run()
   {
-    switch (this.jdField_a_of_type_Kwp.a)
-    {
-    default: 
-      return;
-    case 1: 
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadUrl(paramString);
-      return;
-    case 2: 
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.a(paramString);
-      return;
-    case 3: 
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadData(paramString, this.jdField_a_of_type_Kwp.c, this.jdField_a_of_type_Kwp.d);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.loadDataWithBaseURL(paramString, this.jdField_a_of_type_Kwp.b, this.jdField_a_of_type_Kwp.c, this.jdField_a_of_type_Kwp.d, this.jdField_a_of_type_Kwp.e);
+    ReadInJoyNativeAdFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountNativeAdFragmentReadInJoyNativeAdFragment).setProgress(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g);
   }
 }
 

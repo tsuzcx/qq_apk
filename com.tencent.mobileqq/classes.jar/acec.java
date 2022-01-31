@@ -1,102 +1,137 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.file.TroopFileProtocol.OnGetZipFileList;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.ZipFilePresenter.FileData;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView.ScaleType;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
+import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout.DataObserver;
+import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout.EmoticonAdapter;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.URLUtil;
+import com.tencent.widget.XPanelContainer;
 import java.util.List;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class acec
-  implements HttpWebCgiAsyncTask.Callback
+  implements EmoticonLinearLayout.DataObserver
 {
-  public acec(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity, List paramList, String paramString1, FileManagerEntity paramFileManagerEntity, boolean paramBoolean, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt, TroopFileProtocol.OnGetZipFileList paramOnGetZipFileList) {}
+  private int jdField_a_of_type_Int;
+  private boolean jdField_a_of_type_Boolean;
+  private int b;
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public acec(EmoticonLinearLayout paramEmoticonLinearLayout) {}
+  
+  public void a()
   {
-    this.jdField_a_of_type_JavaUtilList.clear();
-    if (paramJSONObject != null) {}
-    try
+    long l = System.currentTimeMillis();
+    int m = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.a();
+    int n = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.b();
+    int j = 0;
+    int i = 0;
+    int k;
+    if (j < n)
     {
-      ZipFilePresenter.FileData localFileData;
-      if (!paramJSONObject.isNull("dirs"))
-      {
-        paramBundle = paramJSONObject.getJSONArray("dirs");
-        paramInt = 0;
-        while (paramInt < paramBundle.length())
-        {
-          localFileData = new ZipFilePresenter.FileData();
-          localFileData.jdField_a_of_type_Boolean = true;
-          localFileData.jdField_a_of_type_JavaLangString = paramBundle.getString(paramInt);
-          this.jdField_a_of_type_JavaUtilList.add(localFileData);
-          paramInt += 1;
-        }
+      k = 0;
+      label41:
+      if (k < m) {
+        if (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_JavaUtilList.size() > i) {}
       }
-      if ((paramJSONObject != null) && (!paramJSONObject.isNull("files")))
+    }
+    do
+    {
+      return;
+      RelativeLayout localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_JavaUtilList.get(i);
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout$EmoticonAdapter.a(i, localRelativeLayout, this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout);
+      i += 1;
+      k += 1;
+      break label41;
+      j += 1;
+      break;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.requestLayout();
+    } while (!QLog.isColorLevel());
+    QLog.d("EmoticonLinearLayout", 2, "[Performance] EmoticonLinearLayout onDataChanged, bindView duration: " + (System.currentTimeMillis() - l) + ", type=" + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_Int);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if ((this.jdField_a_of_type_Int == paramInt1) && (this.b == paramInt2) && (this.jdField_a_of_type_Boolean)) {}
+    long l;
+    label294:
+    do
+    {
+      return;
+      this.jdField_a_of_type_Int = paramInt1;
+      this.b = paramInt2;
+      l = System.currentTimeMillis();
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.removeAllViews();
+      paramInt1 = 0;
+      if (XPanelContainer.d > 0) {
+        paramInt1 = XPanelContainer.d / 3;
+      }
+      paramInt2 = paramInt1;
+      if (paramInt1 > 60) {
+        paramInt2 = 60;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.setPadding(0, paramInt2, 0, paramInt2);
+      paramInt1 = 0;
+      paramInt2 = 0;
+      while (paramInt2 < this.jdField_a_of_type_Int)
       {
-        paramBundle = paramJSONObject.getJSONArray("files");
-        paramInt = 0;
-        if (paramInt < paramBundle.length())
+        LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_AndroidContentContext);
+        LinearLayout.LayoutParams localLayoutParams1 = new LinearLayout.LayoutParams(-1, -1);
+        localLayoutParams1.weight = 1.0F;
+        localLinearLayout.setOrientation(0);
+        localLinearLayout.setPadding(0, 0, 0, 0);
+        int i = 0;
+        if (i < this.b)
         {
-          localFileData = new ZipFilePresenter.FileData();
-          paramJSONObject = paramBundle.getJSONObject(paramInt);
-          localFileData.jdField_a_of_type_JavaLangString = paramJSONObject.getString("filename");
-          localFileData.jdField_a_of_type_Long = paramJSONObject.getLong("size");
-          if (this.jdField_a_of_type_JavaLangString.equals("/")) {}
-          for (paramJSONObject = "/" + localFileData.jdField_a_of_type_JavaLangString;; paramJSONObject = this.jdField_a_of_type_JavaLangString + "/" + localFileData.jdField_a_of_type_JavaLangString)
+          System.currentTimeMillis();
+          LinearLayout.LayoutParams localLayoutParams2 = new LinearLayout.LayoutParams(-1, -1);
+          localLayoutParams2.weight = 1.0F;
+          RelativeLayout localRelativeLayout = null;
+          if (paramInt1 < this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_JavaUtilList.size()) {
+            localRelativeLayout = (RelativeLayout)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_JavaUtilList.get(paramInt1);
+          }
+          Object localObject;
+          if (localRelativeLayout == null)
           {
-            FileManagerEntity localFileManagerEntity = new FileManagerEntity();
-            localFileManagerEntity.fileName = localFileData.jdField_a_of_type_JavaLangString;
-            localFileManagerEntity.nRelatedSessionId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId;
-            localFileManagerEntity.fileSize = localFileData.jdField_a_of_type_Long;
-            localFileManagerEntity.mContext = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid;
-            localFileManagerEntity.nSessionId = FileManagerUtil.a().longValue();
-            if (this.jdField_a_of_type_Boolean)
+            localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_AndroidContentContext);
+            localObject = new URLImageView(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_AndroidContentContext);
+            ((URLImageView)localObject).setId(2131361968);
+            switch (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_Int)
             {
-              localFileManagerEntity.WeiYunFileId = this.b;
-              localFileManagerEntity.mContext = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId;
-              localFileManagerEntity.nRelatedSessionId = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize);
+            default: 
+              if (QLog.isColorLevel()) {
+                QLog.e("EmoticonLinearLayout", 2, "Should not reach here, check your code!!!");
+              }
+              this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_JavaUtilList.add(localRelativeLayout);
             }
-            localFileManagerEntity.zipFileId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId;
-            if (localFileManagerEntity.mContext == null) {
-              QLog.i("IphoneTitleBarActivity", 1, "zip list file content is empty. zipSessionId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "] zipIsWeiyunFile[" + this.jdField_a_of_type_Boolean + "] zipCouldType[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.cloudType + "] fileSessionId[" + localFileManagerEntity.nSessionId + "]");
-            }
-            localFileManagerEntity.strServerPath = ("http://" + this.c + ":" + this.d + "/ftn_compress_getfile/rkey=" + this.e + "&filetype=" + this.jdField_a_of_type_Int + "&path=" + URLUtil.a(paramJSONObject) + "&");
-            localFileManagerEntity.zipFileId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.WeiYunFileId;
-            localFileManagerEntity.zipInnerPath = paramJSONObject;
-            localFileManagerEntity.selfUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.selfUin;
-            localFileManagerEntity.peerUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-            localFileManagerEntity.peerType = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType;
-            localFileManagerEntity.busId = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId;
-            localFileManagerEntity.cloudType = 1;
-            localFileManagerEntity.isZipInnerFile = true;
-            localFileManagerEntity.zipFilePath = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
-            localFileManagerEntity.zipType = this.jdField_a_of_type_Int;
-            localFileManagerEntity.TroopUin = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin;
-            localFileData.b = localFileManagerEntity.nSessionId;
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.app.a().a(localFileManagerEntity);
-            this.jdField_a_of_type_JavaUtilList.add(localFileData);
-            paramInt += 1;
+          }
+          for (;;)
+          {
+            localLinearLayout.addView(localRelativeLayout, localLayoutParams2);
+            paramInt1 += 1;
+            i += 1;
             break;
+            RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+            localLayoutParams.addRule(13, -1);
+            ((URLImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
+            ((URLImageView)localObject).setAdjustViewBounds(false);
+            localRelativeLayout.addView((View)localObject, localLayoutParams);
+            break label294;
+            localObject = (ViewGroup)localRelativeLayout.getParent();
+            if (localObject != null) {
+              ((ViewGroup)localObject).removeAllViews();
+            }
           }
         }
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.addView(localLinearLayout, localLayoutParams1);
+        paramInt2 += 1;
       }
-      return;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      paramJSONObject.printStackTrace();
-      if (this.jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$OnGetZipFileList != null) {
-        this.jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$OnGetZipFileList.a(this.jdField_a_of_type_JavaUtilList);
-      }
-    }
+      this.jdField_a_of_type_Boolean = true;
+    } while (!QLog.isColorLevel());
+    QLog.d("EmoticonLinearLayout", 2, "[Performance] EmoticonLinearLayout create duration: " + (System.currentTimeMillis() - l) + ", type=" + this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_Int);
   }
 }
 

@@ -1,16 +1,18 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
-import com.tencent.mobileqq.ark.ArkAppCGI.ArkAppCGICallback;
-import java.util.ArrayList;
+import android.view.View;
+import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.ar.config.SplashPopupWin;
 
 public class aajy
-  extends ArkAppCGI.ArkAppCGICallback
+  implements PopupWindow.OnDismissListener
 {
-  public aajy(ArkActionAppMgr paramArkActionAppMgr) {}
+  public aajy(SplashPopupWin paramSplashPopupWin, BaseActivity paramBaseActivity, View paramView) {}
   
-  public void a(boolean paramBoolean, Object paramObject, ArrayList paramArrayList1, ArrayList paramArrayList2)
+  public void onDismiss()
   {
-    ThreadManager.post(new aajz(this, paramObject, paramBoolean, paramArrayList1, paramArrayList2), 5, null, true);
+    this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.a(8);
+    SplashPopupWin.a(this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin, this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.jdField_a_of_type_AndroidViewView, false);
+    this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.b();
   }
 }
 

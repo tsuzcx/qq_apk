@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.data;
 
-import aioz;
+import ajdd;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -107,7 +107,7 @@ public class TroopAioTips
           if (!paramBoolean) {
             break label101;
           }
-          localLayoutParams.addRule(3, 2131362419);
+          localLayoutParams.addRule(3, 2131362422);
         }
       }
     }
@@ -127,7 +127,7 @@ public class TroopAioTips
       localObject = this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar;
       break;
       label101:
-      int i = TroopAioMsgNavigateBar.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, new int[] { 2131363490, 2131362153, 2131362130 });
+      int i = TroopAioMsgNavigateBar.a(this.jdField_a_of_type_AndroidWidgetRelativeLayout, new int[] { 2131363508, 2131362153, 2131362130 });
       if (i > 0) {
         localLayoutParams.addRule(3, i);
       }
@@ -177,7 +177,7 @@ public class TroopAioTips
     this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioBlueTipsView.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
     this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilObserver, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidWidgetRelativeLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1, this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, this.jdField_a_of_type_ComTencentMobileqqWidgetScrollerRunnable);
     this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipBar.a(this);
-    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidContentContext, new aioz(this));
+    this.jdField_a_of_type_AndroidViewGestureDetector = new GestureDetector(this.jdField_a_of_type_AndroidContentContext, new ajdd(this));
   }
   
   public void c(int paramInt)
@@ -295,7 +295,7 @@ public class TroopAioTips
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioTips
  * JD-Core Version:    0.7.0.1
  */

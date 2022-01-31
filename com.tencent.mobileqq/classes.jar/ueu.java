@@ -1,54 +1,24 @@
-import android.graphics.drawable.Drawable;
-import android.widget.ImageView;
-import com.nineoldandroids.animation.Animator;
-import com.nineoldandroids.animation.AnimatorListenerAdapter;
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
-public class ueu
-  extends AnimatorListenerAdapter
+class ueu
+  implements DialogInterface.OnClickListener
 {
-  int jdField_a_of_type_Int = 0;
-  boolean jdField_a_of_type_Boolean = true;
+  ueu(uet paramuet, QQCustomDialog paramQQCustomDialog) {}
   
-  public ueu(VisitorsActivity paramVisitorsActivity) {}
-  
-  public void onAnimationRepeat(Animator paramAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean)
-    {
-      int j = this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a.size();
-      int i = 0;
-      for (;;)
-      {
-        if (i < j)
-        {
-          this.jdField_a_of_type_Int = ((this.jdField_a_of_type_Int + 1) % j);
-          paramAnimator = (Drawable)this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.a.get(this.jdField_a_of_type_Int);
-          if (paramAnimator == null) {
-            break label112;
-          }
-          if (!(paramAnimator instanceof URLDrawable)) {
-            break label98;
-          }
-          if (((URLDrawable)paramAnimator).getStatus() != 1) {
-            break label112;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.c.setImageDrawable(paramAnimator);
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_Boolean = false;
-          return;
-          label98:
-          this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.c.setImageDrawable(paramAnimator);
-        }
-        label112:
-        i += 1;
-      }
-    }
-    this.jdField_a_of_type_Boolean = true;
+    ReportController.b(this.jdField_a_of_type_Uet.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_more", 0, 0, this.jdField_a_of_type_Uet.a.a, "", "", "");
+    paramDialogInterface = new Intent(this.jdField_a_of_type_Uet.a, QQBrowserActivity.class);
+    paramDialogInterface.putExtra("url", "http://kf.qq.com/touch/apifaq/120307IVnEni140626N3EZzq.html?platform=15&ADTAG=veda.mobileqq.app&_wv=1027");
+    paramDialogInterface.putExtra("webStyle", "noBottomBar");
+    this.jdField_a_of_type_Uet.a.startActivity(paramDialogInterface);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
   }
 }
 

@@ -1,32 +1,60 @@
-import android.util.AndroidRuntimeException;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import android.text.TextUtils;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.takevideo2.StoryLocalPublishPart;
-import com.tencent.biz.qqstory.takevideo2.StoryPublishLauncher;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import com.tencent.biz.qqstory.takevideo.EditVideoMusic;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import com.tencent.biz.qqstory.takevideo.music.QQStoryMusicInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class oky
-  implements View.OnClickListener
+  extends BroadcastReceiver
 {
-  public oky(StoryLocalPublishPart paramStoryLocalPublishPart) {}
+  public oky(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public void onClick(View paramView)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    SLog.d("story.publish.StoryLocalPublishPart", "onClick %s", new Object[] { paramView });
-    switch (paramView.getId())
+    paramContext = paramIntent.getAction();
+    if ("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT".equals(paramContext))
     {
-    default: 
-      return;
+      paramContext = paramIntent.getStringExtra("data");
+      paramIntent = paramIntent.getStringExtra("event");
+      if ((!TextUtils.isEmpty(paramIntent)) && (paramIntent.equals("kTribeSelectMusic"))) {}
     }
-    StoryReportor.a("video_edit", "clk_local", 0, 0, new String[0]);
-    paramView = StoryPublishLauncher.a();
-    if (paramView.a())
+    do
     {
-      paramView.a(this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideo2StoryEffectsCameraCaptureFragment, this.a.a(), this.a.jdField_a_of_type_Int);
+      do
+      {
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("zivonchen", 2, "onReceive:" + paramContext);
+        }
+      } while (TextUtils.isEmpty(paramContext));
+      paramContext = new QQStoryMusicInfo(paramContext);
+      this.a.b();
+      if (!TextUtils.isEmpty(paramContext.d))
+      {
+        this.a.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramContext.b);
+        this.a.jdField_b_of_type_AndroidViewView.setVisibility(8);
+      }
+      this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoMusic.a(paramContext);
+      this.a.a(paramContext.d);
+      VideoEditReport.a("0X80076D6");
       return;
-    }
-    throw new AndroidRuntimeException("StoryPublishLauncher is not support");
+      if ("action_music_start".equals(paramContext))
+      {
+        this.a.f();
+        this.a.d();
+        return;
+      }
+    } while (!"action_music_refresh_list".equals(paramContext));
+    this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
   }
 }
 

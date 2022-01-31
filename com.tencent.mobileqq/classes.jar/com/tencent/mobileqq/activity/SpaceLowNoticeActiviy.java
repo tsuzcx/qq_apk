@@ -13,9 +13,9 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import mqq.manager.ServerConfigManager.ConfigType;
-import tqg;
-import tqh;
-import tqi;
+import ttg;
+import tth;
+import tti;
 
 public class SpaceLowNoticeActiviy
   extends BaseActivity
@@ -63,15 +63,15 @@ public class SpaceLowNoticeActiviy
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969140);
+    super.setContentView(2130969139);
     if ((this.a != null) && (this.a.isShowing())) {
       this.a.dismiss();
     }
     this.a = null;
     this.a = DialogUtil.a(this, 230);
     this.a.setContentView(2130968842);
-    this.a.setTitle(getString(2131438702)).setMessage(getString(2131438703)).setPositiveButton(2131436807, new tqh(this)).setNegativeButton(2131432998, new tqg(this));
-    this.a.setOnKeyListener(new tqi(this));
+    this.a.setTitle(getString(2131438720)).setMessage(getString(2131438721)).setPositiveButton(2131436824, new tth(this)).setNegativeButton(2131433015, new ttg(this));
+    this.a.setOnKeyListener(new tti(this));
     this.a.show();
     return false;
   }

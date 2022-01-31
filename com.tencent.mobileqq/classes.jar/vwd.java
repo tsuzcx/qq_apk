@@ -1,14 +1,27 @@
-import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
+import com.tencent.mobileqq.nearby.NearbyRelevantObserver;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 public class vwd
-  implements Runnable
+  extends NearbyRelevantObserver
 {
-  public vwd(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vwd(NearbyChatPie paramNearbyChatPie) {}
   
-  public void run()
+  public void a(String paramString1, String paramString2, Object paramObject)
   {
-    ServiceAccountFolderManager.a().b(this.a.a);
+    if (QLog.isDevelopLevel()) {
+      QLog.i(this.a.f, 4, "onAutoInput, [" + paramString1 + "," + paramString2 + "," + paramObject + "," + System.currentTimeMillis() + "]");
+    }
+    if (!"tag_nearby_chat".equals(paramString1)) {}
+    while ((TextUtils.isEmpty(paramString2)) || (this.a.a == null)) {
+      return;
+    }
+    this.a.ar();
+    this.a.a.setText(paramString2);
+    this.a.a.selectAll();
+    this.a.g = paramString2;
   }
 }
 

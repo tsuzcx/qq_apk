@@ -1,19 +1,19 @@
-import com.tencent.mobileqq.armap.ARGLSurfaceView;
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.ARMapTracer.TraceResultListener;
+import android.graphics.Bitmap;
+import android.widget.ImageView;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
+import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
 
-class aaui
-  implements ARMapTracer.TraceResultListener
+public class aaui
+  implements ArkAppCenter.OnGetAppIcon
 {
-  aaui(aauh paramaauh) {}
+  public aaui(ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder) {}
   
-  public boolean a(int paramInt)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    ARGLSurfaceView localARGLSurfaceView = this.a.a.a;
-    if (localARGLSurfaceView != null) {
-      localARGLSurfaceView.runOnGlThread(new aauj(this, localARGLSurfaceView, paramInt));
+    if (paramBitmap != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArkArkHorizontalListViewAdapter$ItemViewHolder.a.setImageBitmap(paramBitmap);
     }
-    return true;
   }
 }
 

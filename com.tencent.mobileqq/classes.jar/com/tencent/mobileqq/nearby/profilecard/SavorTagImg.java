@@ -54,7 +54,7 @@ public class SavorTagImg
     getResources().getDimensionPixelSize(2131558557);
     int i = getResources().getDimensionPixelSize(2131558558);
     setOrientation(1);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2130970446, null));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2130970487, null));
     LinearLayout.LayoutParams localLayoutParams = generateDefaultLayoutParams();
     localLayoutParams.width = -1;
     localLayoutParams.height = -2;
@@ -127,15 +127,15 @@ public class SavorTagImg
       if ((paramInt == 10) || (paramInt == 9) || (paramInt == 11)) {
         j = (int)(jdField_a_of_type_ArrayOfInt[i] * f);
       }
-      i = paramString.getDimensionPixelSize(2131559116);
+      i = paramString.getDimensionPixelSize(2131559118);
       int m = paramString.getDimensionPixelSize(2131558558);
       paramString = new GradientDrawable();
       if (this.jdField_a_of_type_Int == 7)
       {
-        paramString.setColor(getResources().getColor(2131493212));
+        paramString.setColor(getResources().getColor(2131493213));
         paramString.setCornerRadius(10.0F * f);
         paramString.setShape(0);
-        int n = getResources().getDimensionPixelSize(2131559031);
+        int n = getResources().getDimensionPixelSize(2131559033);
         paramString.setSize(n, n);
         label214:
         paramString = new SavorImgTagAdapter(getContext(), paramString, k, j, paramInt);
@@ -169,7 +169,7 @@ public class SavorTagImg
       break;
       i = 2;
       break;
-      paramString.setColor(getResources().getColor(2131493212));
+      paramString.setColor(getResources().getColor(2131493213));
       paramString.setShape(0);
       paramString.setSize(k, j);
       break label214;
@@ -240,7 +240,7 @@ public class SavorTagImg
     this.jdField_a_of_type_Boolean = paramBoolean;
     if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130838480, 0);
+      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 2130838484, 0);
       return;
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);

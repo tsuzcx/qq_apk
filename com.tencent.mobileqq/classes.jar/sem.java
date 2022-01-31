@@ -1,90 +1,97 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.util.Utils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
+import android.content.Intent;
+import android.net.Uri;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.troop.TroopStoryUtil;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.activity.JumpActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.util.TroopReportor;
+import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.AppInfo;
 
 public class sem
-  extends CardObserver
+  implements View.OnClickListener
 {
-  public sem(Conversation paramConversation) {}
+  public sem(ChatSettingForTroop paramChatSettingForTroop) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onClick(View paramView)
   {
-    if ((paramObject instanceof Card)) {}
-    for (paramObject = (Card)paramObject;; paramObject = null)
+    Object localObject1 = paramView.getTag();
+    oidb_0xaf4.AppInfo localAppInfo;
+    if ((localObject1 instanceof oidb_0xaf4.AppInfo))
     {
-      if ((paramBoolean) && (paramObject != null) && (!Utils.a(paramObject.uin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-        this.a.a(8, paramObject.uin, -2147483648);
+      localAppInfo = (oidb_0xaf4.AppInfo)localObject1;
+      localObject1 = localAppInfo.url.get();
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        break label40;
       }
+    }
+    label40:
+    label460:
+    for (;;)
+    {
       return;
-    }
-  }
-  
-  protected void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (paramBoolean1)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("interactive", 2, " conversation onGetCalReactiveDays isAllow= " + paramBoolean2);
-      }
-      this.a.a(0L);
-    }
-  }
-  
-  protected void b(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramObject instanceof Card)) {}
-    for (Object localObject = (Card)paramObject;; localObject = null)
-    {
-      if ((paramBoolean) && (localObject != null) && (!Utils.a(((Card)localObject).uin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-        this.a.a(8, ((Card)localObject).uin, 1029);
-      }
-      if (QLog.isDevelopLevel())
+      long l = localAppInfo.appid.get();
+      int i = localAppInfo.push_red_point.get();
+      Object localObject2;
+      if ((((String)localObject1).startsWith("http")) || (((String)localObject1).startsWith("https")))
       {
-        if (localObject == null) {
-          break label120;
+        localObject2 = new Intent(this.a, QQBrowserActivity.class);
+        ((Intent)localObject2).putExtra("url", ChatSettingForTroop.a(this.a, (String)localObject1, l, i));
+        ((Intent)localObject2).putExtra("webStyle", "noBottomBar");
+        ((Intent)localObject2).putExtra("startOpenPageTime", System.currentTimeMillis());
+        this.a.startActivity((Intent)localObject2);
+        if (i != 0)
+        {
+          localAppInfo.push_red_point.set(0);
+          ((TextView)paramView.findViewById(2131368493)).setVisibility(8);
         }
-        paramObject = ((Card)localObject).uin;
-        if (localObject == null) {
-          break label126;
+        if ((this.a.d != 1) && (!this.a.a.isMember)) {
+          continue;
         }
+        TroopReportor.a("Grp_app_new", "grpData_admin", "app_clk", 0, 0, new String[] { this.a.a.troopUin, TroopReportor.a(this.a.a), String.valueOf(l) });
+        paramView = "";
+        if (l != 0L) {
+          break label422;
+        }
+        paramView = "app_clk";
       }
-      label120:
-      label126:
-      for (localObject = ((Card)localObject).strCampusName;; localObject = "")
+      for (;;)
       {
-        QLog.i("Q.recent", 4, String.format(Locale.getDefault(), "onGetCampusInfo isSuccess: %b uin: %s name: %s", new Object[] { Boolean.valueOf(paramBoolean), Utils.b(paramObject), Utils.b((String)localObject) }));
+        if (TextUtils.isEmpty(paramView)) {
+          break label460;
+        }
+        TroopReportor.a("Grp_app_new", "grpData_admin", paramView, 0, 0, new String[] { this.a.a.troopUin, TroopReportor.a(this.a.a) });
         return;
-        paramObject = "";
+        if (!((String)localObject1).startsWith("mqqapi")) {
+          break;
+        }
+        localObject2 = ChatSettingForTroop.a(this.a, (String)localObject1, l, i);
+        localObject1 = localObject2;
+        if (l == 1105981808L)
+        {
+          localObject1 = TroopStoryUtil.a(this.a.getIntent(), (String)localObject2, null);
+          StoryReportor.a("story_grp", "clk_entry", 0, 0, new String[] { "", "", "", "" });
+        }
+        localObject2 = new Intent(this.a, JumpActivity.class);
+        ((Intent)localObject2).setData(Uri.parse((String)localObject1));
+        this.a.startActivity((Intent)localObject2);
         break;
+        if (l == 1L) {
+          paramView = "clk_file";
+        } else if (l == 2L) {
+          paramView = "clk_album";
+        } else if (l == 1101236949L) {
+          paramView = "clk_notice";
+        }
       }
-    }
-  }
-  
-  protected void b(boolean paramBoolean, String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent", 2, "Conversation.onUpdateAvatar: uin:" + paramString + ", success :" + paramBoolean);
-    }
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (Utils.a(paramString, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.sendEmptyMessage(3);
-    }
-  }
-  
-  protected void c(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (paramString != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin().equals(paramString)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.recent", 2, "refresh recent, from_onGreetingRecv");
-      }
-      this.a.a(8, AppConstants.G, 1001);
     }
   }
 }

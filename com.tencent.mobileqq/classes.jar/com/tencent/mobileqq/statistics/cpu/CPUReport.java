@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics.cpu;
 
-import ahsy;
+import aihb;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
@@ -54,7 +54,7 @@ public class CPUReport
   {
     try
     {
-      int m = new File("/sys/devices/system/cpu/").listFiles(new ahsy()).length;
+      int m = new File("/sys/devices/system/cpu/").listFiles(new aihb()).length;
       return m;
     }
     catch (Exception localException) {}
@@ -1422,7 +1422,7 @@ public class CPUReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.cpu.CPUReport
  * JD-Core Version:    0.7.0.1
  */

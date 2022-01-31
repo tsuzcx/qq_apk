@@ -1,6 +1,6 @@
 package cooperation.qlink;
 
-import alxn;
+import amnr;
 import android.os.Bundle;
 import android.os.Handler;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -70,7 +70,7 @@ public class QlinkServiceManager
       QLog.e("QlinkServiceManager", 1, "[QLINK] QQ - PluginCommunicationHandler.getInstance failed");
       return;
     }
-    localPluginCommunicationHandler.register(new alxn(this, "qlink.notify"));
+    localPluginCommunicationHandler.register(new amnr(this, "qlink.notify"));
   }
   
   public void a(long paramLong) {}

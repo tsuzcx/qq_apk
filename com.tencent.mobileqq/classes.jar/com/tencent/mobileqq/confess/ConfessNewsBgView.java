@@ -150,7 +150,7 @@ public class ConfessNewsBgView
         try
         {
           Drawable localDrawable = getResources().getDrawable(localBgElement.jdField_a_of_type_Int);
-          if (localBgElement.jdField_a_of_type_Int == 2130842342) {
+          if (localBgElement.jdField_a_of_type_Int == 2130842389) {
             break label291;
           }
           int i1 = localDrawable.getIntrinsicWidth();
@@ -213,7 +213,7 @@ public class ConfessNewsBgView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessNewsBgView
  * JD-Core Version:    0.7.0.1
  */

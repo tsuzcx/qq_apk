@@ -1,23 +1,14 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.smallscreen.SmallScreenDoubleVideoControlUI;
-import com.tencent.av.smallscreen.SmallScreenVideoController;
+import android.widget.TextView;
+import com.tencent.av.ui.AVActivity;
 
 public class jpn
   implements Runnable
 {
-  public jpn(SmallScreenVideoController paramSmallScreenVideoController) {}
+  public jpn(AVActivity paramAVActivity) {}
   
   public void run()
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI instanceof SmallScreenDoubleVideoControlUI))
-    {
-      String str = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
-      int i = this.a.jdField_a_of_type_ComTencentAvVideoController.a().P;
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(new Object[] { Integer.valueOf(42), str, Integer.valueOf(i) });
-    }
-    this.a.a();
+    ((TextView)this.a.findViewById(2131365841)).setVisibility(8);
   }
 }
 

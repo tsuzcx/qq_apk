@@ -1,6 +1,6 @@
 package cooperation.comic.utils;
 
-import aluk;
+import amko;
 import com.tencent.mobileqq.app.ThreadManager;
 import java.util.Observable;
 import java.util.Observer;
@@ -13,7 +13,7 @@ public abstract class QQComicRedTouchManager$PluginRedTouchObserver
   
   public final void update(Observable paramObservable, Object paramObject)
   {
-    ThreadManager.getUIHandler().post(new aluk(this));
+    ThreadManager.getUIHandler().post(new amko(this));
   }
 }
 

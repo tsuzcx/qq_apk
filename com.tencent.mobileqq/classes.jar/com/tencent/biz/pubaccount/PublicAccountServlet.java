@@ -89,7 +89,7 @@ public class PublicAccountServlet
       {
         paramPacket.setSSOCommand("PubAccountAdSvc.ad_report");
       }
-      else if ((paramIntent.equals("PubAccountSvc.net_connect_info")) || (paramIntent.equals("PubAccountArticleCenter.GetRecommendPubAccount")) || (paramIntent.equals("MQUpdateSvc_com_qq_mp.web.proxy.kandian_ad")) || (paramIntent.equals("MQUpdateSvc_com_qq_mp.web.proxy.kandian_ad_report")) || (paramIntent.equals("MQUpdateSvc_com_qq_mp.web.proxy.kandian_ad_native")) || (paramIntent.equals("MQUpdateSvc_com_qq_mp.web.proxy.kandian_ad_report_new")) || (paramIntent.equals(NativeCommentServlet.c)) || (paramIntent.equals(NativeCommentServlet.b)) || (paramIntent.equals(NativeCommentServlet.d)) || (paramIntent.equals(NativeCommentServlet.e)))
+      else if ((paramIntent.equals("PubAccountSvc.net_connect_info")) || (paramIntent.equals("PubAccountArticleCenter.GetRecommendPubAccount")) || (paramIntent.equals("MQUpdateSvc_com_qq_mp.web.proxy.kandian_ad")) || (paramIntent.equals("MQUpdateSvc_com_qq_mp.web.proxy.kandian_ad_report")) || (paramIntent.equals("MQUpdateSvc_com_qq_mp.web.proxy.kandian_ad_native")) || (paramIntent.equals("MQUpdateSvc_com_qq_mp.web.proxy.kandian_ad_report_new")) || (paramIntent.equals("MQUpdateSvc_com_qq_mp.web.proxy.kandian_ad_report_test")) || (paramIntent.equals(NativeCommentServlet.c)) || (paramIntent.equals(NativeCommentServlet.b)) || (paramIntent.equals(NativeCommentServlet.d)) || (paramIntent.equals(NativeCommentServlet.e)))
       {
         paramPacket.setTimeout(15000L);
         paramPacket.setSSOCommand(paramIntent);

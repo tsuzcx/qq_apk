@@ -1,27 +1,16 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.mobileqq.activity.MainFragment;
 
 public class tba
-  implements CompoundButton.OnCheckedChangeListener
+  implements DialogInterface.OnDismissListener
 {
-  public tba(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public tba(MainFragment paramMainFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (AppSetting.b) {
-      NotifyPushSettingActivity.b(this.a).setContentDescription("夜间防骚扰模式");
-    }
-    SettingCloneUtil.writeValue(this.a, null, "no_disturb_mode", "qqsetting_nodisturb_mode_key", paramBoolean);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ReportController.b(this.a.app, "CliOper", "", "", "Setting_tab", "Clk_night_mode", 0, i, String.valueOf(i), "", "", "");
-      return;
+    if (paramDialogInterface == this.a.a) {
+      this.a.a = null;
     }
   }
 }

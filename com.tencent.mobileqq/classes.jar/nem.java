@@ -1,40 +1,46 @@
-import com.tencent.biz.qqstory.newshare.StoryShare;
-import com.tencent.biz.qqstory.newshare.callback.OnShareListener;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.ui.OnShareUIListener;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeVidListPullSegment;
+import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryManager;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeVidListRequest;
+import com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeVidListRequest.MsgTabNodeVidListResponse;
+import com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeVideoList;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.pb.PBRepeatMessageField;
+import com.tencent.qphone.base.util.QLog;
 
 public class nem
-  implements OnShareUIListener
+  implements CmdTaskManger.CommandCallback
 {
-  public nem(StoryShare paramStoryShare) {}
+  public nem(MsgTabNodeVidListPullSegment paramMsgTabNodeVidListPullSegment, MsgTabNodeInfo paramMsgTabNodeInfo) {}
   
-  public void a()
+  public void a(@NonNull MsgTabNodeVidListRequest paramMsgTabNodeVidListRequest, @Nullable MsgTabNodeVidListRequest.MsgTabNodeVidListResponse paramMsgTabNodeVidListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).c();
+    if ((paramMsgTabNodeVidListResponse == null) || (paramErrorMessage.isFail()))
+    {
+      SLog.e("Q.qqstory.msgTab.jobPullVidList", "pull failed, info=" + this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo + ", err=" + paramErrorMessage.getErrorMessage());
+      MsgTabNodeVidListPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment, new ErrorMessage(101, paramErrorMessage.getErrorMessage()));
+      return;
     }
-  }
-  
-  public void a(int paramInt)
-  {
-    StoryShare.a(this.a).a(paramInt);
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).b(paramInt);
+    if (paramMsgTabNodeVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_service$RspMsgTabNodeVideoList.video_list.size() == 0)
+    {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.a != 5)
+      {
+        SLog.e("Q.qqstory.msgTab.jobPullVidList", "pull failed, ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, info=" + this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo + ", err=ERROR_NODE_VIDEOINFO_VIDLIST_IS_NULL, " + paramErrorMessage.getErrorMessage());
+        MsgTabNodeVidListPullSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment, new ErrorMessage(103, paramErrorMessage.getErrorMessage()));
+        return;
+      }
+      MsgTabNodeVidListPullSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment, paramMsgTabNodeVidListResponse);
+      return;
     }
-  }
-  
-  public void b()
-  {
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).d();
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.qqstory.msgTab.jobPullVidList", 2, "pull succeed, info=" + this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo);
     }
-  }
-  
-  public void c()
-  {
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).d(-1);
-    }
+    MsgTabStoryManager.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo, paramMsgTabNodeVidListResponse.jdField_a_of_type_ArrayOfByte);
+    MsgTabNodeVidListPullSegment.b(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeVidListPullSegment, paramMsgTabNodeVidListResponse);
   }
 }
 

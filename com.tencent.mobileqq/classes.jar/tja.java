@@ -1,19 +1,26 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SVIPObserver;
+import com.tencent.mobileqq.activity.QQLSActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class tja
-  extends SVIPObserver
+  implements Runnable
 {
-  public tja(QQSettingMe paramQQSettingMe) {}
+  public tja(QQLSActivity paramQQLSActivity) {}
   
-  public void a()
+  public void run()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("QQSettingRedesign", 2, "updateLevelAndVip from mVipInfoChangedObserver");
+      QLog.d("moveTaskToBack", 2, "moveTaskToBackInSubThread");
     }
-    this.a.b(this.a.a.getCurrentAccountUin());
+    try
+    {
+      this.a.moveTaskToBack(true);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("moveTaskToBack", 2, "moveTaskToBack e=" + localThrowable.toString());
+    }
   }
 }
 

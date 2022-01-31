@@ -11,7 +11,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AnticipateOvershootInterpolator;
 import android.view.animation.LinearInterpolator;
-import anll;
+import aobq;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -111,7 +111,7 @@ public class SecondDemoView
     ValueAnimator localValueAnimator = ValueAnimator.ofObject(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetAnimStateTypeEvaluator, new Object[] { this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetAnimStateTypeEvaluator.b(), this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetAnimStateTypeEvaluator.a() });
     localValueAnimator.setInterpolator(new LinearInterpolator());
     localValueAnimator.setRepeatCount(100);
-    localValueAnimator.addUpdateListener(new anll(this));
+    localValueAnimator.addUpdateListener(new aobq(this));
     localValueAnimator.setDuration(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiWidgetAnimStateTypeEvaluator.a());
     localValueAnimator.start();
   }

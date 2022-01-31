@@ -1,13 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraProgressView;
+import android.content.DialogInterface;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
 
-public class lia
-  implements Runnable
+public final class lia
+  extends DialogUtil.DialogOnClickAdapter
 {
-  public lia(ReadInJoyCameraProgressView paramReadInJoyCameraProgressView) {}
-  
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.invalidate();
+    paramDialogInterface.dismiss();
   }
 }
 

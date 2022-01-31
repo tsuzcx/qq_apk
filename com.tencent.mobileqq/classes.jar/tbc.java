@@ -1,47 +1,15 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.util.BadgeUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.MainFragment;
 
 public class tbc
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public tbc(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
+  public tbc(MainFragment paramMainFragment) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    QQAppInterface localQQAppInterface;
-    if (paramBoolean)
-    {
-      BadgeUtils.a();
-      localQQAppInterface = this.a.app;
-      if (!paramBoolean) {
-        break label78;
-      }
-      paramCompoundButton = "0X8004BE7";
-      label23:
-      if (!paramBoolean) {
-        break label84;
-      }
-    }
-    label78:
-    label84:
-    for (String str = "0X8004BE7";; str = "0X8004BE6")
-    {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", paramCompoundButton, str, 0, 1, "1", "", "", "");
-      if (AppSetting.b) {
-        NotifyPushSettingActivity.d(this.a).setContentDescription("桌面图标显示未读消息数");
-      }
-      return;
-      BadgeUtils.b();
-      break;
-      paramCompoundButton = "0X8004BE6";
-      break label23;
-    }
+    this.a.g();
   }
 }
 

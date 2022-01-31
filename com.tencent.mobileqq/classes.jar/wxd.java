@@ -1,18 +1,16 @@
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import mqq.os.MqqHandler;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
 
 public class wxd
-  extends DownloadListener
+  implements DialogInterface.OnClickListener
 {
-  public wxd(PreloadImgManager paramPreloadImgManager) {}
+  public wxd(PhotoListActivity paramPhotoListActivity) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.onDone(paramDownloadTask);
-    ThreadManager.getFileThreadHandler().post(new wxe(this, paramDownloadTask));
+    paramDialogInterface.dismiss();
+    this.a.setResult(8001);
   }
 }
 

@@ -1,25 +1,52 @@
-import com.tencent.TMG.channel.AVAppChannel.CsCmdCallback;
-import com.tencent.TMG.sdk.AVContext.StartParam;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineStartParams;
-import com.tencent.mobileqq.apollo.tmg_opensdk.SSOChannel;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.script.SpriteContext;
+import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqavopensdk.PBuffer.SSOTunnelEvent.CsCmdCallback;
+import com.tencent.widget.XPanelContainer;
 
 public class ysg
-  implements SSOTunnelEvent.CsCmdCallback
+  implements Runnable
 {
-  public ysg(SSOChannel paramSSOChannel, byte[] paramArrayOfByte, AVAppChannel.CsCmdCallback paramCsCmdCallback) {}
+  public ysg(SpriteUIHandler paramSpriteUIHandler, int paramInt) {}
   
-  public void a(int paramInt, String paramString)
+  public void run()
   {
-    QLog.e(SSOChannel.jdField_a_of_type_JavaLangString, 2, "ACTION_NOTICE_SERVICE_REQUEST_SSOCHANNEL:onError  identifier=" + this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkSSOChannel.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier + ", nAppid=" + this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkSSOChannel.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId + ", nGameID=" + ((AVEngineStartParams)this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkSSOChannel.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int + ", lGameRoomID=" + ((AVEngineStartParams)this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkSSOChannel.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long + ", UserRequestData.length" + this.jdField_a_of_type_ArrayOfByte.length + ", s info=" + paramString);
-    this.jdField_a_of_type_ComTencentTMGChannelAVAppChannel$CsCmdCallback.onError(paramInt, paramString);
-  }
-  
-  public void a(byte[] paramArrayOfByte)
-  {
-    QLog.e(SSOChannel.jdField_a_of_type_JavaLangString, 2, "ACTION_NOTICE_SERVICE_REQUEST_SSOCHANNEL:onSuccess  startParam_.identifier=" + this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkSSOChannel.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.identifier + ", nAppid=" + this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkSSOChannel.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam.sdkAppId + ", nGameID=" + ((AVEngineStartParams)this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkSSOChannel.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Int + ", lGameRoomID=" + ((AVEngineStartParams)this.jdField_a_of_type_ComTencentMobileqqApolloTmg_opensdkSSOChannel.jdField_a_of_type_ComTencentTMGSdkAVContext$StartParam).jdField_a_of_type_Long + ", UserRequestData.length" + paramArrayOfByte.length + ", bytes.length=" + this.jdField_a_of_type_ArrayOfByte.length);
-    this.jdField_a_of_type_ComTencentTMGChannelAVAppChannel$CsCmdCallback.onSuccess(paramArrayOfByte);
+    try
+    {
+      if (SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a() == null) {
+        return;
+      }
+      XPanelContainer localXPanelContainer = (XPanelContainer)SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a().a().findViewById(2131362840);
+      if (1 == this.jdField_a_of_type_Int)
+      {
+        if (localXPanelContainer.a() != 21) {
+          return;
+        }
+        SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a().ai();
+        return;
+      }
+    }
+    catch (Exception localException)
+    {
+      QLog.e("cmshow_scripted_SpriteUIHandler", 1, localException, new Object[0]);
+      return;
+    }
+    if (2 == this.jdField_a_of_type_Int)
+    {
+      BaseChatPie localBaseChatPie = SpriteUIHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler).a();
+      if (localBaseChatPie != null)
+      {
+        ApolloPanel localApolloPanel = localBaseChatPie.a;
+        if ((localApolloPanel != null) && (localApolloPanel.a() == 7))
+        {
+          localBaseChatPie.o(0);
+          return;
+        }
+      }
+      localException.a(21);
+    }
   }
 }
 

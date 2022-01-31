@@ -33,7 +33,7 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Map;
-import ray;
+import rdo;
 
 public class ActivityLeakSolution
 {
@@ -103,7 +103,7 @@ public class ActivityLeakSolution
         if (jdField_a_of_type_JavaLangReflectField == null) {
           continue;
         }
-        paramActivity.runOnUiThread(new ray(paramActivity));
+        paramActivity.runOnUiThread(new rdo(paramActivity));
         return;
       }
       catch (Throwable localThrowable)
@@ -1070,7 +1070,7 @@ public class ActivityLeakSolution
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mfsdk.LeakInspector.ActivityLeakSolution
  * JD-Core Version:    0.7.0.1
  */

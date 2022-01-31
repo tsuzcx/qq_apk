@@ -1,4 +1,8 @@
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.ProfileActivity;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class spo
   implements Runnable
@@ -7,7 +11,7 @@ class spo
   
   public void run()
   {
-    this.a.a.a(2131437508, 1);
+    ReportController.b(this.a.a.a.app, "CliOper", "", "", "P_prof", "Prof_copy", ProfileActivity.a(this.a.a.a.a.a.h), 0, Integer.toString(ProfileActivity.a(this.a.a.a.a.a)), "", "", "");
   }
 }
 

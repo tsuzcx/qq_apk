@@ -1,20 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.video.TopicShareHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareListener;
+import android.view.View;
+import com.tencent.biz.pubaccount.readinjoy.struct.TagInfo;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyVideoTagSelectionFragment;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
 public class lzf
-  implements DialogInterface.OnDismissListener
+  implements AdapterView.OnItemClickListener
 {
-  public lzf(TopicShareHelper paramTopicShareHelper) {}
+  public lzf(ReadInJoyVideoTagSelectionFragment paramReadInJoyVideoTagSelectionFragment) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (TopicShareHelper.a(this.a) != null) {
-      TopicShareHelper.a(this.a).a(TopicShareHelper.a(this.a), TopicShareHelper.b(this.a), false, false);
-    }
-    TopicShareHelper.a(this.a, true);
-    TopicShareHelper.b(this.a, false);
+    paramAdapterView = (TagInfo)ReadInJoyVideoTagSelectionFragment.a(this.a).getItem(paramInt);
+    ReadInJoyVideoTagSelectionFragment.a(this.a).b(paramAdapterView);
   }
 }
 

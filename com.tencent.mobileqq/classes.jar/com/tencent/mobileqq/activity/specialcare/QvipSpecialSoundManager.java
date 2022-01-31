@@ -24,11 +24,11 @@ import java.util.List;
 import mqq.os.MqqHandler;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ycc;
-import ycd;
-import yce;
-import ycf;
-import ycg;
+import yfj;
+import yfk;
+import yfl;
+import yfm;
+import yfn;
 
 public class QvipSpecialSoundManager
 {
@@ -51,7 +51,7 @@ public class QvipSpecialSoundManager
     try
     {
       paramContext = paramContext.getFilesDir().getCanonicalPath() + "/";
-      ThreadManager.getFileThreadHandler().post(new ycd(this, paramContext));
+      ThreadManager.getFileThreadHandler().post(new yfk(this, paramContext));
       return;
     }
     catch (Exception paramContext) {}
@@ -317,7 +317,7 @@ public class QvipSpecialSoundManager
   
   private void a(QvipSpecialSoundManager.CallBack paramCallBack, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ycg(this, paramCallBack, paramBoolean));
+    this.jdField_a_of_type_AndroidOsHandler.post(new yfn(this, paramCallBack, paramBoolean));
   }
   
   private void a(String paramString1, String paramString2)
@@ -353,10 +353,10 @@ public class QvipSpecialSoundManager
       int i = 0;
       while (i < j)
       {
-        localObject = (ycc)paramString1.get(i);
-        ycc localycc = (ycc)paramString2.get(i);
-        if ((((ycc)localObject).jdField_a_of_type_Int == localycc.jdField_a_of_type_Int) && (!((ycc)localObject).jdField_b_of_type_JavaLangString.equals(localycc.jdField_b_of_type_JavaLangString))) {
-          ThreadManager.post(new yce(this, (ycc)localObject), 5, null, true);
+        localObject = (yfj)paramString1.get(i);
+        yfj localyfj = (yfj)paramString2.get(i);
+        if ((((yfj)localObject).jdField_a_of_type_Int == localyfj.jdField_a_of_type_Int) && (!((yfj)localObject).jdField_b_of_type_JavaLangString.equals(localyfj.jdField_b_of_type_JavaLangString))) {
+          ThreadManager.post(new yfl(this, (yfj)localObject), 5, null, true);
         }
         i += 1;
       }
@@ -379,25 +379,25 @@ public class QvipSpecialSoundManager
       int i = 0;
       if (i < j)
       {
-        ycc localycc = (ycc)paramList.get(i);
-        if (!b.containsKey(String.valueOf(localycc.jdField_a_of_type_Int))) {
-          b.put(String.valueOf(localycc.jdField_a_of_type_Int), localycc);
+        yfj localyfj = (yfj)paramList.get(i);
+        if (!b.containsKey(String.valueOf(localyfj.jdField_a_of_type_Int))) {
+          b.put(String.valueOf(localyfj.jdField_a_of_type_Int), localyfj);
         }
-        localEditor.putString("special_sound_url" + localycc.jdField_a_of_type_Int, localycc.jdField_c_of_type_JavaLangString);
-        if (!b(localycc.d)) {
+        localEditor.putString("special_sound_url" + localyfj.jdField_a_of_type_Int, localyfj.jdField_c_of_type_JavaLangString);
+        if (!b(localyfj.d)) {
           b("is white list.");
         }
         for (;;)
         {
           i += 1;
           break;
-          if (localycc.jdField_c_of_type_Int == 1) {
-            if (localycc.jdField_b_of_type_Int == 1) {
-              localArrayList1.add(localycc);
-            } else if (localycc.jdField_b_of_type_Int == 2) {
-              localArrayList2.add(localycc);
+          if (localyfj.jdField_c_of_type_Int == 1) {
+            if (localyfj.jdField_b_of_type_Int == 1) {
+              localArrayList1.add(localyfj);
+            } else if (localyfj.jdField_b_of_type_Int == 2) {
+              localArrayList2.add(localyfj);
             } else {
-              localArrayList3.add(localycc);
+              localArrayList3.add(localyfj);
             }
           }
         }
@@ -466,9 +466,9 @@ public class QvipSpecialSoundManager
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      ycc localycc = (ycc)((Iterator)localObject).next();
-      if (paramString.equals(localycc.jdField_c_of_type_JavaLangString)) {
-        return localycc.jdField_a_of_type_Int;
+      yfj localyfj = (yfj)((Iterator)localObject).next();
+      if (paramString.equals(localyfj.jdField_c_of_type_JavaLangString)) {
+        return localyfj.jdField_a_of_type_Int;
       }
     }
     return -1;
@@ -478,9 +478,9 @@ public class QvipSpecialSoundManager
   {
     if ((b != null) && (!b.isEmpty()))
     {
-      ycc localycc = (ycc)b.get(String.valueOf(paramInt));
-      if (localycc != null) {
-        return localycc.jdField_a_of_type_JavaLangString;
+      yfj localyfj = (yfj)b.get(String.valueOf(paramInt));
+      if (localyfj != null) {
+        return localyfj.jdField_a_of_type_JavaLangString;
       }
     }
     return "";
@@ -683,7 +683,7 @@ public class QvipSpecialSoundManager
   
   public void a(QvipSpecialSoundManager.CallBack paramCallBack)
   {
-    ThreadManager.post(new ycf(this, paramCallBack), 5, null, true);
+    ThreadManager.post(new yfm(this, paramCallBack), 5, null, true);
   }
   
   public void a(String paramString)

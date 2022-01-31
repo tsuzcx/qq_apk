@@ -1,12 +1,25 @@
-import dov.com.tencent.mobileqq.shortvideo.gesture.DownloadInfo;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleBtnOperationHelper;
+import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
 
-public class anzn
+class anzn
+  implements Animation.AnimationListener
 {
-  int jdField_a_of_type_Int = 0;
-  DownloadInfo jdField_a_of_type_DovComTencentMobileqqShortvideoGestureDownloadInfo = null;
-  boolean jdField_a_of_type_Boolean = false;
-  int b = 0;
-  int c = 0;
+  anzn(anzm paramanzm) {}
+  
+  public void onAnimationEnd(Animation paramAnimation)
+  {
+    this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoViewWidgetColorbarHorizontalSelectColorLayout.setAnimation(null);
+    if (this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleBtnOperationHelper != null) {
+      this.a.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiDoodleDoodleLayout$DoodleBtnOperationHelper.a(null);
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

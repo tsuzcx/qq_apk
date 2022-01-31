@@ -1,20 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout;
-import dov.com.tencent.biz.qqstory.takevideo.view.widget.colorbar.HorizontalSelectColorLayout.OnUndoViewClickListener;
+import android.util.SparseArray;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.GridView;
+import dov.com.qq.im.capture.adapter.ComboProviderPagerAdapter;
+import dov.com.qq.im.capture.view.ComboProviderView;
 
 public class anow
-  implements View.OnClickListener
+  implements Runnable
 {
-  public anow(HorizontalSelectColorLayout paramHorizontalSelectColorLayout) {}
+  public anow(ComboProviderView paramComboProviderView, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (HorizontalSelectColorLayout.a(this.a) > System.currentTimeMillis()) {}
-    while (this.a.a == null) {
+    GridView localGridView = (GridView)this.jdField_a_of_type_DovComQqImCaptureViewComboProviderView.a.a.get(this.jdField_a_of_type_DovComQqImCaptureViewComboProviderView.b());
+    if (localGridView != null)
+    {
+      localGridView.setSelection(this.jdField_a_of_type_Int);
+      if (QLog.isColorLevel()) {
+        QLog.d("ComboProviderView", 2, "positon= " + this.jdField_a_of_type_Int);
+      }
+    }
+    while (!QLog.isColorLevel()) {
       return;
     }
-    this.a.a.a();
+    QLog.d("ComboProviderView", 2, "gridView is null");
   }
 }
 

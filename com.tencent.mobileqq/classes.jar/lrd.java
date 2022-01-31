@@ -1,17 +1,41 @@
-import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
-import com.tencent.mobileqq.persistence.EntityManager;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
 
 public class lrd
-  implements Runnable
 {
-  public lrd(InterestLabelInfoModule paramInterestLabelInfoModule) {}
+  private long jdField_a_of_type_Long;
+  Object jdField_a_of_type_JavaLangObject;
+  public boolean a;
+  private long b;
   
-  public void run()
+  public lrd(FastWebModule paramFastWebModule, Object paramObject)
   {
-    List localList = this.a.a.a(InterestLabelInfo.class, true, null, null, null, null, null, null);
-    this.a.c(localList);
+    this(paramFastWebModule, paramObject, 600000L);
+    if (paramObject == null) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+  }
+  
+  public lrd(FastWebModule paramFastWebModule, Object paramObject, long paramLong)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.b = System.currentTimeMillis();
+    this.jdField_a_of_type_Long = paramLong;
+  }
+  
+  public Object a()
+  {
+    return this.jdField_a_of_type_JavaLangObject;
+  }
+  
+  public void a(Object paramObject)
+  {
+    this.jdField_a_of_type_JavaLangObject = paramObject;
+    this.b = System.currentTimeMillis();
+  }
+  
+  public boolean a()
+  {
+    return System.currentTimeMillis() - this.b >= this.jdField_a_of_type_Long;
   }
 }
 

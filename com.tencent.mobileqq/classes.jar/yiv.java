@@ -1,20 +1,35 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.adapter.contacts.BuddyListItem;
+import com.tencent.widget.SimpleTextView;
+import com.tencent.widget.SwipRightMenuBuilder.SwipRightMenuItem;
+import com.tencent.widget.SwipTextViewMenuBuilder;
 
 public class yiv
-  implements Runnable
+  extends SwipTextViewMenuBuilder
 {
-  public yiv(ApolloRenderDriver paramApolloRenderDriver) {}
-  
-  public void run()
+  public yiv(BuddyListItem paramBuddyListItem, int paramInt1, int paramInt2, int[] paramArrayOfInt1, int paramInt3, int[] paramArrayOfInt2, int[] paramArrayOfInt3, int[] paramArrayOfInt4)
   {
-    String str = String.format("mainTicker.interval = %f;mainTicker.paused = false;renderTicker.paused = false;renderTicker.interval = %f;BK.Director.tickerResume();", new Object[] { Double.valueOf(60.0D / this.a.jdField_a_of_type_Int), Double.valueOf(60.0D / this.a.jdField_a_of_type_Int) });
-    this.a.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine.a(str);
+    super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
+  }
+  
+  public View a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem paramSwipRightMenuItem, View.OnClickListener paramOnClickListener)
+  {
+    paramSwipRightMenuItem = super.a(paramInt, paramObject, paramSwipRightMenuItem, paramOnClickListener);
+    if ((paramSwipRightMenuItem instanceof SimpleTextView)) {
+      paramSwipRightMenuItem.setTag(-10, paramObject);
+    }
+    return paramSwipRightMenuItem;
+  }
+  
+  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
+  {
+    this.a.a(paramInt, paramArrayOfSwipRightMenuItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     yiv
  * JD-Core Version:    0.7.0.1
  */

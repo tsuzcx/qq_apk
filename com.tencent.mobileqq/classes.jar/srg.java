@@ -1,15 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity.ColorScreenLoader;
+import com.tencent.mobileqq.dinifly.LottieComposition;
+import com.tencent.mobileqq.dinifly.OnCompositionLoadedListener;
+import com.tencent.mobileqq.vas.VasMonitorHandler;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
 
 public class srg
-  implements DialogInterface.OnClickListener
+  implements OnCompositionLoadedListener
 {
-  public srg(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
+  public srg(FriendProfileCardActivity.ColorScreenLoader paramColorScreenLoader) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    paramDialogInterface.dismiss();
+    if (QLog.isColorLevel()) {
+      QLog.d("ColorScreenManager", 2, "onCompositionLoaded: composition= " + paramLottieComposition);
+    }
+    if (paramLottieComposition == null)
+    {
+      VasMonitorHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.app, "individual_v2_colorscreen_parse_fail", "0", "", Integer.toString(this.a.jdField_a_of_type_Int), null, null, 0.0F, 0.0F);
+      return;
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqDiniflyLottieComposition = paramLottieComposition;
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.b.postDelayed(this.a, 500L);
   }
 }
 

@@ -1,40 +1,23 @@
-import android.support.v4.view.ViewPager.OnPageChangeListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.NativeAd.data.BannerInfo;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import android.content.Context;
+import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
 import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
-import java.util.ArrayList;
 
 public class kws
-  implements ViewPager.OnPageChangeListener
+  implements Runnable
 {
-  public kws(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
+  public kws(AdModuleBase paramAdModuleBase) {}
   
-  public void onPageScrollStateChanged(int paramInt) {}
-  
-  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
-  
-  public void onPageSelected(int paramInt)
+  public void run()
   {
-    ReadInJoyNativeAdFragment.a(this.a, Math.max(ReadInJoyNativeAdFragment.a(this.a), paramInt + 1));
-    ((AdModuleBase)ReadInJoyNativeAdFragment.a(this.a).get(paramInt)).a();
-    if (paramInt + 1 < ReadInJoyNativeAdFragment.a(this.a).size()) {
-      ((AdModuleBase)ReadInJoyNativeAdFragment.a(this.a).get(paramInt + 1)).b();
-    }
-    if ((ReadInJoyNativeAdFragment.a(this.a) != null) && (ReadInJoyNativeAdFragment.a(this.a).a == 1) && ((ReadInJoyNativeAdFragment.b(this.a) == 1) || (ReadInJoyNativeAdFragment.b(this.a) == 2)))
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton != null)
     {
-      if (paramInt != ReadInJoyNativeAdFragment.a(this.a).size() - 1) {
-        break label155;
-      }
-      ReadInJoyNativeAdFragment.a(this.a).setVisibility(8);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setBackgroundResource(2130838508);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setText(this.a.jdField_a_of_type_AndroidContentContext.getText(2131438693));
+      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setTextColor(-1);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setProgress(0);
+      this.a.jdField_a_of_type_ComTencentBizPubaccountAdvertisementViewAdProgressButton.setClickable(true);
     }
-    for (;;)
-    {
-      ReadInJoyNativeAdFragment.a(this.a);
-      return;
-      label155:
-      ReadInJoyNativeAdFragment.a(this.a).setVisibility(0);
-    }
+    this.a.c = 0;
   }
 }
 

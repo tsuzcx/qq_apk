@@ -1,36 +1,28 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.TroopAssisSettingActivity;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
-import com.tencent.mobileqq.managers.TroopAssistantManager;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.SoundAndVibrateActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.PopupMenuDialog.MenuItem;
-import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
 
 public class tte
-  implements PopupMenuDialog.OnClickActionListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public tte(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public tte(SoundAndVibrateActivity paramSoundAndVibrateActivity, SharedPreferences paramSharedPreferences) {}
   
-  public void a(PopupMenuDialog.MenuItem paramMenuItem)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool = false;
-    switch (paramMenuItem.a)
+    paramCompoundButton = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    paramCompoundButton.putBoolean("theme_voice_setting_" + this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app.getCurrentAccountUin(), paramBoolean);
+    paramCompoundButton.commit();
+    paramCompoundButton = this.jdField_a_of_type_ComTencentMobileqqActivitySoundAndVibrateActivity.app;
+    if (paramBoolean) {}
+    for (int i = 1;; i = 0)
     {
-    default: 
-      return;
-    case 0: 
-      paramMenuItem = this.a;
-      if (!this.a.d) {
-        bool = true;
-      }
-      paramMenuItem.d = bool;
-      TroopAssistantManager.a().b(this.a.app, this.a.d);
+      ReportController.b(paramCompoundButton, "CliOper", "", "", "ThemeSound", "SwitchTabSound", 0, i, "", "", "", "");
       return;
     }
-    paramMenuItem = new Intent(this.a, TroopAssisSettingActivity.class);
-    paramMenuItem.setFlags(67108864);
-    this.a.startActivity(paramMenuItem);
-    ReportController.b(this.a.app, "P_CliOper", "Grp_msg", "", "help_list", "Clk_set", 0, 0, "", "", "", "");
   }
 }
 

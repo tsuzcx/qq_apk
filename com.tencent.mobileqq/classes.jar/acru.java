@@ -1,77 +1,55 @@
-import android.app.Activity;
-import android.content.Intent;
-import android.content.res.Resources;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.teamwork.TeamWorkConvertUtils;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.widget.QQToast;
+import android.content.Context;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView;
+import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
-public final class acru
-  implements View.OnClickListener
+public class acru
+  implements Runnable
 {
-  public acru(FileManagerEntity paramFileManagerEntity, Activity paramActivity) {}
+  public acru(QfileLocalFileMediaTabView paramQfileLocalFileMediaTabView, int paramInt, Context paramContext) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    TeamWorkFileImportInfo localTeamWorkFileImportInfo;
-    boolean bool2;
-    if ((this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) && (this.jdField_a_of_type_AndroidAppActivity != null))
+    ArrayList localArrayList = new ArrayList();
+    Map localMap;
+    Iterator localIterator;
+    String str;
+    if ((this.jdField_a_of_type_Int & 0x1) > 0)
     {
-      paramView = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-      ReportController.b(paramView, "dc00898", "", "", "0X8009063", "0X8009063", 0, 0, "", "", "", "");
-      new Intent(this.jdField_a_of_type_AndroidAppActivity, TeamWorkDocEditBrowserActivity.class);
-      localTeamWorkFileImportInfo = new TeamWorkFileImportInfo();
-      localTeamWorkFileImportInfo.jdField_c_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFilePath;
-      localTeamWorkFileImportInfo.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName;
-      localTeamWorkFileImportInfo.jdField_d_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType;
-      localTeamWorkFileImportInfo.jdField_c_of_type_Int = 2;
-      localTeamWorkFileImportInfo.jdField_c_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileSize;
-      if (!(this.jdField_a_of_type_AndroidAppActivity instanceof FileBrowserActivity)) {
-        break label382;
-      }
-      bool2 = ((FileBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).c();
-      if ((((FileBrowserActivity)this.jdField_a_of_type_AndroidAppActivity).b()) && (!bool2))
+      localMap = FileCategoryUtil.c(this.jdField_a_of_type_AndroidContentContext);
+      if (localMap != null)
       {
-        bool1 = true;
-        localTeamWorkFileImportInfo.jdField_b_of_type_Boolean = bool1;
-      }
-    }
-    label382:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      if ((bool1) && (!FileUtils.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath())))
-      {
-        QQToast.a(BaseApplicationImpl.getApplication(), 1, BaseApplicationImpl.getApplication().getString(2131439110), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131558448));
-        return;
-        bool1 = false;
-        break;
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin))
-      {
-        localTeamWorkFileImportInfo.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerType;
-        localTeamWorkFileImportInfo.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin;
-        localTeamWorkFileImportInfo.e = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin);
-        localTeamWorkFileImportInfo.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strTroopFilePath;
-        localTeamWorkFileImportInfo.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.busId;
-        localTeamWorkFileImportInfo.jdField_a_of_type_Long = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.uniseq;
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.status != 16) {
-          localTeamWorkFileImportInfo.jdField_a_of_type_Boolean = true;
+        localIterator = localMap.keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          str = (String)localIterator.next();
+          if (str.equalsIgnoreCase("QQfile_recv") != true) {
+            localArrayList.addAll((List)localMap.get(str));
+          }
         }
       }
-      TeamWorkConvertUtils.a(localTeamWorkFileImportInfo, this.jdField_a_of_type_AndroidAppActivity, paramView, localTeamWorkFileImportInfo.jdField_c_of_type_Int);
-      return;
-      QQToast.a(BaseApplicationImpl.getApplication(), 1, BaseApplicationImpl.getApplication().getString(2131439111), 0).b(BaseApplicationImpl.getApplication().getResources().getDimensionPixelSize(2131558448));
-      return;
     }
+    if ((this.jdField_a_of_type_Int & 0x2) > 0)
+    {
+      localMap = FileCategoryUtil.b(this.jdField_a_of_type_AndroidContentContext);
+      if (localMap != null)
+      {
+        localIterator = localMap.keySet().iterator();
+        while (localIterator.hasNext())
+        {
+          str = (String)localIterator.next();
+          if (str.equalsIgnoreCase("QQfile_recv") != true) {
+            localArrayList.addAll((List)localMap.get(str));
+          }
+        }
+      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a.addAll(localArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalfileQfileLocalFileMediaTabView.a();
   }
 }
 

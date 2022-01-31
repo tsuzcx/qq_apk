@@ -1,114 +1,108 @@
-import android.content.res.Resources;
-import android.view.animation.Animation;
+import android.content.Context;
+import android.graphics.Bitmap;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.widget.MusicPendantView;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.recent.RecentFaceDecoder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.FaceDecoder.DecodeTaskCompletionListener;
+import com.tencent.widget.ListView;
+import java.util.ArrayList;
 
 public class snj
-  extends AnimateUtils.AnimationAdapter
+  extends BaseAdapter
+  implements FaceDecoder.DecodeTaskCompletionListener
 {
-  public snj(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
+  private RecentFaceDecoder jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder;
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public snj(FontSettingActivity paramFontSettingActivity, Context paramContext, QQAppInterface paramQQAppInterface, ListView paramListView)
   {
-    boolean bool2 = true;
-    StringBuilder localStringBuilder;
-    if (QLog.isDevelopLevel())
-    {
-      localStringBuilder = new StringBuilder().append("onAnimationStart, [");
-      if (paramAnimation != this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation) {
-        break label106;
-      }
-      bool1 = true;
-      localStringBuilder = localStringBuilder.append(bool1).append(",");
-      if (paramAnimation != this.a.jdField_b_of_type_AndroidViewAnimationAlphaAnimation) {
-        break label111;
-      }
-    }
-    label106:
-    label111:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      QLog.i("Q.profilecard.FrdProfileCard", 4, bool1 + "]");
-      if (this.a.d != null) {
-        break label116;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("Q.profilecard.FrdProfileCard", 4, "centerView is null");
-      }
-      return;
-      bool1 = false;
-      break;
-    }
-    label116:
-    if (paramAnimation == this.a.jdField_b_of_type_AndroidViewAnimationAlphaAnimation)
-    {
-      this.a.d.setVisibility(8);
-      this.a.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(4);
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130845149);
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131494181));
-      this.a.c.setTextColor(this.a.getResources().getColor(2131494181));
-      this.a.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130839151);
-    }
-    this.a.d.clearAnimation();
-    this.a.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.clearAnimation();
+    this.jdField_a_of_type_AndroidViewLayoutInflater = paramFontSettingActivity.getLayoutInflater();
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder = new RecentFaceDecoder(paramQQAppInterface, this);
   }
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void a()
   {
-    boolean bool;
-    if (QLog.isDevelopLevel())
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder.a();
+  }
+  
+  public int getCount()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.size();
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971485, paramViewGroup, false);
+    paramViewGroup = (sni)this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.get(paramInt);
+    ImageView localImageView = (ImageView)paramView.findViewById(2131362719);
+    localImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder.a(paramViewGroup.jdField_b_of_type_Int, paramViewGroup.d));
+    ((TextView)paramView.findViewById(16908308)).setText(paramViewGroup.jdField_a_of_type_JavaLangString);
+    ((TextView)paramView.findViewById(16908309)).setText(paramViewGroup.jdField_b_of_type_JavaLangString);
+    ((TextView)paramView.findViewById(2131363201)).setText(paramViewGroup.c);
+    snk localsnk = new snk(this);
+    localsnk.jdField_a_of_type_JavaLangString = paramViewGroup.d;
+    localsnk.jdField_a_of_type_AndroidWidgetImageView = localImageView;
+    localsnk.jdField_a_of_type_Sni = paramViewGroup;
+    paramView.setTag(localsnk);
+    if ((FontSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity)) && (paramInt == this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_JavaUtilArrayList.size() - 1))
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("onAnimationStart, [");
-      if (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation)
+      this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.a();
+    }
+    return paramView;
+  }
+  
+  public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
+  {
+    Object localObject1 = null;
+    paramInt2 = this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_ComTencentWidgetListView.getChildCount();
+    Object localObject2;
+    if (paramBitmap != null)
+    {
+      paramInt1 = 0;
+      if (paramInt1 >= paramInt2) {
+        break label105;
+      }
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityFontSettingActivity.jdField_b_of_type_ComTencentWidgetListView.getChildAt(paramInt1).getTag();
+      if ((localObject2 == null) || (!(localObject2 instanceof snk))) {
+        break label98;
+      }
+      localObject2 = (snk)localObject2;
+      localObject1 = localObject2;
+      if (!((snk)localObject2).jdField_a_of_type_JavaLangString.equals(paramString)) {
+        break label98;
+      }
+    }
+    for (;;)
+    {
+      if (localObject2 != null)
       {
-        bool = true;
-        localStringBuilder = localStringBuilder.append(bool).append(",");
-        if (paramAnimation != this.a.jdField_b_of_type_AndroidViewAnimationAlphaAnimation) {
-          break label105;
-        }
-        bool = true;
-        label56:
-        QLog.i("Q.profilecard.FrdProfileCard", 4, bool + "]");
+        ((snk)localObject2).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+        notifyDataSetChanged();
       }
-    }
-    else
-    {
-      if (this.a.d != null) {
-        break label110;
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("Q.profilecard.FrdProfileCard", 4, "centerView is null");
-      }
-    }
-    label105:
-    label110:
-    do
-    {
       return;
-      bool = false;
+      label98:
+      paramInt1 += 1;
       break;
-      bool = false;
-      break label56;
-      if (paramAnimation == this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation)
-      {
-        this.a.d.setVisibility(0);
-        this.a.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.setVisibility(0);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetMusicPendantView.setVisibility(4);
-        this.a.jdField_a_of_type_ComTencentMobileqqWidgetMusicPendantView.b = true;
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130846136);
-        this.a.jdField_b_of_type_AndroidWidgetTextView.setTextColor(this.a.getResources().getColor(2131494203));
-        this.a.c.setTextColor(this.a.getResources().getColor(2131494203));
-      }
-    } while (paramAnimation != this.a.jdField_b_of_type_AndroidViewAnimationAlphaAnimation);
-    if (this.a.jdField_a_of_type_ComTencentMobileqqWidgetMusicPendantView.a) {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetMusicPendantView.setVisibility(0);
+      label105:
+      localObject2 = localObject1;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetMusicPendantView.b = false;
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo.util;
 
-import ahpp;
-import ahpq;
+import aidr;
+import aids;
 import android.opengl.EGLContext;
 import android.opengl.GLES20;
 import android.os.Handler;
@@ -28,7 +28,7 @@ public class OffScreenGLSurface
 {
   private static boolean jdField_a_of_type_Boolean = CameraCompatibleList.c(CameraCompatibleList.z);
   private int jdField_a_of_type_Int;
-  private ahpq jdField_a_of_type_Ahpq = new ahpq(null);
+  private aids jdField_a_of_type_Aids = new aids(null);
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   GLVideoClipUtil jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewGLVideoClipUtil;
@@ -78,11 +78,11 @@ public class OffScreenGLSurface
   
   private void a(AVIOStruct paramAVIOStruct)
   {
-    this.jdField_a_of_type_Ahpq.jdField_a_of_type_Int = paramAVIOStruct.pFrameIndex;
+    this.jdField_a_of_type_Aids.jdField_a_of_type_Int = paramAVIOStruct.pFrameIndex;
     paramAVIOStruct.pFrameIndex = 0;
-    this.jdField_a_of_type_Ahpq.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_Ahpq.jdField_b_of_type_Int = 0;
-    GLSurfaceUtil.a("handleMessage:writeVideoFrame[false]  mThumbPicControl.mSendThumbOKIndex=" + this.jdField_a_of_type_Ahpq.jdField_a_of_type_Int);
+    this.jdField_a_of_type_Aids.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Aids.jdField_b_of_type_Int = 0;
+    GLSurfaceUtil.a("handleMessage:writeVideoFrame[false]  mThumbPicControl.mSendThumbOKIndex=" + this.jdField_a_of_type_Aids.jdField_a_of_type_Int);
   }
   
   private boolean a()
@@ -339,9 +339,9 @@ public class OffScreenGLSurface
         f();
         this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilOffScreenGLSurface$GLSharedData.a();
         this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilOffScreenGLSurface$GLSharedData.a = null;
-        this.jdField_a_of_type_Ahpq.jdField_b_of_type_Int = 0;
-        this.jdField_a_of_type_Ahpq.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Ahpq.jdField_a_of_type_Int = -1;
+        this.jdField_a_of_type_Aids.jdField_b_of_type_Int = 0;
+        this.jdField_a_of_type_Aids.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Aids.jdField_a_of_type_Int = -1;
         h();
       } while (!QLog.isColorLevel());
       QLog.d("OffScreenGLSurface", 2, "[FILE_CACHE_OPENGL_RANDER_DATA_FINISH]");
@@ -414,7 +414,7 @@ public class OffScreenGLSurface
         localObject = localAVIOStruct;
         if (localAVIOStruct.pFrameIndex == 0)
         {
-          this.jdField_a_of_type_Ahpq.jdField_a_of_type_Boolean = true;
+          this.jdField_a_of_type_Aids.jdField_a_of_type_Boolean = true;
           localObject = localAVIOStruct;
         }
         label713:
@@ -429,10 +429,10 @@ public class OffScreenGLSurface
         localTextureDataPipe.a(j, localObject, bool1);
         localTextureDataPipe.e();
         bool1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilOffScreenGLSurface$GLSharedData.a.a();
-        GLSurfaceUtil.a("handleMessage:writeVideoFrame  mNewSession=" + this.jdField_a_of_type_Ahpq.jdField_a_of_type_Boolean + "  Make data ready: frameIndex= " + ((AVIOStruct)localObject).pFrameIndex + "  hasRenaderFrame=" + bool1);
+        GLSurfaceUtil.a("handleMessage:writeVideoFrame  mNewSession=" + this.jdField_a_of_type_Aids.jdField_a_of_type_Boolean + "  Make data ready: frameIndex= " + ((AVIOStruct)localObject).pFrameIndex + "  hasRenaderFrame=" + bool1);
         if (!bool1)
         {
-          if (this.jdField_a_of_type_Ahpq.jdField_a_of_type_Boolean) {
+          if (this.jdField_a_of_type_Aids.jdField_a_of_type_Boolean) {
             a((AVIOStruct)localObject);
           }
           localTextureDataPipe.a();
@@ -464,7 +464,7 @@ public class OffScreenGLSurface
         this.g = this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.notifyFirstFrame;
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext != null) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoMediadevicePreviewContext.notifyFirstFrame)) {
-        this.jdField_a_of_type_AndroidOsHandler.post(new ahpp(this));
+        this.jdField_a_of_type_AndroidOsHandler.post(new aidr(this));
       }
       if (this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilPtvFilterOpenglFrameBuffer == null) {
         break;

@@ -31,7 +31,7 @@ public class SelectMemberActivity$GridViewAdapter
   
   public SelectMemberActivity$GridViewAdapter(SelectMemberActivity paramSelectMemberActivity, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130842321);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130842368);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -45,7 +45,7 @@ public class SelectMemberActivity$GridViewAdapter
         ResultRecord localResultRecord = (ResultRecord)this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.i.get(this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.i.size() - 1);
         if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(str))
         {
-          this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.d(str);
+          this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.e(str);
           this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.a(localResultRecord, false);
           this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.j();
           int i = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.jdField_a_of_type_ComTencentCommonAppInnerFrameManager.a();
@@ -95,10 +95,10 @@ public class SelectMemberActivity$GridViewAdapter
     ResultRecord localResultRecord = (ResultRecord)getItem(paramInt);
     paramViewGroup = paramView;
     if (paramView == null) {
-      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2130969034, null);
+      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getLayoutInflater().inflate(2130969033, null);
     }
     paramViewGroup.setTag(localResultRecord);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131362721);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131362739);
     if (paramInt == getCount() - 1) {
       if (this.jdField_a_of_type_Boolean)
       {
@@ -115,11 +115,11 @@ public class SelectMemberActivity$GridViewAdapter
     label171:
     for (paramInt = 11;; paramInt = 1)
     {
-      localTextView = (TextView)paramViewGroup.findViewById(2131363917);
+      localTextView = (TextView)paramViewGroup.findViewById(2131363940);
       if (localResultRecord.jdField_a_of_type_Int != 5) {
         break label176;
       }
-      localImageView.setImageResource(2130840183);
+      localImageView.setImageResource(2130840189);
       localTextView.setVisibility(0);
       localTextView.setText(ContactUtils.a(localResultRecord.b));
       if (AppSetting.b) {
@@ -165,7 +165,7 @@ public class SelectMemberActivity$GridViewAdapter
         View localView = this.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.jdField_a_of_type_AndroidWidgetGridView.getChildAt(paramInt1);
         Object localObject = localView.getTag();
         if ((localObject != null) && ((localObject instanceof ResultRecord)) && (paramString.equals(((ResultRecord)localObject).jdField_a_of_type_JavaLangString))) {
-          ((ImageView)localView.findViewById(2131362721)).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+          ((ImageView)localView.findViewById(2131362739)).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
         }
         paramInt1 += 1;
       }

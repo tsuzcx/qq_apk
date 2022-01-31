@@ -1,24 +1,21 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnErrorListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.VideoSprite;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import msf.msgcomm.msg_comm.Msg;
 
-public class ahxo
-  implements MediaPlayer.OnErrorListener
+public final class ahxo
+  implements Runnable
 {
-  public ahxo(VideoSprite paramVideoSprite) {}
+  public ahxo(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg) {}
   
-  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("VideoSprite", 2, "onError: " + paramInt1);
-    }
-    return true;
+    ((DataLineHandler)this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b.a(8)).a(this.jdField_a_of_type_MsfMsgcommMsg_comm$Msg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahxo
  * JD-Core Version:    0.7.0.1
  */

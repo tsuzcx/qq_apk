@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.magicface.service;
 
-import adqt;
-import adqu;
-import adqv;
-import adqw;
+import aedz;
+import aeea;
+import aeeb;
+import aeec;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.hardware.SensorManager;
@@ -68,10 +68,10 @@ public class MagicfaceActionManager
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData = null;
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceSensorOperation = new adqt(this);
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceServiceMagicfaceActionManager$MagicfaceSensorOperation = new aedz(this);
     this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentMobileqqAppShakeListener = new adqv(this);
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelRecordVolume = new RecordVolume(new adqw(this));
+    this.jdField_a_of_type_ComTencentMobileqqAppShakeListener = new aeeb(this);
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceModelRecordVolume = new RecordVolume(new aeec(this));
     if (QLog.isColorLevel()) {
       QLog.d("MagicfaceActionManager", 2, "func MagicfaceActionManager begins");
     }
@@ -250,7 +250,7 @@ public class MagicfaceActionManager
     this.jdField_a_of_type_ComTencentMobileqqDataEmoticon = paramEmoticon;
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_a_of_type_JavaLangString = paramString;
-    ThreadManager.post(new adqu(this, paramInt2, paramInt1), 8, null, true);
+    ThreadManager.post(new aeea(this, paramInt2, paramInt1), 8, null, true);
   }
   
   public void a(ActionGlobalData paramActionGlobalData)
@@ -475,7 +475,7 @@ public class MagicfaceActionManager
       this.jdField_a_of_type_JavaUtilList = a(false);
       return;
     }
-    int[] arrayOfInt1 = a("7.6.0");
+    int[] arrayOfInt1 = a("7.6.3");
     int[] arrayOfInt2 = a(this.jdField_a_of_type_ComTencentMobileqqMagicfaceMagicfaceactionActionGlobalData.jdField_b_of_type_JavaLangString);
     if (QLog.isColorLevel()) {
       QLog.d("MagicfaceActionManager", 2, "func filterAction, qqver:" + arrayOfInt1 + ",magicVer:" + arrayOfInt2);
@@ -585,7 +585,7 @@ public class MagicfaceActionManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.service.MagicfaceActionManager
  * JD-Core Version:    0.7.0.1
  */

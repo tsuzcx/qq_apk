@@ -59,10 +59,10 @@ public class TimeFormatterUtils
         {
           return -1;
           if (localTime.yearDay == paramCalendar.yearDay) {
-            return 2131434623;
+            return 2131434640;
           }
           if (paramCalendar.yearDay == i) {
-            return 2131434624;
+            return 2131434641;
           }
         } while ((paramCalendar.yearDay >= i) || (paramCalendar.yearDay <= j - 7));
         switch (paramCalendar.weekDay)
@@ -70,43 +70,43 @@ public class TimeFormatterUtils
         default: 
           return -1;
         case 0: 
-          return 2131434632;
+          return 2131434649;
         case 1: 
-          return 2131434626;
+          return 2131434643;
         case 2: 
-          return 2131434627;
+          return 2131434644;
         case 3: 
-          return 2131434628;
+          return 2131434645;
         case 4: 
-          return 2131434629;
+          return 2131434646;
         case 5: 
-          return 2131434630;
+          return 2131434647;
         }
-        return 2131434631;
+        return 2131434648;
       } while (paramCalendar.year + 1 != localTime.year);
       paramLong = (l - paramLong + 86400000L - 1L) / 86400000L;
     } while ((paramLong <= 0L) || (paramLong > 7L));
     if (paramLong == 1L) {
-      return 2131434624;
+      return 2131434641;
     }
     switch (paramCalendar.weekDay)
     {
     default: 
       return -1;
     case 0: 
-      return 2131434632;
+      return 2131434649;
     case 1: 
-      return 2131434626;
+      return 2131434643;
     case 2: 
-      return 2131434627;
+      return 2131434644;
     case 3: 
-      return 2131434628;
+      return 2131434645;
     case 4: 
-      return 2131434629;
+      return 2131434646;
     case 5: 
-      return 2131434630;
+      return 2131434647;
     }
-    return 2131434631;
+    return 2131434648;
   }
   
   public static CharSequence a(Context paramContext, int paramInt, long paramLong)
@@ -145,7 +145,7 @@ public class TimeFormatterUtils
     jdField_a_of_type_JavaUtilCalendar.setTimeInMillis(paramLong);
     int i = jdField_a_of_type_JavaUtilCalendar.get(2);
     int j = jdField_a_of_type_JavaUtilCalendar.get(5);
-    return String.format("%s%s%s%s", new Object[] { Integer.valueOf(i + 1), paramContext.getString(2131434640), Integer.valueOf(j), paramContext.getString(2131434641) });
+    return String.format("%s%s%s%s", new Object[] { Integer.valueOf(i + 1), paramContext.getString(2131434657), Integer.valueOf(j), paramContext.getString(2131434658) });
   }
   
   private static CharSequence a(Context paramContext, long paramLong, StringBuilder paramStringBuilder, SimpleDateFormat paramSimpleDateFormat, int paramInt, boolean paramBoolean)
@@ -206,7 +206,7 @@ public class TimeFormatterUtils
         label207:
         if ((m == 1) && (j != 0))
         {
-          paramStringBuilder.append(paramContext.getString(2131436000)).append(" ");
+          paramStringBuilder.append(paramContext.getString(2131436017)).append(" ");
           if (!paramBoolean) {
             return paramStringBuilder.toString().trim();
           }
@@ -214,7 +214,7 @@ public class TimeFormatterUtils
         }
         if ((m == 2) && (paramInt != 0))
         {
-          paramStringBuilder.append(paramContext.getString(2131434625)).append(" ");
+          paramStringBuilder.append(paramContext.getString(2131434642)).append(" ");
           if (!paramBoolean) {
             return paramStringBuilder.toString().trim();
           }
@@ -304,7 +304,7 @@ public class TimeFormatterUtils
         if (i == 12) {
           if (jdField_a_of_type_JavaUtilCalendar.get(11) < 12)
           {
-            i = 2131434637;
+            i = 2131434654;
             return String.format("%s %s", new Object[] { paramContext.getString(i), new SimpleDateFormat("hh:mm", paramContext.getResources().getConfiguration().locale).format(new Date(paramLong)) });
           }
         }
@@ -315,13 +315,13 @@ public class TimeFormatterUtils
         {
           i = 0;
           continue;
-          i = 2131434638;
+          i = 2131434655;
         }
       }
       return new SimpleDateFormat("HH:mm", paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
     }
     if (i == 1) {
-      return paramContext.getString(2131434624);
+      return paramContext.getString(2131434641);
     }
     if ((i < 7) && (i > 1)) {
       return new SimpleDateFormat("E", paramContext.getResources().getConfiguration().locale).format(new Date(paramLong));
@@ -380,7 +380,7 @@ public class TimeFormatterUtils
       {
         j = 1;
         i = j;
-        if (k != 2131434623)
+        if (k != 2131434640)
         {
           paramStringBuffer.append(BaseApplication.getContext().getString(k));
           i = j;
@@ -391,11 +391,11 @@ public class TimeFormatterUtils
       if (i != 0)
       {
         boolean bool = android.text.format.DateFormat.is24HourFormat(BaseApplication.getContext());
-        if (k == 2131434623) {
+        if (k == 2131434640) {
           if (!bool) {
             if ((m >= 0) && (m < 12))
             {
-              paramStringBuffer.append(BaseApplication.getContext().getString(2131434637));
+              paramStringBuffer.append(BaseApplication.getContext().getString(2131434654));
               if (m != 12) {
                 break label204;
               }
@@ -414,7 +414,7 @@ public class TimeFormatterUtils
       for (;;)
       {
         return paramStringBuffer.toString();
-        paramStringBuffer.append(BaseApplication.getContext().getString(2131434638));
+        paramStringBuffer.append(BaseApplication.getContext().getString(2131434655));
         break;
         label204:
         i = m % 12;
@@ -515,19 +515,6 @@ public class TimeFormatterUtils
     return jdField_a_of_type_JavaUtilCalendar.get(12);
   }
   
-  public static CharSequence b(Context paramContext, int paramInt, long paramLong, boolean paramBoolean)
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    SimpleDateFormat localSimpleDateFormat = (SimpleDateFormat)android.text.format.DateFormat.getDateFormat(paramContext);
-    localSimpleDateFormat.applyPattern("yyyy/M/d");
-    if (paramInt == 0)
-    {
-      localStringBuilder.append(localSimpleDateFormat.toLocalizedPattern());
-      return android.text.format.DateFormat.format(localStringBuilder.append(" ").toString(), paramLong) + b().format(Long.valueOf(paramLong));
-    }
-    return a(paramContext, paramLong, localStringBuilder, localSimpleDateFormat, paramInt, paramBoolean);
-  }
-  
   public static CharSequence b(Context paramContext, long paramLong)
   {
     return b().format(new Date(paramLong));
@@ -584,16 +571,16 @@ public class TimeFormatterUtils
     int j = (int)((System.currentTimeMillis() + jdField_a_of_type_Int) / 86400000L);
     int k = (int)((jdField_a_of_type_Int + paramLong) / 86400000L);
     if (k == j) {
-      i = 2131434623;
+      i = 2131434640;
     }
     do
     {
       return i;
       if (k == j - 1) {
-        return 2131434624;
+        return 2131434641;
       }
     } while (k != j - 2);
-    return 2131434625;
+    return 2131434642;
   }
   
   public static String c(Context paramContext, long paramLong)

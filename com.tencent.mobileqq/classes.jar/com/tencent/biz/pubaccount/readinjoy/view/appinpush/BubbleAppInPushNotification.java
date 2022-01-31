@@ -19,16 +19,17 @@ import android.widget.ImageView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.activity.MainFragment;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.util.FaceDrawable;
 import com.tencent.qphone.base.util.QLog;
-import mjw;
-import mjy;
+import mlh;
+import mlj;
 
 public class BubbleAppInPushNotification
   extends AppInPushNotification
@@ -36,7 +37,7 @@ public class BubbleAppInPushNotification
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private PopupWindow jdField_a_of_type_AndroidWidgetPopupWindow;
-  private BubbleFrameLayout jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushBubbleFrameLayout;
+  private AppInPushBubbleFrameLayout jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushAppInPushBubbleFrameLayout;
   
   BubbleAppInPushNotification(AppInPushNotification.Builder paramBuilder)
   {
@@ -56,10 +57,10 @@ public class BubbleAppInPushNotification
   private void d()
   {
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView().getRootView());
-    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969549, this.jdField_a_of_type_AndroidViewViewGroup, false);
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131363805);
+    View localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969556, this.jdField_a_of_type_AndroidViewViewGroup, false);
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131363828);
     this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow(localView, -1, -2);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushBubbleFrameLayout = ((BubbleFrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365643));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushAppInPushBubbleFrameLayout = ((AppInPushBubbleFrameLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131365670));
     f();
     e();
     g();
@@ -72,7 +73,7 @@ public class BubbleAppInPushNotification
     TextView localTextView;
     if ((!TextUtils.isEmpty(this.h)) && (!TextUtils.isEmpty(this.i)))
     {
-      localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366891);
+      localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366933);
       localTextView.setVisibility(0);
       localTextView.setText(this.h);
     }
@@ -94,14 +95,14 @@ public class BubbleAppInPushNotification
   
   private void f()
   {
-    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366896)).setText(this.jdField_b_of_type_JavaLangString);
+    ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366938)).setText(this.jdField_b_of_type_JavaLangString);
   }
   
   private void g()
   {
-    View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366897);
-    ImageView localImageView1 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366898);
-    ImageView localImageView2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366899);
+    View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366939);
+    ImageView localImageView1 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366940);
+    ImageView localImageView2 = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366941);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       localView.setVisibility(8);
     }
@@ -120,29 +121,27 @@ public class BubbleAppInPushNotification
   
   private void h()
   {
-    Object localObject = this.jdField_a_of_type_AndroidViewView.findViewById(2131366892);
+    View localView = this.jdField_a_of_type_AndroidViewView.findViewById(2131366934);
     if ((!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.e)) && (!TextUtils.isEmpty(this.g)))
     {
-      ((View)localObject).setVisibility(0);
-      localObject = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366893);
-      TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366894);
-      ((ImageView)localObject).setImageDrawable(FaceDrawable.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.f, (byte)3));
-      localTextView.setText(this.e);
-      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366895)).setText(this.g);
+      localView.setVisibility(0);
+      ((ReadInJoyHeadImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366935)).setHeadImgByUin(this.f);
+      ((ReadInJoyNickNameTextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366936)).setText(this.e);
+      ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366937)).setText(this.g);
     }
   }
   
   private void i()
   {
-    View localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131366890);
-    View localView2 = this.jdField_a_of_type_AndroidViewView.findViewById(2131366900);
-    localView1.setOnClickListener(new mjw(this));
-    localView2.setOnClickListener(new mjy(this));
+    View localView1 = this.jdField_a_of_type_AndroidViewView.findViewById(2131366932);
+    View localView2 = this.jdField_a_of_type_AndroidViewView.findViewById(2131366942);
+    localView1.setOnClickListener(new mlh(this));
+    localView2.setOnClickListener(new mlj(this));
   }
   
   private void j()
   {
-    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushBubbleFrameLayout.a(), 1, 1.0F);
+    ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushAppInPushBubbleFrameLayout.a(), 1, 1.0F);
     localScaleAnimation.setDuration(400L);
     localScaleAnimation.setInterpolator(new OvershootInterpolator(1.65F));
     localScaleAnimation.setFillAfter(true);
@@ -171,7 +170,7 @@ public class BubbleAppInPushNotification
         {
           int[] arrayOfInt = new int[2];
           ((View)localObject).getLocationInWindow(arrayOfInt);
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushBubbleFrameLayout.setTriPosition((arrayOfInt[0] + ((View)localObject).getWidth() / 2.0F) / this.jdField_a_of_type_AndroidViewViewGroup.getWidth());
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewAppinpushAppInPushBubbleFrameLayout.setTriPosition((arrayOfInt[0] + ((View)localObject).getWidth() / 2.0F) / this.jdField_a_of_type_AndroidViewViewGroup.getWidth());
           int i = ((View)localObject).getHeight();
           this.jdField_a_of_type_AndroidWidgetPopupWindow.showAtLocation(this.jdField_a_of_type_AndroidViewViewGroup, 8388691, 0, i);
           j();

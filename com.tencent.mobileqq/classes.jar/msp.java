@@ -1,49 +1,40 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.biz.pubaccount.subscript.SubscriptObserver;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
-import java.util.Iterator;
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class msp
-  implements Runnable
+  extends SubscriptObserver
 {
-  public msp(TroopBarAssistantManager paramTroopBarAssistantManager, QQAppInterface paramQQAppInterface) {}
+  public msp(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, ArrayList paramArrayList)
   {
-    Object localObject1 = new JSONArray();
-    Object localObject2 = this.jdField_a_of_type_ComTencentBizPubaccountTroopbarassitTroopBarAssistantManager.a.keySet().iterator();
-    while (((Iterator)localObject2).hasNext())
+    if (QLog.isColorLevel()) {
+      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList isSuccess: " + paramBoolean + " | data: " + paramArrayList);
+    }
+    if (!paramBoolean) {}
+    do
     {
-      JSONObject localJSONObject = new JSONObject();
-      String str = (String)((Iterator)localObject2).next();
-      if ((str != null) && (this.jdField_a_of_type_ComTencentBizPubaccountTroopbarassitTroopBarAssistantManager.a.get(str) != null)) {
-        try
-        {
-          localJSONObject.put(str, this.jdField_a_of_type_ComTencentBizPubaccountTroopbarassitTroopBarAssistantManager.a.get(str));
-          ((JSONArray)localObject1).put(localJSONObject);
+      do
+      {
+        return;
+        if ((paramArrayList != null) && (paramArrayList.size() == 4)) {
+          break;
         }
-        catch (JSONException localJSONException)
-        {
-          localJSONException.printStackTrace();
-        }
-      }
-    }
-    localObject1 = ((JSONArray)localObject1).toString();
-    if (ReadInJoyHelper.b()) {
-      QLog.i("TroopBarAssistantManager", 2, "saveNewMsgSet, save newMsgStr into sp:" + (String)localObject1);
-    }
-    localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), 0).edit();
-    ((SharedPreferences.Editor)localObject2).putString("troopbar_assist_new_unread_list", (String)localObject1);
-    ((SharedPreferences.Editor)localObject2).commit();
+      } while (!QLog.isColorLevel());
+      QLog.d("SubscriptObserver", 2, "onGetRecommendReadInJoyArticleList data is null or small than 4");
+      return;
+    } while (this.a.a == null);
+    Message localMessage = new Message();
+    localMessage.what = 1003;
+    Bundle localBundle = new Bundle();
+    localBundle.putSerializable("ReadInJoyArticleList", paramArrayList);
+    localMessage.setData(localBundle);
+    this.a.a.removeMessages(1003);
   }
 }
 

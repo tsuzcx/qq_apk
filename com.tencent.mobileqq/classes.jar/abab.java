@@ -1,15 +1,22 @@
-import com.tencent.mobileqq.armap.ArMapHandler;
-import com.tencent.mobileqq.armap.ArMapInterface;
-import com.tencent.mobileqq.armap.map.ARMapPOIStarDialog;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abab
-  implements Runnable
+  implements Handler.Callback
 {
-  public abab(ARMapPOIStarDialog paramARMapPOIStarDialog, ArMapInterface paramArMapInterface, long paramLong1, long paramLong2) {}
+  public abab(ARMapActivity paramARMapActivity) {}
   
-  public void run()
+  public boolean handleMessage(Message paramMessage)
   {
-    ((ArMapHandler)this.jdField_a_of_type_ComTencentMobileqqArmapArMapInterface.a(2)).a(this.jdField_a_of_type_Long, this.b, null);
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return true;
+      this.a.k();
+    }
   }
 }
 

@@ -1,22 +1,13 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder.Holder;
-import com.tencent.mobileqq.data.MessageForScribble;
-import com.tencent.mobileqq.widget.MessageProgressView;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.aio.AbstractChatItemBuilder.ViewHolder;
+import com.tencent.mobileqq.activity.aio.item.MyEnterTroopChatItemBuilder;
 
 public class vcc
-  implements Runnable
+  extends AbstractChatItemBuilder.ViewHolder
 {
-  public vcc(ScribbleItemBuilder paramScribbleItemBuilder, MessageForScribble paramMessageForScribble, ScribbleItemBuilder.Holder paramHolder) {}
+  public TextView b;
   
-  public void run()
-  {
-    ScribbleItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder$Holder, this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mUiProgress, false);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder$Holder.a.isShown()) {
-      ScribbleItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemScribbleItemBuilder).postDelayed(this.jdField_a_of_type_ComTencentMobileqqDataMessageForScribble.mUpdateProgressRunnable, 50L);
-    }
-  }
+  public vcc(MyEnterTroopChatItemBuilder paramMyEnterTroopChatItemBuilder) {}
 }
 
 

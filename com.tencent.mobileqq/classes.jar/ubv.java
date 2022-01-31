@@ -1,18 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
+import java.util.List;
 
 class ubv
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  ubv(ubt paramubt, QQCustomDialog paramQQCustomDialog) {}
+  ubv(ubp paramubp, List paramList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ReportController.b(this.jdField_a_of_type_Ubt.a.app, "P_CliOper", "Grp_manage", "", "turn_grp", "Clk_know", 0, 0, this.jdField_a_of_type_Ubt.a.a, "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.cancel();
+    if (this.jdField_a_of_type_Ubp.a.isFinishing()) {}
+    while (this.jdField_a_of_type_Ubp.a.a == null) {
+      return;
+    }
+    this.jdField_a_of_type_Ubp.a.a.c = this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_Ubp.a.a.a();
   }
 }
 

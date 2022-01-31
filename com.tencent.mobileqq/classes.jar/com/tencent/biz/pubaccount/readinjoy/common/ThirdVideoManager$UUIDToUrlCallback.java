@@ -2,7 +2,7 @@ package com.tencent.biz.pubaccount.readinjoy.common;
 
 public abstract interface ThirdVideoManager$UUIDToUrlCallback
 {
-  public abstract void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean);
+  public abstract void a(String paramString1, String paramString2, int paramInt, boolean paramBoolean, String paramString3);
 }
 
 

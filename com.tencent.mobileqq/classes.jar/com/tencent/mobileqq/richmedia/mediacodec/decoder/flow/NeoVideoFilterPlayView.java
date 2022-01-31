@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.richmedia.mediacodec.decoder.flow;
 
-import ahab;
-import ahaj;
-import ahak;
-import ahal;
+import ahod;
+import ahol;
+import ahom;
+import ahon;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
@@ -29,8 +29,8 @@ import javax.microedition.khronos.opengles.GL10;
 public class NeoVideoFilterPlayView
   extends VideoFilterPlayView
 {
-  private ahab jdField_a_of_type_Ahab;
-  private ahal jdField_a_of_type_Ahal;
+  private ahod jdField_a_of_type_Ahod;
+  private ahon jdField_a_of_type_Ahon;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private EditorEGLContextFactory jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowEditorEGLContextFactory;
   private NeoVideoFilterPlayView.PlayProgressListener jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView$PlayProgressListener = new NeoVideoFilterPlayView.JustLogPlayProgressListener();
@@ -51,8 +51,8 @@ public class NeoVideoFilterPlayView
     super(paramContext, paramAttributeSet);
     paramContext = new HandlerThread("NeoVideoFilterPlayView");
     paramContext.start();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramContext.getLooper(), new ahaj(this));
-    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeWrapper$FlowListener = new ahak(this);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(paramContext.getLooper(), new ahol(this));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeWrapper$FlowListener = new ahom(this);
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowEditorEGLContextFactory = new EditorEGLContextFactory();
@@ -67,7 +67,7 @@ public class NeoVideoFilterPlayView
   {
     Object localObject = (VideoFlowDecodeWrapper)this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderIVideoDecoder;
     paramGL10 = ((VideoFlowDecodeWrapper)localObject).b();
-    ahab localahab = ((VideoFlowDecodeWrapper)localObject).c();
+    ahod localahod = ((VideoFlowDecodeWrapper)localObject).c();
     int m;
     int j;
     int n;
@@ -78,7 +78,7 @@ public class NeoVideoFilterPlayView
         SLog.d("FlowEdit_NeoVideoFilterPlayView", "find invalid frame : %s us, current config start - end : [%d - %d] ms", new Object[] { paramGL10, Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.jdField_a_of_type_Long), Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderDecodeConfig.b) });
       }
       m = 0;
-      if ((this.jdField_a_of_type_Ahal == null) || (paramGL10.b() != ahal.a(this.jdField_a_of_type_Ahal)))
+      if ((this.jdField_a_of_type_Ahon == null) || (paramGL10.b() != ahon.a(this.jdField_a_of_type_Ahon)))
       {
         m = 1;
         this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView$PlayProgressListener.a();
@@ -100,22 +100,22 @@ public class NeoVideoFilterPlayView
     for (;;)
     {
       label201:
-      if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false)) || (this.jdField_a_of_type_Ahal == null) || (m != 0) || (n != 0))
+      if ((this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.compareAndSet(true, false)) || (this.jdField_a_of_type_Ahon == null) || (m != 0) || (n != 0))
       {
-        this.jdField_a_of_type_Ahal = new ahal(SystemClock.uptimeMillis(), paramGL10.a(), paramGL10.b(), null);
-        SLog.c("FlowEdit_NeoVideoFilterPlayView", "start render : " + this.jdField_a_of_type_Ahal);
+        this.jdField_a_of_type_Ahon = new ahon(SystemClock.uptimeMillis(), paramGL10.a(), paramGL10.b(), null);
+        SLog.c("FlowEdit_NeoVideoFilterPlayView", "start render : " + this.jdField_a_of_type_Ahon);
       }
       long l2 = SystemClock.uptimeMillis();
-      long l3 = ahal.a(this.jdField_a_of_type_Ahal) + (paramGL10.a() - ahal.b(this.jdField_a_of_type_Ahal)) * k / (j * 1000);
+      long l3 = ahon.a(this.jdField_a_of_type_Ahon) + (paramGL10.a() - ahon.b(this.jdField_a_of_type_Ahon)) * k / (j * 1000);
       long l1;
-      if ((localahab != null) && (localahab.b() == paramGL10.b()))
+      if ((localahod != null) && (localahod.b() == paramGL10.b()))
       {
-        l1 = ahal.a(this.jdField_a_of_type_Ahal) + (localahab.a() - ahal.b(this.jdField_a_of_type_Ahal)) * k / (j * 1000);
+        l1 = ahon.a(this.jdField_a_of_type_Ahon) + (localahod.a() - ahon.b(this.jdField_a_of_type_Ahon)) * k / (j * 1000);
         label367:
         if (l2 >= l3 - 5L) {
           break label548;
         }
-        paramGL10 = this.jdField_a_of_type_Ahab;
+        paramGL10 = this.jdField_a_of_type_Ahod;
         l1 = l3 - l2;
         label391:
         if (paramGL10 != null)
@@ -123,10 +123,10 @@ public class NeoVideoFilterPlayView
           Trace.beginSection("AVEditor:DrawFrameOnScreen");
           localObject = FilterUtil.a(this.b, this.c, this.b, this.c);
           a(paramGL10.a(), paramGL10.a, (float[])localObject);
-          if ((this.jdField_a_of_type_Ahab != null) && (this.jdField_a_of_type_Ahab != paramGL10)) {
-            this.jdField_a_of_type_Ahab.b();
+          if ((this.jdField_a_of_type_Ahod != null) && (this.jdField_a_of_type_Ahod != paramGL10)) {
+            this.jdField_a_of_type_Ahod.b();
           }
-          this.jdField_a_of_type_Ahab = paramGL10;
+          this.jdField_a_of_type_Ahod = paramGL10;
           this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowNeoVideoFilterPlayView$PlayProgressListener.a(paramGL10.a());
           Trace.endSection();
         }
@@ -167,7 +167,7 @@ public class NeoVideoFilterPlayView
           break label391;
         }
         paramGL10 = ((VideoFlowDecodeWrapper)localObject).a();
-        if (localahab != null)
+        if (localahod != null)
         {
           if (paramGL10 != null) {
             paramGL10.b();
@@ -226,7 +226,7 @@ public class NeoVideoFilterPlayView
         localFlowDecodeConfig.b = true;
         localFlowDecodeConfig.a = localEGLContext;
         localFlowDecodeConfig.c = 1;
-        this.jdField_a_of_type_Ahal = null;
+        this.jdField_a_of_type_Ahon = null;
         ((VideoFlowDecodeWrapper)this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderIVideoDecoder).a(localFlowDecodeConfig, this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecDecoderFlowVideoFlowDecodeWrapper$FlowListener);
         if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioDecodeConfig.jdField_a_of_type_JavaLangString)) {
           this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecAudioDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecAudioDecoder$AudioDecodeConfig);

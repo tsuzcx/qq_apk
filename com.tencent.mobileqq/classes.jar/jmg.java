@@ -1,19 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.redpacket.ui.RedPacketGameView;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.VideoControlUI;
+import com.tencent.av.report.AVPushReport;
+import com.tencent.av.utils.HttpUtil.SimpleHttpPostTask;
+import com.tencent.qphone.base.util.QLog;
 
-public class jmg
-  implements View.OnClickListener
+public final class jmg
+  extends HttpUtil.SimpleHttpPostTask
 {
-  public jmg(RedPacketGameView paramRedPacketGameView, AVActivity paramAVActivity) {}
-  
-  public void onClick(View paramView)
+  public jmg(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_ComTencentAvUiAVActivity.a.v();
-    ((VideoAppInterface)this.jdField_a_of_type_ComTencentAvUiAVActivity.getAppRuntime()).a(new Object[] { Integer.valueOf(105), Boolean.valueOf(true) });
+    super(paramString1, paramString2, paramString3);
+  }
+  
+  protected void a(String paramString)
+  {
+    AVPushReport.a(null);
+    if (QLog.isColorLevel()) {
+      QLog.d("AVPushReport", 2, "onAvReportPush SimpleHttpPostTask rsp = " + paramString);
+    }
   }
 }
 

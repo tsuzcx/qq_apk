@@ -1,15 +1,28 @@
-import com.tencent.biz.qqstory.newshare.callback.StoryShareCallback;
+import com.tencent.biz.qqstory.newshare.job.UrlDrawableDownloadJob;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-class ngg
-  implements Runnable
+public class ngg
+  implements URLDrawable.URLDrawableListener
 {
-  ngg(ngf paramngf) {}
+  public ngg(UrlDrawableDownloadJob paramUrlDrawableDownloadJob) {}
   
-  public void run()
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback != null) {
-      this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareCallbackStoryShareCallback.a(this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData);
-    }
+    UrlDrawableDownloadJob.c(this.a, false);
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    UrlDrawableDownloadJob.b(this.a, false);
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    this.a.a("UrlDrawableDownloadJob_dra", paramURLDrawable.getCurrDrawable());
+    UrlDrawableDownloadJob.a(this.a, true);
   }
 }
 

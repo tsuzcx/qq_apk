@@ -1,13 +1,13 @@
-import com.tencent.av.ui.QAVPtvTemplateAdapter;
+import com.tencent.av.ui.QavVideoRecordUICtrl;
 
 public class jzr
   implements Runnable
 {
-  public jzr(QAVPtvTemplateAdapter paramQAVPtvTemplateAdapter, String paramString, int paramInt) {}
+  public jzr(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvUiQAVPtvTemplateAdapter.b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    this.a.a(8, true);
   }
 }
 

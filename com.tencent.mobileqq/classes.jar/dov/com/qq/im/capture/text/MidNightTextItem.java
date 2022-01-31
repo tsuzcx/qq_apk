@@ -1,7 +1,5 @@
 package dov.com.qq.im.capture.text;
 
-import amya;
-import amyb;
 import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.RectF;
@@ -12,6 +10,8 @@ import android.text.SpannableString;
 import android.text.StaticLayout;
 import android.text.TextPaint;
 import android.text.TextUtils;
+import anof;
+import anog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -34,7 +34,7 @@ public class MidNightTextItem
   private RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   private Typeface jdField_a_of_type_AndroidGraphicsTypeface;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint;
-  private PinYinSpan.OnHanZiToPinYinListener jdField_a_of_type_DovComQqImCaptureTextPinYinSpan$OnHanZiToPinYinListener = new amya(this);
+  private PinYinSpan.OnHanZiToPinYinListener jdField_a_of_type_DovComQqImCaptureTextPinYinSpan$OnHanZiToPinYinListener = new anof(this);
   private PinYinSpan jdField_a_of_type_DovComQqImCaptureTextPinYinSpan;
   private float jdField_b_of_type_Float;
   private Typeface jdField_b_of_type_AndroidGraphicsTypeface;
@@ -71,8 +71,8 @@ public class MidNightTextItem
     localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
-      amyb localamyb = (amyb)((Iterator)localObject).next();
-      paramString.setSpan(paramPinYinSpan.clone(), localamyb.jdField_a_of_type_Int, localamyb.b, 33);
+      anog localanog = (anog)((Iterator)localObject).next();
+      paramString.setSpan(paramPinYinSpan.clone(), localanog.jdField_a_of_type_Int, localanog.b, 33);
     }
     return StaticLayoutWithMaxLines.a(paramString, 0, paramString.length(), this.jdField_a_of_type_AndroidTextTextPaint, paramInt, Layout.Alignment.ALIGN_CENTER, 1.0F, 0.0F, false, null, 0, 4);
   }
@@ -119,11 +119,11 @@ public class MidNightTextItem
     ArrayList localArrayList = new ArrayList();
     while (paramString.find())
     {
-      amyb localamyb = new amyb(this, null);
-      localamyb.jdField_a_of_type_Int = paramString.start();
-      localamyb.b = paramString.end();
-      localamyb.jdField_a_of_type_JavaLangString = paramString.group();
-      localArrayList.add(localamyb);
+      anog localanog = new anog(this, null);
+      localanog.jdField_a_of_type_Int = paramString.start();
+      localanog.b = paramString.end();
+      localanog.jdField_a_of_type_JavaLangString = paramString.group();
+      localArrayList.add(localanog);
     }
     return localArrayList;
   }

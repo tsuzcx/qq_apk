@@ -1,48 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IUploadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
-import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
-import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import java.util.UUID;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter;
+import com.tencent.mobileqq.filemanager.core.FileManagerRSCenter;
+import com.tencent.mobileqq.filemanager.settings.FMSettings;
+import com.tencent.qphone.base.util.QLog;
 
 public class actw
-  implements IUploadController
+  extends BroadcastReceiver
 {
-  public actw(TroopFileModel paramTroopFileModel) {}
+  private actw(FileManagerEngine paramFileManagerEngine) {}
   
-  public void a()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    FileManagerEntity localFileManagerEntity = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    TroopFileStatusInfo localTroopFileStatusInfo = TroopFileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity);
-    if ((TextUtils.isEmpty(TroopFileModel.a(this.a))) && (localTroopFileStatusInfo.a != null)) {
-      TroopFileModel.a(this.a, localTroopFileStatusInfo.a.toString());
+    QLog.i("FileManagerEngine<FileAssistant>", 1, "!!!extCard changed[" + paramIntent.getAction() + "]!!!");
+    paramContext = paramIntent.getAction();
+    if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_UNMOUNTABLE")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_EJECT")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_REMOVED"))) {
+      FMSettings.a().a("externalSdCard");
     }
-    TroopFileItemOperation localTroopFileItemOperation = new TroopFileItemOperation(localFileManagerEntity.TroopUin, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidAppActivity);
-    if (((localTroopFileStatusInfo.b == 3) || (localTroopFileStatusInfo.b == 2)) && (localTroopFileStatusInfo.a != null)) {
-      localTroopFileItemOperation.a(localTroopFileStatusInfo.a);
-    }
-    localFileManagerEntity.status = 2;
-  }
-  
-  public void b()
-  {
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject).TroopUin);
-    localObject = TroopFileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (FileManagerEntity)localObject);
-    if (!TextUtils.isEmpty(TroopFileModel.a(this.a)))
+    try
     {
-      localTroopFileTransferManager.c(UUID.fromString(TroopFileModel.a(this.a)));
-      TroopFileModel.a(this.a, (TroopFileStatusInfo)localObject);
+      this.a.a.a().a(true);
+      label96:
+      if ((paramContext.equalsIgnoreCase("android.intent.action.MEDIA_MOUNTED")) || (paramContext.equalsIgnoreCase("android.intent.action.MEDIA_SCANNER_STARTED"))) {
+        FMSettings.a().a();
+      }
+      this.a.a.a().a(true, 3, null);
+      return;
+    }
+    catch (Exception paramIntent)
+    {
+      break label96;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     actw
  * JD-Core Version:    0.7.0.1
  */

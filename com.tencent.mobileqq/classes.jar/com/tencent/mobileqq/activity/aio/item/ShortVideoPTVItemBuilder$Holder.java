@@ -4,7 +4,7 @@ import android.widget.ImageView;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
 import com.tencent.mobileqq.widget.AudioAnimationView;
 import com.tencent.mobileqq.widget.CircleProgressView;
-import vcy;
+import vga;
 
 public class ShortVideoPTVItemBuilder$Holder
   extends BaseBubbleBuilder.ViewHolder
@@ -12,7 +12,7 @@ public class ShortVideoPTVItemBuilder$Holder
   ImageView jdField_a_of_type_AndroidWidgetImageView;
   AudioAnimationView jdField_a_of_type_ComTencentMobileqqWidgetAudioAnimationView;
   CircleProgressView jdField_a_of_type_ComTencentMobileqqWidgetCircleProgressView;
-  vcy jdField_a_of_type_Vcy;
+  vga jdField_a_of_type_Vga;
   
   public ShortVideoPTVItemBuilder$Holder(ShortVideoPTVItemBuilder paramShortVideoPTVItemBuilder) {}
 }

@@ -1,20 +1,87 @@
+import android.graphics.Rect;
 import android.view.View;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadinjoySubscriptManagerActivity;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.EditText;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.biu.ReadInJoyDeliverBiuActivity;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XPanelContainer;
 
 public class lge
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  private View jdField_a_of_type_AndroidViewView;
-  private Button jdField_a_of_type_AndroidWidgetButton;
-  private ImageView jdField_a_of_type_AndroidWidgetImageView;
-  private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private String jdField_a_of_type_JavaLangString;
-  private View b;
-  private View c;
+  public lge(ReadInJoyDeliverBiuActivity paramReadInJoyDeliverBiuActivity) {}
   
-  private lge(ReadinjoySubscriptManagerActivity paramReadinjoySubscriptManagerActivity) {}
+  public void onGlobalLayout()
+  {
+    Object localObject = new Rect();
+    ReadInJoyDeliverBiuActivity.a(this.a).getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = ReadInJoyDeliverBiuActivity.b(this.a).getRootView().getHeight();
+    int j = i - ((Rect)localObject).height();
+    boolean bool;
+    if (j > 100)
+    {
+      bool = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout screenHeight:" + i + ", ExternalPanelheight:" + j + ", isShowKeybroad:" + bool);
+      }
+      i = ReadInJoyDeliverBiuActivity.a(this.a).getHeight();
+      if (bool == ReadInJoyDeliverBiuActivity.a(this.a)) {
+        break label394;
+      }
+      if (j > ReadInJoyDeliverBiuActivity.a(this.a)) {
+        ReadInJoyDeliverBiuActivity.a(this.a, j);
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout mMAXExternalPanelheight:" + ReadInJoyDeliverBiuActivity.b(this.a));
+      }
+      j = i - ReadInJoyDeliverBiuActivity.c(this.a);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout contentHeight:" + i + ", fixedHeight:" + ReadInJoyDeliverBiuActivity.d(this.a) + ", maxHeight:" + j);
+      }
+      ReadInJoyDeliverBiuActivity.a(this.a).setMaxHeight(j);
+      ReadInJoyDeliverBiuActivity.a(this.a, bool);
+      localObject = this.a;
+      if (i >= ReadInJoyDeliverBiuActivity.e(this.a)) {
+        break label372;
+      }
+      j = i;
+      label283:
+      ReadInJoyDeliverBiuActivity.b((ReadInJoyDeliverBiuActivity)localObject, j);
+      localObject = this.a;
+      if (i <= ReadInJoyDeliverBiuActivity.f(this.a)) {
+        break label383;
+      }
+      label307:
+      ReadInJoyDeliverBiuActivity.c((ReadInJoyDeliverBiuActivity)localObject, i);
+    }
+    for (;;)
+    {
+      ReadInJoyDeliverBiuActivity.d(this.a, ReadInJoyDeliverBiuActivity.h(this.a));
+      if (QLog.isColorLevel()) {
+        QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout mExternalPanelheight:" + ReadInJoyDeliverBiuActivity.g(this.a));
+      }
+      return;
+      bool = false;
+      break;
+      label372:
+      j = ReadInJoyDeliverBiuActivity.e(this.a);
+      break label283;
+      label383:
+      i = ReadInJoyDeliverBiuActivity.f(this.a);
+      break label307;
+      label394:
+      if ((ReadInJoyDeliverBiuActivity.g(this.a) != ReadInJoyDeliverBiuActivity.h(this.a)) && (i == ReadInJoyDeliverBiuActivity.f(this.a)))
+      {
+        i -= ReadInJoyDeliverBiuActivity.h(this.a);
+        j = i - ReadInJoyDeliverBiuActivity.i(this.a);
+        if (QLog.isColorLevel()) {
+          QLog.d("ReadInJoyDeliverBiuActivity", 2, "onGlobalLayout contentHeight:" + i + ", fixedHeight:" + ReadInJoyDeliverBiuActivity.j(this.a) + ", maxHeight:" + j);
+        }
+        ReadInJoyDeliverBiuActivity.b(this.a).setMaxHeight(j);
+      }
+    }
+  }
 }
 
 

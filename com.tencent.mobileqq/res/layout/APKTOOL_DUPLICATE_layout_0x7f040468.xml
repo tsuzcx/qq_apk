@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerHorizontal="true"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0c63" android:layout_width="fill_parent" android:layout_height="wrap_content">
-        <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06d8" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginRight="5.0dip" android:indeterminate="true" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020440" android:indeterminateBehavior="repeat" />
-        <TextView android:textSize="16.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0576" android:id="@id/loading" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正在加载…" />
-    </LinearLayout>
-</LinearLayout>
+    <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1672" android:layout_width="wrap_content" android:layout_height="wrap_content" android:adjustViewBounds="true" android:layout_alignParentLeft="true" />
+    <TextView android:textColor="#ffffffff" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1673" android:background="#80000000" android:layout_width="30.0dip" android:layout_height="18.0dip" android:text="图标" android:layout_alignRight="@id/APKTOOL_DUPLICATE_id_0x7f0a1672" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a1672" />
+</RelativeLayout>

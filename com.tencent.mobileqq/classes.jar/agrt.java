@@ -1,39 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
-import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.mobileqq.redtouch.RedTouchWebviewHandler;
-import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppInfo;
-import java.util.ArrayList;
-import org.json.JSONObject;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profile.view.ProfileTagView;
+import java.util.List;
 
-class agrt
+public class agrt
   implements Runnable
 {
-  agrt(agrs paramagrs, String paramString1, JSONObject paramJSONObject, BusinessInfoCheckUpdate.AppInfo paramAppInfo, int paramInt1, int paramInt2, ArrayList paramArrayList, String paramString2, String paramString3) {}
+  public agrt(ProfileTagView paramProfileTagView, ProfileCardInfo paramProfileCardInfo) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Agrs.a.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-    Object localObject = "";
-    if (this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo != null) {
-      localObject = RedTouchWebviewHandler.access$100(this.jdField_a_of_type_Agrs.a, this.jdField_a_of_type_ComTencentPbGetbusiinfoBusinessInfoCheckUpdate$AppInfo.buffer.get());
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("ret", String.valueOf(this.jdField_a_of_type_Int));
-    localBundle.putString("buffer", (String)localObject);
-    localBundle.putString("red", String.valueOf(this.jdField_b_of_type_Int));
-    localBundle.putStringArrayList("missions", this.jdField_a_of_type_JavaUtilArrayList);
-    localBundle.putString("path", this.jdField_b_of_type_JavaLangString);
-    localBundle.putString("serial", this.c);
-    localBundle.putString("callback", this.jdField_a_of_type_JavaLangString);
-    localObject = DataFactory.a("redTouch_getAppInfo_report", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Agrs.a.mOnRemoteResp.key, localBundle);
-    this.jdField_a_of_type_Agrs.a.sendRemoteReq((Bundle)localObject, false, true);
+    List localList = this.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.getLabelList();
+    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a.runOnUiThread(new agru(this, localList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agrt
  * JD-Core Version:    0.7.0.1
  */

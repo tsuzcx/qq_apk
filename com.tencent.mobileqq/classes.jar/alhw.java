@@ -1,49 +1,17 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.common.CommTvRpt;
-import com.tencent.qqprotect.common.QPMiscUtils;
-import com.tencent.qqprotect.qsec.CrashProtector.IProtectedMethod;
-import com.tencent.qqprotect.qsec.QSecFramework;
-import mqq.app.MobileQQ;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.open.downloadnew.MyAppApi;
 
 public class alhw
-  implements CrashProtector.IProtectedMethod
+  implements DialogInterface.OnDismissListener
 {
-  public alhw(QSecFramework paramQSecFramework) {}
+  public alhw(MyAppApi paramMyAppApi) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if ((!QSecFramework.a()) || (QSecFramework.a(this.a))) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        Object[] arrayOfObject = new Object[1];
-        if ((QSecFramework.a(1, 33751040, QPMiscUtils.a(), 0, QSecFramework.a(this.a), MobileQQ.sMobileQQ, null, arrayOfObject) == 0) && (arrayOfObject[0] != null) && ((arrayOfObject[0] instanceof Integer)))
-        {
-          QSecFramework.a(this.a, ((Integer)arrayOfObject[0]).intValue());
-          QPMiscUtils.a = QSecFramework.a(this.a);
-          QSecFramework.a(this.a, true);
-        }
-        if (QLog.isColorLevel())
-        {
-          QLog.d("QSecFramework", 2, String.format("Native ver: %d(%s)", new Object[] { Integer.valueOf(QSecFramework.a(this.a)), QPMiscUtils.a(QSecFramework.a(this.a)) }));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QSecFramework", 2, "Something wrong when init native.");
-    }
-    CommTvRpt.a(1, 2);
+    this.a.a = null;
+    this.a.c = false;
+    this.a.c = false;
   }
 }
 

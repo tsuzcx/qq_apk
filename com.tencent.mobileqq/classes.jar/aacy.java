@@ -1,25 +1,14 @@
-import com.tencent.mobileqq.ar.arengine.ARReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.FaceScanDownloadManager.DownloadCallback;
 
-public class aacy
+public final class aacy
   implements Runnable
 {
-  public aacy(ARReport paramARReport, long paramLong, boolean paramBoolean) {}
+  public aacy(FaceScanDownloadManager.DownloadCallback paramDownloadCallback, int paramInt1, int paramInt2) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("alltime", String.valueOf(this.jdField_a_of_type_Long));
-    if (this.jdField_a_of_type_Boolean) {
-      localHashMap.put("result", "0");
-    }
-    for (;;)
-    {
-      StatisticCollector.a(BaseApplication.getContext()).a("", "ARLocalFaceRecogInit", true, 0L, 0L, localHashMap, "");
-      return;
-      localHashMap.put("result", "1");
+    if (this.jdField_a_of_type_ComTencentMobileqqArFaceScanDownloadManager$DownloadCallback != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArFaceScanDownloadManager$DownloadCallback.a(this.jdField_a_of_type_Int, this.b);
     }
   }
 }

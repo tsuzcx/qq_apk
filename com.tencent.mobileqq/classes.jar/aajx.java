@@ -1,67 +1,24 @@
+import android.widget.PopupWindow;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnCompletionListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkActionAppMgr;
-import com.tencent.mobileqq.ark.ArkAppCGI.ActionAppUpdateInfo;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import java.util.Iterator;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.ar.config.SplashPopupWin;
+import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.qphone.base.util.QLog;
 
-class aajx
-  implements Runnable
+public class aajx
+  implements IMediaPlayer.OnCompletionListener
 {
-  aajx(aajw paramaajw, ArrayList paramArrayList) {}
+  public aajx(SplashPopupWin paramSplashPopupWin, PopupWindow paramPopupWindow, QQAppInterface paramQQAppInterface, TextureVideoView paramTextureVideoView) {}
   
-  public void run()
+  public void a(IMediaPlayer paramIMediaPlayer)
   {
-    aakc localaakc2 = null;
-    if ((ArkActionAppMgr)this.jdField_a_of_type_Aajw.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
-      return;
+    QLog.w("WorldCupMgr", 1, "SplashPopupWin, 播放结束, popupWindow[" + this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing() + "]");
+    if ((AudioHelper.d()) && (AudioHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVisibility(4);
     }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    aakc localaakc1 = null;
-    ArkAppCGI.ActionAppUpdateInfo localActionAppUpdateInfo;
-    while (localIterator.hasNext())
-    {
-      localActionAppUpdateInfo = (ArkAppCGI.ActionAppUpdateInfo)localIterator.next();
-      ArkAppCenter.b("ArkApp.ActionAppMgr", String.format("_checkActionNeedUpdate, action=%s.%s, gray-appid=%d, appid=%d, need-update=%s", new Object[] { localActionAppUpdateInfo.jdField_a_of_type_JavaLangString, localActionAppUpdateInfo.jdField_b_of_type_JavaLangString, Long.valueOf(localActionAppUpdateInfo.jdField_b_of_type_Long), Long.valueOf(localActionAppUpdateInfo.jdField_a_of_type_Long), Boolean.toString(localActionAppUpdateInfo.jdField_a_of_type_Boolean) }));
-      if (localActionAppUpdateInfo.jdField_a_of_type_Boolean)
-      {
-        ArkActionAppMgr.a(this.jdField_a_of_type_Aajw.jdField_a_of_type_ComTencentMobileqqArkArkActionAppMgr, localActionAppUpdateInfo.jdField_a_of_type_JavaLangString, localActionAppUpdateInfo.jdField_b_of_type_JavaLangString, localActionAppUpdateInfo.jdField_b_of_type_Long, localActionAppUpdateInfo.jdField_a_of_type_Long);
-      }
-      else
-      {
-        label151:
-        if (localaakc1 != null) {
-          break label269;
-        }
-        localaakc1 = new aakc();
-        localaakc1.a(this.jdField_a_of_type_Aajw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), 2);
-      }
-    }
-    label269:
-    for (;;)
-    {
-      if (localaakc2 == null)
-      {
-        localaakc2 = new aakc();
-        localaakc2.a(this.jdField_a_of_type_Aajw.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationContext(), 1);
-      }
-      for (;;)
-      {
-        localaakc1.a(localActionAppUpdateInfo.jdField_a_of_type_JavaLangString, localActionAppUpdateInfo.jdField_b_of_type_JavaLangString);
-        localaakc2.a(localActionAppUpdateInfo.jdField_a_of_type_JavaLangString, localActionAppUpdateInfo.jdField_b_of_type_JavaLangString);
-        break label151;
-        if (localaakc1 != null) {
-          localaakc1.a();
-        }
-        if (localaakc2 == null) {
-          break;
-        }
-        localaakc2.a();
-        return;
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqArConfigSplashPopupWin.a(0);
   }
 }
 

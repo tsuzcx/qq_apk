@@ -1,14 +1,14 @@
 package com.tencent.chirp;
 
 import android.content.Context;
-import pcv;
+import pep;
 
 public class PCMRecorder
 {
   private int jdField_a_of_type_Int = 44100;
   private Context jdField_a_of_type_AndroidContentContext;
   private PCMRecorder.OnQQRecorderListener jdField_a_of_type_ComTencentChirpPCMRecorder$OnQQRecorderListener;
-  private volatile pcv jdField_a_of_type_Pcv;
+  private volatile pep jdField_a_of_type_Pep;
   private int b;
   
   public PCMRecorder(Context paramContext, int paramInt, PCMRecorder.OnQQRecorderListener paramOnQQRecorderListener)
@@ -21,19 +21,19 @@ public class PCMRecorder
   
   public void a()
   {
-    if (this.jdField_a_of_type_Pcv != null)
+    if (this.jdField_a_of_type_Pep != null)
     {
-      this.jdField_a_of_type_Pcv.a = false;
-      this.jdField_a_of_type_Pcv = null;
+      this.jdField_a_of_type_Pep.a = false;
+      this.jdField_a_of_type_Pep = null;
     }
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_Pcv == null)
+    if (this.jdField_a_of_type_Pep == null)
     {
-      this.jdField_a_of_type_Pcv = new pcv(this);
-      this.jdField_a_of_type_Pcv.start();
+      this.jdField_a_of_type_Pep = new pep(this);
+      this.jdField_a_of_type_Pep.start();
       return true;
     }
     return false;
@@ -41,7 +41,7 @@ public class PCMRecorder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.chirp.PCMRecorder
  * JD-Core Version:    0.7.0.1
  */

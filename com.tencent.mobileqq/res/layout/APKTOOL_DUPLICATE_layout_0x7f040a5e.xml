@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021b32" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.FeedImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2efa" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" />
-    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2efb" android:background="@android:color/transparent" android:padding="5.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
-        <CheckBox android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2efc" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021c9d" android:layout_width="wrap_content" android:layout_height="wrap_content" android:button="@null" />
-    </FrameLayout>
-</RelativeLayout>
+    <com.qzone.proxy.albumcomponent.widget.NormalHeaderCell android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ee5" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <com.qzone.proxy.albumcomponent.widget.BigPhotoView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ede" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="5.0dip" />
+</LinearLayout>

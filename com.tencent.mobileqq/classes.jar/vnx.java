@@ -1,19 +1,22 @@
 import android.os.Handler;
 import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import android.os.Process;
+import com.tencent.qphone.base.util.QLog;
 
-public class vnx
+public final class vnx
   extends Handler
 {
-  public vnx(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
-  
   public void handleMessage(Message paramMessage)
   {
-    super.handleMessage(paramMessage);
-    if (this.a.p.isShown()) {
-      this.a.p.setVisibility(8);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("PEAK", 2, "self-destory BOOM!!!!");
+    }
+    Process.killProcess(Process.myPid());
   }
 }
 

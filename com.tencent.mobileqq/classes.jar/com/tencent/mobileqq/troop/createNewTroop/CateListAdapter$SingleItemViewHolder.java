@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.createNewTroop;
 
-import aimr;
+import ajav;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.View;
@@ -12,7 +12,7 @@ import android.widget.TextView;
 public class CateListAdapter$SingleItemViewHolder
 {
   int jdField_a_of_type_Int;
-  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new aimr(this);
+  View.OnTouchListener jdField_a_of_type_AndroidViewView$OnTouchListener = new ajav(this);
   View jdField_a_of_type_AndroidViewView;
   public ImageView a;
   public TextView a;
@@ -24,11 +24,11 @@ public class CateListAdapter$SingleItemViewHolder
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368268));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368270));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368272));
-    this.c = paramView.findViewById(2131368271);
-    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131368269);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368335));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368337));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368339));
+    this.c = paramView.findViewById(2131368338);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131368336);
   }
   
   public void a(Context paramContext, TroopCateListProvider.TroopCateInfo paramTroopCateInfo, View.OnClickListener paramOnClickListener)
@@ -74,7 +74,7 @@ public class CateListAdapter$SingleItemViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.createNewTroop.CateListAdapter.SingleItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

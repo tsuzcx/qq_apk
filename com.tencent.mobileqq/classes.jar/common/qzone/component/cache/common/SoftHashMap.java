@@ -1,9 +1,9 @@
 package common.qzone.component.cache.common;
 
-import alsj;
-import alsl;
-import also;
-import alsr;
+import amin;
+import amip;
+import amis;
+import amiv;
 import java.lang.ref.ReferenceQueue;
 import java.util.AbstractMap;
 import java.util.Collection;
@@ -21,7 +21,7 @@ public final class SoftHashMap
   private final ReferenceQueue jdField_a_of_type_JavaLangRefReferenceQueue = new ReferenceQueue();
   private volatile transient Collection jdField_a_of_type_JavaUtilCollection;
   private transient Set jdField_a_of_type_JavaUtilSet;
-  private alsj[] jdField_a_of_type_ArrayOfAlsj = new alsj[16];
+  private amin[] jdField_a_of_type_ArrayOfAmin = new amin[16];
   private int jdField_b_of_type_Int = 16;
   private volatile transient Set jdField_b_of_type_JavaUtilSet;
   private volatile int c;
@@ -42,90 +42,90 @@ public final class SoftHashMap
     return a(paramObject.hashCode());
   }
   
-  private alsj a(Object paramObject)
+  private amin a(Object paramObject)
   {
     Object localObject = b(paramObject);
     int i = a(localObject);
     paramObject = a();
-    for (paramObject = paramObject[a(i, paramObject.length)]; (paramObject != null) && ((alsj.a(paramObject) != i) || (!a(localObject, paramObject.get()))); paramObject = alsj.a(paramObject)) {}
+    for (paramObject = paramObject[a(i, paramObject.length)]; (paramObject != null) && ((amin.a(paramObject) != i) || (!a(localObject, paramObject.get()))); paramObject = amin.a(paramObject)) {}
     return paramObject;
   }
   
   private void a()
   {
-    alsj localalsj2 = (alsj)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll();
-    if (localalsj2 != null)
+    amin localamin2 = (amin)this.jdField_a_of_type_JavaLangRefReferenceQueue.poll();
+    if (localamin2 != null)
     {
-      int i = a(alsj.a(localalsj2), this.jdField_a_of_type_ArrayOfAlsj.length);
-      Object localObject1 = this.jdField_a_of_type_ArrayOfAlsj[i];
+      int i = a(amin.a(localamin2), this.jdField_a_of_type_ArrayOfAmin.length);
+      Object localObject1 = this.jdField_a_of_type_ArrayOfAmin[i];
       Object localObject2 = localObject1;
       while (localObject1 != null)
       {
-        alsj localalsj1 = alsj.a((alsj)localObject1);
-        if (localObject1 == localalsj2)
+        amin localamin1 = amin.a((amin)localObject1);
+        if (localObject1 == localamin2)
         {
-          if (localObject2 == localalsj2) {
-            this.jdField_a_of_type_ArrayOfAlsj[i] = localalsj1;
+          if (localObject2 == localamin2) {
+            this.jdField_a_of_type_ArrayOfAmin[i] = localamin1;
           }
           for (;;)
           {
-            alsj.a(localalsj2, null);
-            alsj.a(localalsj2, null);
+            amin.a(localamin2, null);
+            amin.a(localamin2, null);
             this.jdField_a_of_type_Int -= 1;
             break;
-            alsj.a(localObject2, localalsj1);
+            amin.a(localObject2, localamin1);
           }
         }
         localObject2 = localObject1;
-        localObject1 = localalsj1;
+        localObject1 = localamin1;
       }
     }
   }
   
   private void a(int paramInt)
   {
-    alsj[] arrayOfalsj1 = a();
-    if (arrayOfalsj1.length == 1073741824)
+    amin[] arrayOfamin1 = a();
+    if (arrayOfamin1.length == 1073741824)
     {
       this.jdField_b_of_type_Int = 2147483647;
       return;
     }
-    alsj[] arrayOfalsj2 = new alsj[paramInt];
-    a(arrayOfalsj1, arrayOfalsj2);
-    this.jdField_a_of_type_ArrayOfAlsj = arrayOfalsj2;
+    amin[] arrayOfamin2 = new amin[paramInt];
+    a(arrayOfamin1, arrayOfamin2);
+    this.jdField_a_of_type_ArrayOfAmin = arrayOfamin2;
     if (this.jdField_a_of_type_Int >= this.jdField_b_of_type_Int / 2)
     {
       this.jdField_b_of_type_Int = ((int)(paramInt * this.jdField_a_of_type_Float));
       return;
     }
     a();
-    a(arrayOfalsj2, arrayOfalsj1);
-    this.jdField_a_of_type_ArrayOfAlsj = arrayOfalsj1;
+    a(arrayOfamin2, arrayOfamin1);
+    this.jdField_a_of_type_ArrayOfAmin = arrayOfamin1;
   }
   
-  private void a(alsj[] paramArrayOfalsj1, alsj[] paramArrayOfalsj2)
+  private void a(amin[] paramArrayOfamin1, amin[] paramArrayOfamin2)
   {
     int i = 0;
-    while (i < paramArrayOfalsj1.length)
+    while (i < paramArrayOfamin1.length)
     {
-      Object localObject = paramArrayOfalsj1[i];
-      paramArrayOfalsj1[i] = null;
+      Object localObject = paramArrayOfamin1[i];
+      paramArrayOfamin1[i] = null;
       if (localObject != null)
       {
-        alsj localalsj = alsj.a((alsj)localObject);
-        if (((alsj)localObject).get() == null)
+        amin localamin = amin.a((amin)localObject);
+        if (((amin)localObject).get() == null)
         {
-          alsj.a((alsj)localObject, null);
-          alsj.a((alsj)localObject, null);
+          amin.a((amin)localObject, null);
+          amin.a((amin)localObject, null);
           this.jdField_a_of_type_Int -= 1;
         }
         for (;;)
         {
-          localObject = localalsj;
+          localObject = localamin;
           break;
-          int j = a(alsj.a((alsj)localObject), paramArrayOfalsj2.length);
-          alsj.a((alsj)localObject, paramArrayOfalsj2[j]);
-          paramArrayOfalsj2[j] = localObject;
+          int j = a(amin.a((amin)localObject), paramArrayOfamin2.length);
+          amin.a((amin)localObject, paramArrayOfamin2[j]);
+          paramArrayOfamin2[j] = localObject;
         }
       }
       i += 1;
@@ -134,16 +134,16 @@ public final class SoftHashMap
   
   private boolean a()
   {
-    alsj[] arrayOfalsj = a();
+    amin[] arrayOfamin = a();
     int j;
-    for (int i = arrayOfalsj.length;; i = j)
+    for (int i = arrayOfamin.length;; i = j)
     {
       j = i - 1;
       if (i <= 0) {
         break;
       }
-      for (alsj localalsj = arrayOfalsj[j]; localalsj != null; localalsj = alsj.a(localalsj)) {
-        if (alsj.a(localalsj) == null) {
+      for (amin localamin = arrayOfamin[j]; localamin != null; localamin = amin.a(localamin)) {
+        if (amin.a(localamin) == null) {
           return true;
         }
       }
@@ -156,42 +156,42 @@ public final class SoftHashMap
     return (paramObject1 == paramObject2) || (paramObject1.equals(paramObject2));
   }
   
-  private alsj[] a()
+  private amin[] a()
   {
     a();
-    return this.jdField_a_of_type_ArrayOfAlsj;
+    return this.jdField_a_of_type_ArrayOfAmin;
   }
   
-  private alsj b(Object paramObject)
+  private amin b(Object paramObject)
   {
     if (!(paramObject instanceof Map.Entry)) {}
     for (;;)
     {
       return null;
-      alsj[] arrayOfalsj = a();
+      amin[] arrayOfamin = a();
       Map.Entry localEntry = (Map.Entry)paramObject;
       int i = a(b(localEntry.getKey()));
-      int j = a(i, arrayOfalsj.length);
-      paramObject = arrayOfalsj[j];
+      int j = a(i, arrayOfamin.length);
+      paramObject = arrayOfamin[j];
       Object localObject = paramObject;
       while (paramObject != null)
       {
-        alsj localalsj = alsj.a(paramObject);
-        if ((i == alsj.a(paramObject)) && (paramObject.equals(localEntry)))
+        amin localamin = amin.a(paramObject);
+        if ((i == amin.a(paramObject)) && (paramObject.equals(localEntry)))
         {
           this.c += 1;
           this.jdField_a_of_type_Int -= 1;
           if (localObject == paramObject) {
-            arrayOfalsj[j] = localalsj;
+            arrayOfamin[j] = localamin;
           }
           for (;;)
           {
             return paramObject;
-            alsj.a(localObject, localalsj);
+            amin.a(localObject, localamin);
           }
         }
         localObject = paramObject;
-        paramObject = localalsj;
+        paramObject = localamin;
       }
     }
   }
@@ -218,11 +218,11 @@ public final class SoftHashMap
   {
     while (this.jdField_a_of_type_JavaLangRefReferenceQueue.poll() != null) {}
     this.c += 1;
-    alsj[] arrayOfalsj = this.jdField_a_of_type_ArrayOfAlsj;
+    amin[] arrayOfamin = this.jdField_a_of_type_ArrayOfAmin;
     int i = 0;
-    while (i < arrayOfalsj.length)
+    while (i < arrayOfamin.length)
     {
-      arrayOfalsj[i] = null;
+      arrayOfamin[i] = null;
       i += 1;
     }
     this.jdField_a_of_type_Int = 0;
@@ -239,16 +239,16 @@ public final class SoftHashMap
     if (paramObject == null) {
       return a();
     }
-    alsj[] arrayOfalsj = a();
+    amin[] arrayOfamin = a();
     int j;
-    for (int i = arrayOfalsj.length;; i = j)
+    for (int i = arrayOfamin.length;; i = j)
     {
       j = i - 1;
       if (i <= 0) {
         break;
       }
-      for (alsj localalsj = arrayOfalsj[j]; localalsj != null; localalsj = alsj.a(localalsj)) {
-        if (paramObject.equals(alsj.a(localalsj))) {
+      for (amin localamin = arrayOfamin[j]; localamin != null; localamin = amin.a(localamin)) {
+        if (paramObject.equals(amin.a(localamin))) {
           return true;
         }
       }
@@ -262,7 +262,7 @@ public final class SoftHashMap
     if (localObject != null) {
       return localObject;
     }
-    localObject = new alsl(this);
+    localObject = new amip(this);
     this.jdField_a_of_type_JavaUtilSet = ((Set)localObject);
     return localObject;
   }
@@ -272,9 +272,9 @@ public final class SoftHashMap
     Object localObject = b(paramObject);
     int i = a(localObject);
     paramObject = a();
-    for (paramObject = paramObject[a(i, paramObject.length)]; paramObject != null; paramObject = alsj.a(paramObject)) {
-      if ((alsj.a(paramObject) == i) && (a(localObject, paramObject.get()))) {
-        return alsj.a(paramObject);
+    for (paramObject = paramObject[a(i, paramObject.length)]; paramObject != null; paramObject = amin.a(paramObject)) {
+      if ((amin.a(paramObject) == i) && (a(localObject, paramObject.get()))) {
+        return amin.a(paramObject);
       }
     }
     return null;
@@ -291,7 +291,7 @@ public final class SoftHashMap
     if (localObject != null) {
       return localObject;
     }
-    localObject = new also(this);
+    localObject = new amis(this);
     this.jdField_b_of_type_JavaUtilSet = ((Set)localObject);
     return localObject;
   }
@@ -300,25 +300,25 @@ public final class SoftHashMap
   {
     Object localObject = b(paramObject1);
     int i = a(localObject);
-    alsj[] arrayOfalsj = a();
-    int j = a(i, arrayOfalsj.length);
-    for (paramObject1 = arrayOfalsj[j]; paramObject1 != null; paramObject1 = alsj.a(paramObject1)) {
-      if ((i == alsj.a(paramObject1)) && (a(localObject, paramObject1.get())))
+    amin[] arrayOfamin = a();
+    int j = a(i, arrayOfamin.length);
+    for (paramObject1 = arrayOfamin[j]; paramObject1 != null; paramObject1 = amin.a(paramObject1)) {
+      if ((i == amin.a(paramObject1)) && (a(localObject, paramObject1.get())))
       {
-        localObject = alsj.a(paramObject1);
+        localObject = amin.a(paramObject1);
         if (paramObject2 != localObject) {
-          alsj.a(paramObject1, paramObject2);
+          amin.a(paramObject1, paramObject2);
         }
         return localObject;
       }
     }
     this.c += 1;
-    paramObject1 = arrayOfalsj[j];
-    arrayOfalsj[j] = new alsj(localObject, paramObject2, this.jdField_a_of_type_JavaLangRefReferenceQueue, i, paramObject1);
+    paramObject1 = arrayOfamin[j];
+    arrayOfamin[j] = new amin(localObject, paramObject2, this.jdField_a_of_type_JavaLangRefReferenceQueue, i, paramObject1);
     i = this.jdField_a_of_type_Int + 1;
     this.jdField_a_of_type_Int = i;
     if (i >= this.jdField_b_of_type_Int) {
-      a(arrayOfalsj.length * 2);
+      a(arrayOfamin.length * 2);
     }
     return null;
   }
@@ -339,11 +339,11 @@ public final class SoftHashMap
     }
     for (;;)
     {
-      j = this.jdField_a_of_type_ArrayOfAlsj.length;
+      j = this.jdField_a_of_type_ArrayOfAmin.length;
       while (j < i) {
         j <<= 1;
       }
-      if (j > this.jdField_a_of_type_ArrayOfAlsj.length) {
+      if (j > this.jdField_a_of_type_ArrayOfAmin.length) {
         a(j);
       }
       paramMap = paramMap.entrySet().iterator();
@@ -362,28 +362,28 @@ public final class SoftHashMap
   {
     Object localObject2 = b(paramObject);
     int i = a(localObject2);
-    alsj[] arrayOfalsj = a();
-    int j = a(i, arrayOfalsj.length);
-    paramObject = arrayOfalsj[j];
+    amin[] arrayOfamin = a();
+    int j = a(i, arrayOfamin.length);
+    paramObject = arrayOfamin[j];
     Object localObject1 = paramObject;
     while (paramObject != null)
     {
-      alsj localalsj = alsj.a(paramObject);
-      if ((i == alsj.a(paramObject)) && (a(localObject2, paramObject.get())))
+      amin localamin = amin.a(paramObject);
+      if ((i == amin.a(paramObject)) && (a(localObject2, paramObject.get())))
       {
         this.c += 1;
         this.jdField_a_of_type_Int -= 1;
         if (localObject1 == paramObject) {
-          arrayOfalsj[j] = localalsj;
+          arrayOfamin[j] = localamin;
         }
         for (;;)
         {
-          return alsj.a(paramObject);
-          alsj.a(localObject1, localalsj);
+          return amin.a(paramObject);
+          amin.a(localObject1, localamin);
         }
       }
       localObject1 = paramObject;
-      paramObject = localalsj;
+      paramObject = localamin;
     }
     return null;
   }
@@ -403,7 +403,7 @@ public final class SoftHashMap
     if (localObject != null) {
       return localObject;
     }
-    localObject = new alsr(this);
+    localObject = new amiv(this);
     this.jdField_a_of_type_JavaUtilCollection = ((Collection)localObject);
     return localObject;
   }

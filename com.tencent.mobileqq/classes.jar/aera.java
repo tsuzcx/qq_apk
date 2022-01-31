@@ -1,19 +1,41 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity;
+import com.tencent.mobileqq.widget.MonitorSizeChangeHSV;
 
-public class aera
-  implements View.OnClickListener
+class aera
+  implements Runnable
 {
-  public aera(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  aera(aeqz paramaeqz, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (!this.a.a.onBackEvent())
+    if (this.jdField_a_of_type_Int >= 0)
     {
-      this.a.a.finish();
-      this.a.a.b(false);
+      ((RelativeLayout.LayoutParams)ChooseInterestTagActivity.a(this.jdField_a_of_type_Aeqz.a).getLayoutParams()).leftMargin = ((int)(this.jdField_a_of_type_Int + ChooseInterestTagActivity.a(this.jdField_a_of_type_Aeqz.a) * 7.0F));
+      ChooseInterestTagActivity.a(this.jdField_a_of_type_Aeqz.a).requestLayout();
+    }
+    RelativeLayout.LayoutParams localLayoutParams;
+    if (ChooseInterestTagActivity.a(this.jdField_a_of_type_Aeqz.a).getChildCount() <= 0)
+    {
+      ChooseInterestTagActivity.a(this.jdField_a_of_type_Aeqz.a).setVisibility(8);
+      if (ChooseInterestTagActivity.b(this.jdField_a_of_type_Aeqz.a))
+      {
+        localLayoutParams = (RelativeLayout.LayoutParams)ChooseInterestTagActivity.a(this.jdField_a_of_type_Aeqz.a).getLayoutParams();
+        localLayoutParams.height = 1;
+        if (!ChooseInterestTagActivity.a(this.jdField_a_of_type_Aeqz.a)) {
+          break label183;
+        }
+      }
+    }
+    label183:
+    for (int i = (int)(ChooseInterestTagActivity.a(this.jdField_a_of_type_Aeqz.a) * 7.0F + 0.5D);; i = 0)
+    {
+      localLayoutParams.topMargin = i;
+      localLayoutParams.bottomMargin = i;
+      ChooseInterestTagActivity.a(this.jdField_a_of_type_Aeqz.a).setLayoutParams(localLayoutParams);
+      return;
     }
   }
 }

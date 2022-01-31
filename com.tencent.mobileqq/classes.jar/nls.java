@@ -1,23 +1,15 @@
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.biz.qqstory.playmode.util.ShareGroupVideoDataProvider;
-import java.util.ArrayList;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playmode.child.TroopProfileVideoPlayMode;
 
 public class nls
-  implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
+  implements DialogInterface.OnDismissListener
 {
-  public nls(ShareGroupVideoDataProvider paramShareGroupVideoDataProvider, BatchGetVideoInfo paramBatchGetVideoInfo, String paramString) {}
+  public nls(TroopProfileVideoPlayMode paramTroopProfileVideoPlayMode) {}
   
-  public void a()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilShareGroupVideoDataProvider.a(this.jdField_a_of_type_JavaLangString, false, null);
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilShareGroupVideoDataProvider.a(this.jdField_a_of_type_JavaLangString, true, paramArrayList);
+    this.a.s();
   }
 }
 

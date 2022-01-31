@@ -1,31 +1,48 @@
-import com.tencent.hotpatch.config.BasePatchConfig;
-import java.util.Comparator;
+import android.os.Build.VERSION;
+import android.util.Log;
+import com.tencent.gdtad.jsbridge.GdtAdWebPlugin;
+import com.tencent.gdtad.jsbridge.GdtJsCallHandler;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public final class qky
-  implements Comparator
+public class qky
+  implements GdtJsCallHandler
 {
-  public int a(BasePatchConfig paramBasePatchConfig1, BasePatchConfig paramBasePatchConfig2)
+  public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
-    if ((paramBasePatchConfig1 == null) && (paramBasePatchConfig2 == null)) {}
-    do
+    if ((paramGdtAdWebPlugin == null) || (paramGdtAdWebPlugin.mRuntime == null) || (paramGdtAdWebPlugin.mRuntime.a() == null))
     {
-      return 0;
-      if ((paramBasePatchConfig1 == null) && (paramBasePatchConfig2 != null)) {
-        return 1;
+      Log.e("GdtOSVersionJsCallHandler", "handleJsCallRequest error");
+      return true;
+    }
+    paramVarArgs = new JSONObject();
+    try
+    {
+      paramVarArgs.put("osVersion", Build.VERSION.RELEASE);
+      try
+      {
+        paramGdtAdWebPlugin.callJs(paramString, new String[] { paramVarArgs.toString() });
+        return true;
       }
-      if ((paramBasePatchConfig1 != null) && (paramBasePatchConfig2 == null)) {
-        return -1;
+      catch (Throwable paramGdtAdWebPlugin)
+      {
+        paramGdtAdWebPlugin.printStackTrace();
+        return true;
       }
-      if (paramBasePatchConfig1.a > paramBasePatchConfig2.a) {
-        return -1;
+    }
+    catch (JSONException localJSONException)
+    {
+      for (;;)
+      {
+        localJSONException.printStackTrace();
       }
-    } while (paramBasePatchConfig1.a >= paramBasePatchConfig2.a);
-    return 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     qky
  * JD-Core Version:    0.7.0.1
  */

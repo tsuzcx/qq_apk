@@ -1,14 +1,13 @@
-import com.tencent.TMG.sdk.AVVideoCtrl.EnableCameraCompleteCallback;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
+import com.tencent.mobileqq.apollo.GLTextureView;
 
 public class ynj
-  extends AVVideoCtrl.EnableCameraCompleteCallback
+  implements Runnable
 {
-  public ynj(CmGameAvHandler paramCmGameAvHandler) {}
+  public ynj(GLTextureView paramGLTextureView) {}
   
-  protected void onComplete(boolean paramBoolean, int paramInt)
+  public void run()
   {
-    if (paramInt == 0) {}
+    GLTextureView.access$1800(this.a, 1.0F);
   }
 }
 

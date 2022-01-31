@@ -1,20 +1,15 @@
-import com.tencent.biz.qqstory.playvideo.TVKPreloader;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadItem;
-import com.tencent.biz.qqstory.playvideo.TVKPreloader.PreloadListener;
-import java.util.Iterator;
-import java.util.concurrent.CopyOnWriteArraySet;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
+import com.tencent.biz.qqstory.playmode.util.SendVideoToFriendHelper;
 
-public final class nnd
+public class nnd
   implements Runnable
 {
-  public nnd(TVKPreloader.PreloadItem paramPreloadItem) {}
+  public nnd(SendVideoToFriendHelper paramSendVideoToFriendHelper, StoryVideoItem paramStoryVideoItem) {}
   
   public void run()
   {
-    Iterator localIterator = TVKPreloader.a().iterator();
-    while (localIterator.hasNext()) {
-      ((TVKPreloader.PreloadListener)localIterator.next()).a(this.a, new Throwable("TVK_ICacheMgr create failed !"));
-    }
+    PlayModeUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mStoryType, "SendVideoToFriendHelper");
   }
 }
 

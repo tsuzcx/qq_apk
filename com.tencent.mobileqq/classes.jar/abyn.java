@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.emoticonview.EmotionKeywordAdapter;
-import java.util.List;
+import com.tencent.mobileqq.doutu.DoutuManager;
 
-class abyn
-  implements Runnable
+public class abyn
 {
-  abyn(abym paramabym, List paramList) {}
+  public long a;
+  long b;
   
-  public void run()
+  public abyn(DoutuManager paramDoutuManager, long paramLong1, long paramLong2)
   {
-    if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
-      this.jdField_a_of_type_Abym.a.a(this.jdField_a_of_type_JavaUtilList);
-    }
+    this.jdField_a_of_type_Long = paramLong1;
+    this.b = paramLong2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abyn
  * JD-Core Version:    0.7.0.1
  */

@@ -1,81 +1,88 @@
-import com.tencent.mobileqq.filemanager.app.FileTransferObserver;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportHandler;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportJobForDisc;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.MultiMsgProxy;
+import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.PicInfoInterface.ErrInfo;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.mobileqq.shortvideo.BaseShortVideoOprerator;
+import com.tencent.mobileqq.shortvideo.ShortVideoForwardInfo;
+import com.tencent.mobileqq.shortvideo.ShortVideoResult;
 import com.tencent.qphone.base.util.QLog;
-import org.json.JSONArray;
-import org.json.JSONObject;
+import java.util.ArrayList;
+import tencent.im.msg.im_msg_body.RichText;
 
-public class ahyi
-  extends FileTransferObserver
+class ahyi
+  implements UpCallBack
 {
-  public ahyi(TeamWorkFileImportJobForDisc paramTeamWorkFileImportJobForDisc) {}
+  final int jdField_a_of_type_Int;
+  ShortVideoResult jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResult;
   
-  protected void a(boolean paramBoolean, long paramLong1, String paramString1, String paramString2, String paramString3, int paramInt1, String paramString4, String paramString5, int paramInt2, long paramLong2)
+  ahyi(ahyh paramahyh, int paramInt)
   {
-    paramInt2 = 0;
-    paramString2 = new JSONObject();
-    if (paramBoolean)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("TeamWorkFileImportJobForDisc", 2, "---OnDiscDownloadInfo retCode: " + paramLong1 + ",retMsg: " + paramString1 + ",strCookie: " + paramString5 + ",host: " + paramString3 + ",port: " + paramInt1);
-      }
-      paramString1 = new StringBuilder("http://");
-      paramString1.append(paramString3).append(":").append(paramInt1).append("/ftn_handler/").append(paramString4);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResult = ((ShortVideoResult)paramahyh.b.get(this.jdField_a_of_type_Int));
+  }
+  
+  public MessageRecord a(im_msg_body.RichText paramRichText)
+  {
+    return (MessageForShortVideo)((ShortVideoForwardInfo)this.jdField_a_of_type_Ahyh.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a;
+  }
+  
+  public void a(UpCallBack.SendResult paramSendResult)
+  {
+    MessageForShortVideo localMessageForShortVideo = (MessageForShortVideo)((ShortVideoForwardInfo)this.jdField_a_of_type_Ahyh.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_Int)).a;
+    localMessageForShortVideo.videoFileStatus = 1003;
+    localMessageForShortVideo.md5 = paramSendResult.d;
+    localMessageForShortVideo.uuid = paramSendResult.jdField_c_of_type_JavaLangString;
+    localMessageForShortVideo.thumbFileSize = ((int)paramSendResult.jdField_c_of_type_Long);
+    localMessageForShortVideo.videoAttr = paramSendResult.jdField_c_of_type_Int;
+    localMessageForShortVideo.serial();
+    paramSendResult = this.jdField_a_of_type_Ahyh.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.a.a();
+    if (paramSendResult != null) {
+      paramSendResult.a(localMessageForShortVideo, null);
     }
+  }
+  
+  public void b(UpCallBack.SendResult paramSendResult)
+  {
     for (;;)
     {
-      try
+      int i;
+      synchronized (this.jdField_a_of_type_Ahyh.b)
       {
-        paramString3 = new JSONArray();
-        paramString3.put(0, paramString1.toString());
-        paramString2.put("urls", paramString3);
-        paramString2.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
-        paramString2.put("cookie", paramString5);
-        paramInt1 = 1;
-      }
-      catch (Exception paramString1)
-      {
-        paramInt1 = 0;
-        QLog.e("TeamWorkFileImportJobForDisc", 2, "OnDiscDownloadInfo exception: " + paramString1.toString());
-        continue;
-      }
-      paramInt2 = 0;
-      try
-      {
-        if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null)
+        if (paramSendResult.jdField_a_of_type_Int == 0)
         {
-          if (paramInt1 == 0) {
-            paramString2.put("filename", this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b);
+          a(paramSendResult);
+          this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResult.jdField_a_of_type_Int = 0;
+          if (QLog.isColorLevel()) {
+            QLog.d("BaseShortVideoOprerator", 2, "onsend success!");
           }
-          paramString2.put("filetype", 2);
-          paramString2.put("fileid", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid);
-          paramString2.put("discussuin", Long.valueOf(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin));
-          paramString2.put("md5", this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strFileMd5);
-          paramInt2 = 1;
+          i = ahyh.a(this.jdField_a_of_type_Ahyh);
+          if (i == 0) {
+            this.jdField_a_of_type_Ahyh.jdField_a_of_type_ComTencentMobileqqShortvideoBaseShortVideoOprerator.a(3, 0, this.jdField_a_of_type_Ahyh.b);
+          }
+        }
+        else
+        {
+          this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResult.jdField_a_of_type_Int = -1;
+          this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo = new PicInfoInterface.ErrInfo();
+          this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b = paramSendResult.jdField_a_of_type_JavaLangString;
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("BaseShortVideoOprerator", 2, "onsend fail! err:" + paramSendResult.jdField_a_of_type_JavaLangString);
         }
       }
-      catch (Exception paramString1)
-      {
-        QLog.e("TeamWorkFileImportJobForDisc", 2, "put fileid exception: " + paramString1.toString());
-        paramInt2 = 0;
-        continue;
-        this.a.a(true);
+      if (this.jdField_a_of_type_Ahyh.jdField_a_of_type_Int == this.jdField_a_of_type_Ahyh.jdField_a_of_type_JavaUtilArrayList.size() - i) {
+        this.jdField_a_of_type_Ahyh.a();
       }
-      if (((paramInt2 == 0) && (paramInt1 == 0)) || (paramString2 == null)) {
-        break;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportHandler.a(paramString2, this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo);
-      return;
-      QLog.e("TeamWorkFileImportJobForDisc", 1, "---OnDiscDownloadInfo retCode: " + paramLong1 + ",fileName: " + this.a.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b + "----");
-      paramInt1 = paramInt2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahyi
  * JD-Core Version:    0.7.0.1
  */

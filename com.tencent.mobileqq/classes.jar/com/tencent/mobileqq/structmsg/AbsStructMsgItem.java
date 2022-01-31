@@ -90,16 +90,16 @@ public abstract class AbsStructMsgItem
     default: 
       return;
     case 0: 
-      paramView.setBackgroundResource(2130837915);
+      paramView.setBackgroundResource(2130837918);
       return;
     case 1: 
-      paramView.setBackgroundResource(2130837916);
+      paramView.setBackgroundResource(2130837919);
       return;
     case 2: 
-      paramView.setBackgroundResource(2130837914);
+      paramView.setBackgroundResource(2130837917);
       return;
     }
-    paramView.setBackgroundResource(2130837913);
+    paramView.setBackgroundResource(2130837916);
   }
   
   public void a(AbsShareMsg paramAbsShareMsg)
@@ -689,13 +689,13 @@ public abstract class AbsStructMsgItem
     do
     {
       return;
-      paramView.setBackgroundResource(2130837915);
+      paramView.setBackgroundResource(2130837918);
+      break;
+      paramView.setBackgroundResource(2130837919);
+      break;
+      paramView.setBackgroundResource(2130837917);
       break;
       paramView.setBackgroundResource(2130837916);
-      break;
-      paramView.setBackgroundResource(2130837914);
-      break;
-      paramView.setBackgroundResource(2130837913);
       break;
       paramView = paramView.findViewById(2131362097);
     } while ((paramView == null) || (!(paramView instanceof PAHighLightImageView)));
@@ -731,13 +731,13 @@ public abstract class AbsStructMsgItem
       paramView.setLayoutParams(localLayoutParams);
       paramView.setPadding(i, j, k, m);
       return;
-      paramView.setBackgroundResource(2130837923);
-      continue;
       paramView.setBackgroundResource(2130837926);
       continue;
-      paramView.setBackgroundResource(2130837922);
+      paramView.setBackgroundResource(2130837929);
       continue;
       paramView.setBackgroundResource(2130837925);
+      continue;
+      paramView.setBackgroundResource(2130837928);
     }
   }
   
@@ -767,19 +767,19 @@ public abstract class AbsStructMsgItem
         return;
         if (!TextUtils.isEmpty(this.b))
         {
-          this.jdField_g_of_type_Int = 2130837917;
+          this.jdField_g_of_type_Int = 2130837920;
           break;
         }
-        this.jdField_g_of_type_Int = 2130837927;
+        this.jdField_g_of_type_Int = 2130837930;
         break;
         if (!TextUtils.isEmpty(this.b))
         {
-          this.jdField_g_of_type_Int = 2130837918;
+          this.jdField_g_of_type_Int = 2130837921;
           break;
         }
-        this.jdField_g_of_type_Int = 2130837928;
+        this.jdField_g_of_type_Int = 2130837931;
         break;
-        paramView.setBackgroundResource(2130837916);
+        paramView.setBackgroundResource(2130837919);
         return;
       } while ((!a()) || (this.jdField_f_of_type_Int == 0));
       int i = AIOUtils.a(4.0F, paramView.getResources());
@@ -799,7 +799,7 @@ public abstract class AbsStructMsgItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsStructMsgItem
  * JD-Core Version:    0.7.0.1
  */

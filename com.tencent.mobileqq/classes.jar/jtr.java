@@ -1,20 +1,15 @@
-import com.tencent.av.ui.DoubleVideoMeetingCtrlUI;
-import com.tencent.av.ui.QavInOutAnimation.QavOutAnimationListener;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.ui.EffectSettingUi;
 
-public class jtr
-  implements QavInOutAnimation.QavOutAnimationListener
+public final class jtr
+  implements Runnable
 {
-  public jtr(DoubleVideoMeetingCtrlUI paramDoubleVideoMeetingCtrlUI) {}
+  public jtr(VideoAppInterface paramVideoAppInterface) {}
   
-  public void a()
+  public void run()
   {
-    this.a.l = true;
-    this.a.ah();
-  }
-  
-  public void b()
-  {
-    this.a.l = false;
+    EffectSettingUi.a = null;
+    EffectSettingUi.a(this.a);
   }
 }
 

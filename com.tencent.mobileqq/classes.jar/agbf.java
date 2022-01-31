@@ -1,24 +1,24 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.specialcare.QvipSpecialSoundManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardCheckUpdate;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.OCRObserver;
+import com.tencent.mobileqq.ocr.OCRRecognitionResultActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class agbf
-  implements Runnable
+  extends OCRObserver
 {
-  public agbf(ProfileCardCheckUpdate paramProfileCardCheckUpdate) {}
+  public agbf(OCRRecognitionResultActivity paramOCRRecognitionResultActivity) {}
   
-  public void run()
+  public void a(boolean paramBoolean, String paramString)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    OCRRecognitionResultActivity.a(this.a, 0);
+    if (paramBoolean)
     {
-      localObject = (QQAppInterface)localObject;
-      localObject = new QvipSpecialSoundManager(BaseApplicationImpl.getContext(), (AppInterface)localObject);
-      ((QvipSpecialSoundManager)localObject).a();
-      ((QvipSpecialSoundManager)localObject).b();
+      OCRRecognitionResultActivity.c(this.a);
+      OCRRecognitionResultActivity.a(this.a, false);
+      OCRRecognitionResultActivity.b(this.a).setText(paramString);
+      return;
     }
+    QQToast.a(this.a, 1, "翻译失败，请稍候再试。", 0).a();
   }
 }
 

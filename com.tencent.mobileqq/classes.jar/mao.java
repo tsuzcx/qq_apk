@@ -1,24 +1,26 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.widget.ImageView;
+import android.os.Handler;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.VideoAdInfo;
+import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.VideoItemHolder;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.ADVideoItemHolder;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayProgressListener;
 
 public class mao
-  extends AnimatorListenerAdapter
+  implements VideoFeedsPlayManager.VideoPlayProgressListener
 {
-  public mao(VideoFeedsAdapter paramVideoFeedsAdapter, VideoFeedsAdapter.VideoItemHolder paramVideoItemHolder, ImageView paramImageView) {}
+  public mao(VideoFeedsAdapter paramVideoFeedsAdapter) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void a(long paramLong)
   {
-    super.onAnimationEnd(paramAnimator);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter$VideoItemHolder.a.removeView(this.jdField_a_of_type_AndroidWidgetImageView);
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
+    if ((VideoFeedsAdapter.a(this.a) instanceof VideoFeedsAdapter.ADVideoItemHolder))
+    {
+      VideoFeedsAdapter.ADVideoItemHolder localADVideoItemHolder = (VideoFeedsAdapter.ADVideoItemHolder)VideoFeedsAdapter.a(this.a);
+      if ((localADVideoItemHolder.jdField_a_of_type_Int == 5) && (localADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.a != null) && (localADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.a.a != null) && (localADVideoItemHolder.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.a.a.c == 12) && (paramLong >= 3000L) && (!localADVideoItemHolder.d.isShown()) && (VideoFeedsAdapter.a(this.a) != null)) {
+        VideoFeedsAdapter.a(this.a).sendEmptyMessage(6);
+      }
+    }
   }
 }
 

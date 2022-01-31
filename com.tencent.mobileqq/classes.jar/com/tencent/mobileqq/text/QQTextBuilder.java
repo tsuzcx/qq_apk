@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.text;
 
-import ahzp;
+import ains;
 import android.text.Editable.Factory;
 import android.text.SpannableStringBuilder;
 import com.tencent.mobileqq.emosm.EmosmUtils;
@@ -15,7 +15,7 @@ public class QQTextBuilder
   
   static
   {
-    jdField_a_of_type_AndroidTextEditable$Factory = new ahzp();
+    jdField_a_of_type_AndroidTextEditable$Factory = new ains();
   }
   
   public QQTextBuilder(CharSequence paramCharSequence, int paramInt)
@@ -282,7 +282,7 @@ public class QQTextBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.text.QQTextBuilder
  * JD-Core Version:    0.7.0.1
  */

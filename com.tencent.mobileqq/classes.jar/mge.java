@@ -1,13 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoVolumeControl;
+import java.util.TimerTask;
 
-class mge
-  implements Runnable
+public class mge
+  extends TimerTask
 {
-  mge(mga parammga) {}
+  public mge(VideoVolumeControl paramVideoVolumeControl) {}
   
   public void run()
   {
-    this.a.a.notifyDataSetChanged();
+    VideoVolumeControl.a(this.a, true);
   }
 }
 

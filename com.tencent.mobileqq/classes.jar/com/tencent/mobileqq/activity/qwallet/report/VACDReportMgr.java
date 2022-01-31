@@ -24,12 +24,12 @@ import mqq.app.AppRuntime;
 import mqq.app.NewIntent;
 import mqq.manager.Manager;
 import mqq.observer.BusinessObserver;
-import xec;
-import xed;
-import xee;
-import xef;
-import xeg;
-import xeh;
+import xhh;
+import xhi;
+import xhj;
+import xhk;
+import xhl;
+import xhm;
 
 public class VACDReportMgr
   implements Manager
@@ -40,8 +40,8 @@ public class VACDReportMgr
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   private ArrayList jdField_a_of_type_JavaUtilArrayList = new ArrayList(8);
   private Map jdField_a_of_type_JavaUtilMap = Collections.synchronizedMap(new HashMap(8));
-  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new xeg(this);
-  private xec jdField_a_of_type_Xec = new xec(BaseApplicationImpl.getApplication());
+  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new xhl(this);
+  private xhh jdField_a_of_type_Xhh = new xhh(BaseApplicationImpl.getApplication());
   private Handler jdField_b_of_type_AndroidOsHandler;
   private HandlerThread jdField_b_of_type_AndroidOsHandlerThread;
   private ArrayList jdField_b_of_type_JavaUtilArrayList = new ArrayList(8);
@@ -64,12 +64,12 @@ public class VACDReportMgr
     }
     if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
     {
-      this.jdField_a_of_type_Xec.c(this.jdField_a_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_Xhh.c(this.jdField_a_of_type_JavaUtilArrayList);
       this.jdField_a_of_type_JavaUtilArrayList.clear();
     }
     if (this.jdField_b_of_type_JavaUtilArrayList.size() > 0)
     {
-      this.jdField_a_of_type_Xec.b(this.jdField_b_of_type_JavaUtilArrayList);
+      this.jdField_a_of_type_Xhh.b(this.jdField_b_of_type_JavaUtilArrayList);
       this.jdField_b_of_type_JavaUtilArrayList.clear();
     }
   }
@@ -150,10 +150,10 @@ public class VACDReportMgr
     //   50: iconst_1
     //   51: putstatic 75	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:jdField_a_of_type_Boolean	Z
     //   54: aload_0
-    //   55: getfield 45	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:jdField_a_of_type_Xec	Lxec;
+    //   55: getfield 45	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:jdField_a_of_type_Xhh	Lxhh;
     //   58: aload_0
     //   59: getfield 58	com/tencent/mobileqq/activity/qwallet/report/VACDReportMgr:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   62: invokevirtual 241	xec:a	(Ljava/util/Map;)Ljava/util/Map;
+    //   62: invokevirtual 241	xhh:a	(Ljava/util/Map;)Ljava/util/Map;
     //   65: pop
     //   66: iload_1
     //   67: ifne +11 -> 78
@@ -358,7 +358,7 @@ public class VACDReportMgr
   
   private void b(List paramList)
   {
-    ThreadManager.post(new xeh(this, paramList), 10, null, true);
+    ThreadManager.post(new xhm(this, paramList), 10, null, true);
   }
   
   private void b(boolean paramBoolean)
@@ -371,7 +371,7 @@ public class VACDReportMgr
       this.jdField_b_of_type_AndroidOsHandlerThread = new HandlerThread("VACDReportTimeOut");
       this.jdField_b_of_type_AndroidOsHandlerThread.start();
       this.jdField_b_of_type_AndroidOsHandler = new Handler(this.jdField_b_of_type_AndroidOsHandlerThread.getLooper());
-      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new xed(this, paramBoolean), 0L);
+      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new xhi(this, paramBoolean), 0L);
     }
   }
   
@@ -384,7 +384,7 @@ public class VACDReportMgr
       }
       this.jdField_c_of_type_AndroidOsHandlerThread = new HandlerThread("ReportCache");
       this.jdField_c_of_type_AndroidOsHandlerThread.start();
-      this.jdField_c_of_type_AndroidOsHandler = new xee(this, this.jdField_c_of_type_AndroidOsHandlerThread.getLooper());
+      this.jdField_c_of_type_AndroidOsHandler = new xhj(this, this.jdField_c_of_type_AndroidOsHandlerThread.getLooper());
     }
   }
   
@@ -398,7 +398,7 @@ public class VACDReportMgr
       this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("VACDReportWriteDB");
       this.jdField_a_of_type_AndroidOsHandlerThread.start();
       this.jdField_a_of_type_AndroidOsHandler = new Handler(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new xef(this, new byte[0]), 2000L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new xhk(this, new byte[0]), 2000L);
     }
   }
   

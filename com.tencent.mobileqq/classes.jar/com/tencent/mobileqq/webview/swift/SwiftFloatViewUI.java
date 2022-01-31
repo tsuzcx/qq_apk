@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.webview.swift;
 
-import ajyi;
-import ajyj;
-import ajyl;
-import ajym;
+import akmp;
+import akmq;
+import akms;
+import akmt;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.SharedPreferences;
@@ -47,7 +47,7 @@ public class SwiftFloatViewUI
   public SwiftFloatViewUI(SwiftBrowserUIStyleHandler paramSwiftBrowserUIStyleHandler)
   {
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
-    this.jdField_a_of_type_JavaLangRunnable = new ajyl(this);
+    this.jdField_a_of_type_JavaLangRunnable = new akms(this);
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler = paramSwiftBrowserUIStyleHandler;
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle = paramSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle;
   }
@@ -78,7 +78,7 @@ public class SwiftFloatViewUI
     if (SystemBarTintManager.a(paramActivity))
     {
       paramActivity = paramActivity.findViewById(16908290);
-      paramActivity.addOnLayoutChangeListener(new ajym(this, paramActivity));
+      paramActivity.addOnLayoutChangeListener(new akmt(this, paramActivity));
     }
   }
   
@@ -98,16 +98,16 @@ public class SwiftFloatViewUI
         j = localDisplayMetrics.widthPixels;
         label64:
         this.jdField_b_of_type_Int = j;
-        this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366743);
-        this.c = paramView.findViewById(2131366736);
-        this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131366738);
-        this.d = paramView.findViewById(2131366742);
-        this.f = paramView.findViewById(2131366739);
-        this.g = paramView.findViewById(2131366740);
-        this.h = paramView.findViewById(2131362697);
-        this.e = paramView.findViewById(2131366741);
-        this.i = paramView.findViewById(2131365570);
-        this.jdField_a_of_type_ComTencentBizWebviewpluginHole = ((Hole)paramView.findViewById(2131366737));
+        this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366786);
+        this.c = paramView.findViewById(2131366779);
+        this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131366781);
+        this.d = paramView.findViewById(2131366785);
+        this.f = paramView.findViewById(2131366782);
+        this.g = paramView.findViewById(2131366783);
+        this.h = paramView.findViewById(2131362715);
+        this.e = paramView.findViewById(2131366784);
+        this.i = paramView.findViewById(2131365597);
+        this.jdField_a_of_type_ComTencentBizWebviewpluginHole = ((Hole)paramView.findViewById(2131366780));
         b();
         if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_c_of_type_Long & 1L) != 0L)
         {
@@ -135,12 +135,12 @@ public class SwiftFloatViewUI
         }
         this.c.setVisibility(0);
         localSharedPreferences.edit().putBoolean("first_float_tip", false).apply();
-        paramView.getViewTreeObserver().addOnGlobalLayoutListener(new ajyi(this, paramView, localDisplayMetrics));
+        paramView.getViewTreeObserver().addOnGlobalLayoutListener(new akmp(this, paramView, localDisplayMetrics));
       }
     }
     for (;;)
     {
-      paramView = new ajyj(this, localDisplayMetrics);
+      paramView = new akmq(this, localDisplayMetrics);
       this.d.setOnClickListener(paramOnClickListener);
       this.f.setOnClickListener(paramOnClickListener);
       this.h.setOnClickListener(paramOnClickListener);
@@ -181,15 +181,15 @@ public class SwiftFloatViewUI
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.C)
     {
-      paramView.setBackgroundResource(2130840635);
+      paramView.setBackgroundResource(2130840657);
       return;
     }
     if (paramBoolean)
     {
-      paramView.setBackgroundResource(2130840626);
+      paramView.setBackgroundResource(2130840648);
       return;
     }
-    paramView.setBackgroundResource(2130840627);
+    paramView.setBackgroundResource(2130840649);
   }
   
   public void a(boolean paramBoolean)
@@ -240,7 +240,7 @@ public class SwiftFloatViewUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftFloatViewUI
  * JD-Core Version:    0.7.0.1
  */

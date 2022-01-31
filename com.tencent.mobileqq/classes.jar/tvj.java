@@ -1,29 +1,19 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.troop.utils.TroopAvatarManger;
-import com.tencent.mobileqq.troop.utils.TroopUploadingThread;
-import java.util.ArrayList;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.activity.TextPreviewActivity;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.MatcherCallback;
+import com.tencent.mobileqq.business.sougou.WordMatchManager.WordMatcher;
 
 public class tvj
-  extends AccountObserver
+  implements WordMatchManager.MatcherCallback
 {
-  public tvj(TroopInfoActivity paramTroopInfoActivity, TroopAvatarManger paramTroopAvatarManger, ArrayList paramArrayList) {}
+  public tvj(TextPreviewActivity paramTextPreviewActivity) {}
   
-  public void onUpdateSKey(String paramString1, String paramString2)
+  public void a(WordMatchManager.WordMatcher paramWordMatcher)
   {
-    super.onUpdateSKey(paramString1, paramString2);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.c) {
-      return;
+    this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$WordMatcher = paramWordMatcher;
+    if (this.a.h != 0) {
+      paramWordMatcher.a(this.a.h);
     }
-    if (paramString1 == null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.runOnUiThread(new tvk(this));
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAvatarManger.a(TroopInfoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity));
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopAvatarManger.a(TroopUploadingThread.class, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.app, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.a.troopcode, paramString1, this.jdField_a_of_type_ComTencentMobileqqActivityTroopInfoActivity.app.getCurrentAccountUin(), null);
+    this.a.h = paramWordMatcher.a(1, this.a.c, 3, this.a.jdField_a_of_type_ComTencentMobileqqBusinessSougouWordMatchManager$MatchCallback);
   }
 }
 

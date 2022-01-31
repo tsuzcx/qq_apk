@@ -58,9 +58,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import tencent.im.msg.im_msg_body.Elem;
 import tencent.im.msg.im_msg_body.NearByMessageType;
-import zbz;
-import zca;
-import zcb;
+import zff;
+import zfg;
+import zfh;
 
 public class HotChatManager
   implements Manager
@@ -97,7 +97,7 @@ public class HotChatManager
     this.jdField_b_of_type_Long = 20000L;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     c();
-    ThreadManager.getFileThreadHandler().post(new zbz(this));
+    ThreadManager.getFileThreadHandler().post(new zff(this));
   }
   
   public static int a(int paramInt1, int paramInt2)
@@ -106,16 +106,16 @@ public class HotChatManager
     {
     default: 
       if (paramInt1 == 2) {
-        return 2130840578;
+        return 2130840584;
       }
       break;
     case 1: 
-      return 2130840590;
+      return 2130840596;
     }
     if (paramInt1 == 3) {
-      return 2130840589;
+      return 2130840595;
     }
-    return 2130840587;
+    return 2130840593;
   }
   
   public static int a(QQAppInterface paramQQAppInterface)
@@ -125,7 +125,7 @@ public class HotChatManager
   
   public static int a(String paramString, QQAppInterface paramQQAppInterface)
   {
-    int j = 2130840592;
+    int j = 2130840598;
     HotChatManager localHotChatManager = paramQQAppInterface.a(false);
     paramQQAppInterface = null;
     if (localHotChatManager != null) {
@@ -136,7 +136,7 @@ public class HotChatManager
     {
       i = j;
       if (!paramQQAppInterface.isWifiHotChat) {
-        i = a(paramQQAppInterface.hotThemeGroupFlag, 2130840592);
+        i = a(paramQQAppInterface.hotThemeGroupFlag, 2130840598);
       }
     }
     return i;
@@ -527,7 +527,7 @@ public class HotChatManager
   public void a()
   {
     if (this.jdField_a_of_type_Int <= 0) {
-      ThreadManager.post(new zca(this), 10, null, false);
+      ThreadManager.post(new zfg(this), 10, null, false);
     }
   }
   
@@ -703,7 +703,7 @@ public class HotChatManager
       if (paramInt != 1) {
         break label90;
       }
-      HotChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPbGetGroupMsgResp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131437315), true);
+      HotChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPbGetGroupMsgResp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131437332), true);
     }
     for (;;)
     {
@@ -713,13 +713,13 @@ public class HotChatManager
       {
         if (paramPbGetGroupMsgResp.isWifiHotChat)
         {
-          HotChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPbGetGroupMsgResp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131437301, new Object[] { paramPbGetGroupMsgResp.name }), true);
+          HotChatHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPbGetGroupMsgResp, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131437318, new Object[] { paramPbGetGroupMsgResp.name }), true);
           return;
         }
         if (1 == paramPbGetGroupMsgResp.adminLevel) {
           break;
         }
-        paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131437300, new Object[] { paramPbGetGroupMsgResp.name });
+        paramString = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131437317, new Object[] { paramPbGetGroupMsgResp.name });
         Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramPbGetGroupMsgResp.troopUin, 1, 10);
         if ((localObject != null) && (((List)localObject).size() > 0))
         {
@@ -1016,7 +1016,7 @@ public class HotChatManager
     if (QLog.isColorLevel()) {
       NearbyUtils.a("HotChatManager", new Object[] { "checkHotChatInfo", "need AddHotChatInfoRunnable", Long.valueOf(paramLong) });
     }
-    localObject = new zcb(this, (HotChatInfo)localObject);
+    localObject = new zfh(this, (HotChatInfo)localObject);
     ThreadManager.getSubThreadHandler().post((Runnable)localObject);
   }
   

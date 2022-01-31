@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.emoticonview;
 
-import abzn;
-import abzo;
-import abzp;
-import abzq;
+import acgp;
+import acgq;
+import acgr;
+import acgs;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -92,7 +92,7 @@ public class RecommendEmotionAdapter
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_MqqOsMqqHandler = new MqqWeakReferenceHandler(Looper.getMainLooper(), this, true);
-    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new abzp(this);
+    this.jdField_a_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new acgr(this);
     this.i = paramInt4;
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
     this.jdField_c_of_type_JavaUtilList = new ArrayList();
@@ -140,12 +140,12 @@ public class RecommendEmotionAdapter
     ((RelativeLayout)localObject1).setId(2131362228);
     Object localObject2 = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
     RelativeLayout.LayoutParams localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -1);
-    ((URLImageView)localObject2).setId(2131372139);
+    ((URLImageView)localObject2).setId(2131372312);
     ((URLImageView)localObject2).setAdjustViewBounds(true);
     ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams1);
     localObject2 = new URLImageView(this.jdField_a_of_type_AndroidContentContext);
     localLayoutParams1 = new RelativeLayout.LayoutParams(-1, -1);
-    ((URLImageView)localObject2).setId(2131372140);
+    ((URLImageView)localObject2).setId(2131372313);
     ((URLImageView)localObject2).setAdjustViewBounds(true);
     ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams1);
     ((URLImageView)localObject2).setScaleType(ImageView.ScaleType.FIT_XY);
@@ -154,11 +154,11 @@ public class RecommendEmotionAdapter
     ((ImageView)localObject2).setId(2131362229);
     localLayoutParams1.addRule(10, -1);
     localLayoutParams1.addRule(11, -1);
-    ((ImageView)localObject2).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130845923));
+    ((ImageView)localObject2).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846051));
     ((RelativeLayout)localObject1).addView((View)localObject2, localLayoutParams1);
     localLinearLayout.addView((View)localObject1, localLayoutParams);
     localObject1 = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    ((TextView)localObject1).setId(2131372141);
+    ((TextView)localObject1).setId(2131372314);
     localLayoutParams = new LinearLayout.LayoutParams(-2, (int)(18.0F * this.jdField_a_of_type_Float));
     localLayoutParams.gravity = 1;
     localLayoutParams.topMargin = ((int)(this.jdField_a_of_type_Float * 10.0F));
@@ -169,11 +169,11 @@ public class RecommendEmotionAdapter
     ((TextView)localObject1).setEllipsize(TextUtils.TruncateAt.END);
     localLinearLayout.addView((View)localObject1, localLayoutParams);
     localObject1 = new ProgressButton(this.jdField_a_of_type_AndroidContentContext);
-    ((ProgressButton)localObject1).setId(2131372142);
+    ((ProgressButton)localObject1).setId(2131372315);
     localLayoutParams = new LinearLayout.LayoutParams(-2, (int)(25.0F * this.jdField_a_of_type_Float));
     localLayoutParams.topMargin = ((int)(this.jdField_a_of_type_Float * 10.0F));
     localLayoutParams.gravity = 1;
-    ((ProgressButton)localObject1).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838516));
+    ((ProgressButton)localObject1).setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838520));
     ((ProgressButton)localObject1).setTextColor(-14894864);
     ((ProgressButton)localObject1).setPadding((int)(this.jdField_a_of_type_Float * 15.0F), 0, (int)(this.jdField_a_of_type_Float * 15.0F), 0);
     ((ProgressButton)localObject1).setEllipsize(TextUtils.TruncateAt.END);
@@ -254,15 +254,15 @@ public class RecommendEmotionAdapter
       paramView.setVisibility(0);
       try
       {
-        localObject1 = (URLImageView)paramView.findViewById(2131372139);
-        localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843835);
-        localObject3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843836);
+        localObject1 = (URLImageView)paramView.findViewById(2131372312);
+        localObject2 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843959);
+        localObject3 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843960);
         ((URLImageView)localObject1).setImageDrawable(URLDrawable.getDrawable(paramPromotionEmoticonPkg.b, (Drawable)localObject2, (Drawable)localObject3));
         ((URLImageView)localObject1).setTag(paramPromotionEmoticonPkg);
         ((URLImageView)localObject1).setOnClickListener(this);
-        ((TextView)paramView.findViewById(2131372141)).setText(paramPromotionEmoticonPkg.c);
+        ((TextView)paramView.findViewById(2131372314)).setText(paramPromotionEmoticonPkg.c);
         ((URLImageView)localObject1).setContentDescription(paramPromotionEmoticonPkg.c);
-        localObject1 = (ProgressButton)paramView.findViewById(2131372142);
+        localObject1 = (ProgressButton)paramView.findViewById(2131372315);
         ((ProgressButton)localObject1).setText(paramPromotionEmoticonPkg.d);
         ((ProgressButton)localObject1).setTag(paramPromotionEmoticonPkg);
         ((ProgressButton)localObject1).setContentDescription(paramPromotionEmoticonPkg.d);
@@ -271,7 +271,7 @@ public class RecommendEmotionAdapter
         if ((this.jdField_b_of_type_JavaUtilList != null) && (!this.jdField_b_of_type_JavaUtilList.contains(localObject1))) {
           this.jdField_b_of_type_JavaUtilList.add(localObject1);
         }
-        localObject2 = (URLImageView)paramView.findViewById(2131372140);
+        localObject2 = (URLImageView)paramView.findViewById(2131372313);
         ((URLImageView)localObject2).setImageDrawable(null);
         ((URLImageView)localObject2).setVisibility(8);
         localObject2 = (ImageView)paramView.findViewById(2131362229);
@@ -285,11 +285,11 @@ public class RecommendEmotionAdapter
           j = this.jdField_a_of_type_JavaUtilList.indexOf(paramPromotionEmoticonPkg);
           if ((this.jdField_c_of_type_Boolean) && (j < 2) && ((this.jdField_a_of_type_JavaUtilArrayList == null) || ((this.jdField_a_of_type_JavaUtilArrayList.size() < 2) && (this.jdField_a_of_type_JavaUtilArrayList.indexOf(Integer.valueOf(j)) < 0))))
           {
-            localObject3 = new abzq(this);
-            ((abzq)localObject3).jdField_a_of_type_AndroidViewView = paramView;
-            ((abzq)localObject3).jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$PromotionEmoticonPkg = paramPromotionEmoticonPkg;
-            ((abzq)localObject3).jdField_a_of_type_Int = j;
-            ThreadManager.post(new abzn(this, (abzq)localObject3), 8, null, true);
+            localObject3 = new acgs(this);
+            ((acgs)localObject3).jdField_a_of_type_AndroidViewView = paramView;
+            ((acgs)localObject3).jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$PromotionEmoticonPkg = paramPromotionEmoticonPkg;
+            ((acgs)localObject3).jdField_a_of_type_Int = j;
+            ThreadManager.post(new acgp(this, (acgs)localObject3), 8, null, true);
           }
         }
         if ((this.jdField_c_of_type_JavaUtilList != null) && (!this.jdField_c_of_type_JavaUtilList.contains(localObject2))) {
@@ -582,7 +582,7 @@ public class RecommendEmotionAdapter
       }
     }
     Object localObject = (EmojiManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(42);
-    ((EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13)).a(paramPromotionEmoticonPkg.a, -1, new abzo(this, paramPromotionEmoticonPkg, paramBoolean, (EmojiManager)localObject, paramProgressButton, paramInt));
+    ((EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13)).a(paramPromotionEmoticonPkg.a, -1, new acgq(this, paramPromotionEmoticonPkg, paramBoolean, (EmojiManager)localObject, paramProgressButton, paramInt));
   }
   
   public void c()
@@ -713,9 +713,9 @@ public class RecommendEmotionAdapter
       paramMessage.setText(((ClubContentJsonTask.PromotionEmoticonPkg)localObject1).d);
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "ep_mall", "0X8005816", 0, 1, ((ClubContentJsonTask.PromotionEmoticonPkg)localObject1).a, "", "", "");
       continue;
-      if ((paramMessage.obj instanceof abzq))
+      if ((paramMessage.obj instanceof acgs))
       {
-        paramMessage = (abzq)paramMessage.obj;
+        paramMessage = (acgs)paramMessage.obj;
         if ((paramMessage == null) || (paramMessage.jdField_a_of_type_Boolean)) {
           return true;
         }
@@ -723,7 +723,7 @@ public class RecommendEmotionAdapter
         if ((paramMessage.jdField_a_of_type_AndroidViewView == null) || (paramMessage.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$PromotionEmoticonPkg == null) || (paramMessage.jdField_a_of_type_JavaIoFile == null) || (paramMessage.jdField_a_of_type_AndroidViewView.getVisibility() != 0)) {
           return true;
         }
-        if (((URLImageView)paramMessage.jdField_a_of_type_AndroidViewView.findViewById(2131372139)).getTag() != paramMessage.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$PromotionEmoticonPkg) {
+        if (((URLImageView)paramMessage.jdField_a_of_type_AndroidViewView.findViewById(2131372312)).getTag() != paramMessage.jdField_a_of_type_ComTencentMobileqqVasClubContentJsonTask$PromotionEmoticonPkg) {
           return true;
         }
         if ((this.jdField_a_of_type_JavaUtilArrayList != null) && ((this.jdField_a_of_type_JavaUtilArrayList.size() >= 2) || (this.jdField_a_of_type_JavaUtilArrayList.indexOf(Integer.valueOf(paramMessage.jdField_a_of_type_Int)) >= 0))) {
@@ -738,7 +738,7 @@ public class RecommendEmotionAdapter
             localObject2 = Bitmap.createBitmap(10, 10, Bitmap.Config.ARGB_8888);
             this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject2);
           }
-          localObject2 = (URLImageView)paramMessage.jdField_a_of_type_AndroidViewView.findViewById(2131372140);
+          localObject2 = (URLImageView)paramMessage.jdField_a_of_type_AndroidViewView.findViewById(2131372313);
           URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
           localURLDrawableOptions.mUseApngImage = true;
           j = (int)(85.0F * this.jdField_a_of_type_Float);

@@ -8,7 +8,7 @@ import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.widget.TextView;
-import ansq;
+import aoiv;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -67,7 +67,7 @@ public class SendVideoActivity$SendVideoTask
   
   public static void a(Context paramContext, int paramInt, boolean paramBoolean)
   {
-    DialogUtil.a(paramContext, 232, null, paramContext.getString(paramInt), new ansq(paramBoolean, paramContext), null).show();
+    DialogUtil.a(paramContext, 232, null, paramContext.getString(paramInt), new aoiv(paramBoolean, paramContext), null).show();
   }
   
   /* Error */
@@ -279,14 +279,14 @@ public class SendVideoActivity$SendVideoTask
     //   440: astore 9
     //   442: aload 12
     //   444: invokevirtual 319	java/io/File:length	()J
-    //   447: lstore 5
+    //   447: lstore 4
     //   449: aload 7
     //   451: astore 10
     //   453: aload 8
     //   455: astore 9
     //   457: aload_0
     //   458: aload 8
-    //   460: lload 5
+    //   460: lload 4
     //   462: invokestatic 325	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
     //   465: invokestatic 331	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
     //   468: putfield 333	dov/com/tencent/mobileqq/activity/shortvideo/SendVideoActivity$SendVideoTask:g	Ljava/lang/String;
@@ -359,8 +359,8 @@ public class SendVideoActivity$SendVideoTask
     //   611: aload_0
     //   612: getfield 347	dov/com/tencent/mobileqq/activity/shortvideo/SendVideoActivity$SendVideoTask:f	Ljava/lang/String;
     //   615: invokestatic 350	com/tencent/mobileqq/utils/FileUtils:c	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   618: istore 4
-    //   620: iload 4
+    //   618: istore 6
+    //   620: iload 6
     //   622: ifne +42 -> 664
     //   625: iconst_0
     //   626: ifeq +11 -> 637
@@ -388,7 +388,7 @@ public class SendVideoActivity$SendVideoTask
     //   668: aload 8
     //   670: astore 9
     //   672: aload_1
-    //   673: lload 5
+    //   673: lload 4
     //   675: invokestatic 356	android/text/format/Formatter:formatFileSize	(Landroid/content/Context;J)Ljava/lang/String;
     //   678: astore_1
     //   679: aload 7
@@ -668,8 +668,8 @@ public class SendVideoActivity$SendVideoTask
     //   0	1215	1	paramContext	Context
     //   7	970	2	i	int
     //   1	921	3	j	int
-    //   618	3	4	bool	boolean
-    //   447	227	5	l	long
+    //   447	227	4	l	long
+    //   618	3	6	bool	boolean
     //   24	64	7	localObject1	Object
     //   203	14	7	localNumberFormatException	java.lang.NumberFormatException
     //   341	698	7	localObject2	Object
@@ -890,11 +890,11 @@ public class SendVideoActivity$SendVideoTask
       QLog.e("SendVideoActivity", 2, "showProgressDialog", paramContext);
       return;
       label63:
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624515);
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624516);
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969181);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363381));
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399));
     }
   }
   
@@ -957,22 +957,22 @@ public class SendVideoActivity$SendVideoTask
       }
     case 2: 
     case 6: 
-      a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437349, this.jdField_a_of_type_Boolean);
+      a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437366, this.jdField_a_of_type_Boolean);
       return;
     case 3: 
-      a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437356, this.jdField_a_of_type_Boolean);
+      a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437373, this.jdField_a_of_type_Boolean);
       return;
     case 4: 
-      a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437354, this.jdField_a_of_type_Boolean);
+      a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437371, this.jdField_a_of_type_Boolean);
       return;
     }
-    a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437357, this.jdField_a_of_type_Boolean);
+    a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131437374, this.jdField_a_of_type_Boolean);
   }
   
   protected void onPreExecute()
   {
     super.onPreExecute();
-    a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131436128);
+    a((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get(), 2131436145);
   }
 }
 

@@ -1,18 +1,42 @@
-import android.content.Context;
-import android.view.View;
-import android.view.View.OnFocusChangeListener;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.res.Resources;
+import android.os.Handler;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
+import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
 
 public class xbe
-  implements View.OnFocusChangeListener
+  implements Runnable
 {
-  public xbe(GoldMsgAioState paramGoldMsgAioState, QQCustomDialog paramQQCustomDialog, Context paramContext) {}
+  public xbe(RedPacketRecordFragment paramRedPacketRecordFragment, int paramInt, String paramString) {}
   
-  public void onFocusChange(View paramView, boolean paramBoolean)
+  public void run()
   {
-    if (!paramBoolean) {
-      GoldMsgAioState.a(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.getWindow(), this.jdField_a_of_type_AndroidContentContext, paramView);
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.e()) {
+      return;
+    }
+    String str2 = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.getResources().getString(2131432341);
+    String str1;
+    if (this.jdField_a_of_type_Int == 2) {
+      str1 = this.jdField_a_of_type_JavaLangString;
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.c.setText(str1);
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.jdField_a_of_type_ComTencentMobileqqActivityQwalletVoiceRecordMicView.c();
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      RedPacketRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment);
+      if (RedPacketRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment) == null) {
+        break;
+      }
+      RedPacketRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment).removeCallbacksAndMessages(null);
+      return;
+      str1 = str2;
+      if (this.jdField_a_of_type_Int == 3)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.getActivity());
+        str1 = str2;
+      }
     }
   }
 }

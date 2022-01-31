@@ -1,37 +1,40 @@
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.mobileqq.utils.QQUtils;
-import java.util.HashMap;
-import java.util.Map;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.GetAppPathByActionResult;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByActionCallback;
+import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
+import com.tencent.mobileqq.data.RecommendCommonMessage.IGetAppInfosByContextListCallback;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class abvg
-  implements Runnable
+public final class abvg
+  implements ArkLocalAppMgr.IGetAppPathByActionCallback
 {
-  abvg(abue paramabue, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public abvg(String paramString1, boolean paramBoolean, String paramString2) {}
   
-  public void run()
+  public void a(Object paramObject, ArrayList paramArrayList)
   {
-    Bitmap localBitmap = QQUtils.a(this.jdField_a_of_type_JavaLangString, this.b, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
-    Bundle localBundle = new Bundle();
-    if (localBitmap != null)
+    ArrayList localArrayList = new ArrayList();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
     {
-      Object localObject = new HashMap();
-      ((Map)localObject).put("starHomeUrl", this.c);
-      ((Map)localObject).put("nickname", this.d);
-      ((Map)localObject).put("starId", this.b);
-      localObject = QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sid", (Map)localObject);
-      QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Intent)localObject, this.d, localBitmap);
-      localBundle.putInt("ret", 0);
+      ArkLocalAppMgr.GetAppPathByActionResult localGetAppPathByActionResult = (ArkLocalAppMgr.GetAppPathByActionResult)paramArrayList.next();
+      if ((localGetAppPathByActionResult.a == 0) && (localGetAppPathByActionResult.c != null))
+      {
+        RecommendCommonMessage.ArkMsgAppInfo localArkMsgAppInfo = new RecommendCommonMessage.ArkMsgAppInfo();
+        localArkMsgAppInfo.appName = localGetAppPathByActionResult.b;
+        localArkMsgAppInfo.appPath = localGetAppPathByActionResult.c;
+        localArkMsgAppInfo.appView = localGetAppPathByActionResult.d;
+        localArkMsgAppInfo.keyword = this.jdField_a_of_type_JavaLangString;
+        localArkMsgAppInfo.equalInputText = this.jdField_a_of_type_Boolean;
+        localArkMsgAppInfo.meta = this.b;
+        localArrayList.add(localArkMsgAppInfo);
+      }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      localBundle.putInt("ret", -4);
+    paramObject = (RecommendCommonMessage.IGetAppInfosByContextListCallback)paramObject;
+    paramObject.mAppList.addAll(localArrayList);
+    int i = paramObject.mCount - 1;
+    paramObject.mCount = i;
+    if (i == 0) {
+      paramObject.onGetAppInfos(paramObject.mAppList);
     }
   }
 }

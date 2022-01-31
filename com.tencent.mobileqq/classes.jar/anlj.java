@@ -1,18 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.InfoStickerDrawable;
-import java.util.ArrayList;
+import android.os.Handler.Callback;
+import android.os.Message;
+import dov.com.qq.im.capture.data.CaptureComboManager;
+import dov.com.qq.im.capture.data.CaptureSet;
 
 public class anlj
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Handler.Callback
 {
-  public anlj(InfoStickerDrawable paramInfoStickerDrawable) {}
+  public anlj(CaptureComboManager paramCaptureComboManager) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean handleMessage(Message paramMessage)
   {
-    paramValueAnimator = (ArrayList)paramValueAnimator.getAnimatedValue();
-    this.a.a = paramValueAnimator;
-    this.a.invalidateSelf();
+    switch (paramMessage.what)
+    {
+    }
+    for (;;)
+    {
+      return false;
+      if ((paramMessage.obj instanceof CaptureSet)) {
+        paramMessage = (CaptureSet)paramMessage.obj;
+      }
+    }
   }
 }
 

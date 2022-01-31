@@ -1,150 +1,42 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Bitmap;
-import android.os.Bundle;
-import android.text.TextUtils;
-import android.view.View;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.biz.ui.TouchWebView;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.NearbyActivity;
-import com.tencent.mobileqq.activity.NearbyActivity.TabInfo;
-import com.tencent.mobileqq.fragment.CommonTabFragment;
-import com.tencent.mobileqq.fragment.TitlebarStatus;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.webview.AbsWebView;
-import com.tencent.mobileqq.webviewplugin.WebViewJumpPlugin;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
+import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnZipEventListener;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.smtt.sdk.WebView;
-import java.util.ArrayList;
 
-public final class adcs
-  extends AbsWebView
-  implements TouchWebView.OnScrollChangedListener
+public class adcs
+  implements FilePreviewActivity.ControlerCallback
 {
-  public int a;
-  public boolean a;
-  public boolean b;
-  boolean c = false;
+  public adcs(DefaultFileModel paramDefaultFileModel) {}
   
-  public adcs(CommonTabFragment paramCommonTabFragment, Context paramContext, Activity paramActivity, AppInterface paramAppInterface)
+  public void a(boolean paramBoolean, String paramString1, String paramString2, long paramLong, String paramString3, String paramString4, String paramString5, String paramString6)
   {
-    super(paramContext, paramActivity, paramAppInterface);
-    super.y();
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_Boolean) {
+    if (!paramBoolean)
+    {
+      QLog.e("FileBrowserModelBase", 1, "sending cs to get preview url but failed, retCode[" + paramLong + "], retMeg[" + paramString3 + "]");
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener.a(paramLong);
+      }
+      if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.d();
+      }
+      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a());
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity != null) {}
-    for (long l = System.currentTimeMillis();; l = 0L)
-    {
-      this.jdField_a_of_type_Boolean = true;
-      AuthorizeConfig.a();
-      if (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo != null) {
-        this.h = this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity$TabInfo.b;
-      }
-      if (!TextUtils.isEmpty(this.h)) {
-        if (!this.h.contains("?")) {
-          break label343;
-        }
-      }
-      label343:
-      for (this.h += "&";; this.h += "?")
-      {
-        this.h += this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_JavaLangString;
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView = new TouchWebView(this.e);
-        b(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
-        this.c = "1103".equals(ThemeUtil.getCurrentThemeInfo().getString("themeId"));
-        if (this.c) {
-          this.jdField_a_of_type_ComTencentBizUiTouchWebView.setMask(true);
-        }
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.setOnScrollChangedListener(this);
-        a(System.currentTimeMillis());
-        if (QLog.isDevelopLevel()) {
-          NearbyUtils.a("WebSpeedTrace", "mTimeBeforeLoadUrl", new Object[] { Long.valueOf(this.jdField_b_of_type_Long) });
-        }
-        this.jdField_a_of_type_ComTencentBizUiTouchWebView.loadUrl(this.h);
-        if (QLog.isColorLevel()) {
-          NearbyUtils.a("AbsWebView", new Object[] { "HotChatWebView.init", this.h });
-        }
-        if ((this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity == null) || (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.k != 0L)) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.k = (System.currentTimeMillis() - l);
-        if (!QLog.isDevelopLevel()) {
-          break;
-        }
-        NearbyUtils.a("WebSpeedTrace", "mInitWebViewTime", new Object[] { Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqActivityNearbyActivity.k) });
-        return;
-      }
-    }
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
-  {
-    if (this.jdField_a_of_type_ComTencentBizUiTouchWebView != null) {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizUiTouchWebView.getWebScrollY();
-    }
-  }
-  
-  public void a(Intent paramIntent)
-  {
-    super.b(paramIntent);
-  }
-  
-  public void a(WebView paramWebView, String paramString, Bitmap paramBitmap)
-  {
-    this.jdField_b_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.b(true).a(true);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a();
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.b != null) && (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.b.getVisibility() != 8)) {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.b.setVisibility(8);
-    }
-  }
-  
-  public void a(ArrayList paramArrayList)
-  {
-    if (paramArrayList != null) {
-      paramArrayList.add(new WebViewJumpPlugin());
-    }
-  }
-  
-  public void b()
-  {
-    super.u();
-  }
-  
-  public void b(WebView paramWebView, String paramString)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.b(false).a(true);
-      this.jdField_a_of_type_ComTencentMobileqqFragmentCommonTabFragment.jdField_a_of_type_ComTencentMobileqqFragmentTitlebarStatus.a();
-    }
-  }
-  
-  public void c()
-  {
-    super.v();
-  }
-  
-  public void d()
-  {
-    super.w();
+    this.a.jdField_a_of_type_JavaLangString = paramString1;
+    this.a.b = paramString2;
+    this.a.c = paramString4;
+    this.a.d = paramString5;
+    this.a.a(this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.c, FileManagerUtil.c(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a()), "/", this.a.d, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a(), new adct(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adcs
  * JD-Core Version:    0.7.0.1
  */

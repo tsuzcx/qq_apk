@@ -1,17 +1,33 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.utils.VideoActionSheet;
-import com.tencent.mobileqq.utils.QAVGroupConfig.Report;
+import android.view.ViewGroup;
+import java.lang.ref.SoftReference;
 
-public final class vij
-  implements View.OnClickListener
+public class vij
 {
-  public vij(boolean paramBoolean, VideoActionSheet paramVideoActionSheet) {}
+  public String a;
+  SoftReference a;
+  SoftReference b;
   
-  public void onClick(View paramView)
+  public vij(String paramString, View paramView, ViewGroup paramViewGroup)
   {
-    QAVGroupConfig.Report.a(this.jdField_a_of_type_Boolean, 2);
-    this.jdField_a_of_type_ComTencentAvUtilsVideoActionSheet.dismiss();
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangRefSoftReference = new SoftReference(paramView);
+    this.b = new SoftReference(paramViewGroup);
+  }
+  
+  public View a()
+  {
+    return (View)this.jdField_a_of_type_JavaLangRefSoftReference.get();
+  }
+  
+  public ViewGroup a()
+  {
+    return (ViewGroup)this.b.get();
+  }
+  
+  public void a(ViewGroup paramViewGroup)
+  {
+    this.b = new SoftReference(paramViewGroup);
   }
 }
 

@@ -1,34 +1,59 @@
-import android.widget.SeekBar;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
+import android.content.Context;
+import android.view.OrientationEventListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
 
-class mok
-  implements Runnable
+public class mok
+  extends OrientationEventListener
 {
-  mok(moj parammoj, FastWebVideoFeedsPlayManager.VideoPlayParam paramVideoPlayParam, long paramLong1, long paramLong2, long paramLong3) {}
-  
-  public void run()
+  public mok(FastWebVideoFeedsListView paramFastWebVideoFeedsListView, Context paramContext, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager$VideoPlayParam != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_AndroidWidgetSeekBar != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_AndroidWidgetTextView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager$VideoPlayParam.b != null))
+    super(paramContext, paramInt);
+  }
+  
+  public void onOrientationChanged(int paramInt)
+  {
+    if (FastWebVideoFeedsListView.a(this.a)) {}
+    label10:
+    do
     {
-      if (this.jdField_a_of_type_Long != 0L) {
-        break label81;
-      }
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(0);
-    }
-    for (;;)
-    {
-      if (this.c > 0L) {
-        VideoFeedsHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager$VideoPlayParam.b, this.c);
-      }
-      return;
-      label81:
-      if (this.b != 0L)
+      do
       {
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_AndroidWidgetSeekBar.setProgress((int)((float)this.b * 100.0F / (float)this.jdField_a_of_type_Long + 0.5D));
-        VideoFeedsHelper.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager$VideoPlayParam.jdField_a_of_type_AndroidWidgetTextView, this.b);
-      }
-    }
+        do
+        {
+          do
+          {
+            do
+            {
+              do
+              {
+                break label10;
+                break label10;
+                break label10;
+                break label10;
+                do
+                {
+                  return;
+                } while ((!FastWebVideoFeedsListView.b(this.a)) || (FastWebVideoFeedsListView.a(this.a) == 1) || (!FastWebVideoFeedsListView.a(this.a, paramInt)) || (!FastWebVideoFeedsListView.c(this.a)));
+                if ((paramInt < 0) || ((paramInt > 30) && (paramInt < 330))) {
+                  break;
+                }
+              } while ((FastWebVideoFeedsListView.b(this.a) != -1) && (FastWebVideoFeedsListView.b(this.a) != 0));
+              FastWebVideoFeedsListView.a(this.a, -1);
+            } while (FastWebVideoFeedsListView.c(this.a) == 0);
+            this.a.e();
+            return;
+            if ((paramInt < 70) || (paramInt > 110)) {
+              break;
+            }
+          } while ((FastWebVideoFeedsListView.b(this.a) != -1) && (FastWebVideoFeedsListView.b(this.a) != 2));
+          FastWebVideoFeedsListView.a(this.a, -1);
+        } while (FastWebVideoFeedsListView.c(this.a) == 2);
+        FastWebVideoFeedsListView.a(this.a, 2);
+        return;
+      } while ((paramInt < 250) || (paramInt > 290) || ((FastWebVideoFeedsListView.b(this.a) != -1) && (FastWebVideoFeedsListView.b(this.a) != 1)));
+      FastWebVideoFeedsListView.a(this.a, -1);
+    } while (FastWebVideoFeedsListView.c(this.a) == 1);
+    FastWebVideoFeedsListView.a(this.a, 1);
   }
 }
 

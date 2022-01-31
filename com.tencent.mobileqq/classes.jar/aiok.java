@@ -1,210 +1,279 @@
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
-import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.Callback;
-import java.util.List;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.os.Handler;
+import android.support.v4.util.MQLruCache;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.theme.ThemeDownloader;
+import com.tencent.mobileqq.theme.ThemeReporter;
+import com.tencent.mobileqq.theme.ThemeSwitchManager;
+import com.tencent.mobileqq.theme.ThemeSwitchUtil;
+import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.theme.ThemeUtil.ThemeInfo;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.theme.SkinEngine;
+import java.io.File;
+import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
 
 public class aiok
-  implements Runnable
+  extends AsyncTask
 {
-  public aiok(TroopAioKeywordTipManager paramTroopAioKeywordTipManager, List paramList1, List paramList2, int paramInt, TroopAioKeywordTipManager.Callback paramCallback) {}
+  aiok(ThemeSwitchManager paramThemeSwitchManager) {}
   
-  /* Error */
-  public void run()
+  protected Bundle a(Object... paramVarArgs)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 16	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager;
-    //   4: aload_0
-    //   5: getfield 18	aiok:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   8: aload_0
-    //   9: getfield 20	aiok:b	Ljava/util/List;
-    //   12: aload_0
-    //   13: getfield 22	aiok:jdField_a_of_type_Int	I
-    //   16: invokevirtual 34	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager:a	(Ljava/util/List;Ljava/util/List;I)Landroid/util/Pair;
-    //   19: astore_3
-    //   20: aload_3
-    //   21: getfield 40	android/util/Pair:second	Ljava/lang/Object;
-    //   24: checkcast 42	java/lang/Integer
-    //   27: astore_2
-    //   28: aload_3
-    //   29: getfield 45	android/util/Pair:first	Ljava/lang/Object;
-    //   32: checkcast 47	com/tencent/mobileqq/data/MessageRecord
-    //   35: astore_3
-    //   36: aload_0
-    //   37: getfield 24	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$Callback	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$Callback;
-    //   40: ifnull +20 -> 60
-    //   43: invokestatic 53	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
-    //   46: new 55	aiol
-    //   49: dup
-    //   50: aload_0
-    //   51: aload_3
-    //   52: aload_2
-    //   53: invokespecial 58	aiol:<init>	(Laiok;Lcom/tencent/mobileqq/data/MessageRecord;Ljava/lang/Integer;)V
-    //   56: invokevirtual 64	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
-    //   59: pop
-    //   60: aload_2
-    //   61: ifnull +258 -> 319
-    //   64: aload_0
-    //   65: getfield 16	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager;
-    //   68: getfield 67	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
-    //   71: aload_2
-    //   72: invokevirtual 71	java/lang/Integer:intValue	()I
-    //   75: invokevirtual 77	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   78: checkcast 79	com/tencent/mobileqq/troop/data/TroopAioKeywordRuleInfo
-    //   81: astore 4
-    //   83: aload_0
-    //   84: getfield 16	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager;
-    //   87: getfield 67	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager:jdField_a_of_type_AndroidUtilSparseArray	Landroid/util/SparseArray;
-    //   90: astore 5
-    //   92: aload 5
-    //   94: monitorenter
-    //   95: aload 4
-    //   97: ifnonnull +20 -> 117
-    //   100: aload_0
-    //   101: getfield 16	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager;
-    //   104: aload_3
-    //   105: aconst_null
-    //   106: aload_0
-    //   107: getfield 24	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$Callback	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$Callback;
-    //   110: invokestatic 82	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager:a	(Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager;Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo;Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$Callback;)V
-    //   113: aload 5
-    //   115: monitorexit
-    //   116: return
-    //   117: aload 5
-    //   119: monitorexit
-    //   120: aload_0
-    //   121: getfield 16	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager;
-    //   124: getfield 84	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager:b	Landroid/util/SparseArray;
-    //   127: astore 5
-    //   129: aload 5
-    //   131: monitorenter
-    //   132: aload_0
-    //   133: getfield 16	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager;
-    //   136: getfield 84	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager:b	Landroid/util/SparseArray;
-    //   139: aload_2
-    //   140: invokevirtual 71	java/lang/Integer:intValue	()I
-    //   143: invokevirtual 77	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   146: checkcast 86	com/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo
-    //   149: astore 6
-    //   151: aload 5
-    //   153: monitorexit
-    //   154: aload 6
-    //   156: ifnull +67 -> 223
-    //   159: aload 6
-    //   161: getfield 89	com/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo:version	I
-    //   164: aload 4
-    //   166: getfield 92	com/tencent/mobileqq/troop/data/TroopAioKeywordRuleInfo:e	I
-    //   169: if_icmpeq +35 -> 204
-    //   172: iconst_1
-    //   173: istore_1
-    //   174: iload_1
-    //   175: ifeq +157 -> 332
-    //   178: aload_0
-    //   179: getfield 16	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager;
-    //   182: aload_2
-    //   183: aload_3
-    //   184: aload_0
-    //   185: getfield 24	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$Callback	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$Callback;
-    //   188: invokestatic 95	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager:a	(Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager;Ljava/lang/Integer;Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$Callback;)V
-    //   191: return
-    //   192: astore_2
-    //   193: aload 5
-    //   195: monitorexit
-    //   196: aload_2
-    //   197: athrow
-    //   198: astore_2
-    //   199: aload 5
-    //   201: monitorexit
-    //   202: aload_2
-    //   203: athrow
-    //   204: aload_0
-    //   205: getfield 16	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager;
-    //   208: aload_3
-    //   209: aload 6
-    //   211: aload_0
-    //   212: getfield 24	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$Callback	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$Callback;
-    //   215: invokestatic 82	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager:a	(Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager;Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo;Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$Callback;)V
-    //   218: iconst_0
-    //   219: istore_1
-    //   220: goto -46 -> 174
-    //   223: aload_0
-    //   224: getfield 16	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager;
-    //   227: getfield 98	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   230: aload_2
-    //   231: invokestatic 104	java/lang/String:valueOf	(Ljava/lang/Object;)Ljava/lang/String;
-    //   234: invokestatic 109	com/tencent/mobileqq/troop/data/TroopAioKeywordHelper:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;)Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo;
-    //   237: astore 5
-    //   239: aload 5
-    //   241: ifnull +16 -> 257
-    //   244: aload 4
-    //   246: getfield 92	com/tencent/mobileqq/troop/data/TroopAioKeywordRuleInfo:e	I
-    //   249: aload 5
-    //   251: getfield 89	com/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo:version	I
-    //   254: if_icmpeq +8 -> 262
-    //   257: iconst_1
-    //   258: istore_1
-    //   259: goto -85 -> 174
-    //   262: aload_0
-    //   263: getfield 16	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager;
-    //   266: aload_3
-    //   267: aload 5
-    //   269: aload_0
-    //   270: getfield 24	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$Callback	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$Callback;
-    //   273: invokestatic 82	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager:a	(Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager;Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo;Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$Callback;)V
-    //   276: aload_0
-    //   277: getfield 16	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager;
-    //   280: getfield 84	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager:b	Landroid/util/SparseArray;
-    //   283: astore 4
-    //   285: aload 4
-    //   287: monitorenter
-    //   288: aload_0
-    //   289: getfield 16	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager;
-    //   292: getfield 84	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager:b	Landroid/util/SparseArray;
-    //   295: aload 5
-    //   297: getfield 112	com/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo:ruleId	I
-    //   300: aload 5
-    //   302: invokevirtual 116	android/util/SparseArray:put	(ILjava/lang/Object;)V
-    //   305: aload 4
-    //   307: monitorexit
-    //   308: iconst_0
-    //   309: istore_1
-    //   310: goto -136 -> 174
-    //   313: astore_2
-    //   314: aload 4
-    //   316: monitorexit
-    //   317: aload_2
-    //   318: athrow
-    //   319: aload_0
-    //   320: getfield 16	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager;
-    //   323: aconst_null
-    //   324: aconst_null
-    //   325: aload_0
-    //   326: getfield 24	aiok:jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$Callback	Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$Callback;
-    //   329: invokestatic 82	com/tencent/mobileqq/troop/data/TroopAioKeywordTipManager:a	(Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager;Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipInfo;Lcom/tencent/mobileqq/troop/data/TroopAioKeywordTipManager$Callback;)V
-    //   332: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	333	0	this	aiok
-    //   173	137	1	i	int
-    //   27	156	2	localInteger	java.lang.Integer
-    //   192	5	2	localObject1	Object
-    //   198	33	2	localObject2	Object
-    //   313	5	2	localObject3	Object
-    //   19	248	3	localObject4	Object
-    //   149	61	6	localTroopAioKeywordTipInfo	com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo
-    // Exception table:
-    //   from	to	target	type
-    //   100	116	192	finally
-    //   117	120	192	finally
-    //   193	196	192	finally
-    //   132	154	198	finally
-    //   199	202	198	finally
-    //   288	308	313	finally
-    //   314	317	313	finally
+    Bundle localBundle = new Bundle();
+    if ((this.a.jdField_b_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_b_of_type_JavaLangRefWeakReference.get() == null)) {}
+    for (paramVarArgs = null; paramVarArgs == null; paramVarArgs = (AppRuntime)this.a.jdField_b_of_type_JavaLangRefWeakReference.get())
+    {
+      QLog.e("ThemeSwitchManager", 1, "doInBackground mRuntime==null");
+      localBundle.putBoolean("result", false);
+      localBundle.putString("message", "mRuntime=null");
+      localBundle.putInt("errCode", -8);
+      return localBundle;
+    }
+    QLog.d("ThemeSwitchManager", 1, "doInBackground intend to set themeID:" + this.a.jdField_a_of_type_JavaLangString + ", version:" + this.a.jdField_b_of_type_JavaLangString + ", from:" + this.a.c);
+    if (this.a.jdField_a_of_type_JavaLangString.equals("1000")) {
+      try
+      {
+        Thread.sleep(800L);
+        localBundle.putString("message", "doInBackground DEFAULT_THEME_ID");
+        localBundle.putBoolean("result", true);
+        return localBundle;
+      }
+      catch (Exception paramVarArgs)
+      {
+        for (;;)
+        {
+          QLog.e("ThemeSwitchManager", 1, "doInBackground sleep Exception0:" + paramVarArgs.getMessage());
+        }
+      }
+    }
+    if (TextUtils.isEmpty(this.a.jdField_b_of_type_JavaLangString))
+    {
+      QLog.e("ThemeSwitchManager", 2, "doInBackground version=null, themeId=" + this.a.jdField_a_of_type_JavaLangString);
+      localBundle.putBoolean("result", false);
+      localBundle.putString("message", "version=null");
+      localBundle.putInt("errCode", -54);
+      return localBundle;
+    }
+    Object localObject1;
+    Object localObject3;
+    String str;
+    File localFile;
+    int i;
+    try
+    {
+      localObject1 = ThemeUtil.getThemeInfo(paramVarArgs.getApplication(), this.a.jdField_a_of_type_JavaLangString);
+      if ((localObject1 != null) || (this.a.jdField_a_of_type_ComTencentMobileqqThemeThemeUtil$ThemeInfo == null) || (!this.a.jdField_a_of_type_JavaLangString.equals(this.a.jdField_a_of_type_ComTencentMobileqqThemeThemeUtil$ThemeInfo.themeId))) {
+        break label1384;
+      }
+      localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqThemeThemeUtil$ThemeInfo;
+      if (localObject1 == null)
+      {
+        QLog.e("ThemeSwitchManager", 2, "doInBackground themeInfo=null, themeId=" + this.a.jdField_a_of_type_JavaLangString);
+        localBundle.putBoolean("result", false);
+        localBundle.putString("message", "themeInfo = null");
+        localBundle.putInt("errCode", -53);
+        return localBundle;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("ThemeSwitchManager", 1, "doInBackground set theme,themeId=" + this.a.jdField_a_of_type_JavaLangString + ",version=" + this.a.jdField_b_of_type_JavaLangString + ", from:" + this.a.c);
+      }
+      localObject3 = ThemeUtil.getThemeResourcePath(paramVarArgs.getApplication(), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString);
+      str = ThemeUtil.getThemeDownloadFilePath(paramVarArgs.getApplication(), this.a.jdField_a_of_type_JavaLangString, "20000000");
+      localFile = new File(str);
+      localObject2 = new File((String)localObject3);
+      if (!((File)localObject2).exists()) {
+        break label1226;
+      }
+      i = ThemeUtil.getFileNumInFile((File)localObject2);
+      if ((i > 0) && (i >= ((ThemeUtil.ThemeInfo)localObject1).fileNum))
+      {
+        localBundle.putString("themePath", ThemeUtil.getThemeResourcePath(paramVarArgs.getApplication(), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString));
+        try
+        {
+          Thread.sleep(500L);
+          localBundle.putString("message", "doInBackground already THEME_STATUS_COMPLETE,  fileNum:" + i);
+          localBundle.putBoolean("result", true);
+          if ((!QLog.isColorLevel()) && (i == ((ThemeUtil.ThemeInfo)localObject1).fileNum)) {
+            break label1387;
+          }
+          QLog.d("ThemeSwitchManager", 1, "doInBackground THEME_STATUS_COMPLETE ok fileNum:" + i + ", themeInfo.fileNum=" + ((ThemeUtil.ThemeInfo)localObject1).fileNum + ", themeResDir:" + localObject2);
+        }
+        catch (Exception paramVarArgs)
+        {
+          for (;;)
+          {
+            QLog.d("ThemeSwitchManager", 2, "doInBackground THEME_STATUS_COMPLETE sleep Exception1:" + paramVarArgs.getMessage());
+          }
+        }
+      }
+      ThemeReporter.a(paramVarArgs, "theme_detail", this.a.c, 155, -1, -3, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString, this.a.d, "");
+    }
+    catch (Exception paramVarArgs)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ThemeSwitchManager", 2, "doInBackground Exception:" + paramVarArgs.getMessage());
+      }
+      localBundle.putString("message", "doInBackground Exception error");
+      localBundle.putBoolean("result", false);
+      localBundle.putInt("errCode", -35);
+      if (QLog.isColorLevel()) {
+        QLog.i("ThemeSwitchManager", 2, "doInBackground fail");
+      }
+      return localBundle;
+    }
+    QLog.e("ThemeSwitchManager", 1, "doInBackground THEME_STATUS_COMPLETE fileNum Error, themeInfo.fileNum:" + ((ThemeUtil.ThemeInfo)localObject1).fileNum + ", fileNum:" + i + ",themeId:" + ((ThemeUtil.ThemeInfo)localObject1).themeId + ",version:" + ((ThemeUtil.ThemeInfo)localObject1).version + ", from:" + this.a.c);
+    label949:
+    if ((localFile.exists()) && (localFile.length() > 0L)) {
+      if (QLog.isColorLevel())
+      {
+        localObject3 = new StringBuilder().append("doInBackground themePkgFile is exists,themeZipPath=").append(str);
+        if (localObject1 == null) {
+          break label1393;
+        }
+      }
+    }
+    label1226:
+    label1384:
+    label1387:
+    label1390:
+    label1393:
+    for (Object localObject2 = ",status=" + ((ThemeUtil.ThemeInfo)localObject1).status + ", themeInfo.size=" + ((ThemeUtil.ThemeInfo)localObject1).size;; localObject2 = "themeInfo=null")
+    {
+      QLog.d("ThemeSwitchManager", 2, (String)localObject2);
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putString("themeId", ((ThemeUtil.ThemeInfo)localObject1).themeId);
+      ((Bundle)localObject2).putString("version", ((ThemeUtil.ThemeInfo)localObject1).version);
+      ((Bundle)localObject2).putBoolean("isVoiceTheme", ((ThemeUtil.ThemeInfo)localObject1).isVoiceTheme);
+      ((Bundle)localObject2).putLong("size", ((ThemeUtil.ThemeInfo)localObject1).size);
+      localObject1 = new ThemeDownloader(paramVarArgs, this.a.c);
+      boolean bool = ((ThemeDownloader)localObject1).a(paramVarArgs.getApplication(), (Bundle)localObject2, null);
+      ((ThemeDownloader)localObject1).a();
+      if (bool)
+      {
+        this.a.jdField_b_of_type_JavaLangString = ((Bundle)localObject2).getString("version");
+        localBundle.putString("themePath", ThemeUtil.getThemeResourcePath(paramVarArgs.getApplication(), this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString));
+        localBundle.putString("message", "doInBackground unzip ok");
+        localBundle.putBoolean("result", true);
+        if (!QLog.isColorLevel()) {
+          break label1390;
+        }
+        QLog.d("ThemeSwitchManager", 1, "doInBackground unzip ThemeZip ok");
+        break label1390;
+        QLog.e("ThemeSwitchManager", 1, "doInBackground THEME_STATUS_COMPLETE themeResPath not exists,themeResPath=" + (String)localObject3);
+        break label949;
+      }
+      QLog.e("ThemeSwitchManager", 1, "doInBackground unzip error, themeZipPath:" + str);
+      localBundle.putString("message", "doInBackground unzip fail");
+      localBundle.putBoolean("result", false);
+      localBundle.putInt("errCode", -30);
+      break label1390;
+      QLog.e("ThemeSwitchManager", 1, "doInBackground theme RES error, themeZipPath:" + str + ", exists:" + localFile.exists());
+      localBundle.putString("message", "doInBackground RES error");
+      localBundle.putBoolean("result", false);
+      localBundle.putInt("errCode", -29);
+      break label1390;
+      break;
+      return localBundle;
+      return localBundle;
+    }
+  }
+  
+  protected void onPostExecute(Object paramObject)
+  {
+    if ((paramObject == null) || (!(paramObject instanceof Bundle)))
+    {
+      QLog.e("ThemeSwitchManager", 1, "onPostExecute result Error, result:" + paramObject);
+      return;
+    }
+    Bundle localBundle = (Bundle)paramObject;
+    if ((this.a.jdField_b_of_type_JavaLangRefWeakReference == null) || (this.a.jdField_b_of_type_JavaLangRefWeakReference.get() == null)) {}
+    for (paramObject = null; paramObject == null; paramObject = (AppRuntime)this.a.jdField_b_of_type_JavaLangRefWeakReference.get())
+    {
+      QLog.e("ThemeSwitchManager", 1, "onPostExecute mRuntime==null");
+      return;
+    }
+    boolean bool2 = localBundle.getBoolean("result", false);
+    int i;
+    boolean bool1;
+    if (localBundle.getInt("errCode") == 0)
+    {
+      i = 23;
+      if (QLog.isColorLevel()) {
+        QLog.d("ThemeSwitchManager", 2, "onPostExecute result: " + bool2 + ", errCode:" + localBundle.getInt("errCode") + ", msg:" + localBundle.getString("message") + ", theme:" + this.a.jdField_a_of_type_JavaLangString + ", version:" + this.a.jdField_b_of_type_JavaLangString + ", mFrom:" + this.a.c);
+      }
+      if (!bool2) {
+        break label858;
+      }
+      this.a.a();
+      Object localObject = ThemeUtil.getCurrentThemeInfo();
+      String str = localBundle.getString("themePath");
+      bool1 = SkinEngine.getInstances().setSkinRootPath(paramObject.getApplication(), str);
+      QLog.d("ThemeSwitchManager", 2, "onPostExecute setSkinRootPath: " + str + ", themeid:" + this.a.jdField_a_of_type_JavaLangString + ", version:" + this.a.jdField_b_of_type_JavaLangString + ", mFrom:" + this.a.c + ", setSkinSuccess=" + bool1);
+      if (!bool1) {
+        break label778;
+      }
+      if (BaseApplicationImpl.sImageCache != null) {
+        BaseApplicationImpl.sImageCache.evictAll();
+      }
+      str = ((Bundle)localObject).getString("themeId");
+      localObject = ((Bundle)localObject).getString("version");
+      QLog.d("ThemeSwitchManager", 1, "onPostExecute currentTheme currThemeId=" + str + ", currVersion=" + (String)localObject + ", change to themeId=" + this.a.jdField_a_of_type_JavaLangString + ", mVersion=" + this.a.jdField_b_of_type_JavaLangString);
+      if (!str.equals("1103")) {
+        ThemeSwitchUtil.a(paramObject, str, (String)localObject);
+      }
+      ThemeUtil.setCurrentThemeIdVersion(paramObject, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString);
+      ThemeReporter.a(paramObject, "theme_detail", this.a.c, 155, NetworkUtil.a(null), 23, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString, this.a.d, "");
+    }
+    for (;;)
+    {
+      if ((bool2) && (bool1)) {
+        break label970;
+      }
+      int j = i;
+      if (i > -1) {
+        j = -1;
+      }
+      this.a.a(j, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString, 65);
+      QLog.e("ThemeSwitchManager", 1, "onPostExecute result Error: " + bool2 + ", errCode:" + localBundle.getInt("errCode") + ", msg:" + localBundle.getString("message") + ", theme:" + this.a.jdField_a_of_type_JavaLangString + ", version:" + this.a.jdField_b_of_type_JavaLangString + ", mFrom:" + this.a.c + ", errCode:" + j);
+      ThemeReporter.a(paramObject, "theme_detail", this.a.c, 155, NetworkUtil.a(null), j, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString, this.a.d, "");
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(201);
+      return;
+      i = localBundle.getInt("errCode");
+      break;
+      label778:
+      i = -24;
+      QLog.e("ThemeSwitchManager", 1, "onPostExecute setSkinSuccess: " + bool1 + ", theme:" + this.a.jdField_a_of_type_JavaLangString + ", version:" + this.a.jdField_b_of_type_JavaLangString + ", mFrom:" + this.a.c);
+      continue;
+      label858:
+      QLog.e("ThemeSwitchManager", 1, "onPostExecute result: " + bool2 + ", errCode:" + localBundle.getInt("errCode") + ", msg:" + localBundle.getString("message") + ", theme:" + this.a.jdField_a_of_type_JavaLangString + ", version:" + this.a.jdField_b_of_type_JavaLangString + ", mFrom:" + this.a.c);
+      bool1 = false;
+    }
+    label970:
+    if ((paramObject instanceof QQAppInterface)) {
+      ThreadManager.post(new aiol(this, paramObject), 8, null, true);
+    }
+    this.a.a(1, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString, 66);
+    ThemeReporter.a(paramObject, "theme_detail", this.a.c, 155, NetworkUtil.a(null), 23, this.a.jdField_a_of_type_JavaLangString, this.a.jdField_b_of_type_JavaLangString, this.a.d, "");
+  }
+  
+  protected void onPreExecute()
+  {
+    if (this.a.jdField_b_of_type_Boolean) {
+      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(200);
+    }
+    super.onPreExecute();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiok
  * JD-Core Version:    0.7.0.1
  */

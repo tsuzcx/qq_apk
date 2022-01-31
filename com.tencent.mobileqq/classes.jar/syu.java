@@ -1,17 +1,74 @@
-import android.media.MediaRecorder;
-import android.media.MediaRecorder.OnErrorListener;
-import com.tencent.mobileqq.activity.MakeVideoActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.LebaListMgrActivity;
+import com.tencent.mobileqq.adapter.LebaListMgrAdapter;
+import com.tencent.mobileqq.app.LebaUtil;
+import com.tencent.mobileqq.config.DownloadIconsListener;
+import com.tencent.mobileqq.config.struct.LebaViewItem;
+import com.tencent.mobileqq.data.ResourcePluginInfo;
+import java.io.File;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class syu
-  implements MediaRecorder.OnErrorListener
+  extends DownloadIconsListener
 {
-  public syu(MakeVideoActivity paramMakeVideoActivity) {}
+  public syu(LebaListMgrActivity paramLebaListMgrActivity) {}
   
-  public void onError(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    paramMediaRecorder = "(code = " + paramInt1 + ", extra = " + paramInt2 + ")";
-    QLog.w(this.a.a, 1, "MakeVideoActivity error " + paramMediaRecorder);
+    int k = 0;
+    if ((LebaListMgrActivity.a(this.a) == null) || (!this.a.isResume())) {}
+    label241:
+    label242:
+    for (;;)
+    {
+      return;
+      int m = LebaListMgrActivity.a(this.a).getCount();
+      int j = 0;
+      int i = k;
+      if (j < m)
+      {
+        Object localObject = LebaListMgrActivity.a(this.a).getItem(j);
+        if ((localObject != null) && ((localObject instanceof LebaViewItem)))
+        {
+          localObject = (LebaViewItem)localObject;
+          if ((((LebaViewItem)localObject).a != null) && (paramString.equals(((LebaViewItem)localObject).a.strPkgName)))
+          {
+            j = 1;
+            File localFile = LebaUtil.a(this.a, paramString, ((LebaViewItem)localObject).a.strResURL);
+            i = j;
+            if (localFile == null) {
+              break label241;
+            }
+            i = j;
+            if (paramBitmap == null) {
+              break label241;
+            }
+            ((LebaViewItem)localObject).b = ("LebaIcon://" + localFile.getAbsolutePath());
+            i = j;
+            if (BaseApplicationImpl.sImageHashMap == null) {
+              break label241;
+            }
+            i = j;
+            if (BaseApplicationImpl.sImageHashMap.get(((LebaViewItem)localObject).b) != null) {
+              break label241;
+            }
+            BaseApplicationImpl.sImageHashMap.put(((LebaViewItem)localObject).b, paramBitmap);
+            i = 1;
+          }
+        }
+      }
+      for (;;)
+      {
+        if (i == 0) {
+          break label242;
+        }
+        this.a.runOnUiThread(new syv(this, paramString));
+        return;
+        j += 1;
+        break;
+      }
+    }
   }
 }
 

@@ -1,18 +1,15 @@
-import com.tencent.biz.common.offline.AsyncBack;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewBaseActivity;
 
-class ldb
-  implements AsyncBack
+public class ldb
+  implements View.OnClickListener
 {
-  ldb(lda paramlda) {}
+  public ldb(ReadInJoyNewBaseActivity paramReadInJoyNewBaseActivity) {}
   
-  public void a(int paramInt) {}
-  
-  public void a(String paramString, int paramInt)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyBaseActivity", 2, "load 2378 html web resource finish");
-    }
+    this.a.onBackEvent();
   }
 }
 

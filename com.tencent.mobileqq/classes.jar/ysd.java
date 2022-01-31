@@ -1,48 +1,67 @@
-import com.tencent.TMG.sdk.AVCallback;
-import com.tencent.TMG.utils.SoUtil;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.mobileqq.apollo.tmg_opensdk.TMG_Downloader;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.view.View;
+import android.widget.BaseAdapter;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
+import com.tencent.mobileqq.activity.aio.item.ApolloItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.ItemBuilderFactory;
+import com.tencent.mobileqq.apollo.script.SpriteUIHandler;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.data.MessageForApollo;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqavopensdk.AVEngineEventHandler;
+import com.tencent.widget.XListView;
 
 public class ysd
-  implements AVCallback
+  implements Runnable
 {
-  public ysd(AVEngineWalper paramAVEngineWalper) {}
+  public ysd(SpriteUIHandler paramSpriteUIHandler, long paramLong, int paramInt1, int paramInt2) {}
   
-  public void onComplete(int paramInt, String paramString)
+  public void run()
   {
-    if (paramInt == 0)
+    try
     {
-      QLog.e("AVEngineWalper", 1, "AVCallback make connection successfully!!!");
-      if (!this.a.a())
+      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler.a();
+      if (localObject1 == null)
       {
-        FileUtils.d(TMG_Downloader.a() + "libqav_graphics.so", TMG_Downloader.a() + "libtmg_graphics.so");
-        boolean bool = SoUtil.loadSo("tmg_graphics");
-        QLog.e("AVEngineWalper", 1, "first check failed, rename bLoad = " + bool);
-        if (!this.a.a())
+        QLog.e("cmshow_scripted_SpriteUIHandler", 1, "adatper is null.");
+        return;
+      }
+      int i = AIOUtils.a(this.jdField_a_of_type_Long, (ListAdapter)localObject1);
+      if (i >= 0)
+      {
+        XListView localXListView = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler.a();
+        Object localObject2 = (ChatMessage)((ChatAdapter1)localObject1).getItem(i);
+        if ((localXListView != null) && (localObject2 != null) && ((localObject2 instanceof MessageForApollo)))
         {
-          QLog.e("AVEngineWalper", 1, "Second check failed, stop engine~~~");
-          AVEngineWalper.a(this.a, false);
-          this.a.a();
-          paramInt = 1;
+          localObject1 = ((ChatAdapter1)localObject1).a.a((ChatMessage)localObject2, (BaseAdapter)localObject1);
+          if ((localObject1 instanceof ApolloItemBuilder))
+          {
+            localObject1 = (ApolloItemBuilder)localObject1;
+            localObject2 = (BaseChatItemLayout)AIOUtils.a(localXListView, AIOUtils.a(this.jdField_a_of_type_Long, localXListView.getAdapter()));
+            if (localObject2 != null)
+            {
+              ((ApolloItemBuilder)localObject1).a((View)localObject2, this.jdField_a_of_type_Int, this.b);
+              localXListView.getFirstVisiblePosition();
+              int j = localXListView.getLastVisiblePosition();
+              i = 0;
+              while (i < j)
+              {
+                BaseChatItemLayout localBaseChatItemLayout = (BaseChatItemLayout)AIOUtils.a(localXListView, i);
+                if (localBaseChatItemLayout != null) {
+                  ((ApolloItemBuilder)localObject1).a(localBaseChatItemLayout, (BaseChatItemLayout)localObject2, this.jdField_a_of_type_Int, this.b);
+                }
+                i += 1;
+              }
+            }
+          }
         }
       }
-    }
-    for (;;)
-    {
-      if (this.a.a != null) {
-        this.a.a.a(paramInt, paramString);
-      }
       return;
-      AVEngineWalper.a(this.a, true);
-      QLog.e("AVEngineWalper", 1, "start successfully second try~~~~");
-      continue;
-      AVEngineWalper.a(this.a, true);
-      QLog.e("AVEngineWalper", 1, "start successfully~~~~");
-      continue;
-      QLog.e("AVEngineWalper", 1, "AVCallback result=" + paramInt + ", errorInfo=" + paramString);
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("cmshow_scripted_SpriteUIHandler", 1, "[onActionDownloadNotify], error.", localThrowable);
     }
   }
 }

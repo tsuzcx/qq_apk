@@ -1,16 +1,14 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.webviewplugin.OfflineWebResManager;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class pai
+public final class pai
   implements Runnable
 {
-  public pai(OfflineWebResManager paramOfflineWebResManager, SharedPreferences paramSharedPreferences) {}
+  public pai(Exception paramException) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizWebviewpluginOfflineWebResManager.b();
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("Last_Check_Cache", System.currentTimeMillis()).commit();
+    ReportController.b(null, "P_CliOper", "BizTechReport", "", "leba_search", "leba_search_set_data", 0, 0, HtmlOffline.a("1002"), this.a.getClass().getSimpleName(), null, null);
   }
 }
 

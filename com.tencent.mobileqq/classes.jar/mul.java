@@ -1,18 +1,37 @@
 import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.mobileqq.app.FontSettingManager;
+import com.tencent.biz.pubaccount.util.GalleryShareHelper;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class mul
-  implements DialogInterface.OnClickListener
+public class mul
+  extends DownloadListener
 {
-  mul(muk parammuk) {}
+  public mul(GalleryShareHelper paramGalleryShareHelper, Activity paramActivity, String paramString) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDone(DownloadTask paramDownloadTask)
   {
-    FontSettingManager.a();
-    this.a.a.a.finish();
+    if ((this.jdField_a_of_type_AndroidAppActivity == null) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
+      return;
+    }
+    if (paramDownloadTask.a == 0)
+    {
+      paramDownloadTask = new File(AbsDownloader.d(this.jdField_a_of_type_JavaLangString));
+      if (paramDownloadTask.exists())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("GalleryShareHelper", 2, "shareImageToAIO->downloadFile success: " + this.jdField_a_of_type_JavaLangString);
+        }
+        this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new mum(this, paramDownloadTask));
+        return;
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("GalleryShareHelper", 2, "shareImageToAIO->downloadFile failed: " + this.jdField_a_of_type_JavaLangString);
+    }
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new mun(this));
   }
 }
 

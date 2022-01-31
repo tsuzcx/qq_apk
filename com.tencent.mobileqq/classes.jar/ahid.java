@@ -1,28 +1,20 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class ahid
-  extends SosoInterface.OnLocationListener
+  implements Runnable
 {
-  public ahid(NetSearchEngine paramNetSearchEngine, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public ahid(CameraCaptureFragment paramCameraCaptureFragment) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void run()
   {
-    if (paramInt == 0)
-    {
-      NetSearchEngine.a = paramSosoLbsInfo.a.a;
-      NetSearchEngine.b = paramSosoLbsInfo.a.b;
-    }
+    QLog.d("CameraCaptureFragment", 2, "onVideoCaptured. mDanceRestartToRecord = true  restart to record.");
+    this.a.z_();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahid
  * JD-Core Version:    0.7.0.1
  */

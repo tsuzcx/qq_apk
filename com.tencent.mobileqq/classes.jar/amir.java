@@ -1,18 +1,21 @@
-import cooperation.qzone.report.lp.MachinelearningReport;
+import common.qzone.component.cache.common.SoftHashMap;
 
 public class amir
-  implements Runnable
+  extends amiq
 {
-  public amir(MachinelearningReport paramMachinelearningReport) {}
-  
-  public void run()
+  amir(SoftHashMap paramSoftHashMap)
   {
-    MachinelearningReport.access$200(this.a);
+    super(paramSoftHashMap);
+  }
+  
+  public Object next()
+  {
+    return a().getKey();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amir
  * JD-Core Version:    0.7.0.1
  */

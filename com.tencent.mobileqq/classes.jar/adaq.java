@@ -1,17 +1,12 @@
-import android.app.Activity;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardFileBaseOption;
+import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
 
 public class adaq
-  implements DialogInterface.OnClickListener
 {
-  public adaq(ForwardFileBaseOption paramForwardFileBaseOption) {}
+  public long a;
+  public String a;
+  public long b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    this.a.a.finish();
-  }
+  public adaq(FileManagerProxy paramFileManagerProxy) {}
 }
 
 

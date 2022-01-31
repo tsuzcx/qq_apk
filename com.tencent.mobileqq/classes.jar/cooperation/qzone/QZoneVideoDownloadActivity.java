@@ -1,8 +1,8 @@
 package cooperation.qzone;
 
-import amcf;
-import amcg;
-import amci;
+import amsj;
+import amsk;
+import amsm;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -48,7 +48,7 @@ public class QZoneVideoDownloadActivity
   public int a;
   public long a;
   private Bundle jdField_a_of_type_AndroidOsBundle;
-  Handler jdField_a_of_type_AndroidOsHandler = new amcf(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new amsj(this);
   public ProgressBar a;
   public TextView a;
   public URLImageView a;
@@ -351,7 +351,7 @@ public class QZoneVideoDownloadActivity
     }
     if (this.jdField_e_of_type_Boolean)
     {
-      ThreadManager.postImmediately(new amcg(this), null, false);
+      ThreadManager.postImmediately(new amsk(this), null, false);
       return;
     }
     finish();
@@ -376,12 +376,19 @@ public class QZoneVideoDownloadActivity
     QLog.i("QZoneVideoDownloadActivity", 2, "entry source quick left slide report");
   }
   
+  public void C_()
+  {
+    VideoEnvironment.a("QZoneVideoDownloadActivity", "onNetWorkNone...", null);
+    this.jdField_a_of_type_AndroidWidgetProgressBar.post(new amsm(this));
+    ShortVideoErrorReport.b(3, -1500);
+  }
+  
   public void a()
   {
     setTitle("短视频");
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131375329));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375328));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131375330));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131375560));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131375559));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131375561));
     this.jdField_a_of_type_ComTencentImageURLImageView.setImageURL("http://qzs.qq.com/qzone/photo/v7/js/common/images/mini_video_cover_7.png");
   }
   
@@ -524,7 +531,7 @@ public class QZoneVideoDownloadActivity
       }
       if (!a((QQAppInterface)localAppRuntime))
       {
-        setContentView(2130971696);
+        setContentView(2130971745);
         a();
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
         d();
@@ -536,13 +543,6 @@ public class QZoneVideoDownloadActivity
       QLog.d("QZoneVideoDownloadActivity", 2, "app is not QQAppInterface");
     }
     e();
-  }
-  
-  public void y_()
-  {
-    VideoEnvironment.a("QZoneVideoDownloadActivity", "onNetWorkNone...", null);
-    this.jdField_a_of_type_AndroidWidgetProgressBar.post(new amci(this));
-    ShortVideoErrorReport.b(3, -1500);
   }
 }
 

@@ -1,18 +1,16 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
+import com.tencent.mobileqq.ar.ARNativeBridge;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
 
-public final class zzp
-  implements Parcelable.Creator
+public class zzp
+  implements Runnable
 {
-  public ARCommonConfigInfo a(Parcel paramParcel)
-  {
-    return new ARCommonConfigInfo(paramParcel);
-  }
+  public zzp(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
   
-  public ARCommonConfigInfo[] a(int paramInt)
+  public void run()
   {
-    return new ARCommonConfigInfo[paramInt];
+    if ((ARWorldCupGlobalSceneRenderable.a(this.a) != null) && (this.a.b <= 4)) {
+      ARWorldCupGlobalSceneRenderable.a(this.a).native_startTranversalAnimation();
+    }
   }
 }
 

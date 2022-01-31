@@ -1,50 +1,38 @@
-import android.os.Message;
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
-import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
-import com.tencent.mobileqq.nearby.ipc.MainProcessInterface.Stub;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
+import com.tencent.mobileqq.magicface.service.MagicfaceActionManager.MagicfaceSensorOperation;
+import com.tencent.mobileqq.statistics.ReportController;
+import mqq.app.AppRuntime;
 
 public class aedz
-  extends MainProcessInterface.Stub
+  implements MagicfaceActionManager.MagicfaceSensorOperation
 {
-  public aedz(ConnectNearbyProcService paramConnectNearbyProcService) {}
+  public aedz(MagicfaceActionManager paramMagicfaceActionManager) {}
   
-  public Message a(Message paramMessage)
+  public void a()
   {
-    if (paramMessage == null) {
-      return null;
+    AppRuntime localAppRuntime;
+    if (this.a.jdField_a_of_type_Int == 1)
+    {
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localAppRuntime != null) && ((localAppRuntime instanceof QQAppInterface))) {
+        ReportController.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbJieshou", "MbWanchengXiaochu", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
+      }
     }
-    return ConnectNearbyProcService.a(this.a, paramMessage);
-  }
-  
-  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
-  {
-    if (paramBasicTypeDataParcel == null) {}
-    Object[] arrayOfObject;
     do
     {
-      return null;
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
-      }
-      arrayOfObject = ConnectNearbyProcService.a(this.a, paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
-    } while (arrayOfObject == null);
-    return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
-  }
-  
-  public void a(NearbyProcessInterface paramNearbyProcessInterface)
-  {
-    ConnectNearbyProcService.a(paramNearbyProcessInterface);
-    if (ConnectNearbyProcService.a(this.a) != null) {
-      ConnectNearbyProcService.a(this.a).a();
-    }
+      return;
+      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    } while ((localAppRuntime == null) || (!(localAppRuntime instanceof QQAppInterface)));
+    this.a.jdField_a_of_type_Long = System.currentTimeMillis();
+    ReportController.b((QQAppInterface)localAppRuntime, "CliOper", "", "", "MbFasong", "MbZhudongChaozuo", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aedz
  * JD-Core Version:    0.7.0.1
  */

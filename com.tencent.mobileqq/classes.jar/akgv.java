@@ -1,26 +1,18 @@
-import android.view.View;
-import com.tencent.image.ApngDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.avatar.dynamicavatar.VasFaceManager;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import com.tencent.mobileqq.utils.VoicePlayer;
 
 public class akgv
-  extends URLDrawableDownListener.Adapter
+  implements Runnable
 {
-  public akgv(NewStyleDropdownView paramNewStyleDropdownView) {}
+  public akgv(VoicePlayer paramVoicePlayer) {}
   
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void run()
   {
-    paramView = paramURLDrawable.getCurrDrawable();
-    if ((paramView instanceof ApngDrawable)) {
-      VasFaceManager.a((ApngDrawable)paramView, null);
-    }
+    VoicePlayer.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akgv
  * JD-Core Version:    0.7.0.1
  */

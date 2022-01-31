@@ -29,7 +29,7 @@ public class NewTroopContactView$GridViewAdapter
   
   public NewTroopContactView$GridViewAdapter(NewTroopContactView paramNewTroopContactView, Context paramContext)
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130842321);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130842368);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
@@ -74,10 +74,10 @@ public class NewTroopContactView$GridViewAdapter
     ResultRecord localResultRecord = (ResultRecord)getItem(paramInt);
     paramViewGroup = paramView;
     if (paramView == null) {
-      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity.getLayoutInflater().inflate(2130969034, null);
+      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity.getLayoutInflater().inflate(2130969033, null);
     }
     paramViewGroup.setTag(localResultRecord);
-    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131362721);
+    ImageView localImageView = (ImageView)paramViewGroup.findViewById(2131362739);
     if (paramInt == getCount() - 1) {
       if (this.jdField_a_of_type_Boolean)
       {
@@ -94,11 +94,11 @@ public class NewTroopContactView$GridViewAdapter
     label174:
     for (paramInt = 11;; paramInt = 1)
     {
-      localTextView = (TextView)paramViewGroup.findViewById(2131363917);
+      localTextView = (TextView)paramViewGroup.findViewById(2131363940);
       if (localResultRecord.jdField_a_of_type_Int != 5) {
         break label179;
       }
-      localImageView.setImageResource(2130840183);
+      localImageView.setImageResource(2130840189);
       localTextView.setVisibility(0);
       localTextView.setText(ContactUtils.a(localResultRecord.b));
       if (AppSetting.b) {
@@ -144,7 +144,7 @@ public class NewTroopContactView$GridViewAdapter
         View localView = this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_AndroidWidgetGridView.getChildAt(paramInt1);
         Object localObject = localView.getTag();
         if ((localObject != null) && ((localObject instanceof ResultRecord)) && (paramString.equals(((ResultRecord)localObject).jdField_a_of_type_JavaLangString))) {
-          ((ImageView)localView.findViewById(2131362721)).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity.getResources(), paramBitmap));
+          ((ImageView)localView.findViewById(2131362739)).setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopContactView.jdField_a_of_type_ComTencentMobileqqTroopCreateNewTroopNewTroopCreateActivity.getResources(), paramBitmap));
         }
         paramInt1 += 1;
       }
@@ -153,7 +153,7 @@ public class NewTroopContactView$GridViewAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.createNewTroop.NewTroopContactView.GridViewAdapter
  * JD-Core Version:    0.7.0.1
  */

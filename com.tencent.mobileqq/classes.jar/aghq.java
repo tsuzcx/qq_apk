@@ -1,26 +1,18 @@
-import com.tencent.mobileqq.qzonealbumreddot.QzoneAlbumRedTouchManager;
-import com.tencent.mobileqq.qzonealbumreddot.QzonePhotoGuideNotifyService;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public class aghq
+class aghq
   implements Runnable
 {
-  public aghq(QzonePhotoGuideNotifyService paramQzonePhotoGuideNotifyService) {}
+  aghq(aghp paramaghp) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QzonePhotoGuideNotifyServlet", 2, "sendRedRunnable");
-    }
-    if (this.a.a != null) {
-      this.a.a.a();
-    }
-    this.a.b();
+    ScanTorchActivity.d(this.a.a.a, ScanTorchActivity.b(this.a.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghq
  * JD-Core Version:    0.7.0.1
  */

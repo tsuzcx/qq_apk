@@ -1,15 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import com.tencent.biz.qrcode.activity.QRJumpActivity;
+import com.tencent.biz.qrcode.CustomAccessibilityDelegate;
+import com.tencent.biz.qrcode.CustomAccessibilityDelegate.CallBack;
 
 public class osk
-  implements DialogInterface.OnCancelListener
+  implements Runnable
 {
-  public osk(QRJumpActivity paramQRJumpActivity) {}
+  public osk(CustomAccessibilityDelegate paramCustomAccessibilityDelegate) {}
   
-  public void onCancel(DialogInterface paramDialogInterface)
+  public void run()
   {
-    this.a.finish();
+    if (CustomAccessibilityDelegate.a(this.a) != null) {
+      CustomAccessibilityDelegate.a(this.a).b();
+    }
   }
 }
 

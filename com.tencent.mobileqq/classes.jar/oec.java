@@ -1,13 +1,28 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
+import android.os.Handler;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent;
+import com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager.POIPostersRequestCallback;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
+import java.util.Collections;
+import java.util.List;
 
-class oec
-  implements Runnable
+public class oec
+  implements DoodleEmojiManager.POIPostersRequestCallback
 {
-  oec(oeb paramoeb) {}
+  public oec(EditVideoDoodle paramEditVideoDoodle) {}
   
-  public void run()
+  public void a(int paramInt, List paramList)
   {
-    this.a.a.Y_();
+    SLog.b("Q.qqstory.publish.edit.StoryDoodle", "onPOIPostersRequestResult callback");
+    this.a.jdField_a_of_type_Boolean = true;
+    this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    List localList = paramList;
+    if (paramList == null) {
+      localList = Collections.EMPTY_LIST;
+    }
+    Dispatchers.get().dispatch(new DoodleEmojiManager.DoodleEmojiUpdatePoiPostersEvent(paramInt, localList));
   }
 }
 

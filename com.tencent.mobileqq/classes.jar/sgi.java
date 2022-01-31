@@ -1,32 +1,14 @@
-import com.tencent.mobileqq.activity.DevlockPushActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.Conversation;
 
-public class sgi
+class sgi
   implements Runnable
 {
-  public sgi(DevlockPushActivity paramDevlockPushActivity) {}
+  sgi(sgg paramsgg) {}
   
   public void run()
   {
-    try
-    {
-      if ((this.a.a == null) && (!this.a.isFinishing()))
-      {
-        this.a.a = new QQProgressDialog(this.a, this.a.getTitleBarHeight());
-        this.a.a.c(2131435053);
-      }
-      if ((this.a.a != null) && (!this.a.a.isShowing())) {
-        this.a.a.show();
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    this.a.a.c.removeAllViews();
   }
 }
 

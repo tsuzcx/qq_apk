@@ -1,21 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.presenter.SearchResultGroupMessagePresenter;
+import android.os.Bundle;
+import com.tencent.mobileqq.richmedia.CompoundProcessor;
+import com.tencent.mobileqq.richmedia.RichmediaClient;
+import com.tencent.mobileqq.utils.LogTag;
 
 public class ahgi
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ahgi(SearchResultGroupMessagePresenter paramSearchResultGroupMessagePresenter, ISearchResultGroupModel paramISearchResultGroupModel) {}
+  public ahgi(CompoundProcessor paramCompoundProcessor) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultGroupModel.a(paramView);
+    RichmediaClient localRichmediaClient = RichmediaClient.a();
+    String str = this.a.a(this.a.jdField_b_of_type_JavaLangString);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("vidoe_record_uniseq", this.a.a);
+    localBundle.putString("full_video_path", str);
+    localBundle.putInt("video_slices_total_time_length", this.a.jdField_b_of_type_Int);
+    localRichmediaClient.a(103, -1, localBundle);
+    LogTag.a(this.a.a, "clicompCompoundProcessor.compressSourceYUV", "path = " + str + ",totalTime = " + this.a.jdField_b_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahgi
  * JD-Core Version:    0.7.0.1
  */

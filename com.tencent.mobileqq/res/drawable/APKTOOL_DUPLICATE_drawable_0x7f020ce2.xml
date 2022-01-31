@@ -2,10 +2,10 @@
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
     <item>
-        <shape>
-            <solid android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c04c2" />
-            <corners android:radius="10.5dip" />
-            <padding android:left="1.0dip" android:right="1.0dip" />
+        <shape android:shape="rectangle">
+            <corners android:topLeftRadius="22.0dip" android:topRightRadius="22.0dip" android:bottomLeftRadius="22.0dip" android:bottomRightRadius="22.0dip" />
+            <gradient android:startColor="@color/APKTOOL_DUPLICATE_color_0x7f0c01bc" android:endColor="@color/APKTOOL_DUPLICATE_color_0x7f0c01bc" android:angle="0.0" />
+            <stroke android:width="1.0dip" android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c01bc" />
         </shape>
     </item>
 </selector>

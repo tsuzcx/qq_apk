@@ -1,23 +1,22 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.aio.tips.LightalkBlueTipsBar;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.anonymous.AnonymousChatHelper;
+import com.tencent.biz.anonymous.QQAnonymousDialog;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import mqq.os.MqqHandler;
 
-public class vzv
+class vzv
   implements Runnable
 {
-  public vzv(LightalkBlueTipsBar paramLightalkBlueTipsBar) {}
+  vzv(vzs paramvzs) {}
   
   public void run()
   {
-    Object localObject = LightalkBlueTipsBar.a(this.a).getPreferences();
-    int i = ((SharedPreferences)localObject).getInt("LT_tip_show_times" + LightalkBlueTipsBar.a(this.a).getCurrentAccountUin(), 0);
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).putInt("LT_tip_show_times" + LightalkBlueTipsBar.a(this.a).getCurrentAccountUin(), i + 1);
-    ((SharedPreferences.Editor)localObject).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("LightalkBlueTipsBar", 2, "onAIOEvent() : commit =====> tipsum = " + (i + 1));
+    if (this.a.a.jdField_a_of_type_ComTencentBizAnonymousQQAnonymousDialog != null) {
+      this.a.a.jdField_a_of_type_ComTencentBizAnonymousQQAnonymousDialog.dismiss();
+    }
+    this.a.a.p(true);
+    TroopChatPie.d(this.a.a).postDelayed(new vzw(this), 100L);
+    if (!AnonymousChatHelper.a(this.a.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      TroopChatPie.e(this.a.a).postDelayed(new vzx(this), 200L);
     }
   }
 }

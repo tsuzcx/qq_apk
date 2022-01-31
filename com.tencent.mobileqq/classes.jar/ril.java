@@ -1,18 +1,15 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.activity.FontSettingActivity;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.ContactUtils;
 
 public class ril
-  implements View.OnClickListener
+  implements Runnable
 {
-  public ril(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public ril(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.a, FontSettingActivity.class);
-    this.a.startActivity(paramView);
+    this.a.d(ContactUtils.f(this.a.app, this.a.app.getCurrentAccountUin()));
   }
 }
 

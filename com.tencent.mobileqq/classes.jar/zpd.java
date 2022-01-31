@@ -1,38 +1,41 @@
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.BaseMessageManagerForTroopAndDisc;
-import com.tencent.mobileqq.app.message.UncommonMessageProcessor;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.service.message.MessageCache;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.HandlerThread;
+import android.os.IBinder;
+import android.os.Messenger;
+import android.util.SparseArray;
+import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler;
 import com.tencent.qphone.base.util.QLog;
 
 public class zpd
-  implements Runnable
+  implements ServiceConnection
 {
-  public zpd(BaseMessageManagerForTroopAndDisc paramBaseMessageManagerForTroopAndDisc, MessageRecord paramMessageRecord, boolean paramBoolean, long paramLong) {}
+  public zpd(TroopQZoneUploadAlbumHandler paramTroopQZoneUploadAlbumHandler) {}
   
-  public void run()
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  {
+    TroopQZoneUploadAlbumHandler.a(this.a, 2);
+    TroopQZoneUploadAlbumHandler.a(this.a, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("UploadPhoto", 2, "onServiceConnected()...");
+    }
+    this.a.jdField_a_of_type_AndroidOsMessenger = new Messenger(paramIBinder);
+    this.a.b = new Messenger(this.a.jdField_a_of_type_AndroidOsHandler);
+    TroopQZoneUploadAlbumHandler.b(this.a);
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageManager", 2, "doMsgRevokeRequest " + this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getLogColorContent() + " holdFlag: " + this.jdField_a_of_type_Boolean);
+      QLog.d("UploadPhoto", 2, "onServiceDisconnected()...");
     }
-    if (!this.jdField_a_of_type_Boolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 15000L);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.a().e(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a();
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.a().e(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 15000L - (l1 - l2));
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.a().e(null);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.a().a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, UncommonMessageProcessor.e, UncommonMessageProcessor.n);
+    this.a.jdField_a_of_type_AndroidOsMessenger = null;
+    TroopQZoneUploadAlbumHandler.a(this.a, 4);
+    this.a.jdField_a_of_type_AndroidUtilSparseArray.clear();
+    this.a.b = null;
+    TroopQZoneUploadAlbumHandler.a(this.a, true);
+    if (TroopQZoneUploadAlbumHandler.a(this.a) != null) {
+      TroopQZoneUploadAlbumHandler.a(this.a).interrupt();
     }
   }
 }

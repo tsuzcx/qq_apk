@@ -1,30 +1,21 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
 
 public class sxm
-  implements ActionMode.Callback
+  extends FriendListObserver
 {
-  public sxm(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  public sxm(Leba paramLeba) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    return false;
-  }
-  
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    paramMenu.clear();
-    return false;
-  }
-  
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
-  
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
-  {
-    return false;
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
+    while ((QZoneManagerImp)this.a.a.getManager(9) == null) {
+      return;
+    }
+    Leba.c(this.a);
   }
 }
 

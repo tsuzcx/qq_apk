@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import com.tencent.mobileqq.app.ThreadManager;
+import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
-class txz
+public class txz
   implements Runnable
 {
-  txz(txx paramtxx) {}
+  public txz(TroopInfoActivity paramTroopInfoActivity) {}
   
   public void run()
   {
-    this.a.a.m();
+    ArrayList localArrayList = TroopInfoActivity.a(this.a, this.a.a);
+    if (localArrayList != null) {
+      ThreadManager.getUIHandler().post(new tya(this, localArrayList));
+    }
   }
 }
 

@@ -1,21 +1,14 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
+import com.tencent.mobileqq.data.DiscussionMemberInfo;
 
 public class ahua
-  extends URLDrawableDownListener.Adapter
 {
-  public ahua(StructMsgForHypertext paramStructMsgForHypertext) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    paramView.setBackgroundDrawable(null);
-  }
+  public long a;
+  public DiscussionMemberInfo a;
+  public String a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahua
  * JD-Core Version:    0.7.0.1
  */

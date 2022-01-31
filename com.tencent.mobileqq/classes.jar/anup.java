@@ -1,44 +1,38 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.Bundle;
-import android.os.IBinder;
-import android.os.Message;
-import android.os.Messenger;
-import android.os.RemoteException;
-import com.tencent.util.BinderWarpper;
-import dov.com.tencent.mobileqq.richmedia.ICallBack;
-import dov.com.tencent.mobileqq.richmedia.LOG;
-import dov.com.tencent.mobileqq.richmedia.RichmediaClient;
+import android.os.Handler;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
+import dov.com.tencent.biz.qqstory.takevideo.MultiBlockVideoPlayer;
+import dov.com.tencent.biz.qqstory.takevideo.MultiBlockVideoPlayer.MultiOperateException;
+import dov.com.tencent.biz.qqstory.takevideo.MultiBlockVideoPlayer.RecordVideoBlockInfo;
+import java.util.List;
 
 public class anup
-  implements ServiceConnection
+  implements Runnable
 {
-  public anup(RichmediaClient paramRichmediaClient) {}
+  public anup(EditVideoPlayer paramEditVideoPlayer, int paramInt1, int paramInt2) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void run()
   {
-    LOG.a("PTV.RichmediaClient", "onServiceConnected");
-    this.a.b = new Messenger(paramIBinder);
-    paramComponentName = Message.obtain(null, 1);
-    paramComponentName.replyTo = this.a.jdField_a_of_type_AndroidOsMessenger;
-    paramIBinder = new BinderWarpper(this.a.jdField_a_of_type_DovComTencentMobileqqRichmediaICallBack.asBinder());
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("ICallBack_BinderWrapper", paramIBinder);
-    paramComponentName.setData(localBundle);
+    List localList = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPlayer.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (this.jdField_a_of_type_Int < localList.size())) {}
     try
     {
-      this.a.b.send(paramComponentName);
+      ((MultiBlockVideoPlayer)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPlayer.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer).setCurrentVideoFragment((MultiBlockVideoPlayer.RecordVideoBlockInfo)localList.get(this.jdField_a_of_type_Int));
+      if (this.jdField_a_of_type_Int > this.b) {
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPlayer.b.post(new anuq(this));
+      }
+      if ((localList != null) && (this.b < localList.size())) {
+        this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPlayer.a((MultiBlockVideoPlayer.RecordVideoBlockInfo)localList.get(this.b));
+      }
       return;
     }
-    catch (RemoteException paramComponentName)
+    catch (MultiBlockVideoPlayer.MultiOperateException localMultiOperateException)
     {
-      LOG.b("PTV.RichmediaClient", "MSG_C2S_REGISTER_CLIENT send failed. e = " + paramComponentName);
+      for (;;)
+      {
+        SLog.c("Q.qqstory.record.EditVideoPlayer", "setCurrentVideoFragment failed", localMultiOperateException);
+      }
     }
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    this.a.b = null;
   }
 }
 

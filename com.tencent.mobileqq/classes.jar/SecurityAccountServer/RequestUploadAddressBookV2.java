@@ -54,7 +54,7 @@ public final class RequestUploadAddressBookV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aad.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     SecurityAccountServer.RequestUploadAddressBookV2
  * JD-Core Version:    0.7.0.1
  */

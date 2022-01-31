@@ -17,8 +17,8 @@ import com.tencent.widget.XListView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import yez;
-import yfa;
+import yig;
+import yih;
 
 public class ShowExternalTroopListAdapter
   extends FacePreloadBaseAdapter
@@ -28,7 +28,7 @@ public class ShowExternalTroopListAdapter
   public ShowExternalTroopListAdapter.OnTroopListClickListener a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   protected TroopManager a;
-  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new yez(this);
+  TroopObserver jdField_a_of_type_ComTencentMobileqqAppTroopObserver = new yig(this);
   XListView jdField_a_of_type_ComTencentWidgetXListView;
   protected String a;
   protected List a;
@@ -42,7 +42,7 @@ public class ShowExternalTroopListAdapter
     super(paramContext, paramQQAppInterface, paramXListView, 4, true);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new yfa(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new yih(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqAdapterShowExternalTroopListAdapter$OnTroopListClickListener = paramOnTroopListClickListener;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
@@ -53,10 +53,10 @@ public class ShowExternalTroopListAdapter
     paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
   }
   
-  public void V_()
+  public void X_()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopObserver);
-    super.V_();
+    super.X_();
   }
   
   public void a(List paramList)
@@ -82,7 +82,7 @@ public class ShowExternalTroopListAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969870, null);
+      return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969884, null);
     }
     ShowExternalTroopListAdapter.TroopListItem localTroopListItem = (ShowExternalTroopListAdapter.TroopListItem)getItem(paramInt);
     if (localTroopListItem == null) {

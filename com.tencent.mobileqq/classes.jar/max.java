@@ -1,14 +1,21 @@
-import com.tencent.mobileqq.app.PublicAccountObserver;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnShowListener;
+import android.view.Window;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.ActionSheet;
 
-public final class max
-  extends PublicAccountObserver
+public class max
+  implements DialogInterface.OnShowListener
 {
-  public void a(boolean paramBoolean, String paramString)
+  public max(VideoFeedsAdapter paramVideoFeedsAdapter) {}
+  
+  public void onShow(DialogInterface paramDialogInterface)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoFeedsHelper", 2, "followPubAccount() onFollowPublicAccount uin=" + paramString + ", isSuccess=" + paramBoolean);
+      QLog.d("Q.pubaccount.video.feeds.VideoFeedsAdapter", 2, "mShareActionSheet onShow()");
     }
+    VideoFeedsAdapter.a(this.a).getWindow().clearFlags(8);
   }
 }
 

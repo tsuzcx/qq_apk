@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class rmm
   implements Runnable
 {
-  public rmm(BaseChatPie paramBaseChatPie) {}
+  public rmm(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
   public void run()
   {
-    this.a.A = false;
+    if (this.a.a != null) {
+      this.a.a.springBackOverScrollHeaderView();
+    }
   }
 }
 

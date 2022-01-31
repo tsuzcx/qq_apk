@@ -1,20 +1,25 @@
-import android.os.Handler;
-import com.tencent.mobileqq.surfaceviewaction.gl.FrameSprite.OnFrameEndListener;
-import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 
 public class ajgx
-  implements FrameSprite.OnFrameEndListener
+  implements DialogInterface.OnClickListener
 {
-  public ajgx(TroopGiftAnimationController paramTroopGiftAnimationController) {}
+  public ajgx(PublishHomeWorkFragment paramPublishHomeWorkFragment) {}
   
-  public void a()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.post(new ajgy(this));
+    switch (paramInt)
+    {
+    default: 
+      return;
+    }
+    PublishHomeWorkFragment.d(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajgx
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,26 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.webprocess.PreloadService.PreloadImpl;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.troopreward.OrientationAdapterImageView;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajxh
-  implements Runnable
+  extends Handler
 {
-  public ajxh(PreloadService.PreloadImpl paramPreloadImpl, AppInterface paramAppInterface) {}
+  public ajxh(OrientationAdapterImageView paramOrientationAdapterImageView) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWebprocessPreloadService$PreloadImpl.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    if (this.a.jdField_a_of_type_AndroidGraphicsBitmap != null) {
+      this.a.invalidate();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("OrientationAdapterImageView", 2, "handleMessage:" + this.a.jdField_a_of_type_Int + "," + this.a.jdField_a_of_type_AndroidGraphicsBitmap);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajxh
  * JD-Core Version:    0.7.0.1
  */

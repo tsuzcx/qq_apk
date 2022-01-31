@@ -1,37 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.View.OnLongClickListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.utils.BubbleContextMenu;
-import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
+import com.tencent.mobileqq.activity.EmosmActivity;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emoticon.EmoticonPackageChangedListener;
+import java.util.ArrayList;
 
 public class smn
-  implements View.OnLongClickListener
+  implements EmoticonPackageChangedListener
 {
-  View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new smp(this);
-  DataTag jdField_a_of_type_ComTencentMobileqqProfileDataTag;
+  public smn(EmosmActivity paramEmosmActivity) {}
   
-  public smn(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public void a(EmoticonPackage paramEmoticonPackage) {}
   
-  public boolean onLongClick(View paramView)
+  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2) {}
+  
+  public void b(EmoticonPackage paramEmoticonPackage)
   {
-    if ((paramView == null) || (!(paramView.getTag() instanceof DataTag))) {
-      return false;
-    }
-    Object localObject = (DataTag)paramView.getTag();
-    switch (((DataTag)localObject).a)
+    int i = 0;
+    while (i < this.a.jdField_a_of_type_JavaUtilArrayList.size())
     {
+      if (((EmoticonPackage)this.a.jdField_a_of_type_JavaUtilArrayList.get(i)).epId.equals(paramEmoticonPackage.epId)) {
+        return;
+      }
+      i += 1;
     }
-    for (;;)
-    {
-      return true;
-      paramView.setSelected(true);
-      this.jdField_a_of_type_ComTencentMobileqqProfileDataTag = ((DataTag)localObject);
-      localObject = new QQCustomMenu();
-      ((QQCustomMenu)localObject).a(2131375342, this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getString(2131435076), 2130838301);
-      BubbleContextMenu.a(paramView, (QQCustomMenu)localObject, this.jdField_a_of_type_AndroidViewView$OnClickListener, new smo(this, paramView));
-    }
+    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
   }
 }
 

@@ -1,18 +1,20 @@
-import com.tencent.component.media.image.ImageManager;
-import java.util.concurrent.ThreadFactory;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.galleryactivity.AbstractImageListScene;
 
-public final class pez
-  implements ThreadFactory
+public class pez
+  implements View.OnClickListener
 {
-  public Thread newThread(Runnable paramRunnable)
+  public pez(AbstractImageListScene paramAbstractImageListScene) {}
+  
+  public void onClick(View paramView)
   {
-    return new Thread(paramRunnable, "Qzone_ImageManager_decode_ThreadPool_" + ImageManager.a().getAndIncrement());
+    this.a.e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     pez
  * JD-Core Version:    0.7.0.1
  */

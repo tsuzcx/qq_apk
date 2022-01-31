@@ -1,12 +1,22 @@
-import com.tencent.mobileqq.utils.MessageProgressController;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class ajos
+class ajos
+  implements FilenameFilter
 {
-  private static final MessageProgressController a = new MessageProgressController(null);
+  ajos(ajor paramajor) {}
+  
+  public boolean accept(File paramFile, String paramString)
+  {
+    if (paramString == null) {
+      return false;
+    }
+    return paramString.startsWith("[Thumb]");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajos
  * JD-Core Version:    0.7.0.1
  */

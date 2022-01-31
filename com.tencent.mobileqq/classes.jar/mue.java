@@ -1,17 +1,23 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.biz.pubaccount.util.GalleryShareHelper;
+import com.tencent.biz.widgets.ElasticHorScrView;
 
 public class mue
-  implements TroopMemberApiClient.Callback
+  implements Runnable
 {
-  public mue(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin) {}
+  public mue(GalleryShareHelper paramGalleryShareHelper, ElasticHorScrView paramElasticHorScrView1, int paramInt1, ElasticHorScrView paramElasticHorScrView2, int paramInt2) {}
   
-  public void a(Bundle paramBundle)
+  public void run()
   {
-    if (this.a.a != null) {
-      this.a.k();
+    if (this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
     }
+    while (this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_b_of_type_Int)
+    {
+      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+      return;
+      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
+    }
+    this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
   }
 }
 

@@ -1,22 +1,17 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.FaceLayer.FaceItem;
+import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
+import com.tencent.weiyun.transmission.WeiyunTransmissionStatus;
 
-public class angx
-  implements ValueAnimator.AnimatorUpdateListener
+public final class angx
+  implements INetEventHandler
 {
-  public angx(FaceLayer.FaceItem paramFaceItem) {}
-  
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onNetChangeEvent(boolean paramBoolean)
   {
-    this.a.w = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.b.k();
+    WeiyunTransmissionStatus.getInstance().onReceiveNetChanged(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     angx
  * JD-Core Version:    0.7.0.1
  */

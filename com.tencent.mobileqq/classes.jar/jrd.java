@@ -1,27 +1,27 @@
-import com.tencent.av.SessionMgr;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.VideoAppInterface;
+import android.content.res.Resources;
+import android.widget.Button;
+import android.widget.TextView;
 import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.ui.BeautySettingUi;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.av.utils.PSTNNotification;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class jrd
   implements Runnable
 {
-  public jrd(BeautySettingUi paramBeautySettingUi) {}
+  public jrd(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
   
   public void run()
   {
-    if (this.a.a != null)
+    this.a.c.setText(this.a.getResources().getString(2131429562));
+    this.a.a.a(1);
+    this.a.a(this.a.b, false, 2130840125);
+    this.a.b.setClickable(true);
+    if (CallbackWaitingActivityExt.a(this.a) != null)
     {
-      this.a.c = AVNotifyCenter.b(this.a.a.getCurrentAccountUin());
-      this.a.d(this.a.c);
-      if (this.a.c > 0)
-      {
-        SessionInfo localSessionInfo = SessionMgr.a().a();
-        if (localSessionInfo != null) {
-          localSessionInfo.s = true;
-        }
-      }
+      CallbackWaitingActivityExt.a(this.a).a().a().b = 2;
+      CallbackWaitingActivityExt.a(this.a).a().e(true);
+      CallbackWaitingActivityExt.a(this.a).a().c(true);
     }
   }
 }

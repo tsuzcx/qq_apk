@@ -1,24 +1,13 @@
-import android.os.Handler;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
 
-public class agux
+class agux
   implements Runnable
 {
-  public agux(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
+  agux(aguw paramaguw) {}
   
   public void run()
   {
-    DanceLog.a("EffectsFragment", "playSceneEndEvent  begin exe...");
-    EffectsCameraCaptureFragment.a(this.a).setVisibility(8);
-    EffectsCameraCaptureFragment.a(this.a).setEnabled(false);
-    EffectsCameraCaptureFragment.a(this.a, 0);
-    EffectsCameraCaptureFragment.a(this.a, EffectsCameraCaptureFragment.a(this.a));
-    EffectsCameraCaptureFragment.e(this.a).setVisibility(0);
-    this.a.a.postDelayed(EffectsCameraCaptureFragment.a(this.a), 500L);
-    DanceLog.a("EffectsFragment", "playSceneEndEvent  end exe...");
+    QCallDetailActivity.b(this.a.a);
   }
 }
 

@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import aace;
+import aahf;
 import android.content.Context;
+import android.graphics.PointF;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.ar.aidl.ARScanStarFaceConfigInfo;
 import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
@@ -10,22 +11,24 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
 public class ARLocalControl
-  implements ARLocalFaceRecog.ARLocalFaceRecogCallback, ARLocalMarkerRecog.ARLocalMarkerRecogCallback
+  implements ARLocalFaceRecog.ARLocalFaceRecogCallback, ARLocalGestureCircleRecog.ARLocalGestureCircleRecogCallback, ARLocalMarkerRecog.ARLocalMarkerRecogCallback
 {
   private static final Object jdField_b_of_type_JavaLangObject = new Object();
   private long jdField_a_of_type_Long = 0L;
   ARLocalControl.ARLocalRecogCallback jdField_a_of_type_ComTencentMobileqqArArengineARLocalControl$ARLocalRecogCallback = null;
   public ARLocalFaceRecog a;
+  ARLocalGestureCircleRecog jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog = null;
   ARLocalMarkerRecog jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog = null;
   Object jdField_a_of_type_JavaLangObject = new Object();
   private boolean jdField_a_of_type_Boolean;
   private boolean jdField_b_of_type_Boolean;
   private boolean c;
+  private boolean d;
   
   private void a(Context paramContext, int paramInt1, int paramInt2, ARScanStarFaceConfigInfo paramARScanStarFaceConfigInfo)
   {
     QLog.i("AREngine_ARLocalControl", 1, "initFaceRecogAsync start.");
-    ThreadManager.postImmediately(new aace(this, paramInt1, paramInt2, paramContext, paramARScanStarFaceConfigInfo, System.currentTimeMillis()), null, true);
+    ThreadManager.postImmediately(new aahf(this, paramInt1, paramInt2, paramContext, paramARScanStarFaceConfigInfo, System.currentTimeMillis()), null, true);
   }
   
   public void a()
@@ -41,6 +44,9 @@ public class ARLocalControl
     if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog != null) {
       this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog.e();
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.c();
+    }
     this.jdField_b_of_type_Boolean = false;
     QLog.i("AREngine_ARLocalControl", 1, "stop end. mIsStarted = " + this.jdField_b_of_type_Boolean);
   }
@@ -53,6 +59,9 @@ public class ARLocalControl
     }
     if (((0x4 & paramLong) != 0L) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog != null)) {
       this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog.c();
+    }
+    if (((0x1000 & paramLong) != 0L) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.a();
     }
   }
   
@@ -72,6 +81,14 @@ public class ARLocalControl
     if ((paramArrayOfByte == null) || (!this.jdField_b_of_type_Boolean)) {}
     do
     {
+      do
+      {
+        return;
+        if (!this.d) {
+          break;
+        }
+      } while (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog == null);
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.a(paramLong, paramArrayOfByte);
       return;
       if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog != null) {
         this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog.a(paramLong, paramArrayOfByte);
@@ -80,9 +97,21 @@ public class ARLocalControl
     this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog.a(paramLong, paramArrayOfByte);
   }
   
+  public void a(PointF paramPointF, int paramInt)
+  {
+    if ((this.d) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog != null) && (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.d())) {
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.a(paramPointF, paramInt);
+    }
+  }
+  
   public void a(ARLocalFaceRecogResult paramARLocalFaceRecogResult)
   {
     a(4L, paramARLocalFaceRecogResult);
+  }
+  
+  public void a(ARLocalGestureCircleRecogResult paramARLocalGestureCircleRecogResult)
+  {
+    a(4096L, paramARLocalGestureCircleRecogResult);
   }
   
   public void a(ARLocalMarkerRecogResult paramARLocalMarkerRecogResult)
@@ -107,9 +136,14 @@ public class ARLocalControl
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog != null) && (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog.b()))
     {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog.d();
       this.jdField_b_of_type_Boolean = false;
       QLog.i("AREngine_ARLocalControl", 1, "start end. face recog start failed. mIsStarted = " + this.jdField_b_of_type_Boolean);
+      return this.jdField_b_of_type_Boolean;
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog != null) && (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.c()))
+    {
+      this.jdField_b_of_type_Boolean = false;
+      QLog.i("AREngine_ARLocalControl", 1, "start end. gesture circle recog start failed. mIsStarted = " + this.jdField_b_of_type_Boolean);
       return this.jdField_b_of_type_Boolean;
     }
     this.jdField_b_of_type_Boolean = true;
@@ -124,6 +158,9 @@ public class ARLocalControl
     }
     if (((0x4 & paramLong) != 0L) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog != null)) {
       return this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog.c();
+    }
+    if (((0x1000 & paramLong) != 0L) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog != null)) {
+      return this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.d();
     }
     return true;
   }
@@ -147,6 +184,13 @@ public class ARLocalControl
         this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog = null;
       }
     }
+    if ((this.jdField_a_of_type_Long & 0x1000) != 0L)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog = new ARLocalGestureCircleRecog();
+      if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.a(paramInt1, paramInt2, this)) {
+        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog = null;
+      }
+    }
     QLog.i("AREngine_ARLocalControl", 1, String.format("init running. marker recog end. time cost:%sms", new Object[] { Long.valueOf(System.currentTimeMillis() - paramLong) }));
     synchronized (jdField_b_of_type_JavaLangObject)
     {
@@ -157,9 +201,9 @@ public class ARLocalControl
     try
     {
       jdField_b_of_type_JavaLangObject.wait();
-      label195:
+      label239:
       QLog.i("AREngine_ARLocalControl", 1, "init running. face recog init complete.");
-      if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog != null) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog != null)) {}
+      if ((this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog != null) || (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog != null) || (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog != null)) {}
       for (this.jdField_a_of_type_Boolean = true;; this.jdField_a_of_type_Boolean = false)
       {
         this.jdField_b_of_type_Boolean = false;
@@ -168,21 +212,11 @@ public class ARLocalControl
         return this.jdField_a_of_type_Boolean;
         paramArConfigInfo = finally;
         throw paramArConfigInfo;
-        if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog.e();
-          this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog = null;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog.b();
-          this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog = null;
-        }
       }
     }
     catch (Exception paramArConfigInfo)
     {
-      break label195;
+      break label239;
     }
   }
   
@@ -202,6 +236,29 @@ public class ARLocalControl
       return false;
     }
     return this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalMarkerRecog.a(paramString1, paramString2, paramArCloudConfigInfo);
+  }
+  
+  public boolean a(boolean paramBoolean, int paramInt1, int paramInt2)
+  {
+    if (paramBoolean) {
+      if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog == null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog = new ARLocalGestureCircleRecog();
+        if (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.a(paramInt1, paramInt2, this))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog = null;
+          return false;
+        }
+        this.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.c();
+        this.jdField_b_of_type_Boolean = true;
+      }
+    }
+    for (this.jdField_a_of_type_Long |= 0x1000;; this.jdField_a_of_type_Long &= 0xFFFFEFFF)
+    {
+      this.d = paramBoolean;
+      return this.d;
+    }
   }
   
   public float[] a(int paramInt1, int paramInt2)
@@ -225,6 +282,9 @@ public class ARLocalControl
     if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog != null) {
       this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog.b();
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog != null) {
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.d();
+    }
     this.jdField_a_of_type_Boolean = false;
     QLog.i("AREngine_ARLocalControl", 1, "uninit end. mIsInited = " + this.jdField_a_of_type_Boolean);
   }
@@ -238,6 +298,9 @@ public class ARLocalControl
     if (((0x4 & paramLong) != 0L) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog != null)) {
       this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog.d();
     }
+    if (((0x1000 & paramLong) != 0L) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.b();
+    }
   }
   
   public boolean b(long paramLong)
@@ -246,6 +309,13 @@ public class ARLocalControl
       return this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalFaceRecog.d();
     }
     return true;
+  }
+  
+  public void c()
+  {
+    if ((this.d) && (this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog != null) && (!this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.d())) {
+      this.jdField_a_of_type_ComTencentMobileqqArArengineARLocalGestureCircleRecog.e();
+    }
   }
 }
 

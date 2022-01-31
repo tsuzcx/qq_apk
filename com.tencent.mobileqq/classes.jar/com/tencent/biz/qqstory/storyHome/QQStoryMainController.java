@@ -63,16 +63,16 @@ import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
 import java.util.Map;
 import mqq.os.MqqHandler;
-import nsa;
-import nsb;
-import nsc;
-import nsd;
-import nse;
-import nsf;
-import nsg;
-import nsh;
-import nsi;
-import nsj;
+import ntn;
+import nto;
+import ntp;
+import ntq;
+import ntr;
+import nts;
+import ntt;
+import ntu;
+import ntv;
+import ntw;
 
 public class QQStoryMainController
   implements QQStoryHomeJumpHelper.JumpListener, IMyStoryListView, MystoryListView.PullRefreshListener
@@ -99,7 +99,7 @@ public class QQStoryMainController
   public TakeVideoButtonMainPart a;
   public StorySimpleLoadView a;
   public QQAppInterface a;
-  private GetRedPointExObserver jdField_a_of_type_ComTencentMobileqqObserverGetRedPointExObserver = new nsg(this);
+  private GetRedPointExObserver jdField_a_of_type_ComTencentMobileqqObserverGetRedPointExObserver = new ntt(this);
   public OnItemSelectListener a;
   public boolean a;
   public int[] a;
@@ -116,8 +116,8 @@ public class QQStoryMainController
     for (boolean bool = true;; bool = false)
     {
       jdField_c_of_type_Boolean = bool;
-      jdField_b_of_type_ArrayOfInt = new int[] { 2131371687, 2131371651, 2131371686, 2131371860 };
-      jdField_c_of_type_ArrayOfInt = new int[] { 2131371687, 2131371651, 2131371686, 2131371632 };
+      jdField_b_of_type_ArrayOfInt = new int[] { 2131371857, 2131371816, 2131371856, 2131372029 };
+      jdField_c_of_type_ArrayOfInt = new int[] { 2131371857, 2131371816, 2131371856, 2131371797 };
       return;
     }
   }
@@ -125,10 +125,10 @@ public class QQStoryMainController
   public QQStoryMainController(QQStoryMainController.QQStoryMainView paramQQStoryMainView, int[] paramArrayOfInt)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeStoryHomePushYellowBarHandler = new StoryHomePushYellowBarHandler();
-    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarOnItemSelectListener = new nsi(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetNavbarOnItemSelectListener = new ntv(this);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController$QQStoryMainView = paramQQStoryMainView;
     this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    this.jdField_a_of_type_AndroidOsHandler = new nsj(this, null);
+    this.jdField_a_of_type_AndroidOsHandler = new ntw(this, null);
   }
   
   public static void a(Activity paramActivity, String paramString, ImageView paramImageView, TextView paramTextView)
@@ -147,7 +147,7 @@ public class QQStoryMainController
       }
       if (((QQStoryMainActivity.ButtonConfig)localObject1).jdField_a_of_type_Int != 0)
       {
-        Drawable localDrawable = paramActivity.getResources().getDrawable(2130843489);
+        Drawable localDrawable = paramActivity.getResources().getDrawable(2130843610);
         if ((!TextUtils.isEmpty(((QQStoryMainActivity.ButtonConfig)localObject1).jdField_a_of_type_JavaLangString)) && (HttpUtil.a(((QQStoryMainActivity.ButtonConfig)localObject1).jdField_a_of_type_JavaLangString)))
         {
           Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
@@ -156,13 +156,13 @@ public class QQStoryMainController
           ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = localDrawable;
           ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = localDrawable;
           localObject2 = URLDrawable.getDrawable(((QQStoryMainActivity.ButtonConfig)localObject1).jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2);
-          ((URLDrawable)localObject2).setURLDrawableListener(new nsa(paramImageView, localDrawable));
+          ((URLDrawable)localObject2).setURLDrawableListener(new ntn(paramImageView, localDrawable));
           paramImageView.setVisibility(0);
           paramImageView.setContentDescription("发现");
           paramImageView.setImageDrawable((Drawable)localObject2);
           paramImageView.getLayoutParams().width = -2;
           paramImageView.setPadding(0, 0, DisplayUtil.a(paramActivity, 5.0F), 0);
-          localObject1 = new nsb((QQStoryMainActivity.ButtonConfig)localObject1, paramActivity, paramString);
+          localObject1 = new nto((QQStoryMainActivity.ButtonConfig)localObject1, paramActivity, paramString);
           paramImageView.setOnClickListener((View.OnClickListener)localObject1);
           paramTextView.setOnClickListener((View.OnClickListener)localObject1);
           if (!"troopStoryHallConfig".equals(paramString)) {
@@ -195,7 +195,7 @@ public class QQStoryMainController
   
   private void o()
   {
-    ThreadManager.getUIHandler().postDelayed(new nsd(this), 500L);
+    ThreadManager.getUIHandler().postDelayed(new ntq(this), 500L);
   }
   
   private void p()
@@ -217,7 +217,7 @@ public class QQStoryMainController
     for (boolean bool1 = true;; bool1 = false)
     {
       this.jdField_a_of_type_Boolean = localFeedManager.a(bool2, bool1);
-      Bosses.get().postJob(new nse(this));
+      Bosses.get().postJob(new ntr(this));
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager = ((FeedManager)SuperManager.a(11));
       this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.jdField_a_of_type_JavaUtilMap.clear();
       return;
@@ -325,7 +325,7 @@ public class QQStoryMainController
       return;
     }
     AtVideoTextWatcher.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentStoryInputBarView.a, paramIntent);
-    ThreadManager.getUIHandler().postDelayed(new nsh(this), 100L);
+    ThreadManager.getUIHandler().postDelayed(new ntu(this), 100L);
   }
   
   public void a(Activity paramActivity)
@@ -528,7 +528,7 @@ public class QQStoryMainController
   public void d()
   {
     this.g = true;
-    ThreadManager.post(new nsc(this), 5, null, false);
+    ThreadManager.post(new ntp(this), 5, null, false);
     if (this.jdField_a_of_type_Long > 0L)
     {
       int i = this.jdField_a_of_type_AndroidAppActivity.getIntent().getIntExtra("action", 0);
@@ -597,14 +597,14 @@ public class QQStoryMainController
   {
     this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController$QQStoryMainView.a();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQQStoryMainController$QQStoryMainView.a("日迹");
-    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131371655);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTakeVideoButtonMainPart = new TakeVideoButtonMainPart(new nsf(this), this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView = ((MystoryListView)this.jdField_b_of_type_AndroidViewView.findViewById(2131371592));
+    this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView.findViewById(2131371825);
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTakeVideoButtonMainPart = new TakeVideoButtonMainPart(new nts(this), this.jdField_a_of_type_AndroidViewView);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView = ((MystoryListView)this.jdField_b_of_type_AndroidViewView.findViewById(2131371757));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.setDisableAutoRefresh(this.jdField_a_of_type_Boolean);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.a(this.jdField_a_of_type_AndroidAppActivity, this, this.jdField_a_of_type_AndroidViewView);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.setPullRefreshListener(this);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.setIsNowTab(false);
-    ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.getParent()).setBackgroundColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131494248));
+    ((ViewGroup)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewMystoryListView.getParent()).setBackgroundColor(this.jdField_a_of_type_AndroidAppActivity.getResources().getColor(2131494255));
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStorySimpleLoadView = new StorySimpleLoadView(this.jdField_a_of_type_AndroidAppActivity);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStorySimpleLoadView.setVisibility(8);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStorySimpleLoadView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));

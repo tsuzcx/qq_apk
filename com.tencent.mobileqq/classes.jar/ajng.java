@@ -1,39 +1,54 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.os.Handler;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
+import com.tencent.mobileqq.troop.data.TroopGiftBagInfo;
+import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
+import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.qphone.base.util.QLog;
 
-public final class ajng
-  extends BroadcastReceiver
+public class ajng
+  extends TroopGiftCallback
 {
-  public ajng(BaseApplicationImpl paramBaseApplicationImpl) {}
+  public ajng(AIOAnimationControlManager paramAIOAnimationControlManager, MessageForDeliverGiftTips paramMessageForDeliverGiftTips, String paramString, boolean paramBoolean) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a(int paramInt, String paramString)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    int i;
-    do
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.hasFetchButFailed = true;
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.showButton = true;
+    if ((this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {}
+    for (this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.senderName = ContactUtils.g((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.senderUin);; this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.senderName = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_ComTencentCommonAppAppInterface.getDisplayName(1, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.senderUin + ""))
     {
-      do
-      {
-        return;
-      } while (!"tencent.video.q2v.debug".equals(paramIntent.getAction()));
-      i = paramIntent.getIntExtra("_debug_Event_index", -1);
-      int j = paramIntent.getIntExtra("_debug_Event_value", -1);
-      if ((i >= 0) && (i < 9))
-      {
-        AudioHelper.a[i] = j;
-        QLog.w("AudioHelper", 1, "ReceiverDebugValue, [" + i + "]=[" + j + "]");
+      if (QLog.isColorLevel()) {
+        QLog.i(".troop.send_gift", 2, "playGiftBigAnimation getGrabBagInfo onError. errorCode:" + paramInt + " errorMsg:" + paramString);
       }
-    } while (i != 2);
-    AudioHelper.a(this.a.getApplicationContext());
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_AndroidOsHandler.post(new ajni(this));
+      return;
+    }
+  }
+  
+  public void a(TroopGiftBagInfo paramTroopGiftBagInfo)
+  {
+    if (paramTroopGiftBagInfo.myGrabResult == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.hasFetchButFailed = true;
+      this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.showButton = true;
+      if (!(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
+        break label105;
+      }
+    }
+    label105:
+    for (this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.senderName = ContactUtils.g((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, "" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.senderUin);; this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.senderName = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_ComTencentCommonAppAppInterface.getDisplayName(1, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeliverGiftTips.senderUin + ""))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.jdField_a_of_type_AndroidOsHandler.post(new ajnh(this));
+      return;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajng
  * JD-Core Version:    0.7.0.1
  */

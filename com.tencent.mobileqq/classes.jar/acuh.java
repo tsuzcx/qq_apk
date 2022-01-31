@@ -1,37 +1,19 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.mobileqq.filemanager.fileviewer.FileViewMusicService;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.MusicFilePresenter;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
+import com.tencent.mobileqq.filemanager.data.FMTransC2CMsgInfo;
 
-public class acuh
-  implements SeekBar.OnSeekBarChangeListener
+class acuh
+  implements Runnable
 {
-  public acuh(MusicFilePresenter paramMusicFilePresenter) {}
+  acuh(acuf paramacuf, byte[] paramArrayOfByte, FMTransC2CMsgInfo paramFMTransC2CMsgInfo) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      this.a.a.a(paramInt);
-      this.a.b(paramInt);
-    }
-  }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    if ((this.a.a != null) && (!this.a.a.b(MusicFilePresenter.a(this.a)))) {
-      this.a.a.d();
-    }
-  }
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    this.a.a.e();
+    this.jdField_a_of_type_Acuf.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a(this.jdField_a_of_type_Acuf.jdField_a_of_type_JavaLangString, 529, 4, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acuh
  * JD-Core Version:    0.7.0.1
  */

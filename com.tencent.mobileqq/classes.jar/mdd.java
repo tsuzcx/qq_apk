@@ -1,35 +1,24 @@
-import android.widget.RelativeLayout;
-import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyAdVideoReportData;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAppJumpManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class mdd
-  implements Runnable
+  implements AbsListView.OnScrollListener
 {
-  public mdd(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
+  public mdd(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void run()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if ((VideoFeedsPlayManager.a(this.a) != null) && ((VideoFeedsPlayManager.a(this.a).c() == 5) || (VideoFeedsPlayManager.a(this.a).c() == 2)))
-    {
-      VideoFeedsPlayManager.a(this.a).e();
-      VideoFeedsPlayManager.a(this.a, 8);
-      if ((VideoFeedsPlayManager.a(this.a) == null) || (VideoFeedsPlayManager.a(this.a).c.getVisibility() != 0)) {
-        break label118;
-      }
-      this.a.b(3);
+    if ((VideoFeedsPlayActivity.j(this.a)) && (paramInt == 1)) {
+      VideoFeedsPlayActivity.b(this.a);
     }
-    for (;;)
-    {
-      if (VideoFeedsPlayManager.d(this.a)) {
-        VideoFeedsPlayManager.a(this.a).a.f = ReadinjoyAdVideoReportData.b;
-      }
-      return;
-      label118:
-      this.a.b(4);
+    if ((VideoFeedsPlayActivity.a(this.a) != null) && (paramInt == 1)) {
+      VideoFeedsPlayActivity.a(this.a).a(1);
     }
   }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

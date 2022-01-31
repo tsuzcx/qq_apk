@@ -1,26 +1,21 @@
-import android.app.Activity;
-import android.text.TextUtils;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.AudioInfo;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
-import cooperation.troop_homework.TroopHomeworkHelper;
+import android.view.View;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
 
-public class aiwm
-  implements Runnable
+class aiwm
+  implements AdapterView.OnItemClickListener
 {
-  public aiwm(AudioItem paramAudioItem, AudioInfo paramAudioInfo) {}
+  aiwm(aiwl paramaiwl) {}
   
-  public void run()
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    String str = TroopHomeworkHelper.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.b);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelAudioInfo.b(str);
-    if (!TextUtils.isEmpty(str)) {
-      ((Activity)AudioItem.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiAudioItem)).runOnUiThread(new aiwn(this));
-    }
+    this.a.a.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiwm
  * JD-Core Version:    0.7.0.1
  */

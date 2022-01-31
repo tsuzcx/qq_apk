@@ -1,21 +1,30 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity;
-import com.tencent.mobileqq.activity.TroopRobotPickerActivity.RobotPickerData;
-import com.tencent.mobileqq.conditionsearch.CountrySelectActivity;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.utils.DBUtils;
+import java.util.List;
 
 public class uan
-  implements View.OnClickListener
+  implements Runnable
 {
-  public uan(TroopRobotPickerActivity paramTroopRobotPickerActivity) {}
+  public uan(TroopMemberListActivity paramTroopMemberListActivity, FriendsManager paramFriendsManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = new Intent(this.a, CountrySelectActivity.class);
-    paramView.putExtra("key_country_code", this.a.a.mLocationCountyCode);
-    paramView.putExtra("key_no_limit_allow", true);
-    this.a.startActivityForResult(paramView, 111);
+    Object localObject1 = DBUtils.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.v);
+    DBUtils.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.b, this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.v);
+    if ((localObject1 != null) && (this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.v);
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity)
+      {
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.a((TroopMemberInfo)localObject1, this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_JavaUtilList.add(localObject1);
+        this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(9);
+        return;
+      }
+    }
   }
 }
 

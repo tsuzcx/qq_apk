@@ -1,14 +1,15 @@
-import com.tencent.biz.qqstory.playmode.child.NewFriendsPlayMode;
-import com.tencent.biz.qqstory.storyHome.detail.model.VideoListPageLoader.GetVideoListEvent;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qqstory.playmode.child.FeedsPlayModeBase;
 
-class njp
-  implements Runnable
+public class njp
+  implements DialogInterface.OnDismissListener
 {
-  njp(njo paramnjo, NewFriendsPlayMode paramNewFriendsPlayMode, VideoListPageLoader.GetVideoListEvent paramGetVideoListEvent) {}
+  public njp(FeedsPlayModeBase paramFeedsPlayModeBase) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelVideoListPageLoader$GetVideoListEvent);
+    this.a.s();
   }
 }
 

@@ -1,23 +1,21 @@
-import com.tencent.ark.ArkEnvironmentManager.LibraryLoader;
-import com.tencent.mobileqq.ark.ArkAppCenter;
+import android.view.View;
+import com.tencent.mobileqq.arcard.ARCardPageProcess;
+import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
 
-public final class aamz
-  implements ArkEnvironmentManager.LibraryLoader
+public class aamz
+  implements Runnable
 {
-  public boolean Load()
-  {
-    ArkAppCenter.e();
-    return ArkAppCenter.b;
-  }
+  public aamz(ARGreetingCardListManager paramARGreetingCardListManager) {}
   
-  public boolean isLibraryLoad()
+  public void run()
   {
-    return ArkAppCenter.b;
+    ARGreetingCardListManager.a(this.a).setVisibility(4);
+    ARGreetingCardListManager.a(this.a).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aamz
  * JD-Core Version:    0.7.0.1
  */

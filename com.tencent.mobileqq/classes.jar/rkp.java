@@ -1,65 +1,37 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.AuthDevActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SecSvcHandler;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.activity.AgeSelectionActivity;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView;
+import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.IphonePickListener;
+import com.tencent.widget.ActionSheet;
 
 public class rkp
-  implements CompoundButton.OnCheckedChangeListener
+  implements IphonePickerView.IphonePickListener
 {
-  public rkp(AuthDevActivity paramAuthDevActivity) {}
+  public rkp(AgeSelectionActivity paramAgeSelectionActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onConfirmBtClicked()
   {
-    boolean bool = true;
-    paramBoolean = false;
-    if (paramCompoundButton == AuthDevActivity.a(this.a).a())
-    {
-      AuthDevActivity.a(this.a).setOnCheckedChangeListener(null);
-      paramCompoundButton = AuthDevActivity.a(this.a);
-      if (AuthDevActivity.a(this.a).a())
-      {
-        paramBoolean = false;
-        paramCompoundButton.setChecked(paramBoolean);
-        AuthDevActivity.a(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
-        if (NetworkUtil.d(this.a)) {
-          break label118;
-        }
-        QQToast.a(this.a, this.a.getString(2131432992), 0).b(this.a.getTitleBarHeight());
-      }
+    if ((AgeSelectionActivity.a(this.a) != null) && (AgeSelectionActivity.a(this.a).isShowing())) {
+      AgeSelectionActivity.a(this.a).dismiss();
     }
-    label118:
-    while (paramCompoundButton != AuthDevActivity.b(this.a).a())
+  }
+  
+  public void onItemSelected(int paramInt1, int paramInt2)
+  {
+    switch (paramInt1)
     {
-      do
-      {
-        for (;;)
-        {
-          return;
-          paramBoolean = true;
-        }
-        paramCompoundButton = (SecSvcHandler)this.a.app.a(34);
-      } while (paramCompoundButton == null);
-      if (!AuthDevActivity.a(this.a).a()) {}
-      for (paramBoolean = bool;; paramBoolean = false)
-      {
-        paramCompoundButton.a(paramBoolean);
-        return;
-      }
     }
-    AuthDevActivity.b(this.a).setOnCheckedChangeListener(null);
-    paramCompoundButton = AuthDevActivity.b(this.a);
-    if (AuthDevActivity.b(this.a).a()) {}
     for (;;)
     {
-      paramCompoundButton.setChecked(paramBoolean);
-      AuthDevActivity.b(this.a).setOnCheckedChangeListener(AuthDevActivity.a(this.a));
-      AuthDevActivity.a(this.a);
+      AgeSelectionActivity.a(this.a);
+      if ((AgeSelectionActivity.a(this.a) != null) && ((paramInt1 == 0) || (paramInt1 == 1))) {
+        AgeSelectionActivity.a(this.a).a(2);
+      }
       return;
-      paramBoolean = true;
+      AgeSelectionActivity.a(this.a, paramInt2);
+      continue;
+      AgeSelectionActivity.b(this.a, paramInt2);
+      continue;
+      AgeSelectionActivity.c(this.a, paramInt2);
     }
   }
 }

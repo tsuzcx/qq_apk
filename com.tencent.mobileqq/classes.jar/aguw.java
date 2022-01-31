@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
-import com.tencent.mobileqq.richmedia.capture.util.DanceGameReporter;
-import com.tencent.mobileqq.shortvideo.dancegame.DanceGameVideoManager;
+import com.tencent.mobileqq.qcall.QCallDetailActivity;
 
 public class aguw
   implements Runnable
 {
-  public aguw(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment, long paramLong) {}
+  public aguw(QCallDetailActivity paramQCallDetailActivity) {}
   
   public void run()
   {
-    DanceGameVideoManager.a().a();
-    DanceGameReporter.a().a(this.jdField_a_of_type_Long);
+    QCallDetailActivity.a(this.a);
+    this.a.runOnUiThread(new agux(this));
   }
 }
 

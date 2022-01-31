@@ -1,21 +1,27 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.MoveToGroupActivity;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
 public class acao
-  implements View.OnClickListener
+  extends acaq
 {
-  public acao(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  private float jdField_a_of_type_Float;
+  private float b;
   
-  public void onClick(View paramView)
+  public void a()
   {
-    paramView = new Intent(this.a, MoveToGroupActivity.class).putExtra("friendUin", this.a.f).putExtra("mgid", (byte)this.a.l);
-    paramView.putExtra("PARAM_EXECUTE_IMMEDIATELY", false);
-    this.a.startActivityForResult(paramView, 100);
-    ReportController.b(null, "CliOper", "", "", "0X80050F1", "0X80050F1", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.f;
+    this.b = this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.j;
+  }
+  
+  public void a(float paramFloat1, float paramFloat2)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.g != 4)
+    {
+      d();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.f = ((int)(this.b * paramFloat2 + (1.0F - paramFloat2) * this.jdField_a_of_type_Float));
+    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a.y = (this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.k - this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.f);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.a(true);
   }
 }
 

@@ -1,50 +1,40 @@
-import android.os.SystemClock;
-import android.view.MotionEvent;
+import android.animation.Animator;
+import android.animation.Animator.AnimatorListener;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.Button;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import android.view.View.OnClickListener;
 
-public class anpj
-  implements View.OnTouchListener
+public final class anpj
+  implements Animator.AnimatorListener, ValueAnimator.AnimatorUpdateListener
 {
-  public anpj(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
+  final View jdField_a_of_type_AndroidViewView;
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public anpj(View paramView, View.OnClickListener paramOnClickListener)
   {
-    if (!this.a.m) {}
-    while (((!this.a.g) && (!this.a.d)) || (paramView.getId() != 2131368941)) {
-      return false;
+    this.jdField_a_of_type_AndroidViewView = paramView;
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = paramOnClickListener;
+  }
+  
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
+  {
+    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this.jdField_a_of_type_AndroidViewView);
     }
-    switch (paramMotionEvent.getAction())
-    {
-    case 2: 
-    default: 
-      return false;
-    case 0: 
-      if (QLog.isColorLevel()) {
-        QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_DOWN, event = " + paramMotionEvent);
-      }
-      if (!this.a.b.isLongClickable()) {
-        this.a.a.d();
-      }
-      this.a.b.setText(null);
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "[@]onTouch ACTION_UP, event = " + paramMotionEvent);
-    }
-    if (this.a.a != null) {
-      this.a.a.c();
-    }
-    if (this.a.b != null) {
-      this.a.b.setText(2131438144);
-    }
-    FlowCameraActivity2.a(this.a, SystemClock.uptimeMillis());
-    FlowCameraActivity2.a(this.a);
-    return false;
+  }
+  
+  public void onAnimationRepeat(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator) {}
+  
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  {
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    this.jdField_a_of_type_AndroidViewView.setScaleX(f);
+    this.jdField_a_of_type_AndroidViewView.setScaleY(f);
   }
 }
 

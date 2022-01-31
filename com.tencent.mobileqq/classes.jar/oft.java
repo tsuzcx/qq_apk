@@ -1,15 +1,20 @@
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.qqstory.takevideo.EditVideoPermission;
 
-class oft
+public class oft
   implements Runnable
 {
-  oft(ofr paramofr) {}
+  public oft(EditVideoPermission paramEditVideoPermission) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo.b = null;
-    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo.a = true;
-    HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_Ofq.a, this.a.jdField_a_of_type_Ofq.a.a);
+    if (EditVideoPermission.a(this.a))
+    {
+      SLog.b("Q.qqstory.publish.edit.EditVideoPermission", "PermissionSettingActivity launch failed, change state to IDLE");
+      this.a.a.a(0);
+      EditVideoPermission.a(this.a, false);
+    }
   }
 }
 

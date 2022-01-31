@@ -3,7 +3,7 @@ package com.tencent.biz.qqstory.view.widget;
 import android.content.Context;
 import android.util.AttributeSet;
 import com.tencent.mobileqq.widget.MessageProgressView;
-import opa;
+import oqu;
 
 public class AutoStartProgressBar
   extends MessageProgressView
@@ -48,7 +48,7 @@ public class AutoStartProgressBar
     {
       this.e = 0;
       this.jdField_a_of_type_Boolean = false;
-      new opa(this, null).start();
+      new oqu(this, null).start();
     }
   }
   

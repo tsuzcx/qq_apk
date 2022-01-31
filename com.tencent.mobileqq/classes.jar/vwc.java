@@ -1,15 +1,15 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.PublicAccountManager.InitDoneObserver;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie;
 
 class vwc
-  implements PublicAccountManager.InitDoneObserver
+  implements Runnable
 {
   vwc(vwb paramvwb) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a.a.sendEmptyMessage(1);
+    if (!NearbyChatPie.a(this.a.a)) {
+      this.a.a.k();
+    }
   }
 }
 

@@ -96,7 +96,7 @@ public class GroupBaseNetSearchModelItem
   
   public GroupBaseNetSearchModelItem()
   {
-    this.jdField_c_of_type_Int = 2131494258;
+    this.jdField_c_of_type_Int = 2131494265;
     this.jdField_f_of_type_Int = -1;
     this.jdField_a_of_type_ArrayOfInt = new int[3];
   }
@@ -113,7 +113,7 @@ public class GroupBaseNetSearchModelItem
   
   public GroupBaseNetSearchModelItem(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, long paramLong, List paramList1, List paramList2, int paramInt)
   {
-    this.jdField_c_of_type_Int = 2131494258;
+    this.jdField_c_of_type_Int = 2131494265;
     this.jdField_f_of_type_Int = -1;
     this.jdField_a_of_type_ArrayOfInt = new int[3];
     this.jdField_a_of_type_JavaLangString = paramString1;
@@ -249,7 +249,7 @@ public class GroupBaseNetSearchModelItem
         localObject2 = localException.optString("memo");
         Object localObject1 = localObject2;
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131430411);
+          localObject1 = this.jdField_a_of_type_AndroidContentContext.getString(2131430428);
         }
         this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject1);
         continue;

@@ -1,36 +1,30 @@
-import com.tencent.biz.qqstory.comment.FeedLikeLego;
-import com.tencent.biz.qqstory.database.LikeEntry;
-import com.tencent.biz.qqstory.model.LikeManager;
-import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
-import com.tencent.biz.qqstory.storyHome.model.FeedManager;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
+import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.biz.qqstory.support.logging.SLog;
 
 public class nat
   implements Runnable
 {
-  public nat(FeedLikeLego paramFeedLikeLego, String paramString) {}
+  public nat(VideoCompositeHelper paramVideoCompositeHelper, PublishVideoEntry paramPublishVideoEntry, String paramString, boolean paramBoolean1, boolean paramBoolean2, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedManager.a(this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount > 0)
+    try
     {
-      CommentLikeFeedItem localCommentLikeFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
-      localCommentLikeFeedItem.mLikeCount -= 1;
-    }
-    int i = 0;
-    while (i < this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_JavaUtilList.size())
-    {
-      if (((LikeEntry)this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_JavaUtilList.get(i)).unionId.equals(this.jdField_a_of_type_JavaLangString))
+      try
       {
-        this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_ComTencentBizQqstoryModelLikeManager.b((LikeEntry)this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_JavaUtilList.get(i));
-        this.jdField_a_of_type_ComTencentBizQqstoryCommentFeedLikeLego.jdField_a_of_type_JavaUtilList.remove(i);
+        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper.b(this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack);
+        return;
       }
-      i += 1;
+      finally {}
+      return;
     }
-    ThreadManager.getUIHandler().post(new nau(this));
+    catch (Exception localException)
+    {
+      SLog.c(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "do composite exception", localException);
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(942012, localException.getMessage(), "");
+    }
   }
 }
 

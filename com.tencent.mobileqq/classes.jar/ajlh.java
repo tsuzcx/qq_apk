@@ -1,80 +1,39 @@
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.util.FaceDecodeTask;
-import com.tencent.mobileqq.util.FaceDecodeTask.DecodeCompletionListener;
-import java.lang.ref.WeakReference;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.model.TextInfo;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.EditItemBase.OnEditItemListener;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem;
+import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.TextItem.TextViewHolder;
+import com.tencent.qphone.base.util.QLog;
 
-public final class ajlh
-  extends MqqHandler
+public class ajlh
+  implements View.OnFocusChangeListener
 {
-  public ajlh(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ajlh(TextItem paramTextItem, TextInfo paramTextInfo, TextItem.TextViewHolder paramTextViewHolder) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (paramMessage == null) {}
-    label4:
-    FaceDecodeTask.DecodeCompletionListener localDecodeCompletionListener;
-    label143:
-    label150:
-    do
+    QLog.i("xmediaEditor", 1, "mData.position:" + this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.c + ", text:" + this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.jdField_a_of_type_JavaLangString + ",onFocusChange:" + paramBoolean);
+    if (paramBoolean)
     {
-      do
-      {
-        int i;
-        do
-        {
-          break label4;
-          do
-          {
-            return;
-          } while (paramMessage.what != FaceDecodeTask.jdField_a_of_type_Int);
-          if (FaceDecodeTask.b.size() <= 0) {
-            break label150;
-          }
-          i = 0;
-          if (i >= FaceDecodeTask.b.size()) {
-            break label143;
-          }
-          paramMessage = (FaceDecodeTask)FaceDecodeTask.b.get(i);
-          if ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-            break;
-          }
-          localDecodeCompletionListener = (FaceDecodeTask.DecodeCompletionListener)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
-        } while (localDecodeCompletionListener == null);
-        if (paramMessage.jdField_a_of_type_Boolean)
-        {
-          paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b = 2;
-          localDecodeCompletionListener.a(FaceDecodeTask.a(paramMessage), paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          localDecodeCompletionListener.a(paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
-        }
-        FaceDecodeTask.b.clear();
-        return;
-        paramMessage = (FaceDecodeTask)paramMessage.obj;
-      } while ((paramMessage == null) || (paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference == null) || (paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get() == null));
-      localDecodeCompletionListener = (FaceDecodeTask.DecodeCompletionListener)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localDecodeCompletionListener == null);
-    if (paramMessage.jdField_a_of_type_Boolean)
-    {
-      paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo.b = 2;
-      localDecodeCompletionListener.a(FaceDecodeTask.a(paramMessage), paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo);
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setCursorVisible(true);
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.a.c(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder);
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelTextInfo.jdField_a_of_type_Boolean = true;
     }
-    localDecodeCompletionListener.a(paramMessage.jdField_a_of_type_ComTencentMobileqqUtilFaceInfo, paramMessage.jdField_a_of_type_AndroidGraphicsBitmap);
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setFocusable(paramBoolean);
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setFocusableInTouchMode(paramBoolean);
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder.a.setCursorVisible(false);
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem.a.d(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiTextItem$TextViewHolder);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajlh
  * JD-Core Version:    0.7.0.1
  */

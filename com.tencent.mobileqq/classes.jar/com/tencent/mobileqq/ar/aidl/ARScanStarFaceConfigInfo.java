@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.ar.aidl;
 
+import aaem;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -12,12 +13,11 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import org.xmlpull.v1.XmlPullParser;
-import zzs;
 
 public class ARScanStarFaceConfigInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new zzs();
+  public static final Parcelable.Creator CREATOR = new aaem();
   static boolean a;
   static String b;
   public String a;

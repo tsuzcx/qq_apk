@@ -1,26 +1,20 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.message.MsgPool;
-import com.tencent.mobileqq.app.msgcache.CacheConstants;
-import com.tencent.mobileqq.app.msgcache.MsgLruCache;
-import com.tencent.mobileqq.database.corrupt.DBFixConfigActivity;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.businessCard.utilities.BusinessCardGroupLogic;
 
 public class abop
   implements View.OnClickListener
 {
-  public abop(DBFixConfigActivity paramDBFixConfigActivity, AppRuntime paramAppRuntime) {}
+  public abop(BusinessCardGroupLogic paramBusinessCardGroupLogic) {}
   
   public void onClick(View paramView)
   {
-    if (CacheConstants.a) {
-      MsgPool.a(this.jdField_a_of_type_MqqAppAppRuntime.getAccount()).a().printMsgLruCache();
-    }
+    this.a.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     abop
  * JD-Core Version:    0.7.0.1
  */

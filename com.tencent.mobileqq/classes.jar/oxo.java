@@ -1,30 +1,41 @@
-import android.view.ActionMode;
-import android.view.ActionMode.Callback;
-import android.view.Menu;
-import android.view.MenuItem;
-import com.tencent.biz.troopgift.TroopGiftPanel;
-import com.tencent.biz.troopgift.TroopGiftPanel.GiftNumInputDialog;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.biz.troop.VideoCombineHelper;
+import com.tencent.qphone.base.util.QLog;
 
 public class oxo
-  implements ActionMode.Callback
+  implements FFmpegExecuteResponseCallback
 {
-  public oxo(TroopGiftPanel.GiftNumInputDialog paramGiftNumInputDialog, TroopGiftPanel paramTroopGiftPanel) {}
+  oxo(VideoCombineHelper paramVideoCombineHelper) {}
   
-  public boolean onActionItemClicked(ActionMode paramActionMode, MenuItem paramMenuItem)
+  public void a()
   {
-    return false;
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onStart");
+    }
   }
   
-  public boolean onCreateActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public void a(String paramString)
   {
-    return false;
+    b(true);
   }
   
-  public void onDestroyActionMode(ActionMode paramActionMode) {}
+  public void a(boolean paramBoolean) {}
   
-  public boolean onPrepareActionMode(ActionMode paramActionMode, Menu paramMenu)
+  public void b(String paramString)
   {
-    return false;
+    b(false);
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onFailure" + paramString);
+    }
+  }
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c(String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onProgress" + paramString);
+    }
   }
 }
 

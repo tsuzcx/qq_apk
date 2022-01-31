@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.magicface.drawable.PngFrameManager;
-import java.util.HashMap;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
+import com.tencent.qphone.base.util.QLog;
 
-public class adqi
-  implements Runnable
+class adqi
+  implements DialogInterface.OnClickListener
 {
-  public adqi(PngFrameManager paramPngFrameManager, long paramLong) {}
+  adqi(adqh paramadqh) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameManager.a.put(Long.valueOf(this.jdField_a_of_type_Long), Boolean.valueOf(true));
+    this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView.d = false;
+    if (this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a == 1) {
+      this.a.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicPageView$MyVideoViewHolder.a(0);
+    }
+    QLog.d("HotPicManagerHotPicPageView", 2, "user click button");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adqi
  * JD-Core Version:    0.7.0.1
  */

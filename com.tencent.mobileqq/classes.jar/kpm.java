@@ -1,78 +1,111 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import android.util.Pair;
+import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
+import com.tencent.biz.pubaccount.AccountDetail.bean.DynamicInfo;
+import com.tencent.biz.pubaccount.AccountDetail.bean.MsgAttr;
+import com.tencent.biz.pubaccount.AccountDetail.bean.PictureAttr;
+import com.tencent.biz.pubaccount.AccountDetail.bean.VideoAttr;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyDisplayUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageManager;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.LinkedList;
+import java.util.List;
 
 public class kpm
-  implements BusinessObserver
+  implements Runnable
 {
-  public kpm(EqqAccountDetailActivity paramEqqAccountDetailActivity) {}
+  public kpm(AccountDetailBaseAdapter paramAccountDetailBaseAdapter, long paramLong1, List paramList, int paramInt1, int paramInt2, long paramLong2) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "success:" + String.valueOf(paramBoolean));
-    }
-    if (!paramBoolean) {
-      if (!EqqAccountDetailActivity.a(this.a)) {
-        this.a.d(2131430016);
-      }
-    }
-    for (;;)
+    if (AccountDetailBaseAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter) != this.jdField_a_of_type_Long) {}
+    label25:
+    LinkedList localLinkedList;
+    label38:
+    label80:
+    label232:
+    do
     {
-      EqqAccountDetailActivity.a(this.a);
-      if (EqqAccountDetailActivity.b(this.a) == 0) {
-        EqqAccountDetailActivity.a(this.a);
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("crmtest", 4, "receive sendCrmDetailInfoRequest, ts=" + System.currentTimeMillis());
-      }
-      return;
-      if (paramBoolean) {}
-      try
+      do
       {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle != null)
+        return;
+        int i;
+        int j;
+        if (this.jdField_a_of_type_JavaUtilList == null)
         {
-          mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
-          localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
-          if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
-          {
-            if ((this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail == null) || ((localGetEqqAccountDetailInfoResponse.seqno.has()) && (localGetEqqAccountDetailInfoResponse.seqno.get() != this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.seqno)))
-            {
-              this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse = localGetEqqAccountDetailInfoResponse;
-              paramBundle = new EqqDetail(this.a.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$GetEqqAccountDetailInfoResponse);
-              if ((EqqAccountDetailActivity.b(this.a)) && (paramBundle.followType == 1))
-              {
-                this.a.a(paramBundle, false);
-                continue;
-              }
-              this.a.a(paramBundle, true);
-              continue;
-            }
-            if ((!EqqAccountDetailActivity.c(this.a)) || (this.a.jdField_a_of_type_ComTencentMobileqqDataEqqDetail.followType != 1)) {
-              continue;
-            }
-            this.a.f();
+          i = 0;
+          localLinkedList = new LinkedList();
+          j = this.jdField_a_of_type_Int;
+          if (j >= this.jdField_a_of_type_Int + this.jdField_b_of_type_Int) {
             continue;
           }
-          this.a.d(2131430016);
-          continue;
+          if ((j < i) && (j >= 0)) {
+            break label80;
+          }
         }
-        if (EqqAccountDetailActivity.d(this.a)) {
-          continue;
+        for (;;)
+        {
+          j += 1;
+          break label38;
+          i = this.jdField_a_of_type_JavaUtilList.size();
+          break label25;
+          if (AccountDetailBaseAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter) != this.jdField_a_of_type_Long) {
+            break;
+          }
+          try
+          {
+            DynamicInfo localDynamicInfo = (DynamicInfo)this.jdField_a_of_type_JavaUtilList.get(j);
+            if (localDynamicInfo == null) {
+              continue;
+            }
+            if (localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanMsgAttr.jdField_a_of_type_Int != 2) {
+              break label232;
+            }
+            if (localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanVideoAttr == null) {
+              continue;
+            }
+            if (localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanVideoAttr.e != 1) {
+              break label201;
+            }
+            localLinkedList.add(kpz.a(new URL(localDynamicInfo.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanVideoAttr.d), ReadInJoyDisplayUtils.b()));
+          }
+          catch (Exception localException)
+          {
+            localException.printStackTrace();
+          }
+          if (AccountDetailBaseAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter) != this.jdField_a_of_type_Long)
+          {
+            return;
+            localLinkedList.add(kpz.a(new URL(localException.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanVideoAttr.jdField_a_of_type_JavaLangString), ReadInJoyDisplayUtils.a()));
+            continue;
+            if (localException.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanPictureAttr != null) {
+              if (localException.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanPictureAttr.jdField_a_of_type_Int == 1) {
+                localLinkedList.add(kpz.a(new URL(localException.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanPictureAttr.b), ReadInJoyDisplayUtils.b()));
+              } else {
+                localLinkedList.add(kpz.a(new URL(localException.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBeanPictureAttr.jdField_a_of_type_JavaLangString), ReadInJoyDisplayUtils.a()));
+              }
+            }
+          }
         }
-        this.a.d(2131430016);
+      } while (AccountDetailBaseAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailAdapterAccountDetailBaseAdapter) != this.jdField_a_of_type_Long);
+      Iterator localIterator = localLinkedList.iterator();
+      while (localIterator.hasNext())
+      {
+        kpz localkpz = (kpz)localIterator.next();
+        if ((localkpz != null) && (localkpz.jdField_a_of_type_JavaNetURL != null))
+        {
+          ImageRequest localImageRequest = new ImageRequest();
+          localImageRequest.jdField_a_of_type_JavaNetURL = localkpz.jdField_a_of_type_JavaNetURL;
+          localImageRequest.jdField_a_of_type_Int = ((Integer)localkpz.jdField_a_of_type_AndroidUtilPair.first).intValue();
+          localImageRequest.jdField_b_of_type_Int = ((Integer)localkpz.jdField_a_of_type_AndroidUtilPair.second).intValue();
+          ImageManager.a().a(localImageRequest, null);
+        }
       }
-      catch (Exception paramBundle) {}
-      if (!EqqAccountDetailActivity.e(this.a)) {
-        this.a.d(2131430016);
-      }
-    }
+    } while (!QLog.isColorLevel());
+    label201:
+    QLog.d("AccountDetailBaseAdapter", 2, "preloadImg size:" + localLinkedList.size() + " cost:" + (System.currentTimeMillis() - this.jdField_b_of_type_Long));
   }
 }
 

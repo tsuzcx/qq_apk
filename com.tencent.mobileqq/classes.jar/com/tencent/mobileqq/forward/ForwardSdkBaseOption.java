@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.forward;
 
-import adbe;
-import adbf;
-import adbg;
-import adbh;
-import adbi;
-import adbj;
-import adbk;
-import adbn;
-import adbo;
-import adbp;
-import adbs;
-import adbt;
+import adld;
+import adle;
+import adlf;
+import adlg;
+import adlh;
+import adli;
+import adlj;
+import adlm;
+import adln;
+import adlo;
+import adlr;
+import adls;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -64,9 +64,9 @@ public abstract class ForwardSdkBaseOption
   implements ReportDef
 {
   public static final Object a;
-  adbs jdField_a_of_type_Adbs = new adbs(this);
-  public adbt a;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new adbe(this);
+  adlr jdField_a_of_type_Adlr = new adlr(this);
+  public adls a;
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new adld(this);
   public Handler a;
   public AbsShareMsg a;
   public GetAppInfoProto.GetAppinfoResponse a;
@@ -98,8 +98,8 @@ public abstract class ForwardSdkBaseOption
   public ForwardSdkBaseOption(Intent paramIntent)
   {
     super(paramIntent);
-    this.jdField_a_of_type_MqqObserverBusinessObserver = new adbk(this);
-    this.jdField_b_of_type_AndroidOsHandler = new adbn(this);
+    this.jdField_a_of_type_MqqObserverBusinessObserver = new adlj(this);
+    this.jdField_b_of_type_AndroidOsHandler = new adlm(this);
   }
   
   private void A()
@@ -111,7 +111,7 @@ public abstract class ForwardSdkBaseOption
     if (TextUtils.isEmpty(str)) {
       return;
     }
-    ThreadManager.post(new adbj(this, str), 8, null, true);
+    ThreadManager.post(new adli(this, str), 8, null, true);
   }
   
   private void B()
@@ -440,7 +440,7 @@ public abstract class ForwardSdkBaseOption
       A();
       return;
     }
-    ThreadManager.post(new adbi(this, str1, str2, str3, str5, str4), 5, null, false);
+    ThreadManager.post(new adlh(this, str1, str2, str3, str5, str4), 5, null, false);
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -455,17 +455,17 @@ public abstract class ForwardSdkBaseOption
     if (this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog == null)
     {
       this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog = new ShareResultDialog(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.a(new adbf(this));
+      this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.a(new adle(this));
     }
     for (;;)
     {
-      String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131433681);
+      String str = this.jdField_a_of_type_AndroidAppActivity.getString(2131433698);
       Object localObject = str;
       if (!TextUtils.isEmpty(this.jdField_a_of_type_AndroidOsBundle.getString("app_name"))) {
         localObject = str + this.jdField_a_of_type_AndroidOsBundle.getString("app_name");
       }
       this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.a((String)localObject, c());
-      this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.a(2131429898);
+      this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.a(2131429904);
       localObject = this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog;
       boolean bool;
       if (paramInt1 == 0)
@@ -495,10 +495,10 @@ public abstract class ForwardSdkBaseOption
         }
         for (;;)
         {
-          this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.b(this.jdField_a_of_type_AndroidAppActivity.getString(2131433332), c());
+          this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.b(this.jdField_a_of_type_AndroidAppActivity.getString(2131433349), c());
           break;
           if (paramInt1 == 1003) {
-            this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.a(2131430140);
+            this.jdField_a_of_type_ComTencentBizWidgetsShareResultDialog.a(2131430157);
           } else if (paramInt1 == 1004)
           {
             if (QLog.isColorLevel()) {
@@ -609,7 +609,7 @@ public abstract class ForwardSdkBaseOption
           break label717;
         }
         QLog.d("ForwardOption.ForwardSdkBaseOption", 2, "-->sdk_share, getting appinfo in construct. sign: " + (String)localObject2);
-        a(2131434114);
+        a(2131434131);
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.setCancelable(false);
         Share.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), l3, (String)localObject2, l1, l2, this.jdField_a_of_type_MqqObserverBusinessObserver);
         for (;;)
@@ -620,13 +620,13 @@ public abstract class ForwardSdkBaseOption
           if ((this instanceof ForwardSdkShareOption))
           {
             localObject3 = this.jdField_a_of_type_AndroidOsBundle.getString("app_name");
-            localObject4 = DialogUtil.b(this.jdField_a_of_type_AndroidAppActivity, 230).setTitle(this.jdField_a_of_type_AndroidAppActivity.getString(2131435572)).setMessage(2131435573).setPositiveButton(2131430133, new adbh(this));
-            localObject5 = new StringBuilder().append(this.jdField_a_of_type_AndroidAppActivity.getString(2131433681));
+            localObject4 = DialogUtil.b(this.jdField_a_of_type_AndroidAppActivity, 230).setTitle(this.jdField_a_of_type_AndroidAppActivity.getString(2131435589)).setMessage(2131435590).setPositiveButton(2131430150, new adlg(this));
+            localObject5 = new StringBuilder().append(this.jdField_a_of_type_AndroidAppActivity.getString(2131433698));
             localObject2 = localObject3;
             if (TextUtils.isEmpty((CharSequence)localObject3)) {
               localObject2 = "";
             }
-            localObject2 = ((QQCustomDialog)localObject4).setNegativeButton((String)localObject2, new adbg(this));
+            localObject2 = ((QQCustomDialog)localObject4).setNegativeButton((String)localObject2, new adlf(this));
             ((Dialog)localObject2).setCancelable(false);
             ((Dialog)localObject2).show();
           }
@@ -801,7 +801,7 @@ public abstract class ForwardSdkBaseOption
     if (QLog.isColorLevel()) {
       QLog.d("ForwardOption.ForwardSdkBaseOption", 2, "-->getQQAccountSKey--send g_t_n_p, account = " + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.ssoGetTicketNoPasswd(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4096, this.jdField_a_of_type_Adbs);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.ssoGetTicketNoPasswd(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 4096, this.jdField_a_of_type_Adlr);
   }
   
   void y()
@@ -826,12 +826,12 @@ public abstract class ForwardSdkBaseOption
         C();
         return;
       }
-      a(2131430139);
-      ThreadManager.post(new adbo(this, (String)localObject), 8, null, false);
+      a(2131430156);
+      ThreadManager.post(new adln(this, (String)localObject), 8, null, false);
       return;
     }
-    a(2131430139);
-    Object localObject = new adbp(this);
+    a(2131430156);
+    Object localObject = new adlo(this);
     if (QLog.isDevelopLevel()) {
       QLog.d("ForwardOption.ForwardSdkBaseOption", 4, "ThreadManager.post asyncUploadImageAndSendToBuddy");
     }

@@ -1,20 +1,16 @@
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.newshare.job.AddInteractViewJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareQQData;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.widget.ListView;
 
 public class nfh
-  extends AddInteractViewJob
+  implements Runnable
 {
-  public nfh(ShareModeBase paramShareModeBase, StoryVideoItem paramStoryVideoItem, ShareQQData paramShareQQData)
-  {
-    super(paramStoryVideoItem);
-  }
+  public nfh(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
   
-  public boolean b()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareQQData.a = ((String)a("result"));
-    return true;
+    if (this.a.a.getFirstVisiblePosition() != this.a.a.getHeaderViewsCount()) {
+      this.a.a.setSelection(this.a.a.getHeaderViewsCount());
+    }
   }
 }
 

@@ -47,10 +47,10 @@ import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 import java.util.regex.Pattern;
-import kmq;
-import kmr;
-import kms;
-import kmt;
+import kmb;
+import kmc;
+import kmd;
+import kme;
 import mqq.app.NewIntent;
 import mqq.manager.Manager;
 import mqq.manager.TicketManager;
@@ -87,7 +87,7 @@ public class CrmUtils
       if ((paramQQAppInterface == null) || (paramQQAppInterface.certifiedGrade <= 0)) {
         break label84;
       }
-      i = 2130839745;
+      i = 2130839751;
     }
     for (;;)
     {
@@ -96,7 +96,7 @@ public class CrmUtils
       i = j;
       if (((PublicAccountInfo)localObject).certifiedGrade > 0L)
       {
-        return 2130839745;
+        return 2130839751;
         label84:
         i = 0;
       }
@@ -361,9 +361,9 @@ public class CrmUtils
       if ((VcSystemInfo.c()) && (VcSystemInfo.d()))
       {
         ActionSheet localActionSheet = ActionSheet.a(paramContext);
-        localActionSheet.b(2131433811);
-        localActionSheet.c(2131432998);
-        localActionSheet.a(new kmt(localActionSheet, paramQQAppInterface, paramContext, paramSessionInfo));
+        localActionSheet.b(2131433828);
+        localActionSheet.c(2131433015);
+        localActionSheet.a(new kme(localActionSheet, paramQQAppInterface, paramContext, paramSessionInfo));
         localActionSheet.show();
         return;
       }
@@ -422,14 +422,14 @@ public class CrmUtils
         localGetEqqDetailInfoRequest.eqq_id.set((int)Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString));
         label280:
         ((NewIntent)localObject).putExtra("data", localGetEqqDetailInfoRequest.toByteArray());
-        ((NewIntent)localObject).setObserver(new kmr(paramContext, paramQQAppInterface, localQQProgressDialog, paramSessionInfo, paramString));
+        ((NewIntent)localObject).setObserver(new kmc(paramContext, paramQQAppInterface, localQQProgressDialog, paramSessionInfo, paramString));
         paramQQAppInterface.startServlet((NewIntent)localObject);
         try
         {
           if ((!(paramContext instanceof Activity)) || (((Activity)paramContext).isFinishing())) {
             continue;
           }
-          a(2131430012, localQQProgressDialog);
+          a(2131430029, localQQProgressDialog);
           return;
         }
         catch (Exception paramQQAppInterface)
@@ -438,12 +438,12 @@ public class CrmUtils
         }
         b(paramQQAppInterface, paramContext, paramSessionInfo, null, (EqqDetail)localObject, paramString);
         return;
-        a(paramContext, 2131430016);
+        a(paramContext, 2131430033);
         ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
         return;
         b(paramQQAppInterface, paramContext, paramSessionInfo, (PublicAccountInfo)localObject, null, paramString);
         return;
-        a(paramContext, 2131430016);
+        a(paramContext, 2131430033);
         ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X80049DF", "GetDetailFalse", 0, 0, "", "", "", "");
         return;
       }
@@ -510,7 +510,7 @@ public class CrmUtils
   
   public static void a(QQAppInterface paramQQAppInterface, EqqDetail paramEqqDetail)
   {
-    ThreadManager.getFileThreadHandler().post(new kmq(paramQQAppInterface, paramEqqDetail));
+    ThreadManager.getFileThreadHandler().post(new kmb(paramQQAppInterface, paramEqqDetail));
   }
   
   public static boolean a()
@@ -724,13 +724,13 @@ public class CrmUtils
         localFollowRequest.uin.set((int)Long.parseLong(paramEqqDetail.uin));
         localFollowRequest.account_type.set(2);
         localNewIntent.putExtra("data", localFollowRequest.toByteArray());
-        localNewIntent.setObserver(new kms(paramContext, paramQQAppInterface, paramPublicAccountInfo, paramEqqDetail, paramSessionInfo, paramString));
+        localNewIntent.setObserver(new kmd(paramContext, paramQQAppInterface, paramPublicAccountInfo, paramEqqDetail, paramSessionInfo, paramString));
         paramQQAppInterface.startServlet(localNewIntent);
       }
       try
       {
         if (((paramContext instanceof Activity)) && (!((Activity)paramContext).isFinishing())) {
-          a(2131430012, paramPublicAccountInfo);
+          a(2131430029, paramPublicAccountInfo);
         }
         label257:
         if (QLog.isColorLevel()) {
@@ -770,7 +770,7 @@ public class CrmUtils
     if (localObject == null) {}
     for (localObject = null; (localObject == null) || (((String)localObject).length() == 0); localObject = ((TicketManager)localObject).getStweb(paramQQAppInterface.getCurrentAccountUin()))
     {
-      new QQToastNotifier(paramContext).a(2131435778, paramContext.getResources().getDimensionPixelSize(2131558448), 0, 1);
+      new QQToastNotifier(paramContext).a(2131435795, paramContext.getResources().getDimensionPixelSize(2131558448), 0, 1);
       return;
     }
     paramString1 = String.format("http://ptlogin2.qq.com/qidian_client?pt_clientver=5428&pt_src=1&clientuin=%s&clientkey=%s&keyindex=19&jump=30&kfuin=%s&kfext=%s&buildver=1.0.0.0&inter=1&_wv=1027", new Object[] { paramQQAppInterface.getCurrentAccountUin(), localObject, paramString1, paramString2 });

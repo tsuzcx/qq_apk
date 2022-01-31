@@ -1,53 +1,24 @@
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.PublicAccountManager;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.MessageForPubAccount;
-import com.tencent.mobileqq.data.MessageForStructing;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.mobileqq.activity.aio.rebuild.HotChatPie;
+import com.tencent.mobileqq.adapter.HotChatPostListAdapter;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.widget.XListView;
 
 public class vvg
-  implements Runnable
+  implements AbsListView.OnScrollListener
 {
-  public vvg(PublicAccountChatPie paramPublicAccountChatPie) {}
+  public vvg(HotChatPie paramHotChatPie) {}
   
-  public void run()
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    if (PublicAccountManager.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString) != 0L) {}
-    for (;;)
+    if ((paramInt == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXListView != null) && (this.a.jdField_a_of_type_ComTencentWidgetXListView.getLastVisiblePosition() == this.a.jdField_a_of_type_ComTencentWidgetXListView.getCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter.a() != 0) && (this.a.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter.a()))
     {
-      return;
-      Object localObject1 = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
-      if ((localObject1 != null) && (((List)localObject1).size() > 0))
-      {
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          Object localObject2 = (ChatMessage)((Iterator)localObject1).next();
-          if (((localObject2 instanceof MessageForStructing)) || ((localObject2 instanceof MessageForPubAccount)))
-          {
-            localObject2 = ((ChatMessage)localObject2).getExtInfoFromExtStr("pa_msgId");
-            if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-              try
-              {
-                long l = Long.parseLong((String)localObject2);
-                if (l > 0L)
-                {
-                  PublicAccountManager.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, l);
-                  return;
-                }
-              }
-              catch (Exception localException) {}
-            }
-          }
-        }
-      }
+      this.a.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter.b();
+      HotChatPie.a(this.a, this.a.jdField_a_of_type_ComTencentMobileqqAdapterHotChatPostListAdapter.a(), 10);
     }
   }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

@@ -1,31 +1,19 @@
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class anhi
-  extends anhm
+public final class anhi
+  implements Runnable
 {
-  public anhi(DoodleEmojiManager paramDoodleEmojiManager, DoodleEmojiItem paramDoodleEmojiItem)
-  {
-    super(paramDoodleEmojiItem);
-  }
+  public anhi(QQAppInterface paramQQAppInterface, int paramInt) {}
   
-  protected void a(@Nullable DoodleEmojiItem arg1)
+  public void run()
   {
-    super.onResult(???);
-    SLog.b("DoodleEmojiManager", "startDownload again");
-    synchronized (this.a.jdField_a_of_type_JavaLangObject)
-    {
-      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleModelDoodleEmojiItem = null;
-      this.a.c();
-      return;
-    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), 2131428195, 0).b(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhi
  * JD-Core Version:    0.7.0.1
  */

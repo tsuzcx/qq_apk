@@ -1,19 +1,15 @@
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import java.io.File;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
 
-public class anyf
+class anyf
   implements Runnable
 {
-  public anyf(PtvTemplateManager paramPtvTemplateManager, String paramString) {}
+  anyf(anyd paramanyd) {}
   
   public void run()
   {
-    FileUtils.a(PtvTemplateManager.b.getPath() + File.separator, "dov_doodle_template_new.cfg", this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.i("DOV_Doodle_Strokes_PtvTemplateManager", 2, "save Config to file finish.");
-    }
+    this.a.a.a.a(this.a.a.a(), this.a.a.b());
+    this.a.a.a.a(true);
   }
 }
 

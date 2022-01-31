@@ -1,19 +1,23 @@
-import cooperation.weiyun.channel.HttpChannel;
-import org.json.JSONObject;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.CrashGuard;
+import cooperation.qzone.LocalMultiProcConfig;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class amrf
+public class amrf
   implements Runnable
 {
-  public amrf(String paramString, JSONObject paramJSONObject) {}
+  public amrf(CrashGuard paramCrashGuard, long paramLong) {}
   
   public void run()
   {
-    HttpChannel.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_OrgJsonJSONObject);
+    this.jdField_a_of_type_CooperationQzoneCrashGuard.isTimeOvered.set(true);
+    QLog.i("QZLog", 1, "clear crash count with no crash");
+    LocalMultiProcConfig.putInt4Uin("key_crash_count", 0, this.jdField_a_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amrf
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,14 @@
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.model.QueryCallback;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
-class rqj
-  implements QueryCallback
+public class rqj
+  implements Runnable
 {
-  rqj(rqi paramrqi, int paramInt1, int paramInt2, String paramString) {}
+  public rqj(BaseChatPie paramBaseChatPie, int paramInt) {}
   
-  public void a(Emoticon paramEmoticon)
+  public void run()
   {
-    MarketFaceItemBuilder.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_Rqi.a.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Rqi.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramEmoticon, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Rqi.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.setSelection(this.jdField_a_of_type_Int);
   }
 }
 

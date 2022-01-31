@@ -1,28 +1,31 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.QQBroadcastActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.PermisionPrivacyActivity;
+import com.tencent.mobileqq.app.LBSObserver;
+import com.tencent.qphone.base.util.QLog;
 
-class tfd
-  implements DialogInterface.OnClickListener
+public class tfd
+  extends LBSObserver
 {
-  tfd(tfc paramtfc) {}
+  public tfd(PermisionPrivacyActivity paramPermisionPrivacyActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void a(boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
-    switch (paramInt)
-    {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateGetSwitch| isSuc = " + paramBoolean1 + ", userType = " + paramInt + ", curSwitch = " + paramBoolean2);
     }
-    do
-    {
-      return;
-      this.a.jdField_a_of_type_Tfb.a.app.a().b(this.a.jdField_a_of_type_Tfb.a.a(), 0, this.a.jdField_a_of_type_Long);
-      this.a.jdField_a_of_type_Tfb.a.b();
-      return;
-    } while (this.a.jdField_a_of_type_Tfb.a.jdField_a_of_type_Tfb.getCount() <= 0);
-    this.a.jdField_a_of_type_Tfb.a.app.a().a(this.a.jdField_a_of_type_Tfb.a.a(), 0);
-    this.a.jdField_a_of_type_Tfb.a.jdField_a_of_type_Tfb.changeCursor(this.a.jdField_a_of_type_Tfb.getCursor());
+    if ((paramBoolean1) && (paramInt == 64)) {
+      this.a.a(paramBoolean2);
+    }
+  }
+  
+  protected void a(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.security", 2, "onUpdateSetShareStatus| isSuc = " + paramBoolean1 + ", beShare = " + paramBoolean2);
+    }
+    if (!paramBoolean1) {
+      this.a.a(2131436066, 1);
+    }
+    this.a.a(paramBoolean2);
   }
 }
 

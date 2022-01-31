@@ -1,18 +1,27 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.ar.arengine.QRRecognizerController;
 
-class aaiv
-  implements ArkAppCenter.OnGetAppIcon
+public class aaiv
+  extends Handler
 {
-  aaiv(aaiu paramaaiu, QQCustomDialog paramQQCustomDialog) {}
-  
-  public void a(String paramString, Bitmap paramBitmap)
+  public aaiv(QRRecognizerController paramQRRecognizerController, Looper paramLooper)
   {
-    if (paramBitmap != null) {
-      ((ImageView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364017)).setImageBitmap(paramBitmap);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    case 100: 
+      QRRecognizerController.a(this.a);
+      return;
     }
+    QRRecognizerController.b(this.a);
   }
 }
 

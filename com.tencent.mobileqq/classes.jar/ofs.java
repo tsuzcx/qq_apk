@@ -1,26 +1,16 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditVideoFilter;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.takevideo.EditVideoArtFilter;
 import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
 
-class ofs
+public class ofs
   implements Runnable
 {
-  ofs(ofr paramofr) {}
+  public ofs(EditVideoPartManager paramEditVideoPartManager) {}
   
   public void run()
   {
-    HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_Ofq.a, null);
-    if (!HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_Ofq.a))
-    {
-      SLog.d("Q.qqstory.record.HWEditLocalVideoPlayer", "Convert video finished but player not displayed.");
-      return;
-    }
-    if ((this.a.jdField_a_of_type_Ofq.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a != null) && (this.a.jdField_a_of_type_Ofq.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.b() == 3) && (this.a.jdField_a_of_type_Ofq.c == this.a.jdField_a_of_type_Ofq.a.jdField_a_of_type_Int)) {
-      HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_Ofq.a, this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoHWEditLocalVideoPlayer$Mp4VideoFragmentInfo);
-    }
-    HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_Ofq.a);
-    HWEditLocalVideoPlayer.a(this.a.jdField_a_of_type_Ofq.a, this.a.jdField_a_of_type_Ofq.a.jdField_a_of_type_Int);
+    Bitmap localBitmap = this.a.a();
+    this.a.a.a(localBitmap);
   }
 }
 

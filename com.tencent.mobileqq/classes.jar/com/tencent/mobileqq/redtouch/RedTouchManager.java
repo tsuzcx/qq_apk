@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.redtouch;
 
-import agrl;
-import agrm;
-import agrn;
-import agro;
-import agrp;
+import ahfn;
+import ahfo;
+import ahfp;
+import ahfq;
+import ahfr;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -72,7 +72,7 @@ public class RedTouchManager
 {
   protected long a;
   public AppInterface a;
-  private BusinessObserver jdField_a_of_type_ComTencentMobileqqAppBusinessObserver = new agrp(this);
+  private BusinessObserver jdField_a_of_type_ComTencentMobileqqAppBusinessObserver = new ahfr(this);
   protected BusinessInfoCheckUpdate.TimeRspBody a;
   Object jdField_a_of_type_JavaLangObject = new Object();
   protected String a;
@@ -237,18 +237,21 @@ public class RedTouchManager
   {
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("7.6.0.3525");
+    localReportReqBody.clientver.set("7.6.3.3560");
     localReportReqBody.platid.set(109);
     localReportReqBody.appid.set(a(paramAppInfo.path.get()));
     localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");
     localReportReqBody.cmd.set(paramInt);
-    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-      localReportReqBody.bHebaFlag.set(false);
+    if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface))
+    {
+      if (((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface).q) {
+        localReportReqBody.bHebaFlag.set(true);
+      }
     }
-    if (paramBoolean)
+    else if (paramBoolean)
     {
       if ((paramList == null) || (paramList.size() <= 0)) {
-        break label175;
+        break label200;
       }
       localReportReqBody.missionid.set(paramList);
     }
@@ -258,7 +261,9 @@ public class RedTouchManager
       paramAppInfo.putWupBuffer(localReportReqBody.toByteArray());
       a(paramAppInfo);
       return;
-      label175:
+      localReportReqBody.bHebaFlag.set(false);
+      break;
+      label200:
       if (paramAppInfo.missions.has()) {
         localReportReqBody.missionid.set(paramAppInfo.missions.get());
       }
@@ -271,7 +276,7 @@ public class RedTouchManager
     {
       BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
       localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-      localReportReqBody.clientver.set("7.6.0.3525");
+      localReportReqBody.clientver.set("7.6.3.3560");
       localReportReqBody.platid.set(109);
       localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");
       localReportReqBody.buffer.set(paramJSONObject.toString());
@@ -318,7 +323,7 @@ public class RedTouchManager
   {
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("7.6.0.3525");
+    localReportReqBody.clientver.set("7.6.3.3560");
     localReportReqBody.platid.set(109);
     localReportReqBody.appid.set(a(paramString));
     localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");
@@ -368,8 +373,8 @@ public class RedTouchManager
   
   private boolean a(String paramString1, String paramString2)
   {
-    if ((a(paramString1, "7.6.0") == 1) && (!paramString1.equals("0"))) {}
-    while ((a("7.6.0", paramString2) == -1) && (!paramString2.equals("0"))) {
+    if ((a(paramString1, "7.6.3") == 1) && (!paramString1.equals("0"))) {}
+    while ((a("7.6.3", paramString2) == -1) && (!paramString2.equals("0"))) {
       return false;
     }
     return true;
@@ -434,7 +439,7 @@ public class RedTouchManager
   {
     if (Looper.myLooper() == Looper.getMainLooper())
     {
-      ThreadManager.post(new agrn(this, paramAppInfo, paramInt, paramBoolean, paramList), 2, null, true);
+      ThreadManager.post(new ahfp(this, paramAppInfo, paramInt, paramBoolean, paramList), 2, null, true);
       return;
     }
     a(paramAppInfo, paramInt, paramBoolean, paramList);
@@ -782,7 +787,7 @@ public class RedTouchManager
       }
       if (Looper.getMainLooper() == Looper.myLooper())
       {
-        ThreadManager.post(new agrl(this), 5, null, true);
+        ThreadManager.post(new ahfn(this), 5, null, true);
         return null;
       }
     }
@@ -1136,7 +1141,7 @@ public class RedTouchManager
   {
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("7.6.0.3525");
+    localReportReqBody.clientver.set("7.6.3.3560");
     localReportReqBody.platid.set(109);
     localReportReqBody.appid.set(paramInt2);
     localReportReqBody.platver.set(Build.VERSION.SDK_INT + "");
@@ -1211,7 +1216,7 @@ public class RedTouchManager
       QLog.e("residenceReport", 2, "residenceReport time = " + paramLong + ";path = " + this.jdField_a_of_type_JavaLangString);
     }
     this.jdField_a_of_type_JavaLangString = null;
-    ThreadManager.post(new agrm(this, localAppInfo, paramLong), 2, null, true);
+    ThreadManager.post(new ahfo(this, localAppInfo, paramLong), 2, null, true);
   }
   
   public void a(RedTouchManager.BannerInfoHandler paramBannerInfoHandler)
@@ -1361,7 +1366,7 @@ public class RedTouchManager
             }
           }
         }
-        ThreadManager.post(new agro(this, localTimeRspBody), 8, null, true);
+        ThreadManager.post(new ahfq(this, localTimeRspBody), 8, null, true);
         return;
       }
       catch (Exception paramString)
@@ -1402,7 +1407,7 @@ public class RedTouchManager
     //   13: iconst_0
     //   14: ireturn
     //   15: aload_0
-    //   16: invokevirtual 510	com/tencent/mobileqq/redtouch/RedTouchManager:a	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$TimeRspBody;
+    //   16: invokevirtual 513	com/tencent/mobileqq/redtouch/RedTouchManager:a	()Lcom/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$TimeRspBody;
     //   19: astore 4
     //   21: aload 4
     //   23: ifnonnull +7 -> 30
@@ -1411,29 +1416,29 @@ public class RedTouchManager
     //   28: iconst_1
     //   29: ireturn
     //   30: aload 4
-    //   32: getfield 883	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$TimeRspBody:rptMsgNumRedInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
-    //   35: invokevirtual 387	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
+    //   32: getfield 886	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$TimeRspBody:rptMsgNumRedInfo	Lcom/tencent/mobileqq/pb/PBRepeatMessageField;
+    //   35: invokevirtual 390	com/tencent/mobileqq/pb/PBRepeatMessageField:get	()Ljava/util/List;
     //   38: astore 4
     //   40: aload 4
     //   42: ifnull +66 -> 108
     //   45: aload 4
-    //   47: invokeinterface 454 1 0
+    //   47: invokeinterface 457 1 0
     //   52: astore 4
     //   54: aload 4
-    //   56: invokeinterface 459 1 0
+    //   56: invokeinterface 462 1 0
     //   61: ifeq +47 -> 108
     //   64: aload 4
-    //   66: invokeinterface 463 1 0
-    //   71: checkcast 885	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$NumRedInfo
+    //   66: invokeinterface 466 1 0
+    //   71: checkcast 888	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$NumRedInfo
     //   74: astore 5
     //   76: aload 5
-    //   78: getfield 886	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$NumRedInfo:appid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   78: getfield 889	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$NumRedInfo:appid	Lcom/tencent/mobileqq/pb/PBUInt32Field;
     //   81: invokevirtual 89	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
     //   84: iload_1
     //   85: if_icmpne -31 -> 54
     //   88: aload 5
-    //   90: getfield 889	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$NumRedInfo:flag	Lcom/tencent/mobileqq/pb/PBBoolField;
-    //   93: invokevirtual 447	com/tencent/mobileqq/pb/PBBoolField:get	()Z
+    //   90: getfield 892	com/tencent/pb/getbusiinfo/BusinessInfoCheckUpdate$NumRedInfo:flag	Lcom/tencent/mobileqq/pb/PBBoolField;
+    //   93: invokevirtual 450	com/tencent/mobileqq/pb/PBBoolField:get	()Z
     //   96: istore_2
     //   97: aload_3
     //   98: monitorexit
@@ -1498,9 +1503,9 @@ public class RedTouchManager
       QLog.e("RedPointManage", 2, "parsePushRedTouchInfo start");
     }
     if (paramArrayOfByte != null) {}
-    label911:
-    label921:
-    label923:
+    label927:
+    label937:
+    label939:
     for (;;)
     {
       try
@@ -1509,38 +1514,46 @@ public class RedTouchManager
         ((Submsgtype0x71.MsgBody)localObject1).mergeFrom(paramArrayOfByte);
         Object localObject3 = ((Submsgtype0x71.MsgBody)localObject1).rpt_msg_app_info.get();
         if (localObject3 == null) {
-          break label921;
+          break label937;
         }
         if (((List)localObject3).size() < 1) {
           return false;
         }
         if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
-          break label921;
+          break label937;
         }
         if (!(this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-          break label911;
+          break label927;
         }
         paramArrayOfByte = (QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface;
         if (paramArrayOfByte == null) {
-          break label921;
+          break label937;
         }
         paramArrayOfByte.getEntityManagerFactory().createEntityManager();
-        localObject1 = RedpointHandler.a(paramArrayOfByte);
-        localObject2 = ((List)localObject3).iterator();
-        if (((Iterator)localObject2).hasNext())
+        if (paramArrayOfByte.q)
         {
-          localObject4 = (Submsgtype0x71.ReportAppInfo)((Iterator)localObject2).next();
-          if (3 == ((Submsgtype0x71.ReportAppInfo)localObject4).int32_appset.get()) {
-            continue;
+          localObject1 = RedpointHandler.b(paramArrayOfByte);
+          localObject2 = ((List)localObject3).iterator();
+          if (((Iterator)localObject2).hasNext())
+          {
+            localObject4 = (Submsgtype0x71.ReportAppInfo)((Iterator)localObject2).next();
+            if (3 == ((Submsgtype0x71.ReportAppInfo)localObject4).int32_appset.get()) {
+              continue;
+            }
+            localObject4 = ((Submsgtype0x71.ReportAppInfo)localObject4).str_android_path.get();
+            if (TextUtils.isEmpty((CharSequence)localObject4)) {
+              break label937;
+            }
+            if (a((List)localObject1, (String)localObject4)) {
+              continue;
+            }
+            return false;
           }
-          localObject4 = ((Submsgtype0x71.ReportAppInfo)localObject4).str_android_path.get();
-          if (TextUtils.isEmpty((CharSequence)localObject4)) {
-            break label921;
-          }
-          if (a((List)localObject1, (String)localObject4)) {
-            continue;
-          }
-          return false;
+        }
+        else
+        {
+          localObject1 = RedpointHandler.a(paramArrayOfByte);
+          continue;
         }
         localObject2 = new StringBuilder(((List)localObject3).size() * 32);
         ((StringBuilder)localObject2).append("push clear red:path = ");
@@ -1617,7 +1630,7 @@ public class RedTouchManager
           }
           ((BusinessInfoCheckUpdate.AppInfo)localObject4).red_display_info.set((MessageMicro)localObject5);
           if (!RedpointHandler.a((List)localObject1, (BusinessInfoCheckUpdate.AppInfo)localObject4)) {
-            break label921;
+            break label937;
           }
           a("redpush path = " + ((BusinessInfoCheckUpdate.AppInfo)localObject4).path.get() + " inewflag = " + ((BusinessInfoCheckUpdate.AppInfo)localObject4).iNewFlag.get());
           a((BusinessInfoCheckUpdate.AppInfo)localObject4, true);
@@ -1652,7 +1665,7 @@ public class RedTouchManager
           continue;
         }
       }
-      break label923;
+      break label939;
       paramArrayOfByte = null;
       continue;
       boolean bool = false;
@@ -1732,7 +1745,7 @@ public class RedTouchManager
     }
     BusinessInfoCheckUpdate.ReportReqBody localReportReqBody = new BusinessInfoCheckUpdate.ReportReqBody();
     localReportReqBody.uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
-    localReportReqBody.clientver.set("7.6.0.3525");
+    localReportReqBody.clientver.set("7.6.3.3560");
     localReportReqBody.platid.set(109);
     localReportReqBody.missionid.set(paramAppInfo.missions.get());
     localReportReqBody.appid.set(paramAppInfo.uiAppId.get());

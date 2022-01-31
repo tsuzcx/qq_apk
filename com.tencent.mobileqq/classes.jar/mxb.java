@@ -1,19 +1,20 @@
-import android.widget.ImageView;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionActivity;
 
-class mxb
-  implements Runnable
+public class mxb
+  extends Handler
 {
-  mxb(mwx parammwx) {}
+  public mxb(PublicAccountImageCollectionActivity paramPublicAccountImageCollectionActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    if (PublicAccountImageCollectionMainActivity.b(this.a.a))
+    switch (paramMessage.what)
     {
-      this.a.a.e.setImageResource(2130839673);
+    default: 
       return;
     }
-    this.a.a.e.setImageResource(2130839672);
+    PublicAccountImageCollectionActivity.a(this.a);
   }
 }
 

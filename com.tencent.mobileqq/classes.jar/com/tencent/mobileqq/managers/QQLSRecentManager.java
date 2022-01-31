@@ -480,7 +480,7 @@ public class QQLSRecentManager
       if ((paramInt > 0) && (paramString != null))
       {
         if ((NewFriendManager.a(paramQQAppInterface, paramString.a())) && (AppConstants.Z.equals(paramString.a()))) {
-          paramString.b = paramQQAppInterface.getApp().getString(2131437218);
+          paramString.b = paramQQAppInterface.getApp().getString(2131437235);
         }
         localObject1 = jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
         if (((Iterator)localObject1).hasNext())
@@ -702,15 +702,15 @@ public class QQLSRecentManager
       } while (!QLog.isColorLevel());
       QLog.d("QQLSActivity", 2, "QQLSRecentManager update retrun because unread =0 || isNewFriendEnterAio" + f);
       return;
-      bool1 = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435387), "qqsetting_lock_screen_whenexit_key", true);
-      bool2 = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434185), "qqsetting_notify_showcontent_key", true);
+      bool1 = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131435404), "qqsetting_lock_screen_whenexit_key", true);
+      bool2 = SettingCloneUtil.readValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131434202), "qqsetting_notify_showcontent_key", true);
     } while ((!Boolean.valueOf(bool1).booleanValue()) || (!Boolean.valueOf(bool2).booleanValue()));
     a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, AppConstants.C, 4000, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.managers.QQLSRecentManager
  * JD-Core Version:    0.7.0.1
  */

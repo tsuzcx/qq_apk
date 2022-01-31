@@ -1,24 +1,19 @@
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.mobileqq.app.PhoneContactHelper;
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.widget.AdapterView;
-import com.tencent.widget.AdapterView.OnItemClickListener;
+import com.tencent.mobileqq.armap.ItemInfo;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public class aggx
-  implements AdapterView.OnItemClickListener
+class aggx
+  implements Runnable
 {
-  public aggx(QCallDetailActivity paramQCallDetailActivity) {}
+  aggx(aggv paramaggv, ItemInfo paramItemInfo) {}
   
-  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
+  public void run()
   {
-    paramAdapterView = PhoneContactHelper.a(((TextView)paramView.findViewById(2131369824)).getText().toString());
-    this.a.a(this.a.getActivity(), paramAdapterView);
+    ScanTorchActivity.a(this.jdField_a_of_type_Aggv.a, this.jdField_a_of_type_ComTencentMobileqqArmapItemInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aggx
  * JD-Core Version:    0.7.0.1
  */

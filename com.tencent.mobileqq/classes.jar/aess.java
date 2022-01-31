@@ -1,20 +1,15 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
 
 public class aess
   implements View.OnClickListener
 {
-  public aess(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public aess(SelectLocationFragment paramSelectLocationFragment) {}
   
   public void onClick(View paramView)
   {
-    if (!this.a.a.onBackEvent())
-    {
-      this.a.a.finish();
-      this.a.a.b(false);
-    }
+    SelectLocationFragment.c(this.a);
   }
 }
 

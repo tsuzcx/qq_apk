@@ -1,21 +1,42 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
+import com.tencent.mobileqq.activity.ProfileCardMoreActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.businessCard.BusinessCardManager;
+import com.tencent.mobileqq.businessCard.BusinessCardObserver;
+import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import com.tencent.qphone.base.util.QLog;
 
 public class tgt
-  implements View.OnClickListener
+  extends BusinessCardObserver
 {
-  public tgt(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
+  public tgt(ProfileCardMoreActivity paramProfileCardMoreActivity) {}
   
-  public void onClick(View paramView)
+  public void a(boolean paramBoolean, String paramString)
   {
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    super.a(paramBoolean, paramString);
+  }
+  
+  public void a(boolean paramBoolean, String paramString, int paramInt)
+  {
+    super.a(paramBoolean, paramString, paramInt);
+    if (paramBoolean)
+    {
+      BusinessCard localBusinessCard = ((BusinessCardManager)this.a.app.getManager(111)).a(paramString);
+      QLog.i("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo success : cardId = " + paramString);
+      this.a.a(localBusinessCard);
+      this.a.a = localBusinessCard;
+      return;
     }
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.k) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.finish();
-    }
+    QLog.e("BusinessCard_observer_ProfileCardMoreActivity", 4, "onGetCardInfo faild : cardId = " + paramString);
+  }
+  
+  public void b(boolean paramBoolean, String paramString)
+  {
+    super.b(paramBoolean, paramString);
+  }
+  
+  public void b(boolean paramBoolean, String paramString, int paramInt)
+  {
+    super.b(paramBoolean, paramString, paramInt);
   }
 }
 

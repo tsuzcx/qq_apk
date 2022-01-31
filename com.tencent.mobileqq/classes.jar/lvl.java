@@ -1,21 +1,12 @@
 import android.text.TextPaint;
-import android.text.style.ClickableSpan;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.IReadInJoyModel;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.CmpCtxt;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderRecommend;
+import android.text.style.CharacterStyle;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentContentUgcOriginalHeader;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 
 public class lvl
-  extends ClickableSpan
+  extends CharacterStyle
 {
-  public lvl(ComponentHeaderRecommend paramComponentHeaderRecommend) {}
-  
-  public void onClick(View paramView)
-  {
-    ReadInJoyUtils.a(this.a.getContext(), this.a.a.a.a(), 1, false, 8, false);
-  }
+  public lvl(ComponentContentUgcOriginalHeader paramComponentContentUgcOriginalHeader) {}
   
   public void updateDrawState(TextPaint paramTextPaint)
   {

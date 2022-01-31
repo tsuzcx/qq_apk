@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ar.ARRenderModel;
 
+import aaao;
+import aabq;
+import aabt;
 import android.opengl.GLSurfaceView;
 import com.tencent.qphone.base.util.QLog;
-import zvv;
-import zwx;
-import zxa;
 
 public class ARRenderableConstructorFactoty
 {
@@ -18,16 +18,16 @@ public class ARRenderableConstructorFactoty
     default: 
       return null;
     case 0: 
-      paramARRenderMangerInnerCallback = new zvv(paramARRenderMangerInnerCallback, (GeneralARResourceInfo)paramARRenderResourceInfo);
+      paramARRenderMangerInnerCallback = new aaao(paramARRenderMangerInnerCallback, (GeneralARResourceInfo)paramARRenderResourceInfo);
       QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_3D here " + paramARRenderResourceInfo.toString());
       return paramARRenderMangerInnerCallback;
     case 2: 
     case 3: 
-      paramARRenderMangerInnerCallback = new zwx(paramARRenderMangerInnerCallback, (NormalVideoARResourceInfo)paramARRenderResourceInfo);
+      paramARRenderMangerInnerCallback = new aabq(paramARRenderMangerInnerCallback, (NormalVideoARResourceInfo)paramARRenderResourceInfo);
       QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_NORAML_2D_VIDEO here" + paramARRenderResourceInfo.toString());
       return paramARRenderMangerInnerCallback;
     case 4: 
-      paramARRenderMangerInnerCallback = new zxa(paramARRenderMangerInnerCallback, (OnlineVideoARRenderableInfo)paramARRenderResourceInfo);
+      paramARRenderMangerInnerCallback = new aabt(paramARRenderMangerInnerCallback, (OnlineVideoARRenderableInfo)paramARRenderResourceInfo);
       QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_ONLINE_VIDEO here" + paramARRenderResourceInfo.toString());
       return paramARRenderMangerInnerCallback;
     case 5: 
@@ -38,8 +38,10 @@ public class ARRenderableConstructorFactoty
       paramARRenderMangerInnerCallback = new Interactive3DRenderable(paramARRenderMangerInnerCallback, (Interactive3DResourceInfo)paramARRenderResourceInfo, paramGLSurfaceView);
       QLog.d("ARRenderableConstructorFactoty", 1, "generate AR_BINHAI_3D here" + paramARRenderResourceInfo.toString());
       return paramARRenderMangerInnerCallback;
+    case 7: 
+      return new GreetingCardRender(paramARRenderMangerInnerCallback, (GreetingCardResourceInfo)paramARRenderResourceInfo);
     }
-    return new GreetingCardRender(paramARRenderMangerInnerCallback, (GreetingCardResourceInfo)paramARRenderResourceInfo);
+    return new ARWorldCupGlobalSceneRenderable(paramARRenderMangerInnerCallback, (ARWorldCupResourceInfo)paramARRenderResourceInfo);
   }
 }
 

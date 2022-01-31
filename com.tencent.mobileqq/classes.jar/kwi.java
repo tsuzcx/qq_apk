@@ -1,16 +1,37 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebChromeClient;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class kwi
-  implements DialogInterface.OnClickListener
+  implements ActionSheet.OnButtonClickListener
 {
-  public kwi(CustomWebChromeClient paramCustomWebChromeClient, JsPromptResult paramJsPromptResult) {}
+  public kwi(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsPromptResult.cancel();
+    if (ReadInJoyNativeAdFragment.a(this.a)) {
+      return;
+    }
+    ReadInJoyNativeAdFragment.a(this.a, true);
+    paramView = "";
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      ReadInJoyNativeAdFragment.a(this.a).dismiss();
+      QQToast.a(this.a.getActivity(), 2, paramView, 0).b(0);
+      return;
+      NativeAdUtils.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 1, 0);
+      paramView = this.a.getString(2131438704);
+      continue;
+      NativeAdUtils.a(this.a.getActivity().app, ReadInJoyNativeAdFragment.a(this.a), ReadInJoyNativeAdFragment.b(this.a), ReadInJoyNativeAdFragment.c(this.a), 2, 2, 0);
+      paramView = this.a.getString(2131438703);
+    }
   }
 }
 

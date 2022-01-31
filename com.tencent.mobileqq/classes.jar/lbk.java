@@ -1,15 +1,19 @@
-import android.view.animation.Animation;
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyNaviController;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentFactory;
 
-class lbk
-  extends AnimateUtils.AnimationAdapter
+public class lbk
+  implements SwiftBrowserComponentsProvider.SwiftBrowserComponentFactory
 {
-  lbk(lbj paramlbj) {}
+  public lbk(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment paramReadInJoyArticleDetailFragment) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public Object a(int paramInt)
   {
-    ReadInJoyNaviController.a(this.a.a.a, true);
+    switch (paramInt)
+    {
+    default: 
+      return null;
+    }
+    return new lbo(this.a);
   }
 }
 

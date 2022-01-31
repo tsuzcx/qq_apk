@@ -1,69 +1,21 @@
-import android.util.SparseArray;
-import com.tencent.mobileqq.hotpic.HotPicManager;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
 public class adfy
-  implements Runnable
+  implements View.OnClickListener
 {
-  public adfy(HotPicManager paramHotPicManager, int paramInt1, int paramInt2) {}
+  public adfy(VideoFileViewer paramVideoFileViewer, String paramString) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.a();
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-    case 10001: 
-      do
-      {
-        return;
-        if ((this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.b) || (this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.b())) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("HotPicManager", 2, "cancel request");
-      return;
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.a(this.b);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager;
-      int j = this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.b();
-      int k = this.b;
-      if (bool) {}
-      for (i = 10003;; i = 10002)
-      {
-        ((HotPicManager)localObject).a(0, 15, j, k, true, i);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("HotPicManager", 2, "request REQ_CHECK_UPDATE getLoaclVersion is " + this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.b());
-        return;
-      }
-    case 10002: 
-      localArrayList = (ArrayList)HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager).get(this.b);
-      localObject = localArrayList;
-      if (localArrayList == null)
-      {
-        localObject = new ArrayList();
-        HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager).put(this.b, localObject);
-      }
-      i = ((ArrayList)localObject).size();
-      this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.a(i, 16 + i - 1, this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.b(), this.b, false, this.jdField_a_of_type_Int);
-      return;
-    }
-    ArrayList localArrayList = (ArrayList)HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager).get(this.b);
-    Object localObject = localArrayList;
-    if (localArrayList == null)
-    {
-      localObject = new ArrayList();
-      HotPicManager.a(this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager).put(this.b, localObject);
-    }
-    int i = ((ArrayList)localObject).size();
-    this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.a(i, 8 + i - 1, this.jdField_a_of_type_ComTencentMobileqqHotpicHotPicManager.b(), this.b, false, this.jdField_a_of_type_Int);
+    FileManagerUtil.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adfy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,17 @@
-import android.support.annotation.NonNull;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnErrorListener;
+import com.tencent.biz.qqstory.playvideo.player.TextureVideoView;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTextureImpl;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
 
-class nqb
-  implements nqa
+public class nqb
+  implements IMediaPlayer.OnErrorListener
 {
-  private final int jdField_a_of_type_Int;
-  @NonNull
-  private final WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  public nqb(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnErrorListener paramOnErrorListener, Object paramObject) {}
   
-  public nqb(@NonNull nqa paramnqa)
+  public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = System.identityHashCode(paramnqa);
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramnqa);
-  }
-  
-  private boolean a()
-  {
-    return this.jdField_a_of_type_JavaLangRefWeakReference.get() != null;
-  }
-  
-  public void a(@NonNull npy paramnpy)
-  {
-    nqa localnqa = (nqa)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localnqa != null) {
-      localnqa.a(paramnpy);
-    }
-  }
-  
-  public void b(@NonNull npy paramnpy)
-  {
-    nqa localnqa = (nqa)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localnqa != null) {
-      localnqa.b(paramnpy);
-    }
-  }
-  
-  public boolean equals(Object paramObject)
-  {
-    return ((paramObject instanceof nqb)) && (((nqb)paramObject).jdField_a_of_type_Int == this.jdField_a_of_type_Int);
-  }
-  
-  public int hashCode()
-  {
-    return this.jdField_a_of_type_Int;
+    return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerIVideoView$OnErrorListener.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTextureImpl, 0, paramInt1, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerVideoViewTextureImpl.a.getCurrentPosition(), String.valueOf(paramInt2), this.jdField_a_of_type_JavaLangObject);
   }
 }
 

@@ -1,6 +1,6 @@
 package cooperation.qqreader;
 
-import amax;
+import amrb;
 import android.content.Context;
 import android.content.Intent;
 import com.tencent.biz.common.offline.HtmlOffline;
@@ -28,7 +28,7 @@ public class VipProxyRreLoadReaderProcess
       if (NetworkUtil.h(MobileQQ.sMobileQQ))
       {
         HtmlOffline.a();
-        ThreadManager.post(new amax(this, paramContext), 5, null, true);
+        ThreadManager.post(new amrb(this, paramContext), 5, null, true);
       }
     }
   }

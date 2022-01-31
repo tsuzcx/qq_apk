@@ -1,21 +1,41 @@
-import com.tencent.biz.qqstory.takevideo.EditPicSave;
-import com.tencent.mobileqq.widget.ProgressPieDrawable;
-import com.tencent.mobileqq.widget.ProgressPieDrawable.OnProgressListener;
-import com.tencent.qphone.base.util.QLog;
+import android.support.annotation.NonNull;
+import com.tencent.biz.qqstory.channel.CmdTaskManger;
+import com.tencent.biz.qqstory.channel.NetworkRequest;
+import com.tencent.biz.qqstory.model.lbs.BasicLocation;
+import com.tencent.biz.qqstory.network.request.square.GetSquareFeedIdListRequest;
+import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.FeedIdListCache;
+import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.GetFeedIdListResult;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
 public class oby
-  implements ProgressPieDrawable.OnProgressListener
+  extends JobSegment
 {
-  public oby(EditPicSave paramEditPicSave) {}
+  private BasicLocation jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation;
+  private FeedListPageLoaderBase.FeedIdListCache jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache;
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable)
+  public oby(@NonNull FeedListPageLoaderBase.FeedIdListCache paramFeedIdListCache, BasicLocation paramBasicLocation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("EditPicSave", 2, "[onProgressCompleted] hide ProgressPieDrawable ,ppd = " + paramProgressPieDrawable);
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache = paramFeedIdListCache;
+    this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation = paramBasicLocation;
   }
   
-  public void a(ProgressPieDrawable paramProgressPieDrawable, int paramInt1, int paramInt2) {}
+  protected void a(JobContext paramJobContext, Integer paramInteger)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache.a(paramInteger.intValue(), 5);
+    if ((((FeedListPageLoaderBase.GetFeedIdListResult)localObject).a.size() > 0) || (((FeedListPageLoaderBase.GetFeedIdListResult)localObject).b))
+    {
+      SLog.b("Q.qqstory.discover.SquareFeedListPageLoader", "hit feed id cache");
+      notifyResult(localObject);
+      return;
+    }
+    localObject = new GetSquareFeedIdListRequest();
+    ((GetSquareFeedIdListRequest)localObject).b = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache.a();
+    ((GetSquareFeedIdListRequest)localObject).jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation = this.jdField_a_of_type_ComTencentBizQqstoryModelLbsBasicLocation;
+    CmdTaskManger.a().a((NetworkRequest)localObject, new obz(this, paramJobContext, paramInteger));
+  }
 }
 
 

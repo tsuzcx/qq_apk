@@ -1,29 +1,22 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.WindowManager;
-import android.view.WindowManager.LayoutParams;
-import com.tencent.mobileqq.nearby.gameroom.GameRoomFloatView;
+import android.view.ViewStub;
+import com.tencent.mobileqq.activity.main.CommonLoadingView;
+import com.tencent.mobileqq.leba.LebaWithFeeds;
 
 public class aeaj
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public aeaj(GameRoomFloatView paramGameRoomFloatView, WindowManager.LayoutParams paramLayoutParams, ValueAnimator paramValueAnimator) {}
+  public aeaj(LebaWithFeeds paramLebaWithFeeds) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.b)
-    {
-      int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = i;
-      this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.jdField_a_of_type_AndroidViewWindowManager.updateViewLayout(this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomGameRoomFloatView.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
-      return;
-    }
-    this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+    ViewStub localViewStub = (ViewStub)this.a.a(2131364872);
+    ((CommonLoadingView)this.a.a(2131363809)).setVisibility(8);
+    localViewStub.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeaj
  * JD-Core Version:    0.7.0.1
  */

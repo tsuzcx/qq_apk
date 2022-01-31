@@ -23,8 +23,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Observable;
-import kon;
-import koo;
+import kny;
+import knz;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
 
@@ -53,7 +53,7 @@ public class NowLiveManager
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Char = '0';
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new kon(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback = new kny(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidContentSharedPreferences = paramQQAppInterface.getApplication().getSharedPreferences("now_msg_sp" + paramQQAppInterface.getCurrentAccountUin(), 0);
     a();
@@ -69,18 +69,18 @@ public class NowLiveManager
     return this.jdField_b_of_type_JavaLangString;
   }
   
-  public koo a(String paramString, long paramLong)
+  public knz a(String paramString, long paramLong)
   {
-    koo localkoo2 = (koo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString + paramLong);
-    koo localkoo1 = localkoo2;
-    if (localkoo2 == null)
+    knz localknz2 = (knz)this.jdField_a_of_type_JavaUtilHashMap.get(paramString + paramLong);
+    knz localknz1 = localknz2;
+    if (localknz2 == null)
     {
-      localkoo1 = new koo(this);
-      localkoo1.jdField_a_of_type_JavaLangString = paramString;
-      localkoo1.jdField_a_of_type_Long = paramLong;
-      this.jdField_a_of_type_JavaUtilHashMap.put(localkoo1.a(), localkoo1);
+      localknz1 = new knz(this);
+      localknz1.jdField_a_of_type_JavaLangString = paramString;
+      localknz1.jdField_a_of_type_Long = paramLong;
+      this.jdField_a_of_type_JavaUtilHashMap.put(localknz1.a(), localknz1);
     }
-    return localkoo1;
+    return localknz1;
   }
   
   public void a()

@@ -1,25 +1,33 @@
-import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
+import android.os.Bundle;
+import com.tencent.mobileqq.troop.homework.recite.utils.SoLibraryChecker;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.vip.DownloaderInterface;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import org.json.JSONObject;
 
 public class ajkd
+  implements Runnable
 {
-  public final int a;
-  public final long a;
-  public final String a;
-  public final long b;
-  public final String b;
+  public ajkd(SoLibraryChecker paramSoLibraryChecker, JSONObject paramJSONObject, String paramString, DownloadListener paramDownloadListener) {}
   
-  public ajkd(UnifiedDebugManager paramUnifiedDebugManager, String paramString1, int paramInt, long paramLong1, long paramLong2, String paramString2)
+  public void run()
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_b_of_type_Long = paramLong2;
-    this.jdField_b_of_type_JavaLangString = paramString2;
-    this.jdField_a_of_type_Int = paramInt;
+    String str = this.jdField_a_of_type_OrgJsonJSONObject.optString("url");
+    Object localObject = new File(this.jdField_a_of_type_JavaLangString);
+    Bundle localBundle = new Bundle();
+    localObject = new DownloadTask(str, (File)localObject);
+    ((DownloadTask)localObject).b = 3;
+    SoLibraryChecker.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUtilsSoLibraryChecker).a((DownloadTask)localObject, this.jdField_a_of_type_ComTencentMobileqqVipDownloadListener, localBundle);
+    if (QLog.isColorLevel()) {
+      QLog.d("SoLibraryLoader", 2, "start Download url = " + str);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajkd
  * JD-Core Version:    0.7.0.1
  */

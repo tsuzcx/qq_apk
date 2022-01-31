@@ -1,18 +1,22 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.open.downloadnew.DownloadInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.vipcomic.VipComicMqqManager;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.qphone.base.util.QLog;
 
-class acei
+public class acei
   implements Runnable
 {
-  acei(aceg paramaceg, DownloadInfo paramDownloadInfo) {}
+  public acei(EmoticonMainPanel paramEmoticonMainPanel) {}
   
   public void run()
   {
-    UniformDownloadActivity.b(this.jdField_a_of_type_Aceg.a).setVisibility(0);
-    UniformDownloadActivity.a(this.jdField_a_of_type_Aceg.a).setVisibility(0);
-    UniformDownloadActivity.b(this.jdField_a_of_type_Aceg.a).setText(this.jdField_a_of_type_Aceg.a.getString(2131428574, new Object[] { this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.g + "%" }));
+    if (this.a.a != null)
+    {
+      ((VipComicMqqManager)this.a.a.getManager(140)).a();
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonMainPanel", 2, "vipComicMqqManager.uploadInitComicEmoStructMsgInfo");
+      }
+    }
   }
 }
 

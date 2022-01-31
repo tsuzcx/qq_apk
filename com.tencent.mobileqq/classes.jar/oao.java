@@ -1,18 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.tag.TagAdapter.OnItemClickListener;
-import com.tencent.biz.qqstory.takevideo.tag.TagItem.TagInfoBase;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.playvideo.TVKPreloader;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
+import java.util.List;
 
-class oao
-  implements View.OnClickListener
+public class oao
+  extends SimpleJob
 {
-  oao(oan paramoan, TagAdapter.OnItemClickListener paramOnItemClickListener, TagItem.TagInfoBase paramTagInfoBase) {}
+  public oao(FeedSegment paramFeedSegment, List paramList) {}
   
-  public void onClick(View paramView)
+  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter$OnItemClickListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter$OnItemClickListener.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase);
+    TVKPreloader.a();
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.toArray();
+    int j = paramJobContext.length;
+    int i = 0;
+    while (i < j)
+    {
+      TVKPreloader.a(paramJobContext[i].toString());
+      i += 1;
     }
+    return null;
   }
 }
 

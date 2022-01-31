@@ -1,23 +1,21 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.av.VideoController.CameraDataUpdataInterface;
+import com.tencent.av.ui.VideoLayerUI;
 import com.tencent.qphone.base.util.QLog;
 
 public class kbx
-  extends BroadcastReceiver
+  implements VideoController.CameraDataUpdataInterface
 {
-  public kbx(VideoInviteActivity paramVideoInviteActivity) {}
+  public kbx(VideoLayerUI paramVideoLayerUI, int paramInt, boolean paramBoolean) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void a()
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteActivity", 2, "onReceive action = " + paramContext);
+    if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView != null) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView.length > this.jdField_a_of_type_Int)) {
+      VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[this.jdField_a_of_type_Int], this.jdField_a_of_type_Boolean);
     }
-    if (paramContext.equals("tencent.video.q2v.ACTION_ON_UPDATE_FRIEND_INFO")) {
-      this.a.h();
+    while (!QLog.isColorLevel()) {
+      return;
     }
+    QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "switchCameraFristData Error : Index = " + this.jdField_a_of_type_Int);
   }
 }
 

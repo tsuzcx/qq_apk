@@ -1,37 +1,64 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin;
+import android.util.Log;
+import cooperation.plugin.Dex2Oat;
+import cooperation.plugin.Dex2Oat.ResultCallback;
+import dalvik.system.DexFile;
+import java.io.File;
+import java.io.IOException;
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class amlu
-  implements Downloader.DownloadListener
+  implements Runnable
 {
-  public amlu(QZoneSharePictureJsPlugin paramQZoneSharePictureJsPlugin, String[] paramArrayOfString) {}
+  private static String jdField_a_of_type_JavaLangString;
+  private final Dex2Oat.ResultCallback jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback;
+  private final File jdField_a_of_type_JavaIoFile;
+  private final CountDownLatch jdField_a_of_type_JavaUtilConcurrentCountDownLatch;
+  private final AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
+  private final boolean jdField_a_of_type_Boolean;
+  private final File b;
   
-  public void onDownloadCanceled(String paramString)
+  public amlu(File paramFile1, File paramFile2, boolean paramBoolean, String paramString, AtomicInteger paramAtomicInteger, CountDownLatch paramCountDownLatch, Dex2Oat.ResultCallback paramResultCallback)
   {
-    QZLog.i("QZoneSharePictureJsPlugin", "onDownloadCanceled");
+    this.jdField_a_of_type_JavaIoFile = paramFile1;
+    this.b = paramFile2;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = paramAtomicInteger;
+    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch = paramCountDownLatch;
+    this.jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback = paramResultCallback;
+    jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
+  public void run()
   {
-    QZLog.w("QZoneSharePictureJsPlugin", "下载GIF组件失败，请稍后重试");
-    QZoneSharePictureJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, "下载GIF组件失败，请稍后重试", 1);
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    QZLog.i("QZoneSharePictureJsPlugin", "下载GIF组件成功");
-    if (this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin.a != null)
+    try
     {
-      QZoneSharePictureJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin.a.mRuntime, this.jdField_a_of_type_ArrayOfJavaLangString);
+      if ((!Dex2Oat.a(this.jdField_a_of_type_JavaIoFile)) && (this.jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback != null)) {
+        this.jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback.a(this.jdField_a_of_type_JavaIoFile, this.b, new IOException("dex file " + this.jdField_a_of_type_JavaIoFile.getAbsolutePath() + " is not exist!"));
+      }
+      if (this.jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback != null) {
+        this.jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback.a(this.jdField_a_of_type_JavaIoFile, this.b);
+      }
+      String str = Dex2Oat.a(this.jdField_a_of_type_JavaIoFile, this.b);
+      DexFile.loadDex(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), str, 0);
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.incrementAndGet();
+      if (this.jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback != null) {
+        this.jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback.a(this.jdField_a_of_type_JavaIoFile, this.b, new File(str));
+      }
       return;
     }
-    QZLog.w("QZoneSharePictureJsPlugin", "parentPlugin is null");
-    QZoneSharePictureJsPlugin.a(this.jdField_a_of_type_CooperationQzoneWebviewpluginQZoneSharePictureJsPlugin, "请稍后重试", 1);
+    catch (Throwable localThrowable)
+    {
+      Log.e("plugin_tag.Dex2Oat", "Failed to optimize dex: " + this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), localThrowable);
+      if (this.jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback != null) {
+        this.jdField_a_of_type_CooperationPluginDex2Oat$ResultCallback.a(this.jdField_a_of_type_JavaIoFile, this.b, localThrowable);
+      }
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    }
   }
 }
 

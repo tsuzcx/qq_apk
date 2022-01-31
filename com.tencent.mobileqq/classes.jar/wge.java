@@ -1,112 +1,33 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import com.tencent.biz.addContactTroopView.BaseTroopCardView;
-import com.tencent.biz.addContactTroopView.TroopCardGroup;
-import com.tencent.biz.addContactTroopView.TroopCardSameCity;
-import com.tencent.biz.addContactTroopView.TroopCardXingquBuluo;
-import com.tencent.mobileqq.activity.contact.addcontact.TroopView;
-import com.tencent.mobileqq.pb.PBEnumField;
-import java.util.ArrayList;
-import java.util.Iterator;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListAdapter;
+import com.tencent.mobileqq.activity.chathistory.ChatHistoryBubbleListForTroopFragment;
+import com.tencent.mobileqq.data.MessageRecord;
 import java.util.List;
-import tencent.im.troop_search_searchtab.searchtab.Card;
 
-public class wge
-  extends BaseAdapter
+class wge
+  implements Runnable
 {
-  public List a;
-  private List b;
+  wge(wgd paramwgd, List paramList) {}
   
-  private wge(TroopView paramTroopView)
+  public void run()
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-  }
-  
-  public void a()
-  {
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    ChatHistoryBubbleListAdapter localChatHistoryBubbleListAdapter = this.jdField_a_of_type_Wgd.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter;
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (this.jdField_a_of_type_JavaUtilList.size() < 21) {}
+    for (boolean bool = true;; bool = false)
     {
-      BaseTroopCardView localBaseTroopCardView = (BaseTroopCardView)localIterator.next();
-      try
+      localChatHistoryBubbleListAdapter.b(localList, bool);
+      if (this.jdField_a_of_type_Wgd.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() > 0)
       {
-        localBaseTroopCardView.e();
+        this.jdField_a_of_type_Wgd.a.jdField_a_of_type_Long = ((MessageRecord)this.jdField_a_of_type_Wgd.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getItem(0)).shmsgseq;
+        this.jdField_a_of_type_Wgd.a.b = ((MessageRecord)this.jdField_a_of_type_Wgd.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getItem(this.jdField_a_of_type_Wgd.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() - 1)).shmsgseq;
       }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+      this.jdField_a_of_type_Wgd.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.a = true;
+      this.jdField_a_of_type_Wgd.a.jdField_a_of_type_AndroidWidgetTextView.setText("点击加载更多");
+      this.jdField_a_of_type_Wgd.a.a(this.jdField_a_of_type_Wgd.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.a, this.jdField_a_of_type_Wgd.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.b);
+      this.jdField_a_of_type_Wgd.a.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.notifyDataSetChanged();
+      return;
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-  }
-  
-  public void a(List paramList)
-  {
-    this.b = paramList;
-  }
-  
-  public int getCount()
-  {
-    if (this.b != null) {
-      return this.b.size();
-    }
-    return 0;
-  }
-  
-  public Object getItem(int paramInt)
-  {
-    return null;
-  }
-  
-  public long getItemId(int paramInt)
-  {
-    return 0L;
-  }
-  
-  public int getItemViewType(int paramInt)
-  {
-    return ((searchtab.Card)this.b.get(paramInt)).type.get() - 1;
-  }
-  
-  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
-  {
-    paramViewGroup = (searchtab.Card)this.b.get(paramInt);
-    if (paramView == null) {
-      if (1 == paramViewGroup.type.get())
-      {
-        paramView = new TroopCardGroup(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView.a);
-        paramView.a();
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        this.jdField_a_of_type_JavaUtilList.add((BaseTroopCardView)paramView);
-        ((BaseTroopCardView)paramView).a(paramViewGroup);
-        return paramView;
-        if (2 == paramViewGroup.type.get())
-        {
-          paramView = new TroopCardSameCity(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView.a);
-          paramView.a();
-        }
-        else
-        {
-          paramView = new TroopCardXingquBuluo(this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactTroopView.a);
-          paramView.a();
-        }
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
-    }
-  }
-  
-  public int getViewTypeCount()
-  {
-    return 3;
   }
 }
 

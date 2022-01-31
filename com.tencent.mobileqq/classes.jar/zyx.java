@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.ar.ScanEntranceReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARRelationShipAIOMsg;
 
-public class zyx
-  implements Runnable
+public final class zyx
+  implements Parcelable.Creator
 {
-  public zyx(ScanEntranceReport paramScanEntranceReport, long paramLong1, int paramInt, String paramString, long paramLong2) {}
-  
-  public void run()
+  public ARRelationShipAIOMsg a(Parcel paramParcel)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("last_total_time", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("upload_count", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("session_ids", this.jdField_a_of_type_JavaLangString);
-    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_first_ocr_tips", true, this.b, 0L, localHashMap, "");
+    return new ARRelationShipAIOMsg(paramParcel);
+  }
+  
+  public ARRelationShipAIOMsg[] a(int paramInt)
+  {
+    return new ARRelationShipAIOMsg[paramInt];
   }
 }
 

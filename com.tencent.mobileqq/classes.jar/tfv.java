@@ -1,13 +1,16 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class tfv
-  implements Runnable
+  implements ActionSheet.OnDismissListener
 {
-  public tfv(QQLSActivity paramQQLSActivity) {}
+  public tfv(PhoneUnityBindInfoActivity paramPhoneUnityBindInfoActivity) {}
   
-  public void run()
+  public void onDismiss()
   {
-    this.a.b();
+    if (this.a.b) {
+      this.a.finish();
+    }
   }
 }
 

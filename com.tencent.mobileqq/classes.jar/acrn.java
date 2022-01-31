@@ -1,18 +1,14 @@
-import android.content.Intent;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
 
 class acrn
-  implements FMDialogUtil.FMDialogInterface
+  implements Runnable
 {
-  acrn(acrm paramacrm, Intent paramIntent) {}
+  acrn(acrk paramacrk) {}
   
-  public void a()
+  public void run()
   {
-    ForwardBaseOption.a(this.jdField_a_of_type_Acrm.a, this.jdField_a_of_type_AndroidContentIntent, 103);
+    this.a.a.d();
   }
-  
-  public void b() {}
 }
 
 

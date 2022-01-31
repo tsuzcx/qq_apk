@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.widget;
 
-import ajdu;
-import ajdw;
+import ajry;
+import ajsa;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -195,7 +195,7 @@ public class AvatarWallViewPagerAdapter
           if (paramAvatarInfo.jdField_a_of_type_AndroidGraphicsBitmap != null) {
             break;
           }
-          ThreadManager.post(new ajdu(this, paramString, paramAvatarInfo, paramViewHolder), 8, null, true);
+          ThreadManager.post(new ajry(this, paramString, paramAvatarInfo, paramViewHolder), 8, null, true);
           return;
         }
         catch (OutOfMemoryError paramViewHolder) {}
@@ -210,7 +210,7 @@ public class AvatarWallViewPagerAdapter
       paramViewHolder.setImageDrawable(null);
       return;
     } while (paramInt != 3);
-    ThreadManager.post(new ajdw(this, paramViewHolder, paramString), 8, null, true);
+    ThreadManager.post(new ajsa(this, paramViewHolder, paramString), 8, null, true);
   }
   
   public boolean a(List paramList, boolean paramBoolean)
@@ -373,9 +373,9 @@ public class AvatarWallViewPagerAdapter
     }
     for (;;)
     {
-      View localView = LayoutInflater.from((Context)this.jdField_a_of_type_MqqUtilWeakReference.get()).inflate(2130969431, null);
+      View localView = LayoutInflater.from((Context)this.jdField_a_of_type_MqqUtilWeakReference.get()).inflate(2130969432, null);
       AvatarWallViewPagerAdapter.ViewHolder localViewHolder = new AvatarWallViewPagerAdapter.ViewHolder(this);
-      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131362749));
+      localViewHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131362767));
       if (a() <= i) {}
       for (int j = 0;; j = i)
       {
@@ -394,14 +394,14 @@ public class AvatarWallViewPagerAdapter
         {
           label356:
           if (this.jdField_a_of_type_MqqUtilWeakReference != null) {
-            localView.setContentDescription(((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131430198));
+            localView.setContentDescription(((Activity)this.jdField_a_of_type_MqqUtilWeakReference.get()).getString(2131430215));
           }
           a(localViewHolder, i, (String)localObject, localAvatarInfo);
           if (localAvatarInfo.jdField_b_of_type_Boolean)
           {
             if (localViewHolder.jdField_a_of_type_AndroidViewView == null)
             {
-              localViewHolder.jdField_a_of_type_AndroidViewView = ((ViewStub)localView.findViewById(2131366439)).inflate();
+              localViewHolder.jdField_a_of_type_AndroidViewView = ((ViewStub)localView.findViewById(2131366466)).inflate();
               localObject = (FrameLayout.LayoutParams)localViewHolder.jdField_a_of_type_AndroidViewView.getLayoutParams();
               ((FrameLayout.LayoutParams)localObject).height = -1;
               ((FrameLayout.LayoutParams)localObject).width = -1;
@@ -474,7 +474,7 @@ public class AvatarWallViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AvatarWallViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

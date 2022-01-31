@@ -1,47 +1,26 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.LBSHandler;
-import com.tencent.mobileqq.app.NearFieldTroopHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import android.database.DataSetObserver;
+import com.tencent.mobileqq.emosm.view.DragSortListView;
 
 public class acah
-  implements Runnable
+  extends DataSetObserver
 {
-  public acah(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, NearFieldTroopHandler paramNearFieldTroopHandler) {}
+  public acah(DragSortListView paramDragSortListView) {}
   
-  public void run()
+  private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.b == 1) {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.d)) {}
+    if (this.a.g == 4) {
+      this.a.a();
     }
-    do
-    {
-      for (;;)
-      {
-        return;
-        try
-        {
-          long l = Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.d).longValue();
-          boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppNearFieldTroopHandler.a(l, 1);
-          if (!bool)
-          {
-            Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).sendEmptyMessageDelayed(6, 0L);
-            this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.f = 2;
-            return;
-          }
-        }
-        catch (Exception localException) {}
-      }
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppNearFieldTroopHandler.a(0L, 1))
-      {
-        Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).sendEmptyMessageDelayed(6, 0L);
-        this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.f = 2;
-        return;
-      }
-    } while (this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.app.getCurrentAccountUin(), false));
-    this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.e = 2;
-    Face2FaceAddFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity).sendEmptyMessageDelayed(6, 0L);
-    return;
+  }
+  
+  public void onChanged()
+  {
+    a();
+  }
+  
+  public void onInvalidated()
+  {
+    a();
   }
 }
 

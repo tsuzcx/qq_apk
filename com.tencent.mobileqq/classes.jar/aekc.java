@@ -1,29 +1,54 @@
-import android.view.View;
-import android.widget.ListView;
-import com.tencent.av.utils.UITools;
-import com.tencent.mobileqq.nearby.now.model.Comments;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import java.util.List;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
+import com.tencent.mobileqq.music.QQPlayerService;
 
 public class aekc
-  implements Runnable
+  implements INetInfoHandler
 {
-  public aekc(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  long a = 0L;
   
-  public void run()
+  private void a(int paramInt)
   {
-    int i = UITools.b(this.a.getContext());
-    if (ShortVideoCommentsView.a() * this.a.a.a.size() + ShortVideoCommentsView.b(this.a).getMeasuredHeight() >= i)
-    {
-      ShortVideoCommentsView.a(this.a).setSelectionFromTop(1, ShortVideoCommentsView.a() + ShortVideoCommentsView.b(this.a).getMeasuredHeight());
+    if (System.currentTimeMillis() - this.a < 500L) {
       return;
     }
-    ShortVideoCommentsView.a(this.a).setSelection(this.a.a.a.size() + 1);
+    this.a = System.currentTimeMillis();
+    QQPlayerService.d(BaseApplicationImpl.getContext());
+  }
+  
+  public void onNetMobile2None()
+  {
+    a(4);
+  }
+  
+  public void onNetMobile2Wifi(String paramString)
+  {
+    a(3);
+  }
+  
+  public void onNetNone2Mobile(String paramString)
+  {
+    a(1);
+  }
+  
+  public void onNetNone2Wifi(String paramString)
+  {
+    a(2);
+  }
+  
+  public void onNetWifi2Mobile(String paramString)
+  {
+    a(6);
+  }
+  
+  public void onNetWifi2None()
+  {
+    a(5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aekc
  * JD-Core Version:    0.7.0.1
  */

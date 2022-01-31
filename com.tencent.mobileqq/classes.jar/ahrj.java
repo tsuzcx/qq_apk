@@ -1,40 +1,19 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.startup.step.ProcessInfoUtil;
-import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ThreadFactory;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public final class ahrj
-  implements Runnable
+  implements ThreadFactory
 {
-  public ahrj(String paramString) {}
+  private final AtomicInteger a = new AtomicInteger(1);
   
-  public void run()
+  public Thread newThread(Runnable paramRunnable)
   {
-    SharedPreferences localSharedPreferences = ProcessInfoUtil.a();
-    int i;
-    if (localSharedPreferences != null)
-    {
-      i = ProcessInfoUtil.a(BaseApplicationImpl.getContext(), this.a);
-      if (i != -1) {
-        break label27;
-      }
-    }
-    label27:
-    long l;
-    do
-    {
-      return;
-      l = System.currentTimeMillis();
-      localSharedPreferences.edit().putInt("pid" + this.a, i);
-      localSharedPreferences.edit().putLong("start_time" + this.a, l).apply();
-    } while (!QLog.isColorLevel());
-    QLog.d("ProcessUtils", 2, "recordProcessStart - " + this.a + ":" + i + "|" + l);
+    return new Thread(paramRunnable, "SearchTask #" + this.a.getAndIncrement());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahrj
  * JD-Core Version:    0.7.0.1
  */

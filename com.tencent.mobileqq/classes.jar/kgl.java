@@ -1,17 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.intervideo.groupvideo.GroupVideoManager;
+import com.tencent.av.utils.PopupDialogQQSide;
 
-class kgl
+public class kgl
   implements DialogInterface.OnClickListener
 {
-  kgl(kgk paramkgk) {}
+  public kgl(PopupDialogQQSide paramPopupDialogQQSide, DialogInterface.OnClickListener paramOnClickListener) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
+    }
     paramDialogInterface.dismiss();
-    ((GroupVideoManager)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(235)).a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_JavaLangString, "4", "openRoom");
   }
 }
 

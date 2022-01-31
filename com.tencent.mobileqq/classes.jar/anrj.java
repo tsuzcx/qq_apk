@@ -1,23 +1,67 @@
+import android.app.Activity;
+import android.content.Intent;
+import android.support.annotation.NonNull;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tribe.async.reactive.SimpleObserver;
+import cooperation.qzone.QZoneHelper;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoUi;
+import dov.com.tencent.biz.qqstory.takevideo.publish.GenerateContext;
+import dov.com.tencent.biz.qqstory.takevideo.publish.GeneratePicArgs;
 
 public class anrj
-  implements Runnable
+  extends SimpleObserver
 {
-  public anrj(RMVideoRecordState paramRMVideoRecordState) {}
+  public anrj(EditPicPartManager paramEditPicPartManager) {}
   
-  public void run()
+  public void a(GenerateContext paramGenerateContext)
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (!localRMVideoStateMgr.a())
+    super.onNext(paramGenerateContext);
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.f();
+    Object localObject = this.a.a();
+    String str = paramGenerateContext.a.jdField_b_of_type_JavaLangString;
+    if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams != null) && (this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 2)) {}
+    for (boolean bool = true;; bool = false)
     {
-      SLog.c("RMRecordState", "run record finish, but state is not right");
+      EditPicPartManager.a((String)localObject, str, paramGenerateContext.a.jdField_b_of_type_Boolean, paramGenerateContext.a.a, bool, this.a.c);
+      localObject = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.getActivity();
+      if ((localObject != null) && (!((Activity)localObject).isFinishing()))
+      {
+        SLog.b("EditPicActivity.EditPicPartManager", "picDestPath = " + paramGenerateContext.a.jdField_b_of_type_JavaLangString);
+        paramGenerateContext = this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(paramGenerateContext);
+        this.a.a();
+        str = paramGenerateContext.getStringExtra("PhotoConst.PLUGIN_APK");
+        bool = paramGenerateContext.getBooleanExtra("DirectBackToQzone", false);
+        if ((!"qzone_plugin.apk".equals(str)) || (!bool)) {
+          break;
+        }
+        QZoneHelper.a((Activity)localObject, "", paramGenerateContext, -1);
+        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(-1, null, 2131034158, 0);
+      }
       return;
     }
-    this.a.b();
-    localRMVideoStateMgr.a.z();
+    if (this.a.jdField_a_of_type_Int == 1)
+    {
+      this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(-1, paramGenerateContext, 2131034158, 0);
+      return;
+    }
+    this.a.a((Activity)localObject, this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.a(), paramGenerateContext);
+  }
+  
+  public void onCancel()
+  {
+    super.onCancel();
+    SLog.d("EditPicActivity.EditPicPartManager", "PIC PUBLISH cancel !");
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.f();
+    QQToast.a(this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a(), "取消编辑", 0).a();
+  }
+  
+  public void onError(@NonNull Error paramError)
+  {
+    super.onError(paramError);
+    this.a.a(paramError);
   }
 }
 

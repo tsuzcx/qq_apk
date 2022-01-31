@@ -1,24 +1,17 @@
-import com.tencent.av.VideoController.GAudioFriends;
-import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
-import java.util.Comparator;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.PSTNC2CActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class jyn
-  implements Comparator
+  implements DialogInterface.OnClickListener
 {
-  public jyn(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
+  public jyn(PSTNC2CActivity paramPSTNC2CActivity) {}
   
-  public int a(VideoController.GAudioFriends paramGAudioFriends1, VideoController.GAudioFriends paramGAudioFriends2)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramGAudioFriends2.b) && (paramGAudioFriends1.b)) {
-      return paramGAudioFriends2.e - paramGAudioFriends1.e;
-    }
-    if ((!paramGAudioFriends2.b) && (!paramGAudioFriends1.b)) {
-      return paramGAudioFriends2.e - paramGAudioFriends1.e;
-    }
-    if ((paramGAudioFriends2.b) && (!paramGAudioFriends1.b)) {
-      return 1;
-    }
-    return -1;
+    paramDialogInterface.dismiss();
+    ReportController.b(this.a.app, "CliOper", "", "", "0X80063FA", "0X80063FA", 5, 0, "", "", "", "");
   }
 }
 

@@ -1,24 +1,26 @@
-import android.app.Activity;
-import android.content.Intent;
 import android.view.View;
-import com.tencent.device.devicemgr.SmartDeviceProxyMgr;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.TipsClickedInterface;
-import cooperation.smartdevice.SmartDevicePluginLoader;
-import cooperation.smartdevice.SmartDevicePluginProxyActivity;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.ConfessNewsItemBuilder;
+import com.tencent.mobileqq.confess.ConfessMsgUtil;
+import com.tencent.mobileqq.confess.ConfessNewsBgView;
+import com.tencent.mobileqq.data.MessageForConfessNews;
 
 public class uvm
-  implements FileManagerUtil.TipsClickedInterface
+  implements View.OnClickListener
 {
-  public uvm(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  public uvm(ConfessNewsItemBuilder paramConfessNewsItemBuilder) {}
   
-  public void a(View paramView)
+  public void onClick(View paramView)
   {
-    paramView = new Intent();
-    paramView.putExtra("device_info", ((SmartDeviceProxyMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(51)).a(Long.parseLong(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)));
-    SmartDevicePluginLoader.a().a((Activity)this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount(), paramView, "com.tencent.device.activities.DeviceUnBindActivity", -1, null, SmartDevicePluginProxyActivity.class);
+    if ((paramView instanceof ConfessNewsBgView))
+    {
+      Object localObject = paramView.getTag();
+      if ((localObject instanceof MessageForConfessNews))
+      {
+        localObject = (MessageForConfessNews)localObject;
+        ConfessMsgUtil.a(this.a.a, paramView.getContext(), ((MessageForConfessNews)localObject).nTopicId, ((MessageForConfessNews)localObject).strConfessorUin, ((MessageForConfessNews)localObject).nConfessorSex, ((MessageForConfessNews)localObject).strRecUin);
+      }
+    }
   }
 }
 

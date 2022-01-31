@@ -1,27 +1,15 @@
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
-import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
-import cooperation.weiyun.sdk.download.DownloadJobContext;
-import cooperation.weiyun.sdk.download.WyDownloader;
-import java.util.HashMap;
+import android.os.Handler;
+import android.os.Message;
+import cooperation.qzone.QZoneLiveVideoBaseDownLoadActivty;
 
 public class amrt
-  implements ThreadPool.Job
+  extends Handler
 {
-  public amrt(WyDownloader paramWyDownloader, Long paramLong, NetReq paramNetReq) {}
+  public amrt(QZoneLiveVideoBaseDownLoadActivty paramQZoneLiveVideoBaseDownLoadActivty) {}
   
-  public Void a(ThreadPool.JobContext paramJobContext)
+  public void handleMessage(Message paramMessage)
   {
-    paramJobContext = (DownloadJobContext)WyDownloader.a(this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader).get(this.jdField_a_of_type_JavaLangLong);
-    if ((paramJobContext == null) || (paramJobContext.d())) {
-      WyDownloader.a(this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader, this.jdField_a_of_type_JavaLangLong.longValue());
-    }
-    for (;;)
-    {
-      return null;
-      WyDownloader.b(this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader).a(this.jdField_a_of_type_ComTencentMobileqqTransfileNetReq);
-    }
+    this.a.a(this.a.a, paramMessage);
   }
 }
 

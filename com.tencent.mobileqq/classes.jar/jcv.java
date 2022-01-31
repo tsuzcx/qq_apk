@@ -1,21 +1,33 @@
-import android.content.Context;
-import com.rookery.asyncHttpClient.AsyncHttpClient;
-import com.rookery.asyncHttpClient.AsyncHttpResponseHandler;
-import com.rookery.translate.TranslateClient;
-import java.util.List;
-import org.apache.http.Header;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnCompletionListener;
+import com.tencent.av.AVLog;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
 
-public abstract class jcv
-  extends TranslateClient
+public class jcv
+  implements MediaPlayer.OnCompletionListener
 {
-  public static void a(Context paramContext, Header[] paramArrayOfHeader, List paramList, AsyncHttpResponseHandler paramAsyncHttpResponseHandler)
+  public jcv(VideoController paramVideoController) {}
+  
+  public void onCompletion(MediaPlayer paramMediaPlayer)
   {
-    a().a(paramContext, "https://www.googleapis.com/language/translate/v2", paramArrayOfHeader, paramList, paramAsyncHttpResponseHandler);
+    AVLog.d(VideoController.a, "onCompletion onClose");
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.release();
+    }
+    if (!this.a.a().h())
+    {
+      AVLog.d(VideoController.a, "onCompletion onClose is not Closing2");
+      return;
+    }
+    this.a.a(this.a.a().c, 0);
+    this.a.b(217);
+    this.a.c(this.a.a().c, this.a.a().z);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     jcv
  * JD-Core Version:    0.7.0.1
  */

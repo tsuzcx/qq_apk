@@ -1,50 +1,21 @@
-import android.annotation.TargetApi;
-import android.os.SystemClock;
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper;
-import com.tencent.biz.qqstory.base.videoupload.VideoCompositeHelper.VideoCompositeCallBack;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.utils.FileUtils;
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.qqstory.base.Copyable;
+import com.tencent.biz.qqstory.base.OneObjectCacheList;
+import java.lang.ref.WeakReference;
+import java.util.concurrent.ConcurrentHashMap;
 
-@TargetApi(14)
 public class mzk
-  extends ExecuteBinResponseCallback
+  extends LruCache
 {
-  private long jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-  private VideoCompositeHelper.VideoCompositeCallBack jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack;
-  private String jdField_a_of_type_JavaLangString;
-  private String b;
-  
-  public mzk(String paramString1, String paramString2, VideoCompositeHelper.VideoCompositeCallBack paramVideoCompositeCallBack)
+  public mzk(OneObjectCacheList paramOneObjectCacheList, int paramInt)
   {
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack = paramVideoCompositeCallBack;
+    super(paramInt);
   }
   
-  public void a(String paramString)
+  protected void a(boolean paramBoolean, Object paramObject, Copyable paramCopyable1, Copyable paramCopyable2)
   {
-    SLog.a(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "combine music success take time:%d", Long.valueOf(SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
-    this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(0, "", this.b);
-    FileUtils.f(this.jdField_a_of_type_JavaLangString);
-  }
-  
-  public void b(String paramString)
-  {
-    if (paramString.equals(String.valueOf(941001))) {
-      this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(941001, paramString, "");
-    }
-    for (;;)
-    {
-      SLog.d(VideoCompositeHelper.jdField_a_of_type_JavaLangString, "combine audio fail %s", new Object[] { paramString });
-      FileUtils.f(this.jdField_a_of_type_JavaLangString);
-      return;
-      if (paramString.equals(String.valueOf(941002))) {
-        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(941002, paramString, "");
-      } else {
-        this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadVideoCompositeHelper$VideoCompositeCallBack.a(941000, paramString, "");
-      }
-    }
+    this.a.a.put(paramObject, new WeakReference(paramCopyable1));
+    this.a.a();
   }
 }
 

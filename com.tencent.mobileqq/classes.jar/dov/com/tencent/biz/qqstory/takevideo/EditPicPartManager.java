@@ -1,7 +1,5 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import anbe;
-import anbf;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
@@ -12,6 +10,8 @@ import android.os.Parcelable;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import anrj;
+import anrk;
 import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.VideoEditReport;
@@ -118,7 +118,7 @@ public class EditPicPartManager
           ImageUtil.a(paramString2, "Orientation", String.valueOf(6));
         }
         paramString1 = PlayModeUtils.a("", true);
-        ThreadManager.executeOnSubThread(new PhotoUtils.WatermarkPicTask(paramString2, paramString1, new anbf(paramString2, paramString1)));
+        ThreadManager.executeOnSubThread(new PhotoUtils.WatermarkPicTask(paramString2, paramString1, new anrk(paramString2, paramString1)));
         if (QLog.isColorLevel()) {
           QLog.d("EditPicActivity.EditPicPartManager", 2, "save from " + paramString2 + " to " + paramString1);
         }
@@ -201,7 +201,7 @@ public class EditPicPartManager
   
   protected SimpleObserver a()
   {
-    return new anbe(this);
+    return new anrj(this);
   }
   
   public void a()

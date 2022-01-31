@@ -1,18 +1,18 @@
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import com.tencent.biz.qqstory.takevideo.EditVideoParams;
+import com.tencent.biz.qqstory.takevideo.EditRecordVideoSource;
 
 public final class odr
   implements Parcelable.Creator
 {
-  public EditVideoParams a(Parcel paramParcel)
+  public EditRecordVideoSource a(Parcel paramParcel)
   {
-    return new EditVideoParams(paramParcel);
+    return new EditRecordVideoSource(paramParcel);
   }
   
-  public EditVideoParams[] a(int paramInt)
+  public EditRecordVideoSource[] a(int paramInt)
   {
-    return new EditVideoParams[paramInt];
+    return new EditRecordVideoSource[paramInt];
   }
 }
 

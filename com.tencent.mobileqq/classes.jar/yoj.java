@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
-import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.apollo.ai.ApolloAIActivity;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
+import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
+import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
 
 public class yoj
-  implements Runnable
+  implements ClickableColorSpanTextView.SpanClickListener
 {
-  public yoj(CmGameLauncher paramCmGameLauncher, String paramString) {}
+  public yoj(ApolloAIActivity paramApolloAIActivity) {}
   
-  public void run()
+  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
   {
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(this.jdField_a_of_type_JavaLangString);
-      localJSONObject.put("gameId", CmGameLauncher.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher));
-      ApolloGameBasicEventUtil.a(CmGameLauncher.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher), localJSONObject.toString(), this.jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameLauncher.a());
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("cmgame_process.CmGameLauncher", 1, localException, new Object[0]);
-    }
+    paramClickableColorSpanTextView = new Intent(this.a, QQBrowserActivity.class);
+    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
+    this.a.startActivity(paramClickableColorSpanTextView);
   }
 }
 

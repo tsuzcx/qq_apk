@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.PSTNC2CActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.QavPanel;
+import com.tencent.av.ui.QavPanel.SlideAcceptListener;
+import com.tencent.av.ui.QavPanelSlideTouchListener;
 
-class jzh
-  implements DialogInterface.OnClickListener
+public class jzh
+  implements View.OnClickListener
 {
-  jzh(jzd paramjzd) {}
+  public jzh(QavPanel paramQavPanel) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    this.a.a.finish();
+    if ((this.a.a != null) && (this.a.a.a != null)) {
+      this.a.a.a.a(true);
+    }
   }
 }
 

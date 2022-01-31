@@ -1,31 +1,42 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+import com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager;
+import com.tencent.maxvideo.mediadevice.AVCodec;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.shortvideo.mediadevice.RecordManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ohb
-  extends AnimatorListenerAdapter
+  implements Runnable
 {
-  public ohb(TextLayer.TextItem paramTextItem) {}
+  public ohb(EditWebVideoPartManager paramEditWebVideoPartManager, RMVideoStateMgr paramRMVideoStateMgr) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    SLog.b("TextLayer", "scaleAnimator cancel!");
-  }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    SLog.b("TextLayer", "scaleAnimator end!");
-    this.a.p = 1.0F;
-    this.a.c = false;
-    this.a.a.g();
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    SLog.b("TextLayer", "scaleAnimator start!");
-    this.a.c = true;
+    try
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("EditWebVideoActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString + ",is to call AVideoCodec.recordSubmit()");
+      }
+      RecordManager.a().a().recordSubmit();
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        localUnsatisfiedLinkError.printStackTrace();
+        synchronized (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.notifyAll();
+          if (!QLog.isColorLevel()) {
+            continue;
+          }
+          QLog.d("EditWebVideoActivity", 2, "stopRecord(): Async, mVideoFileDir:" + this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.jdField_a_of_type_JavaLangString + ", call AVideoCodec.recordSubmit() fail, error = " + localUnsatisfiedLinkError.getMessage());
+          return;
+        }
+      }
+    }
   }
 }
 

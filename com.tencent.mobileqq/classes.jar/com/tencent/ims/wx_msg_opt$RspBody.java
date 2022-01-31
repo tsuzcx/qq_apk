@@ -26,7 +26,7 @@ public final class wx_msg_opt$RspBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.ims.wx_msg_opt.RspBody
  * JD-Core Version:    0.7.0.1
  */

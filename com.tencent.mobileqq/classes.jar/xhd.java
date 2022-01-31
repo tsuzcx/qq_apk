@@ -1,18 +1,9 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
 
 public class xhd
-  implements DialogInterface.OnClickListener
 {
-  public xhd(RecentAdapter paramRecentAdapter) {}
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    ((CardHandler)this.a.a.a(2)).j(false);
-  }
+  public static final IRedPacket a = new RedPacketManager();
 }
 
 

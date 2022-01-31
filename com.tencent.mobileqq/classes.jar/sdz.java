@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.RecentAdapter;
-import java.util.ArrayList;
-import java.util.Iterator;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
 
-class sdz
+public class sdz
   implements Runnable
 {
-  sdz(sdv paramsdv, ArrayList paramArrayList) {}
+  public sdz(ChatSettingForTroop paramChatSettingForTroop, TroopManager paramTroopManager) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Sdv.a.a != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.a.troopUin, this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.app.getCurrentAccountUin());
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        String str = (String)localIterator.next();
-        this.jdField_a_of_type_Sdv.a.a.a(str, true);
-      }
+      localObject = ((TroopMemberInfo)localObject).troopnick;
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingForTroop.runOnUiThread(new sea(this, (String)localObject));
     }
   }
 }

@@ -1,29 +1,20 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.os.Handler;
+import android.os.Message;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
 
 public class amte
-  implements Animation.AnimationListener
+  extends Handler
 {
-  public amte(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public amte(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void handleMessage(Message paramMessage)
   {
-    if (QIMEffectCameraCaptureUnit.e(this.a) != null)
-    {
-      QIMEffectCameraCaptureUnit.e(this.a).clearAnimation();
-      QIMEffectCameraCaptureUnit.e(this.a).setVisibility(8);
-    }
+    this.a.a(QzoneVerticalVideoDownloadActivity.a(this.a), paramMessage);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amte
  * JD-Core Version:    0.7.0.1
  */

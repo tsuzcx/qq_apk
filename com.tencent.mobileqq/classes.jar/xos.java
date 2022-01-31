@@ -1,21 +1,26 @@
-import android.hardware.Camera;
-import android.hardware.Camera.AutoFocusCallback;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class xos
-  implements Camera.AutoFocusCallback
+  implements View.OnClickListener
 {
-  public xos(NewFlowCameraActivity paramNewFlowCameraActivity) {}
+  public xos(FlowCameraActivity2 paramFlowCameraActivity2, File paramFile) {}
   
-  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".photo", 2, "shot photo with custom camera focus " + paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowCameraActivity2.l();
+    if (((!QLog.isColorLevel()) || (!FileUtils.d(this.jdField_a_of_type_JavaIoFile.getAbsolutePath()))) || (FlowCameraConstant.a == 1))
+    {
+      FlowCameraMqqAction.b("", "0X8005F5B", "0");
+      return;
     }
-    NewFlowCameraReporter.a(paramBoolean);
-    NewFlowCameraActivity.b(this.a);
+    FlowCameraMqqAction.b("", "0X8005F5B", "1");
   }
 }
 

@@ -1,37 +1,19 @@
-import android.content.res.Resources;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.interestTag.ShowTagNamePopupWindow;
+import com.tencent.mobileqq.nearby.interestTag.ShowTagNamePopupWindow.IShowTagNamePopupWindowCallback;
 
 public class aerd
-  implements Animation.AnimationListener
+  implements View.OnClickListener
 {
-  public aerd(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  public aerd(ShowTagNamePopupWindow paramShowTagNamePopupWindow) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    if (paramAnimation == NearbyProfileDisplayPanel.b(this.a))
-    {
-      NearbyProfileDisplayPanel.a(this.a).setVisibility(8);
-      NearbyProfileDisplayPanel.a(this.a).clearAnimation();
-      NearbyProfileDisplayPanel.a(this.a).setBackgroundResource(2130845149);
-      NearbyProfileDisplayPanel.a(this.a).setTextColor(this.a.a.getResources().getColor(2131494181));
+    if (ShowTagNamePopupWindow.a(this.a) != null) {
+      ShowTagNamePopupWindow.a(this.a).a(ShowTagNamePopupWindow.a(this.a));
     }
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    if (paramAnimation == NearbyProfileDisplayPanel.a(this.a))
-    {
-      NearbyProfileDisplayPanel.a(this.a).setVisibility(0);
-      NearbyProfileDisplayPanel.a(this.a).setBackgroundResource(2130846136);
-      NearbyProfileDisplayPanel.a(this.a).setTextColor(this.a.a.getResources().getColor(2131494203));
-    }
+    this.a.dismiss();
   }
 }
 

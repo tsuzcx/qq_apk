@@ -1,14 +1,6 @@
-import android.widget.TextView;
-
-public final class lhx
-  implements Runnable
+public abstract interface lhx
 {
-  public lhx(TextView paramTextView, String paramString) {}
-  
-  public void run()
-  {
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_JavaLangString);
-  }
+  public abstract void c();
 }
 
 

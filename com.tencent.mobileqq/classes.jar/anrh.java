@@ -1,17 +1,18 @@
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoSource;
 
-public class anrh
-  implements Runnable
+public final class anrh
+  implements Parcelable.Creator
 {
-  public anrh(RMVideoRecordState paramRMVideoRecordState, RMVideoStateMgr paramRMVideoStateMgr) {}
-  
-  public void run()
+  public EditLocalVideoSource a(Parcel paramParcel)
   {
-    if (this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null) {
-      this.jdField_a_of_type_DovComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.unlockFrameSync();
-    }
+    return new EditLocalVideoSource(paramParcel);
+  }
+  
+  public EditLocalVideoSource[] a(int paramInt)
+  {
+    return new EditLocalVideoSource[paramInt];
   }
 }
 

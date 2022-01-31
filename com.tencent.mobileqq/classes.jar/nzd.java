@@ -1,34 +1,33 @@
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher.Condition;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.support.v4.util.LruCache;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.URLImageLoader;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.URLImageLoader.Config;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.common.InfoPrinter;
 
 public class nzd
-  implements LocalVideoPusher.Condition
+  extends LruCache
 {
-  public nzd(LocalVideoPushSegment paramLocalVideoPushSegment) {}
-  
-  public boolean a()
+  public nzd(URLImageLoader paramURLImageLoader, int paramInt)
   {
-    long l = ((Long)this.a.a.b("last_cancel_time", Long.valueOf(0L))).longValue();
-    try
+    super(paramInt);
+  }
+  
+  protected int a(URLImageLoader.Config paramConfig, Drawable paramDrawable)
+  {
+    if ((paramDrawable instanceof BitmapDrawable))
     {
-      String str = (String)this.a.a.b("localVideoScanInterval", "1440");
-      SLog.a("Q.qqstory.home.LocalVideoPushSegment", "localVideoScanInterval config=%s", str);
-      i = Integer.valueOf(str).intValue();
-      if (NetConnInfoCenter.getServerTimeMillis() - l < i * 60 * 1000) {
-        return false;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      paramDrawable = ((BitmapDrawable)paramDrawable).getBitmap();
+      if (paramDrawable != null)
       {
-        int i = 1440;
+        int i = paramDrawable.getRowBytes();
+        i = paramDrawable.getHeight() * i;
+        InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "URLImageLoader cache put:", paramConfig, " size=", Integer.valueOf(i) });
+        return i;
       }
     }
-    return true;
+    return 524288;
   }
 }
 

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.profile.PersonalityLabel.tagCloud;
 
-import agba;
-import agbb;
-import agbc;
-import agbd;
+import agpc;
+import agpd;
+import agpe;
+import agpf;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -144,8 +144,8 @@ public class TagCloudView
       }
     }
     localObject1 = new Point((int)(paramInt1 * 0.5F), (int)(paramInt2 * 0.5F));
-    Collections.sort(this.jdField_a_of_type_JavaUtilList, new agbd(this, (Point)localObject1));
-    Collections.sort(localArrayList1, new agbb(this, (Point)localObject1));
+    Collections.sort(this.jdField_a_of_type_JavaUtilList, new agpf(this, (Point)localObject1));
+    Collections.sort(localArrayList1, new agpd(this, (Point)localObject1));
     int i = this.jdField_a_of_type_JavaUtilList.size();
     if (this.jdField_a_of_type_JavaUtilList.size() >= 6) {
       i = 2;
@@ -733,7 +733,7 @@ public class TagCloudView
     {
       i = (int)(((Tag)localObject).b() * f1);
       k = (int)(((Tag)localObject).c() * f1);
-      this.jdField_b_of_type_JavaUtilList.add(new agba(j, f1, paramRect.left, paramRect.top));
+      this.jdField_b_of_type_JavaUtilList.add(new agpc(j, f1, paramRect.left, paramRect.top));
       localObject = new Rect(i + paramRect.left, paramRect.top, paramRect.right, paramRect.top + k);
       paramRect = new Rect(paramRect.left, k + paramRect.top, paramRect.right, paramRect.bottom);
       a((Rect)localObject);
@@ -769,7 +769,7 @@ public class TagCloudView
       }
       for (;;)
       {
-        this.jdField_b_of_type_JavaUtilList.add(new agba(j, f1, paramRect.left, paramRect.top));
+        this.jdField_b_of_type_JavaUtilList.add(new agpc(j, f1, paramRect.left, paramRect.top));
         return;
         i = 0;
         break;
@@ -1232,16 +1232,16 @@ public class TagCloudView
       int i = 0;
       if (i < this.jdField_b_of_type_JavaUtilList.size())
       {
-        localObject3 = (agba)this.jdField_b_of_type_JavaUtilList.get(i);
-        localObject2 = (Tag)this.jdField_a_of_type_JavaUtilList.get(((agba)localObject3).jdField_a_of_type_Int);
+        localObject3 = (agpc)this.jdField_b_of_type_JavaUtilList.get(i);
+        localObject2 = (Tag)this.jdField_a_of_type_JavaUtilList.get(((agpc)localObject3).jdField_a_of_type_Int);
         localObject4 = ((Tag)localObject2).jdField_a_of_type_AndroidTextTextPaint;
         ((TextPaint)localObject4).setColor(this.f);
         ((TextPaint)localObject4).setAlpha(64);
         ((TextPaint)localObject4).setFakeBoldText(false);
-        localObject4 = new Point(((agba)localObject3).jdField_b_of_type_Int, ((agba)localObject3).c);
+        localObject4 = new Point(((agpc)localObject3).jdField_b_of_type_Int, ((agpc)localObject3).c);
         ((Canvas)localObject1).save();
-        ((Canvas)localObject1).translate(((Point)localObject4).x + k, ((Point)localObject4).y - ((Tag)localObject2).jdField_d_of_type_Int * ((agba)localObject3).jdField_a_of_type_Float);
-        ((Canvas)localObject1).scale(((agba)localObject3).jdField_a_of_type_Float, ((agba)localObject3).jdField_a_of_type_Float);
+        ((Canvas)localObject1).translate(((Point)localObject4).x + k, ((Point)localObject4).y - ((Tag)localObject2).jdField_d_of_type_Int * ((agpc)localObject3).jdField_a_of_type_Float);
+        ((Canvas)localObject1).scale(((agpc)localObject3).jdField_a_of_type_Float, ((agpc)localObject3).jdField_a_of_type_Float);
         if (((Tag)localObject2).jdField_b_of_type_Boolean) {
           ((Tag)localObject2).jdField_a_of_type_AndroidTextLayout.draw((Canvas)localObject1);
         }
@@ -1305,7 +1305,7 @@ public class TagCloudView
     if (paramInt2 < this.jdField_d_of_type_Int) {
       paramInt1 = this.jdField_d_of_type_Int;
     }
-    Collections.sort(this.jdField_a_of_type_JavaUtilList, new agbc(this, this.jdField_a_of_type_JavaUtilRandom, (int)(i * 0.7F), (int)(this.jdField_d_of_type_Int * 0.7F)));
+    Collections.sort(this.jdField_a_of_type_JavaUtilList, new agpe(this, this.jdField_a_of_type_JavaUtilRandom, (int)(i * 0.7F), (int)(this.jdField_d_of_type_Int * 0.7F)));
     paramInt2 = a(i, paramInt1);
     if (j == 1073741824) {
       paramInt1 = paramInt2;

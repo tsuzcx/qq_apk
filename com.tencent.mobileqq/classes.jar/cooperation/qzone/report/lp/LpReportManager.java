@@ -1,7 +1,7 @@
 package cooperation.qzone.report.lp;
 
-import amim;
-import amin;
+import amyr;
+import amys;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.text.TextUtils;
@@ -119,7 +119,7 @@ public class LpReportManager
   {
     if ((Looper.myLooper() != null) && (Looper.myLooper() == Looper.getMainLooper()))
     {
-      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new amim(this, paramInt, paramLpReportInfo, paramBoolean1, paramBoolean2));
+      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new amyr(this, paramInt, paramLpReportInfo, paramBoolean1, paramBoolean2));
       return;
     }
     report(paramInt, paramLpReportInfo, paramBoolean1, paramBoolean2);
@@ -234,7 +234,7 @@ public class LpReportManager
   {
     if ((Looper.myLooper() != null) && (Looper.myLooper() == Looper.getMainLooper()))
     {
-      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new amin(this, paramInt));
+      QzoneHandlerThreadFactory.getHandlerThread("Report_HandlerThread").post(new amys(this, paramInt));
       return;
     }
     report(paramInt);

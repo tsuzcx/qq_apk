@@ -1,20 +1,34 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileFragment;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
+import com.tencent.mobileqq.nearby.now.model.LocationInfo;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsManager;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadListener;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
 
 public class aewa
-  extends TroopGiftCallback
+  extends SosoInterface.OnLocationListener
 {
-  public aewa(NearbyProfileFragment paramNearbyProfileFragment) {}
-  
-  public void a(long paramLong)
+  public aewa(VideoFeedsManager paramVideoFeedsManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString, VideoFeedsUploader.UploadInfo paramUploadInfo)
   {
-    if (paramLong > 0L)
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if (paramSosoLbsInfo == null)
     {
-      NearbyProfileFragment.a(this.a).setText(String.format("获得%d礼物积分", new Object[] { Long.valueOf(paramLong) }));
+      paramSosoLbsInfo = new VideoFeedsUploader.UploadResult();
+      paramSosoLbsInfo.i = "定位失败！";
+      paramSosoLbsInfo.a = -108;
+      VideoFeedsManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager).a(new VideoFeedsUploader.UploadInfo(), paramSosoLbsInfo);
       return;
     }
-    NearbyProfileFragment.a(this.a).setText("我的礼物积分");
+    LocationInfo localLocationInfo = new LocationInfo();
+    localLocationInfo.init("" + paramSosoLbsInfo.a.jdField_b_of_type_Double, "" + paramSosoLbsInfo.a.jdField_a_of_type_Double, paramSosoLbsInfo.a.e, paramSosoLbsInfo.a.jdField_a_of_type_JavaLangString);
+    localLocationInfo.setAddress(paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString);
+    VideoFeedsManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsManager, this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadInfo, localLocationInfo);
   }
 }
 

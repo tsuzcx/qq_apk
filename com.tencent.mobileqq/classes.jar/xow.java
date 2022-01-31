@@ -1,24 +1,46 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
-import com.tencent.mobileqq.shortvideo.hwcodec.SVHwEncoder;
+import android.animation.Animator;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.AnimatorAdapter;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.activity.richmedia.FlowPlusPanel;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
 import com.tencent.qphone.base.util.QLog;
 
 public class xow
-  implements Runnable
+  extends AnimatorAdapter
 {
-  private SVHwEncoder jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder;
+  public xow(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
-  public xow(NewFlowCameraActivity paramNewFlowCameraActivity, SVHwEncoder paramSVHwEncoder)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder = paramSVHwEncoder;
-  }
-  
-  public void run()
+  public void onAnimationEnd(Animator paramAnimator)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("PTV.NewFlowCameraActivity", 2, "handleQQVideo(): onSendVideoClick mEncoderCache=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder);
+      QLog.d("FlowCameraActivity", 2, "enterPtvModeAnimation: onAnimationEnd <<===");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoHwcodecSVHwEncoder.b();
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.x();
+    this.a.m();
+    if (!this.a.g) {
+      this.a.e(false);
+    }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("FlowCameraActivity", 2, "enterPtvModeAnimation: onAnimationStart ===>>");
+    }
+    this.a.e.setVisibility(0);
+    this.a.f.setBackgroundColor(this.a.getResources().getColor(2131493275));
+    this.a.d = true;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowPlusPanel != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowPlusPanel.b();
+    }
+    if (this.a.g)
+    {
+      this.a.b.setOnTouchListener(this.a.jdField_a_of_type_AndroidViewView$OnTouchListener);
+      this.a.b.setLongClickable(false);
     }
   }
 }

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import ahvq;
-import ahvr;
+import aijt;
+import aiju;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.SpannableStringBuilder;
@@ -84,7 +84,7 @@ public class StructMsgItemTimer
     if ((paramView != null) && ((paramView instanceof CountdownTextView)))
     {
       paramContext = (CountdownTextView)paramView;
-      paramContext.a(a(), new ahvq(this, paramContext));
+      paramContext.a(a(), new aijt(this, paramContext));
       paramContext.setTag(this);
       return paramContext;
     }
@@ -98,7 +98,7 @@ public class StructMsgItemTimer
     if (this.A != null) {
       paramContext.setText(a(l));
     }
-    paramContext.a(l, new ahvr(this, paramContext));
+    paramContext.a(l, new aiju(this, paramContext));
     return paramContext;
   }
   
@@ -179,7 +179,7 @@ public class StructMsgItemTimer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemTimer
  * JD-Core Version:    0.7.0.1
  */

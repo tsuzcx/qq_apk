@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.PersonalityLabel;
 
-import agar;
+import agot;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -12,7 +12,7 @@ import tencent.im.label.comm.PersonalityTagComm.PraiseUserInfo;
 public class PersonalityLabelZan
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new agar();
+  public static final Parcelable.Creator CREATOR = new agot();
   public static final String TAG = "PersonalityLabelPhoto";
   public String nick;
   public long uin;

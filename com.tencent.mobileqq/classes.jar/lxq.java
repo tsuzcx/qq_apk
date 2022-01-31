@@ -1,21 +1,21 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.image.GifDrawable;
-import java.io.File;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class lxq
   implements Runnable
 {
-  public lxq(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity, File paramFile) {}
+  public lxq(KandianOx210MsgInfo paramKandianOx210MsgInfo, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    ReadInJoyDeliverUGCActivity localReadInJoyDeliverUGCActivity = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyUgcReadInJoyDeliverUGCActivity;
-    if (GifDrawable.isGifFile(this.jdField_a_of_type_JavaIoFile)) {}
-    for (int i = 2;; i = 1)
-    {
-      ReadInJoyDeliverUGCActivity.a(localReadInJoyDeliverUGCActivity, i);
-      return;
-    }
+    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false).edit();
+    localEditor.putString("kandian_push_0x210_msg_sys", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.a());
+    localEditor.putInt("kandian_push_0x210_msg_sys_count", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.a);
+    localEditor.putLong("kandian_push_0x210_c5_msg_time", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.d);
+    ReadInJoyHelper.a(localEditor, true);
   }
 }
 

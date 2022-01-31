@@ -47,10 +47,10 @@ import java.util.Iterator;
 import mqq.manager.TicketManager;
 import oicq.wlogin_sdk.request.Ticket;
 import org.json.JSONObject;
-import xer;
-import xes;
-import xev;
-import xew;
+import xhw;
+import xhx;
+import xia;
+import xib;
 
 public class VoiceRedPacketHelper
   implements QQRecorder.OnQQRecorderListener, QQRecorder.RecorderProcessorListener
@@ -437,7 +437,7 @@ public class VoiceRedPacketHelper
       localBaseApplication = BaseApplication.getContext();
       if (!FileUtils.a())
       {
-        b(2131433420);
+        b(2131433437);
         b("no sdcard");
         return;
       }
@@ -450,19 +450,19 @@ public class VoiceRedPacketHelper
     }
     if (!QQRecorder.d())
     {
-      b(2131433421);
+      b(2131433438);
       b("sdcard full");
       return;
     }
     if (!QQRecorder.a(localRecorderParam.jdField_c_of_type_Int))
     {
-      b(2131433424);
+      b(2131433441);
       b("internal storage full");
       return;
     }
     if (localQQAppInterface.c())
     {
-      b(2131433771);
+      b(2131433788);
       b("ppt play error on video chatting");
       return;
     }
@@ -488,7 +488,7 @@ public class VoiceRedPacketHelper
       QLog.d("VoiceRedPacketHelper", 2, "startRecord() is checkInPhone:" + paramBoolean + ",isInitSuccess:" + this.jdField_c_of_type_Boolean + ",isServerAvailable:" + bool1);
     }
     if ((!this.jdField_c_of_type_Boolean) && (!bool1)) {
-      a(2, QWalletSetting.a(localQQAppInterface.getCurrentAccountUin(), "voice_recognieze_in_phone_tips", BaseApplicationImpl.getContext().getResources().getString(2131432324)));
+      a(2, QWalletSetting.a(localQQAppInterface.getCurrentAccountUin(), "voice_recognieze_in_phone_tips", BaseApplicationImpl.getContext().getResources().getString(2131432341)));
     }
     if (paramBoolean)
     {
@@ -594,7 +594,7 @@ public class VoiceRedPacketHelper
     }
     for (;;)
     {
-      a(new xes(this, localQQAppInterface, (MessageForQQWalletMsg)localObject, i, paramLong, paramArrayOfByte, paramString, paramMessageRecord, paramBaseUploadProcessor, paramMessageObserver));
+      a(new xhx(this, localQQAppInterface, (MessageForQQWalletMsg)localObject, i, paramLong, paramArrayOfByte, paramString, paramMessageRecord, paramBaseUploadProcessor, paramMessageObserver));
       return;
       int j = ((MessageForQQWalletMsg)localObject).istroop;
       if (j == 3000) {
@@ -641,7 +641,7 @@ public class VoiceRedPacketHelper
       PttBuffer.b(paramString);
       if (paramDouble < 500.0D)
       {
-        b(2131433769);
+        b(2131433786);
         b("record time too short");
         return;
       }
@@ -733,16 +733,16 @@ public class VoiceRedPacketHelper
     }
   }
   
-  public void a(xew paramxew)
+  public void a(xib paramxib)
   {
     Object localObject = QWalletTools.a();
-    if ((localObject == null) || (paramxew == null)) {}
+    if ((localObject == null) || (paramxib == null)) {}
     do
     {
       return;
-      localObject = ((TicketManager)((QQAppInterface)localObject).getManager(2)).GetSkey(((QQAppInterface)localObject).getCurrentAccountUin(), 16L, new xev(this, paramxew));
+      localObject = ((TicketManager)((QQAppInterface)localObject).getManager(2)).GetSkey(((QQAppInterface)localObject).getCurrentAccountUin(), 16L, new xia(this, paramxib));
     } while ((localObject == null) || (((Ticket)localObject)._sig == null) || (((Ticket)localObject)._sig.length == 0));
-    paramxew.a(new String(((Ticket)localObject)._sig));
+    paramxib.a(new String(((Ticket)localObject)._sig));
   }
   
   public void b()
@@ -762,7 +762,7 @@ public class VoiceRedPacketHelper
       return;
     }
     BaseApplication localBaseApplication = BaseApplication.getContext();
-    localQQAppInterface.runOnUiThread(new xer(this, localBaseApplication, paramInt, localBaseApplication.getResources().getDimensionPixelSize(2131558448)));
+    localQQAppInterface.runOnUiThread(new xhw(this, localBaseApplication, paramInt, localBaseApplication.getResources().getDimensionPixelSize(2131558448)));
   }
   
   public void b(IPttProcessor paramIPttProcessor, IPttProcessor.ProcessData paramProcessData)

@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.vashealth.HealthStepCounterPlugin;
+import com.tencent.mobileqq.troopgift.TroopGiftAnimationController;
 
-public class ajvc
+class ajvc
   implements Runnable
 {
-  public ajvc(HealthStepCounterPlugin paramHealthStepCounterPlugin, String paramString) {}
+  ajvc(ajvb paramajvb) {}
   
   public void run()
   {
-    HealthStepCounterPlugin.a(this.jdField_a_of_type_ComTencentMobileqqVashealthHealthStepCounterPlugin, this.jdField_a_of_type_JavaLangString);
+    this.a.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajvc
  * JD-Core Version:    0.7.0.1
  */

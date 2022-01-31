@@ -1,33 +1,19 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager;
 
 public class acyz
-  implements FMDialogUtil.FMDialogInterface
+  implements Runnable
 {
-  public acyz(QfileEditBottomBar paramQfileEditBottomBar) {}
+  public acyz(ThumbDownloadManager paramThumbDownloadManager, String paramString) {}
   
-  public void a()
+  public void run()
   {
-    QfileEditBottomBar.a(this.a).a().e();
-    if (this.a.a != null) {
-      this.a.a.c();
-    }
-    FMDataCache.b();
-    QfileEditBottomBar.a(this.a).h();
-    QfileEditBottomBar.a(this.a).e(false);
-    QfileEditBottomBar.a(this.a).b();
+    ThumbDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbDownloadManager, this.jdField_a_of_type_JavaLangString);
+    ThumbDownloadManager.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbDownloadManager, this.jdField_a_of_type_JavaLangString);
   }
-  
-  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acyz
  * JD-Core Version:    0.7.0.1
  */

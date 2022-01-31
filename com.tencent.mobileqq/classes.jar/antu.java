@@ -1,13 +1,19 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import dov.com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import android.content.DialogInterface.OnDismissListener;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
 
 public class antu
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  public antu(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public antu(EditVideoGuide paramEditVideoGuide) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void onDismiss(DialogInterface paramDialogInterface)
+  {
+    this.a.jdField_a_of_type_Int = 2;
+    this.a.b = 2;
+    this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(5);
+  }
 }
 
 

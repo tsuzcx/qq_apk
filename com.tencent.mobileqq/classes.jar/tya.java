@@ -1,28 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopMemberListActivity;
-import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
+import com.tencent.mobileqq.activity.TroopInfoActivity;
+import java.util.ArrayList;
 
 class tya
-  implements View.OnClickListener
+  implements Runnable
 {
-  tya(txx paramtxx) {}
+  tya(txz paramtxz, ArrayList paramArrayList) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.a.jdField_d_of_type_Boolean = false;
-    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.a.a.findViewById(2131363227));
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-    this.a.a.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this.a.a.jdField_b_of_type_AndroidViewView$OnClickListener);
-    if (this.a.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter != null) {
-      this.a.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
+    if (this.jdField_a_of_type_Txz.a.c) {
+      return;
     }
+    this.jdField_a_of_type_Txz.a.a(8, this.jdField_a_of_type_JavaUtilArrayList, true, 2, true);
   }
 }
 

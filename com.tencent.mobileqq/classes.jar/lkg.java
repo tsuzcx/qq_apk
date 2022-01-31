@@ -1,31 +1,19 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.widget.ActionSheet;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
+import com.tencent.qphone.base.util.QLog;
 
-class lkg
-  implements View.OnClickListener
+public final class lkg
+  extends SosoInterface.OnLocationListener
 {
-  lkg(lkf paramlkf, ActionSheet paramActionSheet) {}
-  
-  public void onClick(View paramView)
+  public lkg(int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    paramView = this.jdField_a_of_type_Lkf.a.a;
-    String str1 = ReadInJoyCommentUtils.a(ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_Lkf.a));
-    long l = ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_Lkf.a).mArticleID;
-    int j = ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_Lkf.a).mStrategyId;
-    String str2 = ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_Lkf.a).innerUniqueID;
-    ArticleInfo localArticleInfo = ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_Lkf.a);
-    if (ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_Lkf.a)) {}
-    for (int i = 2;; i = 1)
-    {
-      PublicAccountReportUtils.a(paramView, str1, "0X8009018", "0X8009018", 0, 0, String.valueOf(l), String.valueOf(j), str2, ReadInJoyCommentUtils.a(localArticleInfo, i, ReadInJoySecondCommentListAdapter.a(this.jdField_a_of_type_Lkf.a).commentId, 3, 2), false);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (QLog.isColorLevel())) {
+      QLog.d("GalleryReportedUtils", 2, "get Location: info = " + paramSosoLbsInfo.toString());
     }
   }
 }

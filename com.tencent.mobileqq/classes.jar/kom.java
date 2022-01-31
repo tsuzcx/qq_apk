@@ -1,29 +1,13 @@
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import com.tencent.biz.now.CgiHelper;
-import com.tencent.biz.now.CgiHelper.cigHelperCallback;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
 
-public class kom
-  extends Handler
+class kom
+  implements Runnable
 {
-  public kom(CgiHelper paramCgiHelper) {}
+  kom(kol paramkol) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if ((paramMessage.what == 1001) && (CgiHelper.a(this.a) != null))
-    {
-      paramMessage = CgiHelper.a(this.a);
-      if (TextUtils.isEmpty(CgiHelper.a(this.a))) {
-        break label58;
-      }
-    }
-    label58:
-    for (boolean bool = true;; bool = false)
-    {
-      paramMessage.a(bool, CgiHelper.b(this.a));
-      return;
-    }
+    EqqAccountDetailActivity.b(this.a.a, false);
   }
 }
 

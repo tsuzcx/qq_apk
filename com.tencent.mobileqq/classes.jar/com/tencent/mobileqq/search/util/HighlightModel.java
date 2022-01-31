@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.util;
 
-import ahip;
+import ahwr;
 import android.graphics.Color;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -24,7 +24,7 @@ public class HighlightModel
     if ((paramString != null) && (!((List)localObject).contains(paramString))) {
       ((List)localObject).add(paramString);
     }
-    Collections.sort((List)localObject, new ahip(this));
+    Collections.sort((List)localObject, new ahwr(this));
     this.jdField_a_of_type_JavaUtilList = ((List)localObject);
   }
   

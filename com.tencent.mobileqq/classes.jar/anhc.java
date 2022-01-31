@@ -1,34 +1,30 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.pb.PBStringField;
+import cooperation.weiyun.channel.pb.WeiyunPB.WeiyunTrialCouponUseMsgReq;
+import cooperation.weiyun.sdk.api.WeiyunApi;
+import cooperation.weiyun.utils.PreferenceUtils;
+import mqq.app.AppRuntime;
 
-public class anhc
-  implements ValueAnimator.AnimatorUpdateListener
+public final class anhc
+  implements Runnable
 {
-  public anhc(TextLayer.TextItem paramTextItem) {}
+  public anhc(int paramInt) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    if (this.a.a.b == null) {
-      return;
-    }
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    this.a.s = (this.a.d + this.a.f * (1.0F - f));
-    this.a.t = (this.a.e + this.a.g * (1.0F - f));
-    this.a.q = (this.a.b + this.a.h * (1.0F - f));
-    this.a.r = (this.a.c + this.a.i * (1.0F - f));
-    if (f == 1.0F)
+    WeiyunPB.WeiyunTrialCouponUseMsgReq localWeiyunTrialCouponUseMsgReq = new WeiyunPB.WeiyunTrialCouponUseMsgReq();
+    localWeiyunTrialCouponUseMsgReq.business_id.set("upload_speed_up");
+    WeiyunApi.a(localWeiyunTrialCouponUseMsgReq, null);
+    if (this.a > 0)
     {
-      this.a.a.b = null;
-      this.a.a.b(4);
+      int i = this.a;
+      PreferenceUtils.a(BaseApplicationImpl.getApplication(), String.valueOf(BaseApplicationImpl.getApplication().getRuntime().getLongAccountUin()), "upload_coupon_count", String.valueOf(i - 1));
     }
-    TextLayer.b(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhc
  * JD-Core Version:    0.7.0.1
  */

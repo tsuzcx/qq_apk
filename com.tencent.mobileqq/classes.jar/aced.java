@@ -1,16 +1,17 @@
-import com.tencent.biz.troop.file.ZipFilesListAdapter;
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
 
 public class aced
-  extends FMObserver
+  implements Runnable
 {
-  public aced(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity) {}
+  public aced(EmoticonLinearLayout paramEmoticonLinearLayout) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, String paramString1, String paramString2)
+  public void run()
   {
-    if ((paramBoolean) && (this.a.a != null)) {
-      this.a.a.notifyDataSetChanged();
+    if (this.a.a != null)
+    {
+      this.a.a.b();
+      this.a.postDelayed(this, 100L);
     }
   }
 }

@@ -1,23 +1,16 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.PositionCallback;
+import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.arengine.AREngineCallback;
 
-class aahe
-  implements ArkAppEventObserverManager.PositionCallback
+public class aahe
+  implements Runnable
 {
-  aahe(aahd paramaahd) {}
+  public aahe(AREngine paramAREngine) {}
   
-  public void a(long paramLong)
+  public void run()
   {
-    ark.VariantWrapper localVariantWrapper = this.a.a.a.jdField_a_of_type_Aagv.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    if (AREngine.a(this.a) != null) {
+      AREngine.a(this.a).a();
     }
-  }
-  
-  public void a(boolean paramBoolean, double paramDouble1, double paramDouble2)
-  {
-    ArkAppDeviceModule.a(this.a.a.a.jdField_a_of_type_Aagv.a, this.a.a.a.jdField_a_of_type_Long, paramBoolean, paramDouble1, paramDouble2);
   }
 }
 

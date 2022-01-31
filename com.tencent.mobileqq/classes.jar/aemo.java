@@ -1,13 +1,33 @@
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.app.ShieldListObserver;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-class aemo
-  implements Runnable
+public class aemo
+  extends ShieldListObserver
 {
-  aemo(aemn paramaemn) {}
+  public aemo(NearbyProxy paramNearbyProxy) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, List paramList, int paramInt)
   {
-    PlayOperationViewModel.a(this.a.a);
+    if (paramInt == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyProxy", 2, "onAddShieldList from nearby");
+      }
+      NearbyProxy.a(this.a, 4113, new Object[] { Boolean.valueOf(paramBoolean), paramList });
+    }
+  }
+  
+  protected void b(boolean paramBoolean, List paramList, int paramInt)
+  {
+    if (paramInt == 1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyProxy", 2, "onDeleteShieldList from nearby");
+      }
+      NearbyProxy.a(this.a, 4114, new Object[] { Boolean.valueOf(paramBoolean), paramList });
+    }
   }
 }
 

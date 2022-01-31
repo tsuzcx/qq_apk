@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.campuscircle;
 
-import abih;
-import abii;
+import abpi;
+import abpj;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -19,7 +19,7 @@ import java.util.Set;
 public class CampusCircleManager$CampusTopicPublisher
 {
   public CampusCircleManager.TopicPublishSession a;
-  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new abih(this);
+  private TransProcessorHandler jdField_a_of_type_ComTencentMobileqqTransfileTransProcessorHandler = new abpi(this);
   HashSet jdField_a_of_type_JavaUtilHashSet = new HashSet();
   
   public CampusCircleManager$CampusTopicPublisher(CampusCircleManager paramCampusCircleManager, CampusCircleManager.TopicPublishSession paramTopicPublishSession)
@@ -37,7 +37,7 @@ public class CampusCircleManager$CampusTopicPublisher
     if (!bool)
     {
       this.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleManager.jdField_a_of_type_JavaUtilSet.add(paramPicInfo.md5);
-      paramPicInfo = new abii(this, paramPicInfo);
+      paramPicInfo = new abpj(this, paramPicInfo);
       this.jdField_a_of_type_JavaUtilHashSet.add(paramPicInfo);
       ThreadManager.post(paramPicInfo, 8, null, true);
     }
@@ -85,7 +85,7 @@ public class CampusCircleManager$CampusTopicPublisher
       }
       localObject = this.jdField_a_of_type_JavaUtilHashSet.iterator();
       while (((Iterator)localObject).hasNext()) {
-        ThreadManager.remove((abii)((Iterator)localObject).next());
+        ThreadManager.remove((abpj)((Iterator)localObject).next());
       }
     }
     this.jdField_a_of_type_JavaUtilHashSet.clear();
@@ -260,7 +260,7 @@ public class CampusCircleManager$CampusTopicPublisher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.campuscircle.CampusCircleManager.CampusTopicPublisher
  * JD-Core Version:    0.7.0.1
  */

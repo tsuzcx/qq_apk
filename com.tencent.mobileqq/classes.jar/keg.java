@@ -1,11 +1,17 @@
-class keg
-  implements Runnable
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.av.ui.redbag.AVRedBagMgr;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
+
+public class keg
+  implements MenuItem.OnMenuItemClickListener
 {
-  keg(kef paramkef, int paramInt) {}
+  public keg(AVRedBagMgr.TestFlag paramTestFlag, AVRedBagMgr paramAVRedBagMgr) {}
   
-  public void run()
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    this.jdField_a_of_type_Kef.e(this.jdField_a_of_type_Int - 1);
+    this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr$TestFlag.b(this.jdField_a_of_type_ComTencentAvUiRedbagAVRedBagMgr);
+    return true;
   }
 }
 

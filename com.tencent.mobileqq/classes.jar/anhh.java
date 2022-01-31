@@ -1,20 +1,24 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
-import java.io.File;
-import java.io.FilenameFilter;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 
-public class anhh
-  implements FilenameFilter
+public final class anhh
+  implements FMDialogUtil.FMDialogInterface
 {
-  public anhh(DoodleEmojiManager paramDoodleEmojiManager) {}
+  public anhh(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage) {}
   
-  public boolean accept(File paramFile, String paramString)
+  public void a()
   {
-    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp")) || (paramString.endsWith(".apng"));
+    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, BaseActivity.sTopActivity);
   }
+  
+  public void b() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhh
  * JD-Core Version:    0.7.0.1
  */

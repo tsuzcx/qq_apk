@@ -1,26 +1,10 @@
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditBasePanel;
+import android.view.View;
 
-public class aepm
-  implements ConditionSearchManager.IConfigListener
+public abstract interface aepm
 {
-  public aepm(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
+  public abstract void a(View paramView);
   
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    if ((paramBoolean) && (paramInt == 2))
-    {
-      if ((NearbyPeopleProfileActivity.a(this.a) == null) || (this.a.e != 1)) {
-        break label41;
-      }
-      NearbyPeopleProfileActivity.a(this.a).d();
-    }
-    label41:
-    while (NearbyPeopleProfileActivity.a(this.a) == null) {
-      return;
-    }
-  }
+  public abstract void a(View paramView, aepr paramaepr);
 }
 
 

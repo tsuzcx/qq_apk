@@ -1,24 +1,14 @@
-import com.tencent.mobileqq.app.automator.step.RegisterPush;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime.Status;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.data.ChatMessage;
 
-public class zoi
-  extends AccountObserver
+class zoi
+  implements Runnable
 {
-  private zoi(RegisterPush paramRegisterPush) {}
+  zoi(zoh paramzoh, ChatMessage paramChatMessage) {}
   
-  public void onlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, long paramLong, boolean paramBoolean3)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "onlineStatusChanged isSuccess=" + paramBoolean1 + ",curStatus=" + paramStatus.toString() + ",isFriendListChang=" + paramBoolean2 + ",timeStamp=" + paramLong + ",isGatherListChange=" + paramBoolean3);
-    }
-    if (paramBoolean1)
-    {
-      this.a.a(7);
-      return;
-    }
-    this.a.a(6);
+    this.jdField_a_of_type_Zoh.jdField_a_of_type_ComTencentMobileqqAppTroopHandler.a(this.jdField_a_of_type_Zoh.jdField_a_of_type_Int, this.jdField_a_of_type_Zoh.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
   }
 }
 

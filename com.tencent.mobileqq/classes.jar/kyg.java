@@ -1,11 +1,16 @@
-import com.tencent.biz.pubaccount.PhotoWallViewForAccountDetail.PhotoAdapter;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import java.net.URL;
+import org.json.JSONObject;
 
 public class kyg
+  implements Runnable
 {
-  public URLImageView a;
+  public kyg(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, URL paramURL, String paramString1, String paramString2, JSONObject paramJSONObject) {}
   
-  public kyg(PhotoWallViewForAccountDetail.PhotoAdapter paramPhotoAdapter) {}
+  public void run()
+  {
+    PublicAccountJavascriptInterface.a(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface, this.jdField_a_of_type_JavaNetURL, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_OrgJsonJSONObject);
+  }
 }
 
 

@@ -1,16 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.forward.ForwardSendHongBaoOption;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.filemanager.fileviewer.ImageGalleryAdapter;
 
 public class adce
-  implements DialogInterface.OnClickListener
 {
-  public adce(ForwardSendHongBaoOption paramForwardSendHongBaoOption, QQCustomDialog paramQQCustomDialog) {}
+  public ProgressBar a;
+  public TextView a;
+  public URLImageView a;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  private adce(ImageGalleryAdapter paramImageGalleryAdapter)
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+    this.jdField_a_of_type_AndroidWidgetProgressBar = null;
   }
 }
 

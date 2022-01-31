@@ -1,25 +1,62 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.LikeSettingActivity;
+import com.tencent.mobileqq.app.CardHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.NearbyRelevantHandler;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class szm
-  implements DialogInterface.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public szm(NotificationActivity paramNotificationActivity) {}
+  public szm(LikeSettingActivity paramLikeSettingActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    paramDialogInterface = "http://aq.qq.com/007?from=andapp&account=" + NotificationActivity.b(this.a);
-    Intent localIntent = new Intent(this.a.getActivity(), QQBrowserActivity.class);
-    this.a.startActivity(localIntent.putExtra("url", paramDialogInterface));
-    this.a.finish();
+    if (paramCompoundButton == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
+    {
+      ((NearbyRelevantHandler)this.a.app.a(66)).a(paramBoolean);
+      this.a.app.reportClickEvent("CliOper", "0X8006729");
+    }
+    do
+    {
+      return;
+      if (paramCompoundButton == this.a.c.a())
+      {
+        this.a.app.d(true, paramBoolean);
+        return;
+      }
+      if (paramCompoundButton == this.a.b.a())
+      {
+        localQQAppInterface = this.a.app;
+        if (paramBoolean) {}
+        for (paramCompoundButton = "1";; paramCompoundButton = "0")
+        {
+          ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8007614", "0X8007614", 0, 0, paramCompoundButton, "", "", "");
+          this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.e(paramBoolean);
+          return;
+        }
+      }
+    } while (paramCompoundButton != this.a.d.a());
+    QQAppInterface localQQAppInterface = this.a.app;
+    if (paramBoolean) {}
+    for (paramCompoundButton = "1";; paramCompoundButton = "2")
+    {
+      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800791B", "0X800791B", 0, 0, paramCompoundButton, "", "", "");
+      this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.d(paramBoolean);
+      if (paramBoolean) {
+        break;
+      }
+      this.a.b.setVisibility(8);
+      return;
+    }
+    this.a.b.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     szm
  * JD-Core Version:    0.7.0.1
  */

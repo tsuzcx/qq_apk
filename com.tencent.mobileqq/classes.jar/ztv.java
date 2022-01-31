@@ -1,26 +1,25 @@
-import com.tencent.mobileqq.app.utils.QQConfMeetingLogReportHelper;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper;
-import com.tencent.mobileqq.testassister.ShareAppLogHelper.OnGetLocalLogListener;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 
 public class ztv
-  implements ShareAppLogHelper.OnGetLocalLogListener
+  implements Runnable
 {
-  public ztv(QQConfMeetingLogReportHelper paramQQConfMeetingLogReportHelper) {}
+  public ztv(QQMessageFacade paramQQMessageFacade, MessageRecord paramMessageRecord, MessageObserver paramMessageObserver, boolean paramBoolean) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    QLog.e("QQConfMeetingLogReportHelper", 1, "doReportLocalLog OnGetLocalLogListener onError, code=" + paramInt);
-  }
-  
-  public void a(String paramString)
-  {
-    QQConfMeetingLogReportHelper.a(this.a, paramString);
-  }
-  
-  public void b(int paramInt)
-  {
-    this.a.a.a(false);
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.c(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqAppMessageObserver, this.jdField_a_of_type_Boolean);
+      return;
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      QLog.e("Q.msg.QQMessageFacade", 1, "smr error :", localRuntimeException);
+      throw localRuntimeException;
+    }
   }
 }
 

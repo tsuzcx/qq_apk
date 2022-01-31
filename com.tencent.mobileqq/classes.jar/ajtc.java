@@ -1,23 +1,19 @@
-import android.content.Context;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.mobileqq.vas.ColorRingPlayer;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.troop.widget.TroopAIORobotPanel;
 
 public class ajtc
-  extends QQCustomDialog
 {
-  public ajtc(ColorRingPlayer paramColorRingPlayer, Context paramContext, int paramInt)
-  {
-    super(paramContext, paramInt);
-  }
+  public View a;
+  public TextView a;
+  public URLImageView a;
   
-  public void onBackPressed()
-  {
-    super.onBackPressed();
-  }
+  private ajtc(TroopAIORobotPanel paramTroopAIORobotPanel) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajtc
  * JD-Core Version:    0.7.0.1
  */

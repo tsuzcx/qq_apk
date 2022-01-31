@@ -1,44 +1,13 @@
-import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.TbsAccelerator;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.video.QzoneLiveVideoInterface;
-import cooperation.qzone.webviewwrapper.IWebviewOnClassLoaded;
+import cooperation.dingdong.DingdongPluginRemoteCmdHandler;
 
-public final class amla
+public class amla
   implements Runnable
 {
-  public amla(IWebviewOnClassLoaded paramIWebviewOnClassLoaded) {}
+  public amla(DingdongPluginRemoteCmdHandler paramDingdongPluginRemoteCmdHandler, int paramInt) {}
   
   public void run()
   {
-    for (;;)
-    {
-      try
-      {
-        if (1 != QzoneLiveVideoInterface.getIntConfig("LiveSetting", "qzone_webview_need_preload_dex_classes", 1)) {
-          return;
-        }
-        if (!QzoneLiveVideoInterface.isBestPerformanceDevice()) {
-          break;
-        }
-        if (!SwiftWebAccelerator.TbsAccelerator.a())
-        {
-          long l = System.currentTimeMillis();
-          SwiftWebAccelerator.TbsAccelerator.b();
-          QLog.i("QzoneLiveVideoInterface", 2, "saxon@ 预加载 TbsAccelerator init cost " + (System.currentTimeMillis() - l));
-          if (this.a == null) {
-            break;
-          }
-          this.a.a();
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("QzoneLiveVideoInterface", 1, localException, new Object[0]);
-        return;
-      }
-      QLog.i("QzoneLiveVideoInterface", 2, "saxon@ 预加载 TbsAccelerator is inited");
-    }
+    DingdongPluginRemoteCmdHandler.a(this.jdField_a_of_type_CooperationDingdongDingdongPluginRemoteCmdHandler, this.jdField_a_of_type_Int);
   }
 }
 

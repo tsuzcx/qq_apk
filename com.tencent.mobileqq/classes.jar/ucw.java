@@ -1,20 +1,35 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeActivity;
-import com.tencent.open.appcircle.st.AppCircleReportManager;
-import com.tencent.open.appcircle.st.STUtils;
-import com.tencent.open.base.LogUtility;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.StrangerHandler;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ucw
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public ucw(UpgradeActivity paramUpgradeActivity) {}
+  public ucw(TroopRequestActivity paramTroopRequestActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    LogUtility.b("qqBaseActivity", STUtils.a(10010, 1, 2, 200));
-    AppCircleReportManager.a().a(17, STUtils.a(10010, 1, 2, 200));
-    this.a.finish();
+    paramView = (StrangerHandler)this.a.app.a(26);
+    ArrayList localArrayList = new ArrayList();
+    try
+    {
+      if (!TextUtils.isEmpty(this.a.b)) {
+        localArrayList.add(Long.valueOf(Long.parseLong(this.a.b)));
+      }
+      paramView.a(localArrayList);
+      return;
+    }
+    catch (NumberFormatException paramView)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("Q.systemmsg.TroopRequestActivity", 2, "delete Stranger parseLong() error", paramView);
+    }
   }
 }
 

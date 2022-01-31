@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.util;
 
-import ajmy;
+import akbd;
 import android.os.Handler;
 import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
@@ -9,7 +9,7 @@ import com.tencent.util.LongSparseArray;
 public class ThreadPriorityManager
 {
   private static int jdField_a_of_type_Int = 1;
-  private static Handler jdField_a_of_type_AndroidOsHandler = new ajmy(Looper.getMainLooper());
+  private static Handler jdField_a_of_type_AndroidOsHandler = new akbd(Looper.getMainLooper());
   private static LongSparseArray jdField_a_of_type_ComTencentUtilLongSparseArray = new LongSparseArray(40);
   
   public static void a(boolean paramBoolean)
@@ -95,7 +95,7 @@ public class ThreadPriorityManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.util.ThreadPriorityManager
  * JD-Core Version:    0.7.0.1
  */

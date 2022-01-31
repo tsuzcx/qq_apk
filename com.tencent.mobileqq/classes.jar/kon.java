@@ -1,82 +1,33 @@
-import android.os.Bundle;
-import com.tencent.biz.now.NowLiveManager;
-import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
-import java.util.ArrayList;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import android.content.Intent;
+import android.net.Uri;
+import android.view.View;
+import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.mobileqq.data.EqqDetail;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class kon
-  implements HttpWebCgiAsyncTask.Callback
+  implements ActionSheet.OnButtonClickListener
 {
-  public kon(NowLiveManager paramNowLiveManager) {}
+  public kon(EqqAccountDetailActivity paramEqqAccountDetailActivity, ActionSheet paramActionSheet, String paramString) {}
   
-  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
+  public void OnClick(View paramView, int paramInt)
   {
-    NowLiveManager.a(this.a);
-    String str = "";
-    long l = 0L;
-    Object localObject1 = "";
-    if (paramBundle != null)
-    {
-      l = paramBundle.getLong("time", 0L);
-      str = paramBundle.getString("room_id");
-      localObject1 = paramBundle.getString("friendUin");
-    }
-    localObject1 = this.a.a((String)localObject1, l);
-    if (paramJSONObject == null)
-    {
-      NowLiveManager.b(this.a);
-      this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(false), localObject1, paramBundle });
-      return;
-    }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
     switch (paramInt)
     {
-    }
-    do
-    {
+    default: 
+    case 0: 
       do
       {
-        for (;;)
-        {
-          this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(false), null, paramBundle });
-          return;
-          Object localObject2 = paramJSONObject.optJSONObject("result");
-          if ((localObject2 != null) && (((JSONObject)localObject2).optInt("retcode") == 0))
-          {
-            paramJSONObject = new ArrayList();
-            localObject2 = ((JSONObject)localObject2).optJSONArray("videoURLList");
-            if (localObject2 != null)
-            {
-              int i = 0;
-              for (;;)
-              {
-                if (i < ((JSONArray)localObject2).length()) {
-                  try
-                  {
-                    paramJSONObject.add(((JSONArray)localObject2).getString(i));
-                    i += 1;
-                  }
-                  catch (JSONException localJSONException)
-                  {
-                    for (;;)
-                    {
-                      localJSONException.printStackTrace();
-                    }
-                  }
-                }
-              }
-              ((koo)localObject1).jdField_a_of_type_JavaUtilList = paramJSONObject;
-              ((koo)localObject1).b = str;
-            }
-            this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
-          }
-        }
-      } while (paramJSONObject.optInt("retcode") != 0);
-      paramJSONObject = paramJSONObject.optJSONObject("result");
-    } while (paramJSONObject == null);
-    ((koo)localObject1).jdField_a_of_type_Int = paramJSONObject.optInt("state");
-    this.a.notifyObservers(new Object[] { Integer.valueOf(paramInt), Boolean.valueOf(true), localObject1, paramBundle });
+        return;
+      } while (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a == null);
+      CrmUtils.a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity, this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.a.name, EqqAccountDetailActivity.m(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), "IvrEnterpriseDetailEngineFalse");
+      return;
+    }
+    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.startActivity(paramView);
   }
 }
 

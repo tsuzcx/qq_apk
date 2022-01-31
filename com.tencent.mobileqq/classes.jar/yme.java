@@ -1,25 +1,39 @@
-import android.os.Process;
-import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine;
-import com.tencent.mobileqq.apollo.game.ApolloGameStateMachine.HardwareInfo;
-import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import com.tencent.mobileqq.apollo.ITriggerRenderCallback;
+import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class yme
   implements Runnable
 {
-  public yme(ApolloGameStateMachine paramApolloGameStateMachine) {}
+  public yme(ApolloRenderDriver paramApolloRenderDriver, String[] paramArrayOfString) {}
   
   public void run()
   {
-    ApolloGameStateMachine.HardwareInfo localHardwareInfo2 = ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo;
-    ApolloGameStateMachine.HardwareInfo localHardwareInfo1 = localHardwareInfo2;
-    if (localHardwareInfo2 == null) {
-      localHardwareInfo1 = new ApolloGameStateMachine.HardwareInfo();
+    if (QLog.isColorLevel()) {
+      QLog.d("ApolloRenderDriver", 2, "start run.");
     }
-    localHardwareInfo1.b = DeviceInfoUtil.a(Process.myPid());
-    localHardwareInfo1.c = DeviceInfoUtil.g();
-    ApolloGameStateMachine.jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine$HardwareInfo = localHardwareInfo1;
-    ApolloGameStateMachine.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
+    int i = 0;
+    try
+    {
+      while (i < this.jdField_a_of_type_ArrayOfJavaLangString.length)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloApolloEngine.a(this.jdField_a_of_type_ArrayOfJavaLangString[i]);
+        i += 1;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      if ((!this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback != null)) {
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_ComTencentMobileqqApolloITriggerRenderCallback.onRender();
+      }
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+    }
   }
 }
 

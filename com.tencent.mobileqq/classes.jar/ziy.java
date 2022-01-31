@@ -1,33 +1,21 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.app.RegisterProxySvcPackHandler;
-import com.tencent.qphone.base.util.QLog;
+import SecurityAccountServer.RespondQueryQQBindingStat;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
 public class ziy
-  extends Handler
+  implements Runnable
 {
-  public ziy(RegisterProxySvcPackHandler paramRegisterProxySvcPackHandler, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public ziy(PhoneContactManagerImp paramPhoneContactManagerImp, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    RespondQueryQQBindingStat localRespondQueryQQBindingStat = this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp.a();
+    if ((localRespondQueryQQBindingStat != null) && (TextUtils.isEmpty(localRespondQueryQQBindingStat.mobileNo)) && (localRespondQueryQQBindingStat.noBindUploadContacts == true))
     {
+      PhoneContactManagerImp.b(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp, this.jdField_a_of_type_Boolean);
+      return;
     }
-    do
-    {
-      return;
-      this.a.c();
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterProxySvcPack", 2, "real notify|iState:" + RegisterProxySvcPackHandler.a(this.a) + ", clientType:" + RegisterProxySvcPackHandler.a(this.a) + ", appId:" + RegisterProxySvcPackHandler.b(this.a));
-      }
-      this.a.a(2, true, new Object[] { Integer.valueOf(RegisterProxySvcPackHandler.a(this.a)), Long.valueOf(RegisterProxySvcPackHandler.a(this.a)), Long.valueOf(RegisterProxySvcPackHandler.b(this.a)) });
-    } while ((RegisterProxySvcPackHandler.a(this.a) != 0) || (this.a.a.hasMessages(101)));
-    this.a.a.sendEmptyMessageDelayed(101, 3000L);
+    PhoneContactManagerImp.a(this.jdField_a_of_type_ComTencentMobileqqAppPhoneContactManagerImp, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

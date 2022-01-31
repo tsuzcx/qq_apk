@@ -1,33 +1,31 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import dov.com.qq.im.QIMEffectCameraCaptureUnit;
+import android.widget.ImageView;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.QzoneVerticalVideoDownloadActivity;
 
 public class amtf
-  implements Animation.AnimationListener
+  implements URLDrawable.URLDrawableListener
 {
-  public amtf(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
+  public amtf(QzoneVerticalVideoDownloadActivity paramQzoneVerticalVideoDownloadActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (QIMEffectCameraCaptureUnit.d(this.a) != null)
-    {
-      QIMEffectCameraCaptureUnit.d(this.a).clearAnimation();
-      QIMEffectCameraCaptureUnit.d(this.a).setVisibility(8);
-    }
-    this.a.i = false;
+    QLog.w("QzoneVerticalVideoDownloadActivity", 1, "onLoadFialed");
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
   
-  public void onAnimationStart(Animation paramAnimation)
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    this.a.i = true;
+    QzoneVerticalVideoDownloadActivity.a(this.a).setImageDrawable(paramURLDrawable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amtf
  * JD-Core Version:    0.7.0.1
  */

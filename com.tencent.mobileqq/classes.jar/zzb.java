@@ -1,22 +1,15 @@
-import com.tencent.mobileqq.ar.ScanEntranceReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.ARRenderModel.ARRenderMangerInnerCallback;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.armap.sensor.SimpleSensorChangeListener;
 
 public class zzb
-  implements Runnable
+  extends SimpleSensorChangeListener
 {
-  public zzb(ScanEntranceReport paramScanEntranceReport, boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3, int paramInt, long paramLong4) {}
+  public zzb(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
   
-  public void run()
+  public void onRotationUpdateQuaternion(float[] paramArrayOfFloat)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("first_init", String.valueOf(this.jdField_a_of_type_Boolean));
-    localHashMap.put("start_delay", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("first_select_time", String.valueOf(this.b));
-    localHashMap.put("first_upload_delay", String.valueOf(this.c));
-    localHashMap.put("neon_opened", String.valueOf(this.jdField_a_of_type_Int));
-    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_ar_cloud_first_upload", true, this.d, 0L, localHashMap, "");
+    ARWorldCupGlobalSceneRenderable.a(this.a).a(new zzc(this, paramArrayOfFloat));
   }
 }
 

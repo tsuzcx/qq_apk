@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.armap;
 
-import aavf;
-import aavg;
+import abcg;
+import abch;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningAppProcessInfo;
 import android.app.ActivityManager.RunningTaskInfo;
@@ -298,12 +298,12 @@ public class ArMapUtil
     {
       try
       {
-        paramBoolean = ArNativeSoLoader.b("ArMapEngine738");
+        paramBoolean = ArNativeSoLoader.b("ArMapEngine7651");
         localObject1 = "";
         if (!paramBoolean) {
           break label688;
         }
-        localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).getString("ar_native_ArMapEngine738", "");
+        localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).getString("ar_native_ArMapEngine7651", "");
       }
       catch (Exception paramQQAppInterface)
       {
@@ -348,13 +348,13 @@ public class ArMapUtil
   public static void a(String paramString)
   {
     if (jdField_a_of_type_Boolean) {
-      ThreadManager.getUIHandler().post(new aavf(paramString));
+      ThreadManager.getUIHandler().post(new abcg(paramString));
     }
   }
   
   public static void a(String[] paramArrayOfString)
   {
-    ThreadManager.postImmediately(new aavg(paramArrayOfString), null, false);
+    ThreadManager.postImmediately(new abch(paramArrayOfString), null, false);
   }
   
   public static boolean a(long paramLong1, long paramLong2)

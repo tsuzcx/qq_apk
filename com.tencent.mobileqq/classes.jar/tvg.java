@@ -1,79 +1,71 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.data.TroopMemberCardInfo;
-import com.tencent.mobileqq.data.TroopMemberInfo;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.mobileqq.utils.DBUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Rect;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.Button;
+import android.widget.RelativeLayout;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.av.utils.UITools;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
 
 public class tvg
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public tvg(TroopInfoActivity paramTroopInfoActivity) {}
+  public tvg(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    Object localObject1 = ContactUtils.l(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
-    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equals(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin)))
+    Object localObject = new Rect();
+    this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.getWindowVisibleDisplayFrame((Rect)localObject);
+    int i = this.a.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.b.getRootView().getHeight();
+    int j = i - ((Rect)localObject).bottom;
+    if ((this.a.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.a.e != j))
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick = ((String)localObject1);
-      this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+      localObject = (RelativeLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
+      ((RelativeLayout.LayoutParams)localObject).setMargins(0, 0, 0, j);
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      this.a.e = j;
     }
-    for (;;)
+    if (j > i / 3)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.troopinfo", 2, "mTroopInfoData.troopOwnerNick = " + this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick);
-      }
-      return;
-      Object localObject2 = null;
-      Object localObject3 = DBUtils.a().a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
-      if (localObject3 == null)
-      {
-        localObject3 = DBUtils.a().a(this.a.app, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
-        localObject1 = localObject2;
-        if (localObject3 != null)
-        {
-          if (TextUtils.isEmpty(((TroopMemberInfo)localObject3).friendnick)) {
-            break label237;
-          }
-          localObject1 = ((TroopMemberInfo)localObject3).friendnick;
-        }
+      if (this.a.c) {
+        this.a.c(false);
       }
       for (;;)
       {
-        if (TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label295;
+        if (this.a.jdField_a_of_type_Int == 2) {
+          this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(0);
         }
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopOwnerNick = ((String)localObject1);
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-        break;
-        label237:
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty(((TroopMemberInfo)localObject3).troopnick))
+        i = (int)UITools.b(BaseApplicationImpl.getApplication(), this.a.b + j);
+        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.c(this.a).c("setKeyboardHeight(" + i + ")");
+        if (!this.a.d)
         {
-          localObject1 = ((TroopMemberInfo)localObject3).troopnick;
-          continue;
-          if (!TextUtils.isEmpty(((TroopMemberCardInfo)localObject3).nick))
-          {
-            localObject1 = ((TroopMemberCardInfo)localObject3).nick;
-          }
-          else
-          {
-            localObject1 = localObject2;
-            if (!TextUtils.isEmpty(((TroopMemberCardInfo)localObject3).name)) {
-              localObject1 = ((TroopMemberCardInfo)localObject3).name;
-            }
-          }
+          TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.d(this.a).c("reLocateForNative()");
+          this.a.d = true;
         }
+        return;
+        this.a.c(true);
       }
-      label295:
-      if ((!this.a.b) && (this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler != null))
-      {
-        this.a.b = true;
-        this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopowneruin);
+    }
+    this.a.c(false);
+    if (this.a.jdField_a_of_type_Int == 2) {
+      this.a.jdField_a_of_type_AndroidWidgetButton.setVisibility(8);
+    }
+    if (this.a.jdField_a_of_type_Int == 2)
+    {
+      i = (int)UITools.b(BaseApplicationImpl.getApplication(), this.a.b);
+      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.e(this.a).c("setKeyboardHeight(" + i + ")");
+    }
+    for (;;)
+    {
+      this.a.d = false;
+      return;
+      if (this.a.jdField_a_of_type_Int == 1) {
+        TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.f(this.a).c("setKeyboardHeight(0)");
       }
     }
   }

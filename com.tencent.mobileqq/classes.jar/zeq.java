@@ -1,75 +1,70 @@
-import android.os.Handler;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.newfriend.FriendSystemMessage;
-import com.tencent.mobileqq.newfriend.NewFriendMessage;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
-import java.util.ArrayList;
-import java.util.Iterator;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
+import com.tencent.mobileqq.app.GuardManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class zeq
-  extends FriendListObserver
 {
-  public zeq(NewFriendManager paramNewFriendManager) {}
+  public static final String[] a;
+  private static final String[] b = { "MSG", "RESUME", "TICK", "FG", "BG", "ENTER", "MAIN" };
+  public int a;
+  public GuardManager a;
+  protected long c;
+  protected long d;
   
-  protected void onAddFriend(String paramString)
+  static
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "EMPTY", "BG_FETCH", "FG_MAIN", "FG_OTHER", "BG_GUARD", "BG_UNGUARD", "LITE_GUARD", "LITE_UNGUARD", "DEAD" };
+  }
+  
+  public void a()
+  {
+    this.c += 1L;
+    this.d += 1L;
+  }
+  
+  public final void a(int paramInt, Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("GuardManager", 2, jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int] + " onEvent " + b[paramInt] + ", " + paramObject + ", " + this.c + ", " + this.d);
+    }
+    switch (paramInt)
     {
+    default: 
       return;
-      localObject = this.a.b();
-    } while (((ArrayList)localObject).isEmpty());
-    Object localObject = ((ArrayList)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
-    {
-      NewFriendMessage localNewFriendMessage = (NewFriendMessage)((Iterator)localObject).next();
-      if ((localNewFriendMessage instanceof FriendSystemMessage))
-      {
-        int i = ((FriendSystemMessage)localNewFriendMessage).a.structMsg.msg.sub_type.get();
-        String str = ((FriendSystemMessage)localNewFriendMessage).a.senderuin;
-        if ((i == 13) && (paramString.equals(str)))
-        {
-          ((Iterator)localObject).remove();
-          NewFriendManager.a(this.a).a().b(AppConstants.K, 0, ((FriendSystemMessage)localNewFriendMessage).a.uniseq, false);
-        }
-      }
+    case 2: 
+      a();
+      return;
+    case 0: 
+      b();
+      return;
+    case 3: 
+      a((String)paramObject);
+      return;
+    case 4: 
+      d((String)paramObject);
+      return;
+    case 5: 
+      b((String)paramObject);
+      return;
+    case 6: 
+      this.jdField_a_of_type_ComTencentMobileqqAppGuardManager.a(2, null);
+      return;
     }
-    NewFriendManager.a(this.a).sendEmptyMessage(2);
+    c((String)paramObject);
   }
   
-  protected void onCancelMayKnowRecommend(boolean paramBoolean, String paramString)
+  protected void a(String paramString) {}
+  
+  protected void b() {}
+  
+  protected void b(String paramString)
   {
-    if ((paramBoolean) && (NewFriendManager.a(this.a) != null)) {
-      NewFriendManager.a(this.a).sendEmptyMessage(2);
-    }
+    this.d = 0L;
+    this.c = 0L;
   }
   
-  protected void onGetPushRecommend(boolean paramBoolean)
-  {
-    if ((paramBoolean) && (NewFriendManager.a(this.a) != null)) {
-      NewFriendManager.a(this.a).sendEmptyMessage(2);
-    }
-  }
+  protected void c(String paramString) {}
   
-  protected void onMayknowStateChanged(boolean paramBoolean)
-  {
-    NewFriendManager.a(this.a).runOnUiThread(new zer(this, paramBoolean));
-  }
-  
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
-  {
-    if ((paramBoolean) && (NewFriendManager.a(this.a) != null)) {
-      NewFriendManager.a(this.a).sendEmptyMessage(2);
-    }
-  }
+  protected void d(String paramString) {}
 }
 
 

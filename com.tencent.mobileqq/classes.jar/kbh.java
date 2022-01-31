@@ -1,40 +1,18 @@
-import android.os.Handler;
-import android.widget.TextView;
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoControlUI;
-import com.tencent.av.ui.VideoNetStateBar;
-import com.tencent.av.utils.UITools;
+import android.content.Context;
+import android.view.Window;
+import com.tencent.av.ui.VideoInviteActivity;
+import com.tencent.widget.ActionSheet;
 
 public class kbh
-  implements Runnable
+  extends ActionSheet
 {
-  public kbh(VideoControlUI paramVideoControlUI) {}
-  
-  public void run()
+  public kbh(VideoInviteActivity paramVideoInviteActivity, Context paramContext)
   {
-    if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.h))
-    {
-      this.a.d = UITools.a(this.a.jdField_a_of_type_ComTencentAvVideoController.a());
-      Object localObject = this.a;
-      ((VideoControlUI)localObject).jdField_k_of_type_Int += 1;
-      if ((this.a.g != null) && (!this.a.j))
-      {
-        localObject = UITools.a(this.a.d);
-        this.a.g.setContentDescription((CharSequence)localObject);
-        this.a.f((String)localObject);
-        this.a.d = this.a.a(this.a.d);
-        if (!this.a.jdField_k_of_type_Boolean)
-        {
-          this.a.g.setText(this.a.d);
-          this.a.e(this.a.d);
-          if (this.a.jdField_a_of_type_ComTencentAvUiVideoNetStateBar != null) {
-            this.a.jdField_a_of_type_ComTencentAvUiVideoNetStateBar.a(this.a.d);
-          }
-        }
-      }
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
-    }
+    super(paramContext);
+    super.getWindow().addFlags(524288);
+    super.getWindow().addFlags(128);
+    super.getWindow().addFlags(1024);
+    super.getWindow().addFlags(2097152);
   }
 }
 

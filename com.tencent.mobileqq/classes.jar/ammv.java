@@ -1,15 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnCancelListener;
-import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import cooperation.qappcenter.remote.RecvMsg;
 
-public class ammv
-  implements DialogInterface.OnCancelListener
+public final class ammv
+  implements Parcelable.Creator
 {
-  public ammv(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin, String paramString) {}
-  
-  public void onCancel(DialogInterface paramDialogInterface)
+  public RecvMsg a(Parcel paramParcel)
   {
-    QzoneQunFeedJsPlugin.b(this.jdField_a_of_type_CooperationQzoneWebviewpluginQzoneQunFeedJsPlugin, this.jdField_a_of_type_JavaLangString);
+    return new RecvMsg(paramParcel);
+  }
+  
+  public RecvMsg[] a(int paramInt)
+  {
+    return new RecvMsg[paramInt];
   }
 }
 

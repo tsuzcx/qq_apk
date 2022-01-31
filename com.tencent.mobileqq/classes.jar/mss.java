@@ -1,30 +1,30 @@
-import android.support.v7.widget.RecyclerView.Adapter;
-import com.tencent.biz.pubaccount.util.DiffUtil.DiffResult;
-import com.tencent.biz.pubaccount.util.ListUpdateCallback;
+import android.view.View;
+import android.view.View.OnFocusChangeListener;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class mss
-  implements ListUpdateCallback
+  implements View.OnFocusChangeListener
 {
-  public mss(DiffUtil.DiffResult paramDiffResult, RecyclerView.Adapter paramAdapter) {}
+  public mss(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.notifyItemRangeInserted(paramInt1, paramInt2);
-  }
-  
-  public void a(int paramInt1, int paramInt2, Object paramObject)
-  {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.notifyItemRangeChanged(paramInt1, paramInt2, paramObject);
-  }
-  
-  public void b(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.notifyItemRangeRemoved(paramInt1, paramInt2);
-  }
-  
-  public void c(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView$Adapter.notifyItemMoved(paramInt1, paramInt2);
+    if (paramBoolean)
+    {
+      paramView.clearFocus();
+      SubscriptFeedsActivity.a(this.a);
+      long l = System.currentTimeMillis();
+      if (l - SubscriptFeedsActivity.a(this.a) > 1500L)
+      {
+        SubscriptFeedsActivity.a(this.a, l);
+        UniteSearchActivity.a(this.a, null, 12);
+        if (QLog.isColorLevel()) {
+          QLog.d("SubscriptFeedsActivity", 2, "Search Subscript Account...");
+        }
+      }
+    }
   }
 }
 

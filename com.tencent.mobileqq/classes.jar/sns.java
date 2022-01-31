@@ -1,65 +1,20 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
-import com.tencent.widget.PullToZoomHeaderListView;
-import com.tencent.widget.immersive.ImmersiveTitleBar2;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
 
 public class sns
-  implements AbsListView.OnScrollListener
+  implements View.OnClickListener
 {
-  public sns(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public sns(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public void onClick(View paramView)
   {
-    if (this.a.jdField_b_of_type_Int != paramInt) {
-      this.a.jdField_b_of_type_Int = paramInt;
-    }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    paramAbsListView = this.a.jdField_a_of_type_ComTencentWidgetPullToZoomHeaderListView.getChildAt(0);
-    if ((paramAbsListView == null) || (paramInt1 != 0) || (this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_Int == 33) || (this.a.d == null)) {
-      return;
-    }
-    paramInt1 = Math.abs(paramAbsListView.getTop());
-    Object localObject = null;
-    if ((paramInt1 > this.a.jdField_a_of_type_Int) && (paramInt1 >= this.a.c) && (this.a.d.getVisibility() == 8)) {
-      paramAbsListView = this.a.jdField_a_of_type_AndroidViewAnimationAlphaAnimation;
-    }
-    for (;;)
-    {
-      if ((paramAbsListView != null) && (paramAbsListView != this.a.d.getAnimation()))
-      {
-        paramAbsListView.reset();
-        this.a.d.startAnimation(paramAbsListView);
-        this.a.jdField_a_of_type_ComTencentWidgetImmersiveImmersiveTitleBar2.startAnimation(paramAbsListView);
-      }
-      this.a.jdField_a_of_type_Int = paramInt1;
-      return;
-      paramAbsListView = localObject;
-      if (paramInt1 < this.a.jdField_a_of_type_Int)
-      {
-        paramAbsListView = localObject;
-        if (paramInt1 <= this.a.c)
-        {
-          paramAbsListView = localObject;
-          if (this.a.d.getVisibility() == 0) {
-            paramAbsListView = this.a.jdField_b_of_type_AndroidViewAnimationAlphaAnimation;
-          }
-        }
-      }
-    }
+    this.a.a(ForwardRecentActivity.a(this.a), paramView, paramView.getId());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     sns
  * JD-Core Version:    0.7.0.1
  */

@@ -1,49 +1,22 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.hotpic.HotPicPageView;
-import com.tencent.mobileqq.hotpic.HotPicPageView.MyVideoViewHolder;
-import com.tencent.mobileqq.hotpic.HotPicRecyclerView;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
 
 public class adge
-  extends Handler
+  implements CUKingCardHelper.CUKingDialogListener
 {
-  public adge(HotPicPageView paramHotPicPageView) {}
+  public adge(FileModel paramFileModel, Activity paramActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void callback(int paramInt)
   {
-    switch (paramMessage.what)
-    {
+    if ((paramInt == 1) || (paramInt == 2)) {
+      FileModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerRecreateFileModel, this.jdField_a_of_type_AndroidAppActivity);
     }
-    int i;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-          } while (HotPicPageView.b);
-          this.a.i();
-          return;
-        } while ((HotPicPageView.b) || (this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.getVisibility() != 0) || (this.a.jdField_a_of_type_Adgp == null) || (this.a.jdField_a_of_type_Adgp.getItemCount() == 0));
-        i = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.a();
-      } while (i < 0);
-      paramMessage = this.a.jdField_a_of_type_ComTencentMobileqqHotpicHotPicRecyclerView.findViewHolderForPosition(i);
-    } while ((paramMessage == null) || (!(paramMessage instanceof HotPicPageView.MyVideoViewHolder)));
-    paramMessage = (HotPicPageView.MyVideoViewHolder)paramMessage;
-    if (paramMessage.jdField_a_of_type_Int == 0)
-    {
-      this.a.b(paramMessage, i);
-      return;
-    }
-    paramMessage.jdField_a_of_type_Boolean = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adge
  * JD-Core Version:    0.7.0.1
  */

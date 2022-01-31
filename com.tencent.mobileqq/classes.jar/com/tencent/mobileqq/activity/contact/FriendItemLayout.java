@@ -102,23 +102,23 @@ public class FriendItemLayout
   public BuddyListFriends.BuddyChildTag a()
   {
     this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag = new BuddyListFriends.BuddyChildTag();
-    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362701));
-    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)findViewById(2131363873));
-    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView = ((SimpleTextView)findViewById(2131363875));
-    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363876));
-    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363877));
-    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_b_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)findViewById(2131363878));
-    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.d = ((ImageView)findViewById(2131363862));
-    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.e = ((ImageView)findViewById(2131363864));
-    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131363874));
-    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.f = ((ImageView)findViewById(2131363868));
-    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.g = ((ImageView)findViewById(2131363870));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131362719));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)findViewById(2131363896));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_a_of_type_ComTencentMobileqqActivityContactSimpleTextView = ((SimpleTextView)findViewById(2131363898));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363899));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131363900));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_b_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)findViewById(2131363901));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.d = ((ImageView)findViewById(2131363885));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.e = ((ImageView)findViewById(2131363887));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)findViewById(2131363897));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.f = ((ImageView)findViewById(2131363891));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.g = ((ImageView)findViewById(2131363893));
     this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_b_of_type_ComTencentWidgetAlphaDrawable = new AlphaDrawable(getContext());
     this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_c_of_type_ComTencentWidgetAlphaDrawable = new AlphaDrawable(getContext());
-    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363871));
-    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.h = ((ImageView)findViewById(2131363866));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363894));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.h = ((ImageView)findViewById(2131363889));
     this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_a_of_type_ComTencentWidgetAlphaDrawable = new AlphaDrawable(getContext());
-    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363872));
+    this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363895));
     this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendTextColor(RichStatus.sActionColor, 1);
     this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setExtendTextSize(12.0F, 1);
     this.jdField_a_of_type_ComTencentMobileqqAdapterContactsBuddyListFriends$BuddyChildTag.jdField_b_of_type_ComTencentWidgetSingleLineTextView.setGravity(19);

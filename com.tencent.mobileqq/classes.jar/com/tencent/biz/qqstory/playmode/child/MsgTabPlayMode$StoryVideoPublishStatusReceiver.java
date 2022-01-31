@@ -19,8 +19,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import nij;
-import nik;
+import njv;
+import njw;
 
 public class MsgTabPlayMode$StoryVideoPublishStatusReceiver
   extends QQUIEventReceiver
@@ -95,8 +95,8 @@ public class MsgTabPlayMode$StoryVideoPublishStatusReceiver
           paramMsgTabPlayMode.d((VideoPlayerPagerAdapter.VideoViewHolder)localObject1, paramStoryVideoPublishStatusEvent);
         }
         localObject1 = new BatchGetVideoInfo(Collections.singletonList(paramStoryVideoPublishStatusEvent.mVid));
-        ((BatchGetVideoInfo)localObject1).a = new nij(this);
-        ((BatchGetVideoInfo)localObject1).a(new nik(this, paramMsgTabPlayMode, paramStoryVideoPublishStatusEvent));
+        ((BatchGetVideoInfo)localObject1).a = new njv(this);
+        ((BatchGetVideoInfo)localObject1).a(new njw(this, paramMsgTabPlayMode, paramStoryVideoPublishStatusEvent));
         ((BatchGetVideoInfo)localObject1).b();
         if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
           break;

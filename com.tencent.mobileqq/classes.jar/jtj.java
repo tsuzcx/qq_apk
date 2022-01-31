@@ -1,21 +1,19 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.DoubleVideoCtrlUI;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import com.tencent.av.ui.EffectSettingBtn;
 
 public class jtj
-  implements View.OnClickListener
+  implements Runnable
 {
-  public jtj(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
+  public jtj(EffectSettingBtn paramEffectSettingBtn) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    QLog.d(this.a.c, 1, "quit double screen from reset clicker");
-    if ((this.a.a != null) && (this.a.a.get() != null) && ((this.a.a.get() instanceof AVActivity))) {
-      ((AVActivity)this.a.a.get()).BtnOnClick(paramView);
+    if (!this.a.b)
+    {
+      this.a.a.postDelayed(EffectSettingBtn.a(this.a), 1000L);
+      return;
     }
+    EffectSettingBtn.a(this.a);
   }
 }
 

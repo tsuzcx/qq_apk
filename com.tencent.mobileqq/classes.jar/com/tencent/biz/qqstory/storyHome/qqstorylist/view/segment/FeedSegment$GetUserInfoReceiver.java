@@ -14,7 +14,7 @@ public class FeedSegment$GetUserInfoReceiver
   
   public void a(@NonNull FeedSegment paramFeedSegment, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    paramFeedSegment.h();
+    paramFeedSegment.i();
   }
   
   public Class acceptEventClass()

@@ -1,24 +1,35 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.statistics.battery.BatteryIPCModule;
-import com.tencent.mobileqq.statistics.battery.BatteryStatsImpl;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.activity.VADActivity;
+import com.tencent.mobileqq.search.searchengine.ApproximateSearchEngine;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import com.tencent.mobileqq.search.util.ObjectTransfer;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class ahsj
-  implements EIPCResultCallback
+  implements Runnable
 {
-  public ahsj(BatteryIPCModule paramBatteryIPCModule) {}
+  public ahsj(VADActivity paramVADActivity) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void run()
   {
-    if ((paramEIPCResult.isSuccess()) && (paramEIPCResult.data.getBoolean("key_monitor"))) {
-      BatteryStatsImpl.a().e();
+    Object localObject = new ApproximateSearchEngine(this.a.app, 2, 793, null);
+    ((ApproximateSearchEngine)localObject).a();
+    if (!VADActivity.a(this.a).get())
+    {
+      VADActivity.a(this.a, (ApproximateSearchEngine)localObject);
+      VADActivity.a(this.a).set(true);
     }
+    localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    VADActivity.a(this.a, new GroupSearchEngine((QQAppInterface)localObject, VADActivity.b()));
+    VADActivity.a(this.a).a();
+    VADActivity.a(this.a, ObjectTransfer.a().a(VADActivity.a(this.a)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahsj
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,46 @@
-import com.tencent.biz.pubaccount.readinjoy.view.headers.ReadInJoyFeedsHeaderViewController;
-import com.tencent.mobileqq.app.UniteSearchHandler;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView.ListViewEventListener;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.qphone.base.util.QLog;
 
-class mow
-  implements Runnable
+public class mow
+  implements FastWebVideoFeedsListView.ListViewEventListener
 {
-  mow(mov parammov) {}
+  public mow(FastWebVideoFeedsPlayActivity paramFastWebVideoFeedsPlayActivity) {}
   
-  public void run()
+  public void a()
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController.jdField_a_of_type_Boolean) {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayActivity", 2, "ListViewEventListener doOnLoadMoreData() 触发拉取推荐视频列表");
+    }
+  }
+  
+  public void a(Object paramObject) {}
+  
+  public void a(Object paramObject, boolean paramBoolean)
+  {
+    FastWebVideoFeedsPlayActivity.a(this.a, paramBoolean);
+    if (paramBoolean)
+    {
+      if (FastWebVideoFeedsPlayActivity.a(this.a) != null) {
+        FastWebVideoFeedsPlayActivity.a(this.a).b(0);
+      }
+      this.a.a.setVisibility(8);
       return;
     }
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController.e();
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController.jdField_a_of_type_ComTencentMobileqqAppUniteSearchHandler = new UniteSearchHandler(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewHeadersReadInJoyFeedsHeaderViewController.jdField_a_of_type_ComTencentMobileqqAppUniteSearchHandler.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (FastWebVideoFeedsPlayActivity.a(this.a) != null) {
+      FastWebVideoFeedsPlayActivity.a(this.a).b(2);
+    }
+    this.a.a.setVisibility(0);
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayActivity", 2, "onFinishActivity()");
+    }
+    FastWebVideoFeedsPlayActivity.a(this.a);
   }
 }
 

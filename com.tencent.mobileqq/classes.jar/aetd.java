@@ -1,21 +1,32 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import android.os.Handler;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.location.LocationListener;
+import com.tencent.mobileqq.nearby.now.location.TLocationManager;
+import com.tencent.mobileqq.nearby.now.model.LocationInfo;
+import com.tencent.util.LogUtil;
+import mqq.os.MqqHandler;
 
 public class aetd
-  implements TextWatcher
+  implements aeth
 {
-  public aetd(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
+  public aetd(TLocationManager paramTLocationManager, double paramDouble1, double paramDouble2, LocationListener paramLocationListener) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a()
   {
-    NearbyUtils.a(this.a.e, 40);
+    LogUtil.i("TLocationManager", "getCityByLatLng onFail() ");
+    ThreadManager.getUIHandler().post(new aete(this));
   }
   
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  public void a(String paramString)
+  {
+    LogUtil.i("TLocationManager", "getCityByLatLng onSuccess() " + paramString);
+    LocationInfo localLocationInfo = new LocationInfo();
+    localLocationInfo.lng = String.valueOf(this.jdField_a_of_type_Double);
+    localLocationInfo.lat = String.valueOf(this.b);
+    localLocationInfo.city = paramString;
+    TLocationManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationTLocationManager, this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationLocationListener, localLocationInfo);
+    TLocationManager.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowLocationTLocationManager).sendEmptyMessage(1);
+  }
 }
 
 

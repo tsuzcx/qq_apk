@@ -1,16 +1,23 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ark.ArkActionAppMgr.IGetAppNameByActionCallback;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
-import java.util.Set;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.OrientationCallback;
 
-public class aany
-  implements ArkActionAppMgr.IGetAppNameByActionCallback
+class aany
+  implements ArkAppEventObserverManager.OrientationCallback
 {
-  public aany(ArkLocalAppMgr paramArkLocalAppMgr, aaov paramaaov) {}
+  aany(aanw paramaanw, long paramLong) {}
   
-  public void a(Object paramObject, Set paramSet)
+  public void a(long paramLong)
   {
-    ThreadManager.post(new aanz(this, paramSet), 5, null, true);
+    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aanw.a.a(paramLong);
+    if (localVariantWrapper != null) {
+      localVariantWrapper.Reset();
+    }
+  }
+  
+  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
+  {
+    ArkAppDeviceModule.a(this.jdField_a_of_type_Aanw.a, this.jdField_a_of_type_Long, paramBoolean, "Orientation", paramFloat1, paramFloat2, paramFloat3);
   }
 }
 

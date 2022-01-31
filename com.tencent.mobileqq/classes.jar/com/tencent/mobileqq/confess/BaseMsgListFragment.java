@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.confess;
 
-import abkm;
-import abkn;
-import abko;
+import abrn;
+import abro;
+import abrp;
 import android.os.Bundle;
 import android.os.Handler.Callback;
 import android.os.Message;
@@ -57,14 +57,14 @@ public class BaseMsgListFragment
 {
   int jdField_a_of_type_Int = -1;
   public long a;
-  final Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new abko(this);
+  final Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new abrp(this);
   public View a;
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   TopGestureLayout jdField_a_of_type_ComTencentMobileqqActivityFlingTopGestureLayout;
   public RecentAdapter a;
   public DragFrameLayout a;
   BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
-  final FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new abkn(this);
+  final FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new abro(this);
   public QQAppInterface a;
   FPSSwipListView jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView;
   String jdField_a_of_type_JavaLangString = "";
@@ -109,7 +109,7 @@ public class BaseMsgListFragment
   
   protected int a()
   {
-    return 2130970273;
+    return 2130970289;
   }
   
   public RecentBaseData a()
@@ -133,7 +133,7 @@ public class BaseMsgListFragment
   {
     super.a(paramLayoutInflater, paramViewGroup, paramBundle);
     this.d = ThemeUtil.isDefaultOrDIYTheme(false);
-    this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView = ((FPSSwipListView)this.e.findViewById(2131364160));
+    this.jdField_a_of_type_ComTencentMobileqqFpsreportFPSSwipListView = ((FPSSwipListView)this.e.findViewById(2131364184));
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout = DragFrameLayout.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragFrameLayout.a(this, false);
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
@@ -521,12 +521,12 @@ public class BaseMsgListFragment
     if (getActivity() == null) {
       return;
     }
-    getActivity().runOnUiThread(new abkm(this));
+    getActivity().runOnUiThread(new abrn(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.confess.BaseMsgListFragment
  * JD-Core Version:    0.7.0.1
  */

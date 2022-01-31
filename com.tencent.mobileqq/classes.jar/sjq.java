@@ -1,29 +1,15 @@
-import com.tencent.mobileqq.activity.EmosmActivity;
-import com.tencent.mobileqq.data.EmoticonPackage;
-import com.tencent.mobileqq.emoticon.EmoticonPackageDownloadListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.DialogActivity;
 
 public class sjq
-  extends EmoticonPackageDownloadListener
+  implements DialogInterface.OnClickListener
 {
-  public sjq(EmosmActivity paramEmosmActivity) {}
+  public sjq(DialogActivity paramDialogActivity) {}
   
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.runOnUiThread(new sjs(this, paramEmoticonPackage, paramInt));
-  }
-  
-  public void a(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    if ((paramEmoticonPackage == null) || (paramInt1 != 2) || (paramInt2 != 0)) {}
-    while (this.a.jdField_a_of_type_JavaUtilArrayList == null) {
-      return;
-    }
-    this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
-  }
-  
-  public void b(EmoticonPackage paramEmoticonPackage, int paramInt1, int paramInt2)
-  {
-    this.a.runOnUiThread(new sjr(this, paramEmoticonPackage));
+    paramDialogInterface.cancel();
   }
 }
 

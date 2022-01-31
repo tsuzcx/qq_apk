@@ -1,28 +1,29 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.lightReply.LightReplyMenuManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import mqq.os.MqqHandler;
+import android.os.Handler;
+import android.os.Looper;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.graytip.UniteGrayTipItemBuilder;
+import com.tencent.mobileqq.transfile.AbsDownloader;
+import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import java.io.File;
+import java.net.URL;
 
 public class adov
   implements Runnable
 {
-  public adov(LightReplyMenuManager paramLightReplyMenuManager, String paramString1, String paramString2) {}
+  public adov(UniteGrayTipItemBuilder paramUniteGrayTipItemBuilder, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    synchronized ()
-    {
-      boolean bool = FileUtils.a(this.jdField_a_of_type_JavaLangString, this.b);
-      if (!bool) {
-        ThreadManager.getUIHandler().post(new adow(this));
-      }
-      return;
+    File localFile = AbsDownloader.a(URLDrawableHelper.a((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 1, null).toString());
+    if ((localFile == null) || (!localFile.exists())) {
+      new Handler(Looper.getMainLooper()).post(new adow(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adov
  * JD-Core Version:    0.7.0.1
  */

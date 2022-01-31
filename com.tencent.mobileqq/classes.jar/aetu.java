@@ -1,38 +1,18 @@
-import android.annotation.TargetApi;
-import android.content.ClipData;
-import android.content.ClipData.Item;
-import android.view.View;
-import android.view.View.OnLongClickListener;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
 
-public class aetu
-  implements View.OnLongClickListener
+public final class aetu
+  implements Parcelable.Creator
 {
-  public aetu(NearbyProfileEditPanel paramNearbyProfileEditPanel) {}
-  
-  @TargetApi(11)
-  public boolean onLongClick(View paramView)
+  public VideoData a(Parcel paramParcel)
   {
-    if (this.a.a.getChildCount() <= 1) {
-      return true;
-    }
-    Object localObject = new ClipData.Item("");
-    paramView.startDrag(new ClipData("", new String[] { "text/plain" }, (ClipData.Item)localObject), new aeuh(this.a, paramView), paramView, 0);
-    localObject = NearbyProfileEditPanel.a(this.a, (PicInfo)paramView.getTag(), null);
-    ((RelativeLayout)localObject).setVisibility(4);
-    NearbyProfileEditPanel.a(this.a, (RelativeLayout)localObject);
-    int i = this.a.a.indexOfChild(paramView);
-    if (i != -1)
-    {
-      this.a.a.removeView(paramView);
-      this.a.a.addView(NearbyProfileEditPanel.a(this.a), i);
-      return true;
-    }
-    paramView.setVisibility(4);
-    return true;
+    return new VideoData(paramParcel);
+  }
+  
+  public VideoData[] a(int paramInt)
+  {
+    return new VideoData[paramInt];
   }
 }
 

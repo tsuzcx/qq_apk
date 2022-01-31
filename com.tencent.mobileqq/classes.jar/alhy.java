@@ -1,30 +1,27 @@
-import android.os.Handler;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqprotect.qsec.QSecFramework;
-import com.tencent.qqprotect.qsec.QSecFramework.IGoingUpHandler;
+import android.app.Activity;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.base.TicketUtils;
+import com.tencent.open.base.TicketUtils.TicketCallback;
+import com.tencent.open.downloadnew.MyAppApi;
+import mqq.os.MqqHandler;
 
 public class alhy
-  implements QSecFramework.IGoingUpHandler
+  implements TicketUtils.TicketCallback
 {
-  public alhy(QSecFramework paramQSecFramework) {}
+  public alhy(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, long paramLong, Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public int a(int paramInt1, int paramInt2, int paramInt3, Object paramObject1, Object paramObject2, Object[] paramArrayOfObject1, Object[] paramArrayOfObject2)
+  public void a()
   {
-    if (paramInt1 != 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSecFramework", 2, String.format("Native msg, cookie: %08X, delay: %d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
-      }
-      if (paramInt2 != 0) {
-        QSecFramework.a(this.a).sendMessageDelayed(QSecFramework.a(this.a).obtainMessage(1, paramInt1, 0), paramInt2 * 1000);
-      }
-    }
-    else
-    {
-      return 0;
-    }
-    QSecFramework.a(this.a).sendMessage(QSecFramework.a(this.a).obtainMessage(1, paramInt1, 0));
-    return 0;
+    LogUtility.a("MyAppApi", "onGetA1Fail ---");
+    ThreadManager.getSubThreadHandler().post(new alia(this));
+  }
+  
+  public void a(String paramString, byte[] paramArrayOfByte)
+  {
+    LogUtility.a("MyAppApi", "onGetA1 ---");
+    ThreadManager.getSubThreadHandler().post(new alhz(this, paramArrayOfByte, paramString));
   }
 }
 

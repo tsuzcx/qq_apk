@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.vas;
 
-import ajts;
-import ajtt;
+import akhz;
+import akia;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.manager.Manager;
@@ -13,7 +13,7 @@ public class VasManager
   
   public static VasManager.CompleteListener a(VasManager.CompleteListener paramCompleteListener)
   {
-    return new ajtt(paramCompleteListener);
+    return new akia(paramCompleteListener);
   }
   
   public void a(String paramString, Object paramObject)
@@ -30,11 +30,11 @@ public class VasManager
         i = this.a.size() - 1;
         if (i >= 0)
         {
-          ajts localajts = (ajts)this.a.get(i);
-          if (paramString.equals(localajts.jdField_a_of_type_JavaLangString))
+          akhz localakhz = (akhz)this.a.get(i);
+          if (paramString.equals(localakhz.jdField_a_of_type_JavaLangString))
           {
             this.a.remove(i);
-            localArrayList.add(localajts);
+            localArrayList.add(localakhz);
           }
         }
         else
@@ -43,8 +43,8 @@ public class VasManager
           if (!paramString.hasNext()) {
             break;
           }
-          ??? = (ajts)paramString.next();
-          ((ajts)???).jdField_a_of_type_ComTencentMobileqqVasVasManager$CompleteListener.a(paramObject, ((ajts)???).jdField_a_of_type_JavaLangObject);
+          ??? = (akhz)paramString.next();
+          ((akhz)???).jdField_a_of_type_ComTencentMobileqqVasVasManager$CompleteListener.a(paramObject, ((akhz)???).jdField_a_of_type_JavaLangObject);
         }
       }
       i -= 1;
@@ -55,7 +55,7 @@ public class VasManager
   {
     if (paramCompleteListener != null)
     {
-      paramCompleteListener = new ajts(paramCompleteListener, paramObject, ???);
+      paramCompleteListener = new akhz(paramCompleteListener, paramObject, ???);
       synchronized (this.a)
       {
         this.a.add(paramCompleteListener);
@@ -75,7 +75,7 @@ public class VasManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasManager
  * JD-Core Version:    0.7.0.1
  */

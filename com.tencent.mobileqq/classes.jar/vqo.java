@@ -1,16 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class vqo
-  implements DialogInterface.OnClickListener
+class vqo
+  implements Runnable
 {
-  public vqo(GameRoomChatPie paramGameRoomChatPie, boolean paramBoolean) {}
+  vqo(vqn paramvqn) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.V = true;
-    GameRoomChatPie.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie, this.jdField_a_of_type_Boolean);
+    QQToast.a(this.a.a.a.a, "连接已经建立...", 0).a();
   }
 }
 

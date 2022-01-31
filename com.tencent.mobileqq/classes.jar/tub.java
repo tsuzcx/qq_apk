@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.TroopDisbandActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.util.FaceDrawable;
 
-public class tub
-  implements DialogInterface.OnClickListener
+class tub
+  implements Runnable
 {
-  public tub(TroopDisbandActivity paramTroopDisbandActivity) {}
+  tub(tua paramtua, String paramString, int paramInt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    FaceDrawable localFaceDrawable = FaceDrawable.a(this.jdField_a_of_type_Tua.a.app, 1, this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Tua.a.runOnUiThread(new tuc(this, localFaceDrawable));
+  }
 }
 
 

@@ -24,20 +24,20 @@ public class ViewFactory
     switch (paramInt)
     {
     default: 
-      return 2131435469;
+      return 2131435486;
     case 80000000: 
-      return 2131434347;
+      return 2131434364;
     case 80000001: 
-      return 2131435470;
+      return 2131435487;
     case 80000002: 
       if (UniteSearchActivity.d == 12) {
-        return 2131435492;
+        return 2131435509;
       }
-      return 2131435491;
+      return 2131435508;
     case 80000003: 
-      return 2131435472;
+      return 2131435489;
     }
-    return 2131434928;
+    return 2131434945;
   }
   
   private View a(Context paramContext)
@@ -48,8 +48,8 @@ public class ViewFactory
     TextView localTextView = new TextView(paramContext);
     localTextView.setText("没有找到相关结果");
     localTextView.setTextSize(0, paramContext.getResources().getDimension(2131558464));
-    localTextView.setPadding(0, paramContext.getResources().getDimensionPixelSize(2131559039), 0, 0);
-    localTextView.setTextColor(paramContext.getResources().getColor(2131494258));
+    localTextView.setPadding(0, paramContext.getResources().getDimensionPixelSize(2131559041), 0, 0);
+    localTextView.setTextColor(paramContext.getResources().getColor(2131494265));
     paramContext = new LinearLayout.LayoutParams(-2, -2);
     paramContext.gravity = 1;
     localLinearLayout.addView(localTextView, paramContext);

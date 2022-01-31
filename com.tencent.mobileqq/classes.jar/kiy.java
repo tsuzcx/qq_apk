@@ -1,19 +1,26 @@
-import android.view.animation.DecelerateInterpolator;
-import android.widget.ImageView;
-import com.tencent.mobileqq.widget.Rotate3dAnimation;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import com.tencent.biz.PoiMapActivity;
 
-class kiy
-  implements Runnable
+public class kiy
+  extends GestureDetector.SimpleOnGestureListener
 {
-  kiy(kix paramkix) {}
+  public kiy(PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    Rotate3dAnimation localRotate3dAnimation = new Rotate3dAnimation(-90.0F, 0.0F, this.a.jdField_a_of_type_Float, this.a.b, 200.0F, false);
-    localRotate3dAnimation.setDuration(500L);
-    localRotate3dAnimation.setInterpolator(new DecelerateInterpolator());
-    this.a.jdField_a_of_type_AndroidWidgetImageView.startAnimation(localRotate3dAnimation);
-    localRotate3dAnimation.setAnimationListener(new kiz(this));
+    return false;
+  }
+  
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  {
+    return false;
+  }
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    this.a.j();
+    return false;
   }
 }
 

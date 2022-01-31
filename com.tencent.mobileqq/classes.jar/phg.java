@@ -1,14 +1,42 @@
-import com.tencent.component.media.photogif.QzoneAnimationDrawable;
-
 public class phg
-  implements Runnable
+  implements Comparable, Runnable
 {
-  private phg(QzoneAnimationDrawable paramQzoneAnimationDrawable) {}
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public phg(Runnable paramRunnable, boolean paramBoolean)
+  {
+    this.jdField_a_of_type_JavaLangRunnable = paramRunnable;
+    this.jdField_a_of_type_Boolean = paramBoolean;
+  }
+  
+  public int a(phg paramphg)
+  {
+    boolean bool;
+    if (paramphg != null)
+    {
+      bool = paramphg.jdField_a_of_type_Boolean;
+      if ((!this.jdField_a_of_type_Boolean) || (!bool)) {
+        break label27;
+      }
+    }
+    label27:
+    do
+    {
+      return 0;
+      bool = false;
+      break;
+      if ((this.jdField_a_of_type_Boolean) && (!bool)) {
+        return 1;
+      }
+    } while (!bool);
+    return -1;
+  }
   
   public void run()
   {
-    if (!QzoneAnimationDrawable.b(this.a)) {
-      QzoneAnimationDrawable.a(this.a, true);
+    if (this.jdField_a_of_type_JavaLangRunnable != null) {
+      this.jdField_a_of_type_JavaLangRunnable.run();
     }
   }
 }

@@ -1,101 +1,64 @@
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
-import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.UpCallBack.SendResult;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr;
+import com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr.DItemInfo;
+import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.mobileqq.transfile.NetResp;
+import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
-import tencent.im.msg.im_msg_body.RichText;
+import java.io.File;
 
-class aidv
-  implements UpCallBack
+public final class aidv
+  implements INetEngine.INetEngineListener
 {
-  aidv(aidu paramaidu, boolean paramBoolean) {}
+  public aidv(RecentDanceConfigMgr.DItemInfo paramDItemInfo, String paramString) {}
   
-  public MessageRecord a(im_msg_body.RichText paramRichText)
+  public void a(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    return null;
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onUpdateProgeress: totalLen=" + paramLong2 + " curOffset=" + paramLong1);
+    }
   }
   
-  public void a(UpCallBack.SendResult paramSendResult) {}
-  
-  public void b(UpCallBack.SendResult paramSendResult)
+  public void a(NetResp paramNetResp)
   {
-    boolean bool;
-    int i;
-    if (QLog.isColorLevel())
+    if (paramNetResp.jdField_a_of_type_Int == 0)
     {
-      localObject = new StringBuilder().append(" onSend result is null ? ");
-      if (paramSendResult == null)
+      paramNetResp = paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq;
+      if (new File(paramNetResp.c).exists())
       {
-        bool = true;
-        localObject = ((StringBuilder)localObject).append(bool).append(" result is: ");
-        if (paramSendResult != null) {
-          break label71;
+        str = RecentDanceConfigMgr.a(paramNetResp.c);
+        if ((str == null) || ("".equals(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.icon_md5)))
+        {
+          FileUtils.d(paramNetResp.c);
+          FileUtils.d(this.jdField_a_of_type_JavaLangString);
+          if (QLog.isColorLevel()) {
+            QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: item.icon_md5" + this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.icon_md5 + " md5=" + str);
+          }
         }
-        i = -99;
-        label46:
-        QLog.i("NearbyPeoplePhotoUploadProcessor", 2, i);
       }
-    }
-    else
-    {
-      if (paramSendResult != null) {
-        break label79;
-      }
-    }
-    label71:
-    label79:
-    do
-    {
-      return;
-      bool = false;
-      break;
-      i = paramSendResult.a;
-      break label46;
-      if (paramSendResult.a == 0)
+      while (!QLog.isColorLevel())
       {
-        bool = true;
-        localObject = (CardHandler)this.jdField_a_of_type_Aidu.a.a(2);
-        if (localObject == null) {
-          break label149;
-        }
-        ((CardHandler)localObject).a(bool, this.jdField_a_of_type_Aidu.a.getCurrentAccountUin(), 0);
-      }
-      for (;;)
-      {
-        if (bool) {
-          break label156;
-        }
-        ProfileCardUtil.a("TransferRequest.onSend", paramSendResult.b, paramSendResult.toString());
+        String str;
         return;
-        bool = false;
-        break;
-        ProfileCardUtil.a(null);
+        if (QLog.isColorLevel()) {
+          QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: check success");
+        }
+        FileUtils.c(paramNetResp.c, this.jdField_a_of_type_JavaLangString);
+        RecentDanceConfigMgr.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo, this.jdField_a_of_type_JavaLangString);
+        return;
       }
-      if (((Integer)NearbySPUtil.a(this.jdField_a_of_type_Aidu.a.getAccount(), "qq_avatar_type", Integer.valueOf(-1))).intValue() != 1) {
-        NearbySPUtil.a(this.jdField_a_of_type_Aidu.a.getAccount(), "qq_avatar_type", Integer.valueOf(1));
-      }
-      if (this.jdField_a_of_type_Boolean) {
-        ThreadManager.getUIHandler().post(new aidw(this));
-      }
-    } while (SharedPreUtils.az(this.jdField_a_of_type_Aidu.a.getApp(), this.jdField_a_of_type_Aidu.a.getCurrentAccountUin()) == 2);
-    label149:
-    label156:
-    paramSendResult = (CardHandler)this.jdField_a_of_type_Aidu.a.a(2);
-    Object localObject = new ArrayList();
-    ((ArrayList)localObject).add(Integer.valueOf(42104));
-    paramSendResult.a(this.jdField_a_of_type_Aidu.a.getCurrentAccountUin(), this.jdField_a_of_type_Aidu.a.getCurrentAccountUin(), 0, (ArrayList)localObject);
+      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp[not exists]: mOutPath" + paramNetResp.c);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: resp.mResult=" + paramNetResp.jdField_a_of_type_Int);
+    }
+    FileUtils.d(paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aidv
  * JD-Core Version:    0.7.0.1
  */

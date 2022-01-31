@@ -1,19 +1,13 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.av.ui.EffectSettingUi;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.GAudioMembersCtrlActivity;
 
-public class jum
-  implements View.OnTouchListener
+class jum
+  implements Runnable
 {
-  public jum(EffectSettingUi paramEffectSettingUi) {}
+  jum(jul paramjul) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    EffectSettingUi.a(this.a.a);
-    QLog.w("EffectSettingUi", 1, "m_qav_effect_bottom, onTouchEvent[" + paramMotionEvent.getAction() + "]");
-    return false;
+    this.a.a.c();
   }
 }
 

@@ -1,73 +1,27 @@
-import android.graphics.drawable.Drawable;
-import android.text.TextUtils;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import com.tencent.mobileqq.utils.StringUtil;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.NormalFacePackage;
-import java.util.List;
+import dov.com.qq.im.capture.QIMCaptureController;
+import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import dov.com.qq.im.capture.view.QIMProviderContainerView;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView.DoodleEditViewListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
 
-class ankh
-  implements Runnable
+public class ankh
+  implements DoodleEditView.DoodleEditViewListener
 {
-  ankh(ankg paramankg, NormalFacePackage paramNormalFacePackage, List paramList, boolean paramBoolean) {}
+  public ankh(QIMCaptureController paramQIMCaptureController) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.a(this.jdField_a_of_type_JavaUtilList);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      SLog.b("FaceListPage", "FacePkg is already download.show face list.");
-      FaceListPage.a(this.jdField_a_of_type_Ankg.a).setMax(1);
-      FaceListPage.a(this.jdField_a_of_type_Ankg.a).setProgress(1);
-      this.jdField_a_of_type_Ankg.a.postDelayed(new anki(this), 50L);
-    }
-    do
-    {
-      return;
-      FaceListPage.a(this.jdField_a_of_type_Ankg.a).setVisibility(4);
-      FaceListPage.b(this.jdField_a_of_type_Ankg.a).setVisibility(4);
-      FaceListPage.a(this.jdField_a_of_type_Ankg.a).setVisibility(0);
-      Object localObject = (String)FaceListPage.a(this.jdField_a_of_type_Ankg.a).getTag(2131362360);
-      if ((TextUtils.isEmpty((CharSequence)localObject)) || (!((String)localObject).equals(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.jdField_d_of_type_JavaLangString)))
-      {
-        FaceListPage.a(this.jdField_a_of_type_Ankg.a).setTag(2131362360, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.jdField_d_of_type_JavaLangString);
-        localObject = URLDrawable.URLDrawableOptions.obtain();
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = FaceListPage.a(this.jdField_a_of_type_Ankg.a);
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = FaceListPage.a(this.jdField_a_of_type_Ankg.a);
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = URLDrawableHelper.c();
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = URLDrawableHelper.a;
-        ((URLDrawable.URLDrawableOptions)localObject).mUseAutoScaleParams = false;
-        localObject = URLDrawable.getDrawable(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.jdField_d_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject);
-        FaceListPage.a(this.jdField_a_of_type_Ankg.a).setImageDrawable((Drawable)localObject);
-      }
-      TextView localTextView = FaceListPage.a(this.jdField_a_of_type_Ankg.a);
-      if (TextUtils.isEmpty(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.jdField_b_of_type_JavaLangString)) {}
-      for (localObject = "";; localObject = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.jdField_b_of_type_JavaLangString)
-      {
-        localTextView.setText((CharSequence)localObject);
-        if (!this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.jdField_b_of_type_Boolean) {
-          break;
-        }
-        FaceListPage.a(this.jdField_a_of_type_Ankg.a).setMax(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.c);
-        FaceListPage.a(this.jdField_a_of_type_Ankg.a).setProgress(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.jdField_d_of_type_Int);
-        FaceListPage.b(this.jdField_a_of_type_Ankg.a).setText("正在下载");
-        FaceListPage.a(this.jdField_a_of_type_Ankg.a).setVisibility(0);
-        return;
-      }
-      FaceListPage.a(this.jdField_a_of_type_Ankg.a).setMax(1);
-      FaceListPage.a(this.jdField_a_of_type_Ankg.a).setProgress(0);
-      FaceListPage.b(this.jdField_a_of_type_Ankg.a).setBackgroundResource(2130843336);
-      FaceListPage.a(this.jdField_a_of_type_Ankg.a).setVisibility(4);
-    } while (StringUtil.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.e));
-    FaceListPage.b(this.jdField_a_of_type_Ankg.a).setText(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceNormalFacePackage.e);
+    this.a.a.setVisibility(0);
+    QIMCaptureController.a(this.a).setVisibility(0);
+    QIMCaptureController.a(this.a).b();
+  }
+  
+  public void a(GestureHelper.ZoomItem paramZoomItem)
+  {
+    this.a.a.setVisibility(8);
+    QIMCaptureController.a(this.a).setVisibility(8);
+    QIMCaptureController.a(this.a).a(103, new Object[] { paramZoomItem });
   }
 }
 

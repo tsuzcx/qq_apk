@@ -1,40 +1,29 @@
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.lbs.BasicLocation;
-import com.tencent.biz.qqstory.model.lbs.LbsManager;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import android.os.Bundle;
+import cooperation.qzone.remote.logic.WebEventListener;
+import cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin;
 
 public class ancx
-  extends LbsManager.OnLocationListener
+  implements WebEventListener
 {
-  public ancx(EditVideoDoodle paramEditVideoDoodle, String paramString)
-  {
-    super(paramString);
-  }
+  public ancx(QzoneQunFeedJsPlugin paramQzoneQunFeedJsPlugin) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    super.a(paramInt, paramSosoLbsInfo);
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    if ("cmd.troop.download.photo".equals(paramString))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.publish.edit.StoryDoodle", 2, "onLocationUpdate() latitude=" + paramSosoLbsInfo.a.a + " longitude=" + paramSosoLbsInfo.a.b);
-      }
-      paramSosoLbsInfo = new BasicLocation((int)(paramSosoLbsInfo.a.a * 1000000.0D), (int)(paramSosoLbsInfo.a.b * 1000000.0D));
-      ((LbsManager)SuperManager.a(9)).a(paramSosoLbsInfo, null, this.a);
+      paramString = paramBundle.getBundle("data");
+      paramString.getInt("totalNum");
+      int i = paramString.getInt("successNum");
+      int j = paramString.getInt("failNum");
+      boolean bool = paramString.getBoolean("isDownloadCanceled");
+      paramString = paramString.getString("path");
+      QzoneQunFeedJsPlugin.a(this.a, i, j, paramString, bool);
     }
-    while (!QLog.isColorLevel()) {
-      return;
-    }
-    QLog.d("Q.qqstory.publish.edit.StoryDoodle", 2, "onLocationUpdate() error");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancx
  * JD-Core Version:    0.7.0.1
  */

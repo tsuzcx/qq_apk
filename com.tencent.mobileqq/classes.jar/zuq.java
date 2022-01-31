@@ -1,22 +1,30 @@
-import com.tencent.mobileqq.ar.ARRecord.ARRecordReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class zuq
-  implements Runnable
+  implements View.OnClickListener
 {
-  public zuq(ARRecordReport paramARRecordReport, boolean paramBoolean) {}
+  public zuq(MsgNotifyPushDialog paramMsgNotifyPushDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    HashMap localHashMap = new HashMap();
-    StatisticCollector.a(BaseApplication.getContext()).a("", "ar_record_active_record_start", this.jdField_a_of_type_Boolean, 0L, 0L, localHashMap, "");
+    ReportController.b(null, "CliOper", "", "", "0X8006B16", "0X8006B16", 0, 0, "", "", "", "");
+    paramView = PreferenceManager.getDefaultSharedPreferences(MsgNotifyPushDialog.a(this.a));
+    int i = paramView.getInt("push_msg_notify_cancle", 0);
+    paramView = paramView.edit();
+    paramView.putInt("push_msg_notify_cancle", i + 1);
+    paramView.commit();
+    this.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zuq
  * JD-Core Version:    0.7.0.1
  */

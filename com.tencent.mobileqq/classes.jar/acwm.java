@@ -1,31 +1,49 @@
-import android.app.Activity;
-import android.view.View;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.settings.FMSettingInterface.MoveFileCallback;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import java.util.List;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerCallback;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IDownloadMgr;
 
-public class acwm
-  implements Runnable
+class acwm
+  implements FileVideoManager.FileVideoManagerCallback
 {
-  public acwm(FMSettings paramFMSettings, Activity paramActivity, List paramList, FMSettingInterface.MoveFileCallback paramMoveFileCallback) {}
+  acwm(acwl paramacwl) {}
   
-  public void run()
+  public void a(int paramInt, String paramString)
   {
-    View localView = RelativeLayout.inflate(this.jdField_a_of_type_AndroidAppActivity, 2130970020, null);
-    TextView localTextView = (TextView)localView.findViewById(2131366618);
-    localTextView.setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.jdField_a_of_type_JavaLangString);
-    ((TextView)localView.findViewById(2131368762)).setText(this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.b);
-    ProgressBar localProgressBar = (ProgressBar)localView.findViewById(2131364093);
-    localProgressBar.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 0, 2130968844, "下载通知", this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.jdField_a_of_type_JavaLangString + '\n' + this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.b, "取消", "确定", new acwn(this, localTextView, localProgressBar), new acws(this)).addView(localView);
-    FileManagerReporter.a("0X8005BE1");
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerSettingsFMSettings.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerCallback != null)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerCallback.a(paramInt, paramString);
+      FileVideoManager.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl);
+    }
+  }
+  
+  public void a(String paramString1, String paramString2)
+  {
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_JavaLangString = paramString1;
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.c = paramString2;
+    FileVideoManager.VideoControl.b(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_Int = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.startPlayWithSavePath(20160714, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_JavaLangString, FileManagerUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.b), 0L, 0, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.b, 0);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.setPlayerState(20160714, this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_Int, 6);
+    paramString1 = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.buildPlayURLMp4(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_Int);
+    if (QLog.isDevelopLevel()) {
+      QLog.i("FileVideoManager<FileAssistant>", 1, "[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.hashCode() + "][" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nSessionId + "]getDiscPlayUrl, mPlayId[" + this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_Int + "]");
+    }
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$VideoControl.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nOpType = 8;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerCallback != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerCallback.a(paramString1, paramString2);
+    }
+  }
+  
+  public void ae_() {}
+  
+  public void af_()
+  {
+    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerCallback != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerCallback.af_();
+    }
   }
 }
 

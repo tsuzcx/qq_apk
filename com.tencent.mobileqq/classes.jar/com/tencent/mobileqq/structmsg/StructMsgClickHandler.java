@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.structmsg;
 
-import ahtg;
+import aihj;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -63,11 +63,11 @@ public class StructMsgClickHandler
     if ((jdField_a_of_type_ComTencentWidgetActionSheet == null) || (!jdField_a_of_type_ComTencentWidgetActionSheet.getContext().equals(paramContext)))
     {
       jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.a(paramContext);
-      jdField_a_of_type_ComTencentWidgetActionSheet.a(2131435075, 1);
-      jdField_a_of_type_ComTencentWidgetActionSheet.a(2131435076, 1);
-      jdField_a_of_type_ComTencentWidgetActionSheet.c(2131432998);
-      jdField_a_of_type_ComTencentWidgetActionSheet.a(String.format(paramContext.getString(2131435096), new Object[] { paramString }));
-      jdField_a_of_type_ComTencentWidgetActionSheet.a(new ahtg(paramString, paramContext));
+      jdField_a_of_type_ComTencentWidgetActionSheet.a(2131435092, 1);
+      jdField_a_of_type_ComTencentWidgetActionSheet.a(2131435093, 1);
+      jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
+      jdField_a_of_type_ComTencentWidgetActionSheet.a(String.format(paramContext.getString(2131435113), new Object[] { paramString }));
+      jdField_a_of_type_ComTencentWidgetActionSheet.a(new aihj(paramString, paramContext));
     }
     if (!jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
       jdField_a_of_type_ComTencentWidgetActionSheet.show();
@@ -436,7 +436,7 @@ public class StructMsgClickHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgClickHandler
  * JD-Core Version:    0.7.0.1
  */

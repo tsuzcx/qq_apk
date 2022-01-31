@@ -10,7 +10,7 @@ import mqq.os.MqqHandler;
 import protocol.KQQConfig.GPS;
 import protocol.KQQConfig.GetResourceRespV2;
 import protocol.KQQConfig.ReqUserInfo;
-import zgf;
+import zjl;
 
 public class PluginConfigProxy
   extends ServerConfigObserver
@@ -52,7 +52,7 @@ public class PluginConfigProxy
         while (localIterator.hasNext())
         {
           ServerConfigObserver localServerConfigObserver = (ServerConfigObserver)localIterator.next();
-          ThreadManager.getSubThreadHandler().post(new zgf(this, localServerConfigObserver, paramBoolean, paramInt, paramGetResourceRespV2));
+          ThreadManager.getSubThreadHandler().post(new zjl(this, localServerConfigObserver, paramBoolean, paramInt, paramGetResourceRespV2));
         }
       }
     }

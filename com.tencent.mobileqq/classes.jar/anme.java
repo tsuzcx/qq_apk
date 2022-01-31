@@ -1,20 +1,18 @@
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader;
-import dov.com.tencent.biz.qqstory.takevideo.multivideo.VideoFrameLoader.VideoFrameLoaderListener;
-import java.lang.ref.WeakReference;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.WeakReferenceHandler;
+import dov.com.qq.im.capture.music.QQMusicPlayerScene;
+import java.util.TimerTask;
 
 public class anme
-  implements Runnable
+  extends TimerTask
 {
-  public anme(VideoFrameLoader paramVideoFrameLoader) {}
+  private anme(QQMusicPlayerScene paramQQMusicPlayerScene) {}
   
   public void run()
   {
-    VideoFrameLoader.VideoFrameLoaderListener localVideoFrameLoaderListener = null;
-    if (VideoFrameLoader.a(this.a) != null) {
-      localVideoFrameLoaderListener = (VideoFrameLoader.VideoFrameLoaderListener)VideoFrameLoader.a(this.a).get();
-    }
-    if (localVideoFrameLoaderListener != null) {
-      localVideoFrameLoaderListener.b();
+    this.a.a.sendEmptyMessage(1);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQMusicPlayerScene", 2, "MyMusicTimerTask MSG_MUSIC_REPLAY");
     }
   }
 }

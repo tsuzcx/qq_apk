@@ -1,32 +1,72 @@
-import android.app.Activity;
-import android.app.AlertDialog.Builder;
-import android.app.Dialog;
-import android.content.DialogInterface.OnClickListener;
-import android.os.Bundle;
-import com.tencent.apkupdate.logic.data.ApkUpdateDetail;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.DownloadManager;
+import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.webview.webso.SHA1Util;
+import com.tencent.mobileqq.webview.webso.WebSoService;
+import com.tencent.mobileqq.webview.webso.WebSoService.CallBack;
+import com.tencent.mobileqq.webview.webso.WebSoUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.IOException;
 
 public class akrh
   implements Runnable
 {
-  public akrh(DownloadManager paramDownloadManager, Bundle paramBundle, Activity paramActivity, int paramInt1, ApkUpdateDetail paramApkUpdateDetail, int paramInt2) {}
+  public akrh(WebSoService paramWebSoService, File paramFile, String paramString, WebSoService.CallBack paramCallBack, Uri paramUri) {}
   
   public void run()
   {
-    Object localObject = new akri(this);
-    akrj localakrj = new akrj(this);
-    LogUtility.b(DownloadManager.a, "dialog create and show");
-    localObject = new AlertDialog.Builder(this.jdField_a_of_type_AndroidAppActivity).setMessage(this.jdField_a_of_type_AndroidAppActivity.getString(2131428549)).setPositiveButton(2131428546, localakrj).setNegativeButton(2131428547, (DialogInterface.OnClickListener)localObject).create();
-    ((Dialog)localObject).setCanceledOnTouchOutside(false);
-    if (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()) {
-      ((Dialog)localObject).show();
+    try
+    {
+      long l = System.currentTimeMillis();
+      String str = FileUtils.b(this.jdField_a_of_type_JavaIoFile);
+      if (QLog.isColorLevel()) {
+        QLog.d("WebSoService", 2, "readFileToString cost=" + (System.currentTimeMillis() - l));
+      }
+      if (!TextUtils.isEmpty(str))
+      {
+        l = System.currentTimeMillis();
+        if (SHA1Util.a(str).equals(this.jdField_a_of_type_JavaLangString))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("WebSoService", 2, "verify html success cost=" + (System.currentTimeMillis() - l));
+          }
+          this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$CallBack.a(str);
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("WebSoService", 2, "verify html fail cost=" + (System.currentTimeMillis() - l));
+        }
+        WebSoUtils.a(this.jdField_a_of_type_AndroidNetUri);
+        this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$CallBack.a("");
+        return;
+      }
+    }
+    catch (IOException localIOException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebSoService", 2, "deal eTag exception=" + localIOException.getMessage());
+      }
+      WebSoUtils.a(this.jdField_a_of_type_AndroidNetUri);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$CallBack.a("");
+      localIOException.printStackTrace();
+      return;
+    }
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebSoService", 2, "verify load data exception=" + localOutOfMemoryError.getMessage());
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$CallBack.a("");
+      localOutOfMemoryError.printStackTrace();
+      VipUtils.a(null, "webview_report", "0X8006511", "0X8006511", 1, 1, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akrh
  * JD-Core Version:    0.7.0.1
  */

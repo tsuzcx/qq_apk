@@ -1,32 +1,38 @@
 import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.model.TroopNickNameManager.TroopNickNameUpdateEvent;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.qphone.base.util.QLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.channel.CmdTaskManger;
+import com.tencent.biz.qqstory.channel.NetworkRequest;
+import com.tencent.biz.qqstory.network.request.GetProfileFeedIdListRequest;
+import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.FeedIdListCache;
+import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.GetFeedIdListResult;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.JobSegment;
+import java.util.List;
 
 public class nws
-  extends QQUIEventReceiver
+  extends JobSegment
 {
-  public nws(@NonNull StoryMessageListActivity paramStoryMessageListActivity)
+  private FeedListPageLoaderBase.FeedIdListCache a;
+  
+  public nws(@NonNull FeedListPageLoaderBase.FeedIdListCache paramFeedIdListCache)
   {
-    super(paramStoryMessageListActivity);
+    this.a = paramFeedIdListCache;
   }
   
-  public void a(@NonNull StoryMessageListActivity paramStoryMessageListActivity, @NonNull TroopNickNameManager.TroopNickNameUpdateEvent paramTroopNickNameUpdateEvent)
+  protected void a(JobContext paramJobContext, Integer paramInteger)
   {
-    if (paramTroopNickNameUpdateEvent.a.isSuccess())
+    Object localObject = this.a.a(paramInteger.intValue(), 5);
+    if ((((FeedListPageLoaderBase.GetFeedIdListResult)localObject).a.size() > 0) || (((FeedListPageLoaderBase.GetFeedIdListResult)localObject).b))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i(this.TAG, 2, "TroopNickNameUpdateEvent");
-      }
-      paramStoryMessageListActivity.e();
+      SLog.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
+      notifyResult(localObject);
+      return;
     }
-  }
-  
-  public Class acceptEventClass()
-  {
-    return TroopNickNameManager.TroopNickNameUpdateEvent.class;
+    localObject = new GetProfileFeedIdListRequest();
+    ((GetProfileFeedIdListRequest)localObject).a = this.a.a();
+    ((GetProfileFeedIdListRequest)localObject).b = QQStoryContext.a().b();
+    CmdTaskManger.a().a((NetworkRequest)localObject, new nwt(this, paramJobContext, paramInteger));
   }
 }
 

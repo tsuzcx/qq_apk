@@ -1,16 +1,15 @@
+import dov.com.tencent.biz.qqstory.takevideo.doodle.model.DoodleEmojiManager;
+import java.io.File;
+import java.io.FilenameFilter;
+
 public class anxm
+  implements FilenameFilter
 {
-  final int jdField_a_of_type_Int;
-  final long jdField_a_of_type_Long;
-  final byte[] jdField_a_of_type_ArrayOfByte;
-  final int b;
+  public anxm(DoodleEmojiManager paramDoodleEmojiManager) {}
   
-  public anxm(byte[] paramArrayOfByte, int paramInt1, int paramInt2, long paramLong)
+  public boolean accept(File paramFile, String paramString)
   {
-    this.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_Long = paramLong;
+    return (paramString.endsWith(".png")) || (paramString.endsWith(".jpg")) || (paramString.endsWith(".bmp")) || (paramString.endsWith(".apng"));
   }
 }
 

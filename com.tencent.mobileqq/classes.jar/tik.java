@@ -1,20 +1,25 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.observer.GameCenterObserver;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.widget.TabBarView.OnTabChangeListener;
+import mqq.util.WeakReference;
 
 public class tik
-  extends GameCenterObserver
+  implements TabBarView.OnTabChangeListener
 {
-  public tik(QQSettingMe paramQQSettingMe) {}
+  final WeakReference a;
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public tik(QQBrowserActivity paramQQBrowserActivity)
   {
-    if (this.a.c)
-    {
-      this.a.k();
+    this.a = new WeakReference(paramQQBrowserActivity);
+  }
+  
+  public void onTabSelected(int paramInt1, int paramInt2)
+  {
+    QQBrowserActivity localQQBrowserActivity = (QQBrowserActivity)this.a.get();
+    if (localQQBrowserActivity == null) {}
+    while (paramInt1 == paramInt2) {
       return;
     }
-    QQSettingMe.a(this.a, true);
+    QQBrowserActivity.a(paramInt2, localQQBrowserActivity);
   }
 }
 

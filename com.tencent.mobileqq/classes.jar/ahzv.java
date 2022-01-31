@@ -1,53 +1,21 @@
-import android.app.Dialog;
-import android.os.Bundle;
-import android.view.View;
-import android.view.View.OnClickListener;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.mobileqq.theme.NightModeLogic;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
+import java.util.List;
 
-public class ahzv
-  implements View.OnClickListener
+public final class ahzv
+  implements Runnable
 {
-  public ahzv(NightModeLogic paramNightModeLogic) {}
+  public ahzv(QQAppInterface paramQQAppInterface, List paramList, ShortVideoResourceManager.INet_ShortVideoResource paramINet_ShortVideoResource) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    ReportController.b((QQAppInterface)this.a.jdField_a_of_type_MqqAppAppRuntime, "CliOper", "", "", "Setting_tab", "Night_mode_dl", 0, 0, "", "", "", "");
-    if (!this.a.jdField_a_of_type_Boolean)
-    {
-      paramView = new Bundle();
-      paramView.putInt("start_status", 1);
-      this.a.a(0, paramView);
-    }
-    boolean bool = this.a.b();
-    if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing()))
-    {
-      this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-      this.a.jdField_a_of_type_AndroidAppDialog = null;
-    }
-    try
-    {
-      HashMap localHashMap = new HashMap();
-      if (bool) {}
-      for (paramView = "0";; paramView = "1")
-      {
-        localHashMap.put("param_FailCode", paramView);
-        StatisticCollector.a(this.a.jdField_a_of_type_MqqAppAppRuntime.getApplication().getApplicationContext()).a(((QQAppInterface)this.a.jdField_a_of_type_MqqAppAppRuntime).getAccount(), "VipNightThemeDialogClick", true, 1L, 0L, localHashMap, "", false);
-        return;
-      }
-      return;
-    }
-    catch (Exception paramView) {}
+    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResourceManager$INet_ShortVideoResource, "new_qq_android_native_art_filter_");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahzv
  * JD-Core Version:    0.7.0.1
  */

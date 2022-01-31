@@ -1,27 +1,31 @@
-import android.os.Bundle;
 import android.os.Handler;
-import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
-import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.child.MsgTabPlayMode;
+import com.tencent.biz.qqstory.playmode.child.MsgTabPlayMode.StoryVideoPublishStatusReceiver;
 import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.IBatchGetVideoInfoCallback;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import mqq.os.MqqHandler;
 
 public class njw
   implements BatchGetVideoInfo.IBatchGetVideoInfoCallback
 {
-  public njw(ShareGroupHotSortPlayMode paramShareGroupHotSortPlayMode, BatchGetVideoInfo paramBatchGetVideoInfo, Bundle paramBundle) {}
+  public njw(MsgTabPlayMode.StoryVideoPublishStatusReceiver paramStoryVideoPublishStatusReceiver, MsgTabPlayMode paramMsgTabPlayMode, StoryVideoItem paramStoryVideoItem) {}
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    ThreadManager.getUIHandler().post(new njz(this));
+    if (QLog.isColorLevel()) {
+      QLog.e(MsgTabPlayMode.StoryVideoPublishStatusReceiver.b(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode$StoryVideoPublishStatusReceiver), 2, new Object[] { "get self publish success video info failed. vid=", this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
+    }
   }
   
   public void a(ArrayList paramArrayList)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfo.a();
-    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildShareGroupHotSortPlayMode.a.post(new njx(this, paramArrayList));
+    if (QLog.isColorLevel()) {
+      QLog.d(MsgTabPlayMode.StoryVideoPublishStatusReceiver.a(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode$StoryVideoPublishStatusReceiver), 2, new Object[] { "get self publish success video info finish. size=", Integer.valueOf(paramArrayList.size()) });
+    }
+    if (!paramArrayList.isEmpty()) {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMsgTabPlayMode.a.post(new njx(this, paramArrayList));
+    }
   }
 }
 

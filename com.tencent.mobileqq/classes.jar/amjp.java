@@ -1,23 +1,9 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.EditText;
-import cooperation.qzone.share.QZoneShareActivity;
-
-public class amjp
-  implements View.OnTouchListener
+public final class amjp
+  extends ThreadLocal
 {
-  public amjp(QZoneShareActivity paramQZoneShareActivity) {}
-  
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  protected char[] a()
   {
-    this.a.a();
-    if ((!this.a.c) && (this.a.a != null))
-    {
-      this.a.a.setHint("");
-      this.a.c = true;
-    }
-    return false;
+    return new char[1024];
   }
 }
 

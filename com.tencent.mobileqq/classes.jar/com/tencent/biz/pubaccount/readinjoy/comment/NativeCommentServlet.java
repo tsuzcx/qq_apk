@@ -14,10 +14,10 @@ import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
-import liz;
-import lja;
-import ljb;
-import ljc;
+import liu;
+import liv;
+import liw;
+import lix;
 import mqq.app.NewIntent;
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -84,7 +84,7 @@ public class NativeCommentServlet
         paramString2 = new NewIntent(paramQQAppInterface.getApplication(), PublicAccountServlet.class);
         paramString2.putExtra("cmd", c);
         paramString2.putExtra("data", paramString1.toByteArray());
-        paramString2.setObserver(new liz(paramCommentObserver, paramArticleInfo));
+        paramString2.setObserver(new liu(paramCommentObserver, paramArticleInfo));
         paramQQAppInterface.startServlet(paramString2);
         return;
       }
@@ -177,7 +177,7 @@ public class NativeCommentServlet
       paramString4 = new NewIntent(paramQQAppInterface.getApplication(), PublicAccountServlet.class);
       paramString4.putExtra("cmd", e);
       paramString4.putExtra("data", paramString1.toByteArray());
-      paramString4.setObserver(new ljc(paramInt1, paramCommentLikeObserver, paramArticleInfo, paramString2, paramString3));
+      paramString4.setObserver(new lix(paramInt1, paramCommentLikeObserver, paramArticleInfo, paramString2, paramString3));
       paramQQAppInterface.startServlet(paramString4);
       return;
       if (!QLog.isColorLevel()) {
@@ -234,7 +234,7 @@ public class NativeCommentServlet
         paramString3 = new NewIntent(paramQQAppInterface.getApplication(), PublicAccountServlet.class);
         paramString3.putExtra("cmd", d);
         paramString3.putExtra("data", paramString1.toByteArray());
-        paramString3.setObserver(new ljb(paramDeleteCommentObserver, paramArticleInfo, paramInt1, paramString2, paramString4));
+        paramString3.setObserver(new liw(paramDeleteCommentObserver, paramArticleInfo, paramInt1, paramString2, paramString4));
         paramQQAppInterface.startServlet(paramString3);
         return;
       }
@@ -331,7 +331,7 @@ public class NativeCommentServlet
       paramString4 = new NewIntent(paramQQAppInterface.getApplication(), PublicAccountServlet.class);
       paramString4.putExtra("cmd", jdField_b_of_type_JavaLangString);
       paramString4.putExtra("data", paramString1.toByteArray());
-      paramString4.setObserver(new lja(paramCreateCommentObserver, paramArticleInfo, paramInt1, paramString2, paramString3, paramJSONArray, paramInt2));
+      paramString4.setObserver(new liv(paramCreateCommentObserver, paramArticleInfo, paramInt1, paramString2, paramString3, paramJSONArray, paramInt2));
       paramQQAppInterface.startServlet(paramString4);
       return;
       if (!QLog.isColorLevel()) {

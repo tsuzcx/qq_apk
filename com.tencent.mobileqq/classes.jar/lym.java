@@ -1,38 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.FileUploadController.FileUploadListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.video.transfer.NormalVideoDeliverController;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyVideoCompositeManager.OnVideoCompositeListener;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.biz.qqstory.database.PublishVideoEntry;
+import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class lym
-  implements FileUploadController.FileUploadListener
+  implements ReadInJoyVideoCompositeManager.OnVideoCompositeListener
 {
-  public lym(NormalVideoDeliverController paramNormalVideoDeliverController) {}
+  public lym(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public void a() {}
-  
-  public void a(float paramFloat) {}
-  
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3)
+  public void a(PublishVideoEntry paramPublishVideoEntry, int paramInt, String paramString)
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      NormalVideoDeliverController.a(this.a, paramString1);
-      NormalVideoDeliverController.b(this.a, paramString2);
-      NormalVideoDeliverController.a(this.a, 4);
-      return;
-    case 1001: 
-      NormalVideoDeliverController.b(this.a, 10);
-      return;
-    case 1002: 
-      NormalVideoDeliverController.b(this.a, 9);
-      return;
-    case 1003: 
-      NormalVideoDeliverController.b(this.a, 11);
-      return;
-    }
-    NormalVideoDeliverController.b(this.a, 13);
-    NormalVideoDeliverController.c(this.a, 1002);
+    QLog.d("ReadInJoyDeliverVideoActivity", 2, "onError: code - " + paramInt + " msg - " + paramString);
+    ReadInJoyDeliverVideoActivity.a(this.a).post(new lyo(this));
+  }
+  
+  public void a(PublishVideoEntry paramPublishVideoEntry, String paramString)
+  {
+    QLog.d("ReadInJoyDeliverVideoActivity", 2, "onSuccess: outputPath - " + paramString);
+    ReadInJoyDeliverVideoActivity.b(this.a, paramString);
+    ReadInJoyDeliverVideoActivity.a(this.a).post(new lyn(this));
   }
 }
 

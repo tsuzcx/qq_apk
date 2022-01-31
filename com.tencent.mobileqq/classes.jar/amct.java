@@ -1,42 +1,29 @@
-import android.app.Activity;
-import android.content.DialogInterface.OnDismissListener;
-import android.content.Intent;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.hitrate.PreloadProcHitPluginSession;
-import cooperation.plugin.IPluginManager.PluginParams;
-import cooperation.qzone.QZoneHelper.StartActivity;
-import cooperation.qzone.QzonePluginProxyActivity;
-import mqq.os.MqqHandler;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Paint.FontMetricsInt;
+import android.text.style.ReplacementSpan;
+import com.tencent.widget.MultiImageTextView;
 
-public final class amct
-  implements QZoneHelper.StartActivity
+public class amct
+  extends ReplacementSpan
 {
-  public amct(Intent paramIntent, String paramString, PreloadProcHitPluginSession paramPreloadProcHitPluginSession, int paramInt, Activity paramActivity, DialogInterface.OnDismissListener paramOnDismissListener) {}
+  private int jdField_a_of_type_Int;
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public amct(MultiImageTextView paramMultiImageTextView, int paramInt)
   {
-    String str = QzonePluginProxyActivity.a(this.jdField_a_of_type_AndroidContentIntent);
-    Class localClass = amcw.a(str);
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
-    this.jdField_a_of_type_AndroidContentIntent.putExtra("click_time", System.currentTimeMillis());
-    IPluginManager.PluginParams localPluginParams = new IPluginManager.PluginParams(0);
-    localPluginParams.jdField_b_of_type_JavaLangString = "qzone_plugin.apk";
-    localPluginParams.d = "QZone";
-    localPluginParams.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-    localPluginParams.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession = this.jdField_a_of_type_ComTencentMobileqqHitratePreloadProcHitPluginSession;
-    localPluginParams.e = str;
-    localPluginParams.jdField_a_of_type_JavaLangClass = localClass;
-    localPluginParams.jdField_a_of_type_AndroidContentIntent = this.jdField_a_of_type_AndroidContentIntent;
-    localPluginParams.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-    localPluginParams.c = 60000;
-    localPluginParams.f = null;
-    localPluginParams.jdField_a_of_type_Boolean = false;
-    ThreadManager.getUIHandler().post(new amcu(this, str, paramBoolean1, paramBoolean2, localPluginParams));
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
+  
+  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
+  {
+    return this.jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amct
  * JD-Core Version:    0.7.0.1
  */

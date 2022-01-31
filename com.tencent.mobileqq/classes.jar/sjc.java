@@ -1,21 +1,29 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.EditInfoActivity;
-import com.tencent.mobileqq.data.TroopMemberCard;
+import com.tencent.mobileqq.activity.ConversationHotChatCtrl;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.HotChatObserver;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.mobileqq.widget.QQToast;
 
-class sjc
-  implements Runnable
+public class sjc
+  extends HotChatObserver
 {
-  sjc(sja paramsja, TroopMemberCard paramTroopMemberCard) {}
+  public sjc(ConversationHotChatCtrl paramConversationHotChatCtrl, BaseActivity paramBaseActivity) {}
   
-  public void run()
+  public void a(String paramString1, boolean paramBoolean, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard != null)
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.removeObserver(this);
+    if (paramBoolean)
     {
-      Intent localIntent = new Intent();
-      localIntent.putExtra("nick", this.jdField_a_of_type_ComTencentMobileqqDataTroopMemberCard.card);
-      this.jdField_a_of_type_Sja.a.setResult(-1, localIntent);
-      EditInfoActivity.e(this.jdField_a_of_type_Sja.a);
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a.isShowing())) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a.dismiss();
+      }
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, "已退出热聊房间。", 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
+      return;
     }
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a.isShowing())) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityConversationHotChatCtrl.a.dismiss();
+    }
+    QQToast.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 0, "退出失败，请稍后重试。", 0).b(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
   }
 }
 

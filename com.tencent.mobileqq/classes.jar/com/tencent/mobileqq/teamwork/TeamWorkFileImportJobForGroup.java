@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.teamwork;
 
-import ahyj;
+import aimm;
 import android.text.TextUtils;
 import com.tencent.biz.troop.file.TroopFileProtocol;
 import com.tencent.biz.troop.file.TroopFileProtocol.ReqDownloadFileObserver;
@@ -17,7 +17,7 @@ public class TeamWorkFileImportJobForGroup
   public TeamWorkFileImportJobForGroup(TeamWorkFileImportInfo paramTeamWorkFileImportInfo, QQAppInterface paramQQAppInterface)
   {
     super(paramTeamWorkFileImportInfo, paramQQAppInterface);
-    this.jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqDownloadFileObserver = new ahyj(this);
+    this.jdField_a_of_type_ComTencentBizTroopFileTroopFileProtocol$ReqDownloadFileObserver = new aimm(this);
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -53,7 +53,7 @@ public class TeamWorkFileImportJobForGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportJobForGroup
  * JD-Core Version:    0.7.0.1
  */

@@ -1,48 +1,28 @@
-import android.graphics.Rect;
 import android.view.View;
-import com.tencent.biz.now.NowVideoController;
+import com.tencent.biz.pubaccount.AccountDetail.activity.EqqAccountDetailActivity;
+import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
 import com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantManager;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.PAVideoView;
-import com.tencent.widget.AbsListView;
+import com.tencent.biz.pubaccount.ecshopassit.EcshopReportHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class kor
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public kor(NowVideoController paramNowVideoController, int paramInt1, int paramInt2) {}
+  public kor(EqqAccountDetailActivity paramEqqAccountDetailActivity, PaConfigAttr.PaConfigInfo paramPaConfigInfo, ActionSheet paramActionSheet, int paramInt) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    if (NowVideoController.a(this.jdField_a_of_type_ComTencentBizNowNowVideoController) == null) {
+    if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.d) {}
+    do
+    {
       return;
-    }
-    int i = this.jdField_a_of_type_Int;
-    label16:
-    Object localObject;
-    if (i <= this.b)
-    {
-      localObject = NowVideoController.a(this.jdField_a_of_type_ComTencentBizNowNowVideoController).getChildAt(i - this.jdField_a_of_type_Int);
-      if (localObject != null) {
-        break label52;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label16;
-      break;
-      label52:
-      localObject = (PAVideoView)((View)localObject).findViewById(2131362177);
-      if ((localObject != null) && (((PAVideoView)localObject).j == 4))
-      {
-        ((PAVideoView)localObject).getGlobalVisibleRect(NowVideoController.a());
-        if ((((PAVideoView)localObject).getHeight() == NowVideoController.a().height()) && (NetworkUtil.h(((PAVideoView)localObject).getContext())) && (EcShopAssistantManager.a) && (NowVideoController.a().top > 0)) {
-          ((PAVideoView)localObject).d();
-        } else {
-          ((PAVideoView)localObject).c();
-        }
-      }
-    }
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.d = true;
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity.b(this.jdField_a_of_type_ComTencentBizPubaccountPaConfigAttr$PaConfigInfo, paramInt + 1);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    } while ((!((EcShopAssistantManager)EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).getManager(87)).a(EqqAccountDetailActivity.n(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity))) || (this.jdField_a_of_type_Int == paramInt));
+    ((EcshopReportHandler)EqqAccountDetailActivity.p(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity).a(88)).a(134243867, EqqAccountDetailActivity.o(this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailActivityEqqAccountDetailActivity), null, null, null, paramInt + 1, false);
   }
 }
 

@@ -1,37 +1,53 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.activity.aio.item.ShortVideoItemBuilder;
+import android.os.SystemClock;
+import android.view.View;
+import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Calendar;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.transfile.BaseTransProcessor;
+import com.tencent.mobileqq.transfile.TransFileController;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class vcp
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public vcp(ShortVideoItemBuilder paramShortVideoItemBuilder) {}
+  public vcp(PicItemBuilder paramPicItemBuilder, MessageForPic paramMessageForPic, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    boolean bool = false;
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.set(11, 0);
-    localCalendar.set(12, 0);
-    localCalendar.set(13, 0);
-    localCalendar.set(14, 0);
-    SharedPreferences localSharedPreferences = this.a.a.getPreferences();
-    long l1 = localSharedPreferences.getLong("key_check_temp", 0L);
-    long l2 = localCalendar.getTimeInMillis();
-    if (l1 < l2) {
-      bool = true;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoItemBuilder", 2, "TempCleanTask, lastCheck=" + l1 + ", today:" + l2 + ", needClean : " + bool);
-    }
-    if (bool)
+    switch (paramInt)
     {
-      localSharedPreferences.edit().putLong("key_check_temp", l2).commit();
-      ShortVideoUtils.a("", true);
+    }
+    label172:
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      long l;
+      do
+      {
+        return;
+        l = SystemClock.uptimeMillis();
+      } while (l - this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.d < 500L);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.d = l;
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq);
+      if ((paramView != null) && ((paramView instanceof BaseTransProcessor)))
+      {
+        paramView = (BaseTransProcessor)paramView;
+        if ((paramView.a()) && (paramView.b()))
+        {
+          paramInt = 1;
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.a.a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.frienduin, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic.uniseq));
+        }
+      }
+      for (;;)
+      {
+        if (paramInt != 0) {
+          break label172;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPicItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPic);
+        break;
+        paramInt = 0;
+      }
     }
   }
 }

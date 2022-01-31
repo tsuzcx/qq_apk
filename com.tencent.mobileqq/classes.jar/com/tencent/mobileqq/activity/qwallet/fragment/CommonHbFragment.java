@@ -76,25 +76,25 @@ import mqq.app.AppRuntime;
 import mqq.observer.BusinessObserver;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
-import wzo;
-import wzp;
-import wzq;
-import wzr;
-import wzs;
-import wzt;
-import wzu;
-import wzv;
-import wzw;
-import wzx;
-import wzy;
-import wzz;
-import xaa;
-import xad;
-import xae;
-import xaf;
-import xag;
-import xah;
-import xai;
+import xct;
+import xcu;
+import xcv;
+import xcw;
+import xcx;
+import xcy;
+import xcz;
+import xda;
+import xdb;
+import xdc;
+import xdd;
+import xde;
+import xdf;
+import xdi;
+import xdj;
+import xdk;
+import xdl;
+import xdm;
+import xdn;
 
 public class CommonHbFragment
   extends BaseHbFragment
@@ -108,23 +108,23 @@ public class CommonHbFragment
   private long jdField_a_of_type_Long;
   private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable(-528142);
   private Handler jdField_a_of_type_AndroidOsHandler = new Handler();
-  private PagerAdapter jdField_a_of_type_AndroidSupportV4ViewPagerAdapter = new wzv(this);
+  private PagerAdapter jdField_a_of_type_AndroidSupportV4ViewPagerAdapter = new xda(this);
   private ViewPager jdField_a_of_type_AndroidSupportV4ViewViewPager;
   protected TextWatcher a;
   private View jdField_a_of_type_AndroidViewView;
-  private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new xaa(this);
+  private AdapterView.OnItemClickListener jdField_a_of_type_AndroidWidgetAdapterView$OnItemClickListener = new xdf(this);
   private Button jdField_a_of_type_AndroidWidgetButton;
   private EditText jdField_a_of_type_AndroidWidgetEditText;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private IRedPacket.OnGetSkinListener jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketIRedPacket$OnGetSkinListener = new xad(this);
-  private QwScrollView.OnQwScrollListener jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetQwScrollView$OnQwScrollListener = new xah(this);
+  private IRedPacket.OnGetSkinListener jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketIRedPacket$OnGetSkinListener = new xdi(this);
+  private QwScrollView.OnQwScrollListener jdField_a_of_type_ComTencentMobileqqActivityQwalletWidgetQwScrollView$OnQwScrollListener = new xdm(this);
   private IndividualRedPacketManager jdField_a_of_type_ComTencentMobileqqAppIndividualRedPacketManager;
   private QwAdapter jdField_a_of_type_CooperationQwalletPluginQwAdapter;
   private String jdField_a_of_type_JavaLangString;
   private List jdField_a_of_type_JavaUtilList;
-  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new wzz(this);
+  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new xde(this);
   private JSONObject jdField_a_of_type_OrgJsonJSONObject;
   public boolean a;
   private int jdField_b_of_type_Int;
@@ -174,7 +174,7 @@ public class CommonHbFragment
   
   public CommonHbFragment()
   {
-    this.jdField_a_of_type_AndroidTextTextWatcher = new wzo(this);
+    this.jdField_a_of_type_AndroidTextTextWatcher = new xct(this);
   }
   
   public static int a(String paramString)
@@ -235,22 +235,22 @@ public class CommonHbFragment
     do
     {
       return;
-      ViewTransformer localViewTransformer = (ViewTransformer)paramView.findViewById(2131367959);
-      EditText localEditText = (EditText)paramView.findViewById(2131367918);
+      ViewTransformer localViewTransformer = (ViewTransformer)paramView.findViewById(2131368026);
+      EditText localEditText = (EditText)paramView.findViewById(2131367985);
       localViewTransformer.setTag("");
-      Button localButton1 = (Button)paramView.findViewById(2131367958);
-      localRelativeLayout = (RelativeLayout)paramView.findViewById(2131367979);
-      TextView localTextView = (TextView)paramView.findViewById(2131365631);
-      Button localButton2 = (Button)paramView.findViewById(2131367958);
+      Button localButton1 = (Button)paramView.findViewById(2131368025);
+      localRelativeLayout = (RelativeLayout)paramView.findViewById(2131368046);
+      TextView localTextView = (TextView)paramView.findViewById(2131365658);
+      Button localButton2 = (Button)paramView.findViewById(2131368025);
       localTextView.setText("当前所有成员可抢，");
       localButton2.setText("改为指定人领取");
       localButton2.setVisibility(0);
-      localViewTransformer.setLisenter(new wzs(this, localEditText, localRelativeLayout));
+      localViewTransformer.setLisenter(new xcx(this, localEditText, localRelativeLayout));
       if (localButton1 != null) {
-        localButton1.setOnClickListener(new wzt(this, localViewTransformer, localTextView, localButton2));
+        localButton1.setOnClickListener(new xcy(this, localViewTransformer, localTextView, localButton2));
       }
     } while (localRelativeLayout == null);
-    localRelativeLayout.setOnClickListener(new wzu(this, paramView));
+    localRelativeLayout.setOnClickListener(new xcz(this, paramView));
   }
   
   private void a(View paramView, int paramInt)
@@ -259,22 +259,22 @@ public class CommonHbFragment
     if (!jdField_e_of_type_JavaUtilList.contains(this.k))
     {
       localObject = new ArrayList();
-      ((List)localObject).add(Integer.valueOf(2131367959));
-      ((List)localObject).add(Integer.valueOf(2131365631));
+      ((List)localObject).add(Integer.valueOf(2131368026));
+      ((List)localObject).add(Integer.valueOf(2131365658));
       a(paramView, (List)localObject, 8);
-      localObject = paramView.findViewById(2131367959);
+      localObject = paramView.findViewById(2131368026);
       ((View)localObject).setVisibility(8);
-      ((EditText)((View)localObject).findViewById(2131364166)).setText("1");
-      localObject = (TextView)paramView.findViewById(2131367983);
+      ((EditText)((View)localObject).findViewById(2131364190)).setText("1");
+      localObject = (TextView)paramView.findViewById(2131368050);
       if (localObject != null) {
         ((TextView)localObject).setText("金额");
       }
-      localObject = (EditText)paramView.findViewById(2131367918);
+      localObject = (EditText)paramView.findViewById(2131367985);
       ((EditText)localObject).addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
       if (paramInt == 2) {
-        ((EditText)localObject).setOnEditorActionListener(new wzq(this));
+        ((EditText)localObject).setOnEditorActionListener(new xcv(this));
       }
-      localObject = (EditText)paramView.findViewById(2131367956);
+      localObject = (EditText)paramView.findViewById(2131368023);
       if (paramInt != 2) {
         break label380;
       }
@@ -285,30 +285,30 @@ public class CommonHbFragment
     }
     for (;;)
     {
-      ((Button)paramView.findViewById(2131364058)).setOnClickListener(this);
+      ((Button)paramView.findViewById(2131364082)).setOnClickListener(this);
       if ((("2".equals(this.k)) || ("3".equals(this.k))) && ((paramInt == 0) || (paramInt == 1))) {
         a(paramView);
       }
       if ("4096".equals(this.jdField_a_of_type_JavaLangString))
       {
-        localObject = (TextView)paramView.findViewById(2131365631);
+        localObject = (TextView)paramView.findViewById(2131365658);
         if (localObject != null) {
           ((TextView)localObject).setText("小伙伴领取的金额随机");
         }
-        paramView = (Button)paramView.findViewById(2131367958);
+        paramView = (Button)paramView.findViewById(2131368025);
         if (paramView != null) {
           paramView.setVisibility(8);
         }
       }
       return;
-      localObject = (EditText)paramView.findViewById(2131364166);
+      localObject = (EditText)paramView.findViewById(2131364190);
       if (!TextUtils.isEmpty(this.j)) {
         ((EditText)localObject).setHint("本群共" + this.j + "人");
       }
       ((EditText)localObject).addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
       break;
       label380:
-      ((EditText)localObject).setOnEditorActionListener(new wzr(this));
+      ((EditText)localObject).setOnEditorActionListener(new xcw(this));
     }
   }
   
@@ -340,7 +340,7 @@ public class CommonHbFragment
             i2 = (int)(i3 * 3.076923076923077D + 0.5D);
             if ((i2 == 0) || (i3 == 0))
             {
-              ((ViewTreeObserver)localObject2).addOnGlobalLayoutListener(new wzw(this, paramView, paramImageView, (URLDrawable)localObject1));
+              ((ViewTreeObserver)localObject2).addOnGlobalLayoutListener(new xdb(this, paramView, paramImageView, (URLDrawable)localObject1));
               return;
             }
           }
@@ -370,11 +370,11 @@ public class CommonHbFragment
     do
     {
       return;
-      localLinearLayout = (LinearLayout)paramView.findViewById(2131367953);
+      localLinearLayout = (LinearLayout)paramView.findViewById(2131368020);
       localLinearLayout.setVisibility(0);
-      ((TextView)paramView.findViewById(2131367954)).setText(paramString1);
+      ((TextView)paramView.findViewById(2131368021)).setText(paramString1);
     } while (TextUtils.isEmpty(paramString2));
-    localLinearLayout.setOnClickListener(new xag(this, paramString2));
+    localLinearLayout.setOnClickListener(new xdl(this, paramString2));
   }
   
   private static void a(View paramView, List paramList, int paramInt)
@@ -468,7 +468,7 @@ public class CommonHbFragment
     {
       try
       {
-        paramView = (String)((ViewTransformer)paramView.findViewById(2131367959)).getTag();
+        paramView = (String)((ViewTransformer)paramView.findViewById(2131368026)).getTag();
         if (!TextUtils.isEmpty(paramView))
         {
           bool = "check".equals(paramView);
@@ -503,8 +503,8 @@ public class CommonHbFragment
   
   private void b(int paramInt)
   {
-    View localView1 = this.jdField_b_of_type_AndroidViewView.findViewById(2131367949);
-    View localView2 = this.jdField_a_of_type_AndroidViewView.findViewById(2131367949);
+    View localView1 = this.jdField_b_of_type_AndroidViewView.findViewById(2131368016);
+    View localView2 = this.jdField_a_of_type_AndroidViewView.findViewById(2131368016);
     localView1.setVisibility(paramInt);
     localView2.setVisibility(paramInt);
   }
@@ -549,7 +549,7 @@ public class CommonHbFragment
       {
         if (Integer.parseInt(str) < 1)
         {
-          str = getString(2131431335);
+          str = getString(2131431352);
           if (str != null) {
             this.jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity.c(str);
           }
@@ -566,7 +566,7 @@ public class CommonHbFragment
   
   private void c(String paramString)
   {
-    ThreadManager.post(new xai(this, paramString), 5, null, true);
+    ThreadManager.post(new xdn(this, paramString), 5, null, true);
   }
   
   private boolean c()
@@ -591,7 +591,7 @@ public class CommonHbFragment
       }
       if ((str1.indexOf('.') > 0) && (str1.indexOf('.') < str1.length() - 3))
       {
-        str1 = getString(2131431343);
+        str1 = getString(2131431360);
         if (str1 != null) {
           this.jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity.c(str1);
         }
@@ -632,22 +632,22 @@ public class CommonHbFragment
   
   private void d()
   {
-    this.jdField_d_of_type_AndroidViewView.post(new xae(this));
-    this.jdField_d_of_type_AndroidViewView.postDelayed(new xaf(this), 50L);
+    this.jdField_d_of_type_AndroidViewView.post(new xdj(this));
+    this.jdField_d_of_type_AndroidViewView.postDelayed(new xdk(this), 50L);
   }
   
   private void e()
   {
     Object localObject1 = new ArrayList();
     ((List)localObject1).add(HbSkinInfo.a(this.s));
-    this.jdField_a_of_type_CooperationQwalletPluginQwAdapter = new QwAdapter(getActivity(), (List)localObject1, 2130969774, new CommonHbFragment.HbSkinHolder(this));
+    this.jdField_a_of_type_CooperationQwalletPluginQwAdapter = new QwAdapter(getActivity(), (List)localObject1, 2130969788, new CommonHbFragment.HbSkinHolder(this));
     if ((!jdField_c_of_type_JavaUtilList.contains(this.jdField_a_of_type_JavaLangString)) || (RedPacketManager.getInstance().isRiskSwitchOpen()))
     {
       b(8);
       return;
     }
-    Object localObject2 = (LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131367950);
-    localObject1 = (LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131367950);
+    Object localObject2 = (LinearLayout)this.jdField_b_of_type_AndroidViewView.findViewById(2131368017);
+    localObject1 = (LinearLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131368017);
     LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, AIOUtils.a(226.0F, ((LinearLayout)localObject1).getResources()));
     HorizontalListView localHorizontalListView = new HorizontalListView(getActivity());
     localHorizontalListView.setDividerWidth(AIOUtils.a(12, getActivity().getResources()));
@@ -723,7 +723,7 @@ public class CommonHbFragment
   {
     this.jdField_c_of_type_AndroidWidgetTextView.setText("小伙伴需录入语音抢红包");
     this.jdField_b_of_type_AndroidWidgetTextView.setText("改为文字口令");
-    Drawable localDrawable = getResources().getDrawable(2130841116);
+    Drawable localDrawable = getResources().getDrawable(2130841153);
     localDrawable.setBounds(0, 0, localDrawable.getMinimumWidth(), localDrawable.getMinimumHeight());
     this.jdField_d_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, localDrawable, null);
     this.jdField_d_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(AIOUtils.a(5.0F, getResources()));
@@ -738,7 +738,7 @@ public class CommonHbFragment
     this.jdField_c_of_type_AndroidWidgetTextView.setText("小伙伴需回复口令抢红包");
     this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetTextView.setText("改为语音口令");
-    Drawable localDrawable = getResources().getDrawable(2130841117);
+    Drawable localDrawable = getResources().getDrawable(2130841154);
     localDrawable.setBounds(0, 0, localDrawable.getMinimumWidth(), localDrawable.getMinimumHeight());
     this.jdField_d_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, localDrawable, null);
     this.jdField_d_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(AIOUtils.a(5.0F, getResources()));
@@ -756,15 +756,15 @@ public class CommonHbFragment
       Object localObject = (View)localIterator.next();
       if (localObject != null)
       {
-        EditText localEditText = (EditText)((View)localObject).findViewById(2131367918);
+        EditText localEditText = (EditText)((View)localObject).findViewById(2131367985);
         if (localEditText != null) {
           localEditText.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
         }
-        localEditText = (EditText)((View)localObject).findViewById(2131367956);
+        localEditText = (EditText)((View)localObject).findViewById(2131368023);
         if (localEditText != null) {
           localEditText.removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
         }
-        localObject = (EditText)((View)localObject).findViewById(2131364166);
+        localObject = (EditText)((View)localObject).findViewById(2131364190);
         if (localObject != null) {
           ((EditText)localObject).removeTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
         }
@@ -821,13 +821,13 @@ public class CommonHbFragment
     for (;;)
     {
       return;
-      this.s = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity.getResources().getString(2131431248);
+      this.s = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity.getResources().getString(2131431265);
       Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity.getCurrentAccountUin();
       this.q = ((String)localObject1);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131363227));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131363245));
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_d_of_type_AndroidViewView.findViewById(2131363410));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_d_of_type_AndroidViewView.findViewById(2131363428));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
       if ("512".equals(this.jdField_a_of_type_JavaLangString))
       {
@@ -836,17 +836,17 @@ public class CommonHbFragment
         }
         label124:
         c((String)localObject1);
-        localObject1 = (TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131363363);
+        localObject1 = (TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131363381);
         if (!"512".equals(this.jdField_a_of_type_JavaLangString)) {
           break label1140;
         }
-        ((TextView)localObject1).setText(getString(2131431522));
+        ((TextView)localObject1).setText(getString(2131431539));
         label167:
-        this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_d_of_type_AndroidViewView.findViewById(2131367799));
+        this.jdField_c_of_type_AndroidWidgetButton = ((Button)this.jdField_d_of_type_AndroidViewView.findViewById(2131367867));
         this.jdField_c_of_type_AndroidWidgetButton.setOnClickListener(this);
-        this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_d_of_type_AndroidViewView.findViewById(2131367800));
+        this.jdField_b_of_type_AndroidWidgetButton = ((Button)this.jdField_d_of_type_AndroidViewView.findViewById(2131367868));
         this.jdField_b_of_type_AndroidWidgetButton.setOnClickListener(this);
-        this.jdField_d_of_type_AndroidWidgetButton = ((Button)this.jdField_d_of_type_AndroidViewView.findViewById(2131367801));
+        this.jdField_d_of_type_AndroidWidgetButton = ((Button)this.jdField_d_of_type_AndroidViewView.findViewById(2131367869));
         this.jdField_d_of_type_AndroidWidgetButton.setOnClickListener(this);
         if ("1".equals(this.k)) {
           this.jdField_c_of_type_AndroidWidgetButton.setVisibility(8);
@@ -854,13 +854,13 @@ public class CommonHbFragment
         if (("6".equals(this.k)) || ("2048".equals(this.jdField_a_of_type_JavaLangString)) || ("512".equals(this.jdField_a_of_type_JavaLangString))) {
           this.jdField_d_of_type_AndroidWidgetButton.setVisibility(8);
         }
-        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_d_of_type_AndroidViewView.findViewById(2131363362));
+        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_d_of_type_AndroidViewView.findViewById(2131363380));
         localObject1 = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity);
-        this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)localObject1).inflate(2130969804, null);
-        this.jdField_b_of_type_AndroidViewView = ((LayoutInflater)localObject1).inflate(2130969791, null);
-        this.jdField_c_of_type_AndroidViewView = ((LayoutInflater)localObject1).inflate(2130969788, null);
-        this.jdField_b_of_type_JavaUtilList.add((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131367956));
-        this.jdField_b_of_type_JavaUtilList.add((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131367956));
+        this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)localObject1).inflate(2130969818, null);
+        this.jdField_b_of_type_AndroidViewView = ((LayoutInflater)localObject1).inflate(2130969805, null);
+        this.jdField_c_of_type_AndroidViewView = ((LayoutInflater)localObject1).inflate(2130969802, null);
+        this.jdField_b_of_type_JavaUtilList.add((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131368023));
+        this.jdField_b_of_type_JavaUtilList.add((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368023));
         this.jdField_a_of_type_JavaUtilList = new ArrayList();
         if (!"4096".equals(this.jdField_a_of_type_JavaLangString)) {
           break label1176;
@@ -872,8 +872,8 @@ public class CommonHbFragment
         a(this.jdField_a_of_type_AndroidViewView, 0);
         label500:
         a(this.jdField_a_of_type_JavaUtilList);
-        this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_d_of_type_AndroidViewView.findViewById(2131367803));
-        this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.jdField_d_of_type_AndroidViewView.findViewById(2131367804));
+        this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_d_of_type_AndroidViewView.findViewById(2131367871));
+        this.jdField_a_of_type_AndroidSupportV4ViewViewPager = ((ViewPager)this.jdField_d_of_type_AndroidViewView.findViewById(2131367872));
         this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setAdapter(this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter);
         this.jdField_a_of_type_AndroidSupportV4ViewPagerAdapter.notifyDataSetChanged();
         this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setOnPageChangeListener(this);
@@ -886,7 +886,7 @@ public class CommonHbFragment
         ((Field)localObject1).set(this.jdField_a_of_type_AndroidSupportV4ViewViewPager, localObject2);
         ((CommonHbFragment.FixedSpeedScroller)localObject2).a(200);
         label625:
-        this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_d_of_type_AndroidViewView.findViewById(2131367802));
+        this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_d_of_type_AndroidViewView.findViewById(2131367870));
         localObject1 = new DisplayMetrics();
         this.jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity.getWindowManager().getDefaultDisplay().getMetrics((DisplayMetrics)localObject1);
         float f1 = getResources().getDisplayMetrics().density;
@@ -917,7 +917,7 @@ public class CommonHbFragment
             }
             a(1);
             this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(1);
-            ((LinearLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.findViewById(2131367975).getLayoutParams()).setMargins(0, AIOUtils.a(10.0F, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity.getResources()), 0, 0);
+            ((LinearLayout.LayoutParams)this.jdField_b_of_type_AndroidViewView.findViewById(2131368042).getLayoutParams()).setMargins(0, AIOUtils.a(10.0F, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity.getResources()), 0, 0);
           }
         }
         while ("4096".equals(this.jdField_a_of_type_JavaLangString))
@@ -932,18 +932,18 @@ public class CommonHbFragment
           this.jdField_c_of_type_AndroidWidgetButton.setVisibility(8);
           this.jdField_b_of_type_AndroidWidgetButton.setVisibility(8);
           ((View)localObject1).setVisibility(4);
-          localObject1 = (LinearLayout)this.jdField_d_of_type_AndroidViewView.findViewById(2131367802);
+          localObject1 = (LinearLayout)this.jdField_d_of_type_AndroidViewView.findViewById(2131367870);
           if (localObject1 == null) {
             break;
           }
           ((LinearLayout)localObject1).getChildAt(0).setVisibility(8);
           ((LinearLayout)localObject1).getLayoutParams().height = ((int)(f1 * 0.5F + 0.5F));
-          ((LinearLayout)localObject1).setBackgroundColor(getResources().getColor(2131493675));
+          ((LinearLayout)localObject1).setBackgroundColor(getResources().getColor(2131493681));
           return;
           this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
           break label124;
           label1140:
-          ((TextView)localObject1).setText(2131431237);
+          ((TextView)localObject1).setText(2131431254);
           break label167;
           label1150:
           this.jdField_a_of_type_JavaUtilList.add(this.jdField_b_of_type_AndroidViewView);
@@ -1025,12 +1025,12 @@ public class CommonHbFragment
     if (1 == this.jdField_a_of_type_JavaUtilList.size())
     {
       localObject = (View)this.jdField_a_of_type_JavaUtilList.get(0);
-      this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)((View)localObject).findViewById(2131364166));
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)((View)localObject).findViewById(2131367918));
-      this.jdField_c_of_type_AndroidWidgetEditText = ((EditText)((View)localObject).findViewById(2131367956));
-      localView1 = ((View)localObject).findViewById(2131367986);
-      localView2 = ((View)localObject).findViewById(2131367987);
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)((View)localObject).findViewById(2131364058));
+      this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)((View)localObject).findViewById(2131364190));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)((View)localObject).findViewById(2131367985));
+      this.jdField_c_of_type_AndroidWidgetEditText = ((EditText)((View)localObject).findViewById(2131368023));
+      localView1 = ((View)localObject).findViewById(2131368053);
+      localView2 = ((View)localObject).findViewById(2131368054);
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)((View)localObject).findViewById(2131364082));
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(false);
       this.jdField_a_of_type_AndroidWidgetButton.setClickable(false);
       this.jdField_d_of_type_JavaLangString = "";
@@ -1070,8 +1070,8 @@ public class CommonHbFragment
         this.jdField_b_of_type_AndroidWidgetButton.setActivated(false);
         this.jdField_d_of_type_AndroidWidgetButton.setActivated(false);
         this.jdField_c_of_type_AndroidWidgetButton.setContentDescription("已选中，拼手气红包");
-        this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131431239));
-        this.jdField_d_of_type_AndroidWidgetButton.setContentDescription(getString(2131431411));
+        this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131431256));
+        this.jdField_d_of_type_AndroidWidgetButton.setContentDescription(getString(2131431428));
         if (("6".equals(this.jdField_a_of_type_JavaLangString)) || ("32".equals(this.jdField_a_of_type_JavaLangString))) {
           this.jdField_a_of_type_JavaLangString = "1";
         }
@@ -1119,8 +1119,8 @@ public class CommonHbFragment
           this.jdField_c_of_type_AndroidWidgetButton.setActivated(false);
           this.jdField_d_of_type_AndroidWidgetButton.setActivated(false);
           this.jdField_b_of_type_AndroidWidgetButton.setContentDescription("已选中，普通红包");
-          this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(getString(2131431238));
-          this.jdField_d_of_type_AndroidWidgetButton.setContentDescription(getString(2131431411));
+          this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(getString(2131431255));
+          this.jdField_d_of_type_AndroidWidgetButton.setContentDescription(getString(2131431428));
           if (("6".equals(this.jdField_a_of_type_JavaLangString)) || ("32".equals(this.jdField_a_of_type_JavaLangString))) {
             this.jdField_a_of_type_JavaLangString = "1";
           }
@@ -1128,10 +1128,10 @@ public class CommonHbFragment
         }
         else if (paramInt == 2)
         {
-          this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131367958));
-          this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131367957));
-          this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131367955));
-          this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new wzp(this));
+          this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131368025));
+          this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131368024));
+          this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131368022));
+          this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(new xcu(this));
           if (this.jdField_d_of_type_Boolean)
           {
             this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
@@ -1146,8 +1146,8 @@ public class CommonHbFragment
             this.jdField_b_of_type_AndroidWidgetButton.setActivated(false);
             this.jdField_c_of_type_AndroidWidgetButton.setActivated(false);
             this.jdField_d_of_type_AndroidWidgetButton.setContentDescription("已选中，口令红包");
-            this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131431239));
-            this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(getString(2131431238));
+            this.jdField_b_of_type_AndroidWidgetButton.setContentDescription(getString(2131431256));
+            this.jdField_c_of_type_AndroidWidgetButton.setContentDescription(getString(2131431255));
             this.jdField_f_of_type_JavaLangString = "2";
             break;
             label845:
@@ -1169,7 +1169,7 @@ public class CommonHbFragment
       return;
     }
     paramString = this.jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity.getFilesDir().getPath() + "/QWallet/" + paramString + "/hbThemeConfig.cfg";
-    ThreadManager.getFileThreadHandler().post(new wzx(this, paramString));
+    ThreadManager.getFileThreadHandler().post(new xdc(this, paramString));
   }
   
   @TargetApi(11)
@@ -1191,7 +1191,7 @@ public class CommonHbFragment
         } while ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= i1));
         localObject2 = (View)this.jdField_a_of_type_JavaUtilList.get(i1);
       } while (localObject2 == null);
-      localLinearLayout = (LinearLayout)((View)localObject2).findViewById(2131367982);
+      localLinearLayout = (LinearLayout)((View)localObject2).findViewById(2131368049);
     } while (localLinearLayout == null);
     if ((paramArrayList != null) && (paramArrayList.size() > 1))
     {
@@ -1262,7 +1262,7 @@ public class CommonHbFragment
       }
       paramArrayList.setText("请选择领取人");
       paramArrayList.setTextSize(17.0F);
-      paramArrayList.setTextColor(getActivity().getResources().getColor(2131493637));
+      paramArrayList.setTextColor(getActivity().getResources().getColor(2131493643));
       localLinearLayout.addView(paramArrayList);
       this.jdField_b_of_type_AndroidWidgetEditText.setText("");
       return;
@@ -1309,7 +1309,7 @@ public class CommonHbFragment
           long l3 = System.currentTimeMillis();
           if ((l3 > l1) && (l3 < l2))
           {
-            this.jdField_d_of_type_AndroidViewView.post(new wzy(this));
+            this.jdField_d_of_type_AndroidViewView.post(new xdd(this));
             return;
           }
         }
@@ -1323,10 +1323,10 @@ public class CommonHbFragment
   
   public void a(boolean paramBoolean, View paramView)
   {
-    ViewGroup localViewGroup1 = (ViewGroup)paramView.findViewById(2131367976);
-    ViewGroup localViewGroup2 = (ViewGroup)paramView.findViewById(2131367985);
-    ViewGroup localViewGroup3 = (ViewGroup)paramView.findViewById(2131367974);
-    paramView = (ImageView)paramView.findViewById(2131367984);
+    ViewGroup localViewGroup1 = (ViewGroup)paramView.findViewById(2131368043);
+    ViewGroup localViewGroup2 = (ViewGroup)paramView.findViewById(2131368052);
+    ViewGroup localViewGroup3 = (ViewGroup)paramView.findViewById(2131368041);
+    paramView = (ImageView)paramView.findViewById(2131368051);
     if ((localViewGroup1 == null) || (localViewGroup2 == null) || (localViewGroup3 == null) || (paramView == null)) {}
     do
     {
@@ -1363,7 +1363,7 @@ public class CommonHbFragment
     }
     this.m = this.p;
     int i1 = paramView.getId();
-    if (i1 == 2131363227) {
+    if (i1 == 2131363245) {
       if (this.jdField_b_of_type_Boolean)
       {
         a("hongbao.wrap.keyback", "");
@@ -1381,7 +1381,7 @@ public class CommonHbFragment
       return;
       a("hongbao.wrap.back", "");
       break;
-      if (i1 != 2131364058) {
+      if (i1 != 2131364082) {
         break label1123;
       }
       l1 = System.currentTimeMillis();
@@ -1391,13 +1391,13 @@ public class CommonHbFragment
     {
       if (a(this.n) < 4)
       {
-        QQToast.a(getActivity(), 2131431524, 0).a();
+        QQToast.a(getActivity(), 2131431541, 0).a();
         return;
       }
       paramView = a(this.n);
       if (paramView.length() > 0)
       {
-        QQToast.a(getActivity(), String.format(getString(2131431523), new Object[] { Character.valueOf(paramView.charAt(0)) }), 0).a();
+        QQToast.a(getActivity(), String.format(getString(2131431540), new Object[] { Character.valueOf(paramView.charAt(0)) }), 0).a();
         return;
       }
     }
@@ -1439,7 +1439,7 @@ public class CommonHbFragment
             if (!TextUtils.isEmpty(this.jdField_c_of_type_AndroidWidgetEditText.getHint())) {
               break label852;
             }
-            paramView = getResources().getString(2131431248);
+            paramView = getResources().getString(2131431265);
           }
         }
         label525:
@@ -1548,7 +1548,7 @@ public class CommonHbFragment
         ((Map)localObject1).put("poi", this.jdField_a_of_type_ComTencentMobileqqActivityQwalletSendHbActivity.jdField_g_of_type_JavaLangString);
         break;
       }
-      if (i1 == 2131367800)
+      if (i1 == 2131367868)
       {
         if ((paramView instanceof Button)) {
           this.i = ((Button)paramView).getText().toString();
@@ -1569,7 +1569,7 @@ public class CommonHbFragment
         this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(1, true);
         return;
       }
-      if (i1 == 2131367799)
+      if (i1 == 2131367867)
       {
         if (this.jdField_a_of_type_AndroidSupportV4ViewViewPager.getCurrentItem() == 0) {
           break;
@@ -1581,7 +1581,7 @@ public class CommonHbFragment
         this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(0, true);
         return;
       }
-      if (i1 == 2131367801)
+      if (i1 == 2131367869)
       {
         if ((paramView instanceof Button)) {
           this.i = ((Button)paramView).getText().toString();
@@ -1602,7 +1602,7 @@ public class CommonHbFragment
         this.jdField_a_of_type_AndroidSupportV4ViewViewPager.setCurrentItem(2, true);
         return;
       }
-      if ((i1 != 2131363410) || (getActivity() == null)) {
+      if ((i1 != 2131363428) || (getActivity() == null)) {
         break;
       }
       a("hongbao.wrap.vip", "");
@@ -1626,12 +1626,12 @@ public class CommonHbFragment
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramLayoutInflater = paramLayoutInflater.inflate(2130969757, null);
+    paramLayoutInflater = paramLayoutInflater.inflate(2130969771, null);
     boolean bool = getActivity().getPackageName().equals("com.tencent.qim");
     this.jdField_c_of_type_Boolean = bool;
     if (bool)
     {
-      paramViewGroup = paramLayoutInflater.findViewById(2131363410);
+      paramViewGroup = paramLayoutInflater.findViewById(2131363428);
       if (paramViewGroup != null) {
         paramViewGroup.setVisibility(8);
       }

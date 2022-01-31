@@ -1,25 +1,18 @@
-import com.tencent.biz.pubaccount.AccountDetailActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import mqq.util.WeakReference;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity;
 
 public class ktn
-  extends FriendListObserver
+  implements View.OnClickListener
 {
-  WeakReference a;
+  public ktn(PublicAccountAdvertisementActivity paramPublicAccountAdvertisementActivity, Dialog paramDialog) {}
   
-  public ktn(AccountDetailActivity paramAccountDetailActivity)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramAccountDetailActivity);
-  }
-  
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
-  {
-    AccountDetailActivity localAccountDetailActivity = (AccountDetailActivity)this.a.get();
-    if (localAccountDetailActivity == null) {}
-    while ((localAccountDetailActivity.j) || (!paramBoolean) || (!paramString.equals(localAccountDetailActivity.d))) {
-      return;
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
-    localAccountDetailActivity.N();
   }
 }
 

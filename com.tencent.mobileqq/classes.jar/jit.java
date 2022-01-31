@@ -1,13 +1,30 @@
-import com.tencent.av.gaudio.AVObserver;
+import android.widget.Button;
+import android.widget.TextView;
+import com.tencent.av.app.SessionInfo.HeroDetail;
+import com.tencent.av.guild.GameHeroesUi;
 
 public class jit
   implements Runnable
 {
-  public jit(AVObserver paramAVObserver, Object paramObject) {}
+  public jit(GameHeroesUi paramGameHeroesUi) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentAvGaudioAVObserver.a(this.jdField_a_of_type_JavaLangObject);
+    if ((this.a.a != null) && (this.a.a.a > 0))
+    {
+      this.a.f();
+      this.a.e();
+      if (this.a.b)
+      {
+        this.a.jdField_c_of_type_AndroidWidgetButton.setVisibility(8);
+        this.a.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.a.g();
   }
 }
 

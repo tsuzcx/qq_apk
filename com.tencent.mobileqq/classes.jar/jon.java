@@ -1,15 +1,33 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.smallscreen.SmallScreenActivityPlugin;
-import com.tencent.av.smallscreen.SmallScreenUtils;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Handler;
+import com.tencent.av.smallscreen.SmallScreenService;
+import com.tencent.qphone.base.util.QLog;
 
 public class jon
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public jon(SmallScreenActivityPlugin paramSmallScreenActivityPlugin) {}
+  public jon(SmallScreenService paramSmallScreenService) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    SmallScreenUtils.a(this.a.a.getApp());
+    paramContext = paramIntent.getAction();
+    if (QLog.isColorLevel()) {
+      QLog.d("SmallScreenService", 2, "onReceive action = " + paramContext);
+    }
+    if (paramContext.equals("android.intent.action.NEW_OUTGOING_CALL"))
+    {
+      paramContext = paramIntent.getStringExtra("android.intent.extra.PHONE_NUMBER");
+      if (QLog.isColorLevel()) {
+        QLog.d("SmallScreenService", 2, "onReceive NEW_OUTGOING_CALL phoneNumber = " + paramContext);
+      }
+    }
+    while (!paramContext.equals("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED")) {
+      return;
+    }
+    this.a.a().removeCallbacks(this.a.d);
+    this.a.a().postDelayed(this.a.d, 200L);
   }
 }
 

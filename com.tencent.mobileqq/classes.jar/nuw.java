@@ -1,20 +1,38 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.storyHome.discover.view.StoryDiscoverActivity;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.biz.qqstory.storyHome.atvideo.model.AtVideoTextWatcher;
+import com.tencent.biz.qqstory.storyHome.detail.model.cmment.DetailCommentHelper;
 
 public class nuw
-  extends SimpleJob
+  implements View.OnTouchListener
 {
-  public nuw(StoryDiscoverActivity paramStoryDiscoverActivity) {}
+  public nuw(DetailCommentHelper paramDetailCommentHelper) {}
   
-  protected Void a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    SLog.d("Q.qqstory.discover.StoryDiscoverActivity", "doOnActivityResult : fireCreateStoryVideo count = %d", new Object[] { Integer.valueOf(StoryVideoUploadManager.a()) });
-    return null;
+    if (paramMotionEvent.getAction() == 0)
+    {
+      if (DetailCommentHelper.a(this.a)) {
+        break label105;
+      }
+      this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = StoryInputBarView.a(DetailCommentHelper.a(this.a), DetailCommentHelper.a(this.a), this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx, DetailCommentHelper.a(this.a).jdField_a_of_type_JavaUtilList);
+      DetailCommentHelper.a(this.a).jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView = this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView;
+      paramView = this.a;
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetBubbleBubbleTextView == null) {
+        break label100;
+      }
+    }
+    label100:
+    for (boolean bool = true;; bool = false)
+    {
+      DetailCommentHelper.a(paramView, bool);
+      return false;
+    }
+    label105:
+    this.a.b();
+    return false;
   }
 }
 

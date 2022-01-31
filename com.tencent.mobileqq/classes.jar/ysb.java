@@ -1,18 +1,16 @@
-import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqavopensdk.AVEngineEventHandler;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.apollo.script.SpriteBridge;
+import com.tencent.mobileqq.apollo.script.SpriteContext;
 
 public class ysb
-  extends AVAudioCtrl.EnableMicCompleteCallback
+  implements Runnable
 {
-  public ysb(AVEngineWalper paramAVEngineWalper) {}
+  public ysb(SpriteBridge paramSpriteBridge) {}
   
-  protected void onComplete(boolean paramBoolean, int paramInt)
+  public void run()
   {
-    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
-    if (this.a.a != null) {
-      this.a.a.a(paramBoolean, paramInt);
+    if ((SpriteBridge.a(this.a) != null) && (SpriteBridge.a(this.a).a() != null)) {
+      SpriteBridge.a(this.a).a().f();
     }
   }
 }

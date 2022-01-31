@@ -1,21 +1,19 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.aio.item.ArkAppItemBubbleBuilder.Holder;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import com.tencent.mobileqq.activity.aio.doodle.DoodleMsgView;
+import mqq.util.WeakReference;
 
 class urp
-  implements ArkAppCenter.OnGetAppIcon
+  implements Runnable
 {
   urp(uro paramuro) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void run()
   {
-    if (paramBitmap != null)
+    if (DoodleMsgView.a(this.a.a) != null)
     {
-      this.a.b.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.a.a.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+      urt localurt = (urt)DoodleMsgView.a(this.a.a).get();
+      if (localurt != null) {
+        localurt.g();
+      }
     }
   }
 }

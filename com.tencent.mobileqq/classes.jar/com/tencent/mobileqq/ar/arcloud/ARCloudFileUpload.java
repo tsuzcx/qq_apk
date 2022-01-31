@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.ar.arcloud;
 
-import aaab;
-import aaac;
-import aaad;
+import aaev;
+import aaew;
+import aaex;
 import com.tencent.YTFace.model.FaceStatus;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.ar.ARLBSHandler;
@@ -1744,8 +1744,8 @@ public class ARCloudFileUpload
         i = 0;
         while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
         {
-          QLog.i("AREngine_ARCloudFileUpload", 1, "cancelTransactionTask. sessionId = " + ((aaad)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.jdField_a_of_type_JavaLangString);
-          this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().cancelTransactionTask(((aaad)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
+          QLog.i("AREngine_ARCloudFileUpload", 1, "cancelTransactionTask. sessionId = " + ((aaex)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.jdField_a_of_type_JavaLangString);
+          this.jdField_a_of_type_ComTencentCommonAppAppInterface.getHwEngine().cancelTransactionTask(((aaex)this.jdField_a_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction);
           i += 1;
         }
         this.jdField_a_of_type_JavaUtilArrayList.clear();
@@ -1772,7 +1772,7 @@ public class ARCloudFileUpload
     if (!paramBoolean) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqArARLBSObserver = new aaab(this);
+    this.jdField_a_of_type_ComTencentMobileqqArARLBSObserver = new aaev(this);
     this.jdField_a_of_type_ComTencentCommonAppAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqArARLBSObserver);
   }
   
@@ -1789,7 +1789,7 @@ public class ARCloudFileUpload
       if (localObject1 != null) {
         l = ((File)localObject1).length();
       }
-      localObject1 = new aaac(this, paramARCloudReqInfo, l);
+      localObject1 = new aaew(this, paramARCloudReqInfo, l);
       Object localObject2 = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin();
       if ((this.jdField_a_of_type_ArrayOfByte == null) || (this.jdField_a_of_type_ArrayOfByte.length == 0)) {}
       int i;
@@ -1817,11 +1817,11 @@ public class ARCloudFileUpload
       }
       byte[] arrayOfByte2 = a(paramARCloudReqInfo);
       localObject1 = new Transaction((String)localObject2, 42, paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_ArrayOfByte, arrayOfByte1, (ITransactionCallback)localObject1, arrayOfByte2);
-      localObject2 = new aaad();
-      ((aaad)localObject2).jdField_a_of_type_JavaLangString = paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.jdField_a_of_type_JavaLangString;
-      ((aaad)localObject2).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo = paramARCloudReqInfo;
-      ((aaad)localObject2).jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = ((Transaction)localObject1);
-      ((aaad)localObject2).jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback = ???;
+      localObject2 = new aaex();
+      ((aaex)localObject2).jdField_a_of_type_JavaLangString = paramARCloudReqInfo.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqFileInfo.jdField_a_of_type_JavaLangString;
+      ((aaex)localObject2).jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo = paramARCloudReqInfo;
+      ((aaex)localObject2).jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = ((Transaction)localObject1);
+      ((aaex)localObject2).jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback = ???;
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
         this.jdField_a_of_type_JavaUtilArrayList.add(localObject2);

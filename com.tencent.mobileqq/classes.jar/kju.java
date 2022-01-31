@@ -1,29 +1,26 @@
-import android.view.View;
-import android.view.animation.Transformation;
-import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
-import com.tencent.mobileqq.widget.QQMapView;
+import com.tencent.biz.PoiMapActivity.PoiItemAdapter;
+import com.tencent.biz.PoiMapActivity.PoiTab;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
 
 public class kju
-  implements ValueAnimation.AnimationUpdateListener
+  implements AbsListView.OnScrollListener
 {
-  public kju(PoiMapActivity paramPoiMapActivity) {}
+  public kju(PoiMapActivity.PoiTab paramPoiTab, PoiMapActivity paramPoiMapActivity) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    paramValueAnimation = PoiMapActivity.g(this.a).getLayoutParams();
-    paramValueAnimation.height = paramInteger.intValue();
-    PoiMapActivity.h(this.a).setLayoutParams(paramValueAnimation);
-    paramValueAnimation = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
-    paramValueAnimation.bottomMargin = (this.a.o - paramInteger.intValue());
-    this.a.b.setLayoutParams(paramValueAnimation);
-    int i = (paramInteger.intValue() - PoiMapActivity.c(this.a) - this.a.s) / 2;
-    if (i >= (this.a.o - PoiMapActivity.d(this.a)) / 2 + this.a.t) {
-      this.a.a(i, false);
+    if ((paramInt == 0) && (paramAbsListView.getLastVisiblePosition() == paramAbsListView.getCount() - 1) && (this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiItemAdapter.b))
+    {
+      this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.b(false);
+      if (!PoiMapActivity.b(this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.jdField_a_of_type_ComTencentBizPoiMapActivity)) {
+        this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.jdField_a_of_type_ComTencentBizPoiMapActivity.a("share_locate", "turn_page", this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.jdField_a_of_type_ComTencentBizPoiMapActivity.f, this.jdField_a_of_type_ComTencentBizPoiMapActivity$PoiTab.jdField_a_of_type_ComTencentBizPoiMapActivity.e, "", "");
+      }
     }
   }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

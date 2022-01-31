@@ -1,21 +1,21 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.aio.item.HiBoomItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.flashchat.FlashChatManager;
+import android.graphics.drawable.ColorDrawable;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.activity.aio.item.FileVideoItemBuilder;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import java.io.File;
 
-public class uxf
-  implements View.OnClickListener
+class uxf
+  implements Runnable
 {
-  public uxf(HiBoomItemBuilder paramHiBoomItemBuilder) {}
+  uxf(uxe paramuxe) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    MessageRecord localMessageRecord = (MessageRecord)paramView.getTag();
-    if (localMessageRecord != null) {
-      ((FlashChatManager)this.a.a.getManager(216)).a(paramView.getContext(), localMessageRecord);
-    }
+    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+    localURLDrawableOptions.mLoadingDrawable = new ColorDrawable(-16777216);
+    URLDrawable.getDrawable(new File(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.strLargeThumPath), localURLDrawableOptions);
+    this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemFileVideoItemBuilder.b();
   }
 }
 

@@ -57,7 +57,7 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.HorizontalListView;
 import java.util.ArrayList;
 import java.util.Iterator;
-import uhj;
+import ukj;
 
 public class BaseChatItemLayout
   extends ChatItemAnimLayout
@@ -170,7 +170,7 @@ public class BaseChatItemLayout
     y = localBaseApplication.getResources().getDimensionPixelSize(2131558625);
     z = localBaseApplication.getResources().getDimensionPixelSize(2131558626);
     A = localBaseApplication.getResources().getDimensionPixelSize(2131558627);
-    jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new uhj();
+    jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new ukj();
   }
   
   public BaseChatItemLayout(Context paramContext)
@@ -225,7 +225,7 @@ public class BaseChatItemLayout
       label127:
       if (paramBoolean1)
       {
-        paramTextView = getResources().getDrawable(2130844077);
+        paramTextView = getResources().getDrawable(2130844201);
         paramTextView.setBounds(0, 0, (int)(13.0F * jdField_d_of_type_Float), (int)(13.0F * jdField_d_of_type_Float));
         paramTextView = new ImageSpan(paramTextView, 0);
         paramColorStateList = new SpannableString(" ");
@@ -787,7 +787,7 @@ public class BaseChatItemLayout
       this.jdField_c_of_type_AndroidWidgetLinearLayout.setOrientation(0);
       this.jdField_c_of_type_AndroidWidgetLinearLayout.setGravity(16);
       this.jdField_c_of_type_AndroidWidgetLinearLayout.setOnClickListener(paramOnClickListener);
-      this.jdField_c_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130843974);
+      this.jdField_c_of_type_AndroidWidgetLinearLayout.setBackgroundResource(2130844098);
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.addRule(3, 2131361877);
       paramOnClickListener = new TextView((Context)localObject);
@@ -860,7 +860,7 @@ public class BaseChatItemLayout
         this.jdField_e_of_type_AndroidWidgetTextView.setPadding(AIOUtils.a(4.0F, this.jdField_e_of_type_AndroidWidgetTextView.getContext().getResources()), 0, AIOUtils.a(4.0F, this.jdField_e_of_type_AndroidWidgetTextView.getContext().getResources()), 0);
         this.jdField_e_of_type_AndroidWidgetTextView.setText(paramString);
         this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(-1);
-        paramQQAppInterface = this.jdField_e_of_type_AndroidWidgetTextView.getContext().getResources().getDrawable(2130842744);
+        paramQQAppInterface = this.jdField_e_of_type_AndroidWidgetTextView.getContext().getResources().getDrawable(2130842843);
         i1 = Color.parseColor("#12B7F5");
         this.jdField_e_of_type_AndroidWidgetTextView.setBackgroundDrawable(TroopUtils.a(this.jdField_e_of_type_AndroidWidgetTextView.getContext().getResources(), i1, paramQQAppInterface));
         this.jdField_e_of_type_AndroidWidgetTextView.setTextSize(1, 10.0F);
@@ -1322,7 +1322,7 @@ public class BaseChatItemLayout
         this.jdField_e_of_type_AndroidWidgetTextView.setPadding(AIOUtils.a(4.0F, this.jdField_e_of_type_AndroidWidgetTextView.getContext().getResources()), 0, AIOUtils.a(4.0F, this.jdField_e_of_type_AndroidWidgetTextView.getContext().getResources()), 0);
         this.jdField_e_of_type_AndroidWidgetTextView.setText("LV" + paramInt);
         this.jdField_e_of_type_AndroidWidgetTextView.setTextColor(-1);
-        paramQQAppInterface = this.jdField_e_of_type_AndroidWidgetTextView.getContext().getResources().getDrawable(2130842744);
+        paramQQAppInterface = this.jdField_e_of_type_AndroidWidgetTextView.getContext().getResources().getDrawable(2130842843);
         arrayOfInt = NearbyFlowerUtil.a(this.jdField_e_of_type_AndroidWidgetTextView.getContext());
         i2 = Color.parseColor("#FFCC59");
         i1 = i2;
@@ -1604,7 +1604,7 @@ public class BaseChatItemLayout
       if (this.jdField_a_of_type_AndroidWidgetCheckBox == null)
       {
         this.jdField_a_of_type_AndroidWidgetCheckBox = new CheckBox(getContext());
-        this.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(2130838337);
+        this.jdField_a_of_type_AndroidWidgetCheckBox.setButtonDrawable(2130838341);
         this.jdField_a_of_type_AndroidWidgetCheckBox.setId(2131361884);
         this.jdField_a_of_type_AndroidWidgetCheckBox.setOnCheckedChangeListener(jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
         paramBaseChatItemLayout = new RelativeLayout.LayoutParams(AIOUtils.a(25.0F, getContext().getResources()), AIOUtils.a(25.0F, getContext().getResources()));
@@ -1656,7 +1656,7 @@ public class BaseChatItemLayout
     {
       this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(getContext());
       this.jdField_c_of_type_AndroidWidgetImageView.setId(2131361876);
-      this.jdField_c_of_type_AndroidWidgetImageView.setContentDescription(getContext().getString(2131437037));
+      this.jdField_c_of_type_AndroidWidgetImageView.setContentDescription(getContext().getString(2131437054));
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.bottomMargin = AIOUtils.a(16.0F, getContext().getResources());
       localLayoutParams.addRule(8, 2131361877);
@@ -1683,7 +1683,7 @@ public class BaseChatItemLayout
   public void setFailedIconVisable(boolean paramBoolean, View.OnClickListener paramOnClickListener)
   {
     if (paramBoolean) {
-      setFailedIconResource(2130837750, paramOnClickListener);
+      setFailedIconResource(2130837753, paramOnClickListener);
     }
     for (;;)
     {
@@ -1708,7 +1708,7 @@ public class BaseChatItemLayout
         this.jdField_b_of_type_AndroidWidgetTextView.setId(2131361862);
         int i1 = AIOUtils.a(12.0F, getContext().getResources());
         int i2 = AIOUtils.a(5.0F, getContext().getResources());
-        this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130842144);
+        this.jdField_b_of_type_AndroidWidgetTextView.setBackgroundResource(2130842181);
         this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(2, 13.0F);
         if (paramColorStateList != null) {
           this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramColorStateList);
@@ -2078,7 +2078,7 @@ public class BaseChatItemLayout
         this.jdField_a_of_type_AndroidWidgetProgressBar = new ProgressBar(getContext(), null, 0);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setId(2131361875);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminate(true);
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130838592));
+        this.jdField_a_of_type_AndroidWidgetProgressBar.setIndeterminateDrawable(getResources().getDrawable(2130838596));
         i1 = AIOUtils.a(16.0F, getContext().getResources());
         localLayoutParams = new RelativeLayout.LayoutParams(i1, i1);
         localLayoutParams.bottomMargin = AIOUtils.a(18.0F, getContext().getResources());
@@ -2165,7 +2165,7 @@ public class BaseChatItemLayout
         this.jdField_i_of_type_AndroidWidgetTextView.setId(2131361878);
         if (paramBoolean2)
         {
-          this.jdField_i_of_type_AndroidWidgetTextView.setBackgroundResource(2130845423);
+          this.jdField_i_of_type_AndroidWidgetTextView.setBackgroundResource(2130845551);
           this.jdField_i_of_type_AndroidWidgetTextView.setTextSize(2, 13.0F);
           this.jdField_i_of_type_AndroidWidgetTextView.setTextColor(-1);
           this.jdField_i_of_type_AndroidWidgetTextView.setGravity(17);
@@ -2204,7 +2204,7 @@ public class BaseChatItemLayout
         Object localObject;
         RelativeLayout.LayoutParams localLayoutParams;
         return;
-        this.jdField_i_of_type_AndroidWidgetTextView.setBackgroundResource(2130839636);
+        this.jdField_i_of_type_AndroidWidgetTextView.setBackgroundResource(2130839642);
         continue;
         paramCharSequence.leftMargin = jdField_i_of_type_Int;
       }
@@ -2284,7 +2284,7 @@ public class BaseChatItemLayout
       paramOnClickListener.addRule(6, 2131361877);
       paramOnClickListener.addRule(1, 2131361877);
       addView(this.jdField_d_of_type_AndroidWidgetImageView, paramOnClickListener);
-      this.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130845924);
+      this.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130846052);
     }
     while (this.jdField_d_of_type_AndroidWidgetImageView == null) {
       return;

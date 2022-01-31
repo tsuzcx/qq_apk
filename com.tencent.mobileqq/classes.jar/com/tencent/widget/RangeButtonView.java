@@ -1,10 +1,10 @@
 package com.tencent.widget;
 
-import alnr;
-import alns;
-import alnt;
-import alnu;
-import alnv;
+import amdh;
+import amdi;
+import amdj;
+import amdk;
+import amdl;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
@@ -31,11 +31,11 @@ public class RangeButtonView
   extends View
 {
   private int jdField_a_of_type_Int;
-  public alnr a;
-  private alns jdField_a_of_type_Alns;
-  private alnt jdField_a_of_type_Alnt;
-  private alnu jdField_a_of_type_Alnu;
-  private alnv jdField_a_of_type_Alnv;
+  public amdh a;
+  private amdi jdField_a_of_type_Amdi;
+  private amdj jdField_a_of_type_Amdj;
+  private amdk jdField_a_of_type_Amdk;
+  private amdl jdField_a_of_type_Amdl;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
   private TextPaint jdField_a_of_type_AndroidTextTextPaint;
   private RangeButtonView.OnChangeListener jdField_a_of_type_ComTencentWidgetRangeButtonView$OnChangeListener;
@@ -55,25 +55,25 @@ public class RangeButtonView
   public RangeButtonView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Alnr = new alnr(this);
+    this.jdField_a_of_type_Amdh = new amdh(this);
     paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.RangeButtonView, 0, 0);
-    this.jdField_a_of_type_Alnr.jdField_a_of_type_Float = paramContext.getDimension(1, a(26.0F));
-    this.jdField_a_of_type_Alnr.jdField_b_of_type_Float = paramContext.getDimension(2, a(26.0F));
-    this.jdField_a_of_type_Alnr.f = paramContext.getDimension(3, a(8.0F));
-    this.jdField_a_of_type_Alnr.jdField_a_of_type_Int = paramContext.getColor(0, 17170446);
-    this.jdField_a_of_type_Alnr.jdField_c_of_type_Float = paramContext.getDimension(4, a(24.0F));
-    this.jdField_a_of_type_Alnr.jdField_b_of_type_Int = paramContext.getColor(5, 17170446);
-    this.jdField_a_of_type_Alnr.jdField_d_of_type_Float = paramContext.getDimension(6, a(8.0F));
-    this.jdField_a_of_type_Alnr.e = paramContext.getDimension(7, a(1.0F));
-    this.jdField_a_of_type_Alnr.jdField_d_of_type_Int = paramContext.getResourceId(9, 2130842439);
+    this.jdField_a_of_type_Amdh.jdField_a_of_type_Float = paramContext.getDimension(1, a(26.0F));
+    this.jdField_a_of_type_Amdh.jdField_b_of_type_Float = paramContext.getDimension(2, a(26.0F));
+    this.jdField_a_of_type_Amdh.f = paramContext.getDimension(3, a(8.0F));
+    this.jdField_a_of_type_Amdh.jdField_a_of_type_Int = paramContext.getColor(0, 17170446);
+    this.jdField_a_of_type_Amdh.jdField_c_of_type_Float = paramContext.getDimension(4, a(24.0F));
+    this.jdField_a_of_type_Amdh.jdField_b_of_type_Int = paramContext.getColor(5, 17170446);
+    this.jdField_a_of_type_Amdh.jdField_d_of_type_Float = paramContext.getDimension(6, a(8.0F));
+    this.jdField_a_of_type_Amdh.e = paramContext.getDimension(7, a(1.0F));
+    this.jdField_a_of_type_Amdh.jdField_d_of_type_Int = paramContext.getResourceId(9, 2130842531);
     paramContext.recycle();
     this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint();
     this.jdField_a_of_type_AndroidTextTextPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), this.jdField_a_of_type_Alnr.jdField_d_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), this.jdField_a_of_type_Amdh.jdField_d_of_type_Int);
     if (AppSetting.b)
     {
-      this.jdField_a_of_type_Alns = new alns(this, this);
-      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Alns);
+      this.jdField_a_of_type_Amdi = new amdi(this, this);
+      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_Amdi);
       ViewCompat.setImportantForAccessibility(this, 1);
     }
   }
@@ -119,7 +119,7 @@ public class RangeButtonView
   
   private int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean)
   {
-    ArrayList localArrayList = this.jdField_a_of_type_Alnv.a();
+    ArrayList localArrayList = this.jdField_a_of_type_Amdl.a();
     int i = 0;
     while (i < localArrayList.size())
     {
@@ -139,7 +139,7 @@ public class RangeButtonView
         }
         paramInt1 = i;
       } while (!paramBoolean);
-      this.jdField_a_of_type_Alnt.a(localPoint.x, localPoint.y);
+      this.jdField_a_of_type_Amdj.a(localPoint.x, localPoint.y);
       return i;
       i += 1;
     }
@@ -148,13 +148,13 @@ public class RangeButtonView
   
   private float b()
   {
-    return a() + this.jdField_a_of_type_Alnr.jdField_c_of_type_Float + Math.max(this.jdField_a_of_type_Alnr.jdField_d_of_type_Float, this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    return a() + this.jdField_a_of_type_Amdh.jdField_c_of_type_Float + Math.max(this.jdField_a_of_type_Amdh.jdField_d_of_type_Float, this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
   }
   
   @TargetApi(14)
   protected boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
-    if ((AppSetting.b) && (this.jdField_a_of_type_Alns.dispatchHoverEvent(paramMotionEvent))) {
+    if ((AppSetting.b) && (this.jdField_a_of_type_Amdi.dispatchHoverEvent(paramMotionEvent))) {
       return true;
     }
     return super.dispatchHoverEvent(paramMotionEvent);
@@ -163,25 +163,25 @@ public class RangeButtonView
   protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_Alnu == null)
+    if (this.jdField_a_of_type_Amdk == null)
     {
-      this.jdField_a_of_type_Alnr.jdField_c_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
-      this.jdField_a_of_type_Alnv = new alnv((int)(getPaddingLeft() + this.jdField_a_of_type_Alnr.jdField_a_of_type_Float), (int)(getWidth() - this.jdField_a_of_type_Alnr.jdField_b_of_type_Float - getPaddingRight()), (int)(this.jdField_a_of_type_Alnr.f + this.jdField_a_of_type_Alnr.jdField_c_of_type_Float + a()), this.jdField_a_of_type_Alnr.jdField_c_of_type_Int);
-      this.jdField_a_of_type_Alnv.a(this.jdField_a_of_type_Alnr.jdField_d_of_type_Float);
-      Object localObject2 = this.jdField_a_of_type_Alnv.a();
+      this.jdField_a_of_type_Amdh.jdField_c_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
+      this.jdField_a_of_type_Amdl = new amdl((int)(getPaddingLeft() + this.jdField_a_of_type_Amdh.jdField_a_of_type_Float), (int)(getWidth() - this.jdField_a_of_type_Amdh.jdField_b_of_type_Float - getPaddingRight()), (int)(this.jdField_a_of_type_Amdh.f + this.jdField_a_of_type_Amdh.jdField_c_of_type_Float + a()), this.jdField_a_of_type_Amdh.jdField_c_of_type_Int);
+      this.jdField_a_of_type_Amdl.a(this.jdField_a_of_type_Amdh.jdField_d_of_type_Float);
+      Object localObject2 = this.jdField_a_of_type_Amdl.a();
       Object localObject1 = new ArrayList(((ArrayList)localObject2).size());
       localObject2 = ((ArrayList)localObject2).iterator();
       while (((Iterator)localObject2).hasNext()) {
         ((ArrayList)localObject1).add(Integer.valueOf(((Point)((Iterator)localObject2).next()).x));
       }
-      this.jdField_a_of_type_Alnu = new alnu(this, this.jdField_a_of_type_JavaUtilList);
-      this.jdField_a_of_type_Alnu.a((ArrayList)localObject1, (int)(this.jdField_a_of_type_Alnr.f + a()));
-      localObject1 = (Point)this.jdField_a_of_type_Alnv.a().get(this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_Alnt = new alnt(((Point)localObject1).x, ((Point)localObject1).y, this.jdField_a_of_type_AndroidGraphicsBitmap);
+      this.jdField_a_of_type_Amdk = new amdk(this, this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_Amdk.a((ArrayList)localObject1, (int)(this.jdField_a_of_type_Amdh.f + a()));
+      localObject1 = (Point)this.jdField_a_of_type_Amdl.a().get(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_Amdj = new amdj(((Point)localObject1).x, ((Point)localObject1).y, this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
-    this.jdField_a_of_type_Alnu.a(paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint);
-    this.jdField_a_of_type_Alnv.a(paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint, this.jdField_a_of_type_Alnr);
-    this.jdField_a_of_type_Alnt.a(paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint);
+    this.jdField_a_of_type_Amdk.a(paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint);
+    this.jdField_a_of_type_Amdl.a(paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint, this.jdField_a_of_type_Amdh);
+    this.jdField_a_of_type_Amdj.a(paramCanvas, this.jdField_a_of_type_AndroidTextTextPaint);
   }
   
   protected void onMeasure(int paramInt1, int paramInt2)
@@ -211,7 +211,7 @@ public class RangeButtonView
       break;
       label76:
       if (k != 1073741824) {
-        paramInt1 = (int)(getPaddingTop() + j + this.jdField_a_of_type_Alnr.f);
+        paramInt1 = (int)(getPaddingTop() + j + this.jdField_a_of_type_Amdh.f);
       }
     }
   }
@@ -227,10 +227,10 @@ public class RangeButtonView
     do
     {
       return true;
-      if ((this.jdField_a_of_type_Alnv == null) || (this.jdField_a_of_type_Alnt == null)) {
+      if ((this.jdField_a_of_type_Amdl == null) || (this.jdField_a_of_type_Amdj == null)) {
         return false;
       }
-      i = a((int)f1, (int)f2, this.jdField_a_of_type_Alnv.a() / 2, this.jdField_a_of_type_Alnt.a() / 2, true);
+      i = a((int)f1, (int)f2, this.jdField_a_of_type_Amdl.a() / 2, this.jdField_a_of_type_Amdj.a() / 2, true);
     } while ((i == this.jdField_a_of_type_Int) || (i == -1));
     if (this.jdField_a_of_type_ComTencentWidgetRangeButtonView$OnChangeListener != null) {
       this.jdField_a_of_type_ComTencentWidgetRangeButtonView$OnChangeListener.a(this.jdField_a_of_type_Int, i);
@@ -253,11 +253,11 @@ public class RangeButtonView
   public void setThumbPosition(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_Alnv == null) {
+    if (this.jdField_a_of_type_Amdl == null) {
       return;
     }
-    Point localPoint = (Point)this.jdField_a_of_type_Alnv.a().get(paramInt);
-    this.jdField_a_of_type_Alnt.a(localPoint.x, localPoint.y);
+    Point localPoint = (Point)this.jdField_a_of_type_Amdl.a().get(paramInt);
+    this.jdField_a_of_type_Amdj.a(localPoint.x, localPoint.y);
     invalidate();
   }
   
@@ -268,7 +268,7 @@ public class RangeButtonView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.RangeButtonView
  * JD-Core Version:    0.7.0.1
  */

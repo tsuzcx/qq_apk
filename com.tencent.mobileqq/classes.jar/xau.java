@@ -1,37 +1,16 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.OnSingleDownloadCallback;
-import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.qwallet.QWalletPushManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class xau
-  implements PreloadImgManager.OnSingleDownloadCallback
+public final class xau
+  implements Runnable
 {
-  public xau(ThemeHbFragment paramThemeHbFragment) {}
+  public xau(QQAppInterface paramQQAppInterface) {}
   
-  public void a()
+  public void run()
   {
-    ThemeHbFragment.a(this.a, null);
-  }
-  
-  public void a(Object paramObject)
-  {
-    if (ThemeHbFragment.a(this.a) == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back context is null");
-      }
+    if (QWalletPushManager.a(this.a)) {
+      QWalletPushManager.a(this.a);
     }
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("ThemeHbFragment", 2, "setImageBgProcess download back bitmap = " + paramObject);
-      }
-    } while (!(paramObject instanceof Bitmap));
-    if (QLog.isColorLevel()) {
-      QLog.i("ThemeHbFragment", 2, "setImageBgProcess image set...");
-    }
-    ThemeHbFragment.a(this.a).post(new xav(this, paramObject));
   }
 }
 

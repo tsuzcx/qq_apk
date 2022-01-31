@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.activity.aio.doodle.MyParcel;
-import com.tencent.mobileqq.activity.aio.doodle.MyParcelable.Creator;
-import com.tencent.mobileqq.activity.aio.doodle.PathDrawer.PathSegment;
+import com.tencent.mobileqq.activity.aio.audiopanel.ListenChangeVoicePanel;
 
-public final class upv
-  implements MyParcelable.Creator
+public class upv
+  implements Runnable
 {
-  public PathDrawer.PathSegment a(MyParcel paramMyParcel)
+  public upv(ListenChangeVoicePanel paramListenChangeVoicePanel) {}
+  
+  public void run()
   {
-    return new PathDrawer.PathSegment(paramMyParcel);
+    this.a.a(false);
   }
 }
 

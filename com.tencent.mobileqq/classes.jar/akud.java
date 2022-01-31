@@ -1,57 +1,40 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.open.wadl.WadlJsBridgeDownloadInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.ImageView;
+import android.widget.ListAdapter;
+import com.tencent.mobileqq.activity.LoginActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.DropdownView;
 
-public final class akud
-  implements Parcelable.Creator
+public class akud
+  implements View.OnClickListener
 {
-  public WadlJsBridgeDownloadInfo a(Parcel paramParcel)
+  public akud(DropdownView paramDropdownView) {}
+  
+  public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    WadlJsBridgeDownloadInfo localWadlJsBridgeDownloadInfo = new WadlJsBridgeDownloadInfo();
-    localWadlJsBridgeDownloadInfo.jdField_a_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_b_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_c_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.d = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.e = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Long = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.jdField_f_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_g_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_a_of_type_Int = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.jdField_j_of_type_JavaLangString = paramParcel.readString();
-    localWadlJsBridgeDownloadInfo.jdField_f_of_type_Int = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.jdField_g_of_type_Int = paramParcel.readInt();
-    localWadlJsBridgeDownloadInfo.jdField_b_of_type_Long = paramParcel.readLong();
-    if (paramParcel.readByte() != 0)
+    this.a.jdField_a_of_type_Akug.clearFocus();
+    this.a.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(this.a.jdField_a_of_type_Akug.getWindowToken(), 0);
+    if ((this.a.jdField_a_of_type_Akug.getAdapter() != null) && (this.a.jdField_a_of_type_Akug.getAdapter().getCount() > 0))
     {
-      bool1 = true;
-      localWadlJsBridgeDownloadInfo.jdField_b_of_type_Boolean = bool1;
-      localWadlJsBridgeDownloadInfo.l = paramParcel.readString();
-      localWadlJsBridgeDownloadInfo.i = paramParcel.readInt();
-      localWadlJsBridgeDownloadInfo.jdField_j_of_type_Int = paramParcel.readInt();
-      localWadlJsBridgeDownloadInfo.m = paramParcel.readString();
-      if (paramParcel.readByte() == 0) {
-        break label203;
+      if ((((ImageView)paramView).getDrawable() != this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable) || (this.a.jdField_a_of_type_Boolean)) {
+        break label160;
+      }
+      DropdownView.a(this.a).postDelayed(new akue(this, paramView), 250L);
+      paramView = paramView.getContext();
+      if ((paramView != null) && ((paramView instanceof LoginActivity))) {
+        ReportController.a(((LoginActivity)paramView).app, "dc00898", "", "", "0X8007367", "0X8007367", 0, 0, "", "", "", "");
       }
     }
-    label203:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localWadlJsBridgeDownloadInfo.jdField_c_of_type_Boolean = bool1;
-      return localWadlJsBridgeDownloadInfo;
-      bool1 = false;
-      break;
-    }
-  }
-  
-  public WadlJsBridgeDownloadInfo[] a(int paramInt)
-  {
-    return new WadlJsBridgeDownloadInfo[paramInt];
+    return;
+    label160:
+    this.a.jdField_a_of_type_Akug.dismissDropDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akud
  * JD-Core Version:    0.7.0.1
  */

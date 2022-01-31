@@ -1,20 +1,14 @@
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
-import com.tencent.mobileqq.activity.aio.item.ApprovalMsgBuilder;
-import cooperation.dingdong.DingdongMsgItemTitleImageView;
+import com.tencent.mobileqq.activity.aio.audiopanel.RecordSoundPanel;
 
 public class uqx
-  extends BaseBubbleBuilder.ViewHolder
+  implements Runnable
 {
-  public LinearLayout a;
-  public TextView a;
-  public DingdongMsgItemTitleImageView a;
-  public TextView b;
-  public TextView c;
-  public TextView d;
+  public uqx(RecordSoundPanel paramRecordSoundPanel) {}
   
-  public uqx(ApprovalMsgBuilder paramApprovalMsgBuilder) {}
+  public void run()
+  {
+    this.a.b();
+  }
 }
 
 

@@ -199,19 +199,19 @@ public class RecentItemRouterDataLine
           }
           if (paramMessage.msgtype == -2000)
           {
-            paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = a(paramContext.getString(2131434153), bool1, bool2, null, paramMsgSummary);
+            paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = a(paramContext.getString(2131434170), bool1, bool2, null, paramMsgSummary);
           }
           else if (paramMessage.msgtype == -2005)
           {
-            paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = a(paramContext.getString(2131435064), bool1, bool2, null, paramMsgSummary);
+            paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = a(paramContext.getString(2131435081), bool1, bool2, null, paramMsgSummary);
           }
           else if (paramMessage.msgtype == -2009)
           {
-            paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = a(paramContext.getString(2131435924), bool1, bool2, null, paramMsgSummary);
+            paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = a(paramContext.getString(2131435941), bool1, bool2, null, paramMsgSummary);
           }
           else if (paramMessage.msgtype == -2335)
           {
-            paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = a(paramContext.getString(2131435064), bool1, bool2, null, paramMsgSummary);
+            paramMsgSummary.jdField_b_of_type_JavaLangCharSequence = a(paramContext.getString(2131435081), bool1, bool2, null, paramMsgSummary);
           }
           else if (paramMessage.msgtype == -2015)
           {

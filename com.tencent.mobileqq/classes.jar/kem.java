@@ -1,17 +1,21 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.app.VideoObserver;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
 
 public class kem
-  extends VideoObserver
+  implements MenuItem.OnMenuItemClickListener
 {
-  public kem(AVRedBagMgr paramAVRedBagMgr) {}
+  public kem(AVRedBagMgr.TestFlag paramTestFlag) {}
   
-  protected void c()
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    super.c();
-    this.a.a("onConnected_init_when_not_support");
-    AVRedBagMgr.a(this.a).b(this);
+    paramMenuItem = this.a;
+    if (!this.a.a) {}
+    for (boolean bool = true;; bool = false)
+    {
+      paramMenuItem.a = bool;
+      return true;
+    }
   }
 }
 

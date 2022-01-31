@@ -1,24 +1,45 @@
-import com.tencent.biz.pubaccount.CustomWebView;
+import android.content.Context;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.NativeAd.data.BannerInfo;
+import com.tencent.biz.pubaccount.NativeAd.module.AdModuleBase;
+import com.tencent.biz.pubaccount.NativeAd.util.NativeAdUtils;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 
 public class kwo
-  implements Runnable
+  implements View.OnClickListener
 {
-  public kwo(CustomWebView paramCustomWebView, String paramString) {}
+  public kwo(AdModuleBase paramAdModuleBase) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.b) {
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo.b == 2)
+    {
+      paramView = new Intent((FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo.jdField_c_of_type_JavaLangString);
+      this.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
+      NativeAdUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 3, 0);
+    }
+    while (this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo.b != 1) {
       return;
     }
-    try
+    switch (this.a.jdField_c_of_type_Int)
     {
-      CustomWebView.a(this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView, "javascript:" + this.jdField_a_of_type_JavaLangString);
+    case 3: 
+    default: 
+      return;
+    case 0: 
+      AdModuleBase.a(this.a);
+      return;
+    case 1: 
+      NativeAdUtils.a(this.a.jdField_a_of_type_AndroidContentContext, this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo.f);
+      NativeAdUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 1, 0);
       return;
     }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    NativeAdUtils.a(this.a.jdField_a_of_type_ComTencentBizPubaccountNativeAdDataBannerInfo);
+    NativeAdUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_JavaLangString, this.a.b, this.a.jdField_c_of_type_JavaLangString, 3, 4, 0);
   }
 }
 

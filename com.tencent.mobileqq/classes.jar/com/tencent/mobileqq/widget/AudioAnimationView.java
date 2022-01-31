@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.widget;
 
-import akem;
+import akst;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Canvas;
@@ -90,7 +90,7 @@ public class AudioAnimationView
     {
       this.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler.post(new akem(this, null));
+      this.jdField_a_of_type_AndroidOsHandler.post(new akst(this, null));
     }
   }
   
@@ -234,7 +234,7 @@ public class AudioAnimationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AudioAnimationView
  * JD-Core Version:    0.7.0.1
  */

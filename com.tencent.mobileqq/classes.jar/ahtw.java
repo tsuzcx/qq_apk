@@ -1,39 +1,30 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.PopupWindow;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.gdtad.net.GdtAdHandler;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine;
+import com.tencent.mobileqq.search.ftsmsg.FTSMessageSearchEngine.FTSSearchResultItem;
+import java.util.Comparator;
 
 public class ahtw
-  implements View.OnClickListener
+  implements Comparator
 {
-  public ahtw(StructMsgForGeneralShare paramStructMsgForGeneralShare, PopupWindow paramPopupWindow, Context paramContext) {}
+  public ahtw(FTSMessageSearchEngine paramFTSMessageSearchEngine) {}
   
-  public void onClick(View paramView)
+  public int a(FTSMessageSearchEngine.FTSSearchResultItem paramFTSSearchResultItem1, FTSMessageSearchEngine.FTSSearchResultItem paramFTSSearchResultItem2)
   {
-    QLog.d(StructMsgForGeneralShare.access$000(), 1, "delete_ad");
-    if (this.jdField_a_of_type_AndroidWidgetPopupWindow.isShowing()) {
-      this.jdField_a_of_type_AndroidWidgetPopupWindow.dismiss();
+    int j = Long.signum(paramFTSSearchResultItem1.b - paramFTSSearchResultItem2.b);
+    int i = j;
+    if (j == 0)
+    {
+      j = Long.signum(paramFTSSearchResultItem1.c - paramFTSSearchResultItem2.c);
+      i = j;
+      if (j == 0) {
+        i = Long.signum(-paramFTSSearchResultItem1.a + paramFTSSearchResultItem2.a);
+      }
     }
-    ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a().b((ChatMessage)this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-    ((GdtAdHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a(110)).a(8, this.jdField_a_of_type_ComTencentMobileqqStructmsgStructMsgForGeneralShare.message);
-    QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131432407), 1).a();
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahtw
  * JD-Core Version:    0.7.0.1
  */

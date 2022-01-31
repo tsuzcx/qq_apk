@@ -1,32 +1,34 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.IBitmapCallback;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
-import java.lang.ref.WeakReference;
-import java.util.Iterator;
-import java.util.Set;
+import android.widget.RelativeLayout;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadinjoyAdVideoReportData;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
 
 public class mpl
   implements Runnable
 {
-  public mpl(RunningJob paramRunningJob, CloseableBitmap paramCloseableBitmap) {}
+  public mpl(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest.a)
+    if ((FastWebVideoFeedsPlayManager.a(this.a) != null) && (FastWebVideoFeedsPlayManager.a(this.a).c() == 5))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderCloseableBitmap.a();
-      return;
-    }
-    Iterator localIterator = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_JavaUtilSet.iterator();
-    while (localIterator.hasNext())
-    {
-      WeakReference localWeakReference = (WeakReference)localIterator.next();
-      if (localWeakReference.get() != null) {
-        ((IBitmapCallback)localWeakReference.get()).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderImageRequest, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderCloseableBitmap.a());
+      FastWebVideoFeedsPlayManager.a(this.a).e();
+      FastWebVideoFeedsPlayManager.a(this.a, 8);
+      if ((FastWebVideoFeedsPlayManager.a(this.a) == null) || (FastWebVideoFeedsPlayManager.a(this.a).c.getVisibility() != 0)) {
+        break label104;
       }
+      this.a.a(3);
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderCloseableBitmap.a();
+    for (;;)
+    {
+      if (FastWebVideoFeedsPlayManager.c(this.a)) {
+        FastWebVideoFeedsPlayManager.a(this.a).a.f = ReadinjoyAdVideoReportData.b;
+      }
+      return;
+      label104:
+      this.a.a(4);
+    }
   }
 }
 

@@ -1,46 +1,31 @@
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.FriendsManager;
+import android.os.Message;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.qphone.base.util.QLog;
 
-public class sht
-  extends FriendListObserver
+class sht
+  implements Runnable
 {
-  public sht(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  sht(shq paramshq, long paramLong) {}
   
-  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte)
+  public void run()
   {
-    if (paramBoolean)
+    if (this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager != null)
     {
-      this.a.b();
-      DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
-      DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
-    }
-    while ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) || (this.a.isFinishing())) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
-  }
-  
-  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    if (paramBoolean) {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin != null))
+      this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a();
+      if (this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Long) == 2)
       {
-        paramString = ((FriendsManager)this.a.app.getManager(50)).c(this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo.ownerUin + "");
-        if (paramString != null) {
-          this.a.d = paramString.name;
-        }
+        Message localMessage = new Message();
+        localMessage.obj = Long.valueOf(this.jdField_a_of_type_Long);
+        this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(32, localMessage);
       }
     }
-    while (!QLog.isColorLevel()) {
+    else
+    {
       return;
     }
-    QLog.d("DiscussionInfoCardActivity", 2, "onUpdateFriendInfo get owner name failed");
+    this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(-1, null);
   }
 }
 

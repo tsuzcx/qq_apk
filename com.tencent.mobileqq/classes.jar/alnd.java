@@ -1,29 +1,19 @@
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Paint.FontMetricsInt;
-import android.text.style.ReplacementSpan;
-import com.tencent.widget.MultiImageTextView;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qidian.QidianProfileCardActivity;
 
-public class alnd
-  extends ReplacementSpan
+class alnd
+  implements Runnable
 {
-  private int jdField_a_of_type_Int;
+  alnd(alnc paramalnc, QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public alnd(MultiImageTextView paramMultiImageTextView, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint) {}
-  
-  public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
-  {
-    return this.jdField_a_of_type_Int;
+    QQToast.a(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity, "保存图片失败", 0).b(this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.getTitleBarHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alnd
  * JD-Core Version:    0.7.0.1
  */

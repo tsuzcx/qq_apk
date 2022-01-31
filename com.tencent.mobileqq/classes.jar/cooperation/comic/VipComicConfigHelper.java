@@ -1,6 +1,6 @@
 package cooperation.comic;
 
-import altc;
+import amjg;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
@@ -16,7 +16,7 @@ import org.json.JSONObject;
 
 public class VipComicConfigHelper
 {
-  static EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new altc();
+  static EIPCResultCallback jdField_a_of_type_EipcEIPCResultCallback = new amjg();
   static Vector jdField_a_of_type_JavaUtilVector;
   static JSONObject jdField_a_of_type_OrgJsonJSONObject = new JSONObject();
   

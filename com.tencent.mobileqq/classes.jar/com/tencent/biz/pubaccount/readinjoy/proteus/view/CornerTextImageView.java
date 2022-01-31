@@ -157,7 +157,7 @@ public class CornerTextImageView
       if (i == 1)
       {
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131428496);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131428502);
       }
       localLayoutParams.width = ((int)f2);
       localLayoutParams.height = ((int)f1);
@@ -180,7 +180,7 @@ public class CornerTextImageView
           f1 = k;
           f2 = AIOUtils.a(150.0F, localResources);
           this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131428494);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131428500);
         }
         else
         {
@@ -195,7 +195,7 @@ public class CornerTextImageView
         {
           f2 = j;
           f1 = AIOUtils.a(150.0F, localResources);
-          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131428495);
+          this.jdField_a_of_type_AndroidWidgetTextView.setText(2131428501);
           this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
         }
         else
@@ -210,13 +210,13 @@ public class CornerTextImageView
         f1 = k;
         f2 = AIOUtils.a(150.0F, localResources);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131428494);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131428500);
       }
       else if (f2 / f1 > 4.0F)
       {
         f2 = j;
         f1 = AIOUtils.a(150.0F, localResources);
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131428495);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131428501);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       }
       else

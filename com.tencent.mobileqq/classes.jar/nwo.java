@@ -1,18 +1,12 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
-public class nwo
-  implements View.OnClickListener
+class nwo
+  implements DialogInterface.OnDismissListener
 {
-  public nwo(StoryMessageListActivity paramStoryMessageListActivity, int paramInt) {}
+  nwo(nwn paramnwn) {}
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMessagenotifyStoryMessageListActivity.a(this.jdField_a_of_type_Int);
-    StoryReportor.a("play_video", "del_notice", 0, 0, new String[] { "", "", "", "" });
-  }
+  public void onDismiss(DialogInterface paramDialogInterface) {}
 }
 
 

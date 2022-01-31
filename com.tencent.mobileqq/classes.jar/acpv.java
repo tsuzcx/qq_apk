@@ -1,44 +1,18 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLConnection;
+import com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter;
+import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
+import com.tencent.mobileqq.filemanager.widget.ViewerMoreRelativeLayout;
+import com.tencent.widget.ExpandableListView.OnGroupCollapseListener;
 
 public class acpv
-  implements Runnable
+  implements ExpandableListView.OnGroupCollapseListener
 {
-  public acpv(UniformDownloadMgr paramUniformDownloadMgr, String paramString, Bundle paramBundle) {}
+  public acpv(QfileBaseCloudFileTabView paramQfileBaseCloudFileTabView) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    long l = 0L;
-    for (;;)
-    {
-      try
-      {
-        localURL = new URL(this.jdField_a_of_type_JavaLangString);
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        URL localURL;
-        int i;
-        localMalformedURLException.printStackTrace();
-        continue;
-      }
-      try
-      {
-        i = localURL.openConnection().getContentLength();
-        l = i;
-      }
-      catch (IOException localIOException)
-      {
-        localIOException.printStackTrace();
-      }
+    if ((paramInt == this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityAdapterQfileBaseExpandableListAdapter.getGroupCount() - 1) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout != null)) {
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerWidgetViewerMoreRelativeLayout.setGone();
     }
-    this.jdField_a_of_type_AndroidOsBundle.putLong("_filesize_from_dlg", l);
-    UniformDownloadMgr.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidOsBundle);
-    UniformDownloadMgr.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreUniformDownloadMgr);
   }
 }
 

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.teamwork.spread;
 
-import ahyx;
-import ahyz;
-import ahza;
+import aina;
+import ainc;
+import aind;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
@@ -196,7 +196,7 @@ public class AIOMessageSpreadManager
       QLog.i("AIOMessageSpreadManager", 1, "insertGaryTips:" + paramString1 + " link:" + paramString2);
     }
     this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadConfigSetting.a(paramChatMessage);
-    new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new ahyz(this, paramChatMessage, paramString1, paramTeamworkKeyWords, paramString2, paramString3), 1000L);
+    new Handler(ThreadManager.getSubThreadLooper()).postDelayed(new ainc(this, paramChatMessage, paramString1, paramTeamworkKeyWords, paramString2, paramString3), 1000L);
   }
   
   static boolean a(char paramChar)
@@ -262,7 +262,7 @@ public class AIOMessageSpreadManager
     if ((paramChatMessage instanceof MessageForText)) {
       this.jdField_b_of_type_Long = paramChatMessage.uniseq;
     }
-    ThreadManager.executeOnSubThread(new ahyx(this, paramChatMessage));
+    ThreadManager.executeOnSubThread(new aina(this, paramChatMessage));
   }
   
   public void a(ChatMessage paramChatMessage, Context paramContext, SessionInfo paramSessionInfo)
@@ -398,7 +398,7 @@ public class AIOMessageSpreadManager
     if (QLog.isColorLevel()) {
       QLog.i("AIOMessageSpreadManager", 1, "send file:" + paramMessageRecord.msgUid);
     }
-    ThreadManager.getUIHandler().postDelayed(new ahza(this), 1000L);
+    ThreadManager.getUIHandler().postDelayed(new aind(this), 1000L);
     try
     {
       this.jdField_a_of_type_JavaUtilList.add(paramMessageRecord);
@@ -435,7 +435,7 @@ public class AIOMessageSpreadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager
  * JD-Core Version:    0.7.0.1
  */

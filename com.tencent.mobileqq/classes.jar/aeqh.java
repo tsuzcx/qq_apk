@@ -1,20 +1,30 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.widget.ActionSheet;
+import android.os.Bundle;
+import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
+import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
+import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class aeqh
-  implements View.OnClickListener
+  implements Runnable
 {
-  public aeqh(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel) {}
+  public aeqh(NearbyGuideActivity paramNearbyGuideActivity, ArrayList paramArrayList, NearbyCardHandler paramNearbyCardHandler, Bundle paramBundle) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = ActionSheet.a(this.a.a);
-    paramView.a(2131432509, 1);
-    paramView.c(2131432998);
-    paramView.a(new aeqi(this, paramView));
-    paramView.show();
+    ArrayList localArrayList = new ArrayList();
+    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        Integer localInteger = (Integer)localIterator.next();
+        PicInfo localPicInfo = new PicInfo();
+        localPicInfo.a = localInteger.intValue();
+        localArrayList.add(localPicInfo);
+      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler.a(this.jdField_a_of_type_AndroidOsBundle, localArrayList, null, true, true, true);
   }
 }
 

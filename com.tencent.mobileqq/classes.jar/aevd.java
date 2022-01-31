@@ -1,17 +1,24 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.nearby.business.NearbyCardHandler;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
-import java.util.ArrayList;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.view.View;
+import android.widget.ImageButton;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.nearby.now.send.capturepart.StoryLocalPublishPart;
 
-public class aevd
+class aevd
   implements Runnable
 {
-  public aevd(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel, NearbyCardHandler paramNearbyCardHandler, Bundle paramBundle, ArrayList paramArrayList) {}
+  aevd(aevc paramaevc, Bitmap paramBitmap) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.jdField_a_of_type_ArrayOfComTencentMobileqqNearbyInterestTagInterestTag, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.d, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditTribePanel.b(), false);
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    {
+      StoryLocalPublishPart.a(this.jdField_a_of_type_Aevc.jdField_a_of_type_ComTencentMobileqqNearbyNowSendCapturepartStoryLocalPublishPart).setImageDrawable(new BitmapDrawable(this.jdField_a_of_type_Aevc.jdField_a_of_type_AndroidViewView.getResources(), this.jdField_a_of_type_AndroidGraphicsBitmap));
+      StoryLocalPublishPart.a(this.jdField_a_of_type_Aevc.jdField_a_of_type_ComTencentMobileqqNearbyNowSendCapturepartStoryLocalPublishPart).setOnClickListener(StoryLocalPublishPart.a(this.jdField_a_of_type_Aevc.jdField_a_of_type_ComTencentMobileqqNearbyNowSendCapturepartStoryLocalPublishPart));
+      return;
+    }
+    SLog.d("story.publish.StoryLocalPublishPart", "queryFirstMediaThumbnail return null");
   }
 }
 

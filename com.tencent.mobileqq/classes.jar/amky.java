@@ -1,25 +1,15 @@
-import cooperation.qzone.plugin.IQZonePluginManager;
-import cooperation.qzone.plugin.PluginRecord;
-import cooperation.qzone.plugin.QZonePluginMangerHelper;
-import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
-import cooperation.qzone.video.QzoneLiveVideoInterface;
+import android.os.Bundle;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import cooperation.dingdong.DingdongPluginRemoteCmdHandler;
 
-public final class amky
-  implements QZonePluginMangerHelper.OnQzonePluginClientReadyListner
+class amky
+  implements Runnable
 {
-  public amky(String paramString) {}
+  amky(amkx paramamkx, Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener) {}
   
-  public void a(IQZonePluginManager paramIQZonePluginManager)
+  public void run()
   {
-    if (paramIQZonePluginManager == null) {
-      QZonePluginMangerHelper.a(QzoneLiveVideoInterface.getContext(), this);
-    }
-    do
-    {
-      return;
-      paramIQZonePluginManager = paramIQZonePluginManager.a(this.a);
-    } while (paramIQZonePluginManager == null);
-    QzoneLiveVideoInterface.access$002(paramIQZonePluginManager.c);
+    this.jdField_a_of_type_Amkx.a.a(this.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentMobileqqPluginsdkIpcRemoteCommand$OnInvokeFinishLinstener);
   }
 }
 

@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.activity.qwallet.QWalletPushManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
+import com.tencent.mobileqq.activity.photo.MediaScanner.OnMediaInfoScannerListener;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.nearby.now.send.capturepart.QQNowVideoFlowCallback;
 
-public final class wxp
-  implements Runnable
+class wxp
+  implements MediaScanner.OnMediaInfoScannerListener
 {
-  public wxp(QQAppInterface paramQQAppInterface) {}
+  wxp(wxk paramwxk, int paramInt) {}
   
-  public void run()
+  public void a(LocalMediaInfo paramLocalMediaInfo, boolean paramBoolean)
   {
-    if (QWalletPushManager.a(this.a)) {
-      QWalletPushManager.a(this.a);
+    this.jdField_a_of_type_Wxk.a.d();
+    if (QQNowVideoFlowCallback.a(this.jdField_a_of_type_Wxk.a, paramLocalMediaInfo)) {
+      this.jdField_a_of_type_Wxk.a.a(paramLocalMediaInfo, this.jdField_a_of_type_Int);
     }
   }
 }

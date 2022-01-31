@@ -1,64 +1,49 @@
-import java.util.HashMap;
+import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementVideoPreloadManager;
+import com.tencent.qqlive.mediaplayer.api.TVK_ICacheMgr.IPreloadCallback;
+import java.io.File;
+import org.json.JSONObject;
 
 public class kut
+  implements TVK_ICacheMgr.IPreloadCallback
 {
-  public int a;
-  public long a;
-  public String a;
-  public boolean a;
-  public int b;
-  public long b;
-  public String b;
-  public long c;
-  public String c;
-  public long d = -1L;
+  private kut(AdvertisementVideoPreloadManager paramAdvertisementVideoPreloadManager) {}
   
-  private kut()
+  public void onPreLoadFailed(String paramString1, int paramInt, String paramString2)
   {
-    this.jdField_a_of_type_JavaLangString = "IMAX_Ad_StartCost";
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_c_of_type_Long = -1L;
-    this.jdField_a_of_type_Boolean = true;
+    synchronized (AdvertisementVideoPreloadManager.a(this.a))
+    {
+      AdvertisementVideoPreloadManager.c("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
+      AdvertisementVideoPreloadManager.a(this.a, AdvertisementVideoPreloadManager.a(this.a));
+      return;
+    }
   }
   
-  public HashMap a()
+  public void onPreLoadSucess(String paramString1, String paramString2)
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("adid", this.jdField_b_of_type_JavaLangString);
-    localHashMap.put("vid", this.jdField_c_of_type_JavaLangString);
-    localHashMap.put("webPreloaded", "" + this.jdField_a_of_type_Int);
-    localHashMap.put("videoPreloaded", "" + this.jdField_b_of_type_Int);
-    localHashMap.put("webProStartCost", "" + this.jdField_b_of_type_Long);
-    localHashMap.put("webActStartCost", "" + this.jdField_a_of_type_Long);
-    localHashMap.put("actDisplayCost", "" + this.jdField_c_of_type_Long);
-    localHashMap.put("videoDisplayCost", "" + this.d);
-    localHashMap.put("isFirst", "" + this.jdField_a_of_type_Boolean);
-    return localHashMap;
-  }
-  
-  public void a()
-  {
-    this.jdField_b_of_type_JavaLangString = "";
-    this.jdField_c_of_type_JavaLangString = "";
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = -1;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_b_of_type_Long = -1L;
-    this.jdField_c_of_type_Long = -1L;
-    this.d = -1L;
-    this.jdField_a_of_type_Boolean = true;
-  }
-  
-  public String toString()
-  {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("[name:" + this.jdField_a_of_type_JavaLangString).append(" adid:" + this.jdField_b_of_type_JavaLangString).append(" vid:" + this.jdField_c_of_type_JavaLangString).append(" webPreloaded:" + this.jdField_a_of_type_Int).append(" videoPreloaded:" + this.jdField_b_of_type_Int).append(" webProStartCost:" + this.jdField_b_of_type_Long).append(" webActStartCost:" + this.jdField_a_of_type_Long).append(" actDisplayCost:" + this.jdField_c_of_type_Long).append(" videoDisplayCost:" + this.d).append(" isFirst:" + this.jdField_a_of_type_Boolean + "]");
-    return localStringBuilder.toString();
+    synchronized (AdvertisementVideoPreloadManager.a(this.a))
+    {
+      AdvertisementVideoPreloadManager.c("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
+      try
+      {
+        paramString2 = new JSONObject(paramString2);
+        long l1 = paramString2.optLong("fileSize");
+        long l2 = paramString2.optLong("offset");
+        if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
+        {
+          paramString2 = new File(AdvertisementVideoPreloadManager.b(paramString1));
+          if (paramString2.exists()) {
+            paramString2.renameTo(new File(AdvertisementVideoPreloadManager.a(paramString1)));
+          }
+          AdvertisementVideoPreloadManager.a(this.a, AdvertisementVideoPreloadManager.a(this.a));
+        }
+      }
+      catch (Exception paramString1)
+      {
+        label136:
+        break label136;
+      }
+      return;
+    }
   }
 }
 

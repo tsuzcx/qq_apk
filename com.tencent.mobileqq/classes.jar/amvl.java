@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import dov.com.qq.im.capture.data.LockedCategory;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
 
-public final class amvl
-  implements Parcelable.Creator
+public class amvl
+  implements Runnable
 {
-  public LockedCategory a(Parcel paramParcel)
-  {
-    return new LockedCategory(paramParcel);
-  }
+  public amvl(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin) {}
   
-  public LockedCategory[] a(int paramInt)
+  public void run()
   {
-    return new LockedCategory[paramInt];
+    RemoteHandleManager.a().a().b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amvl
  * JD-Core Version:    0.7.0.1
  */

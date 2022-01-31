@@ -1,23 +1,21 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
-import com.tencent.av.ui.redbag.SendRedBag;
+import android.view.MenuItem;
+import android.view.MenuItem.OnMenuItemClickListener;
+import com.tencent.av.ui.redbag.AVRedBagMgr.TestFlag;
 
 public class ken
-  implements kge
+  implements MenuItem.OnMenuItemClickListener
 {
-  public ken(AVRedBagMgr paramAVRedBagMgr) {}
+  public ken(AVRedBagMgr.TestFlag paramTestFlag) {}
   
-  public void a(SendRedBag paramSendRedBag)
+  public boolean onMenuItemClick(MenuItem paramMenuItem)
   {
-    AVRedBagMgr localAVRedBagMgr = this.a;
-    if (paramSendRedBag.b == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localAVRedBagMgr.a(bool, paramSendRedBag.g, paramSendRedBag.c);
-      this.a.a = null;
-      AVRedBagMgr.b(this.a).a(new Object[] { Integer.valueOf(8003), Integer.valueOf(7) });
-      return;
+    AVRedBagMgr.TestFlag localTestFlag = this.a;
+    localTestFlag.a += 1;
+    if (this.a.a > 3) {
+      this.a.a = 0;
     }
+    paramMenuItem.setTitle("禁用C2C发包索引:" + this.a.a);
+    return true;
   }
 }
 

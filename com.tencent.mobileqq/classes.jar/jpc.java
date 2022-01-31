@@ -1,33 +1,50 @@
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
-import com.tencent.av.smallscreen.SmallScreenService;
+import android.view.Display;
+import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.smallscreen.SmallScreenVideoControlUI;
+import com.tencent.av.smallscreen.SmallScreenVideoController;
+import com.tencent.av.smallscreen.SmallScreenVideoLayerUI;
+import com.tencent.av.ui.AbstractOrientationEventListener;
 import com.tencent.qphone.base.util.QLog;
 
 public class jpc
-  extends BroadcastReceiver
+  extends AbstractOrientationEventListener
 {
-  public jpc(SmallScreenService paramSmallScreenService) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public jpc(SmallScreenVideoController paramSmallScreenVideoController, Context paramContext, int paramInt)
   {
-    paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("SmallScreenService", 2, "onReceive action = " + paramContext);
-    }
-    if (paramContext.equals("android.intent.action.NEW_OUTGOING_CALL"))
+    super(paramContext, paramInt);
+  }
+  
+  public void a(int paramInt, boolean paramBoolean)
+  {
+    int j = 0;
+    try
     {
-      paramContext = paramIntent.getStringExtra("android.intent.extra.PHONE_NUMBER");
-      if (QLog.isColorLevel()) {
-        QLog.d("SmallScreenService", 2, "onReceive NEW_OUTGOING_CALL phoneNumber = " + paramContext);
+      i = (this.a.jdField_a_of_type_AndroidViewDisplay.getRotation() * 90 + paramInt) % 360;
+      if (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI != null) {
+        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoControlUI.b(i);
       }
-    }
-    while (!paramContext.equals("tencent.video.q2v.ACTION_SELECT_MEMBER_ACTIVITY_IS_RESUME_CHANGED")) {
+      if (this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI != null) {
+        this.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.a(paramInt, paramBoolean);
+      }
+      if (this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils != null) {
+        this.a.jdField_a_of_type_ComTencentAvCameraCameraUtils.a(paramInt);
+      }
+      this.a.f = paramInt;
       return;
     }
-    this.a.a().removeCallbacks(this.a.d);
-    this.a.a().postDelayed(this.a.d, 200L);
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        int i = j;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("SmallScreenVideoController", 2, "onVideoOrientationChanged e = " + localException);
+          i = j;
+        }
+      }
+    }
   }
 }
 

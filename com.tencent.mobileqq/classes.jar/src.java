@@ -1,43 +1,14 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.GesturePWDCreateActivity;
-import com.tencent.mobileqq.activity.GesturePWDManualGuideActivity;
-import com.tencent.mobileqq.activity.GesturePWDSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class src
-  implements View.OnClickListener
+  implements Runnable
 {
-  public src(GesturePWDSettingActivity paramGesturePWDSettingActivity) {}
+  public src(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    switch (paramView.getId())
-    {
-    case 2131364691: 
-    case 2131364692: 
-    case 2131364695: 
-    case 2131364696: 
-    default: 
-      return;
-    case 2131364690: 
-      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 20);
-      this.a.a();
-      return;
-    case 2131364694: 
-      GesturePWDUtils.setGesturePWDMode(this.a, this.a.app.getCurrentAccountUin(), 21);
-      this.a.a();
-      return;
-    case 2131364693: 
-      paramView = new Intent(this.a, GesturePWDManualGuideActivity.class);
-      this.a.startActivity(paramView);
-      return;
-    }
-    paramView = new Intent(this.a, GesturePWDCreateActivity.class);
-    this.a.startActivityForResult(paramView, 11);
-    this.a.overridePendingTransition(2131034134, 2131034131);
+    ThreadManager.post(new srd(this), 5, null, true);
   }
 }
 

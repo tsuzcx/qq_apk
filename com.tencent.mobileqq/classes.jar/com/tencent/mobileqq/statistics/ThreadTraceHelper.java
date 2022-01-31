@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics;
 
-import ahsd;
+import aigg;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -18,7 +18,7 @@ import java.util.Set;
 public class ThreadTraceHelper
 {
   private static long jdField_a_of_type_Long;
-  private static ahsd jdField_a_of_type_Ahsd;
+  private static aigg jdField_a_of_type_Aigg;
   private static Object jdField_a_of_type_JavaLangObject = new Object();
   private static final String jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory().getPath() + "/tencent/msflogs/" + "com.tencent.mobileqq".replace(".", "/") + "/";
   private static HashMap jdField_a_of_type_JavaUtilHashMap;
@@ -26,7 +26,7 @@ public class ThreadTraceHelper
   
   static
   {
-    jdField_a_of_type_Ahsd = new ahsd("/data/anr/traces.txt", 8);
+    jdField_a_of_type_Aigg = new aigg("/data/anr/traces.txt", 8);
     jdField_a_of_type_Long = -1L;
     jdField_a_of_type_JavaUtilHashMap = new HashMap(30);
   }
@@ -161,8 +161,8 @@ public class ThreadTraceHelper
     //   257: invokeinterface 168 3 0
     //   262: invokeinterface 131 1 0
     //   267: pop
-    //   268: getstatic 62	com/tencent/mobileqq/statistics/ThreadTraceHelper:jdField_a_of_type_Ahsd	Lahsd;
-    //   271: invokevirtual 171	ahsd:startWatching	()V
+    //   268: getstatic 62	com/tencent/mobileqq/statistics/ThreadTraceHelper:jdField_a_of_type_Aigg	Laigg;
+    //   271: invokevirtual 171	aigg:startWatching	()V
     //   274: invokestatic 176	android/os/SystemClock:uptimeMillis	()J
     //   277: lstore 8
     //   279: ldc 133
@@ -172,17 +172,17 @@ public class ThreadTraceHelper
     //   287: invokestatic 184	android/os/Process:myPid	()I
     //   290: iconst_3
     //   291: invokestatic 188	android/os/Process:sendSignal	(II)V
-    //   294: getstatic 62	com/tencent/mobileqq/statistics/ThreadTraceHelper:jdField_a_of_type_Ahsd	Lahsd;
+    //   294: getstatic 62	com/tencent/mobileqq/statistics/ThreadTraceHelper:jdField_a_of_type_Aigg	Laigg;
     //   297: astore 12
     //   299: aload 12
     //   301: monitorenter
-    //   302: getstatic 62	com/tencent/mobileqq/statistics/ThreadTraceHelper:jdField_a_of_type_Ahsd	Lahsd;
+    //   302: getstatic 62	com/tencent/mobileqq/statistics/ThreadTraceHelper:jdField_a_of_type_Aigg	Laigg;
     //   305: ldc2_w 189
     //   308: invokevirtual 194	java/lang/Object:wait	(J)V
     //   311: aload 12
     //   313: monitorexit
-    //   314: getstatic 62	com/tencent/mobileqq/statistics/ThreadTraceHelper:jdField_a_of_type_Ahsd	Lahsd;
-    //   317: invokevirtual 197	ahsd:stopWatching	()V
+    //   314: getstatic 62	com/tencent/mobileqq/statistics/ThreadTraceHelper:jdField_a_of_type_Aigg	Laigg;
+    //   317: invokevirtual 197	aigg:stopWatching	()V
     //   320: aload_0
     //   321: invokeinterface 118 1 0
     //   326: ldc 110

@@ -1,44 +1,29 @@
-import android.os.Bundle;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.loginwelcome.LoginWelcomeManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.hiboom.HiBoomFont.HiBoomFontDownloader;
+import com.tencent.mobileqq.profile.diy.VipDiyCardConstants;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import mqq.app.AppRuntime;
 
-public class adpd
-  extends TroopObserver
+public final class adpd
+  implements HiBoomFont.HiBoomFontDownloader
 {
-  public adpd(LoginWelcomeManager paramLoginWelcomeManager) {}
-  
-  protected void a(boolean paramBoolean, long paramLong, int paramInt1, TroopInfo paramTroopInfo, int paramInt2, String paramString)
+  public String a()
   {
-    if (paramBoolean)
-    {
-      paramString = LoginWelcomeManager.a(this.a).getBundle("request");
-      paramString.putString("uin", String.valueOf(paramLong));
-      paramString.putShort("option", paramTroopInfo.cGroupOption);
-      paramString.putString("name", paramTroopInfo.troopname);
-      if ((paramTroopInfo.cGroupOption != 4) && (paramTroopInfo.cGroupOption != 5)) {
-        break label114;
-      }
-      paramString.putString("answer", paramTroopInfo.joinTroopAnswer);
-      paramString.putString("question", paramTroopInfo.joinTroopQuestion);
-    }
-    for (;;)
-    {
-      this.a.b();
-      LoginWelcomeManager.a(this.a).removeObserver(this);
-      return;
-      label114:
-      if (QLog.isColorLevel()) {
-        QLog.d("LoginWelcomeManager", 2, "onOIDB0X88D_1_Ret err");
-      }
+    return VipDiyCardConstants.a;
+  }
+  
+  public void a(int paramInt)
+  {
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      ((VasQuickUpdateManager)localAppRuntime.getManager(183)).a(5L, "font.diycard.android." + paramInt, "HiBoomDownloader");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adpd
  * JD-Core Version:    0.7.0.1
  */

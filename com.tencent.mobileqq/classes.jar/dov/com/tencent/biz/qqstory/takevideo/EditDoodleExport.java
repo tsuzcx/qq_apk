@@ -24,7 +24,7 @@ public abstract interface EditDoodleExport
   
   public abstract byte[] a(int paramInt);
   
-  public abstract void ax_();
+  public abstract void az_();
   
   public abstract void c();
   

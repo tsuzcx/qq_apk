@@ -22,7 +22,7 @@ import mqq.app.MobileQQ;
 import tencent.im.statsvc.getonline.StatSvcGetOnline.Instance;
 import tencent.im.statsvc.getonline.StatSvcGetOnline.ReqBody;
 import tencent.im.statsvc.getonline.StatSvcGetOnline.RspBody;
-import ziy;
+import zme;
 
 public class RegisterProxySvcPackHandler
   extends BusinessHandler
@@ -43,7 +43,7 @@ public class RegisterProxySvcPackHandler
   RegisterProxySvcPackHandler(QQAppInterface paramQQAppInterface)
   {
     super(paramQQAppInterface);
-    this.jdField_a_of_type_AndroidOsHandler = new ziy(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new zme(this, Looper.getMainLooper());
   }
   
   public int a()

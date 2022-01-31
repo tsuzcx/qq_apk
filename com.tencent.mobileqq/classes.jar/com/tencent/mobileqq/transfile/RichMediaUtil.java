@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.transfile;
 
-import aicp;
-import aicq;
+import aiqs;
+import aiqt;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.JpegExifReader;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -257,9 +257,9 @@ public class RichMediaUtil
           if ((QLog.isColorLevel()) || (jdField_a_of_type_Boolean)) {
             QLog.d("RichMediaUtil", 2, "activeReport start : " + paramString);
           }
-          jdField_a_of_type_JavaUtilHashMap.put(paramString, new aicq(paramInt1, paramArrayOfString));
+          jdField_a_of_type_JavaUtilHashMap.put(paramString, new aiqt(paramInt1, paramArrayOfString));
           QLog.startColorLog(paramArrayOfString);
-          paramString = new aicp(paramString);
+          paramString = new aiqs(paramString);
           new Timer().schedule(paramString, paramLong);
           return;
         }
@@ -337,8 +337,8 @@ public class RichMediaUtil
         if ((QLog.isColorLevel()) || (jdField_a_of_type_Boolean)) {
           QLog.d("RichMediaUtil", 2, "activeReport stop : " + paramString1 + ", " + paramBoolean);
         }
-        aicq localaicq = (aicq)jdField_a_of_type_JavaUtilHashMap.remove(paramString1);
-        if (localaicq != null)
+        aiqt localaiqt = (aiqt)jdField_a_of_type_JavaUtilHashMap.remove(paramString1);
+        if (localaiqt != null)
         {
           paramString1 = BaseApplicationImpl.sApplication.getRuntime();
           if (paramString1 != null)
@@ -349,7 +349,7 @@ public class RichMediaUtil
             if (localTicketManager != null) {
               paramString1 = localTicketManager.getSkey(str);
             }
-            QLog.endColorLog(localaicq.jdField_a_of_type_ArrayOfJavaLangString, localaicq.jdField_a_of_type_Int, paramBoolean, paramString2, str, paramString1);
+            QLog.endColorLog(localaiqt.jdField_a_of_type_ArrayOfJavaLangString, localaiqt.jdField_a_of_type_Int, paramBoolean, paramString2, str, paramString1);
           }
         }
         if (jdField_a_of_type_JavaUtilHashMap.isEmpty()) {
@@ -567,7 +567,7 @@ public class RichMediaUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.RichMediaUtil
  * JD-Core Version:    0.7.0.1
  */

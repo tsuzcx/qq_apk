@@ -17,7 +17,7 @@ import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.widget.SingleLineTextView;
-import yfp;
+import yiw;
 
 public class BuddyListPhone
   extends BuddyListItem
@@ -31,14 +31,14 @@ public class BuddyListPhone
   {
     PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(10);
     PhoneContact localPhoneContact;
-    if ((paramView == null) || (!(paramView.getTag() instanceof yfp)))
+    if ((paramView == null) || (!(paramView.getTag() instanceof yiw)))
     {
       paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968817, paramViewGroup, false);
-      paramOnClickListener = new yfp();
-      paramOnClickListener.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131362701));
-      paramOnClickListener.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramViewGroup.findViewById(2131363873));
-      paramOnClickListener.c = ((SingleLineTextView)paramViewGroup.findViewById(2131363875));
-      paramOnClickListener.b = ((ImageView)paramViewGroup.findViewById(2131363862));
+      paramOnClickListener = new yiw();
+      paramOnClickListener.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131362719));
+      paramOnClickListener.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramViewGroup.findViewById(2131363896));
+      paramOnClickListener.c = ((SingleLineTextView)paramViewGroup.findViewById(2131363898));
+      paramOnClickListener.b = ((ImageView)paramViewGroup.findViewById(2131363885));
       paramViewGroup.setTag(paramOnClickListener);
       localPhoneContact = (PhoneContact)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntity;
       paramOnClickListener.jdField_a_of_type_JavaLangObject = localPhoneContact;
@@ -56,7 +56,7 @@ public class BuddyListPhone
     default: 
       paramView = paramView.a(localPhoneContactManagerImp.a(localPhoneContact.unifiedCode));
       if (paramView == null) {
-        paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131436009);
+        paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131436026);
       }
       break;
     case 1: 
@@ -72,7 +72,7 @@ public class BuddyListPhone
           paramInt2 = 1;
           if ((localPhoneContactManagerImp.e & 0x8) != 8L)
           {
-            localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842321);
+            localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842368);
             ImageView localImageView = paramOnClickListener.jdField_a_of_type_AndroidWidgetImageView;
             if (paramInt2 == 0) {
               break label583;
@@ -80,7 +80,7 @@ public class BuddyListPhone
             label310:
             localImageView.setImageDrawable(localDrawable);
           }
-          paramViewGroup.setBackgroundResource(2130838583);
+          paramViewGroup.setBackgroundResource(2130838587);
           paramViewGroup.setPadding(0, 0, (int)DisplayUtils.a(this.jdField_a_of_type_AndroidContentContext, 10.0F), 0);
           if ((localPhoneContactManagerImp.e & 0x4) != 4L) {
             break label589;
@@ -93,7 +93,7 @@ public class BuddyListPhone
           paramOnClickListener.c.setVisibility(8);
           label374:
           paramOnClickListener.b.setVisibility(8);
-          paramOnClickListener.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131494212));
+          paramOnClickListener.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setTextColor(a(this.jdField_a_of_type_AndroidContentContext, 2131494219));
           paramOnClickListener.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(localPhoneContact.name);
           if (AppSetting.b)
           {
@@ -108,12 +108,12 @@ public class BuddyListPhone
             paramViewGroup.setContentDescription(paramOnClickListener);
           }
           return paramViewGroup;
-          paramOnClickListener = (yfp)paramView.getTag();
+          paramOnClickListener = (yiw)paramView.getTag();
           paramViewGroup = paramView;
           break;
-          paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131436004);
+          paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131436021);
           continue;
-          paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131436005);
+          paramView = this.jdField_a_of_type_AndroidContentContext.getString(2131436022);
           continue;
           if ((paramInt2 != 8) || ((localPhoneContact.abilityBits & 1L) != 0L)) {
             break label656;

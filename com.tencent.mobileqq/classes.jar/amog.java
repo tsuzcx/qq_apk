@@ -1,16 +1,16 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnShowListener;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import cooperation.smartdevice.SmartDevicePluginLoader;
+import android.content.DialogInterface.OnClickListener;
+import cooperation.qlink.QlinkStandardDialogActivity;
 
 public class amog
-  implements DialogInterface.OnShowListener
+  implements DialogInterface.OnClickListener
 {
-  public amog(SmartDevicePluginLoader paramSmartDevicePluginLoader, QQProgressDialog paramQQProgressDialog) {}
+  public amog(QlinkStandardDialogActivity paramQlinkStandardDialogActivity) {}
   
-  public void onShow(DialogInterface paramDialogInterface)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.hide();
+    paramDialogInterface.dismiss();
+    this.a.finish();
   }
 }
 

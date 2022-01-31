@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.widget;
 
-import akil;
-import akim;
+import akwu;
+import akwv;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Path;
@@ -19,8 +19,8 @@ public class ShaderAnimLayout
 {
   public float a;
   private Path jdField_a_of_type_AndroidGraphicsPath = new Path();
-  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new akim(this);
-  private Animation jdField_a_of_type_AndroidViewAnimationAnimation = new akil(this);
+  private Animation.AnimationListener jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new akwv(this);
+  private Animation jdField_a_of_type_AndroidViewAnimationAnimation = new akwu(this);
   public boolean a;
   private boolean b;
   
@@ -142,7 +142,7 @@ public class ShaderAnimLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ShaderAnimLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,18 +1,27 @@
-import com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.common.app.AppInterface;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class kya
   implements Runnable
 {
-  public kya(ReadInJoyNativeAdAppVideoView paramReadInJoyNativeAdAppVideoView) {}
+  public kya(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface, AppInterface paramAppInterface, String paramString1, JSONObject paramJSONObject, String paramString2) {}
   
   public void run()
   {
-    ReadInJoyNativeAdAppVideoView.e(this.a, 5);
-    ReadInJoyNativeAdAppVideoView.a(this.a).pause();
-    QQToast.a(ReadInJoyNativeAdAppVideoView.a(this.a), 1, "视频加载失败，请稍后重试", 0).a();
-    ReadInJoyNativeAdAppVideoView.a(this.a);
+    boolean bool = PublicAccountUtil.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString);
+    try
+    {
+      this.jdField_a_of_type_OrgJsonJSONObject.put("follow", bool);
+      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:0, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountJavascriptInterface.callJs(this.b, new String[] { "{ret:-2, response:" + this.jdField_a_of_type_OrgJsonJSONObject.toString() + "}" });
+    }
   }
 }
 

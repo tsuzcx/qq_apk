@@ -1,28 +1,48 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.UpgradeDetailActivity;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.upgrade.UpgradeConstants;
-import com.tencent.mobileqq.app.upgrade.UpgradeController;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadComDownloader;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource.DownloadListenerWrapper;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import java.io.File;
+import java.util.Map;
 
 public class xfi
-  implements View.OnClickListener
+  extends PreloadResource.DownloadListenerWrapper
 {
-  public xfi(BannerManager paramBannerManager) {}
-  
-  public void onClick(View paramView)
+  public xfi(PreloadComDownloader paramPreloadComDownloader, DownloadListener paramDownloadListener)
   {
-    this.a.a(-1, null);
-    if (UpgradeController.a().a() == 4)
+    super(paramDownloadListener);
+  }
+  
+  public void onDoneFile(DownloadTask paramDownloadTask)
+  {
+    long l2 = -1L;
+    super.onDoneFile(paramDownloadTask);
+    if ((paramDownloadTask != null) && (paramDownloadTask.jdField_a_of_type_JavaUtilMap != null) && (!TextUtils.isEmpty(paramDownloadTask.jdField_a_of_type_JavaLangString)))
     {
-      ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "0X8004DA4", "0X8004DA4", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "1");
-      UpgradeController.a().a(BannerManager.a(this.a));
-      return;
+      File localFile = (File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      if (localFile != null)
+      {
+        Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        if (localObject != null)
+        {
+          localObject = (PreDownloadController)((QQAppInterface)localObject).getManager(192);
+          String str = paramDownloadTask.jdField_a_of_type_JavaLangString;
+          long l1 = l2;
+          if (paramDownloadTask.jdField_a_of_type_Int == 0)
+          {
+            l1 = l2;
+            if (localFile.exists()) {
+              l1 = localFile.length();
+            }
+          }
+          ((PreDownloadController)localObject).a(str, l1);
+        }
+      }
     }
-    ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "0X8004DA3", "0X8004DA3", 0, 0, UpgradeConstants.b(), UpgradeController.b(), UpgradeController.a(), "1");
-    UpgradeDetailActivity.a(BannerManager.a(this.a), UpgradeController.a().a(), true, true, true);
   }
 }
 

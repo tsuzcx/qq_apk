@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.troop.data.TroopAioNotificationBar;
+import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
 
 public class aioy
-  implements Runnable
+  implements ITransCallbackForReport
 {
-  public aioy(TroopAioNotificationBar paramTroopAioNotificationBar) {}
+  public aioy(C2CPicUploadProcessor paramC2CPicUploadProcessor) {}
   
-  public void run()
+  public void onFailed(int paramInt, String paramString1, String paramString2)
   {
-    TroopAioNotificationBar.a(this.a);
+    this.a.a(false, this.a.j, paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aioy
  * JD-Core Version:    0.7.0.1
  */

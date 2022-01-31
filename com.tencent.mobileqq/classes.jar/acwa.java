@@ -1,24 +1,17 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
 
 public class acwa
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public acwa(VideoFileViewer paramVideoFileViewer) {}
+  public acwa(FileVideoManager paramFileVideoManager, Context paramContext, FileVideoManager.FileVideoManagerInitCallback paramFileVideoManagerInitCallback) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (VideoFileViewer.a(this.a).getVisibility() == 0)
-    {
-      Animation localAnimation = VideoFileViewer.a(this.a).getAnimation();
-      if (localAnimation != null) {
-        localAnimation.cancel();
-      }
-      VideoFileViewer.a(this.a).clearAnimation();
-    }
-    VideoFileViewer.a(this.a).setVisibility(8);
+    FileVideoManager.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerInitCallback);
   }
 }
 

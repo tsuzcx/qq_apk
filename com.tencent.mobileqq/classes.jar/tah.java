@@ -1,42 +1,54 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.open.downloadnew.MyAppApi;
-import org.json.JSONObject;
+import android.app.Activity;
+import com.tencent.mobileqq.activity.LoginInfoActivity;
+import com.tencent.mobileqq.utils.JumpQqPimSecureUtil;
+import com.tencent.mobileqq.widget.FormSimpleItem;
+import java.lang.ref.WeakReference;
+import mqq.app.MobileQQ;
 
 public class tah
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public tah(NotificationActivity paramNotificationActivity, String paramString) {}
+  private WeakReference a;
+  private WeakReference b;
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public tah(Activity paramActivity, FormSimpleItem paramFormSimpleItem)
   {
-    try
+    this.a = new WeakReference(paramFormSimpleItem);
+    this.b = new WeakReference(paramActivity);
+  }
+  
+  public void run()
+  {
+    boolean bool1 = JumpQqPimSecureUtil.a(MobileQQ.sMobileQQ);
+    boolean bool2 = JumpQqPimSecureUtil.b(MobileQQ.sMobileQQ);
+    if (!bool1)
     {
-      paramDialogInterface = new JSONObject();
-      paramDialogInterface.put("appid", "100686848");
-      paramDialogInterface.put("apkId", "6633");
-      paramDialogInterface.put("versionCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity.getPackageManager().getPackageInfo(this.jdField_a_of_type_JavaLangString, 16384).versionCode));
-      paramDialogInterface.put("via", "ANDROIDQQ.NEICE.OTHER");
-      paramDialogInterface.put("appPackageName", this.jdField_a_of_type_JavaLangString);
-      paramDialogInterface.put("channel", "000316053134377c30");
-      paramDialogInterface.put("appAuthorizedStr", NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity));
-      paramDialogInterface = paramDialogInterface.toString();
-      MyAppApi.a().a(paramDialogInterface, new tai(this), this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity);
-      NotificationActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityNotificationActivity, true);
-      return;
+      i = LoginInfoActivity.a();
+      if (i == LoginInfoActivity.c()) {
+        break label85;
+      }
     }
-    catch (Exception paramDialogInterface)
+    label85:
+    for (int i = 2131436646;; i = 2131436647)
     {
-      paramDialogInterface.printStackTrace();
+      Activity localActivity = (Activity)this.b.get();
+      if (localActivity != null) {
+        localActivity.runOnUiThread(new taj(i, this.a));
+      }
+      return;
+      if (!bool2)
+      {
+        i = LoginInfoActivity.b();
+        break;
+      }
+      i = LoginInfoActivity.c();
+      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     tah
  * JD-Core Version:    0.7.0.1
  */

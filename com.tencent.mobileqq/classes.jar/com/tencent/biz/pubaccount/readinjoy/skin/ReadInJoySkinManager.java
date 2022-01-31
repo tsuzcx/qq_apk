@@ -20,19 +20,19 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import lwq;
-import lwr;
-import lws;
-import lwt;
-import lwu;
-import lwv;
-import lww;
-import lwx;
-import lwy;
 import lwz;
 import lxa;
 import lxb;
 import lxc;
+import lxd;
+import lxe;
+import lxf;
+import lxg;
+import lxh;
+import lxi;
+import lxj;
+import lxk;
+import lxl;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
@@ -53,13 +53,13 @@ public class ReadInJoySkinManager
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    a(3, new BaseSkinRes[] { new BaseSkinRes(), new lwq(this) });
-    a(2, new BaseSkinRes[] { new BaseSkinRes(), new lwv(this) });
-    a(4, new BaseSkinRes[] { new lww(this), new lwx(this, paramAppInterface) });
-    a(5, new BaseSkinRes[] { new lwy(this), new lwz(this, paramAppInterface) });
-    a(6, new BaseSkinRes[] { new lxa(this), new lxb(this, paramAppInterface) });
-    a(7, new BaseSkinRes[] { new lxc(this), new lwr(this, paramAppInterface) });
-    a(8, new BaseSkinRes[] { new lws(this), new lwt(this) });
+    a(3, new BaseSkinRes[] { new BaseSkinRes(), new lwz(this) });
+    a(2, new BaseSkinRes[] { new BaseSkinRes(), new lxe(this) });
+    a(4, new BaseSkinRes[] { new lxf(this), new lxg(this, paramAppInterface) });
+    a(5, new BaseSkinRes[] { new lxh(this), new lxi(this, paramAppInterface) });
+    a(6, new BaseSkinRes[] { new lxj(this), new lxk(this, paramAppInterface) });
+    a(7, new BaseSkinRes[] { new lxl(this), new lxa(this, paramAppInterface) });
+    a(8, new BaseSkinRes[] { new lxb(this), new lxc(this) });
   }
   
   public static String b()
@@ -82,7 +82,7 @@ public class ReadInJoySkinManager
       paramInt = 0;
       while (paramInt < this.b.size())
       {
-        ((ReadInJoySkinManager.OnSkinChangedListener)this.b.get(paramInt)).B_();
+        ((ReadInJoySkinManager.OnSkinChangedListener)this.b.get(paramInt)).F_();
         paramInt += 1;
       }
     }
@@ -105,7 +105,7 @@ public class ReadInJoySkinManager
   public SkinData a(Context paramContext)
   {
     SkinData localSkinData = null;
-    paramContext = SharedPreUtils.s(paramContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    paramContext = SharedPreUtils.r(paramContext, this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
     if (paramContext != null) {}
     for (;;)
     {
@@ -229,7 +229,7 @@ public class ReadInJoySkinManager
       b(paramInt, paramString);
       return;
     }
-    ThreadManager.getUIHandler().post(new lwu(this, paramInt, paramString));
+    ThreadManager.getUIHandler().post(new lxd(this, paramInt, paramString));
   }
   
   public void a(int paramInt, BaseSkinRes... paramVarArgs)
@@ -300,7 +300,7 @@ public class ReadInJoySkinManager
   public void b(String paramString, BaseResData paramBaseResData)
   {
     SharedPreUtils.w(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), paramBaseResData.id);
-    SharedPreUtils.H(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    SharedPreUtils.G(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
   }
   
   public boolean b(String paramString, BaseResData paramBaseResData)

@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.utils;
 
-import ajob;
+import akci;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.ContentResolver;
@@ -193,7 +193,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839128);
+      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839132);
       if ((localBitmap1 != null) && (BaseApplicationImpl.sImageCache != null)) {
         BaseApplicationImpl.sImageCache.put("static://DefaultFace", localBitmap1);
       }
@@ -221,7 +221,7 @@ public class ImageUtil
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject2 = c(BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130843311), 10.0F, 70, 70);
+        localObject2 = c(BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130843427), 10.0F, 70, 70);
         localObject1 = localObject2;
         if (localObject2 != null)
         {
@@ -250,7 +250,7 @@ public class ImageUtil
           }
           localObject1 = localObject2;
         } while (localObject2 != null);
-        localObject2 = c(BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130843311), 70, 70);
+        localObject2 = c(BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130843427), 70, 70);
         localObject1 = localObject2;
       } while (localObject2 == null);
       localObject1 = localObject2;
@@ -2021,16 +2021,16 @@ public class ImageUtil
     //   160: ifne +102 -> 262
     //   163: aload_1
     //   164: invokevirtual 243	android/graphics/Bitmap:getWidth	()I
-    //   167: istore 10
-    //   169: aload_1
-    //   170: invokevirtual 246	android/graphics/Bitmap:getHeight	()I
-    //   173: istore_0
-    //   174: iload 10
-    //   176: iload 7
-    //   178: if_icmpgt +12 -> 190
-    //   181: aload_1
-    //   182: astore 13
-    //   184: iload_0
+    //   167: istore_0
+    //   168: aload_1
+    //   169: invokevirtual 246	android/graphics/Bitmap:getHeight	()I
+    //   172: istore 10
+    //   174: iload_0
+    //   175: iload 7
+    //   177: if_icmpgt +13 -> 190
+    //   180: aload_1
+    //   181: astore 13
+    //   183: iload 10
     //   185: iload 7
     //   187: if_icmple +11 -> 198
     //   190: aload_1
@@ -2153,7 +2153,7 @@ public class ImageUtil
     //   439: astore 20
     //   441: iload 5
     //   443: sipush 3000
-    //   446: if_icmpne +829 -> 1275
+    //   446: if_icmpne +830 -> 1276
     //   449: iload 5
     //   451: sipush 1001
     //   454: if_icmpeq +11 -> 465
@@ -2218,14 +2218,14 @@ public class ImageUtil
     //   579: iload 10
     //   581: i2l
     //   582: lcmp
-    //   583: ifle +592 -> 1175
+    //   583: ifle +593 -> 1176
     //   586: aload 13
     //   588: astore 17
     //   590: aload_1
     //   591: astore 16
     //   593: aload_2
     //   594: invokestatic 969	com/tencent/image/GifDrawable:isGifFile	(Ljava/io/File;)Z
-    //   597: ifne +578 -> 1175
+    //   597: ifne +579 -> 1176
     //   600: aload 4
     //   602: ldc_w 911
     //   605: ldc_w 971
@@ -2236,7 +2236,7 @@ public class ImageUtil
     //   616: astore 16
     //   618: aload_3
     //   619: invokevirtual 667	java/io/File:delete	()Z
-    //   622: ifeq +553 -> 1175
+    //   622: ifeq +554 -> 1176
     //   625: aload_3
     //   626: invokevirtual 664	java/io/File:createNewFile	()Z
     //   629: istore 8
@@ -2245,7 +2245,7 @@ public class ImageUtil
     //   635: aload_1
     //   636: astore 16
     //   638: iload 8
-    //   640: ifeq +535 -> 1175
+    //   640: ifeq +536 -> 1176
     //   643: iconst_1
     //   644: istore 5
     //   646: iload 7
@@ -2256,7 +2256,7 @@ public class ImageUtil
     //   653: istore 7
     //   655: iload 5
     //   657: iconst_4
-    //   658: if_icmpge +487 -> 1145
+    //   658: if_icmpge +488 -> 1146
     //   661: aload_1
     //   662: astore 14
     //   664: aload_1
@@ -2266,7 +2266,7 @@ public class ImageUtil
     //   671: iload 10
     //   673: i2l
     //   674: lcmp
-    //   675: ifle +470 -> 1145
+    //   675: ifle +471 -> 1146
     //   678: aload_1
     //   679: astore 14
     //   681: aload_1
@@ -2290,7 +2290,7 @@ public class ImageUtil
     //   723: ishr
     //   724: istore_0
     //   725: iload_0
-    //   726: ifne +1040 -> 1766
+    //   726: ifne +1041 -> 1767
     //   729: iconst_1
     //   730: istore_0
     //   731: aload_1
@@ -2302,7 +2302,7 @@ public class ImageUtil
     //   739: invokestatic 929	com/tencent/mobileqq/utils/ImageUtil:a	(Landroid/graphics/Bitmap;I)Landroid/graphics/Bitmap;
     //   742: astore_1
     //   743: aload_1
-    //   744: ifnonnull +349 -> 1093
+    //   744: ifnonnull +350 -> 1094
     //   747: aload_1
     //   748: astore 14
     //   750: aload_1
@@ -2313,11 +2313,11 @@ public class ImageUtil
     //   759: aload 13
     //   761: ifnull +21 -> 782
     //   764: aload_1
-    //   765: astore_3
-    //   766: aload 13
-    //   768: astore 15
-    //   770: aload_1
-    //   771: astore 16
+    //   765: astore 16
+    //   767: aload 13
+    //   769: astore 15
+    //   771: aload_1
+    //   772: astore_3
     //   773: aload 13
     //   775: astore 14
     //   777: aload 13
@@ -2325,22 +2325,22 @@ public class ImageUtil
     //   782: aload_1
     //   783: ifnull +40 -> 823
     //   786: aload_1
-    //   787: astore_3
-    //   788: aload 13
-    //   790: astore 15
-    //   792: aload_1
-    //   793: astore 16
+    //   787: astore 16
+    //   789: aload 13
+    //   791: astore 15
+    //   793: aload_1
+    //   794: astore_3
     //   795: aload 13
     //   797: astore 14
     //   799: aload_1
     //   800: invokevirtual 397	android/graphics/Bitmap:isRecycled	()Z
     //   803: ifne +20 -> 823
     //   806: aload_1
-    //   807: astore_3
-    //   808: aload 13
-    //   810: astore 15
-    //   812: aload_1
-    //   813: astore 16
+    //   807: astore 16
+    //   809: aload 13
+    //   811: astore 15
+    //   813: aload_1
+    //   814: astore_3
     //   815: aload 13
     //   817: astore 14
     //   819: aload_1
@@ -2460,11 +2460,11 @@ public class ImageUtil
     //   1041: goto -556 -> 485
     //   1044: astore_2
     //   1045: aload_1
-    //   1046: astore_3
-    //   1047: aload 13
-    //   1049: astore 15
-    //   1051: aload_1
-    //   1052: astore 16
+    //   1046: astore 16
+    //   1048: aload 13
+    //   1050: astore 15
+    //   1052: aload_1
+    //   1053: astore_3
     //   1054: aload 13
     //   1056: astore 14
     //   1058: new 49	java/lang/StringBuilder
@@ -2479,359 +2479,359 @@ public class ImageUtil
     //   1081: invokestatic 68	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
     //   1084: goto -302 -> 782
     //   1087: astore_1
-    //   1088: aload_3
-    //   1089: astore_1
-    //   1090: goto -119 -> 971
-    //   1093: aload_1
-    //   1094: astore 14
-    //   1096: aload_1
-    //   1097: astore 15
-    //   1099: new 814	java/io/FileOutputStream
-    //   1102: dup
-    //   1103: aload_3
-    //   1104: invokespecial 815	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   1107: astore_2
-    //   1108: aload 4
-    //   1110: aload_1
-    //   1111: getstatic 841	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   1114: iload 6
-    //   1116: aload_2
-    //   1117: invokevirtual 828	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   1120: putfield 939	com/tencent/mobileqq/activity/photo/ImageInfo:l	Z
-    //   1123: aload 4
-    //   1125: getfield 939	com/tencent/mobileqq/activity/photo/ImageInfo:l	Z
-    //   1128: ifeq +628 -> 1756
-    //   1131: aload_2
-    //   1132: invokestatic 945	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/FileOutputStream;)V
-    //   1135: iload 7
-    //   1137: istore 5
-    //   1139: aload_2
-    //   1140: astore 13
-    //   1142: goto -493 -> 649
-    //   1145: iload 7
-    //   1147: iconst_4
-    //   1148: if_icmplt +20 -> 1168
-    //   1151: aload_1
-    //   1152: astore 14
-    //   1154: aload_1
-    //   1155: astore 15
-    //   1157: aload 4
-    //   1159: ldc_w 911
-    //   1162: ldc_w 991
-    //   1165: invokestatic 918	com/tencent/mobileqq/utils/ImageUtil:a	(Lcom/tencent/mobileqq/activity/photo/ImageInfo;Ljava/lang/String;Ljava/lang/String;)V
-    //   1168: aload_1
-    //   1169: astore 16
-    //   1171: aload 13
-    //   1173: astore 17
-    //   1175: aload 17
-    //   1177: ifnull +24 -> 1201
-    //   1180: aload 17
-    //   1182: astore 15
-    //   1184: aload 16
-    //   1186: astore 21
-    //   1188: aload 17
-    //   1190: astore 14
-    //   1192: aload 16
-    //   1194: astore 18
-    //   1196: aload 17
-    //   1198: invokevirtual 955	java/io/FileOutputStream:close	()V
-    //   1201: aload 17
-    //   1203: astore 19
-    //   1205: aload 16
-    //   1207: astore 20
-    //   1209: aload 16
-    //   1211: ifnull +64 -> 1275
-    //   1214: aload 17
-    //   1216: astore 15
-    //   1218: aload 16
-    //   1220: astore 21
-    //   1222: aload 17
-    //   1224: astore 19
-    //   1226: aload 16
-    //   1228: astore 20
-    //   1230: aload 17
-    //   1232: astore 14
-    //   1234: aload 16
-    //   1236: astore 18
-    //   1238: aload 16
-    //   1240: invokevirtual 397	android/graphics/Bitmap:isRecycled	()Z
-    //   1243: ifne +32 -> 1275
-    //   1246: aload 17
-    //   1248: astore 15
-    //   1250: aload 16
-    //   1252: astore 21
-    //   1254: aload 17
-    //   1256: astore 14
-    //   1258: aload 16
-    //   1260: astore 18
-    //   1262: aload 16
-    //   1264: invokevirtual 404	android/graphics/Bitmap:recycle	()V
-    //   1267: aload 16
-    //   1269: astore 20
-    //   1271: aload 17
-    //   1273: astore 19
-    //   1275: aload 19
-    //   1277: ifnull +8 -> 1285
-    //   1280: aload 19
-    //   1282: invokevirtual 955	java/io/FileOutputStream:close	()V
-    //   1285: aload 20
-    //   1287: ifnull -1150 -> 137
-    //   1290: aload 20
-    //   1292: invokevirtual 397	android/graphics/Bitmap:isRecycled	()Z
-    //   1295: ifne -1158 -> 137
-    //   1298: aload 20
-    //   1300: invokevirtual 404	android/graphics/Bitmap:recycle	()V
-    //   1303: return
-    //   1304: astore_1
-    //   1305: aload 17
-    //   1307: astore 15
-    //   1309: aload 16
-    //   1311: astore 21
-    //   1313: aload 17
-    //   1315: astore 14
-    //   1317: aload 16
-    //   1319: astore 18
-    //   1321: new 49	java/lang/StringBuilder
-    //   1324: dup
-    //   1325: invokespecial 50	java/lang/StringBuilder:<init>	()V
-    //   1328: ldc_w 988
-    //   1331: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1334: aload_1
-    //   1335: invokevirtual 989	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   1338: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1341: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1344: invokestatic 68	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
-    //   1347: goto -146 -> 1201
-    //   1350: astore_1
-    //   1351: aload 18
-    //   1353: astore_2
-    //   1354: aload 14
-    //   1356: ifnull +8 -> 1364
-    //   1359: aload 14
-    //   1361: invokevirtual 955	java/io/FileOutputStream:close	()V
-    //   1364: aload_2
-    //   1365: ifnull +14 -> 1379
-    //   1368: aload_2
-    //   1369: invokevirtual 397	android/graphics/Bitmap:isRecycled	()Z
-    //   1372: ifne +7 -> 1379
-    //   1375: aload_2
-    //   1376: invokevirtual 404	android/graphics/Bitmap:recycle	()V
-    //   1379: aload_1
-    //   1380: athrow
-    //   1381: astore_2
-    //   1382: aload_1
-    //   1383: astore_2
-    //   1384: aload 13
-    //   1386: astore_1
-    //   1387: aload 4
-    //   1389: iconst_0
-    //   1390: putfield 942	com/tencent/mobileqq/activity/photo/ImageInfo:o	Z
-    //   1393: aload 4
-    //   1395: invokestatic 977	com/tencent/mobileqq/utils/ImageUtil:a	()Z
-    //   1398: putfield 980	com/tencent/mobileqq/activity/photo/ImageInfo:m	Z
-    //   1401: ldc_w 993
-    //   1404: invokestatic 68	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
-    //   1407: aload_1
-    //   1408: ifnull +7 -> 1415
-    //   1411: aload_1
-    //   1412: invokevirtual 955	java/io/FileOutputStream:close	()V
-    //   1415: aload_2
-    //   1416: ifnull +331 -> 1747
-    //   1419: aload_2
-    //   1420: invokevirtual 397	android/graphics/Bitmap:isRecycled	()Z
-    //   1423: ifne +324 -> 1747
-    //   1426: aload_2
-    //   1427: invokevirtual 404	android/graphics/Bitmap:recycle	()V
-    //   1430: aload_1
-    //   1431: astore 19
-    //   1433: aload_2
-    //   1434: astore 20
-    //   1436: goto -161 -> 1275
-    //   1439: astore_3
-    //   1440: new 49	java/lang/StringBuilder
-    //   1443: dup
-    //   1444: invokespecial 50	java/lang/StringBuilder:<init>	()V
-    //   1447: ldc_w 988
-    //   1450: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1453: aload_3
-    //   1454: invokevirtual 989	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   1457: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1460: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1463: invokestatic 68	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
-    //   1466: goto -51 -> 1415
-    //   1469: astore_3
-    //   1470: aload_1
-    //   1471: astore 15
-    //   1473: aload_2
-    //   1474: astore_1
-    //   1475: goto -504 -> 971
-    //   1478: astore_2
-    //   1479: aload 13
-    //   1481: ifnull +21 -> 1502
-    //   1484: aload_1
-    //   1485: astore_3
-    //   1486: aload 13
-    //   1488: astore 15
-    //   1490: aload_1
-    //   1491: astore 16
-    //   1493: aload 13
-    //   1495: astore 14
-    //   1497: aload 13
-    //   1499: invokevirtual 955	java/io/FileOutputStream:close	()V
-    //   1502: aload_1
-    //   1503: ifnull +40 -> 1543
-    //   1506: aload_1
-    //   1507: astore_3
-    //   1508: aload 13
-    //   1510: astore 15
-    //   1512: aload_1
-    //   1513: astore 16
-    //   1515: aload 13
-    //   1517: astore 14
-    //   1519: aload_1
-    //   1520: invokevirtual 397	android/graphics/Bitmap:isRecycled	()Z
-    //   1523: ifne +20 -> 1543
-    //   1526: aload_1
-    //   1527: astore_3
-    //   1528: aload 13
-    //   1530: astore 15
-    //   1532: aload_1
-    //   1533: astore 16
-    //   1535: aload 13
-    //   1537: astore 14
-    //   1539: aload_1
-    //   1540: invokevirtual 404	android/graphics/Bitmap:recycle	()V
-    //   1543: aload_1
-    //   1544: astore_3
-    //   1545: aload 13
-    //   1547: astore 15
-    //   1549: aload_1
-    //   1550: astore 16
-    //   1552: aload 13
-    //   1554: astore 14
-    //   1556: aload_2
-    //   1557: athrow
-    //   1558: astore 17
-    //   1560: aload_1
-    //   1561: astore_3
-    //   1562: aload 13
-    //   1564: astore 15
-    //   1566: aload_1
-    //   1567: astore 16
-    //   1569: aload 13
-    //   1571: astore 14
-    //   1573: new 49	java/lang/StringBuilder
-    //   1576: dup
-    //   1577: invokespecial 50	java/lang/StringBuilder:<init>	()V
-    //   1580: ldc_w 988
-    //   1583: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1586: aload 17
-    //   1588: invokevirtual 989	java/io/IOException:getMessage	()Ljava/lang/String;
-    //   1591: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1594: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1597: invokestatic 68	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
-    //   1600: goto -98 -> 1502
-    //   1603: astore_2
-    //   1604: goto -1482 -> 122
-    //   1607: astore_2
-    //   1608: goto -1362 -> 246
-    //   1611: astore 13
-    //   1613: aload 16
-    //   1615: astore 13
-    //   1617: goto -1205 -> 412
-    //   1620: astore 13
-    //   1622: goto -669 -> 953
-    //   1625: astore_2
-    //   1626: goto -793 -> 833
-    //   1629: astore_1
-    //   1630: goto -345 -> 1285
-    //   1633: astore_2
-    //   1634: goto -614 -> 1020
-    //   1637: astore_3
-    //   1638: goto -274 -> 1364
-    //   1641: astore_1
-    //   1642: aconst_null
-    //   1643: astore 14
-    //   1645: aload 13
-    //   1647: astore_2
-    //   1648: goto -294 -> 1354
-    //   1651: astore_3
-    //   1652: aload_1
-    //   1653: astore_2
-    //   1654: aconst_null
-    //   1655: astore 14
-    //   1657: aload_3
-    //   1658: astore_1
-    //   1659: goto -305 -> 1354
-    //   1662: astore_3
-    //   1663: aload_1
-    //   1664: astore 14
-    //   1666: aload_3
-    //   1667: astore_1
-    //   1668: goto -314 -> 1354
-    //   1671: astore_1
-    //   1672: aconst_null
-    //   1673: astore 15
-    //   1675: aload 14
-    //   1677: astore_1
-    //   1678: goto -707 -> 971
-    //   1681: astore_2
-    //   1682: aconst_null
-    //   1683: astore 15
-    //   1685: goto -714 -> 971
-    //   1688: astore_2
-    //   1689: aload 14
-    //   1691: astore_1
-    //   1692: goto -213 -> 1479
-    //   1695: astore_3
-    //   1696: aload_2
-    //   1697: astore 13
-    //   1699: aload_3
-    //   1700: astore_2
-    //   1701: goto -222 -> 1479
-    //   1704: astore_3
-    //   1705: aload_1
-    //   1706: astore 13
-    //   1708: aload_2
-    //   1709: astore_1
-    //   1710: aload_3
-    //   1711: astore_2
-    //   1712: goto -233 -> 1479
-    //   1715: astore_1
-    //   1716: aload 15
-    //   1718: astore_2
-    //   1719: aload 13
-    //   1721: astore_1
-    //   1722: goto -335 -> 1387
-    //   1725: astore_3
-    //   1726: aload_2
-    //   1727: astore_3
-    //   1728: aload_1
-    //   1729: astore_2
-    //   1730: aload_3
-    //   1731: astore_1
-    //   1732: goto -345 -> 1387
-    //   1735: astore_3
-    //   1736: aload 13
-    //   1738: astore_2
-    //   1739: goto -806 -> 933
-    //   1742: astore 13
-    //   1744: goto -890 -> 854
-    //   1747: aload_1
-    //   1748: astore 19
-    //   1750: aload_2
-    //   1751: astore 20
-    //   1753: goto -478 -> 1275
-    //   1756: iload 7
-    //   1758: istore 5
-    //   1760: aload_2
-    //   1761: astore 13
-    //   1763: goto -1114 -> 649
-    //   1766: goto -1035 -> 731
-    //   1769: astore_1
-    //   1770: aload 16
+    //   1088: aload 16
+    //   1090: astore_1
+    //   1091: goto -120 -> 971
+    //   1094: aload_1
+    //   1095: astore 14
+    //   1097: aload_1
+    //   1098: astore 15
+    //   1100: new 814	java/io/FileOutputStream
+    //   1103: dup
+    //   1104: aload_3
+    //   1105: invokespecial 815	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   1108: astore_2
+    //   1109: aload 4
+    //   1111: aload_1
+    //   1112: getstatic 841	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   1115: iload 6
+    //   1117: aload_2
+    //   1118: invokevirtual 828	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   1121: putfield 939	com/tencent/mobileqq/activity/photo/ImageInfo:l	Z
+    //   1124: aload 4
+    //   1126: getfield 939	com/tencent/mobileqq/activity/photo/ImageInfo:l	Z
+    //   1129: ifeq +628 -> 1757
+    //   1132: aload_2
+    //   1133: invokestatic 945	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/io/FileOutputStream;)V
+    //   1136: iload 7
+    //   1138: istore 5
+    //   1140: aload_2
+    //   1141: astore 13
+    //   1143: goto -494 -> 649
+    //   1146: iload 7
+    //   1148: iconst_4
+    //   1149: if_icmplt +20 -> 1169
+    //   1152: aload_1
+    //   1153: astore 14
+    //   1155: aload_1
+    //   1156: astore 15
+    //   1158: aload 4
+    //   1160: ldc_w 911
+    //   1163: ldc_w 991
+    //   1166: invokestatic 918	com/tencent/mobileqq/utils/ImageUtil:a	(Lcom/tencent/mobileqq/activity/photo/ImageInfo;Ljava/lang/String;Ljava/lang/String;)V
+    //   1169: aload_1
+    //   1170: astore 16
+    //   1172: aload 13
+    //   1174: astore 17
+    //   1176: aload 17
+    //   1178: ifnull +24 -> 1202
+    //   1181: aload 17
+    //   1183: astore 15
+    //   1185: aload 16
+    //   1187: astore 21
+    //   1189: aload 17
+    //   1191: astore 14
+    //   1193: aload 16
+    //   1195: astore 18
+    //   1197: aload 17
+    //   1199: invokevirtual 955	java/io/FileOutputStream:close	()V
+    //   1202: aload 17
+    //   1204: astore 19
+    //   1206: aload 16
+    //   1208: astore 20
+    //   1210: aload 16
+    //   1212: ifnull +64 -> 1276
+    //   1215: aload 17
+    //   1217: astore 15
+    //   1219: aload 16
+    //   1221: astore 21
+    //   1223: aload 17
+    //   1225: astore 19
+    //   1227: aload 16
+    //   1229: astore 20
+    //   1231: aload 17
+    //   1233: astore 14
+    //   1235: aload 16
+    //   1237: astore 18
+    //   1239: aload 16
+    //   1241: invokevirtual 397	android/graphics/Bitmap:isRecycled	()Z
+    //   1244: ifne +32 -> 1276
+    //   1247: aload 17
+    //   1249: astore 15
+    //   1251: aload 16
+    //   1253: astore 21
+    //   1255: aload 17
+    //   1257: astore 14
+    //   1259: aload 16
+    //   1261: astore 18
+    //   1263: aload 16
+    //   1265: invokevirtual 404	android/graphics/Bitmap:recycle	()V
+    //   1268: aload 16
+    //   1270: astore 20
+    //   1272: aload 17
+    //   1274: astore 19
+    //   1276: aload 19
+    //   1278: ifnull +8 -> 1286
+    //   1281: aload 19
+    //   1283: invokevirtual 955	java/io/FileOutputStream:close	()V
+    //   1286: aload 20
+    //   1288: ifnull -1151 -> 137
+    //   1291: aload 20
+    //   1293: invokevirtual 397	android/graphics/Bitmap:isRecycled	()Z
+    //   1296: ifne -1159 -> 137
+    //   1299: aload 20
+    //   1301: invokevirtual 404	android/graphics/Bitmap:recycle	()V
+    //   1304: return
+    //   1305: astore_1
+    //   1306: aload 17
+    //   1308: astore 15
+    //   1310: aload 16
+    //   1312: astore 21
+    //   1314: aload 17
+    //   1316: astore 14
+    //   1318: aload 16
+    //   1320: astore 18
+    //   1322: new 49	java/lang/StringBuilder
+    //   1325: dup
+    //   1326: invokespecial 50	java/lang/StringBuilder:<init>	()V
+    //   1329: ldc_w 988
+    //   1332: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1335: aload_1
+    //   1336: invokevirtual 989	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   1339: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1342: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1345: invokestatic 68	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
+    //   1348: goto -146 -> 1202
+    //   1351: astore_1
+    //   1352: aload 18
+    //   1354: astore_2
+    //   1355: aload 14
+    //   1357: ifnull +8 -> 1365
+    //   1360: aload 14
+    //   1362: invokevirtual 955	java/io/FileOutputStream:close	()V
+    //   1365: aload_2
+    //   1366: ifnull +14 -> 1380
+    //   1369: aload_2
+    //   1370: invokevirtual 397	android/graphics/Bitmap:isRecycled	()Z
+    //   1373: ifne +7 -> 1380
+    //   1376: aload_2
+    //   1377: invokevirtual 404	android/graphics/Bitmap:recycle	()V
+    //   1380: aload_1
+    //   1381: athrow
+    //   1382: astore_2
+    //   1383: aload_1
+    //   1384: astore_2
+    //   1385: aload 13
+    //   1387: astore_1
+    //   1388: aload 4
+    //   1390: iconst_0
+    //   1391: putfield 942	com/tencent/mobileqq/activity/photo/ImageInfo:o	Z
+    //   1394: aload 4
+    //   1396: invokestatic 977	com/tencent/mobileqq/utils/ImageUtil:a	()Z
+    //   1399: putfield 980	com/tencent/mobileqq/activity/photo/ImageInfo:m	Z
+    //   1402: ldc_w 993
+    //   1405: invokestatic 68	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
+    //   1408: aload_1
+    //   1409: ifnull +7 -> 1416
+    //   1412: aload_1
+    //   1413: invokevirtual 955	java/io/FileOutputStream:close	()V
+    //   1416: aload_2
+    //   1417: ifnull +331 -> 1748
+    //   1420: aload_2
+    //   1421: invokevirtual 397	android/graphics/Bitmap:isRecycled	()Z
+    //   1424: ifne +324 -> 1748
+    //   1427: aload_2
+    //   1428: invokevirtual 404	android/graphics/Bitmap:recycle	()V
+    //   1431: aload_1
+    //   1432: astore 19
+    //   1434: aload_2
+    //   1435: astore 20
+    //   1437: goto -161 -> 1276
+    //   1440: astore_3
+    //   1441: new 49	java/lang/StringBuilder
+    //   1444: dup
+    //   1445: invokespecial 50	java/lang/StringBuilder:<init>	()V
+    //   1448: ldc_w 988
+    //   1451: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1454: aload_3
+    //   1455: invokevirtual 989	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   1458: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1461: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1464: invokestatic 68	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
+    //   1467: goto -51 -> 1416
+    //   1470: astore_3
+    //   1471: aload_1
+    //   1472: astore 15
+    //   1474: aload_2
+    //   1475: astore_1
+    //   1476: goto -505 -> 971
+    //   1479: astore_2
+    //   1480: aload 13
+    //   1482: ifnull +21 -> 1503
+    //   1485: aload_1
+    //   1486: astore 16
+    //   1488: aload 13
+    //   1490: astore 15
+    //   1492: aload_1
+    //   1493: astore_3
+    //   1494: aload 13
+    //   1496: astore 14
+    //   1498: aload 13
+    //   1500: invokevirtual 955	java/io/FileOutputStream:close	()V
+    //   1503: aload_1
+    //   1504: ifnull +40 -> 1544
+    //   1507: aload_1
+    //   1508: astore 16
+    //   1510: aload 13
+    //   1512: astore 15
+    //   1514: aload_1
+    //   1515: astore_3
+    //   1516: aload 13
+    //   1518: astore 14
+    //   1520: aload_1
+    //   1521: invokevirtual 397	android/graphics/Bitmap:isRecycled	()Z
+    //   1524: ifne +20 -> 1544
+    //   1527: aload_1
+    //   1528: astore 16
+    //   1530: aload 13
+    //   1532: astore 15
+    //   1534: aload_1
+    //   1535: astore_3
+    //   1536: aload 13
+    //   1538: astore 14
+    //   1540: aload_1
+    //   1541: invokevirtual 404	android/graphics/Bitmap:recycle	()V
+    //   1544: aload_1
+    //   1545: astore 16
+    //   1547: aload 13
+    //   1549: astore 15
+    //   1551: aload_1
+    //   1552: astore_3
+    //   1553: aload 13
+    //   1555: astore 14
+    //   1557: aload_2
+    //   1558: athrow
+    //   1559: astore 17
+    //   1561: aload_1
+    //   1562: astore 16
+    //   1564: aload 13
+    //   1566: astore 15
+    //   1568: aload_1
+    //   1569: astore_3
+    //   1570: aload 13
+    //   1572: astore 14
+    //   1574: new 49	java/lang/StringBuilder
+    //   1577: dup
+    //   1578: invokespecial 50	java/lang/StringBuilder:<init>	()V
+    //   1581: ldc_w 988
+    //   1584: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1587: aload 17
+    //   1589: invokevirtual 989	java/io/IOException:getMessage	()Ljava/lang/String;
+    //   1592: invokevirtual 56	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1595: invokevirtual 65	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1598: invokestatic 68	com/tencent/mobileqq/utils/ImageUtil:a	(Ljava/lang/String;)V
+    //   1601: goto -98 -> 1503
+    //   1604: astore_2
+    //   1605: goto -1483 -> 122
+    //   1608: astore_2
+    //   1609: goto -1363 -> 246
+    //   1612: astore 13
+    //   1614: aload 16
+    //   1616: astore 13
+    //   1618: goto -1206 -> 412
+    //   1621: astore 13
+    //   1623: goto -670 -> 953
+    //   1626: astore_2
+    //   1627: goto -794 -> 833
+    //   1630: astore_1
+    //   1631: goto -345 -> 1286
+    //   1634: astore_2
+    //   1635: goto -615 -> 1020
+    //   1638: astore_3
+    //   1639: goto -274 -> 1365
+    //   1642: astore_1
+    //   1643: aconst_null
+    //   1644: astore 14
+    //   1646: aload 13
+    //   1648: astore_2
+    //   1649: goto -294 -> 1355
+    //   1652: astore_3
+    //   1653: aload_1
+    //   1654: astore_2
+    //   1655: aconst_null
+    //   1656: astore 14
+    //   1658: aload_3
+    //   1659: astore_1
+    //   1660: goto -305 -> 1355
+    //   1663: astore_3
+    //   1664: aload_1
+    //   1665: astore 14
+    //   1667: aload_3
+    //   1668: astore_1
+    //   1669: goto -314 -> 1355
+    //   1672: astore_1
+    //   1673: aconst_null
+    //   1674: astore 15
+    //   1676: aload 14
+    //   1678: astore_1
+    //   1679: goto -708 -> 971
+    //   1682: astore_2
+    //   1683: aconst_null
+    //   1684: astore 15
+    //   1686: goto -715 -> 971
+    //   1689: astore_2
+    //   1690: aload 14
+    //   1692: astore_1
+    //   1693: goto -213 -> 1480
+    //   1696: astore_3
+    //   1697: aload_2
+    //   1698: astore 13
+    //   1700: aload_3
+    //   1701: astore_2
+    //   1702: goto -222 -> 1480
+    //   1705: astore_3
+    //   1706: aload_1
+    //   1707: astore 13
+    //   1709: aload_2
+    //   1710: astore_1
+    //   1711: aload_3
+    //   1712: astore_2
+    //   1713: goto -233 -> 1480
+    //   1716: astore_1
+    //   1717: aload 15
+    //   1719: astore_2
+    //   1720: aload 13
+    //   1722: astore_1
+    //   1723: goto -335 -> 1388
+    //   1726: astore_3
+    //   1727: aload_1
+    //   1728: astore_3
+    //   1729: aload_2
+    //   1730: astore_1
+    //   1731: aload_3
+    //   1732: astore_2
+    //   1733: goto -345 -> 1388
+    //   1736: astore_3
+    //   1737: aload 13
+    //   1739: astore_2
+    //   1740: goto -807 -> 933
+    //   1743: astore 13
+    //   1745: goto -891 -> 854
+    //   1748: aload_1
+    //   1749: astore 19
+    //   1751: aload_2
+    //   1752: astore 20
+    //   1754: goto -478 -> 1276
+    //   1757: iload 7
+    //   1759: istore 5
+    //   1761: aload_2
+    //   1762: astore 13
+    //   1764: goto -1115 -> 649
+    //   1767: goto -1036 -> 731
+    //   1770: astore_1
+    //   1771: aload_3
     //   1772: astore_2
-    //   1773: goto -419 -> 1354
+    //   1773: goto -418 -> 1355
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	1776	0	paramInt1	int
@@ -2844,28 +2844,28 @@ public class ImageUtil
     //   0	1776	7	paramInt4	int
     //   0	1776	8	paramBoolean1	boolean
     //   0	1776	9	paramBoolean2	boolean
-    //   167	505	10	i	int
+    //   172	500	10	i	int
     //   483	557	11	l	long
     //   76	753	13	localObject1	Object
     //   849	1	13	localIOException1	IOException
     //   856	61	13	localObject2	Object
     //   921	1	13	localIOException2	IOException
-    //   925	645	13	localObject3	Object
-    //   1611	1	13	localIOException3	IOException
-    //   1615	1	13	localObject4	Object
-    //   1620	26	13	localIOException4	IOException
-    //   1697	40	13	localObject5	Object
-    //   1742	1	13	localIOException5	IOException
-    //   1761	1	13	localFile	File
-    //   73	1617	14	localObject6	Object
-    //   391	1326	15	localObject7	Object
-    //   283	1488	16	localObject8	Object
-    //   570	744	17	localObject9	Object
-    //   1558	29	17	localIOException6	IOException
-    //   401	951	18	localObject10	Object
-    //   436	1313	19	localObject11	Object
-    //   439	1313	20	localObject12	Object
-    //   394	918	21	localObject13	Object
+    //   925	646	13	localObject3	Object
+    //   1612	1	13	localIOException3	IOException
+    //   1616	1	13	localObject4	Object
+    //   1621	26	13	localIOException4	IOException
+    //   1698	40	13	localObject5	Object
+    //   1743	1	13	localIOException5	IOException
+    //   1762	1	13	localFile	File
+    //   73	1618	14	localObject6	Object
+    //   391	1327	15	localObject7	Object
+    //   283	1332	16	localObject8	Object
+    //   570	745	17	localObject9	Object
+    //   1559	29	17	localIOException6	IOException
+    //   401	952	18	localObject10	Object
+    //   436	1314	19	localObject11	Object
+    //   439	1314	20	localObject12	Object
+    //   394	919	21	localObject13	Object
     // Exception table:
     //   from	to	target	type
     //   275	285	849	java/io/IOException
@@ -2878,110 +2878,110 @@ public class ImageUtil
     //   909	914	967	java/lang/OutOfMemoryError
     //   949	953	967	java/lang/OutOfMemoryError
     //   965	967	967	java/lang/OutOfMemoryError
-    //   1196	1201	967	java/lang/OutOfMemoryError
-    //   1238	1246	967	java/lang/OutOfMemoryError
-    //   1262	1267	967	java/lang/OutOfMemoryError
-    //   1321	1347	967	java/lang/OutOfMemoryError
+    //   1197	1202	967	java/lang/OutOfMemoryError
+    //   1239	1247	967	java/lang/OutOfMemoryError
+    //   1263	1268	967	java/lang/OutOfMemoryError
+    //   1322	1348	967	java/lang/OutOfMemoryError
     //   777	782	1044	java/io/IOException
     //   777	782	1087	java/lang/OutOfMemoryError
     //   799	806	1087	java/lang/OutOfMemoryError
     //   819	823	1087	java/lang/OutOfMemoryError
     //   1058	1084	1087	java/lang/OutOfMemoryError
-    //   1497	1502	1087	java/lang/OutOfMemoryError
-    //   1519	1526	1087	java/lang/OutOfMemoryError
-    //   1539	1543	1087	java/lang/OutOfMemoryError
-    //   1556	1558	1087	java/lang/OutOfMemoryError
-    //   1573	1600	1087	java/lang/OutOfMemoryError
-    //   1196	1201	1304	java/io/IOException
-    //   403	408	1350	finally
-    //   479	485	1350	finally
-    //   504	528	1350	finally
-    //   542	568	1350	finally
-    //   909	914	1350	finally
-    //   949	953	1350	finally
-    //   965	967	1350	finally
-    //   978	984	1350	finally
-    //   991	997	1350	finally
-    //   1004	1010	1350	finally
-    //   1196	1201	1350	finally
-    //   1238	1246	1350	finally
-    //   1262	1267	1350	finally
-    //   1321	1347	1350	finally
-    //   575	586	1381	java/io/IOException
-    //   593	611	1381	java/io/IOException
-    //   618	631	1381	java/io/IOException
-    //   1411	1415	1439	java/io/IOException
-    //   1411	1415	1469	java/lang/OutOfMemoryError
-    //   1419	1430	1469	java/lang/OutOfMemoryError
-    //   1440	1466	1469	java/lang/OutOfMemoryError
-    //   575	586	1478	finally
-    //   593	611	1478	finally
-    //   618	631	1478	finally
-    //   1497	1502	1558	java/io/IOException
-    //   114	122	1603	java/io/IOException
-    //   238	246	1607	java/io/IOException
-    //   403	408	1611	java/io/IOException
-    //   949	953	1620	java/io/IOException
-    //   828	833	1625	java/io/IOException
-    //   1280	1285	1629	java/io/IOException
-    //   1015	1020	1633	java/io/IOException
-    //   1359	1364	1637	java/io/IOException
-    //   78	89	1641	finally
-    //   211	222	1641	finally
-    //   228	234	1641	finally
-    //   93	110	1651	finally
-    //   152	158	1651	finally
-    //   163	174	1651	finally
-    //   190	198	1651	finally
-    //   262	269	1651	finally
-    //   1411	1415	1662	finally
-    //   1419	1430	1662	finally
-    //   1440	1466	1662	finally
-    //   78	89	1671	java/lang/OutOfMemoryError
-    //   211	222	1671	java/lang/OutOfMemoryError
-    //   228	234	1671	java/lang/OutOfMemoryError
-    //   93	110	1681	java/lang/OutOfMemoryError
-    //   152	158	1681	java/lang/OutOfMemoryError
-    //   163	174	1681	java/lang/OutOfMemoryError
-    //   190	198	1681	java/lang/OutOfMemoryError
-    //   262	269	1681	java/lang/OutOfMemoryError
-    //   667	678	1688	finally
-    //   684	721	1688	finally
-    //   737	743	1688	finally
-    //   753	759	1688	finally
-    //   1099	1108	1688	finally
-    //   1157	1168	1688	finally
-    //   1108	1135	1695	finally
-    //   1387	1407	1704	finally
-    //   667	678	1715	java/io/IOException
-    //   684	721	1715	java/io/IOException
-    //   737	743	1715	java/io/IOException
-    //   753	759	1715	java/io/IOException
-    //   1099	1108	1715	java/io/IOException
-    //   1157	1168	1715	java/io/IOException
-    //   1108	1135	1725	java/io/IOException
-    //   289	305	1735	finally
-    //   309	315	1735	finally
-    //   319	327	1735	finally
-    //   331	336	1735	finally
-    //   340	380	1735	finally
-    //   858	864	1735	finally
-    //   868	876	1735	finally
-    //   880	886	1735	finally
-    //   289	305	1742	java/io/IOException
-    //   309	315	1742	java/io/IOException
-    //   319	327	1742	java/io/IOException
-    //   331	336	1742	java/io/IOException
-    //   340	380	1742	java/io/IOException
-    //   777	782	1769	finally
-    //   799	806	1769	finally
-    //   819	823	1769	finally
-    //   1058	1084	1769	finally
-    //   1497	1502	1769	finally
-    //   1519	1526	1769	finally
-    //   1539	1543	1769	finally
-    //   1556	1558	1769	finally
-    //   1573	1600	1769	finally
+    //   1498	1503	1087	java/lang/OutOfMemoryError
+    //   1520	1527	1087	java/lang/OutOfMemoryError
+    //   1540	1544	1087	java/lang/OutOfMemoryError
+    //   1557	1559	1087	java/lang/OutOfMemoryError
+    //   1574	1601	1087	java/lang/OutOfMemoryError
+    //   1197	1202	1305	java/io/IOException
+    //   403	408	1351	finally
+    //   479	485	1351	finally
+    //   504	528	1351	finally
+    //   542	568	1351	finally
+    //   909	914	1351	finally
+    //   949	953	1351	finally
+    //   965	967	1351	finally
+    //   978	984	1351	finally
+    //   991	997	1351	finally
+    //   1004	1010	1351	finally
+    //   1197	1202	1351	finally
+    //   1239	1247	1351	finally
+    //   1263	1268	1351	finally
+    //   1322	1348	1351	finally
+    //   575	586	1382	java/io/IOException
+    //   593	611	1382	java/io/IOException
+    //   618	631	1382	java/io/IOException
+    //   1412	1416	1440	java/io/IOException
+    //   1412	1416	1470	java/lang/OutOfMemoryError
+    //   1420	1431	1470	java/lang/OutOfMemoryError
+    //   1441	1467	1470	java/lang/OutOfMemoryError
+    //   575	586	1479	finally
+    //   593	611	1479	finally
+    //   618	631	1479	finally
+    //   1498	1503	1559	java/io/IOException
+    //   114	122	1604	java/io/IOException
+    //   238	246	1608	java/io/IOException
+    //   403	408	1612	java/io/IOException
+    //   949	953	1621	java/io/IOException
+    //   828	833	1626	java/io/IOException
+    //   1281	1286	1630	java/io/IOException
+    //   1015	1020	1634	java/io/IOException
+    //   1360	1365	1638	java/io/IOException
+    //   78	89	1642	finally
+    //   211	222	1642	finally
+    //   228	234	1642	finally
+    //   93	110	1652	finally
+    //   152	158	1652	finally
+    //   163	174	1652	finally
+    //   190	198	1652	finally
+    //   262	269	1652	finally
+    //   1412	1416	1663	finally
+    //   1420	1431	1663	finally
+    //   1441	1467	1663	finally
+    //   78	89	1672	java/lang/OutOfMemoryError
+    //   211	222	1672	java/lang/OutOfMemoryError
+    //   228	234	1672	java/lang/OutOfMemoryError
+    //   93	110	1682	java/lang/OutOfMemoryError
+    //   152	158	1682	java/lang/OutOfMemoryError
+    //   163	174	1682	java/lang/OutOfMemoryError
+    //   190	198	1682	java/lang/OutOfMemoryError
+    //   262	269	1682	java/lang/OutOfMemoryError
+    //   667	678	1689	finally
+    //   684	721	1689	finally
+    //   737	743	1689	finally
+    //   753	759	1689	finally
+    //   1100	1109	1689	finally
+    //   1158	1169	1689	finally
+    //   1109	1136	1696	finally
+    //   1388	1408	1705	finally
+    //   667	678	1716	java/io/IOException
+    //   684	721	1716	java/io/IOException
+    //   737	743	1716	java/io/IOException
+    //   753	759	1716	java/io/IOException
+    //   1100	1109	1716	java/io/IOException
+    //   1158	1169	1716	java/io/IOException
+    //   1109	1136	1726	java/io/IOException
+    //   289	305	1736	finally
+    //   309	315	1736	finally
+    //   319	327	1736	finally
+    //   331	336	1736	finally
+    //   340	380	1736	finally
+    //   858	864	1736	finally
+    //   868	876	1736	finally
+    //   880	886	1736	finally
+    //   289	305	1743	java/io/IOException
+    //   309	315	1743	java/io/IOException
+    //   319	327	1743	java/io/IOException
+    //   331	336	1743	java/io/IOException
+    //   340	380	1743	java/io/IOException
+    //   777	782	1770	finally
+    //   799	806	1770	finally
+    //   819	823	1770	finally
+    //   1058	1084	1770	finally
+    //   1498	1503	1770	finally
+    //   1520	1527	1770	finally
+    //   1540	1544	1770	finally
+    //   1557	1559	1770	finally
+    //   1574	1601	1770	finally
   }
   
   public static void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean, String paramString1, String paramString2)
@@ -3308,7 +3308,7 @@ public class ImageUtil
   private static void a(String paramString, Context paramContext, boolean paramBoolean)
   {
     if ((paramContext != null) && ((paramContext instanceof BaseActivity))) {
-      ThreadManager.post(new ajob((QQAppInterface)((BaseActivity)paramContext).getAppRuntime(), paramString, paramBoolean), 2, null, false);
+      ThreadManager.post(new akci((QQAppInterface)((BaseActivity)paramContext).getAppRuntime(), paramString, paramBoolean), 2, null, false);
     }
   }
   
@@ -5725,7 +5725,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839190);
+      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839194);
       if ((localBitmap1 != null) && (BaseApplicationImpl.sImageCache != null)) {
         BaseApplicationImpl.sImageCache.put("static://DefaultPhoneContactFace", localBitmap1);
       }
@@ -5753,7 +5753,7 @@ public class ImageUtil
       localObject1 = localObject2;
       if (localObject2 == null)
       {
-        localObject2 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130841551);
+        localObject2 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130841588);
         localObject1 = localObject2;
         if (localObject2 != null)
         {
@@ -5782,7 +5782,7 @@ public class ImageUtil
           }
           localObject1 = localObject2;
         } while (localObject2 != null);
-        localObject2 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130841549);
+        localObject2 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130841586);
         localObject1 = localObject2;
       } while (localObject2 == null);
       localObject1 = localObject2;
@@ -6818,7 +6818,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839129);
+      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839133);
       if ((localBitmap1 != null) && (BaseApplicationImpl.sImageCache != null)) {
         BaseApplicationImpl.sImageCache.put("static://DefaultFace140_140", localBitmap1);
       }
@@ -6963,34 +6963,71 @@ public class ImageUtil
   
   public static Bitmap d(Bitmap paramBitmap, float paramFloat, int paramInt1, int paramInt2)
   {
+    int j = 0;
     if (paramBitmap == null) {
       return null;
     }
     try
     {
-      Bitmap localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-      Canvas localCanvas = new Canvas(localBitmap);
-      Paint localPaint = new Paint();
-      Rect localRect1 = new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight());
-      Rect localRect2 = new Rect(0, 0, paramInt1, paramInt2);
-      Rect localRect3 = new Rect(0, (int)(paramInt2 - paramFloat), paramInt1, (int)(paramInt2 + paramFloat));
-      RectF localRectF = new RectF(localRect2);
-      localPaint.setAntiAlias(true);
-      localPaint.setDither(true);
-      localPaint.setFilterBitmap(true);
-      localCanvas.drawARGB(0, 0, 0, 0);
-      localPaint.setColor(-12434878);
-      localCanvas.drawRoundRect(localRectF, paramFloat, paramFloat, localPaint);
-      localCanvas.drawRect(localRect3, localPaint);
-      localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
-      localCanvas.drawBitmap(paramBitmap, localRect1, localRect2, localPaint);
-      return localBitmap;
+      float f = Math.min(paramBitmap.getWidth() / paramInt1, paramBitmap.getHeight() / paramInt2);
+      int m = (int)Math.ceil(paramBitmap.getWidth() / f);
+      int n = (int)Math.ceil(paramBitmap.getHeight() / f);
+      Bitmap localBitmap;
+      int i;
+      int k;
+      if (m == paramInt1)
+      {
+        localBitmap = paramBitmap;
+        if (n == paramInt2) {}
+      }
+      else
+      {
+        paramBitmap = Bitmap.createScaledBitmap(paramBitmap, m, n, true);
+        i = (m - paramInt1) / 2;
+        if (i >= 0) {
+          break label417;
+        }
+        i = 0;
+        k = (n - paramInt2) / 2;
+        if (k >= 0) {
+          break label420;
+        }
+      }
+      for (;;)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ImageUtil", 2, "HALF_ROUND_CORNER_DECODER scale = " + f + ", scaledWidth = " + m + ", scaledHeight = " + n + ", xTopLeft = " + i + ", yTopLeft = " + j + ", width = " + paramInt1 + ", height = " + paramInt2 + " roundPx: " + paramFloat);
+        }
+        localBitmap = Bitmap.createBitmap(paramBitmap, i, j, paramInt1, paramInt2);
+        paramBitmap.recycle();
+        paramBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+        Canvas localCanvas = new Canvas(paramBitmap);
+        Paint localPaint = new Paint();
+        Rect localRect1 = new Rect(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
+        Rect localRect2 = new Rect(0, 0, paramInt1, paramInt2);
+        Rect localRect3 = new Rect(0, (int)(paramInt2 - paramFloat), paramInt1, (int)(paramInt2 + paramFloat));
+        RectF localRectF = new RectF(localRect2);
+        localPaint.setAntiAlias(true);
+        localPaint.setDither(true);
+        localPaint.setFilterBitmap(true);
+        localCanvas.drawARGB(0, 0, 0, 0);
+        localPaint.setColor(-12434878);
+        localCanvas.drawRoundRect(localRectF, paramFloat, paramFloat, localPaint);
+        localCanvas.drawRect(localRect3, localPaint);
+        localPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC_IN));
+        localCanvas.drawBitmap(localBitmap, localRect1, localRect2, localPaint);
+        return paramBitmap;
+        label417:
+        break;
+        label420:
+        j = k;
+      }
+      return null;
     }
     catch (Throwable paramBitmap)
     {
       paramBitmap.printStackTrace();
     }
-    return null;
   }
   
   public static Bitmap d(Bitmap paramBitmap, int paramInt1, int paramInt2)
@@ -7091,7 +7128,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = c(BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839275), 50, 50);
+      localBitmap1 = c(BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839279), 50, 50);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -7120,7 +7157,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = c(BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839276), 50, 50);
+      localBitmap1 = c(BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839280), 50, 50);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -7145,7 +7182,7 @@ public class ImageUtil
     if (localObject1 == null) {}
     try
     {
-      localObject2 = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130838539);
+      localObject2 = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130838543);
       localObject1 = localObject2;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
@@ -7175,7 +7212,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130845991);
+      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130846119);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {
@@ -7199,7 +7236,7 @@ public class ImageUtil
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null)
     {
-      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839202);
+      localBitmap1 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130839206);
       localBitmap2 = localBitmap1;
       if (localBitmap1 != null)
       {

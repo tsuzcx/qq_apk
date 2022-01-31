@@ -1,21 +1,31 @@
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.IInformationPasterResDownloaderCallback;
-import dov.com.qq.im.capture.paster.QIMInformationPasterManager.InformationPasterResDownloader;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
+import android.app.Activity;
+import android.content.Context;
+import android.widget.Toast;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.plugin.IQZonePluginManager;
+import cooperation.qzone.plugin.IQZonePluginManager.OnPluginReadyListener;
+import cooperation.qzone.plugin.IQZonePluginManager.PluginParams;
 
-public class amwu
-  implements Runnable
+public final class amwu
+  implements IQZonePluginManager.OnPluginReadyListener
 {
-  public amwu(QIMInformationPasterManager paramQIMInformationPasterManager, InfomationFacePackage.Item paramItem, QIMInformationPasterManager.IInformationPasterResDownloaderCallback paramIInformationPasterResDownloaderCallback) {}
-  
-  public void run()
+  public void a(boolean paramBoolean, Context paramContext, IQZonePluginManager.PluginParams paramPluginParams)
   {
-    this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager.a.a(this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiFaceInfomationFacePackage$Item, this.jdField_a_of_type_DovComQqImCapturePasterQIMInformationPasterManager$IInformationPasterResDownloaderCallback);
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "openActivityForResult onPluginReady." + paramBoolean);
+    }
+    if (paramBoolean)
+    {
+      IQZonePluginManager.b((Activity)paramContext, paramPluginParams);
+      return;
+    }
+    Toast.makeText(BaseApplicationImpl.getContext(), "加载失败", 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwu
  * JD-Core Version:    0.7.0.1
  */

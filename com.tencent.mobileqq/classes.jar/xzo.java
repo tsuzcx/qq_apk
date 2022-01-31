@@ -1,16 +1,19 @@
-import android.app.Activity;
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.utils.PstnUtils;
+import com.tencent.mobileqq.activity.selectmember.PhoneContactSelectActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public final class xzo
+public class xzo
   implements DialogInterface.OnClickListener
 {
-  public xzo(Context paramContext) {}
+  public xzo(PhoneContactSelectActivity paramPhoneContactSelectActivity) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    ((Activity)this.a).finish();
+    paramDialogInterface.dismiss();
+    PstnUtils.a(this.a.app, this.a, 2, 12);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X80063F9", "0X80063F9", 1, 0, "", "", "", "");
   }
 }
 

@@ -1,20 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
-import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.GalleryImageStruct;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.activity.aio.item.TroopFeeMsgItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.data.MessageForTroopFee;
+import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class vjk
-  implements Runnable
+public class vjk
+  implements View.OnClickListener
 {
-  vjk(vjj paramvjj, String paramString) {}
+  public vjk(TroopFeeMsgItemBuilder paramTroopFeeMsgItemBuilder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    vjl localvjl = (vjl)AIOUtils.a(paramView);
+    MessageForTroopFee localMessageForTroopFee = (MessageForTroopFee)localvjl.a;
+    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
+    localIntent.putExtra("url", localMessageForTroopFee.actionUrl);
+    paramView.getContext().startActivity(localIntent);
+    paramView = ((TroopManager)this.a.a.getManager(51)).a(localvjl.b);
+    int i;
+    if (paramView != null)
     {
-      this.jdField_a_of_type_Vjj.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(this.jdField_a_of_type_Vjj.jdField_a_of_type_Int, true);
-      this.jdField_a_of_type_Vjj.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a(this.jdField_a_of_type_Vjj.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, null, this.jdField_a_of_type_Vjj.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct, false);
-      if (AIOGalleryAdapter.a(this.jdField_a_of_type_Vjj.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter) != null) {
-        AIOGalleryAdapter.a(this.jdField_a_of_type_Vjj.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter).a(this.jdField_a_of_type_Vjj.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageData, this.jdField_a_of_type_Vjj.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter$GalleryImageStruct.a());
+      if (!paramView.isTroopOwner(this.a.a.getCurrentAccountUin())) {
+        break label150;
+      }
+      i = 0;
+    }
+    for (;;)
+    {
+      ReportController.b(this.a.a, "P_CliOper", "Grp_pay", "", "grp_aio", "Clk_payobj", 0, 0, localvjl.b, i + "", "", "");
+      return;
+      label150:
+      if (paramView.isAdmin()) {
+        i = 1;
+      } else {
+        i = 2;
       }
     }
   }

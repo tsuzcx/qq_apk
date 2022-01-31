@@ -1,20 +1,38 @@
-import android.content.ClipboardManager;
-import android.content.Context;
+import android.os.Build.VERSION;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.adapter.WebFastAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.TextData;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
+import android.view.View.OnTouchListener;
+import android.widget.ImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.appinpush.DialogAppInPushNotification;
 
 public class mlm
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  public mlm(WebFastAdapter paramWebFastAdapter) {}
+  public mlm(DialogAppInPushNotification paramDialogAppInPushNotification, ImageView paramImageView) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    TextData localTextData = (TextData)WebFastAdapter.a(this.a).a;
-    ((ClipboardManager)paramView.getContext().getSystemService("clipboard")).setText(localTextData.a.toString());
+    int i;
+    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
+    {
+      if (paramMotionEvent.getAction() != 1) {
+        break label45;
+      }
+      i = 255;
+      if (Build.VERSION.SDK_INT < 16) {
+        break label51;
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
+    }
+    for (;;)
+    {
+      return false;
+      label45:
+      i = 127;
+      break;
+      label51:
+      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
+    }
   }
 }
 

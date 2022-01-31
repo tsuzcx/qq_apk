@@ -1,36 +1,23 @@
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraCompatibleList;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Handler;
+import android.os.SystemClock;
+import com.tencent.biz.qqstory.storyHome.QQStoryTakeVideoHelper.GenerateManifestCallback;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-class xrs
-  implements Runnable
+public class xrs
+  implements QQStoryTakeVideoHelper.GenerateManifestCallback
 {
-  xrs(xrq paramxrq) {}
+  public xrs(NewFlowCameraActivity paramNewFlowCameraActivity, long paramLong, int paramInt) {}
   
-  public void run()
+  public void a()
   {
-    boolean bool = CameraCompatibleList.a(CameraCompatibleList.y);
-    if (bool)
-    {
-      RMVideoStateMgr.a().a(1102, "已经获取权限，需要重新进入打开摄像头", true);
-      return;
-    }
-    try
-    {
-      if ((!this.a.d) && (this.a.f)) {
-        RMVideoStateMgr.a().a(1102, "初始化失败,code=1102", true);
-      }
-      RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-      if (QLog.isColorLevel()) {
-        QLog.e("RMVideoInitState", 2, "[ERR_CODE_INIT_TIMEOUT]初始化失败,code=1102 mIsReadAVCodec=" + this.a.a + " mIsReadCamera=" + this.a.b + " black=" + bool + " rmStateMgr.mIsAudioReady=" + localRMVideoStateMgr.d + " rmStateMgr.mVideoFileDir=" + localRMVideoStateMgr.a);
-      }
-      RMVideoStateMgr.b(null);
-      return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
-    }
+    SLog.c("PTV.NewFlowCameraActivity", "generate manifest file success. cost = " + (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.a.post(new xrt(this));
+  }
+  
+  public void b()
+  {
+    SLog.e("PTV.NewFlowCameraActivity", "generate manifest file failed. cost = " + (SystemClock.elapsedRealtime() - this.jdField_a_of_type_Long));
   }
 }
 

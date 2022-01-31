@@ -1,30 +1,31 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.arcard.ARGreetingCardListManager;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl;
+import com.tencent.mobileqq.ar.arengine.ARCloudControl.ARCloudControlCallback;
+import com.tencent.qphone.base.util.QLog;
 
 public class aafm
-  implements View.OnTouchListener
+  implements Runnable
 {
-  public aafm(ARGreetingCardListManager paramARGreetingCardListManager) {}
+  public aafm(ARCloudControl paramARCloudControl) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    switch (paramMotionEvent.getAction())
+    if ((ARCloudControl.a(this.a) != null) && (ARCloudControl.e(this.a)))
     {
+      QLog.i("AREngine_ARCloudControl", 1, "requestToCheckLBSLocation timeout.");
+      if (!ARCloudControl.a(this.a)) {}
     }
-    for (;;)
+    else
     {
-      return false;
-      paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
+      return;
     }
+    ARCloudControl.a(this.a, true);
+    ARCloudControl.a(this.a).a(1, null);
+    ARCloudControl.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aafm
  * JD-Core Version:    0.7.0.1
  */

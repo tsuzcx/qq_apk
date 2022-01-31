@@ -1,31 +1,27 @@
-import android.support.v4.app.FragmentActivity;
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteDisplayView;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteEvaluateViewHolder;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteFragment;
-import com.tencent.mobileqq.troop.homework.xmediaeditor.model.HWReciteInfo;
+import android.widget.ImageView;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.emoticonview.SystemAndEmojiEmoticonPanel;
+import com.tencent.mobileqq.troop.activity.PublicCommentWindow;
 
-class aiuo
+public class aiuo
   implements Runnable
 {
-  aiuo(aiun paramaiun, int paramInt) {}
+  public aiuo(PublicCommentWindow paramPublicCommentWindow) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_Aiun.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.getActivity().isFinishing()) {
-      return;
+    this.a.b = false;
+    if ((this.a.isShowing()) && (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel != null))
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewSystemAndEmojiEmoticonPanel.setVisibility(0);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844546);
+      this.a.jdField_a_of_type_AndroidWidgetImageView.setContentDescription(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430342));
     }
-    ReciteFragment.a(this.jdField_a_of_type_Aiun.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment).e = this.jdField_a_of_type_Aiun.jdField_a_of_type_Int;
-    ReciteFragment.a(this.jdField_a_of_type_Aiun.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment).d = this.jdField_a_of_type_Aiun.c;
-    ReciteFragment.a(this.jdField_a_of_type_Aiun.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment).f = this.jdField_a_of_type_Int;
-    ReciteFragment.a(this.jdField_a_of_type_Aiun.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment).a(true, ReciteFragment.a(this.jdField_a_of_type_Aiun.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment).b, ReciteFragment.a(this.jdField_a_of_type_Aiun.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment).f, ReciteFragment.a(this.jdField_a_of_type_Aiun.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment).a, this.jdField_a_of_type_Aiun.c, this.jdField_a_of_type_Aiun.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Aiun.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.a.smoothScrollToPosition(this.jdField_a_of_type_Aiun.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.a.getAdapter().getCount());
-    this.jdField_a_of_type_Aiun.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiReciteFragment.a.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiuo
  * JD-Core Version:    0.7.0.1
  */

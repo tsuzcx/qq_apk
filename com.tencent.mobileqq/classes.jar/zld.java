@@ -1,26 +1,15 @@
-import com.tencent.ark.ark;
-import com.tencent.mobileqq.statistics.QQCatchedExceptionReporter;
-import com.tencent.qphone.base.util.QLog;
-import org.json.JSONObject;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public final class zld
+class zld
   implements Runnable
 {
-  public zld(JSONObject paramJSONObject) {}
+  zld(zlb paramzlb, Context paramContext, Intent paramIntent) {}
   
   public void run()
   {
-    try
-    {
-      ark.arkNotify("com.tencent.test.groupDragon", "UpdateDragonTitle", this.a.toString(), "json");
-      ark.arkNotify("com.tencent.groupDragon", "UpdateDragonTitle", this.a.toString(), "json");
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      QLog.e(".troop.survey", 2, "Error: arkNotify com.tencent.groupDragon error, .so notloaded", localUnsatisfiedLinkError);
-      QQCatchedExceptionReporter.reportQQCatchedException(localUnsatisfiedLinkError, "TroopHandlerCatchedException", "Error: arkNotify com.tencent.groupDragon error, .so notloaded");
-    }
+    QQAppInterface.b(this.jdField_a_of_type_Zlb.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentIntent);
   }
 }
 

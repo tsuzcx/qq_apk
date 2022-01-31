@@ -11,8 +11,8 @@ import com.tencent.mobileqq.utils.SharedPreUtils;
 import java.io.File;
 import java.text.DecimalFormat;
 import mqq.os.MqqHandler;
-import zut;
-import zuv;
+import zxz;
+import zyb;
 
 public final class ARRecordUtils
 {
@@ -49,12 +49,12 @@ public final class ARRecordUtils
   
   public static void a(String paramString1, String paramString2)
   {
-    ThreadManager.getUIHandler().post(new zut(paramString1, paramString2));
+    ThreadManager.getUIHandler().post(new zxz(paramString1, paramString2));
   }
   
   public static void a(String paramString, boolean paramBoolean)
   {
-    ThreadManager.getUIHandler().post(new zuv(paramBoolean, paramString));
+    ThreadManager.getUIHandler().post(new zyb(paramBoolean, paramString));
   }
   
   public static void a(boolean paramBoolean)

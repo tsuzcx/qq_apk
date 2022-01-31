@@ -1,21 +1,16 @@
-import android.view.animation.Animation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.VisitorsActivity;
-import com.tencent.util.AnimateUtils.AnimationAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.TroopTransferActivity;
 
 public class uey
-  extends AnimateUtils.AnimationAdapter
+  implements View.OnClickListener
 {
-  public uey(VisitorsActivity paramVisitorsActivity) {}
+  public uey(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onClick(View paramView)
   {
-    this.a.f = false;
-  }
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.d.setVisibility(0);
+    this.a.a.setText("");
   }
 }
 

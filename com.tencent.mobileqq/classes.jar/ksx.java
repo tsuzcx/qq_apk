@@ -1,13 +1,15 @@
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 import com.tencent.biz.pubaccount.AccountDetailActivity;
 
-class ksx
-  implements Runnable
+public class ksx
+  implements DialogInterface.OnDismissListener
 {
-  ksx(ksw paramksw) {}
+  public ksx(AccountDetailActivity paramAccountDetailActivity) {}
   
-  public void run()
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    this.a.a.f();
+    this.a.q = false;
   }
 }
 

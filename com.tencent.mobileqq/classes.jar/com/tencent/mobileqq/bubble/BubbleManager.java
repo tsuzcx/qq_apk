@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.bubble;
 
-import abei;
-import abej;
-import abek;
-import abel;
-import abem;
-import aben;
+import ablj;
+import ablk;
+import abll;
+import ablm;
+import abln;
+import ablo;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -60,13 +60,13 @@ public class BubbleManager
   public static long a;
   public static volatile boolean a;
   float jdField_a_of_type_Float = 1.0F;
-  protected abem a;
+  protected abln a;
   protected Context a;
   protected AppInterface a;
   public BubbleManager.LruLinkedHashMap a;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new abej(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new ablk(this, "param_WIFIBubbleDownloadFlow", "param_XGBubbleDownloadFlow");
   IPCDownloadListener jdField_a_of_type_ComTencentMobileqqVipIPCDownloadListener = null;
-  Runnable jdField_a_of_type_JavaLangRunnable = new abel(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new ablm(this);
   private final List jdField_a_of_type_JavaUtilList = new ArrayList();
   Map jdField_a_of_type_JavaUtilMap;
   protected Vector a;
@@ -88,7 +88,7 @@ public class BubbleManager
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getApplicationContext();
-    this.jdField_a_of_type_Abem = new abem(this, 2010, 50, 10);
+    this.jdField_a_of_type_Abln = new abln(this, 2010, 50, 10);
     this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager$LruLinkedHashMap = new BubbleManager.LruLinkedHashMap(this, 9);
     paramAppInterface = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics();
     if (paramAppInterface.density == 160.0F) {}
@@ -2355,7 +2355,7 @@ public class BubbleManager
       if (Thread.currentThread() != Looper.getMainLooper().getThread()) {
         break label116;
       }
-      ThreadManager.post(new aben(this, paramInt, paramBoolean), 5, null, true);
+      ThreadManager.post(new ablo(this, paramInt, paramBoolean), 5, null, true);
     }
     for (;;)
     {
@@ -2366,7 +2366,7 @@ public class BubbleManager
       QLog.d("BubbleManager", 2, "getBubbleConfig bubbleId=" + paramInt + ",autoDownload=" + paramBoolean + ",bubbleConfig=" + localBubbleConfig);
       return localBubbleConfig;
       label116:
-      new aben(this, paramInt, paramBoolean).run();
+      new ablo(this, paramInt, paramBoolean).run();
     }
   }
   
@@ -2379,7 +2379,7 @@ public class BubbleManager
     do
     {
       return ???;
-      localObject2 = (BubbleInfo)this.jdField_a_of_type_Abem.get(Integer.valueOf(paramInt));
+      localObject2 = (BubbleInfo)this.jdField_a_of_type_Abln.get(Integer.valueOf(paramInt));
       if (localObject2 == null) {
         break;
       }
@@ -2390,7 +2390,7 @@ public class BubbleManager
     if ((paramBoolean) && (!this.jdField_a_of_type_JavaUtilVector.contains(Integer.valueOf(paramInt)))) {
       synchronized (this.jdField_a_of_type_JavaUtilVector)
       {
-        localObject2 = new abek(this, paramInt);
+        localObject2 = new abll(this, paramInt);
         this.jdField_a_of_type_JavaUtilVector.add(Integer.valueOf(paramInt));
         ThreadManager.post((Runnable)localObject2, 8, null, true);
       }
@@ -2438,7 +2438,7 @@ public class BubbleManager
         localObject = paramString;
         if (paramString != null)
         {
-          paramPair = (BubbleInfo)this.jdField_a_of_type_Abem.get(Integer.valueOf(paramInt));
+          paramPair = (BubbleInfo)this.jdField_a_of_type_Abln.get(Integer.valueOf(paramInt));
           localObject = paramString;
           if (paramPair != null)
           {
@@ -3186,7 +3186,7 @@ public class BubbleManager
       }
       label897:
       label944:
-      this.jdField_a_of_type_Abem.put(Integer.valueOf(paramInt), localObject3);
+      this.jdField_a_of_type_Abln.put(Integer.valueOf(paramInt), localObject3);
       if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
       {
         VasUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
@@ -3230,7 +3230,7 @@ public class BubbleManager
   
   public boolean a(long paramLong)
   {
-    return (this.jdField_a_of_type_Abem != null) && (this.jdField_a_of_type_Abem.a((int)paramLong));
+    return (this.jdField_a_of_type_Abln != null) && (this.jdField_a_of_type_Abln.a((int)paramLong));
   }
   
   public boolean a(String paramString)
@@ -3350,7 +3350,7 @@ public class BubbleManager
               if (paramInt1 == 0)
               {
                 if (this.jdField_a_of_type_OrgJsonJSONArray == null) {
-                  ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, new abei(this, paramInt2), true);
+                  ThreadManager.post(this.jdField_a_of_type_JavaLangRunnable, 5, new ablj(this, paramInt2), true);
                 }
               }
               else
@@ -3383,7 +3383,7 @@ public class BubbleManager
           a(paramInt2, false);
           paramString1 = a(paramInt2, a(paramInt2, "static"), false);
         } while (paramString1 == null);
-        ??? = (BubbleInfo)this.jdField_a_of_type_Abem.get(Integer.valueOf(paramInt2));
+        ??? = (BubbleInfo)this.jdField_a_of_type_Abln.get(Integer.valueOf(paramInt2));
       } while (??? == null);
       ???.jdField_a_of_type_JavaUtilList.add(paramString1);
       return;
@@ -3440,7 +3440,7 @@ public class BubbleManager
     if (QLog.isColorLevel()) {
       QLog.d("BubbleManager", 2, "onDestroy...");
     }
-    this.jdField_a_of_type_Abem.a();
+    this.jdField_a_of_type_Abln.a();
     this.jdField_a_of_type_ComTencentMobileqqBubbleBubbleManager$LruLinkedHashMap.clear();
     jdField_a_of_type_Int = 0;
   }

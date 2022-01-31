@@ -1,48 +1,59 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.troopgift.TroopGiftAioPanelData;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.nearby.gift.NearbyGiftPanelDialog;
-import com.tencent.mobileqq.troop.utils.AIOAnimationControlManager;
-import com.tencent.mobileqq.troop.utils.TroopGiftCallback;
-import com.tencent.mobileqq.troop.utils.TroopGiftManager;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderInterface;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import android.util.Log;
+import com.tencent.mobileqq.lyric.common.TimerTaskManager;
+import java.util.concurrent.CancellationException;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
 
 public class aecm
-  extends TroopGiftCallback
+  extends ScheduledThreadPoolExecutor
 {
-  public aecm(NearbyGiftPanelDialog paramNearbyGiftPanelDialog, TroopGiftManager paramTroopGiftManager, long paramLong, AIOAnimationControlManager paramAIOAnimationControlManager, int paramInt) {}
-  
-  public void a(int paramInt, String paramString)
+  public aecm(TimerTaskManager paramTimerTaskManager, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(NearbyGiftPanelDialog.a(), 2, "onError() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", errorCode = " + paramInt + ", errorMsg = " + paramString);
-    }
+    super(paramInt);
   }
   
-  public void a(String paramString, int paramInt)
+  protected void afterExecute(Runnable paramRunnable, Throwable paramThrowable)
   {
-    int i = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGiftManager.a(NearbyGiftPanelDialog.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog));
-    if (QLog.isColorLevel()) {
-      QLog.d(NearbyGiftPanelDialog.a(), 2, "onGetExtraData() time =  " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + ", configURL = " + paramString + ", version:" + paramInt + ", oldVersion:" + i);
+    super.afterExecute(paramRunnable, paramThrowable);
+    Throwable localThrowable1 = paramThrowable;
+    if (paramThrowable == null)
+    {
+      localThrowable1 = paramThrowable;
+      if (!(paramRunnable instanceof Future)) {}
     }
-    if ((paramInt <= i) && (TroopGiftAioPanelData.a(NearbyGiftPanelDialog.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog), NearbyGiftPanelDialog.a(this.jdField_a_of_type_ComTencentMobileqqNearbyGiftNearbyGiftPanelDialog)) != null)) {}
-    while (TextUtils.isEmpty(paramString)) {
-      return;
+    try
+    {
+      paramRunnable = (Future)paramRunnable;
+      localThrowable1 = paramThrowable;
+      if (paramRunnable.isDone())
+      {
+        paramRunnable.get();
+        localThrowable1 = paramThrowable;
+      }
     }
-    Object localObject = new File(AppConstants.ba);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
+    catch (CancellationException localCancellationException)
+    {
+      break label46;
     }
-    localObject = AppConstants.ba + "troopGiftConfig.tmp";
-    paramString = new DownloadTask(paramString, new File((String)localObject));
-    paramString.b = 3;
-    Bundle localBundle = new Bundle();
-    localBundle.putString("filePath", (String)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a().a(paramString, new aecn(this, paramInt), localBundle);
+    catch (ExecutionException paramRunnable)
+    {
+      for (;;)
+      {
+        localThrowable2 = paramRunnable.getCause();
+      }
+    }
+    catch (InterruptedException paramRunnable)
+    {
+      for (;;)
+      {
+        label46:
+        Throwable localThrowable2 = paramThrowable;
+      }
+    }
+    if (localThrowable1 != null) {
+      Log.e("LyricTimerTaskManager", "Exception happen when execute task! : " + localThrowable1.toString());
+    }
   }
 }
 

@@ -1,25 +1,44 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.ark.ArkAiInfo;
-import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppViewByIntentCallback;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeArkBabyQReplyByServerHandler;
-import com.tencent.mobileqq.ark.ArkMessageServerLogic.SearchArkBabyQInfo;
-import java.util.ArrayList;
+import com.tencent.ark.ark.VariantWrapper;
+import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
+import java.util.HashMap;
+import java.util.Locale;
+import oicq.wlogin_sdk.tools.util;
 
 class aapq
-  implements ArkLocalAppMgr.IGetAppViewByIntentCallback
+  implements Runnable
 {
-  aapq(aapp paramaapp, ArkAiInfo paramArkAiInfo, ArkMessageServerLogic.SearchArkBabyQInfo paramSearchArkBabyQInfo, int paramInt1, int paramInt2) {}
+  aapq(aapp paramaapp, int paramInt, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, long paramLong, String paramString) {}
   
-  public void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  public void run()
   {
-    if ((!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString4)))
+    ark.VariantWrapper localVariantWrapper1 = this.jdField_a_of_type_Aapp.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ.a(this.jdField_a_of_type_Aapp.jdField_a_of_type_Long);
+    if (localVariantWrapper1 == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.d = paramString3;
-      this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo.b = paramString4;
-      this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$SearchArkBabyQInfo.a.add(this.jdField_a_of_type_ComTencentMobileqqArkArkAiInfo);
+      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aapp.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ, null);
+      return;
     }
-    if ((this.jdField_a_of_type_Int == this.b - 1) && (this.jdField_a_of_type_Aapp.a.a.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler != null)) {
-      this.jdField_a_of_type_Aapp.a.a.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeArkBabyQReplyByServerHandler.a(this.jdField_a_of_type_Aapp.a.a.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Aapp.a.a.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$SearchArkBabyQInfo, false);
+    ark.VariantWrapper localVariantWrapper2 = localVariantWrapper1.Create();
+    Object localObject;
+    if (this.jdField_a_of_type_Int == 0)
+    {
+      localObject = util.buf_to_string(this.jdField_a_of_type_ArrayOfByte);
+      String str1 = util.buf_to_string(this.b);
+      localVariantWrapper2.SetTableAsJsonString(String.format(Locale.CHINA, "{\"openid\":\"%s\",\"token\":\"%s\"}", new Object[] { localObject, str1 }));
+      String str2 = this.jdField_a_of_type_Aapp.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ.jdField_a_of_type_JavaLangString + "_" + this.jdField_a_of_type_Long + "_" + this.jdField_a_of_type_JavaLangString;
+      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aapp.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ).put(str2, localObject);
+      ArkAppModuleReg.ModuleQQ.b(this.jdField_a_of_type_Aapp.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ).put(str2, str1);
+      ArkAppModuleReg.ModuleQQ.c(this.jdField_a_of_type_Aapp.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ).put(this.jdField_a_of_type_Aapp.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ.jdField_a_of_type_JavaLangString, String.valueOf(this.jdField_a_of_type_Long));
+    }
+    for (;;)
+    {
+      localObject = localVariantWrapper1.Create();
+      localVariantWrapper1.InvokeDefault(new ark.VariantWrapper[] { localVariantWrapper2 }, (ark.VariantWrapper)localObject);
+      ((ark.VariantWrapper)localObject).Reset();
+      localVariantWrapper2.Reset();
+      localVariantWrapper1.Reset();
+      ArkAppModuleReg.ModuleQQ.a(this.jdField_a_of_type_Aapp.jdField_a_of_type_ComTencentMobileqqArkAPIArkAppModuleReg$ModuleQQ, null);
+      return;
+      localVariantWrapper2.SetNull();
     }
   }
 }

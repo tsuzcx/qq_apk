@@ -75,18 +75,18 @@ import java.util.HashMap;
 import java.util.Map;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import zmb;
-import zmc;
-import zmd;
-import zme;
-import zmf;
+import zph;
+import zpi;
+import zpj;
+import zpk;
+import zpl;
 
 public class VideoBroadcastReceiver
   extends BroadcastReceiver
 {
   static VideoBroadcastReceiver jdField_a_of_type_ComTencentMobileqqAppVideoBroadcastReceiver;
   public static String a;
-  INetEngine.INetEngineListener jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new zme(this);
+  INetEngine.INetEngineListener jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new zpk(this);
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   MqqHandler jdField_a_of_type_MqqOsMqqHandler = null;
   boolean jdField_a_of_type_Boolean = false;
@@ -99,7 +99,7 @@ public class VideoBroadcastReceiver
   VideoBroadcastReceiver(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_a_of_type_MqqOsMqqHandler = new zmf(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_MqqOsMqqHandler = new zpl(Looper.getMainLooper(), this);
   }
   
   public static void a()
@@ -389,8 +389,8 @@ public class VideoBroadcastReceiver
       bool2 = bool3;
       if (QQUtils.a(paramIntent.getApp()))
       {
-        bool1 = SettingCloneUtil.readValue(paramIntent.getApp(), paramIntent.getCurrentAccountUin(), paramIntent.getApp().getString(2131435387), "qqsetting_lock_screen_whenexit_key", true);
-        bool2 = SettingCloneUtil.readValue(paramIntent.getApp(), paramIntent.getCurrentAccountUin(), paramIntent.getApp().getString(2131434185), "qqsetting_notify_showcontent_key", true);
+        bool1 = SettingCloneUtil.readValue(paramIntent.getApp(), paramIntent.getCurrentAccountUin(), paramIntent.getApp().getString(2131435404), "qqsetting_lock_screen_whenexit_key", true);
+        bool2 = SettingCloneUtil.readValue(paramIntent.getApp(), paramIntent.getCurrentAccountUin(), paramIntent.getApp().getString(2131434202), "qqsetting_notify_showcontent_key", true);
         if ((!bool1) || (!bool2)) {
           break label705;
         }
@@ -1492,7 +1492,7 @@ public class VideoBroadcastReceiver
     if (localQQAppInterface == null) {
       return;
     }
-    String str3 = localQQAppInterface.getApp().getString(2131429218);
+    String str3 = localQQAppInterface.getApp().getString(2131429224);
     paramIntent = ContactUtils.l(localQQAppInterface, str1);
     paramContext = paramIntent;
     if (paramIntent.length() > 10) {
@@ -1500,10 +1500,10 @@ public class VideoBroadcastReceiver
     }
     paramIntent = localQQAppInterface.getApp();
     if (bool1) {}
-    for (int i = 2131429219;; i = 2131429220)
+    for (int i = 2131429225;; i = 2131429226)
     {
       paramContext = String.format(paramIntent.getString(i), new Object[] { paramContext });
-      paramContext = DialogUtil.b(localQQAppInterface.getApp().getApplicationContext(), 230, str3, paramContext, 2131432998, 2131429050, new zmb(this, localQQAppInterface, j, k, bool1, str1, str2, bool2), null);
+      paramContext = DialogUtil.b(localQQAppInterface.getApp().getApplicationContext(), 230, str3, paramContext, 2131433015, 2131429056, new zph(this, localQQAppInterface, j, k, bool1, str1, str2, bool2), null);
       paramContext.getWindow().setType(2003);
       paramContext.show();
       DataReport.a(localQQAppInterface.isBackground_Pause, bool1);
@@ -1530,14 +1530,14 @@ public class VideoBroadcastReceiver
     if (localObject == null) {
       return;
     }
-    String str4 = ((QQAppInterface)localObject).getApp().getString(2131429218);
+    String str4 = ((QQAppInterface)localObject).getApp().getString(2131429224);
     if (i == 3000) {
       paramContext = ContactUtils.c((QQAppInterface)localObject, str2, str1);
     }
     for (;;)
     {
-      paramContext = String.format(((QQAppInterface)localObject).getApp().getString(2131429221), new Object[] { paramContext });
-      paramContext = DialogUtil.b(((QQAppInterface)localObject).getApp().getApplicationContext(), 230, str4, paramContext, 2131432998, 2131429050, new zmc(this, (QQAppInterface)localObject, i, j, str2, str1, paramIntent, str3), null);
+      paramContext = String.format(((QQAppInterface)localObject).getApp().getString(2131429227), new Object[] { paramContext });
+      paramContext = DialogUtil.b(((QQAppInterface)localObject).getApp().getApplicationContext(), 230, str4, paramContext, 2131433015, 2131429056, new zpi(this, (QQAppInterface)localObject, i, j, str2, str1, paramIntent, str3), null);
       paramContext.getWindow().setType(2003);
       paramContext.show();
       DataReport.c(((QQAppInterface)localObject).isBackground_Pause);
@@ -1573,11 +1573,11 @@ public class VideoBroadcastReceiver
     {
       return;
       VideoMsgTools.a(localQQAppInterface, i, j, bool1, paramContext, str, bool2, paramIntent, bool3);
-      bool1 = SettingCloneUtil.readValue(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin(), localQQAppInterface.getApp().getString(2131434185), "qqsetting_notify_showcontent_key", true);
+      bool1 = SettingCloneUtil.readValue(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin(), localQQAppInterface.getApp().getString(2131434202), "qqsetting_notify_showcontent_key", true);
       if (QQUtils.a(localQQAppInterface.getApp()))
       {
-        bool2 = SettingCloneUtil.readValue(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin(), localQQAppInterface.getApp().getString(2131435387), "qqsetting_lock_screen_whenexit_key", true);
-        bool1 = SettingCloneUtil.readValue(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin(), localQQAppInterface.getApp().getString(2131434185), "qqsetting_notify_showcontent_key", true);
+        bool2 = SettingCloneUtil.readValue(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin(), localQQAppInterface.getApp().getString(2131435404), "qqsetting_lock_screen_whenexit_key", true);
+        bool1 = SettingCloneUtil.readValue(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin(), localQQAppInterface.getApp().getString(2131434202), "qqsetting_notify_showcontent_key", true);
       }
       for (;;)
       {
@@ -1989,9 +1989,9 @@ public class VideoBroadcastReceiver
         }
         if (((String)localObject1).equals("tencent.av.v2q.multiPsntTryEnd"))
         {
-          localObject1 = ((QQAppInterface)localObject4).getApplication().getResources().getString(2131438387);
-          localObject2 = ((QQAppInterface)localObject4).getApplication().getResources().getString(2131438388);
-          localObject3 = ((QQAppInterface)localObject4).getApplication().getResources().getString(2131438389);
+          localObject1 = ((QQAppInterface)localObject4).getApplication().getResources().getString(2131438405);
+          localObject2 = ((QQAppInterface)localObject4).getApplication().getResources().getString(2131438406);
+          localObject3 = ((QQAppInterface)localObject4).getApplication().getResources().getString(2131438407);
           localObject4 = (PstnManager)((QQAppInterface)localObject4).getManager(142);
           String str2 = ((PstnManager)localObject4).a("key_pstn_multi_try_over_recharge_title");
           String str1 = ((PstnManager)localObject4).a("key_pstn_multi_try_over_recharge_content");
@@ -2145,9 +2145,9 @@ public class VideoBroadcastReceiver
     if (paramContext == null) {
       return;
     }
-    paramIntent = paramContext.getApp().getString(2131429039);
-    String str = paramContext.getApp().getString(2131429035);
-    paramContext = DialogUtil.b(paramContext.getApp().getApplicationContext(), 230, str, paramIntent, 2131432998, 2131429050, new zmd(this), null);
+    paramIntent = paramContext.getApp().getString(2131429045);
+    String str = paramContext.getApp().getString(2131429041);
+    paramContext = DialogUtil.b(paramContext.getApp().getApplicationContext(), 230, str, paramIntent, 2131433015, 2131429056, new zpj(this), null);
     paramContext.getWindow().setType(2003);
     paramContext.show();
     paramIntent = new Message();

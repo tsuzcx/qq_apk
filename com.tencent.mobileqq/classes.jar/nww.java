@@ -1,21 +1,15 @@
-import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader;
-import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.JobSegment;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
 
-public class nww
-  extends JobSegment
+class nww
+  implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private CommentListPageLoader jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader;
-  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  nww(nwv paramnwv, MemoriesProfilePresenter paramMemoriesProfilePresenter) {}
   
-  protected void a(JobContext paramJobContext, FeedCommentSync paramFeedCommentSync)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader = new CommentListPageLoader(paramFeedCommentSync, new nwx(this, paramJobContext, paramFeedCommentSync));
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader.c();
+    ((UserManager)SuperManager.a(2)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter.a);
   }
 }
 

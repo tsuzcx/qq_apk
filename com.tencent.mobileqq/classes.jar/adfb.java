@@ -1,37 +1,58 @@
-import android.graphics.Bitmap;
-import android.support.v4.util.MQLruCache;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.hiboom.HiBoomFontDrawer;
-import java.util.List;
-import java.util.Vector;
+import android.annotation.TargetApi;
+import android.os.Handler;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
 
 public class adfb
-  implements Runnable
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public adfb(HiBoomFontDrawer paramHiBoomFontDrawer, List paramList) {}
+  public adfb(VideoFilePresenter paramVideoFilePresenter) {}
   
-  public void run()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    int i = 0;
-    if (i < this.jdField_a_of_type_JavaUtilList.size())
+    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null))
     {
-      Bitmap localBitmap = HiBoomFontDrawer.a((String)this.jdField_a_of_type_JavaUtilList.get(i));
-      if (localBitmap != null) {
-        BaseApplicationImpl.sImageCache.put(this.jdField_a_of_type_JavaUtilList.get(i), localBitmap);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.a.add(this.jdField_a_of_type_JavaUtilList.get(i));
+      VideoFilePresenter.a(this.a, VideoFilePresenter.b(this.a, paramInt));
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.b(VideoFilePresenter.a(this.a));
+      if (QLog.isDevelopLevel()) {
+        QLog.d("#@#@", 1, "onProgressChanged userPos[" + VideoFilePresenter.a(this.a) + "]");
       }
     }
-    HiBoomFontDrawer.a(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer);
+  }
+  
+  @TargetApi(16)
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    if ((this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (!this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()))
+    {
+      this.a.b = false;
+      return;
+    }
+    VideoFilePresenter.c(this.a);
+    VideoFilePresenter.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+    this.a.b = this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying();
+    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a(null);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
+      return;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("##########", 1, "mMediaPlayer sekTo [" + VideoFilePresenter.a(this.a) + "]");
+    }
+    this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.seekTo(VideoFilePresenter.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adfb
  * JD-Core Version:    0.7.0.1
  */

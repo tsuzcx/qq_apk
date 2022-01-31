@@ -1,30 +1,33 @@
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.app.SubAccountBindObserver;
-import com.tencent.mobileqq.subaccount.logic.SubAccountBackProtocData;
+import com.tencent.mfsdk.MagnifierSDK;
+import com.tencent.mfsdk.collector.DropResultObject;
+import com.tencent.mfsdk.persist.DBHandler;
 
 public class rdu
-  extends SubAccountBindObserver
+  implements Runnable
 {
-  public rdu(AccountManageActivity paramAccountManageActivity) {}
+  private long jdField_a_of_type_Long;
+  private DropResultObject jdField_a_of_type_ComTencentMfsdkCollectorDropResultObject;
+  private String jdField_a_of_type_JavaLangString;
   
-  protected void a(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public rdu(long paramLong, String paramString, DropResultObject paramDropResultObject)
   {
-    AccountManageActivity.a(this.a, AccountManageActivity.a(this.a));
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMfsdkCollectorDropResultObject = paramDropResultObject;
   }
   
-  protected void b(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
+  public void run()
   {
-    AccountManageActivity.a(this.a, false);
-  }
-  
-  protected void c(boolean paramBoolean, SubAccountBackProtocData paramSubAccountBackProtocData)
-  {
-    AccountManageActivity.a(this.a, false);
+    if (MagnifierSDK.a != null)
+    {
+      MagnifierSDK.a.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMfsdkCollectorDropResultObject);
+      this.jdField_a_of_type_ComTencentMfsdkCollectorDropResultObject.a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rdu
  * JD-Core Version:    0.7.0.1
  */

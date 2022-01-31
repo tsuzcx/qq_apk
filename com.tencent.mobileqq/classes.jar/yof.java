@@ -1,30 +1,15 @@
-import android.app.Activity;
-import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
-import com.tencent.mobileqq.apollo.utils.ApolloSoLoader;
-import com.tencent.mobileqq.apollo.utils.ApolloSoLoader.OnCmSoLoadCompleteCallback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.AioPushData;
 
-public class yof
-  implements ApolloSoLoader.OnCmSoLoadCompleteCallback
+public final class yof
+  implements Runnable
 {
-  public yof(CmGameLauncher paramCmGameLauncher) {}
+  public yof(AioPushData paramAioPushData, QQAppInterface paramQQAppInterface) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    QLog.i("cmgame_process.CmGameLauncher", 1, "[onSoLoadComplete], ret:" + paramInt);
-    ApolloSoLoader.b(CmGameLauncher.a(this.a));
-    Activity localActivity = this.a.a();
-    if (paramInt == 0) {
-      if ((localActivity != null) && (!CmGameLauncher.a(this.a)))
-      {
-        CmGameLauncher.a(this.a, true);
-        this.a.a(localActivity, CmGameLauncher.a(this.a));
-      }
-    }
-    while (localActivity == null) {
-      return;
-    }
-    localActivity.finish();
+    HotChatCenterFragment.a(this.jdField_a_of_type_ComTencentMobileqqDataAioPushData, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 

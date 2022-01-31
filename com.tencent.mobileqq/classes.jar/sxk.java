@@ -1,27 +1,15 @@
-import android.content.res.Resources;
-import com.tencent.mobileqq.widget.FormSimpleItem;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.adapter.LebaListViewAdapter;
 
-public class sxk
+class sxk
   implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  
-  public sxk(int paramInt, WeakReference paramWeakReference)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_JavaLangRefWeakReference = paramWeakReference;
-  }
+  sxk(sxj paramsxj) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      FormSimpleItem localFormSimpleItem = (FormSimpleItem)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localFormSimpleItem != null) {
-        localFormSimpleItem.setRightText(localFormSimpleItem.getResources().getString(this.jdField_a_of_type_Int));
-      }
+    if ((Leba.a(this.a.a) != null) && (this.a.a.a != null)) {
+      this.a.a.a.notifyDataSetChanged();
     }
   }
 }

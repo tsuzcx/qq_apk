@@ -1,17 +1,17 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.GetMomentListCallback;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.GetMomentListCallback;
-import java.util.List;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.nearby.now.view.StuffContainerView;
 
 public class aeyd
-  implements NearbyMomentProtocol.GetMomentListCallback
+  implements View.OnTouchListener
 {
-  public aeyd(NearbyMomentManager paramNearbyMomentManager, NearbyMomentManager.GetMomentListCallback paramGetMomentListCallback) {}
+  public aeyd(StuffContainerView paramStuffContainerView, GestureDetector paramGestureDetector) {}
   
-  public void a(boolean paramBoolean1, List paramList, boolean paramBoolean2, int paramInt)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    ThreadManager.post(new aeye(this, paramList, paramBoolean1, paramBoolean2, paramInt), 8, null, false);
+    return this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
   }
 }
 

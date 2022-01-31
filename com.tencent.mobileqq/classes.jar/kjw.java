@@ -1,28 +1,14 @@
-import android.view.View;
-import android.view.animation.Transformation;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.PoiMapActivity;
-import com.tencent.mobileqq.utils.ValueAnimation;
-import com.tencent.mobileqq.utils.ValueAnimation.AnimationUpdateListener;
-import com.tencent.mobileqq.widget.QQMapView;
+import android.os.Bundle;
+import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
 
 public class kjw
-  implements ValueAnimation.AnimationUpdateListener
+  implements Runnable
 {
-  public kjw(PoiMapActivity paramPoiMapActivity) {}
+  public kjw(ProtoUtils.TroopProtocolObserver paramTroopProtocolObserver, int paramInt, boolean paramBoolean, Bundle paramBundle) {}
   
-  public void a(ValueAnimation paramValueAnimation, float paramFloat, Integer paramInteger, Transformation paramTransformation)
+  public void run()
   {
-    paramValueAnimation = PoiMapActivity.k(this.a).getLayoutParams();
-    paramValueAnimation.height = paramInteger.intValue();
-    PoiMapActivity.l(this.a).setLayoutParams(paramValueAnimation);
-    paramValueAnimation = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
-    paramValueAnimation.bottomMargin = (this.a.o - paramInteger.intValue());
-    this.a.b.setLayoutParams(paramValueAnimation);
-    int i = (paramInteger.intValue() - PoiMapActivity.f(this.a)) / 2;
-    if (i >= (this.a.o - PoiMapActivity.g(this.a)) / 2 + this.a.t) {
-      this.a.a(i, false);
-    }
+    ProtoUtils.TroopProtocolObserver.a(this.jdField_a_of_type_ComTencentBizProtoUtils$TroopProtocolObserver, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 

@@ -104,7 +104,7 @@ public class SubscriptRecommendAdapter
     View localView;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater().inflate(2130969686, null);
+      localView = this.jdField_a_of_type_AndroidAppActivity.getLayoutInflater().inflate(2130969700, null);
       paramView = new SubscriptRecommendAdapter.RecommendItem(this, localView, this.jdField_a_of_type_Boolean);
       localView.setVisibility(0);
       localView.setFocusable(false);

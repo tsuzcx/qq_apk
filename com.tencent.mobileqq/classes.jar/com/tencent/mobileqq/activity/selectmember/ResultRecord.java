@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import xwv;
+import yab;
 
 public class ResultRecord
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new xwv();
+  public static final Parcelable.Creator CREATOR = new yab();
   public int a;
   public String a;
   public String b;

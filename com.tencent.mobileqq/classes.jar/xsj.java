@@ -1,69 +1,34 @@
-class xsj
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.NewFlowEditVideoActivity;
+import com.tencent.mobileqq.activity.richmedia.QzEditVideoPartManager;
+import com.tencent.open.base.ToastUtil;
+
+public class xsj
+  implements View.OnClickListener
 {
-  private int jdField_a_of_type_Int;
-  private short[] jdField_a_of_type_ArrayOfShort;
-  private int b;
+  public xsj(NewFlowEditVideoActivity paramNewFlowEditVideoActivity) {}
   
-  public xsj(int paramInt)
+  public void onClick(View paramView)
   {
-    if (paramInt > 0) {
-      this.jdField_a_of_type_ArrayOfShort = new short[paramInt];
-    }
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_Int = 0;
-    this.b = 0;
-  }
-  
-  public void a(short[] paramArrayOfShort, int paramInt1, int paramInt2)
-  {
-    if (this.jdField_a_of_type_ArrayOfShort == null) {}
-    do
+    if (!NewFlowEditVideoActivity.a(this.a))
     {
-      do
-      {
-        return;
-        if (this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int < paramInt2) {
-          break;
-        }
-        System.arraycopy(paramArrayOfShort, paramInt1, this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_Int, paramInt2);
-        this.jdField_a_of_type_Int += paramInt2;
-        if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfShort.length) {
-          this.jdField_a_of_type_Int = 0;
-        }
-        this.b += paramInt2;
-      } while (this.b <= this.jdField_a_of_type_ArrayOfShort.length);
-      this.b = this.jdField_a_of_type_ArrayOfShort.length;
+      NewFlowEditVideoActivity.a(this.a);
       return;
-      System.arraycopy(paramArrayOfShort, paramInt1, this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int);
-      System.arraycopy(paramArrayOfShort, this.jdField_a_of_type_ArrayOfShort.length + paramInt1 - this.jdField_a_of_type_Int, this.jdField_a_of_type_ArrayOfShort, 0, paramInt2 - (this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int));
-      this.jdField_a_of_type_Int = (paramInt2 - (this.jdField_a_of_type_ArrayOfShort.length - this.jdField_a_of_type_Int));
-      if (this.jdField_a_of_type_Int == this.jdField_a_of_type_ArrayOfShort.length) {
-        this.jdField_a_of_type_Int = 0;
-      }
-      this.b += paramInt2;
-    } while (this.b <= this.jdField_a_of_type_ArrayOfShort.length);
-    this.b = this.jdField_a_of_type_ArrayOfShort.length;
-  }
-  
-  public short[] a()
-  {
-    if ((this.jdField_a_of_type_ArrayOfShort == null) || (this.b == 0) || (this.b > this.jdField_a_of_type_ArrayOfShort.length)) {
-      return null;
     }
-    short[] arrayOfShort = new short[this.b];
-    if (this.jdField_a_of_type_Int >= this.b)
+    if (NewFlowEditVideoActivity.b(this.a))
     {
-      System.arraycopy(this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_Int - this.b, arrayOfShort, 0, this.b);
-      return arrayOfShort;
+      ToastUtil.a().a("不使用超清");
+      NewFlowEditVideoActivity.a(this.a, false);
+      NewFlowEditVideoActivity.a(this.a).setBackgroundResource(2130845304);
+      ((QzEditVideoPartManager)NewFlowEditVideoActivity.a(this.a)).f = false;
+      return;
     }
-    System.arraycopy(this.jdField_a_of_type_ArrayOfShort, this.jdField_a_of_type_ArrayOfShort.length - (this.b - this.jdField_a_of_type_Int), arrayOfShort, 0, this.b - this.jdField_a_of_type_Int);
-    System.arraycopy(this.jdField_a_of_type_ArrayOfShort, 0, arrayOfShort, this.b - this.jdField_a_of_type_Int, this.jdField_a_of_type_Int);
-    return arrayOfShort;
+    ToastUtil.a().a("使用超清");
+    NewFlowEditVideoActivity.a(this.a, true);
+    NewFlowEditVideoActivity.a(this.a).setBackgroundResource(2130845303);
+    ((QzEditVideoPartManager)NewFlowEditVideoActivity.b(this.a)).f = true;
   }
 }
 

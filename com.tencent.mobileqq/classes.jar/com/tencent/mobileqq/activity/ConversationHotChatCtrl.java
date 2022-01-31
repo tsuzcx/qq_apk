@@ -11,8 +11,8 @@ import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import mqq.app.Constants.LogoutReason;
-import sge;
-import sgf;
+import sjc;
+import sjd;
 
 public class ConversationHotChatCtrl
 {
@@ -79,9 +79,9 @@ public class ConversationHotChatCtrl
     {
       ReportController.b(localQQAppInterface, "CliOper", "", "", "0X8004D29", "0X8004D29", i, 0, "", "", "", "");
       if (this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver == null) {
-        this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new sge(this, localBaseActivity);
+        this.jdField_a_of_type_ComTencentMobileqqAppHotChatObserver = new sjc(this, localBaseActivity);
       }
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = HotChatHelper.a(localHotChatManager.a(paramRecentUser.uin), new sgf(this, localHotChatInfo, localQQAppInterface, localBaseActivity));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = HotChatHelper.a(localHotChatManager.a(paramRecentUser.uin), new sjd(this, localHotChatInfo, localQQAppInterface, localBaseActivity));
       return;
     }
   }

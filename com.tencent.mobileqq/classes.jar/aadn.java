@@ -1,85 +1,62 @@
-import com.tencent.mobileqq.ar.arengine.ARResouceDir;
-import com.tencent.mobileqq.ar.arengine.ARResourceDownload.ARResourceDownloadCallback;
-import com.tencent.mobileqq.ar.arengine.ARResourceDownload.DownloadInfo;
-import com.tencent.mobileqq.ar.arengine.ARResourceManagerTools;
-import com.tencent.mobileqq.ar.arengine.ARResourceManagerTools.ARResourceCallback;
-import com.tencent.mobileqq.ar.arengine.ArResourceConfigUtils;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.ar.RemoteArConfigManager;
+import com.tencent.mobileqq.ar.aidl.IArFaceCallback.Stub;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class aadn
-  implements ARResourceDownload.ARResourceDownloadCallback
+  extends IArFaceCallback.Stub
 {
-  public aadn(ARResourceManagerTools paramARResourceManagerTools, ARResourceManagerTools.ARResourceCallback paramARResourceCallback, ArrayList paramArrayList1, ArrayList paramArrayList2) {}
+  public aadn(RemoteArConfigManager paramRemoteArConfigManager) {}
   
-  public void a(long paramLong1, long paramLong2)
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(ARResourceManagerTools.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools, paramLong1, 0));
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "download success " + paramInt);
     }
-  }
-  
-  public void a(boolean paramBoolean, ARResourceDownload.DownloadInfo paramDownloadInfo)
-  {
-    QLog.i("AREngine_ARResourceManagerTools", 1, "onARResourceDownloadComplete result" + paramBoolean);
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(paramDownloadInfo.jdField_a_of_type_Int, paramBoolean);
-    }
-    if (paramBoolean)
+    if (RemoteArConfigManager.a(this.a) == null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      for (;;)
-      {
-        if (localIterator.hasNext())
-        {
-          ARResourceDownload.DownloadInfo localDownloadInfo = (ARResourceDownload.DownloadInfo)localIterator.next();
-          if (!localDownloadInfo.jdField_a_of_type_JavaLangString.equals(paramDownloadInfo.jdField_a_of_type_JavaLangString)) {
-            continue;
-          }
-          if (paramDownloadInfo.jdField_a_of_type_Boolean) {}
-          try
-          {
-            System.currentTimeMillis();
-            if (paramDownloadInfo.jdField_a_of_type_Int == 6)
-            {
-              new File(paramDownloadInfo.c);
-              ArResourceConfigUtils.a(paramDownloadInfo.c, ARResouceDir.c());
-            }
-            for (;;)
-            {
-              QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerModelDownloadComplete  ");
-              this.b.remove(localDownloadInfo);
-              break;
-              File localFile = new File(paramDownloadInfo.c);
-              ArResourceConfigUtils.a(paramDownloadInfo.c, localFile.getParentFile().getAbsolutePath() + File.separator + paramDownloadInfo.b + File.separator);
-            }
-            return;
-          }
-          catch (Exception localException)
-          {
-            new File(paramDownloadInfo.c).delete();
-            QLog.i("AREngine_ARResourceManagerTools", 1, "Download end. uncompressZip error. url = ");
-            if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback != null) {
-              this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(false);
-            }
-            this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a();
-            QLog.i("AREngine_ARResourceManagerTools", 1, "onARMarkerAllDownloadComplete  ");
-          }
-        }
-      }
-      while (this.b.size() != 0) {}
-      if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(true);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a();
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadSuccess error mHandler is null ");
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools$ARResourceCallback.a(false);
+    Message localMessage = Message.obtain();
+    localMessage.what = 6;
+    localMessage.arg1 = paramInt;
+    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void a(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "download process " + paramInt1 + " : " + paramInt2);
     }
-    this.jdField_a_of_type_ComTencentMobileqqArArengineARResourceManagerTools.a();
+    if (RemoteArConfigManager.a(this.a) == null)
+    {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadProcess error mHandler is null ");
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 7;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
+  }
+  
+  public void b(int paramInt1, int paramInt2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ArConfig_RemoteArConfigManager", 2, "download error " + paramInt1 + " : " + paramInt2);
+    }
+    if (RemoteArConfigManager.a(this.a) == null)
+    {
+      QLog.d("ArConfig_RemoteArConfigManager", 1, "mFaceCallback onDownloadError error mHandler is null ");
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 8;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    RemoteArConfigManager.a(this.a).sendMessage(localMessage);
   }
 }
 

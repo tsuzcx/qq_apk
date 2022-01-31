@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ocr;
 
-import afob;
+import agbh;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -59,11 +59,11 @@ public class OCRShareHelper
     if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null)
     {
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.a(this.jdField_a_of_type_AndroidAppActivity);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131439024);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131439022);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131439023);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131432998);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new afob(this));
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(2131439052);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131439050);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.b(2131439051);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.c(2131433015);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.a(new agbh(this));
     }
     try
     {

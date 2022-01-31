@@ -1,16 +1,29 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentTopGestureLayout;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.FetchCommentObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
 public class ljw
-  implements Runnable
+  implements ArticleCommentModule.FetchCommentObserver
 {
-  public ljw(ReadInJoyCommentTopGestureLayout paramReadInJoyCommentTopGestureLayout, View paramView) {}
+  public ljw(ReadInJoySecondCommentListAdapter paramReadInJoySecondCommentListAdapter) {}
   
-  public void run()
+  public void a(ArticleInfo paramArticleInfo)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.setScrollY(0);
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyCommentListView", 2, "second comment bottom refresh success");
     }
+    ReadInJoySecondCommentListAdapter.a(this.a).a(true);
+    this.a.notifyDataSetChanged();
+  }
+  
+  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyCommentListView", 2, "second comment bottom refresh failed,err code =" + paramInt + " errMsg =" + paramString);
+    }
+    ReadInJoySecondCommentListAdapter.a(this.a).a();
   }
 }
 

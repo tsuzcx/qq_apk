@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
 public class sqk
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public sqk(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public sqk(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    FriendProfileMoreInfoActivity.a(this.a, true);
-    this.a.a("0X80081E6", 2);
+    this.a.G();
+    this.a.I();
   }
 }
 

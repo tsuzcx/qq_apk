@@ -1,17 +1,25 @@
-import com.tencent.mobileqq.apollo.ApolloPushManager;
-import com.tencent.mobileqq.apollo.task.ApolloMsgPlayController;
+import com.tencent.mobileqq.apollo.ApolloManager;
+import com.tencent.mobileqq.apollo.ApolloPanelManager;
+import com.tencent.mobileqq.apollo.script.SpriteActionMessage;
+import com.tencent.mobileqq.apollo.script.SpriteContext;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ApolloActionPush;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class yru
   implements Runnable
 {
-  public yru(ApolloMsgPlayController paramApolloMsgPlayController, QQAppInterface paramQQAppInterface, ApolloActionPush paramApolloActionPush) {}
+  public yru(SpriteActionMessage paramSpriteActionMessage, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      ((ApolloPushManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(226)).a(this.jdField_a_of_type_ComTencentMobileqqDataApolloActionPush);
+    if ((SpriteActionMessage.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionMessage) != null) && (SpriteActionMessage.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionMessage).a() != null))
+    {
+      ApolloPanelManager localApolloPanelManager = ((ApolloManager)SpriteActionMessage.a(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteActionMessage).a().getManager(152)).a();
+      if (localApolloPanelManager != null)
+      {
+        localApolloPanelManager.a.set(this.jdField_a_of_type_Int);
+        localApolloPanelManager.a(this.jdField_a_of_type_Int, true, this.jdField_a_of_type_Boolean);
+      }
     }
   }
 }

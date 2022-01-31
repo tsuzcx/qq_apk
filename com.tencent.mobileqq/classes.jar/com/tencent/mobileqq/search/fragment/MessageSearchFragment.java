@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahfj;
+import ahtl;
 import com.tencent.mobileqq.search.adapter.BaseMvpAdapter;
 import com.tencent.mobileqq.search.searchengine.ISearchEngine;
 import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
@@ -15,7 +15,7 @@ public class MessageSearchFragment
   
   protected BaseMvpAdapter a()
   {
-    return new ahfj(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
+    return new ahtl(this, this.jdField_a_of_type_ComTencentWidgetListView, this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder);
   }
   
   protected ISearchEngine a()
@@ -25,7 +25,7 @@ public class MessageSearchFragment
   
   protected String a()
   {
-    return getString(2131438129);
+    return getString(2131438147);
   }
   
   public void a(String paramString)

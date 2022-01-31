@@ -1,26 +1,46 @@
-import com.tencent.mobileqq.activity.specialcare.QQSpecialCareSettingActivity;
-import com.tencent.mobileqq.app.QvipSpecialCareObserver;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberActivity;
+import com.tencent.mobileqq.activity.selectmember.TroopAddFrdsInnerFrame;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 
-public class ybw
-  extends QvipSpecialCareObserver
+class ybw
+  implements Runnable
 {
-  public ybw(QQSpecialCareSettingActivity paramQQSpecialCareSettingActivity) {}
+  ybw(ybv paramybv, List paramList) {}
   
-  public void a(Object paramObject)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQSpecialCareSettingActivity", 2, "onSpecialSoundEvent data: " + paramObject);
-    }
-    if (paramObject != null) {
-      this.a.stopTitleProgress();
-    }
-    switch (((Integer)paramObject).intValue())
+    int i = 0;
+    try
     {
-    default: 
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder().append("onUpdateTroopGetMemberList:");
+        if (this.jdField_a_of_type_JavaUtilList != null) {
+          break label159;
+        }
+      }
+      for (;;)
+      {
+        QLog.d("TroopAddFrdsInnerFrame", 2, i);
+        this.jdField_a_of_type_Ybv.a.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberSelectMemberActivity.getSharedPreferences("last_update_time" + this.jdField_a_of_type_Ybv.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0).edit().putLong("key_last_update_time" + this.jdField_a_of_type_Ybv.a.b, System.currentTimeMillis()).commit();
+        TroopAddFrdsInnerFrame.a(this.jdField_a_of_type_Ybv.a, this.jdField_a_of_type_Ybv.a.b, this.jdField_a_of_type_JavaUtilList);
+        return;
+        label159:
+        i = this.jdField_a_of_type_JavaUtilList.size();
+      }
       return;
     }
-    QQSpecialCareSettingActivity.a(this.a);
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopAddFrdsInnerFrame", 2, "onUpdateTroopGetMemberList:" + localException.toString());
+      }
+    }
   }
 }
 

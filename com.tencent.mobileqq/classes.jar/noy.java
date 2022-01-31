@@ -1,31 +1,21 @@
-import java.nio.ByteBuffer;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.qqstory.playvideo.player.ExploreAnimalView;
 
 public class noy
+  implements Animation.AnimationListener
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
-  ByteBuffer jdField_a_of_type_JavaNioByteBuffer;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  public noy(ExploreAnimalView paramExploreAnimalView) {}
   
-  public noy()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    a();
+    this.a.a.startAnimation(this.a.b);
   }
   
-  public void a()
-  {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_JavaNioByteBuffer = null;
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Boolean = false;
-    this.b = false;
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public String toString()
-  {
-    return "FrameInfo{buffer=" + this.jdField_a_of_type_Int + ", data=" + this.jdField_a_of_type_JavaNioByteBuffer + ", presentationTimeUs=" + this.jdField_a_of_type_Long + ", endOfStream=" + this.jdField_a_of_type_Boolean + ", representationChanged=" + this.b + '}';
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

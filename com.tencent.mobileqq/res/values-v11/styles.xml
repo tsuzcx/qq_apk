@@ -4,15 +4,15 @@
         <item name="android:windowIsFloating">false</item>
         <item name="android:windowActionModeOverlay">false</item>
     </style>
-    <style name="APKTOOL_DUPLICATE_style_0x7f0e02e6">
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e02e7">
         <item name="android:windowEnterAnimation">@anim/APKTOOL_DUPLICATE_anim_0x7f050121</item>
         <item name="android:windowExitAnimation">@anim/APKTOOL_DUPLICATE_anim_0x7f050122</item>
     </style>
-    <style name="APKTOOL_DUPLICATE_style_0x7f0e02e7">
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e02e8">
         <item name="android:windowEnterAnimation">@anim/APKTOOL_DUPLICATE_anim_0x7f050132</item>
         <item name="android:windowExitAnimation">@anim/APKTOOL_DUPLICATE_anim_0x7f050133</item>
     </style>
-    <style name="APKTOOL_DUPLICATE_style_0x7f0e0316">
+    <style name="APKTOOL_DUPLICATE_style_0x7f0e0318">
         <item name="android:windowEnterAnimation">@anim/APKTOOL_DUPLICATE_anim_0x7f050025</item>
         <item name="android:windowExitAnimation">@anim/APKTOOL_DUPLICATE_anim_0x7f050026</item>
     </style>

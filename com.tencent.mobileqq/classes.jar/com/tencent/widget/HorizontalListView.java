@@ -1,13 +1,13 @@
 package com.tencent.widget;
 
-import almi;
-import almj;
-import almk;
-import alml;
-import almm;
-import almn;
-import almo;
-import almp;
+import amby;
+import ambz;
+import amca;
+import amcb;
+import amcc;
+import amcd;
+import amce;
+import amcf;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -49,9 +49,9 @@ public class HorizontalListView
   public static final boolean a;
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int;
-  private alml jdField_a_of_type_Alml;
-  private almo jdField_a_of_type_Almo;
-  almp jdField_a_of_type_Almp;
+  private amcb jdField_a_of_type_Amcb;
+  private amce jdField_a_of_type_Amce;
+  amcf jdField_a_of_type_Amcf;
   private DataSetObserver jdField_a_of_type_AndroidDatabaseDataSetObserver;
   private Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
@@ -79,7 +79,7 @@ public class HorizontalListView
   private Runnable d;
   public boolean d;
   public int e;
-  private Runnable jdField_e_of_type_JavaLangRunnable = new almi(this);
+  private Runnable jdField_e_of_type_JavaLangRunnable = new amby(this);
   private boolean jdField_e_of_type_Boolean;
   protected int f;
   private boolean f;
@@ -193,6 +193,21 @@ public class HorizontalListView
     }
     label193:
     return paramInt4;
+  }
+  
+  private View a(int paramInt, boolean paramBoolean)
+  {
+    View localView1 = a(paramInt);
+    setTag(2131362520, Boolean.valueOf(paramBoolean));
+    View localView2 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, localView1, this);
+    b(localView2, paramInt);
+    if ((localView1 != null) && (localView2 != localView1)) {
+      a(paramInt, localView1);
+    }
+    if (localView2 != null) {
+      c(localView2, paramInt);
+    }
+    return localView2;
   }
   
   private ViewGroup.LayoutParams a(View paramView)
@@ -460,7 +475,7 @@ public class HorizontalListView
     {
       paramInt = this.jdField_a_of_type_AndroidWidgetListAdapter.getItemViewType(paramInt);
       if ((paramView != null) && (b(paramInt))) {
-        paramView.setTag(2131432987, Integer.valueOf(paramInt));
+        paramView.setTag(2131433004, Integer.valueOf(paramInt));
       }
       return;
     }
@@ -482,6 +497,7 @@ public class HorizontalListView
   private View c(int paramInt)
   {
     View localView1 = a(paramInt);
+    setTag(2131362520, Boolean.valueOf(true));
     View localView2 = this.jdField_a_of_type_AndroidWidgetListAdapter.getView(paramInt, localView1, this);
     b(localView2, paramInt);
     if ((localView1 != null) && (localView2 != localView1)) {
@@ -553,7 +569,7 @@ public class HorizontalListView
       a("checkSpringback", new Object[] { Integer.valueOf(this.p) });
     }
     if (this.jdField_d_of_type_JavaLangRunnable == null) {
-      this.jdField_d_of_type_JavaLangRunnable = new almk(this);
+      this.jdField_d_of_type_JavaLangRunnable = new amca(this);
     }
     removeCallbacks(this.jdField_d_of_type_JavaLangRunnable);
     getHandler().post(this.jdField_d_of_type_JavaLangRunnable);
@@ -685,7 +701,7 @@ public class HorizontalListView
         if (this.k < 0) {
           this.k = this.l;
         }
-        localView = c(this.l);
+        localView = a(this.l, false);
         if (localView == null)
         {
           if (QLog.isColorLevel()) {
@@ -715,10 +731,10 @@ public class HorizontalListView
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_Almp == null) {
-      this.jdField_a_of_type_Almp = new almp(this);
+    if (this.jdField_a_of_type_Amcf == null) {
+      this.jdField_a_of_type_Amcf = new amcf(this);
     }
-    this.jdField_a_of_type_Almp.a(paramInt1, paramInt2, paramInt3);
+    this.jdField_a_of_type_Amcf.a(paramInt1, paramInt2, paramInt3);
   }
   
   protected void a(int paramInt1, int paramInt2, boolean paramBoolean)
@@ -746,7 +762,7 @@ public class HorizontalListView
   {
     try
     {
-      Object localObject = paramView.getTag(2131432987);
+      Object localObject = paramView.getTag(2131433004);
       if ((localObject instanceof Integer))
       {
         i1 = ((Integer)localObject).intValue();
@@ -930,7 +946,7 @@ public class HorizontalListView
     while ((paramInt1 + paramInt2 - this.jdField_f_of_type_Int > 0) && (this.k >= 1))
     {
       this.k -= 1;
-      View localView = c(this.k);
+      View localView = a(this.k, false);
       if (localView == null)
       {
         if (QLog.isColorLevel()) {
@@ -941,7 +957,7 @@ public class HorizontalListView
       {
         a(localView, 0);
         int i1;
-        label82:
+        label83:
         int i2;
         if (this.k == 0)
         {
@@ -949,10 +965,10 @@ public class HorizontalListView
           i1 = paramInt1 - i1;
           i2 = this.jdField_e_of_type_Int;
           if (i1 + paramInt2 != 0) {
-            break label166;
+            break label167;
           }
         }
-        label166:
+        label167:
         for (paramInt1 = localView.getMeasuredWidth();; paramInt1 = this.jdField_f_of_type_Int + localView.getMeasuredWidth())
         {
           this.jdField_e_of_type_Int = (i2 - paramInt1);
@@ -964,7 +980,7 @@ public class HorizontalListView
           paramInt1 = i1;
           break;
           i1 = this.jdField_f_of_type_Int + localView.getMeasuredWidth();
-          break label82;
+          break label83;
         }
       }
     }
@@ -972,10 +988,10 @@ public class HorizontalListView
   
   public void b(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.jdField_a_of_type_Almp == null) {
-      this.jdField_a_of_type_Almp = new almp(this);
+    if (this.jdField_a_of_type_Amcf == null) {
+      this.jdField_a_of_type_Amcf = new amcf(this);
     }
-    this.jdField_a_of_type_Almp.b(paramInt1, paramInt2, paramInt3);
+    this.jdField_a_of_type_Amcf.b(paramInt1, paramInt2, paramInt3);
   }
   
   @TargetApi(9)
@@ -998,7 +1014,7 @@ public class HorizontalListView
     setWillNotDraw(false);
     this.p = -1;
     g(4097);
-    this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new almn(this);
+    this.jdField_a_of_type_AndroidDatabaseDataSetObserver = new amcd(this);
   }
   
   int c(int paramInt)
@@ -1795,7 +1811,7 @@ public class HorizontalListView
               {
                 this.p = 0;
                 if (this.jdField_b_of_type_JavaLangRunnable == null) {
-                  this.jdField_b_of_type_JavaLangRunnable = new almm(this);
+                  this.jdField_b_of_type_JavaLangRunnable = new amcc(this);
                 }
                 postDelayed(this.jdField_b_of_type_JavaLangRunnable, ViewConfiguration.getTapTimeout());
                 this.s = getFirstVisiblePosition();
@@ -1812,7 +1828,7 @@ public class HorizontalListView
                 }
                 this.p = 0;
                 if (this.jdField_b_of_type_JavaLangRunnable == null) {
-                  this.jdField_b_of_type_JavaLangRunnable = new almm(this);
+                  this.jdField_b_of_type_JavaLangRunnable = new amcc(this);
                 }
                 postDelayed(this.jdField_b_of_type_JavaLangRunnable, ViewConfiguration.getTapTimeout());
                 i1 = i2;
@@ -1863,7 +1879,7 @@ public class HorizontalListView
           break;
           paramMotionEvent = getHandler();
           if (paramMotionEvent != null) {
-            paramMotionEvent.removeCallbacks(this.jdField_a_of_type_Alml);
+            paramMotionEvent.removeCallbacks(this.jdField_a_of_type_Amcb);
           }
           if (this.jdField_c_of_type_JavaLangRunnable != null) {
             removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
@@ -1915,7 +1931,7 @@ public class HorizontalListView
           invalidate();
           paramMotionEvent = getHandler();
           if (paramMotionEvent != null) {
-            paramMotionEvent.removeCallbacks(this.jdField_a_of_type_Alml);
+            paramMotionEvent.removeCallbacks(this.jdField_a_of_type_Amcb);
           }
           if (!jdField_a_of_type_Boolean) {
             break;
@@ -1938,16 +1954,16 @@ public class HorizontalListView
           i2 = this.s;
           localObject = getChildAt(i2 - getFirstVisiblePosition());
           f1 = paramMotionEvent.getX();
-          almo localalmo;
+          amce localamce;
           if ((f1 > getPaddingLeft()) && (f1 < getWidth() - getPaddingRight()))
           {
             i1 = 1;
-            if (this.jdField_a_of_type_Almo == null) {
-              this.jdField_a_of_type_Almo = new almo(this, null);
+            if (this.jdField_a_of_type_Amce == null) {
+              this.jdField_a_of_type_Amce = new amce(this, null);
             }
-            localalmo = this.jdField_a_of_type_Almo;
-            localalmo.jdField_a_of_type_Int = i2;
-            localalmo.a();
+            localamce = this.jdField_a_of_type_Amce;
+            localamce.jdField_a_of_type_Int = i2;
+            localamce.a();
             if ((localObject == null) || (((View)localObject).hasFocusable()) || (i1 == 0)) {
               break label1311;
             }
@@ -1984,25 +2000,25 @@ public class HorizontalListView
             if (this.jdField_c_of_type_JavaLangRunnable != null) {
               removeCallbacks(this.jdField_c_of_type_JavaLangRunnable);
             }
-            this.jdField_c_of_type_JavaLangRunnable = new almj(this, localalmo);
+            this.jdField_c_of_type_JavaLangRunnable = new ambz(this, localamce);
             postDelayed(this.jdField_c_of_type_JavaLangRunnable, ViewConfiguration.getPressedStateDuration());
             return true;
             i1 = 0;
             break;
-            paramMotionEvent = this.jdField_a_of_type_Alml;
+            paramMotionEvent = this.jdField_a_of_type_Amcb;
             break label1152;
             b((View)localObject);
           }
           this.p = -1;
           return true;
           if ((!this.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_AndroidWidgetListAdapter.isEnabled(i2))) {
-            localalmo.run();
+            localamce.run();
           }
           for (;;)
           {
             this.p = -1;
             break;
-            localalmo.run();
+            localamce.run();
           }
           this.p = -1;
           continue;
@@ -2029,7 +2045,7 @@ public class HorizontalListView
             c();
             paramMotionEvent = getHandler();
             if (paramMotionEvent != null) {
-              paramMotionEvent.removeCallbacks(this.jdField_a_of_type_Alml);
+              paramMotionEvent.removeCallbacks(this.jdField_a_of_type_Amcb);
             }
             break;
           }
@@ -2343,7 +2359,7 @@ public class HorizontalListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.widget.HorizontalListView
  * JD-Core Version:    0.7.0.1
  */

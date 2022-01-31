@@ -1,35 +1,49 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
-import com.tencent.mobileqq.filemanager.util.FMToastUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import android.view.ViewParent;
+import com.tencent.mobileqq.emoticonview.EmoticonCallback;
+import com.tencent.mobileqq.emoticonview.EmoticonInfo;
+import com.tencent.mobileqq.emoticonview.EmoticonLinearLayout;
 
 public class acee
-  implements View.OnClickListener
+  implements Runnable
 {
-  public acee(UniformDownloadActivity paramUniformDownloadActivity) {}
+  private int jdField_a_of_type_Int;
   
-  public void onClick(View paramView)
+  public acee(EmoticonLinearLayout paramEmoticonLinearLayout) {}
+  
+  public void a()
   {
-    if (NetworkUtil.d(this.a.getActivity()))
+    this.jdField_a_of_type_Int = EmoticonLinearLayout.b(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout);
+  }
+  
+  public void run()
+  {
+    EmoticonInfo localEmoticonInfo;
+    if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.getParent() != null) && (this.jdField_a_of_type_Int == EmoticonLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout)) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_AndroidViewView != null))
     {
-      UniformDownloadActivity.a(this.a).setVisibility(8);
-      if (FileManagerUtil.a())
+      localEmoticonInfo = (EmoticonInfo)this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_AndroidViewView.getTag();
+      if (localEmoticonInfo != null)
       {
-        FMDialogUtil.a(this.a.getActivity(), 2131428241, 2131428268, new acef(this));
-        return;
+        if ((this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback != null) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonCallback.a(localEmoticonInfo))) {
+          break label172;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_Boolean = true;
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.getParent().requestDisallowInterceptTouchEvent(true);
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.sendAccessibilityEvent(2);
+        if (!"delete".equals(localEmoticonInfo.a)) {
+          break label132;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_JavaLangRunnable.run();
       }
-      UniformDownloadActivity.a(this.a);
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
+    }
+    label132:
+    while (("setting".equals(localEmoticonInfo.a)) || ("add".equals(localEmoticonInfo.a))) {
       return;
     }
-    FMToastUtil.a(2131428327);
-    this.a.finish();
-    this.a.overridePendingTransition(0, 0);
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.a(this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_AndroidViewView, localEmoticonInfo);
+    return;
+    label172:
+    this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmoticonLinearLayout.jdField_a_of_type_AndroidViewView = null;
   }
 }
 

@@ -1,24 +1,13 @@
-import com.tencent.av.ui.ControlUIObserver;
-import com.tencent.av.ui.ControlUIObserver.CPreEventInfo;
-import com.tencent.av.ui.redbag.GuideTip2;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.utils.AvCustomDialog;
 
 public class kfr
-  extends ControlUIObserver
+  implements View.OnClickListener
 {
-  public kfr(GuideTip2 paramGuideTip2) {}
+  public kfr(AvCustomDialog paramAvCustomDialog) {}
   
-  protected void b(ControlUIObserver.CPreEventInfo paramCPreEventInfo)
-  {
-    if (paramCPreEventInfo.b) {
-      return;
-    }
-    paramCPreEventInfo.b = this.a.a(false, 2);
-    if (paramCPreEventInfo.b) {
-      paramCPreEventInfo.a = "AVRegbagResultUI";
-    }
-    QLog.w(this.a.i, 1, "onAVActivityPreBackPressed, BlockSystemBack[" + paramCPreEventInfo.b + "]");
-  }
+  public void onClick(View paramView) {}
 }
 
 

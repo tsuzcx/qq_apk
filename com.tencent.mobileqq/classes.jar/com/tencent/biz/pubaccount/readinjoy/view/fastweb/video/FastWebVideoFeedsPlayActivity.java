@@ -38,9 +38,9 @@ import com.tencent.util.VersionUtils;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
-import mnn;
-import mnq;
-import mnr;
+import mot;
+import mow;
+import mox;
 import mqq.app.AppRuntime;
 
 public class FastWebVideoFeedsPlayActivity
@@ -52,7 +52,7 @@ public class FastWebVideoFeedsPlayActivity
   private AudioManager jdField_a_of_type_AndroidMediaAudioManager;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new mnr(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new mox(this);
   protected TranslateAnimation a;
   private ImageView jdField_a_of_type_AndroidWidgetImageView;
   public RelativeLayout a;
@@ -61,9 +61,9 @@ public class FastWebVideoFeedsPlayActivity
   private VideoFeedsIPCClient jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient;
   private FastWebVideoFeedsAdapter.VideoItemHolder jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsAdapter$VideoItemHolder;
   private FastWebVideoFeedsAdapter jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsAdapter;
-  private FastWebVideoFeedsListView.ListViewEventListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView$ListViewEventListener = new mnq(this);
+  private FastWebVideoFeedsListView.ListViewEventListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView$ListViewEventListener = new mow(this);
   private FastWebVideoFeedsListView jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView;
-  FastWebVideoFeedsPlayManager.VideoStatusListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager$VideoStatusListener = new mnn(this);
+  FastWebVideoFeedsPlayManager.VideoStatusListener jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager$VideoStatusListener = new mot(this);
   private FastWebVideoFeedsPlayManager jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString;
@@ -172,8 +172,8 @@ public class FastWebVideoFeedsPlayActivity
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView.setDivider(new ColorDrawable(16777215));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView.setDividerHeight(AIOUtils.a(2.0F, getResources()));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView.setScrollable(false);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsCustomRelativeLayout = ((VideoFeedsCustomRelativeLayout)findViewById(2131365609));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367093));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsCustomRelativeLayout = ((VideoFeedsCustomRelativeLayout)findViewById(2131365636));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131367142));
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView, new ViewGroup.LayoutParams(-1, -1));
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager = new FastWebVideoFeedsPlayManager(getApplicationContext(), this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient, this.jdField_a_of_type_AndroidOsHandler, this.jdField_a_of_type_JavaLangString);
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsPlayManager$VideoStatusListener);
@@ -193,9 +193,9 @@ public class FastWebVideoFeedsPlayActivity
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView.a(((FastWebVideoInfo)this.jdField_a_of_type_JavaUtilArrayList.get(0)).a(getApplicationContext(), this));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView.setAdapter(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsAdapter);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebVideoFastWebVideoFeedsListView$ListViewEventListener);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsCustomRelativeLayout.findViewById(2131367088));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsCustomRelativeLayout.findViewById(2131367137));
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.bringToFront();
-      ((LinearLayout)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsCustomRelativeLayout.findViewById(2131367089)).setOnClickListener(this);
+      ((LinearLayout)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsCustomRelativeLayout.findViewById(2131367138)).setOnClickListener(this);
       FastWebVideoVolumeControl.a().a(this);
       localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient.a("CMD_VOLUMECONTROL_INSTANCE_SHOULDMUTEINVIDEOFEEDS_GET", null);
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient.a("CMD_IGNORE_VOLUME_CHANGE", null);
@@ -209,7 +209,7 @@ public class FastWebVideoFeedsPlayActivity
     }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsCustomRelativeLayout.findViewById(2131367092));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsCustomRelativeLayout.findViewById(2131367141));
       if ((!this.d) && (this.jdField_a_of_type_AndroidWidgetImageView != null))
       {
         this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
@@ -356,12 +356,12 @@ public class FastWebVideoFeedsPlayActivity
         if (paramInt1 != 0)
         {
           paramIntent.a(QQToast.a(2));
-          paramIntent.c(2131431555);
+          paramIntent.c(2131431572);
           paramIntent.b(getApplicationContext().getResources().getDimensionPixelSize(2131558448) - (int)DisplayUtils.a(getApplicationContext(), 5.0F));
           return;
         }
         paramIntent.a(QQToast.a(1));
-        paramIntent.c(2131431563);
+        paramIntent.c(2131431580);
         paramIntent.b(getApplicationContext().getResources().getDimensionPixelSize(2131558448) - (int)DisplayUtils.a(getApplicationContext(), 5.0F));
         return;
       }
@@ -371,7 +371,7 @@ public class FastWebVideoFeedsPlayActivity
     default: 
       return;
     }
-    QQToast.a(this, 2131437343, 0).a();
+    QQToast.a(this, 2131437360, 0).a();
   }
   
   public void doOnBackPressed()
@@ -400,7 +400,7 @@ public class FastWebVideoFeedsPlayActivity
     getWindow().setBackgroundDrawable(null);
     setRequestedOrientation(1);
     super.doOnCreate(paramBundle);
-    super.setContentView(2130969611);
+    super.setContentView(2130969619);
     overridePendingTransition(2131034194, 2131034195);
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
     this.jdField_a_of_type_AndroidMediaAudioManager = ((AudioManager)getSystemService("audio"));

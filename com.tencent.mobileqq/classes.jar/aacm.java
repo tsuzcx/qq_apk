@@ -1,15 +1,13 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.ar.ArConfigService;
 
-public class aacm
+class aacm
   implements Runnable
 {
-  public aacm(ARMarkerResourceManager paramARMarkerResourceManager) {}
+  aacm(aacj paramaacj) {}
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, "场景识别不支持特征追踪！", 1).a();
+    ArConfigService.e(this.a.a);
   }
 }
 

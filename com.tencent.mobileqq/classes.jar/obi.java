@@ -1,42 +1,42 @@
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.base.QQStoryObserver;
+import com.tencent.biz.qqstory.model.item.FeedFeatureItem;
+import com.tencent.biz.qqstory.notification.StoryPushMsg;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.MyStorys;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetMyStoryVideoListStep.Result;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStep.GetResultSimpleStep;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStep.InitParamSimpleStep;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.Step;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
 import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoPlayer;
-import com.tencent.biz.qqstory.takevideo.EditLocalVideoPlayer.PlayerContext;
-import com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
-import com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailProgress;
+import com.tencent.biz.qqstory.utils.UncheckedCallable;
 
 public class obi
-  implements Callbacks.Callback
+  extends QQStoryObserver
 {
-  public obi(EditLocalVideoPlayer paramEditLocalVideoPlayer, long paramLong, int paramInt) {}
+  public obi(NewMyStorySegment paramNewMyStorySegment) {}
   
-  public Void a(Boolean paramBoolean, MediaCodecThumbnailGenerator.ThumbnailProgress paramThumbnailProgress)
+  public void a(StoryPushMsg paramStoryPushMsg)
   {
-    if ((!paramBoolean.booleanValue()) || (paramThumbnailProgress == null) || (paramThumbnailProgress.jdField_a_of_type_AndroidGraphicsBitmap == null))
+    if ((NewMyStorySegment.a(this.a) == null) || (NewMyStorySegment.a(this.a).a == null))
     {
-      SLog.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail error! thumbnail = (null)");
-      return null;
+      SLog.e("NewMyStorySegment", "onPushMessage MyStory feed is null!");
+      return;
     }
-    SLog.b("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d", Integer.valueOf(paramThumbnailProgress.jdField_a_of_type_Int));
-    if (paramThumbnailProgress.jdField_a_of_type_Int >= this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditLocalVideoPlayer.a.length)
+    String str = NewMyStorySegment.a(this.a).a.a;
+    if (!TextUtils.equals(str, paramStoryPushMsg.d))
     {
-      SLog.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d OutOfArrayBounds", new Object[] { Integer.valueOf(paramThumbnailProgress.jdField_a_of_type_Int) });
-      return null;
+      SLog.a("NewMyStorySegment", "onPushMessage Push feed id = %s not equal to current feed %s, ignore!", paramStoryPushMsg.d, str);
+      return;
     }
-    SLog.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "thumbnailProgress index: %d thumbnail done!", Integer.valueOf(paramThumbnailProgress.jdField_a_of_type_Int));
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditLocalVideoPlayer.a[paramThumbnailProgress.jdField_a_of_type_Int] = EditLocalVideoPlayer.PlayerContext.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditLocalVideoPlayer.a[paramThumbnailProgress.jdField_a_of_type_Int], paramThumbnailProgress.jdField_a_of_type_AndroidGraphicsBitmap);
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditLocalVideoPlayer.a[paramThumbnailProgress.jdField_a_of_type_Int].jdField_a_of_type_JavaLangString = paramThumbnailProgress.jdField_a_of_type_JavaLangString;
-    if (paramThumbnailProgress.jdField_a_of_type_Long > 0L)
+    switch (paramStoryPushMsg.a)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditLocalVideoPlayer.a[paramThumbnailProgress.jdField_a_of_type_Int].jdField_a_of_type_Int = ((int)paramThumbnailProgress.jdField_a_of_type_Long / 1000);
-      SLog.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "fix start time : %d ", Integer.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditLocalVideoPlayer.a[paramThumbnailProgress.jdField_a_of_type_Int].jdField_a_of_type_Int));
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditLocalVideoPlayer.a[paramThumbnailProgress.jdField_a_of_type_Int].b <= 0) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditLocalVideoPlayer.a.length == 1))
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditLocalVideoPlayer.a[paramThumbnailProgress.jdField_a_of_type_Int].b = ((int)this.jdField_a_of_type_Long);
-        SLog.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "fix end time : %d ", Integer.valueOf(this.jdField_a_of_type_Int));
-      }
+    case 16: 
+    case 17: 
+    default: 
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditLocalVideoPlayer.h();
-    return null;
+    this.a.a(new Step[] { new SimpleStep.InitParamSimpleStep(GetMyStoryVideoListStep.Result.a(str)), (Step)this.a.b.a(), new SimpleStep.GetResultSimpleStep(new obj(this, str)) });
   }
 }
 

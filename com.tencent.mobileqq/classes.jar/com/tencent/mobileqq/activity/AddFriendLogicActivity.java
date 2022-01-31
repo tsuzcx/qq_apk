@@ -37,14 +37,14 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
-import rff;
-import rfg;
-import rfh;
-import rfi;
-import rfj;
-import rfk;
-import rfl;
-import rfm;
+import ric;
+import rid;
+import rie;
+import rif;
+import rig;
+import rih;
+import rii;
+import rij;
 
 public class AddFriendLogicActivity
   extends BaseActivity
@@ -58,7 +58,7 @@ public class AddFriendLogicActivity
   protected OpenIdObserver a;
   public QQCustomDialog a;
   private QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
-  private rfm jdField_a_of_type_Rfm;
+  private rij jdField_a_of_type_Rij;
   public boolean a;
   private int jdField_b_of_type_Int;
   public DialogInterface.OnClickListener b;
@@ -77,10 +77,10 @@ public class AddFriendLogicActivity
   
   public AddFriendLogicActivity()
   {
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new rfh(this);
-    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new rfi(this);
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new rfj(this);
-    this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver = new rfl(this);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = new rie(this);
+    this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = new rif(this);
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnDismissListener = new rig(this);
+    this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver = new rii(this);
   }
   
   public static Intent a(Context paramContext, int paramInt1, String paramString1, String paramString2, int paramInt2, int paramInt3, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
@@ -230,8 +230,8 @@ public class AddFriendLogicActivity
       }
       ((EntityManager)localObject1).a();
     }
-    this.jdField_a_of_type_Rfm = new rfm(this, this);
-    addObserver(this.jdField_a_of_type_Rfm);
+    this.jdField_a_of_type_Rij = new rij(this, this);
+    addObserver(this.jdField_a_of_type_Rij);
     if (this.jdField_b_of_type_Int == 1) {
       ((FriendListHandler)this.app.a(1)).a("OidbSvc.0x476_147", Long.parseLong(this.jdField_d_of_type_JavaLangString), 147);
     }
@@ -256,7 +256,7 @@ public class AddFriendLogicActivity
     case 1: 
       if (paramString.equals(this.app.getCurrentAccountUin()))
       {
-        QQToast.a(this, 2131434411, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131434428, 0).b(getTitleBarHeight());
         finish();
         return false;
       }
@@ -265,7 +265,7 @@ public class AddFriendLogicActivity
         Long.parseLong(paramString);
         if (((FriendsManager)this.app.getManager(50)).b(paramString))
         {
-          QQToast.a(this.app.getApplication(), 2131434412, 0).b(getTitleBarHeight());
+          QQToast.a(this.app.getApplication(), 2131434429, 0).b(getTitleBarHeight());
           finish();
           return false;
         }
@@ -286,7 +286,7 @@ public class AddFriendLogicActivity
     }
     while (!NetworkUtil.d(this))
     {
-      QQToast.a(this.app.getApplication(), 2131434794, 0).b(getTitleBarHeight());
+      QQToast.a(this.app.getApplication(), 2131434811, 0).b(getTitleBarHeight());
       finish();
       return false;
       if (this.jdField_c_of_type_Int == 3999)
@@ -308,8 +308,8 @@ public class AddFriendLogicActivity
     FriendListHandler localFriendListHandler = (FriendListHandler)this.app.a(1);
     int i = getIntent().getIntExtra("sub_source_id", 0);
     localFriendListHandler.a(this.jdField_d_of_type_JavaLangString, this.jdField_c_of_type_Int, i, this.e, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131434416);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(new rff(this));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131434433);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(new ric(this));
     if (!isFinishing()) {
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
     }
@@ -319,7 +319,7 @@ public class AddFriendLogicActivity
   {
     if (!NetworkUtil.d(this))
     {
-      QQToast.a(this.app.getApplication(), 2131434794, 0).b(getTitleBarHeight());
+      QQToast.a(this.app.getApplication(), 2131434811, 0).b(getTitleBarHeight());
       finish();
       return false;
     }
@@ -352,10 +352,10 @@ public class AddFriendLogicActivity
     label135:
     for (OpenID localOpenID = null; (localOpenID == null) || (TextUtils.isEmpty(localOpenID.openID)); localOpenID = this.app.a().a(this.e))
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131434416);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131434433);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       this.jdField_a_of_type_AndroidOsHandler = new Handler();
-      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new rfg(this), 3000L);
+      this.jdField_a_of_type_AndroidOsHandler.postDelayed(new rid(this), 3000L);
       this.app.addObserver(this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver);
       if (this.e != null) {
         this.app.a().d(this.e);
@@ -377,7 +377,7 @@ public class AddFriendLogicActivity
     int i = ((Intent)localObject).getShortExtra("group_option", (short)2);
     if (((TroopManager)this.app.getManager(51)).a(str) != null)
     {
-      QQToast.a(this.app.getApplication(), 2131434413, 0).b(getTitleBarHeight());
+      QQToast.a(this.app.getApplication(), 2131434430, 0).b(getTitleBarHeight());
       finish();
       return false;
     }
@@ -385,9 +385,9 @@ public class AddFriendLogicActivity
     {
       localObject = getIntent().getStringExtra("nick_name");
       if ((localObject == null) || (((String)localObject).length() == 0)) {
-        getString(2131433032);
+        getString(2131433049);
       }
-      QQToast.a(this.app.getApplication(), 2131434414, 0).b(getTitleBarHeight());
+      QQToast.a(this.app.getApplication(), 2131434431, 0).b(getTitleBarHeight());
       finish();
       return false;
     }
@@ -437,7 +437,7 @@ public class AddFriendLogicActivity
             {
               if (this.jdField_d_of_type_Int == 1)
               {
-                i = 2131432969;
+                i = 2131432986;
                 localObject5 = getString(i);
               }
             }
@@ -449,7 +449,7 @@ public class AddFriendLogicActivity
                 if (this.jdField_d_of_type_Int != 1) {
                   break label333;
                 }
-                localObject1 = getString(2131432971);
+                localObject1 = getString(2131432988);
               }
               if (localObject2 != null) {
                 break label432;
@@ -465,7 +465,7 @@ public class AddFriendLogicActivity
               if (this.jdField_d_of_type_Int != 1) {
                 break label456;
               }
-              localObject2 = getString(2131432977);
+              localObject2 = getString(2131432994);
             }
             for (;;)
             {
@@ -474,34 +474,34 @@ public class AddFriendLogicActivity
               this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton((String)localObject4, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
               this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton((String)localObject2, this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener);
               if ((this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null) || (this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener == null)) {
-                this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364020).setVisibility(8);
+                this.jdField_b_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364044).setVisibility(8);
               }
               return;
-              i = 2131432970;
+              i = 2131432987;
               break;
               if (this.jdField_d_of_type_Int == 2)
               {
-                localObject1 = getString(2131432972);
+                localObject1 = getString(2131432989);
                 break label209;
               }
               if (this.jdField_d_of_type_Int == 3)
               {
-                localObject1 = getString(2131432973);
+                localObject1 = getString(2131432990);
                 break label209;
               }
               if (this.jdField_d_of_type_Int == 4)
               {
-                localObject1 = getString(2131432974);
+                localObject1 = getString(2131432991);
                 break label209;
               }
               if (this.jdField_d_of_type_Int == 5)
               {
-                localObject1 = getString(2131432975);
+                localObject1 = getString(2131432992);
                 break label209;
               }
-              localObject1 = getString(2131432976);
+              localObject1 = getString(2131432993);
               break label209;
-              localObject4 = getString(2131432978);
+              localObject4 = getString(2131432995);
               break label229;
               localObject4 = localObject2;
               if (!TextUtils.isEmpty(((String)localObject2).trim())) {
@@ -510,7 +510,7 @@ public class AddFriendLogicActivity
               this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
               localObject4 = localObject2;
               break label229;
-              localObject2 = getString(2131432979);
+              localObject2 = getString(2131432996);
               continue;
               if (TextUtils.isEmpty(((String)localObject3).trim())) {
                 this.jdField_b_of_type_AndroidContentDialogInterface$OnClickListener = null;
@@ -531,11 +531,11 @@ public class AddFriendLogicActivity
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131430008);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131430142);
-    rfk localrfk = new rfk(this);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131432998, localrfk);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131430009, localrfk);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setMessage(2131430025);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131430159);
+    rih localrih = new rih(this);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setNegativeButton(2131433015, localrih);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setPositiveButton(2131430026, localrih);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
   }
   
@@ -599,8 +599,8 @@ public class AddFriendLogicActivity
   
   protected void doOnDestroy()
   {
-    if (this.jdField_a_of_type_Rfm != null) {
-      removeObserver(this.jdField_a_of_type_Rfm);
+    if (this.jdField_a_of_type_Rij != null) {
+      removeObserver(this.jdField_a_of_type_Rij);
     }
     if (this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver != null) {
       removeObserver(this.jdField_a_of_type_ComTencentBizCommonUtilOpenIdObserver);

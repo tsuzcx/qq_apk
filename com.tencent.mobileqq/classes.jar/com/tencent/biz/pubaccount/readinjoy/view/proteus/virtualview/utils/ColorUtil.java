@@ -23,9 +23,7 @@ public class ColorUtil
     if (paramString1 != null) {
       arrayOfInt[2] = Utils.a(paramString1);
     }
-    paramString1 = new int[] { 16842919 };
-    paramString2 = new int[0];
-    return new ColorStateList(new int[][] { { 16842913 }, paramString1, paramString2 }, arrayOfInt);
+    return new ColorStateList(new int[][] { { 16842913 }, { 16842919 }, new int[0] }, arrayOfInt);
   }
 }
 

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.WeakHashMap;
-import mpb;
+import mqi;
 import mqq.util.WeakReference;
 
 public class ReadInJoyFeedsHeaderViewController$GifPlayOnceEventMultiCaster
@@ -26,7 +26,7 @@ public class ReadInJoyFeedsHeaderViewController$GifPlayOnceEventMultiCaster
     if ((paramURLDrawable.getCurrDrawable() instanceof GifDrawable))
     {
       AbstractGifImage localAbstractGifImage = ((GifDrawable)paramURLDrawable.getCurrDrawable()).getImage();
-      paramURLDrawable = new mpb(localAbstractGifImage);
+      paramURLDrawable = new mqi(localAbstractGifImage);
       localAbstractGifImage.setGIFPlayOnceListener(paramURLDrawable);
       b.put(localAbstractGifImage, paramURLDrawable);
       List localList = (List)a.get(localAbstractGifImage);

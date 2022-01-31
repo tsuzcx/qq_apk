@@ -1,19 +1,15 @@
-import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
 
 public class jya
-  implements Runnable
+  implements View.OnClickListener
 {
-  public String a;
+  public jya(MultiVideoMembersListviewAvtivity paramMultiVideoMembersListviewAvtivity) {}
   
-  public jya(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
-  
-  public void run()
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.c, 2, "StartRecvAllVideoRunnable-->FunctionName=" + this.jdField_a_of_type_JavaLangString);
-    }
-    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.e();
+    this.a.b();
   }
 }
 

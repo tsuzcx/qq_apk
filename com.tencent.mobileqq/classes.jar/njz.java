@@ -1,22 +1,15 @@
-import com.tencent.biz.qqstory.playmode.child.ShareGroupHotSortPlayMode;
-import com.tencent.biz.qqstory.playvideo.QQStoryVideoPlayerErrorView;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.playmode.child.MyMemoryPlayMode;
 import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
-import com.tencent.biz.qqstory.view.widget.QQStoryLoadingView;
 
-class njz
+public class njz
   implements Runnable
 {
-  njz(njw paramnjw) {}
+  public njz(MyMemoryPlayMode paramMyMemoryPlayMode, int paramInt) {}
   
   public void run()
   {
-    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryViewWidgetQQStoryLoadingView.setVisibility(8);
-    StoryReportor.b("play_video", "play_done", 0, 0, new String[] { "1", String.valueOf(111) });
-    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.a(1);
-    this.a.a.a.jdField_a_of_type_Int = 1;
-    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setVisibility(0);
-    this.a.a.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoQQStoryVideoPlayerErrorView.setOnTipsClickListener(new nka(this));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMyMemoryPlayMode.e = false;
+    this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildMyMemoryPlayMode.a.setCurrentItem(this.jdField_a_of_type_Int, false);
   }
 }
 

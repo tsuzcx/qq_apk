@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vashealth;
 
-import ajvw;
-import ajvx;
-import ajvy;
-import ajwa;
+import akkd;
+import akke;
+import akkf;
+import akkh;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -48,11 +48,11 @@ public class SportManager
   long jdField_a_of_type_Long = 0L;
   AlarmManager jdField_a_of_type_AndroidAppAlarmManager = null;
   PendingIntent jdField_a_of_type_AndroidAppPendingIntent = null;
-  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new ajwa(this);
+  Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new akkh(this);
   public Handler a;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   StepAlarmReceiver jdField_a_of_type_ComTencentMobileqqVashealthStepAlarmReceiver;
-  BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new ajvy(this);
+  BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new akkf(this);
   PendingIntent b = null;
   
   static
@@ -64,7 +64,7 @@ public class SportManager
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
-    ThreadManager.post(new ajvw(this), 5, null, true);
+    ThreadManager.post(new akkd(this), 5, null, true);
   }
   
   public static SharedPreferences a()
@@ -238,7 +238,7 @@ public class SportManager
     do
     {
       return;
-      localObject1 = new ajvx(this, l, i, j);
+      localObject1 = new akke(this, l, i, j);
     } while (jdField_a_of_type_AndroidHardwareSensorManager == null);
     localObject2 = jdField_a_of_type_AndroidHardwareSensorManager.getDefaultSensor(19);
     try
@@ -291,7 +291,7 @@ public class SportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.vashealth.SportManager
  * JD-Core Version:    0.7.0.1
  */

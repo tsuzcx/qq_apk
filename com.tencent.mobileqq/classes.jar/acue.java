@@ -1,32 +1,22 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IUploadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
-import com.tencent.mobileqq.filemanager.fileviewer.presenter.FileBrowserPresenterBase;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
+import com.tencent.qphone.base.util.QLog;
 
 public class acue
-  implements View.OnClickListener
+  implements Runnable
 {
-  public acue(FileBrowserPresenterBase paramFileBrowserPresenterBase) {}
+  public acue(FileTransferHandler paramFileTransferHandler, long paramLong, boolean paramBoolean, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    int i = this.a.a.h();
-    if ((i == 2) || (i == 3)) {
-      if (this.a.a.a() != null) {
-        this.a.a.a().a();
-      }
-    }
-    while ((i != 1) || (this.a.a.a() == null)) {
-      return;
-    }
-    this.a.a.a().a();
+    QLog.i("FileTransferHandler<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_Long + "]  handle recv onlinefile resp. sucess =" + this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acue
  * JD-Core Version:    0.7.0.1
  */

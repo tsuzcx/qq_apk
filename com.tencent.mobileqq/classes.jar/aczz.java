@@ -1,60 +1,40 @@
-import android.support.v4.view.PagerAdapter;
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
-import com.tencent.mobileqq.flashchat.FlashChatPanel;
-import com.tencent.mobileqq.flashchat.FlashChatTextEffectView;
-import com.tencent.mobileqq.widget.QQViewPager;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadMgr.SucDownloadInfo;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadNfn;
+import com.tencent.mobileqq.filemanager.core.UniformDownloadPkgInstallReceiver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class aczz
-  extends PagerAdapter
+  implements Runnable
 {
-  public aczz(FlashChatPanel paramFlashChatPanel) {}
+  public aczz(UniformDownloadPkgInstallReceiver paramUniformDownloadPkgInstallReceiver, String paramString1, String paramString2) {}
   
-  public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
+  public void run()
   {
-    ((QQViewPager)paramViewGroup).removeView((View)paramObject);
-  }
-  
-  public int getCount()
-  {
-    return 2;
-  }
-  
-  public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
-  {
-    FlashChatTextEffectView localFlashChatTextEffectView;
-    if (paramInt == 0) {
-      localFlashChatTextEffectView = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqFlashchatFlashChatTextEffectView[0];
-    }
-    for (;;)
+    if (("android.intent.action.PACKAGE_ADDED".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)) || ("android.intent.action.PACKAGE_REPLACED".equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)))
     {
-      if (localFlashChatTextEffectView != null)
+      Object localObject = UniformDownloadMgr.a().a(this.b, true);
+      if ((localObject != null) && (((List)localObject).size() > 0))
       {
-        ViewParent localViewParent = this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getParent();
-        if (localViewParent != null) {
-          ((ViewGroup)localViewParent).removeView(localFlashChatTextEffectView);
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          UniformDownloadMgr.SucDownloadInfo localSucDownloadInfo = (UniformDownloadMgr.SucDownloadInfo)((Iterator)localObject).next();
+          if (localSucDownloadInfo != null)
+          {
+            QLog.i("UniformDownloadPkgInstallReceiver<FileAssistant>", 1, "[UniformDL] send cancel notification.pkgName:" + this.b + " notificationId:" + localSucDownloadInfo.a);
+            UniformDownloadNfn.a().c(localSucDownloadInfo.a, null);
+          }
         }
-        paramViewGroup.addView(localFlashChatTextEffectView);
-        localFlashChatTextEffectView.requestLayout();
-      }
-      return localFlashChatTextEffectView;
-      if (paramInt == 1) {
-        localFlashChatTextEffectView = this.a.jdField_a_of_type_ArrayOfComTencentMobileqqFlashchatFlashChatTextEffectView[1];
-      } else {
-        localFlashChatTextEffectView = null;
       }
     }
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aczz
  * JD-Core Version:    0.7.0.1
  */

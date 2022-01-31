@@ -1,24 +1,65 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyMessagesActivity;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
+import com.tencent.biz.pubaccount.readinjoy.skin.CommonSkinRes;
+import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyOperationManager;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoyRefreshManager;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinHandler;
+import com.tencent.biz.pubaccount.readinjoy.skin.ReadInJoySkinManager;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshData;
+import com.tencent.biz.pubaccount.readinjoy.skin.RefreshRes;
+import com.tencent.biz.pubaccount.readinjoy.skin.SkinData;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class ldp
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public ldp(ReadInJoyMessagesActivity paramReadInJoyMessagesActivity, String paramString, ActionSheet paramActionSheet) {}
+  public ldp(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
+    Object localObject = (ReadInJoyRefreshManager)this.a.app.getManager(269);
+    RefreshData localRefreshData = ((ReadInJoyRefreshManager)localObject).a(this.a.getActivity());
+    int i = (int)(System.currentTimeMillis() / 1000L);
+    ReadInJoySkinManager localReadInJoySkinManager;
+    SkinData localSkinData;
+    if ((localRefreshData != null) && (i >= localRefreshData.beginTime) && (i <= localRefreshData.endTime)) {
+      if (RefreshRes.a(localRefreshData.id)) {
+        if (localRefreshData.isShown)
+        {
+          ((ReadInJoyRefreshManager)localObject).a(1, localRefreshData.id);
+          ((ReadInJoyRefreshManager)localObject).a(true);
+          localObject = (GuideData)((ReadInJoyOperationManager)this.a.app.getManager(270)).a("operation_guide");
+          localReadInJoySkinManager = (ReadInJoySkinManager)this.a.app.getManager(260);
+          localSkinData = localReadInJoySkinManager.a(this.a);
+          if ((localSkinData == null) || (i < localSkinData.beginTime) || (i > localSkinData.endTime)) {
+            break label293;
+          }
+          if (!CommonSkinRes.a(localSkinData.id)) {
+            break label274;
+          }
+          localReadInJoySkinManager.a(1, localSkinData.id);
+        }
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      localReadInJoySkinManager.a(this.a);
+      this.a.app.addObserver(ReadInJoyNewFeedsActivity.a(this.a));
+      ((ReadInJoySkinHandler)this.a.app.a(121)).a(localSkinData, null, localRefreshData, (GuideData)localObject);
       return;
-      ReadInJoyLogicEngine.a().a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyMessagesActivity.getActivity());
+      ((ReadInJoyRefreshManager)localObject).a(0, "");
+      break;
+      ((ReadInJoyRefreshManager)localObject).a(0, "");
+      ((ReadInJoyRefreshManager)localObject).a(localRefreshData);
+      break;
+      ((ReadInJoyRefreshManager)localObject).a(0, "");
+      break;
+      label274:
+      localReadInJoySkinManager.a(localSkinData);
+      localReadInJoySkinManager.a(0, "");
+      continue;
+      label293:
+      localReadInJoySkinManager.a(0, "");
     }
   }
 }

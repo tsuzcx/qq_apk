@@ -1,15 +1,22 @@
-import com.tencent.biz.qqstory.view.widget.AbsEmptyView;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpeg;
+import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
 
 public class ooy
-  implements Runnable
+  extends ExecuteBinResponseCallback
 {
-  public ooy(AbsEmptyView paramAbsEmptyView) {}
+  public ooy(FFmpeg paramFFmpeg, FFmpegExecuteResponseCallback paramFFmpegExecuteResponseCallback) {}
   
-  public void run()
+  public void a(String paramString)
   {
-    if (AbsEmptyView.a(this.a) == 0) {
-      AbsEmptyView.a(this.a, 3, true);
-    }
+    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onSuccess: " + paramString);
+  }
+  
+  public void b(String paramString)
+  {
+    SLog.d("Q.qqstory.ffmpeg.FFmpegCmd", "concatMediaByTs change ts onFail: " + paramString);
+    this.jdField_a_of_type_ComTencentBizQqstoryUtilsFfmpegFFmpegExecuteResponseCallback.b(paramString);
   }
 }
 

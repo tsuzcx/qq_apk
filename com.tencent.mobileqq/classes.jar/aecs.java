@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.nearby.guide.NearbyGuideActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.lyric.data.Sentence;
+import java.util.Comparator;
 
 public class aecs
-  implements Runnable
+  implements Comparator
 {
-  public aecs(NearbyGuideActivity paramNearbyGuideActivity, String paramString) {}
-  
-  public void run()
+  public int a(Sentence paramSentence1, Sentence paramSentence2)
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyGuideNearbyGuideActivity.app, "CliOper", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
+    if (paramSentence1.a >= paramSentence2.a) {
+      return 1;
+    }
+    return -1;
   }
 }
 

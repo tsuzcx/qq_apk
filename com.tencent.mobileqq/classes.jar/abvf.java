@@ -1,41 +1,36 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.devicelock.DevlockInfo;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.GetAppPathByActionResult;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByActionCallback;
+import com.tencent.mobileqq.data.RecommendCommonMessage.ArkMsgAppInfo;
+import com.tencent.mobileqq.data.RecommendCommonMessage.IGetAppInfosByContextCallback;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class abvf
-  extends WtloginObserver
+public final class abvf
+  implements ArkLocalAppMgr.IGetAppPathByActionCallback
 {
-  abvf(abue paramabue, Bundle paramBundle, MessengerService paramMessengerService) {}
+  public abvf(String paramString1, boolean paramBoolean, String paramString2) {}
   
-  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
+  public void a(Object paramObject, ArrayList paramArrayList)
   {
-    boolean bool2 = true;
-    paramWUserSigInfo = new Bundle();
-    if ((paramInt == 0) && (paramDevlockInfo != null))
+    ArrayList localArrayList = new ArrayList();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
     {
-      if (paramDevlockInfo.DevSetup != 1) {
-        break label90;
-      }
-      bool1 = true;
-      paramWUserSigInfo.putBoolean("auth_dev_open", bool1);
-      if (paramDevlockInfo.AllowSet != 1) {
-        break label96;
+      ArkLocalAppMgr.GetAppPathByActionResult localGetAppPathByActionResult = (ArkLocalAppMgr.GetAppPathByActionResult)paramArrayList.next();
+      if ((localGetAppPathByActionResult.a == 0) && (localGetAppPathByActionResult.c != null))
+      {
+        RecommendCommonMessage.ArkMsgAppInfo localArkMsgAppInfo = new RecommendCommonMessage.ArkMsgAppInfo();
+        localArkMsgAppInfo.appName = localGetAppPathByActionResult.b;
+        localArkMsgAppInfo.appPath = localGetAppPathByActionResult.c;
+        localArkMsgAppInfo.appView = localGetAppPathByActionResult.d;
+        localArkMsgAppInfo.keyword = this.jdField_a_of_type_JavaLangString;
+        localArkMsgAppInfo.equalInputText = this.jdField_a_of_type_Boolean;
+        localArkMsgAppInfo.meta = this.b;
+        localArrayList.add(localArkMsgAppInfo);
       }
     }
-    label90:
-    label96:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      paramWUserSigInfo.putBoolean("allow_set", bool1);
-      paramWUserSigInfo.putString("phone_num", paramDevlockInfo.Mobile);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramWUserSigInfo);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      bool1 = false;
-      break;
+    if ((paramObject != null) && ((paramObject instanceof RecommendCommonMessage.IGetAppInfosByContextCallback))) {
+      ((RecommendCommonMessage.IGetAppInfosByContextCallback)paramObject).a(localArrayList);
     }
   }
 }

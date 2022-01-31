@@ -1,24 +1,14 @@
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.ApolloTicker;
-import com.tencent.mobileqq.apollo.script.SpriteBackgroundManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 
 public class yor
   implements Runnable
 {
-  public yor(SpriteBackgroundManager paramSpriteBackgroundManager) {}
+  public yor(ApolloCmdChannel paramApolloCmdChannel, Bitmap paramBitmap, String paramString, int paramInt, long paramLong) {}
   
   public void run()
   {
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)SpriteBackgroundManager.a(this.a).get();
-    if ((localApolloTextureView != null) && (localApolloTextureView.getRender() != null) && (localApolloTextureView.getRender().mApolloTicker != null)) {
-      ApolloRender.tickerPause(localApolloTextureView.getRender().mApolloTicker.ticker);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, "mPauseTickerTask");
-    }
+    ApolloCmdChannel.access$200(this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
   }
 }
 

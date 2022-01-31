@@ -1,20 +1,18 @@
-import com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity.IShowExternalTroopDataChangedCallBack;
-import com.tencent.mobileqq.activity.contact.troop.TroopActivity;
-import java.util.HashMap;
+import android.os.MessageQueue.IdleHandler;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
 
 public class wia
-  implements ShowExternalTroopListActivity.IShowExternalTroopDataChangedCallBack
+  implements MessageQueue.IdleHandler
 {
-  public wia(TroopActivity paramTroopActivity) {}
+  public wia(ClassificationSearchActivity paramClassificationSearchActivity) {}
   
-  public void a(String paramString, boolean paramBoolean)
+  public boolean queueIdle()
   {
-    if ((this.a.a.containsKey(paramString)) && (((Boolean)this.a.a.get(paramString)).booleanValue() != paramBoolean))
-    {
-      this.a.a.remove(paramString);
-      return;
-    }
-    this.a.a.put(paramString, Boolean.valueOf(paramBoolean));
+    this.a.a.requestFocus();
+    ((InputMethodManager)this.a.getSystemService("input_method")).showSoftInput(this.a.a, 0);
+    return false;
   }
 }
 

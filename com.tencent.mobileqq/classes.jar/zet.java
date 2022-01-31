@@ -1,22 +1,23 @@
-import com.tencent.mobileqq.app.NewFriendManager;
-import com.tencent.mobileqq.app.NewFriendManager.INewFriendListener;
-import java.util.Iterator;
-import java.util.LinkedList;
+import com.tencent.mobileqq.app.HotChatCenterManager;
+import com.tencent.mobileqq.data.HotChatItemData;
+import java.util.Comparator;
 
 public class zet
-  implements Runnable
+  implements Comparator
 {
-  public zet(NewFriendManager paramNewFriendManager, int paramInt) {}
+  public zet(HotChatCenterManager paramHotChatCenterManager) {}
   
-  public void run()
+  public int a(HotChatItemData paramHotChatItemData1, HotChatItemData paramHotChatItemData2)
   {
-    synchronized (NewFriendManager.a(this.jdField_a_of_type_ComTencentMobileqqAppNewFriendManager))
-    {
-      Iterator localIterator = NewFriendManager.a(this.jdField_a_of_type_ComTencentMobileqqAppNewFriendManager).iterator();
-      if (localIterator.hasNext()) {
-        ((NewFriendManager.INewFriendListener)localIterator.next()).a(this.jdField_a_of_type_Int);
-      }
+    long l1 = paramHotChatItemData1.mMakeTopTime;
+    long l2 = paramHotChatItemData2.mMakeTopTime;
+    if (l1 < l2) {
+      return 1;
     }
+    if (l1 == l2) {
+      return 0;
+    }
+    return -1;
   }
 }
 

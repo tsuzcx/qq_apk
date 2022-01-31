@@ -56,9 +56,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
-import uik;
-import uil;
-import uim;
+import ulk;
+import ull;
+import ulm;
 
 public class ForwardUtils
 {
@@ -207,7 +207,7 @@ public class ForwardUtils
     SessionInfo localSessionInfo = a(paramIntent);
     if ((localSessionInfo.jdField_a_of_type_Int == 1) && (((TroopGagMgr)paramQQAppInterface.getManager(47)).a(localSessionInfo.jdField_a_of_type_JavaLangString, true).a))
     {
-      QQToast.a(paramQQAppInterface.getApp(), 2131430256, 0).b(paramContext.getResources().getDimensionPixelSize(2131558448));
+      QQToast.a(paramQQAppInterface.getApp(), 2131430273, 0).b(paramContext.getResources().getDimensionPixelSize(2131558448));
       return false;
     }
     int i = paramIntent.getIntExtra("forward_type", 2147483647);
@@ -308,7 +308,7 @@ public class ForwardUtils
                       if (!FileManagerUtil.a()) {
                         break;
                       }
-                      FMDialogUtil.a(paramActivity, 2131428241, 2131428237, new uik((ArrayList)localObject3, paramContext, i, paramQQAppInterface, (String)localObject2, str));
+                      FMDialogUtil.a(paramActivity, 2131428241, 2131428237, new ulk((ArrayList)localObject3, paramContext, i, paramQQAppInterface, (String)localObject2, str));
                     }
                   }
                   catch (Exception paramContext) {}
@@ -393,7 +393,7 @@ public class ForwardUtils
           if (QLog.isColorLevel()) {
             QLog.d("ForwardUtils", 2, "[@]call sendPic start!");
           }
-          ThreadManager.post(new uil(paramQQAppInterface, paramActivity, localSessionInfo, (String)localObject1, str, (String)localObject2, l1, i, paramContext, paramMqqHandler), 8, null, false);
+          ThreadManager.post(new ull(paramQQAppInterface, paramActivity, localSessionInfo, (String)localObject1, str, (String)localObject2, l1, i, paramContext, paramMqqHandler), 8, null, false);
           if (!QLog.isColorLevel()) {
             break;
           }
@@ -417,7 +417,7 @@ public class ForwardUtils
           l1 = paramIntent.getLongExtra("forward_image_width", 0L);
           long l2 = paramIntent.getLongExtra("forward_image_height", 0L);
           int k = paramIntent.getIntExtra("forward_image_type", 0);
-          ThreadManager.executeOnFileThread(new uim(AppConstants.aT + "#" + l1 + "#" + l2 + "#" + k, localSessionInfo, j, paramQQAppInterface));
+          ThreadManager.executeOnFileThread(new ulm(AppConstants.aT + "#" + l1 + "#" + l2 + "#" + k, localSessionInfo, j, paramQQAppInterface));
         }
         paramContext = PicBusiManager.a(i, paramIntent);
         paramActivity = PicBusiManager.a(3, i);

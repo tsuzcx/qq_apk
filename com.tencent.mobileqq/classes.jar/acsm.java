@@ -1,33 +1,13 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
-import com.tencent.mobileqq.filemanager.core.OnlineFileSessionCenter;
-import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
-import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadController;
-import com.tencent.mobileqq.filemanager.fileviewer.model.C2CFileModel;
-import com.tencent.mobileqq.filemanager.recreate.FileModel;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileBaseRecentFileTabView;
 
-public class acsm
-  implements IDownloadController
+class acsm
+  implements Runnable
 {
-  public acsm(C2CFileModel paramC2CFileModel) {}
+  acsm(acsi paramacsi) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a(false, FileModel.a(this.a.a.a()), this.a.b(), new acsn(this));
-  }
-  
-  public void b()
-  {
-    this.a.d();
-    int i = this.a.d();
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.sApplication.getRuntime();
-    if (i == 0)
-    {
-      localQQAppInterface.a().a(this.a.c());
-      return;
-    }
-    localQQAppInterface.a().a(this.a.a.a());
+    this.a.a.e();
   }
 }
 

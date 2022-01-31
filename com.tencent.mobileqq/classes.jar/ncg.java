@@ -1,22 +1,39 @@
-import com.tencent.biz.qqstory.model.WeatherDataProvider;
-import com.tencent.biz.qqstory.model.lbs.BasicLocation;
-import com.tencent.biz.qqstory.model.lbs.LbsManager.LbsUpdateListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import android.view.KeyEvent;
+import android.widget.TextView;
+import android.widget.TextView.OnEditorActionListener;
+import com.tencent.biz.qqstory.comment.FeedCommentLego;
+import com.tencent.biz.qqstory.comment.StoryInputBarView;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment.InputViewHideListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 public class ncg
-  implements LbsManager.LbsUpdateListener
+  implements TextView.OnEditorActionListener
 {
-  public ncg(WeatherDataProvider paramWeatherDataProvider) {}
+  public ncg(StoryInputBarView paramStoryInputBarView) {}
   
-  public void a(boolean paramBoolean, BasicLocation paramBasicLocation)
+  public boolean onEditorAction(TextView paramTextView, int paramInt, KeyEvent paramKeyEvent)
   {
-    SLog.b("WeatherDataProvider", "WeatherLbsListener: onLbsUpdate, isSuccess=" + paramBoolean);
-    if ((paramBoolean) && (paramBasicLocation != null))
+    if (paramInt == 4)
     {
-      this.a.a(paramBasicLocation.b, paramBasicLocation.a);
-      return;
+      paramTextView = paramTextView.getText().toString();
+      if (paramTextView.length() <= 0) {
+        break label122;
+      }
+      this.a.setKeyBoardState(false);
+      this.a.jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLego.a(paramTextView, this.a.jdField_a_of_type_ComTencentBizQqstoryDatabaseCommentEntry);
+      this.a.c();
+      this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
+      if (StoryInputBarView.a(this.a) != null) {
+        StoryInputBarView.a(this.a).f();
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.qqstory:StoryInputBarView", 2, "onEditorAction vaule=" + paramTextView);
+      }
     }
-    this.a.a(false, null);
+    return false;
+    label122:
+    return true;
   }
 }
 

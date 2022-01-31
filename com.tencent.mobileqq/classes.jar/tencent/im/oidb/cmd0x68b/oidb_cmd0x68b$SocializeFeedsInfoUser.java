@@ -4,13 +4,15 @@ import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.MessageMicro.FieldMap;
 import com.tencent.mobileqq.pb.PBEnumField;
 import com.tencent.mobileqq.pb.PBField;
+import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 
 public final class oidb_cmd0x68b$SocializeFeedsInfoUser
   extends MessageMicro
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint64_uin", "enum_uin_type" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0) }, SocializeFeedsInfoUser.class);
+  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24 }, new String[] { "uint64_uin", "enum_uin_type", "uint32_star_style" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0) }, SocializeFeedsInfoUser.class);
   public final PBEnumField enum_uin_type = PBField.initEnum(0);
+  public final PBUInt32Field uint32_star_style = PBField.initUInt32(0);
   public final PBUInt64Field uint64_uin = PBField.initUInt64(0L);
 }
 

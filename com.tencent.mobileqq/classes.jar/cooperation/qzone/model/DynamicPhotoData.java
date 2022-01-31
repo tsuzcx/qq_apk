@@ -1,6 +1,6 @@
 package cooperation.qzone.model;
 
-import amej;
+import amun;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class DynamicPhotoData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amej();
+  public static final Parcelable.Creator CREATOR = new amun();
   public String a = "";
   public String b = "";
   public String c = "";

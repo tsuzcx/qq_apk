@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.emoticon;
 
-import abwl;
-import abwm;
+import acdn;
+import acdo;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.widget.TextView;
@@ -43,18 +43,18 @@ public class SogouEmojiTaskController
     if (QLog.isColorLevel()) {
       QLog.d("SogouEmojiTaskController", 2, "func addTask begins, packId:" + paramString1 + ",exprId:" + paramString2);
     }
-    abwm localabwm = new abwm();
+    acdo localacdo = new acdo();
     this.jdField_a_of_type_Int = this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-    localabwm.jdField_a_of_type_JavaLangString = paramString1;
-    localabwm.b = paramString2;
-    localabwm.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localacdo.jdField_a_of_type_JavaLangString = paramString1;
+    localacdo.b = paramString2;
+    localacdo.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
     if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localabwm);
+      this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(this.jdField_a_of_type_Int), localacdo);
     }
     if (QLog.isColorLevel()) {
       QLog.d("SogouEmojiTaskController", 2, "func addTask ends, mCurTaskId:" + this.jdField_a_of_type_Int);
     }
-    b(2131436128);
+    b(2131436145);
     return this.jdField_a_of_type_Int;
   }
   
@@ -94,7 +94,7 @@ public class SogouEmojiTaskController
     }
     if (this.jdField_a_of_type_JavaUtilMap != null)
     {
-      if ((abwm)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) != null) {}
+      if ((acdo)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(paramInt)) != null) {}
       for (boolean bool = true;; bool = false)
       {
         if (QLog.isColorLevel()) {
@@ -147,12 +147,12 @@ public class SogouEmojiTaskController
         QLog.d("SogouEmojiTaskController", 2, "func showProgressDialog ends");
       }
       return;
-      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this.jdField_a_of_type_AndroidAppActivity, 2131624515);
-      this.jdField_a_of_type_AndroidAppProgressDialog.setOnDismissListener(new abwl(this));
+      this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(this.jdField_a_of_type_AndroidAppActivity, 2131624516);
+      this.jdField_a_of_type_AndroidAppProgressDialog.setOnDismissListener(new acdn(this));
       this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(true);
       this.jdField_a_of_type_AndroidAppProgressDialog.show();
-      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969181);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363381));
+      this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399));
     }
   }
   

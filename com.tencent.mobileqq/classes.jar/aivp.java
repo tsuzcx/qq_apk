@@ -1,27 +1,24 @@
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter;
-import com.tencent.mobileqq.troop.homework.recite.ui.SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter.OnItemClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemLongClickListener;
 
-public class aivp
-  implements View.OnClickListener
+class aivp
+  implements AdapterView.OnItemLongClickListener
 {
-  public int a;
-  public TextView a;
+  aivp(aivm paramaivm) {}
   
-  private aivp(SearchReciteArticleFragment.FlowLayoutKeywordsListAdapter paramFlowLayoutKeywordsListAdapter) {}
-  
-  public void onClick(View paramView)
+  public boolean a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment$FlowLayoutKeywordsListAdapter.a != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkReciteUiSearchReciteArticleFragment$FlowLayoutKeywordsListAdapter.a.a(paramView, this.jdField_a_of_type_Int);
+    if ((this.a.a.a.c) || (this.a.a.a.b)) {
+      TroopAvatarWallEditActivity.a(this.a.a.a);
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aivp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,39 @@
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
-import mqq.os.MqqHandler;
+import android.graphics.Bitmap;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil;
+import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
+import com.tencent.mobileqq.util.BitmapManager;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
 
 public final class aewv
-  implements VideoFeedsUploader.UploadListener
+  implements URLDrawable.URLDrawableListener
 {
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo) {}
+  public aewv(String paramString1, String paramString2, String paramString3, String paramString4, QQAppInterface paramQQAppInterface) {}
   
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo, int paramInt) {}
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
   
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult)
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    ThreadManager.getUIHandler().post(new aeww(this, paramUploadInfo, paramUploadResult));
+    paramURLDrawable = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130842645);
+    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.b, paramURLDrawable, this.c, this.d);
+    new NowVideoReporter().h("video").i("playpage_fw_suc").a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
   
-  public void b(VideoFeedsUploader.UploadInfo paramUploadInfo) {}
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    Bitmap localBitmap = ShortVideoShareUtil.a(paramURLDrawable);
+    paramURLDrawable = localBitmap;
+    if (localBitmap == null) {
+      paramURLDrawable = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), 2130842645);
+    }
+    WXShareHelper.a().a(this.jdField_a_of_type_JavaLangString, this.b, paramURLDrawable, this.c, this.d);
+    new NowVideoReporter().h("video").i("playpage_fw_suc").a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+  }
 }
 
 

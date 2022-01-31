@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
+import com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity;
 
-public final class acqv
-  implements Parcelable.Creator
+class acqv
+  implements Runnable
 {
-  public OfflineFileInfo a(Parcel paramParcel)
-  {
-    return new OfflineFileInfo(paramParcel);
-  }
+  acqv(acqu paramacqu) {}
   
-  public OfflineFileInfo[] a(int paramInt)
+  public void run()
   {
-    return new OfflineFileInfo[paramInt];
+    QfileFileAssistantActivity.g(this.a.a);
   }
 }
 

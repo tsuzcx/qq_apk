@@ -1,85 +1,61 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.mobileqq.nearby.NearbyJsInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import java.util.HashMap;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.cmd0x8c1.oidb_0x8c1.RspBody;
-import tencent.im.oidb.cmd0x8c1.oidb_0x8c1.SelfCardInfo;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import com.tencent.mobileqq.hotpic.VideoItemEventManager.onVideoItemEventListener;
+import com.tencent.mobileqq.leba.LebaFeedsVideoPlayController;
+import com.tencent.mobileqq.leba.LebaFeedsVideoPlayer;
+import com.tencent.qphone.base.util.QLog;
 
 public class adyy
-  implements BusinessObserver
+  implements VideoItemEventManager.onVideoItemEventListener
 {
-  public adyy(NearbyJsInterface paramNearbyJsInterface, String paramString, boolean paramBoolean) {}
+  public adyy(LebaFeedsVideoPlayController paramLebaFeedsVideoPlayController) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void a() {}
+  
+  public void a(int paramInt)
   {
-    int j = 0;
-    int i = 1;
-    Object localObject;
-    if ((paramBoolean) && (paramBundle != null))
-    {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localObject = new oidb_sso.OIDBSSOPkg();
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        paramBundle = (oidb_sso.OIDBSSOPkg)((oidb_sso.OIDBSSOPkg)localObject).mergeFrom((byte[])paramBundle);
-        if ((paramBundle.uint32_result.has()) && (paramBundle.uint32_result.get() == 0) && (paramBundle.bytes_bodybuffer.has()) && (paramBundle.bytes_bodybuffer.get() != null))
-        {
-          localObject = new oidb_0x8c1.RspBody();
-          ((oidb_0x8c1.RspBody)localObject).mergeFrom(paramBundle.bytes_bodybuffer.get().toByteArray());
-          paramBundle = (oidb_0x8c1.SelfCardInfo)((oidb_0x8c1.RspBody)localObject).msg_card_info.get();
-          if (NearbyJsInterface.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface) != 1) {
-            continue;
-          }
-          paramInt = 10002;
-          if (!paramBundle.int32_friend_flag.has()) {
-            break label283;
-          }
-          if (paramBundle.int32_friend_flag.get() != 1) {
-            continue;
-          }
-          break label286;
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.a(paramBundle.bytes_xml_msg.get().toByteArray(), String.valueOf(paramBundle.uint64_uin.get()), paramBundle.int32_direction_flag.get(), paramInt);
-          paramBundle = new adza(String.valueOf(paramBundle.uint64_uin.get()), paramBundle.int32_direction_flag.get());
-          this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface.jdField_a_of_type_JavaUtilHashMap.put(String.valueOf(this.jdField_a_of_type_JavaLangString), paramBundle);
-          if (this.jdField_a_of_type_Boolean) {
-            NearbyJsInterface.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyJsInterface, paramBundle);
-          }
-        }
-        return;
-        paramInt = 1001;
-        continue;
-        i = 0;
-      }
-      catch (Exception paramBundle)
-      {
-        paramBundle.printStackTrace();
-        return;
-      }
-      continue;
-      label283:
-      continue;
-      label286:
-      if (i != 0) {
-        paramInt = j;
-      }
-    }
+    LebaFeedsVideoPlayController.a(this.a, 1000L);
   }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("LebaFeedsVideoPlayController", 2, "onVolumChange");
+    }
+    boolean bool;
+    int i;
+    if ((LebaFeedsVideoPlayController.a(this.a) != null) && (LebaFeedsVideoPlayController.a(this.a)) && (LebaFeedsVideoPlayController.a(this.a) != null))
+    {
+      bool = LebaFeedsVideoPlayController.a(this.a).c();
+      if ((LebaFeedsVideoPlayController.a(this.a) == null) || (!LebaFeedsVideoPlayController.a(this.a).b())) {
+        break label115;
+      }
+      i = 1;
+      if (i == 0) {
+        break label120;
+      }
+      LebaFeedsVideoPlayController.a(this.a).a(true);
+      LebaFeedsVideoPlayController.a(this.a, true);
+      LebaFeedsVideoPlayController.a(this.a, true);
+    }
+    label115:
+    label120:
+    while (!bool)
+    {
+      return;
+      i = 0;
+      break;
+    }
+    LebaFeedsVideoPlayController.a(this.a).a(false);
+    LebaFeedsVideoPlayController.a(this.a, false);
+    LebaFeedsVideoPlayController.a(this.a, false);
+  }
+  
+  public void b(boolean paramBoolean) {}
+  
+  public void c(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adyy
  * JD-Core Version:    0.7.0.1
  */

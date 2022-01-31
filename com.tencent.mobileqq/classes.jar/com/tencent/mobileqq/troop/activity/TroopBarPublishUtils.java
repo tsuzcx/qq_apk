@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.activity;
 
-import aiki;
-import aikj;
-import aikk;
+import aiym;
+import aiyn;
+import aiyo;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
@@ -51,7 +51,7 @@ public class TroopBarPublishUtils
   
   static
   {
-    jdField_a_of_type_AndroidTextEditable$Factory = new aiki();
+    jdField_a_of_type_AndroidTextEditable$Factory = new aiym();
   }
   
   public static int a(String paramString1, String paramString2)
@@ -271,7 +271,7 @@ public class TroopBarPublishUtils
     {
       QQCustomDialog localQQCustomDialog = DialogUtil.a(paramActivity, 230);
       localQQCustomDialog.setTitle("你的网络连接不是WIFI，是否继续下载");
-      paramActivity = new aikk(paramActivity);
+      paramActivity = new aiyo(paramActivity);
       localQQCustomDialog.setNegativeButton("取消", paramActivity);
       localQQCustomDialog.setPositiveButton("土豪继续下载", paramActivity);
       localQQCustomDialog.show();
@@ -360,10 +360,10 @@ public class TroopBarPublishUtils
       ((Bundle)localObject1).putString("REFERER", " https://buluo.qq.com/");
       ((Bundle)localObject1).putString("HOST", " buluo.qq.com");
       Object localObject2 = new JSONObject(HttpUtil.a(paramActivity, "https://buluo.qq.com/cgi-bin/sbar/other/downloadappurl", "POST", null, (Bundle)localObject1));
-      localObject1 = paramActivity.getString(2131430337);
+      localObject1 = paramActivity.getString(2131430354);
       localObject2 = ((JSONObject)localObject2).getJSONObject("result").getJSONObject("android").getString("app_url");
-      String str1 = paramActivity.getString(2131430338);
-      String str2 = paramActivity.getString(2131430339);
+      String str1 = paramActivity.getString(2131430355);
+      String str2 = paramActivity.getString(2131430356);
       Bundle localBundle = new Bundle();
       localBundle.putString(DownloadConstants.a, (String)localObject1);
       localBundle.putString(DownloadConstants.i, (String)localObject2);
@@ -432,8 +432,8 @@ public class TroopBarPublishUtils
     {
       ReportController.b(null, "dc00899", "Grp_tribe", "", (String)localObject, str3, paramInt2, 0, str4, "", "", "");
       localObject = DialogUtil.a(paramActivity, 230);
-      ((QQCustomDialog)localObject).setTitle(paramActivity.getString(2131430336, new Object[] { str1, str2 }));
-      paramActivity = new aikj(paramBundle, paramInt1, paramInt1, paramActivity);
+      ((QQCustomDialog)localObject).setTitle(paramActivity.getString(2131430353, new Object[] { str1, str2 }));
+      paramActivity = new aiyn(paramBundle, paramInt1, paramInt1, paramActivity);
       ((QQCustomDialog)localObject).setNegativeButton("取消", paramActivity);
       ((QQCustomDialog)localObject).setPositiveButton("立即" + str1, paramActivity);
       ((QQCustomDialog)localObject).show();
@@ -485,7 +485,7 @@ public class TroopBarPublishUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarPublishUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -17,8 +17,8 @@ import com.tribe.async.async.Boss;
 import com.tribe.async.async.Bosses;
 import com.tribe.async.dispatch.Dispatcher;
 import com.tribe.async.dispatch.Dispatchers;
-import nuh;
-import nui;
+import nvv;
+import nvw;
 
 public class DiscoverPagerLoader
   extends INetPageLoader
@@ -75,7 +75,7 @@ public class DiscoverPagerLoader
       this.b = true;
       Dispatchers.get().dispatch(localGetDiscoverCardsEvent);
       SLog.a("Q.qqstory.discover:DiscoverPagerLoader", "dispatch video list return from network: %s", localGetDiscoverCardsEvent);
-      paramGetDiscoverCardInfoRequest = new nui(this, localGetDiscoverCardsEvent, bool);
+      paramGetDiscoverCardInfoRequest = new nvw(this, localGetDiscoverCardsEvent, bool);
       Bosses.get().postJob(paramGetDiscoverCardInfoRequest);
       return;
     }
@@ -99,7 +99,7 @@ public class DiscoverPagerLoader
       SLog.d("Q.qqstory.discover:DiscoverPagerLoader", "don't need to load data from cache");
       return false;
     }
-    Bosses.get().postLightWeightJob(new nuh(this), 0);
+    Bosses.get().postLightWeightJob(new nvv(this), 0);
     return true;
   }
   

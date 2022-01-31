@@ -1,27 +1,54 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgDialog;
+import Wallet.PfaFriendRsp;
+import android.content.Context;
+import com.qq.taf.jce.JceOutputStream;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.qwallet.TopayManager;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.io.File;
 
-class xbr
+public final class xbr
   implements Runnable
 {
-  xbr(xbq paramxbq, Bitmap paramBitmap) {}
-  
   public void run()
   {
-    if ((GoldMsgDialog.a(this.jdField_a_of_type_Xbq.a.a) != null) && (this.jdField_a_of_type_Xbq.a.a.isShowing()) && (GoldMsgDialog.a(this.jdField_a_of_type_Xbq.a.a) != null))
+    if (TopayManager.a == null) {
+      return;
+    }
+    Object localObject1 = "";
+    Object localObject2 = QWalletTools.a();
+    if (localObject2 != null) {}
+    try
     {
-      int i = GoldMsgDialog.b(this.jdField_a_of_type_Xbq.a.a).getWidth();
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)GoldMsgDialog.a(this.jdField_a_of_type_Xbq.a.a).getLayoutParams();
-      if (localLayoutParams != null)
+      localObject1 = ((QQAppInterface)localObject2).getCurrentAccountUin();
+      localObject2 = BaseApplicationImpl.getContext().getApplicationContext().getFilesDir() + "/QWallet/.tmp/topay_recommends" + (String)localObject1;
+      localObject1 = localObject2;
+      if (TopayManager.b == 1)
       {
-        localLayoutParams.height = (i * this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight() / this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth());
-        GoldMsgDialog.a(this.jdField_a_of_type_Xbq.a.a).setLayoutParams(localLayoutParams);
+        localObject1 = localObject2;
+        if (TopayManager.c > 0)
+        {
+          localObject1 = localObject2;
+          if (TopayManager.c < 3) {
+            localObject1 = (String)localObject2 + "_" + TopayManager.b + "_" + TopayManager.c;
+          }
+        }
       }
-      GoldMsgDialog.a(this.jdField_a_of_type_Xbq.a.a).setVisibility(0);
-      GoldMsgDialog.a(this.jdField_a_of_type_Xbq.a.a).setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      localObject2 = new File((String)localObject1);
+      if (((File)localObject2).exists()) {
+        ((File)localObject2).delete();
+      }
+      localObject2 = new JceOutputStream();
+      ((JceOutputStream)localObject2).setServerEncoding("utf-8");
+      TopayManager.a.writeTo((JceOutputStream)localObject2);
+      FileUtils.a(((JceOutputStream)localObject2).toByteArray(), (String)localObject1);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }

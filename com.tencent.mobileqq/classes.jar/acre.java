@@ -1,23 +1,25 @@
-import android.view.GestureDetector.SimpleOnGestureListener;
-import android.view.MotionEvent;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserManager;
+import android.content.Context;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.filemanager.activity.localfile.QfileBaseLocalFileTabView;
+import com.tencent.mobileqq.utils.BubbleContextMenu;
+import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 
 public class acre
-  extends GestureDetector.SimpleOnGestureListener
+  implements View.OnLongClickListener
 {
-  public acre(FileBrowserActivity paramFileBrowserActivity, int paramInt) {}
+  public acre(QfileBaseLocalFileTabView paramQfileBaseLocalFileTabView) {}
   
-  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
+  public boolean onLongClick(View paramView)
   {
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {}
-    do
-    {
+    if ((paramView == null) || (QfileBaseLocalFileTabView.a(this.a))) {
       return false;
-      paramFloat1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-      paramFloat2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / paramFloat1);
-    } while ((paramFloat1 > -this.jdField_a_of_type_Int) || (paramFloat2 >= 0.5F) || (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.a == null) || (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity.a.b()));
-    return FileBrowserActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerFileBrowserActivity);
+    }
+    paramView.setSelected(true);
+    QQCustomMenu localQQCustomMenu = new QQCustomMenu();
+    localQQCustomMenu.a(2131362740, paramView.getContext().getString(2131434041));
+    this.a.a = BubbleContextMenu.a(paramView, localQQCustomMenu, new acrf(this, paramView), new acrh(this, paramView));
+    return true;
   }
 }
 

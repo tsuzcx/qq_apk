@@ -1,28 +1,19 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.util.DisplayMetrics;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.apollo.view.ApolloInfo;
-import com.tencent.mobileqq.apollo.view.ApolloLinearLayout.ViewHolder;
-import com.tencent.mobileqq.apollo.view.ApolloPanel;
+import com.tencent.TMG.sdk.AVAudioCtrl.EnableMicCompleteCallback;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqavopensdk.AVEngineEventHandler;
 
 public class yvh
-  implements Runnable
+  extends AVAudioCtrl.EnableMicCompleteCallback
 {
-  public yvh(ApolloPanel paramApolloPanel, ApolloLinearLayout.ViewHolder paramViewHolder) {}
+  public yvh(AVEngineWalper paramAVEngineWalper) {}
   
-  public void run()
+  protected void onComplete(boolean paramBoolean, int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.jdField_a_of_type_AndroidWidgetImageView == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloPanel", 2, "holder.apolloInfo == null");
-      }
-      return;
+    QLog.d("AVEngineWalper", 1, "StartOpenMic.OnComplete. bOpen = " + paramBoolean + ", result = " + paramInt);
+    if (this.a.a != null) {
+      this.a.a.a(paramBoolean, paramInt);
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.jdField_a_of_type_AndroidWidgetImageView.setBackgroundDrawable(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloLinearLayout$ViewHolder.jdField_a_of_type_ComTencentMobileqqApolloViewApolloInfo.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a, this.jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel.a.a.getResources().getDisplayMetrics().density));
   }
 }
 

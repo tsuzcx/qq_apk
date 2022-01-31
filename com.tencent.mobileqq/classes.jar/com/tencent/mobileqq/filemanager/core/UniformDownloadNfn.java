@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import acqa;
-import acqb;
+import aczx;
+import aczy;
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -27,7 +27,7 @@ public class UniformDownloadNfn
   private static QNotificationManager jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager;
   public static String a;
   private long jdField_a_of_type_Long;
-  private acqb jdField_a_of_type_Acqb;
+  private aczy jdField_a_of_type_Aczy;
   
   static
   {
@@ -39,7 +39,7 @@ public class UniformDownloadNfn
     try
     {
       jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager = new QNotificationManager(BaseApplicationImpl.getContext());
-      this.jdField_a_of_type_Acqb = new acqb(this, BaseApplicationImpl.getContext());
+      this.jdField_a_of_type_Aczy = new aczy(this, BaseApplicationImpl.getContext());
       this.jdField_a_of_type_Long = 123456L;
       return;
     }
@@ -96,7 +96,7 @@ public class UniformDownloadNfn
     }
     while (paramUniformDownloader != null)
     {
-      paramUniformDownloader.a(new acqa(this, ThreadManager.getSubThreadHandler().getLooper(), paramInt, paramBundle, paramLong), false);
+      paramUniformDownloader.a(new aczx(this, ThreadManager.getSubThreadHandler().getLooper(), paramInt, paramBundle, paramLong), false);
       return paramInt;
       QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL][" + paramLong + "]. attachDownloader.here will using notificationid,maybe is not uinform id");
     }
@@ -110,70 +110,70 @@ public class UniformDownloadNfn
     if (paramBundle != null)
     {
       Object localObject = paramBundle.getString("_notify_param_ContentTitle");
-      localNotification.icon = 2130841632;
-      paramBundle = new RemoteViews(BaseApplication.getContext().getPackageName(), 2130970025);
-      paramBundle.setImageViewResource(2131365684, 2130841628);
-      paramBundle.setTextViewText(2131365686, (CharSequence)localObject);
-      paramBundle.setProgressBar(2131365690, 100, 0, false);
-      paramBundle.setViewVisibility(2131365688, 8);
-      paramBundle.setViewVisibility(2131365689, 8);
-      if (this.jdField_a_of_type_Acqb.b() != null) {
-        paramBundle.setTextColor(2131365686, this.jdField_a_of_type_Acqb.b().intValue());
+      localNotification.icon = 2130841669;
+      paramBundle = new RemoteViews(BaseApplication.getContext().getPackageName(), 2130970039);
+      paramBundle.setImageViewResource(2131365711, 2130841665);
+      paramBundle.setTextViewText(2131365713, (CharSequence)localObject);
+      paramBundle.setProgressBar(2131365717, 100, 0, false);
+      paramBundle.setViewVisibility(2131365715, 8);
+      paramBundle.setViewVisibility(2131365716, 8);
+      if (this.jdField_a_of_type_Aczy.b() != null) {
+        paramBundle.setTextColor(2131365713, this.jdField_a_of_type_Aczy.b().intValue());
       }
       for (;;)
       {
-        if (this.jdField_a_of_type_Acqb.a() != null)
+        if (this.jdField_a_of_type_Aczy.a() != null)
         {
-          paramBundle.setTextColor(2131365688, this.jdField_a_of_type_Acqb.a().intValue());
-          paramBundle.setTextColor(2131368777, this.jdField_a_of_type_Acqb.a().intValue());
+          paramBundle.setTextColor(2131365715, this.jdField_a_of_type_Aczy.a().intValue());
+          paramBundle.setTextColor(2131368844, this.jdField_a_of_type_Aczy.a().intValue());
           label154:
-          float f1 = this.jdField_a_of_type_Acqb.a();
-          if (this.jdField_a_of_type_Acqb.a() <= 0.0F)
+          float f1 = this.jdField_a_of_type_Aczy.a();
+          if (this.jdField_a_of_type_Aczy.a() <= 0.0F)
           {
             QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. initNotification param error. getTextSize failed. set defualt value:14");
             f1 = 14.0F;
           }
-          paramBundle.setFloat(2131365688, "setTextSize", f1);
-          paramBundle.setFloat(2131368777, "setTextSize", f1);
-          float f2 = this.jdField_a_of_type_Acqb.b();
+          paramBundle.setFloat(2131365715, "setTextSize", f1);
+          paramBundle.setFloat(2131368844, "setTextSize", f1);
+          float f2 = this.jdField_a_of_type_Aczy.b();
           f1 = f2;
           if (f2 <= 0.0F)
           {
             QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. initNotification param error. getTitleSize failed. set defualt value:16");
             f1 = 16.0F;
           }
-          paramBundle.setFloat(2131365686, "setTextSize", f1);
+          paramBundle.setFloat(2131365713, "setTextSize", f1);
           localObject = BaseApplication.getContext().getApplicationInfo();
           if ((localObject == null) || (((ApplicationInfo)localObject).targetSdkVersion >= 10) || (Build.VERSION.SDK_INT <= 10)) {}
         }
         try
         {
-          int i = this.jdField_a_of_type_Acqb.b().intValue();
-          paramBundle.setInt(2131368775, "setBackgroundColor", (i & 0xFF000000) + (-1 - i));
+          int i = this.jdField_a_of_type_Aczy.b().intValue();
+          paramBundle.setInt(2131368842, "setBackgroundColor", (i & 0xFF000000) + (-1 - i));
           localNotification.contentView = paramBundle;
           return localNotification;
           QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. initNotification param error. getTitleColor failed.");
-          this.jdField_a_of_type_Acqb.a(BaseApplication.getContext(), true);
-          if (this.jdField_a_of_type_Acqb.b() != null)
+          this.jdField_a_of_type_Aczy.a(BaseApplication.getContext(), true);
+          if (this.jdField_a_of_type_Aczy.b() != null)
           {
-            paramBundle.setTextColor(2131365686, this.jdField_a_of_type_Acqb.b().intValue());
+            paramBundle.setTextColor(2131365713, this.jdField_a_of_type_Aczy.b().intValue());
           }
           else
           {
             QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. initNotification param error. getTitleColor failed. set defualt value");
-            paramBundle.setTextColor(2131365686, -7829368);
+            paramBundle.setTextColor(2131365713, -7829368);
             continue;
             QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. initNotification param error. getTextColor failed. ");
-            this.jdField_a_of_type_Acqb.a(BaseApplication.getContext(), true);
-            if (this.jdField_a_of_type_Acqb.a() != null)
+            this.jdField_a_of_type_Aczy.a(BaseApplication.getContext(), true);
+            if (this.jdField_a_of_type_Aczy.a() != null)
             {
-              paramBundle.setTextColor(2131365688, this.jdField_a_of_type_Acqb.a().intValue());
-              paramBundle.setTextColor(2131368777, this.jdField_a_of_type_Acqb.a().intValue());
+              paramBundle.setTextColor(2131365715, this.jdField_a_of_type_Aczy.a().intValue());
+              paramBundle.setTextColor(2131368844, this.jdField_a_of_type_Aczy.a().intValue());
               break label154;
             }
             QLog.w(jdField_a_of_type_JavaLangString, 1, "[UniformDL]. initNotification param error. getTitleColor failed. set defualt value");
-            paramBundle.setTextColor(2131365688, -7829368);
-            paramBundle.setTextColor(2131368777, -7829368);
+            paramBundle.setTextColor(2131365715, -7829368);
+            paramBundle.setTextColor(2131368844, -7829368);
           }
         }
         catch (Exception localException)
@@ -208,14 +208,14 @@ public class UniformDownloadNfn
     {
       return;
       paramNotification.tickerText = (BaseApplication.getContext().getString(2131428277) + " " + paramBundle1.getString("_notify_param_Filename"));
-      paramNotification.contentView.setImageViewResource(2131365684, 2130841628);
+      paramNotification.contentView.setImageViewResource(2131365711, 2130841665);
       int i = paramBundle2.getInt("_START_WAITING_");
       if (1 == i)
       {
-        paramNotification.contentView.setTextViewText(2131368777, BaseApplication.getContext().getString(2131428278));
-        paramNotification.contentView.setViewVisibility(2131365689, 0);
-        paramNotification.contentView.setViewVisibility(2131365688, 8);
-        paramNotification.contentView.setProgressBar(2131365690, 100, 0, false);
+        paramNotification.contentView.setTextViewText(2131368844, BaseApplication.getContext().getString(2131428278));
+        paramNotification.contentView.setViewVisibility(2131365716, 0);
+        paramNotification.contentView.setViewVisibility(2131365715, 8);
+        paramNotification.contentView.setProgressBar(2131365717, 100, 0, false);
         paramNotification.flags = 34;
         paramBundle2 = new Intent("com.tencent.mobileqq.UniformDownloadNfn.PAUSE");
         paramBundle2.putExtra("_PARAM_EXTRA", paramBundle1);
@@ -245,11 +245,11 @@ public class UniformDownloadNfn
           paramNotification.printStackTrace();
           return;
         }
-        paramNotification.contentView.setTextViewText(2131368777, "0%");
+        paramNotification.contentView.setTextViewText(2131368844, "0%");
         break;
         paramNotification.when = a(3);
         break label221;
-        paramNotification.contentView.setOnClickPendingIntent(2131368775, paramBundle1);
+        paramNotification.contentView.setOnClickPendingIntent(2131368842, paramBundle1);
       }
     }
   }
@@ -302,16 +302,16 @@ public class UniformDownloadNfn
       int i = FileManagerUtil.b(str1);
       if (i != 0)
       {
-        localNotification.contentView.setImageViewResource(2131365684, i);
+        localNotification.contentView.setImageViewResource(2131365711, i);
         label203:
-        localNotification.contentView.setImageViewResource(2131365684, 2130841630);
+        localNotification.contentView.setImageViewResource(2131365711, 2130841667);
       }
     }
     for (;;)
     {
-      localNotification.contentView.setViewVisibility(2131365688, 0);
-      localNotification.contentView.setViewVisibility(2131365689, 8);
-      localNotification.contentView.setTextViewText(2131365688, paramBundle2);
+      localNotification.contentView.setViewVisibility(2131365715, 0);
+      localNotification.contentView.setViewVisibility(2131365716, 8);
+      localNotification.contentView.setTextViewText(2131365715, paramBundle2);
       localNotification.flags = 16;
       paramBundle2 = new Intent("com.tencent.mobileqq.UniformDownloadNfn.INSTALL");
       paramBundle2.putExtra("_PARAM_FILEPATH", str1);
@@ -341,9 +341,9 @@ public class UniformDownloadNfn
         paramBundle1.printStackTrace();
         return;
       }
-      localNotification.contentView.setImageViewResource(2131365684, 2130841630);
+      localNotification.contentView.setImageViewResource(2131365711, 2130841667);
       break label203;
-      localNotification.contentView.setImageViewBitmap(2131365684, localBitmap);
+      localNotification.contentView.setImageViewBitmap(2131365711, localBitmap);
     }
   }
   
@@ -356,12 +356,12 @@ public class UniformDownloadNfn
     {
       return;
       paramNotification.tickerText = null;
-      paramNotification.contentView.setImageViewResource(2131365684, 2130841628);
-      paramNotification.contentView.setViewVisibility(2131365688, 8);
-      paramNotification.contentView.setViewVisibility(2131365689, 0);
+      paramNotification.contentView.setImageViewResource(2131365711, 2130841665);
+      paramNotification.contentView.setViewVisibility(2131365715, 8);
+      paramNotification.contentView.setViewVisibility(2131365716, 0);
       int i = paramBundle2.getInt("_FILE_PROGRESS_");
-      paramNotification.contentView.setProgressBar(2131365690, 100, i, false);
-      paramNotification.contentView.setTextViewText(2131368777, "" + i + "%");
+      paramNotification.contentView.setProgressBar(2131365717, 100, i, false);
+      paramNotification.contentView.setTextViewText(2131368844, "" + i + "%");
       paramNotification.flags = 34;
       paramBundle2 = new Intent("com.tencent.mobileqq.UniformDownloadNfn.PAUSE");
       paramBundle2.putExtra("_PARAM_EXTRA", paramBundle1);
@@ -382,7 +382,7 @@ public class UniformDownloadNfn
           paramNotification.printStackTrace();
           return;
         }
-        paramNotification.contentView.setOnClickPendingIntent(2131368775, paramBundle1);
+        paramNotification.contentView.setOnClickPendingIntent(2131368842, paramBundle1);
       }
     }
   }
@@ -420,12 +420,12 @@ public class UniformDownloadNfn
     }
     paramNotification.tickerText = null;
     int i = paramBundle2.getInt("_FILE_PROGRESS_");
-    paramNotification.contentView.setImageViewResource(2131365684, 2130841631);
-    paramNotification.contentView.setViewVisibility(2131365688, 0);
-    paramNotification.contentView.setViewVisibility(2131365689, 8);
-    paramNotification.contentView.setTextViewText(2131365688, BaseApplication.getContext().getString(2131428279));
-    paramNotification.contentView.setProgressBar(2131365690, 100, i, false);
-    paramNotification.contentView.setTextViewText(2131368777, "" + i + "%");
+    paramNotification.contentView.setImageViewResource(2131365711, 2130841668);
+    paramNotification.contentView.setViewVisibility(2131365715, 0);
+    paramNotification.contentView.setViewVisibility(2131365716, 8);
+    paramNotification.contentView.setTextViewText(2131365715, BaseApplication.getContext().getString(2131428279));
+    paramNotification.contentView.setProgressBar(2131365717, 100, i, false);
+    paramNotification.contentView.setTextViewText(2131368844, "" + i + "%");
     paramNotification.flags = 16;
     paramBundle2 = new Intent("com.tencent.mobileqq.UniformDownloadNfn.DO_DOWNLOAD");
     paramBundle2.putExtra("_PARAM_EXTRA", paramBundle1);
@@ -452,7 +452,7 @@ public class UniformDownloadNfn
         paramNotification.printStackTrace();
         return;
       }
-      paramNotification.contentView.setOnClickPendingIntent(2131368775, paramBundle2);
+      paramNotification.contentView.setOnClickPendingIntent(2131368842, paramBundle2);
     }
   }
   
@@ -475,16 +475,16 @@ public class UniformDownloadNfn
     if (jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager != null) {
       jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.cancel(jdField_a_of_type_JavaLangString, paramInt);
     }
-    paramNotification.contentView.setViewVisibility(2131365689, 8);
+    paramNotification.contentView.setViewVisibility(2131365716, 8);
     int i = paramBundle2.getInt("_FILE_ERR_CODE_");
     if (2 == i)
     {
       paramNotification.tickerText = BaseApplication.getContext().getString(2131428283);
-      paramNotification.contentView.setTextViewText(2131365688, BaseApplication.getContext().getString(2131428283));
+      paramNotification.contentView.setTextViewText(2131365715, BaseApplication.getContext().getString(2131428283));
       label115:
-      paramNotification.contentView.setImageViewResource(2131365684, 2130841629);
-      paramNotification.contentView.setViewVisibility(2131365688, 0);
-      paramNotification.contentView.setTextViewText(2131368777, " ");
+      paramNotification.contentView.setImageViewResource(2131365711, 2130841666);
+      paramNotification.contentView.setViewVisibility(2131365715, 0);
+      paramNotification.contentView.setTextViewText(2131368844, " ");
       paramNotification.flags = 16;
       paramBundle2 = new Intent("com.tencent.mobileqq.UniformDownloadNfn.TRY_DOWNLOAD");
       paramBundle2.putExtra("_PARAM_EXTRA", paramBundle1);
@@ -514,10 +514,10 @@ public class UniformDownloadNfn
         return;
       }
       paramNotification.tickerText = (BaseApplication.getContext().getString(2131428284) + " " + paramBundle1.getString("_notify_param_Filename"));
-      paramNotification.contentView.setTextViewText(2131365688, UniformDownloader.a(i) + "，点击重试");
+      paramNotification.contentView.setTextViewText(2131365715, UniformDownloader.a(i) + "，点击重试");
       break label115;
       label360:
-      paramNotification.contentView.setOnClickPendingIntent(2131368775, paramBundle2);
+      paramNotification.contentView.setOnClickPendingIntent(2131368842, paramBundle2);
     }
   }
   
@@ -533,12 +533,12 @@ public class UniformDownloadNfn
         jdField_a_of_type_ComTencentMobileqqMsfSdkQNotificationManager.cancel(jdField_a_of_type_JavaLangString, paramInt);
       }
       paramNotification.tickerText = null;
-      paramNotification.contentView.setImageViewResource(2131365684, 2130841628);
-      paramNotification.contentView.setViewVisibility(2131365688, 8);
-      paramNotification.contentView.setViewVisibility(2131365689, 0);
+      paramNotification.contentView.setImageViewResource(2131365711, 2130841665);
+      paramNotification.contentView.setViewVisibility(2131365715, 8);
+      paramNotification.contentView.setViewVisibility(2131365716, 0);
       int i = paramBundle2.getInt("_FILE_PROGRESS_");
-      paramNotification.contentView.setProgressBar(2131365690, 100, i, false);
-      paramNotification.contentView.setTextViewText(2131368777, BaseApplication.getContext().getString(2131428278));
+      paramNotification.contentView.setProgressBar(2131365717, 100, i, false);
+      paramNotification.contentView.setTextViewText(2131368844, BaseApplication.getContext().getString(2131428278));
       paramNotification.flags = 34;
       paramBundle2 = new Intent("com.tencent.mobileqq.UniformDownloadNfn.PAUSE");
       paramBundle2.putExtra("_PARAM_EXTRA", paramBundle1);
@@ -559,7 +559,7 @@ public class UniformDownloadNfn
           paramNotification.printStackTrace();
           return;
         }
-        paramNotification.contentView.setOnClickPendingIntent(2131368775, paramBundle1);
+        paramNotification.contentView.setOnClickPendingIntent(2131368842, paramBundle1);
       }
     }
   }

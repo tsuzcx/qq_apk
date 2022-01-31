@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.capture.util;
 
-import agwn;
-import agwo;
+import ahkp;
+import ahkq;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.view.View;
@@ -13,13 +13,13 @@ public class CaptureAnimationUtils
   public static Animator a(View paramView, int paramInt1, int paramInt2, int paramInt3)
   {
     ValueAnimator localValueAnimator = ValueAnimator.ofInt(new int[] { paramInt2, paramInt3 });
-    localValueAnimator.addUpdateListener(new agwo(paramInt1, paramView));
+    localValueAnimator.addUpdateListener(new ahkq(paramInt1, paramView));
     return localValueAnimator;
   }
   
   public static Animation a(View paramView, float paramFloat1, float paramFloat2)
   {
-    return new ValueAnimation(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new agwn(paramView));
+    return new ValueAnimation(Float.valueOf(paramFloat1), Float.valueOf(paramFloat2), new ahkp(paramView));
   }
 }
 

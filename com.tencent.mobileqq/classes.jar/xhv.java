@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView;
+import com.tencent.mobileqq.activity.qwallet.voice.RecordMicView.StatusListener;
 
-public final class xhv
-  implements Animation.AnimationListener
+class xhv
+  implements Runnable
 {
-  public xhv(View paramView, Animation paramAnimation) {}
+  xhv(xhu paramxhu) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+    this.a.a.c();
+    if (RecordMicView.a(this.a.a) != null) {
+      RecordMicView.a(this.a.a).f();
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

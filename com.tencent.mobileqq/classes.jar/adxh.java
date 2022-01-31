@@ -1,19 +1,21 @@
-import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
-import java.util.TimerTask;
+import android.app.Activity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
 
 public class adxh
-  extends TimerTask
+  implements View.OnClickListener
 {
-  public adxh(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
+  public adxh(UiApiPlugin paramUiApiPlugin, Activity paramActivity, String paramString1, String paramString2) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    MusicGeneWebViewPlugin.a(this.a);
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adxh
  * JD-Core Version:    0.7.0.1
  */

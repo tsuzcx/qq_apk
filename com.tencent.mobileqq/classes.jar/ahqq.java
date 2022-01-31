@@ -1,46 +1,33 @@
-import com.tencent.mfsdk.LeakInspector.DumpMemInfoHandler;
-import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
-import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectorListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.startup.step.InitMagnifierSDK;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.Context;
+import android.content.Intent;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.search.ContentRecommendModel;
+import com.tencent.mobileqq.search.ContentRecommendModel.ContentRecommendListAdapter;
+import com.tencent.mobileqq.search.model.ContentRecommendDataModel.ContentRecommendItem;
+import com.tencent.mobileqq.search.util.SearchUtils;
 
 public class ahqq
-  implements LeakInspector.InspectorListener
+  implements View.OnClickListener
 {
-  public List a(String paramString)
+  public ahqq(ContentRecommendModel.ContentRecommendListAdapter paramContentRecommendListAdapter, ahqs paramahqs) {}
+  
+  public void onClick(View paramView)
   {
-    if (BaseActivity.sTopActivity != null) {
-      BaseActivity.sTopActivity.runOnUiThread(new ahqr(this, paramString));
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_Ahqs.a.d))
+    {
+      SearchUtils.a("home_page", "clk_rec_title", new String[] { this.jdField_a_of_type_Ahqs.a.a, String.valueOf(this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel$ContentRecommendListAdapter.a.jdField_a_of_type_Int) });
+      paramView = new Intent(this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel$ContentRecommendListAdapter.a.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+      paramView.putExtra("url", this.jdField_a_of_type_Ahqs.a.d);
+      this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel$ContentRecommendListAdapter.a.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
     }
-    paramString = new ArrayList(4);
-    paramString.add(DumpMemInfoHandler.b());
-    paramString.add(DumpMemInfoHandler.a());
-    paramString.addAll(DumpMemInfoHandler.a());
-    return paramString;
-  }
-  
-  public void a(boolean paramBoolean, String paramString1, String paramString2)
-  {
-    if (BaseActivity.sTopActivity != null) {
-      BaseActivity.sTopActivity.runOnUiThread(new ahqs(this, paramString1, paramBoolean, paramString2));
-    }
-  }
-  
-  public boolean a(LeakInspector.InspectUUID paramInspectUUID)
-  {
-    return InitMagnifierSDK.a(paramInspectUUID);
-  }
-  
-  public boolean a(Object paramObject)
-  {
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahqq
  * JD-Core Version:    0.7.0.1
  */

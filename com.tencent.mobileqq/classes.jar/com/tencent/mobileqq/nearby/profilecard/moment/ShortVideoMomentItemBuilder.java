@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import aeyu;
+import afma;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
@@ -34,7 +34,7 @@ public class ShortVideoMomentItemBuilder
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadListener = new aeyu();
+    jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadListener = new afma();
   }
   
   public ShortVideoMomentItemBuilder(Context paramContext, QQAppInterface paramQQAppInterface)
@@ -50,10 +50,10 @@ public class ShortVideoMomentItemBuilder
   public View a(ViewGroup paramViewGroup, BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     paramMomentViewHolder = (ShortVideoMomentItemBuilder.ShortVideoViewHolder)paramMomentViewHolder;
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970438, paramViewGroup, false);
-    paramMomentViewHolder.j = ((TextView)paramViewGroup.findViewById(2131367080));
-    paramMomentViewHolder.f = ((ImageView)paramViewGroup.findViewById(2131366351));
-    paramMomentViewHolder.g = ((ImageView)paramViewGroup.findViewById(2131370699));
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970479, paramViewGroup, false);
+    paramMomentViewHolder.j = ((TextView)paramViewGroup.findViewById(2131367129));
+    paramMomentViewHolder.f = ((ImageView)paramViewGroup.findViewById(2131366378));
+    paramMomentViewHolder.g = ((ImageView)paramViewGroup.findViewById(2131370839));
     return paramViewGroup;
   }
   
@@ -163,8 +163,8 @@ public class ShortVideoMomentItemBuilder
             try
             {
               localObject = URLDrawable.URLDrawableOptions.obtain();
-              ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842715);
-              ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842715);
+              ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842814);
+              ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842814);
               if (!bool) {
                 continue;
               }
@@ -177,7 +177,7 @@ public class ShortVideoMomentItemBuilder
             catch (Exception paramMomentViewHolder)
             {
               label413:
-              localShortVideoViewHolder.f.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842715));
+              localShortVideoViewHolder.f.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842814));
               if (!QLog.isColorLevel()) {
                 continue;
               }

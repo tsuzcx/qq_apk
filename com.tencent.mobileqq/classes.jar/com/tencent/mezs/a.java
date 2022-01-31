@@ -21,7 +21,7 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.MobileQQ;
 import org.json.JSONObject;
-import rax;
+import rdn;
 
 public class a
   implements MQPSigCheckService.ISigCheckResultListener
@@ -317,7 +317,7 @@ public class a
     this.b = true;
     this.c = paramBoolean;
     if (this.c) {
-      new rax(this).start();
+      new rdn(this).start();
     }
     for (;;)
     {
@@ -329,7 +329,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mezs.a
  * JD-Core Version:    0.7.0.1
  */

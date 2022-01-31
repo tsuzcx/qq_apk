@@ -1,14 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d55" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_horizontal" android:layout_gravity="center_horizontal" android:orientation="vertical" android:paddingTop="90.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d93" android:layout_width="fill_parent" android:layout_height="50.0dip" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d94" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="点赞" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0d93" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d95" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="取消点赞" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0d93" android:layout_alignParentRight="true" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d96" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="获取详情" android:layout_alignParentRight="true" />
-    <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d97" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d98" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="关注" android:layout_alignParentRight="true" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d99" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="取消关注" android:layout_alignParentRight="true" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d9a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="获取标签" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d9b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="播放视频" />
-    <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d9c" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="下载图片测试" />
+    <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207b3" />
+    <TextView android:textSize="16.0sp" android:textColor="#ffbbbbbb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="22.0dip" android:text="无结果" />
 </LinearLayout>

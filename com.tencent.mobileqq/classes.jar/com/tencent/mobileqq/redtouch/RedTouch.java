@@ -60,11 +60,13 @@ public class RedTouch
   protected boolean c;
   protected int d;
   protected boolean d;
-  public boolean e;
+  protected boolean e;
   protected int f;
-  boolean f;
+  protected boolean f;
   protected int g;
+  public boolean g;
   protected int h;
+  boolean h;
   protected int i;
   protected int j;
   protected int k;
@@ -73,7 +75,13 @@ public class RedTouch
   protected int n;
   protected int o;
   protected int p;
-  protected int q = -2;
+  protected int q;
+  protected int r;
+  protected int s;
+  protected int t;
+  protected int u;
+  protected int v = -2;
+  protected int w = 30;
   
   static
   {
@@ -89,10 +97,10 @@ public class RedTouch
   {
     super(paramContext);
     this.jdField_f_of_type_Int = 21;
-    this.jdField_f_of_type_Boolean = true;
+    this.jdField_h_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_AndroidViewView = paramView;
-    c();
+    d();
   }
   
   private FrameLayout.LayoutParams a()
@@ -115,7 +123,7 @@ public class RedTouch
     paramImageView.setLayoutParams(localLayoutParams);
     localFrameLayout.addView(paramImageView);
     paramImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    paramImageView.setImageResource(2130845923);
+    paramImageView.setImageResource(2130846051);
     localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 49;
     paramImageView.setLayoutParams(localLayoutParams);
@@ -193,7 +201,7 @@ public class RedTouch
   
   private View b(String paramString)
   {
-    Object localObject = getResources().getDrawable(2130839128);
+    Object localObject = getResources().getDrawable(2130839132);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
     localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
@@ -218,11 +226,18 @@ public class RedTouch
   private FrameLayout b(ImageView paramImageView)
   {
     FrameLayout localFrameLayout = new FrameLayout(getContext());
-    paramImageView.setLayoutParams(new FrameLayout.LayoutParams(a(38), a(38)));
-    paramImageView.setPadding(a(4), a(4), a(4), a(4));
+    int i2 = 38;
+    int i1 = 4;
+    if (this.jdField_d_of_type_Boolean)
+    {
+      i2 = this.w + 12;
+      i1 = 6;
+    }
+    paramImageView.setLayoutParams(new FrameLayout.LayoutParams(a(i2), a(i2)));
+    paramImageView.setPadding(a(i1), a(i1), a(i1), a(i1));
     localFrameLayout.addView(paramImageView);
     paramImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    paramImageView.setImageResource(2130845923);
+    paramImageView.setImageResource(2130846051);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
     localLayoutParams.gravity = 53;
     paramImageView.setLayoutParams(localLayoutParams);
@@ -241,7 +256,7 @@ public class RedTouch
   {
     int i3 = 0;
     int i1 = 0;
-    if (this.jdField_f_of_type_Boolean) {
+    if (this.jdField_h_of_type_Boolean) {
       this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
     }
     try
@@ -251,23 +266,23 @@ public class RedTouch
       {
         localObject = new JSONObject();
         if (!((JSONObject)localObject).has("bg")) {
-          break label622;
+          break label633;
         }
       }
-      label622:
+      label633:
       for (int i2 = a(((JSONObject)localObject).getString("bg"));; i2 = 0) {
         switch (paramRedTypeInfo.red_type.get())
         {
         case 0: 
           localObject = new JSONObject(paramRedTypeInfo.red_desc.get());
           break;
-          paramRedTypeInfo = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371147);
+          paramRedTypeInfo = (ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371310);
           if (paramRedTypeInfo != null) {
             paramRedTypeInfo.setVisibility(0);
           }
           paramRedTypeInfo = a(i2);
           if (paramRedTypeInfo == null) {
-            break label627;
+            break label638;
           }
           i1 = this.jdField_a_of_type_Int;
           this.jdField_a_of_type_Int = (i1 + 1);
@@ -275,6 +290,9 @@ public class RedTouch
           this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(paramRedTypeInfo);
           return;
         case 3: 
+          if (this.jdField_c_of_type_Boolean) {
+            c();
+          }
           if (!((JSONObject)localObject).has("av")) {}
         case 4: 
         case 5: 
@@ -361,17 +379,17 @@ public class RedTouch
           }
         }
       }
-      label627:
+      label638:
       return;
     }
     catch (Exception paramRedTypeInfo) {}
   }
   
-  private void c()
+  private void d()
   {
     this.k = this.jdField_f_of_type_Int;
-    this.l = this.g;
-    this.m = this.h;
+    this.l = this.jdField_g_of_type_Int;
+    this.m = this.jdField_h_of_type_Int;
     this.n = this.i;
     this.o = this.j;
     this.p = 99;
@@ -383,7 +401,7 @@ public class RedTouch
     this.jdField_d_of_type_Int = 40;
   }
   
-  private void d()
+  private void e()
   {
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(a());
@@ -446,7 +464,7 @@ public class RedTouch
       localURLImageView.setImageDrawable(getResources().getDrawable(paramInt4));
     }
     while (paramInt2 == 1) {
-      if (this.jdField_d_of_type_Boolean)
+      if (this.jdField_f_of_type_Boolean)
       {
         return a(localURLImageView);
         if (!TextUtils.isEmpty(paramString2))
@@ -497,7 +515,7 @@ public class RedTouch
   protected ImageView a(int paramInt)
   {
     ImageView localImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-    localImageView.setImageResource(2130845923);
+    localImageView.setImageResource(2130846051);
     localImageView.setBackgroundColor(paramInt);
     localImageView.setLayoutParams(a());
     return localImageView;
@@ -505,7 +523,7 @@ public class RedTouch
   
   protected LinearLayout.LayoutParams a()
   {
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.q, this.q);
+    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(this.v, this.v);
     localLayoutParams.gravity = 16;
     return localLayoutParams;
   }
@@ -527,11 +545,11 @@ public class RedTouch
           break label179;
         }
         localTextView.setTextSize(11.0F);
-        if (!this.jdField_c_of_type_Boolean) {
+        if (!this.jdField_e_of_type_Boolean) {
           break;
         }
         localTextView.setIncludeFontPadding(false);
-        localTextView.setBackgroundResource(2130845929);
+        localTextView.setBackgroundResource(2130846057);
         localTextView.setLayoutParams(a());
         if (this.jdField_b_of_type_Boolean)
         {
@@ -549,7 +567,7 @@ public class RedTouch
       {
         localTextView.setText(paramString.trim());
         continue;
-        localTextView.setBackgroundResource(2130845927);
+        localTextView.setBackgroundResource(2130846055);
         continue;
         label179:
         localTextView.setTextSize(13.0F);
@@ -563,7 +581,7 @@ public class RedTouch
     {
       a(this.jdField_a_of_type_AndroidViewView);
       b(this.jdField_a_of_type_AndroidViewView);
-      d();
+      e();
       this.jdField_a_of_type_Boolean = true;
       return this;
     }
@@ -633,12 +651,16 @@ public class RedTouch
     do
     {
       return;
-      Object localObject = getResources().getDrawable(2130839128);
+      Object localObject = getResources().getDrawable(2130839132);
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject);
       localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
-      localURLDrawableOptions.mRequestWidth = a(30);
-      localURLDrawableOptions.mRequestHeight = a(30);
+      int i1 = 30;
+      if (this.jdField_d_of_type_Boolean) {
+        i1 = this.w;
+      }
+      localURLDrawableOptions.mRequestWidth = a(i1);
+      localURLDrawableOptions.mRequestHeight = a(i1);
       try
       {
         localObject = URLDrawable.getDrawable(new URL("redtouchpicdownloadprotoc", null, paramString), localURLDrawableOptions);
@@ -662,20 +684,20 @@ public class RedTouch
     {
       if (this.jdField_a_of_type_AndroidWidgetImageView != null)
       {
-        this.jdField_e_of_type_Boolean = paramBoolean;
+        this.jdField_g_of_type_Boolean = paramBoolean;
         this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
         return;
       }
-      if (!this.jdField_e_of_type_Boolean)
+      if (!this.jdField_g_of_type_Boolean)
       {
-        this.jdField_e_of_type_Boolean = paramBoolean;
+        this.jdField_g_of_type_Boolean = paramBoolean;
         Object localObject2 = (ViewGroup)getParent();
-        Object localObject1 = (TextView)((ViewGroup)localObject2).findViewById(2131374727);
+        Object localObject1 = (TextView)((ViewGroup)localObject2).findViewById(2131374908);
         if ((localObject1 != null) && ((localObject2 instanceof LinearLayout)))
         {
           removeView(this.jdField_a_of_type_AndroidViewView);
           ((ViewGroup)localObject2).removeAllViews();
-          RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131558948));
+          RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, (int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131558950));
           RelativeLayout localRelativeLayout = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
           ((ViewGroup)localObject2).addView(localRelativeLayout, localLayoutParams);
           localObject2 = new RelativeLayout.LayoutParams(AIOUtils.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(24.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
@@ -692,7 +714,7 @@ public class RedTouch
           ((RelativeLayout.LayoutParams)localObject1).leftMargin = AIOUtils.a(-5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
           ((RelativeLayout.LayoutParams)localObject1).topMargin = AIOUtils.a(-5.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
           this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845451);
+          this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130845579);
           localRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetImageView, (ViewGroup.LayoutParams)localObject1);
           return;
         }
@@ -713,9 +735,28 @@ public class RedTouch
     return true;
   }
   
+  public boolean a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    if (paramAppInfo == null) {}
+    while ((paramAppInfo.iNewFlag.get() == 0) || (paramAppInfo.red_display_info.get() == null) || (paramAppInfo.red_display_info.red_type_info.get() == null) || (paramAppInfo.red_display_info.red_type_info.get().size() == 0)) {
+      return false;
+    }
+    return true;
+  }
+  
   public RedTouch b(int paramInt)
   {
     this.l = a(paramInt);
+    return this;
+  }
+  
+  public RedTouch b(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    this.r = a(paramInt1);
+    this.s = a(paramInt2);
+    this.t = a(paramInt3);
+    this.u = a(paramInt4);
+    this.jdField_c_of_type_Boolean = true;
     return this;
   }
   
@@ -732,10 +773,30 @@ public class RedTouch
     }
   }
   
+  public boolean b(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
+  {
+    if (paramAppInfo == null) {}
+    while ((paramAppInfo.iNewFlag.get() == 0) || (paramAppInfo.red_display_info.get() == null) || (paramAppInfo.red_display_info.red_type_info.get() == null) || (paramAppInfo.red_display_info.red_type_info.get().size() == 0) || (!a(paramAppInfo.red_display_info.red_type_info.get()))) {
+      return false;
+    }
+    return true;
+  }
+  
   public RedTouch c(int paramInt)
   {
     this.m = a(paramInt);
     return this;
+  }
+  
+  protected void c()
+  {
+    FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
+    localLayoutParams.gravity = this.q;
+    localLayoutParams.leftMargin = this.r;
+    localLayoutParams.rightMargin = this.s;
+    localLayoutParams.topMargin = this.t;
+    localLayoutParams.bottomMargin = this.u;
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(localLayoutParams);
   }
   
   public RedTouch d(int paramInt)
@@ -747,6 +808,19 @@ public class RedTouch
   public RedTouch e(int paramInt)
   {
     this.o = a(paramInt);
+    return this;
+  }
+  
+  public RedTouch f(int paramInt)
+  {
+    this.w = paramInt;
+    this.jdField_d_of_type_Boolean = true;
+    return this;
+  }
+  
+  public RedTouch g(int paramInt)
+  {
+    this.q = paramInt;
     return this;
   }
   
@@ -764,7 +838,7 @@ public class RedTouch
     for (int i1 = 0;; i1 = 4)
     {
       localLinearLayout.setVisibility(i1);
-      this.jdField_f_of_type_Boolean = paramBoolean;
+      this.jdField_h_of_type_Boolean = paramBoolean;
       return;
     }
   }

@@ -1,70 +1,39 @@
-import com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager;
-import java.util.ArrayList;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader;
+import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader.P2VEffectDownloadListener;
+import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.networkedmodule.ModuleDownloadListener;
+import cooperation.qzone.util.QZLog;
 
 public class xus
+  implements ModuleDownloadListener
 {
-  public int a;
-  public long a;
-  public ArrayList a;
-  public xus a;
-  public boolean a;
+  public xus(P2VEffectLoader paramP2VEffectLoader, P2VEffectLoader.P2VEffectDownloadListener paramP2VEffectDownloadListener) {}
   
-  private xus()
+  public void onDownloadCanceled(String paramString)
   {
-    this.jdField_a_of_type_Xus = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 3;
+    QZLog.i("P2VEffectLoader", 4, new Object[] { "onDownloadCanceled ", paramString });
   }
   
-  public static xus a()
+  public void onDownloadFailed(String paramString)
   {
-    xus localxus = new xus();
-    localxus.a();
-    return localxus;
+    QZLog.i("P2VEffectLoader", 4, new Object[] { "onDownloadFailed ", paramString });
+    P2VEffectLoader.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader, false);
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader$P2VEffectDownloadListener.a(false);
   }
   
-  public String a()
+  public void onDownloadProgress(String paramString, float paramFloat)
   {
-    switch (this.jdField_a_of_type_Int)
-    {
-    default: 
-      return "LBS_REQ_OK";
-    case 1: 
-      return "LBS_REQ_PENDING";
+    QZLog.i("P2VEffectLoader", 4, new Object[] { "moduleId = ", paramString, " progress = ", Float.valueOf(paramFloat) });
+  }
+  
+  public void onDownloadSucceed(String paramString)
+  {
+    if (!paramString.equals("p2v_material.zip")) {
+      return;
     }
-    return "LBS_REQ_PERM_OK";
-  }
-  
-  void a()
-  {
-    if (this.jdField_a_of_type_Xus == null) {
-      this.jdField_a_of_type_Xus = new xus();
-    }
-  }
-  
-  public boolean a(String paramString)
-  {
-    LbsFilterStatusManager.a("startLocation", String.format("filterId=%s , IdList=%s", new Object[] { paramString, this.jdField_a_of_type_JavaUtilArrayList.toString() }), null);
-    return this.jdField_a_of_type_JavaUtilArrayList.contains(paramString);
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  public void c()
-  {
-    this.jdField_a_of_type_Xus.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Xus.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Xus.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_Xus.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Xus.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    QZLog.i("P2VEffectLoader", 4, new Object[] { "onDownloadSucceed url = ", P2VEffectLoader.c(), P2VEffectLoader.d() });
+    LocalMultiProcConfig.putString("p2v_effect_material_md5", P2VEffectLoader.d());
+    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader$P2VEffectDownloadListener.a(true);
   }
 }
 

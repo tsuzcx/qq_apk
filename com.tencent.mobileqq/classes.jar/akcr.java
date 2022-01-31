@@ -1,23 +1,25 @@
+import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.CustomWebView;
-import com.tencent.mobileqq.webview.ui.WebViewTitlerBar;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.utils.JumpAction;
 
 public class akcr
   implements View.OnClickListener
 {
-  public akcr(WebViewTitlerBar paramWebViewTitlerBar) {}
+  public akcr(JumpAction paramJumpAction) {}
   
   public void onClick(View paramView)
   {
-    if (this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView != null) {
-      this.a.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.a(this.a.jdField_a_of_type_JavaLangString, new String[] { "" });
+    if ((JumpAction.a(this.a) != null) && (JumpAction.a(this.a).isShowing())) {
+      JumpAction.a(this.a).dismiss();
     }
+    ((BaseActivity)this.a.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akcr
  * JD-Core Version:    0.7.0.1
  */

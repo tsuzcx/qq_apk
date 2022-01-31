@@ -202,7 +202,7 @@ public class PublicAccountSearchResultModel
             localIntent.putExtra("uin", str);
             localIntent.putExtra("uintype", i);
             localIntent.putExtra("uinname", this.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo.name);
-            localIntent.putExtra("selfSet_leftViewText", ((Context)localObject2).getString(2131433681));
+            localIntent.putExtra("selfSet_leftViewText", ((Context)localObject2).getString(2131433698));
             RecentUtil.a = true;
             RecentUtil.a(localIntent);
             ((Context)localObject2).startActivity(localIntent);

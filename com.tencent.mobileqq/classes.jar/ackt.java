@@ -1,20 +1,27 @@
-import com.tencent.mobileqq.filemanager.core.DiscPicThumbDownloader;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.FilePicURLDrawlableHelper;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
 
 public class ackt
-  implements Runnable
+  implements Animation.AnimationListener
 {
-  public ackt(DiscPicThumbDownloader paramDiscPicThumbDownloader, FileManagerEntity paramFileManagerEntity) {}
+  public ackt(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    FilePicURLDrawlableHelper.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    this.a.l = false;
+    this.a.a.setVisibility(8);
+    this.a.e();
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ackt
  * JD-Core Version:    0.7.0.1
  */

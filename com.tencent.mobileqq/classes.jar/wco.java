@@ -1,10 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.tips.ComicTipsBar;
+import com.tencent.mobileqq.activity.aio.tips.TipsManager;
 
-public final class wco
-  implements DialogInterface.OnClickListener
+class wco
+  implements Runnable
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  wco(wcn paramwcn) {}
+  
+  public void run()
+  {
+    if (this.a.a.a != null) {
+      this.a.a.a.b();
+    }
+  }
 }
 
 

@@ -1,16 +1,21 @@
-import com.tencent.biz.qqstory.view.widget.RateWidget;
+import android.text.TextUtils;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.qqstory.utils.pngquant.PngQuantUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public class opl
-  implements Runnable
+public final class opl
+  implements AsyncBack
 {
-  public opl(RateWidget paramRateWidget) {}
+  public void a(int paramInt) {}
   
-  public void run()
+  public void a(String paramString, int paramInt)
   {
-    if (RateWidget.a(this.a))
-    {
-      RateWidget.a(this.a, false);
-      this.a.c(false);
+    if (QLog.isColorLevel()) {
+      QLog.d("PngQuantUtils", 2, "checkUpByBusinessId loaded,code=" + paramInt);
+    }
+    if ((paramInt == 0) && (!TextUtils.isEmpty(paramString)) && (paramString.contains("url"))) {
+      PngQuantUtils.a.set(false);
     }
   }
 }

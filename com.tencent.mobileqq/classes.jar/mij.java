@@ -1,17 +1,13 @@
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoySlidingIndicator;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
 
-public class mij
-  extends View.AccessibilityDelegate
+class mij
+  implements Runnable
 {
-  public mij(ReadinjoySlidingIndicator paramReadinjoySlidingIndicator) {}
+  mij(mii parammii) {}
   
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void run()
   {
-    if (paramInt != 4096) {
-      super.sendAccessibilityEvent(paramView, paramInt);
-    }
+    this.a.a.l();
   }
 }
 

@@ -1,7 +1,7 @@
 package cooperation.comic;
 
-import alta;
-import altb;
+import amje;
+import amjf;
 import android.os.Handler;
 import android.os.HandlerThread;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -38,7 +38,7 @@ public class PluginPreloader
       }
       return;
     }
-    a.postDelayed(new alta(paramPluginPreloadStrategy), paramLong);
+    a.postDelayed(new amje(paramPluginPreloadStrategy), paramLong);
   }
   
   public static void a(AppRuntime paramAppRuntime, PluginPreloadStrategy paramPluginPreloadStrategy, int paramInt, PluginPreloader.ExtraResult paramExtraResult)
@@ -75,7 +75,7 @@ public class PluginPreloader
       }
       if ((paramPluginPreloadStrategy.jdField_a_of_type_Boolean) && (NetworkUtil.h(BaseApplicationImpl.getContext())))
       {
-        localIPluginManager.installPlugin(paramPluginPreloadStrategy.jdField_b_of_type_JavaLangString, new altb(paramAppRuntime, paramPluginPreloadStrategy, paramExtraResult, paramInt));
+        localIPluginManager.installPlugin(paramPluginPreloadStrategy.jdField_b_of_type_JavaLangString, new amjf(paramAppRuntime, paramPluginPreloadStrategy, paramExtraResult, paramInt));
         return;
       }
       if (QLog.isColorLevel()) {

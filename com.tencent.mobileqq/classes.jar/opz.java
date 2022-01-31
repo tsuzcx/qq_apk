@@ -1,16 +1,20 @@
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.widget.RotateCircleImageView;
+import com.tencent.biz.qqstory.view.NeoVideoRecordButton;
+import com.tencent.biz.qqstory.view.RingView.DrawInfo;
 
 public class opz
   implements ValueAnimator.AnimatorUpdateListener
 {
-  public opz(RotateCircleImageView paramRotateCircleImageView) {}
+  public opz(NeoVideoRecordButton paramNeoVideoRecordButton) {}
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    RotateCircleImageView.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
-    this.a.invalidate();
+    this.a.a.a(((Integer)paramValueAnimator.getAnimatedValue("border")).intValue(), 0.0F);
+    this.a.a.b(((Integer)paramValueAnimator.getAnimatedValue("ring")).intValue(), 0.0F);
+    this.a.b.a(((Integer)paramValueAnimator.getAnimatedValue("center")).intValue(), 0.0F);
+    this.a.b.e = ((Integer)paramValueAnimator.getAnimatedValue("color")).intValue();
+    NeoVideoRecordButton.a(this.a);
   }
 }
 

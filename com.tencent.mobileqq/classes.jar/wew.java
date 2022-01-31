@@ -1,23 +1,20 @@
-import com.tencent.biz.lebasearch.SearchProtocol.SearchObserver;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnErrorListener;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class wew
-  extends SearchProtocol.SearchObserver
+  implements MediaPlayer.OnErrorListener
 {
-  public wew(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public wew(BlessActivity paramBlessActivity) {}
   
-  public void a(int paramInt, List paramList)
+  public boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    if (paramInt == 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("ClassificationSearchActivity", 2, "hot words size: " + paramList.size());
-      }
-      this.a.b = paramList;
-      ClassificationSearchActivity.a(this.a, true);
+    if (QLog.isColorLevel()) {
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onError what=" + paramInt1 + ", extra=" + paramInt2);
     }
+    BlessActivity.a(this.a, true);
+    return true;
   }
 }
 

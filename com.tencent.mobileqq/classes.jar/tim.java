@@ -1,13 +1,19 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.app.MessageObserver;
+import com.tencent.qphone.base.util.QLog;
 
-class tim
-  implements Runnable
+public class tim
+  extends MessageObserver
 {
-  tim(til paramtil) {}
+  public tim(QQLSActivity paramQQLSActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, Object paramObject)
   {
-    QQSettingMe.c(this.a.a);
+    super.a(paramBoolean, paramObject);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
+    }
+    QQLSActivity.a(this.a);
   }
 }
 

@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.widget.QQProgressNotifier;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoi;
 
 class ogf
   implements Runnable
 {
-  ogf(ogc paramogc) {}
+  ogf(ogd paramogd) {}
   
   public void run()
   {
-    this.a.a.a.a.a();
+    EditVideoPoi.a(this.a.a, 1);
   }
 }
 

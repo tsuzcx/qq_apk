@@ -1,16 +1,35 @@
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.UnLikeCallback;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.nearby.now.model.VideoData;
+import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
 
 public class aexy
-  implements NearbyMomentProtocol.UnLikeCallback
+  implements Runnable
 {
-  public aexy(NearbyMomentManager paramNearbyMomentManager, String paramString) {}
+  private int jdField_a_of_type_Int = 2;
   
-  public void a(boolean paramBoolean, int paramInt)
+  public aexy(ShortVideoCommentsView paramShortVideoCommentsView, int paramInt)
   {
-    if (paramBoolean) {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentNearbyMomentManager.b(this.jdField_a_of_type_JavaLangString, paramInt);
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  public void run()
+  {
+    switch (this.jdField_a_of_type_Int)
+    {
+    default: 
+      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(8);
+      ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(8);
+      return;
+    case 0: 
+      ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(8);
+      ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(0);
+      return;
     }
+    ShortVideoCommentsView.b(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(8);
+    if ((ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView) != null) && (ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).jdField_a_of_type_Int != 4)) {
+      ShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView).setVisibility(0);
+    }
+    ShortVideoCommentsView.d(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView);
   }
 }
 

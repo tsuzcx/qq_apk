@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aidx;
+import aisa;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
@@ -336,7 +336,7 @@ public class VasExtensionDownloader
     if (paramFavoriteEmoticonInfo == null) {
       return;
     }
-    ThreadManager.post(new aidx(this, paramFavoriteEmoticonInfo), 5, null, false);
+    ThreadManager.post(new aisa(this, paramFavoriteEmoticonInfo), 5, null, false);
   }
   
   public boolean a()
@@ -1201,7 +1201,7 @@ public class VasExtensionDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.VasExtensionDownloader
  * JD-Core Version:    0.7.0.1
  */

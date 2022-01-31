@@ -1,14 +1,40 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
+import android.text.Html;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.LinkData;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.item.BaseItemViewHolder;
 
 public class mni
-  implements Runnable
+  extends BaseItemViewHolder
+  implements View.OnClickListener
 {
-  public mni(FastWebVideoFeedsListView paramFastWebVideoFeedsListView) {}
+  private TextView a;
   
-  public void run()
+  public mni(View paramView, BaseData paramBaseData)
   {
-    FastWebVideoFeedsListView.a(this.a, true);
-    this.a.smoothScrollBy(-FastWebVideoFeedsListView.d(this.a), 0);
+    super(paramView, paramBaseData);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367129));
+    paramView.setOnClickListener(this);
+  }
+  
+  public void b(BaseData paramBaseData1, BaseData paramBaseData2, boolean paramBoolean)
+  {
+    switch (paramBaseData2.d)
+    {
+    default: 
+      return;
+    }
+    paramBaseData1 = (LinkData)paramBaseData2;
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(Html.fromHtml(paramBaseData1.a));
+  }
+  
+  public void onClick(View paramView)
+  {
+    paramView = (LinkData)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataBaseData;
+    ReadInJoyUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), paramView.b);
   }
 }
 

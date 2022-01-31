@@ -1,20 +1,15 @@
-import android.view.View;
-import android.widget.FrameLayout;
-import com.tencent.biz.tribe.TribeVideoPlugin;
-import com.tencent.biz.ui.TouchWebView.OnScrollChangedListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
+import com.tencent.biz.qrcode.activity.QRDisplayActivity;
 
 public class oth
-  implements TouchWebView.OnScrollChangedListener
+  implements DialogInterface.OnDismissListener
 {
-  public oth(TribeVideoPlugin paramTribeVideoPlugin) {}
+  public oth(QRDisplayActivity paramQRDisplayActivity) {}
   
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (TribeVideoPlugin.a(this.a) != null)
-    {
-      TribeVideoPlugin.a(this.a).scrollBy(0, paramInt2 - paramInt4);
-      TribeVideoPlugin.a(this.a);
-    }
+    this.a.d = false;
   }
 }
 

@@ -1,21 +1,30 @@
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.CreateFakeVideoEvent;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager.StoryVideoPublishStatusEvent;
-import com.tencent.biz.qqstory.base.videoupload.task.StoryVideoTaskInfo;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionPreloadManager;
+import java.util.Iterator;
+import java.util.List;
 
 public class mzd
   implements Runnable
 {
-  public mzd(StoryVideoUploadManager paramStoryVideoUploadManager, StoryVideoTaskInfo paramStoryVideoTaskInfo, StoryVideoUploadManager.StoryVideoPublishStatusEvent paramStoryVideoPublishStatusEvent) {}
+  public mzd(PublicAccountImageCollectionPreloadManager paramPublicAccountImageCollectionPreloadManager) {}
   
   public void run()
   {
-    SLog.d("Q.qqstory.publish.upload:StoryVideoUploadManager", "create story %s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadTaskStoryVideoTaskInfo });
-    Dispatchers.get().dispatch(this.jdField_a_of_type_ComTencentBizQqstoryBaseVideouploadStoryVideoUploadManager$StoryVideoPublishStatusEvent);
-    Dispatchers.get().dispatch(new StoryVideoUploadManager.CreateFakeVideoEvent());
+    ??? = PublicAccountImageCollectionPreloadManager.a(this.a).iterator();
+    while (((Iterator)???).hasNext())
+    {
+      String str = (String)((Iterator)???).next();
+      PublicAccountImageCollectionPreloadManager.a(this.a, str);
+    }
+    synchronized (this.a.jdField_a_of_type_JavaLangObject)
+    {
+      PublicAccountImageCollectionPreloadManager.a(this.a).clear();
+      if (PublicAccountImageCollectionPreloadManager.b(this.a).size() > 0)
+      {
+        PublicAccountImageCollectionPreloadManager.a(this.a);
+        return;
+      }
+      this.a.jdField_a_of_type_Boolean = false;
+    }
   }
 }
 

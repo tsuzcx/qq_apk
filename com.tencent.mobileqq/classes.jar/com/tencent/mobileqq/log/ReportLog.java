@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.log;
 
-import adoy;
-import adoz;
-import adpa;
+import aece;
+import aecf;
+import aecg;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -42,8 +42,8 @@ public class ReportLog
   static
   {
     jdField_a_of_type_JavaLangString = "/Tencent/MobileQQ/log/";
-    jdField_a_of_type_AndroidOsHandler = new adoy(Looper.getMainLooper());
-    jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorListener = new adoz();
+    jdField_a_of_type_AndroidOsHandler = new aece(Looper.getMainLooper());
+    jdField_a_of_type_ComTencentMobileqqUtilsHttputilsIHttpCommunicatorListener = new aecf();
     jdField_b_of_type_JavaLangString = "http://bugtrace.3g.qq.com/upload/1/0";
   }
   
@@ -359,7 +359,7 @@ public class ReportLog
       a("crash", ((StringBuilder)localObject).toString(), true);
       paramThread.crashed();
       paramThread.sendBroadcast(new Intent("qqplayer_exit_action"));
-      paramThread = new adpa(this, paramThread);
+      paramThread = new aecg(this, paramThread);
       if (Thread.currentThread() != Looper.getMainLooper().getThread())
       {
         new Handler(Looper.getMainLooper()).postAtFrontOfQueue(paramThread);
@@ -376,7 +376,7 @@ public class ReportLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.log.ReportLog
  * JD-Core Version:    0.7.0.1
  */

@@ -23,8 +23,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-import khr;
-import khs;
+import khc;
+import khd;
 
 public class TipsManager
 {
@@ -44,7 +44,7 @@ public class TipsManager
   public int b;
   ImageView jdField_b_of_type_AndroidWidgetImageView = null;
   public TextView b;
-  Runnable jdField_b_of_type_JavaLangRunnable = new khs(this);
+  Runnable jdField_b_of_type_JavaLangRunnable = new khd(this);
   public boolean b;
   int jdField_c_of_type_Int = 0;
   TextView jdField_c_of_type_AndroidWidgetTextView = null;
@@ -65,15 +65,15 @@ public class TipsManager
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler = null;
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131364222));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131364246));
     this.jdField_a_of_type_AndroidWidgetLinearLayout = paramLinearLayout;
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramLinearLayout.findViewById(2131364221));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLinearLayout.findViewById(2131365803));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramLinearLayout.findViewById(2131365801));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131365802));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramLinearLayout.findViewById(2131364245));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramLinearLayout.findViewById(2131365830));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramLinearLayout.findViewById(2131365828));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramLinearLayout.findViewById(2131365829));
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_JavaLangRunnable = new khr(this);
+    this.jdField_a_of_type_JavaLangRunnable = new khc(this);
   }
   
   private void a(boolean paramBoolean1, int paramInt, long paramLong, boolean paramBoolean2, String paramString, boolean paramBoolean3, boolean paramBoolean4)
@@ -204,7 +204,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429186);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429192);
           i = 0;
           bool2 = false;
           bool1 = true;
@@ -217,7 +217,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428691);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428697);
           i = 0;
           bool2 = false;
           bool1 = true;
@@ -248,7 +248,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428696);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428702);
           i = 0;
           bool2 = false;
           bool1 = false;
@@ -261,7 +261,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428697);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428703);
           this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
           l = 3000L;
           bool2 = false;
@@ -269,7 +269,7 @@ public class TipsManager
           i = 0;
           break label753;
         }
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428698);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428704);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
         l = 3000L;
         bool2 = false;
@@ -278,7 +278,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428686);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428692);
           i = 0;
           bool2 = false;
           bool1 = false;
@@ -291,7 +291,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429184);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429190);
           this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
           l = 3000L;
           bool2 = false;
@@ -306,7 +306,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428687);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428693);
           i = 0;
           bool2 = false;
           bool1 = false;
@@ -321,14 +321,14 @@ public class TipsManager
         {
           if (((VideoController)localObject).b(str) == 5)
           {
-            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428695);
+            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428701);
             this.jdField_d_of_type_Int = this.jdField_b_of_type_Int;
             i = 0;
             bool2 = false;
             bool1 = false;
             break label753;
           }
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429102);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429108);
           i = 0;
           bool2 = false;
           bool1 = true;
@@ -342,7 +342,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428694);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428700);
           this.jdField_d_of_type_Int = this.jdField_b_of_type_Int;
           i = 0;
           bool2 = false;
@@ -355,14 +355,14 @@ public class TipsManager
         bool2 = false;
         bool1 = false;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429123);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429129);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
         l = 3000L;
         bool2 = false;
         bool1 = true;
         i = 0;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429124);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429130);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
         l = 3000L;
         bool2 = false;
@@ -373,7 +373,7 @@ public class TipsManager
         {
           localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp();
           if (this.f) {}
-          for (i = 2131429411;; i = 2131428701)
+          for (i = 2131429417;; i = 2131428707)
           {
             this.jdField_a_of_type_JavaLangString = ((BaseApplication)localObject).getString(i);
             this.jdField_d_of_type_Int = this.jdField_b_of_type_Int;
@@ -384,7 +384,7 @@ public class TipsManager
           }
         }
         if (!this.f) {}
-        for (this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428703);; this.jdField_a_of_type_JavaLangString = "")
+        for (this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428709);; this.jdField_a_of_type_JavaLangString = "")
         {
           this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
           this.jdField_d_of_type_Int = 0;
@@ -394,13 +394,13 @@ public class TipsManager
           i = 0;
           break;
         }
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429130);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429136);
         this.jdField_d_of_type_Int = this.jdField_b_of_type_Int;
         i = 0;
         bool2 = false;
         bool1 = true;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429131);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429137);
         this.jdField_d_of_type_Int = this.jdField_b_of_type_Int;
         i = 0;
         bool2 = true;
@@ -408,7 +408,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429195);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429201);
           this.jdField_d_of_type_Int = this.jdField_b_of_type_Int;
           i = 0;
           bool2 = false;
@@ -424,7 +424,7 @@ public class TipsManager
         {
           localObject = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp();
           if (this.f) {}
-          for (i = 2131429410;; i = 2131428706)
+          for (i = 2131429416;; i = 2131428712)
           {
             this.jdField_a_of_type_JavaLangString = ((BaseApplication)localObject).getString(i);
             i = 0;
@@ -440,7 +440,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428707);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428713);
           i = 0;
           bool2 = false;
           bool1 = true;
@@ -469,26 +469,26 @@ public class TipsManager
         bool2 = false;
         bool1 = true;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429368);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429374);
         i = 0;
         bool2 = false;
         bool1 = false;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429370);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429376);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
         l = 3000L;
         bool2 = false;
         bool1 = false;
         i = 0;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429369);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429375);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
         l = 3000L;
         bool2 = false;
         bool1 = false;
         i = 0;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429462);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429468);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
         l = 3000L;
         bool2 = false;
@@ -502,7 +502,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429079);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429085);
           i = 0;
           bool2 = false;
           bool1 = false;
@@ -513,7 +513,7 @@ public class TipsManager
         bool2 = false;
         bool1 = false;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428755);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428761);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
         l = 3000L;
         bool2 = false;
@@ -522,7 +522,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428690);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428696);
           i = 0;
           bool2 = false;
           bool1 = false;
@@ -533,66 +533,106 @@ public class TipsManager
         bool2 = false;
         bool1 = false;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429099);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429105);
         i = 0;
         bool2 = false;
         bool1 = true;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429116);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429122);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
         l = 3000L;
         bool2 = true;
         bool1 = false;
         i = 0;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429115);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429121);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
         l = 3000L;
         bool2 = true;
         bool1 = false;
         i = 0;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429100);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429106);
         i = 0;
         bool2 = false;
         bool1 = true;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429117);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429123);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);
         l = 5000L;
         i = 0;
         bool2 = false;
         bool1 = true;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429118);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429124);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 5000L);
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429117);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429123);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
         l = 3000L;
         bool2 = false;
         bool1 = true;
         i = 0;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428968);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428974);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 30000L);
         l = 30000L;
         i = 0;
         bool2 = true;
         bool1 = false;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428699);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428705);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
         l = 3000L;
         bool2 = false;
         bool1 = true;
         i = 0;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428700);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428706);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
         l = 3000L;
         bool2 = false;
         bool1 = true;
         i = 0;
+        break label753;
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429171);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
+        l = 3000L;
+        bool2 = false;
+        bool1 = true;
+        i = 0;
+        break label753;
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429172);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
+        l = 3000L;
+        bool2 = false;
+        bool1 = true;
+        i = 0;
+        break label753;
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429118);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
+        l = 3000L;
+        bool2 = false;
+        bool1 = true;
+        i = 0;
+        break label753;
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429119);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
+        l = 3000L;
+        bool2 = false;
+        bool1 = true;
+        i = 0;
+        break label753;
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429179);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
+        l = 3000L;
+        bool2 = false;
+        bool1 = true;
+        i = 0;
+        break label753;
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429131);
+        i = 0;
+        bool2 = false;
+        bool1 = false;
         break label753;
         this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429165);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
@@ -601,79 +641,11 @@ public class TipsManager
         bool1 = true;
         i = 0;
         break label753;
+        i = 0;
+        bool2 = false;
+        bool1 = true;
+        break label753;
         this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429166);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
-        l = 3000L;
-        bool2 = false;
-        bool1 = true;
-        i = 0;
-        break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429112);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
-        l = 3000L;
-        bool2 = false;
-        bool1 = true;
-        i = 0;
-        break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429113);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
-        l = 3000L;
-        bool2 = false;
-        bool1 = true;
-        i = 0;
-        break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429173);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
-        l = 3000L;
-        bool2 = false;
-        bool1 = true;
-        i = 0;
-        break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429125);
-        i = 0;
-        bool2 = false;
-        bool1 = false;
-        break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429159);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
-        l = 3000L;
-        bool2 = false;
-        bool1 = true;
-        i = 0;
-        break label753;
-        i = 0;
-        bool2 = false;
-        bool1 = true;
-        break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429160);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
-        l = 3000L;
-        bool2 = false;
-        bool1 = true;
-        i = 0;
-        break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429158);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
-        l = 3000L;
-        bool2 = false;
-        bool1 = true;
-        i = 0;
-        break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429163);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
-        l = 3000L;
-        bool2 = false;
-        bool1 = true;
-        i = 0;
-        break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131433989);
-        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
-        l = 3000L;
-        bool2 = false;
-        bool1 = true;
-        i = 0;
-        break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429669);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
         l = 3000L;
         bool2 = false;
@@ -687,14 +659,42 @@ public class TipsManager
         bool1 = true;
         i = 0;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429161);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429169);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
         l = 3000L;
         bool2 = false;
         bool1 = true;
         i = 0;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429162);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131434006);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
+        l = 3000L;
+        bool2 = false;
+        bool1 = true;
+        i = 0;
+        break label753;
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429675);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
+        l = 3000L;
+        bool2 = false;
+        bool1 = true;
+        i = 0;
+        break label753;
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429170);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
+        l = 3000L;
+        bool2 = false;
+        bool1 = true;
+        i = 0;
+        break label753;
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429167);
+        this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
+        l = 3000L;
+        bool2 = false;
+        bool1 = true;
+        i = 0;
+        break label753;
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429168);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
         l = 3000L;
         bool2 = false;
@@ -703,7 +703,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429176);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429182);
           i = 0;
           bool2 = true;
           bool1 = false;
@@ -716,7 +716,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429222);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429228);
           i = 0;
           bool2 = false;
           bool1 = false;
@@ -730,7 +730,7 @@ public class TipsManager
         j = ((VideoController)localObject).c(str);
         if (((VideoController)localObject).a().i == 1011) {
           if (j < 45) {
-            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429169);
+            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429175);
           }
         }
         for (;;)
@@ -742,19 +742,19 @@ public class TipsManager
           i = 0;
           break;
           if (!VcSystemInfo.f()) {
-            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428808);
+            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428814);
           } else if (!VcSystemInfo.b()) {
-            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428807);
+            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428813);
           } else if (Utils.a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp()) == 1) {
-            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428802);
+            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428808);
           } else if (j < 16) {
-            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429168);
+            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429174);
           } else if ((i != 4) && (i != 2) && (i != 3)) {
-            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429169);
+            this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429175);
           }
         }
         if ((i != 4) && (i != 2)) {}
-        for (this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429171);; this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429172))
+        for (this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429177);; this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429178))
         {
           this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
           l = 3000L;
@@ -763,14 +763,14 @@ public class TipsManager
           i = 0;
           break;
         }
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429170);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429176);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
         l = 3000L;
         bool2 = false;
         bool1 = true;
         i = 0;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428803);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428809);
         this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 3000L);
         l = 3000L;
         bool2 = false;
@@ -779,7 +779,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429363);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429369);
           i = 0;
           bool2 = false;
           bool1 = false;
@@ -791,7 +791,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429364);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429370);
           i = 0;
           bool2 = false;
           bool1 = false;
@@ -803,7 +803,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429343);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429349);
           i = 0;
           bool2 = false;
           bool1 = false;
@@ -815,7 +815,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429383);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429389);
           i = 0;
           bool2 = false;
           bool1 = false;
@@ -827,7 +827,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429235);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429241);
           UITools.a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaLangString);
           i = 0;
           bool2 = false;
@@ -841,7 +841,7 @@ public class TipsManager
         break label753;
         if (this.jdField_a_of_type_Boolean)
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429433);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429439);
           UITools.a(this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_JavaLangString);
           this.jdField_a_of_type_AndroidOsHandler.postDelayed(this.jdField_a_of_type_JavaLangRunnable, 2000L);
           l = 2000L;
@@ -855,13 +855,13 @@ public class TipsManager
         bool2 = false;
         bool1 = false;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428733);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428739);
         this.jdField_d_of_type_Int = this.jdField_b_of_type_Int;
         i = 0;
         bool2 = false;
         bool1 = false;
         break label753;
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429132);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429138);
         this.jdField_d_of_type_Int = this.jdField_b_of_type_Int;
         i = 0;
         bool2 = true;
@@ -1130,11 +1130,11 @@ public class TipsManager
     {
       if (this.jdField_a_of_type_AndroidWidgetTextView != null)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getResources().getColor(2131493505));
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getResources().getColor(2131493511));
         this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(3.0F, 1.0F, 1.0F, 1342177280);
       }
       if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840332);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840338);
       }
       if (this.jdField_a_of_type_AndroidWidgetProgressBar != null) {
         this.jdField_a_of_type_AndroidWidgetProgressBar.getIndeterminateDrawable().setColorFilter(-1, PorterDuff.Mode.MULTIPLY);
@@ -1149,7 +1149,7 @@ public class TipsManager
         this.jdField_a_of_type_AndroidWidgetTextView.setShadowLayer(0.0F, 0.0F, 0.0F, 5663613);
       }
       if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840333);
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130840339);
       }
     } while (this.jdField_a_of_type_AndroidWidgetProgressBar == null);
     this.jdField_a_of_type_AndroidWidgetProgressBar.getIndeterminateDrawable().setColorFilter(-11113603, PorterDuff.Mode.MULTIPLY);
@@ -1400,7 +1400,7 @@ public class TipsManager
     case 0: 
       if (this.f)
       {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429408);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429414);
         b(false, true);
       }
       for (;;)
@@ -1409,19 +1409,19 @@ public class TipsManager
         return;
         if ((i == 3) || (i == 1))
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428860);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428866);
           b(false, false);
         }
         else
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428859);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428865);
           b(false, true);
         }
       }
     case 2: 
       if (this.f)
       {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429406);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429412);
         this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
         b(false, true);
       }
@@ -1431,12 +1431,12 @@ public class TipsManager
         return;
         if ((i == 3) || (i == 1))
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428862);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428868);
           b(false, false);
         }
         else
         {
-          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428858);
+          this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428864);
           this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
           b(false, true);
         }
@@ -1444,7 +1444,7 @@ public class TipsManager
     }
     if (this.f)
     {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429407);
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131429413);
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
       b(false, true);
     }
@@ -1454,12 +1454,12 @@ public class TipsManager
       return;
       if ((i == 3) || (i == 1))
       {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428861);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428867);
         b(false, false);
       }
       else
       {
-        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428857);
+        this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().getString(2131428863);
         this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(null, null, null, null);
         b(false, true);
       }

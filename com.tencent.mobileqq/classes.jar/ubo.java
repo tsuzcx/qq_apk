@@ -1,21 +1,22 @@
-import com.tencent.mobileqq.activity.TroopTransferActivity;
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.widget.PopupMenuDialog;
 
 public class ubo
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public ubo(TroopTransferActivity paramTroopTransferActivity) {}
+  public ubo(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
+    if (paramMotionEvent.getAction() == 4)
     {
-      if (this.a.a != null) {
-        this.a.a.notifyDataSetChanged();
-      }
-      return;
+      this.a.a.dismiss();
+      return true;
     }
-    catch (Throwable localThrowable) {}
+    return false;
   }
 }
 

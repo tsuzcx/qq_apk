@@ -1,30 +1,14 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import java.util.concurrent.CountDownLatch;
+import cooperation.comic.utils.QQComicPluginBridge.PluginInstallObserver;
+import cooperation.plugin.IPluginManager;
 
 public final class amkl
-  implements Downloader.DownloadListener
+  implements Runnable
 {
-  public amkl(boolean[] paramArrayOfBoolean, CountDownLatch paramCountDownLatch) {}
+  public amkl(IPluginManager paramIPluginManager, QQComicPluginBridge.PluginInstallObserver paramPluginInstallObserver) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void run()
   {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = false;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    this.jdField_a_of_type_ArrayOfBoolean[0] = true;
-    this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
+    this.jdField_a_of_type_CooperationPluginIPluginManager.installPlugin("comic_plugin.apk", new amkm(this));
   }
 }
 

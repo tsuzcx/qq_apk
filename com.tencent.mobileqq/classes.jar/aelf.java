@@ -1,51 +1,19 @@
-import com.tencent.mobileqq.nearby.now.view.PlayResultListener;
-import com.tencent.mobileqq.nearby.now.view.VideoPlayerView;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnDownloadListener;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import MyCarrier.Carrier;
+import com.tencent.mobileqq.mybusiness.MyBusinessManager;
 
-public class aelf
-  implements IVideoView.OnDownloadListener
+class aelf
+  implements Runnable
 {
-  public aelf(VideoPlayerView paramVideoPlayerView) {}
+  aelf(aele paramaele, Carrier paramCarrier) {}
   
-  public void a(String paramString1, String paramString2, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("VideoPlayerView", 2, "OnDownloadListener error ! vid = " + paramString1 + "  url = " + paramString2 + "  errorCode=" + paramInt);
-    }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayResultListener != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayResultListener.a(paramString1, 199, paramInt, "use sdk download error");
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong)
-  {
-    this.a.jdField_a_of_type_Long = paramLong;
-  }
-  
-  public void a(String paramString1, String paramString2, long paramLong1, long paramLong2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.w("VideoPlayerView", 2, "OnDownloadListener onProgress   ! vid = " + paramString1 + "  url = " + paramString2 + "  offset=" + paramLong2);
-    }
-    this.a.jdField_a_of_type_Long = paramLong1;
-    if (paramLong2 > this.a.b) {
-      this.a.b = paramLong2;
-    }
-  }
-  
-  public void a(String paramString1, String paramString2, File paramFile)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayerView", 2, "OnDownloadListener onSuccess ! vid = " + paramString1 + "  url = " + paramString2);
-    }
-    VideoPlayerView.a(paramFile);
+    this.jdField_a_of_type_Aele.a.a(this.jdField_a_of_type_MyCarrierCarrier);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aelf
  * JD-Core Version:    0.7.0.1
  */

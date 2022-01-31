@@ -1,49 +1,41 @@
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.ApolloRenderDriver;
+import android.text.TextUtils;
+import com.tencent.mobileqq.addon.DiyPendantEntity;
+import com.tencent.mobileqq.addon.DiyPendantFetcher;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.locks.ReentrantLock;
+import com.tencent.util.LRULinkedHashMap;
+import java.util.Iterator;
+import java.util.List;
 
 public class yjb
   implements Runnable
 {
-  private String jdField_a_of_type_JavaLangString;
-  WeakReference jdField_a_of_type_JavaLangRefWeakReference = null;
-  private ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
-  
-  public yjb(ApolloRenderDriver paramApolloRenderDriver, String paramString, ReentrantLock paramReentrantLock, ApolloEngine paramApolloEngine)
-  {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = paramReentrantLock;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloEngine);
-  }
+  public yjb(DiyPendantFetcher paramDiyPendantFetcher, QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.lock();
-    try
+    List localList = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager().a(DiyPendantEntity.class, true, null, null, null, null, null, " 20 ");
+    if ((localList != null) && (localList.size() > 0))
     {
-      ApolloEngine localApolloEngine = (ApolloEngine)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localApolloEngine != null)
+      Iterator localIterator = localList.iterator();
+      while (localIterator.hasNext())
       {
-        QLog.d("ApolloRenderDriver", 2, "run js =" + this.jdField_a_of_type_JavaLangString);
-        localApolloEngine.a(this.jdField_a_of_type_JavaLangString);
-        if (!this.jdField_a_of_type_ComTencentMobileqqApolloApolloRenderDriver.a.get()) {
-          localApolloEngine.a(0.0D);
+        DiyPendantEntity localDiyPendantEntity = (DiyPendantEntity)localIterator.next();
+        if (!TextUtils.isEmpty(localDiyPendantEntity.uinAndDiyId)) {
+          this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.a.put(localDiyPendantEntity.uinAndDiyId, localDiyPendantEntity);
         }
       }
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.unlock();
+      if (QLog.isColorLevel()) {
+        QLog.i("DiyPendantFetcher", 2, "initCacheFromDB, size: " + localList.size());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     yjb
  * JD-Core Version:    0.7.0.1
  */

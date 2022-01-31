@@ -1,14 +1,20 @@
-import android.graphics.Bitmap;
-import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.av.redpacket.ui.RedPacketGameEmojiAnimation;
+import com.tencent.av.redpacket.ui.RedPacketGameParticleEmoji.OnShowListener;
+import com.tencent.qphone.base.util.QLog;
 
 public class jlm
-  extends jlk
+  implements RedPacketGameParticleEmoji.OnShowListener
 {
-  Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
+  public jlm(RedPacketGameEmojiAnimation paramRedPacketGameEmojiAnimation) {}
   
-  jlm(RandomWebProtocol paramRandomWebProtocol)
+  public void a()
   {
-    this.a = -100;
+    if (QLog.isColorLevel()) {
+      QLog.d("RedPacketGameEmojiAnimation", 2, "onShow called, needDetectFace set true");
+    }
+    if (this.a.a != null) {
+      this.a.a.c = true;
+    }
   }
 }
 

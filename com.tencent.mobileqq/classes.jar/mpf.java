@@ -1,11 +1,30 @@
-import java.util.Comparator;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.qphone.base.util.QLog;
 
-public final class mpf
-  implements Comparator
+public class mpf
+  extends Handler
 {
-  public int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public mpf(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager, Looper paramLooper)
   {
-    return paramArrayOfByte1.length - paramArrayOfByte2.length;
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    switch (paramMessage.what)
+    {
+    }
+    do
+    {
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.pubaccount.video.feeds.FastWebVideoFeedsPlayManager", 2, "mUiHandler.postDelayed() innerChangePlayButton(SHOW_LOADING_BTN) mIsNeedShowLoading = " + FastWebVideoFeedsPlayManager.b(this.a));
+      }
+    } while (!FastWebVideoFeedsPlayManager.b(this.a));
+    this.a.a(1);
   }
 }
 

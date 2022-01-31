@@ -1,13 +1,19 @@
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+import android.view.ViewGroup;
+import android.widget.ListView;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FaceListPage;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.BaseFaceListAdapter;
 
-class oke
+public class oke
   implements Runnable
 {
-  oke(okd paramokd) {}
+  public oke(FaceListPage paramFaceListPage) {}
   
   public void run()
   {
-    EditVideoTagPresenter.a(EditVideoTagPresenter.a(this.a.a), EditVideoTagPresenter.a(this.a.a));
+    FaceListPage.a(this.a).setVisibility(4);
+    FaceListPage.b(this.a).setVisibility(4);
+    FaceListPage.a(this.a).setVisibility(0);
+    FaceListPage.a(this.a).notifyDataSetChanged();
   }
 }
 

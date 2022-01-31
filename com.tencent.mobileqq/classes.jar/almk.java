@@ -1,35 +1,56 @@
-import com.tencent.widget.HorizontalListView;
-import com.tencent.widget.OverScroller;
+import com.tencent.biz.bmqq.app.BmqqBusinessObserver;
+import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.data.BmqqUserSimpleInfo;
+import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.qidian.QidianProfileCardActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class almk
-  implements Runnable
+  extends BmqqBusinessObserver
 {
-  public almk(HorizontalListView paramHorizontalListView) {}
+  public almk(QidianProfileCardActivity paramQidianProfileCardActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, BmqqUserSimpleInfo paramBmqqUserSimpleInfo)
   {
-    if ((this.a.p != -1) || (HorizontalListView.a(this.a) != -1)) {}
-    do
+    this.a.a();
+    if ((paramBoolean) && (paramBmqqUserSimpleInfo != null)) {
+      if (paramBmqqUserSimpleInfo.mBmqqUin.equals(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.a)) {
+        if (!paramBmqqUserSimpleInfo.equals(this.a.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo))
+        {
+          i = 1;
+          if (i == 0) {
+            break label80;
+          }
+          this.a.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo = paramBmqqUserSimpleInfo;
+          this.a.c(0);
+        }
+      }
+    }
+    label80:
+    while (!QLog.isColorLevel())
     {
       do
       {
+        do
+        {
+          for (;;)
+          {
+            return;
+            int i = 0;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("QidianProfileCardActivity", 2, "BmqqBusinessObserver not change");
         return;
-      } while (!this.a.jdField_a_of_type_ComTencentWidgetOverScroller.a());
-      if (HorizontalListView.jdField_a_of_type_Boolean) {
-        this.a.a("mFlingRunnable", new Object[] { Integer.valueOf(this.a.p) });
-      }
-    } while (!this.a.jdField_a_of_type_ComTencentWidgetOverScroller.a(this.a.getScrollX() + this.a.h, this.a.getScrollY(), this.a.h, this.a.h, 0, 0));
-    this.a.p = 6;
-    if (HorizontalListView.jdField_a_of_type_Boolean) {
-      this.a.a("mFlingRunnable", new Object[] { "TOUCH_MODE_OVERFLING" });
+      } while (!QLog.isColorLevel());
+      QLog.d("QidianProfileCardActivity", 2, "BmqqBusinessObserver not current uin");
+      return;
     }
-    this.a.g(4099);
-    this.a.invalidate();
+    QLog.d("QidianProfileCardActivity", 2, "BmqqBusinessObserver fail");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     almk
  * JD-Core Version:    0.7.0.1
  */

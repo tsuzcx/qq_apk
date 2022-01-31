@@ -42,7 +42,7 @@ public class QmcfSwitchStrategy
         this.h = 5;
       } else if (!this.jdField_b_of_type_Boolean) {
         this.h = 6;
-      } else if (!SoLoader.a()) {
+      } else if (!SoLoader.b()) {
         this.h = 7;
       } else {
         this.h = 0;

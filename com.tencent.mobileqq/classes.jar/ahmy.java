@@ -1,24 +1,29 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.shortvideo.dancemachine.GLImageView;
-import com.tencent.mobileqq.shortvideo.dancemachine.filter.DanceScoreFilter;
+import android.text.TextUtils;
+import com.tencent.mobileqq.richmedia.capture.view.SplitEffectsCameraCaptureView;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class ahmy
-  implements Animation.AnimationListener
+  implements Runnable
 {
-  public ahmy(DanceScoreFilter paramDanceScoreFilter) {}
+  public ahmy(SplitEffectsCameraCaptureView paramSplitEffectsCameraCaptureView) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    DanceScoreFilter.a(this.a).h_(true);
-    if (DanceScoreFilter.a(this.a) != null) {
-      DanceScoreFilter.a(this.a).a(DanceScoreFilter.a(this.a));
+    while (SplitEffectsCameraCaptureView.a(this.a).size() > 0)
+    {
+      String str = (String)SplitEffectsCameraCaptureView.a(this.a).get(0);
+      if (!TextUtils.isEmpty(str))
+      {
+        FileUtils.d(str);
+        if (QLog.isColorLevel()) {
+          QLog.d("Q.pubaccount.video.cameracapture.SplitEffectsCameraCaptureView", 2, "deleteLastSegment()：deleteFilePath=" + str);
+        }
+      }
+      SplitEffectsCameraCaptureView.a(this.a).remove(0);
     }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

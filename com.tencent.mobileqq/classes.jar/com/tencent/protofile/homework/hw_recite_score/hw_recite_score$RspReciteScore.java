@@ -13,7 +13,7 @@ public final class hw_recite_score$RspReciteScore
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.protofile.homework.hw_recite_score.hw_recite_score.RspReciteScore
  * JD-Core Version:    0.7.0.1
  */

@@ -19,7 +19,7 @@ import com.tencent.av.utils.TraeHelper;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import jpi;
+import jot;
 
 public class SmallScreenVideoControlUI
   implements Animation.AnimationListener
@@ -55,7 +55,7 @@ public class SmallScreenVideoControlUI
     if (this.jdField_a_of_type_AndroidContentResResources == null)
     {
       QLog.d("SmallScreenVideoControlUI", 1, "mRes is null. exit video progress");
-      paramVideoAppInterface = paramSmallScreenService.getString(2131428790) + " 0x03";
+      paramVideoAppInterface = paramSmallScreenService.getString(2131428796) + " 0x03";
       QQToast.a(paramSmallScreenService.getApplicationContext(), paramVideoAppInterface, 0).a();
       paramSmallScreenService.stopSelf();
       return;
@@ -64,7 +64,7 @@ public class SmallScreenVideoControlUI
     if (this.jdField_a_of_type_ComTencentAvVideoController == null)
     {
       QLog.d("SmallScreenVideoControlUI", 1, "mVideoController is null. exit video progress");
-      paramVideoAppInterface = this.jdField_a_of_type_AndroidContentResResources.getString(2131428790) + " 0x04";
+      paramVideoAppInterface = this.jdField_a_of_type_AndroidContentResResources.getString(2131428796) + " 0x04";
       QQToast.a(paramSmallScreenService.getApplicationContext(), paramVideoAppInterface, 0).a();
       paramSmallScreenService.stopSelf();
       return;
@@ -190,12 +190,12 @@ public class SmallScreenVideoControlUI
   
   void d(int paramInt)
   {
-    int i = 2131429068;
-    int j = 2131429412;
+    int i = 2131429074;
+    int j = 2131429418;
     switch (paramInt)
     {
     default: 
-      i = 2131429412;
+      i = 2131429418;
     case 12: 
     case 43: 
       if (this.jdField_a_of_type_ComTencentAvVideoController.a().i == 1011) {
@@ -209,22 +209,22 @@ public class SmallScreenVideoControlUI
     {
       a(paramInt);
       return;
-      i = 2131429400;
+      i = 2131429406;
       break;
-      i = 2131429412;
+      i = 2131429418;
       break;
-      i = 2131429410;
+      i = 2131429416;
       break;
-      i = 2131429071;
+      i = 2131429077;
       break;
-      i = 2131429412;
+      i = 2131429418;
       break;
-      i = 2131429412;
+      i = 2131429418;
       break;
-      paramInt = 2131429397;
+      paramInt = 2131429403;
       if (this.jdField_a_of_type_ComTencentAvVideoController.f)
       {
-        paramInt = 2131429419;
+        paramInt = 2131429425;
         continue;
         paramInt = i;
       }
@@ -245,11 +245,11 @@ public class SmallScreenVideoControlUI
   
   protected void k()
   {
-    TextView localTextView = (TextView)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.a.findViewById(2131365357);
+    TextView localTextView = (TextView)this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.a.findViewById(2131365379);
     this.jdField_b_of_type_AndroidWidgetTextView = localTextView;
     this.jdField_a_of_type_AndroidWidgetTextView = localTextView;
-    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.b.findViewById(2131365361);
-    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.a.findViewById(2131365361);
+    this.jdField_a_of_type_ArrayOfAndroidViewView[0] = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.b.findViewById(2131365383);
+    this.jdField_a_of_type_ArrayOfAndroidViewView[1] = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenService.a.findViewById(2131365383);
   }
   
   public void onAnimationEnd(Animation paramAnimation)
@@ -309,7 +309,7 @@ public class SmallScreenVideoControlUI
     }
     this.jdField_b_of_type_Boolean = true;
     if (this.jdField_e_of_type_JavaLangRunnable == null) {
-      this.jdField_e_of_type_JavaLangRunnable = new jpi(this);
+      this.jdField_e_of_type_JavaLangRunnable = new jot(this);
     }
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_e_of_type_JavaLangRunnable, 0L);
   }

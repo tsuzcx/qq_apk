@@ -3,7 +3,6 @@ package com.tencent.biz.pubaccount.readinjoy.view;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.struct.BaseArticleInfo;
-import com.tencent.image.URLImageView;
 
 public class ReadInJoyBaseAdapter$VideoFeedsTwoItemViewHolder
   extends ReadInJoyBaseAdapter.ViewHolder
@@ -12,12 +11,14 @@ public class ReadInJoyBaseAdapter$VideoFeedsTwoItemViewHolder
   public TextView a;
   public BaseArticleInfo a;
   public KandianUrlImageView a;
-  public URLImageView a;
+  public ReadInJoyHeadImageView a;
+  public ReadInJoyNickNameTextView a;
   public ViewGroup b;
   public TextView b;
   public BaseArticleInfo b;
   public KandianUrlImageView b;
-  public URLImageView b;
+  public ReadInJoyHeadImageView b;
+  public ReadInJoyNickNameTextView b;
   public ViewGroup c;
   public TextView c;
   public ViewGroup d;
@@ -26,8 +27,6 @@ public class ReadInJoyBaseAdapter$VideoFeedsTwoItemViewHolder
   public TextView f;
   public TextView g;
   public TextView h;
-  public TextView i;
-  public TextView j;
 }
 
 

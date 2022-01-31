@@ -14,8 +14,8 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
-import kfm;
-import kfn;
+import kex;
+import key;
 import org.json.JSONObject;
 
 public class GetRedBag
@@ -502,7 +502,7 @@ public class GetRedBag
       if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
         break;
       }
-      this.jdField_a_of_type_JavaLangRunnable = new kfm(this, paramInt);
+      this.jdField_a_of_type_JavaLangRunnable = new kex(this, paramInt);
       this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.jdField_a_of_type_JavaLangRunnable, paramLong);
       return;
     }
@@ -581,9 +581,9 @@ public class GetRedBag
     a();
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
-      kfn localkfn = (kfn)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localkfn != null) {
-        localkfn.a(this);
+      key localkey = (key)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localkey != null) {
+        localkey.a(this);
       }
       this.jdField_a_of_type_JavaLangRefWeakReference = null;
     }

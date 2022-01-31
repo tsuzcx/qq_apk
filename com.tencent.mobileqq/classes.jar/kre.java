@@ -1,27 +1,16 @@
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
+import android.os.Bundle;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
+import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
+import org.json.JSONObject;
 
-class kre
-  implements TVK_SDKMgr.InstallListener
+public class kre
+  implements HttpWebCgiAsyncTask.Callback
 {
-  kre(krd paramkrd) {}
+  public kre(AccountDetailGroupListContainer paramAccountDetailGroupListContainer) {}
   
-  public void onInstallProgress(float paramFloat) {}
-  
-  public void onInstalledFailed(int paramInt)
+  public void a(JSONObject paramJSONObject, int paramInt, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledFailed arg0=" + paramInt);
-    }
-    com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.a = false;
-  }
-  
-  public void onInstalledSuccessed()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledSuccessed");
-    }
-    com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.a = true;
+    AccountDetailGroupListContainer.a(this.a, paramJSONObject);
   }
 }
 

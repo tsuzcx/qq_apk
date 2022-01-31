@@ -1,20 +1,27 @@
-import com.tencent.av.SessionMgr;
-import com.tencent.av.app.SessionInfo;
-import com.tencent.av.app.SessionInfo.Anychat_Info;
-import com.tencent.av.guild.GuildMultiActivity;
-import com.tencent.av.utils.SparkDot;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.av.AVLog;
+import com.tencent.av.camera.CameraObserver;
+import com.tencent.av.opengl.effects.EffectsRenderController;
 
 public class jjo
-  implements Runnable
+  extends CameraObserver
 {
-  public jjo(GuildMultiActivity paramGuildMultiActivity) {}
+  public jjo(EffectsRenderController paramEffectsRenderController) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, int paramInt)
   {
-    if (SessionMgr.a().a(this.a.e).a.b == 5)
-    {
-      this.a.a.b();
-      this.a.a.setVisibility(8);
+    AVLog.c(EffectsRenderController.jdField_a_of_type_JavaLangString, "onAfterOpenCamera: " + paramBoolean + "|" + paramInt);
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4).sendToTarget();
+    }
+  }
+  
+  protected void c(boolean paramBoolean)
+  {
+    AVLog.c(EffectsRenderController.jdField_a_of_type_JavaLangString, "onAfterReopenCamera: " + paramBoolean);
+    if (paramBoolean) {
+      this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(4).sendToTarget();
     }
   }
 }

@@ -8,7 +8,7 @@ public class QZoneLiveClassLoader
   extends DexClassLoader
 {
   private ClassLoader a;
-  private final String[] b = { "com.tencent.av", "com.tencent.xplatform", "com.tencent.kapalaiadapter", "NS_QQRADIO_PROTOCOL", "com.qzone.widget", "com.tencent.component.animation.rebound", "com.tencent.component.hdasync", "com.tencent.component.app", "com.qzonex.app.internal", "com.tencent.sharp.jni", "com.microrapid", "com.tencent.algo", "com.tencent.common", "com.tencent.faceBeauty", "com.tencent.filter", "com.tencent.oscarcamera.particlesystem", "com.tencent.ptualgo", "com.tencent.ttpic", "com.tencent.util", "com.tencent.view", "com.tencent.vtool", "com.tencent.youtufacetrack", "com.tencent.ytcommon", "com.tencent.youtu.android.segmenter", "com.tentent.youtu.android.segementer", "me.lake.gleslab" };
+  private final String[] b = { "com.tencent.av", "com.tencent.xplatform", "com.tencent.kapalaiadapter", "NS_QQRADIO_PROTOCOL", "com.tencent.component.animation.rebound", "com.tencent.component.hdasync", "com.tencent.component.app", "com.qzonex.app.internal", "com.tencent.sharp.jni", "com.microrapid", "com.tencent.algo", "com.tencent.common", "com.tencent.faceBeauty", "com.tencent.filter", "com.tencent.oscarcamera.particlesystem", "com.tencent.ptualgo", "com.tencent.ttpic", "com.tencent.util", "com.tencent.view", "com.tencent.vtool", "com.tencent.youtufacetrack", "com.tencent.ytcommon", "com.tencent.youtu.android.segmenter", "com.tentent.youtu.android.segementer", "me.lake.gleslab" };
   
   public QZoneLiveClassLoader(String paramString1, String paramString2, String paramString3, ClassLoader paramClassLoader)
   {

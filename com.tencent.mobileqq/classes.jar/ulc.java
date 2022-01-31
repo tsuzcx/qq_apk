@@ -1,16 +1,40 @@
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.HBCustomizeStrategy;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.aio.qwallet.elem.BaseRedPkgElem;
+import com.tencent.mobileqq.activity.aio.qwallet.elem.ThemeRedPkgElem;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
 
 public class ulc
-  implements Runnable
+  implements CustomizeStrategyFactory.HBCustomizeStrategy
 {
-  public ulc(XBubbleAnimation paramXBubbleAnimation, Object[] paramArrayOfObject) {}
+  private PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager;
+  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   
-  public void run()
+  public ulc(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimXBubbleAnimation.b(this.jdField_a_of_type_ArrayOfJavaLangObject);
-    ThreadManager.getUIHandler().postDelayed(new uld(this), 100L);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(150));
+    }
+  }
+  
+  public void a() {}
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
+  {
+    if (paramRedPacketInfo == null) {
+      return;
+    }
+    ThreadManager.post(new uld(this, paramRedPacketInfo), 5, null, true);
+  }
+  
+  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, BaseRedPkgElem paramBaseRedPkgElem)
+  {
+    if ((paramRedPacketInfo != null) && ((paramBaseRedPkgElem instanceof ThemeRedPkgElem))) {
+      paramRedPacketInfo.background = ((ThemeRedPkgElem)paramBaseRedPkgElem).a;
+    }
   }
 }
 

@@ -1,33 +1,41 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.model.DeleteStoryVideoEvent;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tribe.async.async.Job;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
+import android.content.Intent;
+import android.view.View;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageManager;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionRecommendViewWrapper;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionUtils;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionUtils.RecommendItemInfo;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemClickListener;
+import java.util.ArrayList;
 
 public class mzf
-  extends Job
+  implements AdapterView.OnItemClickListener
 {
-  public mzf(StoryVideoUploadManager paramStoryVideoUploadManager, String paramString, StoryVideoItem paramStoryVideoItem) {}
+  public mzf(PublicAccountImageCollectionRecommendViewWrapper paramPublicAccountImageCollectionRecommendViewWrapper) {}
   
-  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object... paramVarArgs)
+  public void a(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    paramJobContext = new DeleteStoryVideoEvent(new ErrorMessage(), this.jdField_a_of_type_JavaLangString, true);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null)
-    {
-      paramJobContext.b = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mOwnerUid;
-      paramJobContext.c = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.shareGroupId;
-      paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoIndex;
-      if (paramJobContext.a == 0L) {
-        paramJobContext.a = this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mCreateTime;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("PublicAccountImageCollectionRecommendViewWrapper", 2, "onItemClick!");
     }
-    Dispatchers.get().dispatch(paramJobContext);
-    return null;
+    paramAdapterView = (PublicAccountImageCollectionUtils.RecommendItemInfo)PublicAccountImageCollectionRecommendViewWrapper.a.get(paramInt);
+    paramView = new Intent(paramView.getContext(), PublicAccountImageCollectionMainActivity.class);
+    paramView.putExtra("recommend_source", paramAdapterView.c);
+    paramView.putExtra("recommend_position", paramInt + 1);
+    paramView.putExtra("click_source", 2);
+    paramView.putExtra("source_for_report", 15);
+    PublicAccountImageCollectionUtils.a(PublicAccountImageCollectionRecommendViewWrapper.a(this.a), paramView, String.valueOf(paramAdapterView.d));
+    if ((PublicAccountImageCollectionRecommendViewWrapper.a(this.a) instanceof PublicAccountImageCollectionMainActivity))
+    {
+      paramView = (PublicAccountImageCollectionMainActivity)PublicAccountImageCollectionRecommendViewWrapper.a(this.a);
+      paramInt += 1;
+      paramView.a(2, paramInt, paramAdapterView.c);
+      PublicAccountReportUtils.a(null, paramView.a, "0X8007B94", "0X8007B94", 0, 0, paramView.b, paramView.c, paramAdapterView.d, "" + paramInt, false);
+    }
+    ImageManager.a().a();
   }
 }
 

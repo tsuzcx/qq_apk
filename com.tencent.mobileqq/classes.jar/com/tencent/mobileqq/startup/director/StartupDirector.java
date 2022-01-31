@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.startup.director;
 
-import ahqk;
-import ahql;
-import ahqm;
+import aiem;
+import aien;
+import aieo;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Handler;
@@ -463,7 +463,7 @@ public class StartupDirector
     localTextView.setLayoutParams(new ViewGroup.LayoutParams(-1, -1));
     if (!paramBoolean1) {
       if (InjectUtils.sSpaceNoEnough) {
-        localTextView.setText(2131433065);
+        localTextView.setText(2131433082);
       }
     }
     for (;;)
@@ -471,9 +471,9 @@ public class StartupDirector
       paramAppActivity.setContentView(localTextView);
       QLog.flushLog();
       InjectUtils.uploadInjectFailure(paramAppActivity, "SuicideFailed", Integer.toString(jdField_b_of_type_Int));
-      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new ahqm(this, paramAppActivity), 8000L);
+      this.jdField_b_of_type_AndroidOsHandler.postDelayed(new aieo(this, paramAppActivity), 8000L);
       return;
-      localTextView.setText(2131433064);
+      localTextView.setText(2131433081);
       continue;
       localTextView.setText("程序启动失败，请稍候重试.");
     }
@@ -517,8 +517,8 @@ public class StartupDirector
     {
       long l6 = this.jdField_a_of_type_Long;
       long l7 = this.jdField_c_of_type_Long;
-      ThreadManager.getSubThreadHandler().postDelayed(new ahqk(this, l7, l6, l2, l1 - l3, l4, l1 - l5), 10000L);
-      ThreadManager.getSubThreadHandler().postDelayed(new ahql(this), 3000L);
+      ThreadManager.getSubThreadHandler().postDelayed(new aiem(this, l7, l6, l2, l1 - l3, l4, l1 - l5), 10000L);
+      ThreadManager.getSubThreadHandler().postDelayed(new aien(this), 3000L);
       ThreadManager.getSubThreadHandler().postDelayed(Step.AmStepFactory.b(28, this, null), 5000L);
       BaseApplicationImpl.sDirector = null;
       return;

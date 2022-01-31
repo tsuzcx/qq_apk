@@ -3,12 +3,12 @@ package com.tencent.mobileqq.activity;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
-import tzh;
+import uch;
 
 public class TroopMemberListActivity$TroopAdmin
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new tzh();
+  public static final Parcelable.Creator CREATOR = new uch();
   public String a;
   public short a;
   public String b;

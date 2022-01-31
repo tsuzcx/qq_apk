@@ -1,19 +1,24 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.DialogActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class sgx
-  implements DialogInterface.OnClickListener
+class sgx
+  implements Runnable
 {
-  public sgx(DialogActivity paramDialogActivity) {}
+  sgx(sgt paramsgt, ArrayList paramArrayList) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    TeamWorkUtils.a(this.a.app, this.a);
-    this.a.finish();
-    ReportController.b(this.a.app, "dc00898", "", "", "0X800906A", "0X800906A", 0, 0, "", "", "", "");
+    if (this.jdField_a_of_type_Sgt.a.a != null)
+    {
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        this.jdField_a_of_type_Sgt.a.a.a(str, true);
+      }
+    }
   }
 }
 

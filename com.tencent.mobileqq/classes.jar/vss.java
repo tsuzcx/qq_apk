@@ -1,18 +1,18 @@
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
+import com.tencent.mobileqq.activity.aio.tips.FriendHotTipsBar;
+import com.tencent.mobileqq.servlet.ReduFriendObserver;
 
-class vss
-  implements Runnable
+public class vss
+  extends ReduFriendObserver
 {
-  vss(vsq paramvsq, MultiForwardChatPie paramMultiForwardChatPie) {}
+  public vss(FriendChatPie paramFriendChatPie) {}
   
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setVisibility(0);
-    MultiForwardChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie).setText(2131433404);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.d.setText(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.g);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildMultiForwardChatPie.y();
+    if ((paramBoolean) && (this.a.a != null)) {
+      this.a.a.a();
+    }
   }
 }
 

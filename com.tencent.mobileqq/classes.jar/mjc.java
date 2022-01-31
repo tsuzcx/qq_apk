@@ -1,13 +1,12 @@
-import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabFrame;
+import android.view.animation.Interpolator;
 
-public class mjc
-  implements Runnable
+public final class mjc
+  implements Interpolator
 {
-  public mjc(ReadinjoyTabFrame paramReadinjoyTabFrame) {}
-  
-  public void run()
+  public float getInterpolation(float paramFloat)
   {
-    ReadinjoyTabFrame.a(this.a);
+    paramFloat -= 1.0F;
+    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
   }
 }
 

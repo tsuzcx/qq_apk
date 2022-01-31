@@ -1,26 +1,32 @@
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteRecordLayout;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView;
-import com.tencent.mobileqq.widget.ClickableColorSpanTextView.SpanClickListener;
-import com.tencent.mobileqq.widget.StatableSpanTextView.StatableForegroundColorSpan;
+import android.text.TextUtils;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.troop.activity.TroopAdminList;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aiux
-  implements ClickableColorSpanTextView.SpanClickListener
+  extends FriendListObserver
 {
-  public aiux(ReciteRecordLayout paramReciteRecordLayout) {}
+  public aiux(TroopAdminList paramTroopAdminList) {}
   
-  public void a(ClickableColorSpanTextView paramClickableColorSpanTextView, StatableSpanTextView.StatableForegroundColorSpan paramStatableForegroundColorSpan)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    paramClickableColorSpanTextView = new Intent(this.a.a, QQBrowserActivity.class);
-    paramClickableColorSpanTextView.putExtra("url", "http://kf.qq.com/touch/apifaq/1211147RVfAV140904mA3QjU.html?platform=14");
-    this.a.a.startActivity(paramClickableColorSpanTextView);
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString))) {
+      this.a.c();
+    }
+  }
+  
+  protected void onUpdateFriendInfoFinished(ArrayList paramArrayList, boolean paramBoolean)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("TroopAdminList", 2, "onUpdateFriendInfoFinished ");
+    }
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiux
  * JD-Core Version:    0.7.0.1
  */

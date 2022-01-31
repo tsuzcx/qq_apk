@@ -1,18 +1,17 @@
-import android.view.View;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnPreDrawListener;
-import com.tencent.biz.ui.CustomAnimationAdapter;
+import android.os.Handler;
+import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
+import com.tencent.mobileqq.troop.data.TroopFeedsDataManager.TroopNotify;
+import org.json.JSONObject;
 
 public class oxw
-  implements ViewTreeObserver.OnPreDrawListener
+  implements Runnable
 {
-  public oxw(CustomAnimationAdapter paramCustomAnimationAdapter, View paramView) {}
+  public oxw(TroopNewGuidePopWindow paramTroopNewGuidePopWindow, JSONObject paramJSONObject, int paramInt) {}
   
-  public boolean onPreDraw()
+  public void run()
   {
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnPreDrawListener(this);
-    CustomAnimationAdapter.a(this.jdField_a_of_type_ComTencentBizUiCustomAnimationAdapter, this.jdField_a_of_type_AndroidViewView);
-    return false;
+    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFeedsDataManager$TroopNotify = TroopFeedsDataManager.TroopNotify.a(this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.b, this.jdField_a_of_type_OrgJsonJSONObject);
+    this.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow.jdField_a_of_type_AndroidOsHandler.post(new oxx(this));
   }
 }
 

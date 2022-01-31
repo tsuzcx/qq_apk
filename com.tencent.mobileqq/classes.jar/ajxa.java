@@ -1,21 +1,16 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-public class ajxa
-  implements View.OnTouchListener
+class ajxa
+  implements DialogInterface.OnClickListener
 {
-  public ajxa(VipFunCallPreviewActivity paramVipFunCallPreviewActivity) {}
+  ajxa(ajwy paramajwy) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
-  {
-    return true;
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajxa
  * JD-Core Version:    0.7.0.1
  */

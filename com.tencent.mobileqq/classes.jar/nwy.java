@@ -1,21 +1,15 @@
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.FeedIdListCache;
-import com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase.RequestFeedObserver;
-import com.tribe.async.async.ThreadOffFunction;
-import com.tribe.async.reactive.Stream;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.model.UserManager;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter;
 
-public class nwy
+class nwy
   implements Runnable
 {
-  public nwy(FeedListPageLoaderBase paramFeedListPageLoaderBase) {}
+  nwy(nwx paramnwx, MemoriesProfilePresenter paramMemoriesProfilePresenter) {}
   
   public void run()
   {
-    if (FeedListPageLoaderBase.a(this.a) != null) {
-      FeedListPageLoaderBase.a(this.a).cancel();
-    }
-    FeedListPageLoaderBase.a(this.a, Stream.of(Integer.valueOf(this.a.a.a)).map(new ThreadOffFunction(2)).map(this.a.a(this.a.a)).map(this.a.a()));
-    FeedListPageLoaderBase.a(this.a).subscribe(new FeedListPageLoaderBase.RequestFeedObserver(this.a));
+    ((UserManager)SuperManager.a(2)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryControllerMemoriesProfilePresenter.a);
   }
 }
 

@@ -1,34 +1,29 @@
-import com.tencent.mobileqq.search.searchengine.ISearchListener;
-import com.tencent.mobileqq.search.searchengine.SearchRequest;
-import cooperation.qqfav.globalsearch.FavoriteSearchEngine;
-import java.util.List;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.sharp.jni.TraeMediaPlayer;
+import com.tencent.sharp.jni.TraeMediaPlayer.OnCompletionListener;
+import java.util.TimerTask;
 
 public class alzd
-  implements Runnable
+  extends TimerTask
 {
-  public ISearchListener a;
-  public SearchRequest a;
-  
-  private alzd(FavoriteSearchEngine paramFavoriteSearchEngine) {}
+  public alzd(TraeMediaPlayer paramTraeMediaPlayer, long paramLong) {}
   
   public void run()
   {
-    SearchRequest localSearchRequest = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest;
-    String str = this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a;
-    List localList = this.jdField_a_of_type_CooperationQqfavGlobalsearchFavoriteSearchEngine.a(localSearchRequest);
-    try
+    if (TraeMediaPlayer.a(this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer) != null)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener != null) && (localSearchRequest == this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest) && (str.equals(this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineSearchRequest.a))) {
-        this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener.a(localList, 1);
+      if (QLog.isColorLevel()) {
+        QLog.w("TraeMediaPlay", 1, "playRing, onCompletion, seq[" + this.jdField_a_of_type_Long + "]");
       }
-      return;
+      if (TraeMediaPlayer.a(this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer) != null) {
+        TraeMediaPlayer.a(this.jdField_a_of_type_ComTencentSharpJniTraeMediaPlayer).a();
+      }
     }
-    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alzd
  * JD-Core Version:    0.7.0.1
  */

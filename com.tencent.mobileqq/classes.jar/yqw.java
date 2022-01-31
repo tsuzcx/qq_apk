@@ -1,14 +1,15 @@
-import com.tencent.mobileqq.apollo.store.ApolloViewController;
-import com.tencent.mobileqq.apollo.store.ApolloWebAvatarParam;
+import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
+import com.tencent.mobileqq.apollo.tmg_opensdk.AVEngineWalper;
 
 public class yqw
   implements Runnable
 {
-  public yqw(ApolloViewController paramApolloViewController, int paramInt, boolean paramBoolean, ApolloWebAvatarParam paramApolloWebAvatarParam) {}
+  public yqw(CmGameAvHandler paramCmGameAvHandler, boolean paramBoolean) {}
   
   public void run()
   {
-    ApolloViewController.a(this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloViewController, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqApolloStoreApolloWebAvatarParam);
+    CmGameAvHandler.b(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler, this.jdField_a_of_type_Boolean);
+    AVEngineWalper.a().b(this.jdField_a_of_type_Boolean);
   }
 }
 

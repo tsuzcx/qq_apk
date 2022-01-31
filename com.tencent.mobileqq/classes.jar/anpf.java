@@ -1,28 +1,15 @@
-import android.view.View;
-import android.widget.Button;
-import dov.com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import dov.com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.capture.view.MusicProviderView;
 
 public class anpf
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public anpf(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public anpf(MusicProviderView paramMusicProviderView) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((this.a.b != null) && (!this.a.b.isEnabled()))
-    {
-      this.a.b.setEnabled(true);
-      this.a.b.setText(2131438144);
-      this.a.b.setTextColor(-15550475);
-    }
-    int i = 0;
-    if (this.a.a != null) {
-      i = this.a.a.c();
-    }
-    if ((!this.a.i.isEnabled()) && (i > 0)) {
-      this.a.i.setEnabled(true);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

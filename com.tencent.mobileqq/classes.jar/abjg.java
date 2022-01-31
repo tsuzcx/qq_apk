@@ -1,24 +1,21 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarManager;
+import java.util.concurrent.Executor;
 
 public class abjg
-  implements TextWatcher
+  implements Runnable
 {
-  public abjg(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
+  public abjg(DynamicAvatarManager paramDynamicAvatarManager, Runnable paramRunnable) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    this.a.a = true;
+    if (this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAvatarDynamicavatarDynamicAvatarManager.a.execute(this.jdField_a_of_type_JavaLangRunnable);
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abjg
  * JD-Core Version:    0.7.0.1
  */

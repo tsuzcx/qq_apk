@@ -1,22 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.biz.qqstory.storyHome.detail.view.segment.FeedItemThumbAdapter;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.StoryHomeHorizontalListView;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.model.CommentManager;
+import com.tencent.biz.qqstory.model.SuperManager;
+import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader;
+import com.tencent.biz.qqstory.storyHome.detail.model.CommentListPageLoader.GetFeedCommentEvent;
+import com.tencent.biz.qqstory.storyHome.model.FeedCommentSync;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class nue
-  implements ValueAnimator.AnimatorUpdateListener
+  extends SimpleJob
 {
-  public nue(FeedItemThumbAdapter paramFeedItemThumbAdapter, StoryHomeHorizontalListView paramStoryHomeHorizontalListView) {}
+  public nue(CommentListPageLoader paramCommentListPageLoader, CommentListPageLoader.GetFeedCommentEvent paramGetFeedCommentEvent, boolean paramBoolean) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  protected Object doInBackground(@NonNull JobContext paramJobContext, @Nullable Object[] paramArrayOfObject)
   {
-    try
-    {
-      float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewWidgetStoryHomeHorizontalListView.scrollTo((int)(300.0F - f * 300.0F), 0);
-      return;
-    }
-    catch (Exception paramValueAnimator) {}
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader.a();
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader.b();
+    ((CommentManager)SuperManager.a(17)).a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader$GetFeedCommentEvent.a, CommentListPageLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader).a, CommentListPageLoader.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader).a(), this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelCommentListPageLoader.a("Q.qqstory.detail:CommentListPageLoader");
+    return null;
   }
 }
 

@@ -1,20 +1,14 @@
-import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
-import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.rebuild.ArkDebugChatPie;
+import com.tencent.mobileqq.widget.QQToast;
 
-public class vqt
+class vqt
   implements Runnable
 {
-  public vqt(GameRoomChatPie paramGameRoomChatPie) {}
+  vqt(vqm paramvqm) {}
   
   public void run()
   {
-    synchronized (this.a)
-    {
-      this.a.a.a(this.a.a(), this.a);
-      GameRoomChatPie.a(this.a).post(new vqu(this));
-      return;
-    }
+    QQToast.a(this.a.a.a, "已经开启监听，可以连接调试...", 0).a();
   }
 }
 

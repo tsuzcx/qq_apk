@@ -1,25 +1,19 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.ReadInJoySearchHistoryEntity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.List;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
 
 public class wem
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public wem(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public wem(BlessActivity paramBlessActivity, RelativeLayout paramRelativeLayout) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    EntityManager localEntityManager = this.a.app.getEntityManagerFactory().createEntityManager();
-    List localList = localEntityManager.a(ReadInJoySearchHistoryEntity.class, true, null, null, null, null, " timestamp DESC ", null);
-    Message localMessage = this.a.a.obtainMessage(1);
-    localMessage.obj = localList;
-    this.a.a.sendMessage(localMessage);
-    localEntityManager.a();
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight());
+    BlessActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getWidth());
+    BlessActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity);
   }
 }
 

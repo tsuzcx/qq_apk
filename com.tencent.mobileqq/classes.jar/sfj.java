@@ -1,26 +1,27 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.app.ShortVideoObserver;
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.activity.ContactBindedActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class sfj
-  extends ShortVideoObserver
+  implements Animation.AnimationListener
 {
-  public sfj(Conversation paramConversation) {}
+  public sfj(ContactBindedActivity paramContactBindedActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (!this.a.h) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, "VideoRedbag, onCheckRealNameRsp in conv");
-      }
-    } while ((!paramBoolean) || (paramInt != RedBagVideoManager.a));
-    DialogUtil.b(this.a.a(), 0, null, this.a.a(2131439096), 2131439098, 2131439097, new sfk(this), new sfl(this)).show();
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim end");
+    }
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "doMultiAddTipsAnim start");
+    }
   }
 }
 

@@ -1,15 +1,26 @@
-import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketInfoBase;
-import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketProxy.2;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.qwallet.PreloadImgManager.OnSingleDownloadCallback;
+import com.tencent.mobileqq.activity.qwallet.fragment.ThemeHbFragment;
+import com.tencent.qphone.base.util.QLog;
 
 public class xeb
-  implements Runnable
+  implements PreloadImgManager.OnSingleDownloadCallback
 {
-  public xeb(RedPacketProxy.2 param2, RedPacketInfoBase paramRedPacketInfoBase) {}
+  public xeb(ThemeHbFragment paramThemeHbFragment) {}
   
-  public void run()
+  public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketProxy$2.a.onGetSkin(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketRedPacketInfoBase);
+    ThemeHbFragment.a(this.a, null);
+  }
+  
+  public void a(Object paramObject)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("ThemeHbFragment", 2, "setAnimFrameBgProcess download back obj = " + paramObject);
+    }
+    if (((paramObject instanceof String)) && (ThemeHbFragment.a(this.a) != null)) {
+      ThemeHbFragment.a(this.a).post(new xec(this, paramObject));
+    }
   }
 }
 

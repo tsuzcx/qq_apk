@@ -1,29 +1,23 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.PreloadImgManager;
-import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.mobileqq.vip.DownloaderInterface;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import android.graphics.Paint;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.utils.ViewUtils;
 
 public class wxh
-  implements ThreadExcutor.IThreadListener
+  implements Runnable
 {
-  public wxh(PreloadImgManager paramPreloadImgManager, List paramList, Map paramMap, Bundle paramBundle) {}
+  public wxh(PhotoListActivity paramPhotoListActivity, String paramString) {}
   
-  public void a() {}
-  
-  public void b()
+  public void run()
   {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
-    {
-      DownloadTask localDownloadTask = new DownloadTask(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_JavaUtilMap, UUID.randomUUID().toString());
-      localDownloadTask.a(this.jdField_a_of_type_AndroidOsBundle);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadImgManager.a != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadImgManager.a.a(localDownloadTask, PreloadImgManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadImgManager), null);
-      }
-    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_c_of_type_AndroidWidgetTextView.getPaint();
+    int i = ViewUtils.a((Paint)localObject, "《");
+    int j = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_c_of_type_AndroidViewView.getLeft();
+    int k = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.d.getRight();
+    localObject = ViewUtils.a((Paint)localObject, this.jdField_a_of_type_JavaLangString, j - k - i * 2);
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_c_of_type_AndroidWidgetTextView.setText("《" + (String)localObject + "》");
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.jdField_c_of_type_AndroidWidgetTextView.setContentDescription(this.jdField_a_of_type_JavaLangString);
   }
 }
 

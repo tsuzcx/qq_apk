@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.settings;
 
-import acwj;
-import acwk;
-import acwm;
-import acwt;
-import acwu;
+import adgg;
+import adgh;
+import adgj;
+import adgq;
+import adgr;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -54,7 +54,7 @@ public class FMSettings
   
   public static FMSettings a()
   {
-    return acwt.a();
+    return adgq.a();
   }
   
   private String a(String paramString)
@@ -74,11 +74,11 @@ public class FMSettings
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 9
+    //   1: astore 7
     //   3: aconst_null
-    //   4: astore 7
+    //   4: astore 8
     //   6: aconst_null
-    //   7: astore 8
+    //   7: astore 9
     //   9: aload_1
     //   10: invokevirtual 99	java/io/File:exists	()Z
     //   13: ifeq +12 -> 25
@@ -194,7 +194,7 @@ public class FMSettings
     //   249: astore_1
     //   250: aconst_null
     //   251: astore 5
-    //   253: aload 9
+    //   253: aload 7
     //   255: astore_1
     //   256: aload 5
     //   258: ifnull +8 -> 266
@@ -211,7 +211,7 @@ public class FMSettings
     //   282: astore_1
     //   283: aconst_null
     //   284: astore 5
-    //   286: aload 7
+    //   286: aload 8
     //   288: astore_1
     //   289: aload 5
     //   291: ifnull +8 -> 299
@@ -279,7 +279,7 @@ public class FMSettings
     //   428: astore 7
     //   430: goto -107 -> 323
     //   433: astore_1
-    //   434: aload 7
+    //   434: aload 8
     //   436: astore_1
     //   437: goto -148 -> 289
     //   440: astore_1
@@ -287,7 +287,7 @@ public class FMSettings
     //   443: astore_1
     //   444: goto -155 -> 289
     //   447: astore_1
-    //   448: aload 9
+    //   448: aload 7
     //   450: astore_1
     //   451: goto -195 -> 256
     //   454: astore_1
@@ -297,13 +297,13 @@ public class FMSettings
     //   461: astore_1
     //   462: aconst_null
     //   463: astore_1
-    //   464: aload 8
+    //   464: aload 9
     //   466: astore_2
     //   467: goto -291 -> 176
     //   470: astore_1
     //   471: aload 5
     //   473: astore_1
-    //   474: aload 8
+    //   474: aload 9
     //   476: astore_2
     //   477: goto -301 -> 176
     // Local variable table:
@@ -321,12 +321,12 @@ public class FMSettings
     //   410	1	5	localException5	Exception
     //   415	57	5	localException6	Exception
     //   106	350	6	localFileInputStream	java.io.FileInputStream
-    //   4	283	7	arrayOfByte	byte[]
+    //   1	253	7	arrayOfByte	byte[]
     //   315	49	7	localObject1	Object
     //   420	1	7	localObject2	Object
-    //   428	7	7	localObject3	Object
-    //   7	468	8	localObject4	Object
-    //   1	448	9	localObject5	Object
+    //   428	21	7	localObject3	Object
+    //   4	431	8	localObject4	Object
+    //   7	468	9	localObject5	Object
     // Exception table:
     //   from	to	target	type
     //   108	119	169	java/io/IOException
@@ -426,7 +426,7 @@ public class FMSettings
         localObject = new File((String)localObject);
         try
         {
-          ThreadManager.post(new acwk(this, str2, (File)localObject, j, paramMoveFileCallback), 8, null, false);
+          ThreadManager.post(new adgh(this, str2, (File)localObject, j, paramMoveFileCallback), 8, null, false);
           i += 1;
         }
         catch (Exception paramList)
@@ -455,9 +455,9 @@ public class FMSettings
     return bool;
   }
   
-  private acwu b()
+  private adgr b()
   {
-    return (acwu)this.jdField_a_of_type_JavaUtilMap.get("sdCard");
+    return (adgr)this.jdField_a_of_type_JavaUtilMap.get("sdCard");
   }
   
   private String b(String paramString)
@@ -470,12 +470,12 @@ public class FMSettings
     return paramString;
   }
   
-  private acwu c()
+  private adgr c()
   {
     if (this.jdField_a_of_type_JavaUtilMap.size() == 1) {
       return null;
     }
-    return (acwu)this.jdField_a_of_type_JavaUtilMap.get("externalSdCard");
+    return (adgr)this.jdField_a_of_type_JavaUtilMap.get("externalSdCard");
   }
   
   private String c(String paramString)
@@ -490,31 +490,31 @@ public class FMSettings
   
   private void c()
   {
-    acwu localacwu = a();
-    if (localacwu == null) {
+    adgr localadgr = a();
+    if (localadgr == null) {
       return;
     }
-    ThreadManager.post(new acwj(this, b(localacwu.jdField_b_of_type_JavaLangString + localacwu.c)), 8, null, false);
+    ThreadManager.post(new adgg(this, b(localadgr.jdField_b_of_type_JavaLangString + localadgr.c)), 8, null, false);
   }
   
-  private acwu d()
+  private adgr d()
   {
     a(2, "getDefaultStorage[" + this.jdField_a_of_type_JavaUtilMap.size() + "]");
     Object localObject1 = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       Object localObject2 = (String)((Iterator)localObject1).next();
-      localObject2 = (acwu)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
-      ((acwu)localObject2).a();
-      if (((acwu)localObject2).jdField_a_of_type_Boolean)
+      localObject2 = (adgr)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
+      ((adgr)localObject2).a();
+      if (((adgr)localObject2).jdField_a_of_type_Boolean)
       {
-        a(2, "getDefaultStorage[" + ((acwu)localObject2).jdField_b_of_type_JavaLangString + "] + ext[" + ((acwu)localObject2).c + "]");
+        a(2, "getDefaultStorage[" + ((adgr)localObject2).jdField_b_of_type_JavaLangString + "] + ext[" + ((adgr)localObject2).c + "]");
         return localObject2;
       }
     }
     a(2, "getDefaultStorage nothing is default refresh!");
-    localObject1 = (acwu)this.jdField_a_of_type_JavaUtilMap.get("sdCard");
-    ((acwu)localObject1).a(BaseApplicationImpl.getContext());
+    localObject1 = (adgr)this.jdField_a_of_type_JavaUtilMap.get("sdCard");
+    ((adgr)localObject1).a(BaseApplicationImpl.getContext());
     return localObject1;
   }
   
@@ -535,16 +535,16 @@ public class FMSettings
     return 2147483647L;
   }
   
-  public acwu a()
+  public adgr a()
   {
     a(2, "getOtherStorage[" + this.jdField_a_of_type_JavaUtilMap.size() + "]");
-    acwu localacwu = d();
+    adgr localadgr = d();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (String)localIterator.next();
-      localObject = (acwu)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-      if (localacwu != localObject) {
+      localObject = (adgr)this.jdField_a_of_type_JavaUtilMap.get(localObject);
+      if (localadgr != localObject) {
         return localObject;
       }
     }
@@ -554,11 +554,11 @@ public class FMSettings
   
   public String a()
   {
-    acwu localacwu = a();
-    if (localacwu == null) {
+    adgr localadgr = a();
+    if (localadgr == null) {
       return null;
     }
-    return a(localacwu.jdField_b_of_type_JavaLangString + localacwu.c);
+    return a(localadgr.jdField_b_of_type_JavaLangString + localadgr.c);
   }
   
   public void a()
@@ -575,29 +575,29 @@ public class FMSettings
     {
       String str2 = (String)localIterator.next();
       Object localObject = ((File)localMap.get(str2)).getPath();
-      acwu localacwu = new acwu(this, null);
-      localacwu.jdField_a_of_type_Boolean = false;
+      adgr localadgr = new adgr(this, null);
+      localadgr.jdField_a_of_type_Boolean = false;
       if (str2.equalsIgnoreCase("sdCard"))
       {
-        localacwu.jdField_a_of_type_JavaLangString = "SD卡";
-        localacwu.jdField_b_of_type_JavaLangString = ((String)localObject);
-        localacwu.c = "";
+        localadgr.jdField_a_of_type_JavaLangString = "SD卡";
+        localadgr.jdField_b_of_type_JavaLangString = ((String)localObject);
+        localadgr.c = "";
       }
       for (;;)
       {
-        a(1, "rootPath[" + localacwu.jdField_b_of_type_JavaLangString + "],bDefault[" + localacwu.jdField_a_of_type_Boolean + "]");
+        a(1, "rootPath[" + localadgr.jdField_b_of_type_JavaLangString + "],bDefault[" + localadgr.jdField_a_of_type_Boolean + "]");
         try
         {
           localObject = new StatFs((String)localObject);
-          localacwu.jdField_a_of_type_Long = (((StatFs)localObject).getAvailableBlocks() * ((StatFs)localObject).getBlockSize());
-          a(4, "defaultRootPath[" + str1 + "].equalsIgnoreCase(si.rootPath[" + localacwu.jdField_b_of_type_JavaLangString + "])");
-          if ((localMap.size() == 1) || (str1.equalsIgnoreCase(localacwu.jdField_b_of_type_JavaLangString)))
+          localadgr.jdField_a_of_type_Long = (((StatFs)localObject).getAvailableBlocks() * ((StatFs)localObject).getBlockSize());
+          a(4, "defaultRootPath[" + str1 + "].equalsIgnoreCase(si.rootPath[" + localadgr.jdField_b_of_type_JavaLangString + "])");
+          if ((localMap.size() == 1) || (str1.equalsIgnoreCase(localadgr.jdField_b_of_type_JavaLangString)))
           {
             a(4, "defaultRootPath.equalsIgnoreCase(si.rootPath) = true");
-            localacwu.jdField_a_of_type_Boolean = true;
-            localacwu.a(localBaseApplication);
+            localadgr.jdField_a_of_type_Boolean = true;
+            localadgr.a(localBaseApplication);
           }
-          localacwu.a();
+          localadgr.a();
         }
         catch (Exception localException)
         {
@@ -607,15 +607,15 @@ public class FMSettings
             localException.printStackTrace();
           }
         }
-        this.jdField_a_of_type_JavaUtilMap.put(str2, localacwu);
+        this.jdField_a_of_type_JavaUtilMap.put(str2, localadgr);
         break;
         if (str2.equalsIgnoreCase("externalSdCard"))
         {
-          localacwu.jdField_a_of_type_JavaLangString = "外置SD卡";
+          localadgr.jdField_a_of_type_JavaLangString = "外置SD卡";
           localBaseApplication.getExternalFilesDir(null);
           str3 = BaseApplicationImpl.sApplication.getPackageName();
-          localacwu.jdField_b_of_type_JavaLangString = ((String)localObject);
-          localacwu.c = ("/Android/data/" + str3 + "/");
+          localadgr.jdField_b_of_type_JavaLangString = ((String)localObject);
+          localadgr.c = ("/Android/data/" + str3 + "/");
         }
       }
     }
@@ -653,16 +653,16 @@ public class FMSettings
       }
       a(1, "showChoosePath, callback[" + paramMoveFileCallback + "]");
       ??? = b();
-      acwu localacwu = c();
-      if (((acwu)???).jdField_a_of_type_Boolean) {
+      adgr localadgr = c();
+      if (((adgr)???).jdField_a_of_type_Boolean) {
         this.jdField_a_of_type_JavaLangString = "本机内存已满，下载失败。为保证以后顺利下载，默认存储路径将为你更换到外置SD卡中：";
       }
       for (this.jdField_b_of_type_JavaLangString = (a().jdField_b_of_type_JavaLangString + a().c + "/Tencent/QQfile_recv/").replace("//", "/"); paramActivity != null; this.jdField_b_of_type_JavaLangString = (a().jdField_b_of_type_JavaLangString + a().c + "/Tencent/QQfile_recv/").replace("//", "/"))
       {
         label213:
-        paramActivity.runOnUiThread(new acwm(this, paramActivity, ???, paramMoveFileCallback));
+        paramActivity.runOnUiThread(new adgj(this, paramActivity, ???, paramMoveFileCallback));
         return;
-        if ((localacwu == null) || (!localacwu.jdField_a_of_type_Boolean)) {
+        if ((localadgr == null) || (!localadgr.jdField_a_of_type_Boolean)) {
           break label213;
         }
         this.jdField_a_of_type_JavaLangString = "外置SD卡已满，下载失败。为保证以后顺利下载，默认存储路径将为你更换到本机内存中：";
@@ -685,7 +685,7 @@ public class FMSettings
         }
         if ("externalSdCard".equalsIgnoreCase(paramString))
         {
-          ((acwu)this.jdField_a_of_type_JavaUtilMap.get("sdCard")).a(BaseApplicationImpl.getContext());
+          ((adgr)this.jdField_a_of_type_JavaUtilMap.get("sdCard")).a(BaseApplicationImpl.getContext());
           return;
         }
       }
@@ -708,7 +708,7 @@ public class FMSettings
     if (localObject == null) {
       return 0L;
     }
-    localObject = ((acwu)localObject).jdField_b_of_type_JavaLangString;
+    localObject = ((adgr)localObject).jdField_b_of_type_JavaLangString;
     try
     {
       localObject = new StatFs((String)localObject);

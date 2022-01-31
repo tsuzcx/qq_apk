@@ -18,8 +18,8 @@ import com.tencent.gdtad.views.video.GdtVideoCommonView.VideoFullScreenListener;
 import com.tencent.mobileqq.webview.WebViewDirector;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
-import qks;
-import qkt;
+import qni;
+import qnj;
 
 public class GdtVideoCeilingView
   extends FrameLayout
@@ -83,7 +83,7 @@ public class GdtVideoCeilingView
   
   private void e()
   {
-    inflate(getContext(), 2130969008, this);
+    inflate(getContext(), 2130969007, this);
     f();
     g();
     j();
@@ -91,23 +91,23 @@ public class GdtVideoCeilingView
   
   private void f()
   {
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView = ((GdtVideoCommonView)findViewById(2131364662));
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView = ((GdtVideoCommonView)findViewById(2131364684));
     this.jdField_a_of_type_ComTencentGdtadViewsVideoGdtVideoCommonView.setOnVideoFullScreen(this);
   }
   
   private void g()
   {
-    findViewById(2131364664).setOnClickListener(new qks(this));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363360));
+    findViewById(2131364686).setOnClickListener(new qni(this));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363378));
   }
   
   private void j()
   {
     AppInterface localAppInterface = (AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web");
-    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131364668);
+    FrameLayout localFrameLayout = (FrameLayout)findViewById(2131364690);
     this.jdField_a_of_type_ComTencentBizUiTouchWebView = new TouchWebView(getContext());
     localFrameLayout.addView(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
-    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder = new qkt(this, getContext(), a(), a(), localAppInterface);
+    this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder = new qnj(this, getContext(), a(), a(), localAppInterface);
     this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder.a(this.jdField_a_of_type_ComTencentBizUiTouchWebView);
     new WebViewDirector(this.jdField_a_of_type_ComTencentGdtadViewsVideoceilingGdtWebViewBuilder).a(null, localAppInterface, a());
   }
@@ -209,7 +209,7 @@ public class GdtVideoCeilingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.views.videoceiling.GdtVideoCeilingView
  * JD-Core Version:    0.7.0.1
  */

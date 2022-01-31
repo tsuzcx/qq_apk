@@ -1,20 +1,21 @@
-import java.io.File;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
 
-public class pim
+public final class pim
+  implements Animation.AnimationListener
 {
-  public final long a;
-  public final String a;
-  public final boolean a;
-  public final String b;
+  public pim(Runnable paramRunnable) {}
   
-  public pim(String paramString1, String paramString2)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramString1 = new File(paramString1, paramString2);
-    this.jdField_a_of_type_JavaLangString = paramString1.getPath();
-    this.b = paramString2;
-    this.jdField_a_of_type_Long = paramString1.lastModified();
-    this.jdField_a_of_type_Boolean = true;
+    if (this.a != null) {
+      this.a.run();
+    }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

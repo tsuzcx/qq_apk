@@ -101,7 +101,7 @@ public class SearchResultGroupPresenter
           if (!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
             break label340;
           }
-          ((ISearchResultView)paramIModel.get(i)).a().setBackgroundResource(2130838576);
+          ((ISearchResultView)paramIModel.get(i)).a().setBackgroundResource(2130838580);
         }
         for (;;)
         {
@@ -117,7 +117,7 @@ public class SearchResultGroupPresenter
           m = 0;
           break label91;
           label340:
-          ((ISearchResultView)paramIModel.get(i)).a().setBackgroundResource(2130838575);
+          ((ISearchResultView)paramIModel.get(i)).a().setBackgroundResource(2130838579);
         }
         label363:
         i = Math.min(((List)localObject).size(), n);

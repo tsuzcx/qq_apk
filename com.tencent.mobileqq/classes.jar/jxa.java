@@ -1,13 +1,15 @@
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
-class jxa
-  implements Runnable
+public class jxa
+  implements DialogInterface.OnClickListener
 {
-  jxa(jwy paramjwy) {}
+  public jxa(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.a.M();
+    paramDialogInterface.dismiss();
   }
 }
 

@@ -1,18 +1,16 @@
-import android.view.View;
-import com.tencent.biz.qrcode.CustomAccessibilityDelegate;
-import com.tencent.biz.qrcode.activity.QRDisplayActivity;
-import com.tencent.mobileqq.util.AccessibilityUtil;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.biz.qqstory.widget.RotateCircleImageView;
 
 public class orv
-  implements Runnable
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public orv(QRDisplayActivity paramQRDisplayActivity) {}
+  public orv(RotateCircleImageView paramRotateCircleImageView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    CustomAccessibilityDelegate localCustomAccessibilityDelegate = new CustomAccessibilityDelegate(this.a.d, this.a);
-    this.a.d.setAccessibilityDelegate(localCustomAccessibilityDelegate);
-    AccessibilityUtil.a(this.a.a, false);
+    RotateCircleImageView.b(this.a, ((Float)paramValueAnimator.getAnimatedValue()).floatValue());
+    this.a.invalidate();
   }
 }
 

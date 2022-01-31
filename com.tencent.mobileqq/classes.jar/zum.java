@@ -1,23 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.ar.ARRecognition;
+import com.tencent.mobileqq.app.message.UncommonMessageProcessor;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.utils.SendMessageHandler.SendMessageRunnable;
 
-public final class zum
-  implements Parcelable.Creator
+public class zum
+  extends SendMessageHandler.SendMessageRunnable
 {
-  public ARRecognition a(Parcel paramParcel)
-  {
-    return new ARRecognition(paramParcel);
-  }
+  public zum(UncommonMessageProcessor paramUncommonMessageProcessor, MessageRecord paramMessageRecord, long paramLong) {}
   
-  public ARRecognition[] a(int paramInt)
+  public void run()
   {
-    return new ARRecognition[paramInt];
+    UncommonMessageProcessor.a(this.jdField_a_of_type_ComTencentMobileqqAppMessageUncommonMessageProcessor, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_Long, this.c, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zum
  * JD-Core Version:    0.7.0.1
  */

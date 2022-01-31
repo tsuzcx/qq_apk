@@ -76,20 +76,20 @@ import java.util.Set;
 import java.util.Vector;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.os.MqqHandler;
-import uso;
-import uuq;
-import uur;
-import uut;
-import uuu;
-import uuv;
-import uuw;
-import uux;
-import uuz;
-import uva;
-import uvb;
-import uvc;
-import uvd;
-import uve;
+import uvq;
+import uxs;
+import uxt;
+import uxv;
+import uxw;
+import uxx;
+import uxy;
+import uxz;
+import uyb;
+import uyc;
+import uyd;
+import uye;
+import uyf;
+import uyg;
 
 public class GivingHeartItemBuilder
   extends BaseBubbleBuilder
@@ -102,10 +102,10 @@ public class GivingHeartItemBuilder
   private static int d;
   private static int e;
   private LruCache jdField_a_of_type_AndroidUtilLruCache;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new uve(this, null);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new uyg(this, null);
   public DiniFlyAnimationView a;
   public ViewAnimation a;
-  VasExtensionObserver jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver = new uuv(this);
+  VasExtensionObserver jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver = new uxx(this);
   public VasQuickUpdateManager.CallBacker a;
   Runnable jdField_a_of_type_JavaLangRunnable = null;
   private float jdField_b_of_type_Float = 1.0F;
@@ -262,7 +262,7 @@ public class GivingHeartItemBuilder
   private void a(long paramLong, MessageForPoke paramMessageForPoke)
   {
     if (this.jdField_a_of_type_AndroidUtilLruCache == null) {
-      this.jdField_a_of_type_AndroidUtilLruCache = new uuq(this, d);
+      this.jdField_a_of_type_AndroidUtilLruCache = new uxs(this, d);
     }
     this.jdField_a_of_type_AndroidUtilLruCache.put(Long.valueOf(paramLong), paramMessageForPoke);
   }
@@ -273,7 +273,7 @@ public class GivingHeartItemBuilder
     if (QLog.isColorLevel()) {
       QLog.d("PokeItemBuilder", 2, "startPokeWindowAnim " + paramBoolean1);
     }
-    this.jdField_a_of_type_JavaLangRunnable = new uur(this, paramActivity, paramBoolean2, paramBoolean1);
+    this.jdField_a_of_type_JavaLangRunnable = new uxt(this, paramActivity, paramBoolean2, paramBoolean1);
     jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
   }
   
@@ -410,8 +410,8 @@ public class GivingHeartItemBuilder
         i = ((Integer)this.jdField_c_of_type_JavaUtilMap.get(Integer.valueOf(paramMessageForPoke.subId))).intValue();
         if ((4 == i) || (5 == i))
         {
-          localObject1 = ImageUtil.a(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130837715);
-          localObject4 = ImageUtil.a(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130837716);
+          localObject1 = ImageUtil.a(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130837718);
+          localObject4 = ImageUtil.a(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130837719);
           localObject1 = BitmapUtil.a(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject1, (Bitmap)localObject4);
           paramHolder.c.setImageDrawable((Drawable)localObject1);
         }
@@ -429,7 +429,7 @@ public class GivingHeartItemBuilder
         ((RelativeLayout.LayoutParams)localObject2).bottomMargin = 0;
         localObject2 = new File(PokeItemHelper.e + paramMessageForPoke.subId + "/pressed.png");
         localObject3 = URLDrawable.URLDrawableOptions.obtain();
-        localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844062);
+        localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130844186);
         ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = new ColorDrawable();
         ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Drawable)localObject1);
         localObject2 = URLDrawable.getDrawable((File)localObject2, (URLDrawable.URLDrawableOptions)localObject3);
@@ -445,7 +445,7 @@ public class GivingHeartItemBuilder
         ((StateListDrawable)localObject3).addState(new int[] { 16842919, 16842910 }, (Drawable)localObject2);
         ((StateListDrawable)localObject3).addState(new int[] { 16842908 }, (Drawable)localObject1);
         ((StateListDrawable)localObject3).addState(new int[0], (Drawable)localObject1);
-        ((URLDrawable)localObject1).setURLDrawableListener(new uvc(this, (StateListDrawable)localObject3));
+        ((URLDrawable)localObject1).setURLDrawableListener(new uye(this, (StateListDrawable)localObject3));
         if ((((URLDrawable)localObject1).getStatus() == 2) || (((URLDrawable)localObject1).getStatus() == 3)) {
           ((URLDrawable)localObject1).restartDownload();
         }
@@ -479,7 +479,7 @@ public class GivingHeartItemBuilder
       paramHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(localLayoutParams2);
       paramHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setLayoutParams(localLayoutParams1);
       paramHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.removeAllAnimatorListener();
-      paramHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new uvd(this, paramHolder, paramMessageForPoke));
+      paramHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new uyf(this, paramHolder, paramMessageForPoke));
       return;
       this.jdField_b_of_type_Float = 1.0F;
       break;
@@ -489,8 +489,8 @@ public class GivingHeartItemBuilder
       break;
       this.jdField_b_of_type_Float = 2.0F;
       break;
-      localObject1 = ImageUtil.a(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130837713);
-      localObject4 = ImageUtil.a(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130837714);
+      localObject1 = ImageUtil.a(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130837716);
+      localObject4 = ImageUtil.a(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130837717);
       localObject1 = BitmapUtil.a(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject1, (Bitmap)localObject4);
       break label415;
       label992:
@@ -552,8 +552,8 @@ public class GivingHeartItemBuilder
     paramHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setScaleType(ImageView.ScaleType.CENTER_CROP);
     paramHolder.jdField_a_of_type_AndroidWidgetImageView.setScaleX(1.0F);
     paramHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setScaleX(1.0F);
-    localObject1 = ImageUtil.a(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130837713);
-    localObject4 = ImageUtil.a(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130837714);
+    localObject1 = ImageUtil.a(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130837716);
+    localObject4 = ImageUtil.a(this.jdField_a_of_type_AndroidContentContext.getResources(), 2130837717);
     localObject1 = BitmapUtil.a(this.jdField_a_of_type_AndroidContentContext.getResources(), (Bitmap)localObject1, (Bitmap)localObject4);
     paramHolder.c.setImageDrawable((Drawable)localObject1);
     if (paramMessageForPoke.isSendFromLocal())
@@ -756,15 +756,15 @@ public class GivingHeartItemBuilder
   private void b(Context paramContext)
   {
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = new DiniFlyAnimationView(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new uuw(this));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.addAnimatorListener(new uxy(this));
     paramContext = new RelativeLayout.LayoutParams(1, 1);
-    ViewGroup localViewGroup = (ViewGroup)((ViewGroup)((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView()).getChildAt(0).findViewById(2131363473);
+    ViewGroup localViewGroup = (ViewGroup)((ViewGroup)((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView()).getChildAt(0).findViewById(2131363491);
     if (localViewGroup != null) {
       localViewGroup.addView(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView, paramContext);
     }
     this.jdField_a_of_type_ComTencentMobileqqDiniflyViewAnimation = new ViewAnimation(this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView);
     this.jdField_c_of_type_JavaUtilMap = new HashMap();
-    this.jdField_b_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new uux(this);
+    this.jdField_b_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker = new uxz(this);
     e();
     if (!(this.jdField_a_of_type_AndroidContentContext instanceof ChatHistoryForC2C)) {
       this.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqVasVasExtensionObserver);
@@ -838,7 +838,7 @@ public class GivingHeartItemBuilder
         }
         bool1 = true;
         localUnlimitedBladeWorks.setMirror(bool1);
-        paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setEndListener(new uut(this, paramHolder, paramMessageForPoke));
+        paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setEndListener(new uxv(this, paramHolder, paramMessageForPoke));
         localUnlimitedBladeWorks = paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks;
         if (paramMessageForPoke.isSend()) {
           break label396;
@@ -897,7 +897,7 @@ public class GivingHeartItemBuilder
     paramHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     paramHolder.c.setVisibility(8);
     paramHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.clearAnimation();
-    paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setEndListener(new uuu(this, paramHolder, paramMessageForPoke));
+    paramHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setEndListener(new uxw(this, paramHolder, paramMessageForPoke));
     if (QLog.isColorLevel()) {
       QLog.i("fangdazhao", 2, "[start]");
     }
@@ -929,7 +929,7 @@ public class GivingHeartItemBuilder
     if ((this.jdField_c_of_type_JavaUtilMap == null) || (this.jdField_b_of_type_ComTencentMobileqqVasVasQuickUpdateManager$CallBacker == null)) {
       return;
     }
-    ThreadManager.getFileThreadHandler().post(new uuz(this));
+    ThreadManager.getFileThreadHandler().post(new uyb(this));
   }
   
   private void f()
@@ -980,16 +980,16 @@ public class GivingHeartItemBuilder
         QLog.d("GivingHeart", 2, "[getBubbleView]:content is null");
       }
       paramViewHolder = new RelativeLayout((Context)localObject1);
-      paramViewHolder.setId(2131362822);
+      paramViewHolder.setId(2131362840);
       paramView = new RelativeLayout((Context)localObject1);
       Object localObject4 = new DiniFlyAnimationView((Context)localObject1);
       localHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)localObject4);
       paramView.addView((View)localObject4);
       paramViewHolder.addView(paramView, new RelativeLayout.LayoutParams(-2, -2));
       Object localObject3 = new ImageView((Context)localObject1);
-      ((ImageView)localObject3).setId(2131362451);
-      paramView = ImageUtil.a(((Context)localObject1).getResources(), 2130837713);
-      Object localObject2 = ImageUtil.a(((Context)localObject1).getResources(), 2130837714);
+      ((ImageView)localObject3).setId(2131362454);
+      paramView = ImageUtil.a(((Context)localObject1).getResources(), 2130837716);
+      Object localObject2 = ImageUtil.a(((Context)localObject1).getResources(), 2130837717);
       ((ImageView)localObject3).setImageDrawable(BitmapUtil.a(((Context)localObject1).getResources(), paramView, (Bitmap)localObject2));
       localHolder.c = ((ImageView)localObject3);
       paramViewHolder.addView((View)localObject3);
@@ -997,18 +997,18 @@ public class GivingHeartItemBuilder
       localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks = localUnlimitedBladeWorks;
       paramViewHolder.addView(localUnlimitedBladeWorks);
       RelativeLayout localRelativeLayout = new RelativeLayout((Context)localObject1);
-      localRelativeLayout.setId(2131362450);
+      localRelativeLayout.setId(2131362453);
       ImageView localImageView = new ImageView((Context)localObject1);
       localHolder.jdField_a_of_type_AndroidWidgetImageView = localImageView;
       localRelativeLayout.addView(localImageView);
       localObject2 = new ProgressBar((Context)localObject1, null, 0);
       ((ProgressBar)localObject2).setIndeterminate(true);
-      ((ProgressBar)localObject2).setIndeterminateDrawable(((Context)localObject1).getResources().getDrawable(2130838596));
+      ((ProgressBar)localObject2).setIndeterminateDrawable(((Context)localObject1).getResources().getDrawable(2130838600));
       localHolder.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)localObject2);
       localRelativeLayout.addView((View)localObject2);
       paramView = new ImageView((Context)localObject1);
       paramView.setId(2131362361);
-      paramView.setImageResource(2130844063);
+      paramView.setImageResource(2130844187);
       localHolder.jdField_b_of_type_AndroidWidgetImageView = paramView;
       localRelativeLayout.addView(paramView);
       localHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = localRelativeLayout;
@@ -1175,7 +1175,7 @@ public class GivingHeartItemBuilder
     {
     default: 
       return;
-    case 2131375336: 
+    case 2131375567: 
       ChatActivityFacade.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
       return;
     }
@@ -1320,7 +1320,7 @@ public class GivingHeartItemBuilder
         if (localMessageForPoke.isPlayed) {
           break label872;
         }
-        paramChatMessage = ((FitSystemWindowsRelativeLayout)((ViewGroup)((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView()).getChildAt(0).findViewById(2131363473)).a();
+        paramChatMessage = ((FitSystemWindowsRelativeLayout)((ViewGroup)((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView()).getChildAt(0).findViewById(2131363491)).a();
         if (SixCombolEffectView.jdField_a_of_type_Int != 0) {
           break label786;
         }
@@ -1350,7 +1350,7 @@ public class GivingHeartItemBuilder
       return;
       if (SixCombolEffectView.jdField_a_of_type_Int > 0)
       {
-        paramChatMessage = ((FitSystemWindowsRelativeLayout)((ViewGroup)((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView()).getChildAt(0).findViewById(2131363473)).a().a();
+        paramChatMessage = ((FitSystemWindowsRelativeLayout)((ViewGroup)((Activity)this.jdField_a_of_type_AndroidContentContext).getWindow().getDecorView()).getChildAt(0).findViewById(2131363491)).a().a();
         if ((paramChatMessage != null) && (localHolder.jdField_a_of_type_ComTencentMobileqqDataChatMessage == paramChatMessage))
         {
           switch (SixCombolEffectView.jdField_a_of_type_Int)
@@ -1436,7 +1436,7 @@ public class GivingHeartItemBuilder
           localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
           localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
           localHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(paramContext);
-          paramContext.a(new uva(this, localHolder, localMessageForPoke));
+          paramContext.a(new uyc(this, localHolder, localMessageForPoke));
           paramContext.d();
           if (!QLog.isColorLevel()) {
             break;
@@ -1603,7 +1603,7 @@ public class GivingHeartItemBuilder
     localHolder.c.setVisibility(8);
     localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.clearAnimation();
     localHolder.jdField_a_of_type_ComTencentMobileqqActivityAioItemUnlimitedBladeWorks.setVisibility(8);
-    paramContext.a(new uvb(this, localHolder, localMessageForPoke));
+    paramContext.a(new uyd(this, localHolder, localMessageForPoke));
     localHolder.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setImageDrawable(paramContext);
     paramContext.c();
     a(localMessageForPoke.uniseq, localMessageForPoke);

@@ -1,18 +1,41 @@
+import android.os.Bundle;
 import android.os.Handler;
-import com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.mobileqq.data.ChatMessage;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.qphone.base.util.QLog;
 
 public class vgp
-  implements Runnable
+  extends Handler
 {
-  public vgp(TroopFileItemBuilder paramTroopFileItemBuilder, ChatMessage paramChatMessage) {}
-  
-  public void run()
+  public vgp(Looper paramLooper)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.a.a().b(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.istroop, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemTroopFileItemBuilder.b.post(new vgq(this));
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ShortVideoRealItemBuilder", 2, "EncodeHandler.handleMessage, msg.what = " + paramMessage.what + ", ret is " + paramMessage.arg1);
+    }
+    switch (paramMessage.what)
+    {
+    }
+    String str;
+    do
+    {
+      int i;
+      do
+      {
+        return;
+        i = paramMessage.arg1;
+        paramMessage = paramMessage.getData();
+      } while (!QLog.isColorLevel());
+      QLog.i("ShortVideoRealItemBuilder", 2, "ret is " + i);
+      QLog.i("ShortVideoRealItemBuilder", 2, "data is " + paramMessage);
+      return;
+      str = paramMessage.getData().getString("maxvideo.file.mp4");
+    } while (!QLog.isColorLevel());
+    QLog.d("ShortVideoRealItemBuilder", 2, "EncodeHandler.handleMessage MaxVideoConst.MSG_ENDret is " + paramMessage.arg1 + ",targetFile is " + str);
   }
 }
 

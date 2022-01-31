@@ -20,7 +20,7 @@ import android.util.TypedValue;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import kjc;
+import kin;
 
 public class StageMemberView
   extends ViewGroup
@@ -34,7 +34,7 @@ public class StageMemberView
   public ImageView a;
   public MemberEffect a;
   private String jdField_a_of_type_JavaLangString;
-  private kjc jdField_a_of_type_Kjc;
+  private kin jdField_a_of_type_Kin;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int = 3;
   private Bitmap jdField_b_of_type_AndroidGraphicsBitmap;
@@ -46,14 +46,14 @@ public class StageMemberView
     this.jdField_a_of_type_ComTencentAvWidgetStageviewMemberEffect = null;
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap1;
     this.jdField_b_of_type_AndroidGraphicsBitmap = paramBitmap2;
-    this.jdField_a_of_type_Kjc = new kjc(this, getContext());
-    this.jdField_a_of_type_Kjc.setVisibility(0);
+    this.jdField_a_of_type_Kin = new kin(this, getContext());
+    this.jdField_a_of_type_Kin.setVisibility(0);
     this.jdField_b_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     addViewInLayout(this.jdField_a_of_type_AndroidWidgetImageView, 0, generateDefaultLayoutParams(), false);
     addViewInLayout(this.jdField_b_of_type_AndroidWidgetImageView, 1, generateDefaultLayoutParams(), false);
-    addViewInLayout(this.jdField_a_of_type_Kjc, 2, generateDefaultLayoutParams(), false);
+    addViewInLayout(this.jdField_a_of_type_Kin, 2, generateDefaultLayoutParams(), false);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     setClipChildren(false);
     this.jdField_a_of_type_AndroidTextTextPaint = new TextPaint(1);
@@ -119,7 +119,7 @@ public class StageMemberView
     {
       int j = (int)(localFontMetrics.descent - localFontMetrics.ascent);
       getWidth();
-      this.jdField_a_of_type_Kjc.layout((getWidth() - i) / 2 + 5, this.jdField_b_of_type_AndroidWidgetImageView.getHeight(), (i + getWidth()) / 2 + 5, j + this.jdField_b_of_type_AndroidWidgetImageView.getHeight());
+      this.jdField_a_of_type_Kin.layout((getWidth() - i) / 2 + 5, this.jdField_b_of_type_AndroidWidgetImageView.getHeight(), (i + getWidth()) / 2 + 5, j + this.jdField_b_of_type_AndroidWidgetImageView.getHeight());
       b();
       return;
     }
@@ -130,7 +130,7 @@ public class StageMemberView
     if (((this.jdField_a_of_type_JavaLangString == null) && (paramString == null)) || ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))) {
       return;
     }
-    float f2 = super.getResources().getDimensionPixelSize(2131559814);
+    float f2 = super.getResources().getDimensionPixelSize(2131559832);
     String str2 = paramString;
     if (f2 > 0.0F)
     {
@@ -175,7 +175,7 @@ public class StageMemberView
     for (;;)
     {
       a();
-      this.jdField_a_of_type_Kjc.invalidate();
+      this.jdField_a_of_type_Kin.invalidate();
       this.jdField_a_of_type_AndroidWidgetImageView.invalidate();
       setContentDescription(this.jdField_a_of_type_JavaLangString);
       return;
@@ -213,7 +213,7 @@ public class StageMemberView
     }
     for (;;)
     {
-      this.jdField_a_of_type_Kjc.invalidate();
+      this.jdField_a_of_type_Kin.invalidate();
       this.jdField_a_of_type_AndroidWidgetImageView.invalidate();
       this.jdField_b_of_type_AndroidWidgetImageView.invalidate();
       return;

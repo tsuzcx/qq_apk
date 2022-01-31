@@ -1,14 +1,35 @@
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.data.TroopInfo;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.preference.PreferenceManager;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class zkv
   implements Runnable
 {
-  public zkv(TroopHandler paramTroopHandler, String paramString, long paramLong, TroopInfo paramTroopInfo) {}
+  public zkv(QQAppInterface paramQQAppInterface) {}
   
   public void run()
   {
-    TroopHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppTroopHandler, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqDataTroopInfo);
+    SharedPreferences.Editor localEditor = PreferenceManager.getDefaultSharedPreferences(this.a.getApp()).edit();
+    localEditor.putString("LastScreenShotUri", "");
+    localEditor.commit();
+    this.a.o();
+    try
+    {
+      QQAppInterface.i(this.a).unregisterReceiver(QQAppInterface.b(this.a));
+      try
+      {
+        label58:
+        QQAppInterface.j(this.a).unregisterReceiver(QQAppInterface.c(this.a));
+        return;
+      }
+      catch (Exception localException1) {}
+    }
+    catch (Exception localException2)
+    {
+      break label58;
+    }
   }
 }
 

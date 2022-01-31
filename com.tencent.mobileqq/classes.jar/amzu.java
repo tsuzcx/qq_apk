@@ -1,46 +1,28 @@
-import android.widget.ListAdapter;
-import com.tencent.mobileqq.widget.QQViewPager;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GridView;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateAdapter;
-import dov.com.qq.im.capture.adapter.QIMPtvTemplateViewPagerAdapter;
-import dov.com.qq.im.capture.view.QIMPtvTemplateProviderView;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import java.util.HashMap;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.EditText;
+import cooperation.qzone.share.QZoneShareActivity;
 
 public class amzu
-  implements Runnable
+  implements View.OnTouchListener
 {
-  public amzu(QIMPtvTemplateProviderView paramQIMPtvTemplateProviderView, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo) {}
+  public amzu(QZoneShareActivity paramQZoneShareActivity) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    GridView localGridView = (GridView)this.jdField_a_of_type_DovComQqImCaptureViewQIMPtvTemplateProviderView.jdField_a_of_type_DovComQqImCaptureAdapterQIMPtvTemplateViewPagerAdapter.a.get(Integer.valueOf(this.jdField_a_of_type_DovComQqImCaptureViewQIMPtvTemplateProviderView.jdField_a_of_type_ComTencentMobileqqWidgetQQViewPager.getCurrentItem()));
-    if (localGridView != null)
+    this.a.a();
+    if ((!this.a.c) && (this.a.a != null))
     {
-      localListAdapter = localGridView.a();
-      if ((localListAdapter instanceof QIMPtvTemplateAdapter))
-      {
-        i = ((QIMPtvTemplateAdapter)localListAdapter).a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo);
-        ((QIMPtvTemplateAdapter)localListAdapter).a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, i);
-        localGridView.requestFocusFromTouch();
-        localGridView.setFocusableInTouchMode(true);
-        localGridView.setSelection(i);
-        ((QIMPtvTemplateAdapter)localListAdapter).notifyDataSetChanged();
-      }
+      this.a.a.setHint("");
+      this.a.c = true;
     }
-    while (!QLog.isColorLevel())
-    {
-      ListAdapter localListAdapter;
-      int i;
-      return;
-    }
-    QLog.d("PtvTemplateProviderView", 2, "gridView is null");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amzu
  * JD-Core Version:    0.7.0.1
  */

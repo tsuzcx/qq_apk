@@ -1,16 +1,13 @@
-import com.tencent.biz.qqstory.app.QQStoryContext;
-import com.tencent.biz.qqstory.base.QQStoryHandler;
-import com.tencent.biz.qqstory.storyHome.QQStoryMainController;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity;
 
-public class nsc
+class nsc
   implements Runnable
 {
-  public nsc(QQStoryMainController paramQQStoryMainController) {}
+  nsc(nsb paramnsb, QQStoryShareGroupProfileActivity paramQQStoryShareGroupProfileActivity) {}
   
   public void run()
   {
-    ((QQStoryHandler)QQStoryContext.a().a(98)).a(2001, true, null);
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupInfocardQQStoryShareGroupProfileActivity.finish();
   }
 }
 

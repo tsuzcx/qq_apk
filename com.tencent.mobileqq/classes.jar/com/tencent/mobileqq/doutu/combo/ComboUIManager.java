@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.doutu.combo;
 
-import abrq;
+import abyr;
 import android.animation.Animator;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -435,12 +435,12 @@ public class ComboUIManager
   
   public void update(Observable paramObservable, Object paramObject)
   {
-    new Handler(Looper.getMainLooper()).post(new abrq(this));
+    new Handler(Looper.getMainLooper()).post(new abyr(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.combo.ComboUIManager
  * JD-Core Version:    0.7.0.1
  */

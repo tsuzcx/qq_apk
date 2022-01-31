@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.ark;
 
-import aalv;
-import aalw;
-import aaly;
-import aalz;
-import aama;
-import aamb;
-import aamc;
-import aamd;
-import aame;
-import aamf;
-import aamg;
-import aamh;
-import aami;
-import aamj;
-import aamk;
-import aaml;
-import aamm;
-import aamn;
-import aamo;
+import aasw;
+import aasx;
+import aasz;
+import aata;
+import aatb;
+import aatc;
+import aatd;
+import aate;
+import aatf;
+import aatg;
+import aath;
+import aati;
+import aatj;
+import aatk;
+import aatl;
+import aatm;
+import aatn;
+import aato;
+import aatp;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
@@ -258,18 +258,18 @@ public class ArkAppCGI
     }
   }
   
-  private String a(String paramString1, String paramString2, aamo... paramVarArgs)
+  private String a(String paramString1, String paramString2, aatp... paramVarArgs)
   {
     ArrayList localArrayList = new ArrayList();
-    localArrayList.add(new aamo("QQVersion", "7.6.0"));
-    localArrayList.add(new aamo("Cmd", paramString1));
-    localArrayList.add(new aamo("Ver", paramString2));
-    localArrayList.add(new aamo("OS", "android"));
-    localArrayList.add(new aamo("Framework", ArkAppCenter.g()));
-    localArrayList.add(new aamo("MinFramework", ArkAppCenter.h()));
+    localArrayList.add(new aatp("QQVersion", "7.6.3"));
+    localArrayList.add(new aatp("Cmd", paramString1));
+    localArrayList.add(new aatp("Ver", paramString2));
+    localArrayList.add(new aatp("OS", "android"));
+    localArrayList.add(new aatp("Framework", ArkAppCenter.g()));
+    localArrayList.add(new aatp("MinFramework", ArkAppCenter.h()));
     paramString1 = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     if (paramString1 != null) {
-      localArrayList.add(new aamo("Uin", paramString1.c()));
+      localArrayList.add(new aatp("Uin", paramString1.c()));
     }
     if (paramVarArgs != null)
     {
@@ -288,7 +288,7 @@ public class ArkAppCGI
       paramString2 = localArrayList.iterator();
       while (paramString2.hasNext())
       {
-        paramVarArgs = (aamo)paramString2.next();
+        paramVarArgs = (aatp)paramString2.next();
         try
         {
           paramString1.append(paramVarArgs.jdField_a_of_type_JavaLangString);
@@ -484,13 +484,13 @@ public class ArkAppCGI
     }
   }
   
-  private void a(aamh paramaamh, aamg arg2)
+  private void a(aati paramaati, aath arg2)
   {
-    paramaamh.jdField_a_of_type_Aamg = ???;
-    paramaamh.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream();
+    paramaati.jdField_a_of_type_Aath = ???;
+    paramaati.jdField_a_of_type_JavaIoByteArrayOutputStream = new ByteArrayOutputStream();
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramaamh);
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramaati);
       ??? = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
       if (??? == null)
       {
@@ -499,43 +499,43 @@ public class ArkAppCGI
       }
     }
     HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.jdField_a_of_type_JavaLangString = paramaamh.jdField_a_of_type_JavaLangString;
+    localHttpNetReq.jdField_a_of_type_JavaLangString = paramaati.jdField_a_of_type_JavaLangString;
     localHttpNetReq.e = 1;
-    if (paramaamh.jdField_a_of_type_ArrayOfByte == null) {
+    if (paramaati.jdField_a_of_type_ArrayOfByte == null) {
       localHttpNetReq.jdField_a_of_type_Int = 0;
     }
     for (;;)
     {
-      localHttpNetReq.a(paramaamh);
+      localHttpNetReq.a(paramaati);
       localHttpNetReq.jdField_a_of_type_JavaUtilHashMap.put("Accept-Encoding", "identity");
       localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = this;
       localHttpNetReq.jdField_c_of_type_Long = 30L;
-      localHttpNetReq.jdField_a_of_type_JavaIoOutputStream = paramaamh.jdField_a_of_type_JavaIoByteArrayOutputStream;
-      if (paramaamh.jdField_b_of_type_JavaLangString != null) {
-        localHttpNetReq.jdField_a_of_type_JavaUtilHashMap.put("Cookie", paramaamh.jdField_b_of_type_JavaLangString);
+      localHttpNetReq.jdField_a_of_type_JavaIoOutputStream = paramaati.jdField_a_of_type_JavaIoByteArrayOutputStream;
+      if (paramaati.jdField_b_of_type_JavaLangString != null) {
+        localHttpNetReq.jdField_a_of_type_JavaUtilHashMap.put("Cookie", paramaati.jdField_b_of_type_JavaLangString);
       }
-      if (paramaamh.jdField_a_of_type_Long >= 0L)
+      if (paramaati.jdField_a_of_type_Long >= 0L)
       {
         Object localObject = new SimpleDateFormat("E, d MMM y HH:mm:ss 'GMT'", Locale.US);
         ((SimpleDateFormat)localObject).setTimeZone(TimeZone.getTimeZone("GMT"));
-        localObject = ((SimpleDateFormat)localObject).format(new Date(paramaamh.jdField_a_of_type_Long));
+        localObject = ((SimpleDateFormat)localObject).format(new Date(paramaati.jdField_a_of_type_Long));
         if (!TextUtils.isEmpty((CharSequence)localObject)) {
           localHttpNetReq.jdField_a_of_type_JavaUtilHashMap.put("If-Modified-Since", localObject);
         }
       }
-      ThreadManager.post(new aamf(this, ???, paramaamh, localHttpNetReq), 5, null, true);
+      ThreadManager.post(new aatg(this, ???, paramaati, localHttpNetReq), 5, null, true);
       return;
       localHttpNetReq.jdField_a_of_type_Int = 1;
-      localHttpNetReq.jdField_a_of_type_ArrayOfByte = paramaamh.jdField_a_of_type_ArrayOfByte;
+      localHttpNetReq.jdField_a_of_type_ArrayOfByte = paramaati.jdField_a_of_type_ArrayOfByte;
     }
   }
   
-  private void a(aamh paramaamh, boolean paramBoolean, byte[] paramArrayOfByte)
+  private void a(aati paramaati, boolean paramBoolean, byte[] paramArrayOfByte)
   {
-    new Handler(Looper.getMainLooper()).post(new aaly(this, paramaamh, paramBoolean, paramArrayOfByte));
+    new Handler(Looper.getMainLooper()).post(new aasz(this, paramaati, paramBoolean, paramArrayOfByte));
   }
   
-  private void a(aami paramaami, ArrayList paramArrayList)
+  private void a(aatj paramaatj, ArrayList paramArrayList)
   {
     if ((paramArrayList == null) || (paramArrayList.isEmpty())) {}
     do
@@ -554,25 +554,25 @@ public class ArkAppCGI
         return;
       }
     }
-    catch (Exception paramaami)
+    catch (Exception paramaatj)
     {
-      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("_addSubTaskForCheckActionAppUpdate, put 'context' fail, err=%s.", new Object[] { paramaami.getMessage() }));
+      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("_addSubTaskForCheckActionAppUpdate, put 'context' fail, err=%s.", new Object[] { paramaatj.getMessage() }));
       return;
     }
-    localObject = new aamj(null);
-    ((aamj)localObject).jdField_a_of_type_JavaLangString = b();
-    ((aamj)localObject).jdField_a_of_type_ArrayOfByte = paramArrayList;
-    paramaami.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+    localObject = new aatk(null);
+    ((aatk)localObject).jdField_a_of_type_JavaLangString = b();
+    ((aatk)localObject).jdField_a_of_type_ArrayOfByte = paramArrayList;
+    paramaatj.jdField_a_of_type_JavaUtilArrayList.add(localObject);
   }
   
-  private void a(aamm paramaamm)
+  private void a(aatn paramaatn)
   {
-    paramaamm.jdField_a_of_type_JavaLangString = a("QueryContextActionApp", "1", new aamo[] { new aamo("Context", paramaamm.jdField_d_of_type_JavaLangString), new aamo("Action", paramaamm.e), new aamo("AppIDGray", Long.toString(paramaamm.jdField_c_of_type_Long)), new aamo("AppID", Long.toString(paramaamm.jdField_b_of_type_Long)) });
-    paramaamm.jdField_a_of_type_Boolean = false;
-    b(paramaamm, new aamb(this));
+    paramaatn.jdField_a_of_type_JavaLangString = a("QueryContextActionApp", "1", new aatp[] { new aatp("Context", paramaatn.jdField_d_of_type_JavaLangString), new aatp("Action", paramaatn.e), new aatp("AppIDGray", Long.toString(paramaatn.jdField_c_of_type_Long)), new aatp("AppID", Long.toString(paramaatn.jdField_b_of_type_Long)) });
+    paramaatn.jdField_a_of_type_Boolean = false;
+    b(paramaatn, new aatc(this));
   }
   
-  private void a(aamn paramaamn, boolean paramBoolean, byte[] paramArrayOfByte)
+  private void a(aato paramaato, boolean paramBoolean, byte[] paramArrayOfByte)
   {
     int i;
     label31:
@@ -580,14 +580,14 @@ public class ArkAppCGI
     ArkAppCGI.ArkAppCGICallback localArkAppCGICallback;
     if (!paramBoolean)
     {
-      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("onQueryPackageNameByAppID: fail, url=%s", new Object[] { paramaamn.jdField_a_of_type_JavaLangString }));
+      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("onQueryPackageNameByAppID: fail, url=%s", new Object[] { paramaato.jdField_a_of_type_JavaLangString }));
       paramArrayOfByte = null;
       i = 0;
-      if (i >= paramaamn.jdField_b_of_type_JavaUtilArrayList.size()) {
+      if (i >= paramaato.jdField_b_of_type_JavaUtilArrayList.size()) {
         return;
       }
-      localObject = paramaamn.jdField_a_of_type_JavaUtilArrayList.get(i);
-      localArkAppCGICallback = (ArkAppCGI.ArkAppCGICallback)paramaamn.jdField_b_of_type_JavaUtilArrayList.get(i);
+      localObject = paramaato.jdField_a_of_type_JavaUtilArrayList.get(i);
+      localArkAppCGICallback = (ArkAppCGI.ArkAppCGICallback)paramaato.jdField_b_of_type_JavaUtilArrayList.get(i);
       if (localArkAppCGICallback != null) {
         if (paramArrayOfByte == null) {
           break label136;
@@ -597,12 +597,12 @@ public class ArkAppCGI
     label136:
     for (paramBoolean = true;; paramBoolean = false)
     {
-      localArkAppCGICallback.a(paramBoolean, paramArrayOfByte, paramaamn.jdField_d_of_type_JavaLangString, localObject);
+      localArkAppCGICallback.a(paramBoolean, paramArrayOfByte, paramaato.jdField_d_of_type_JavaLangString, localObject);
       i += 1;
       break label31;
       paramArrayOfByte = a(paramArrayOfByte);
       if (paramArrayOfByte == null) {
-        ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("onQueryPackageNameByAppID: parseReply fail, url=%s", new Object[] { paramaamn.jdField_a_of_type_JavaLangString }));
+        ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("onQueryPackageNameByAppID: parseReply fail, url=%s", new Object[] { paramaato.jdField_a_of_type_JavaLangString }));
       }
       break;
     }
@@ -687,11 +687,11 @@ public class ArkAppCGI
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
       while (localIterator.hasNext())
       {
-        aamh localaamh = (aamh)localIterator.next();
-        if ((localaamh.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) && (localaamh.jdField_a_of_type_Long == paramLong))
+        aati localaati = (aati)localIterator.next();
+        if ((localaati.jdField_a_of_type_JavaLangString.equalsIgnoreCase(paramString)) && (localaati.jdField_a_of_type_Long == paramLong))
         {
-          localaamh.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
-          localaamh.jdField_b_of_type_JavaUtilArrayList.add(paramArkAppCGICallback);
+          localaati.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
+          localaati.jdField_b_of_type_JavaUtilArrayList.add(paramArkAppCGICallback);
           return true;
         }
       }
@@ -717,7 +717,7 @@ public class ArkAppCGI
       if (paramJSONObject != null) {
         paramString.put("uin", paramJSONObject.c());
       }
-      paramString.put("qq_ver", "7.6.0");
+      paramString.put("qq_ver", "7.6.3");
       paramString.put("sdk_ver", ArkAppCenter.g());
       paramString.put("min_sdk_ver", ArkAppCenter.h());
       localJSONObject.put("data", paramString);
@@ -739,20 +739,20 @@ public class ArkAppCGI
     return String.format("http://%s/cgi-bin/arkappcgi?", new Object[] { ArkAppEnvConfig.a().f() });
   }
   
-  private void b(aamh paramaamh, aamg arg2)
+  private void b(aati paramaati, aath arg2)
   {
-    paramaamh.jdField_a_of_type_Aamg = ???;
+    paramaati.jdField_a_of_type_Aath = ???;
     synchronized (this.jdField_a_of_type_JavaUtilArrayList)
     {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramaamh);
-      ThreadManager.post(new aalw(this, paramaamh), 5, null, true);
+      this.jdField_a_of_type_JavaUtilArrayList.add(paramaati);
+      ThreadManager.post(new aasx(this, paramaati), 5, null, true);
       return;
     }
   }
   
-  private static void b(aami paramaami, byte[] paramArrayOfByte)
+  private static void b(aatj paramaatj, byte[] paramArrayOfByte)
   {
-    if ((paramaami == null) || (paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
+    if ((paramaatj == null) || (paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {}
     for (;;)
     {
       return;
@@ -765,9 +765,9 @@ public class ArkAppCGI
           return;
         }
       }
-      catch (Exception paramaami)
+      catch (Exception paramaatj)
       {
-        ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("parseReply_CheckActionAppUpdate, exception, msg=%s", new Object[] { paramaami.getMessage() }));
+        ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("parseReply_CheckActionAppUpdate, exception, msg=%s", new Object[] { paramaatj.getMessage() }));
         return;
       }
       int i;
@@ -830,7 +830,7 @@ public class ArkAppCGI
                   localActionAppUpdateInfo.jdField_a_of_type_JavaLangString = ((String)localObject);
                   localActionAppUpdateInfo.jdField_b_of_type_JavaLangString = str;
                   localActionAppUpdateInfo.jdField_a_of_type_Boolean = bool;
-                  paramaami.jdField_b_of_type_JavaUtilArrayList.add(localActionAppUpdateInfo);
+                  paramaatj.jdField_b_of_type_JavaUtilArrayList.add(localActionAppUpdateInfo);
                 }
                 finally {}
               }
@@ -885,9 +885,9 @@ public class ArkAppCGI
     }
   }
   
-  private static boolean b(aamm paramaamm, byte[] paramArrayOfByte)
+  private static boolean b(aatn paramaatn, byte[] paramArrayOfByte)
   {
-    if ((paramaamm == null) || (paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+    if ((paramaatn == null) || (paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
       return false;
     }
     Object localObject;
@@ -900,9 +900,9 @@ public class ArkAppCGI
         return false;
       }
     }
-    catch (Exception paramaamm)
+    catch (Exception paramaatn)
     {
-      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("parseReply_GetContextActionAppList, fail, msg=%s", new Object[] { paramaamm.getMessage() }));
+      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("parseReply_GetContextActionAppList, fail, msg=%s", new Object[] { paramaatn.getMessage() }));
       return false;
     }
     try
@@ -934,10 +934,10 @@ public class ArkAppCGI
         return false;
       }
       localObject = paramArrayOfByte.optJSONArray("app");
-      paramaamm.jdField_b_of_type_Long = a(paramaamm.jdField_d_of_type_JavaLangString, paramaamm.e, paramaamm.jdField_c_of_type_JavaUtilArrayList, (JSONArray)localObject);
+      paramaatn.jdField_b_of_type_Long = a(paramaatn.jdField_d_of_type_JavaLangString, paramaatn.e, paramaatn.jdField_c_of_type_JavaUtilArrayList, (JSONArray)localObject);
       localObject = paramArrayOfByte.optJSONArray("gray_app");
-      paramaamm.jdField_c_of_type_Long = a(paramaamm.jdField_d_of_type_JavaLangString, paramaamm.e, paramaamm.jdField_d_of_type_JavaUtilArrayList, (JSONArray)localObject);
-      paramaamm.jdField_a_of_type_Boolean = paramArrayOfByte.optBoolean("more", false);
+      paramaatn.jdField_c_of_type_Long = a(paramaatn.jdField_d_of_type_JavaLangString, paramaatn.e, paramaatn.jdField_d_of_type_JavaUtilArrayList, (JSONArray)localObject);
+      paramaatn.jdField_a_of_type_Boolean = paramArrayOfByte.optBoolean("more", false);
     }
     return true;
   }
@@ -961,7 +961,7 @@ public class ArkAppCGI
     }
   }
   
-  public void a(aamk paramaamk, boolean paramBoolean, byte[] paramArrayOfByte)
+  public void a(aatl paramaatl, boolean paramBoolean, byte[] paramArrayOfByte)
   {
     byte[] arrayOfByte;
     int i;
@@ -969,14 +969,14 @@ public class ArkAppCGI
     ArkAppCGI.ArkAppCGICallback localArkAppCGICallback;
     if (!paramBoolean)
     {
-      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("onDownloadAppPackage: net fail, url=%s", new Object[] { paramaamk.jdField_a_of_type_JavaLangString }));
+      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("onDownloadAppPackage: net fail, url=%s", new Object[] { paramaatl.jdField_a_of_type_JavaLangString }));
       arrayOfByte = null;
       i = 0;
-      if (i >= paramaamk.jdField_b_of_type_JavaUtilArrayList.size()) {
+      if (i >= paramaatl.jdField_b_of_type_JavaUtilArrayList.size()) {
         return;
       }
-      paramArrayOfByte = paramaamk.jdField_a_of_type_JavaUtilArrayList.get(i);
-      localArkAppCGICallback = (ArkAppCGI.ArkAppCGICallback)paramaamk.jdField_b_of_type_JavaUtilArrayList.get(i);
+      paramArrayOfByte = paramaatl.jdField_a_of_type_JavaUtilArrayList.get(i);
+      localArkAppCGICallback = (ArkAppCGI.ArkAppCGICallback)paramaatl.jdField_b_of_type_JavaUtilArrayList.get(i);
       if (localArkAppCGICallback != null) {
         if (arrayOfByte == null) {
           break label148;
@@ -989,27 +989,27 @@ public class ArkAppCGI
       localArkAppCGICallback.a(paramBoolean, arrayOfByte, paramArrayOfByte);
       i += 1;
       break label32;
-      if (paramaamk.jdField_b_of_type_ArrayOfByte != null)
+      if (paramaatl.jdField_b_of_type_ArrayOfByte != null)
       {
         arrayOfByte = paramArrayOfByte;
-        if (a(paramArrayOfByte, paramaamk.jdField_b_of_type_ArrayOfByte)) {
+        if (a(paramArrayOfByte, paramaatl.jdField_b_of_type_ArrayOfByte)) {
           break;
         }
       }
-      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("onDownloadAppPackage: verifyAppPackage fail, url=%s", new Object[] { paramaamk.jdField_a_of_type_JavaLangString }));
+      ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("onDownloadAppPackage: verifyAppPackage fail, url=%s", new Object[] { paramaatl.jdField_a_of_type_JavaLangString }));
       arrayOfByte = null;
       break;
     }
   }
   
-  public void a(aaml paramaaml, boolean paramBoolean, byte[] paramArrayOfByte)
+  public void a(aatm paramaatm, boolean paramBoolean, byte[] paramArrayOfByte)
   {
     int i = 0;
-    while (i < paramaaml.jdField_b_of_type_JavaUtilArrayList.size())
+    while (i < paramaatm.jdField_b_of_type_JavaUtilArrayList.size())
     {
-      ArkAppCGI.ArkAppCGICallback localArkAppCGICallback = (ArkAppCGI.ArkAppCGICallback)paramaaml.jdField_b_of_type_JavaUtilArrayList.get(i);
+      ArkAppCGI.ArkAppCGICallback localArkAppCGICallback = (ArkAppCGI.ArkAppCGICallback)paramaatm.jdField_b_of_type_JavaUtilArrayList.get(i);
       if (localArkAppCGICallback != null) {
-        localArkAppCGICallback.a(paramBoolean, paramaaml.jdField_a_of_type_Long, paramArrayOfByte);
+        localArkAppCGICallback.a(paramBoolean, paramaatm.jdField_a_of_type_Long, paramArrayOfByte);
       }
       i += 1;
     }
@@ -1019,7 +1019,7 @@ public class ArkAppCGI
   
   public void a(NetResp paramNetResp)
   {
-    aamh localaamh = (aamh)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
+    aati localaati = (aati)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
     boolean bool;
     if (paramNetResp.jdField_a_of_type_Int == 0)
     {
@@ -1032,7 +1032,7 @@ public class ArkAppCGI
     {
       try
       {
-        arrayOfByte = localaamh.jdField_a_of_type_JavaIoByteArrayOutputStream.toByteArray();
+        arrayOfByte = localaati.jdField_a_of_type_JavaIoByteArrayOutputStream.toByteArray();
         if (paramNetResp.c == 304)
         {
           bool = true;
@@ -1052,8 +1052,8 @@ public class ArkAppCGI
           paramNetResp = paramNetResp.group(1);
           SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("E,d MMM y HH:mm:ss 'GMT'", Locale.US);
           localSimpleDateFormat.setTimeZone(TimeZone.getTimeZone("GMT"));
-          localaamh.jdField_a_of_type_Long = localSimpleDateFormat.parse(paramNetResp).getTime();
-          a(localaamh, bool, arrayOfByte);
+          localaati.jdField_a_of_type_Long = localSimpleDateFormat.parse(paramNetResp).getTime();
+          a(localaati, bool, arrayOfByte);
           return;
           bool = false;
           break;
@@ -1064,7 +1064,7 @@ public class ArkAppCGI
         }
         catch (ParseException paramNetResp)
         {
-          ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("lastModified time parse fail, url=%s", new Object[] { localaamh.jdField_a_of_type_JavaLangString }));
+          ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("lastModified time parse fail, url=%s", new Object[] { localaati.jdField_a_of_type_JavaLangString }));
           continue;
         }
         continue;
@@ -1079,11 +1079,11 @@ public class ArkAppCGI
     if (a(paramString, paramLong, null, paramArkAppCGICallback)) {
       return;
     }
-    aaml localaaml = new aaml(null);
-    localaaml.jdField_a_of_type_JavaLangString = paramString;
-    localaaml.jdField_a_of_type_Long = paramLong;
-    localaaml.jdField_b_of_type_JavaUtilArrayList.add(paramArkAppCGICallback);
-    a(localaaml, new aamc(this));
+    aatm localaatm = new aatm(null);
+    localaatm.jdField_a_of_type_JavaLangString = paramString;
+    localaatm.jdField_a_of_type_Long = paramLong;
+    localaatm.jdField_b_of_type_JavaUtilArrayList.add(paramArkAppCGICallback);
+    a(localaatm, new aatd(this));
   }
   
   public void a(String paramString, Object paramObject, ArkAppCGI.ArkAppCGICallback paramArkAppCGICallback)
@@ -1092,11 +1092,11 @@ public class ArkAppCGI
     while (a(paramString, -1L, paramObject, paramArkAppCGICallback)) {
       return;
     }
-    aamh localaamh = new aamh(null);
-    localaamh.jdField_a_of_type_JavaLangString = paramString;
-    localaamh.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
-    localaamh.jdField_b_of_type_JavaUtilArrayList.add(paramArkAppCGICallback);
-    b(localaamh, new aame(this));
+    aati localaati = new aati(null);
+    localaati.jdField_a_of_type_JavaLangString = paramString;
+    localaati.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
+    localaati.jdField_b_of_type_JavaUtilArrayList.add(paramArkAppCGICallback);
+    b(localaati, new aatf(this));
   }
   
   public void a(String paramString, byte[] paramArrayOfByte, Object paramObject, ArkAppCGI.ArkAppCGICallback paramArkAppCGICallback)
@@ -1104,12 +1104,12 @@ public class ArkAppCGI
     if (a(paramString, -1L, paramObject, paramArkAppCGICallback)) {
       return;
     }
-    aamk localaamk = new aamk(null);
-    localaamk.jdField_a_of_type_JavaLangString = paramString;
-    localaamk.jdField_b_of_type_ArrayOfByte = paramArrayOfByte;
-    localaamk.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
-    localaamk.jdField_b_of_type_JavaUtilArrayList.add(paramArkAppCGICallback);
-    b(localaamk, new aamd(this));
+    aatl localaatl = new aatl(null);
+    localaatl.jdField_a_of_type_JavaLangString = paramString;
+    localaatl.jdField_b_of_type_ArrayOfByte = paramArrayOfByte;
+    localaatl.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
+    localaatl.jdField_b_of_type_JavaUtilArrayList.add(paramArkAppCGICallback);
+    b(localaatl, new aate(this));
   }
   
   public void a(ArrayList paramArrayList, Object paramObject, ArkAppCGI.ArkAppCGICallback paramArkAppCGICallback)
@@ -1136,7 +1136,7 @@ public class ArkAppCGI
       return;
     }
     ArkAppCenter.b("ArkApp.ArkAppCGI", String.format("queryAppInfoByAppNameBatch, sso request, req=%s", new Object[] { paramArrayList }));
-    ((ArkAppSSO)localObject).a("ArkAppInfo.QueryAppInfo", paramArrayList, 10000, 0, new aalv(this, paramArkAppCGICallback, paramObject));
+    ((ArkAppSSO)localObject).a("ArkAppInfo.QueryAppInfo", paramArrayList, 10000, 0, new aasw(this, paramArkAppCGICallback, paramObject));
   }
   
   public boolean a(String paramString1, String paramString2, long paramLong1, long paramLong2, Object paramObject, ArkAppCGI.ArkAppCGICallback paramArkAppCGICallback)
@@ -1150,15 +1150,15 @@ public class ArkAppCGI
     }
     else
     {
-      aamm localaamm = new aamm(null);
-      localaamm.jdField_a_of_type_Boolean = false;
-      localaamm.jdField_b_of_type_Long = paramLong2;
-      localaamm.jdField_c_of_type_Long = paramLong1;
-      localaamm.jdField_d_of_type_JavaLangString = paramString1;
-      localaamm.e = paramString2;
-      localaamm.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
-      localaamm.jdField_b_of_type_JavaUtilArrayList.add(paramArkAppCGICallback);
-      a(localaamm);
+      aatn localaatn = new aatn(null);
+      localaatn.jdField_a_of_type_Boolean = false;
+      localaatn.jdField_b_of_type_Long = paramLong2;
+      localaatn.jdField_c_of_type_Long = paramLong1;
+      localaatn.jdField_d_of_type_JavaLangString = paramString1;
+      localaatn.e = paramString2;
+      localaatn.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
+      localaatn.jdField_b_of_type_JavaUtilArrayList.add(paramArkAppCGICallback);
+      a(localaatn);
       bool = true;
     }
     return bool;
@@ -1173,9 +1173,9 @@ public class ArkAppCGI
       }
       return false;
     }
-    aami localaami = new aami(null);
-    localaami.jdField_a_of_type_JavaLangObject = paramObject;
-    localaami.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI$ArkAppCGICallback = paramArkAppCGICallback;
+    aatj localaatj = new aatj(null);
+    localaatj.jdField_a_of_type_JavaLangObject = paramObject;
+    localaatj.jdField_a_of_type_ComTencentMobileqqArkArkAppCGI$ArkAppCGICallback = paramArkAppCGICallback;
     paramObject = new ArrayList();
     paramArrayList = paramArrayList.iterator();
     while (paramArrayList.hasNext())
@@ -1183,23 +1183,23 @@ public class ArkAppCGI
       paramObject.add((ArkAppCGI.ActionAppUpdateInfo)paramArrayList.next());
       if (paramObject.size() >= 20)
       {
-        a(localaami, paramObject);
+        a(localaatj, paramObject);
         paramObject.clear();
       }
     }
     if (!paramObject.isEmpty())
     {
-      a(localaami, paramObject);
+      a(localaatj, paramObject);
       paramObject.clear();
     }
-    if (localaami.jdField_a_of_type_JavaUtilArrayList.isEmpty())
+    if (localaatj.jdField_a_of_type_JavaUtilArrayList.isEmpty())
     {
       ArkAppCenter.b("ArkApp.ArkAppCGI", "queryActionAppNeedUpdate, subTask is empty, return.");
       return false;
     }
-    paramArrayList = localaami.jdField_a_of_type_JavaUtilArrayList.iterator();
+    paramArrayList = localaatj.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (paramArrayList.hasNext()) {
-      a((aamj)paramArrayList.next(), new aama(this, localaami));
+      a((aatk)paramArrayList.next(), new aatb(this, localaatj));
     }
     return true;
   }
@@ -1263,16 +1263,16 @@ public class ArkAppCGI
       localObject2 = ((TicketManager)localObject2).getSkey(((QQAppInterface)localObject1).getCurrentAccountUin());
       str2 = String.format("http://cgi.connect.qq.com/qqconnectwebsite/v2/appinfo/apkname/get?appid=%s&token=%d", new Object[] { paramString, Integer.valueOf(a(str1)) });
     } while (a(str2, -1L, paramObject, paramArkAppCGICallback));
-    aamn localaamn = new aamn(null);
+    aato localaato = new aato(null);
     for (Object localObject1 = ((QQAppInterface)localObject1).getCurrentAccountUin(); ((String)localObject1).length() < 10; localObject1 = "0" + (String)localObject1) {}
     localObject1 = "o" + (String)localObject1;
-    localaamn.jdField_b_of_type_JavaLangString = ("p_uin=" + (String)localObject1 + "; p_skey=" + str1 + "; uin=" + (String)localObject1 + "; skey=" + (String)localObject2);
-    localaamn.jdField_a_of_type_JavaLangString = str2;
-    localaamn.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
-    localaamn.jdField_b_of_type_JavaUtilArrayList.add(paramArkAppCGICallback);
-    localaamn.jdField_d_of_type_JavaLangString = paramString;
-    localaamn.c = "http://connect.qq.com";
-    b(localaamn, new aalz(this));
+    localaato.jdField_b_of_type_JavaLangString = ("p_uin=" + (String)localObject1 + "; p_skey=" + str1 + "; uin=" + (String)localObject1 + "; skey=" + (String)localObject2);
+    localaato.jdField_a_of_type_JavaLangString = str2;
+    localaato.jdField_a_of_type_JavaUtilArrayList.add(paramObject);
+    localaato.jdField_b_of_type_JavaUtilArrayList.add(paramArkAppCGICallback);
+    localaato.jdField_d_of_type_JavaLangString = paramString;
+    localaato.c = "http://connect.qq.com";
+    b(localaato, new aata(this));
   }
 }
 

@@ -48,7 +48,7 @@ public class StoryPickerHorizontalListAdapter
   
   private View a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970791, paramViewGroup, false);
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970839, paramViewGroup, false);
     paramViewGroup.setTag(new StoryPickerHorizontalListAdapter.ItemHolder(this, paramViewGroup));
     return paramViewGroup;
   }

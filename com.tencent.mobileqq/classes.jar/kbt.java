@@ -1,54 +1,38 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.GAudioUIObserver;
-import com.tencent.av.ui.QavInOutAnimation;
-import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.av.ui.VideoInviteFull;
-import com.tencent.av.utils.TraeHelper;
-import com.tencent.qphone.base.util.QLog;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import com.tencent.av.ui.VideoInviteLock;
+import com.tencent.mobileqq.utils.NetworkUtil;
 
 public class kbt
-  extends GAudioUIObserver
+  implements Runnable
 {
-  public kbt(VideoInviteActivity paramVideoInviteActivity) {}
+  public kbt(VideoInviteLock paramVideoInviteLock) {}
   
-  protected void a(long paramLong, int paramInt)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteActivity", 2, "VideoInviteActivity onDestroyInviteUI, relationId:" + paramLong);
-    }
-    boolean bool = this.a.h;
-    if ((bool) && (this.a.c != null) && (this.a.c.equals(String.valueOf(paramLong))))
+    if ((this.a.a == null) || (this.a.c == null)) {}
+    do
     {
-      super.c(paramLong);
-      TraeHelper.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-      TraeHelper.a().a("VideoInviteActivity.onDestroyInviteUI");
-      if ((bool) && (this.a.c.length() > 2) && (paramLong != 0L))
+      do
       {
-        paramLong = Long.valueOf(this.a.c).longValue();
-        if (!this.a.g)
-        {
-          this.a.g = true;
-          if (paramInt != 1) {
-            break label217;
-          }
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, 7);
+        return;
+        this.a.a.setVisibility(8);
+        this.a.c.setVisibility(8);
+        if ((NetworkUtil.h(VideoInviteLock.a(this.a))) || (NetworkUtil.f(VideoInviteLock.b(this.a)))) {
+          break;
         }
-      }
-    }
-    for (;;)
-    {
-      this.a.e = true;
-      if ((this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation == null) || (!(this.a instanceof VideoInviteFull))) {
-        break;
-      }
-      this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation.a(new kbu(this));
+        if (NetworkUtil.b(VideoInviteLock.c(this.a)))
+        {
+          this.a.c.setVisibility(0);
+          this.a.c.setText(2131429067);
+        }
+      } while (!NetworkUtil.c(VideoInviteLock.d(this.a)));
+      this.a.c.setVisibility(0);
+      this.a.c.setText(2131429066);
       return;
-      label217:
-      if (paramInt == 2) {
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a(paramLong, 2);
-      }
-    }
-    this.a.finish();
+    } while (!this.a.b);
+    this.a.c.setVisibility(0);
+    this.a.c.setText(2131428696);
   }
 }
 

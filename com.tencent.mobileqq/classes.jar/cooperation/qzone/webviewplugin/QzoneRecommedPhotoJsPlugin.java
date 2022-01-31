@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
-import ammx;
-import ammy;
+import andc;
+import andd;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -41,7 +41,7 @@ public class QzoneRecommedPhotoJsPlugin
     {
       this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new ammx(this));
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new andc(this));
       }
       return;
     }
@@ -91,7 +91,7 @@ public class QzoneRecommedPhotoJsPlugin
     {
       this.jdField_a_of_type_JavaLangString = new JSONObject(paramString).optString("callback");
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new ammy(this));
+        this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new andd(this));
       }
       return;
     }

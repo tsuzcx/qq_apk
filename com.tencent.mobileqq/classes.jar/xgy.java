@@ -1,28 +1,16 @@
-import android.os.Looper;
-import android.os.Message;
-import android.view.View;
-import com.tencent.mobileqq.activity.recent.LocalSearchBar;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.OnCustomizeListener;
+import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
+import com.tencent.mobileqq.activity.qwallet.redpacket.IRedPacket.OnGetSkinListener;
+import com.tencent.mobileqq.activity.qwallet.redpacket.RedPacketManager;
 
-public final class xgy
-  extends MqqHandler
+public class xgy
+  implements CustomizeStrategyFactory.OnCustomizeListener
 {
-  public xgy(Looper paramLooper, View paramView)
-  {
-    super(paramLooper);
-  }
+  public xgy(RedPacketManager paramRedPacketManager, IRedPacket.OnGetSkinListener paramOnGetSkinListener) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onSucc(int paramInt, CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      LocalSearchBar.a(this.a);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedpacketIRedPacket$OnGetSkinListener.onGetSkin(paramRedPacketInfo);
   }
 }
 

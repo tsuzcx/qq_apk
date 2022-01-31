@@ -1,14 +1,19 @@
-import com.tencent.mobileqq.activity.aio.anim.XBubbleAnimation;
-import com.tencent.mobileqq.bubble.BubbleInfo.CommonAttrs;
+import android.os.Looper;
+import android.os.Message;
+import com.tencent.mobileqq.activity.aio.FileTransferManager;
+import com.tencent.mobileqq.transfile.TransProcessorHandler;
 
-class uli
-  implements Runnable
+public class uli
+  extends TransProcessorHandler
 {
-  uli(ulh paramulh) {}
-  
-  public void run()
+  public uli(FileTransferManager paramFileTransferManager, Looper paramLooper)
   {
-    this.a.a.a(false, this.a.a.b.b);
+    super(paramLooper);
+  }
+  
+  public void handleMessage(Message paramMessage)
+  {
+    this.a.a(paramMessage);
   }
 }
 

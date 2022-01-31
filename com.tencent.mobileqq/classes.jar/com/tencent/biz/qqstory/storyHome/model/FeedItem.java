@@ -21,6 +21,7 @@ public abstract class FeedItem
   public static final int BANNER_FEED_ITEM = 5;
   public static final int GENERAL_FEED_ITEM = 1;
   public static final int GENERAL_RECOMMEND_FEED_ITEM = 3;
+  public static final int HOT_RECOMMEND_FEED_ITEM = 7;
   public static final int SHARE_GROUP_FEED_ITEM = 2;
   public static final int SHARE_GROUP_RECOMMEND_FEED_ITEM = 4;
   public static final int TAG_FEED_ITEM = 6;
@@ -47,8 +48,10 @@ public abstract class FeedItem
       return new GeneralRecommendFeedItem();
     case 5: 
       return new BannerFeedItem();
+    case 6: 
+      return new TagFeedItem();
     }
-    return new TagFeedItem();
+    return new HotRecommendFeedItem();
   }
   
   protected abstract int assignType();

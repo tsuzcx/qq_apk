@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ocr.ui;
 
-import afqd;
-import afqf;
+import agdj;
+import agdl;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -44,7 +44,7 @@ public class SearchSougouResultItemBuilder
       paramSearchResultAdapter = (SearchResultAdapter.ListItem)paramView.getTag();
       if ((paramSearchResultAdapter.jdField_a_of_type_Int == paramListItem.jdField_a_of_type_Int) && (paramSearchResultAdapter.b == paramListItem.b))
       {
-        paramSearchResultAdapter = (afqf)paramView.getTag(-1);
+        paramSearchResultAdapter = (agdl)paramView.getTag(-1);
         paramInt = 0;
       }
     }
@@ -58,49 +58,49 @@ public class SearchSougouResultItemBuilder
       }
       else
       {
-        localObject = new afqf(this);
-        paramView = (ViewGroup)LayoutInflater.from(localContext).inflate(2130970465, paramViewGroup, false);
-        ((afqf)localObject).jdField_a_of_type_AndroidViewViewGroup = paramView;
-        ((afqf)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363360));
-        ((afqf)localObject).b = ((TextView)paramView.findViewById(2131370771));
-        ((afqf)localObject).c = ((TextView)paramView.findViewById(2131370772));
-        ((afqf)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131361846));
+        localObject = new agdl(this);
+        paramView = (ViewGroup)LayoutInflater.from(localContext).inflate(2130970506, paramViewGroup, false);
+        ((agdl)localObject).jdField_a_of_type_AndroidViewViewGroup = paramView;
+        ((agdl)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363378));
+        ((agdl)localObject).b = ((TextView)paramView.findViewById(2131370911));
+        ((agdl)localObject).c = ((TextView)paramView.findViewById(2131370912));
+        ((agdl)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131361846));
         paramView.setTag(-1, localObject);
       }
-      a((afqf)localObject, localSougouSearchInfo);
+      a((agdl)localObject, localSougouSearchInfo);
       paramView.setTag(paramListItem);
       return paramView;
       paramSearchResultAdapter = null;
     }
   }
   
-  void a(afqf paramafqf, OCRTextSearchInfo.SougouSearchInfo paramSougouSearchInfo)
+  void a(agdl paramagdl, OCRTextSearchInfo.SougouSearchInfo paramSougouSearchInfo)
   {
     Object localObject = new HighlightModel(paramSougouSearchInfo.titleKeyWords, null);
     if (!TextUtils.isEmpty(paramSougouSearchInfo.title))
     {
       localObject = ((HighlightModel)localObject).a(paramSougouSearchInfo.title, true);
       if (localObject != null) {
-        paramafqf.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+        paramagdl.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       }
     }
     localObject = new HighlightModel(paramSougouSearchInfo.abstractStrKeyWords, null);
     if (!TextUtils.isEmpty(paramSougouSearchInfo.abstractStr))
     {
       localObject = ((HighlightModel)localObject).a(HighlightModel.a(paramSougouSearchInfo.abstractStr));
-      paramafqf.b.setText((CharSequence)localObject);
+      paramagdl.b.setText((CharSequence)localObject);
     }
     try
     {
       if (TextUtils.isEmpty(paramSougouSearchInfo.summaryPic)) {
-        paramafqf.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        paramagdl.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       }
       for (;;)
       {
         if (!TextUtils.isEmpty(paramSougouSearchInfo.sourceFrom)) {
           break label276;
         }
-        paramafqf.c.setVisibility(8);
+        paramagdl.c.setVisibility(8);
         return;
         localObject = URLDrawable.URLDrawableOptions.obtain();
         ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
@@ -112,8 +112,8 @@ public class SearchSougouResultItemBuilder
         if (QLog.isColorLevel()) {
           QLog.e("Q.ocr.SearchSougouResultItemBuilder", 2, "updateNormalItem image fail," + paramSougouSearchInfo);
         }
-        paramafqf.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-        paramafqf.jdField_a_of_type_AndroidWidgetImageView.setTag(paramSougouSearchInfo.summaryPic);
+        paramagdl.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+        paramagdl.jdField_a_of_type_AndroidWidgetImageView.setTag(paramSougouSearchInfo.summaryPic);
       }
     }
     catch (Exception localException)
@@ -125,13 +125,13 @@ public class SearchSougouResultItemBuilder
         }
         localException.printStackTrace();
         continue;
-        paramafqf.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-        localException.setURLDrawableListener(new afqd(this));
-        paramafqf.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localException);
+        paramagdl.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        localException.setURLDrawableListener(new agdj(this));
+        paramagdl.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localException);
       }
       label276:
-      paramafqf.c.setVisibility(0);
-      paramafqf.c.setText(paramSougouSearchInfo.sourceFrom);
+      paramagdl.c.setVisibility(0);
+      paramagdl.c.setText(paramSougouSearchInfo.sourceFrom);
     }
   }
   

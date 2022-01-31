@@ -52,10 +52,10 @@ public class StructMsgGroupItemElement
     }
     if (this.jdField_a_of_type_Boolean)
     {
-      paramImageView.setBackgroundResource(2130841688);
+      paramImageView.setBackgroundResource(2130841725);
       return;
     }
-    paramImageView.setBackgroundResource(2130841687);
+    paramImageView.setBackgroundResource(2130841724);
   }
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
@@ -152,7 +152,7 @@ public class StructMsgGroupItemElement
         localObject2 = new LinearLayout.LayoutParams(-1, -2);
         ((LinearLayout.LayoutParams)localObject2).gravity = 16;
         paramView.setGravity(16);
-        paramView.setBackgroundColor(localResources.getColor(2131493358));
+        paramView.setBackgroundColor(localResources.getColor(2131493361));
         ((LinearLayout.LayoutParams)localObject2).leftMargin = 0;
         ((LinearLayout.LayoutParams)localObject2).rightMargin = 0;
         ((LinearLayout.LayoutParams)localObject2).topMargin = 0;
@@ -522,7 +522,7 @@ public class StructMsgGroupItemElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgGroupItemElement
  * JD-Core Version:    0.7.0.1
  */

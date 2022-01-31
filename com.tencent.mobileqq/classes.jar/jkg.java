@@ -1,14 +1,26 @@
-import com.tencent.av.opengl.effects.FilterProcessRender;
+import com.tencent.av.random.RandomController;
+import com.tencent.av.random.RandomWebProtocol;
+import com.tencent.qphone.base.util.QLog;
 
 public class jkg
+  implements Runnable
 {
-  public int a;
-  public int b;
+  public jkg(RandomController paramRandomController) {}
   
-  public jkg(FilterProcessRender paramFilterProcessRender, int paramInt1, int paramInt2)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
+    if (RandomController.c(this.a))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RandomController", 2, "mRandomPushTimeoutRunnable trigger, request room owner!");
+      }
+      RandomController.a(this.a).a(RandomController.b(this.a), this.a.a);
+      this.a.a();
+    }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("RandomController", 2, "mRoomOwnerEnable == false");
   }
 }
 

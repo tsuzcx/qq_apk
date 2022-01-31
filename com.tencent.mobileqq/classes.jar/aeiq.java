@@ -1,57 +1,35 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.NearbyProxy;
-import com.tencent.mobileqq.nearby.now.send.EditVideoUi;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsManager;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadListener;
-import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadResult;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityTransaction;
 import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import java.util.Iterator;
+import java.util.List;
 
 public class aeiq
-  implements VideoFeedsUploader.UploadListener
+  implements Runnable
 {
-  public aeiq(VideoFeedsManager paramVideoFeedsManager) {}
+  public aeiq(EmoticonManager paramEmoticonManager, List paramList) {}
   
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo)
+  public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowSendEditVideoUi.a("上传中", true);
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoFeedsManager:UploadVideo", 2, "onStart:" + paramUploadInfo);
-    }
-  }
-  
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoFeedsManager:UploadVideo", 2, "onProcessing:" + paramInt);
-    }
-  }
-  
-  public void a(VideoFeedsUploader.UploadInfo paramUploadInfo, VideoFeedsUploader.UploadResult paramUploadResult)
-  {
-    this.a.jdField_a_of_type_Boolean = false;
-    if (paramUploadInfo == null) {
-      QLog.i("VideoFeedsManager", 1, "onResult UploadInfo == null");
-    }
-    do
+    EntityTransaction localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.a.a();
+    localEntityTransaction.a();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
     {
-      return;
-      this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a(paramUploadResult.a, VideoFeedsManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramUploadInfo, paramUploadResult));
-      ThreadManager.getUIHandler().post(new aeis(this, paramUploadInfo, paramUploadResult));
-    } while (paramUploadInfo != null);
-    QLog.i("VideoFeedsManager:UploadVideo", 1, "onResult:" + paramUploadInfo);
-  }
-  
-  public void b(VideoFeedsUploader.UploadInfo paramUploadInfo)
-  {
-    ThreadManager.getUIHandler().post(new aeir(this));
+      EmoticonPackage localEmoticonPackage = (EmoticonPackage)localIterator.next();
+      if ((localEmoticonPackage != null) && (!EmoticonManager.a(this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager, localEmoticonPackage))) {
+        QLog.e("EmoticonManager", 1, "saveEmoticonPackages fail epId = " + localEmoticonPackage.epId);
+      }
+    }
+    localEntityTransaction.c();
+    localEntityTransaction.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aeiq
  * JD-Core Version:    0.7.0.1
  */

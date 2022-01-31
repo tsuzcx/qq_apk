@@ -1,28 +1,44 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.os.Message;
+import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.nearby.ipc.BasicTypeDataParcel;
+import com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService;
+import com.tencent.mobileqq.nearby.ipc.MainProcessInterface.Stub;
+import com.tencent.mobileqq.nearby.ipc.NearbyProcessInterface;
+import com.tencent.qphone.base.util.QLog;
 
 public class aerf
-  implements View.OnClickListener
+  extends MainProcessInterface.Stub
 {
-  public aerf(NearbyProfileDisplayPanel paramNearbyProfileDisplayPanel, String paramString) {}
+  public aerf(ConnectNearbyProcService paramConnectNearbyProcService) {}
   
-  public void onClick(View paramView)
+  public Message a(Message paramMessage)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.a, QQBrowserActivity.class);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
-    paramView = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.a;
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.a.j)) {}
-    for (paramView = "1";; paramView = "2")
+    if (paramMessage == null) {
+      return null;
+    }
+    return ConnectNearbyProcService.a(this.a, paramMessage);
+  }
+  
+  public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
+  {
+    if (paramBasicTypeDataParcel == null) {}
+    Object[] arrayOfObject;
+    do
     {
-      localIntent.putExtra("url", paramView);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_focus", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.a.startActivity(localIntent);
-      return;
+      return null;
+      if (QLog.isColorLevel()) {
+        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
+      }
+      arrayOfObject = ConnectNearbyProcService.a(this.a, paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
+    } while (arrayOfObject == null);
+    return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
+  }
+  
+  public void a(NearbyProcessInterface paramNearbyProcessInterface)
+  {
+    ConnectNearbyProcService.a(paramNearbyProcessInterface);
+    if (ConnectNearbyProcService.a(this.a) != null) {
+      ConnectNearbyProcService.a(this.a).a();
     }
   }
 }

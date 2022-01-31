@@ -1,31 +1,38 @@
-import com.tencent.av.AVLog;
-import com.tencent.mobileqq.richmedia.capture.data.FilterDesc;
-import com.tencent.mobileqq.transfile.INetEngine.INetEngineListener;
-import com.tencent.mobileqq.transfile.NetReq;
-import com.tencent.mobileqq.transfile.NetResp;
-import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
-import dov.com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager.OnResourceDownloadListener;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.qq.taf.jce.HexUtil;
+import com.tencent.util.MqqWeakReferenceHandler;
+import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoActivity;
+import dov.com.tencent.biz.qqstory.takevideo.EditWebVideoPartManager;
+import dov.com.tencent.mobileqq.activity.shortvideo.EncodeVideoTask.ResultListener;
 
 public class anvl
-  implements INetEngine.INetEngineListener
+  implements EncodeVideoTask.ResultListener
 {
-  public anvl(CaptureVideoFilterManager paramCaptureVideoFilterManager) {}
+  public anvl(EditWebVideoActivity paramEditWebVideoActivity) {}
   
-  public void a(NetReq paramNetReq, long paramLong1, long paramLong2) {}
-  
-  public void a(NetResp paramNetResp)
+  public void a(int paramInt)
   {
-    FilterDesc localFilterDesc = (FilterDesc)paramNetResp.jdField_a_of_type_ComTencentMobileqqTransfileNetReq.a();
-    if (paramNetResp.jdField_a_of_type_Int != 0)
+    this.a.runOnUiThread(new anvm(this));
+  }
+  
+  public void a(String paramString1, byte[] paramArrayOfByte1, String paramString2, int paramInt1, int paramInt2, byte[] paramArrayOfByte2, int paramInt3, boolean paramBoolean)
+  {
+    int i = ((EditWebVideoPartManager)this.a.a).a;
+    EditWebVideoActivity.a(this.a, paramString1);
+    EditWebVideoActivity.a(this.a, paramArrayOfByte1);
+    EditWebVideoActivity.b(this.a, HexUtil.bytes2HexStr(EditWebVideoActivity.a(this.a)));
+    paramString1 = this.a;
+    if (i <= 0) {}
+    for (;;)
     {
-      AVLog.c("CaptureVideoFilterManager", "download IconFile failed. errorCode: " + paramNetResp.b + ", errorMsg: " + paramNetResp.jdField_a_of_type_JavaLangString + ", file: " + localFilterDesc.c);
+      EditWebVideoActivity.a(paramString1, paramInt3);
+      EditWebVideoActivity.c(this.a, paramString2);
+      EditWebVideoActivity.b(this.a, paramArrayOfByte2);
+      EditWebVideoActivity.b(this.a, paramInt1);
+      EditWebVideoActivity.c(this.a, paramInt2);
+      EditWebVideoActivity.a(this.a).sendEmptyMessage(1002);
       return;
+      paramInt3 = i;
     }
-    if ((CaptureVideoFilterManager.a(this.a).decrementAndGet() == 0) && (CaptureVideoFilterManager.a(this.a) != null)) {
-      CaptureVideoFilterManager.a(this.a).a(true);
-    }
-    AVLog.c("CaptureVideoFilterManager", "download iconFile success. file: " + localFilterDesc.c);
   }
 }
 

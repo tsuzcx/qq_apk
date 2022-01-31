@@ -1,32 +1,49 @@
-import com.tencent.biz.common.offline.AsyncCallBack;
-import com.tencent.biz.webviewplugin.OfflinePlugin;
-import com.tencent.biz.webviewplugin.OfflineWebResManager;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import android.view.View;
+import com.tencent.biz.qqstory.utils.UIUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
 
-class akaz
-  implements AsyncCallBack
+public final class akaz
+  implements URLDrawable.URLDrawableListener
 {
-  akaz(akay paramakay, long paramLong) {}
+  public akaz(View paramView) {}
   
-  public void a(int paramInt, String paramString)
+  public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    this.jdField_a_of_type_Akay.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserOfflineHandler", 2, "now offline bid has checked, bid " + this.jdField_a_of_type_Akay.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.jdField_a_of_type_JavaLangString + ", loadMode: " + this.jdField_a_of_type_Akay.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() + ", cost: " + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, 0, 0);
     }
-    if (paramInt != 0)
-    {
-      OfflinePlugin.c(this.jdField_a_of_type_Akay.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.jdField_a_of_type_JavaLangString);
-      OfflineWebResManager.a(this.jdField_a_of_type_Akay.jdField_a_of_type_JavaLangString);
+    if (this.a != null) {
+      this.a.postInvalidate();
     }
-    this.jdField_a_of_type_Akay.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserOfflineHandler.a();
+  }
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
+  {
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, 0, 0);
+    }
+    if (this.a != null) {
+      this.a.postInvalidate();
+    }
+  }
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable != null) {
+      paramURLDrawable.setBounds(0, 0, UIUtils.a(BaseApplicationImpl.getContext(), 47.0F), UIUtils.a(BaseApplicationImpl.getContext(), 14.0F));
+    }
+    if (this.a != null) {
+      this.a.postInvalidate();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akaz
  * JD-Core Version:    0.7.0.1
  */

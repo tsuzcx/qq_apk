@@ -1,23 +1,12 @@
-import android.view.SurfaceView;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.selectmember.SelectMemberBuddyListAdapter;
+import com.tencent.widget.BubblePopupWindow.OnDismissListener;
 
 public class ybj
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements BubblePopupWindow.OnDismissListener
 {
-  public ybj(ShortVideoPreviewActivity paramShortVideoPreviewActivity) {}
+  public ybj(SelectMemberBuddyListAdapter paramSelectMemberBuddyListAdapter) {}
   
-  public void onGlobalLayout()
-  {
-    this.a.e = this.a.a.getWidth();
-    this.a.f = this.a.a.getHeight();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "onGlobalLayout,mSurfaceViewWidth:" + this.a.e + ",mSurfaceViewHeight:" + this.a.f);
-    }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-  }
+  public void a() {}
 }
 
 

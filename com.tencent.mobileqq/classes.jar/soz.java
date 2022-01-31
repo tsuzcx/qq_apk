@@ -1,22 +1,14 @@
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
-import com.tencent.mobileqq.activity.FriendProfileImageModel;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ExtensionInfo;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
 
-public class soz
+class soz
   implements Runnable
 {
-  public soz(FriendProfileImageActivity paramFriendProfileImageActivity) {}
+  soz(soy paramsoy) {}
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = ((FriendsManager)this.a.app.getManager(50)).a(this.a.a.b);
-    if (localExtensionInfo != null) {
-      ThreadManager.getUIHandler().post(new spa(this, localExtensionInfo));
-    }
+    this.a.a.c();
+    this.a.a.O();
   }
 }
 

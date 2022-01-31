@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.transfile.dns;
 
-import aiea;
-import aieb;
-import aiec;
-import aied;
+import aisd;
+import aise;
+import aisf;
+import aisg;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -54,7 +54,7 @@ public class InnerDns
   extends QIPCModule
 {
   public static volatile InnerDns a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aiec(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new aisf(this);
   private String jdField_a_of_type_JavaLangString;
   private HashMap jdField_a_of_type_JavaUtilHashMap;
   private Random jdField_a_of_type_JavaUtilRandom = new Random();
@@ -83,8 +83,8 @@ public class InnerDns
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     return;
     label105:
-    QIPCClientHelper.getInstance().getClient().connect(new aiea(this));
-    QIPCClientHelper.getInstance().getClient().addListener(new aieb(this));
+    QIPCClientHelper.getInstance().getClient().connect(new aisd(this));
+    QIPCClientHelper.getInstance().getClient().addListener(new aise(this));
     Object localObject = new IntentFilter();
     ((IntentFilter)localObject).addAction("com.tencent.innerdns.domainAddressDataUpdateAction");
     try
@@ -366,7 +366,7 @@ public class InnerDns
   {
     if (this.b)
     {
-      ThreadManager.postImmediately(new aied(this), null, false);
+      ThreadManager.postImmediately(new aisg(this), null, false);
       return;
     }
     QLog.e("InnerDns", 1, "syncAddressData fail, ipc is not connected.");
@@ -717,7 +717,7 @@ public class InnerDns
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.dns.InnerDns
  * JD-Core Version:    0.7.0.1
  */

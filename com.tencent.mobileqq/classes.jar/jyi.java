@@ -1,24 +1,26 @@
-import com.tencent.av.app.VideoObserver;
-import com.tencent.av.ui.MultiVideoEnterPageActivity;
+import android.content.IntentFilter;
+import com.tencent.av.ui.PSTNC2CActivity;
 import com.tencent.qphone.base.util.QLog;
 
 public class jyi
-  extends VideoObserver
+  implements Runnable
 {
-  public jyi(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
+  public jyi(PSTNC2CActivity paramPSTNC2CActivity) {}
   
-  protected void a(long paramLong)
+  public void run()
   {
-    super.a(paramLong);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin:" + paramLong + ", mRelationId = " + this.a.jdField_a_of_type_Long);
-    }
-    if ((paramLong != 0L) && (paramLong == this.a.jdField_a_of_type_Long))
+    try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 2, "TYPE_NOTIFY_FINFISH_MULTI_VIDEO_ENTER_PAGE_ACTIVITY disscussUin matched");
-      }
-      MultiVideoEnterPageActivity.e(this.a);
+      this.a.a = new jyu(this.a);
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
+      this.a.registerReceiver(this.a.a, localIntentFilter);
+      return;
+    }
+    catch (Exception localException)
+    {
+      while (!QLog.isColorLevel()) {}
+      QLog.d("PSTNC2CActivity", 2, "Exception", localException);
     }
   }
 }

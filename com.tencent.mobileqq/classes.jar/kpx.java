@@ -1,18 +1,14 @@
 import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
+import android.widget.TextView;
 import com.tencent.biz.pubaccount.AccountDetail.adapter.AccountDetailBaseAdapter;
 
 public class kpx
-  implements Runnable
 {
-  public kpx(AccountDetailBaseAdapter paramAccountDetailBaseAdapter, kqp paramkqp, RelativeLayout.LayoutParams paramLayoutParams1, RelativeLayout.LayoutParams paramLayoutParams2, RelativeLayout.LayoutParams paramLayoutParams3) {}
+  public ImageView a;
+  public TextView a;
+  public TextView b;
   
-  public void run()
-  {
-    this.jdField_a_of_type_Kqp.b.setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
-    this.jdField_a_of_type_Kqp.c.setLayoutParams(this.b);
-    this.jdField_a_of_type_Kqp.d.setLayoutParams(this.c);
-  }
+  public kpx(AccountDetailBaseAdapter paramAccountDetailBaseAdapter) {}
 }
 
 

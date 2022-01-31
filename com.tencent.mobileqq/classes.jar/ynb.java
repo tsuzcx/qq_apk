@@ -1,38 +1,50 @@
-import com.tencent.TMG.sdk.AVContext;
-import com.tencent.TMG.sdk.AVRoomMulti;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import java.util.ArrayList;
+import com.tencent.mobileqq.apollo.ApolloEngine;
+import com.tencent.mobileqq.apollo.ApolloRender;
+import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.apollo.OnApolloViewListener;
+import com.tencent.mobileqq.apollo.task.ApolloActionManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class ynb
   implements Runnable
 {
-  public ynb(CmGameAvHandler paramCmGameAvHandler, Boolean paramBoolean) {}
+  private int jdField_a_of_type_Int;
+  
+  public ynb(ApolloTextureView paramApolloTextureView) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = ApolloTextureView.access$1101(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView);
+  }
   
   public void run()
   {
-    if (this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
-      if (CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler).size() > 0)
-      {
-        localObject = BaseApplicationImpl.getApplication().getRuntime();
-        if ((localObject == null) || (!(localObject instanceof QQAppInterface))) {
-          break label115;
-        }
-      }
-    }
-    label115:
-    for (Object localObject = (QQAppInterface)localObject;; localObject = null)
+    Object localObject1;
+    if (this.jdField_a_of_type_Int == ApolloTextureView.access$201(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView))
     {
-      if (localObject == null) {
-        return;
+      ApolloTextureView.access$302(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView, true);
+      ApolloTextureView.access$401(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView, 2);
+      localObject1 = ApolloActionManager.a();
+      QLog.d("ApolloLock", 2, "checkForLongPress");
+      localObject1 = ((ApolloActionManager)localObject1).a();
+      ((ReentrantLock)localObject1).lock();
+    }
+    try
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.mRender != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.mRender.getSavaWrapper() != null))
+      {
+        String str = this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView.mRender.getSavaWrapper().a(ApolloTextureView.access$500(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView), ApolloTextureView.access$601(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView) - ApolloTextureView.access$701(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView) - ApolloTextureView.access$800(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView));
+        if ((ApolloTextureView.access$900(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView) >= 0) && (ApolloTextureView.access$1000(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView) != null)) {
+          ApolloTextureView.access$1000(this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView).onNotifyLongTouch(str);
+        }
+        QLog.d("ApolloTextureView", 2, "surfaceView longclick node = " + str);
       }
-      localObject = ((QQAppInterface)localObject).c();
-      CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler, (String[])CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler).toArray(new String[CmGameAvHandler.a(this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler).size()]), (String)localObject);
       return;
-      AVManager.a(BaseApplicationImpl.getContext()).a().getRoom().cancelAllView(new ync(this));
-      return;
+    }
+    finally
+    {
+      ((ReentrantLock)localObject1).unlock();
     }
   }
 }

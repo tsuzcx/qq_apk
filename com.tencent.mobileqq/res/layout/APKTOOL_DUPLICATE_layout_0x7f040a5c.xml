@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="#fff7f7f4" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.qzone.widget.AvatarClickImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ef5" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021c9c" android:layout_width="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d076b" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d076b" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="12.0sp" android:textColor="#ff727272" android:ellipsize="end" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ef6" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2ef5" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <com.qzone.proxy.albumcomponent.widget.LoverHeaderCell android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2edf" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="7.0dip">
+        <View android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ee0" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c039d" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.qzone.proxy.albumcomponent.widget.BigPhotoView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ede" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ee1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="21.0dip" android:layout_marginBottom="5.0dip" android:layout_alignBottom="@id/APKTOOL_DUPLICATE_id_0x7f0a2ee0" android:layout_alignParentRight="true" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ee2" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="120.0dip">
+        <com.qzone.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2ee3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:scaleType="centerCrop" android:layout_centerInParent="true" />
+    </RelativeLayout>
+</LinearLayout>

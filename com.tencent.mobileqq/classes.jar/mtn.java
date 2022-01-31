@@ -1,29 +1,16 @@
-import com.tencent.biz.pubaccount.util.PreloadManager;
-import java.util.Iterator;
-import java.util.List;
+import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
+import com.tencent.biz.pubaccount.util.PublicAccountUtil;
 
 public class mtn
   implements Runnable
 {
-  public mtn(PreloadManager paramPreloadManager) {}
+  public mtn(SubscriptRecommendController paramSubscriptRecommendController) {}
   
   public void run()
   {
-    ??? = PreloadManager.a(this.a).iterator();
-    while (((Iterator)???).hasNext())
-    {
-      String str = (String)((Iterator)???).next();
-      PreloadManager.a(this.a, str);
-    }
-    synchronized (this.a.b)
-    {
-      PreloadManager.a(this.a).clear();
-      if (PreloadManager.b(this.a).size() > 0)
-      {
-        this.a.a();
-        return;
-      }
-      this.a.a = false;
+    this.a.jdField_a_of_type_Boolean = SubscriptRecommendController.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    if (PublicAccountUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+      this.a.jdField_a_of_type_Boolean = true;
     }
   }
 }

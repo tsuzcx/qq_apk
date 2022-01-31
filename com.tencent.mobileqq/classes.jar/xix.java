@@ -1,34 +1,52 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.widget.NewStyleDropdownView;
+import android.content.Intent;
+import android.os.Bundle;
+import android.text.TextUtils;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import mqq.os.MqqHandler;
 
 public class xix
-  implements TextWatcher
+  implements View.OnClickListener
 {
-  public xix(LoginView paramLoginView) {}
+  public xix(BannerManager paramBannerManager, Bundle paramBundle) {}
   
-  public void afterTextChanged(Editable paramEditable) {}
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
+  public void onClick(View paramView)
   {
-    if (paramCharSequence.length() > 0) {
-      if (this.a.b != null) {
-        this.a.b.setVisibility(0);
-      }
-    }
-    while (paramCharSequence.length() > 4)
+    if (BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager) != null)
     {
-      this.a.b(paramCharSequence.toString());
+      paramView = BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).obtainMessage(1134042);
+      BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).sendMessage(paramView);
+    }
+    paramView = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("activity");
+    if (!TextUtils.isEmpty(paramView)) {}
+    try
+    {
+      paramView = Class.forName(paramView);
+      if (paramView != null)
+      {
+        paramView = new Intent(BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).getApplicationContext(), paramView);
+        String str = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("action");
+        if (!TextUtils.isEmpty(str)) {
+          paramView.setAction(str);
+        }
+        str = (String)this.jdField_a_of_type_AndroidOsBundle.getCharSequence("category");
+        if (!TextUtils.isEmpty(str)) {
+          paramView.addCategory(str);
+        }
+        paramView.setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
+        BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).startActivity(paramView);
+      }
       return;
-      if ((this.a.b != null) && (this.a.b.isShown())) {
-        this.a.b.setVisibility(8);
+    }
+    catch (ClassNotFoundException paramView)
+    {
+      for (;;)
+      {
+        paramView = null;
       }
     }
-    this.a.a.a(false, null);
   }
 }
 

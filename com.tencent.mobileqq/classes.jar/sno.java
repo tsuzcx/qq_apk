@@ -1,35 +1,17 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.QZoneCover;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.widgets.InputDialog;
+import com.tencent.mobileqq.activity.ForwardFriendListActivity;
 
 public class sno
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public sno(FriendProfileCardActivity paramFriendProfileCardActivity) {}
+  public sno(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = ((FriendsManager)this.a.app.getManager(50)).a(this.a.app.getCurrentAccountUin());
-    if (localObject == null) {
-      this.a.j = "-1";
-    }
-    for (;;)
-    {
-      this.a.j = "-1";
-      return;
-      if (((Card)localObject).lCurrentStyleId == ProfileCardTemplate.a)
-      {
-        localObject = (QZoneCover)this.a.app.getEntityManagerFactory().createEntityManager().a(QZoneCover.class, this.a.app.getCurrentAccountUin());
-        if (localObject != null) {
-          this.a.j = ((QZoneCover)localObject).type;
-        }
-      }
-    }
+    ForwardFriendListActivity.a(this.a).dismiss();
+    ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
   }
 }
 

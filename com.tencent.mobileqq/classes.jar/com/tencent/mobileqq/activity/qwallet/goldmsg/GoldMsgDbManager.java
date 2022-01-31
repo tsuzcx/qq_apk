@@ -21,8 +21,8 @@ import java.util.List;
 import mqq.os.MqqHandler;
 import tencent.im.oidb.cmd0x857.TroopTips0x857.GoldMsgTipsElem;
 import tencent.im.oidb.cmd0x858.oidb_0x858.GoldMsgTipsElem;
-import xbm;
-import xbn;
+import xer;
+import xes;
 
 public class GoldMsgDbManager
 {
@@ -102,7 +102,7 @@ public class GoldMsgDbManager
   protected static void a()
   {
     jdField_a_of_type_Int = 1;
-    ThreadManager.post(new xbm(), 10, null, false);
+    ThreadManager.post(new xer(), 10, null, false);
   }
   
   public static void a(int paramInt, String paramString, TroopTips0x857.GoldMsgTipsElem paramGoldMsgTipsElem, oidb_0x858.GoldMsgTipsElem paramGoldMsgTipsElem1)
@@ -395,7 +395,7 @@ public class GoldMsgDbManager
   
   public static void a(ArrayList paramArrayList, boolean paramBoolean)
   {
-    ThreadManager.post(new xbn(paramBoolean, paramArrayList), 5, null, false);
+    ThreadManager.post(new xes(paramBoolean, paramArrayList), 5, null, false);
   }
   
   public static void b()

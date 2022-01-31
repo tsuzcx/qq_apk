@@ -16,9 +16,9 @@ import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
-import khe;
-import khf;
-import khg;
+import kgp;
+import kgq;
+import kgr;
 import mqq.os.MqqHandler;
 import org.json.JSONObject;
 
@@ -30,7 +30,7 @@ public class ScoreManager
   static
   {
     jdField_a_of_type_JavaLangString = AppConstants.aJ + "qav" + File.separator;
-    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new khg();
+    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new kgr();
   }
   
   public static long a(String paramString)
@@ -189,7 +189,7 @@ public class ScoreManager
   
   static void a(String paramString1, String paramString2, String paramString3)
   {
-    ThreadManager.getFileThreadHandler().post(new khe(paramString2, paramString3, paramString1));
+    ThreadManager.getFileThreadHandler().post(new kgp(paramString2, paramString3, paramString1));
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, ScoreManager.DownloadInfo paramDownloadInfo)
@@ -201,9 +201,9 @@ public class ScoreManager
     if (paramDownloadInfo == null) {
       return false;
     }
-    khf localkhf = new khf(paramDownloadInfo);
+    kgq localkgq = new kgq(paramDownloadInfo);
     HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = localkhf;
+    localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = localkgq;
     localHttpNetReq.jdField_a_of_type_JavaLangString = paramDownloadInfo.jdField_a_of_type_JavaLangString;
     localHttpNetReq.jdField_a_of_type_Int = 0;
     localHttpNetReq.c = paramDownloadInfo.c;

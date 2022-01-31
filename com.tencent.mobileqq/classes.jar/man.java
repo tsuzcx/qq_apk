@@ -1,18 +1,17 @@
+import android.animation.ObjectAnimator;
+import android.view.animation.ScaleAnimation;
+import android.widget.ImageView;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.widget.PopupMenuDialog.OnDismissListener;
 
 public class man
-  implements PopupMenuDialog.OnDismissListener
+  implements Runnable
 {
-  public man(VideoFeedsAdapter paramVideoFeedsAdapter, boolean paramBoolean) {}
+  public man(VideoFeedsAdapter paramVideoFeedsAdapter, ImageView paramImageView, ScaleAnimation paramScaleAnimation, ObjectAnimator paramObjectAnimator) {}
   
-  public void a()
+  public void run()
   {
-    VideoFeedsAdapter.d(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter, false);
-    if ((VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter) != null) && (this.jdField_a_of_type_Boolean)) {
-      VideoFeedsAdapter.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsAdapter).a();
-    }
+    this.jdField_a_of_type_AndroidWidgetImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
+    this.jdField_a_of_type_AndroidAnimationObjectAnimator.start();
   }
 }
 

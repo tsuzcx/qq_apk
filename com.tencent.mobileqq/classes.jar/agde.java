@@ -1,23 +1,22 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.widget.EditText;
+import com.tencent.mobileqq.ocr.ui.OCRTextSearchActivity;
 
-class agde
-  implements Runnable
+public class agde
+  implements TextWatcher
 {
-  agde(agdd paramagdd, Bitmap paramBitmap) {}
+  private agde(OCRTextSearchActivity paramOCRTextSearchActivity) {}
   
-  public void run()
+  public void afterTextChanged(Editable paramEditable)
   {
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_Agdd.a.a.get("map_key_face");
-    if ((localImageView != null) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null))
-    {
-      QLog.d("Q.qqhead.freq", 1, "ProfileHeaderView updateAvatar, bitmap: " + this.jdField_a_of_type_AndroidGraphicsBitmap);
-      localImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    }
+    paramEditable = this.a.a.getText().toString();
+    this.a.b(paramEditable);
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

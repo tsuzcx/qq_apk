@@ -1,14 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
-class rqm
-  implements DialogInterface.OnClickListener
+public class rqm
+  implements Runnable
 {
-  rqm(rqk paramrqk) {}
+  public rqm(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    this.a.a.setSelection(0);
   }
 }
 

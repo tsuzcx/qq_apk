@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search;
 
-import ahco;
-import ahcp;
-import ahcq;
+import ahqq;
+import ahqr;
+import ahqs;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -35,13 +35,13 @@ public class ContentRecommendModel$ContentRecommendListAdapter
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
-  private void a(int paramInt, ahcq paramahcq, ContentRecommendDataModel.ContentRecommendItem paramContentRecommendItem)
+  private void a(int paramInt, ahqs paramahqs, ContentRecommendDataModel.ContentRecommendItem paramContentRecommendItem)
   {
     ColorDrawable localColorDrawable = new ColorDrawable();
     URLDrawable.URLDrawableOptions localURLDrawableOptions;
     if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
     {
-      localColorDrawable.setColor(this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel.a.getResources().getColor(2131492955));
+      localColorDrawable.setColor(this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel.a.getResources().getColor(2131492956));
       localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       localURLDrawableOptions.mFailedDrawable = localColorDrawable;
       localURLDrawableOptions.mLoadingDrawable = localColorDrawable;
@@ -54,65 +54,65 @@ public class ContentRecommendModel$ContentRecommendListAdapter
       if (!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
         break label626;
       }
-      paramahcq.jdField_b_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#040E1C"));
-      paramahcq.jdField_e_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#5F6062"));
-      paramahcq.g.setTextColor(Color.parseColor("#5F6062"));
-      paramahcq.jdField_c_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#040E1C"));
+      paramahqs.jdField_b_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#040E1C"));
+      paramahqs.jdField_e_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#5F6062"));
+      paramahqs.g.setTextColor(Color.parseColor("#5F6062"));
+      paramahqs.jdField_c_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#040E1C"));
       return;
-      localColorDrawable.setColor(this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel.a.getResources().getColor(2131492954));
+      localColorDrawable.setColor(this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel.a.getResources().getColor(2131492955));
       break;
-      paramahcq.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramahcq.jdField_c_of_type_AndroidWidgetTextView.setText(paramContentRecommendItem.e);
-      paramahcq.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-      paramahcq.jdField_e_of_type_AndroidWidgetTextView.setText(paramContentRecommendItem.g);
-      paramahcq.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-      paramahcq.jdField_e_of_type_AndroidViewView.setVisibility(0);
-      paramahcq.jdField_f_of_type_AndroidViewView.setVisibility(8);
+      paramahqs.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramahqs.jdField_c_of_type_AndroidWidgetTextView.setText(paramContentRecommendItem.e);
+      paramahqs.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramahqs.jdField_e_of_type_AndroidWidgetTextView.setText(paramContentRecommendItem.g);
+      paramahqs.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramahqs.jdField_e_of_type_AndroidViewView.setVisibility(0);
+      paramahqs.jdField_f_of_type_AndroidViewView.setVisibility(8);
       if (paramContentRecommendItem.jdField_a_of_type_JavaUtilList.size() >= 3)
       {
-        paramahcq.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(URLDrawable.getDrawable((String)paramContentRecommendItem.jdField_a_of_type_JavaUtilList.get(0), localURLDrawableOptions));
-        paramahcq.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(URLDrawable.getDrawable((String)paramContentRecommendItem.jdField_a_of_type_JavaUtilList.get(1), localURLDrawableOptions));
-        paramahcq.jdField_c_of_type_ComTencentImageURLImageView.setImageDrawable(URLDrawable.getDrawable((String)paramContentRecommendItem.jdField_a_of_type_JavaUtilList.get(2), localURLDrawableOptions));
+        paramahqs.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(URLDrawable.getDrawable((String)paramContentRecommendItem.jdField_a_of_type_JavaUtilList.get(0), localURLDrawableOptions));
+        paramahqs.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(URLDrawable.getDrawable((String)paramContentRecommendItem.jdField_a_of_type_JavaUtilList.get(1), localURLDrawableOptions));
+        paramahqs.jdField_c_of_type_ComTencentImageURLImageView.setImageDrawable(URLDrawable.getDrawable((String)paramContentRecommendItem.jdField_a_of_type_JavaUtilList.get(2), localURLDrawableOptions));
       }
       else
       {
-        paramahcq.jdField_e_of_type_AndroidViewView.setVisibility(8);
+        paramahqs.jdField_e_of_type_AndroidViewView.setVisibility(8);
         continue;
-        paramahcq.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-        paramahcq.jdField_e_of_type_AndroidViewView.setVisibility(8);
-        paramahcq.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-        paramahcq.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
-        paramahcq.jdField_f_of_type_AndroidViewView.setVisibility(0);
-        paramahcq.jdField_f_of_type_AndroidWidgetTextView.setText(paramContentRecommendItem.e);
-        paramahcq.g.setText(paramContentRecommendItem.g);
-        paramahcq.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-        paramahcq.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getDrawable((String)paramContentRecommendItem.jdField_a_of_type_JavaUtilList.get(0), localURLDrawableOptions));
+        paramahqs.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+        paramahqs.jdField_e_of_type_AndroidViewView.setVisibility(8);
+        paramahqs.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+        paramahqs.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
+        paramahqs.jdField_f_of_type_AndroidViewView.setVisibility(0);
+        paramahqs.jdField_f_of_type_AndroidWidgetTextView.setText(paramContentRecommendItem.e);
+        paramahqs.g.setText(paramContentRecommendItem.g);
+        paramahqs.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+        paramahqs.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getDrawable((String)paramContentRecommendItem.jdField_a_of_type_JavaUtilList.get(0), localURLDrawableOptions));
         continue;
-        paramahcq.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-        paramahcq.jdField_e_of_type_AndroidViewView.setVisibility(8);
-        paramahcq.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-        paramahcq.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
-        paramahcq.jdField_f_of_type_AndroidViewView.setVisibility(0);
-        paramahcq.jdField_f_of_type_AndroidWidgetTextView.setText(paramContentRecommendItem.e);
-        paramahcq.g.setText(paramContentRecommendItem.g);
-        paramahcq.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-        paramahcq.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getDrawable((String)paramContentRecommendItem.jdField_a_of_type_JavaUtilList.get(0), localURLDrawableOptions));
+        paramahqs.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+        paramahqs.jdField_e_of_type_AndroidViewView.setVisibility(8);
+        paramahqs.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
+        paramahqs.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
+        paramahqs.jdField_f_of_type_AndroidViewView.setVisibility(0);
+        paramahqs.jdField_f_of_type_AndroidWidgetTextView.setText(paramContentRecommendItem.e);
+        paramahqs.g.setText(paramContentRecommendItem.g);
+        paramahqs.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+        paramahqs.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable(URLDrawable.getDrawable((String)paramContentRecommendItem.jdField_a_of_type_JavaUtilList.get(0), localURLDrawableOptions));
         continue;
-        paramahcq.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-        paramahcq.jdField_c_of_type_AndroidWidgetTextView.setText(paramContentRecommendItem.e);
-        paramahcq.jdField_d_of_type_AndroidWidgetTextView.setText(paramContentRecommendItem.f);
-        paramahcq.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
-        paramahcq.jdField_e_of_type_AndroidWidgetTextView.setText(paramContentRecommendItem.g);
-        paramahcq.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
-        paramahcq.jdField_e_of_type_AndroidViewView.setVisibility(8);
-        paramahcq.jdField_f_of_type_AndroidViewView.setVisibility(8);
+        paramahqs.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramahqs.jdField_c_of_type_AndroidWidgetTextView.setText(paramContentRecommendItem.e);
+        paramahqs.jdField_d_of_type_AndroidWidgetTextView.setText(paramContentRecommendItem.f);
+        paramahqs.jdField_e_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramahqs.jdField_e_of_type_AndroidWidgetTextView.setText(paramContentRecommendItem.g);
+        paramahqs.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
+        paramahqs.jdField_e_of_type_AndroidViewView.setVisibility(8);
+        paramahqs.jdField_f_of_type_AndroidViewView.setVisibility(8);
       }
     }
     label626:
-    paramahcq.jdField_b_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#F7F7F8"));
-    paramahcq.jdField_e_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#BBBBBB"));
-    paramahcq.g.setTextColor(Color.parseColor("#BBBBBB"));
-    paramahcq.jdField_c_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#DEDFE0"));
+    paramahqs.jdField_b_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#F7F7F8"));
+    paramahqs.jdField_e_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#BBBBBB"));
+    paramahqs.g.setTextColor(Color.parseColor("#BBBBBB"));
+    paramahqs.jdField_c_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#DEDFE0"));
   }
   
   public void a(List paramList)
@@ -155,26 +155,26 @@ public class ContentRecommendModel$ContentRecommendListAdapter
     if (paramView == null)
     {
       paramView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel.a).inflate(2130968824, paramViewGroup, false);
-      paramViewGroup = new ahcq(this);
-      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363938);
-      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363937);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363939));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363360));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363940));
-      paramViewGroup.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131363926);
-      paramViewGroup.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131363925);
-      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((EllipsizingTextView)paramView.findViewById(2131363927));
-      paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((EllipsizingTextView)paramView.findViewById(2131363935));
-      paramViewGroup.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363936));
-      paramViewGroup.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131363932);
-      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131363678));
-      paramViewGroup.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131363933));
-      paramViewGroup.jdField_c_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131363934));
-      paramViewGroup.jdField_f_of_type_AndroidViewView = paramView.findViewById(2131363928);
-      paramViewGroup.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363930));
-      paramViewGroup.g = ((TextView)paramView.findViewById(2131363931));
-      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362749));
-      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363526));
+      paramViewGroup = new ahqs(this);
+      paramViewGroup.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131363961);
+      paramViewGroup.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363960);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363962));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363378));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363963));
+      paramViewGroup.jdField_d_of_type_AndroidViewView = paramView.findViewById(2131363949);
+      paramViewGroup.jdField_c_of_type_AndroidViewView = paramView.findViewById(2131363948);
+      paramViewGroup.jdField_c_of_type_AndroidWidgetTextView = ((EllipsizingTextView)paramView.findViewById(2131363950));
+      paramViewGroup.jdField_d_of_type_AndroidWidgetTextView = ((EllipsizingTextView)paramView.findViewById(2131363958));
+      paramViewGroup.jdField_e_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363959));
+      paramViewGroup.jdField_e_of_type_AndroidViewView = paramView.findViewById(2131363955);
+      paramViewGroup.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131363701));
+      paramViewGroup.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131363956));
+      paramViewGroup.jdField_c_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131363957));
+      paramViewGroup.jdField_f_of_type_AndroidViewView = paramView.findViewById(2131363951);
+      paramViewGroup.jdField_f_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363953));
+      paramViewGroup.g = ((TextView)paramView.findViewById(2131363954));
+      paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362767));
+      paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363544));
       paramView.setTag(paramViewGroup);
       localContentRecommendItem = (ContentRecommendDataModel.ContentRecommendItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
       if (localContentRecommendItem != null)
@@ -184,7 +184,7 @@ public class ContentRecommendModel$ContentRecommendListAdapter
         if (!ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
           break label495;
         }
-        ((ColorDrawable)localObject).setColor(this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel.a.getResources().getColor(2131492955));
+        ((ColorDrawable)localObject).setColor(this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel.a.getResources().getColor(2131492956));
       }
     }
     for (;;)
@@ -199,13 +199,13 @@ public class ContentRecommendModel$ContentRecommendListAdapter
       paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localContentRecommendItem.jdField_a_of_type_JavaLangString);
       paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setText(localContentRecommendItem.c);
       a(localContentRecommendItem.jdField_a_of_type_Int, paramViewGroup, localContentRecommendItem);
-      paramViewGroup.jdField_a_of_type_AndroidViewView.setOnClickListener(new ahco(this, paramViewGroup));
-      paramViewGroup.jdField_d_of_type_AndroidViewView.setOnClickListener(new ahcp(this, paramViewGroup));
+      paramViewGroup.jdField_a_of_type_AndroidViewView.setOnClickListener(new ahqq(this, paramViewGroup));
+      paramViewGroup.jdField_d_of_type_AndroidViewView.setOnClickListener(new ahqr(this, paramViewGroup));
       return paramView;
-      paramViewGroup = (ahcq)paramView.getTag();
+      paramViewGroup = (ahqs)paramView.getTag();
       break;
       label495:
-      ((ColorDrawable)localObject).setColor(this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel.a.getResources().getColor(2131492954));
+      ((ColorDrawable)localObject).setColor(this.jdField_a_of_type_ComTencentMobileqqSearchContentRecommendModel.a.getResources().getColor(2131492955));
     }
   }
 }

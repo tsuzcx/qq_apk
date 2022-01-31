@@ -1,25 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.open.agent.BindGroupActivity;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.mobileqq.vipgift.VipGiftManager;
 
-class akll
-  implements DialogInterface.OnClickListener
+public class akll
+  implements AsyncBack
 {
-  akll(aklk paramaklk) {}
+  public akll(VipGiftManager paramVipGiftManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    if (paramInt == 1)
-    {
-      this.a.a.a.a.cancel();
-      this.a.a.a.finish();
-    }
-  }
+  public void a(int paramInt) {}
+  
+  public void a(String paramString, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akll
  * JD-Core Version:    0.7.0.1
  */

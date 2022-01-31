@@ -1,15 +1,17 @@
-import com.tencent.biz.pubaccount.readinjoy.model.ChannelCoverInfoModule;
-import com.tencent.biz.pubaccount.readinjoy.struct.ChannelCoverInfo;
+import com.tencent.biz.pubaccount.readinjoy.model.ArticleReadInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleReadInfo;
 import com.tencent.mobileqq.persistence.EntityManager;
+import java.util.List;
 
 public class lqj
   implements Runnable
 {
-  public lqj(ChannelCoverInfoModule paramChannelCoverInfoModule, ChannelCoverInfo paramChannelCoverInfo) {}
+  public lqj(ArticleReadInfoModule paramArticleReadInfoModule) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelChannelCoverInfoModule.a.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructChannelCoverInfo);
+    List localList = this.a.a.a(ArticleReadInfo.class, true, null, null, null, null, null, null);
+    ArticleReadInfoModule.a(this.a, localList);
   }
 }
 

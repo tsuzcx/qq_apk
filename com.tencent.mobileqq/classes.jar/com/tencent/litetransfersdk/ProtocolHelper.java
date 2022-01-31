@@ -33,11 +33,11 @@ import java.util.Iterator;
 import java.util.List;
 import org.json.JSONException;
 import org.json.JSONObject;
-import ras;
-import rat;
-import rau;
-import rav;
-import raw;
+import rdi;
+import rdj;
+import rdk;
+import rdl;
+import rdm;
 import tencent.im.cs.cmd0x346.cmd0x346.ApplyCopyToReq;
 import tencent.im.cs.cmd0x346.cmd0x346.ApplyCopyToRsp;
 import tencent.im.cs.cmd0x346.cmd0x346.ApplyDownloadReq;
@@ -1297,7 +1297,7 @@ public class ProtocolHelper
       FMToastUtil.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131427559));
       return;
     }
-    new Handler(localLooper).post(new ras(this, paramString));
+    new Handler(localLooper).post(new rdi(this, paramString));
   }
   
   public void showFileNotExistDialog(String paramString)
@@ -1308,7 +1308,7 @@ public class ProtocolHelper
       FMToastUtil.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131427516));
       return;
     }
-    new Handler(localLooper).post(new rau(this, paramString));
+    new Handler(localLooper).post(new rdk(this, paramString));
   }
   
   public void showFileTooLargeDialog(String paramString)
@@ -1319,7 +1319,7 @@ public class ProtocolHelper
       FMToastUtil.a("'" + paramString + "'" + BaseApplication.getContext().getResources().getString(2131427561));
       return;
     }
-    new Handler(localLooper).post(new rat(this, paramString));
+    new Handler(localLooper).post(new rdj(this, paramString));
   }
   
   public void showNoNetworkDialog()
@@ -1330,7 +1330,7 @@ public class ProtocolHelper
       FMToastUtil.a(2131427563);
       return;
     }
-    new Handler(localLooper).post(new raw(this));
+    new Handler(localLooper).post(new rdm(this));
   }
   
   public void showQQIsOfflineDialog()
@@ -1341,7 +1341,7 @@ public class ProtocolHelper
       FMToastUtil.a(2131427562);
       return;
     }
-    new Handler(localLooper).post(new rav(this));
+    new Handler(localLooper).post(new rdl(this));
   }
 }
 

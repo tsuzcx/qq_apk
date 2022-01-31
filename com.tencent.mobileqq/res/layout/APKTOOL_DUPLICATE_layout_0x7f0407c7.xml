@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/APKTOOL_DUPLICATE_style_0x7f0e02ca"
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0097"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a24c1" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021655" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02cb" />
-    <com.tencent.mobileqq.redtouch.RedTouchTextView android:id="@id/item_txt" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b24d9" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02cc" />
-    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a14" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02ce" />
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1caf" android:visibility="invisible" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021f12" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02cd" />
+    <View android:id="@id/icon" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0215ae" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0281" />
+    <com.tencent.mobileqq.widget.StatableSpanTextView android:ellipsize="end" android:id="@id/info" android:maxLines="2" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0282" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0673" style="@style/APKTOOL_DUPLICATE_style_0x7f0e0284" />
 </LinearLayout>

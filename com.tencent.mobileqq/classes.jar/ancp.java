@@ -1,24 +1,36 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.view.ViewGroup;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoButton;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.webviewplugin.QzoneDynamicAlbumPlugin;
+import java.util.List;
 
 public class ancp
-  extends AnimatorListenerAdapter
+  implements Runnable
 {
-  public ancp(EditVideoButton paramEditVideoButton) {}
+  public ancp(QzoneDynamicAlbumPlugin paramQzoneDynamicAlbumPlugin, List paramList, String[] paramArrayOfString) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    EditVideoButton.b(this.a).setVisibility(8);
-    EditVideoButton.c(this.a).setVisibility(8);
-    EditVideoButton.d(this.a).setVisibility(8);
-    EditVideoButton.a(this.a, EditVideoButton.a(this.a));
+    int i = 0;
+    if (i < this.jdField_a_of_type_JavaUtilList.size())
+    {
+      if (this.jdField_a_of_type_JavaUtilList.get(i) == null) {}
+      for (;;)
+      {
+        i += 1;
+        break;
+        if (!QzoneDynamicAlbumPlugin.a(BaseApplicationImpl.getContext(), (String)this.jdField_a_of_type_JavaUtilList.get(i), this.jdField_a_of_type_ArrayOfJavaLangString[i], QzoneDynamicAlbumPlugin.b()[0], QzoneDynamicAlbumPlugin.b()[1])) {
+          QLog.i("QZLog", 2, "DynamicQzoneDynamicAlbumPlugin compress failed! ");
+        }
+      }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QZLog", 2, "DynamicQzoneDynamicAlbumPlugin compress all done  ");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ancp
  * JD-Core Version:    0.7.0.1
  */

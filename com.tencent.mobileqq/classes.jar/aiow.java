@@ -1,22 +1,18 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.troop.data.TroopAioNewMessageBar;
+import com.tencent.mobileqq.transfile.C2CPicUploadProcessor;
 
-public class aiow
-  extends Handler
+class aiow
+  implements Runnable
 {
-  public aiow(TroopAioNewMessageBar paramTroopAioNewMessageBar) {}
+  aiow(aiov paramaiov, long paramLong1, long paramLong2, long paramLong3, long paramLong4) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    if ((paramMessage.what == TroopAioNewMessageBar.j) && (TroopAioNewMessageBar.e == this.a.k)) {
-      TroopAioNewMessageBar.a(this.a);
-    }
+    this.jdField_a_of_type_Aiov.a.a(this.jdField_a_of_type_Long, this.b, this.c, this.d, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiow
  * JD-Core Version:    0.7.0.1
  */

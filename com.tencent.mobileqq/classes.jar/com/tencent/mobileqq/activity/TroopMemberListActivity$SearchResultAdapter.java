@@ -65,7 +65,7 @@ public class TroopMemberListActivity$SearchResultAdapter
     if (paramView == null) {
       if (i == 0)
       {
-        paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971632, paramViewGroup, false);
+        paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971680, paramViewGroup, false);
         paramView = new TroopMemberListActivity.TmViewHolder(paramViewGroup, false);
         paramViewGroup.setTag(paramView);
         localObject = paramView;
@@ -95,7 +95,7 @@ public class TroopMemberListActivity$SearchResultAdapter
         paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
       }
       return paramView;
-      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971634, paramViewGroup, false);
+      paramViewGroup = this.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130971682, paramViewGroup, false);
       paramView = new TroopMemberListActivity.TmViewHolder(paramViewGroup, true);
       break;
       paramViewGroup = (TroopMemberListActivity.TmViewHolder)paramView.getTag();

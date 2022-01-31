@@ -1,22 +1,26 @@
-import cooperation.qzone.webviewplugin.QzoneUploadPlugin;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.utils.QQCustomDialog;
+import cooperation.qlink.QQProxyForQlink;
 
 public class amnd
+  extends BroadcastReceiver
 {
-  public int a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
+  public amnd(QQProxyForQlink paramQQProxyForQlink) {}
   
-  public amnd(QzoneUploadPlugin paramQzoneUploadPlugin, int paramInt)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.jdField_a_of_type_Int = paramInt;
+    if (("com.tencent.qlink.finishworkingdlg".equalsIgnoreCase(paramIntent.getAction())) && (QQProxyForQlink.a(this.a) != null))
+    {
+      QQProxyForQlink.a(this.a).dismiss();
+      QQProxyForQlink.a(this.a, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amnd
  * JD-Core Version:    0.7.0.1
  */

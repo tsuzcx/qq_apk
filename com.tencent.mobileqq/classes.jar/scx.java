@@ -1,36 +1,44 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.Conversation;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.ChatSettingForTroop;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
-import com.tencent.mobileqq.utils.SharedPreUtils;
-import com.tencent.qphone.base.util.QLog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.data.TroopMemberInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
+import com.tencent.mobileqq.troopinfo.TroopInfoData;
+import com.tencent.mobileqq.util.Utils;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
-class scx
+public class scx
   implements Runnable
 {
-  scx(scu paramscu) {}
+  public scx(ChatSettingForTroop paramChatSettingForTroop) {}
   
   public void run()
   {
-    long l = SharedPreUtils.a(this.a.a.a.getApplication(), this.a.a.a.getCurrentAccountUin());
-    if (System.currentTimeMillis() - l >= 86400000L)
+    Object localObject1 = null;
+    if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData == null) || (this.a.jdField_a_of_type_AndroidOsHandler == null)) {}
+    do
     {
-      localUpgradeTIMWrapper = UpgradeTIMWrapper.a();
-      if (localUpgradeTIMWrapper != null)
+      return;
+      localObject2 = this.a.app.getEntityManagerFactory().createEntityManager();
+      if (localObject2 != null)
       {
-        localMessage = this.a.a.b.obtainMessage(1134045);
-        localMessage.obj = localUpgradeTIMWrapper;
-        this.a.a.a(new scy(this, localMessage));
+        localObject1 = ((EntityManager)localObject2).a(TroopMemberInfo.class, false, "troopuin=? ", new String[] { this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin }, null, null, null, null);
+        ((EntityManager)localObject2).a();
+      }
+    } while (localObject1 == null);
+    Object localObject2 = new ArrayList(((List)localObject1).size());
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      TroopMemberInfo localTroopMemberInfo = (TroopMemberInfo)((Iterator)localObject1).next();
+      if (Utils.d(localTroopMemberInfo.memberuin)) {
+        ((ArrayList)localObject2).add(localTroopMemberInfo.memberuin);
       }
     }
-    while (!QLog.isColorLevel())
-    {
-      UpgradeTIMWrapper localUpgradeTIMWrapper;
-      Message localMessage;
-      return;
-    }
-    QLog.e("UpgradeTIMWrapper", 2, "Conversation onReceiveShowTIMUpgradeTips smaller than 24 hours");
+    this.a.jdField_a_of_type_AndroidOsHandler.post(new scy(this, (ArrayList)localObject2));
   }
 }
 

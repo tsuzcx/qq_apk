@@ -6,7 +6,7 @@ import android.os.IBinder;
 import android.os.IInterface;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
-import jni;
+import jmt;
 
 public abstract class IQQServiceCallback$Stub
   extends Binder
@@ -26,7 +26,7 @@ public abstract class IQQServiceCallback$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IQQServiceCallback))) {
       return (IQQServiceCallback)localIInterface;
     }
-    return new jni(paramIBinder);
+    return new jmt(paramIBinder);
   }
   
   public IBinder asBinder()

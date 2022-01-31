@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.utils;
 
-import ajng;
+import akbl;
+import akbm;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.IntentFilter;
@@ -13,26 +14,35 @@ import android.media.AudioManager;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.os.Looper;
+import android.os.Process;
 import android.os.SystemClock;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
+import android.util.DisplayMetrics;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import com.tencent.av.core.VcSystemInfo;
 import com.tencent.av.utils.TintStateDrawable;
 import com.tencent.beacon.event.UserAction;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.aio.AudioPlayer;
 import com.tencent.mobileqq.app.DeviceProfileManager;
 import com.tencent.mobileqq.app.DeviceProfileManager.AccountDpcManager.DpcAccountNames;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.immersive.ImmersiveUtils;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import mqq.app.MobileQQ;
+import mqq.os.MqqHandler;
 
 public class AudioHelper
 {
@@ -42,16 +52,17 @@ public class AudioHelper
   public static boolean a;
   public static final int[] a;
   private static AudioHelper.AudioPlayerParameter[] jdField_a_of_type_ArrayOfComTencentMobileqqUtilsAudioHelper$AudioPlayerParameter;
+  private static long jdField_b_of_type_Long;
   public static boolean b;
-  private static final int[] b = { 35, 36 };
+  private static final int[] jdField_b_of_type_ArrayOfInt = { 35, 36 };
   private static boolean jdField_c_of_type_Boolean;
   private static final int[] jdField_c_of_type_ArrayOfInt = { 26, 27 };
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[9];
+    jdField_a_of_type_ArrayOfInt = new int[13];
     int i = 0;
-    while (i < 9)
+    while (i < 13)
     {
       jdField_a_of_type_ArrayOfInt[i] = -1000;
       i += 1;
@@ -65,7 +76,7 @@ public class AudioHelper
     }
     if (jdField_a_of_type_ArrayOfInt[paramInt] == -1000)
     {
-      SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("debugconfig", 0);
+      SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("debugconfig_" + jdField_b_of_type_Long, 0);
       jdField_a_of_type_ArrayOfInt[paramInt] = localSharedPreferences.getInt("debugvalue" + paramInt, -1);
       QLog.w("AudioHelper", 1, "getDebugValue, [" + paramInt + "]=[" + jdField_a_of_type_ArrayOfInt[paramInt] + "]");
     }
@@ -85,31 +96,31 @@ public class AudioHelper
     // Byte code:
     //   0: ldc 2
     //   2: monitorenter
-    //   3: getstatic 86	com/tencent/mobileqq/utils/AudioHelper:jdField_c_of_type_Boolean	Z
+    //   3: getstatic 91	com/tencent/mobileqq/utils/AudioHelper:jdField_c_of_type_Boolean	Z
     //   6: ifne +27 -> 33
-    //   9: getstatic 88	com/tencent/mobileqq/utils/AudioHelper:jdField_a_of_type_Int	I
+    //   9: getstatic 93	com/tencent/mobileqq/utils/AudioHelper:jdField_a_of_type_Int	I
     //   12: iconst_3
     //   13: if_icmpge +20 -> 33
-    //   16: getstatic 88	com/tencent/mobileqq/utils/AudioHelper:jdField_a_of_type_Int	I
+    //   16: getstatic 93	com/tencent/mobileqq/utils/AudioHelper:jdField_a_of_type_Int	I
     //   19: iconst_1
     //   20: iadd
-    //   21: putstatic 88	com/tencent/mobileqq/utils/AudioHelper:jdField_a_of_type_Int	I
+    //   21: putstatic 93	com/tencent/mobileqq/utils/AudioHelper:jdField_a_of_type_Int	I
     //   24: aload_0
-    //   25: ldc 90
-    //   27: invokestatic 96	com/tencent/commonsdk/soload/SoLoadUtilNew:loadSoByName	(Landroid/content/Context;Ljava/lang/String;)Z
-    //   30: putstatic 86	com/tencent/mobileqq/utils/AudioHelper:jdField_c_of_type_Boolean	Z
-    //   33: getstatic 86	com/tencent/mobileqq/utils/AudioHelper:jdField_c_of_type_Boolean	Z
+    //   25: ldc 95
+    //   27: invokestatic 101	com/tencent/commonsdk/soload/SoLoadUtilNew:loadSoByName	(Landroid/content/Context;Ljava/lang/String;)Z
+    //   30: putstatic 91	com/tencent/mobileqq/utils/AudioHelper:jdField_c_of_type_Boolean	Z
+    //   33: getstatic 91	com/tencent/mobileqq/utils/AudioHelper:jdField_c_of_type_Boolean	Z
     //   36: ifeq +17 -> 53
     //   39: aload_1
     //   40: iload_2
     //   41: fload_3
-    //   42: invokestatic 100	com/tencent/mobileqq/utils/AudioHelper:enlargeVolum	([BIF)J
+    //   42: invokestatic 105	com/tencent/mobileqq/utils/AudioHelper:enlargeVolum	([BIF)J
     //   45: lstore 4
     //   47: ldc 2
     //   49: monitorexit
     //   50: lload 4
     //   52: lreturn
-    //   53: ldc2_w 101
+    //   53: ldc2_w 106
     //   56: lstore 4
     //   58: goto -11 -> 47
     //   61: astore_0
@@ -218,6 +229,23 @@ public class AudioHelper
     return paramAudioPlayerParameter;
   }
   
+  public static String a(AppInterface paramAppInterface)
+  {
+    if (paramAppInterface == null)
+    {
+      QLog.d("AudioHelper", 1, "BaseInfo, AppInterface is empty");
+      return "BaseInfo, AppInterface is empty";
+    }
+    if (VcSystemInfo.f() <= 2) {}
+    for (boolean bool = true;; bool = false)
+    {
+      DisplayMetrics localDisplayMetrics = paramAppInterface.getApp().getResources().getDisplayMetrics();
+      paramAppInterface = "BaseInfo, APPID[" + AppSetting.jdField_a_of_type_Int + "], \nUIN[" + paramAppInterface.getAccount() + "], \nisPublicVersion[" + true + "], \nisGrayVersion[" + false + "], \nisDebugVersion[" + false + "], \nquaMainVersion[" + "2013 7.6.3" + "], \nlogLevel[" + QLog.getUIN_REPORTLOG_LEVEL() + "], \nisDevelopLevel[" + QLog.isDevelopLevel() + "], \nisColorLevel[" + QLog.isColorLevel() + "], \nisSupporImmersive[" + ImmersiveUtils.isSupporImmersive() + "], \nStatusBarHeight[" + ImmersiveUtils.a(paramAppInterface.getApp()) + "], \naboutSubVersionLog[" + "7.6.3.3560.2018-05-25.r349884.GuanWang" + "], \ngetQUA[" + a(AppSetting.b()) + "], \nMANUFACTURER[" + Build.MANUFACTURER + "], \nMODEL[" + Build.MODEL + "], \ndevicesInfo[" + AppSetting.b + "], \ndisplayMetrics[" + localDisplayMetrics + "], \ndensity[" + localDisplayMetrics.density + "], \ndensityDpi[" + localDisplayMetrics.densityDpi + "], \ndevVersion[" + Build.VERSION.INCREMENTAL + "], \nsdkVersion[" + Build.VERSION.SDK_INT + "], \nCpuArchitecture[" + VcSystemInfo.f() + "], \nSystemTotalMemory[" + DeviceInfoUtil.e() + "], \nCupNumCores[" + VcSystemInfo.e() + "], \nMaxCpuFreq[" + VcSystemInfo.c() + "], \nbArm6[" + bool + "], \nCPU_ABI[" + Build.CPU_ABI + "], \nCPU_ABI2[" + Build.CPU_ABI2 + "], \nsProcessId[" + BaseApplicationImpl.sProcessId + "], \nprocessName[" + BaseApplicationImpl.processName + "], \nUIThread[" + ThreadManager.getUIHandler().getLooper().getThread().getId() + "], \nCurThread[" + Thread.currentThread().getId() + "], \ntid[" + Process.myTid() + "]";
+      QLog.d("AudioHelper", 1, paramAppInterface);
+      return paramAppInterface;
+    }
+  }
+  
   public static String a(Object paramObject)
   {
     if (d()) {
@@ -233,6 +261,20 @@ public class AudioHelper
   {
     String str = "!@$#_" + paramInt + "_";
     PreferenceManager.getDefaultSharedPreferences(MobileQQ.getContext()).edit().putInt(str + "m", paramAudioPlayerParameter.jdField_a_of_type_Int).putInt(str + "s", paramAudioPlayerParameter.b).putBoolean(str + "so", paramAudioPlayerParameter.jdField_a_of_type_Boolean).commit();
+  }
+  
+  public static void a(long paramLong)
+  {
+    if (jdField_b_of_type_Long != paramLong)
+    {
+      jdField_b_of_type_Long = paramLong;
+      int i = 0;
+      while (i < 13)
+      {
+        jdField_a_of_type_ArrayOfInt[i] = -1000;
+        i += 1;
+      }
+    }
   }
   
   public static void a(Context paramContext)
@@ -272,10 +314,10 @@ public class AudioHelper
   {
     if (paramBoolean)
     {
-      a(paramResources, paramTextView, paramInt, 2131494061, 2131494062);
+      a(paramResources, paramTextView, paramInt, 2131494067, 2131494068);
       return;
     }
-    a(paramResources, paramTextView, paramInt, 2131494053, 2131494054);
+    a(paramResources, paramTextView, paramInt, 2131494059, 2131494060);
   }
   
   public static void a(ImageButton paramImageButton, int paramInt1, int paramInt2)
@@ -299,10 +341,10 @@ public class AudioHelper
   {
     if (paramBoolean)
     {
-      a(paramImageButton, paramInt, 2131494061);
+      a(paramImageButton, paramInt, 2131494067);
       return;
     }
-    a(paramImageButton, paramInt, 2131494053);
+    a(paramImageButton, paramInt, 2131494059);
   }
   
   public static final void a(String paramString)
@@ -329,12 +371,12 @@ public class AudioHelper
         Iterator localIterator = paramBundle.keySet().iterator();
         localObject1 = paramString;
         if (!localIterator.hasNext()) {
-          break label318;
+          break label320;
         }
         str = (String)localIterator.next();
         localObject3 = paramBundle.get(str);
         if ((localObject3 == null) || (!(localObject3 instanceof long[]))) {
-          break label327;
+          break label329;
         }
         localObject2 = (long[])localObject3;
         localObject1 = "" + localObject2.length;
@@ -360,10 +402,10 @@ public class AudioHelper
         break;
       }
       localObject1 = paramString + "bundle为空";
-      label318:
+      label320:
       QLog.w("AudioHelper", 1, (String)localObject1);
       return;
-      label327:
+      label329:
       localObject1 = null;
     }
   }
@@ -432,7 +474,7 @@ public class AudioHelper
           Method localMethod = localObject.getClass().getMethod("checkOpNoThrow", new Class[] { Integer.TYPE, Integer.TYPE, String.class });
           int i = jdField_c_of_type_ArrayOfInt[paramInt];
           if (Build.VERSION.SDK_INT < 19) {
-            i = b[paramInt];
+            i = jdField_b_of_type_ArrayOfInt[paramInt];
           }
           ApplicationInfo localApplicationInfo = BaseApplicationImpl.getContext().getApplicationInfo();
           paramInt = ((Integer)localMethod.invoke(localObject, new Object[] { Integer.valueOf(i), Integer.valueOf(localApplicationInfo.uid), localApplicationInfo.packageName })).intValue();
@@ -465,7 +507,7 @@ public class AudioHelper
           Method localMethod = paramContext.getClass().getMethod("checkOpNoThrow", new Class[] { Integer.TYPE, Integer.TYPE, String.class });
           int i = jdField_c_of_type_ArrayOfInt[paramInt];
           if (Build.VERSION.SDK_INT < 19) {
-            i = b[paramInt];
+            i = jdField_b_of_type_ArrayOfInt[paramInt];
           }
           ApplicationInfo localApplicationInfo = BaseApplicationImpl.getContext().getApplicationInfo();
           paramInt = ((Integer)localMethod.invoke(paramContext, new Object[] { Integer.valueOf(i), Integer.valueOf(localApplicationInfo.uid), localApplicationInfo.packageName })).intValue();
@@ -502,16 +544,20 @@ public class AudioHelper
     jdField_a_of_type_Boolean = d();
     if (!jdField_a_of_type_Boolean) {
       if ((paramLong != 88884098L) && ((paramLong < 1002000551L) || (paramLong > 1002000555L))) {
-        break label78;
+        break label86;
       }
     }
-    label78:
+    label86:
     for (boolean bool = true;; bool = false)
     {
       jdField_a_of_type_Boolean = bool;
+      a(paramLong);
+      if (paramBaseApplicationImpl == null) {
+        break;
+      }
       IntentFilter localIntentFilter = new IntentFilter();
       localIntentFilter.addAction("tencent.video.q2v.debug");
-      if (paramBaseApplicationImpl.registerReceiver(new ajng(paramBaseApplicationImpl), localIntentFilter) == null) {
+      if (paramBaseApplicationImpl.registerReceiver(new akbl(paramBaseApplicationImpl), localIntentFilter) == null) {
         break;
       }
       return true;
@@ -629,6 +675,14 @@ public class AudioHelper
   public static AudioHelper.AudioPlayerParameter c()
   {
     return new AudioHelper.AudioPlayerParameter(0, 2, true);
+  }
+  
+  public static void c(String paramString)
+  {
+    QLog.w("AudioHelper", 1, "showDebugToast, text[" + paramString + "]");
+    if (d()) {
+      ThreadManager.getUIHandler().post(new akbm(paramString));
+    }
   }
   
   public static boolean c()

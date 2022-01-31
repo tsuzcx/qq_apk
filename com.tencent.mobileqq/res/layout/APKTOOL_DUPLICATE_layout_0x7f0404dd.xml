@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:control="http://www.tencent.com/tenpay/android/qqwallet">
-    <View android:layout_marginBottom="15.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00db" />
-    <com.tenpay.sdk.i.o android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18d8" android:layout_width="fill_parent" android:layout_height="35.0dip" control:nameText="提现金额" control:nameTextColor="777777" control:nameTextSize="16" control:valueText="" control:valueTextColor="000000" control:valueTextSize="23" control:valueLinePosition="32" />
-    <com.tenpay.sdk.i.o android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18cd" android:layout_width="fill_parent" android:layout_height="35.0dip" control:nameText="手续费" control:nameTextColor="777777" control:nameTextSize="16" control:valueText="" control:valueTextColor="777777" control:valueTextSize="16" control:valueLinePosition="32" />
-    <com.tenpay.sdk.i.o android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a189c" android:layout_width="fill_parent" android:layout_height="35.0dip" control:nameText="实扣余额" control:nameTextColor="777777" control:nameTextSize="16" control:valueText="" control:valueTextColor="777777" control:valueTextSize="16" control:valueLinePosition="32" />
-    <View android:layout_marginTop="13.0dip" android:layout_marginBottom="18.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00db" />
-    <com.tenpay.sdk.i.o android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18d9" android:layout_width="fill_parent" android:layout_height="wrap_content" control:defaultTextColor="777777" control:defaultTextSize="16" control:nameText="提现银行卡" control:valueText="" />
-    <com.tenpay.sdk.i.o android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18da" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_marginBottom="18.0dip" control:defaultTextColor="777777" control:defaultTextSize="16" control:nameText="交易订单" control:valueText="" control:valueTextSize="14" />
-</merge>
+<LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0487" android:background="@drawable/qb_tenpay_wallet_loading_bg" android:layout_width="110.0dip" android:layout_height="110.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18ac" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e71" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0311" android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a175a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b0eb8" />
+    <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="40.0dip">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a18ad" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0311" android:layout_width="30.0dip" android:layout_height="2.0dip" />
+    </RelativeLayout>
+</LinearLayout>

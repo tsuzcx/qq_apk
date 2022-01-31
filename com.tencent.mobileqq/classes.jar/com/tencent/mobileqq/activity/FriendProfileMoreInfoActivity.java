@@ -59,6 +59,7 @@ import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.ProfilePhotoWall;
 import com.tencent.mobileqq.data.QZonePhotoInfo;
 import com.tencent.mobileqq.data.TroopInfo;
+import com.tencent.mobileqq.extendfriend.ExtendFriendManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.mobileqq.statistics.ReportController;
@@ -93,30 +94,30 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import mqq.app.AppRuntime;
-import spn;
-import spq;
-import spr;
-import sps;
-import spt;
-import spu;
-import spv;
-import spw;
-import spx;
-import spy;
-import spz;
-import sqa;
-import sqb;
-import sqc;
-import sqf;
-import sqg;
-import sqh;
-import sqi;
-import sqj;
-import sqk;
-import sql;
-import sqn;
-import sqo;
-import sqp;
+import ssm;
+import ssp;
+import ssq;
+import ssr;
+import sss;
+import sst;
+import ssu;
+import ssv;
+import ssw;
+import ssx;
+import ssy;
+import ssz;
+import sta;
+import stb;
+import ste;
+import stf;
+import stg;
+import sth;
+import sti;
+import stj;
+import stk;
+import stm;
+import stn;
+import sto;
 
 public class FriendProfileMoreInfoActivity
   extends ProfileActivity
@@ -127,6 +128,8 @@ public class FriendProfileMoreInfoActivity
   private boolean C;
   private boolean D;
   private boolean E;
+  private boolean F;
+  private boolean G;
   private byte jdField_a_of_type_Byte;
   public int a;
   protected BroadcastReceiver a;
@@ -138,13 +141,13 @@ public class FriendProfileMoreInfoActivity
   LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   public ProfileActivity.AllInOne a;
-  private CardHandler.NowOnliveGallayCallback jdField_a_of_type_ComTencentMobileqqAppCardHandler$NowOnliveGallayCallback = new sqi(this);
+  private CardHandler.NowOnliveGallayCallback jdField_a_of_type_ComTencentMobileqqAppCardHandler$NowOnliveGallayCallback = new sth(this);
   public CardHandler a;
   public CardObserver a;
-  private ConditionSearchManager.IConfigListener jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener = new sqh(this);
+  private ConditionSearchManager.IConfigListener jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener = new stg(this);
   ConditionSearchManager jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager;
-  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new sqg(this);
-  private BusinessCardObserver jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardObserver = new sqf(this);
+  private FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new stf(this);
+  private BusinessCardObserver jdField_a_of_type_ComTencentMobileqqBusinessCardBusinessCardObserver = new ste(this);
   public BusinessCard a;
   public CampusCircleObserver a;
   private IphonePickerView jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView;
@@ -157,7 +160,7 @@ public class FriendProfileMoreInfoActivity
   SingleLineTextView jdField_a_of_type_ComTencentWidgetSingleLineTextView;
   public String a;
   public ArrayList a;
-  public sqo a;
+  public stn a;
   public boolean a;
   String[] jdField_a_of_type_ArrayOfJavaLangString;
   public int b;
@@ -165,10 +168,11 @@ public class FriendProfileMoreInfoActivity
   public EditText b;
   LinearLayout jdField_b_of_type_AndroidWidgetLinearLayout;
   TextView jdField_b_of_type_AndroidWidgetTextView;
+  private FormSwitchItem jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem;
   QQProgressDialog jdField_b_of_type_ComTencentMobileqqWidgetQQProgressDialog = null;
   String jdField_b_of_type_JavaLangString = "";
   private ArrayList jdField_b_of_type_JavaUtilArrayList = new ArrayList();
-  public sqo b;
+  public stn b;
   public boolean b;
   String[] jdField_b_of_type_ArrayOfJavaLangString;
   private int jdField_c_of_type_Int;
@@ -177,7 +181,7 @@ public class FriendProfileMoreInfoActivity
   TextView jdField_c_of_type_AndroidWidgetTextView;
   private String jdField_c_of_type_JavaLangString;
   private ArrayList jdField_c_of_type_JavaUtilArrayList = new ArrayList();
-  public sqo c;
+  public stn c;
   public boolean c;
   private int jdField_d_of_type_Int;
   private View jdField_d_of_type_AndroidViewView;
@@ -207,7 +211,7 @@ public class FriendProfileMoreInfoActivity
   private int jdField_j_of_type_Int = -1;
   private View jdField_j_of_type_AndroidViewView;
   private TextView jdField_j_of_type_AndroidWidgetTextView;
-  boolean jdField_j_of_type_Boolean = false;
+  public boolean j;
   private int jdField_k_of_type_Int = -1;
   private View jdField_k_of_type_AndroidViewView;
   private TextView jdField_k_of_type_AndroidWidgetTextView;
@@ -219,26 +223,27 @@ public class FriendProfileMoreInfoActivity
   private int jdField_m_of_type_Int = -1;
   private View jdField_m_of_type_AndroidViewView;
   private TextView jdField_m_of_type_AndroidWidgetTextView;
-  public boolean m;
+  boolean jdField_m_of_type_Boolean = false;
   private int jdField_n_of_type_Int = -1;
   private View jdField_n_of_type_AndroidViewView;
   private TextView jdField_n_of_type_AndroidWidgetTextView;
-  boolean jdField_n_of_type_Boolean = false;
+  public boolean n;
   private int jdField_o_of_type_Int = -1;
   private View jdField_o_of_type_AndroidViewView;
   private TextView jdField_o_of_type_AndroidWidgetTextView;
-  public boolean o;
+  boolean jdField_o_of_type_Boolean = false;
   private int jdField_p_of_type_Int = -1;
   private View jdField_p_of_type_AndroidViewView;
   private TextView jdField_p_of_type_AndroidWidgetTextView;
-  boolean jdField_p_of_type_Boolean = false;
   private int jdField_q_of_type_Int = -1;
   private View jdField_q_of_type_AndroidViewView;
   private TextView jdField_q_of_type_AndroidWidgetTextView;
+  private boolean jdField_q_of_type_Boolean;
   private int jdField_r_of_type_Int = -1;
   private View jdField_r_of_type_AndroidViewView;
   private boolean jdField_r_of_type_Boolean;
   private int jdField_s_of_type_Int = -1;
+  private View jdField_s_of_type_AndroidViewView;
   private boolean jdField_s_of_type_Boolean;
   private int jdField_t_of_type_Int = -1;
   private boolean jdField_t_of_type_Boolean;
@@ -268,15 +273,15 @@ public class FriendProfileMoreInfoActivity
     this.jdField_h_of_type_Boolean = false;
     this.jdField_i_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqDataCard = null;
+    this.jdField_j_of_type_Boolean = false;
     this.jdField_k_of_type_Boolean = false;
     this.jdField_l_of_type_Boolean = false;
-    this.jdField_m_of_type_Boolean = false;
-    this.jdField_o_of_type_Boolean = false;
+    this.jdField_n_of_type_Boolean = false;
     this.jdField_a_of_type_JavaUtilArrayList = null;
     this.jdField_a_of_type_JavaLangString = "";
-    this.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleObserver = new spn(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppCardObserver = new sqa(this);
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new sqc(this);
+    this.jdField_a_of_type_ComTencentMobileqqCampuscircleCampusCircleObserver = new ssm(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppCardObserver = new ssz(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new stb(this);
   }
   
   public static List a(List paramList1, List paramList2)
@@ -322,85 +327,85 @@ public class FriendProfileMoreInfoActivity
   private void a(int paramInt, Intent paramIntent)
   {
     if (paramIntent.hasExtra("param_interest_switch")) {
-      this.jdField_h_of_type_Int = paramIntent.getIntExtra("param_interest_switch", 0);
+      this.jdField_g_of_type_Int = paramIntent.getIntExtra("param_interest_switch", 0);
     }
     if (!this.jdField_r_of_type_Boolean) {
       this.jdField_r_of_type_Boolean = paramIntent.getBooleanExtra("param_interest_switch_changed", false);
     }
     if (paramIntent.hasExtra("param_music_switch")) {
-      this.jdField_i_of_type_Int = paramIntent.getIntExtra("param_music_switch", 0);
+      this.jdField_h_of_type_Int = paramIntent.getIntExtra("param_music_switch", 0);
     }
     if (!this.jdField_s_of_type_Boolean) {
       this.jdField_s_of_type_Boolean = paramIntent.getBooleanExtra("param_music_switch_changed", false);
     }
     if (paramIntent.hasExtra("param_recent_activity_switch")) {
-      this.jdField_j_of_type_Int = paramIntent.getIntExtra("param_recent_activity_switch", 0);
+      this.jdField_i_of_type_Int = paramIntent.getIntExtra("param_recent_activity_switch", 0);
     }
     if (!this.jdField_t_of_type_Boolean) {
       this.jdField_t_of_type_Boolean = paramIntent.getBooleanExtra("param_recent_activity_switch_changed", false);
     }
     if (paramIntent.hasExtra("param_star_switch")) {
-      this.jdField_k_of_type_Int = paramIntent.getIntExtra("param_star_switch", 0);
+      this.jdField_j_of_type_Int = paramIntent.getIntExtra("param_star_switch", 0);
     }
     if (!this.jdField_u_of_type_Boolean) {
       this.jdField_u_of_type_Boolean = paramIntent.getBooleanExtra("param_star_switch_changed", false);
     }
     if (paramIntent.hasExtra("param_joined_group_switch")) {
-      this.jdField_l_of_type_Int = paramIntent.getIntExtra("param_joined_group_switch", 0);
+      this.jdField_k_of_type_Int = paramIntent.getIntExtra("param_joined_group_switch", 0);
     }
     if (!this.jdField_v_of_type_Boolean) {
       this.jdField_v_of_type_Boolean = paramIntent.getBooleanExtra("param_joined_group_switch_changed", false);
     }
     if (paramIntent.hasExtra("param_now_switch")) {
-      this.jdField_m_of_type_Int = paramIntent.getIntExtra("param_now_switch", 0);
+      this.jdField_l_of_type_Int = paramIntent.getIntExtra("param_now_switch", 0);
     }
     if (!this.jdField_w_of_type_Boolean) {
       this.jdField_w_of_type_Boolean = paramIntent.getBooleanExtra("param_now_switch_changed", false);
     }
     if (paramIntent.hasExtra("param_ktv_switch")) {
-      this.jdField_n_of_type_Int = paramIntent.getIntExtra("param_ktv_switch", 0);
+      this.jdField_m_of_type_Int = paramIntent.getIntExtra("param_ktv_switch", 0);
     }
     if (!this.jdField_x_of_type_Boolean) {
       this.jdField_x_of_type_Boolean = paramIntent.getBooleanExtra("param_ktv_switch_changed", false);
     }
     if (paramIntent.hasExtra("param_eat_switch")) {
-      this.jdField_o_of_type_Int = paramIntent.getIntExtra("param_eat_switch", 0);
+      this.jdField_n_of_type_Int = paramIntent.getIntExtra("param_eat_switch", 0);
     }
     if (!this.jdField_y_of_type_Boolean) {
       this.jdField_y_of_type_Boolean = paramIntent.getBooleanExtra("param_eat_switch_changed", false);
     }
     if (paramIntent.hasExtra("param_reader_switch")) {
-      this.jdField_p_of_type_Int = paramIntent.getIntExtra("param_reader_switch", 0);
+      this.jdField_o_of_type_Int = paramIntent.getIntExtra("param_reader_switch", 0);
     }
     if (!this.z) {
       this.z = paramIntent.getBooleanExtra("param_reader_switch_changed", false);
     }
     if (paramIntent.hasExtra("param_radio_switch")) {
-      this.jdField_q_of_type_Int = paramIntent.getIntExtra("param_radio_switch", 0);
+      this.jdField_p_of_type_Int = paramIntent.getIntExtra("param_radio_switch", 0);
     }
     if (!this.A) {
       this.A = paramIntent.getBooleanExtra("param_radio_switch_changed", false);
     }
     if (paramIntent.hasExtra("param_comic_switch")) {
-      this.jdField_r_of_type_Int = paramIntent.getIntExtra("param_comic_switch", 0);
+      this.jdField_q_of_type_Int = paramIntent.getIntExtra("param_comic_switch", 0);
     }
     if (!this.B) {
       this.B = paramIntent.getBooleanExtra("param_comic_switch_changed", false);
     }
     if (paramIntent.hasExtra("param_education_switch")) {
-      this.jdField_s_of_type_Int = paramIntent.getIntExtra("param_education_switch", 0);
+      this.jdField_r_of_type_Int = paramIntent.getIntExtra("param_education_switch", 0);
     }
     if (!this.C) {
       this.C = paramIntent.getBooleanExtra("param_education_switch_changed", false);
     }
     if (paramIntent.hasExtra("param_using_tim_switch")) {
-      this.jdField_t_of_type_Int = paramIntent.getIntExtra("param_using_tim_switch", 0);
+      this.jdField_s_of_type_Int = paramIntent.getIntExtra("param_using_tim_switch", 0);
     }
     if (!this.D) {
       this.D = paramIntent.getBooleanExtra("param_using_tim_switch_changed", false);
     }
     if (paramIntent.hasExtra("param_weishi_switch")) {
-      this.jdField_u_of_type_Int = paramIntent.getIntExtra("param_weishi_switch", 0);
+      this.jdField_t_of_type_Int = paramIntent.getIntExtra("param_weishi_switch", 0);
     }
     if (!this.E) {
       this.E = paramIntent.getBooleanExtra("param_weishi_switch_changed", false);
@@ -468,7 +473,7 @@ public class FriendProfileMoreInfoActivity
           if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
           {
             localObject2 = getResources();
-            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(((Resources)localObject2).getColor(2131493014));
+            this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(((Resources)localObject2).getColor(2131493015));
             this.jdField_x_of_type_Int = ((Resources)localObject2).getDimensionPixelSize(2131558552);
             this.jdField_y_of_type_Int = ((Resources)localObject2).getDimensionPixelSize(2131558553);
           }
@@ -642,20 +647,17 @@ public class FriendProfileMoreInfoActivity
   private void b(Card paramCard, boolean paramBoolean)
   {
     Object localObject2 = null;
-    if (paramCard == null) {}
-    Object localObject1;
-    label220:
-    do
-    {
+    if (paramCard == null) {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
-      a(paramCard.getRichStatus());
-      localObject1 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-      if ((this.jdField_a_of_type_Sqo.jdField_b_of_type_Boolean) || (paramCard.strNick == null) || (paramCard.strNick.equals(localObject1))) {
-        break;
-      }
-      this.jdField_a_of_type_Sqo.jdField_a_of_type_Boolean = true;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDataCard = paramCard;
+    a(paramCard.getRichStatus());
+    Object localObject1 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
+    if ((!this.jdField_a_of_type_Stn.jdField_b_of_type_Boolean) && (paramCard.strNick != null) && (!paramCard.strNick.equals(localObject1)))
+    {
+      this.jdField_a_of_type_Stn.jdField_a_of_type_Boolean = true;
       a(paramCard.strNick);
+      label76:
       if (!this.jdField_c_of_type_Boolean) {
         a(paramCard.shGender, false);
       }
@@ -666,18 +668,19 @@ public class FriendProfileMoreInfoActivity
         a(paramCard.iProfession);
       }
       localObject1 = this.jdField_b_of_type_AndroidWidgetEditText.getText().toString();
-      if ((!this.jdField_b_of_type_Sqo.jdField_b_of_type_Boolean) && (paramCard.strCompany != null) && (!paramCard.strCompany.equals(localObject1)))
+      if ((!this.jdField_b_of_type_Stn.jdField_b_of_type_Boolean) && (paramCard.strCompany != null) && (!paramCard.strCompany.equals(localObject1)))
       {
-        this.jdField_b_of_type_Sqo.jdField_a_of_type_Boolean = true;
+        this.jdField_b_of_type_Stn.jdField_a_of_type_Boolean = true;
         b(paramCard.strCompany);
       }
       a(paramCard, paramBoolean);
       if (!this.jdField_f_of_type_Boolean)
       {
         if (TextUtils.isEmpty(paramCard.strLocationCodes)) {
-          break label423;
+          break label494;
         }
         localObject1 = paramCard.strLocationCodes.split("-");
+        label220:
         this.jdField_a_of_type_ArrayOfJavaLangString = ((String[])localObject1);
         f(paramCard.strLocationDesc);
       }
@@ -691,31 +694,48 @@ public class FriendProfileMoreInfoActivity
         g(paramCard.strHometownDesc);
       }
       localObject1 = this.jdField_c_of_type_AndroidWidgetEditText.getText().toString();
-      if ((!this.jdField_c_of_type_Sqo.jdField_b_of_type_Boolean) && (paramCard.strEmail != null) && (!paramCard.strEmail.equals(localObject1)))
+      if ((!this.jdField_c_of_type_Stn.jdField_b_of_type_Boolean) && (paramCard.strEmail != null) && (!paramCard.strEmail.equals(localObject1)))
       {
-        this.jdField_c_of_type_Sqo.jdField_a_of_type_Boolean = true;
+        this.jdField_c_of_type_Stn.jdField_a_of_type_Boolean = true;
         h(paramCard.strEmail);
       }
       if (!this.jdField_h_of_type_Boolean) {
         i(paramCard.strPersonalNote);
       }
       if (paramCard.switch_disable_personality_label != -1) {
-        this.jdField_g_of_type_Int = paramCard.switch_disable_personality_label;
+        this.jdField_u_of_type_Int = paramCard.switch_disable_personality_label;
       }
-    } while (this.jdField_j_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setEnabled(true);
-    paramCard = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-    if (this.jdField_g_of_type_Int != 1) {}
+      if (!this.F)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setEnabled(true);
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+        if (this.jdField_u_of_type_Int == 1) {
+          break label499;
+        }
+      }
+    }
+    label494:
+    label499:
     for (paramBoolean = true;; paramBoolean = false)
     {
-      paramCard.setChecked(paramBoolean);
-      return;
-      if (TextUtils.isEmpty(paramCard.strNick)) {
+      ((FormSwitchItem)localObject1).setChecked(paramBoolean);
+      if (this.G) {
         break;
       }
+      localObject1 = (ExtendFriendManager)this.app.getManager(263);
+      if ((paramCard.extendFriendEntryAddFriend != 1) || (!((ExtendFriendManager)localObject1).a())) {
+        break;
+      }
+      this.jdField_s_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setEnabled(true);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(paramCard.isShowCard);
+      this.jdField_q_of_type_Boolean = paramCard.isShowCard;
+      return;
+      if (TextUtils.isEmpty(paramCard.strNick)) {
+        break label76;
+      }
       this.jdField_a_of_type_AndroidWidgetEditText.setHint(paramCard.strNick);
-      break;
-      label423:
+      break label76;
       localObject1 = null;
       break label220;
     }
@@ -723,43 +743,43 @@ public class FriendProfileMoreInfoActivity
   
   private boolean b()
   {
-    return (this.jdField_a_of_type_Sqo.jdField_b_of_type_Boolean) || (this.jdField_b_of_type_Sqo.jdField_b_of_type_Boolean) || (this.jdField_c_of_type_Sqo.jdField_b_of_type_Boolean) || (this.jdField_k_of_type_Boolean) || (this.jdField_l_of_type_Boolean) || (this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean) || (this.jdField_e_of_type_Boolean) || (this.jdField_f_of_type_Boolean) || (this.jdField_g_of_type_Boolean) || (this.jdField_h_of_type_Boolean) || (this.jdField_j_of_type_Boolean);
+    return (this.jdField_a_of_type_Stn.jdField_b_of_type_Boolean) || (this.jdField_b_of_type_Stn.jdField_b_of_type_Boolean) || (this.jdField_c_of_type_Stn.jdField_b_of_type_Boolean) || (this.jdField_j_of_type_Boolean) || (this.jdField_k_of_type_Boolean) || (this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean) || (this.jdField_e_of_type_Boolean) || (this.jdField_f_of_type_Boolean) || (this.jdField_g_of_type_Boolean) || (this.jdField_h_of_type_Boolean) || (this.F) || (this.G);
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363363));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131435746);
-    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131435746));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363227));
-    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131433681);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363381));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131435763);
+    this.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(getString(2131435763));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363245));
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(2131433698);
     this.jdField_b_of_type_AndroidWidgetTextView.setContentDescription("返回按钮");
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363533));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131370911);
-    this.jdField_a_of_type_AndroidViewView.setContentDescription(getString(2131437152));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131363551));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131371060);
+    this.jdField_a_of_type_AndroidViewView.setContentDescription(getString(2131437169));
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131370912));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370537));
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131370913);
-    this.jdField_b_of_type_AndroidViewView.setContentDescription(getString(2131434560));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131371061));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370678));
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131371062);
+    this.jdField_b_of_type_AndroidViewView.setContentDescription(getString(2131434577));
     this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370914));
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131370915);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371063));
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131371064);
     this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370916));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371065));
     a(null);
-    this.jdField_d_of_type_AndroidViewView = findViewById(2131370917);
+    this.jdField_d_of_type_AndroidViewView = findViewById(2131371066);
     View localView;
-    if (this.jdField_p_of_type_Boolean)
+    if (this.jdField_o_of_type_Boolean)
     {
       this.jdField_d_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370919));
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370920));
-      localView = findViewById(2131370921);
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371068));
+      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371069));
+      localView = findViewById(2131371070);
       TroopInfo localTroopInfo = ((TroopManager)this.app.getManager(51)).a(this.jdField_a_of_type_JavaLangString);
       if (localTroopInfo == null) {
-        break label1430;
+        break label1489;
       }
       if ((localTroopInfo.isTroopAdmin(this.app.getCurrentAccountUin())) || (localTroopInfo.isTroopOwner(this.app.getCurrentAccountUin())) || (TextUtils.equals(this.jdField_b_of_type_JavaLangString, this.app.getCurrentAccountUin())))
       {
@@ -771,24 +791,24 @@ public class FriendProfileMoreInfoActivity
     for (;;)
     {
       a();
-      this.jdField_e_of_type_AndroidViewView = findViewById(2131370922);
+      this.jdField_e_of_type_AndroidViewView = findViewById(2131371071);
       if (this.jdField_d_of_type_AndroidViewView.getVisibility() == 0) {
         ((LinearLayout.LayoutParams)this.jdField_e_of_type_AndroidViewView.getLayoutParams()).setMargins(0, 0, 0, 0);
       }
       this.jdField_e_of_type_AndroidViewView.setClickable(false);
-      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131370924));
+      this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131371073));
       this.jdField_a_of_type_AndroidWidgetEditText.setOnFocusChangeListener(this);
-      this.jdField_a_of_type_Sqo = new sqo(this, 36, this.jdField_a_of_type_AndroidWidgetEditText);
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Sqo);
-      this.jdField_a_of_type_Sqo.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_Stn = new stn(this, 36, this.jdField_a_of_type_AndroidWidgetEditText);
+      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_Stn);
+      this.jdField_a_of_type_Stn.jdField_a_of_type_Boolean = true;
       a(null);
-      this.jdField_f_of_type_AndroidViewView = findViewById(2131370925);
+      this.jdField_f_of_type_AndroidViewView = findViewById(2131371074);
       this.jdField_f_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370926));
+      this.jdField_g_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371075));
       a(-1, false);
-      this.jdField_g_of_type_AndroidViewView = findViewById(2131370927);
+      this.jdField_g_of_type_AndroidViewView = findViewById(2131371076);
       this.jdField_g_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370928));
+      this.jdField_h_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371077));
       a(0, 0, 0);
       if (ProfileCardUtil.b())
       {
@@ -796,70 +816,75 @@ public class FriendProfileMoreInfoActivity
         int i2 = this.jdField_f_of_type_AndroidViewView.getPaddingTop();
         int i3 = this.jdField_f_of_type_AndroidViewView.getPaddingRight();
         int i4 = this.jdField_f_of_type_AndroidViewView.getPaddingBottom();
-        this.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838626);
+        this.jdField_f_of_type_AndroidViewView.setBackgroundResource(2130838630);
         this.jdField_f_of_type_AndroidViewView.setPadding(i1, i2, i3, i4);
         this.jdField_g_of_type_AndroidViewView.setVisibility(8);
         if (QLog.isDevelopLevel()) {
           QLog.i("FriendProfileMoreInfoActivity", 4, String.format(Locale.getDefault(), "EuropeAndAmerica sexLayout[%s, %s, %s, %s]", new Object[] { Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(i3), Integer.valueOf(i4) }));
         }
       }
-      this.jdField_h_of_type_AndroidViewView = findViewById(2131370929);
+      this.jdField_h_of_type_AndroidViewView = findViewById(2131371078);
       this.jdField_h_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370930));
-      this.jdField_j_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370931));
+      this.jdField_i_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371079));
+      this.jdField_j_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371080));
       a(-1);
-      this.jdField_i_of_type_AndroidViewView = findViewById(2131370932);
+      this.jdField_i_of_type_AndroidViewView = findViewById(2131371081);
       this.jdField_i_of_type_AndroidViewView.setClickable(false);
-      this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131370933));
+      this.jdField_b_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131371082));
       this.jdField_b_of_type_AndroidWidgetEditText.setOnFocusChangeListener(this);
-      this.jdField_b_of_type_Sqo = new sqo(this, 120, this.jdField_b_of_type_AndroidWidgetEditText);
-      this.jdField_b_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_b_of_type_Sqo);
-      this.jdField_b_of_type_Sqo.jdField_a_of_type_Boolean = true;
+      this.jdField_b_of_type_Stn = new stn(this, 120, this.jdField_b_of_type_AndroidWidgetEditText);
+      this.jdField_b_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_b_of_type_Stn);
+      this.jdField_b_of_type_Stn.jdField_a_of_type_Boolean = true;
       b(null);
-      this.jdField_j_of_type_AndroidViewView = findViewById(2131370934);
-      this.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)this.jdField_j_of_type_AndroidViewView.findViewById(2131370935));
-      this.jdField_k_of_type_AndroidViewView = findViewById(2131370936);
-      this.jdField_k_of_type_AndroidWidgetTextView = ((TextView)this.jdField_k_of_type_AndroidViewView.findViewById(2131370937));
-      this.jdField_l_of_type_AndroidWidgetTextView = ((TextView)this.jdField_k_of_type_AndroidViewView.findViewById(2131370938));
-      this.jdField_l_of_type_AndroidViewView = findViewById(2131370939);
-      this.jdField_m_of_type_AndroidWidgetTextView = ((TextView)this.jdField_l_of_type_AndroidViewView.findViewById(2131370940));
-      this.jdField_n_of_type_AndroidWidgetTextView = ((TextView)this.jdField_l_of_type_AndroidViewView.findViewById(2131370941));
+      this.jdField_j_of_type_AndroidViewView = findViewById(2131371083);
+      this.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)this.jdField_j_of_type_AndroidViewView.findViewById(2131371084));
+      this.jdField_k_of_type_AndroidViewView = findViewById(2131371085);
+      this.jdField_k_of_type_AndroidWidgetTextView = ((TextView)this.jdField_k_of_type_AndroidViewView.findViewById(2131371086));
+      this.jdField_l_of_type_AndroidWidgetTextView = ((TextView)this.jdField_k_of_type_AndroidViewView.findViewById(2131371087));
+      this.jdField_l_of_type_AndroidViewView = findViewById(2131371088);
+      this.jdField_m_of_type_AndroidWidgetTextView = ((TextView)this.jdField_l_of_type_AndroidViewView.findViewById(2131371089));
+      this.jdField_n_of_type_AndroidWidgetTextView = ((TextView)this.jdField_l_of_type_AndroidViewView.findViewById(2131371090));
       this.jdField_j_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_k_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_k_of_type_AndroidViewView.setVisibility(8);
       this.jdField_l_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_l_of_type_AndroidViewView.setVisibility(8);
       c(null);
-      this.jdField_m_of_type_AndroidViewView = findViewById(2131364300);
+      this.jdField_m_of_type_AndroidViewView = findViewById(2131364324);
       this.jdField_m_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_o_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370942));
+      this.jdField_o_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371091));
       f(null);
-      this.jdField_n_of_type_AndroidViewView = findViewById(2131370943);
+      this.jdField_n_of_type_AndroidViewView = findViewById(2131371092);
       this.jdField_n_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_p_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370944));
+      this.jdField_p_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371093));
       g(null);
-      this.jdField_o_of_type_AndroidViewView = findViewById(2131370945);
+      this.jdField_o_of_type_AndroidViewView = findViewById(2131371094);
       this.jdField_o_of_type_AndroidViewView.setClickable(false);
-      this.jdField_c_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131370946));
+      this.jdField_c_of_type_AndroidWidgetEditText = ((EditText)findViewById(2131371095));
       this.jdField_c_of_type_AndroidWidgetEditText.setOnFocusChangeListener(this);
-      this.jdField_c_of_type_Sqo = new sqo(this, 50, this.jdField_c_of_type_AndroidWidgetEditText);
-      this.jdField_c_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_c_of_type_Sqo);
-      this.jdField_c_of_type_Sqo.jdField_a_of_type_Boolean = true;
+      this.jdField_c_of_type_Stn = new stn(this, 50, this.jdField_c_of_type_AndroidWidgetEditText);
+      this.jdField_c_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_c_of_type_Stn);
+      this.jdField_c_of_type_Stn.jdField_a_of_type_Boolean = true;
       h(null);
-      this.jdField_p_of_type_AndroidViewView = findViewById(2131370947);
+      this.jdField_p_of_type_AndroidViewView = findViewById(2131371096);
       this.jdField_p_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_q_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131370948));
+      this.jdField_q_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371097));
       i(null);
-      this.jdField_q_of_type_AndroidViewView = findViewById(2131370949);
-      this.jdField_q_of_type_AndroidViewView.setContentDescription(getString(2131437505));
+      this.jdField_q_of_type_AndroidViewView = findViewById(2131371098);
+      this.jdField_q_of_type_AndroidViewView.setContentDescription(getString(2131437522));
       this.jdField_q_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_r_of_type_AndroidViewView = findViewById(2131370951);
-      this.jdField_r_of_type_AndroidViewView.setContentDescription(getString(2131437503));
+      this.jdField_r_of_type_AndroidViewView = findViewById(2131371102);
+      this.jdField_r_of_type_AndroidViewView.setContentDescription(getString(2131437520));
       this.jdField_r_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131370950));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131371099));
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
       this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setEnabled(false);
-      if ((this.jdField_p_of_type_Boolean) && (TroopInfo.isQidianPrivateTroop(this.app, this.jdField_a_of_type_JavaLangString)))
+      this.jdField_s_of_type_AndroidViewView = findViewById(2131371100);
+      this.jdField_s_of_type_AndroidViewView.setVisibility(8);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)findViewById(2131371101));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setEnabled(false);
+      if ((this.jdField_o_of_type_Boolean) && (TroopInfo.isQidianPrivateTroop(this.app, this.jdField_a_of_type_JavaLangString)))
       {
         this.jdField_a_of_type_AndroidViewView.setVisibility(8);
         this.jdField_c_of_type_AndroidViewView.setVisibility(8);
@@ -872,9 +897,10 @@ public class FriendProfileMoreInfoActivity
         this.jdField_p_of_type_AndroidViewView.setVisibility(8);
         this.jdField_r_of_type_AndroidViewView.setVisibility(8);
         this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
+        this.jdField_s_of_type_AndroidViewView.setVisibility(8);
       }
       return;
-      label1430:
+      label1489:
       this.jdField_d_of_type_AndroidViewView.setClickable(false);
       this.jdField_d_of_type_AndroidViewView.setOnClickListener(null);
       localView.setVisibility(8);
@@ -892,16 +918,16 @@ public class FriendProfileMoreInfoActivity
       }
       if (i1 == 2)
       {
-        QQToast.a(this, 2131434794, 0).b(getTitleBarHeight());
+        QQToast.a(this, 2131434811, 0).b(getTitleBarHeight());
         return;
       }
       if (i1 == 0)
       {
-        a(paramInt, getString(2131437280));
+        a(paramInt, getString(2131437297));
         this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.c(this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager$IConfigListener);
         return;
       }
-      a(paramInt, getString(2131437280));
+      a(paramInt, getString(2131437297));
       this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessageDelayed(1000, 20000L);
       return;
     }
@@ -961,7 +987,7 @@ public class FriendProfileMoreInfoActivity
     int i1 = CampusCircleHelper.b(this.jdField_a_of_type_ComTencentMobileqqDataCard.lCampusSchoolID);
     CampusCircleHandler localCampusCircleHandler = (CampusCircleHandler)this.app.a(108);
     String str;
-    if (this.jdField_k_of_type_Boolean)
+    if (this.jdField_j_of_type_Boolean)
     {
       str = this.jdField_l_of_type_AndroidWidgetTextView.getText().toString();
       if (i1 == 4)
@@ -971,7 +997,7 @@ public class FriendProfileMoreInfoActivity
         bool1 = true;
       }
     }
-    else if (this.jdField_l_of_type_Boolean)
+    else if (this.jdField_k_of_type_Boolean)
     {
       str = this.jdField_n_of_type_AndroidWidgetTextView.getText().toString();
       if (i1 != 4) {
@@ -1036,9 +1062,10 @@ public class FriendProfileMoreInfoActivity
   
   private boolean d()
   {
+    int i2 = 1;
     Bundle localBundle = new Bundle();
     Object localObject1;
-    if (this.jdField_a_of_type_Sqo.jdField_b_of_type_Boolean)
+    if (this.jdField_a_of_type_Stn.jdField_b_of_type_Boolean)
     {
       localObject1 = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
       if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(((String)localObject1).trim()))) {}
@@ -1057,7 +1084,7 @@ public class FriendProfileMoreInfoActivity
       if (this.jdField_e_of_type_Boolean) {
         localBundle.putInt("profession", this.jdField_f_of_type_Int);
       }
-      if (this.jdField_b_of_type_Sqo.jdField_b_of_type_Boolean) {
+      if (this.jdField_b_of_type_Stn.jdField_b_of_type_Boolean) {
         localBundle.putString("company", this.jdField_b_of_type_AndroidWidgetEditText.getText().toString());
       }
       if (this.jdField_f_of_type_Boolean)
@@ -1068,7 +1095,6 @@ public class FriendProfileMoreInfoActivity
         localObject1 = null;
       }
     }
-    label419:
     try
     {
       localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppConditionSearchManager.a(this.jdField_a_of_type_ArrayOfJavaLangString);
@@ -1077,10 +1103,11 @@ public class FriendProfileMoreInfoActivity
     catch (Exception localException)
     {
       Object localObject2;
-      label213:
+      label217:
       int i1;
-      label306:
-      break label213;
+      label312:
+      label456:
+      break label217;
     }
     localBundle.putStringArray("location_name", (String[])localObject1);
     if (this.jdField_g_of_type_Boolean)
@@ -1089,7 +1116,7 @@ public class FriendProfileMoreInfoActivity
       localBundle.putStringArray("hometown", this.jdField_b_of_type_ArrayOfJavaLangString);
       localBundle.putString("hometown_desc", (String)localObject1);
     }
-    if (this.jdField_c_of_type_Sqo.jdField_b_of_type_Boolean)
+    if (this.jdField_c_of_type_Stn.jdField_b_of_type_Boolean)
     {
       localObject1 = this.jdField_c_of_type_AndroidWidgetEditText.getText().toString();
       localObject2 = SearchBaseActivity.a.matcher((CharSequence)localObject1);
@@ -1100,23 +1127,31 @@ public class FriendProfileMoreInfoActivity
       if (this.jdField_h_of_type_Boolean) {
         localBundle.putString("personalNote", this.jdField_d_of_type_JavaLangString);
       }
-      if (this.jdField_j_of_type_Boolean) {
+      if (this.F) {
         if (!this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) {
-          break label419;
+          break label456;
         }
       }
     }
     for (i1 = 0;; i1 = 1)
     {
       localBundle.putShort("key_personality_label_switch", (short)i1);
-      return a(localBundle, 2131434794, 0);
+      if (this.G)
+      {
+        i1 = i2;
+        if (this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) {
+          i1 = 0;
+        }
+        localBundle.putShort("key_extend_friend_switch", (short)i1);
+      }
+      return a(localBundle, 2131434811, 0);
       localBundle.putString("nick", ((String)localObject1).trim());
       localObject1 = new QZoneDistributedAppCtrl.Control();
       ((QZoneDistributedAppCtrl.Control)localObject1).jdField_a_of_type_Int = 5;
       QZoneDistributedAppCtrl.a(getAppRuntime().getAccount()).a((QZoneDistributedAppCtrl.Control)localObject1);
       break;
       localBundle.putString("email", (String)localObject1);
-      break label306;
+      break label312;
     }
   }
   
@@ -1124,12 +1159,12 @@ public class FriendProfileMoreInfoActivity
   {
     if (this.jdField_a_of_type_ComTencentWidgetActionSheet == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)getLayoutInflater().inflate(2130970344, null));
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(new spq(this));
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView = ((IphonePickerView)getLayoutInflater().inflate(2130970373, null));
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.a(new ssp(this));
       this.jdField_a_of_type_ComTencentWidgetActionSheet = ActionSheet.c(this);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.c(true);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.a(this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView, null);
-      localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_ComTencentWidgetActionSheet.findViewById(2131362787);
+      localObject = (DispatchActionMoveScrollView)this.jdField_a_of_type_ComTencentWidgetActionSheet.findViewById(2131362805);
       ((DispatchActionMoveScrollView)localObject).jdField_a_of_type_Boolean = true;
       ((DispatchActionMoveScrollView)localObject).setBackgroundResource(17170445);
       if (Build.VERSION.SDK_INT >= 11)
@@ -1139,7 +1174,7 @@ public class FriendProfileMoreInfoActivity
           ((Window)localObject).setFlags(16777216, 16777216);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(new spr(this));
+      this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView.setPickListener(new ssq(this));
     }
     if ((this.jdField_a_of_type_Byte != 0) && (this.jdField_a_of_type_Byte != 1))
     {
@@ -1154,7 +1189,7 @@ public class FriendProfileMoreInfoActivity
       ((IphonePickerView)localObject).setSelection(0, i1);
       try
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new sps(this));
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.setOnDismissListener(new ssr(this));
         this.jdField_a_of_type_ComTencentWidgetActionSheet.show();
         return;
       }
@@ -1179,7 +1214,7 @@ public class FriendProfileMoreInfoActivity
       {
         localObject1 = String.format(Locale.getDefault(), "已认证学校每%d个月仅限修改一次，暂不能修改。", new Object[] { Integer.valueOf(((CampusConfig)localObject2).jdField_a_of_type_Int) });
         QQToast.a(BaseApplicationImpl.getContext(), 0, (CharSequence)localObject1, 0).a();
-        if (this.jdField_m_of_type_Boolean)
+        if (this.jdField_l_of_type_Boolean)
         {
           a("0X80081E7", 1);
           return;
@@ -1191,14 +1226,14 @@ public class FriendProfileMoreInfoActivity
       for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataCard.strSchool;; localObject1 = this.jdField_a_of_type_ComTencentMobileqqDataCard.strCampusSchool)
       {
         localObject1 = String.format(Locale.getDefault(), "你已通过%s的认证审核，若修改为其他学校，须重新认证，且%d个月内仅限修改一次。是否继续修改？", new Object[] { localObject1, Integer.valueOf(((CampusConfig)localObject2).jdField_a_of_type_Int) });
-        localObject2 = new spt(this);
-        DialogUtil.a(this, (String)localObject1, 2131432998, 2131438923, new spu(this), (DialogInterface.OnClickListener)localObject2).show();
+        localObject2 = new sss(this);
+        DialogUtil.a(this, (String)localObject1, 2131433015, 2131438951, new sst(this), (DialogInterface.OnClickListener)localObject2).show();
         return;
       }
     }
-    if (this.jdField_m_of_type_Boolean)
+    if (this.jdField_l_of_type_Boolean)
     {
-      this.jdField_o_of_type_Boolean = true;
+      this.jdField_n_of_type_Boolean = true;
       a(true);
       a("0X80081E7", 2);
       return;
@@ -1209,9 +1244,9 @@ public class FriendProfileMoreInfoActivity
       ((ActionSheet)localObject1).a("当前学校学生身份尚未认证，去认证或修改学校信息。");
       ((ActionSheet)localObject1).c("去校园圈认证");
       ((ActionSheet)localObject1).c("修改学校");
-      ((ActionSheet)localObject1).c(2131432998);
-      ((ActionSheet)localObject1).a(new spv(this));
-      ((ActionSheet)localObject1).a(new spw(this, (ActionSheet)localObject1));
+      ((ActionSheet)localObject1).c(2131433015);
+      ((ActionSheet)localObject1).a(new ssu(this));
+      ((ActionSheet)localObject1).a(new ssv(this, (ActionSheet)localObject1));
       ((ActionSheet)localObject1).show();
       return;
     }
@@ -1277,7 +1312,7 @@ public class FriendProfileMoreInfoActivity
       }
       localArrayList.add(str);
     }
-    a(localArrayList, str, new spx(this));
+    a(localArrayList, str, new ssw(this));
   }
   
   private void h()
@@ -1330,53 +1365,53 @@ public class FriendProfileMoreInfoActivity
       }
       localArrayList.add(localObject);
     }
-    a(localArrayList, (String)localObject, new spy(this));
+    a(localArrayList, (String)localObject, new ssx(this));
   }
   
   private void i()
   {
     Intent localIntent = new Intent(this, InterestSwitchEditActivity.class);
-    if (-1 != this.jdField_o_of_type_Int) {
-      localIntent.putExtra("param_eat_switch", this.jdField_o_of_type_Int);
-    }
-    if (-1 != this.jdField_h_of_type_Int) {
-      localIntent.putExtra("param_interest_switch", this.jdField_h_of_type_Int);
-    }
-    if (-1 != this.jdField_l_of_type_Int) {
-      localIntent.putExtra("param_joined_group_switch", this.jdField_l_of_type_Int);
-    }
-    if (-1 != this.jdField_m_of_type_Int) {
-      localIntent.putExtra("param_now_switch", this.jdField_m_of_type_Int);
-    }
     if (-1 != this.jdField_n_of_type_Int) {
-      localIntent.putExtra("param_ktv_switch", this.jdField_n_of_type_Int);
+      localIntent.putExtra("param_eat_switch", this.jdField_n_of_type_Int);
     }
-    if (-1 != this.jdField_i_of_type_Int) {
-      localIntent.putExtra("param_music_switch", this.jdField_i_of_type_Int);
-    }
-    if (-1 != this.jdField_j_of_type_Int) {
-      localIntent.putExtra("param_recent_activity_switch", this.jdField_j_of_type_Int);
+    if (-1 != this.jdField_g_of_type_Int) {
+      localIntent.putExtra("param_interest_switch", this.jdField_g_of_type_Int);
     }
     if (-1 != this.jdField_k_of_type_Int) {
-      localIntent.putExtra("param_star_switch", this.jdField_k_of_type_Int);
+      localIntent.putExtra("param_joined_group_switch", this.jdField_k_of_type_Int);
+    }
+    if (-1 != this.jdField_l_of_type_Int) {
+      localIntent.putExtra("param_now_switch", this.jdField_l_of_type_Int);
+    }
+    if (-1 != this.jdField_m_of_type_Int) {
+      localIntent.putExtra("param_ktv_switch", this.jdField_m_of_type_Int);
+    }
+    if (-1 != this.jdField_h_of_type_Int) {
+      localIntent.putExtra("param_music_switch", this.jdField_h_of_type_Int);
+    }
+    if (-1 != this.jdField_i_of_type_Int) {
+      localIntent.putExtra("param_recent_activity_switch", this.jdField_i_of_type_Int);
+    }
+    if (-1 != this.jdField_j_of_type_Int) {
+      localIntent.putExtra("param_star_switch", this.jdField_j_of_type_Int);
+    }
+    if (-1 != this.jdField_o_of_type_Int) {
+      localIntent.putExtra("param_reader_switch", this.jdField_o_of_type_Int);
     }
     if (-1 != this.jdField_p_of_type_Int) {
-      localIntent.putExtra("param_reader_switch", this.jdField_p_of_type_Int);
+      localIntent.putExtra("param_radio_switch", this.jdField_p_of_type_Int);
     }
     if (-1 != this.jdField_q_of_type_Int) {
-      localIntent.putExtra("param_radio_switch", this.jdField_q_of_type_Int);
+      localIntent.putExtra("param_comic_switch", this.jdField_q_of_type_Int);
     }
     if (-1 != this.jdField_r_of_type_Int) {
-      localIntent.putExtra("param_comic_switch", this.jdField_r_of_type_Int);
+      localIntent.putExtra("param_education_switch", this.jdField_r_of_type_Int);
     }
     if (-1 != this.jdField_s_of_type_Int) {
-      localIntent.putExtra("param_education_switch", this.jdField_s_of_type_Int);
+      localIntent.putExtra("param_using_tim_switch", this.jdField_s_of_type_Int);
     }
     if (-1 != this.jdField_t_of_type_Int) {
-      localIntent.putExtra("param_using_tim_switch", this.jdField_t_of_type_Int);
-    }
-    if (-1 != this.jdField_u_of_type_Int) {
-      localIntent.putExtra("param_weishi_switch", this.jdField_u_of_type_Int);
+      localIntent.putExtra("param_weishi_switch", this.jdField_t_of_type_Int);
     }
     startActivityForResult(localIntent, 1008);
   }
@@ -1385,48 +1420,48 @@ public class FriendProfileMoreInfoActivity
   {
     Bundle localBundle = new Bundle();
     if (this.jdField_r_of_type_Boolean) {
-      localBundle.putShort("key_interest_switch", (short)this.jdField_h_of_type_Int);
+      localBundle.putShort("key_interest_switch", (short)this.jdField_g_of_type_Int);
     }
     if (this.jdField_v_of_type_Boolean) {
-      localBundle.putShort("key_joined_group_switch", (short)this.jdField_l_of_type_Int);
+      localBundle.putShort("key_joined_group_switch", (short)this.jdField_k_of_type_Int);
     }
     if (this.jdField_x_of_type_Boolean) {
-      localBundle.putShort("key_ktv_switch", (short)this.jdField_n_of_type_Int);
+      localBundle.putShort("key_ktv_switch", (short)this.jdField_m_of_type_Int);
     }
     if (this.jdField_s_of_type_Boolean) {
-      localBundle.putShort("key_music_switch", (short)this.jdField_i_of_type_Int);
+      localBundle.putShort("key_music_switch", (short)this.jdField_h_of_type_Int);
     }
     if (this.jdField_t_of_type_Boolean) {
-      localBundle.putShort("key_recent_activity_switch", (short)this.jdField_j_of_type_Int);
+      localBundle.putShort("key_recent_activity_switch", (short)this.jdField_i_of_type_Int);
     }
     if (this.jdField_u_of_type_Boolean) {
-      localBundle.putShort("key_star_switch", (short)this.jdField_k_of_type_Int);
+      localBundle.putShort("key_star_switch", (short)this.jdField_j_of_type_Int);
     }
     if (this.jdField_y_of_type_Boolean) {
-      localBundle.putShort("key_eat_switch", (short)this.jdField_o_of_type_Int);
+      localBundle.putShort("key_eat_switch", (short)this.jdField_n_of_type_Int);
     }
     if (this.z) {
-      localBundle.putShort("key_reader_switch", (short)this.jdField_p_of_type_Int);
+      localBundle.putShort("key_reader_switch", (short)this.jdField_o_of_type_Int);
     }
     if (this.A) {
-      localBundle.putShort("key_radio_switch", (short)this.jdField_q_of_type_Int);
+      localBundle.putShort("key_radio_switch", (short)this.jdField_p_of_type_Int);
     }
     if (this.jdField_w_of_type_Boolean) {
-      localBundle.putShort("key_now_switch", (short)this.jdField_m_of_type_Int);
+      localBundle.putShort("key_now_switch", (short)this.jdField_l_of_type_Int);
     }
     if (this.B) {
-      localBundle.putShort("key_comic_switch", (short)this.jdField_r_of_type_Int);
+      localBundle.putShort("key_comic_switch", (short)this.jdField_q_of_type_Int);
     }
     if (this.C) {
-      localBundle.putShort("key_education_switch", (short)this.jdField_s_of_type_Int);
+      localBundle.putShort("key_education_switch", (short)this.jdField_r_of_type_Int);
     }
     if (this.D) {
-      localBundle.putShort("key_using_tim_switch", (short)this.jdField_t_of_type_Int);
+      localBundle.putShort("key_using_tim_switch", (short)this.jdField_s_of_type_Int);
     }
     if (this.E) {
-      localBundle.putShort("key_weishi_switch", (short)this.jdField_u_of_type_Int);
+      localBundle.putShort("key_weishi_switch", (short)this.jdField_t_of_type_Int);
     }
-    a(localBundle, 2131434794, 0);
+    a(localBundle, 2131434811, 0);
   }
   
   private void k()
@@ -1436,14 +1471,14 @@ public class FriendProfileMoreInfoActivity
     }
   }
   
-  public ActionSheet a(List paramList, String paramString, sqp paramsqp)
+  public ActionSheet a(List paramList, String paramString, sto paramsto)
   {
     ActionSheet localActionSheet = ActionSheet.c(this);
-    paramList = new sqn(localActionSheet, paramList, paramString, paramsqp);
-    paramString = (DispatchActionMoveScrollView)localActionSheet.findViewById(2131362787);
+    paramList = new stm(localActionSheet, paramList, paramString, paramsto);
+    paramString = (DispatchActionMoveScrollView)localActionSheet.findViewById(2131362805);
     paramString.jdField_a_of_type_Boolean = true;
     paramString.setBackgroundResource(17170445);
-    paramString = (IphonePickerView)LayoutInflater.from(this).inflate(2130970344, null);
+    paramString = (IphonePickerView)LayoutInflater.from(this).inflate(2130970373, null);
     paramString.a(paramList);
     paramString.setPickListener(paramList);
     paramString.setSelection(paramList.a(), paramList.b());
@@ -1464,7 +1499,7 @@ public class FriendProfileMoreInfoActivity
     for (;;)
     {
       this.jdField_d_of_type_AndroidWidgetTextView.setText(str);
-      a(this.jdField_d_of_type_AndroidViewView, this.jdField_d_of_type_AndroidWidgetTextView, getString(2131430579), str);
+      a(this.jdField_d_of_type_AndroidViewView, this.jdField_d_of_type_AndroidWidgetTextView, getString(2131430596), str);
       return;
       this.jdField_e_of_type_AndroidWidgetTextView.setVisibility(8);
     }
@@ -1486,7 +1521,7 @@ public class FriendProfileMoreInfoActivity
       if (TextUtils.isEmpty((CharSequence)localObject2))
       {
         this.jdField_f_of_type_Int = -1;
-        localObject1 = getString(2131437491);
+        localObject1 = getString(2131437508);
       }
       if ((paramInt < NearbyProfileUtil.e.length - 1) && (paramInt > 0)) {
         break label137;
@@ -1499,7 +1534,7 @@ public class FriendProfileMoreInfoActivity
       a((TextView)localObject2, (CharSequence)localObject1, bool);
       localObject2 = this.jdField_h_of_type_AndroidViewView;
       localTextView = this.jdField_j_of_type_AndroidWidgetTextView;
-      str = getString(2131437490);
+      str = getString(2131437507);
       if (paramInt == -1) {
         break label172;
       }
@@ -1531,7 +1566,7 @@ public class FriendProfileMoreInfoActivity
     this.jdField_c_of_type_Int = paramInt1;
     this.jdField_d_of_type_Int = paramInt2;
     this.jdField_e_of_type_Int = paramInt3;
-    String str1 = getString(2131437485);
+    String str1 = getString(2131437502);
     if (paramInt1 != 0) {
       str1 = String.format(Locale.getDefault(), "%d-%d-%d", new Object[] { Integer.valueOf((0xFFFF0000 & paramInt1) >>> 16), Integer.valueOf((0xFF00 & paramInt1) >>> 8), Integer.valueOf(paramInt1 & 0xFF) });
     }
@@ -1543,7 +1578,7 @@ public class FriendProfileMoreInfoActivity
       a((TextView)localObject, str1, bool);
       localObject = this.jdField_g_of_type_AndroidViewView;
       localTextView = this.jdField_h_of_type_AndroidWidgetTextView;
-      str2 = getString(2131437484);
+      str2 = getString(2131437501);
       if (paramInt1 == 0) {
         break label149;
       }
@@ -1584,26 +1619,26 @@ public class FriendProfileMoreInfoActivity
   public void a(int paramInt, boolean paramBoolean)
   {
     this.jdField_a_of_type_Byte = ((byte)paramInt);
-    String str = getString(2131437483);
+    String str = getString(2131437500);
     if (paramInt == 0)
     {
-      str = getString(2131433924);
+      str = getString(2131433941);
       if (!paramBoolean) {
         break label88;
       }
-      a(this.jdField_g_of_type_AndroidWidgetTextView, str, 2131494213);
+      a(this.jdField_g_of_type_AndroidWidgetTextView, str, 2131494220);
       if ((paramInt != 0) && (paramInt != 1)) {
         break label121;
       }
     }
     for (;;)
     {
-      a(this.jdField_f_of_type_AndroidViewView, this.jdField_g_of_type_AndroidWidgetTextView, getString(2131437482), str);
+      a(this.jdField_f_of_type_AndroidViewView, this.jdField_g_of_type_AndroidWidgetTextView, getString(2131437499), str);
       return;
       if (paramInt != 1) {
         break;
       }
-      str = getString(2131433925);
+      str = getString(2131433942);
       break;
       label88:
       TextView localTextView = this.jdField_g_of_type_AndroidWidgetTextView;
@@ -1638,7 +1673,7 @@ public class FriendProfileMoreInfoActivity
   void a(TextView paramTextView, CharSequence paramCharSequence, boolean paramBoolean)
   {
     if (paramBoolean) {}
-    for (int i1 = 2131494262;; i1 = 2131494207)
+    for (int i1 = 2131494269;; i1 = 2131494214)
     {
       a(paramTextView, paramCharSequence, i1);
       return;
@@ -1650,7 +1685,7 @@ public class FriendProfileMoreInfoActivity
     if (((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() == 0)) && (paramCard != null) && (paramCard.nCampusStatus == 4))
     {
       if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-        ThreadManager.post(new spz(this, paramCard), 5, null, true);
+        ThreadManager.post(new ssy(this, paramCard), 5, null, true);
       }
     }
     else {
@@ -1661,10 +1696,10 @@ public class FriendProfileMoreInfoActivity
   
   public void a(Card paramCard, boolean paramBoolean)
   {
-    if ((paramCard == null) || ((!paramBoolean) && (this.jdField_n_of_type_Boolean))) {
+    if ((paramCard == null) || ((!paramBoolean) && (this.jdField_m_of_type_Boolean))) {
       return;
     }
-    this.jdField_n_of_type_Boolean = true;
+    this.jdField_m_of_type_Boolean = true;
     String str1;
     String str3;
     String str2;
@@ -1684,10 +1719,10 @@ public class FriendProfileMoreInfoActivity
       str3 = paramCard.strCampusCollege;
       str2 = String.valueOf(paramCard.nCampusEnrolYear);
       label109:
-      if (!this.jdField_k_of_type_Boolean) {
+      if (!this.jdField_j_of_type_Boolean) {
         d(str3);
       }
-      if (!this.jdField_l_of_type_Boolean) {
+      if (!this.jdField_k_of_type_Boolean) {
         e(str2);
       }
       a(paramCard);
@@ -1705,8 +1740,8 @@ public class FriendProfileMoreInfoActivity
       str2 = paramCard.strCampusClass;
       break label109;
       label196:
+      this.jdField_j_of_type_Boolean = false;
       this.jdField_k_of_type_Boolean = false;
-      this.jdField_l_of_type_Boolean = false;
       this.jdField_k_of_type_AndroidViewView.setVisibility(8);
       this.jdField_l_of_type_AndroidViewView.setVisibility(8);
     }
@@ -1721,7 +1756,7 @@ public class FriendProfileMoreInfoActivity
     for (this.jdField_c_of_type_JavaLangString = paramRichStatus;; this.jdField_c_of_type_JavaLangString = "")
     {
       a(this.jdField_f_of_type_AndroidWidgetTextView, paramRichStatus, bool);
-      a(this.jdField_c_of_type_AndroidViewView, this.jdField_f_of_type_AndroidWidgetTextView, getString(2131433469), paramRichStatus);
+      a(this.jdField_c_of_type_AndroidViewView, this.jdField_f_of_type_AndroidWidgetTextView, getString(2131433486), paramRichStatus);
       return;
       paramRichStatus = "编辑个性签名";
       bool = true;
@@ -1734,13 +1769,13 @@ public class FriendProfileMoreInfoActivity
     if (TextUtils.isEmpty(paramString))
     {
       str = "";
-      paramString = getString(2131437481);
+      paramString = getString(2131437498);
     }
     for (;;)
     {
       this.jdField_a_of_type_AndroidWidgetEditText.setText(str);
       this.jdField_a_of_type_AndroidWidgetEditText.setHint(paramString);
-      a(this.jdField_e_of_type_AndroidViewView, this.jdField_a_of_type_AndroidWidgetEditText, getString(2131437480), str);
+      a(this.jdField_e_of_type_AndroidViewView, this.jdField_a_of_type_AndroidWidgetEditText, getString(2131437497), str);
       return;
       str = paramString;
     }
@@ -1749,7 +1784,7 @@ public class FriendProfileMoreInfoActivity
   public void a(String paramString, int paramInt)
   {
     if (Thread.currentThread() == Looper.getMainLooper().getThread()) {
-      ThreadManager.post(new sqb(this, paramString, paramInt), 5, null, false);
+      ThreadManager.post(new sta(this, paramString, paramInt), 5, null, false);
     }
     for (;;)
     {
@@ -1775,7 +1810,7 @@ public class FriendProfileMoreInfoActivity
     paramString1 = "";
     if (paramInt == 1011)
     {
-      paramString1 = getString(2131430578);
+      paramString1 = getString(2131430595);
       localIntent.putExtra("isTroopNick", true);
       localIntent.putExtra("default_text", this.jdField_d_of_type_AndroidWidgetTextView.getText().toString() + "");
       localIntent.putExtra("max_num", 60);
@@ -1814,16 +1849,16 @@ public class FriendProfileMoreInfoActivity
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_1
-    //   3: getfield 1393	com/tencent/mobileqq/data/Card:strCampusSchool	Ljava/lang/String;
+    //   3: getfield 1416	com/tencent/mobileqq/data/Card:strCampusSchool	Ljava/lang/String;
     //   6: invokestatic 580	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
     //   9: ifeq +148 -> 157
     //   12: aload_1
-    //   13: getfield 1396	com/tencent/mobileqq/data/Card:strSchool	Ljava/lang/String;
+    //   13: getfield 1419	com/tencent/mobileqq/data/Card:strSchool	Ljava/lang/String;
     //   16: astore_2
     //   17: aload_1
-    //   18: getfield 1082	com/tencent/mobileqq/data/Card:lCampusSchoolID	J
+    //   18: getfield 1103	com/tencent/mobileqq/data/Card:lCampusSchoolID	J
     //   21: aload_2
-    //   22: invokestatic 1753	com/tencent/mobileqq/campuscircle/CampusCircleHelper:a	(JLjava/lang/String;)Ljava/lang/String;
+    //   22: invokestatic 1776	com/tencent/mobileqq/campuscircle/CampusCircleHelper:a	(JLjava/lang/String;)Ljava/lang/String;
     //   25: astore_3
     //   26: aload_0
     //   27: getfield 163	com/tencent/mobileqq/activity/FriendProfileMoreInfoActivity:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
@@ -1835,15 +1870,15 @@ public class FriendProfileMoreInfoActivity
     //   41: putfield 163	com/tencent/mobileqq/activity/FriendProfileMoreInfoActivity:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   44: aload_0
     //   45: getfield 544	com/tencent/mobileqq/activity/FriendProfileMoreInfoActivity:app	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   48: invokevirtual 1757	com/tencent/mobileqq/app/QQAppInterface:getPreferences	()Landroid/content/SharedPreferences;
+    //   48: invokevirtual 1780	com/tencent/mobileqq/app/QQAppInterface:getPreferences	()Landroid/content/SharedPreferences;
     //   51: aload_3
     //   52: aconst_null
-    //   53: invokeinterface 1763 3 0
+    //   53: invokeinterface 1786 3 0
     //   58: astore_3
     //   59: aload_3
     //   60: ifnull +21 -> 81
     //   63: aload_3
-    //   64: invokeinterface 1766 1 0
+    //   64: invokeinterface 1789 1 0
     //   69: ifle +12 -> 81
     //   72: aload_0
     //   73: getfield 163	com/tencent/mobileqq/activity/FriendProfileMoreInfoActivity:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
@@ -1856,15 +1891,15 @@ public class FriendProfileMoreInfoActivity
     //   87: invokevirtual 549	com/tencent/mobileqq/app/QQAppInterface:a	(I)Lcom/tencent/mobileqq/app/BusinessHandler;
     //   90: checkcast 551	com/tencent/mobileqq/campuscircle/CampusCircleHandler
     //   93: aload_1
-    //   94: getfield 1082	com/tencent/mobileqq/data/Card:lCampusSchoolID	J
+    //   94: getfield 1103	com/tencent/mobileqq/data/Card:lCampusSchoolID	J
     //   97: aload_2
-    //   98: invokevirtual 1769	com/tencent/mobileqq/campuscircle/CampusCircleHandler:a	(JLjava/lang/String;)V
+    //   98: invokevirtual 1792	com/tencent/mobileqq/campuscircle/CampusCircleHandler:a	(JLjava/lang/String;)V
     //   101: invokestatic 399	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   104: ifeq +50 -> 154
     //   107: ldc_w 401
     //   110: iconst_2
     //   111: invokestatic 616	java/util/Locale:getDefault	()Ljava/util/Locale;
-    //   114: ldc_w 1771
+    //   114: ldc_w 1794
     //   117: iconst_3
     //   118: anewarray 405	java/lang/Object
     //   121: dup
@@ -1877,8 +1912,8 @@ public class FriendProfileMoreInfoActivity
     //   134: dup
     //   135: iconst_1
     //   136: aload_1
-    //   137: getfield 1082	com/tencent/mobileqq/data/Card:lCampusSchoolID	J
-    //   140: invokestatic 1776	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   137: getfield 1103	com/tencent/mobileqq/data/Card:lCampusSchoolID	J
+    //   140: invokestatic 1799	java/lang/Long:valueOf	(J)Ljava/lang/Long;
     //   143: aastore
     //   144: dup
     //   145: iconst_2
@@ -1890,7 +1925,7 @@ public class FriendProfileMoreInfoActivity
     //   155: monitorexit
     //   156: return
     //   157: aload_1
-    //   158: getfield 1393	com/tencent/mobileqq/data/Card:strCampusSchool	Ljava/lang/String;
+    //   158: getfield 1416	com/tencent/mobileqq/data/Card:strCampusSchool	Ljava/lang/String;
     //   161: astore_2
     //   162: goto -145 -> 17
     //   165: aload_0
@@ -1926,8 +1961,8 @@ public class FriendProfileMoreInfoActivity
       str = "";
     }
     this.jdField_b_of_type_AndroidWidgetEditText.setText(str);
-    this.jdField_b_of_type_AndroidWidgetEditText.setHint(2131437493);
-    a(this.jdField_i_of_type_AndroidViewView, this.jdField_b_of_type_AndroidWidgetEditText, getString(2131437492), str);
+    this.jdField_b_of_type_AndroidWidgetEditText.setHint(2131437510);
+    a(this.jdField_i_of_type_AndroidViewView, this.jdField_b_of_type_AndroidWidgetEditText, getString(2131437509), str);
   }
   
   void c(String paramString)
@@ -1936,7 +1971,7 @@ public class FriendProfileMoreInfoActivity
     int i1;
     if (TextUtils.isEmpty(paramString))
     {
-      paramString = getString(2131437495);
+      paramString = getString(2131437512);
       i2 = 1;
       i1 = 0;
     }
@@ -1949,14 +1984,14 @@ public class FriendProfileMoreInfoActivity
       String str;
       if (i2 != 0)
       {
-        i3 = 2131494262;
+        i3 = 2131494269;
         ((SingleLineTextView)localObject1).setTextColor(((Resources)localObject2).getColor(i3));
         this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramString);
-        this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding(getResources().getDimensionPixelSize(2131559408));
+        this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablePadding(getResources().getDimensionPixelSize(2131559410));
         this.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setCompoundDrawablesWithIntrinsicBounds(0, i1);
         localObject1 = this.jdField_j_of_type_AndroidViewView;
         localObject2 = this.jdField_a_of_type_ComTencentWidgetSingleLineTextView;
-        str = getString(2131437494);
+        str = getString(2131437511);
         if (i2 == 0) {
           break label225;
         }
@@ -1990,7 +2025,7 @@ public class FriendProfileMoreInfoActivity
         i1 = CampusCircleConstant.jdField_a_of_type_ArrayOfInt[2];
         i2 = 0;
         break;
-        i3 = 2131494207;
+        i3 = 2131494214;
         break label40;
       }
       label235:
@@ -2034,7 +2069,7 @@ public class FriendProfileMoreInfoActivity
           if (NetworkUtil.d(this)) {
             break label95;
           }
-          a(2131437508, 1);
+          a(2131437525, 1);
         }
       }
     }
@@ -2200,15 +2235,15 @@ public class FriendProfileMoreInfoActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2130970499);
+    super.setContentView(2130970540);
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
     paramBundle = getIntent();
     int i1 = paramBundle.getIntExtra("profile_entry_type", 0);
-    this.jdField_m_of_type_Boolean = ProfileActivity.AllInOne.a(i1);
+    this.jdField_l_of_type_Boolean = ProfileActivity.AllInOne.a(i1);
     if (QLog.isDevelopLevel()) {
-      QLog.i("FriendProfileMoreInfoActivity", 4, String.format(Locale.getDefault(), "doOnCreate [%b, %d]", new Object[] { Boolean.valueOf(this.jdField_m_of_type_Boolean), Integer.valueOf(i1) }));
+      QLog.i("FriendProfileMoreInfoActivity", 4, String.format(Locale.getDefault(), "doOnCreate [%b, %d]", new Object[] { Boolean.valueOf(this.jdField_l_of_type_Boolean), Integer.valueOf(i1) }));
     }
-    this.jdField_p_of_type_Boolean = paramBundle.getBooleanExtra("isTroopMemberCard", false);
+    this.jdField_o_of_type_Boolean = paramBundle.getBooleanExtra("isTroopMemberCard", false);
     this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("troopUin");
     this.jdField_b_of_type_JavaLangString = paramBundle.getStringExtra("memberUin");
     this.jdField_a_of_type_ComTencentMobileqqAppCardHandler = ((CardHandler)this.app.a(2));
@@ -2221,7 +2256,7 @@ public class FriendProfileMoreInfoActivity
     paramBundle = new IntentFilter();
     paramBundle.addAction("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
     registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-    paramBundle = (LinearLayout)super.findViewById(2131370909);
+    paramBundle = (LinearLayout)super.findViewById(2131371058);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramBundle.setFitsSystemWindows(true);
@@ -2237,7 +2272,7 @@ public class FriendProfileMoreInfoActivity
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne = ((ProfileActivity.AllInOne)getIntent().getParcelableExtra("AllInOne"));
       this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard = ((BusinessCard)getIntent().getParcelableExtra("BusinessCard"));
-      ThreadManager.post(new sql(this), 5, null, true);
+      ThreadManager.post(new stk(this), 5, null, true);
       return true;
       if (i1 <= 320) {
         this.jdField_w_of_type_Int = 100;
@@ -2313,13 +2348,13 @@ public class FriendProfileMoreInfoActivity
     }
     else
     {
-      str1 = getString(2131437497);
+      str1 = getString(2131437514);
       bool = true;
     }
     a(this.jdField_o_of_type_AndroidWidgetTextView, str1, bool);
     paramString = this.jdField_m_of_type_AndroidViewView;
     TextView localTextView = this.jdField_o_of_type_AndroidWidgetTextView;
-    String str2 = getString(2131437496);
+    String str2 = getString(2131437513);
     if (!bool) {}
     for (;;)
     {
@@ -2334,7 +2369,7 @@ public class FriendProfileMoreInfoActivity
     Intent localIntent = new Intent();
     if (a())
     {
-      localIntent.putExtra("param_joined_group_switch", this.jdField_l_of_type_Int);
+      localIntent.putExtra("param_joined_group_switch", this.jdField_k_of_type_Int);
       localIntent.putExtra("param_switches_changed", true);
     }
     if (this.jdField_a_of_type_AndroidOsBundle != null) {
@@ -2355,13 +2390,13 @@ public class FriendProfileMoreInfoActivity
     }
     else
     {
-      str1 = getString(2131437499);
+      str1 = getString(2131437516);
       bool = true;
     }
     a(this.jdField_p_of_type_AndroidWidgetTextView, str1, bool);
     paramString = this.jdField_n_of_type_AndroidViewView;
     TextView localTextView = this.jdField_p_of_type_AndroidWidgetTextView;
-    String str2 = getString(2131437498);
+    String str2 = getString(2131437515);
     if (!bool) {}
     for (;;)
     {
@@ -2378,8 +2413,8 @@ public class FriendProfileMoreInfoActivity
       str = "";
     }
     this.jdField_c_of_type_AndroidWidgetEditText.setText(str);
-    this.jdField_c_of_type_AndroidWidgetEditText.setHint(2131437501);
-    a(this.jdField_o_of_type_AndroidViewView, this.jdField_c_of_type_AndroidWidgetEditText, getString(2131437500), str);
+    this.jdField_c_of_type_AndroidWidgetEditText.setHint(2131437518);
+    a(this.jdField_o_of_type_AndroidViewView, this.jdField_c_of_type_AndroidWidgetEditText, getString(2131437517), str);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -2400,7 +2435,7 @@ public class FriendProfileMoreInfoActivity
               return true;
             } while ((this.jdField_a_of_type_Int != 1) && (this.jdField_a_of_type_Int != 2));
             k();
-            QQToast.a(this, 2131437281, 0).b(getTitleBarHeight());
+            QQToast.a(this, 2131437298, 0).b(getTitleBarHeight());
             return true;
             a(paramMessage);
             a(this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoWallView$QZonePhotoCache.jdField_b_of_type_Int);
@@ -2427,9 +2462,9 @@ public class FriendProfileMoreInfoActivity
       a(this.jdField_b_of_type_JavaUtilArrayList, this.jdField_a_of_type_ComTencentMobileqqWidgetPhotoWallView$QZonePhotoCache.jdField_b_of_type_Int);
       return true;
     } while ((isFinishing()) || (!isResume()) || (this.jdField_a_of_type_ComTencentMobileqqDataCard == null) || (this.jdField_a_of_type_ComTencentMobileqqDataCard.nCampusStatus != 1) || (this.jdField_a_of_type_ComTencentMobileqqDataCard.nCampusSchoolFlag != 1) || ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.strCampusSchool)) && (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataCard.strSchool))));
-    paramMessage = new sqj(this);
-    sqk localsqk = new sqk(this);
-    DialogUtil.a(this, getString(2131438910), 2131438912, 2131438911, localsqk, paramMessage).show();
+    paramMessage = new sti(this);
+    stj localstj = new stj(this);
+    DialogUtil.a(this, getString(2131438938), 2131438940, 2131438939, localstj, paramMessage).show();
     return true;
   }
   
@@ -2440,12 +2475,12 @@ public class FriendProfileMoreInfoActivity
     if (TextUtils.isEmpty(paramString)) {
       i1 = 1;
     }
-    for (String str1 = getString(2131437506);; str1 = paramString)
+    for (String str1 = getString(2131437523);; str1 = paramString)
     {
       a(this.jdField_q_of_type_AndroidWidgetTextView, str1, TextUtils.isEmpty(paramString));
       paramString = this.jdField_p_of_type_AndroidViewView;
       TextView localTextView = this.jdField_q_of_type_AndroidWidgetTextView;
-      String str2 = getString(2131437502);
+      String str2 = getString(2131437519);
       if (i1 == 0) {}
       for (;;)
       {
@@ -2468,20 +2503,32 @@ public class FriendProfileMoreInfoActivity
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    int i2 = 1;
+    if (paramCompoundButton == this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
+    {
+      if (this.jdField_q_of_type_Boolean != paramBoolean) {
+        this.G = true;
+      }
+      if (paramBoolean)
+      {
+        ReportController.b(this.app, "dc00898", "", "", "0X80092ED", "0X80092ED", 0, 0, "", "", "", "");
+        return;
+      }
+      ReportController.b(this.app, "dc00898", "", "", "0X80092EE", "0X80092EE", 0, 0, "", "", "", "");
+      return;
+    }
     if (paramBoolean)
     {
       i1 = 0;
-      if (this.jdField_g_of_type_Int != i1) {
-        this.jdField_j_of_type_Boolean = true;
+      if (this.jdField_u_of_type_Int != i1) {
+        this.F = true;
       }
       paramCompoundButton = this.app;
       if (!paramBoolean) {
-        break label67;
+        break label153;
       }
     }
-    label67:
-    for (int i1 = i2;; i1 = 2)
+    label153:
+    for (int i1 = 1;; i1 = 2)
     {
       ReportController.b(paramCompoundButton, "dc00898", "", "", "0X8008407", "0X8008407", i1, 0, "", "", "", "");
       return;
@@ -2498,12 +2545,12 @@ public class FriendProfileMoreInfoActivity
     switch (paramView.getId())
     {
     default: 
-    case 2131363227: 
-    case 2131370911: 
-    case 2131370913: 
-    case 2131370915: 
-    case 2131370925: 
-    case 2131370917: 
+    case 2131363245: 
+    case 2131371060: 
+    case 2131371062: 
+    case 2131371064: 
+    case 2131371074: 
+    case 2131371066: 
       do
       {
         do
@@ -2515,7 +2562,7 @@ public class FriendProfileMoreInfoActivity
           paramView.putExtra("hide_more_button", true);
           paramView.putExtra("hide_operation_bar", true);
           paramView.putExtra("url", "http://ti.qq.com/photowall/index.html?_wv=1027");
-          paramView.putExtra("leftViewText", getString(2131432397));
+          paramView.putExtra("leftViewText", getString(2131432414));
           startActivityForResult(paramView, 1001);
           ReportController.b(this.app, "dc00898", "", "", "0X8007EC4", "0X8007EC4", 0, 0, "", "", "", "");
           return;
@@ -2540,39 +2587,39 @@ public class FriendProfileMoreInfoActivity
       } while (!QLog.isColorLevel());
       QLog.d("FriendProfileMoreInfoActivity", 2, "openModifyNickNamePage right invalidate-----------");
       return;
-    case 2131370927: 
+    case 2131371076: 
       paramView = new Intent(this, AgeSelectionActivity.class);
       paramView.putExtra("param_birthday", this.jdField_c_of_type_Int);
       startActivityForResult(paramView, 1003);
       return;
-    case 2131370929: 
+    case 2131371078: 
       paramView = new Intent(this, JobSelectionActivity.class);
       paramView.putExtra("param_id", this.jdField_f_of_type_Int);
       startActivityForResult(paramView, 1004);
       return;
-    case 2131364300: 
+    case 2131364324: 
       c(1);
       return;
-    case 2131370943: 
+    case 2131371092: 
       c(2);
       return;
-    case 2131370947: 
+    case 2131371096: 
       paramView = new Intent(this, EditActivity.class);
-      paramView.putExtra("title", 2131437502).putExtra("limit", 383).putExtra("canPostNull", true).putExtra("hint", 2131437506).putExtra("multiLine", true).putExtra("current", this.jdField_d_of_type_JavaLangString).putExtra("action", 104).putExtra("key_title_style", 0).putExtra("key_hide_clear_btn", true).putExtra("key_null_bg", true).putExtra("key_simple_count_style", true);
+      paramView.putExtra("title", 2131437519).putExtra("limit", 383).putExtra("canPostNull", true).putExtra("hint", 2131437523).putExtra("multiLine", true).putExtra("current", this.jdField_d_of_type_JavaLangString).putExtra("action", 104).putExtra("key_title_style", 0).putExtra("key_hide_clear_btn", true).putExtra("key_null_bg", true).putExtra("key_simple_count_style", true);
       startActivityForResult(paramView, 1007);
       return;
-    case 2131370949: 
+    case 2131371098: 
       ProfileCardUtil.a(this, this.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard, this.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
       ReportController.b(this.app, "dc00898", "", "", "0X8007ED2", "0X8007ED2", 0, 0, "", "", "", "");
       return;
-    case 2131370951: 
+    case 2131371102: 
       i();
       ReportController.b(this.app, "dc00898", "", "", "0X8007ED1", "0X8007ED1", 0, 0, "", "", "", "");
       return;
-    case 2131370934: 
+    case 2131371083: 
       f();
       return;
-    case 2131370936: 
+    case 2131371085: 
       g();
       return;
     }
@@ -2586,7 +2633,7 @@ public class FriendProfileMoreInfoActivity
       if (paramView != this.jdField_a_of_type_AndroidWidgetEditText) {
         break label67;
       }
-      if (this.jdField_a_of_type_Sqo.jdField_b_of_type_Boolean)
+      if (this.jdField_a_of_type_Stn.jdField_b_of_type_Boolean)
       {
         paramView = this.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
         if ((!TextUtils.isEmpty(paramView)) && (!TextUtils.isEmpty(paramView.trim()))) {}
@@ -2600,7 +2647,7 @@ public class FriendProfileMoreInfoActivity
       do
       {
         return;
-      } while ((paramView != this.jdField_c_of_type_AndroidWidgetEditText) || (!this.jdField_c_of_type_Sqo.jdField_b_of_type_Boolean));
+      } while ((paramView != this.jdField_c_of_type_AndroidWidgetEditText) || (!this.jdField_c_of_type_Stn.jdField_b_of_type_Boolean));
       paramView = this.jdField_c_of_type_AndroidWidgetEditText.getText().toString();
       localMatcher = SearchBaseActivity.a.matcher(paramView);
     } while ((TextUtils.isEmpty(paramView)) || (localMatcher.matches()));

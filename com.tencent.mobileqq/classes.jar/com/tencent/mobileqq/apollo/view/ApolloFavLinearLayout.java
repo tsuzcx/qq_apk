@@ -55,18 +55,18 @@ public class ApolloFavLinearLayout
           View localView = LayoutInflater.from(paramContext).inflate(2130968692, null);
           paramAttributeSet.addView(localView, (ViewGroup.LayoutParams)localObject);
           localObject = new ApolloLinearLayout.ViewHolder();
-          ((ApolloLinearLayout.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131363214));
-          ((ApolloLinearLayout.ViewHolder)localObject).jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363216));
-          ((ApolloLinearLayout.ViewHolder)localObject).e = ((ImageView)localView.findViewById(2131363213));
-          ((ApolloLinearLayout.ViewHolder)localObject).jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131363215));
+          ((ApolloLinearLayout.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131363232));
+          ((ApolloLinearLayout.ViewHolder)localObject).jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363234));
+          ((ApolloLinearLayout.ViewHolder)localObject).e = ((ImageView)localView.findViewById(2131363231));
+          ((ApolloLinearLayout.ViewHolder)localObject).jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)localView.findViewById(2131363233));
           RelativeLayout.LayoutParams localLayoutParams1 = (RelativeLayout.LayoutParams)((ApolloLinearLayout.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
           localLayoutParams1.height = m;
           localLayoutParams1.width = m;
-          ((ApolloLinearLayout.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363223));
-          ((ApolloLinearLayout.ViewHolder)localObject).jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131363217));
-          ((ApolloLinearLayout.ViewHolder)localObject).b = ((ImageView)localView.findViewById(2131363220));
-          ((ApolloLinearLayout.ViewHolder)localObject).jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131363224));
-          ((ApolloLinearLayout.ViewHolder)localObject).d = ((ImageView)localView.findViewById(2131363218));
+          ((ApolloLinearLayout.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131363241));
+          ((ApolloLinearLayout.ViewHolder)localObject).jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131363235));
+          ((ApolloLinearLayout.ViewHolder)localObject).b = ((ImageView)localView.findViewById(2131363238));
+          ((ApolloLinearLayout.ViewHolder)localObject).jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131363242));
+          ((ApolloLinearLayout.ViewHolder)localObject).d = ((ImageView)localView.findViewById(2131363236));
           localView.setTag(localObject);
           i += 1;
         }

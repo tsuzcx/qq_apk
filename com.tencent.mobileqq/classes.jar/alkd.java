@@ -1,69 +1,47 @@
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.TransitionDrawable;
-import android.view.View;
-import android.view.ViewConfiguration;
-import com.tencent.widget.AbsListView;
+import com.squareup.okhttp.ResponseBody;
+import com.tencent.plato.mqq.network.ProgressListener;
+import com.tencent.plato.mqq.network.ProgressResponseBody;
+import okio.Buffer;
+import okio.ForwardingSource;
+import okio.Source;
 
-public final class alkd
-  implements Runnable
+public class alkd
+  extends ForwardingSource
 {
-  public alkd(AbsListView paramAbsListView) {}
-  
-  public void run()
+  public alkd(ProgressResponseBody paramProgressResponseBody, Source paramSource)
   {
-    Object localObject;
-    int i;
-    boolean bool;
-    if (this.a.mTouchMode == 0)
+    super(paramSource);
+  }
+  
+  public long read(Buffer paramBuffer, long paramLong)
+  {
+    long l1 = super.read(paramBuffer, paramLong);
+    paramBuffer = this.a;
+    long l2 = ProgressResponseBody.a(this.a);
+    if (l1 != -1L)
     {
-      this.a.mTouchMode = 1;
-      localObject = this.a.getChildAt(this.a.mMotionPosition - this.a.mFirstPosition);
-      if ((localObject != null) && (!((View)localObject).hasFocusable()))
-      {
-        this.a.mLayoutMode = 0;
-        if (this.a.mDataChanged) {
-          break label249;
-        }
-        ((View)localObject).setPressed(true);
-        this.a.setPressed(true);
-        this.a.layoutChildren();
-        this.a.positionSelector(this.a.mMotionPosition, (View)localObject);
-        this.a.refreshDrawableState();
-        i = ViewConfiguration.getLongPressTimeout();
-        bool = this.a.isLongClickable();
-        if (this.a.mSelector != null)
-        {
-          localObject = this.a.mSelector.getCurrent();
-          if ((localObject != null) && ((localObject instanceof TransitionDrawable)))
-          {
-            if (!bool) {
-              break label230;
-            }
-            ((TransitionDrawable)localObject).startTransition(i);
-          }
-        }
+      paramLong = l1;
+      ProgressResponseBody.a(paramBuffer, paramLong + l2);
+      paramBuffer = ProgressResponseBody.a(this.a);
+      paramLong = ProgressResponseBody.a(this.a);
+      l2 = ProgressResponseBody.a(this.a).contentLength();
+      if (l1 != -1L) {
+        break label102;
       }
     }
-    while (bool)
+    label102:
+    for (boolean bool = true;; bool = false)
     {
-      if (AbsListView.access$700(this.a) == null) {
-        AbsListView.access$702(this.a, new alkc(this.a, null));
-      }
-      AbsListView.access$700(this.a).a();
-      this.a.postDelayed(AbsListView.access$700(this.a), i);
-      return;
-      label230:
-      ((TransitionDrawable)localObject).resetTransition();
+      paramBuffer.a(paramLong, l2, bool);
+      return l1;
+      paramLong = 0L;
+      break;
     }
-    this.a.mTouchMode = 2;
-    return;
-    label249:
-    this.a.mTouchMode = 2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     alkd
  * JD-Core Version:    0.7.0.1
  */

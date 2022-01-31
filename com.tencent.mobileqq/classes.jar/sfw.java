@@ -1,20 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.os.Message;
 import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.statistics.ReportController;
 
-public class sfw
-  implements DialogInterface.OnClickListener
+class sfw
+  implements Runnable
 {
-  public sfw(Conversation paramConversation) {}
+  sfw(sfv paramsfv, Message paramMessage) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    if (paramDialogInterface == Conversation.a(this.a)) {
-      Conversation.a(this.a, null);
-    }
-    ReportController.b(this.a.a, "CliOper", "", "", "0X800815E", "0X800815E", 0, 0, "", "", "", "");
-    ReportController.b(this.a.a, "CliOper", "", "", "0X8008656", "0X8008656", 0, 0, "", "", "", "");
+    Conversation.b(this.jdField_a_of_type_Sfv.a.a, this.jdField_a_of_type_AndroidOsMessage);
   }
 }
 

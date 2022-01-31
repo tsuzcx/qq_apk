@@ -1,16 +1,14 @@
-import com.tencent.mobileqq.ar.arengine.ARCloudRecogResult;
-import com.tencent.mobileqq.ar.arengine.AREngine;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ar.ARRenderModel.GreetingCardRender;
 
 public class aaay
   implements Runnable
 {
-  public aaay(AREngine paramAREngine, ARCloudRecogResult paramARCloudRecogResult) {}
+  public aaay(GreetingCardRender paramGreetingCardRender) {}
   
   public void run()
   {
-    QLog.i("AREngine_AREngine", 1, "processCloudRecogResult start.");
-    this.jdField_a_of_type_ComTencentMobileqqArArengineAREngine.a(null, this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudRecogResult);
+    GreetingCardRender.a(this.a);
+    GreetingCardRender.a(this.a, false);
   }
 }
 

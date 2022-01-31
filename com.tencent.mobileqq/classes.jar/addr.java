@@ -1,55 +1,68 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
-import com.tencent.mobileqq.fragment.NearbyHybridFragment;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
-import com.tencent.mobileqq.nearby.widget.NearbyFacePowerDialog;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.text.TextUtils;
+import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.fileviewer.IFileViewerAdapter;
+import com.tencent.mobileqq.filemanager.fileviewer.controller.IThumbController;
+import com.tencent.mobileqq.filemanager.fileviewer.data.DefaultImageInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.ImageFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnThumbEventListener;
+import com.tencent.mobileqq.filemanager.fileviewer.model.TroopFileModel;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import com.tencent.mobileqq.troop.utils.TroopFileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.util.UUID;
 
 public class addr
-  implements View.OnClickListener
+  implements IThumbController
 {
-  public addr(NearbyHybridFragment paramNearbyHybridFragment) {}
+  public addr(TroopFileModel paramTroopFileModel) {}
   
-  public void onClick(View paramView)
+  public void a(FileBrowserModelBase.ImageFileInfo paramImageFileInfo)
   {
-    int i = paramView.getId();
-    if (i == 2131365222) {
-      if (this.a.jdField_e_of_type_Int == 2)
-      {
-        paramView = DialogUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, "是否下载now直播？", 0, 0, null, null);
-        paramView.setPositiveButton("确定", new adds(this));
-        paramView.setNegativeButton("取消", new addt(this, paramView));
-        paramView.show();
-        NearbyUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "clk_pub", 1);
-      }
-    }
-    while (i != 2131365223) {
-      for (;;)
+    paramImageFileInfo = ((DefaultImageInfo)paramImageFileInfo).a();
+    if (paramImageFileInfo == null) {}
+    Object localObject;
+    do
+    {
+      do
       {
         return;
-        paramView = new NearbyFacePowerDialog(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity);
-        paramView.a(new addu(this, this.a.jdField_e_of_type_JavaLangString));
-        paramView.show();
+      } while ((FileManagerUtil.a(paramImageFileInfo.a()) != 0) || (TextUtils.isEmpty(paramImageFileInfo.a())) || (!TextUtils.isEmpty(paramImageFileInfo.g())));
+      FileManagerEntity localFileManagerEntity = paramImageFileInfo.a();
+      if (localFileManagerEntity == null)
+      {
+        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb : can not get the troop file entity, return.");
+        return;
       }
-    }
-    paramView = new Intent(this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity, QQBrowserActivity.class);
-    paramView.putExtra("url", "http://nearby.qq.com/nearby-index/my_msg.html?_wv=1031&_bid=3027");
-    this.a.jdField_a_of_type_ComTencentMobileqqAppIphoneTitleBarActivity.startActivity(paramView);
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a().a(38);
-    this.a.b.setVisibility(8);
-    NearbyUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface, "clk_msg", 0);
+      localObject = TroopFileUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin, localFileManagerEntity.strTroopFileID, localFileManagerEntity.strTroopFilePath, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, localFileManagerEntity.busId);
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb : troopUin[" + localFileManagerEntity.TroopUin + "] troopFileId[" + localFileManagerEntity.strTroopFileID + "] troopFilePath[" + localFileManagerEntity.strTroopFilePath + "]");
+      }
+      if (TextUtils.isEmpty(((TroopFileStatusInfo)localObject).c))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb :  can not find local thumb file, download.");
+        }
+        localObject = TroopFileTransferManager.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin);
+        if (localFileManagerEntity.strTroopFileID == null)
+        {
+          ((TroopFileTransferManager)localObject).a(localFileManagerEntity.strTroopFilePath, paramImageFileInfo.a(), localFileManagerEntity.busId, 640);
+          return;
+        }
+        ((TroopFileTransferManager)localObject).a(UUID.fromString(localFileManagerEntity.strTroopFileID), 640);
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopFileModel<FileAssistant>", 2, "downloadThumb :  can find local thumb file, refresh the picture browser.");
+      }
+    } while (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener == null);
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener.a(((TroopFileStatusInfo)localObject).e, ((TroopFileStatusInfo)localObject).c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     addr
  * JD-Core Version:    0.7.0.1
  */

@@ -10,15 +10,15 @@ import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import cooperation.qzone.thread.BaseHandler;
 import cooperation.qzone.util.QZLog;
 import cooperation.qzone.webviewplugin.QzonePersonalizeJsPlugin;
-import tla;
-import tlb;
+import toa;
+import tob;
 
 public class QzoneTiantaiTranslucentBrowserActivity
   extends QQTranslucentBrowserActivity
 {
   private long jdField_a_of_type_Long;
-  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new tlb(this);
-  private Runnable jdField_a_of_type_JavaLangRunnable = new tla(this);
+  BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new tob(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new toa(this);
   private volatile boolean jdField_a_of_type_Boolean;
   private volatile boolean b;
   private volatile boolean c;

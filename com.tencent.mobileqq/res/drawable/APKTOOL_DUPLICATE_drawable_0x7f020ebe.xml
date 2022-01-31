@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval"
+<layer-list
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="2.0dip" />
-    <size android:height="5.0dip" android:width="5.0dip" />
-    <solid android:color="@color/APKTOOL_DUPLICATE_color_0x7f0c0121" />
-</shape>
+    <item android:id="@android:id/progress">
+        <clip android:gravity="top" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0222db" android:clipOrientation="vertical" />
+    </item>
+</layer-list>

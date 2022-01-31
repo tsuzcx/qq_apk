@@ -1,34 +1,18 @@
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import com.etrump.mixlayout.ETTextView;
-import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
-import com.tencent.mobileqq.activity.aio.item.TextItemBuilder.Holder;
-import com.tencent.mobileqq.data.MessageForReplyText.LightReplyMsgRich2;
-import com.tencent.mobileqq.widget.BubbleImageView;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class vbp
-  extends TextItemBuilder.Holder
+  implements View.OnClickListener
 {
-  public ViewGroup a;
-  public ImageView a;
-  public LinearLayout a;
-  public TextView a;
-  public ETTextView a;
-  public MessageForReplyText.LightReplyMsgRich2 a;
-  public BubbleImageView a;
-  public View b;
-  public ViewGroup b;
-  public TextView b;
-  public BubbleImageView b;
-  public ViewGroup c;
-  public TextView c;
-  public TextView d;
-  public int e;
+  public vbp(MarketFaceItemBuilder paramMarketFaceItemBuilder, MarketFaceItemBuilder.Holder paramHolder) {}
   
-  public vbp(ReplyTextItemBuilder paramReplyTextItemBuilder) {}
+  public void onClick(View paramView)
+  {
+    ThreadManager.post(new vbq(this), 5, null, true);
+  }
 }
 
 

@@ -31,7 +31,7 @@ public final class stSetSwitchRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aac.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_WEISHI_QQ_PROFILE.stSetSwitchRsp
  * JD-Core Version:    0.7.0.1
  */

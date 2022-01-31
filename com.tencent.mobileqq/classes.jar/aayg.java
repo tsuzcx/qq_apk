@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.mobileqq.armap.config.ARMapConfigManager;
+import android.content.Context;
+import android.graphics.Bitmap;
+import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
+import com.tencent.mobileqq.ark.ArkTipsManager;
 
 public class aayg
-  extends SosoInterface.OnLocationListener
+  implements ArkAppCenter.OnGetAppIcon
 {
-  public aayg(ARMapConfigManager paramARMapConfigManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public aayg(ArkTipsManager paramArkTipsManager, Context paramContext) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void a(String paramString, Bitmap paramBitmap)
   {
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
-      ARMapConfigManager.a(this.a, paramSosoLbsInfo.a.a, paramSosoLbsInfo.a.b);
+    if (paramBitmap != null) {
+      ArkTipsManager.a(this.jdField_a_of_type_ComTencentMobileqqArkArkTipsManager, paramBitmap, this.jdField_a_of_type_AndroidContentContext);
     }
   }
 }

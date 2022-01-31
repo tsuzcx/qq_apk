@@ -1,40 +1,18 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.util.DrawerCoverUtil;
 
-public class zdl
-  extends FriendListObserver
+class zdl
+  implements Runnable
 {
-  public zdl(MessageHandler paramMessageHandler) {}
+  zdl(zdk paramzdk, Card paramCard) {}
   
-  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
+  public void run()
   {
-    if ((paramBoolean1) && (paramBoolean2) && (paramBoolean3) && (!TextUtils.isEmpty(paramString))) {
-      this.a.b.a().k();
-    }
-  }
-  
-  protected void onUpdateAnswerAddedFriend(boolean paramBoolean, String paramString, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "onUpdateAnswerAddedFriend isSuccess = " + paramBoolean + ", uin = " + paramString + ", flag = " + paramInt);
-    }
-    if (paramBoolean) {
-      this.a.b.a().k();
-    }
-  }
-  
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "onUpdateFriendList isSuccess = " + paramBoolean1 + ", isComplete = " + paramBoolean2);
-    }
-    if ((paramBoolean1) && (paramBoolean2)) {
-      this.a.b.a().k();
+    if (FrameHelperActivity.a(this.jdField_a_of_type_Zdk.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity) >= 0)
+    {
+      DrawerCoverUtil.a(this.jdField_a_of_type_Zdk.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataCard);
+      FrameHelperActivity.b(this.jdField_a_of_type_Zdk.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity);
     }
   }
 }

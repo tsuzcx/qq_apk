@@ -1,49 +1,29 @@
-import android.content.Intent;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.media.MediaPlayer;
+import android.media.MediaPlayer.OnPreparedListener;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.QQVideoView;
+import com.tencent.qphone.base.util.QLog;
 
 public class wet
-  implements View.OnClickListener
+  implements MediaPlayer.OnPreparedListener
 {
-  public wet(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public wet(BlessActivity paramBlessActivity) {}
   
-  public void onClick(View paramView)
+  public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if ((TextUtils.isEmpty(this.a.jdField_a_of_type_AndroidWidgetEditText.getText())) || (this.a.f == ClassificationSearchActivity.c))
-    {
-      paramView = (InputMethodManager)this.a.getSystemService("input_method");
-      if ((paramView != null) && (paramView.isActive())) {
-        paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
-      }
-      this.a.setResult(0);
-      this.a.finish();
-      if ((this.a.f == ClassificationSearchActivity.d) || (this.a.f == ClassificationSearchActivity.e)) {
-        this.a.sendBroadcast(new Intent("com.tencent.mobileqq.search.cancel"));
-      }
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
     }
-    paramView = this.a.jdField_a_of_type_AndroidWidgetEditText.getText().toString();
-    if ((this.a.f == ClassificationSearchActivity.jdField_a_of_type_Int) && (!TextUtils.isEmpty(paramView.trim())))
-    {
-      this.a.a(paramView);
-      ClassificationSearchActivity.a(this.a, paramView);
-      PublicAccountReportUtils.a(null, "dc00899", "Pb_account_lifeservice", "", "0X80067C4", "0X80067C4", 0, 0, "", "", paramView, "", true);
-      return;
+    if (BlessActivity.a(this.a) != null) {
+      BlessActivity.a(this.a).start();
     }
-    if (this.a.f == ClassificationSearchActivity.d)
-    {
-      PublicAccountReportUtils.a(null, "", "0X800742D", "0X800742D", 0, 0, paramView, "", "", "");
-      ClassificationSearchActivity.a(this.a, paramView);
-      return;
+    BlessActivity.a(this.a).postDelayed(new weu(this), 800L);
+    if (QLog.isColorLevel()) {
+      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactSearchBaseFragment.a(paramView, false);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X800632D", "0X800632D", 0, 0, "", "", "", "");
   }
 }
 

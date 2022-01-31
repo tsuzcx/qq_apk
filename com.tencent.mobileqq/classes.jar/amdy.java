@@ -1,23 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.font.FontManager;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.widget.TipsPopupWindow;
 
 public class amdy
-  implements EIPCResultCallback
+  implements Runnable
 {
-  public amdy(FontManager paramFontManager) {}
+  public amdy(TipsPopupWindow paramTipsPopupWindow) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FontManager", 2, "startFontSoDownload download so success");
-    }
+    TipsPopupWindow.a(this.a);
+    TipsPopupWindow.a(this.a, false);
+    TipsPopupWindow.b(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amdy
  * JD-Core Version:    0.7.0.1
  */

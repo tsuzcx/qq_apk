@@ -1,37 +1,22 @@
-import com.tencent.mobileqq.businessCard.helpers.CameraHelper;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.armap.map.LbsPackShareDialog;
 
 public class abhl
-  extends Thread
+  implements Animation.AnimationListener
 {
-  public abhl(CameraHelper paramCameraHelper) {}
+  public abhl(LbsPackShareDialog paramLbsPackShareDialog) {}
   
-  public void a()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    try
-    {
-      CameraHelper.a().c();
-      return;
-    }
-    finally {}
+    this.a.a.setVisibility(8);
+    this.a.dismiss();
   }
   
-  public void run()
-  {
-    try
-    {
-      for (;;)
-      {
-        Thread.sleep(3000L);
-        try
-        {
-          a();
-        }
-        catch (RuntimeException localRuntimeException) {}
-      }
-      return;
-    }
-    catch (InterruptedException localInterruptedException) {}
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

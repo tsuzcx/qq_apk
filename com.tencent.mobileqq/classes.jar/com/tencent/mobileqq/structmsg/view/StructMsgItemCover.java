@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import ahum;
+import aiip;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -67,7 +67,7 @@ public class StructMsgItemCover
   public StructMsgItemCover()
   {
     this.jdField_j_of_type_Int = i;
-    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new ahum(this);
+    this.jdField_a_of_type_ComTencentImageURLDrawableDownListener$Adapter = new aiip(this);
     this.jdField_a_of_type_JavaLangString = "picture";
     this.jdField_a_of_type_Int = 11;
   }
@@ -192,7 +192,7 @@ public class StructMsgItemCover
         k = ((Resources)localObject4).getDisplayMetrics().widthPixels;
         try
         {
-          paramBundle = ViewCache.a().a((Resources)localObject4, 2130845965);
+          paramBundle = ViewCache.a().a((Resources)localObject4, 2130846093);
           if ((paramView != null) && ((paramView instanceof PAImageView)))
           {
             localObject1 = (PAHighLightImageView)paramView;
@@ -232,7 +232,7 @@ public class StructMsgItemCover
             continue;
             localObject2 = new PAHighLightImageView(paramContext);
             ((PAHighLightImageView)localObject2).setId(2131361925);
-            ((PAHighLightImageView)localObject2).setContentDescription(((Resources)localObject4).getString(2131433008));
+            ((PAHighLightImageView)localObject2).setContentDescription(((Resources)localObject4).getString(2131433025));
             localObject1 = localObject2;
             continue;
             label299:
@@ -362,7 +362,7 @@ public class StructMsgItemCover
                 k = ((Context)localObject4).getResources().getDimensionPixelSize(2131558474);
                 ((PAHighLightImageView)localObject1).setTextSize(k);
                 ((PAHighLightImageView)localObject1).e = paramContext;
-                paramContext = ((Context)localObject4).getResources().getDrawable(2130840183);
+                paramContext = ((Context)localObject4).getResources().getDrawable(2130840189);
               }
             }
             for (;;)
@@ -400,7 +400,7 @@ public class StructMsgItemCover
         label973:
         if (paramContext.startsWith("troop_notice"))
         {
-          ((PAHighLightImageView)localObject1).setImageResource(2130841422);
+          ((PAHighLightImageView)localObject1).setImageResource(2130841459);
           return localObject2;
         }
         if (QLog.isColorLevel()) {
@@ -878,7 +878,7 @@ public class StructMsgItemCover
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemCover
  * JD-Core Version:    0.7.0.1
  */

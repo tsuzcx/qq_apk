@@ -1,51 +1,18 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.utils.ApolloUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.webprocess.WebProcessManager;
-import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQMapActivity;
 
 public class tjr
-  implements Runnable
+  implements View.OnClickListener
 {
-  private WeakReference a;
+  public tjr(QQMapActivity paramQQMapActivity, Dialog paramDialog) {}
   
-  public tjr(QQSettingMe paramQQSettingMe)
+  public void onClick(View paramView)
   {
-    this.a = new WeakReference(paramQQSettingMe);
-  }
-  
-  public void run()
-  {
-    for (;;)
-    {
-      try
-      {
-        if (this.a == null) {
-          return;
-        }
-        QQSettingMe localQQSettingMe = (QQSettingMe)this.a.get();
-        if ((localQQSettingMe == null) || (localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
-          break;
-        }
-        WebProcessManager localWebProcessManager = (WebProcessManager)localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(12);
-        if (localWebProcessManager == null) {
-          break;
-        }
-        if (ApolloUtil.a(localQQSettingMe.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localQQSettingMe.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView))
-        {
-          i = 100;
-          localWebProcessManager.a(i, new tjs(this, localQQSettingMe));
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        QLog.e("QQSettingRedesign", 1, "WebPreloadTask preloadWebProcess, exception=" + MsfSdkUtils.getStackTraceString(localException));
-        return;
-      }
-      int i = -1;
+    this.jdField_a_of_type_ComTencentMobileqqActivityQQMapActivity.runOnUiThread(new tjs(this));
+    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing())) {
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
   }
 }

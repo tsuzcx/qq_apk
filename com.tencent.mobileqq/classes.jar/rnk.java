@@ -1,14 +1,29 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class rnk
   implements Runnable
 {
-  public rnk(BaseChatPie paramBaseChatPie) {}
+  public rnk(AuthDevActivity paramAuthDevActivity) {}
   
   public void run()
   {
-    if (this.a.a != null) {
-      this.a.a.a = false;
+    try
+    {
+      if ((AuthDevActivity.a(this.a) == null) && (!this.a.isFinishing())) {
+        AuthDevActivity.a(this.a, new QQProgressDialog(this.a, this.a.getTitleBarHeight()));
+      }
+      if ((AuthDevActivity.a(this.a) != null) && (!AuthDevActivity.a(this.a).isShowing())) {
+        AuthDevActivity.a(this.a).show();
+      }
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
     }
   }
 }

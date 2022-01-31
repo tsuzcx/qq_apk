@@ -1,20 +1,21 @@
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.widget.ImageView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
+import com.tencent.mobileqq.olympic.view.ScanIconAnimateView;
 
-public class aggy
-  implements ActionSheet.OnDismissListener
+class aggy
+  implements Runnable
 {
-  public aggy(QCallDetailActivity paramQCallDetailActivity) {}
+  aggy(aggv paramaggv) {}
   
-  public void onDismiss()
+  public void run()
   {
-    ReportController.b(this.a.app, "CliOper", "", "", "0X8005AFA", "0X8005AFA", 0, 0, "", "", "", "");
+    this.a.a.jdField_a_of_type_ComTencentMobileqqOlympicViewScanIconAnimateView.a();
+    this.a.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aggy
  * JD-Core Version:    0.7.0.1
  */

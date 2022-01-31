@@ -14,6 +14,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.animation.Animation;
+import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyEditVideoButton;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.network.pb.qqstory_struct.VideoReaderConf;
@@ -70,6 +71,7 @@ import com.tribe.async.dispatch.IEventReceiver;
 import com.tribe.async.reactive.SimpleObserver;
 import com.tribe.async.reactive.Stream;
 import com.tribe.async.reactive.UIThreadOffFunction;
+import dov.com.tencent.biz.qqstory.takevideo.EditAioSyncToStoryPart;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -77,14 +79,14 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicInteger;
-import ods;
-import odt;
-import odu;
-import odv;
-import odw;
-import odx;
-import ody;
-import odz;
+import ofl;
+import ofm;
+import ofn;
+import ofo;
+import ofp;
+import ofq;
+import ofr;
+import ofs;
 
 public class EditVideoPartManager
   implements IEventReceiver
@@ -115,7 +117,6 @@ public class EditVideoPartManager
   protected EditVideoShareGroup a;
   protected EditVideoShareTo a;
   protected EditVideoSubtitle a;
-  protected EditVideoSyncStoryGuide a;
   protected EditVideoTag a;
   public EditVideoUi a;
   public List a;
@@ -255,7 +256,7 @@ public class EditVideoPartManager
       b("pub_changeface", paramInt, 0, new String[] { "1", str2, str1 });
       return;
       a("pub_video", 0, 0, new String[] { "", String.valueOf(a(paramInt)) });
-      Bosses.get().postJob(new odx(this));
+      Bosses.get().postJob(new ofq(this));
       break;
       paramInt = 0;
       break label52;
@@ -673,7 +674,7 @@ public class EditVideoPartManager
   
   protected SimpleObserver a(GenerateContext paramGenerateContext)
   {
-    return new ody(this, paramGenerateContext, SystemClock.uptimeMillis());
+    return new ofr(this, paramGenerateContext, SystemClock.uptimeMillis());
   }
   
   public String a(String paramString)
@@ -928,6 +929,9 @@ public class EditVideoPartManager
     int k = paramEditVideoParams.jdField_b_of_type_Int;
     ArrayList localArrayList = new ArrayList();
     Object localObject;
+    label290:
+    label459:
+    int m;
     if (paramEditVideoParams.jdField_a_of_type_Int == 10)
     {
       localObject = new TribeEditVideoButton(this, k);
@@ -961,13 +965,12 @@ public class EditVideoPartManager
       if (a(k, 64))
       {
         if (paramEditVideoParams.jdField_a_of_type_Int != 1) {
-          break label840;
+          break label902;
         }
         localObject = new EditVideoFilterNeo(this);
         this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter = ((EditVideoFilter)localObject);
         localArrayList.add(localObject);
       }
-      label281:
       if (a(k, 128))
       {
         localObject = new EditVideoLabel(this);
@@ -989,21 +992,23 @@ public class EditVideoPartManager
       if (a(k, 1024))
       {
         if (!paramEditVideoParams.a()) {
-          break label868;
+          break label931;
         }
         localObject = new EditPicSave(this);
         this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditPicSave = ((EditPicSave)localObject);
         localArrayList.add(localObject);
       }
+      if (a(k, 2048))
+      {
+        m = paramEditVideoParams.jdField_a_of_type_AndroidOsBundle.getInt("uintype", -1);
+        if (m != -1) {
+          break label960;
+        }
+        SLog.e("Q.qqstory.publish.edit.EditVideoPartManager", " curType have not set but it use BUSINESS_QQ ID, that is illegal!!");
+      }
     }
     for (;;)
     {
-      if (a(k, 2048))
-      {
-        localObject = new EditVideoSyncStoryGuide(this);
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSyncStoryGuide = ((EditVideoSyncStoryGuide)localObject);
-        localArrayList.add(localObject);
-      }
       if (a(k, 4096))
       {
         localObject = new EditGifSpeedControl(this);
@@ -1054,19 +1059,29 @@ public class EditVideoPartManager
       while (paramEditVideoParams.hasNext()) {
         SLog.a("Q.qqstory.publish.edit.EditVideoPartManager", "initEditVideoParts : %s", ((EditVideoPart)paramEditVideoParams.next()).getClass().getSimpleName());
       }
+      if (paramEditVideoParams.jdField_a_of_type_Int == 12)
+      {
+        localObject = new ReadInJoyEditVideoButton(this, k);
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoButton = ((EditVideoButton)localObject);
+        localArrayList.add(localObject);
+        break;
+      }
       localObject = new EditVideoButton(this, k);
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoButton = ((EditVideoButton)localObject);
       localArrayList.add(localObject);
       break;
-      label840:
+      label902:
       localObject = new EditVideoFilter(this);
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoFilter = ((EditVideoFilter)localObject);
       localArrayList.add(localObject);
-      break label281;
-      label868:
+      break label290;
+      label931:
       localObject = new EditVideoSave(this);
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoSave = ((EditVideoSave)localObject);
       localArrayList.add(localObject);
+      break label459;
+      label960:
+      localArrayList.add(new EditAioSyncToStoryPart(this, m, true));
     }
   }
   
@@ -1128,7 +1143,7 @@ public class EditVideoPartManager
   public void a(String paramString, int paramInt1, int paramInt2, String... paramVarArgs)
   {
     if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 1) {
-      Bosses.get().postJob(new odv(this, paramString, paramInt1, paramInt2, paramVarArgs));
+      Bosses.get().postJob(new ofo(this, paramString, paramInt1, paramInt2, paramVarArgs));
     }
   }
   
@@ -1257,7 +1272,7 @@ public class EditVideoPartManager
   
   public void b(String paramString, int paramInt1, int paramInt2, String... paramVarArgs)
   {
-    Bosses.get().postJob(new odw(this, paramString, paramInt1, paramInt2, paramVarArgs));
+    Bosses.get().postJob(new ofp(this, paramString, paramInt1, paramInt2, paramVarArgs));
   }
   
   public boolean b()
@@ -1417,7 +1432,7 @@ public class EditVideoPartManager
       {
         if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_Int == 3) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.a()) && (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_AndroidOsBundle != null) && (!"发表".equals(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_AndroidOsBundle.get("extra_publish_text"))))
         {
-          DialogUtil.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), 230, "放弃本次图片编辑？", null, "放弃", "取消", new ods(this), new odt(this)).show();
+          DialogUtil.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), 230, "放弃本次图片编辑？", null, "放弃", "取消", new ofl(this), new ofm(this)).show();
           return;
           localObject = "1";
           break;
@@ -1442,7 +1457,7 @@ public class EditVideoPartManager
         localActionSheet.a((CharSequence)localObject);
         localActionSheet.a("放弃", 3);
         localActionSheet.d("取消");
-        localActionSheet.a(new odu(this, localActionSheet));
+        localActionSheet.a(new ofn(this, localActionSheet));
         localActionSheet.show();
         return;
         localObject = "1";
@@ -1571,7 +1586,7 @@ public class EditVideoPartManager
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((EditVideoPart)localIterator.next()).H_();
+      ((EditVideoPart)localIterator.next()).M_();
     }
   }
   
@@ -1608,7 +1623,7 @@ public class EditVideoPartManager
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
-      ((EditVideoPart)localIterator.next()).I_();
+      ((EditVideoPart)localIterator.next()).N_();
     }
   }
   
@@ -1718,7 +1733,7 @@ public class EditVideoPartManager
   public void v()
   {
     if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoArtFilter != null) {
-      ThreadManager.post(new odz(this), 5, null, true);
+      ThreadManager.post(new ofs(this), 5, null, true);
     }
   }
 }

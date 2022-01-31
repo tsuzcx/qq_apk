@@ -41,15 +41,20 @@ public final class VersionUtils
   
   public static boolean h()
   {
-    return Build.VERSION.SDK_INT >= 19;
+    return Build.VERSION.SDK_INT >= 18;
   }
   
   public static boolean i()
   {
-    return Build.VERSION.SDK_INT >= 24;
+    return Build.VERSION.SDK_INT >= 19;
   }
   
   public static boolean j()
+  {
+    return Build.VERSION.SDK_INT >= 24;
+  }
+  
+  public static boolean k()
   {
     return Build.VERSION.SDK_INT >= 26;
   }

@@ -1,16 +1,36 @@
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity;
+import com.tencent.mobileqq.emoticonview.EmoticonMainPanel;
+import com.tencent.mobileqq.emoticonview.EmotionPanelInfo;
+import com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter;
+import java.util.List;
 
-class aceo
+public class aceo
   implements Runnable
 {
-  aceo(acel paramacel) {}
+  public aceo(EmoticonMainPanel paramEmoticonMainPanel) {}
   
   public void run()
   {
-    UniformDownloadActivity.b(this.a.a).setVisibility(0);
-    UniformDownloadActivity.a(this.a.a).setVisibility(4);
+    int i;
+    EmotionPanelInfo localEmotionPanelInfo;
+    if (this.a.jdField_a_of_type_JavaUtilList != null)
+    {
+      i = 0;
+      if (i < this.a.jdField_a_of_type_JavaUtilList.size())
+      {
+        localEmotionPanelInfo = (EmotionPanelInfo)this.a.jdField_a_of_type_JavaUtilList.get(i);
+        if ((localEmotionPanelInfo == null) || (localEmotionPanelInfo.a != 4)) {}
+      }
+    }
+    for (;;)
+    {
+      if ((localEmotionPanelInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter != null)) {
+        this.a.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelViewPagerAdapter.a(localEmotionPanelInfo);
+      }
+      return;
+      i += 1;
+      break;
+      localEmotionPanelInfo = null;
+    }
   }
 }
 

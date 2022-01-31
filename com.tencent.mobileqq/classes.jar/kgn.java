@@ -1,18 +1,27 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.utils.InviteBaseData;
+import android.graphics.Bitmap;
+import com.tencent.av.utils.QAVNotification;
 
-public final class kgn
-  implements Parcelable.Creator
+public class kgn
 {
-  public InviteBaseData a(Parcel paramParcel)
-  {
-    return new InviteBaseData(paramParcel);
-  }
+  public int a;
+  public Bitmap a;
+  public String a;
+  public boolean a;
+  public int b;
+  public String b;
+  public int c;
+  public String c;
   
-  public InviteBaseData[] a(int paramInt)
+  public kgn(QAVNotification paramQAVNotification, String paramString1, String paramString2, Bitmap paramBitmap, String paramString3, int paramInt1, int paramInt2, int paramInt3)
   {
-    return new InviteBaseData[paramInt];
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaLangString = paramString1;
+    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+    this.jdField_c_of_type_JavaLangString = paramString3;
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_c_of_type_Int = paramInt3;
   }
 }
 

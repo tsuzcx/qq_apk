@@ -14,23 +14,23 @@ import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import mqq.app.NewIntent;
-import xmh;
-import xmi;
-import xmj;
+import xpn;
+import xpo;
+import xpp;
 
 public class LBSDetetor
 {
   private static LBSDetetor jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor;
-  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new xmh(this));
+  private Handler jdField_a_of_type_AndroidOsHandler = new Handler(new xpn(this));
   private AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
   private LBSDetetor.LBSTemplateListener jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor$LBSTemplateListener;
-  private xmi jdField_a_of_type_Xmi = new xmi(this, null);
+  private xpo jdField_a_of_type_Xpo = new xpo(this, null);
   
   private LBSDetetor(AppInterface paramAppInterface)
   {
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
     if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Xmi);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_Xpo);
     }
   }
   
@@ -109,7 +109,7 @@ public class LBSDetetor
       if (QLog.isColorLevel()) {
         QLog.d("LBSDetetor", 2, "destroy");
       }
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Xmi);
+      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_Xpo);
       this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor$LBSTemplateListener = null;
@@ -166,7 +166,7 @@ public class LBSDetetor
         if (bool2)
         {
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(paramInt, 30000L);
-          SosoInterface.a(new xmj(this, 0, true, true, 30000L, false, false, "NewFlowCameraActivity", paramInt));
+          SosoInterface.a(new xpp(this, 0, true, true, 30000L, false, false, "NewFlowCameraActivity", paramInt));
         }
         if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor$LBSTemplateListener != null) {
           this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor$LBSTemplateListener.a(paramInt, bool2);

@@ -1,16 +1,28 @@
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
-import com.tencent.mobileqq.widget.SlideDetectListView;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emoticon.SogouEmoji;
+import com.tencent.mobileqq.model.QueryCallback;
+import com.tencent.qphone.base.util.QLog;
 
 public class acdj
-  implements Runnable
+  implements QueryCallback
 {
-  public acdj(LocalFileBrowserActivity paramLocalFileBrowserActivity, int paramInt) {}
+  public acdj(SogouEmoji paramSogouEmoji, int paramInt, String paramString) {}
   
-  public void run()
+  public void a(Emoticon paramEmoticon)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelected(true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelection(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityLocalFileBrowserActivity.a.setSelected(true);
+    if ((paramEmoticon == null) || (!paramEmoticon.hasEncryptKey()))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.a(Integer.toString(this.jdField_a_of_type_Int), this.jdField_a_of_type_JavaLangString, true);
+      if (QLog.isColorLevel()) {
+        QLog.d("SogouEmoji", 2, "func trySend ends, emotion has invalid key. Call func pullSingleEmojiKey");
+      }
+    }
+    do
+    {
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqEmoticonSogouEmoji.a(paramEmoticon);
+    } while (!QLog.isColorLevel());
+    QLog.d("SogouEmoji", 2, "func trySend ends, everything is ok.");
   }
 }
 

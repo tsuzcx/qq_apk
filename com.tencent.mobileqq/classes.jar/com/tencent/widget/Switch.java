@@ -1,6 +1,6 @@
 package com.tencent.widget;
 
-import alob;
+import amdr;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
@@ -62,7 +62,7 @@ public class Switch
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet)
   {
-    this(paramContext, paramAttributeSet, 2130772300);
+    this(paramContext, paramAttributeSet, 2130772309);
   }
   
   public Switch(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -88,7 +88,7 @@ public class Switch
     this.f = paramContext.getScaledMinimumFlingVelocity();
     refreshDrawableState();
     setChecked(isChecked());
-    setOnClickListener(new alob(this));
+    setOnClickListener(new amdr(this));
   }
   
   private int a()

@@ -1,41 +1,41 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelPicTabView;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Iterator;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.model.EmoticonManager;
+import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
-public class acgo
+public final class acgo
   implements Runnable
 {
-  public acgo(QfileLocalFileDelPicTabView paramQfileLocalFileDelPicTabView) {}
+  public acgo(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, Emoticon paramEmoticon) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    FileCategoryUtil.a(false, FMSettings.a().b(), ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, null);
-    Object localObject1 = FMSettings.a().a();
-    if (localObject1 != null) {
-      FileCategoryUtil.a(false, (String)localObject1, ".jpg|.bmp|.jpeg|.gif|.png|.ico|", "", localHashMap, null);
-    }
-    localObject1 = new HashMap();
-    Iterator localIterator = localHashMap.keySet().iterator();
-    while (localIterator.hasNext())
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (this.jdField_a_of_type_AndroidContentContext != null))
     {
-      Object localObject2 = (String)localIterator.next();
-      String str = this.a.a((String)localObject2);
-      localObject2 = (List)localHashMap.get(localObject2);
-      if (!((HashMap)localObject1).containsKey(str)) {
-        ((HashMap)localObject1).put(str, new ArrayList());
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, H5MagicPlayerActivity.class);
+      localIntent.putExtra("clickTime", System.currentTimeMillis());
+      localIntent.putExtra("autoPlay", "1");
+      localIntent.putExtra("senderUin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localIntent.putExtra("selfUin", this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      localIntent.putExtra("sessionInfo", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+      localIntent.putExtra("emoticon", this.jdField_a_of_type_ComTencentMobileqqDataEmoticon);
+      Object localObject = (EmoticonManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(13);
+      EmoticonPackage localEmoticonPackage = ((EmoticonManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
+      if (localEmoticonPackage != null)
+      {
+        localObject = ((EmoticonManager)localObject).a(localEmoticonPackage.childEpId);
+        if ((localObject != null) && (((List)localObject).size() > 0)) {
+          localIntent.putExtra("childEmoticon", (Serializable)((List)localObject).get(0));
+        }
       }
-      ((List)((HashMap)localObject1).get(str)).addAll((Collection)localObject2);
+      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
     }
-    FileCategoryUtil.a((Map)localObject1);
-    QfileLocalFileDelPicTabView.a(this.a, new acgp(this, (HashMap)localObject1));
   }
 }
 

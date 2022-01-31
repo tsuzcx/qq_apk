@@ -1,46 +1,32 @@
-import com.tencent.mfsdk.LeakInspector.DumpMemInfoHandler;
-import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectUUID;
-import com.tencent.mfsdk.LeakInspector.LeakInspector.InspectorListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.startup.step.InitMagnifierSDKData;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.search.FunctionModuleConfigManager;
+import com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem;
+import com.tencent.mobileqq.utils.ChnToSpell;
+import java.util.Comparator;
 
 public class ahqt
-  implements LeakInspector.InspectorListener
+  implements Comparator
 {
-  public List a(String paramString)
-  {
-    if (BaseActivity.sTopActivity != null) {
-      BaseActivity.sTopActivity.runOnUiThread(new ahqu(this, paramString));
-    }
-    paramString = new ArrayList(4);
-    paramString.add(DumpMemInfoHandler.b());
-    paramString.add(DumpMemInfoHandler.a());
-    paramString.addAll(DumpMemInfoHandler.a());
-    return paramString;
-  }
+  public ahqt(FunctionModuleConfigManager paramFunctionModuleConfigManager) {}
   
-  public void a(boolean paramBoolean, String paramString1, String paramString2)
+  public int a(GroupBaseNetSearchModelItem paramGroupBaseNetSearchModelItem1, GroupBaseNetSearchModelItem paramGroupBaseNetSearchModelItem2)
   {
-    if (BaseActivity.sTopActivity != null) {
-      BaseActivity.sTopActivity.runOnUiThread(new ahqv(this, paramString1, paramBoolean, paramString2));
-    }
-  }
-  
-  public boolean a(LeakInspector.InspectUUID paramInspectUUID)
-  {
-    return InitMagnifierSDKData.a(paramInspectUUID);
-  }
-  
-  public boolean a(Object paramObject)
-  {
-    return false;
+    int i = paramGroupBaseNetSearchModelItem2.a[2] - paramGroupBaseNetSearchModelItem1.a[2];
+    if (i != 0) {}
+    int j;
+    do
+    {
+      return i;
+      j = paramGroupBaseNetSearchModelItem1.a[0] - paramGroupBaseNetSearchModelItem2.a[0];
+      i = j;
+    } while (j != 0);
+    paramGroupBaseNetSearchModelItem1 = paramGroupBaseNetSearchModelItem1.c.substring(paramGroupBaseNetSearchModelItem1.a[0] + paramGroupBaseNetSearchModelItem1.a[1]);
+    paramGroupBaseNetSearchModelItem2 = paramGroupBaseNetSearchModelItem2.c.substring(paramGroupBaseNetSearchModelItem2.a[0] + paramGroupBaseNetSearchModelItem2.a[1]);
+    return ChnToSpell.a(paramGroupBaseNetSearchModelItem1, 2).compareTo(ChnToSpell.a(paramGroupBaseNetSearchModelItem2, 2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahqt
  * JD-Core Version:    0.7.0.1
  */

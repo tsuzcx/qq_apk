@@ -49,9 +49,9 @@ import java.util.Set;
 import java.util.concurrent.TimeUnit;
 import org.apache.http.HttpRequest;
 import org.apache.http.HttpResponse;
-import phw;
-import phy;
-import phz;
+import pjq;
+import pjs;
+import pjt;
 
 public class DownloaderImpl
   extends Downloader
@@ -69,17 +69,17 @@ public class DownloaderImpl
   public static final long TIME_TO_LIVE_HTTP;
   public static final long TIME_TO_LIVE_HTTP2;
   public static final TimeUnit TIME_TO_LIVE_UNIT;
-  private static final phz sThreadPoolCache = new phz("download", THREAD_POOL_SIZE);
+  private static final pjt sThreadPoolCache = new pjt("download", THREAD_POOL_SIZE);
   private Object ExecutingTaskListRock = new Object();
   private final FileCacheService mCacheFileCache = CacheManager.a(this.mContext, "download_cache", 100, 50, false);
   private Map mExecutingTaskList = new HashMap();
   private final HashMap mFutures = new HashMap();
   private QZoneHttpClient mHttpClient;
-  private phy mLockManager = new phy(this, null);
+  private pjs mLockManager = new pjs(this, null);
   private QZoneHttp2Client mOkClient;
   private boolean mPaused = false;
   private final MultiHashMap mPendingRequests = new MultiHashMap();
-  private final phz mThreadPoolCache = sThreadPoolCache;
+  private final pjt mThreadPoolCache = sThreadPoolCache;
   
   static
   {
@@ -296,7 +296,7 @@ public class DownloaderImpl
     }
     ??? = getDownloadThreadPool(paramDownloadTask.a(), paramDownloadTask.b());
     paramDownloadTask.b();
-    Future localFuture = ((PriorityThreadPool)???).submit(paramDownloadTask, new phw(this, paramDownloadTask), paramDownloadTask.a());
+    Future localFuture = ((PriorityThreadPool)???).submit(paramDownloadTask, new pjq(this, paramDownloadTask), paramDownloadTask.a());
     synchronized (this.mFutures)
     {
       this.mFutures.put(paramDownloadTask.c(), localFuture);
@@ -796,7 +796,7 @@ public class DownloaderImpl
     label103:
     label108:
     for (paramString2 = DEFAULT_KEEP_ALIVE_PROXY;; paramString2 = DEFAULT_KEEP_ALIVE) {
-      switch (phx.a[paramString2.ordinal()])
+      switch (pjr.a[paramString2.ordinal()])
       {
       default: 
         return;

@@ -1,11 +1,11 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.ChatHistoryImageView;
+import com.tencent.mobileqq.activity.ChatHistory;
 
 public class ryn
   implements DialogInterface.OnClickListener
 {
-  public ryn(ChatHistoryImageView paramChatHistoryImageView) {}
+  public ryn(ChatHistory paramChatHistory) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }

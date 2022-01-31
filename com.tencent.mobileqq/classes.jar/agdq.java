@@ -1,29 +1,41 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.view.ProfileTagView;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.graphics.Rect;
+import com.tencent.mobileqq.ocr.view.ScanOcrView;
 
 public class agdq
-  implements Animation.AnimationListener
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public agdq(ProfileTagView paramProfileTagView, View paramView) {}
+  public agdq(ScanOcrView paramScanOcrView, agds paramagds) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    paramAnimation = this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView;
-    paramAnimation.l -= 1;
-    this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-    this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.d = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.l == 0) {
-      this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.b();
+    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
+    int j = (int)(this.jdField_a_of_type_Agds.a * f);
+    int i = (int)(f * this.jdField_a_of_type_Agds.jdField_b_of_type_Int);
+    int m = j - this.jdField_a_of_type_Agds.a;
+    int k = i - this.jdField_a_of_type_Agds.jdField_b_of_type_Int;
+    j = (int)(paramValueAnimator.getAnimatedFraction() * 255.0F);
+    i = j;
+    if (j > 255) {
+      i = 255;
     }
-    ((FriendProfileCardActivity)this.jdField_a_of_type_ComTencentMobileqqProfileViewProfileTagView.a).k();
+    j = i;
+    if (i < 0) {
+      j = 0;
+    }
+    i = this.jdField_a_of_type_Agds.jdField_b_of_type_AndroidGraphicsRect.left;
+    int n = m / 2;
+    int i1 = this.jdField_a_of_type_Agds.jdField_b_of_type_AndroidGraphicsRect.top;
+    int i2 = k / 2;
+    int i3 = this.jdField_a_of_type_Agds.jdField_b_of_type_AndroidGraphicsRect.right;
+    m /= 2;
+    int i4 = this.jdField_a_of_type_Agds.jdField_b_of_type_AndroidGraphicsRect.bottom;
+    k /= 2;
+    this.jdField_a_of_type_Agds.e = j;
+    this.jdField_a_of_type_Agds.c.set(i - n, i1 - i2, m + i3, k + i4);
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewScanOcrView.invalidate();
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

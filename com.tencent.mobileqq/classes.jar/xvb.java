@@ -1,25 +1,31 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
 
-public class xvb
-  implements View.OnClickListener
+class xvb
+  implements Runnable
 {
-  public xvb(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
+  xvb(xuw paramxuw) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if (this.a.c) {
-      ReportController.b(this.a.app, "CliOper", "", "", "0X80041AE", "0X80041AE", 0, 0, "", "", "", "");
-    }
-    for (;;)
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
+    boolean bool1 = localSharedPreferences.getBoolean("sv_has_reported_front_camera_compatibility", false);
+    boolean bool2 = localSharedPreferences.getBoolean("sv_has_reported_back_camera_compatibility", false);
+    CameraControl localCameraControl = CameraControl.a();
+    if ((!bool1) && (FlowCameraConstant.a == 1))
     {
-      this.a.finish();
-      this.a.overridePendingTransition(2131034129, 2131034130);
-      return;
-      ReportController.b(this.a.app, "CliOper", "", "", "0X80041A9", "0X80041A9", 0, 0, "", "", "", "");
+      NewFlowCameraReporter.a(localCameraControl.a(), "front");
+      localSharedPreferences.edit().putBoolean("sv_has_reported_front_camera_compatibility", true).commit();
     }
+    while ((bool2) || (FlowCameraConstant.a != 2)) {
+      return;
+    }
+    NewFlowCameraReporter.a(localCameraControl.a(), "back");
+    localSharedPreferences.edit().putBoolean("sv_has_reported_back_camera_compatibility", true).commit();
   }
 }
 

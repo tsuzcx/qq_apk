@@ -57,16 +57,16 @@ public class GVideoLoadingUI
   
   public void a(Activity paramActivity, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131364747));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364748));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364749));
-    this.c = ((TextView)paramView.findViewById(2131364750));
-    this.d = ((TextView)paramView.findViewById(2131364751));
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131364752));
-    this.e = ((TextView)paramView.findViewById(2131364753));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131364754));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131364755));
-    this.f = ((TextView)paramView.findViewById(2131364756));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131364769));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364770));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364771));
+    this.c = ((TextView)paramView.findViewById(2131364772));
+    this.d = ((TextView)paramView.findViewById(2131364773));
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131364774));
+    this.e = ((TextView)paramView.findViewById(2131364775));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131364776));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramView.findViewById(2131364777));
+    this.f = ((TextView)paramView.findViewById(2131364778));
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
@@ -106,7 +106,7 @@ public class GVideoLoadingUI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.GVideoLoadingUI
  * JD-Core Version:    0.7.0.1
  */

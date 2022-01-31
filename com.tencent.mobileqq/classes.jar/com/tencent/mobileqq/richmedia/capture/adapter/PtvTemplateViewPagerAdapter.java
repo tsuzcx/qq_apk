@@ -53,7 +53,7 @@ public class PtvTemplateViewPagerAdapter
     int j;
     label22:
     TemplateGroupItem localTemplateGroupItem;
-    if (!SoLoader.e())
+    if (!SoLoader.f())
     {
       i = 1;
       if (PtvFilterSoLoad.f()) {

@@ -1,25 +1,26 @@
-import android.app.Activity;
-import android.graphics.Bitmap;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebUiMethodInterface;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import java.lang.ref.WeakReference;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.biz.webviewplugin.HotchatPlugin;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-class pbh
-  implements Runnable
+public class pbh
+  implements TroopMemberApiClient.Callback
 {
-  pbh(pbg parampbg, Bitmap paramBitmap) {}
+  public pbh(HotchatPlugin paramHotchatPlugin) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    WebUiBaseInterface localWebUiBaseInterface = (WebUiBaseInterface)this.jdField_a_of_type_Pbg.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localWebUiBaseInterface != null) && ((localWebUiBaseInterface instanceof WebUiUtils.WebUiMethodInterface)) && (((WebUiUtils.WebUiMethodInterface)localWebUiBaseInterface).b()) && (!this.jdField_a_of_type_Pbg.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_AndroidAppActivity.isFinishing()))
+    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")))
     {
-      if ((this.jdField_a_of_type_Pbg.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) && (this.jdField_a_of_type_Pbg.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing())) {
-        this.jdField_a_of_type_Pbg.jdField_a_of_type_ComTencentBizWebviewpluginShare.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+      ArrayList localArrayList = paramBundle.getStringArrayList("uins");
+      paramBundle = paramBundle.getStringArrayList("tinyIds");
+      int i = 0;
+      while (i < localArrayList.size())
+      {
+        HotchatPlugin.a(this.a).put(paramBundle.get(i), localArrayList.get(i));
+        i += 1;
       }
-      Share.a(this.jdField_a_of_type_Pbg.jdField_a_of_type_ComTencentBizWebviewpluginShare, this.jdField_a_of_type_Pbg.jdField_a_of_type_Int, this.jdField_a_of_type_Pbg.jdField_a_of_type_ComTencentBizWebviewpluginShare.d, this.jdField_a_of_type_Pbg.jdField_a_of_type_ComTencentBizWebviewpluginShare.e, this.jdField_a_of_type_Pbg.jdField_a_of_type_ComTencentBizWebviewpluginShare.b, this.jdField_a_of_type_Pbg.jdField_a_of_type_ComTencentBizWebviewpluginShare.f, this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
   }
 }

@@ -1,27 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false">
-        <shape
-          xmlns:android="http://schemas.android.com/apk/res/android">
-            <solid android:color="#ffe9ebec" />
-            <stroke android:width="0.5dip" android:color="#00000000" />
-            <corners android:radius="2.0dip" />
-        </shape>
-    </item>
-    <item android:state_enabled="true">
-        <shape
-          xmlns:android="http://schemas.android.com/apk/res/android">
-            <solid android:color="#ffffffff" />
-            <stroke android:width="0.5dip" android:color="#ff285c9d" />
-            <corners android:radius="1.0dip" />
-        </shape>
-    </item>
-    <item>
-        <shape>
-            <solid android:color="#ffe9ebec" />
-            <stroke android:width="0.5dip" android:color="#ffffffff" />
-            <corners android:radius="1.0dip" />
-        </shape>
-    </item>
+    <item android:state_pressed="true" android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021b5e" />
+    <item android:drawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021b5d" />
 </selector>

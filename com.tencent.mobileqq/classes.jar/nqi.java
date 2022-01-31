@@ -1,71 +1,195 @@
-import android.graphics.Bitmap;
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.shareGroup.icon.ShareGroupIconManager.UrlBitmapDownloaderImp;
-import com.tencent.biz.qqstory.shareGroup.icon.UrlBitmapDownloader.Listener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import java.util.HashSet;
+import android.util.Log;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.SeekMode;
+import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.concurrent.ConcurrentHashMap;
+import java.util.List;
 
 public class nqi
-  implements URLDrawable.URLDrawableListener
 {
-  private final int jdField_a_of_type_Int;
-  private final URLDrawable jdField_a_of_type_ComTencentImageURLDrawable;
-  private final String jdField_a_of_type_JavaLangString;
-  private final int b;
+  private List jdField_a_of_type_JavaUtilList = new ArrayList();
+  private nqj jdField_a_of_type_Nqj;
+  private nqn jdField_a_of_type_Nqn;
   
-  public nqi(ShareGroupIconManager.UrlBitmapDownloaderImp paramUrlBitmapDownloaderImp, @NonNull String paramString, int paramInt1, int paramInt2, URLDrawable paramURLDrawable)
+  public long a()
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_Int = paramInt1;
-    this.b = paramInt2;
-    this.jdField_a_of_type_ComTencentImageURLDrawable = paramURLDrawable;
-  }
-  
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
-  {
-    ShareGroupIconManager.UrlBitmapDownloaderImp.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupIconManager$UrlBitmapDownloaderImp).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    ShareGroupIconManager.UrlBitmapDownloaderImp.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupIconManager$UrlBitmapDownloaderImp).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    SLog.d("story.icon.ShareGroupIconManager", "download url failed. %s", new Object[] { this.jdField_a_of_type_JavaLangString });
-    paramURLDrawable = (HashSet)ShareGroupIconManager.UrlBitmapDownloaderImp.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupIconManager$UrlBitmapDownloaderImp).remove(this.jdField_a_of_type_JavaLangString);
-    if (paramURLDrawable != null)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    long l1 = 9223372036854775807L;
+    if (localIterator.hasNext())
     {
-      paramURLDrawable = paramURLDrawable.iterator();
-      while (paramURLDrawable.hasNext()) {
-        ((UrlBitmapDownloader.Listener)paramURLDrawable.next()).a(this.jdField_a_of_type_JavaLangString, paramThrowable);
+      long l2 = ((nqk)localIterator.next()).a();
+      if ((l2 == -9223372036854775808L) || (l1 <= l2)) {
+        break label60;
       }
+      l1 = l2;
+    }
+    label60:
+    for (;;)
+    {
+      break;
+      return l1;
     }
   }
   
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public List a()
   {
-    ShareGroupIconManager.UrlBitmapDownloaderImp.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupIconManager$UrlBitmapDownloaderImp).remove(this.jdField_a_of_type_ComTencentImageURLDrawable);
-    SLog.a("story.icon.ShareGroupIconManager", "download url success. %s", this.jdField_a_of_type_JavaLangString);
-    Bitmap localBitmap = ShareGroupIconManager.UrlBitmapDownloaderImp.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupIconManager$UrlBitmapDownloaderImp, paramURLDrawable, this.jdField_a_of_type_Int, this.b);
-    if (localBitmap != null)
+    return this.jdField_a_of_type_JavaUtilList;
+  }
+  
+  public nql a(boolean paramBoolean)
+  {
+    Object localObject2 = null;
+    int i = 0;
+    Object localObject1;
+    label24:
+    nqk localnqk;
+    label46:
+    nql localnql;
+    if (i == 0)
     {
-      paramURLDrawable = (HashSet)ShareGroupIconManager.UrlBitmapDownloaderImp.a(this.jdField_a_of_type_ComTencentBizQqstoryShareGroupIconShareGroupIconManager$UrlBitmapDownloaderImp).remove(this.jdField_a_of_type_JavaLangString);
-      if (paramURLDrawable != null)
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      localObject1 = null;
+      i = 0;
+      if (localIterator.hasNext())
       {
-        paramURLDrawable = paramURLDrawable.iterator();
-        while (paramURLDrawable.hasNext()) {
-          ((UrlBitmapDownloader.Listener)paramURLDrawable.next()).a(this.jdField_a_of_type_JavaLangString, localBitmap);
+        localnqk = (nqk)localIterator.next();
+        localnql = localnqk.a();
+        if (localnql == null) {
+          break label151;
+        }
+        if (localnqk == this.jdField_a_of_type_Nqn)
+        {
+          localObject1 = localnql;
+          label70:
+          if (localnqk.a(false)) {
+            break label152;
+          }
+          if (!localnqk.b()) {
+            break label154;
+          }
+          i += 1;
         }
       }
     }
-    else
+    label151:
+    label152:
+    label154:
+    for (;;)
     {
-      SLog.e("story.icon.ShareGroupIconManager", "download url success directly. but OOM occur !");
-      onLoadFialed(paramURLDrawable, new Throwable("getBitmapFromDrawable failed"));
+      break label24;
+      localnqk.a(localnql, 0L);
+      break label46;
+      if (localObject1 != null) {}
+      do
+      {
+        return localObject1;
+        localObject1 = localObject2;
+      } while (!paramBoolean);
+      if (i == this.jdField_a_of_type_JavaUtilList.size())
+      {
+        i = 1;
+        break;
+      }
+      i = 0;
+      break;
+      Log.d("Decoders", "EOS NULL");
+      return null;
+      break label70;
+      break label70;
+    }
+  }
+  
+  public nqn a()
+  {
+    return this.jdField_a_of_type_Nqn;
+  }
+  
+  public void a()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((nqk)localIterator.next()).e();
+    }
+    this.jdField_a_of_type_JavaUtilList.clear();
+  }
+  
+  public void a(MediaPlayer.SeekMode paramSeekMode, long paramLong)
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((nqk)localIterator.next()).a(paramSeekMode, paramLong);
+    }
+  }
+  
+  public void a(nqk paramnqk)
+  {
+    this.jdField_a_of_type_JavaUtilList.add(paramnqk);
+    if ((paramnqk instanceof nqn)) {
+      this.jdField_a_of_type_Nqn = ((nqn)paramnqk);
+    }
+    while (!(paramnqk instanceof nqj)) {
+      return;
+    }
+    this.jdField_a_of_type_Nqj = ((nqj)paramnqk);
+  }
+  
+  public boolean a()
+  {
+    boolean bool = false;
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    int i = 0;
+    if (localIterator.hasNext())
+    {
+      if (!((nqk)localIterator.next()).b()) {
+        break label62;
+      }
+      i += 1;
+    }
+    label62:
+    for (;;)
+    {
+      break;
+      if (i == this.jdField_a_of_type_JavaUtilList.size()) {
+        bool = true;
+      }
+      return bool;
+    }
+  }
+  
+  public long b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    for (long l1 = 9223372036854775807L; localIterator.hasNext(); l1 = Math.min(((nqk)localIterator.next()).b(), l1)) {}
+    long l2 = l1;
+    if (l1 == 9223372036854775807L) {
+      l2 = -1L;
+    }
+    return l2;
+  }
+  
+  public void b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((nqk)localIterator.next()).c();
+    }
+  }
+  
+  public boolean b()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      if (!((nqk)localIterator.next()).d()) {
+        return false;
+      }
+    }
+    return true;
+  }
+  
+  public void c()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext()) {
+      ((nqk)localIterator.next()).d();
     }
   }
 }

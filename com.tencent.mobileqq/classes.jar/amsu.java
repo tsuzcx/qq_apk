@@ -1,21 +1,25 @@
-import android.widget.Toast;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView.PhotoCaptureResult;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import cooperation.qzone.QZoneHelper;
 
-public class amsu
-  implements Runnable
+public final class amsu
+  implements DialogInterface.OnClickListener
 {
-  public amsu(QIMCameraCaptureUnit paramQIMCameraCaptureUnit, CameraCaptureView.PhotoCaptureResult paramPhotoCaptureResult) {}
+  public amsu(Activity paramActivity, int paramInt, String paramString, Intent paramIntent) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Toast.makeText(BaseApplicationImpl.getContext(), "onPhotoCaptured : " + this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView$PhotoCaptureResult.a, 1).show();
+    if (!QZoneHelper.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, Long.valueOf(this.jdField_a_of_type_JavaLangString).longValue(), "com.qzonex.app.tab.QZoneTabActivity")) {
+      QZoneHelper.a(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("sid"), this.jdField_a_of_type_AndroidAppActivity);
+    }
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amsu
  * JD-Core Version:    0.7.0.1
  */

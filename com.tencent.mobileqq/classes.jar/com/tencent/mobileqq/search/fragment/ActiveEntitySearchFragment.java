@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.search.fragment;
 
-import ahem;
-import ahep;
-import aheq;
+import ahso;
+import ahsr;
+import ahss;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -116,7 +116,7 @@ public class ActiveEntitySearchFragment
     this.jdField_b_of_type_Int = 0;
     this.jdField_g_of_type_Boolean = true;
     this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver = new ahem(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver = new ahso(this);
   }
   
   public static ActiveEntitySearchFragment a(int paramInt, long[] paramArrayOfLong, String paramString1, String paramString2)
@@ -358,7 +358,7 @@ public class ActiveEntitySearchFragment
   
   public void onClick(View paramView)
   {
-    paramView = paramView.getTag(2131367520);
+    paramView = paramView.getTag(2131367588);
     if ((paramView instanceof DynamicTabSearch.SubHotWord))
     {
       paramView = (DynamicTabSearch.SubHotWord)paramView;
@@ -414,48 +414,48 @@ public class ActiveEntitySearchFragment
       try
       {
         super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-        paramViewGroup = paramLayoutInflater.inflate(2130970629, paramViewGroup, false);
-        this.jdField_e_of_type_AndroidViewView = paramViewGroup.findViewById(2131362933);
+        paramViewGroup = paramLayoutInflater.inflate(2130970673, paramViewGroup, false);
+        this.jdField_e_of_type_AndroidViewView = paramViewGroup.findViewById(2131362951);
         this.jdField_e_of_type_AndroidViewView.setVisibility(0);
-        this.jdField_f_of_type_AndroidViewView = paramViewGroup.findViewById(2131366877);
-        this.jdField_g_of_type_AndroidViewView = paramViewGroup.findViewById(2131364647);
-        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131371439));
-        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131371438));
-        this.jdField_c_of_type_AndroidViewView = ((RelativeLayout)paramViewGroup.findViewById(2131363900));
+        this.jdField_f_of_type_AndroidViewView = paramViewGroup.findViewById(2131366919);
+        this.jdField_g_of_type_AndroidViewView = paramViewGroup.findViewById(2131364671);
+        this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131371602));
+        this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131371601));
+        this.jdField_c_of_type_AndroidViewView = ((RelativeLayout)paramViewGroup.findViewById(2131363923));
         this.jdField_g_of_type_AndroidViewView.setVisibility(8);
         this.jdField_f_of_type_AndroidViewView.setVisibility(8);
-        paramBundle = paramLayoutInflater.inflate(2130969703, null, false);
-        this.jdField_d_of_type_AndroidViewView = paramBundle.findViewById(2131367517);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131367518));
-        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramBundle.findViewById(2131367519));
+        paramBundle = paramLayoutInflater.inflate(2130969717, null, false);
+        this.jdField_d_of_type_AndroidViewView = paramBundle.findViewById(2131367585);
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramBundle.findViewById(2131367586));
+        this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramBundle.findViewById(2131367587));
         if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
         {
-          this.jdField_d_of_type_AndroidViewView.setBackgroundResource(2130838576);
+          this.jdField_d_of_type_AndroidViewView.setBackgroundResource(2130838580);
           this.jdField_c_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#051020"));
           this.jdField_d_of_type_AndroidViewView.setVisibility(8);
           this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-          View localView1 = paramLayoutInflater.inflate(2130969704, null, false);
-          this.jdField_b_of_type_AndroidViewView = localView1.findViewById(2131364963);
+          View localView1 = paramLayoutInflater.inflate(2130969718, null, false);
+          this.jdField_b_of_type_AndroidViewView = localView1.findViewById(2131364985);
           this.jdField_b_of_type_AndroidViewView.setVisibility(8);
           this.jdField_b_of_type_AndroidViewView.setPadding(0, AIOUtils.a(42.0F, getResources()), 0, AIOUtils.a(42.0F, getResources()));
-          View localView2 = paramLayoutInflater.inflate(2130970374, null, false);
-          this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView2.findViewById(2131364963));
+          View localView2 = paramLayoutInflater.inflate(2130970415, null, false);
+          this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView2.findViewById(2131364985));
           this.jdField_c_of_type_AndroidWidgetTextView.setText("没有更多搜索结果");
           this.jdField_c_of_type_AndroidWidgetTextView.setPadding(0, AIOUtils.a(42.0F, getResources()), 0, AIOUtils.a(42.0F, getResources()));
           this.jdField_c_of_type_AndroidWidgetTextView.setTextSize(16.0F);
-          this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getActivity().getResources().getColor(2131494262));
+          this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getActivity().getResources().getColor(2131494269));
           this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
           this.jdField_a_of_type_AndroidViewView = paramViewGroup;
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppUniteSearchObserver);
-          this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramViewGroup.findViewById(2131364021));
-          this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new ahep(this));
+          this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)paramViewGroup.findViewById(2131364045));
+          this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new ahsr(this));
           this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(localView2);
-          paramLayoutInflater = paramLayoutInflater.inflate(2130970374, null, false);
-          this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131364963));
+          paramLayoutInflater = paramLayoutInflater.inflate(2130970415, null, false);
+          this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)paramLayoutInflater.findViewById(2131364985));
           this.jdField_d_of_type_AndroidWidgetTextView.setText("网络错误，请重试");
           this.jdField_d_of_type_AndroidWidgetTextView.setPadding(0, AIOUtils.a(42.0F, getResources()), 0, AIOUtils.a(42.0F, getResources()));
           this.jdField_d_of_type_AndroidWidgetTextView.setTextSize(16.0F);
-          this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(getActivity().getResources().getColor(2131494262));
+          this.jdField_d_of_type_AndroidWidgetTextView.setTextColor(getActivity().getResources().getColor(2131494269));
           this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
           this.jdField_a_of_type_ComTencentWidgetXListView.addFooterView(paramLayoutInflater);
           this.jdField_a_of_type_ComTencentMobileqqSearchAdapterSubBusinessSearchAdapter = a();
@@ -501,7 +501,7 @@ public class ActiveEntitySearchFragment
         }
         else
         {
-          this.jdField_d_of_type_AndroidViewView.setBackgroundResource(2130838575);
+          this.jdField_d_of_type_AndroidViewView.setBackgroundResource(2130838579);
           this.jdField_c_of_type_AndroidViewView.setBackgroundColor(Color.parseColor("#f2f2f2"));
           continue;
         }
@@ -548,7 +548,7 @@ public class ActiveEntitySearchFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new aheq(this));
+    this.jdField_a_of_type_ComTencentWidgetXListView.setOnTouchListener(new ahss(this));
   }
 }
 

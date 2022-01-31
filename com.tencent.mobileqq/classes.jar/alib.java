@@ -1,19 +1,42 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.qqprotect.qsec.QSecCbMgr.IControlBitChangeListener;
-import com.tencent.qqprotect.qsec.QSecLibMgr;
-import java.util.List;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.os.Bundle;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.business.base.StaticAnalyz;
+import com.tencent.open.downloadnew.MyAppApi;
+import com.tencent.open.downloadnew.MyAppApi.CopyAndInstallTask;
+import com.tencent.open.downloadnew.MyAppApi.InstallParams;
 
 public class alib
-  implements QSecCbMgr.IControlBitChangeListener
+  implements DialogInterface.OnClickListener
 {
-  public alib(QSecLibMgr paramQSecLibMgr) {}
+  public alib(MyAppApi paramMyAppApi, Bundle paramBundle, boolean paramBoolean, Activity paramActivity, String paramString1, DialogInterface.OnClickListener paramOnClickListener, String paramString2) {}
   
-  public void a(List paramList)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Message localMessage = QSecLibMgr.a(this.a).obtainMessage(2);
-    localMessage.obj = paramList;
-    QSecLibMgr.a(this.a).sendMessage(localMessage);
+    LogUtility.c("MyAppApi", "---onConfirm--onClick");
+    if (!this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.b())
+    {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a = new MyAppApi.InstallParams(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi);
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.b = true;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_AndroidOsBundle = this.jdField_a_of_type_AndroidOsBundle;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a.jdField_a_of_type_Int = 2;
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, 0);
+      }
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.c = true;
+      StaticAnalyz.a("201", StaticAnalyz.a(this.jdField_a_of_type_JavaLangString, "NEWYYB"), this.b);
+      return;
+      new MyAppApi.CopyAndInstallTask(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a).execute(new Void[0]);
+      continue;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener);
+    }
   }
 }
 

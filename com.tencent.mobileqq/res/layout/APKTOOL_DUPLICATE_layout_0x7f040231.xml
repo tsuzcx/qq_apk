@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip"
+<RelativeLayout android:id="@id/root" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c6" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0db6" android:layout_width="fill_parent" android:layout_height="50.0dip">
-        <TextView android:textSize="18.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006a" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0db3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="标题" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02156c" android:drawableRight="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02156d" android:drawablePadding="8.0dip" />
-    </LinearLayout>
-    <LinearLayout android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0db7" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-</LinearLayout>
+    <com.tencent.mobileqq.widget.TabBarView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dce" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0322" />
+    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0322" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" android:layout_alignParentTop="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040100" />
+    <FrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0dcf" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0dce" />
+</RelativeLayout>

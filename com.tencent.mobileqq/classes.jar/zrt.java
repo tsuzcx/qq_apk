@@ -1,45 +1,50 @@
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
-import com.tencent.mobileqq.app.proxy.DataLineMsgProxy.LoadMoreAioMessageCb;
-import com.tencent.mobileqq.data.DataLineMsgRecord;
-import com.tencent.mobileqq.data.DataLineMsgSetList;
-import java.util.Iterator;
-import java.util.List;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.automator.Automator;
+import com.tencent.mobileqq.app.automator.step.UpdateFriend;
+import com.tencent.qphone.base.util.QLog;
 
-class zrt
-  implements Runnable
+public class zrt
+  extends FriendListObserver
 {
-  zrt(zrs paramzrs, List paramList) {}
+  private zrt(UpdateFriend paramUpdateFriend) {}
   
-  public void run()
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int j = 0;
-    int i = j;
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    if ((UpdateFriend.a(this.a) == 7) || (UpdateFriend.b(this.a) == 3))
     {
-      i = j;
-      if (DataLineMsgProxy.a(this.jdField_a_of_type_Zrs.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy) != null)
-      {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        i = 0;
-        if (localIterator.hasNext())
-        {
-          DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
-          if (!DataLineMsgProxy.a(this.jdField_a_of_type_Zrs.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy).insertFrontToList(localDataLineMsgRecord)) {
-            break label107;
-          }
-          i += 1;
-        }
+      if (paramBoolean1) {
+        break label37;
       }
+      this.a.a(6);
     }
-    label107:
-    for (;;)
-    {
-      break;
-      if (this.jdField_a_of_type_Zrs.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$LoadMoreAioMessageCb != null) {
-        this.jdField_a_of_type_Zrs.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy$LoadMoreAioMessageCb.a(i);
-      }
+    label37:
+    while ((!paramBoolean1) || (!paramBoolean2)) {
       return;
     }
+    UpdateFriend.a(this.a).a.edit().putBoolean("isFriendlistok", true).commit();
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "onUpdateFriendList put PREF_ISFRIENDLIST_OK true");
+    }
+    UpdateFriend.b(this.a).a(3, true, Integer.valueOf(1));
+    this.a.a(7);
+  }
+  
+  protected void onUpdateGatherFriendList(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (UpdateFriend.c(this.a) == 8)
+    {
+      if (paramBoolean1) {
+        break label26;
+      }
+      this.a.a(6);
+    }
+    label26:
+    while (!paramBoolean2) {
+      return;
+    }
+    this.a.a(7);
   }
 }
 

@@ -1,34 +1,46 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import cooperation.qqindividuality.ipc.IQQIndividualityRemoteProxyInterface.Stub;
-import cooperation.qqindividuality.ipc.QQIndividualityRemoteProxy;
+import android.util.SparseArray;
+import android.view.View;
+import com.tencent.widget.AbsSpinner;
 
 public class amae
-  implements ServiceConnection
 {
-  public amae(QQIndividualityRemoteProxy paramQQIndividualityRemoteProxy) {}
+  private final SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public amae(AbsSpinner paramAbsSpinner) {}
+  
+  public View a(int paramInt)
   {
-    this.a.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface = IQQIndividualityRemoteProxyInterface.Stub.a(paramIBinder);
-    if (this.a.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface != null)
-    {
-      paramComponentName = new amaf(this);
-      paramComponentName.setName("QfavRemoteProxyForQQ.remoteProxyCallThread");
-      paramComponentName.start();
+    View localView = (View)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    if (localView != null) {
+      this.jdField_a_of_type_AndroidUtilSparseArray.delete(paramInt);
     }
+    return localView;
   }
   
-  public void onServiceDisconnected(ComponentName paramComponentName)
+  public void a()
   {
-    this.a.jdField_a_of_type_CooperationQqindividualityIpcIQQIndividualityRemoteProxyInterface = null;
-    this.a.jdField_a_of_type_Boolean = false;
+    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
+    int j = localSparseArray.size();
+    int i = 0;
+    while (i < j)
+    {
+      View localView = (View)localSparseArray.valueAt(i);
+      if (localView != null) {
+        AbsSpinner.a(this.jdField_a_of_type_ComTencentWidgetAbsSpinner, localView, true);
+      }
+      i += 1;
+    }
+    localSparseArray.clear();
+  }
+  
+  public void a(int paramInt, View paramView)
+  {
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amae
  * JD-Core Version:    0.7.0.1
  */

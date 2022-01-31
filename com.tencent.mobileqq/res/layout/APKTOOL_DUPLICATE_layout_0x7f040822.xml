@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:orientation="vertical" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a09a8" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="#00000000" android:divider="@null" android:layout_above="@id/APKTOOL_DUPLICATE_id_0x7f0a0407" />
-    <include android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0407" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" layout="@layout/APKTOOL_DUPLICATE_layout_0x7f040815" />
-    <com.tencent.biz.qqstory.view.widget.QQStoryLoadingView android:textSize="16.0dip" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0475" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b12a7" android:drawablePadding="15.0dip" android:layout_centerInParent="true" />
+    <com.tencent.mobileqq.widget.FormSimpleItem android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a2639" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c04dc" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a263a" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0222dc" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0156" android:paddingTop="8.0dip" android:paddingBottom="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0181" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a2639" />
 </RelativeLayout>

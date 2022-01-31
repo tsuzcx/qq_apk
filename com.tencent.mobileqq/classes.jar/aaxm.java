@@ -1,27 +1,20 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import com.tencent.mobileqq.armap.ShopScanDragView;
+import com.tencent.mobileqq.activity.BaseChatPie;
+import com.tencent.mobileqq.ark.ArkRecommendController;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
 
-public class aaxm
-  implements Animator.AnimatorListener
+class aaxm
+  implements Runnable
 {
-  public aaxm(ShopScanDragView paramShopScanDragView) {}
+  aaxm(aaxl paramaaxl, String paramString, AtTroopMemberSpan[] paramArrayOfAtTroopMemberSpan) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public void run()
   {
-    ShopScanDragView.a(this.a, false);
-    ShopScanDragView.b(this.a, false);
+    if ((ArkRecommendController.a(this.jdField_a_of_type_Aaxl.a) == null) || (ArkRecommendController.a(this.jdField_a_of_type_Aaxl.a) == null) || (ArkRecommendController.a(this.jdField_a_of_type_Aaxl.a).a == null)) {
+      return;
+    }
+    ArkRecommendController.a(this.jdField_a_of_type_Aaxl.a).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfComTencentMobileqqTroopTextAtTroopMemberSpan, this.jdField_a_of_type_Aaxl.a);
   }
-  
-  public void onAnimationEnd(Animator paramAnimator)
-  {
-    ShopScanDragView.a(this.a, false);
-    ShopScanDragView.b(this.a, false);
-  }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

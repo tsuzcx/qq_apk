@@ -70,12 +70,12 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import laj;
-import lak;
-import lal;
-import lam;
-import lan;
-import lao;
+import kzu;
+import kzv;
+import kzw;
+import kzx;
+import kzy;
+import kzz;
 import mqq.app.AppRuntime;
 import mqq.manager.Manager;
 import mqq.manager.TicketManager;
@@ -107,9 +107,9 @@ public class EcShopAssistantManager
   public long a;
   public BroadcastReceiver a;
   public QQAppInterface a;
-  FaceDecoder.DecodeTaskCompletionListener jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder$DecodeTaskCompletionListener = new lao(this);
+  FaceDecoder.DecodeTaskCompletionListener jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder$DecodeTaskCompletionListener = new kzz(this);
   public FaceDecoder a;
-  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new lam(this);
+  DownloadListener jdField_a_of_type_ComTencentMobileqqVipDownloadListener = new kzx(this);
   final Object jdField_a_of_type_JavaLangObject = new Object();
   public List a;
   private Map jdField_a_of_type_JavaUtilMap;
@@ -154,14 +154,14 @@ public class EcShopAssistantManager
     this.jdField_b_of_type_JavaLangObject = new Object();
     this.jdField_a_of_type_JavaUtilSet = new HashSet();
     this.jdField_a_of_type_ArrayOfJavaLangString = new String[] { "https://gouwu.qq.com/m/cgi-bin/shop/discover?_wv=1027", "https://imgcache.qq.com/zzapp/gwmobile/html/haowu.html?_wv=3&max_age=600", "https://gouwu.qq.com/m/cgi-bin/shop/nearby?_wv=1027", "https://imgcache.qq.com/zzapp/gwmobile/html/my.html?_wv=3" };
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new lan(this);
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new kzy(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.l = paramQQAppInterface.getCurrentAccountUin();
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       this.jdField_a_of_type_JavaUtilList = null;
-      ThreadManager.post(new laj(this), 5, null, true);
+      ThreadManager.post(new kzu(this), 5, null, true);
       this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder = new FaceDecoder(paramQQAppInterface);
       this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder$DecodeTaskCompletionListener);
       return;
@@ -196,7 +196,7 @@ public class EcShopAssistantManager
   {
     if (!TextUtils.isEmpty(jdField_d_of_type_JavaLangString))
     {
-      Object localObject1 = paramContext.getResources().getDrawable(2130838676);
+      Object localObject1 = paramContext.getResources().getDrawable(2130838680);
       Object localObject2 = jdField_d_of_type_JavaLangString.split("/");
       localObject2 = jdField_b_of_type_JavaLangString + localObject2[(localObject2.length - 1)];
       String str = jdField_d_of_type_JavaLangString;
@@ -208,10 +208,10 @@ public class EcShopAssistantManager
       catch (MalformedURLException localMalformedURLException)
       {
         localMalformedURLException.printStackTrace();
-        return paramContext.getResources().getDrawable(2130843784);
+        return paramContext.getResources().getDrawable(2130843908);
       }
     }
-    return paramContext.getResources().getDrawable(2130843784);
+    return paramContext.getResources().getDrawable(2130843908);
   }
   
   public static String a(String paramString1, String paramString2, QQAppInterface paramQQAppInterface)
@@ -605,7 +605,7 @@ public class EcShopAssistantManager
   
   private void h()
   {
-    ThreadManager.executeOnSubThread(new lak(this));
+    ThreadManager.executeOnSubThread(new kzv(this));
   }
   
   private void i()
@@ -1325,7 +1325,7 @@ public class EcShopAssistantManager
         ((RecentShopParcel)localObject3).jdField_e_of_type_JavaLangString = localEcShopData.mImgInfo;
         if (localSharedPreferences.getBoolean("ad_cert", false))
         {
-          ((RecentShopParcel)localObject3).jdField_a_of_type_Int = 2130839745;
+          ((RecentShopParcel)localObject3).jdField_a_of_type_Int = 2130839751;
           ((RecentShopParcel)localObject3).jdField_b_of_type_Int = 0;
           ((RecentShopParcel)localObject3).jdField_c_of_type_Int = 1;
           localArrayList.add(localObject3);
@@ -1343,7 +1343,7 @@ public class EcShopAssistantManager
     localRecentShopParcel.jdField_e_of_type_JavaLangString = localEcShopData.mImgInfo;
     PublicAccountInfo localPublicAccountInfo = localObject2.c(localEcShopData.mUin);
     if ((localPublicAccountInfo != null) && (localPublicAccountInfo.certifiedGrade > 0L)) {}
-    for (localRecentShopParcel.jdField_a_of_type_Int = 2130839745;; localRecentShopParcel.jdField_a_of_type_Int = 0)
+    for (localRecentShopParcel.jdField_a_of_type_Int = 2130839751;; localRecentShopParcel.jdField_a_of_type_Int = 0)
     {
       localRecentShopParcel.jdField_b_of_type_Int = ((RecentItemEcShop)localObject3).jdField_c_of_type_Int;
       localRecentShopParcel.jdField_c_of_type_Int = 0;
@@ -1420,7 +1420,7 @@ public class EcShopAssistantManager
   
   public void b(String paramString)
   {
-    ThreadManager.post(new lal(this, paramString), 5, null, true);
+    ThreadManager.post(new kzw(this, paramString), 5, null, true);
   }
   
   public void b(boolean paramBoolean)

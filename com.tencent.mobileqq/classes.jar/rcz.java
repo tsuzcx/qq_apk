@@ -1,25 +1,20 @@
-import android.app.Dialog;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AccountManageActivity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.litetransfersdk.LiteTransferWrapper;
 
 public class rcz
-  implements View.OnClickListener
+  implements Runnable
 {
-  public rcz(AccountManageActivity paramAccountManageActivity) {}
+  public rcz(LiteTransferWrapper paramLiteTransferWrapper, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    if ((this.a.b != null) && (this.a.b.isShowing())) {
-      this.a.b.dismiss();
+    if (LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper) != 0L) {
+      this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper.SetThumbTempPathToJNI(LiteTransferWrapper.access$200(this.jdField_a_of_type_ComTencentLitetransfersdkLiteTransferWrapper), this.jdField_a_of_type_JavaLangString);
     }
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800433B", "0X800433B", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     rcz
  * JD-Core Version:    0.7.0.1
  */

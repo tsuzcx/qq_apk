@@ -1,14 +1,23 @@
-import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
-import com.tencent.mobileqq.widget.QQToast;
+import java.io.File;
+import java.util.Comparator;
 
-class xhp
-  implements Runnable
+public final class xhp
+  implements Comparator
 {
-  xhp(xhn paramxhn) {}
-  
-  public void run()
+  private int a(String paramString)
   {
-    QQToast.a(this.a.a.a, 1, "资源加载失败", 1).a();
+    try
+    {
+      int i = Integer.parseInt(paramString.substring(0, paramString.lastIndexOf('.')));
+      return i;
+    }
+    catch (Exception paramString) {}
+    return 0;
+  }
+  
+  public int a(File paramFile1, File paramFile2)
+  {
+    return a(paramFile1.getName()) - a(paramFile2.getName());
   }
 }
 

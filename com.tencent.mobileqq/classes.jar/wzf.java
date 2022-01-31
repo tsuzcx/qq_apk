@@ -1,17 +1,17 @@
-import android.support.v7.widget.RecyclerView;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
-import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbListAdapter;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgAioState;
 
 public class wzf
-  implements Runnable
+  implements View.OnClickListener
 {
-  public wzf(TroopUnAccalimedRedPacketList.HbListAdapter paramHbListAdapter) {}
+  public wzf(GoldMsgSettingActivity paramGoldMsgSettingActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (TroopUnAccalimedRedPacketList.a() != null) {
-      TroopUnAccalimedRedPacketList.a().invalidateItemDecorations();
-    }
+    GoldMsgAioState.a(this.a.getWindow(), this.a, null);
+    this.a.finish();
   }
 }
 

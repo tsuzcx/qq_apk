@@ -1,55 +1,38 @@
-import android.content.Context;
-import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
-import android.view.View;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter;
-import com.tencent.biz.qqstory.utils.UIUtils;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
-import java.io.File;
+import android.text.TextUtils;
+import com.tencent.biz.pubaccount.util.DiffUtil.Callback;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager.SlideItemInfo;
+import java.util.List;
 
 public class olv
-  extends olz
+  extends DiffUtil.Callback
 {
-  public olv(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
+  private List a;
+  private List b;
+  
+  public olv(List paramList1, List paramList2)
   {
-    super(paramTroopStoryMemoriesListAdapter, paramView);
+    this.a = paramList1;
+    this.b = paramList2;
   }
   
-  public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
+  public int a()
   {
-    TroopStoryMemoriesListAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter, paramTroopStoryItemInfo, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetTextView);
-    Drawable localDrawable = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130843674);
-    try
-    {
-      Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "troop_story_message";
-      localObject = URLDrawable.getDrawable(new File(paramTroopStoryItemInfo.videoThumbUrl), (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setTag(URLDrawableDecodeHandler.a(UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 50.0F), UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 70.0F), UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 3.0F)));
-      ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.g);
-      this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
-      localDrawable = this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130843671);
-      localDrawable.setBounds(0, 0, 26, 26);
-      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawablePadding(10);
-      this.jdField_b_of_type_AndroidWidgetTextView.setCompoundDrawables(localDrawable, null, null, null);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText("上传失败, 点击重试");
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-65536);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new olw(this, paramTroopStoryItemInfo));
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
-      }
-    }
+    return this.a.size();
+  }
+  
+  public boolean a(int paramInt1, int paramInt2)
+  {
+    return TextUtils.equals(((SlideShowPhotoListManager.SlideItemInfo)this.a.get(paramInt1)).a, ((SlideShowPhotoListManager.SlideItemInfo)this.b.get(paramInt2)).a);
+  }
+  
+  public int b()
+  {
+    return this.b.size();
+  }
+  
+  public boolean b(int paramInt1, int paramInt2)
+  {
+    return a(paramInt1, paramInt2);
   }
 }
 

@@ -13,7 +13,7 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import kad;
+import jzo;
 
 public class QavPanelSoundWaveView
   extends View
@@ -32,7 +32,7 @@ public class QavPanelSoundWaveView
     super(paramContext);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangRunnable = new kad(this);
+    this.jdField_a_of_type_JavaLangRunnable = new jzo(this);
     a();
   }
   
@@ -41,7 +41,7 @@ public class QavPanelSoundWaveView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangRunnable = new kad(this);
+    this.jdField_a_of_type_JavaLangRunnable = new jzo(this);
     a();
   }
   
@@ -50,7 +50,7 @@ public class QavPanelSoundWaveView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
-    this.jdField_a_of_type_JavaLangRunnable = new kad(this);
+    this.jdField_a_of_type_JavaLangRunnable = new jzo(this);
     a();
   }
   

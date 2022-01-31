@@ -1,6 +1,14 @@
-public abstract interface ampw
+import cooperation.qqindividuality.QQIndividualityBaseBridgeActivity;
+
+public class ampw
+  implements Runnable
 {
-  public abstract void a(boolean paramBoolean, String paramString);
+  public ampw(QQIndividualityBaseBridgeActivity paramQQIndividualityBaseBridgeActivity) {}
+  
+  public void run()
+  {
+    this.a.a();
+  }
 }
 
 

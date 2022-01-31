@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.lyric.data.Sentence;
-import java.util.Comparator;
+import android.view.ViewGroup;
 
-public class adpm
-  implements Comparator
+class adpm
+  implements Runnable
 {
-  public int a(Sentence paramSentence1, Sentence paramSentence2)
+  adpm(adpl paramadpl) {}
+  
+  public void run()
   {
-    if (paramSentence1.a >= paramSentence2.a) {
-      return 1;
-    }
-    return -1;
+    this.a.jdField_a_of_type_AndroidViewViewGroup.removeView(this.a.jdField_a_of_type_AndroidViewView);
   }
 }
 

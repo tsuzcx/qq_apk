@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.statistics.battery;
 
-import ahsm;
-import ahsn;
-import ahso;
-import ahsq;
-import ahsr;
-import ahss;
-import ahsv;
+import aigp;
+import aigq;
+import aigr;
+import aigt;
+import aigu;
+import aigv;
+import aigy;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
@@ -3534,7 +3534,7 @@ public class BatteryStatsImpl
       {
         Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
         while (localIterator.hasNext()) {
-          ((ahsm)localIterator.next()).a(paramBundle);
+          ((aigp)localIterator.next()).a(paramBundle);
         }
         if (!QLog.isColorLevel()) {}
       }
@@ -3575,7 +3575,7 @@ public class BatteryStatsImpl
       {
         localObject = this.jdField_a_of_type_JavaUtilList.iterator();
         while (((Iterator)localObject).hasNext()) {
-          ((ahsm)((Iterator)localObject).next()).b();
+          ((aigp)((Iterator)localObject).next()).b();
         }
         if (!this.jdField_b_of_type_Boolean) {
           this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(5, 300000L);
@@ -3601,7 +3601,7 @@ public class BatteryStatsImpl
     {
       localObject = this.jdField_a_of_type_JavaUtilList.iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((ahsm)((Iterator)localObject).next()).c();
+        ((aigp)((Iterator)localObject).next()).c();
       }
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(5);
     }
@@ -3702,28 +3702,28 @@ public class BatteryStatsImpl
                 continue;
               }
               this.jdField_a_of_type_JavaUtilList = new ArrayList(10);
-              this.jdField_a_of_type_JavaUtilList.add(new ahso(this, paramMessage[1]));
-              this.jdField_a_of_type_JavaUtilList.add(new ahsq(this, paramMessage[3]));
-              this.jdField_a_of_type_JavaUtilList.add(new ahsn(this, paramMessage[4]));
-              this.jdField_a_of_type_JavaUtilList.add(new ahss(this, paramMessage[5]));
-              this.jdField_a_of_type_JavaUtilList.add(new ahsv(this, paramMessage[6]));
+              this.jdField_a_of_type_JavaUtilList.add(new aigr(this, paramMessage[1]));
+              this.jdField_a_of_type_JavaUtilList.add(new aigt(this, paramMessage[3]));
+              this.jdField_a_of_type_JavaUtilList.add(new aigq(this, paramMessage[4]));
+              this.jdField_a_of_type_JavaUtilList.add(new aigv(this, paramMessage[5]));
+              this.jdField_a_of_type_JavaUtilList.add(new aigy(this, paramMessage[6]));
               this.jdField_a_of_type_ComTencentMobileqqStatisticsBatteryBatteryStatsImpl$GPS = new BatteryStatsImpl.GPS(this, paramMessage[7]);
               this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqStatisticsBatteryBatteryStatsImpl$GPS);
               if (!b()) {
                 continue;
               }
-              this.jdField_a_of_type_JavaUtilList.add(new ahsr(this, paramMessage[2]));
+              this.jdField_a_of_type_JavaUtilList.add(new aigu(this, paramMessage[2]));
               BatteryLog.a(BaseApplicationImpl.sApplication.getProcessName(), this.jdField_a_of_type_Long);
               paramMessage = this.jdField_a_of_type_JavaUtilList.iterator();
               if (!paramMessage.hasNext()) {
                 continue;
               }
-              localObject4 = (ahsm)paramMessage.next();
-              ((ahsm)localObject4).a();
+              localObject4 = (aigp)paramMessage.next();
+              ((aigp)localObject4).a();
               if (!this.jdField_c_of_type_Boolean) {
                 continue;
               }
-              ((ahsm)localObject4).d();
+              ((aigp)localObject4).d();
               continue;
               localException5 = localException5;
               localObject4 = str1;
@@ -3776,7 +3776,7 @@ public class BatteryStatsImpl
         {
           paramMessage = this.jdField_a_of_type_JavaUtilList.iterator();
           while (paramMessage.hasNext()) {
-            ((ahsm)paramMessage.next()).d();
+            ((aigp)paramMessage.next()).d();
           }
         }
       }
@@ -3868,7 +3868,7 @@ public class BatteryStatsImpl
           {
             paramMessage = this.jdField_a_of_type_JavaUtilList.iterator();
             while (paramMessage.hasNext()) {
-              ((ahsm)paramMessage.next()).g();
+              ((aigp)paramMessage.next()).g();
             }
           }
           this.jdField_a_of_type_Int = 0;
@@ -3881,7 +3881,7 @@ public class BatteryStatsImpl
             {
               paramMessage = this.jdField_a_of_type_JavaUtilList.iterator();
               while (paramMessage.hasNext()) {
-                ((ahsm)paramMessage.next()).e();
+                ((aigp)paramMessage.next()).e();
               }
               if (!QLog.isColorLevel()) {
                 continue;
@@ -3898,7 +3898,7 @@ public class BatteryStatsImpl
             {
               paramMessage = this.jdField_a_of_type_JavaUtilList.iterator();
               while (paramMessage.hasNext()) {
-                ((ahsm)paramMessage.next()).f();
+                ((aigp)paramMessage.next()).f();
               }
               this.jdField_b_of_type_Boolean = true;
             }

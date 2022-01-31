@@ -1,9 +1,9 @@
 package cooperation.qzone.plugin;
 
-import amhl;
-import amhm;
-import amhn;
-import amho;
+import amxq;
+import amxr;
+import amxs;
+import amxt;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Handler.Callback;
@@ -37,8 +37,8 @@ public class QZonePluginInstaller
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
     this.b = new HashMap();
-    amhl localamhl = new amhl(this);
-    QZonePluginUtils.a(paramContext, this.b, localamhl);
+    amxq localamxq = new amxq(this);
+    QZonePluginUtils.a(paramContext, this.b, localamxq);
   }
   
   private boolean a(PluginRecord paramPluginRecord)
@@ -116,12 +116,12 @@ public class QZonePluginInstaller
     }
   }
   
-  private void b(amhm paramamhm)
+  private void b(amxr paramamxr)
   {
-    Object localObject1 = paramamhm.jdField_a_of_type_Amhn;
-    PluginRecord localPluginRecord = paramamhm.jdField_a_of_type_CooperationQzonePluginPluginRecord;
+    Object localObject1 = paramamxr.jdField_a_of_type_Amxs;
+    PluginRecord localPluginRecord = paramamxr.jdField_a_of_type_CooperationQzonePluginPluginRecord;
     if (localObject1 != null) {
-      ((amhn)localObject1).d(paramamhm.jdField_a_of_type_CooperationQzonePluginPluginRecord);
+      ((amxs)localObject1).d(paramamxr.jdField_a_of_type_CooperationQzonePluginPluginRecord);
     }
     Object localObject2 = QZonePluginUtils.e(this.jdField_a_of_type_AndroidContentContext, localPluginRecord.f);
     localObject1 = QZonePluginUtils.a(this.jdField_a_of_type_AndroidContentContext, localPluginRecord.f);
@@ -130,7 +130,7 @@ public class QZonePluginInstaller
     if (!a(localPluginRecord, (File)localObject2, true))
     {
       QLog.w("QZonePluginManger", 1, "文件校验失败");
-      Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 2, paramamhm).sendToTarget();
+      Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 2, paramamxr).sendToTarget();
       return;
     }
     File localFile2 = ((File)localObject1).getParentFile();
@@ -145,7 +145,7 @@ public class QZonePluginInstaller
     {
       QLog.w("QZonePluginManger", 1, "解压缩LZMA失败, ret=" + i);
       LpReportInfo_dc01500.reportInstall(localPluginRecord.f, localPluginRecord.d, localPluginRecord.c, l2 / 1000.0D, 5);
-      Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 2, paramamhm).sendToTarget();
+      Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 2, paramamxr).sendToTarget();
       return;
     }
     localPluginRecord.i = PluginStatic.encodeFile(((File)localObject1).getAbsolutePath());
@@ -190,13 +190,13 @@ public class QZonePluginInstaller
     {
       QLog.w("QZonePluginManger", 1, "释放so失败:" + (String)localObject1);
       LpReportInfo_dc01500.reportInstall(localPluginRecord.f, localPluginRecord.d, localPluginRecord.c, l2 / 1000.0D, 3, (String)localObject1);
-      Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 2, paramamhm).sendToTarget();
+      Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 2, paramamxr).sendToTarget();
       return;
     }
     l1 = System.currentTimeMillis() - l1;
     QLog.i("QZonePluginManger", 1, "插件安装成功, cost=" + l1);
     LpReportInfo_dc01500.reportInstall(localPluginRecord.f, localPluginRecord.d, localPluginRecord.c, l1 / 1000.0D, 0);
-    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 3, paramamhm).sendToTarget();
+    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 3, paramamxr).sendToTarget();
   }
   
   public PluginRecord a(String paramString)
@@ -204,31 +204,31 @@ public class QZonePluginInstaller
     return (PluginRecord)this.b.get(paramString);
   }
   
-  public void a(amhm paramamhm)
+  public void a(amxr paramamxr)
   {
-    paramamhm = paramamhm.jdField_a_of_type_CooperationQzonePluginPluginRecord;
-    File localFile1 = QZonePluginUtils.a(this.jdField_a_of_type_AndroidContentContext, paramamhm.f);
-    File localFile2 = QZonePluginUtils.b(this.jdField_a_of_type_AndroidContentContext, paramamhm.f);
+    paramamxr = paramamxr.jdField_a_of_type_CooperationQzonePluginPluginRecord;
+    File localFile1 = QZonePluginUtils.a(this.jdField_a_of_type_AndroidContentContext, paramamxr.f);
+    File localFile2 = QZonePluginUtils.b(this.jdField_a_of_type_AndroidContentContext, paramamxr.f);
     localFile1.delete();
     localFile2.delete();
-    QZonePluginUtils.c(paramamhm);
+    QZonePluginUtils.c(paramamxr);
   }
   
-  public void a(PluginRecord paramPluginRecord, amhn paramamhn)
+  public void a(PluginRecord paramPluginRecord, amxs paramamxs)
   {
-    amhm localamhm = new amhm(this);
-    localamhm.jdField_a_of_type_CooperationQzonePluginPluginRecord = paramPluginRecord;
-    localamhm.jdField_a_of_type_Amhn = paramamhn;
-    localamhm.jdField_a_of_type_JavaLangString = paramPluginRecord.f;
-    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 0, localamhm).sendToTarget();
+    amxr localamxr = new amxr(this);
+    localamxr.jdField_a_of_type_CooperationQzonePluginPluginRecord = paramPluginRecord;
+    localamxr.jdField_a_of_type_Amxs = paramamxs;
+    localamxr.jdField_a_of_type_JavaLangString = paramPluginRecord.f;
+    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 0, localamxr).sendToTarget();
   }
   
-  public void a(PluginRecord paramPluginRecord, amho paramamho)
+  public void a(PluginRecord paramPluginRecord, amxt paramamxt)
   {
-    amhm localamhm = new amhm(this);
-    localamhm.jdField_a_of_type_CooperationQzonePluginPluginRecord = paramPluginRecord;
-    localamhm.jdField_a_of_type_Amho = paramamho;
-    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, localamhm).sendToTarget();
+    amxr localamxr = new amxr(this);
+    localamxr.jdField_a_of_type_CooperationQzonePluginPluginRecord = paramPluginRecord;
+    localamxr.jdField_a_of_type_Amxt = paramamxt;
+    Message.obtain(this.jdField_a_of_type_AndroidOsHandler, 1, localamxr).sendToTarget();
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -249,32 +249,32 @@ public class QZonePluginInstaller
             do
             {
               return false;
-              localObject2 = (amhm)paramMessage.obj;
-            } while (this.jdField_a_of_type_JavaUtilMap.containsKey(((amhm)localObject2).jdField_a_of_type_JavaLangString));
-            this.jdField_a_of_type_JavaUtilMap.put(((amhm)localObject2).jdField_a_of_type_JavaLangString, localObject2);
-            localObject1 = ((amhm)localObject2).jdField_a_of_type_CooperationQzonePluginPluginRecord;
-            localObject2 = ((amhm)localObject2).jdField_a_of_type_Amhn;
+              localObject2 = (amxr)paramMessage.obj;
+            } while (this.jdField_a_of_type_JavaUtilMap.containsKey(((amxr)localObject2).jdField_a_of_type_JavaLangString));
+            this.jdField_a_of_type_JavaUtilMap.put(((amxr)localObject2).jdField_a_of_type_JavaLangString, localObject2);
+            localObject1 = ((amxr)localObject2).jdField_a_of_type_CooperationQzonePluginPluginRecord;
+            localObject2 = ((amxr)localObject2).jdField_a_of_type_Amxs;
             if (localObject2 != null) {
-              ((amhn)localObject2).d((PluginRecord)localObject1);
+              ((amxs)localObject2).d((PluginRecord)localObject1);
             }
-            b((amhm)paramMessage.obj);
+            b((amxr)paramMessage.obj);
             return false;
-            paramMessage = (amhm)paramMessage.obj;
+            paramMessage = (amxr)paramMessage.obj;
           } while (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramMessage.jdField_a_of_type_JavaLangString));
           localObject1 = paramMessage.jdField_a_of_type_CooperationQzonePluginPluginRecord;
-          localObject2 = paramMessage.jdField_a_of_type_Amhn;
+          localObject2 = paramMessage.jdField_a_of_type_Amxs;
           if (localObject2 != null) {
-            ((amhn)localObject2).a(false, (PluginRecord)localObject1);
+            ((amxs)localObject2).a(false, (PluginRecord)localObject1);
           }
           this.jdField_a_of_type_JavaUtilMap.remove(paramMessage.jdField_a_of_type_JavaLangString);
           return false;
-          paramMessage = (amhm)paramMessage.obj;
+          paramMessage = (amxr)paramMessage.obj;
           localObject1 = paramMessage.jdField_a_of_type_CooperationQzonePluginPluginRecord;
-          localObject2 = paramMessage.jdField_a_of_type_Amho;
+          localObject2 = paramMessage.jdField_a_of_type_Amxt;
           if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramMessage.jdField_a_of_type_JavaLangString))
           {
             if (localObject2 != null) {
-              ((amho)localObject2).e((PluginRecord)localObject1);
+              ((amxt)localObject2).e((PluginRecord)localObject1);
             }
             this.jdField_a_of_type_JavaUtilMap.put(paramMessage.jdField_a_of_type_JavaLangString, paramMessage);
             a(paramMessage);
@@ -282,25 +282,25 @@ public class QZonePluginInstaller
             this.b.remove(((PluginRecord)localObject1).f);
             QZonePluginUtils.c((PluginRecord)localObject1);
             if (localObject2 != null) {
-              ((amho)localObject2).b(true, (PluginRecord)localObject1);
+              ((amxt)localObject2).b(true, (PluginRecord)localObject1);
             }
           }
         } while (localObject2 == null);
-        ((amho)localObject2).b(false, (PluginRecord)localObject1);
+        ((amxt)localObject2).b(false, (PluginRecord)localObject1);
         return false;
-        localObject1 = (amhm)paramMessage.obj;
-      } while (!this.jdField_a_of_type_JavaUtilMap.containsKey(((amhm)localObject1).jdField_a_of_type_JavaLangString));
-      paramMessage = ((amhm)localObject1).jdField_a_of_type_CooperationQzonePluginPluginRecord;
-      this.jdField_a_of_type_JavaUtilMap.remove(((amhm)localObject1).jdField_a_of_type_JavaLangString);
+        localObject1 = (amxr)paramMessage.obj;
+      } while (!this.jdField_a_of_type_JavaUtilMap.containsKey(((amxr)localObject1).jdField_a_of_type_JavaLangString));
+      paramMessage = ((amxr)localObject1).jdField_a_of_type_CooperationQzonePluginPluginRecord;
+      this.jdField_a_of_type_JavaUtilMap.remove(((amxr)localObject1).jdField_a_of_type_JavaLangString);
       paramMessage.a = 4;
       this.b.put(paramMessage.f, paramMessage);
       if (QLog.isColorLevel()) {
         QLog.d("QZonePluginManger", 2, "QZonePluginInstaller 安装成功 record:" + paramMessage);
       }
       QZonePluginUtils.b(paramMessage);
-      localObject1 = ((amhm)localObject1).jdField_a_of_type_Amhn;
+      localObject1 = ((amxr)localObject1).jdField_a_of_type_Amxs;
     } while (localObject1 == null);
-    ((amhn)localObject1).a(true, paramMessage);
+    ((amxs)localObject1).a(true, paramMessage);
     return false;
   }
 }

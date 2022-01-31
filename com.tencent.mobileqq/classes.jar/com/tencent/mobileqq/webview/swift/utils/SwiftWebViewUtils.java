@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
-import akcq;
+import akqx;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -81,7 +81,7 @@ public class SwiftWebViewUtils
         }
         else
         {
-          paramWebViewFragment.a.evaluateJavascript("document.querySelector(\"meta[itemprop='name']\").getAttribute('content')", new akcq(paramWebViewFragment));
+          paramWebViewFragment.a.evaluateJavascript("document.querySelector(\"meta[itemprop='name']\").getAttribute('content')", new akqx(paramWebViewFragment));
           paramIntent = null;
         }
       }
@@ -156,7 +156,7 @@ public class SwiftWebViewUtils
     label286:
     for (paramString1 = "";; paramString1 = " " + paramString2)
     {
-      return paramString1 + " QQ/" + "7.6.0" + "." + "3525" + str1 + str2 + " Pixel/" + i;
+      return paramString1 + " QQ/" + "7.6.3" + "." + "3560" + str1 + str2 + " Pixel/" + i;
       str1 = " NetType/UNKNOWN";
       break;
       str1 = " NetType/WIFI";
@@ -353,7 +353,7 @@ public class SwiftWebViewUtils
           if (!TextUtils.isEmpty(paramString))
           {
             bool1 = bool2;
-            if (!IndividuationUrlHelper.a(paramString, "7.6.0.3525")) {
+            if (!IndividuationUrlHelper.a(paramString, "7.6.3.3560")) {
               bool1 = false;
             }
           }
@@ -370,7 +370,7 @@ public class SwiftWebViewUtils
           if (!TextUtils.isEmpty(paramString))
           {
             bool2 = bool1;
-            if (!IndividuationUrlHelper.a("7.6.0.3525", paramString)) {
+            if (!IndividuationUrlHelper.a("7.6.3.3560", paramString)) {
               bool2 = false;
             }
           }
@@ -483,7 +483,7 @@ public class SwiftWebViewUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ocr;
 
-import afoj;
-import afon;
+import agbp;
+import agbt;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.text.TextUtils;
@@ -22,7 +22,7 @@ public class OcrControl
   Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   AppInterface jdField_a_of_type_ComTencentCommonAppAppInterface;
-  ARCloudFileUpload.ARCloudFileUploadCallback jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback = new afon(this);
+  ARCloudFileUpload.ARCloudFileUploadCallback jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload$ARCloudFileUploadCallback = new agbt(this);
   ARCloudFileUpload jdField_a_of_type_ComTencentMobileqqArArcloudARCloudFileUpload;
   public OCRManager a;
   private OcrControl.OcrCallback jdField_a_of_type_ComTencentMobileqqOcrOcrControl$OcrCallback;
@@ -208,11 +208,11 @@ public class OcrControl
     //   91: astore_3
     //   92: aload_0
     //   93: getfield 63	com/tencent/mobileqq/ocr/OcrControl:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   96: new 220	afok
+    //   96: new 220	agbq
     //   99: dup
     //   100: aload_0
     //   101: aload_3
-    //   102: invokespecial 223	afok:<init>	(Lcom/tencent/mobileqq/ocr/OcrControl;Ljava/lang/String;)V
+    //   102: invokespecial 223	agbq:<init>	(Lcom/tencent/mobileqq/ocr/OcrControl;Ljava/lang/String;)V
     //   105: ldc2_w 224
     //   108: invokevirtual 229	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   111: pop
@@ -225,20 +225,20 @@ public class OcrControl
     //   124: ifeq +42 -> 166
     //   127: aload_0
     //   128: getfield 63	com/tencent/mobileqq/ocr/OcrControl:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   131: new 234	afol
+    //   131: new 234	agbr
     //   134: dup
     //   135: aload_0
     //   136: aload_3
     //   137: aload_1
-    //   138: invokespecial 237	afol:<init>	(Lcom/tencent/mobileqq/ocr/OcrControl;Ljava/lang/String;Lcom/tencent/mobileqq/ar/arengine/ARCloudReqFileInfo;)V
+    //   138: invokespecial 237	agbr:<init>	(Lcom/tencent/mobileqq/ocr/OcrControl;Ljava/lang/String;Lcom/tencent/mobileqq/ar/arengine/ARCloudReqFileInfo;)V
     //   141: ldc2_w 238
     //   144: invokevirtual 229	android/os/Handler:postDelayed	(Ljava/lang/Runnable;J)Z
     //   147: pop
-    //   148: new 241	afom
+    //   148: new 241	agbs
     //   151: dup
     //   152: aload_0
     //   153: aload_1
-    //   154: invokespecial 244	afom:<init>	(Lcom/tencent/mobileqq/ocr/OcrControl;Lcom/tencent/mobileqq/ar/arengine/ARCloudReqFileInfo;)V
+    //   154: invokespecial 244	agbs:<init>	(Lcom/tencent/mobileqq/ocr/OcrControl;Lcom/tencent/mobileqq/ar/arengine/ARCloudReqFileInfo;)V
     //   157: iconst_5
     //   158: aconst_null
     //   159: iconst_0
@@ -278,7 +278,7 @@ public class OcrControl
     if (QLog.isColorLevel()) {
       QLog.d("Q.ocr.control", 2, "recogPic picPath:" + paramString + ",isCrop:" + paramBoolean);
     }
-    a(new afoj(this, paramString, paramBoolean));
+    a(new agbp(this, paramString, paramBoolean));
   }
   
   public void b()

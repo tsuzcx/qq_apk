@@ -1,67 +1,31 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.biz.common.offline.AsyncCallBack;
-import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.biz.common.offline.OfflineEnvHelper;
-import com.tencent.biz.viewplugin.ViewPluginContext;
-import com.tencent.biz.viewplugin.ViewPluginManager;
-import com.tencent.mobileqq.pluginsdk.PluginUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
-import dalvik.system.DexClassLoader;
-import java.io.File;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mm.opensdk.modelbase.BaseResp;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.mobileqq.wxapi.WXShareHelper.WXShareListener;
 
-public class oyp
-  implements AsyncCallBack
+public final class oyp
+  implements WXShareHelper.WXShareListener
 {
-  public oyp(ViewPluginManager paramViewPluginManager, long paramLong, Context paramContext, boolean paramBoolean, AsyncCallBack paramAsyncCallBack) {}
+  public oyp(String paramString) {}
   
-  public void a(int paramInt, String paramString)
+  public void a(BaseResp paramBaseResp)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ViewPluginManager", 2, "transToLocalUrl loadMode:" + paramInt + ", time:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("ViewPluginManager", 4, "transToLocalUrl transUrl:" + paramString);
-    }
-    this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.d = HtmlOffline.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangString);
-    String str = OfflineEnvHelper.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangString) + this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangString + "/" + this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.b;
-    try
-    {
-      Object localObject = new File(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.c);
-      if (!this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_AndroidContentSharedPreferences.getString(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangString), "-1").equals(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.d))
-      {
-        if (!((File)localObject).exists()) {
-          break label379;
-        }
-        FileUtils.a(((File)localObject).getAbsolutePath());
-        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangString), HtmlOffline.a(this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangString)).commit();
-        ((File)localObject).mkdirs();
-      }
-      for (;;)
-      {
-        if (!((File)localObject).exists()) {
-          ((File)localObject).mkdirs();
-        }
-        localObject = PluginUtils.getPluginLibPath(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.b).getCanonicalPath();
-        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_JavaLangClassLoader = new DexClassLoader(str, this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.c, (String)localObject, this.jdField_a_of_type_AndroidContentContext.getClassLoader());
-        this.jdField_a_of_type_ComTencentBizViewpluginViewPluginManager.jdField_a_of_type_ComTencentBizViewpluginViewPluginContext = new ViewPluginContext(this.jdField_a_of_type_AndroidContentContext, 0, str, null, null, this.jdField_a_of_type_Boolean);
-        if (this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncCallBack == null) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncCallBack.a(paramInt, paramString);
-        return;
-        label379:
-        ((File)localObject).mkdirs();
-      }
+    if ((this.a == null) || (!this.a.equals(paramBaseResp.transaction))) {
       return;
     }
-    catch (Exception paramString)
+    BaseApplicationImpl.getContext();
+    switch (paramBaseResp.errCode)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ViewPluginManager", 2, "create classloader failed:" + paramString.toString());
-      }
+    case -1: 
+    default: 
+      QRUtils.a(1, 2131435303);
+    }
+    for (;;)
+    {
+      WXShareHelper.a().b(this);
+      return;
+      QRUtils.a(2, 2131435302);
     }
   }
 }

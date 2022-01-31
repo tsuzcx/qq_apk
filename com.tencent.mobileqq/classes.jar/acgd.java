@@ -1,51 +1,19 @@
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileBaseCloudFileTabView;
-import com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
-import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.emoticonview.EmotionPanelDataBuilder.EmotionPanelDataCallback;
+import com.tencent.mobileqq.emoticonview.FavoriteEmotionAdapter;
+import java.util.List;
 
 public class acgd
-  extends IClickListener_Ver51
+  implements EmotionPanelDataBuilder.EmotionPanelDataCallback
 {
-  public acgd(QfileCloudFileTabView paramQfileCloudFileTabView) {}
+  public acgd(FavoriteEmotionAdapter paramFavoriteEmotionAdapter) {}
   
-  public void a()
+  public void a(List paramList)
   {
-    this.a.a.a().a();
-  }
-  
-  public void b()
-  {
-    this.a.a.a().g();
-  }
-  
-  public void c()
-  {
-    this.a.a.a().h();
-  }
-  
-  public void d()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(QfileBaseCloudFileTabView.a, 2, "wy saveto wy?" + FileManagerUtil.a());
+    if (paramList != null)
+    {
+      this.a.a(paramList);
+      this.a.notifyDataSetChanged();
     }
-  }
-  
-  public void e()
-  {
-    this.a.a.a().i();
-  }
-  
-  public void f()
-  {
-    this.a.a.a().j();
-  }
-  
-  public void g()
-  {
-    this.a.a.a().E();
   }
 }
 

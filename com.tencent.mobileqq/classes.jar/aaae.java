@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.ar.arengine.ARCamera;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
 
 public class aaae
   implements Runnable
 {
-  public aaae(ARCamera paramARCamera, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public aaae(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable, long paramLong) {}
   
   public void run()
   {
-    ARCamera.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARCamera, this.jdField_a_of_type_Int, this.b, this.c, this.d, ARCamera.e());
+    ARWorldCupGameLogicManager.a().a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARWorldCupGlobalSceneRenderable.b);
   }
 }
 

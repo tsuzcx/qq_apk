@@ -1,22 +1,31 @@
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCellTypeBigSocial;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell;
+import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnLastReadRefreshListener;
+import java.util.Map;
 
 public class lth
-  implements View.OnTouchListener
+  implements FeedItemCell.CellListener
 {
-  public lth(FeedItemCellTypeBigSocial paramFeedItemCellTypeBigSocial, LinearLayout paramLinearLayout1, LinearLayout paramLinearLayout2) {}
+  public lth(FeedItemCell paramFeedItemCell) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void a(View paramView, Map paramMap)
   {
-    if (paramMotionEvent.getAction() == 0)
-    {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setDuplicateParentStateEnabled(true);
-      this.b.setDuplicateParentStateEnabled(true);
+    if (paramView.getId() == 2131366879) {
+      this.a.a(paramView);
     }
-    return false;
+    do
+    {
+      return;
+      if (paramView != this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead) {
+        break;
+      }
+      paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
+    } while (paramView == null);
+    paramView.a();
+    return;
+    this.a.a(paramView, paramMap);
   }
 }
 

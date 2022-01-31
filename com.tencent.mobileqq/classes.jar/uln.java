@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipViewManager;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.aio.ForwardUtils.SectionBase;
 
-class uln
-  implements Runnable
+public final class uln
+  implements Parcelable.Creator
 {
-  uln(ulm paramulm) {}
-  
-  public void run()
+  public ForwardUtils.SectionBase a(Parcel paramParcel)
   {
-    this.a.a.e();
+    return new ForwardUtils.SectionBase(paramParcel);
+  }
+  
+  public ForwardUtils.SectionBase[] a(int paramInt)
+  {
+    return new ForwardUtils.SectionBase[paramInt];
   }
 }
 

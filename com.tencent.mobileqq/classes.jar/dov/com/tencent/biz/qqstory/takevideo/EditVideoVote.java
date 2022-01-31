@@ -12,8 +12,8 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
-import anfe;
-import anff;
+import anvj;
+import anvk;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
@@ -103,7 +103,7 @@ public class EditVideoVote
       j();
     }
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoVoteVoteDialog = new VoteDialog(a(), this, paramVoteInfo, paramInt);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoVoteVoteDialog.setContentView(2130970855);
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoVoteVoteDialog.setContentView(2130970903);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoVoteVoteDialog.setOnDismissListener(this);
     this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoVoteVoteDialog.show();
   }
@@ -306,7 +306,7 @@ public class EditVideoVote
         if (i == 0) {}
         for (localObject = "还没有输入问题哦";; localObject = "还有未输入的选项哦")
         {
-          DialogUtil.a(localContext, 230, (String)localObject, null, "我知道了", "输入", new anfe(this, i), new anff(this)).show();
+          DialogUtil.a(localContext, 230, (String)localObject, null, "我知道了", "输入", new anvj(this, i), new anvk(this)).show();
           return false;
           i += 1;
           break;

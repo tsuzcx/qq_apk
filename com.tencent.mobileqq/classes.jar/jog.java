@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.av.service.RecvGVideoLevelInfo.Medal;
+import com.tencent.av.smallscreen.SmallScreenMultiVideoControlUI;
 
-public final class jog
-  implements Parcelable.Creator
+class jog
+  implements Runnable
 {
-  public RecvGVideoLevelInfo.Medal a(Parcel paramParcel)
-  {
-    return new RecvGVideoLevelInfo.Medal(paramParcel);
-  }
+  jog(joe paramjoe) {}
   
-  public RecvGVideoLevelInfo.Medal[] a(int paramInt)
+  public void run()
   {
-    return new RecvGVideoLevelInfo.Medal[paramInt];
+    this.a.a.m();
   }
 }
 

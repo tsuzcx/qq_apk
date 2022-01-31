@@ -46,7 +46,7 @@ public final class s_gift_adv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aac.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_gift_adv
  * JD-Core Version:    0.7.0.1
  */

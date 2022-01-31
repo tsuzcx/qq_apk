@@ -9,13 +9,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.smtt.sdk.WebViewCallbackClient;
-import oyj;
+import pad;
 
 public class TouchWebView
   extends CustomWebView
   implements WebViewCallbackClient
 {
-  GestureDetector.OnGestureListener jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = new oyj(this);
+  GestureDetector.OnGestureListener jdField_a_of_type_AndroidViewGestureDetector$OnGestureListener = new pad(this);
   GestureDetector jdField_a_of_type_AndroidViewGestureDetector;
   public TouchWebView.OnOverScrollHandler a;
   TouchWebView.OnScrollChangedListener jdField_a_of_type_ComTencentBizUiTouchWebView$OnScrollChangedListener;

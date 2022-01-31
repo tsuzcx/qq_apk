@@ -1,20 +1,28 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog.EditTextDialogEventListener;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import cooperation.weiyun.sdk.download.WyDownloader;
+import java.util.Iterator;
+import java.util.List;
 
-class ania
-  implements Runnable
+public class ania
+  implements ThreadPool.Job
 {
-  ania(anhy paramanhy) {}
+  public ania(WyDownloader paramWyDownloader, List paramList) {}
   
-  public void run()
+  public Void a(ThreadPool.JobContext paramJobContext)
   {
-    this.a.a.a.a(this.a.a.a(), this.a.a.b());
-    this.a.a.a.a(true);
+    paramJobContext = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (paramJobContext.hasNext())
+    {
+      long l = ((Long)paramJobContext.next()).longValue();
+      this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader.a(l);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ania
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
 import SummaryCard.TPraiseInfo;
-import aeox;
-import aeoy;
+import afcd;
+import afce;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -78,7 +78,7 @@ public class NearbyCardVoteView
   {
     super(paramContext);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new aeox(this);
+    this.jdField_a_of_type_AndroidOsHandler = new afcd(this);
     a();
   }
   
@@ -86,7 +86,7 @@ public class NearbyCardVoteView
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new aeox(this);
+    this.jdField_a_of_type_AndroidOsHandler = new afcd(this);
     a();
   }
   
@@ -94,7 +94,7 @@ public class NearbyCardVoteView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_AndroidOsHandler = new aeox(this);
+    this.jdField_a_of_type_AndroidOsHandler = new afcd(this);
     a();
   }
   
@@ -112,11 +112,11 @@ public class NearbyCardVoteView
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Double * 50.0D), (int)(this.jdField_a_of_type_Double * 50.0D));
     localLayoutParams.addRule(12);
     localLayoutParams.addRule(11);
-    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130842745);
+    this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130842844);
     addView(this.jdField_a_of_type_AndroidViewView, localLayoutParams);
     this.jdField_b_of_type_AndroidViewView = new SingleLineTextView(getContext());
-    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130843032);
-    this.jdField_b_of_type_AndroidViewView.setId(2131368266);
+    this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130843131);
+    this.jdField_b_of_type_AndroidViewView.setId(2131368333);
     localLayoutParams = new RelativeLayout.LayoutParams((int)(this.jdField_a_of_type_Double * 25.0D), (int)(this.jdField_a_of_type_Double * 25.0D));
     localLayoutParams.topMargin = ((int)(15.0D * this.jdField_a_of_type_Double));
     localLayoutParams.addRule(14);
@@ -131,8 +131,8 @@ public class NearbyCardVoteView
     this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-15550475);
     addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams);
     this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(getContext());
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setId(2131365196);
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130845931);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setId(2131365218);
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130846059);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setMinimumHeight((int)(this.jdField_a_of_type_Double * 6.0D));
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setMinimumWidth((int)(this.jdField_a_of_type_Double * 6.0D));
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setContentDescription(((Resources)localObject).getString(2131427420));
@@ -141,7 +141,7 @@ public class NearbyCardVoteView
     ((RelativeLayout.LayoutParams)localObject).addRule(11);
     addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, (ViewGroup.LayoutParams)localObject);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131365197);
+    this.jdField_a_of_type_AndroidWidgetTextView.setId(2131365219);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 11.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, -2, -2);
@@ -226,7 +226,7 @@ public class NearbyCardVoteView
       localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
       if (paramBoolean)
       {
-        j = 2130845924;
+        j = 2130846052;
         i = this.jdField_a_of_type_Int;
         i = j;
         if (localObject != null)
@@ -252,7 +252,7 @@ public class NearbyCardVoteView
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_Int + "");
       return;
-      j = 2130845927;
+      j = 2130846055;
       i = this.jdField_a_of_type_Int;
       i = this.jdField_b_of_type_Int;
       i = j;
@@ -303,7 +303,7 @@ public class NearbyCardVoteView
         {
           if ((this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard != null) && (((NearbyLikeLimitManager)localObject).c(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataNearbyPeopleCard.uin).longValue())))
           {
-            paramNewVoteAnimHelper = getResources().getDrawable(2130840609);
+            paramNewVoteAnimHelper = getResources().getDrawable(2130840631);
             this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-13291);
             if (!this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseAnimation.jdField_a_of_type_Boolean) {
               break label565;
@@ -351,7 +351,7 @@ public class NearbyCardVoteView
           }
           if (!this.jdField_a_of_type_Boolean)
           {
-            paramNewVoteAnimHelper = getResources().getDrawable(2130842760);
+            paramNewVoteAnimHelper = getResources().getDrawable(2130842859);
             this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-52924);
             continue;
           }
@@ -361,21 +361,21 @@ public class NearbyCardVoteView
           if (QLog.isColorLevel()) {
             QLog.e("VoteView", 2, paramNewVoteAnimHelper.toString(), paramNewVoteAnimHelper);
           }
-          paramNewVoteAnimHelper = getResources().getDrawable(2130843032);
+          paramNewVoteAnimHelper = getResources().getDrawable(2130843131);
           this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-15550475);
           continue;
-          paramNewVoteAnimHelper = getResources().getDrawable(2130843032);
+          paramNewVoteAnimHelper = getResources().getDrawable(2130843131);
           this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-15550475);
           continue;
         }
         if (this.jdField_a_of_type_Boolean)
         {
-          paramNewVoteAnimHelper = getResources().getDrawable(2130840611);
+          paramNewVoteAnimHelper = getResources().getDrawable(2130840633);
           this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-1);
         }
         else
         {
-          paramNewVoteAnimHelper = getResources().getDrawable(2130842761);
+          paramNewVoteAnimHelper = getResources().getDrawable(2130842860);
           this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(-4473925);
           this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(new ColorDrawable(0));
           continue;
@@ -424,7 +424,7 @@ public class NearbyCardVoteView
         localHashSet.add(Integer.valueOf((int)localTPraiseInfo.uCustomId));
       }
     }
-    if (((PraiseManager)localObject).a(localHashSet, new aeoy(this, paramInt1, paramInt2, paramList)))
+    if (((PraiseManager)localObject).a(localHashSet, new afce(this, paramInt1, paramInt2, paramList)))
     {
       paramNewVoteAnimHelper.sendToTarget();
       return;

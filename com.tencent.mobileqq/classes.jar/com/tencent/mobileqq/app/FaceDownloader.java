@@ -16,9 +16,9 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.LinkedList;
 import mqq.os.MqqHandler;
-import yzt;
-import yzu;
-import yzv;
+import zcz;
+import zda;
+import zdb;
 
 public abstract class FaceDownloader
 {
@@ -34,7 +34,7 @@ public abstract class FaceDownloader
   public LinkedList a;
   protected MqqHandler a;
   private Thread[] jdField_a_of_type_ArrayOfJavaLangThread;
-  private yzv[] jdField_a_of_type_ArrayOfYzv;
+  private zdb[] jdField_a_of_type_ArrayOfZdb;
   public int b;
   public ArrayList b;
   public int c;
@@ -61,12 +61,12 @@ public abstract class FaceDownloader
     this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
     this.c = this.jdField_a_of_type_Int;
     this.jdField_a_of_type_ArrayOfJavaLangThread = new Thread[this.jdField_a_of_type_Int];
-    this.jdField_a_of_type_ArrayOfYzv = new yzv[this.jdField_a_of_type_Int];
+    this.jdField_a_of_type_ArrayOfZdb = new zdb[this.jdField_a_of_type_Int];
     int i = 0;
     while (i < this.jdField_a_of_type_ArrayOfJavaLangThread.length)
     {
-      this.jdField_a_of_type_ArrayOfYzv[i] = new yzv(this, i);
-      this.jdField_a_of_type_ArrayOfJavaLangThread[i] = ThreadManager.newFreeThread(this.jdField_a_of_type_ArrayOfYzv[i], "FaceDownloadThread", 5);
+      this.jdField_a_of_type_ArrayOfZdb[i] = new zdb(this, i);
+      this.jdField_a_of_type_ArrayOfJavaLangThread[i] = ThreadManager.newFreeThread(this.jdField_a_of_type_ArrayOfZdb[i], "FaceDownloadThread", 5);
       if (ThreadOptimizer.a().c()) {
         this.jdField_a_of_type_ArrayOfJavaLangThread[i].setPriority(1);
       }
@@ -79,7 +79,7 @@ public abstract class FaceDownloader
     }
     for (;;)
     {
-      this.jdField_a_of_type_MqqOsMqqHandler = new yzt(this, Looper.getMainLooper());
+      this.jdField_a_of_type_MqqOsMqqHandler = new zcz(this, Looper.getMainLooper());
       return;
       this.jdField_a_of_type_Byte = 3;
       continue;
@@ -161,7 +161,7 @@ public abstract class FaceDownloader
   
   private void c()
   {
-    ThreadManager.post(new yzu(this), 5, null, true);
+    ThreadManager.post(new zda(this), 5, null, true);
   }
   
   protected int a()
@@ -362,14 +362,14 @@ public abstract class FaceDownloader
     //   235: istore 6
     //   237: iload 4
     //   239: ifeq -208 -> 31
-    //   242: new 371	yzw
+    //   242: new 371	zdc
     //   245: dup
     //   246: aload_0
-    //   247: invokespecial 372	yzw:<init>	(Lcom/tencent/mobileqq/app/FaceDownloader;)V
+    //   247: invokespecial 372	zdc:<init>	(Lcom/tencent/mobileqq/app/FaceDownloader;)V
     //   250: astore_1
     //   251: aload_1
     //   252: aload_3
-    //   253: putfield 375	yzw:jdField_a_of_type_ComTencentMobileqqUtilFaceInfo	Lcom/tencent/mobileqq/util/FaceInfo;
+    //   253: putfield 375	zdc:jdField_a_of_type_ComTencentMobileqqUtilFaceInfo	Lcom/tencent/mobileqq/util/FaceInfo;
     //   256: iload 5
     //   258: ifeq +5172 -> 5430
     //   261: aload_3
@@ -377,7 +377,7 @@ public abstract class FaceDownloader
     //   265: invokevirtual 380	com/tencent/mobileqq/util/FaceInfo:a	(I)V
     //   268: aload_1
     //   269: aconst_null
-    //   270: putfield 383	yzw:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   270: putfield 383	zdc:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   273: aload_0
     //   274: getfield 50	com/tencent/mobileqq/app/FaceDownloader:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   277: aload_1
@@ -2304,17 +2304,17 @@ public abstract class FaceDownloader
     //   4372: invokevirtual 229	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
     //   4375: invokevirtual 178	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   4378: invokestatic 235	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   4381: new 371	yzw
+    //   4381: new 371	zdc
     //   4384: dup
     //   4385: aload_0
-    //   4386: invokespecial 372	yzw:<init>	(Lcom/tencent/mobileqq/app/FaceDownloader;)V
+    //   4386: invokespecial 372	zdc:<init>	(Lcom/tencent/mobileqq/app/FaceDownloader;)V
     //   4389: astore 33
     //   4391: aload 33
     //   4393: aload_3
-    //   4394: putfield 375	yzw:jdField_a_of_type_ComTencentMobileqqUtilFaceInfo	Lcom/tencent/mobileqq/util/FaceInfo;
+    //   4394: putfield 375	zdc:jdField_a_of_type_ComTencentMobileqqUtilFaceInfo	Lcom/tencent/mobileqq/util/FaceInfo;
     //   4397: aload 33
     //   4399: aload 31
-    //   4401: putfield 383	yzw:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   4401: putfield 383	zdc:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   4404: aload_0
     //   4405: getfield 50	com/tencent/mobileqq/app/FaceDownloader:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   4408: aload 33
@@ -2849,7 +2849,7 @@ public abstract class FaceDownloader
     //   5626: aload_1
     //   5627: aload_2
     //   5628: getfield 732	com/tencent/mobileqq/util/BitmapManager$BitmapDecodeResult:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
-    //   5631: putfield 383	yzw:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
+    //   5631: putfield 383	zdc:jdField_a_of_type_AndroidGraphicsBitmap	Landroid/graphics/Bitmap;
     //   5634: aload_0
     //   5635: getfield 50	com/tencent/mobileqq/app/FaceDownloader:jdField_b_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
     //   5638: aload_1
@@ -3493,10 +3493,10 @@ public abstract class FaceDownloader
       this.jdField_a_of_type_JavaUtilHashSet.clear();
     }
     int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfYzv.length)
+    while (i < this.jdField_a_of_type_ArrayOfZdb.length)
     {
-      if (this.jdField_a_of_type_ArrayOfYzv[i] != null) {
-        this.jdField_a_of_type_ArrayOfYzv[i].a();
+      if (this.jdField_a_of_type_ArrayOfZdb[i] != null) {
+        this.jdField_a_of_type_ArrayOfZdb[i].a();
       }
       i += 1;
     }
@@ -3532,8 +3532,8 @@ public abstract class FaceDownloader
           {
             if (this.jdField_a_of_type_ArrayOfJavaLangThread[i] == null)
             {
-              this.jdField_a_of_type_ArrayOfYzv[i] = new yzv(this, i);
-              this.jdField_a_of_type_ArrayOfJavaLangThread[i] = ThreadManager.newFreeThread(this.jdField_a_of_type_ArrayOfYzv[i], "FaceDownloadThread", 5);
+              this.jdField_a_of_type_ArrayOfZdb[i] = new zdb(this, i);
+              this.jdField_a_of_type_ArrayOfJavaLangThread[i] = ThreadManager.newFreeThread(this.jdField_a_of_type_ArrayOfZdb[i], "FaceDownloadThread", 5);
               this.jdField_a_of_type_ArrayOfJavaLangThread[i].start();
               this.c += 1;
             }

@@ -1,30 +1,31 @@
-import com.tencent.mobileqq.activity.AuthDevRenameActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.mobileqq.activity.AssistantSettingActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ark.ArkAiAppCenter;
+import com.tencent.mobileqq.ark.ArkAppCenter;
+import com.tencent.mobileqq.ark.ArkAppDataReport;
 
 public class rlf
-  implements Runnable
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public rlf(AuthDevRenameActivity paramAuthDevRenameActivity) {}
+  public rlf(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void run()
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    try
+    paramCompoundButton = (ArkAppCenter)this.a.app.getManager(120);
+    if (paramCompoundButton != null)
     {
-      if ((AuthDevRenameActivity.a(this.a) != null) && (AuthDevRenameActivity.a(this.a).isShowing()))
-      {
-        AuthDevRenameActivity.a(this.a).dismiss();
-        AuthDevRenameActivity.a(this.a).cancel();
+      paramCompoundButton.a().a(this.a.app, paramBoolean);
+      if (!paramBoolean) {
+        ArkAppDataReport.a();
       }
-      AuthDevRenameActivity.a(this.a, null);
+    }
+    else
+    {
       return;
     }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    ArkAppDataReport.b();
   }
 }
 

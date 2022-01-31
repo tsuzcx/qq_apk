@@ -1,43 +1,62 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
-import com.tencent.qphone.base.util.QLog;
-import mqq.observer.WtloginObserver;
-import oicq.wlogin_sdk.tools.ErrMsg;
+import android.widget.TextView;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.Leba;
+import com.tencent.mobileqq.activity.LebaQZoneFacePlayHelper;
+import com.tencent.mobileqq.activity.QZoneEntryReporterInLeba;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadRegulator;
+import com.tencent.mobileqq.config.struct.LebaViewItem;
+import com.tencent.mobileqq.servlet.QZoneManagerImp;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import cooperation.qzone.QZoneClickReport;
+import cooperation.qzone.QZoneClickReport.ReportInfo;
+import cooperation.qzone.report.lp.LinkReport;
+import java.util.HashMap;
 
 public class sxo
-  extends WtloginObserver
+  implements Runnable
 {
-  public sxo(LoginPhoneNumActivity paramLoginPhoneNumActivity) {}
+  public sxo(Leba paramLeba, LebaViewItem paramLebaViewItem) {}
   
-  public void OnCheckSMSVerifyLoginAccount(long paramLong1, long paramLong2, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3, ErrMsg paramErrMsg)
+  public void run()
   {
-    if (QLog.isColorLevel())
+    if ((Leba.b(this.jdField_a_of_type_ComTencentMobileqqActivityLeba) != null) && (Leba.b(this.jdField_a_of_type_ComTencentMobileqqActivityLeba).getVisibility() == 0)) {}
+    this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a(null, -1, this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem);
+    ThreadRegulator.a().a(4);
+    ThreadRegulator.a().a(4, 2000L);
+    Leba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba, true);
+    Object localObject = (QZoneManagerImp)this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.getManager(9);
+    if (localObject != null)
     {
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount appid=" + paramLong1 + " subAppid=" + paramLong2 + " countryCode=" + paramString1 + " mobile=" + paramString2);
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount msg=" + paramString3 + " msgCnt=" + paramInt1 + " timeLimit=" + paramInt2 + " ret=" + paramInt3);
-      if (paramErrMsg != null) {
-        QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
+      if ((((QZoneManagerImp)localObject).a(1) > 0) || (((QZoneManagerImp)localObject).a(2) > 0)) {
+        break label241;
+      }
+      localObject = new QZoneClickReport.ReportInfo();
+      ((QZoneClickReport.ReportInfo)localObject).c = "1";
+      ((QZoneClickReport.ReportInfo)localObject).d = "0";
+      ((QZoneClickReport.ReportInfo)localObject).b = 4;
+      ((QZoneClickReport.ReportInfo)localObject).k = "3";
+      ((QZoneClickReport.ReportInfo)localObject).l = "mainEntrance";
+      ((QZoneClickReport.ReportInfo)localObject).m = "activefeed";
+      QZoneClickReport.report(this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.getAccount(), (QZoneClickReport.ReportInfo)localObject, false);
+      localObject = new HashMap();
+      ((HashMap)localObject).put("source_type", "3");
+      ((HashMap)localObject).put("source_from", "mainEntrance");
+      ((HashMap)localObject).put("source_to", "activefeed");
+      StatisticCollector.a(BaseApplicationImpl.getContext()).a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.getAccount(), "actQZSourceDataReport", true, 0L, 0L, (HashMap)localObject, null);
+      QZoneEntryReporterInLeba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a);
+    }
+    for (;;)
+    {
+      LinkReport.reportClickQZoneEntry(this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a.c());
+      return;
+      label241:
+      if (((QZoneManagerImp)localObject).a(1) > 0) {
+        QZoneEntryReporterInLeba.c(this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a, ((QZoneManagerImp)localObject).a(1));
+      } else if (Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba) != null) {
+        Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba).a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba.a);
       }
     }
-    this.a.c();
-    if (this.a.isFinishing()) {
-      return;
-    }
-    if (paramInt3 == 0)
-    {
-      this.a.a();
-      return;
-    }
-    paramString1 = null;
-    if (paramErrMsg != null) {
-      paramString1 = paramErrMsg.getMessage();
-    }
-    if (!TextUtils.isEmpty(paramString1))
-    {
-      this.a.a(null, paramString1);
-      return;
-    }
-    this.a.a(2131434443, 1);
   }
 }
 

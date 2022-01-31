@@ -1,10 +1,18 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.RecentLoginDevActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.dingdong.data.OfficeCenterSharedPref;
 
 public class tlc
-  extends Handler
+  implements Runnable
 {
-  public tlc(RecentLoginDevActivity paramRecentLoginDevActivity) {}
+  public tlc(QQSettingMe paramQQSettingMe) {}
+  
+  public void run()
+  {
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    OfficeCenterSharedPref.a().b("officecenter_red_point_flag_" + localQQAppInterface.getLongAccountUin(), false);
+  }
 }
 
 

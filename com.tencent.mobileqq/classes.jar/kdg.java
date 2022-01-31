@@ -1,33 +1,26 @@
-import android.content.res.Resources;
-import com.tencent.av.AVLog;
-import com.tencent.av.ui.VoiceChangeData;
-import com.tencent.av.ui.VoiceChangeData.GetDrawableCallack;
-import com.tencent.av.ui.VoiceChangeData.VoiceInfo;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.av.ui.funchat.record.QavRecordButtonView;
 
 public class kdg
-  implements URLDrawable.URLDrawableListener
+  implements View.OnTouchListener
 {
-  public kdg(VoiceChangeData paramVoiceChangeData, VoiceChangeData.GetDrawableCallack paramGetDrawableCallack, URLDrawable paramURLDrawable, Resources paramResources, VoiceChangeData.VoiceInfo paramVoiceInfo) {}
+  public kdg(QavRecordButtonView paramQavRecordButtonView) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    AVLog.e(VoiceChangeData.b, "getDrawable|urldrawable load failed. url = " + this.jdField_a_of_type_ComTencentAvUiVoiceChangeData$VoiceInfo.b);
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    AVLog.e(VoiceChangeData.b, "getDrawable|urldrawable load failed. url = " + this.jdField_a_of_type_ComTencentAvUiVoiceChangeData$VoiceInfo.b);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    AVLog.a(VoiceChangeData.b, "getDrawable|urldrawable load successed.");
-    if (this.jdField_a_of_type_ComTencentAvUiVoiceChangeData$GetDrawableCallack != null) {
-      this.jdField_a_of_type_ComTencentAvUiVoiceChangeData$GetDrawableCallack.a(this.jdField_a_of_type_ComTencentAvUiVoiceChangeData.a(this.jdField_a_of_type_ComTencentImageURLDrawable, this.jdField_a_of_type_AndroidContentResResources));
+    if (QavRecordButtonView.a(this.a) != 1) {
+      switch (paramMotionEvent.getAction())
+      {
+      }
+    }
+    for (;;)
+    {
+      return false;
+      paramView.setAlpha(0.5F);
+      continue;
+      paramView.setAlpha(1.0F);
     }
   }
 }

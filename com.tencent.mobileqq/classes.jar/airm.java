@@ -1,23 +1,19 @@
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import com.tencent.mobileqq.troop.enterEffect.TroopEnterEffectController;
+import com.tencent.mobileqq.highway.api.ITransCallbackForReport;
+import com.tencent.mobileqq.transfile.ShortVideoUploadProcessor;
 
-class airm
-  implements Runnable
+public class airm
+  implements ITransCallbackForReport
 {
-  airm(airl paramairl) {}
+  public airm(ShortVideoUploadProcessor paramShortVideoUploadProcessor) {}
   
-  public void run()
+  public void onFailed(int paramInt, String paramString1, String paramString2)
   {
-    this.a.a.a.jdField_a_of_type_AndroidWidgetLinearLayout.removeView(this.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView);
-    this.a.a.a.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(this.a.a.a.jdField_a_of_type_AndroidWidgetScrollView);
-    this.a.a.a.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView = null;
-    this.a.a.a.a();
+    this.a.a(false, this.a.j, paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     airm
  * JD-Core Version:    0.7.0.1
  */

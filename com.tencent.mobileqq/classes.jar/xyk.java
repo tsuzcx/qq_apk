@@ -1,28 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.CheckBox;
-import com.tencent.mobileqq.activity.selectmember.SelectMemberFromFriendGroup;
-import java.util.List;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.TranslateAnimation;
+import android.widget.FrameLayout.LayoutParams;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity;
 
-class xyk
-  implements View.OnClickListener
+public class xyk
+  implements Animation.AnimationListener
 {
-  xyk(xyj paramxyj) {}
+  public xyk(CreateFaceToFaceDiscussionActivity paramCreateFaceToFaceDiscussionActivity) {}
   
-  public void onClick(View paramView)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    paramView = (xyl)paramView.getTag();
-    if (this.a.a.a.contains(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups))
-    {
-      this.a.a.a.remove(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(false);
-      this.a.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups, false);
-      return;
-    }
-    this.a.a.a.add(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups);
-    paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(true);
-    this.a.a.a(paramView.jdField_a_of_type_ComTencentMobileqqDataGroups, true);
+    this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0.0F);
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setAnimation(this.a.jdField_b_of_type_AndroidViewAnimationTranslateAnimation);
+    paramAnimation = (FrameLayout.LayoutParams)this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getLayoutParams();
+    paramAnimation.setMargins(0, 0, 0, this.a.jdField_b_of_type_AndroidWidgetLinearLayout.getHeight());
+    this.a.jdField_a_of_type_AndroidWidgetLinearLayout.setLayoutParams(paramAnimation);
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

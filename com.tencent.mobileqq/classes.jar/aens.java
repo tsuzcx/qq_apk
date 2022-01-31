@@ -1,17 +1,15 @@
-import android.graphics.Bitmap;
-import com.tencent.mobileqq.nearby.now.view.StoryViewRelayoutListener;
-import com.tencent.mobileqq.nearby.now.view.widget.FitXImageView;
-import com.tencent.mobileqq.nearby.now.view.widget.ImageDisplayView;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.nearby.gameroom.GameRoomInviteActivity;
 
-class aens
-  implements Runnable
+public class aens
+  implements View.OnClickListener
 {
-  aens(aenp paramaenp, Bitmap paramBitmap) {}
+  public aens(GameRoomInviteActivity paramGameRoomInviteActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Aenp.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView.a.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-    ImageDisplayView.a(this.jdField_a_of_type_Aenp.jdField_a_of_type_ComTencentMobileqqNearbyNowViewWidgetImageDisplayView).a(this.jdField_a_of_type_Aenp.jdField_a_of_type_Int, this.jdField_a_of_type_Aenp.b);
+    this.a.finish();
   }
 }
 

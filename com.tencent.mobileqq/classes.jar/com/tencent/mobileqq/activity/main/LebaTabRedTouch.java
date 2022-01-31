@@ -9,11 +9,10 @@ import com.tencent.mobileqq.redtouch.RedTouchManager;
 import com.tencent.mobileqq.servlet.QZoneManagerImp;
 import com.tencent.pb.getbusiinfo.BusinessInfoCheckUpdate.AppSetting;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.util.QZoneLogTags;
 import cooperation.readinjoy.storage.ReadInJoyNotifyRedTouchInfo;
 import java.util.Iterator;
 import java.util.List;
-import wmn;
+import wps;
 
 public class LebaTabRedTouch
 {
@@ -37,7 +36,7 @@ public class LebaTabRedTouch
       i = j;
       if (QLog.isColorLevel())
       {
-        QLog.d(QZoneLogTags.LOG_TAG_UNDEALCOUNT + "MainAssistObserver", 2, "getQZoneMsgCount TYPE_PASSIVE_FEED: " + localQZoneManagerImp.a(1));
+        QLog.d("UndealCount.MainAssistObserver", 2, "getQZoneMsgCount TYPE_PASSIVE_FEED: " + localQZoneManagerImp.a(1));
         i = j;
       }
     }
@@ -75,11 +74,11 @@ public class LebaTabRedTouch
       bool2 = bool1;
       if (QLog.isColorLevel())
       {
-        QLog.d(QZoneLogTags.LOG_TAG_UNDEALCOUNT + "MainAssistObserver", 2, "isNewQzoneMsgExist TYPE_ACTIVE_FEED: " + localQZoneManagerImp.a(2) + " TYPE_ZEBRA_ALBUM:" + localQZoneManagerImp.a(17));
+        QLog.d("UndealCount.MainAssistObserver", 2, "isNewQzoneMsgExist TYPE_ACTIVE_FEED: " + localQZoneManagerImp.a(2) + " TYPE_ZEBRA_ALBUM:" + localQZoneManagerImp.a(17));
         bool2 = bool1;
       }
     }
-    QLog.d(QZoneLogTags.LOG_TAG_UNDEALCOUNT + "MainAssistObserver", 1, "isNewQzoneMsgExist: " + bool2);
+    QLog.d("UndealCount.MainAssistObserver", 1, "isNewQzoneMsgExist: " + bool2);
     return bool2;
   }
   
@@ -101,7 +100,7 @@ public class LebaTabRedTouch
   
   public Runnable a(LebaTabRedTouch.RefreshCallback paramRefreshCallback)
   {
-    return new wmn(this, paramRefreshCallback);
+    return new wps(this, paramRefreshCallback);
   }
   
   public void a()

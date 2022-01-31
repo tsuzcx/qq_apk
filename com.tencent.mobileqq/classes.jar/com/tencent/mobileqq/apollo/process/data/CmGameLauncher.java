@@ -38,7 +38,6 @@ import com.tencent.mobileqq.apollo.process.chanel.CmGameToolCmdChannel;
 import com.tencent.mobileqq.apollo.store.ApolloGameActivity;
 import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil;
 import com.tencent.mobileqq.apollo.utils.ApolloGameRscVerify;
-import com.tencent.mobileqq.apollo.utils.ApolloGameUtil;
 import com.tencent.mobileqq.apollo.utils.ApolloSoLoader;
 import com.tencent.mobileqq.apollo.utils.ApolloSoLoader.OnCmSoLoadCompleteCallback;
 import com.tencent.mobileqq.apollo.view.ApolloPanel.GameMsgInfo;
@@ -51,18 +50,18 @@ import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
-import yoe;
-import yof;
-import yog;
-import yoh;
-import yoi;
-import yoj;
+import yrk;
+import yrl;
+import yrm;
+import yrn;
+import yro;
+import yrp;
 
 public class CmGameLauncher
   implements Handler.Callback, View.OnKeyListener, OnApolloViewListener
 {
   public int a;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new yoe(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new yrk(this);
   private ApolloSurfaceView jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView;
   private ApolloCmdChannel jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel;
   private CmGameStartChecker.StartCheckParam jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam;
@@ -73,18 +72,19 @@ public class CmGameLauncher
   private CmGameOpenIdFinder jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameOpenIdFinder;
   private CmGameScreenRotate jdField_a_of_type_ComTencentMobileqqApolloProcessDataCmGameScreenRotate;
   private ApolloGameRscVerify jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloGameRscVerify;
-  private ApolloSoLoader.OnCmSoLoadCompleteCallback jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloSoLoader$OnCmSoLoadCompleteCallback = new yof(this);
+  private ApolloSoLoader.OnCmSoLoadCompleteCallback jdField_a_of_type_ComTencentMobileqqApolloUtilsApolloSoLoader$OnCmSoLoadCompleteCallback = new yrl(this);
   private ApolloPanel.GameMsgInfo jdField_a_of_type_ComTencentMobileqqApolloViewApolloPanel$GameMsgInfo;
   private WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(Looper.getMainLooper(), this);
-  private Runnable jdField_a_of_type_JavaLangRunnable = new yoh(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new yrn(this);
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private boolean jdField_a_of_type_Boolean;
   private int jdField_b_of_type_Int;
-  private Runnable jdField_b_of_type_JavaLangRunnable = new yoi(this);
+  private Runnable jdField_b_of_type_JavaLangRunnable = new yro(this);
   private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int;
   private boolean jdField_c_of_type_Boolean;
   private boolean d;
+  private boolean e;
   
   public CmGameLauncher(int paramInt)
   {
@@ -355,7 +355,7 @@ public class CmGameLauncher
   
   public void a()
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (this.jdField_c_of_type_Boolean)) {}
+    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null) && (this.d)) {}
     try
     {
       ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
@@ -387,7 +387,6 @@ public class CmGameLauncher
       }
       if ((this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel != null) && (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null))
       {
-        paramInt2 = ApolloGameUtil.a(CmGameUtil.a(), paramInt2, paramString);
         paramString = new JSONObject();
         paramString.put("ret", paramInt1);
         paramString.put("gameId", this.jdField_b_of_type_Int);
@@ -457,7 +456,7 @@ public class CmGameLauncher
     localIntentFilter.addAction("android.intent.action.SCREEN_ON");
     localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
     paramContext.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
-    this.jdField_c_of_type_Boolean = true;
+    this.d = true;
   }
   
   public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
@@ -490,6 +489,7 @@ public class CmGameLauncher
   
   public void b()
   {
+    this.jdField_c_of_type_Boolean = false;
     if (this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler != null) {
       this.jdField_a_of_type_ComTencentMobileqqApolloProcessChanelCmGameAvHandler.c();
     }
@@ -543,7 +543,7 @@ public class CmGameLauncher
   {
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(19);
     if (!this.jdField_b_of_type_Boolean) {
-      ThreadManager.post(new yoj(this, paramString), 5, null, true);
+      ThreadManager.post(new yrp(this, paramString), 5, null, true);
     }
     QLog.d("cmgame_process.CmGameLauncher", 1, new Object[] { "handleShareMsgCallbackFromEngine mHadHandleShareMsg:", Boolean.valueOf(this.jdField_b_of_type_Boolean) });
     if (QLog.isColorLevel()) {
@@ -648,6 +648,7 @@ public class CmGameLauncher
   
   public void f()
   {
+    this.jdField_c_of_type_Boolean = true;
     if (this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel != null)
     {
       this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel.pauseGameMusic(this.jdField_b_of_type_Int);
@@ -709,7 +710,7 @@ public class CmGameLauncher
       paramView = CmGameUtil.a();
       if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.runRenderTask(new yog(this, paramView));
+        this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.runRenderTask(new yrm(this, paramView));
         return true;
       }
     }

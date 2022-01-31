@@ -1,15 +1,16 @@
-import com.tencent.mobileqq.shortvideo.VideoEnvironment.ShortVideoDownload;
+import com.tencent.mobileqq.richmedia.capture.view.EffectsCameraCaptureView;
+import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
 
-public final class ahme
+public class ahme
   implements Runnable
 {
-  public ahme(VideoEnvironment.ShortVideoDownload paramShortVideoDownload, boolean paramBoolean) {}
+  public ahme(EffectsCameraCaptureView paramEffectsCameraCaptureView) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoEnvironment$ShortVideoDownload != null) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoVideoEnvironment$ShortVideoDownload.a(this.jdField_a_of_type_Boolean);
-    }
+    this.a.a.k();
+    this.a.r();
+    this.a.a.c();
   }
 }
 

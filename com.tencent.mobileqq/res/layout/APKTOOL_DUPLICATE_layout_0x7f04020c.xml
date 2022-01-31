@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ac"
+<RelativeLayout android:gravity="center_vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020778" android:layout_width="fill_parent" android:layout_height="42.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d14" android:text="充值数量" style="@style/APKTOOL_DUPLICATE_style_0x7f0e00ad" />
-    <EditText android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d15" android:hint="请输入充值数量" android:digits="0123456789\n" android:inputType="number" style="@style/APKTOOL_DUPLICATE_style_0x7f0e009b" />
-    <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d16" style="@style/midas_input_cell_button_clear" />
-</LinearLayout>
+    <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d2d" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020750" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="返回" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="18.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d2e" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="标题标题" android:layout_centerInParent="true" />
+    <LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0d2e" android:layout_centerInParent="true">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d2f" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020752" />
+    </LinearLayout>
+    <TextView android:textSize="17.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d30" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="10.0dip" android:text="关闭" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

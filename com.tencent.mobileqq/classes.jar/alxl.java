@@ -1,22 +1,41 @@
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qlink.QlinkReliableReport;
-import java.util.TimerTask;
+import com.tencent.qqprotect.common.CommTvRpt;
+import com.tencent.qqprotect.qsec.CrashProtector.IProtectedMethod;
+import com.tencent.qqprotect.qsec.QSecFramework;
 
-public class alxl
-  extends TimerTask
+public final class alxl
+  implements CrashProtector.IProtectedMethod
 {
-  public alxl(QlinkReliableReport paramQlinkReliableReport) {}
-  
-  public void run()
+  public void a()
   {
-    QLog.d("QlinkReliableReport", 2, "doStopReportTimer :  on timer");
-    QlinkReliableReport.a(this.a, null);
-    QlinkReliableReport.g();
+    if (QSecFramework.a()) {
+      return;
+    }
+    try
+    {
+      if (!QSecFramework.b()) {
+        System.loadLibrary("QSec");
+      }
+      QSecFramework.a(true);
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      localUnsatisfiedLinkError.printStackTrace();
+    }
+  }
+  
+  public void b()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QSecFramework", 2, "Something wrong when load native so.");
+    }
+    CommTvRpt.a(1, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     alxl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,27 @@
-import android.view.View;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
-import cooperation.troop.TroopPluginManager.TroopPluginCallback;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
+import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.vas.ColorRingPlayer;
 
 public class akhn
-  implements TroopPluginManager.TroopPluginCallback
+  implements Runnable
 {
-  public akhn(ProfileCardMoreInfoView paramProfileCardMoreInfoView, View paramView) {}
+  public akhn(ColorRingPlayer paramColorRingPlayer, String paramString1, String paramString2, long paramLong, int paramInt) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (paramInt == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.d = true;
-      ProfileCardMoreInfoView.a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_ComTencentMobileqqWidgetProfileCardMoreInfoView.a);
-    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("subAction", this.jdField_a_of_type_JavaLangString);
+    localBundle.putString("actionName", this.b);
+    localBundle.putLong("id", this.jdField_a_of_type_Long);
+    localBundle.putInt("result", this.jdField_a_of_type_Int);
+    localBundle = DataFactory.a("reportColorRing", "", this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.a.key, localBundle);
+    this.jdField_a_of_type_ComTencentMobileqqVasColorRingPlayer.a(localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akhn
  * JD-Core Version:    0.7.0.1
  */

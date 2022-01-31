@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.now.protocol;
 
-import aegp;
+import aetv;
 import android.text.TextUtils;
 import com.tencent.biz.ProtoUtils;
 import com.tencent.common.app.AppInterface;
@@ -37,7 +37,7 @@ public class CsTask
     {
       paramReqBody.a2.set(str);
       paramReqBody.platform.set(1);
-      paramReqBody.version.set("7.6.0");
+      paramReqBody.version.set("7.6.3");
       paramReqBody.original_id.set(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
       paramReqBody.original_key.set((String)localObject);
       paramReqBody.original_id_type.set(1);
@@ -80,7 +80,7 @@ public class CsTask
       localReqBody.cmd.set(this.jdField_a_of_type_Int);
       localReqBody.subcmd.set(this.b);
       localReqBody.busi_buf.set(ByteStringMicro.copyFrom(paramArrayOfByte));
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new aegp(this), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+      ProtoUtils.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, new aetv(this), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
     }
     return this;
   }

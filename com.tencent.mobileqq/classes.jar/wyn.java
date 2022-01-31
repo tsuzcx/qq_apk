@@ -1,50 +1,46 @@
-import Wallet.PfaFriendRsp;
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.activity.qwallet.TopayManager;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
+import com.tencent.mobileqq.activity.photo.ProGallery;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.utils.FileUtils;
+import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public final class wyn
-  extends Handler
+public class wyn
+  implements View.OnClickListener
 {
-  public wyn(Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public wyn(PhotoPreviewActivity paramPhotoPreviewActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(View paramView)
   {
-    boolean bool2 = true;
-    switch (paramMessage.what)
+    this.a.jdField_b_of_type_AndroidWidgetButton.setClickable(false);
+    if (this.a.getIntent().getBooleanExtra("PhotoConst.IS_SEND_FILESIZE_LIMIT", false))
     {
-    default: 
-      return;
-    }
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramMessage.obj != null)
-    {
-      localObject1 = localObject2;
-      if ((paramMessage.obj instanceof PfaFriendRsp)) {
-        localObject1 = (PfaFriendRsp)paramMessage.obj;
+      paramView = this.a.jdField_b_of_type_JavaUtilArrayList.iterator();
+      for (long l = 0L; paramView.hasNext(); l = FileUtils.a((String)paramView.next()) + l) {}
+      if (this.a.jdField_b_of_type_JavaUtilArrayList.size() == 0)
+      {
+        int i = this.a.jdField_a_of_type_ComTencentMobileqqActivityPhotoProGallery.getFirstVisiblePosition();
+        if (i < this.a.jdField_a_of_type_JavaUtilArrayList.size()) {
+          FileUtils.a((String)this.a.jdField_a_of_type_JavaUtilArrayList.get(i));
+        }
       }
-    }
-    boolean bool1;
-    if (paramMessage.arg1 == 1)
-    {
-      bool1 = true;
-      if (paramMessage.arg2 != 1) {
-        break label93;
+      if (FileManagerUtil.a()) {
+        FMDialogUtil.a(this.a, 2131428241, 2131428237, new wyo(this));
       }
     }
     for (;;)
     {
-      TopayManager.a(bool1, (PfaFriendRsp)localObject1, bool2);
+      LpReportInfo_pf00064.allReport(603, 1);
       return;
-      bool1 = false;
-      break;
-      label93:
-      bool2 = false;
+      this.a.i();
+      continue;
+      this.a.i();
     }
   }
 }

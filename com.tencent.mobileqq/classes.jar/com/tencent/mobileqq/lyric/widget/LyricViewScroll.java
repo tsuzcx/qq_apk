@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.lyric.widget;
 
-import adpy;
+import aede;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
@@ -80,7 +80,7 @@ public class LyricViewScroll
           {
             this.jdField_a_of_type_Boolean = true;
             this.jdField_a_of_type_JavaUtilTimer = new Timer();
-            this.jdField_a_of_type_JavaUtilTimer.scheduleAtFixedRate(new adpy(this), 100L, 100L);
+            this.jdField_a_of_type_JavaUtilTimer.scheduleAtFixedRate(new aede(this), 100L, 100L);
             continue;
             Log.v("LyricViewScroll", "onTouchEvent -> ACTION_CANCEL");
             this.jdField_a_of_type_Int = getScrollY();

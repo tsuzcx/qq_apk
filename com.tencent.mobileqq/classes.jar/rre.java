@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.data.ChatMessage;
+import com.tencent.mobileqq.bubble.ChatXListView;
 
 public class rre
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public rre(BaseChatPie paramBaseChatPie, ChatMessage paramChatMessage) {}
+  public rre(BaseChatPie paramBaseChatPie) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.f(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-    paramDialogInterface.dismiss();
+    this.a.a.setSelectionFromBottom(this.a.a.getCount() - 1, 0);
   }
 }
 

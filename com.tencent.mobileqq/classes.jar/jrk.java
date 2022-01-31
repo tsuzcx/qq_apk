@@ -1,19 +1,30 @@
-import android.content.res.Resources;
-import android.os.Handler;
-import com.tencent.av.ui.BaseCallbackUI;
-import com.tencent.av.ui.CallbackWaitingActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.telephony.TelephonyManager;
+import com.tencent.av.ui.CallbackWaitingActivityExt;
+import com.tencent.mobileqq.utils.AudioUtil;
+import com.tencent.qphone.base.util.QLog;
 
 public class jrk
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public jrk(CallbackWaitingActivity paramCallbackWaitingActivity) {}
+  public jrk(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    this.a.a.a.removeCallbacksAndMessages(null);
-    DialogUtil.b(this.a, 230, this.a.getResources().getString(2131429571), this.a.getResources().getString(2131429572), 2131428670, 2131428670, null, new jrl(this)).show();
+    if (paramIntent.getAction().equals("android.intent.action.NEW_OUTGOING_CALL")) {
+      return;
+    }
+    switch (((TelephonyManager)paramContext.getSystemService("phone")).getCallState())
+    {
+    default: 
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(CallbackWaitingActivityExt.a(), 2, "state is TelephonyManager.CALL_STATE_RINGING");
+    }
+    AudioUtil.a();
   }
 }
 

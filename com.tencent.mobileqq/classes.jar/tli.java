@@ -1,32 +1,17 @@
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
-import com.tencent.mobileqq.adapter.RecommendFriendAdapter;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.MayknowRecommendManager;
-import java.util.ArrayList;
-import java.util.List;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.richstatus.StatusManager;
 
 public class tli
-  extends FriendListObserver
+  implements Runnable
 {
-  public tli(RecommendFriendActivity paramRecommendFriendActivity) {}
+  public tli(QQSettingMe paramQQSettingMe) {}
   
-  protected void onGetMayKnowRecommend(boolean paramBoolean)
+  public void run()
   {
-    if (paramBoolean)
-    {
-      ArrayList localArrayList = RecommendFriendActivity.a(this.a).a();
-      if ((localArrayList != null) && (localArrayList.size() > 0))
-      {
-        RecommendFriendActivity.a(this.a).a(localArrayList);
-        RecommendFriendActivity.a(this.a).setVisibility(8);
-      }
-    }
-    else
-    {
-      return;
-    }
-    RecommendFriendActivity.a(this.a).setVisibility(0);
+    RichStatus localRichStatus = QQSettingMe.a(this.a).a(true);
+    this.a.a.runOnUiThread(new tlj(this, localRichStatus));
   }
 }
 

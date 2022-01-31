@@ -1,41 +1,30 @@
-import android.content.Context;
-import android.content.Intent;
-import android.content.IntentFilter;
-import com.tencent.sharp.jni.TraeAudioManager;
-import com.tencent.sharp.jni.TraeAudioManager.DeviceConfigManager;
+import com.tencent.open.appcommon.CallBackEvent;
+import com.tencent.open.base.LogUtility;
+import com.tencent.open.downloadnew.WebViewDownloadListener;
+import com.tencent.smtt.sdk.WebView;
 
 public class aljb
-  extends aljd
+  implements Runnable
 {
-  public aljb(TraeAudioManager paramTraeAudioManager)
+  public aljb(WebViewDownloadListener paramWebViewDownloadListener, WebView paramWebView, String paramString) {}
+  
+  public void run()
   {
-    super(paramTraeAudioManager);
-  }
-  
-  public String a()
-  {
-    return "BluetoohHeadsetCheckFake";
-  }
-  
-  public void a() {}
-  
-  void a(Context paramContext, Intent paramIntent) {}
-  
-  void a(IntentFilter paramIntentFilter) {}
-  
-  public boolean a()
-  {
-    return false;
-  }
-  
-  public boolean a(Context paramContext, TraeAudioManager.DeviceConfigManager paramDeviceConfigManager)
-  {
-    return true;
+    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (this.jdField_a_of_type_JavaLangString != null) && (CallBackEvent.a().a())) {}
+    try
+    {
+      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
+      return;
+    }
+    catch (Exception localException)
+    {
+      LogUtility.a(WebViewDownloadListener.jdField_a_of_type_JavaLangString, "doJsCallBack >>> ", localException);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aljb
  * JD-Core Version:    0.7.0.1
  */

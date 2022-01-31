@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.profile.upload.task;
 
-import agci;
+import agqk;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.profile.upload.config.VipUploadConfigImpl;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -21,7 +21,7 @@ public class VipImageUploadManager
       IUploadService.UploadServiceCreator.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), paramVipUploadConfigImpl, null, null, new UploadEnv());
       return;
     }
-    IUploadService.UploadServiceCreator.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), new agci(this, Long.parseLong(paramQQAppInterface.getCurrentAccountUin())), null, null, new UploadEnv());
+    IUploadService.UploadServiceCreator.getInstance().init(paramQQAppInterface.getApp().getApplicationContext(), new agqk(this, Long.parseLong(paramQQAppInterface.getCurrentAccountUin())), null, null, new UploadEnv());
   }
   
   public void a(QQAppInterface paramQQAppInterface, VipUploadConfigImpl paramVipUploadConfigImpl)

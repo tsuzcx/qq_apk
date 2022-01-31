@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.richstatus;
 
-import ahbg;
-import ahbh;
-import ahbi;
-import ahbj;
-import ahbk;
+import ahpi;
+import ahpj;
+import ahpk;
+import ahpl;
+import ahpm;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -56,14 +56,14 @@ public class EditActivity
   public long a;
   private Intent jdField_a_of_type_AndroidContentIntent;
   Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new ahbh(this);
+  private TextWatcher jdField_a_of_type_AndroidTextTextWatcher = new ahpj(this);
   protected View.OnClickListener a;
   View jdField_a_of_type_AndroidViewView;
   private LinearLayout jdField_a_of_type_AndroidWidgetLinearLayout;
   TextView jdField_a_of_type_AndroidWidgetTextView;
-  private IActionListener jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener = new ahbg(this);
+  private IActionListener jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener = new ahpi(this);
   private RichStatus jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
-  private RichStatusEditText.RichStatusEditListener jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener = new ahbj(this);
+  private RichStatusEditText.RichStatusEditListener jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener = new ahpl(this);
   private RichStatusEditText jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText;
   private StatusManager jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager;
   private ClickableImageSpan jdField_a_of_type_ComTencentMobileqqWidgetClickableImageSpan;
@@ -76,7 +76,7 @@ public class EditActivity
   
   public EditActivity()
   {
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ahbi(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ahpk(this);
   }
   
   private Drawable a(View paramView)
@@ -122,10 +122,10 @@ public class EditActivity
   private Drawable a(boolean paramBoolean1, boolean paramBoolean2)
   {
     SignatureManager localSignatureManager = (SignatureManager)this.app.getManager(57);
-    View localView = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130969042, null);
+    View localView = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2130969041, null);
     localView.setPadding(0, 0, 0, 0);
-    ImageView localImageView = (ImageView)localView.findViewById(2131364816);
-    TextView localTextView = (TextView)localView.findViewById(2131364817);
+    ImageView localImageView = (ImageView)localView.findViewById(2131364838);
+    TextView localTextView = (TextView)localView.findViewById(2131364839);
     Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.actionText;
     Object localObject1 = localObject2;
     if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.dataText != null) {
@@ -142,7 +142,7 @@ public class EditActivity
     for (;;)
     {
       localImageView.setImageBitmap(this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.actionId, 200));
-      localView.setBackgroundResource(2130845335);
+      localView.setBackgroundResource(2130845463);
       return a(localView);
       if (localSignatureManager.a != null) {
         localTextView.setTextColor(Color.parseColor(localSignatureManager.a.e));
@@ -251,7 +251,7 @@ public class EditActivity
     if (this.d == 1)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.countLength() > this.jdField_c_of_type_Int) {
-        a(2131436453);
+        a(2131436470);
       }
     }
     else {
@@ -282,7 +282,7 @@ public class EditActivity
   
   void b()
   {
-    new Handler().postDelayed(new ahbk(this), 500L);
+    new Handler().postDelayed(new ahpm(this), 500L);
   }
   
   void c()
@@ -336,7 +336,7 @@ public class EditActivity
       this.jdField_c_of_type_Int = i;
     }
     if (this.d == 1) {
-      super.setContentView(2130971534);
+      super.setContentView(2130971582);
     }
     for (;;)
     {
@@ -348,30 +348,30 @@ public class EditActivity
       if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager != null) {
         break;
       }
-      a(2131434198);
+      a(2131434215);
       super.finish();
       return false;
-      super.setContentViewNoTitle(2130971534);
+      super.setContentViewNoTitle(2130971582);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a())
     {
-      a(2131436451);
+      a(2131436468);
       super.finish();
       return false;
     }
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = new ColorDrawable(Color.parseColor("#dedede"));
     this.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusIActionListener);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131374935));
-    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131374942);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)super.findViewById(2131375121));
+    this.jdField_a_of_type_AndroidViewView = super.findViewById(2131375128);
     if (this.d == 1)
     {
-      LayoutInflater.from(this).inflate(2130971535, this.jdField_a_of_type_AndroidWidgetLinearLayout, true);
+      LayoutInflater.from(this).inflate(2130971583, this.jdField_a_of_type_AndroidWidgetLinearLayout, true);
       setTitle("交友宣言");
-      this.leftView.setText(2131432397);
+      this.leftView.setText(2131432414);
       this.jdField_a_of_type_AndroidViewView.setVisibility(4);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363430));
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131494262));
-      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText = ((RichStatusEditText)super.findViewById(2131374946));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)super.findViewById(2131363448));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131494269));
+      this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText = ((RichStatusEditText)super.findViewById(2131375132));
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setHint("你想对附近的人说点什么？");
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.setEditListener(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText$RichStatusEditListener);
       paramBundle = getIntent().getByteArrayExtra("param_old_xuan_yan");
@@ -407,10 +407,10 @@ public class EditActivity
       }
       d();
       this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatusEditText.addTextChangedListener(this.jdField_a_of_type_AndroidTextTextWatcher);
-      this.jdField_b_of_type_AndroidViewView = super.findViewById(2131374947);
+      this.jdField_b_of_type_AndroidViewView = super.findViewById(2131375133);
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
       this.leftView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      ((RelativeLayout)super.findViewById(2131374936)).setVisibility(8);
+      ((RelativeLayout)super.findViewById(2131375122)).setVisibility(8);
       return true;
     }
   }
@@ -493,7 +493,7 @@ public class EditActivity
     {
       if (this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus.countLength() > this.jdField_c_of_type_Int)
       {
-        a(2131436453);
+        a(2131436470);
         return true;
       }
       Intent localIntent = new Intent();
@@ -509,7 +509,7 @@ public class EditActivity
   public void onClick(View paramView)
   {
     paramView.getId();
-    if (paramView.getId() != 2131374946) {
+    if (paramView.getId() != 2131375132) {
       c();
     }
   }

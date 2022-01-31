@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.core;
 
-import ackr;
+import acuo;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
@@ -33,7 +33,7 @@ public class DiscOfflinePreviewController
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new ackr(this);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver = new acuo(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().addObserver(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFMObserver);
   }
   

@@ -1,21 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import com.tencent.mobileqq.search.presenter.EntranceResultPresenter;
+import com.tencent.mobileqq.remind.widget.IosTimepicker;
+import com.tencent.widget.VerticalGallery;
+import com.tencent.widget.VerticalGallery.OnEndFlingListener;
 
 public class ahgg
-  implements View.OnTouchListener
+  implements VerticalGallery.OnEndFlingListener
 {
-  public ahgg(EntranceResultPresenter paramEntranceResultPresenter) {}
+  public ahgg(IosTimepicker paramIosTimepicker) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void b(VerticalGallery paramVerticalGallery)
   {
-    return true;
+    IosTimepicker.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahgg
  * JD-Core Version:    0.7.0.1
  */

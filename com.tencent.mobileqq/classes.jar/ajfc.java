@@ -1,14 +1,20 @@
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopMessageProcessor;
+import java.util.Comparator;
 
 public class ajfc
+  implements Comparator
 {
-  URLImageView jdField_a_of_type_ComTencentImageURLImageView;
+  public ajfc(TroopMessageProcessor paramTroopMessageProcessor) {}
   
-  ajfc(ajfb paramajfb) {}
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  {
+    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajfc
  * JD-Core Version:    0.7.0.1
  */

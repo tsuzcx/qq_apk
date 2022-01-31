@@ -1,43 +1,17 @@
-import android.content.Context;
-import android.content.IntentFilter;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.io.FilenameFilter;
 
-public class ywx
-  implements Runnable
+public final class ywx
+  implements FilenameFilter
 {
-  public ywx(BaseActivity paramBaseActivity) {}
-  
-  public void run()
+  public boolean accept(File paramFile, String paramString)
   {
-    int i = 0;
-    if (!SettingCloneUtil.readValue(this.a, null, this.a.getString(2131433564), "qqsetting_screenshot_key", false)) {}
-    for (;;)
-    {
-      if (i != 0) {
-        this.a.turnOnShake();
-      }
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.SCREEN_OFF");
-      localIntentFilter.addAction("android.intent.action.SCREEN_ON");
-      BaseActivity.access$102(new yxe(null));
-      try
-      {
-        this.a.getApplicationContext().registerReceiver(BaseActivity.access$100(), localIntentFilter);
-        return;
-      }
-      catch (Exception localException)
-      {
-        QLog.e("qqBaseActivity", 1, "", localException);
-      }
-      i = 1;
-    }
+    return (paramString.toLowerCase().endsWith(".amr")) || (paramString.toLowerCase().endsWith(".mp3"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ywx
  * JD-Core Version:    0.7.0.1
  */

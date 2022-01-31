@@ -1,21 +1,14 @@
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.data.ApolloActionData;
-import java.util.Comparator;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.apollo.store.ApolloDiyTextFragment.AndroidBug5497Workaround;
 
 public class ysr
-  implements Comparator
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public ysr(ApolloDaoManager paramApolloDaoManager) {}
+  public ysr(ApolloDiyTextFragment.AndroidBug5497Workaround paramAndroidBug5497Workaround) {}
   
-  public int a(ApolloActionData paramApolloActionData1, ApolloActionData paramApolloActionData2)
+  public void onGlobalLayout()
   {
-    if (paramApolloActionData2.obtainedTime == paramApolloActionData1.obtainedTime) {
-      return 0;
-    }
-    if (paramApolloActionData2.obtainedTime > paramApolloActionData1.obtainedTime) {
-      return 1;
-    }
-    return -1;
+    ApolloDiyTextFragment.AndroidBug5497Workaround.a(this.a);
   }
 }
 

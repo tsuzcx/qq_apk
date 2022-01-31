@@ -1,16 +1,19 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.phone.ContactListView;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 public class wtv
-  implements DialogInterface.OnClickListener
+  extends FriendListObserver
 {
-  public wtv(PhotoListActivity paramPhotoListActivity) {}
+  public wtv(ContactListView paramContactListView) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  protected void onAddFriend(String paramString) {}
+  
+  protected void onUpdateAddFriend(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, String paramString, Bundle paramBundle)
   {
-    paramDialogInterface.dismiss();
-    this.a.setResult(8001);
+    if ((paramBoolean1) && (paramBoolean2) && (!paramBoolean3)) {
+      this.a.j();
+    }
   }
 }
 

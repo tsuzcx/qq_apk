@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ahll;
+import ahzn;
+import android.util.SparseArray;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -10,8 +11,10 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class ShortVideoResDownload
   implements ShortVideoResourceStatus.ISVConfig
 {
+  private static SparseArray jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(5);
   private static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  private ahll jdField_a_of_type_Ahll;
+  public int a;
+  private ahzn jdField_a_of_type_Ahzn;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private String jdField_a_of_type_JavaLangString = "ShortVideoResDownload_";
   boolean jdField_a_of_type_Boolean;
@@ -19,8 +22,9 @@ public class ShortVideoResDownload
   private ShortVideoResDownload(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_JavaLangString += jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
-    this.jdField_a_of_type_Ahll = new ahll(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Int = jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.getAndIncrement();
+    this.jdField_a_of_type_JavaLangString += this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Ahzn = new ahzn(this.jdField_a_of_type_JavaLangString, this);
     this.jdField_a_of_type_Boolean = paramBoolean;
   }
   
@@ -44,10 +48,50 @@ public class ShortVideoResDownload
   
   public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if (!VideoEnvironment.c(paramQQAppInterface)) {
-      return false;
+    boolean bool = false;
+    for (;;)
+    {
+      try
+      {
+        if (!VideoEnvironment.c(paramQQAppInterface))
+        {
+          jdField_a_of_type_AndroidUtilSparseArray.clear();
+          paramBoolean = bool;
+          return paramBoolean;
+        }
+        if (jdField_a_of_type_AndroidUtilSparseArray.size() >= 3)
+        {
+          VideoEnvironment.a("ShortVideoResDownload", "reach to max session size=" + jdField_a_of_type_AndroidUtilSparseArray.size(), null);
+          paramBoolean = bool;
+          continue;
+        }
+        paramQQAppInterface = new ShortVideoResDownload(paramQQAppInterface, paramBoolean);
+      }
+      finally {}
+      jdField_a_of_type_AndroidUtilSparseArray.put(paramQQAppInterface.jdField_a_of_type_Int, paramQQAppInterface);
+      bool = paramQQAppInterface.a();
+      paramBoolean = bool;
+      if (!bool)
+      {
+        jdField_a_of_type_AndroidUtilSparseArray.remove(paramQQAppInterface.jdField_a_of_type_Int);
+        paramBoolean = bool;
+      }
     }
-    return new ShortVideoResDownload(paramQQAppInterface, paramBoolean).a();
+  }
+  
+  private static void b(ShortVideoResDownload paramShortVideoResDownload)
+  {
+    if (paramShortVideoResDownload != null) {}
+    try
+    {
+      jdField_a_of_type_AndroidUtilSparseArray.remove(paramShortVideoResDownload.jdField_a_of_type_Int);
+      return;
+    }
+    finally
+    {
+      paramShortVideoResDownload = finally;
+      throw paramShortVideoResDownload;
+    }
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -55,41 +99,52 @@ public class ShortVideoResDownload
     VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult | result=" + paramInt1 + ",serverError=" + paramInt2, null);
     if ((paramInt1 == 1) || (paramInt1 == 0))
     {
-      if (paramInt2 != 0) {
+      if (paramInt2 != 0)
+      {
         VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| uncompress config error=" + paramInt2, null);
-      }
-      ArrayList localArrayList;
-      do
-      {
+        b(this);
         return;
-        localArrayList = new ArrayList(1);
-        paramInt1 = ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList);
-        if (paramInt1 != 0) {
-          break;
-        }
+      }
+      ArrayList localArrayList = new ArrayList(1);
+      paramInt1 = ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList);
+      if (paramInt1 == 0)
+      {
         VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| check config success...", null);
-        ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Ahll);
+        this.jdField_a_of_type_Ahzn.jdField_a_of_type_Boolean = false;
+        ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Ahzn);
         VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| mDownloadFilterSo=false", null);
-      } while (!this.jdField_a_of_type_Boolean);
-      if (PtvFilterSoLoad.a(VideoEnvironment.a()) != 0) {
-        ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Ahll);
-      }
-      for (;;)
-      {
-        if (PtvFilterSoLoad.d()) {
-          ShortVideoResourceManager.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Ahll);
+        if (this.jdField_a_of_type_Boolean)
+        {
+          if (PtvFilterSoLoad.a(VideoEnvironment.a()) == 0) {
+            break label239;
+          }
+          ShortVideoResourceManager.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Ahzn);
+          this.jdField_a_of_type_Ahzn.b = false;
         }
-        if (!PtvFilterSoLoad.e()) {
-          break;
+        for (;;)
+        {
+          if (PtvFilterSoLoad.d())
+          {
+            this.jdField_a_of_type_Ahzn.c = false;
+            ShortVideoResourceManager.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Ahzn);
+          }
+          if (PtvFilterSoLoad.e())
+          {
+            this.jdField_a_of_type_Ahzn.d = false;
+            ShortVideoResourceManager.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Ahzn);
+          }
+          this.jdField_a_of_type_Ahzn.a();
+          return;
+          label239:
+          VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| getFilterSoState != 2", null);
         }
-        ShortVideoResourceManager.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localArrayList, this.jdField_a_of_type_Ahll);
-        return;
-        VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| getFilterSoState != 2", null);
       }
       VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| check config error=" + paramInt1, null);
+      b(this);
       return;
     }
     VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onConfigResult| result= RESULT_FAILED error=" + paramInt2, null);
+    b(this);
   }
 }
 

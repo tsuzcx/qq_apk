@@ -1,24 +1,18 @@
-import android.annotation.TargetApi;
-import android.view.View;
-import android.view.View.AccessibilityDelegate;
-import com.tencent.widget.PopupMenuDialog;
+import com.tencent.qidian.controller.QidianPubAccountBigDataHandler;
 
 public class alnm
-  extends View.AccessibilityDelegate
+  implements Runnable
 {
-  public alnm(PopupMenuDialog paramPopupMenuDialog) {}
+  public alnm(QidianPubAccountBigDataHandler paramQidianPubAccountBigDataHandler) {}
   
-  @TargetApi(14)
-  public void sendAccessibilityEvent(View paramView, int paramInt)
+  public void run()
   {
-    if (paramInt != 32) {
-      super.sendAccessibilityEvent(paramView, paramInt);
-    }
+    QidianPubAccountBigDataHandler.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alnm
  * JD-Core Version:    0.7.0.1
  */

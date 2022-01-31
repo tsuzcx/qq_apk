@@ -1,16 +1,27 @@
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.main.P2VEffectConvertor;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager.OnViewPagerItemVisiableChangeListener;
+import com.tencent.mobileqq.activity.richmedia.view.FSurfaceViewLayout;
 
-public class xqi
-  implements Runnable
+class xqi
+  implements VideoFilterViewPager.OnViewPagerItemVisiableChangeListener
 {
-  public xqi(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity) {}
+  xqi(xqh paramxqh) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    QLog.d("QzDynamicVideoPreviewActivity", 2, "[run] in resumeRunnable, mIsMusicEnabled = " + QzDynamicVideoPreviewActivity.c(this.a));
-    QzDynamicVideoPreviewActivity.a(this.a).requestDraw();
+    if (paramInt == 0)
+    {
+      NewFlowCameraActivity.b(this.a.a.a.a, true);
+      if (this.a.a.a.a.d.getVisibility() == 0)
+      {
+        this.a.a.a.a.d.setVisibility(8);
+        this.a.a.a.a.a.a(NewFlowCameraActivity.a(this.a.a.a.a));
+      }
+      return;
+    }
+    NewFlowCameraActivity.b(this.a.a.a.a, false);
+    this.a.a.a.a.a.a(NewFlowCameraActivity.a(this.a.a.a.a));
   }
 }
 

@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.ar.arengine.AREngine;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.ar.ARScanAR;
 
-public class aaby
-  implements Runnable
+public final class aaby
+  implements Parcelable.Creator
 {
-  public aaby(AREngine paramAREngine) {}
-  
-  public void run()
+  public ARScanAR a(Parcel paramParcel)
   {
-    AREngine.b(this.a);
+    return new ARScanAR(paramParcel);
+  }
+  
+  public ARScanAR[] a(int paramInt)
+  {
+    return new ARScanAR[paramInt];
   }
 }
 

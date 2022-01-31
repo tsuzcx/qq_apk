@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.armap.config;
 
-import aaxv;
+import abew;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import java.io.Serializable;
 public class ARMapConfig$StarInfo
   implements Parcelable, Serializable
 {
-  public static final Parcelable.Creator CREATOR = new aaxv();
+  public static final Parcelable.Creator CREATOR = new abew();
   public String ShareContent;
   public String ShareSummary;
   public String ShareTitle;

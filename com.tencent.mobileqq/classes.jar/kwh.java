@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.widget.EditText;
-import com.tencent.biz.pubaccount.CustomWebChromeClient;
-import com.tencent.smtt.export.external.interfaces.JsPromptResult;
+import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
 public class kwh
-  implements DialogInterface.OnClickListener
+  implements ActionSheet.OnDismissListener
 {
-  public kwh(CustomWebChromeClient paramCustomWebChromeClient, JsPromptResult paramJsPromptResult, EditText paramEditText) {}
+  public kwh(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss()
   {
-    this.jdField_a_of_type_ComTencentSmttExportExternalInterfacesJsPromptResult.confirm(this.jdField_a_of_type_AndroidWidgetEditText.getText().toString());
+    ReadInJoyNativeAdFragment.a(this.a, false);
   }
 }
 

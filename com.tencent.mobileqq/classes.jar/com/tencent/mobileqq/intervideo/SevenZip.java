@@ -48,18 +48,18 @@ public class SevenZip
     //   23: astore 5
     //   25: aload 7
     //   27: astore_1
-    //   28: new 67	java/util/zip/ZipFile
+    //   28: new 67	com/tencent/commonsdk/zip/QZipFile
     //   31: dup
     //   32: new 69	java/io/File
     //   35: dup
     //   36: aload_0
     //   37: invokespecial 72	java/io/File:<init>	(Ljava/lang/String;)V
-    //   40: invokespecial 75	java/util/zip/ZipFile:<init>	(Ljava/io/File;)V
+    //   40: invokespecial 75	com/tencent/commonsdk/zip/QZipFile:<init>	(Ljava/io/File;)V
     //   43: astore 9
     //   45: aload 7
     //   47: astore_1
     //   48: aload 9
-    //   50: invokevirtual 79	java/util/zip/ZipFile:entries	()Ljava/util/Enumeration;
+    //   50: invokevirtual 79	com/tencent/commonsdk/zip/QZipFile:entries	()Ljava/util/Enumeration;
     //   53: astore 7
     //   55: aload 5
     //   57: astore_0
@@ -128,7 +128,7 @@ public class SevenZip
     //   189: astore 5
     //   191: aload 9
     //   193: aload 10
-    //   195: invokevirtual 114	java/util/zip/ZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   195: invokevirtual 114	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
     //   198: astore_0
     //   199: aload_0
     //   200: aload 8
@@ -237,7 +237,7 @@ public class SevenZip
     //   10	294	6	str	String
     //   20	53	7	localEnumeration	java.util.Enumeration
     //   17	198	8	arrayOfByte	byte[]
-    //   43	149	9	localZipFile	java.util.zip.ZipFile
+    //   43	149	9	localQZipFile	com.tencent.commonsdk.zip.QZipFile
     //   82	112	10	localZipEntry	java.util.zip.ZipEntry
     // Exception table:
     //   from	to	target	type
@@ -277,7 +277,7 @@ public class SevenZip
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.SevenZip
  * JD-Core Version:    0.7.0.1
  */

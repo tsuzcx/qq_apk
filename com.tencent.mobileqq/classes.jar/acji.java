@@ -1,32 +1,39 @@
-import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentAllFileTabView;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.util.QfileTimeUtils;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.extendfriend.fragment.ExtendFriendSquareFragment;
 
 public class acji
-  implements Runnable
+  extends RecyclerView.ItemDecoration
 {
-  public acji(QfileRecentAllFileTabView paramQfileRecentAllFileTabView, FileManagerEntity paramFileManagerEntity) {}
+  private int jdField_a_of_type_Int;
+  private int b;
+  private int c;
+  private int d;
   
-  public void run()
+  public acji(ExtendFriendSquareFragment paramExtendFriendSquareFragment)
   {
-    Object localObject = QfileTimeUtils.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.srvTime);
-    if (!this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAllFileTabView.a.containsKey(localObject)) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAllFileTabView.a.put(localObject, new ArrayList());
-    }
-    localObject = (List)this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAllFileTabView.a.get(localObject);
-    if (((List)localObject).contains(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity) == true) {
+    this.jdField_a_of_type_Int = AIOUtils.a(11.0F, paramExtendFriendSquareFragment.getResources());
+    this.b = AIOUtils.a(11.0F, paramExtendFriendSquareFragment.getResources());
+    this.c = AIOUtils.a(8.0F, paramExtendFriendSquareFragment.getResources());
+    this.d = AIOUtils.a(8.0F, paramExtendFriendSquareFragment.getResources());
+  }
+  
+  public void getItemOffsets(Rect paramRect, int paramInt, RecyclerView paramRecyclerView)
+  {
+    if (paramInt == paramRecyclerView.getAdapter().getItemCount() - 1)
+    {
+      paramRect.set(this.c, this.jdField_a_of_type_Int, this.d, this.b);
       return;
     }
-    ((List)localObject).add(0, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityRecentfileQfileRecentAllFileTabView.i();
+    paramRect.set(this.c, this.jdField_a_of_type_Int, this.d, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     acji
  * JD-Core Version:    0.7.0.1
  */

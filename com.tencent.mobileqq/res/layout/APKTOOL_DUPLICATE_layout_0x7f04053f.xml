@@ -1,6 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:paddingBottom="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020f26" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="284.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.ui.RoundProgressBar android:layout_gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a19f7" android:layout_width="55.0dip" android:layout_height="55.0dip" android:layout_marginLeft="8.0dip" android:layout_marginTop="10.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
-    <TextView android:textSize="13.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0540" android:ellipsize="end" android:gravity="center" android:layout_gravity="center" android:id="@id/title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="5.0dip" android:singleLine="true" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a19f7" android:layout_centerHorizontal="true" />
-</RelativeLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="56.0dip">
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a14" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020689" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginLeft="22.0dip" android:scaleType="fitCenter" />
+        <TextView android:textSize="17.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c006b" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a15" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:text="作业" />
+        <View android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <ImageButton android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a16" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:paddingLeft="20.0dip" android:layout_width="40.0dip" android:layout_height="20.0dip" android:layout_marginRight="22.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020f25" android:scaleType="fitCenter" />
+    </LinearLayout>
+    <View android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c02f2" android:layout_width="fill_parent" android:layout_height="2.0px" android:layout_marginLeft="22.0dip" android:layout_marginRight="22.0dip" />
+    <com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1a17" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="17.0dip" android:layout_marginTop="17.0dip" android:layout_marginRight="17.0dip" android:overScrollMode="never" />
+</LinearLayout>

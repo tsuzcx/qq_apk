@@ -1,10 +1,10 @@
 package dov.com.qq.im.capture.data;
 
-import amvk;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
+import anlp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -14,7 +14,7 @@ import org.json.JSONObject;
 public class FilterCategory
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amvk();
+  public static final Parcelable.Creator CREATOR = new anlp();
   public int a;
   public String a;
   public List a;
@@ -62,7 +62,7 @@ public class FilterCategory
       bool = paramJSONObject.optBoolean("needRedDot");
       localObject2 = (QIMRedDotConfig.CategoryRedConfig)paramQIMRedDotConfig.categories.get(Integer.valueOf(this.jdField_a_of_type_Int));
       if (localObject2 == null) {
-        break label358;
+        break label370;
       }
       localObject1 = localObject2;
       if (((QIMRedDotConfig.CategoryRedConfig)localObject2).version != i)
@@ -92,12 +92,13 @@ public class FilterCategory
         localQIMFilterCategoryItem.e = localJSONObject.optString("type_combo");
         localQIMFilterCategoryItem.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
         localQIMFilterCategoryItem.jdField_d_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+        localQIMFilterCategoryItem.g = localJSONObject.optString("jump_ws");
         JSONArray localJSONArray = localJSONObject.optJSONArray("filters");
         if (localJSONArray != null)
         {
           int j = 0;
           int m = localJSONArray.length();
-          label305:
+          label317:
           if (j < m)
           {
             Object localObject3 = localJSONArray.getJSONObject(j);
@@ -108,8 +109,8 @@ public class FilterCategory
             for (;;)
             {
               j += 1;
-              break label305;
-              label358:
+              break label317;
+              label370:
               localObject1 = new QIMRedDotConfig.CategoryRedConfig();
               ((QIMRedDotConfig.CategoryRedConfig)localObject1).categoryId = this.jdField_a_of_type_Int;
               ((QIMRedDotConfig.CategoryRedConfig)localObject1).version = i;

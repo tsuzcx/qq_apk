@@ -31,9 +31,9 @@ import com.tencent.widget.ListView;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
-import lsf;
-import lsh;
-import lsi;
+import lso;
+import lsq;
+import lsr;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.im.oidb.cmd0x68b.oidb_cmd0x68b.FriendRecommendInfo;
@@ -101,7 +101,7 @@ public class ReadInJoyHeaderPresenter
           localException.printStackTrace();
           localObject = null;
         }
-        Object localObject = ReadInJoyUtils.b((String)localObject);
+        Object localObject = ReadInJoyUtils.a((String)localObject);
         paramArticleInfo.mHeaderIconUrl = ((URL)localObject);
         return localObject;
       }
@@ -146,7 +146,7 @@ public class ReadInJoyHeaderPresenter
       }
       i += 1;
     }
-    paramReadInJoyView = new lsi(this, paramReadInJoyView, localArrayList2, paramArrayList, paramInt, paramObject);
+    paramReadInJoyView = new lsr(this, paramReadInJoyView, localArrayList2, paramArrayList, paramInt, paramObject);
     paramInt = 0;
     if (paramInt < localArrayList1.size())
     {
@@ -307,7 +307,7 @@ public class ReadInJoyHeaderPresenter
       for (;;)
       {
         String str = String.valueOf(paramIReadInJoyModel.get(i));
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[i].setOnClickListener(new lsh(this, str, paramReadInJoyView));
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[i].setOnClickListener(new lsq(this, str, paramReadInJoyView));
         i += 1;
         break;
         this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.jdField_a_of_type_ArrayOfComTencentWidgetFixSizeImageView[i].setImageBitmap(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a(((Long)paramIReadInJoyModel.get(i)).longValue()));
@@ -359,7 +359,7 @@ public class ReadInJoyHeaderPresenter
     switch (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelIReadInJoyModel.c())
     {
     default: 
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.d.setOnClickListener(new lsf(this, paramIReadInJoyModel, paramReadInJoyView));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.d.setOnClickListener(new lso(this, paramIReadInJoyModel, paramReadInJoyView));
       return;
     case 1: 
       this.jdField_a_of_type_Boolean = false;
@@ -389,7 +389,7 @@ public class ReadInJoyHeaderPresenter
     label447:
     for (localObject = ContactUtils.l((QQAppInterface)ReadInJoyUtils.a(), String.valueOf(((List)localObject).get(0)));; localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.b(((Long)((List)localObject).get(0)).longValue()))
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.jdField_a_of_type_AndroidWidgetTextView.setText(ReadInJoyUtils.d((String)localObject));
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.jdField_a_of_type_AndroidWidgetTextView.setText(ReadInJoyUtils.e((String)localObject));
       this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyView.jdField_b_of_type_AndroidWidgetTextView.setText(c(localArticleInfo));
       break;
     }

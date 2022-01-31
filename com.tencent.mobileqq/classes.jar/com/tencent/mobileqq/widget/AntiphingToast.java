@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.widget;
 
-import akei;
-import akej;
-import akek;
+import aksp;
+import aksq;
+import aksr;
 import android.content.Context;
 import android.content.res.Resources;
 import android.os.Handler;
@@ -28,7 +28,7 @@ public class AntiphingToast
   
   public AntiphingToast()
   {
-    this.jdField_a_of_type_AndroidOsHandler = new akei(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidOsHandler = new aksp(this, Looper.getMainLooper());
   }
   
   public void a(float paramFloat1, float paramFloat2, boolean paramBoolean)
@@ -38,7 +38,7 @@ public class AntiphingToast
     localTranslateAnimation.setDuration(700L);
     localTranslateAnimation.setStartOffset(20L);
     if (paramBoolean == true) {
-      localTranslateAnimation.setAnimationListener(new akej(this));
+      localTranslateAnimation.setAnimationListener(new aksq(this));
     }
     this.jdField_a_of_type_AndroidWidgetFrameLayout.startAnimation(localTranslateAnimation);
   }
@@ -78,10 +78,10 @@ public class AntiphingToast
     }
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970878, null);
+      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130970926, null);
       if (this.jdField_a_of_type_AndroidViewView != null)
       {
-        TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372064);
+        TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131372237);
         if ((localTextView != null) && (paramString != null)) {
           localTextView.setText(paramString);
         }
@@ -91,7 +91,7 @@ public class AntiphingToast
     this.jdField_a_of_type_AndroidWidgetFrameLayout.setFocusable(false);
     this.jdField_a_of_type_AndroidWidgetFrameLayout.bringToFront();
     a(-80.0F, 0.0F, false);
-    new Timer().schedule(new akek(this), this.jdField_a_of_type_Int + 700);
+    new Timer().schedule(new aksr(this), this.jdField_a_of_type_Int + 700);
     return true;
   }
   
@@ -102,7 +102,7 @@ public class AntiphingToast
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AntiphingToast
  * JD-Core Version:    0.7.0.1
  */

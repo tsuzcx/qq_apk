@@ -1,20 +1,21 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import dov.com.tencent.biz.qqstory.takevideo.poilist.SearchPoiListLayout;
+import com.tencent.qphone.base.util.QLog;
+import dov.com.qq.im.capture.paster.QIMInformationPasterManager;
+import dov.com.qq.im.capture.paster.QIMInformationPasterManager.IInformationPasterResDownloaderCallback;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.face.InfomationFacePackage.Item;
 
 public class annc
-  implements TextWatcher
+  implements QIMInformationPasterManager.IInformationPasterResDownloaderCallback
 {
-  public annc(SearchPoiListLayout paramSearchPoiListLayout) {}
+  public annc(QIMInformationPasterManager paramQIMInformationPasterManager) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void a(float paramFloat, String paramString, int paramInt) {}
+  
+  public void a(boolean paramBoolean, String paramString, InfomationFacePackage.Item paramItem)
   {
-    SearchPoiListLayout.a(this.a);
+    if (QLog.isColorLevel()) {
+      QLog.d("QIMInformationPasterManager", 2, "preload:" + paramString + " item:" + paramItem.toString());
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

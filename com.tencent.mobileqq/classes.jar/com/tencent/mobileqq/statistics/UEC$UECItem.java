@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.statistics;
 
-import ahse;
+import aigh;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class UEC$UECItem
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ahse();
+  public static final Parcelable.Creator CREATOR = new aigh();
   public int a;
   public long a;
   public String a;

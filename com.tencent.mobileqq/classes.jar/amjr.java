@@ -1,15 +1,48 @@
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import cooperation.qzone.share.WXShareFromQZHelper;
+import android.os.Bundle;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.pic.UpCallBack;
+import com.tencent.mobileqq.pic.UpCallBack.SendResult;
+import com.tencent.mobileqq.pluginsdk.ipc.RemoteCommand.OnInvokeFinishLinstener;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.emoticon.VipComicEmoticonUploadManager;
+import tencent.im.msg.im_msg_body.RichText;
 
 public class amjr
-  implements Runnable
+  implements UpCallBack
 {
-  public amjr(WXShareFromQZHelper paramWXShareFromQZHelper) {}
+  public amjr(VipComicEmoticonUploadManager paramVipComicEmoticonUploadManager) {}
   
-  public void run()
+  public MessageRecord a(im_msg_body.RichText paramRichText)
   {
-    QQToast.a(BaseApplication.getContext(), 2131432709, 0).a();
+    return null;
+  }
+  
+  public void a(UpCallBack.SendResult paramSendResult) {}
+  
+  public void b(UpCallBack.SendResult paramSendResult)
+  {
+    if ((paramSendResult == null) || (this.a.a == null)) {
+      return;
+    }
+    if (paramSendResult.jdField_a_of_type_Int == 0)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VipComicEmoticonUploader", 2, "Upload finish, id=" + paramSendResult.c);
+      }
+      localBundle = new Bundle();
+      localBundle.putInt("result", 0);
+      localBundle.putString("id", paramSendResult.c);
+      this.a.a.onInvokeFinish(localBundle);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("VipComicEmoticonUploader", 2, "Upload error");
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("result", 1);
+    localBundle.putInt("errCode", paramSendResult.b);
+    localBundle.putString("errMsg", paramSendResult.jdField_a_of_type_JavaLangString);
+    this.a.a.onInvokeFinish(localBundle);
   }
 }
 

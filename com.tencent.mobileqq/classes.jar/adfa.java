@@ -1,78 +1,64 @@
-import android.graphics.Typeface;
-import android.text.TextUtils;
-import com.etrump.mixlayout.ETEngine;
-import com.tencent.mobileqq.hiboom.HiBoomFont;
-import com.tencent.mobileqq.hiboom.HiBoomFont.HiBoomFontDownloader;
-import com.tencent.mobileqq.hiboom.HiBoomFontDrawer;
-import com.tencent.mobileqq.hiboom.HiBoomInfo;
-import com.tencent.mobileqq.utils.FileUtils;
-import java.io.File;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.app.Activity;
+import android.media.AudioManager;
+import android.os.Handler;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.fileviewer.controller.IUploadController;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
+import com.tencent.mobileqq.filemanager.fileviewer.viewer.VideoFileViewer;
+import com.tencent.mobileqq.filemanager.util.FileManagerReporter;
 
 public class adfa
-  implements Runnable
+  implements View.OnClickListener
 {
-  public adfa(HiBoomFontDrawer paramHiBoomFontDrawer, boolean paramBoolean) {}
+  public adfa(VideoFilePresenter paramVideoFilePresenter) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_Int == 1)
+    switch (paramView.getId())
     {
-      if (!HiBoomFont.a().jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        HiBoomFont.a().b();
-      }
-      if (HiBoomFont.a().jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
-      {
-        if (!new File(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int + File.separator + this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int + ".hy").exists()) {
-          break label274;
-        }
-        if (HiBoomFont.a().jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_isFontLoaded(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int)) {
-          break label260;
-        }
-        boolean bool = HiBoomFont.a().jdField_a_of_type_ComEtrumpMixlayoutETEngine.native_loadFont(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int + File.separator + this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int + ".hy", this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int, false);
-        this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(bool);
-      }
     }
-    for (;;)
+    int i;
+    int j;
+    do
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-        HiBoomFontDrawer.a(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer);
+      do
+      {
+        return;
+        this.a.jdField_a_of_type_AndroidAppActivity.finish();
+        this.a.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 2131034423);
+        return;
+      } while (this.a.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null);
+      if (VideoFilePresenter.a(this.a))
+      {
+        VideoFilePresenter.a(this.a).removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
+        FileManagerReporter.a("0X8004BE5");
+        this.a.jdField_a_of_type_AndroidMediaAudioManager.abandonAudioFocus(VideoFilePresenter.a(this.a));
+        VideoFilePresenter.a(this.a);
       }
-      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(false);
+      for (;;)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.d(VideoFilePresenter.a(this.a));
+        return;
+        VideoFilePresenter.b(this.a);
+      }
+      VideoFilePresenter.a(this.a);
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.a(this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.b());
+      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerViewerVideoFileViewer.e(true);
       return;
-      label260:
-      this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      continue;
-      label274:
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int);
-        continue;
-        if (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_Int == 2)
-        {
-          File localFile = new File(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int + File.separator + this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int + ".hb");
-          String str = FileUtils.a(localFile, -1);
-          if (!TextUtils.isEmpty(str))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomInfo = HiBoomInfo.a(str);
-            if (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_AndroidGraphicsTypeface == null) {
-              this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_AndroidGraphicsTypeface = Typeface.createFromFile(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int + File.separator + this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int + ".fz");
-            }
-            this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-          }
-          else if ((!localFile.exists()) && (this.jdField_a_of_type_Boolean))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFontDrawer.jdField_b_of_type_Int);
-          }
-        }
-      }
-    }
+      this.a.jdField_a_of_type_AndroidAppActivity.finish();
+      this.a.jdField_a_of_type_AndroidAppActivity.overridePendingTransition(0, 2131034423);
+      return;
+      i = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.i();
+      j = this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.h();
+    } while ((i != 6) || (j != 1) || (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a() == null));
+    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adfa
  * JD-Core Version:    0.7.0.1
  */

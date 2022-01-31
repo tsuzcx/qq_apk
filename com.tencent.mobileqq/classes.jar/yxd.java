@@ -1,29 +1,25 @@
-import android.view.View.OnSystemUiVisibilityChangeListener;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.ImageView;
 
-public class yxd
-  implements View.OnSystemUiVisibilityChangeListener
+class yxd
+  implements Animation.AnimationListener
 {
-  public yxd(BaseActivity paramBaseActivity) {}
+  yxd(yxc paramyxc) {}
   
-  public void onSystemUiVisibilityChange(int paramInt)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (paramInt == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
-      BaseActivity.mIsInMultiScreen = bool;
-      this.a.onMultiWindowModeChanged(BaseActivity.mIsInMultiScreen);
-      if (QLog.isDevelopLevel()) {
-        QLog.d("qqBaseActivity", 4, "onSystemUiVisibilityChange:" + paramInt + ",Activity name:" + getClass().getName());
-      }
-      return;
-    }
+    this.a.a.setVisibility(8);
+    this.a.a.postDelayed(new yxe(this), 300L);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yxd
  * JD-Core Version:    0.7.0.1
  */

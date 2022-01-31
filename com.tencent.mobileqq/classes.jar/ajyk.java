@@ -1,31 +1,40 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.FrameLayout.LayoutParams;
+import android.graphics.Bitmap;
+import com.tencent.image.DownloadParams;
+import com.tencent.image.DownloadParams.DecodeHandler;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.qphone.base.util.QLog;
 
-class ajyk
-  implements Animation.AnimationListener
+public final class ajyk
+  implements DownloadParams.DecodeHandler
 {
-  ajyk(ajyj paramajyj, View paramView) {}
-  
-  public void onAnimationEnd(Animation paramAnimation)
+  public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    paramAnimation = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    paramAnimation.leftMargin = this.jdField_a_of_type_Ajyj.e;
-    paramAnimation.topMargin = this.jdField_a_of_type_Ajyj.f;
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(paramAnimation);
-    this.jdField_a_of_type_AndroidViewView.clearAnimation();
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_a_of_type_Ajyj.a = false;
+    if (QLog.isDevelopLevel()) {
+      QLog.d("URLDrawableDecodeHandler", 4, "ROUND_FACE_DECODER");
+    }
+    if (paramBitmap == null) {
+      return null;
+    }
+    paramDownloadParams = paramDownloadParams.tag;
+    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length == 2))
+    {
+      paramDownloadParams = (int[])paramDownloadParams;
+      float f2 = DeviceInfoUtil.a();
+      float f1 = f2;
+      if (f2 < 0.01F) {
+        f1 = 1.0F;
+      }
+      paramDownloadParams[0] = ((int)(paramDownloadParams[0] / f1));
+      paramDownloadParams[1] = ((int)(paramDownloadParams[1] / f1));
+      return ImageUtil.c(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+    }
+    return ImageUtil.c(paramBitmap, 50, 50);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajyk
  * JD-Core Version:    0.7.0.1
  */

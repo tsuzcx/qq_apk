@@ -1,21 +1,23 @@
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.magicface.service.MagicfaceActionManager;
-import com.tencent.mobileqq.magicface.view.MagicfaceView.SurfaceCreateListener;
-import com.tencent.mobileqq.magicface.view.MagicfaceViewController;
+import android.os.Handler;
+import com.tencent.mobileqq.hotpic.PresenceInterfaceImpl;
 
 public class adro
-  implements MagicfaceView.SurfaceCreateListener
+  implements Runnable
 {
-  public adro(MagicfaceViewController paramMagicfaceViewController, Emoticon paramEmoticon, int paramInt1, String paramString, int paramInt2) {}
+  public adro(PresenceInterfaceImpl paramPresenceInterfaceImpl) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMagicfaceViewMagicfaceViewController.a.a(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.b);
+    if (this.a.b())
+    {
+      this.a.e();
+      this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(this.a.jdField_a_of_type_JavaLangRunnable, 100L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adro
  * JD-Core Version:    0.7.0.1
  */

@@ -1,32 +1,32 @@
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.InsetDrawable;
-import android.widget.Button;
-import com.tencent.mobileqq.utils.ViewUtils;
-import dov.com.qq.im.QIMCameraCaptureUnit;
+import android.os.Handler;
+import com.tencent.mobileqq.magicface.magicfaceaction.ActionGlobalData;
+import cooperation.qzone.QzoneGiftFullScreenActionManager;
+import cooperation.qzone.QzoneGiftFullScreenActionManager.MagicfaceActionListener;
+import cooperation.qzone.QzoneGiftFullScreenViewController;
+import cooperation.qzone.QzoneGiftFullScreenViewController.GiftFullScreenPlayListener;
 
-class amsr
-  implements Runnable
+public class amsr
+  implements QzoneGiftFullScreenActionManager.MagicfaceActionListener
 {
-  amsr(amsq paramamsq) {}
+  public amsr(QzoneGiftFullScreenViewController paramQzoneGiftFullScreenViewController, long paramLong, QzoneGiftFullScreenViewController.GiftFullScreenPlayListener paramGiftFullScreenPlayListener) {}
   
-  public void run()
+  public void a(ActionGlobalData paramActionGlobalData)
   {
-    if ((QIMCameraCaptureUnit.a(this.a.a) != null) && (this.a.a.e != null))
-    {
-      int i = ViewUtils.a(7.5F);
-      InsetDrawable localInsetDrawable = new InsetDrawable(new BitmapDrawable(QIMCameraCaptureUnit.a(this.a.a)), i, i, i, i);
-      this.a.a.e.setBackgroundDrawable(localInsetDrawable);
-      this.a.a.e.setVisibility(0);
-      this.a.a.e.setEnabled(true);
-      return;
-    }
-    this.a.a.e.setVisibility(8);
-    this.a.a.e.setEnabled(false);
+    System.currentTimeMillis();
+    long l = this.jdField_a_of_type_Long;
+    boolean bool = this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager.b();
+    this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenActionManager.a(bool);
+    this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController.jdField_a_of_type_AndroidOsHandler.post(new amss(this, paramActionGlobalData));
+  }
+  
+  public void b(ActionGlobalData paramActionGlobalData)
+  {
+    this.jdField_a_of_type_CooperationQzoneQzoneGiftFullScreenViewController.jdField_a_of_type_AndroidOsHandler.post(new amst(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amsr
  * JD-Core Version:    0.7.0.1
  */

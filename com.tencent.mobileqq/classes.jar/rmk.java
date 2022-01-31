@@ -1,15 +1,13 @@
-import android.content.DialogInterface;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
 
 public class rmk
-  extends DialogUtil.DialogOnClickAdapter
+  implements Runnable
 {
-  public rmk(BaseChatPie paramBaseChatPie) {}
+  public rmk(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    AssociatedAccountActivity.b(this.a);
   }
 }
 

@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:paddingLeft="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07aa" android:paddingRight="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d07aa" android:paddingBottom="5.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c28" android:layout_width="fill_parent" android:layout_height="200.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0172" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24.0dip" android:text="选择个人封面视频" />
-    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="24.0dip">
-        <LinearLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c2b" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02112a" android:layout_width="0.0dip" android:layout_height="40.0dip" android:layout_marginRight="5.0dip" android:layout_weight="1.0">
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021129" />
-            <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0172" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="拍摄视频" android:layout_weight="1.0" />
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0219df" />
-        </LinearLayout>
-        <LinearLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c2c" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02112a" android:layout_width="0.0dip" android:layout_height="40.0dip" android:layout_marginLeft="5.0dip" android:layout_weight="1.0">
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021138" />
-            <TextView android:textSize="15.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0172" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="从相册选择" android:layout_weight="1.0" />
-            <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="15.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0219df" />
-        </LinearLayout>
-    </LinearLayout>
-</LinearLayout>
+    <dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraCaptureButtonLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1bfa" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0433" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <dov.com.tencent.mobileqq.richmedia.capture.view.QIMCameraSegmentCaptureButtonLayout android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1bfb" android:visibility="gone" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0433" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="54.0dip" android:layout_alignParentBottom="true">
+        <RelativeLayout android:layout_gravity="bottom|center|right" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c29" android:layout_width="wrap_content" android:layout_height="54.0dip">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c2a" android:layout_width="29.0dip" android:layout_height="29.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021127" android:scaleType="fitXY" android:layout_centerInParent="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b2ec6" />
+            <com.tencent.mobileqq.activity.recent.cur.DragTextView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c2b" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1c2a" style="@style/APKTOOL_DUPLICATE_style_0x7f0e02d4" />
+        </RelativeLayout>
+        <RelativeLayout android:layout_gravity="bottom|center|left" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c2c" android:layout_width="wrap_content" android:layout_height="54.0dip" android:minWidth="69.0dip">
+            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1c2d" android:layout_width="29.0dip" android:layout_height="29.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021128" android:scaleType="fitXY" android:layout_centerInParent="true" android:contentDescription="@string/APKTOOL_DUPLICATE_string_0x7f0b2ec7" />
+        </RelativeLayout>
+    </FrameLayout>
+</RelativeLayout>

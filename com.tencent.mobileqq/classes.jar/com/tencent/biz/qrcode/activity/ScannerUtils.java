@@ -33,8 +33,8 @@ import java.util.regex.Pattern;
 import mqq.app.AppActivity;
 import mqq.app.NewIntent;
 import mqq.manager.WtloginManager;
-import osx;
-import osy;
+import our;
+import ous;
 
 public class ScannerUtils
 {
@@ -115,7 +115,7 @@ public class ScannerUtils
   public static void a(ScannerParams paramScannerParams, String paramString, AppActivity paramAppActivity, QQAppInterface paramQQAppInterface, QrHandleResultCallBack paramQrHandleResultCallBack, View paramView)
   {
     paramView.setVisibility(0);
-    paramScannerParams = new osy(paramAppActivity, paramString, paramQQAppInterface, paramScannerParams, paramView, paramQrHandleResultCallBack);
+    paramScannerParams = new ous(paramAppActivity, paramString, paramQQAppInterface, paramScannerParams, paramView, paramQrHandleResultCallBack);
     paramAppActivity = new NewIntent(paramAppActivity, QRCodeServlet.class);
     paramAppActivity.putExtra("d", paramString);
     paramAppActivity.putExtra("cmd", "QRCodeSvc.decode");
@@ -229,9 +229,9 @@ public class ScannerUtils
         if (!HttpUtil.a(paramAppActivity))
         {
           paramString1 = DialogUtil.a(paramAppActivity, 230);
-          paramString1.setMessage(2131429908);
-          paramString2 = new osx(paramQrHandleResultCallBack);
-          paramString1.setPositiveButton(2131432999, paramString2);
+          paramString1.setMessage(2131429914);
+          paramString2 = new our(paramQrHandleResultCallBack);
+          paramString1.setPositiveButton(2131433016, paramString2);
           paramString1.setOnCancelListener(paramString2);
           paramString1.show();
           return;

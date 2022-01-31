@@ -1,23 +1,25 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import cooperation.troop_homework.outer.TroopHWRecordBaseActivity;
+import android.content.Context;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import cooperation.qqindividuality.widget.SignatureLoadingDialog;
 
 public class amqb
-  implements View.OnClickListener
+  extends SignatureLoadingDialog
 {
-  public amqb(TroopHWRecordBaseActivity paramTroopHWRecordBaseActivity) {}
-  
-  public void onClick(View paramView)
+  public amqb(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity, Context paramContext)
   {
-    switch (paramView.getId())
-    {
+    super(paramContext);
+  }
+  
+  public void onBackPressed()
+  {
+    if (this.a.a) {
+      super.onBackPressed();
     }
-    do
-    {
+    while (!QLog.isColorLevel()) {
       return;
-    } while (this.a.a);
-    this.a.setResult(0);
-    this.a.finish();
+    }
+    QLog.d("IphoneTitleBarActivity", 2, "tool process has started, cancel by the tool");
   }
 }
 

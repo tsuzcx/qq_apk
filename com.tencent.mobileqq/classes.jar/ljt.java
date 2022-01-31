@@ -1,20 +1,28 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.CommentLikeObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoySecondCommentListAdapter.SecondCommentOperationCallback;
+import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
+import com.tencent.qphone.base.util.QLog;
 
-public class ljt
-  implements View.OnClickListener
+public final class ljt
+  implements ArticleCommentModule.CommentLikeObserver
 {
-  public ljt(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment) {}
+  public ljt(int paramInt, ReadInJoySecondCommentListAdapter.SecondCommentOperationCallback paramSecondCommentOperationCallback) {}
   
-  public void onClick(View paramView)
+  public void a(ArticleInfo paramArticleInfo, String paramString, int paramInt)
   {
-    switch (paramView.getId())
-    {
-    default: 
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyCommentUtils", 2, "zan cancel success,comment type =" + this.jdField_a_of_type_Int);
     }
-    this.a.a(true, null);
+    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter$SecondCommentOperationCallback != null) {
+      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoySecondCommentListAdapter$SecondCommentOperationCallback.a(paramString, null, 4, null);
+    }
+  }
+  
+  public void a(ArticleInfo paramArticleInfo, String paramString1, int paramInt, String paramString2)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyCommentUtils", 2, "zan cancel failed,comment type =" + this.jdField_a_of_type_Int + "comment id =" + paramString1 + "err code = " + paramInt + "errMsg =" + paramString2);
+    }
   }
 }
 

@@ -23,10 +23,10 @@ public class PrinterBindTipActivity
   {
     super.doOnCreate(paramBundle);
     super.getWindow().setBackgroundDrawableResource(2131492895);
-    super.setContentView(2130969192);
+    super.setContentView(2130969191);
     super.setTitle("如何绑定");
     super.setLeftViewName(2131427781);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365530));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131365552));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     paramBundle = super.getIntent();
     this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("printer_bind_url");

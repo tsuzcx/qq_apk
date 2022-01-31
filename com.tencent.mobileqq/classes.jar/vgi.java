@@ -1,47 +1,22 @@
-import android.content.Context;
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.aio.item.TroopFeeMsgItemBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.MessageForTroopFee;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.text.TextUtils;
+import com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder;
+import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.util.Map;
 
 public class vgi
-  implements View.OnClickListener
+  implements Runnable
 {
-  public vgi(TroopFeeMsgItemBuilder paramTroopFeeMsgItemBuilder) {}
+  public vgi(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder, String paramString) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    vgj localvgj = (vgj)AIOUtils.a(paramView);
-    MessageForTroopFee localMessageForTroopFee = (MessageForTroopFee)localvgj.a;
-    Intent localIntent = new Intent(paramView.getContext(), QQBrowserActivity.class);
-    localIntent.putExtra("url", localMessageForTroopFee.actionUrl);
-    paramView.getContext().startActivity(localIntent);
-    paramView = ((TroopManager)this.a.a.getManager(51)).a(localvgj.b);
-    int i;
-    if (paramView != null)
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      if (!paramView.isTroopOwner(this.a.a.getCurrentAccountUin())) {
-        break label150;
+      if (ShortVideoRealItemBuilder.a().size() == 0) {
+        RMVideoStateMgr.c(this.jdField_a_of_type_JavaLangString);
       }
-      i = 0;
-    }
-    for (;;)
-    {
-      ReportController.b(this.a.a, "P_CliOper", "Grp_pay", "", "grp_aio", "Clk_payobj", 0, 0, localvgj.b, i + "", "", "");
-      return;
-      label150:
-      if (paramView.isAdmin()) {
-        i = 1;
-      } else {
-        i = 2;
-      }
+      FileUtils.a(this.jdField_a_of_type_JavaLangString);
     }
   }
 }

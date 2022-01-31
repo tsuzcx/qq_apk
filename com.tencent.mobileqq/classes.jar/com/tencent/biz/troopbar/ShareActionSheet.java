@@ -28,7 +28,7 @@ import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneShareManager;
 import java.util.ArrayList;
 import java.util.List;
-import owv;
+import oyp;
 
 public class ShareActionSheet
   implements AdapterView.OnItemClickListener
@@ -125,7 +125,7 @@ public class ShareActionSheet
   {
     int i = 0;
     if (!WXShareHelper.a().a()) {
-      paramInt1 = 2131435302;
+      paramInt1 = 2131435319;
     }
     for (;;)
     {
@@ -134,13 +134,13 @@ public class ShareActionSheet
         QRUtils.a(0, paramInt1);
         return;
         if (!WXShareHelper.a().b()) {
-          paramInt1 = 2131435303;
+          paramInt1 = 2131435320;
         }
       }
       else
       {
         String str1 = String.valueOf(System.currentTimeMillis());
-        Object localObject = new owv(str1);
+        Object localObject = new oyp(str1);
         WXShareHelper.a().a((WXShareHelper.WXShareListener)localObject);
         localObject = WXShareHelper.a();
         String str2 = paramDetail.jdField_b_of_type_JavaLangString;
@@ -165,7 +165,7 @@ public class ShareActionSheet
     }
     localIntent.setClass(paramActivity, ForwardRecentActivity.class);
     localIntent.putExtra("key_flag_from_plugin", true);
-    localIntent.putExtra("category", paramActivity.getString(2131430003));
+    localIntent.putExtra("category", paramActivity.getString(2131430020));
     localIntent.putExtra("forward_type", 1001);
     localIntent.putExtra("detail_url", paramString);
     localIntent.putExtra("title", paramDetail.jdField_b_of_type_JavaLangString);
@@ -211,7 +211,7 @@ public class ShareActionSheet
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder = new ShareActionSheetBuilder(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131433083));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131433100));
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(a());
       this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(this);
     }
@@ -231,28 +231,28 @@ public class ShareActionSheet
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430091);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838332;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430108);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838336;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.jdField_c_of_type_Int = 2;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430097);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838333;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430114);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838337;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.jdField_c_of_type_Int = 3;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430109);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838336;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430126);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838340;
     localActionSheetItem.jdField_c_of_type_Int = 9;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430110);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838330;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getString(2131430127);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838334;
     localActionSheetItem.jdField_c_of_type_Int = 10;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);

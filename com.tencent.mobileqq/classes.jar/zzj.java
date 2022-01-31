@@ -1,28 +1,25 @@
-import com.tencent.mobileqq.ar.ScanningSurfaceView;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import com.tencent.mobileqq.worldcup.ARWorldCupMediaPlayerWrapper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.MqqWeakReferenceHandler;
 
-public class zzj
+class zzj
   implements Runnable
 {
-  public zzj(ScanningSurfaceView paramScanningSurfaceView) {}
+  zzj(zzi paramzzi) {}
   
   public void run()
   {
-    while (ScanningSurfaceView.a(this.a))
+    if ((this.a.a.a != null) && (ARWorldCupGlobalSceneRenderable.a(this.a.a) != null) && (ARWorldCupGlobalSceneRenderable.a(this.a.a).a()))
     {
-      long l = System.currentTimeMillis();
-      ScanningSurfaceView.a(this.a);
-      try
-      {
-        Thread.sleep(Math.max(0L, ScanningSurfaceView.a(this.a) - (System.currentTimeMillis() - l)));
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        localInterruptedException.printStackTrace();
-      }
+      long l = ARWorldCupGlobalSceneRenderable.a(this.a.a).a();
+      this.a.a.a.postDelayed(ARWorldCupGlobalSceneRenderable.a(this.a.a), 4900L - l);
+      QLog.d("ARWorldCupGlobalSceneRenderable", 2, "start Post  mRepeatCheckRunnable " + l);
     }
-    if (ScanningSurfaceView.b(this.a)) {
-      ScanningSurfaceView.a(this.a);
-    }
+    ARWorldCupGameLogicManager.a().a(true);
+    ReportController.b(null, "dc00898", "", "", "0X8009313", "0X8009313", 0, 0, "0", "", "", "");
   }
 }
 

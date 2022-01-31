@@ -1,21 +1,20 @@
-import com.tencent.mobileqq.activity.AddFriendLogicActivity;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQProgressDialog.Callback;
+import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporter.OnFrequenceDataUpdateListener;
+import com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterMain;
+import java.util.HashMap;
 
 public class rff
-  implements QQProgressDialog.Callback
+  implements Runnable
 {
-  public rff(AddFriendLogicActivity paramAddFriendLogicActivity) {}
+  public rff(DoraemonAPIReporterMain paramDoraemonAPIReporterMain, DoraemonAPIReporter.OnFrequenceDataUpdateListener paramOnFrequenceDataUpdateListener, String paramString, HashMap paramHashMap) {}
   
-  public void a()
+  public void run()
   {
-    this.a.onBackPressed();
-    AddFriendLogicActivity.a(this.a).a(null);
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonMonitorDoraemonAPIReporter$OnFrequenceDataUpdateListener.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilHashMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     rff
  * JD-Core Version:    0.7.0.1
  */

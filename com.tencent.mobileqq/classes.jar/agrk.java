@@ -1,27 +1,20 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.redtouch.RedDisplayInfo;
-import com.tencent.mobileqq.redtouch.RedTypeInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.medalwall.MedalWallMng;
+import com.tencent.mobileqq.profile.view.ProfileHeaderView;
 
-public final class agrk
-  implements Parcelable.Creator
+public class agrk
+  implements Runnable
 {
-  public RedDisplayInfo a(Parcel paramParcel)
-  {
-    RedDisplayInfo localRedDisplayInfo = new RedDisplayInfo();
-    localRedDisplayInfo.a = paramParcel.readArrayList(RedTypeInfo.class.getClassLoader());
-    RedDisplayInfo.a(localRedDisplayInfo, (RedTypeInfo)paramParcel.readSerializable());
-    return localRedDisplayInfo;
-  }
+  public agrk(ProfileHeaderView paramProfileHeaderView) {}
   
-  public RedDisplayInfo[] a(int paramInt)
+  public void run()
   {
-    return new RedDisplayInfo[paramInt];
+    ((MedalWallMng)this.a.a.getManager(249)).a(1, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agrk
  * JD-Core Version:    0.7.0.1
  */

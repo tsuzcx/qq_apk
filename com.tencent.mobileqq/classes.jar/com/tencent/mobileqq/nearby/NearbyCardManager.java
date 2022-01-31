@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.nearby;
 
-import adyk;
-import adyl;
-import adym;
+import aelq;
+import aelr;
+import aels;
 import android.app.Activity;
 import android.os.SystemClock;
 import android.text.TextUtils;
@@ -67,7 +67,7 @@ public class NearbyCardManager
       }
       localEntityManager.a();
     }
-    ThreadManager.getSubThreadHandler().postDelayed(new adyk(paramQQAppInterface), 2000L);
+    ThreadManager.getSubThreadHandler().postDelayed(new aelq(paramQQAppInterface), 2000L);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, Oidb_0x686.CharmEvent paramCharmEvent, Oidb_0x686.NearbyCharmNotify paramNearbyCharmNotify)
@@ -118,7 +118,7 @@ public class NearbyCardManager
     }
     for (;;)
     {
-      DialogUtil.a(paramActivity, 230).setMessage(paramString1).setNegativeButton("取消", new adym()).setPositiveButton("立即下载", new adyl(paramString2, paramInt, paramActivity)).show();
+      DialogUtil.a(paramActivity, 230).setMessage(paramString1).setNegativeButton("取消", new aels()).setPositiveButton("立即下载", new aelr(paramString2, paramInt, paramActivity)).show();
       return true;
       if (paramInt == 2) {
         ReportController.b(null, "dc00899", "grp_lbs", "", "app_down", "exp_pic", 0, 0, "", "", "", "");

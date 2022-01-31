@@ -1,16 +1,44 @@
-import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
-import com.tencent.mobileqq.shortvideo.ShortVideoResDownload;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.activity.leba.LebaShowListManager;
+import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.qphone.base.util.QLog;
 
-class wpr
+public class wpr
   implements Runnable
 {
-  wpr(wpq paramwpq) {}
+  public wpr(LebaShowListManager paramLebaShowListManager, RedTouchManager paramRedTouchManager, long paramLong1, boolean paramBoolean, long paramLong2, long paramLong3) {}
   
   public void run()
   {
-    if (!VideoEnvironment.e(this.a.a.app)) {
-      ShortVideoResDownload.a(this.a.a.app);
+    for (;;)
+    {
+      try
+      {
+        RedTouchManager localRedTouchManager = this.jdField_a_of_type_ComTencentMobileqqRedtouchRedTouchManager;
+        i = (int)this.jdField_a_of_type_Long;
+        boolean bool = this.jdField_a_of_type_Boolean;
+        if (this.b != -9223372036854775808L) {
+          continue;
+        }
+        l = this.c;
+        i = localRedTouchManager.a(i, bool, l);
+      }
+      catch (Exception localException)
+      {
+        long l;
+        int j = -2;
+        int i = j;
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.i("Q.lebatab.mgr", 2, localException.toString());
+        i = j;
+        continue;
+      }
+      if (QLog.isDevelopLevel()) {
+        QLog.i("Q.lebatab.mgr", 4, "updateAppSetting, result = " + i);
+      }
+      return;
+      l = this.b;
     }
   }
 }

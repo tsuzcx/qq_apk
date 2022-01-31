@@ -1,15 +1,13 @@
-import com.tencent.mobileqq.app.message.BaseMessageManager;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.multimsg.LongTextMsgManager;
+import com.tencent.mobileqq.app.TroopManager.callbackInMainThread;
 
-public class zoy
+class zoy
   implements Runnable
 {
-  public zoy(BaseMessageManager paramBaseMessageManager, LongTextMsgManager paramLongTextMsgManager, MessageRecord paramMessageRecord) {}
+  zoy(zox paramzox, String paramString) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqMultimsgLongTextMsgManager.b(this.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManager.a, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+    this.jdField_a_of_type_Zox.a.a(this.jdField_a_of_type_JavaLangString);
   }
 }
 

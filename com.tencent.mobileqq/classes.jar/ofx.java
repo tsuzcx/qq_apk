@@ -1,18 +1,15 @@
-import com.tencent.biz.qqstory.boundaries.extension.widgets.TrimTextureVideoView;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnErrorListener;
-import com.tencent.biz.qqstory.takevideo.LocalVideoSelectActivity;
+import android.os.Message;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tencent.biz.qqstory.takevideo.EditVideoPlayer;
 
 public class ofx
-  implements IMediaPlayer.OnErrorListener
+  implements Runnable
 {
-  public ofx(LocalVideoSelectActivity paramLocalVideoSelectActivity) {}
+  public ofx(EditVideoPlayer paramEditVideoPlayer) {}
   
-  public boolean a(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
+  public void run()
   {
-    LocalVideoSelectActivity.a(this.a).a();
-    LocalVideoSelectActivity.a(this.a).a(true);
-    return true;
+    this.a.a.a(Message.obtain(null, 8));
   }
 }
 

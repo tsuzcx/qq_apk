@@ -1,14 +1,30 @@
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.activity.AuthDevActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 
 public class rnl
   implements Runnable
 {
-  public rnl(BaseChatPie paramBaseChatPie, int paramInt) {}
+  public rnl(AuthDevActivity paramAuthDevActivity) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.a.setSelection(this.jdField_a_of_type_Int);
+    try
+    {
+      if ((AuthDevActivity.a(this.a) != null) && (AuthDevActivity.a(this.a).isShowing()))
+      {
+        AuthDevActivity.a(this.a).dismiss();
+        AuthDevActivity.a(this.a).cancel();
+      }
+      AuthDevActivity.a(this.a, null);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
+      {
+        localThrowable.printStackTrace();
+      }
+    }
   }
 }
 

@@ -25,9 +25,6 @@ public class StaticMethods$QQStoryAutoPlayView
         paramMotionEvent.setDuration(100L);
         paramMotionEvent.setFillAfter(true);
         paramQQStoryAutoPlayView.startAnimation(paramMotionEvent);
-        if (i == 1) {
-          paramQQStoryAutoPlayView.performClick();
-        }
       }
     }
   }

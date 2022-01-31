@@ -1,46 +1,19 @@
-import android.support.annotation.NonNull;
-import com.tencent.biz.qqstory.model.DeleteStoryVideoEvent;
-import com.tencent.biz.qqstory.model.item.StoryVideoItem;
-import com.tencent.biz.qqstory.playvideo.model.BasePagePlayingListSync;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tribe.async.dispatch.QQUIEventReceiver;
-import java.util.Iterator;
-import java.util.List;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import com.tencent.biz.qqstory.playvideo.MyVideoVisibilityDialog;
+import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
 public class nng
-  extends QQUIEventReceiver
+  implements ViewPager.OnPageChangeListener
 {
-  public nng(@NonNull BasePagePlayingListSync paramBasePagePlayingListSync)
-  {
-    super(paramBasePagePlayingListSync);
-  }
+  public nng(MyVideoVisibilityDialog paramMyVideoVisibilityDialog) {}
   
-  public void a(@NonNull BasePagePlayingListSync paramBasePagePlayingListSync, @NonNull DeleteStoryVideoEvent paramDeleteStoryVideoEvent)
-  {
-    Iterator localIterator = paramBasePagePlayingListSync.a.iterator();
-    int i = 0;
-    for (;;)
-    {
-      if (localIterator.hasNext())
-      {
-        StoryVideoItem localStoryVideoItem = (StoryVideoItem)localIterator.next();
-        if (paramDeleteStoryVideoEvent.a.equals(localStoryVideoItem.mVid))
-        {
-          paramBasePagePlayingListSync.a.remove(i);
-          SLog.a("Q.qqstory.player.DefaultPlayerVideoListSynchronizer", "remove vid:%s", localStoryVideoItem.mVid);
-        }
-      }
-      else
-      {
-        return;
-      }
-      i += 1;
-    }
-  }
+  public void onPageScrollStateChanged(int paramInt) {}
   
-  public Class acceptEventClass()
+  public void onPageScrolled(int paramInt1, float paramFloat, int paramInt2) {}
+  
+  public void onPageSelected(int paramInt)
   {
-    return DeleteStoryVideoEvent.class;
+    this.a.a.setSelectedTab(paramInt, true);
   }
 }
 

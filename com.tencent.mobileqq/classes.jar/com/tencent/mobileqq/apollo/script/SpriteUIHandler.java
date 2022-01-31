@@ -25,20 +25,20 @@ import com.tencent.widget.ListView;
 import com.tencent.widget.XListView;
 import java.lang.ref.WeakReference;
 import mqq.os.MqqHandler;
-import yox;
-import yoy;
-import yoz;
-import ypa;
-import ypb;
-import ypc;
-import ypd;
+import ysd;
+import yse;
+import ysf;
+import ysg;
+import ysh;
+import ysi;
+import ysj;
 
 public class SpriteUIHandler
   implements ISpriteUICallback
 {
   private SpriteContext jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
-  private ypd jdField_a_of_type_Ypd;
+  private ysj jdField_a_of_type_Ysj;
   private WeakReference b;
   
   public SpriteUIHandler(SpriteContext paramSpriteContext)
@@ -122,7 +122,7 @@ public class SpriteUIHandler
   
   public void a(int paramInt)
   {
-    ThreadManager.getUIHandler().post(new ypa(this, paramInt));
+    ThreadManager.getUIHandler().post(new ysg(this, paramInt));
   }
   
   public void a(int paramInt1, int paramInt2, long paramLong)
@@ -130,7 +130,7 @@ public class SpriteUIHandler
     if (QLog.isColorLevel()) {
       QLog.d("cmshow_scripted_SpriteUIHandler", 2, new Object[] { "[onActionDownloadNotify], downloadStatus:", Integer.valueOf(paramInt2), ",msgId:", Long.valueOf(paramLong) });
     }
-    ThreadManager.getUIHandler().post(new yox(this, paramLong, paramInt2, paramInt1));
+    ThreadManager.getUIHandler().post(new ysd(this, paramLong, paramInt2, paramInt1));
   }
   
   public void a(SpriteTaskParam paramSpriteTaskParam, long paramLong)
@@ -138,7 +138,7 @@ public class SpriteUIHandler
     if (QLog.isColorLevel()) {
       QLog.d("cmshow_scripted_SpriteUIHandler", 2, new Object[] { "[onTaskStart], msgId:", Long.valueOf(paramLong) });
     }
-    paramSpriteTaskParam = new yoy(this, paramLong);
+    paramSpriteTaskParam = new yse(this, paramLong);
     ThreadManager.getUIHandler().post(paramSpriteTaskParam);
   }
   
@@ -147,7 +147,7 @@ public class SpriteUIHandler
     if (QLog.isColorLevel()) {
       QLog.d("cmshow_scripted_SpriteUIHandler", 2, new Object[] { "[onTaskComplete], msgId:", Long.valueOf(paramLong), ",type:", Integer.valueOf(paramInt) });
     }
-    paramSpriteTaskParam = new yoz(this, paramLong, paramInt);
+    paramSpriteTaskParam = new ysf(this, paramLong, paramInt);
     ThreadManager.getUIHandler().post(paramSpriteTaskParam);
   }
   
@@ -181,7 +181,7 @@ public class SpriteUIHandler
       if (paramInt != 0) {
         break label188;
       }
-      QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131438205), 1).a();
+      QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131438223), 1).a();
       VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "aio_double_disappear_clk", this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_JavaLangString, 0, 0, new String[] { Integer.toString(ApolloUtil.b(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_Int)), "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
       return;
       paramInt = 0;
@@ -201,21 +201,21 @@ public class SpriteUIHandler
   
   public void a(String paramString)
   {
-    ThreadManager.getUIHandler().post(new ypc(this, paramString));
+    ThreadManager.getUIHandler().post(new ysi(this, paramString));
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    if (this.jdField_a_of_type_Ypd != null) {
-      ThreadManager.remove(this.jdField_a_of_type_Ypd);
+    if (this.jdField_a_of_type_Ysj != null) {
+      ThreadManager.remove(this.jdField_a_of_type_Ysj);
     }
-    this.jdField_a_of_type_Ypd = new ypd(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext, paramBoolean1, paramBoolean2, paramString);
-    ThreadManager.post(this.jdField_a_of_type_Ypd, 5, null, true);
+    this.jdField_a_of_type_Ysj = new ysj(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext, paramBoolean1, paramBoolean2, paramString);
+    ThreadManager.post(this.jdField_a_of_type_Ysj, 5, null, true);
   }
   
   public void b(int paramInt)
   {
-    ThreadManager.getUIHandler().post(new ypb(this, paramInt));
+    ThreadManager.getUIHandler().post(new ysh(this, paramInt));
   }
 }
 

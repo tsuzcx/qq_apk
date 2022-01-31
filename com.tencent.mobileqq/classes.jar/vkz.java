@@ -1,29 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
+import android.animation.ValueAnimator;
+import com.tencent.mobileqq.activity.aio.item.CustomFrameAnimationDrawable.FrameListener;
+import com.tencent.mobileqq.activity.aio.item.UnlimitedBladeWorks;
 
 public class vkz
-  implements DialogInterface.OnClickListener
+  implements CustomFrameAnimationDrawable.FrameListener
 {
-  public vkz(AIOImageListScene paramAIOImageListScene, int paramInt) {}
+  public vkz(UnlimitedBladeWorks paramUnlimitedBladeWorks) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void a(int paramInt)
   {
-    if (paramInt == 1)
-    {
-      if (this.jdField_a_of_type_Int != 0) {
-        break label47;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(1) });
-    }
-    for (;;)
-    {
-      AIOImageListScene.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene, null);
-      return;
-      label47:
-      if (this.jdField_a_of_type_Int == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageListScene.a(new Integer[] { Integer.valueOf(0), Integer.valueOf(2) });
-      }
+    if (paramInt == 23) {
+      UnlimitedBladeWorks.a(this.a).start();
     }
   }
 }

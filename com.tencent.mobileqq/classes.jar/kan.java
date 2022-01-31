@@ -1,44 +1,40 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.RelativeLayout;
+import android.view.GestureDetector.OnGestureListener;
+import android.view.MotionEvent;
 import android.widget.TextView;
-import com.tencent.av.ui.QavVideoRecordUICtrl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.VideoControlUI;
 
 public class kan
-  implements Animator.AnimatorListener
+  implements GestureDetector.OnGestureListener
 {
-  public kan(QavVideoRecordUICtrl paramQavVideoRecordUICtrl) {}
+  public kan(VideoControlUI paramVideoControlUI) {}
   
-  public void onAnimationCancel(Animator paramAnimator)
+  public boolean onDown(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "fold onAnimationCancel");
-    }
-    this.a.b(4, false);
-    QavVideoRecordUICtrl.b(this.a).requestLayout();
-    QavVideoRecordUICtrl.a(this.a, false);
+    return false;
   }
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "fold onAnimationEnd");
-    }
-    this.a.c(4);
-    QavVideoRecordUICtrl.b(this.a).requestLayout();
-    QavVideoRecordUICtrl.a(this.a, false);
+    return false;
   }
   
-  public void onAnimationRepeat(Animator paramAnimator) {}
+  public void onLongPress(MotionEvent paramMotionEvent) {}
   
-  public void onAnimationStart(Animator paramAnimator)
+  public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavVideoRecordUICtrl", 2, "fold onAnimationStart");
+    return false;
+  }
+  
+  public void onShowPress(MotionEvent paramMotionEvent) {}
+  
+  public boolean onSingleTapUp(MotionEvent paramMotionEvent)
+  {
+    if ((this.a.k != null) && (this.a.k.isShown()))
+    {
+      this.a.k.setVisibility(8);
+      com.tencent.mobileqq.utils.AudioHelper.b = false;
     }
-    QavVideoRecordUICtrl.d(this.a).setVisibility(0);
-    QavVideoRecordUICtrl.d(this.a).setAlpha(0.0F);
+    return false;
   }
 }
 

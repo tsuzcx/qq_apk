@@ -1,23 +1,17 @@
-import com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem;
-import com.tencent.mobileqq.utils.VoicePlayer.VoicePlayerListener;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
 
 public class aiwp
-  implements VoicePlayer.VoicePlayerListener
+  implements DialogInterface.OnClickListener
 {
-  public aiwp(AudioItem paramAudioItem) {}
+  public aiwp(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void a(int paramInt1, String paramString, int paramInt2)
-  {
-    this.a.b(AudioItem.a(this.a));
-  }
-  
-  public void a(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void b(String paramString, int paramInt1, int paramInt2) {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiwp
  * JD-Core Version:    0.7.0.1
  */

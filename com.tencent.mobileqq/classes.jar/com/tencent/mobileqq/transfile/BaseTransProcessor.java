@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile;
 
-import aian;
+import aioq;
 import android.os.Environment;
 import android.os.Message;
 import com.tencent.common.app.AppInterface;
@@ -91,7 +91,7 @@ public class BaseTransProcessor
     jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     jdField_a_of_type_JavaLangObject = new Object();
     jdField_k_of_type_JavaLangString = "param_reason";
-    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aian();
+    jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$IBreakDownFix = new aioq();
   }
   
   public BaseTransProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
@@ -815,7 +815,7 @@ public class BaseTransProcessor
     return true;
   }
   
-  public void an_() {}
+  public void ap_() {}
   
   public int b()
   {
@@ -1125,7 +1125,7 @@ public class BaseTransProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BaseTransProcessor
  * JD-Core Version:    0.7.0.1
  */

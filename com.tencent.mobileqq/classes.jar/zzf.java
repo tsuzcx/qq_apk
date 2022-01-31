@@ -1,19 +1,17 @@
-import com.tencent.mobileqq.ar.ScanEntranceReport;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupGlobalSceneRenderable;
+import com.tencent.mobileqq.ar.ARRenderModel.ARWorldCupResourceInfo;
+import com.tencent.mobileqq.arcard.ARcardSound;
 
 public class zzf
   implements Runnable
 {
-  public zzf(ScanEntranceReport paramScanEntranceReport, int paramInt1, int paramInt2, long paramLong) {}
+  public zzf(ARWorldCupGlobalSceneRenderable paramARWorldCupGlobalSceneRenderable) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("upload_count", String.valueOf(this.jdField_a_of_type_Int));
-    localHashMap.put("zoom_count", String.valueOf(this.b));
-    StatisticCollector.a(BaseApplication.getContext()).a("", "scanner_qr_success", true, this.jdField_a_of_type_Long, 0L, localHashMap, "");
+    if ((ARWorldCupGlobalSceneRenderable.a(this.a) != null) && (ARWorldCupGlobalSceneRenderable.a(this.a) == 6)) {
+      ARWorldCupGlobalSceneRenderable.a(this.a).a(ARWorldCupGlobalSceneRenderable.a(this.a).a() + "/res/worldcup/doorOpen.mp3", false);
+    }
   }
 }
 

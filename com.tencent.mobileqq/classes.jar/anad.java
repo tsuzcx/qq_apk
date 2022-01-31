@@ -1,41 +1,73 @@
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.net.Uri;
-import android.text.TextUtils;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.view.share.FilterComboSharePlugin;
-import java.io.File;
+import android.content.Context;
+import android.telephony.TelephonyManager;
+import cooperation.qzone.util.QZLog;
+import java.lang.reflect.Method;
 
 public class anad
-  implements Runnable
+  extends anac
 {
-  public anad(FilterComboSharePlugin paramFilterComboSharePlugin, String paramString, ApplicationInfo paramApplicationInfo) {}
-  
-  public void run()
+  protected int b(Context paramContext, int[] paramArrayOfInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FilterComboShare", 2, "shareMsgToSina path:" + this.jdField_a_of_type_JavaLangString);
+    boolean bool2 = true;
+    boolean bool1 = true;
+    TelephonyManager localTelephonyManager = (TelephonyManager)paramContext.getSystemService("phone");
+    Class localClass = localTelephonyManager.getClass();
+    Method localMethod2 = null;
+    Method localMethod1 = null;
+    if ((b == -1) || (b == 21)) {
+      localMethod1 = localMethod2;
     }
-    Intent localIntent = new Intent("android.intent.action.SEND");
-    localIntent.setFlags(268435456);
-    localIntent.setType("image/*");
-    localIntent.putExtra("android.intent.extra.TEXT", "套餐分享");
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      localIntent.putExtra("android.intent.extra.STREAM", Uri.fromFile(new File(this.jdField_a_of_type_JavaLangString)));
+    try
+    {
+      localMethod2 = localClass.getDeclaredMethod("getLine1Number", new Class[] { Integer.TYPE });
+      localMethod1 = localMethod2;
+      b = 21;
+      localMethod1 = localMethod2;
     }
-    localIntent.setPackage(this.jdField_a_of_type_AndroidContentPmApplicationInfo.packageName);
-    this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin.startActivityForResult(localIntent, (byte)110);
-    if (QLog.isColorLevel()) {
-      QLog.d("FilterComboShare", 2, "shareMsgToSina start weibo!");
+    catch (Throwable localThrowable1)
+    {
+      for (;;)
+      {
+        try
+        {
+          localMethod2 = localClass.getDeclaredMethod("getLine1Number", new Class[] { Long.TYPE });
+          localMethod1 = localMethod2;
+        }
+        catch (Throwable localThrowable2)
+        {
+          bool1 = bool2;
+          QZLog.e("UniKingCardHelper/SimManager", "initAllPhoneNum 24 2 error:" + localThrowable2.getMessage());
+          continue;
+        }
+        try
+        {
+          b = 22;
+          bool1 = false;
+          if ((b != -1) && (localMethod1 != null)) {
+            break label213;
+          }
+          return super.b(paramContext, paramArrayOfInt);
+        }
+        catch (Throwable localThrowable3)
+        {
+          bool1 = false;
+          continue;
+        }
+        localThrowable1 = localThrowable1;
+        QZLog.e("UniKingCardHelper/SimManager", "initAllPhoneNum 24 1 error:" + localThrowable1.getMessage());
+      }
     }
-    this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin.a(true, 3);
-    this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin.a();
-    FilterComboSharePlugin.a(this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin, this.jdField_a_of_type_DovComQqImCaptureViewShareFilterComboSharePlugin.jdField_a_of_type_JavaLangString, true);
+    if ((b == -1) || (b == 22)) {}
+    for (;;)
+    {
+      label213:
+      return a(2, localTelephonyManager, paramArrayOfInt, localMethod1, bool1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anad
  * JD-Core Version:    0.7.0.1
  */

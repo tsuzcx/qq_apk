@@ -1,14 +1,13 @@
-import com.tencent.mobileqq.armap.ARTreasurePlayControl;
-import com.tencent.mobileqq.armap.JniCommon;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
 
 public class aavc
   implements Runnable
 {
-  public aavc(ARTreasurePlayControl paramARTreasurePlayControl, int paramInt) {}
+  public aavc(ArkLocalAppMgr paramArkLocalAppMgr, aavw paramaavw) {}
   
   public void run()
   {
-    JniCommon.nativeSwitchMode(this.jdField_a_of_type_Int);
+    ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_Aavw);
   }
 }
 

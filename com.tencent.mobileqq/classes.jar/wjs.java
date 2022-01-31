@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.activity.contacts.base.ContactsViewController;
-import com.tencent.mobileqq.activity.contacts.view.pullrefresh.ContactRefreshHeader.OnRefreshHeaderUpdateListener;
+import com.tencent.mobileqq.activity.contact.newfriend.PhoneContactAddBuilder;
+import com.tencent.mobileqq.adapter.SystemMsgListAdapter;
 
-public class wjs
-  implements ContactRefreshHeader.OnRefreshHeaderUpdateListener
+class wjs
+  implements Runnable
 {
-  public wjs(ContactsViewController paramContactsViewController) {}
+  wjs(wjr paramwjr) {}
   
-  public long a()
+  public void run()
   {
-    return ContactsViewController.a(this.a);
+    this.a.a.a.c();
   }
 }
 

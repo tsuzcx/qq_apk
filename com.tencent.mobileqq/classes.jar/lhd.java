@@ -1,32 +1,16 @@
-import android.app.Activity;
-import android.content.Context;
-import android.view.WindowManager.BadTokenException;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraCaptureActivity;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
 
 public class lhd
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   public lhd(ReadInJoyCameraCaptureActivity paramReadInJoyCameraCaptureActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject = this.a;
-    String str = ((Activity)localObject).getString(2131428347);
-    localObject = DialogUtil.a((Context)localObject, 230).setMessage(str).setPositiveButton(((Activity)localObject).getString(2131428346), new lhe(this));
-    try
-    {
-      ((QQCustomDialog)localObject).setCancelable(false);
-      ((QQCustomDialog)localObject).show();
-      return;
-    }
-    catch (WindowManager.BadTokenException localBadTokenException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("Q.pubaccount.video.cameracapture.ReadInJoyCameraCaptureActivity", 2, "", localBadTokenException);
-    }
+    this.a.setResult(0, this.a.getIntent());
+    this.a.finish();
   }
 }
 

@@ -1,19 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.webview.WebSecurityPlugin;
+import com.tencent.mobileqq.unifiedebug.UnifiedDebugManager;
+import java.io.File;
+import java.io.FilenameFilter;
 
-class ajyc
-  implements Runnable
+public class ajyc
+  implements FilenameFilter
 {
-  ajyc(ajyb paramajyb, boolean paramBoolean, Bundle paramBundle) {}
+  public ajyc(UnifiedDebugManager paramUnifiedDebugManager, String paramString) {}
   
-  public void run()
+  public boolean accept(File paramFile, String paramString)
   {
-    this.jdField_a_of_type_Ajyb.a.a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_AndroidOsBundle);
+    return paramString.startsWith(this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajyc
  * JD-Core Version:    0.7.0.1
  */

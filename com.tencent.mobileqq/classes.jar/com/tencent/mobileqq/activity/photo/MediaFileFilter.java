@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.activity.photo;
 
 import android.util.SparseArray;
-import wtf;
-import wtg;
-import wth;
-import wti;
-import wtj;
+import wwk;
+import wwl;
+import wwm;
+import wwn;
+import wwo;
 
 public abstract class MediaFileFilter
 {
@@ -18,11 +18,11 @@ public abstract class MediaFileFilter
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter = new wtf();
-    b = new wtg();
-    c = new wth();
-    d = new wti();
-    e = new wtj();
+    jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter = new wwk();
+    b = new wwl();
+    c = new wwm();
+    d = new wwn();
+    e = new wwo();
     jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
     jdField_a_of_type_AndroidUtilSparseArray.put(0, jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaFileFilter);
     jdField_a_of_type_AndroidUtilSparseArray.put(1, b);

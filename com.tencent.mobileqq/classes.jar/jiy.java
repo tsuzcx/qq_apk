@@ -1,40 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.VideoController;
-import com.tencent.av.gaudio.GaInviteActivity;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.app.SessionInfo.GuildInfo;
+import com.tencent.av.guild.GuildMultiActivity;
+import com.tencent.av.utils.ImageResUtil;
 
 public class jiy
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  int jdField_a_of_type_Int;
+  public jiy(GuildMultiActivity paramGuildMultiActivity, SessionInfo paramSessionInfo) {}
   
-  public jiy(GaInviteActivity paramGaInviteActivity, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    switch (this.jdField_a_of_type_Int)
-    {
-    }
-    for (;;)
-    {
-      paramDialogInterface.dismiss();
-      return;
-      if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.l()) {
-        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.h(true);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.d();
-        break;
-        if (this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.e) {
-          this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.a.r();
-        }
-      }
-      this.jdField_a_of_type_ComTencentAvGaudioGaInviteActivity.finish();
-    }
+    this.jdField_a_of_type_ComTencentAvAppSessionInfo.a.a = ImageResUtil.a(this.jdField_a_of_type_ComTencentAvGuildGuildMultiActivity.a, this.jdField_a_of_type_ComTencentAvAppSessionInfo.a.i);
   }
 }
 

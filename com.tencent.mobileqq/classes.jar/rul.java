@@ -1,10 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.widget.CursorAdapter;
+import com.tencent.mobileqq.activity.BaseSystemActivity;
 
-public final class rul
-  implements DialogInterface.OnClickListener
+public class rul
+  implements Runnable
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public rul(BaseSystemActivity paramBaseSystemActivity) {}
+  
+  public void run()
+  {
+    if (this.a.a.getCursor() != null) {
+      this.a.b();
+    }
+  }
 }
 
 

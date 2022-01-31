@@ -1,29 +1,37 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.nearby.now.location.LocationDataManager;
+import com.tencent.mobileqq.nearby.now.location.LocationListener;
+import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
+import com.tencent.mobileqq.nearby.now.model.LocationInfo;
+import com.tencent.util.LogUtil;
+import mqq.os.MqqHandler;
 
 public class aesw
-  implements View.OnClickListener
+  implements LocationListener
 {
-  public aesw(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel, String paramString) {}
+  public aesw(SelectLocationFragment paramSelectLocationFragment) {}
   
-  public void onClick(View paramView)
+  public void a(LocationInfo paramLocationInfo)
   {
-    Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a, QQBrowserActivity.class);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
-    paramView = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a;
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.j)) {}
-    for (paramView = "1";; paramView = "2")
+    ThreadManager.getUIHandler().removeCallbacks(this.a.a);
+    LogUtil.d("SelectLocationFragment", "getLocation: onSuccess :" + paramLocationInfo.toString());
+    SelectLocationFragment.a(this.a, paramLocationInfo);
+    if (SelectLocationFragment.e())
     {
-      localIntent.putExtra("url", paramView);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_focus", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.startActivity(localIntent);
-      return;
+      SelectLocationFragment.a(this.a).setCity("北京");
+      SelectLocationFragment.a(this.a).setName("天安门广场");
+      SelectLocationFragment.a(this.a).setLat("39.914380");
+      SelectLocationFragment.a(this.a).setLng("116.412914");
+      SelectLocationFragment.a(this.a, SelectLocationFragment.a(this.a));
     }
+    SelectLocationFragment.a(this.a).a(paramLocationInfo);
+  }
+  
+  public void b(LocationInfo paramLocationInfo)
+  {
+    ThreadManager.getUIHandler().removeCallbacks(this.a.a);
+    LogUtil.d("SelectLocationFragment", "getLocation: onFail");
+    this.a.a(false);
   }
 }
 

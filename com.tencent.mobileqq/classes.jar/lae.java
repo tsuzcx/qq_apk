@@ -1,37 +1,18 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.assistant.PubAccountTipsManager;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.pubaccount.ecshopassit.RecentShopParcel;
 
-public class lae
-  implements URLDrawableDownListener
+public final class lae
+  implements Parcelable.Creator
 {
-  public lae(PubAccountTipsManager paramPubAccountTipsManager) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public RecentShopParcel a(Parcel paramParcel)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PubAccountTipsManager", 2, "img Load Failed.");
-    }
+    return new RecentShopParcel(paramParcel);
   }
   
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
+  public RecentShopParcel[] a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("PubAccountTipsManager", 2, "img Load Interrupted.");
-    }
-  }
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    if (PubAccountTipsManager.a(this.a) != null) {
-      PubAccountTipsManager.a(this.a).setVisibility(0);
-    }
+    return new RecentShopParcel[paramInt];
   }
 }
 

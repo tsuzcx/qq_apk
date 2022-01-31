@@ -1,55 +1,31 @@
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.support.v4.app.FragmentActivity;
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ShowReactiveActivity;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.FriendChatPie;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.StateListDrawable;
+import android.widget.LinearLayout;
+import com.tencent.mobileqq.activity.aio.panel.PanelIconLinearLayout;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.theme.SkinEngine;
+import com.tencent.widget.PatchedButton;
+import com.tencent.widget.XEditTextEx;
+import mqq.os.MqqHandler;
 
-public class vqd
-  implements View.OnTouchListener
+public final class vqd
+  implements Runnable
 {
-  public vqd(FriendChatPie paramFriendChatPie) {}
+  public vqd(LinearLayout paramLinearLayout, XEditTextEx paramXEditTextEx, PanelIconLinearLayout paramPanelIconLinearLayout, PatchedButton paramPatchedButton) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void run()
   {
-    switch (paramMotionEvent.getAction())
-    {
-    }
-    for (;;)
-    {
-      return true;
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        this.a.e.setImageAlpha(127);
-      }
-      else
-      {
-        this.a.e.setAlpha(127);
-        continue;
-        if (Build.VERSION.SDK_INT >= 16) {
-          this.a.e.setImageAlpha(255);
-        }
-        for (;;)
-        {
-          ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007602", "0X8007602", 0, 0, "", "", "", "");
-          paramView = new Intent(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, ShowReactiveActivity.class);
-          paramView.putExtra("friendUin", this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-          this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.startActivity(paramView);
-          break;
-          this.a.e.setAlpha(255);
-        }
-        if (Build.VERSION.SDK_INT >= 16) {
-          this.a.e.setImageAlpha(255);
-        } else {
-          this.a.e.setAlpha(255);
-        }
-      }
-    }
+    Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845635);
+    Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845636);
+    Drawable localDrawable3 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845677);
+    StateListDrawable localStateListDrawable = new StateListDrawable();
+    Drawable localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845778);
+    localStateListDrawable.addState(new int[] { -16842910 }, localDrawable4);
+    localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845781);
+    localStateListDrawable.addState(new int[] { 16842910 }, localDrawable4);
+    localDrawable4 = SkinEngine.getInstances().getDefaultThemeDrawable(2130845782);
+    localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable4);
+    ThreadManager.getUIHandler().post(new vqe(this, localDrawable1, localDrawable2, localDrawable3, localStateListDrawable));
   }
 }
 

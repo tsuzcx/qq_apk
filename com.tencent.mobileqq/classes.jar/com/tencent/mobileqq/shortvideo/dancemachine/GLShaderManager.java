@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.shortvideo.dancemachine;
 
-import ahml;
+import aian;
 import android.opengl.GLES20;
 import com.tencent.mobileqq.richmedia.mediacodec.utils.GlUtil;
 import com.tencent.mobileqq.shortvideo.dancemachine.utils.DanceLog;
@@ -26,22 +26,22 @@ public class GLShaderManager
     return 0;
   }
   
-  static ahml a(String paramString)
+  static aian a(String paramString)
   {
-    ahml localahml2 = (ahml)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    ahml localahml1 = localahml2;
-    if (localahml2 == null)
+    aian localaian2 = (aian)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    aian localaian1 = localaian2;
+    if (localaian2 == null)
     {
-      localahml1 = b(paramString);
-      if (localahml1 == null) {
+      localaian1 = b(paramString);
+      if (localaian1 == null) {
         break label44;
       }
-      jdField_a_of_type_JavaUtilHashMap.put(paramString, localahml1);
+      jdField_a_of_type_JavaUtilHashMap.put(paramString, localaian1);
     }
     for (;;)
     {
       DanceLog.b("GLShaderManager", "createProgram");
-      return localahml1;
+      return localaian1;
       label44:
       DanceLog.b("GLShaderManager", "createProgram[Init]program=null");
     }
@@ -53,43 +53,43 @@ public class GLShaderManager
     DanceLog.b("GLShaderManager", "clearShaderManager");
   }
   
-  private static ahml b(String paramString)
+  private static aian b(String paramString)
   {
     int i = a(paramString);
     DanceLog.b("GLShaderManager", "createProgramInit program=" + i);
     if (i != 0)
     {
-      ahml localahml = new ahml();
-      localahml.jdField_a_of_type_Int = i;
+      aian localaian = new aian();
+      localaian.jdField_a_of_type_Int = i;
       GLES20.glUseProgram(i);
       if (paramString.equals("GL_VIEW_VERTEX_GL_VIEW_FRAGMENT"))
       {
-        localahml.jdField_a_of_type_JavaUtilHashMap.put("a_position", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_position")));
-        localahml.jdField_a_of_type_JavaUtilHashMap.put("a_texCoord", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_texCoord")));
-        localahml.jdField_a_of_type_JavaUtilHashMap.put("a_color", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_color")));
-        localahml.jdField_b_of_type_JavaUtilHashMap.put("u_projectionMatrix", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_projectionMatrix")));
-        localahml.jdField_b_of_type_JavaUtilHashMap.put("u_texture", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_texture")));
-        localahml.jdField_b_of_type_Int = 3;
-        localahml.c = 2;
-        localahml.d = 4;
+        localaian.jdField_a_of_type_JavaUtilHashMap.put("a_position", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_position")));
+        localaian.jdField_a_of_type_JavaUtilHashMap.put("a_texCoord", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_texCoord")));
+        localaian.jdField_a_of_type_JavaUtilHashMap.put("a_color", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_color")));
+        localaian.jdField_b_of_type_JavaUtilHashMap.put("u_projectionMatrix", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_projectionMatrix")));
+        localaian.jdField_b_of_type_JavaUtilHashMap.put("u_texture", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_texture")));
+        localaian.jdField_b_of_type_Int = 3;
+        localaian.c = 2;
+        localaian.d = 4;
       }
       for (;;)
       {
         GLES20.glUseProgram(0);
-        return localahml;
+        return localaian;
         if (paramString.equals("GL_VIEW_VERTEX_MASK_GL_VIEW_FRAGMENT_MASK"))
         {
-          localahml.jdField_a_of_type_JavaUtilHashMap.put("a_position", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_position")));
-          localahml.jdField_a_of_type_JavaUtilHashMap.put("a_texCoord", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_texCoord")));
-          localahml.jdField_a_of_type_JavaUtilHashMap.put("a_color", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_color")));
-          localahml.jdField_a_of_type_JavaUtilHashMap.put("a_texCoordMask", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_texCoordMask")));
-          localahml.jdField_b_of_type_JavaUtilHashMap.put("u_projectionMatrix", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_projectionMatrix")));
-          localahml.jdField_b_of_type_JavaUtilHashMap.put("u_texture", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_texture")));
-          localahml.jdField_b_of_type_JavaUtilHashMap.put("u_texture_mask", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_texture_mask")));
-          localahml.jdField_b_of_type_Int = 3;
-          localahml.c = 2;
-          localahml.d = 4;
-          localahml.e = 2;
+          localaian.jdField_a_of_type_JavaUtilHashMap.put("a_position", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_position")));
+          localaian.jdField_a_of_type_JavaUtilHashMap.put("a_texCoord", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_texCoord")));
+          localaian.jdField_a_of_type_JavaUtilHashMap.put("a_color", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_color")));
+          localaian.jdField_a_of_type_JavaUtilHashMap.put("a_texCoordMask", Integer.valueOf(GLES20.glGetAttribLocation(i, "a_texCoordMask")));
+          localaian.jdField_b_of_type_JavaUtilHashMap.put("u_projectionMatrix", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_projectionMatrix")));
+          localaian.jdField_b_of_type_JavaUtilHashMap.put("u_texture", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_texture")));
+          localaian.jdField_b_of_type_JavaUtilHashMap.put("u_texture_mask", Integer.valueOf(GLES20.glGetUniformLocation(i, "u_texture_mask")));
+          localaian.jdField_b_of_type_Int = 3;
+          localaian.c = 2;
+          localaian.d = 4;
+          localaian.e = 2;
         }
       }
     }

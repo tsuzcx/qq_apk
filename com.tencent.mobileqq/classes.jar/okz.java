@@ -1,21 +1,15 @@
-import android.content.Context;
-import android.graphics.Bitmap;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo2.StoryEffectsCameraCaptureView.CaptureRequest;
-import com.tencent.biz.qqstory.takevideo2.StoryMultiFragmentPart;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
 
 public class okz
-  implements StoryEffectsCameraCaptureView.CaptureRequest
+  implements DialogInterface.OnClickListener
 {
-  public okz(StoryMultiFragmentPart paramStoryMultiFragmentPart, Context paramContext) {}
+  public okz(EditVideoMusicDialog paramEditVideoMusicDialog) {}
   
-  public void a(Bitmap paramBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SLog.a("story.publish.StoryMultiFragmentPart", "requestGetCurrentFrameBitmap done %s", paramBitmap);
-    if (paramBitmap != null) {
-      ThreadManager.postImmediately(new ola(this, paramBitmap), null, false);
-    }
+    paramDialogInterface.dismiss();
   }
 }
 

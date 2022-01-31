@@ -8,8 +8,8 @@ import android.os.Build.VERSION;
 import android.support.annotation.NonNull;
 import android.util.AttributeSet;
 import android.view.SurfaceHolder;
-import anxt;
-import anxu;
+import aony;
+import aonz;
 import com.tencent.mobileqq.richmedia.mediacodec.renderer.GPUBaseFilter;
 import com.tencent.mobileqq.richmedia.mediacodec.renderer.RenderBuffer;
 import com.tencent.mobileqq.shortvideo.filter.QQFilterRenderManager;
@@ -406,7 +406,7 @@ public class VideoFilterPlayView
     if (this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter == null)
     {
       this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = FilterFactory.a(106);
-      a(new anxt(this));
+      a(new aony(this));
     }
     ((GPUImagePixelationFilter)this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter).a(paramBitmap);
     this.jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter = this.jdField_c_of_type_ComTencentMobileqqRichmediaMediacodecRendererGPUBaseFilter;
@@ -434,7 +434,7 @@ public class VideoFilterPlayView
     if (this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecTrackerBaseStickerTracker != null) {
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecTrackerBaseStickerTracker.c();
     }
-    super.queueEvent(new anxu(this));
+    super.queueEvent(new aonz(this));
   }
 }
 

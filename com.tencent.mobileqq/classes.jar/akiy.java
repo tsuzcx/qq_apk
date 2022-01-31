@@ -1,169 +1,86 @@
-import com.tencent.biz.common.util.HttpUtil;
+import android.text.TextUtils;
+import com.tencent.mobileqq.jsp.MediaApiPlugin;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class akiy
+  implements Runnable
 {
-  private static akiy jdField_a_of_type_Akiy;
-  private static akiy jdField_b_of_type_Akiy;
-  private int jdField_a_of_type_Int = 0;
-  private long jdField_a_of_type_Long;
-  private int[] jdField_a_of_type_ArrayOfInt;
-  private int jdField_b_of_type_Int = 0;
-  private int c = 9000;
-  private int d = 1800;
-  private int e;
+  public akiy(HealthBusinessPlugin paramHealthBusinessPlugin, String paramString1, String paramString2) {}
   
-  public akiy(int paramInt)
-  {
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_Int = 0;
-    if (this.jdField_a_of_type_Int == 0) {
-      this.c = 9000;
-    }
-    for (this.d = 1800;; this.d = 1200)
-    {
-      this.jdField_a_of_type_Long = 0L;
-      this.e = 0;
-      this.jdField_a_of_type_ArrayOfInt = new int[3];
-      paramInt = 0;
-      while (paramInt < 3)
-      {
-        this.jdField_a_of_type_ArrayOfInt[paramInt] = 0;
-        paramInt += 1;
-      }
-      this.c = 6000;
-    }
-  }
-  
-  public static akiy a(int paramInt)
-  {
-    if (paramInt == 0)
-    {
-      if (jdField_a_of_type_Akiy == null) {
-        jdField_a_of_type_Akiy = new akiy(0);
-      }
-      return jdField_a_of_type_Akiy;
-    }
-    if (jdField_b_of_type_Akiy == null) {
-      jdField_b_of_type_Akiy = new akiy(1);
-    }
-    return jdField_b_of_type_Akiy;
-  }
-  
-  private void b()
+  public void run()
   {
     int i = 0;
-    while (i < 3)
+    label348:
+    for (;;)
     {
-      this.jdField_a_of_type_ArrayOfInt[i] = 0;
-      i += 1;
-    }
-    this.e = 0;
-  }
-  
-  private int c()
-  {
-    int i = 0;
-    int j = 0;
-    int m;
-    for (int k = 0; i < 3; k = m)
-    {
-      int n = j;
-      m = k;
-      if (this.jdField_a_of_type_ArrayOfInt[i] > 0)
+      try
       {
-        m = k + 1;
-        n = j + this.jdField_a_of_type_ArrayOfInt[i];
+        JSONObject localJSONObject1 = new JSONObject();
+        JSONArray localJSONArray1 = new JSONArray();
+        JSONArray localJSONArray2 = new JSONObject(this.jdField_a_of_type_JavaLangString).getJSONArray("imgList");
+        String str;
+        Object localObject3;
+        synchronized (HealthBusinessPlugin.jdField_a_of_type_JavaUtilHashMap)
+        {
+          if (i < localJSONArray2.length())
+          {
+            str = localJSONArray2.getString(i);
+            if (TextUtils.isEmpty(str)) {
+              break label348;
+            }
+            if ((str.startsWith("http")) || (str.equals("error")))
+            {
+              localObject3 = new JSONObject();
+              ((JSONObject)localObject3).put("imageID", "null");
+              ((JSONObject)localObject3).put("data", str);
+              localJSONArray1.put(localObject3);
+            }
+          }
+        }
+        JSONObject localJSONObject2;
+        i += 1;
       }
-      i += 1;
-      j = n;
-    }
-    if (k > 0) {
-      return j / k;
-    }
-    return 0;
-  }
-  
-  public int a()
-  {
-    if (2 == this.jdField_b_of_type_Int) {
-      return this.c;
-    }
-    return this.d;
-  }
-  
-  public void a()
-  {
-    int j = (int)(System.currentTimeMillis() - this.jdField_a_of_type_Long);
-    int k = c();
-    int i;
-    if (this.jdField_b_of_type_Int == 2)
-    {
-      i = this.c;
-      if (k != 0) {
-        break label90;
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("HealthBusinessPlugin", 2, localException, new Object[0]);
+        }
+        return;
+        if (HealthBusinessPlugin.jdField_a_of_type_JavaUtilHashMap.containsKey(str))
+        {
+          localJSONArray1.put(HealthBusinessPlugin.jdField_a_of_type_JavaUtilHashMap.get(str));
+        }
+        else
+        {
+          localObject3 = MediaApiPlugin.a(str, 0);
+          localJSONObject2 = new JSONObject();
+          localJSONObject2.put("imageID", str);
+          localJSONObject2.put("data", localObject3);
+          HealthBusinessPlugin.jdField_a_of_type_JavaUtilHashMap.put(str, localJSONObject2);
+          localJSONArray1.put(localJSONObject2);
+          break label348;
+          localObject2.put("imgList", localJSONArray1);
+          HealthBusinessPlugin.a(this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin, this.b, new String[] { localObject2.toString() });
+          return;
+        }
       }
-      i *= 3;
-      label36:
-      if (j > 100) {
-        if (j <= i) {
-          break label97;
+      finally
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
+          this.jdField_a_of_type_ComTencentMobileqqVashealthHealthBusinessPlugin.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
         }
       }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ArrayOfInt[this.e] = ((int)(i * 1.2F));
-      i = this.e + 1;
-      this.e = i;
-      this.e = (i % 3);
-      return;
-      i = this.d;
-      break;
-      label90:
-      i = k * 3;
-      break label36;
-      label97:
-      i = j;
-    }
-  }
-  
-  public int b()
-  {
-    this.jdField_a_of_type_Long = System.currentTimeMillis();
-    int j = HttpUtil.a();
-    int i;
-    if (this.jdField_b_of_type_Int != j)
-    {
-      i = 1;
-      this.jdField_b_of_type_Int = j;
-      if (i == 0) {
-        break label62;
-      }
-      if (this.jdField_b_of_type_Int != 2) {
-        break label54;
-      }
-      i = this.c;
-      label43:
-      b();
-    }
-    label54:
-    label62:
-    do
-    {
-      return i;
-      i = 0;
-      break;
-      i = this.d;
-      break label43;
-      j = c();
-      i = j;
-    } while (j > 0);
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akiy
  * JD-Core Version:    0.7.0.1
  */

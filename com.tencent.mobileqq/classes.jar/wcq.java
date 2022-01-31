@@ -1,13 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.bless.BlessTypeActivity;
+import com.tencent.mobileqq.activity.aio.tips.FraudTipsBar;
+import java.util.TimerTask;
+import mqq.os.MqqHandler;
 
 public class wcq
-  implements DialogInterface.OnClickListener
+  extends TimerTask
 {
-  public wcq(BlessTypeActivity paramBlessTypeActivity) {}
+  public wcq(FraudTipsBar paramFraudTipsBar) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    FraudTipsBar.a(this.a).post(new wcr(this));
+  }
 }
 
 

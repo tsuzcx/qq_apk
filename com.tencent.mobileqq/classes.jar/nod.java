@@ -1,16 +1,22 @@
-import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnErrorListener;
-import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
+import android.os.Handler;
+import android.view.ViewTreeObserver;
+import android.view.ViewTreeObserver.OnPreDrawListener;
+import android.widget.RelativeLayout;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.biz.qqstory.widget.circularreveal.CircularRevealCompatLayout;
 
-class nod
-  implements Runnable
+public class nod
+  implements ViewTreeObserver.OnPreDrawListener
 {
-  nod(noc paramnoc, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject) {}
+  public nod(StoryPlayVideoActivity paramStoryPlayVideoActivity) {}
   
-  public void run()
+  public boolean onPreDraw()
   {
-    if (this.jdField_a_of_type_Noc.a.a != null) {
-      this.jdField_a_of_type_Noc.a.a.a(this.jdField_a_of_type_Noc.a, this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangObject);
-    }
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(0);
+    this.a.jdField_a_of_type_AndroidOsHandler.postDelayed(new noe(this), 100L);
+    this.a.h();
+    this.a.jdField_a_of_type_ComTencentBizQqstoryWidgetCircularrevealCircularRevealCompatLayout.getViewTreeObserver().removeOnPreDrawListener(this);
+    return false;
   }
 }
 

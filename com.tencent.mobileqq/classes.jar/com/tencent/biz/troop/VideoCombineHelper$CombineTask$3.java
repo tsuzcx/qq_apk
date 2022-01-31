@@ -1,12 +1,12 @@
 package com.tencent.biz.troop;
 
 import java.util.ArrayList;
-import ovk;
+import oxe;
 
 public class VideoCombineHelper$CombineTask$3
   extends ArrayList
 {
-  public VideoCombineHelper$CombineTask$3(ovk paramovk, String paramString1, String paramString2)
+  public VideoCombineHelper$CombineTask$3(oxe paramoxe, String paramString1, String paramString2)
   {
     add(this.val$inputPath);
     add(this.val$tsFilePath);

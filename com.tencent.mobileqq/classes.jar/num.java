@@ -1,28 +1,29 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
-import com.tencent.biz.qqstory.model.DiscoverManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.network.request.CommonRequest;
-import com.tencent.biz.qqstory.network.response.CommonResponse;
-import com.tencent.biz.qqstory.storyHome.discover.view.DiscoverPresenter;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.channel.CmdTaskManger;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment;
+import com.tencent.biz.qqstory.storyHome.detail.model.DetailLikeListLoader.GetLikeListRequest;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.parallel.ParallelJobSegment;
 
 public class num
-  implements CmdTaskManger.CommandCallback
+  extends ParallelJobSegment
 {
-  public num(DiscoverPresenter paramDiscoverPresenter) {}
+  public int a;
   
-  public void a(@NonNull CommonRequest paramCommonRequest, @Nullable CommonResponse paramCommonResponse, @NonNull ErrorMessage paramErrorMessage)
+  public num(DetailFeedAllInfoPullSegment paramDetailFeedAllInfoPullSegment, int paramInt)
   {
-    if ((paramErrorMessage.isFail()) || (paramCommonResponse == null))
-    {
-      SLog.e("Q.qqstory.discover.DiscoverPresenter", "StorySvc.get_hot_topic_info request fail! %s", new Object[] { paramErrorMessage.toString() });
-      return;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_a_of_type_Int = paramInt;
+  }
+  
+  protected void a(JobContext paramJobContext, String paramString)
+  {
+    DetailLikeListLoader.GetLikeListRequest localGetLikeListRequest = new DetailLikeListLoader.GetLikeListRequest();
+    localGetLikeListRequest.jdField_a_of_type_JavaLangString = paramString;
+    localGetLikeListRequest.jdField_a_of_type_Boolean = true;
+    if (this.jdField_a_of_type_Int != -1) {
+      localGetLikeListRequest.c = this.jdField_a_of_type_Int;
     }
-    ((DiscoverManager)SuperManager.a(22)).a(DiscoverPresenter.a(this.a), paramCommonResponse.a);
-    DiscoverPresenter.a(this.a, paramCommonResponse.a);
+    CmdTaskManger.a().a(localGetLikeListRequest, new nun(this, paramJobContext, paramString));
   }
 }
 

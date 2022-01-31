@@ -1,19 +1,18 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import com.tencent.mobileqq.activity.EditActivity;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.DrawerFrame;
+import com.tencent.mobileqq.app.FrameHelperActivity;
+import com.tencent.mobileqq.subaccount.SubAccountControll;
 
 public class sil
-  implements View.OnClickListener
+  implements Runnable
 {
-  public sil(EditActivity paramEditActivity) {}
+  public sil(Conversation paramConversation) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    EditActivity.a(this.a).setVisibility(4);
-    EditActivity.a(this.a).setImageResource(2130844421);
-    EditActivity.a(this.a, false);
+    if ((Conversation.c(this.a)) && (this.a.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.a.b()) && (SubAccountControll.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sub.uin.all"))) {
+      this.a.a(new sim(this));
+    }
   }
 }
 

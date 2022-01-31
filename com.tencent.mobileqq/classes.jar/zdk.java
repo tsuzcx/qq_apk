@@ -1,51 +1,39 @@
-import com.tencent.mobileqq.app.MessageHandler;
+import android.os.Handler;
+import android.text.TextUtils;
+import android.view.ViewGroup;
+import com.tencent.mobileqq.activity.recent.DrawerFrame;
+import com.tencent.mobileqq.app.FrameHelperActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.OpenID;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.msf.service.protocol.security.CustomSigContent;
-import com.tencent.msf.service.protocol.security.RespondCustomSig;
-import com.tencent.open.agent.report.ReportCenter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import mqq.observer.AccountObserver;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.widget.RandomCoverView;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.DrawerCoverUtil;
 
 public class zdk
-  extends AccountObserver
+  implements Runnable
 {
-  public zdk(MessageHandler paramMessageHandler, String paramString) {}
+  public zdk(FrameHelperActivity paramFrameHelperActivity, QQAppInterface paramQQAppInterface) {}
   
-  public void onChangeToken(boolean paramBoolean, HashMap paramHashMap)
+  public void run()
   {
-    if ((paramBoolean) && (paramHashMap != null))
-    {
-      paramHashMap = (RespondCustomSig)paramHashMap.get("login.chgTok");
-      if ((paramHashMap == null) || (paramHashMap.SigList == null)) {
-        return;
-      }
-      int i = 0;
-      while (i < paramHashMap.SigList.size())
-      {
-        Object localObject = (CustomSigContent)paramHashMap.SigList.get(i);
-        if ((((CustomSigContent)localObject).sResult == 0) && (((CustomSigContent)localObject).ulSigType == 16L))
-        {
-          localObject = new String(((CustomSigContent)localObject).SigContent);
-          OpenID localOpenID = new OpenID();
-          localOpenID.appID = this.jdField_a_of_type_JavaLangString;
-          localOpenID.openID = ((String)localObject);
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a().b(localOpenID);
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a.a(this.jdField_a_of_type_JavaLangString, localOpenID);
-          this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(1, true, localOpenID);
-        }
-        i += 1;
-      }
-    }
-    if (paramBoolean) {}
-    for (paramHashMap = "0";; paramHashMap = "1")
-    {
-      ReportCenter.a().a(this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.b.getAccount(), "", this.jdField_a_of_type_JavaLangString, "41", "19", paramHashMap, "", "", "4", false);
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.jdField_a_of_type_AndroidViewViewGroup == null) {
       return;
     }
+    RandomCoverView localRandomCoverView = (RandomCoverView)this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131371362);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    localObject = ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject);
+    String str = (String)localObject.getCoverData(0)[0];
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.profilecard.", 2, "[getCoverData] getCovertUrl from cache,url:" + str);
+    }
+    if ((!TextUtils.isEmpty(str)) && (!DrawerCoverUtil.b()))
+    {
+      DrawerCoverUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.getActivity(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Card)localObject, localRandomCoverView, str, FrameHelperActivity.a(this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity), this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.jdField_a_of_type_ComTencentMobileqqActivityRecentDrawerFrame.a());
+      return;
+    }
+    if (DrawerCoverUtil.b()) {}
+    this.jdField_a_of_type_ComTencentMobileqqAppFrameHelperActivity.jdField_a_of_type_AndroidOsHandler.postDelayed(new zdl(this, (Card)localObject), 3000L);
   }
 }
 

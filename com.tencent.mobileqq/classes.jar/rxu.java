@@ -1,14 +1,13 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 class rxu
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
   rxu(rxt paramrxt) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
+    this.a.a.runOnUiThread(new rxv(this));
   }
 }
 

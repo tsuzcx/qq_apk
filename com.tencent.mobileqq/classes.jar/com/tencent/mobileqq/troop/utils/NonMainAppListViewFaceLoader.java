@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.troop.utils;
 
-import aizn;
-import aizo;
+import ajnr;
+import ajns;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import com.tencent.biz.pubaccount.VideoInfo;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter.VideoItemHolder;
 import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.image.URLImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
 import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.utils.ImageUtil;
@@ -54,8 +54,8 @@ public class NonMainAppListViewFaceLoader
     this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache(60);
     this.jdField_b_of_type_AndroidSupportV4UtilLruCache = new LruCache(120);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new aizn(this);
-    this.jdField_a_of_type_AndroidOsHandler = new aizo(this, Looper.getMainLooper());
+    this.jdField_a_of_type_AndroidContentBroadcastReceiver = new ajnr(this);
+    this.jdField_a_of_type_AndroidOsHandler = new ajns(this, Looper.getMainLooper());
     this.jdField_a_of_type_Float = 1.0F;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_Float = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().density;
@@ -234,8 +234,8 @@ public class NonMainAppListViewFaceLoader
       if ((localObject instanceof VideoFeedsAdapter.VideoItemHolder))
       {
         localObject = (VideoFeedsAdapter.VideoItemHolder)localObject;
-        if ((((VideoFeedsAdapter.VideoItemHolder)localObject).a != null) && (((VideoFeedsAdapter.VideoItemHolder)localObject).a.a != null) && ((((VideoFeedsAdapter.VideoItemHolder)localObject).a.a.jdField_a_of_type_Int == 1) || (((VideoFeedsAdapter.VideoItemHolder)localObject).a.a.jdField_a_of_type_Int == 6)) && (!TextUtils.isEmpty(((VideoFeedsAdapter.VideoItemHolder)localObject).a.a.j)) && (((VideoFeedsAdapter.VideoItemHolder)localObject).b != null)) {
-          ((VideoFeedsAdapter.VideoItemHolder)localObject).b.setImageBitmap(a(((VideoFeedsAdapter.VideoItemHolder)localObject).a.a.j, paramBoolean));
+        if ((((VideoFeedsAdapter.VideoItemHolder)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam != null) && (((VideoFeedsAdapter.VideoItemHolder)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.a != null) && ((((VideoFeedsAdapter.VideoItemHolder)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.a.jdField_a_of_type_Int == 1) || (((VideoFeedsAdapter.VideoItemHolder)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.a.jdField_a_of_type_Int == 6)) && (!TextUtils.isEmpty(((VideoFeedsAdapter.VideoItemHolder)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.a.j)) && (((VideoFeedsAdapter.VideoItemHolder)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView != null)) {
+          ((VideoFeedsAdapter.VideoItemHolder)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageBitmap(a(((VideoFeedsAdapter.VideoItemHolder)localObject).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsPlayManager$VideoPlayParam.a.j, paramBoolean));
         }
       }
     }
@@ -243,7 +243,7 @@ public class NonMainAppListViewFaceLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.NonMainAppListViewFaceLoader
  * JD-Core Version:    0.7.0.1
  */

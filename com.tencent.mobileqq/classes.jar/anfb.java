@@ -1,22 +1,12 @@
-import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoTag;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoTag.EditBehavior;
-import dov.com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
+import cooperation.thirdpay.ThirdPayGate;
 
 public class anfb
-  implements QQStoryPullToRefreshListView.PullToRefreshListener
 {
-  public anfb(EditVideoTag paramEditVideoTag) {}
-  
-  public void a()
-  {
-    EditVideoTag.EditBehavior localEditBehavior = EditVideoTag.a(this.a);
-    EditVideoTag.a(this.a, EditVideoTag.a(this.a)).a(localEditBehavior);
-  }
+  public static final ThirdPayGate a = new ThirdPayGate(null);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anfb
  * JD-Core Version:    0.7.0.1
  */

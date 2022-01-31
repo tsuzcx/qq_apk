@@ -1,8 +1,5 @@
 package dov.com.qq.im.capture.data;
 
-import amvd;
-import amve;
-import amvf;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -12,6 +9,9 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.text.TextUtils;
+import anli;
+import anlj;
+import anlk;
 import com.tencent.av.opengl.filter.qqavimage.QQAVImageFilterConstants;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -75,7 +75,7 @@ public class CaptureComboManager
     this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_b_of_type_JavaUtilHashMap = new HashMap();
     this.jdField_c_of_type_JavaUtilHashMap = new HashMap();
-    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new amve(this));
+    this.jdField_b_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), new anlj(this));
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_b_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_c_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
@@ -89,7 +89,7 @@ public class CaptureComboManager
     }
     this.jdField_a_of_type_Int = 0;
     this.jdField_a_of_type_MqqAppAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
-    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), new amvd(this));
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), new anli(this));
     this.jdField_a_of_type_DovComQqImCaptureDataComboLockManager = new ComboLockManager(this.jdField_a_of_type_MqqAppAppRuntime);
   }
   
@@ -449,7 +449,7 @@ public class CaptureComboManager
   
   public QIMFilterCategoryItem a(Activity paramActivity, int paramInt)
   {
-    Object localObject = (ComboProviderView)paramActivity.findViewById(2131362414);
+    Object localObject = (ComboProviderView)paramActivity.findViewById(2131362417);
     if (localObject != null)
     {
       ((ComboProviderView)localObject).g();
@@ -461,15 +461,15 @@ public class CaptureComboManager
         ((DoodleLayout)localObject).a().a();
       }
     }
-    localObject = (StaticStickerProviderView)paramActivity.findViewById(2131362416);
+    localObject = (StaticStickerProviderView)paramActivity.findViewById(2131362419);
     if (localObject != null) {
       ((StaticStickerProviderView)localObject).g();
     }
-    localObject = (QIMFilterProviderView)paramActivity.findViewById(2131362415);
+    localObject = (QIMFilterProviderView)paramActivity.findViewById(2131362418);
     if (localObject != null) {
       ((QIMFilterProviderView)localObject).g();
     }
-    paramActivity = (MusicProviderView)paramActivity.findViewById(2131362417);
+    paramActivity = (MusicProviderView)paramActivity.findViewById(2131362420);
     if (paramActivity != null) {
       paramActivity.g();
     }
@@ -566,7 +566,7 @@ public class CaptureComboManager
   
   public void a()
   {
-    ThreadManager.post(new amvf(this), 8, null, true);
+    ThreadManager.post(new anlk(this), 8, null, true);
   }
   
   public void a(int paramInt)

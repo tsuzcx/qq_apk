@@ -1,17 +1,14 @@
-import com.tencent.mobileqq.armap.ArMapInterface;
-import com.tencent.mobileqq.data.QQEntityManagerFactory;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import com.tencent.mobileqq.ark.ArkLocalAppMgr.IGetAppPathByNameCallback;
 
 public class aavd
   implements Runnable
 {
-  public aavd(ArMapInterface paramArMapInterface) {}
+  public aavd(ArkLocalAppMgr paramArkLocalAppMgr, String paramString1, String paramString2, Object paramObject, ArkLocalAppMgr.IGetAppPathByNameCallback paramIGetAppPathByNameCallback) {}
   
   public void run()
   {
-    if ((!ArMapInterface.a(this.a).verifyAuthentication()) && (QLog.isColorLevel())) {
-      QLog.i("ArMapInterface", 2, "verifyAuthentication fail");
-    }
+    ArkLocalAppMgr.a(this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ComTencentMobileqqArkArkLocalAppMgr$IGetAppPathByNameCallback);
   }
 }
 

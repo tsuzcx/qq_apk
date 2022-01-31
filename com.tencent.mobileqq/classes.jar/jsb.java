@@ -1,17 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
+import com.tencent.av.utils.TraeHelper;
 
 public class jsb
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public jsb(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
+  public jsb(DoubleVideoCtrlUI paramDoubleVideoCtrlUI) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    ReportController.b(this.a.app, "CliOper", "", "", "0X80063FA", "0X80063FA", 5, 0, "", "", "", "");
+    TraeHelper.a().a("DoubleVideoCtrlUI.onResumeVideo", this.a.a, 2131230735, null, 0, null);
   }
 }
 

@@ -36,11 +36,11 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ScheduledFuture;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
-import pec;
-import ped;
-import pee;
-import pef;
-import peh;
+import pfw;
+import pfx;
+import pfy;
+import pfz;
+import pgb;
 
 public class NewGifDrawable
   extends Drawable
@@ -69,8 +69,8 @@ public class NewGifDrawable
   public final ConcurrentLinkedQueue a;
   public ScheduledFuture a;
   public final ScheduledThreadPoolExecutor a;
-  private pee jdField_a_of_type_Pee = new pee(this, null);
-  private final peh jdField_a_of_type_Peh;
+  private pfy jdField_a_of_type_Pfy = new pfy(this, null);
+  private final pgb jdField_a_of_type_Pgb;
   public volatile boolean a;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int = 0;
@@ -151,7 +151,7 @@ public class NewGifDrawable
       if ((!ImageManagerEnv.g().isPreferNewGifDecodeTask()) || (this.jdField_b_of_type_Boolean) || (a())) {
         break label510;
       }
-      this.jdField_a_of_type_Peh = new PrepareAndRenderTask(this);
+      this.jdField_a_of_type_Pgb = new PrepareAndRenderTask(this);
       this.e = 2;
       label233:
       paramNewGifDecoder = localObject2;
@@ -220,7 +220,7 @@ public class NewGifDrawable
       this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.setLoopCount(1);
       setCurrentModel(paramInt1);
       break label181;
-      this.jdField_a_of_type_Peh = new peh(this);
+      this.jdField_a_of_type_Pgb = new pgb(this);
       this.e = 1;
       break label233;
       label535:
@@ -319,13 +319,13 @@ public class NewGifDrawable
   
   private void b()
   {
-    boolean bool = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.remove(this.jdField_a_of_type_Peh);
+    boolean bool = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.remove(this.jdField_a_of_type_Pgb);
     ImageManagerLog.e("NewGifDrawable", "waitForPendingRenderTask isRemove:" + bool + " queue size:" + this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.getQueue().size());
     if (this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture != null) {}
     try
     {
       this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture.get();
-      this.jdField_a_of_type_Peh.waitFinish();
+      this.jdField_a_of_type_Pgb.waitFinish();
       label82:
       this.jdField_a_of_type_ComTencentComponentMediaGifInvalidationHandler.removeMessages(0);
       return;
@@ -414,8 +414,8 @@ public class NewGifDrawable
     //   28: lsub
     //   29: lstore_2
     //   30: aload_0
-    //   31: getfield 196	com/tencent/component/media/gif/NewGifDrawable:jdField_a_of_type_Peh	Lpeh;
-    //   34: invokevirtual 425	peh:getFrameDelay	()J
+    //   31: getfield 196	com/tencent/component/media/gif/NewGifDrawable:jdField_a_of_type_Pgb	Lpgb;
+    //   34: invokevirtual 425	pgb:getFrameDelay	()J
     //   37: lstore 4
     //   39: aload_0
     //   40: getfield 427	com/tencent/component/media/gif/NewGifDrawable:jdField_c_of_type_Boolean	Z
@@ -534,8 +534,8 @@ public class NewGifDrawable
       ImageManagerLog.d("NewGifDrawable", "startAnimation: already has one message");
       return;
     }
-    pef localpef = new pef(this, paramLong);
-    this.jdField_a_of_type_AndroidOsHandler.post(localpef);
+    pfz localpfz = new pfz(this, paramLong);
+    this.jdField_a_of_type_AndroidOsHandler.post(localpfz);
   }
   
   public void addAnimationListener(AnimationListener paramAnimationListener)
@@ -562,7 +562,7 @@ public class NewGifDrawable
   {
     b();
     this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.changeFile(paramString);
-    this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.schedule(this.jdField_a_of_type_Peh, 0L, TimeUnit.MILLISECONDS);
+    this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.schedule(this.jdField_a_of_type_Pgb, 0L, TimeUnit.MILLISECONDS);
   }
   
   public void draw(Canvas paramCanvas)
@@ -593,8 +593,8 @@ public class NewGifDrawable
         {
           long l = Math.max(0L, this.jdField_a_of_type_Long - SystemClock.uptimeMillis());
           this.jdField_a_of_type_Long = -9223372036854775808L;
-          this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.remove(this.jdField_a_of_type_Peh);
-          this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.schedule(this.jdField_a_of_type_Peh, l, TimeUnit.MILLISECONDS);
+          this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.remove(this.jdField_a_of_type_Pgb);
+          this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.schedule(this.jdField_a_of_type_Pgb, l, TimeUnit.MILLISECONDS);
         }
         handlePlayCallBack(3);
         return;
@@ -1034,10 +1034,10 @@ public class NewGifDrawable
     //   36: putfield 103	com/tencent/component/media/gif/NewGifDrawable:jdField_a_of_type_Boolean	Z
     //   39: aload_0
     //   40: getfield 160	com/tencent/component/media/gif/NewGifDrawable:jdField_a_of_type_AndroidOsHandler	Landroid/os/Handler;
-    //   43: new 721	pea
+    //   43: new 721	pfu
     //   46: dup
     //   47: aload_0
-    //   48: invokespecial 722	pea:<init>	(Lcom/tencent/component/media/gif/NewGifDrawable;)V
+    //   48: invokespecial 722	pfu:<init>	(Lcom/tencent/component/media/gif/NewGifDrawable;)V
     //   51: invokevirtual 470	android/os/Handler:post	(Ljava/lang/Runnable;)Z
     //   54: pop
     //   55: goto -38 -> 17
@@ -1061,7 +1061,7 @@ public class NewGifDrawable
     if (paramInt < 0) {
       throw new IllegalArgumentException("Position is not positive");
     }
-    this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.execute(new pec(this, this, paramInt));
+    this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.execute(new pfw(this, this, paramInt));
   }
   
   public void seekToFrame(int paramInt)
@@ -1069,7 +1069,7 @@ public class NewGifDrawable
     if (paramInt < 0) {
       throw new IndexOutOfBoundsException("Frame index is not positive");
     }
-    this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.execute(new ped(this, this, paramInt));
+    this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.execute(new pfx(this, this, paramInt));
   }
   
   public Bitmap seekToFrameAndGet(int paramInt)
@@ -1248,7 +1248,7 @@ public class NewGifDrawable
     d();
     this.jdField_c_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_Pee);
+    this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_Pfy);
   }
   
   public String toString()
@@ -1260,7 +1260,7 @@ public class NewGifDrawable
   {
     b();
     this.jdField_a_of_type_ComTencentComponentMediaGifNewGifDecoder.updateFile(paramString);
-    this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.schedule(this.jdField_a_of_type_Peh, 0L, TimeUnit.MILLISECONDS);
+    this.jdField_a_of_type_JavaUtilConcurrentScheduledFuture = this.jdField_a_of_type_JavaUtilConcurrentScheduledThreadPoolExecutor.schedule(this.jdField_a_of_type_Pgb, 0L, TimeUnit.MILLISECONDS);
   }
 }
 

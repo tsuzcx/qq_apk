@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.search.model;
 
-import ahga;
+import ahuc;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -157,7 +157,7 @@ public abstract class SearchEntryDataModel
       }
       return;
     }
-    ThreadManager.post(new ahga(this), 5, null, true);
+    ThreadManager.post(new ahuc(this), 5, null, true);
   }
 }
 

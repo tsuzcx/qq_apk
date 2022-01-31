@@ -1,14 +1,22 @@
-import com.tencent.mobileqq.activity.Leba;
-import com.tencent.mobileqq.observer.GetRedPointExObserver;
+import android.text.TextUtils;
+import android.widget.ImageView;
+import com.tencent.mobileqq.activity.GesturePWDUnlockActivity;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 
 public class suh
-  extends GetRedPointExObserver
+  extends FriendListObserver
 {
-  public suh(Leba paramLeba) {}
+  public suh(GesturePWDUnlockActivity paramGesturePWDUnlockActivity) {}
   
-  protected void a(Object paramObject)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
-    Leba.c(this.a);
+    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (!paramString.equals(this.a.app.getCurrentAccountUin()))) {}
+    while (this.a.a == null) {
+      return;
+    }
+    paramString = this.a.app.a(this.a.app.getCurrentAccountUin(), (byte)3, false);
+    this.a.a.setImageBitmap(paramString);
   }
 }
 

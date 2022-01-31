@@ -1,7 +1,7 @@
 package cooperation.qzone.webviewplugin;
 
-import amle;
-import amlf;
+import anbj;
+import anbk;
 import android.app.Activity;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.CustomWebView;
@@ -47,7 +47,7 @@ public class QZoneDNSAnalyzeJsPlugin
       QLog.e("QZoneDNSAnalyzeJsPlugin", 1, "host is empty.");
       return;
     }
-    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new amle(this, paramWebViewPlugin, paramArrayOfString));
+    QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new anbj(this, paramWebViewPlugin, paramArrayOfString));
   }
   
   private void a(String paramString1, int paramInt, String paramString2)
@@ -95,7 +95,7 @@ public class QZoneDNSAnalyzeJsPlugin
       if ((paramString != null) && ((paramString instanceof Integer)))
       {
         int i = ((Integer)paramString).intValue();
-        QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new amlf(this, i));
+        QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").post(new anbk(this, i));
       }
     }
     return false;

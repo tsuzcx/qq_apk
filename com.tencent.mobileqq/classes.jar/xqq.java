@@ -1,19 +1,14 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import cooperation.qzone.report.lp.LpReportInfo_pf00064;
+import android.os.Process;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
 public class xqq
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public xqq(QzDynamicVideoPreviewActivity paramQzDynamicVideoPreviewActivity) {}
+  public xqq(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    QzDynamicVideoPreviewActivity.a(this.a).dismiss();
-    LpReportInfo_pf00064.allReport(680, 1, 4, true);
-    QzDynamicVideoPreviewActivity.d(this.a);
+    Process.killProcess(Process.myPid());
   }
 }
 

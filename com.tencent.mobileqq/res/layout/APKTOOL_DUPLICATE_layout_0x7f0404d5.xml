@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_width="fill_parent" android:layout_height="60.0dip"
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:background="#ffdcdcdc" android:layout_width="fill_parent" android:layout_height="0.5dip" android:layout_marginLeft="5.0dip" android:layout_marginRight="5.0dip" />
-    <LinearLayout android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0ee9" android:paddingTop="10.0dip" android:paddingBottom="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a03f5" android:background="@drawable/cm_blue_check_checked" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="15.0dip" android:layout_marginRight="15.0dip" android:contentDescription="@null" />
-        <TextView android:textSize="14.0sp" android:textColor="#ff000000" android:id="@id/title" android:paddingRight="15.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:singleLine="true" android:layout_weight="1.0" />
-        <TextView android:textSize="14.0sp" android:textColor="#ff000000" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17ee" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a17ef" android:background="@drawable/qvip_pay_pressed_cover_background" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+    <include layout="@layout/APKTOOL_DUPLICATE_layout_0x7f0404d6" />
+    <TextView android:textSize="16.0sp" android:textColor="#ff777777" android:ellipsize="end" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/title_txt" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="20.0dip" android:text="商品名称" android:singleLine="true" android:includeFontPadding="false" />
+    <RelativeLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a173e" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="5.0dip" android:layout_marginRight="20.0dip">
+        <TextView android:textSize="45.0sp" android:textStyle="bold" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c030d" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a173f" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0.00" android:singleLine="true" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="25.0sp" android:textStyle="bold" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c030d" android:paddingTop="10.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:text="¥" android:includeFontPadding="false" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a173f" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1896" android:visibility="visible" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+        <TextView android:textSize="16.0sp" android:textColor="#ffff8444" android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1897" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="现金卡立减" android:includeFontPadding="false" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1898" android:visibility="gone" android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="6.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020e17" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1897" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</LinearLayout>

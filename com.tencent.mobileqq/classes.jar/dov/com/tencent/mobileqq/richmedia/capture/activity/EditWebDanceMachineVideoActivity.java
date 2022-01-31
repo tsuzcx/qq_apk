@@ -24,10 +24,10 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import anux;
-import anuy;
-import anvc;
-import anvd;
+import aolc;
+import aold;
+import aolh;
+import aoli;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
@@ -192,7 +192,7 @@ public class EditWebDanceMachineVideoActivity
     if ((this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditTakeVideoSource)) {
       str = ((EditTakeVideoSource)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource).jdField_b_of_type_JavaLangString;
     }
-    new anvd(this, this, str, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a(), paramInt, getAppInterface(), this).execute(new Void[0]);
+    new aoli(this, this, str, this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource.a(), paramInt, getAppInterface(), this).execute(new Void[0]);
   }
   
   private void a(Context paramContext, int paramInt)
@@ -210,11 +210,11 @@ public class EditWebDanceMachineVideoActivity
         }
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
         return;
-        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624515);
+        this.jdField_a_of_type_AndroidAppProgressDialog = new ProgressDialog(paramContext, 2131624516);
         this.jdField_a_of_type_AndroidAppProgressDialog.setCancelable(false);
         this.jdField_a_of_type_AndroidAppProgressDialog.show();
-        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969181);
-        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363381));
+        this.jdField_a_of_type_AndroidAppProgressDialog.setContentView(2130969180);
+        this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidAppProgressDialog.findViewById(2131363399));
       }
       return;
     }
@@ -287,28 +287,28 @@ public class EditWebDanceMachineVideoActivity
   {
     ArrayList localArrayList = new ArrayList();
     ShareActionSheetBuilder.ActionSheetItem localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131432987);
-    localActionSheetItem.jdField_b_of_type_Int = 2130845415;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131433004);
+    localActionSheetItem.jdField_b_of_type_Int = 2130845543;
     localActionSheetItem.jdField_a_of_type_Boolean = true;
     localActionSheetItem.jdField_c_of_type_Int = 2;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430109);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838336;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430126);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838340;
     localActionSheetItem.jdField_c_of_type_Int = 9;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     localActionSheetItem = new ShareActionSheetBuilder.ActionSheetItem();
-    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430110);
-    localActionSheetItem.jdField_b_of_type_Int = 2130838330;
+    localActionSheetItem.jdField_a_of_type_JavaLangString = paramContext.getString(2131430127);
+    localActionSheetItem.jdField_b_of_type_Int = 2130838334;
     localActionSheetItem.jdField_c_of_type_Int = 10;
     localActionSheetItem.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(localActionSheetItem);
     paramContext = new ShareActionSheetBuilder.ActionSheetItem();
     paramContext.jdField_a_of_type_JavaLangString = "新浪微博";
     paramContext.jdField_a_of_type_Boolean = true;
-    paramContext.jdField_b_of_type_Int = 2130838335;
+    paramContext.jdField_b_of_type_Int = 2130838339;
     paramContext.jdField_c_of_type_Int = 12;
     paramContext.jdField_b_of_type_JavaLangString = "";
     localArrayList.add(paramContext);
@@ -337,7 +337,7 @@ public class EditWebDanceMachineVideoActivity
     for (;;)
     {
       QIMReportController.b(null, localQIMReadWriteReportItem);
-      ThreadManager.executeOnSubThread(new anuy(this, paramInt));
+      ThreadManager.executeOnSubThread(new aold(this, paramInt));
       return;
       localQIMReadWriteReportItem.jdField_d_of_type_JavaLangString = "0X8008FB3";
       break;
@@ -387,7 +387,7 @@ public class EditWebDanceMachineVideoActivity
   {
     d();
     this.jdField_a_of_type_ComTencentUtilMqqWeakReferenceHandler.removeMessages(-1);
-    runOnUiThread(new anux(this));
+    runOnUiThread(new aolc(this));
     if (QLog.isColorLevel()) {
       QLog.e("DANCE_MACHINE_SHARE_TAG", 2, "upload failed, error code is " + paramInt + " error description : " + paramString);
     }
@@ -486,7 +486,7 @@ public class EditWebDanceMachineVideoActivity
   protected void b()
   {
     if (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager == null) {
-      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager = new anvc(this);
+      this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager = new aolh(this);
     }
   }
   
@@ -498,7 +498,7 @@ public class EditWebDanceMachineVideoActivity
     c(paramInt, paramString);
   }
   
-  public void c_(String paramString)
+  public void d_(String paramString)
   {
     if (QLog.isColorLevel()) {
       QLog.d("DANCE_MACHINE_SHARE_TAG", 2, "video upload success, uuid : " + paramString);
@@ -519,9 +519,9 @@ public class EditWebDanceMachineVideoActivity
       return true;
     }
     c();
-    paramBundle = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a().findViewById(2131364326);
+    paramBundle = this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoUi.a().findViewById(2131364350);
     ((ViewGroup)paramBundle.getParent()).removeView(paramBundle);
-    paramBundle = (RelativeLayout)findViewById(2131364435);
+    paramBundle = (RelativeLayout)findViewById(2131364459);
     Object localObject = paramBundle.getLayoutParams();
     RelativeLayout localRelativeLayout = new RelativeLayout(this);
     ((ViewGroup.LayoutParams)localObject).height = ScreenUtil.a(73.0F);
@@ -558,7 +558,7 @@ public class EditWebDanceMachineVideoActivity
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewShareActionSheet = new ShareActionSheet(this);
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewShareActionSheet.a(a(this));
       this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewShareActionSheet.a(this);
-      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewShareActionSheet.a(getString(2131433083));
+      this.jdField_a_of_type_DovComTencentMobileqqRichmediaCaptureViewShareActionSheet.a(getString(2131433100));
       return true;
       paramBundle.setColor(Color.parseColor("#12B7F5"));
       break;
@@ -586,11 +586,11 @@ public class EditWebDanceMachineVideoActivity
   protected void doOnResume()
   {
     super.doOnResume();
-    ((RelativeLayout)findViewById(2131364435)).setVisibility(8);
-    ((Button)findViewById(2131364436)).setVisibility(8);
+    ((RelativeLayout)findViewById(2131364459)).setVisibility(8);
+    ((Button)findViewById(2131364460)).setVisibility(8);
     if ((this.jdField_b_of_type_Boolean) || (this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean))
     {
-      DoodleLayout localDoodleLayout = (DoodleLayout)findViewById(2131362953);
+      DoodleLayout localDoodleLayout = (DoodleLayout)findViewById(2131362971);
       if ((localDoodleLayout != null) && (localDoodleLayout.a != null)) {
         localDoodleLayout.a.setPreventTouch(true);
       }

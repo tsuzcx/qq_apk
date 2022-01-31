@@ -7,12 +7,12 @@ import android.text.TextUtils;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.mobileqq.troop.data.MediaInfo;
 import java.io.File;
-import obk;
+import odc;
 
 public class EditLocalVideoSource
   implements EditVideoParams.EditSource
 {
-  public static final Parcelable.Creator CREATOR = new obk();
+  public static final Parcelable.Creator CREATOR = new odc();
   public int a;
   @NonNull
   public final LocalMediaInfo a;

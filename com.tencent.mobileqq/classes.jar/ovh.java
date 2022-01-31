@@ -1,26 +1,26 @@
-import com.tencent.biz.troop.VideoCombineHelper;
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr;
+import java.lang.ref.WeakReference;
 
 public class ovh
-  extends ovu
+  implements Runnable
 {
-  public ovh(VideoCombineHelper paramVideoCombineHelper, VideoCombineHelper.Callback paramCallback, String paramString)
+  private WeakReference a;
+  
+  public ovh(TribeVideoPlugin paramTribeVideoPlugin)
   {
-    super(paramVideoCombineHelper);
+    this.a = new WeakReference(paramTribeVideoPlugin);
   }
   
-  public void b(boolean paramBoolean)
+  public void run()
   {
-    if (QLog.isColorLevel())
-    {
-      QLog.d(".troop.VideoCombineHelper", 2, "mixAudio end : isSuccess = " + paramBoolean);
-      QLog.d(".troop.trace_video_combine", 2, "mixAudioTime: " + (System.currentTimeMillis() - this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a));
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper.a = System.currentTimeMillis();
+    TribeVideoPlugin localTribeVideoPlugin = (TribeVideoPlugin)this.a.get();
+    if (localTribeVideoPlugin == null) {
+      return;
     }
-    if (!paramBoolean) {
-      this.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(this.jdField_a_of_type_JavaLangString, false, "mixAudio done.");
-    }
+    TVK_SDKMgr.installPlugin(localTribeVideoPlugin.mRuntime.a().getApplication(), new ovi(this));
   }
 }
 

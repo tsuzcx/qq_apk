@@ -1,6 +1,6 @@
 package cooperation.qzone.model;
 
-import amer;
+import amuv;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -8,7 +8,7 @@ import android.os.Parcelable.Creator;
 public class PublishEventTag
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amer();
+  public static final Parcelable.Creator CREATOR = new amuv();
   public String a;
   public String b;
   public String c;

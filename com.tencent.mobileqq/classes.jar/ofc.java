@@ -1,17 +1,27 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoTag;
-import com.tencent.biz.qqstory.takevideo.EditVideoTag.EditBehavior;
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
-import com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView.PullToRefreshListener;
+import android.graphics.Color;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.EditVideoLabel;
 
 public class ofc
-  implements QQStoryPullToRefreshListView.PullToRefreshListener
+  implements View.OnTouchListener
 {
-  public ofc(EditVideoTag paramEditVideoTag) {}
+  public ofc(EditVideoLabel paramEditVideoLabel) {}
   
-  public void a()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    EditVideoTag.EditBehavior localEditBehavior = EditVideoTag.a(this.a);
-    EditVideoTag.a(this.a, EditVideoTag.a(this.a)).a(localEditBehavior);
+    switch (paramMotionEvent.getAction())
+    {
+    }
+    for (;;)
+    {
+      return false;
+      this.a.a.setTextColor(Color.parseColor("#80ffffff"));
+      continue;
+      this.a.a.setTextColor(Color.parseColor("#ffffff"));
+    }
   }
 }
 

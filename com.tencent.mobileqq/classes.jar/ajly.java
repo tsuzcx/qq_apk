@@ -1,29 +1,44 @@
-import android.util.Base64;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.util.HbThemeConfigManager;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.logic.HomeworkTroopController;
+import com.tencent.mobileqq.troop.utils.HWTroopUtils;
+import com.tencent.mobileqq.troop.utils.TroopLinkManager;
+import com.tencent.mobileqq.troop.utils.TroopLinkManager.LinkParams;
+import com.tencent.mobileqq.util.TroopReportor;
+import java.lang.ref.WeakReference;
 
 public class ajly
-  implements Runnable
+  implements View.OnClickListener
 {
-  public ajly(HbThemeConfigManager paramHbThemeConfigManager, String paramString, QQAppInterface paramQQAppInterface) {}
+  public ajly(HomeworkTroopController paramHomeworkTroopController) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    synchronized ()
+    paramView = (BaseActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (paramView != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("HbThemeConfigManager", 2, "update hbTheme config: " + this.jdField_a_of_type_JavaLangString);
-      }
-      FileUtils.a(HbThemeConfigManager.a(this.jdField_a_of_type_ComTencentMobileqqUtilHbThemeConfigManager, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface), "hbThemeConfig.cfg", Base64.encodeToString(this.jdField_a_of_type_JavaLangString.getBytes(), 0));
-      return;
+      HWTroopUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      Object localObject1 = TroopLinkManager.a();
+      Object localObject2 = ((TroopLinkManager)localObject1).a("troop_list_homework");
+      TroopLinkManager.LinkParams localLinkParams = new TroopLinkManager.LinkParams();
+      localLinkParams.a = this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a;
+      localLinkParams.c = "aio";
+      localObject1 = ((TroopLinkManager)localObject1).a((String)localObject2, localLinkParams);
+      localObject2 = new Intent(paramView, QQBrowserActivity.class);
+      ((Intent)localObject2).putExtra("url", (String)localObject1);
+      paramView.startActivity((Intent)localObject2);
+      TroopReportor.a("Grp_edu", "homework", "AioSee_Clk", 0, 0, new String[] { this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, TroopReportor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()), "", TroopReportor.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajly
  * JD-Core Version:    0.7.0.1
  */

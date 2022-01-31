@@ -1,27 +1,23 @@
-import com.tencent.mobileqq.profile.like.PraiseInfo;
-import com.tencent.mobileqq.profile.like.PraiseManager;
-import com.tencent.mobileqq.profile.like.PraiseManager.OnPraiseLoadListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ocr.OcrControl;
+import com.tencent.mobileqq.ocr.activity.ScanOcrActivity;
 
 public class agcg
-  implements PraiseManager.OnPraiseLoadListener
+  implements View.OnClickListener
 {
-  public int a;
-  public PraiseManager.OnPraiseLoadListener a;
-  public int b;
+  public agcg(ScanOcrActivity paramScanOcrActivity) {}
   
-  public agcg(PraiseManager paramPraiseManager) {}
-  
-  public void a(int paramInt1, PraiseInfo paramPraiseInfo, int paramInt2, String paramString)
+  public void onClick(View paramView)
   {
-    paramInt1 = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = paramInt1;
-    if (paramInt1 == this.b)
+    if ((ScanOcrActivity.a(this.a) == 1) && ((ScanOcrActivity.b(this.a) == 0) || (ScanOcrActivity.b(this.a) == 4)))
     {
-      this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager.b(this);
-      if (this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseLoadListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqProfileLikePraiseManager$OnPraiseLoadListener.a(0, null, 0, "");
-      }
+      ScanOcrActivity.a(this.a).a();
+      ScanOcrActivity.a(this.a, false);
+      ScanOcrActivity.b(this.a);
+      return;
     }
+    this.a.finish();
   }
 }
 

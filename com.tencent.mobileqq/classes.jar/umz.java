@@ -1,52 +1,23 @@
-import com.tencent.av.core.VcSystemInfo;
-import com.tencent.av.utils.TraeHelper;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.audiopanel.PressToChangeVoicePanel;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.earlydownload.EarlyDownloadManager;
-import com.tencent.mobileqq.earlydownload.handler.EarlyHandler;
-import com.tencent.mobileqq.earlydownload.handler.QavSoDownloadHandler;
-import com.tencent.mobileqq.startup.step.UpdateAvSo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.drawable.Drawable;
+import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
+import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
+import com.tencent.mobileqq.activity.aio.anim.AioAnimationRule;
+import com.tencent.mobileqq.activity.aio.anim.AioAnimationRule.BussinessData;
 
-public final class umz
+public class umz
   implements Runnable
 {
-  public umz(boolean paramBoolean, QQAppInterface paramQQAppInterface, String paramString) {}
+  public umz(AioAnimationDetector paramAioAnimationDetector, AIOAnimationConatiner paramAIOAnimationConatiner, Drawable paramDrawable, AioAnimationRule paramAioAnimationRule) {}
   
   public void run()
   {
-    if (!this.jdField_a_of_type_Boolean)
+    AIOAnimationConatiner localAIOAnimationConatiner = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner;
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a == null) {}
+    for (int i = -1;; i = this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAioAnimationRule.a.a)
     {
-      if (PressToChangeVoicePanel.jdField_a_of_type_JavaLangString == null) {
-        PressToChangeVoicePanel.jdField_a_of_type_JavaLangString = TraeHelper.a(BaseApplicationImpl.sApplication);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOAudioPanel", 2, "checkVcSo async:" + PressToChangeVoicePanel.jdField_a_of_type_JavaLangString);
-      }
-    }
-    if ((PressToChangeVoicePanel.jdField_a_of_type_JavaLangString != null) || (VcSystemInfo.f() <= 2)) {}
-    for (;;)
-    {
-      try
-      {
-        EarlyHandler localEarlyHandler = ((EarlyDownloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(76)).a(QavSoDownloadHandler.e());
-        if (localEarlyHandler == null) {
-          continue;
-        }
-        localEarlyHandler.a(false);
-      }
-      catch (Exception localException)
-      {
-        QLog.e("AIOAudioPanel", 1, "voiceChang checkVcSo Exception:" + localException.getMessage());
-        continue;
-      }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 0, 0, "", "", "", "");
+      localAIOAnimationConatiner.a(2, 300, new Object[] { localDrawable, Integer.valueOf(0), Integer.valueOf(i) });
       return;
-      QLog.e("AIOAudioPanel", 1, "voiceChang checkVcSo null == earlyHandler:");
-      continue;
-      UpdateAvSo.b(BaseApplicationImpl.sApplication, "traeimp-armeabi-v7a", true);
     }
   }
 }

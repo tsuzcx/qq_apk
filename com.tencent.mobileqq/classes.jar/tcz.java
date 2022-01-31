@@ -1,37 +1,51 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.PhoneUnityChangeActivity;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import android.app.ProgressDialog;
+import android.content.res.Resources;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.log.ReportLog;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
+import mqq.manager.ServerConfigManager.ConfigType;
+import mqq.manager.TicketManager;
 
-class tcz
-  implements DialogInterface.OnClickListener
+public class tcz
+  implements View.OnClickListener
 {
-  tcz(tcx paramtcx) {}
+  public tcz(NotificationActivity paramNotificationActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    paramDialogInterface.dismiss();
-    if (!NetworkUtil.d(this.a.a))
+    ProgressDialog localProgressDialog = DialogUtil.a(this.a, this.a.getResources().getDrawable(2130845469), 2131435052);
+    localProgressDialog.setOnDismissListener(new tda(this));
+    ReportLog.a(this.a.app.getAccount());
+    this.a.app.a(ServerConfigManager.ConfigType.app, "log_upload");
+    Object localObject = BaseApplicationImpl.sApplication.getRuntime();
+    if (localObject != null)
     {
-      PhoneUnityChangeActivity.a(this.a.a, 2131434596);
+      paramView = (TicketManager)((AppRuntime)localObject).getManager(2);
+      localObject = ((AppRuntime)localObject).getAccount();
+      if (paramView == null) {
+        break label161;
+      }
+    }
+    label161:
+    for (paramView = paramView.getSkey((String)localObject);; paramView = "")
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("qqBaseActivity", 2, new Object[] { " NotificationActivity crash uin=", localObject, ",skey=", paramView });
+      }
+      ReportLog.a(this.a.app.getHttpCommunicatort(), this.a.app.getApp(), localProgressDialog, (String)localObject, paramView);
       return;
     }
-    if (this.a.a.b == null)
-    {
-      this.a.a.b = new tda(this);
-      this.a.a.app.registObserver(this.a.a.b);
-    }
-    PhoneUnityChangeActivity.a(this.a.a).b(true, false);
-    PhoneUnityChangeActivity.a(this.a.a, 2131434436, 0L, true);
-    ReportController.b(this.a.a.app, "CliOper", "", "", "0X8005B81", "0X8005B81", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tcz
  * JD-Core Version:    0.7.0.1
  */

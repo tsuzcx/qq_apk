@@ -1,34 +1,25 @@
-import android.app.Activity;
-import android.graphics.Color;
-import android.text.TextPaint;
-import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.aio.item.DeviceFileItemBuilder;
+import com.tencent.mobileqq.data.MessageForDeviceFile;
 import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class uvt
-  extends ClickableSpan
+  implements ActionSheet.OnButtonClickListener
 {
-  public uvt(GrayTipsItemBuilder paramGrayTipsItemBuilder) {}
+  public uvt(DeviceFileItemBuilder paramDeviceFileItemBuilder, MessageForDeviceFile paramMessageForDeviceFile, ActionSheet paramActionSheet) {}
   
-  public void onClick(View paramView)
+  public void OnClick(View paramView, int paramInt)
   {
-    if ((this.a.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    switch (paramInt)
     {
-      paramView = ActionSheet.a(this.a.jdField_a_of_type_AndroidContentContext);
-      paramView.b(2131433811);
-      paramView.c(2131432998);
-      paramView.a(new uvu(this));
-      paramView.a(new uvv(this, paramView));
-      paramView.show();
-      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005973", "0X8005973", 0, 0, "", "", "", "");
     }
-  }
-  
-  public void updateDrawState(TextPaint paramTextPaint)
-  {
-    paramTextPaint.setColor(Color.rgb(26, 144, 240));
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDeviceFileItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
+    }
   }
 }
 

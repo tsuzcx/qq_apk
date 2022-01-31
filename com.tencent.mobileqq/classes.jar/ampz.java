@@ -1,43 +1,46 @@
-import android.content.Context;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.utils.AudioUtil;
-import com.tencent.mobileqq.utils.QQRecorder;
-import cooperation.troop_homework.jsp.TroopHWVoiceController;
-import cooperation.troop_homework.jsp.TroopHWVoiceController.RecordCallback;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.plugin.IPluginManager;
+import cooperation.qqindividuality.QQIndividualityBridgeActivity;
 
 public class ampz
-  extends Handler
+  extends OnPluginInstallListener.Stub
 {
-  public ampz(TroopHWVoiceController paramTroopHWVoiceController) {}
+  public ampz(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onInstallBegin(String paramString) {}
+  
+  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
+  
+  public void onInstallError(String paramString, int paramInt)
   {
-    switch (paramMessage.what)
-    {
+    String str = String.valueOf(paramInt);
+    paramString = "个性化插件";
+    if (this.a.b == QQIndividualityBridgeActivity.c) {
+      paramString = "斗图";
     }
-    do
+    for (;;)
     {
-      do
-      {
-        do
-        {
-          return;
-          if (TroopHWVoiceController.a(this.a) != null) {
-            TroopHWVoiceController.a(this.a).a(1, TroopHWVoiceController.a(this.a));
-          }
-        } while (!(paramMessage.obj instanceof String));
-        paramMessage = (String)paramMessage.obj;
-        this.a.d(paramMessage);
-        this.a.c(paramMessage);
-        return;
-        TroopHWVoiceController.a(this.a).c();
-        AudioUtil.b(2131230743, false);
-      } while (this.a.a == null);
-      paramMessage = (Context)this.a.a.get();
-    } while (paramMessage == null);
-    AudioUtil.a(paramMessage, false);
+      IPluginManager.a(str, paramString);
+      int i = NetworkUtil.a(this.a);
+      QLog.e("QQIndividuality", 2, "install plugin fail: " + paramInt + " and netType = " + i);
+      this.a.setResult(1001);
+      QQIndividualityBridgeActivity.c(this.a);
+      ReportController.b(null, "CliOper", "", "", "ep_mall", "0X8006A98", 0, 0, str, String.valueOf(i), "", "");
+      return;
+      if (this.a.b == QQIndividualityBridgeActivity.d) {
+        paramString = "个签";
+      } else if (this.a.b == QQIndividualityBridgeActivity.e) {
+        paramString = "历史签名";
+      }
+    }
+  }
+  
+  public void onInstallFinish(String paramString)
+  {
+    this.a.b();
   }
 }
 

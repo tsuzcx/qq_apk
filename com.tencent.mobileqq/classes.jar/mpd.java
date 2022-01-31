@@ -1,29 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.Utils;
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class mpd
-  extends QQLruCache
+  implements DialogInterface.OnClickListener
 {
-  mpd(mpc parammpc, int paramInt1, int paramInt2)
-  {
-    super(paramInt1, paramInt2);
-  }
+  mpd(mpb parammpb) {}
   
-  protected int a(ImageRequest paramImageRequest, CloseableBitmap paramCloseableBitmap)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    return Utils.a(paramCloseableBitmap.a());
-  }
-  
-  protected void a(boolean paramBoolean, ImageRequest paramImageRequest, CloseableBitmap paramCloseableBitmap1, CloseableBitmap paramCloseableBitmap2)
-  {
-    super.entryRemoved(paramBoolean, paramImageRequest, paramCloseableBitmap1, paramCloseableBitmap2);
-    if (QLog.isColorLevel()) {
-      Utils.a(mpc.a, "entryRemoved cache " + paramCloseableBitmap1 + " state:" + this.a.toString());
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
-    paramCloseableBitmap1.a();
   }
 }
 

@@ -34,7 +34,7 @@ import tencent.im.oidb.cmd0x7a1.oidb_0x7a1.RspBody;
 import tencent.im.oidb.cmd0x7a2.oidb_0x7a2.ReqBody;
 import tencent.im.oidb.cmd0x7a2.oidb_0x7a2.RspBody;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
-import zkd;
+import znj;
 
 public class SubAccountBindHandler
   extends BusinessHandler
@@ -903,7 +903,7 @@ public class SubAccountBindHandler
         {
           localObject = SubAccountBackProtocData.a(localSubAccountBackProtocData);
           ((SubAccountBackProtocData)localObject).c = str;
-          this.b.getSubAccountKey(this.b.getAccount(), ((SubAccountBackProtocData)localObject).c, new zkd(this, (SubAccountBackProtocData)localObject, paramFromServiceMsg, bool2));
+          this.b.getSubAccountKey(this.b.getAccount(), ((SubAccountBackProtocData)localObject).c, new znj(this, (SubAccountBackProtocData)localObject, paramFromServiceMsg, bool2));
           i = 0;
         }
         catch (Exception paramToServiceMsg)

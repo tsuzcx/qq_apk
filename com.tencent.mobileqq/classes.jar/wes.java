@@ -1,22 +1,17 @@
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity;
+import com.tencent.mobileqq.activity.bless.BlessActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 
 public class wes
   implements View.OnClickListener
 {
-  public wes(ClassificationSearchActivity paramClassificationSearchActivity) {}
+  public wes(BlessActivity paramBlessActivity) {}
   
   public void onClick(View paramView)
   {
-    paramView = (InputMethodManager)this.a.getSystemService("input_method");
-    if ((paramView != null) && (paramView.isActive())) {
-      paramView.hideSoftInputFromWindow(this.a.getWindow().getDecorView().getWindowToken(), 0);
-    }
-    this.a.setResult(1);
-    this.a.finish();
+    ReportController.b(this.a.app, "CliOper", "", "", "0X800632F", "0X800632F", 0, 0, "", "", "", "");
+    BlessActivity.a(this.a, true);
   }
 }
 

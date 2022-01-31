@@ -18,7 +18,7 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
-import nbp;
+import nda;
 
 public class TagManager
   implements IManager
@@ -174,7 +174,7 @@ public class TagManager
       this.jdField_a_of_type_Long = System.currentTimeMillis();
       localObject = new GetFeedTagInfoListRequest();
       ((GetFeedTagInfoListRequest)localObject).a = paramList;
-      CmdTaskManger.a().a((NetworkRequest)localObject, new nbp(this));
+      CmdTaskManger.a().a((NetworkRequest)localObject, new nda(this));
       SLog.d("Q.qqstory:TagManager", "request tag list :%s", new Object[] { paramList });
       return;
       paramList = paramList.iterator();

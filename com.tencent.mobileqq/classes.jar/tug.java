@@ -1,14 +1,20 @@
-import com.tencent.mobileqq.activity.TroopGagActivity;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr;
+import android.os.Message;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import mqq.os.MqqHandler;
 
 public class tug
-  implements Runnable
+  extends MqqHandler
 {
-  public tug(TroopGagActivity paramTroopGagActivity, TroopGagMgr paramTroopGagMgr) {}
+  public tug(SubAccountUgActivity paramSubAccountUgActivity) {}
   
-  public void run()
+  public void handleMessage(Message paramMessage)
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopGagMgr.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopGagActivity.a, true);
+    switch (paramMessage.what)
+    {
+    default: 
+      return;
+    }
+    this.a.finish();
   }
 }
 

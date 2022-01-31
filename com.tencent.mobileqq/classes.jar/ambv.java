@@ -1,30 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import cooperation.qzone.QZoneLiveVideoDownLoadActivtyV2;
+import com.tencent.widget.GestureSelectGridView;
+import com.tencent.widget.GestureSelectGridView.OnSelectListener;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-class ambv
+public class ambv
   implements Runnable
 {
-  ambv(ambu paramambu, float paramFloat) {}
+  public ambv(GestureSelectGridView paramGestureSelectGridView) {}
   
   public void run()
   {
-    if ((int)(this.jdField_a_of_type_Float * 100.0F) > 0)
+    this.a.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
+    if ((!this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) && (this.a.jdField_b_of_type_Int != -1))
     {
-      this.jdField_a_of_type_Ambu.a.a.removeMessages(1009);
-      this.jdField_a_of_type_Ambu.a.a.obtainMessage(1004, 100, 0).sendToTarget();
-      this.jdField_a_of_type_Ambu.a.a(false, true);
+      if (this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener != null) {
+        this.a.jdField_a_of_type_ComTencentWidgetGestureSelectGridView$OnSelectListener.b(this.a.jdField_b_of_type_Int);
+      }
+      this.a.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
     }
-    while (!this.jdField_a_of_type_Ambu.a.e) {
-      return;
-    }
-    this.jdField_a_of_type_Ambu.a.a.removeMessages(1009);
-    this.jdField_a_of_type_Ambu.a.a(true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ambv
  * JD-Core Version:    0.7.0.1
  */

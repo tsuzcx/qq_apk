@@ -1,23 +1,22 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.data.IPSiteModel.ComicRich;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText;
 
-public final class abmw
-  implements Parcelable.Creator
+public class abmw
+  implements View.OnClickListener
 {
-  public IPSiteModel.ComicRich a(Parcel paramParcel)
-  {
-    IPSiteModel.ComicRich localComicRich = new IPSiteModel.ComicRich();
-    localComicRich.extCover = paramParcel.readString();
-    localComicRich.extName = paramParcel.readString();
-    localComicRich.extTitle = paramParcel.readString();
-    localComicRich.extUrl = paramParcel.readString();
-    return localComicRich;
-  }
+  public abmw(BusinessCardEditActivity paramBusinessCardEditActivity, String paramString) {}
   
-  public IPSiteModel.ComicRich[] a(int paramInt)
+  public void onClick(View paramView)
   {
-    return new IPSiteModel.ComicRich[paramInt];
+    if ((this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.jdField_a_of_type_AndroidAppDialog.isShowing()))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.jdField_a_of_type_AndroidAppDialog.dismiss();
+      this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.jdField_a_of_type_AndroidAppDialog = null;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqBusinessCardActivityBusinessCardEditActivity.jdField_a_of_type_ComTencentMobileqqBusinessCardViewsClearEllipsisEditText.setEllipsisText(this.jdField_a_of_type_JavaLangString);
   }
 }
 

@@ -1,32 +1,27 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addcontact.SearchBaseFragment;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnKeyListener;
+import android.view.KeyEvent;
+import com.tencent.mobileqq.activity.bless.BlessSelectMemberActivity;
+import com.tencent.util.MqqWeakReferenceHandler;
 
 public class wfp
-  extends Handler
+  implements DialogInterface.OnKeyListener
 {
-  public wfp(SearchBaseFragment paramSearchBaseFragment) {}
+  public wfp(BlessSelectMemberActivity paramBlessSelectMemberActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (SearchBaseFragment.a(this.a) != null) {
-      SearchBaseFragment.a(this.a).sendMessage(Message.obtain(paramMessage));
-    }
-    switch (paramMessage.what)
+    if (paramInt == 84) {}
+    do
     {
-    default: 
-      return;
-    case 0: 
-      this.a.a();
-      return;
-    case 1: 
-      this.a.a((String)paramMessage.obj);
-      return;
-    case 2: 
-      this.a.g();
-      return;
-    }
-    this.a.c();
+      return true;
+      if (paramInt != 4) {
+        break;
+      }
+    } while (BlessSelectMemberActivity.a() == null);
+    BlessSelectMemberActivity.a().sendEmptyMessage(1);
+    return true;
+    return false;
   }
 }
 

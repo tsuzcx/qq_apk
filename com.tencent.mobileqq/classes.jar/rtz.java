@@ -1,12 +1,15 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
 
-public final class rtz
-  implements DialogInterface.OnClickListener
+class rtz
+  implements View.OnTouchListener
 {
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  rtz(rty paramrty) {}
+  
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramDialogInterface.dismiss();
+    return true;
   }
 }
 

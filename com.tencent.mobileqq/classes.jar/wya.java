@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.activity.qwallet.RedPacketRecordFragment;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity.QueryPhotoTask;
 
 public class wya
   implements Runnable
 {
-  public wya(RedPacketRecordFragment paramRedPacketRecordFragment, int paramInt) {}
+  public wya(PhotoListActivity.QueryPhotoTask paramQueryPhotoTask) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment.f()) {
-      RedPacketRecordFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityQwalletRedPacketRecordFragment, this.jdField_a_of_type_Int);
-    }
+    this.a.a.d();
   }
 }
 

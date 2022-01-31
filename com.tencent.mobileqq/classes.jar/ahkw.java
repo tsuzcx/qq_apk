@@ -1,36 +1,39 @@
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.mobileqq.transfile.HttpNetReq;
-import com.tencent.mobileqq.transfile.INetEngine;
-import com.tencent.mobileqq.transfile.NetworkCenter;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import com.tencent.mobileqq.richmedia.capture.util.ReportBadCase;
+import com.tencent.mobileqq.shortvideo.dancemachine.BadcaseReportUtils.BadDataFrame;
+import com.tencent.mobileqq.utils.FileUtils;
+import java.util.ArrayList;
 
-public class ahkw
+public final class ahkw
   implements Runnable
 {
-  public ahkw(PtvTemplateManager paramPtvTemplateManager, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, AppInterface paramAppInterface) {}
-  
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo)) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = true;
-    }
-    do
+    for (;;)
     {
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable = false;
-      HttpNetReq localHttpNetReq = new HttpNetReq();
-      localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahkx(this);
-      localHttpNetReq.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl;
-      localHttpNetReq.jdField_a_of_type_Int = 0;
-      localHttpNetReq.jdField_c_of_type_JavaLangString = new File(PtvTemplateManager.a, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name).getPath();
-      localHttpNetReq.jdField_c_of_type_Int = NetworkUtil.a(NetworkCenter.a().a());
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.getNetEngine(0).a(localHttpNetReq);
-    } while (!QLog.isColorLevel());
-    QLog.i("PtvTemplateManager", 2, "startDownloadTemplate, url: " + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.resurl);
+      int i;
+      synchronized ()
+      {
+        int j = ReportBadCase.a().size();
+        if (j > 0)
+        {
+          i = 0;
+          if (i < j)
+          {
+            BadcaseReportUtils.BadDataFrame localBadDataFrame = (BadcaseReportUtils.BadDataFrame)ReportBadCase.a().get(i);
+            if ((!localBadDataFrame.b) || (localBadDataFrame.d == null) || ("".equals(localBadDataFrame.d))) {
+              break label96;
+            }
+            FileUtils.d(localBadDataFrame.d);
+            break label96;
+          }
+        }
+        ReportBadCase.a().clear();
+        ReportBadCase.b();
+        return;
+      }
+      label96:
+      i += 1;
+    }
   }
 }
 

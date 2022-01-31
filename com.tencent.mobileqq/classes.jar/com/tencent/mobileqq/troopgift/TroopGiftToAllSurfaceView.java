@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.troopgift;
 
-import ajhh;
-import ajhi;
-import ajhj;
-import ajhk;
-import ajhl;
+import ajvl;
+import ajvm;
+import ajvn;
+import ajvo;
+import ajvp;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -56,7 +56,7 @@ public class TroopGiftToAllSurfaceView
     if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton != null)
     {
       OpacityAction localOpacityAction = new OpacityAction(500, 255, 0);
-      localOpacityAction.a(new ajhk(this));
+      localOpacityAction.a(new ajvo(this));
       this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(new Action[] { localOpacityAction });
     }
   }
@@ -125,7 +125,7 @@ public class TroopGiftToAllSurfaceView
       }
       try
       {
-        this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton = new ImageButton(this, BitmapFactory.decodeResource(getResources(), 2130843874), true);
+        this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton = new ImageButton(this, BitmapFactory.decodeResource(getResources(), 2130843998), true);
         this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(paramOptions.jdField_a_of_type_Int - DisplayUtils.a(getContext(), 40.0F), DisplayUtils.a(getContext(), 120.0F));
         this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(paramOnClickListener);
         this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.e = 0.75F;
@@ -203,13 +203,13 @@ public class TroopGiftToAllSurfaceView
     }
     if ((this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite != null) && ((this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite instanceof FrameSprite)))
     {
-      ((FrameSprite)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite).a = new ajhh(this, paramOnFrameEndListener);
+      ((FrameSprite)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite).a = new ajvl(this, paramOnFrameEndListener);
       ((FrameSprite)this.jdField_b_of_type_ComTencentMobileqqSurfaceviewactionGlSprite).a(getContext(), this);
     }
     for (;;)
     {
       paramOnFrameEndListener = new DelayAction(500);
-      paramOnFrameEndListener.a(new ajhi(this));
+      paramOnFrameEndListener.a(new ajvm(this));
       if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite != null) {
         this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSprite.a(new Action[] { paramOnFrameEndListener });
       }
@@ -228,7 +228,7 @@ public class TroopGiftToAllSurfaceView
       this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.e = 0.0F;
       a(this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton);
       paramOnClickListener = new SequenceAction(new Action[] { new ScaleAction(500, 0.0F, this.jdField_a_of_type_Float * 1.1F), new ScaleAction(200, this.jdField_a_of_type_Float * 1.1F, this.jdField_a_of_type_Float * 0.88F), new ScaleAction(200, this.jdField_a_of_type_Float * 0.88F, this.jdField_a_of_type_Float) });
-      paramOnClickListener.a(new ajhj(this));
+      paramOnClickListener.a(new ajvn(this));
       this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlImageButton.a(new Action[] { paramOnClickListener });
     }
   }
@@ -238,12 +238,12 @@ public class TroopGiftToAllSurfaceView
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    b(new ajhl(this, paramString, paramInt1, paramInt2));
+    b(new ajvp(this, paramString, paramInt1, paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftToAllSurfaceView
  * JD-Core Version:    0.7.0.1
  */

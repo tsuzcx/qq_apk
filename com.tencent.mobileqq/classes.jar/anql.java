@@ -1,31 +1,19 @@
-import com.tencent.biz.qqstory.database.PublishVideoEntry;
-import com.tencent.biz.qqstory.utils.ffmpeg.ExecuteBinResponseCallback;
-import com.tencent.mobileqq.activity.aio.photo.PeakActivity;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.qphone.base.util.QLog;
+import android.view.GestureDetector.SimpleOnGestureListener;
+import android.view.MotionEvent;
+import dov.com.qq.im.cropvideo.CropVideoActivity;
+import dov.com.qq.im.cropvideo.RenderFilter;
 
-class anql
-  extends ExecuteBinResponseCallback
+public class anql
+  extends GestureDetector.SimpleOnGestureListener
 {
-  anql(anqk paramanqk, String paramString1, PeakActivity paramPeakActivity, String paramString2, String paramString3, PublishVideoEntry paramPublishVideoEntry) {}
+  public anql(CropVideoActivity paramCropVideoActivity) {}
   
-  public void a(boolean paramBoolean)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SaveVideoActivity", 2, "combine music finish: " + paramBoolean);
-    }
-    FileUtils.d(this.jdField_a_of_type_JavaLangString);
-    if (paramBoolean)
-    {
-      anqk.a(this.jdField_a_of_type_Anqk, this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoPeakActivity, this.b, this.c, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-      return;
-    }
-    anqk.a(this.jdField_a_of_type_Anqk, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
-  }
-  
-  public void b(String paramString)
-  {
-    anqk.a(this.jdField_a_of_type_Anqk, 1, this.jdField_a_of_type_ComTencentBizQqstoryDatabasePublishVideoEntry);
+    paramMotionEvent.getX();
+    paramMotionEvent.getY();
+    CropVideoActivity.a(this.a).b(2.0F, 2.0F, 1.0F);
+    return true;
   }
 }
 

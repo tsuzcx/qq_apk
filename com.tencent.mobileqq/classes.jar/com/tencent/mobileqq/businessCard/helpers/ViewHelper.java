@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.businessCard.helpers;
 
-import abhn;
+import aboo;
 import android.graphics.RectF;
 import android.view.View;
 
@@ -11,7 +11,7 @@ public final class ViewHelper
     if (AnimatorProxy.a) {
       return AnimatorProxy.a(paramView).a();
     }
-    return abhn.a(paramView);
+    return aboo.a(paramView);
   }
   
   public static void a(RectF paramRectF, View paramView)
@@ -28,7 +28,7 @@ public final class ViewHelper
       AnimatorProxy.a(paramView).a(paramFloat);
       return;
     }
-    abhn.c(paramView, paramFloat);
+    aboo.c(paramView, paramFloat);
   }
   
   public static float b(View paramView)
@@ -36,7 +36,7 @@ public final class ViewHelper
     if (AnimatorProxy.a) {
       return AnimatorProxy.a(paramView).b();
     }
-    return abhn.b(paramView);
+    return aboo.b(paramView);
   }
   
   public static void b(View paramView, float paramFloat)
@@ -46,7 +46,7 @@ public final class ViewHelper
       AnimatorProxy.a(paramView).d(paramFloat);
       return;
     }
-    abhn.d(paramView, paramFloat);
+    aboo.d(paramView, paramFloat);
   }
   
   public static void c(View paramView, float paramFloat)
@@ -56,7 +56,7 @@ public final class ViewHelper
       AnimatorProxy.a(paramView).e(paramFloat);
       return;
     }
-    abhn.e(paramView, paramFloat);
+    aboo.e(paramView, paramFloat);
   }
   
   public static void d(View paramView, float paramFloat)
@@ -66,7 +66,7 @@ public final class ViewHelper
       AnimatorProxy.a(paramView).b(paramFloat);
       return;
     }
-    abhn.a(paramView, paramFloat);
+    aboo.a(paramView, paramFloat);
   }
   
   public static void e(View paramView, float paramFloat)
@@ -76,7 +76,7 @@ public final class ViewHelper
       AnimatorProxy.a(paramView).c(paramFloat);
       return;
     }
-    abhn.b(paramView, paramFloat);
+    aboo.b(paramView, paramFloat);
   }
   
   public static void f(View paramView, float paramFloat)
@@ -86,7 +86,7 @@ public final class ViewHelper
       AnimatorProxy.a(paramView).f(paramFloat);
       return;
     }
-    abhn.f(paramView, paramFloat);
+    aboo.f(paramView, paramFloat);
   }
   
   public static void g(View paramView, float paramFloat)
@@ -96,7 +96,7 @@ public final class ViewHelper
       AnimatorProxy.a(paramView).g(paramFloat);
       return;
     }
-    abhn.g(paramView, paramFloat);
+    aboo.g(paramView, paramFloat);
   }
   
   public static void h(View paramView, float paramFloat)
@@ -106,7 +106,7 @@ public final class ViewHelper
       AnimatorProxy.a(paramView).h(paramFloat);
       return;
     }
-    abhn.h(paramView, paramFloat);
+    aboo.h(paramView, paramFloat);
   }
 }
 

@@ -1,16 +1,36 @@
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.Holder;
+import android.app.Activity;
+import android.os.Build.VERSION;
+import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
+import android.view.animation.AnimationSet;
+import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
+import com.tencent.qphone.base.util.QLog;
 
-class uxt
+public class uxt
   implements Runnable
 {
-  uxt(uxs paramuxs, MarketFaceItemBuilder.Holder paramHolder) {}
+  public uxt(GivingHeartItemBuilder paramGivingHeartItemBuilder, Activity paramActivity, boolean paramBoolean1, boolean paramBoolean2) {}
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.a.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemMarketFaceItemBuilder$Holder.f.setVisibility(8);
+    if (((Build.VERSION.SDK_INT > 16) && (this.jdField_a_of_type_AndroidAppActivity.isDestroyed())) || (this.jdField_a_of_type_AndroidAppActivity.isFinishing())) {
+      return;
+    }
+    View localView = ((ViewGroup)this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView()).getChildAt(0).findViewById(2131363491);
+    if (QLog.isColorLevel()) {
+      QLog.d("GivingHeart", 2, "start to shake");
+    }
+    if (this.jdField_a_of_type_Boolean) {}
+    for (AnimationSet localAnimationSet = GivingHeartItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder, this.b);; localAnimationSet = GivingHeartItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGivingHeartItemBuilder, this.b))
+    {
+      localAnimationSet.setAnimationListener(new uxu(this));
+      if (localView == null) {
+        break;
+      }
+      localView.startAnimation(localAnimationSet);
+      return;
+    }
   }
 }
 

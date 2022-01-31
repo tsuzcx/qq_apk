@@ -1,32 +1,41 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.medalwall.MedalGuideView;
-import com.tencent.mobileqq.medalwall.ParticleSystem;
+import com.tencent.mobileqq.hotpic.VideoBaseItem;
+import com.tencent.mobileqq.hotpic.VideoBaseItem.OnInnerStateChangeListener;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnInfoListener;
 
 public class adsl
-  implements ValueAnimator.AnimatorUpdateListener
+  implements TVK_IMediaPlayer.OnInfoListener
 {
-  public adsl(MedalGuideView paramMedalGuideView) {}
+  public adsl(VideoBaseItem paramVideoBaseItem) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
-    MedalGuideView.a(this.a, f);
-    if (this.a.a != null)
+    switch (paramInt)
     {
-      this.a.a.a(f);
-      if (f <= 0.05F) {
-        this.a.a.b();
+    }
+    do
+    {
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoBaseItem", 2, "video start buffering !");
       }
-    }
-    if (paramValueAnimator.getAnimatedFraction() >= 1.0F) {
-      paramValueAnimator.removeAllUpdateListeners();
-    }
+      if (VideoBaseItem.a(this.a) != null) {
+        VideoBaseItem.a(this.a).a(this.a.b, 0);
+      }
+      this.a.c = 6;
+      return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("VideoBaseItem", 2, "video end buffering !");
+      }
+    } while (VideoBaseItem.a(this.a) == null);
+    VideoBaseItem.a(this.a).a(this.a.b, 1);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adsl
  * JD-Core Version:    0.7.0.1
  */

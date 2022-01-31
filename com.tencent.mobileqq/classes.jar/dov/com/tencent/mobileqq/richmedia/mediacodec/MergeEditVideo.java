@@ -1,7 +1,7 @@
 package dov.com.tencent.mobileqq.richmedia.mediacodec;
 
 import android.text.TextUtils;
-import anxb;
+import aong;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.mobileqq.richmedia.capture.data.MusicItemInfo;
 import com.tencent.mobileqq.richmedia.capture.data.TrackerStickerParam;
@@ -160,7 +160,7 @@ public class MergeEditVideo
       if (paramEditParam != null) {
         ((Mp4ReEncoder)localObject2).b(TrackerStickerParam.a(paramEditParam));
       }
-      ((Mp4ReEncoder)localObject2).a(???, paramString2, new anxb(this, (QQEncodeFilterRender)localObject1, m, n), (Mp4ReEncoder.EncodeFilterRender)localObject1);
+      ((Mp4ReEncoder)localObject2).a(???, paramString2, new aong(this, (QQEncodeFilterRender)localObject1, m, n), (Mp4ReEncoder.EncodeFilterRender)localObject1);
       if (!this.jdField_a_of_type_Boolean)
       {
         synchronized (this.jdField_a_of_type_JavaLangObject)

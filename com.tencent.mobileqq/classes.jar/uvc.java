@@ -1,22 +1,16 @@
-import android.graphics.drawable.StateListDrawable;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.activity.aio.item.GivingHeartItemBuilder;
+import com.tencent.ark.ArkDispatchTask;
+import com.tencent.mobileqq.activity.aio.item.ArkAppView.Callback;
+import com.tencent.mobileqq.activity.aio.item.ArkFlashChatItemBubbleBuilder;
+import com.tencent.mobileqq.data.MessageForArkFlashChat;
 
 public class uvc
-  implements URLDrawable.URLDrawableListener
+  implements ArkAppView.Callback
 {
-  public uvc(GivingHeartItemBuilder paramGivingHeartItemBuilder, StateListDrawable paramStateListDrawable) {}
+  public uvc(ArkFlashChatItemBubbleBuilder paramArkFlashChatItemBubbleBuilder, MessageForArkFlashChat paramMessageForArkFlashChat) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void a()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableStateListDrawable.invalidateSelf();
+    ArkDispatchTask.getInstance().post(new uvd(this));
   }
 }
 

@@ -1,13 +1,37 @@
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.mobileqq.armap.ipc.ArMapIPCProxy;
+import com.tencent.qphone.base.util.QLog;
+import eipc.EIPCResult;
+import eipc.EIPCResultCallback;
 
 public class abga
-  implements Runnable
+  implements EIPCResultCallback
 {
-  public abga(BusinessCardEditActivity paramBusinessCardEditActivity) {}
+  public abga(ArMapIPCProxy paramArMapIPCProxy) {}
   
-  public void run()
+  public void onCallback(EIPCResult paramEIPCResult)
   {
-    this.a.a(2131437090, 1);
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramEIPCResult != null)
+    {
+      localObject1 = localObject2;
+      if (paramEIPCResult.isSuccess()) {
+        localObject1 = paramEIPCResult.data.getString("action");
+      }
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ArMapIPCProxy", 2, "onCallback error");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("ArMapIPCProxy", 2, "onCallback action:" + (String)localObject1);
+    }
+    this.a.a((String)localObject1, paramEIPCResult);
   }
 }
 

@@ -1,29 +1,23 @@
-import com.tencent.commonsdk.cache.QQLruCache;
-import com.tencent.mobileqq.data.Emoticon;
-import com.tencent.mobileqq.model.EmoticonManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.intervideo.od.LoadingUI;
+import com.tencent.mobileqq.intervideo.od.LoadingUI.Event;
 
 public class advj
-  implements Runnable
+  implements View.OnClickListener
 {
-  public advj(EmoticonManager paramEmoticonManager, String paramString1, String paramString2) {}
+  public advj(LoadingUI paramLoadingUI) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Emoticon localEmoticon = (Emoticon)this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(Emoticon.class, "epId=? and eId=?", new String[] { this.jdField_a_of_type_JavaLangString, this.b });
-    if (localEmoticon != null)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqModelEmoticonManager.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(localEmoticon.getMapKey(), localEmoticon);
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonManager", 2, "hit db, put into cache");
-      }
+    if (LoadingUI.a(this.a) != null) {
+      LoadingUI.a(this.a).a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     advj
  * JD-Core Version:    0.7.0.1
  */

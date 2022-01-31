@@ -1,14 +1,28 @@
-import dov.com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
-import java.util.List;
+import android.graphics.Bitmap;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.LineLayer.LayerEventListener;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout.DoodleEventListener;
 
 public class anzf
-  implements Runnable
+  implements LineLayer.LayerEventListener
 {
-  public anzf(ShortVideoResourceManager paramShortVideoResourceManager, List paramList) {}
+  public anzf(DoodleLayout paramDoodleLayout) {}
   
-  public void run()
+  public void a(Bitmap paramBitmap, boolean paramBoolean)
   {
-    ShortVideoResourceManager.a(this.jdField_a_of_type_DovComTencentMobileqqShortvideoShortVideoResourceManager, this.jdField_a_of_type_JavaUtilList);
+    if (this.a.a != null) {
+      this.a.a.a(paramBitmap, paramBoolean);
+    }
+  }
+  
+  public void a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
+  {
+    if (this.a.a != null)
+    {
+      SLog.b("DoodleLayout", "notify outside onDrawMosaic. width:" + paramInt1 + ",height:" + paramInt2);
+      this.a.a.a(paramArrayOfByte);
+    }
   }
 }
 

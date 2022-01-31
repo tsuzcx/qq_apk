@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.armap.map;
 
-import aazd;
-import aazf;
-import aazi;
-import aazj;
-import aazk;
-import aazm;
-import aazo;
-import aazp;
-import aazq;
-import aazr;
-import aazs;
-import aazt;
+import abge;
+import abgg;
+import abgj;
+import abgk;
+import abgl;
+import abgn;
+import abgp;
+import abgq;
+import abgr;
+import abgs;
+import abgt;
+import abgu;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
@@ -77,11 +77,11 @@ public class ARGridMapViewDialog
   Button jdField_a_of_type_AndroidWidgetButton;
   public ProgressBar a;
   public RelativeLayout a;
-  LbsPackObserver jdField_a_of_type_ComQqImPoiLbsPackObserver = new aazm(this);
+  LbsPackObserver jdField_a_of_type_ComQqImPoiLbsPackObserver = new abgn(this);
   LatLng jdField_a_of_type_ComTencentMapsdkRasterModelLatLng;
   public ArMapInterface a;
-  private ArMapObserver jdField_a_of_type_ComTencentMobileqqArmapArMapObserver = new aazd(this);
-  NonMainAppHeadLoader.FaceObserver jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader$FaceObserver = new aazk(this);
+  private ArMapObserver jdField_a_of_type_ComTencentMobileqqArmapArMapObserver = new abge(this);
+  NonMainAppHeadLoader.FaceObserver jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader$FaceObserver = new abgl(this);
   MapView jdField_a_of_type_ComTencentTencentmapMapsdkMapMapView;
   public Object a;
   private String jdField_a_of_type_JavaLangString;
@@ -98,7 +98,7 @@ public class ARGridMapViewDialog
   
   public ARGridMapViewDialog(Activity paramActivity, ArMapInterface paramArMapInterface, MapView paramMapView, int paramInt1, int paramInt2, int paramInt3, Object paramObject, boolean paramBoolean)
   {
-    super(paramActivity, 2131624515);
+    super(paramActivity, 2131624516);
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
     this.jdField_a_of_type_AndroidContentContext = paramActivity;
     this.jdField_a_of_type_ComTencentMobileqqArmapArMapInterface = paramArMapInterface;
@@ -116,41 +116,41 @@ public class ARGridMapViewDialog
   {
     if (POITaskInfo.jdField_d_of_type_Int == paramInt)
     {
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842205);
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842252);
       return;
     }
     if ((POITaskInfo.g == paramInt) || (paramInt == POITaskInfo.k))
     {
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842207);
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842254);
       return;
     }
     if (POITaskInfo.f == paramInt)
     {
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842204);
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842251);
       return;
     }
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842206);
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setBackgroundResource(2130842253);
   }
   
   private void a(int paramInt1, int paramInt2, String paramString)
   {
-    paramString = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131369562);
-    ImageView localImageView = (ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131369561);
+    paramString = (TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131369639);
+    ImageView localImageView = (ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131369638);
     if (paramInt1 == POITaskInfo.j)
     {
-      localImageView.setImageResource(2130842263);
+      localImageView.setImageResource(2130842310);
       Drawable localDrawable = a("/17_armap_detailbg@2x.png");
       if (localDrawable != null) {
         this.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(localDrawable);
       }
-      paramString.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493357));
+      paramString.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131493360));
       if ((paramInt2 != f) && (paramInt2 != e)) {
         break label204;
       }
       if (paramInt1 != POITaskInfo.f) {
         break label165;
       }
-      paramString.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438750));
+      paramString.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438768));
       label113:
       localImageView.setVisibility(0);
     }
@@ -161,18 +161,18 @@ public class ARGridMapViewDialog
       this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       this.jdField_b_of_type_AndroidViewView.setVisibility(0);
       return;
-      localImageView.setImageResource(2130842223);
+      localImageView.setImageResource(2130842270);
       break;
       label165:
       if (paramInt1 == POITaskInfo.j)
       {
-        paramString.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438752));
+        paramString.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438770));
         break label113;
       }
-      paramString.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438745));
+      paramString.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438763));
       break label113;
       label204:
-      paramString.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438746));
+      paramString.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438764));
       localImageView.setVisibility(8);
     }
   }
@@ -191,27 +191,27 @@ public class ARGridMapViewDialog
       this.jdField_a_of_type_Boolean = true;
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       this.jdField_a_of_type_ComTencentMapsdkRasterModelLatLng = new LatLng(paramPOIInfo.jdField_b_of_type_Double / 1000000.0D, paramPOIInfo.jdField_a_of_type_Double / 1000000.0D);
-      TextView localTextView1 = (TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369715);
-      TextView localTextView2 = (TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369716);
-      localObject1 = (ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369717);
-      localObject2 = (ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369513);
+      TextView localTextView1 = (TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369792);
+      TextView localTextView2 = (TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369793);
+      localObject1 = (ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369794);
+      localObject2 = (ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369590);
       localObject3 = this.jdField_a_of_type_AndroidContentContext.getResources();
       if (!TextUtils.isEmpty(paramString1)) {
         localTextView1.setText(paramString1);
       }
       if (!TextUtils.isEmpty(paramString2)) {
-        localTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438751, new Object[] { paramString2 }));
+        localTextView2.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438769, new Object[] { paramString2 }));
       }
       if (!TextUtils.isEmpty(paramString3))
       {
         paramString2 = URLDrawable.URLDrawableOptions.obtain();
         paramString2.mRequestHeight = AIOUtils.a(130.0F, (Resources)localObject3);
         paramString2.mRequestWidth = AIOUtils.a(160.0F, (Resources)localObject3);
-        paramString2.mLoadingDrawable = ((Resources)localObject3).getDrawable(2130846277);
-        paramString2.mFailedDrawable = ((Resources)localObject3).getDrawable(2130846277);
+        paramString2.mLoadingDrawable = ((Resources)localObject3).getDrawable(2130846407);
+        paramString2.mFailedDrawable = ((Resources)localObject3).getDrawable(2130846407);
         ((ImageView)localObject1).setImageDrawable(URLDrawable.getDrawable(paramString3, paramString2));
       }
-      ((ImageView)localObject2).setOnClickListener(new aazf(this, paramLong1));
+      ((ImageView)localObject2).setOnClickListener(new abgg(this, paramLong1));
       if (paramInt1 != jdField_d_of_type_Int) {
         break label382;
       }
@@ -241,12 +241,12 @@ public class ARGridMapViewDialog
     }
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    ImageView localImageView3 = (ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369509);
-    TextView localTextView2 = (TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369510);
-    TextView localTextView3 = (TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369511);
-    ImageView localImageView2 = (ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369512);
-    TextView localTextView1 = (TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369514);
-    ImageView localImageView1 = (ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369513);
+    ImageView localImageView3 = (ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369586);
+    TextView localTextView2 = (TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369587);
+    TextView localTextView3 = (TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369588);
+    ImageView localImageView2 = (ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369589);
+    TextView localTextView1 = (TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369591);
+    ImageView localImageView1 = (ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369590);
     Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
     this.jdField_a_of_type_ComTencentMapsdkRasterModelLatLng = new LatLng(paramPOIInfo.jdField_b_of_type_Double / 1000000.0D, paramPOIInfo.jdField_a_of_type_Double / 1000000.0D);
     if (!TextUtils.isEmpty(paramString1))
@@ -255,10 +255,10 @@ public class ARGridMapViewDialog
       int i = AIOUtils.a(31.0F, localResources);
       localURLDrawableOptions.mRequestHeight = i;
       localURLDrawableOptions.mRequestWidth = i;
-      localURLDrawableOptions.mLoadingDrawable = localResources.getDrawable(2130846277);
-      localURLDrawableOptions.mFailedDrawable = localResources.getDrawable(2130846277);
+      localURLDrawableOptions.mLoadingDrawable = localResources.getDrawable(2130846407);
+      localURLDrawableOptions.mFailedDrawable = localResources.getDrawable(2130846407);
       localImageView3.setImageDrawable(URLDrawable.getDrawable(paramString1, localURLDrawableOptions));
-      localImageView3.setOnClickListener(new aazs(this, paramString3));
+      localImageView3.setOnClickListener(new abgt(this, paramString3));
     }
     if (!TextUtils.isEmpty(paramString2)) {
       localTextView2.setText(paramString2);
@@ -266,23 +266,23 @@ public class ARGridMapViewDialog
     if (paramInt2 == 0) {
       if (paramInt1 == POITaskInfo.f)
       {
-        localTextView3.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438744));
+        localTextView3.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438762));
         if (!TextUtils.isEmpty(paramString4))
         {
           paramString1 = URLDrawable.URLDrawableOptions.obtain();
           paramString1.mRequestHeight = AIOUtils.a(140.0F, localResources);
           paramString1.mRequestWidth = AIOUtils.a(170.0F, localResources);
-          paramString1.mLoadingDrawable = localResources.getDrawable(2130846277);
-          paramString1.mFailedDrawable = localResources.getDrawable(2130846277);
+          paramString1.mLoadingDrawable = localResources.getDrawable(2130846407);
+          paramString1.mFailedDrawable = localResources.getDrawable(2130846407);
           localImageView2.setImageDrawable(URLDrawable.getDrawable(paramString4, paramString1));
         }
         if (paramInt1 != POITaskInfo.f) {
           break label594;
         }
         paramString1 = NumberFormat.getNumberInstance();
-        localTextView1.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438749, new Object[] { paramString1.format(paramInt4) }));
+        localTextView1.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438767, new Object[] { paramString1.format(paramInt4) }));
         label458:
-        localImageView1.setOnClickListener(new aazt(this, paramLong1));
+        localImageView1.setOnClickListener(new abgu(this, paramLong1));
         if (paramInt2 != jdField_d_of_type_Int) {
           break label615;
         }
@@ -296,20 +296,20 @@ public class ARGridMapViewDialog
     {
       if (paramInt1 == 10)
       {
-        paramString1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369556);
+        paramString1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369633);
         if (paramString1 != null) {
-          paramString1.setText(2131438738);
+          paramString1.setText(2131438756);
         }
       }
       return;
-      localTextView3.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438741));
+      localTextView3.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438759));
       break;
       if ((paramInt2 == 1) || (paramInt2 == 2))
       {
-        localTextView3.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438742));
+        localTextView3.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438760));
         break;
       }
-      localTextView3.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438743));
+      localTextView3.setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438761));
       break;
       label594:
       localTextView1.setText(paramString5);
@@ -324,12 +324,12 @@ public class ARGridMapViewDialog
   
   private void a(POIInfo paramPOIInfo, int paramInt)
   {
-    Object localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369557);
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369558);
-    Button localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131369559);
+    Object localObject = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369634);
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369635);
+    Button localButton = (Button)this.jdField_a_of_type_AndroidViewView.findViewById(2131369636);
     if (paramInt < 1000)
     {
-      ((TextView)localObject).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438731, new Object[] { String.valueOf(paramInt) }));
+      ((TextView)localObject).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438749, new Object[] { String.valueOf(paramInt) }));
       StringBuilder localStringBuilder = new StringBuilder().append(paramPOIInfo.jdField_a_of_type_JavaLangString).append("|");
       if (!TextUtils.isEmpty(paramPOIInfo.jdField_b_of_type_JavaLangString)) {
         break label264;
@@ -346,14 +346,14 @@ public class ARGridMapViewDialog
     }
     for (;;)
     {
-      localButton.setOnClickListener(new aazi(this, paramPOIInfo, paramInt));
+      localButton.setOnClickListener(new abgj(this, paramPOIInfo, paramInt));
       this.jdField_c_of_type_AndroidViewView.setVisibility(8);
       this.jdField_b_of_type_AndroidViewView.setVisibility(8);
       this.jdField_c_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       return;
       float f1 = paramInt / 1000.0F;
-      ((TextView)localObject).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438730, new Object[] { String.valueOf(f1) }));
+      ((TextView)localObject).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438748, new Object[] { String.valueOf(f1) }));
       break;
       label264:
       localObject = paramPOIInfo.jdField_b_of_type_JavaLangString;
@@ -367,9 +367,9 @@ public class ARGridMapViewDialog
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
-    Object localObject3 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369556);
-    Object localObject1 = (ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369509);
-    TextView localTextView = (TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369510);
+    Object localObject3 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131369633);
+    Object localObject1 = (ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369586);
+    TextView localTextView = (TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369587);
     LbsPackInfo localLbsPackInfo = (LbsPackInfo)paramList.get(0);
     this.jdField_a_of_type_JavaLangString = String.valueOf(localLbsPackInfo.jdField_a_of_type_Long);
     ((ImageView)localObject1).setImageBitmap(this.jdField_a_of_type_ComTencentMobileqqArmapArMapInterface.a.a(this.jdField_a_of_type_JavaLangString, true));
@@ -432,9 +432,9 @@ public class ARGridMapViewDialog
           localTextView.setText((CharSequence)localObject1);
           if (paramList.size() > 0) {
             if (TextUtils.equals(String.valueOf(((LbsPackInfo)paramList.get(0)).jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentMobileqqArmapArMapInterface.getCurrentAccountUin())) {
-              ((TextView)localObject3).setText(2131438739);
+              ((TextView)localObject3).setText(2131438757);
             } else {
-              ((TextView)localObject3).setText(2131438737);
+              ((TextView)localObject3).setText(2131438755);
             }
           }
         }
@@ -452,14 +452,14 @@ public class ARGridMapViewDialog
       return;
     }
     Object localObject1 = new RelativeLayout.LayoutParams(-1, AIOUtils.a(210.0F, this.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapView.getResources()));
-    ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131369551);
+    ((RelativeLayout.LayoutParams)localObject1).addRule(3, 2131369628);
     this.jdField_c_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapMapView, (ViewGroup.LayoutParams)localObject1);
-    this.jdField_d_of_type_AndroidViewView = getLayoutInflater().inflate(2130970211, null);
-    localObject1 = (TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131369642);
-    Object localObject2 = (TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131369643);
+    this.jdField_d_of_type_AndroidViewView = getLayoutInflater().inflate(2130970227, null);
+    localObject1 = (TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131369719);
+    Object localObject2 = (TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131369720);
     if (paramInt < 1000)
     {
-      ((TextView)localObject1).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438731, new Object[] { String.valueOf(paramInt) }));
+      ((TextView)localObject1).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438749, new Object[] { String.valueOf(paramInt) }));
       label141:
       StringBuilder localStringBuilder = new StringBuilder().append(paramPOIInfo.jdField_a_of_type_JavaLangString).append("|");
       if (!TextUtils.isEmpty(paramPOIInfo.jdField_b_of_type_JavaLangString)) {
@@ -501,10 +501,10 @@ public class ARGridMapViewDialog
       if ((this.jdField_a_of_type_JavaLangObject == null) || (!(this.jdField_a_of_type_JavaLangObject instanceof ARGridMapViewDialog.POIExtarData)) || (((ARGridMapViewDialog.POIExtarData)this.jdField_a_of_type_JavaLangObject).jdField_a_of_type_Int != 10)) {
         break;
       }
-      ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131369641)).setText(2131438738);
+      ((TextView)this.jdField_d_of_type_AndroidViewView.findViewById(2131369718)).setText(2131438756);
       return;
       float f1 = paramInt / 1000.0F;
-      ((TextView)localObject1).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438730, new Object[] { String.valueOf(f1) }));
+      ((TextView)localObject1).setText(this.jdField_a_of_type_AndroidContentContext.getString(2131438748, new Object[] { String.valueOf(f1) }));
       break label141;
       label505:
       localObject1 = paramPOIInfo.jdField_b_of_type_JavaLangString;
@@ -516,29 +516,29 @@ public class ARGridMapViewDialog
   
   private void d()
   {
-    setContentView(2130970208);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363805));
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369631));
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131369554);
-    this.jdField_b_of_type_AndroidViewView = findViewById(2131369560);
-    this.jdField_c_of_type_AndroidViewView = findViewById(2131369564);
-    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369563));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363954));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363544));
+    setContentView(2130970224);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131363828));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369708));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131369631);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131369637);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131369641);
+    this.jdField_c_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131369640));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131363978));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131363562));
     Object localObject1;
     Object localObject2;
     if ((this.jdField_c_of_type_Int == 0) || (this.jdField_c_of_type_Int == 1) || (this.jdField_c_of_type_Int == 2))
     {
-      localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970192, null);
+      localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970208, null);
       localObject2 = new RelativeLayout.LayoutParams(-1, -1);
       this.jdField_b_of_type_AndroidWidgetRelativeLayout.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     }
     for (;;)
     {
       if (this.jdField_c_of_type_Int != 2) {
-        this.jdField_a_of_type_AndroidWidgetProgressBar.postDelayed(new aazo(this), 1500L);
+        this.jdField_a_of_type_AndroidWidgetProgressBar.postDelayed(new abgp(this), 1500L);
       }
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new aazp(this));
+      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new abgq(this));
       localObject1 = getWindow();
       localObject2 = ((Window)localObject1).getAttributes();
       ((WindowManager.LayoutParams)localObject2).width = this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels;
@@ -547,7 +547,7 @@ public class ARGridMapViewDialog
       return;
       if (this.jdField_c_of_type_Int == 3)
       {
-        localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970222, null);
+        localObject1 = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970238, null);
         localObject2 = new RelativeLayout.LayoutParams(-1, -1);
         Drawable localDrawable = a("/17_armap_cardbg@2x.png");
         if (localDrawable != null) {
@@ -567,7 +567,7 @@ public class ARGridMapViewDialog
       if (this.jdField_c_of_type_Int == 0) {
         a(((ARGridMapViewDialog.POIExtarData)localObject1).jdField_a_of_type_Int);
       }
-      ThreadManager.postImmediately(new aazq(this, (ARGridMapViewDialog.POIExtarData)localObject1), null, true);
+      ThreadManager.postImmediately(new abgr(this, (ARGridMapViewDialog.POIExtarData)localObject1), null, true);
     }
     for (;;)
     {
@@ -592,17 +592,17 @@ public class ARGridMapViewDialog
       {
         localObject1 = (ARGridMapViewDialog.LbsRedBagExtraData)this.jdField_a_of_type_JavaLangObject;
         a(((ARGridMapViewDialog.LbsRedBagExtraData)localObject1).jdField_a_of_type_Int);
-        localObject2 = (TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369511);
-        localObject3 = (ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369512);
-        TextView localTextView = (TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369514);
-        ImageView localImageView = (ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369513);
+        localObject2 = (TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369588);
+        localObject3 = (ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369589);
+        TextView localTextView = (TextView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369591);
+        ImageView localImageView = (ImageView)this.jdField_b_of_type_AndroidWidgetRelativeLayout.findViewById(2131369590);
         ((TextView)localObject2).setVisibility(8);
         localImageView.setVisibility(8);
-        ((ImageView)localObject3).setImageResource(2130842555);
-        localTextView.setText(2131438756);
+        ((ImageView)localObject3).setImageResource(2130842647);
+        localTextView.setText(2131438774);
         this.jdField_a_of_type_ComTencentMobileqqArmapArMapInterface.a.a(this.jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader$FaceObserver);
         this.jdField_a_of_type_ComTencentMobileqqArmapArMapInterface.registObserver(this.jdField_a_of_type_ComQqImPoiLbsPackObserver);
-        ThreadManager.postImmediately(new aazr(this, (ARGridMapViewDialog.LbsRedBagExtraData)localObject1), null, true);
+        ThreadManager.postImmediately(new abgs(this, (ARGridMapViewDialog.LbsRedBagExtraData)localObject1), null, true);
       }
     }
   }
@@ -666,7 +666,7 @@ public class ARGridMapViewDialog
     localAnimationSet.addAnimation(localScaleAnimation);
     localAnimationSet.setFillAfter(true);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.startAnimation(localAnimationSet);
-    localAnimationSet.setAnimationListener(new aazj(this));
+    localAnimationSet.setAnimationListener(new abgk(this));
   }
   
   protected void onStop()

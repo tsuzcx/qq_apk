@@ -1,22 +1,22 @@
-import android.content.Intent;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.TroopFileZipPreviewActivity;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.emoticonview.CommonUsedSystemEmojiManager;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.pb.emosm.EmosmPb.SmallYellowItem;
+import java.util.Comparator;
 
 public class acea
-  implements View.OnClickListener
+  implements Comparator
 {
-  public acea(TroopFileZipPreviewActivity paramTroopFileZipPreviewActivity, FileManagerEntity paramFileManagerEntity) {}
+  public acea(CommonUsedSystemEmojiManager paramCommonUsedSystemEmojiManager) {}
   
-  public void onClick(View paramView)
+  public int a(EmosmPb.SmallYellowItem paramSmallYellowItem1, EmosmPb.SmallYellowItem paramSmallYellowItem2)
   {
-    paramView = new Intent();
-    paramView.putExtra("isNeedFinish", true);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.setResult(-1, paramView);
-    TroopFileZipPreviewActivity.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityTroopFileZipPreviewActivity.app, "dc00899", "Grp_files", null, "oper", "pre_arc_close", 0, 0, "" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.TroopUin, "", "", "1");
+    if (paramSmallYellowItem2.ts.get() > paramSmallYellowItem1.ts.get()) {
+      return 1;
+    }
+    if (paramSmallYellowItem2.ts.get() == paramSmallYellowItem1.ts.get()) {
+      return 0;
+    }
+    return -1;
   }
 }
 

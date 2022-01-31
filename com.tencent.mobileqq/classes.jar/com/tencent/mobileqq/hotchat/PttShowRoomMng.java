@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.hotchat;
 
-import adfl;
+import adpk;
 import android.support.v4.util.LruCache;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -24,7 +24,7 @@ public class PttShowRoomMng
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(3);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new adfl(this, 20);
+    this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new adpk(this, 20);
   }
   
   public static final int a(QQAppInterface paramQQAppInterface)

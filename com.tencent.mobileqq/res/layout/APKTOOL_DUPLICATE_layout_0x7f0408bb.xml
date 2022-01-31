@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="94.5dip"
+<LinearLayout android:orientation="vertical" android:background="#80000000" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26ac" android:background="#fffafafa" android:layout_width="2.0dip" android:layout_height="fill_parent" android:layout_marginLeft="65.5dip" />
-    <RelativeLayout android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216ad" android:paddingLeft="46.5dip" android:descendantFocusability="beforeDescendants" android:layout_width="fill_parent" android:layout_height="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d03e6" android:layout_marginBottom="16.0dip">
-        <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1451" android:layout_width="40.0dip" android:layout_height="56.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0217e1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:layout_alignParentStart="true" />
-        <TextView android:textSize="12.0dip" android:ellipsize="end" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="12.0dip" android:text="点击拍摄，和好友分享你的一天" android:maxLines="1" android:layout_toLeftOf="@id/APKTOOL_DUPLICATE_id_0x7f0a0393" android:layout_toRightOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1451" android:layout_centerVertical="true" android:layout_marginStart="12.0dip" android:layout_toEndOf="@id/APKTOOL_DUPLICATE_id_0x7f0a1451" />
-        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0393" android:layout_width="55.0dip" android:layout_height="78.5dip" android:layout_marginRight="12.0dip" android:layout_alignParentRight="true" android:layout_alignParentEnd="true">
-            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26be" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02172a" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-            <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a26bf" android:layout_width="23.0dip" android:layout_height="16.5dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02172e" android:layout_centerInParent="true" />
-        </RelativeLayout>
+    <RelativeLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27b4" android:layout_width="fill_parent" android:layout_height="58.0dip" android:layout_marginLeft="12.0dip" android:layout_marginTop="6.0dip" android:layout_marginRight="12.0dip">
+        <TextView android:ellipsize="end" android:gravity="center" android:id="@id/ivTitleName" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginLeft="96.0dip" android:layout_marginRight="96.0dip" android:text="@null" android:singleLine="true" android:layout_centerInParent="true" style="@style/TitleText" />
+        <TextView android:gravity="center" android:id="@id/ivTitleBtnLeft" android:background="@drawable/top_back_left_selector" android:layout_width="wrap_content" android:layout_height="36.0dip" android:maxWidth="99.0dip" android:minWidth="40.0dip" android:text="@null" android:singleLine="true" android:includeFontPadding="false" android:layout_alignParentLeft="true" android:layout_centerVertical="true" style="@style/TitleBtn" />
     </RelativeLayout>
-</RelativeLayout>
+    <RelativeLayout android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27a8" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021777" android:clickable="true" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip">
+        <TextView android:textSize="14.0sp" android:textColor="#ff777777" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27a9" android:background="@null" android:layout_width="wrap_content" android:layout_height="wrap_content" android:hint="搜索附近位置" android:maxLength="10" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f022129" android:drawablePadding="3.0dip" android:layout_centerInParent="true" android:inputType="textMultiLine" />
+    </RelativeLayout>
+    <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.tencent.widget.XListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27aa" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="12.0dip" android:layout_marginRight="12.0dip" android:listSelector="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0218a4" android:divider="@null" android:dividerHeight="0.0dip" />
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27ab" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+            <ProgressBar android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminateOnly="true" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02179b" android:indeterminateBehavior="repeat" />
+            <TextView android:textSize="13.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="正在搜索附近位置" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a27ac" android:visibility="gone" android:clickable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="10.0dip">
+            <TextView android:textSize="13.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="位置获取失败，点击重试" />
+            <ImageView android:layout_width="16.0dip" android:layout_height="16.0dip" android:layout_marginLeft="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0217ea" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

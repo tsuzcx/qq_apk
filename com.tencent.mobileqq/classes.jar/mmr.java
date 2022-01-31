@@ -1,15 +1,15 @@
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.RecommendAndAd;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebRequestUtil.ResponseCallback;
-import java.util.List;
+import android.os.MessageQueue.IdleHandler;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
 
-public final class mmr
-  implements FastWebRequestUtil.ResponseCallback
+public class mmr
+  implements MessageQueue.IdleHandler
 {
-  public mmr(FastWebRequestUtil.RecommendAndAd paramRecommendAndAd) {}
+  public mmr(FastWebActivity paramFastWebActivity) {}
   
-  public void a(boolean paramBoolean, List paramList)
+  public boolean queueIdle()
   {
-    this.a.b(paramList);
+    FastWebActivity.a(this.a, FastWebActivity.a(this.a));
+    return false;
   }
 }
 

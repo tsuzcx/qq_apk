@@ -1,16 +1,15 @@
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
+import com.tencent.mobileqq.utils.DialogUtil.DialogOnClickAdapter;
 
 public class xkz
-  implements DialogInterface.OnClickListener
+  extends DialogUtil.DialogOnClickAdapter
 {
-  public xkz(EditLocalVideoActivity paramEditLocalVideoActivity) {}
+  public xkz(RecentOptPopBar paramRecentOptPopBar) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    EditLocalVideoActivity.a(this.a).dismiss();
+    paramDialogInterface.dismiss();
   }
 }
 

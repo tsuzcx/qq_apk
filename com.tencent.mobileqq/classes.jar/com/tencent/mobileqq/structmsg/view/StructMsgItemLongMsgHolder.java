@@ -39,8 +39,8 @@ public class StructMsgItemLongMsgHolder
       if (i == 0) {
         break label249;
       }
-      ((ImageView)localObject).setImageResource(2130839705);
-      paramContext.setText(paramOnLongClickAndTouchListener.getString(2131430088));
+      ((ImageView)localObject).setImageResource(2130839711);
+      paramContext.setText(paramOnLongClickAndTouchListener.getString(2131430105));
     }
     for (;;)
     {
@@ -60,14 +60,14 @@ public class StructMsgItemLongMsgHolder
       paramView = new RelativeLayout(paramContext);
       break label37;
       label249:
-      ((ImageView)localObject).setImageResource(2130839704);
-      paramContext.setText(paramOnLongClickAndTouchListener.getString(2131430089));
+      ((ImageView)localObject).setImageResource(2130839710);
+      paramContext.setText(paramOnLongClickAndTouchListener.getString(2131430106));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLongMsgHolder
  * JD-Core Version:    0.7.0.1
  */

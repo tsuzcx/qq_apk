@@ -1,5 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1efb" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020474" android:layout_width="fill_parent" android:layout_height="40.0dip"
+<RelativeLayout android:layout_gravity="center" android:layout_width="300.0dip" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="13.0sp" android:textColor="#ff000000" android:ellipsize="middle" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1efc" android:layout_width="wrap_content" android:layout_height="40.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b25a9" android:singleLine="true" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021319" android:drawablePadding="10.0dip" />
-</LinearLayout>
+    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a07f4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true"
+      xmlns:roundCorner="http://schemas.android.com/apk/res/com.tencent.mobileqq">
+        <com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e9a" android:layout_width="wrap_content" android:layout_height="400.0dip" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" roundCorner:qqArMapGuideRadius="3">
+            <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1e9b" android:layout_width="300.0dip" android:layout_height="400.0dip" android:layout_alignParentTop="true">
+                <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1eed" android:background="#fffbf7d8" android:layout_width="fill_parent" android:layout_height="278.0dip" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+                    <com.tencent.image.URLImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1eee" android:layout_width="272.0dip" android:layout_height="223.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" />
+                    <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06ea" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="25.0dip" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020444" android:layout_centerInParent="true" />
+                </RelativeLayout>
+                <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1eef" android:background="#ffcd4040" android:layout_width="fill_parent" android:layout_height="122.0dip" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true">
+                    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ef0" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0212c6" android:visibility="gone" android:layout_width="100.0dip" android:layout_height="100.0dip" android:layout_marginRight="-15.0dip" android:layout_marginBottom="-15.0dip" android:layout_alignParentRight="true" android:layout_alignParentBottom="true" />
+                    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ef1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="14.0dip" android:layout_centerHorizontal="true">
+                        <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="#fff1d0a3" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0086" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:singleLine="true" android:layout_centerHorizontal="true" />
+                        <TextView android:textSize="15.0dip" android:textColor="#fff1d0a3" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ef2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="7.0dip" android:maxLines="1" android:singleLine="true" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a0086" android:layout_centerHorizontal="true" />
+                    </RelativeLayout>
+                    <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ef3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="12.0dip" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true">
+                        <Button android:textSize="18.0dip" android:textColor="#ffe14949" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1eda" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02129a" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="35.0dip" android:text="立即领取" />
+                        <ProgressBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ef4" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="25.0dip" android:layout_marginLeft="50.0dip" android:indeterminateDrawable="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0206b9" android:layout_centerVertical="true" />
+                    </RelativeLayout>
+                    <TextView android:textColor="#fff1d0a3" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1ef5" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="24.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2cb3" android:layout_alignParentBottom="true" android:layout_centerHorizontal="true" android:alpha="0.5" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </com.tencent.mobileqq.armap.map.RoundCorneredFrameLayout>
+        <Button android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a088a" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021293" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginTop="40.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a1e9a" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+</RelativeLayout>

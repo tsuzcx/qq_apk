@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import java.lang.ref.WeakReference;
-import kkk;
+import kjv;
 import mqq.observer.BusinessObserver;
 
 public abstract class ProtoUtils$StoryProtocolObserver
@@ -77,7 +77,7 @@ public abstract class ProtoUtils$StoryProtocolObserver
       a(paramInt, paramBoolean, paramBundle);
       return;
     }
-    ThreadManager.post(new kkk(this, paramInt, paramBoolean, paramBundle), 5, null, false);
+    ThreadManager.post(new kjv(this, paramInt, paramBoolean, paramBundle), 5, null, false);
   }
 }
 

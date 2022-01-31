@@ -1,13 +1,8 @@
-import java.io.File;
-import java.io.FileFilter;
+import com.tencent.ark.ark.VariantWrapper;
 
-public final class aanv
-  implements FileFilter
+public abstract interface aanv
 {
-  public boolean accept(File paramFile)
-  {
-    return (paramFile.isFile()) && (paramFile.exists());
-  }
+  public abstract boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper);
 }
 
 

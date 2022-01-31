@@ -1,62 +1,33 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.nearby.smooth.ItemManager;
-import com.tencent.widget.AbsListView;
-import com.tencent.widget.AbsListView.OnScrollListener;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
+import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnInfoListener;
+import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnInfoListener;
+import com.tencent.mobileqq.nearby.now.view.player.VideoViewTextureImpl;
 
 public class aezf
-  implements AbsListView.OnScrollListener
+  implements IMediaPlayer.OnInfoListener
 {
-  private aezf(ItemManager paramItemManager) {}
+  public aezf(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnInfoListener paramOnInfoListener) {}
   
-  public void a(AbsListView paramAbsListView, int paramInt)
+  public boolean a_(IMediaPlayer paramIMediaPlayer, int paramInt1, int paramInt2)
   {
-    int j = 0;
     int i;
-    Object localObject;
-    if ((this.a.jdField_a_of_type_Int == 2) && (paramInt != 2))
-    {
+    if (paramInt1 == 3) {
       i = 1;
-      if (i == 0) {
-        break label136;
-      }
-      localObject = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, this.a);
-      this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      if (!this.a.b) {
-        break label129;
-      }
-      i = j;
-      label66:
-      this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed((Message)localObject, i);
-      this.a.jdField_a_of_type_Boolean = true;
     }
     for (;;)
     {
-      this.a.jdField_a_of_type_Int = paramInt;
-      localObject = this.a.jdField_a_of_type_Aezc.a();
-      if (localObject != null) {
-        ((AbsListView.OnScrollListener)localObject).a(paramAbsListView, paramInt);
-      }
-      return;
-      i = 0;
-      break;
-      label129:
-      i = 550;
-      break label66;
-      label136:
-      if (paramInt == 2)
+      return this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView$OnInfoListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTextureImpl, i, Integer.valueOf(paramInt2));
+      if (paramInt1 == 701)
       {
-        this.a.jdField_a_of_type_Boolean = false;
-        this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+        i = 2;
       }
-    }
-  }
-  
-  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
-  {
-    AbsListView.OnScrollListener localOnScrollListener = this.a.jdField_a_of_type_Aezc.a();
-    if (localOnScrollListener != null) {
-      localOnScrollListener.a(paramAbsListView, paramInt1, paramInt2, paramInt3);
+      else
+      {
+        i = paramInt1;
+        if (paramInt1 == 702) {
+          i = 3;
+        }
+      }
     }
   }
 }

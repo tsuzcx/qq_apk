@@ -1,29 +1,23 @@
-import android.content.ComponentName;
-import android.content.ServiceConnection;
-import android.os.IBinder;
-import com.tencent.av.app.AVServiceProxy;
-import com.tencent.av.service.IAVServiceForQQ.Stub;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.app.GCameraAvailabilityMonitor;
 import com.tencent.qphone.base.util.QLog;
 
 public class jeq
-  implements ServiceConnection
+  extends BroadcastReceiver
 {
-  public jeq(AVServiceProxy paramAVServiceProxy) {}
+  public jeq(GCameraAvailabilityMonitor paramGCameraAvailabilityMonitor) {}
   
-  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(AVServiceProxy.a(), 2, "AVServiceForQQ onServiceConnected");
+    if ((this.a.a() != null) && (paramIntent != null))
+    {
+      this.a.a(paramIntent.getStringExtra("camera_id"), paramIntent.getIntExtra("availability", 1));
+      if (QLog.isColorLevel()) {
+        QLog.d("GCameraAvailabilityMonitor", 2, "update camera availability status cameraId:" + paramIntent.getStringExtra("camera_id") + ", value:" + paramIntent.getIntExtra("availability", 1));
+      }
     }
-    this.a.a = IAVServiceForQQ.Stub.a(paramIBinder);
-  }
-  
-  public void onServiceDisconnected(ComponentName paramComponentName)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d(AVServiceProxy.a(), 2, "AVServiceForQQ onServiceDisconnected");
-    }
-    this.a.a = null;
   }
 }
 

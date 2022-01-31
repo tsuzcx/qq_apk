@@ -1,22 +1,17 @@
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter;
-import com.tencent.mobileqq.ark.ArkHorizontalListViewAdapter.ItemViewHolder;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.arcard.ARVideoPreviewActivity;
 
 public class aani
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public aani(ArkHorizontalListViewAdapter paramArkHorizontalListViewAdapter, String paramString, ArkHorizontalListViewAdapter.ItemViewHolder paramItemViewHolder) {}
+  public aani(ARVideoPreviewActivity paramARVideoPreviewActivity) {}
   
-  public void run()
-  {
-    String str = ArkAppCenter.b(this.jdField_a_of_type_JavaLangString);
-    ArkAppCenter.a().postToMainThread(new aanj(this, str));
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aani
  * JD-Core Version:    0.7.0.1
  */

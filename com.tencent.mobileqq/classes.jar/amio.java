@@ -1,42 +1,22 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.report.lp.MachineLearingSmartReport;
+import common.qzone.component.cache.common.SoftHashMap;
+import java.util.Map.Entry;
 
 public class amio
-  implements ModuleDownloadListener
+  extends amiq
 {
-  public amio(MachineLearingSmartReport paramMachineLearingSmartReport, String paramString1, String paramString2, String paramString3) {}
-  
-  public void onDownloadCanceled(String paramString)
+  amio(SoftHashMap paramSoftHashMap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadCanceled " + paramString);
-    }
+    super(paramSoftHashMap);
   }
   
-  public void onDownloadFailed(String paramString)
+  public Map.Entry a()
   {
-    MachineLearingSmartReport.access$100(this.jdField_a_of_type_CooperationQzoneReportLpMachineLearingSmartReport, 10, "Module onDownloadFailed " + paramString);
-  }
-  
-  public void onDownloadProgress(String paramString, float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadProgress " + paramString + ",progress=" + Float.toString(paramFloat));
-    }
-  }
-  
-  public void onDownloadSucceed(String paramString)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("MachineLearingSmartReport", 2, "Module onDownloadSucceed " + paramString);
-    }
-    MachineLearingSmartReport.access$000(this.jdField_a_of_type_CooperationQzoneReportLpMachineLearingSmartReport, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    return a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     amio
  * JD-Core Version:    0.7.0.1
  */

@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.activity.contact.addcontact.AddContactsView;
-import com.tencent.mobileqq.app.ConditionSearchManager.IFirstLocationReqCancelListener;
+import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
+import java.util.List;
 
 public class web
-  implements ConditionSearchManager.IFirstLocationReqCancelListener
+  implements Runnable
 {
-  public web(AddContactsView paramAddContactsView) {}
+  public web(ZhituManager paramZhituManager, String paramString) {}
   
-  public void a()
+  public void run()
   {
-    this.a.a = false;
+    ZhituManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituManager).add(this.jdField_a_of_type_JavaLangString);
   }
 }
 

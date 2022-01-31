@@ -62,9 +62,14 @@ import tencent.im.oidb.cmd0x84c.oidb_0x84c.ReqBody;
 import tencent.im.oidb.cmd0x84c.oidb_0x84c.RspBody;
 import tencent.im.oidb.cmd0x95a.cmd0x95a.GetArActivityRedReq;
 import tencent.im.oidb.cmd0x95a.cmd0x95a.GetArActivityRedRsp;
+import tencent.im.oidb.cmd0x95a.cmd0x95a.JoinWorldCupReq;
+import tencent.im.oidb.cmd0x95a.cmd0x95a.JoinWorldCupRsp;
 import tencent.im.oidb.cmd0x95a.cmd0x95a.ReqBody;
 import tencent.im.oidb.cmd0x95a.cmd0x95a.RspBody;
+import tencent.im.oidb.cmd0x95a.cmd0x95a.SetWorldCupInfoReq;
+import tencent.im.oidb.cmd0x95a.cmd0x95a.SetWorldCupInfoRsp;
 import tencent.im.oidb.cmd0x95a.cmd0x95a.UpdateArCountRsp;
+import tencent.im.oidb.cmd0x95a.cmd0x95a.WorldCupInfo;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 import tencent.im.oidb.olympic.MqqLbs.CheatApp;
 import tencent.im.oidb.olympic.MqqLbs.LBSCheckInfo;
@@ -79,13 +84,14 @@ public class ArMapHandler
   private int jdField_a_of_type_Int;
   public volatile long a;
   private JNIPOIRequestParam jdField_a_of_type_ComTencentMobileqqArmapJNIPOIRequestParam;
-  private String jdField_a_of_type_JavaLangString;
+  public String a;
   private MqqLbs.LBSCheckInfo jdField_a_of_type_TencentImOidbOlympicMqqLbs$LBSCheckInfo;
   boolean jdField_a_of_type_Boolean = false;
   private double jdField_b_of_type_Double;
   private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString;
-  private double c;
+  private double jdField_c_of_type_Double;
+  private String jdField_c_of_type_JavaLangString;
   
   static
   {
@@ -96,6 +102,7 @@ public class ArMapHandler
   public ArMapHandler(AppInterface paramAppInterface)
   {
     super(paramAppInterface);
+    this.jdField_a_of_type_JavaLangString = "神秘好友";
   }
   
   private void a(ToServiceMsg paramToServiceMsg, boolean paramBoolean, int paramInt, oidb_0x7bb.DeductItemRsp paramDeductItemRsp)
@@ -257,7 +264,7 @@ public class ArMapHandler
         paramToServiceMsg = POIInfo.a(paramToServiceMsg);
         paramQueryPoiRsp = paramQueryPoiRsp.items.get();
         if ((paramQueryPoiRsp == null) || (paramQueryPoiRsp.isEmpty())) {
-          break label333;
+          break label334;
         }
         localArrayList = new ArrayList();
         paramQueryPoiRsp = paramQueryPoiRsp.iterator();
@@ -277,7 +284,7 @@ public class ArMapHandler
       }
       a(6, paramBoolean, new Object[] { paramQueryPoiRsp, paramToServiceMsg, Integer.valueOf(i), Integer.valueOf(j), Long.valueOf(l) });
       return;
-      label333:
+      label334:
       localArrayList = null;
       paramQueryPoiRsp = paramToServiceMsg;
       paramToServiceMsg = localArrayList;
@@ -750,13 +757,13 @@ public class ArMapHandler
       if (paramString != null) {
         localReqBody.bytes_cookie.set(ByteStringMicro.copyFrom(paramString));
       }
-      if ((!TextUtils.isEmpty(paramJNIPOIRequestParam.lbsSig_verifyKey)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      if ((!TextUtils.isEmpty(paramJNIPOIRequestParam.lbsSig_verifyKey)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {
         break label1539;
       }
-      paramJNIPOIRequestParam.lbsSig_verifyKey = this.jdField_a_of_type_JavaLangString;
+      paramJNIPOIRequestParam.lbsSig_verifyKey = this.jdField_b_of_type_JavaLangString;
       paramJNIPOIRequestParam.lbsSig_lon = this.jdField_a_of_type_Double;
       paramJNIPOIRequestParam.lbsSig_lat = this.jdField_b_of_type_Double;
-      paramJNIPOIRequestParam.lbsSig_locationTime = this.c;
+      paramJNIPOIRequestParam.lbsSig_locationTime = this.jdField_c_of_type_Double;
       paramJNIPOIRequestParam.accuracy = this.jdField_a_of_type_Int;
       bool1 = true;
       localLBSSig = new cmd0x7b4.LBSSig();
@@ -961,10 +968,10 @@ public class ArMapHandler
       localLBSSig = new oidb_0x7bb.LBSSig();
       localLBSSig.int32_lon.set((int)ArMapUtil.a(this.jdField_a_of_type_Double, 1000000.0D));
       localLBSSig.int32_lat.set((int)ArMapUtil.a(this.jdField_b_of_type_Double, 1000000.0D));
-      localLBSSig.uint64_time.set((int)(this.c / 1000.0D));
+      localLBSSig.uint64_time.set((int)(this.jdField_c_of_type_Double / 1000.0D));
       localObject = null;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        localObject = this.jdField_a_of_type_JavaLangString.getBytes();
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        localObject = this.jdField_b_of_type_JavaLangString.getBytes();
       }
       if (localObject != null) {
         localLBSSig.bytes_verify_key.set(ByteStringMicro.copyFrom((byte[])localObject));
@@ -973,7 +980,7 @@ public class ArMapHandler
       if (QLog.isColorLevel())
       {
         localObject = new StringBuilder();
-        ((StringBuilder)localObject).append("lbsSig{lat:").append(localLBSSig.int32_lat.get()).append(", lng:").append(localLBSSig.int32_lon.get()).append(", verify_key:").append(this.jdField_a_of_type_JavaLangString).append(", time:").append(localLBSSig.uint64_time.get()).append("}");
+        ((StringBuilder)localObject).append("lbsSig{lat:").append(localLBSSig.int32_lat.get()).append(", lng:").append(localLBSSig.int32_lon.get()).append(", verify_key:").append(this.jdField_b_of_type_JavaLangString).append(", time:").append(localLBSSig.uint64_time.get()).append("}");
         QLog.d("ArMapHandler", 2, "reqOpenPoi has params, ----------- params = " + ((StringBuilder)localObject).toString());
       }
     }
@@ -1235,10 +1242,10 @@ public class ArMapHandler
   {
     this.jdField_b_of_type_Double = paramDouble2;
     this.jdField_a_of_type_Double = paramDouble1;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.c = paramDouble3;
+    this.jdField_b_of_type_JavaLangString = paramString1;
+    this.jdField_c_of_type_Double = paramDouble3;
     this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_JavaLangString = paramString2;
+    this.jdField_c_of_type_JavaLangString = paramString2;
     this.jdField_b_of_type_Int = paramInt2;
   }
   
@@ -1296,10 +1303,10 @@ public class ArMapHandler
       localLBSSig = new oidb_0x7bb.LBSSig();
       localLBSSig.int32_lon.set((int)ArMapUtil.a(this.jdField_a_of_type_Double, 1000000.0D));
       localLBSSig.int32_lat.set((int)ArMapUtil.a(this.jdField_b_of_type_Double, 1000000.0D));
-      localLBSSig.uint64_time.set((int)(this.c / 1000.0D));
+      localLBSSig.uint64_time.set((int)(this.jdField_c_of_type_Double / 1000.0D));
       paramString = null;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        paramString = this.jdField_a_of_type_JavaLangString.getBytes();
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        paramString = this.jdField_b_of_type_JavaLangString.getBytes();
       }
       if (paramString != null) {
         localLBSSig.bytes_verify_key.set(ByteStringMicro.copyFrom(paramString));
@@ -1308,10 +1315,27 @@ public class ArMapHandler
       if (QLog.isColorLevel())
       {
         paramString = new StringBuilder();
-        paramString.append("lbsSig{lat:").append(localLBSSig.int32_lat.get()).append(", lng:").append(localLBSSig.int32_lon.get()).append(", verify_key:").append(this.jdField_a_of_type_JavaLangString).append(", time:").append(localLBSSig.uint64_time.get()).append("}");
+        paramString.append("lbsSig{lat:").append(localLBSSig.int32_lat.get()).append(", lng:").append(localLBSSig.int32_lon.get()).append(", verify_key:").append(this.jdField_b_of_type_JavaLangString).append(", time:").append(localLBSSig.uint64_time.get()).append("}");
         QLog.d("ArMapHandler", 2, "reqOpenPoi has params, ----------- params = " + paramString.toString());
       }
     }
+  }
+  
+  public void a(String paramString1, String paramString2, String paramString3)
+  {
+    cmd0x95a.SetWorldCupInfoReq localSetWorldCupInfoReq = new cmd0x95a.SetWorldCupInfoReq();
+    cmd0x95a.WorldCupInfo localWorldCupInfo = new cmd0x95a.WorldCupInfo();
+    localWorldCupInfo.str_nick.set(paramString1);
+    if (paramString2 != null) {
+      localWorldCupInfo.str_video_url.set(paramString2);
+    }
+    localWorldCupInfo.str_config.set(paramString3);
+    localSetWorldCupInfoReq.msg_worldcup_info.set(localWorldCupInfo);
+    paramString1 = new cmd0x95a.ReqBody();
+    paramString1.msg_set_world_cup_info_req.set(localSetWorldCupInfoReq);
+    paramString1 = a("OidbSvc.0x95a", 2394, 102, paramString1.toByteArray());
+    paramString1.extraData.putInt("subcmd", 102);
+    b(paramString1);
   }
   
   void a(ArrayList paramArrayList1, ArrayList paramArrayList2)
@@ -1352,83 +1376,83 @@ public class ArMapHandler
     //   1: astore 4
     //   3: aconst_null
     //   4: astore_3
-    //   5: invokestatic 1178	com/tencent/mobileqq/armap/map/MapEngineCallback:getRootPath	()Ljava/lang/String;
+    //   5: invokestatic 1210	com/tencent/mobileqq/armap/map/MapEngineCallback:getRootPath	()Ljava/lang/String;
     //   8: astore_2
-    //   9: invokestatic 100	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   9: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   12: ifeq +12 -> 24
-    //   15: ldc 102
+    //   15: ldc 106
     //   17: iconst_2
-    //   18: ldc_w 1180
-    //   21: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   24: new 1182	java/io/File
+    //   18: ldc_w 1212
+    //   21: invokestatic 147	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   24: new 1214	java/io/File
     //   27: dup
     //   28: aload_2
-    //   29: invokespecial 1184	java/io/File:<init>	(Ljava/lang/String;)V
+    //   29: invokespecial 1216	java/io/File:<init>	(Ljava/lang/String;)V
     //   32: astore 5
     //   34: aload 5
-    //   36: invokevirtual 1187	java/io/File:exists	()Z
+    //   36: invokevirtual 1219	java/io/File:exists	()Z
     //   39: ifne +17 -> 56
     //   42: aload 5
-    //   44: invokevirtual 1190	java/io/File:isDirectory	()Z
+    //   44: invokevirtual 1222	java/io/File:isDirectory	()Z
     //   47: ifeq +9 -> 56
     //   50: aload 5
-    //   52: invokevirtual 1193	java/io/File:mkdirs	()Z
+    //   52: invokevirtual 1225	java/io/File:mkdirs	()Z
     //   55: pop
-    //   56: new 1182	java/io/File
+    //   56: new 1214	java/io/File
     //   59: dup
-    //   60: new 104	java/lang/StringBuilder
+    //   60: new 108	java/lang/StringBuilder
     //   63: dup
-    //   64: invokespecial 106	java/lang/StringBuilder:<init>	()V
+    //   64: invokespecial 110	java/lang/StringBuilder:<init>	()V
     //   67: aload_2
-    //   68: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   71: ldc_w 1195
-    //   74: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   80: invokespecial 1184	java/io/File:<init>	(Ljava/lang/String;)V
+    //   68: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   71: ldc_w 1227
+    //   74: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   77: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   80: invokespecial 1216	java/io/File:<init>	(Ljava/lang/String;)V
     //   83: astore_2
-    //   84: invokestatic 100	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   84: invokestatic 104	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
     //   87: ifeq +32 -> 119
-    //   90: ldc 102
+    //   90: ldc 106
     //   92: iconst_2
-    //   93: new 104	java/lang/StringBuilder
+    //   93: new 108	java/lang/StringBuilder
     //   96: dup
-    //   97: invokespecial 106	java/lang/StringBuilder:<init>	()V
-    //   100: ldc_w 1197
-    //   103: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   97: invokespecial 110	java/lang/StringBuilder:<init>	()V
+    //   100: ldc_w 1229
+    //   103: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
     //   106: aload_2
-    //   107: invokevirtual 1200	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   110: invokevirtual 112	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   113: invokevirtual 139	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   116: invokestatic 143	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   119: new 1202	java/io/FileOutputStream
+    //   107: invokevirtual 1232	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   110: invokevirtual 116	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   113: invokevirtual 143	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   116: invokestatic 147	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   119: new 1234	java/io/FileOutputStream
     //   122: dup
     //   123: aload_2
-    //   124: invokespecial 1205	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   124: invokespecial 1237	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
     //   127: astore_2
-    //   128: new 1207	java/io/BufferedOutputStream
+    //   128: new 1239	java/io/BufferedOutputStream
     //   131: dup
     //   132: aload_2
-    //   133: invokespecial 1210	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   133: invokespecial 1242	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
     //   136: astore_3
     //   137: aload_3
     //   138: aload_1
-    //   139: invokevirtual 1213	java/io/BufferedOutputStream:write	([B)V
+    //   139: invokevirtual 1245	java/io/BufferedOutputStream:write	([B)V
     //   142: aload_3
     //   143: ifnull +7 -> 150
     //   146: aload_3
-    //   147: invokevirtual 1216	java/io/BufferedOutputStream:close	()V
+    //   147: invokevirtual 1248	java/io/BufferedOutputStream:close	()V
     //   150: aload_2
     //   151: ifnull +7 -> 158
     //   154: aload_2
-    //   155: invokevirtual 1217	java/io/FileOutputStream:close	()V
+    //   155: invokevirtual 1249	java/io/FileOutputStream:close	()V
     //   158: return
     //   159: astore_1
     //   160: aload_1
-    //   161: invokevirtual 1218	java/io/IOException:printStackTrace	()V
+    //   161: invokevirtual 1250	java/io/IOException:printStackTrace	()V
     //   164: goto -14 -> 150
     //   167: astore_1
     //   168: aload_1
-    //   169: invokevirtual 1218	java/io/IOException:printStackTrace	()V
+    //   169: invokevirtual 1250	java/io/IOException:printStackTrace	()V
     //   172: return
     //   173: astore 4
     //   175: aconst_null
@@ -1438,23 +1462,23 @@ public class ArMapHandler
     //   179: aload 4
     //   181: astore_3
     //   182: aload_3
-    //   183: invokevirtual 346	java/lang/Exception:printStackTrace	()V
+    //   183: invokevirtual 350	java/lang/Exception:printStackTrace	()V
     //   186: aload_1
     //   187: ifnull +7 -> 194
     //   190: aload_1
-    //   191: invokevirtual 1216	java/io/BufferedOutputStream:close	()V
+    //   191: invokevirtual 1248	java/io/BufferedOutputStream:close	()V
     //   194: aload_2
     //   195: ifnull -37 -> 158
     //   198: aload_2
-    //   199: invokevirtual 1217	java/io/FileOutputStream:close	()V
+    //   199: invokevirtual 1249	java/io/FileOutputStream:close	()V
     //   202: return
     //   203: astore_1
     //   204: aload_1
-    //   205: invokevirtual 1218	java/io/IOException:printStackTrace	()V
+    //   205: invokevirtual 1250	java/io/IOException:printStackTrace	()V
     //   208: return
     //   209: astore_1
     //   210: aload_1
-    //   211: invokevirtual 1218	java/io/IOException:printStackTrace	()V
+    //   211: invokevirtual 1250	java/io/IOException:printStackTrace	()V
     //   214: goto -20 -> 194
     //   217: astore_1
     //   218: aconst_null
@@ -1464,20 +1488,20 @@ public class ArMapHandler
     //   223: aload_3
     //   224: ifnull +7 -> 231
     //   227: aload_3
-    //   228: invokevirtual 1216	java/io/BufferedOutputStream:close	()V
+    //   228: invokevirtual 1248	java/io/BufferedOutputStream:close	()V
     //   231: aload_2
     //   232: ifnull +7 -> 239
     //   235: aload_2
-    //   236: invokevirtual 1217	java/io/FileOutputStream:close	()V
+    //   236: invokevirtual 1249	java/io/FileOutputStream:close	()V
     //   239: aload_1
     //   240: athrow
     //   241: astore_3
     //   242: aload_3
-    //   243: invokevirtual 1218	java/io/IOException:printStackTrace	()V
+    //   243: invokevirtual 1250	java/io/IOException:printStackTrace	()V
     //   246: goto -15 -> 231
     //   249: astore_2
     //   250: aload_2
-    //   251: invokevirtual 1218	java/io/IOException:printStackTrace	()V
+    //   251: invokevirtual 1250	java/io/IOException:printStackTrace	()V
     //   254: goto -15 -> 239
     //   257: astore_1
     //   258: aconst_null
@@ -1594,6 +1618,17 @@ public class ArMapHandler
       localArrayList.add(localObject);
     }
     return localArrayList;
+  }
+  
+  public void b()
+  {
+    Object localObject = new cmd0x95a.JoinWorldCupReq();
+    ((cmd0x95a.JoinWorldCupReq)localObject).uint32_t_req_recommend_nick.set(1);
+    cmd0x95a.ReqBody localReqBody = new cmd0x95a.ReqBody();
+    localReqBody.msg_join_world_cup_req.set((MessageMicro)localObject);
+    localObject = a("OidbSvc.0x95a", 2394, 103, localReqBody.toByteArray());
+    ((ToServiceMsg)localObject).extraData.putInt("subcmd", 103);
+    b((ToServiceMsg)localObject);
   }
   
   protected void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
@@ -1759,49 +1794,88 @@ public class ArMapHandler
   
   void c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    int i = -1;
     boolean bool;
+    int j;
     Object localObject;
+    int i;
     if (paramFromServiceMsg == null)
     {
       bool = false;
-      int j = paramToServiceMsg.extraData.getInt("subcmd", -1);
+      j = paramToServiceMsg.extraData.getInt("subcmd", -1);
       localObject = "";
-      if (bool)
+      if (!bool) {
+        break label545;
+      }
+      localObject = new cmd0x95a.RspBody();
+      i = a(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
+      paramFromServiceMsg = paramFromServiceMsg.extraData.getString("str_error_msg");
+      if (i != 0) {
+        break label458;
+      }
+      switch (j)
       {
-        localObject = new cmd0x95a.RspBody();
-        i = a(paramFromServiceMsg, paramObject, (MessageMicro)localObject);
-        paramFromServiceMsg = paramFromServiceMsg.extraData.getString("str_error_msg");
-        if (i == 0) {
-          switch (j)
-          {
-          }
-        }
+      default: 
+        label108:
+        paramToServiceMsg = paramFromServiceMsg;
       }
     }
     for (;;)
     {
-      localObject = paramFromServiceMsg;
       if (QLog.isColorLevel()) {
-        QLog.d("ArMapHandler", 2, "handle0x95a errMsg:" + (String)localObject + ",result:" + i + ",isSuc:" + bool);
+        QLog.d("ArMapHandler", 2, "handle0x95a errMsg:" + paramToServiceMsg + ",result:" + i + ",isSuc:" + bool);
       }
       return;
       bool = paramFromServiceMsg.isSuccess();
       break;
-      if (((cmd0x95a.RspBody)localObject).msg_update_ar_count_rsp.has())
-      {
-        paramToServiceMsg = (cmd0x95a.UpdateArCountRsp)((cmd0x95a.RspBody)localObject).msg_update_ar_count_rsp.get();
-        if (paramToServiceMsg.uint64_uin.has()) {}
-        for (long l = paramToServiceMsg.uint64_uin.get();; l = -1L)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ArMapHandler", 2, "handle0x95a report scanQRCode result,uin = " + l);
-          }
-          localObject = paramFromServiceMsg;
-          break;
-        }
-        a(paramToServiceMsg, bool, i, (cmd0x95a.RspBody)localObject);
+      if (!((cmd0x95a.RspBody)localObject).msg_update_ar_count_rsp.has()) {
+        break label108;
       }
+      paramToServiceMsg = (cmd0x95a.UpdateArCountRsp)((cmd0x95a.RspBody)localObject).msg_update_ar_count_rsp.get();
+      if (paramToServiceMsg.uint64_uin.has()) {}
+      for (long l = paramToServiceMsg.uint64_uin.get(); QLog.isColorLevel(); l = -1L)
+      {
+        QLog.d("ArMapHandler", 2, "handle0x95a report scanQRCode result,uin = " + l);
+        break;
+      }
+      a(paramToServiceMsg, bool, i, (cmd0x95a.RspBody)localObject);
+      break label108;
+      if (!((cmd0x95a.RspBody)localObject).msg_set_world_cup_info_rsp.has()) {
+        break label108;
+      }
+      paramToServiceMsg = ((cmd0x95a.SetWorldCupInfoRsp)((cmd0x95a.RspBody)localObject).msg_set_world_cup_info_rsp.get()).str_share_id.get();
+      a(21, bool, new Object[] { paramToServiceMsg, Integer.valueOf(i) });
+      if (!QLog.isColorLevel()) {
+        break label108;
+      }
+      QLog.d("ArMapHandler", 2, "handle0x95a SetWorldCupInfo shareId = " + paramToServiceMsg);
+      break label108;
+      if (!((cmd0x95a.RspBody)localObject).msg_join_world_cup_rsp.has()) {
+        break label108;
+      }
+      paramToServiceMsg = (cmd0x95a.JoinWorldCupRsp)((cmd0x95a.RspBody)localObject).msg_join_world_cup_rsp.get();
+      paramObject = paramToServiceMsg.str_recommend_nick.get();
+      if ((paramObject != null) && (paramObject.length() > 0)) {
+        this.jdField_a_of_type_JavaLangString = paramObject;
+      }
+      l = paramToServiceMsg.uint64_recommend_uin.get();
+      QLog.d("ArMapHandler", 1, "handle0x95a JoinWorldCup recommendNick = " + paramObject + ", recommendUin = " + l);
+      break label108;
+      label458:
+      switch (j)
+      {
+      }
+      for (;;)
+      {
+        paramToServiceMsg = paramFromServiceMsg;
+        break;
+        a(21, bool, new Object[] { null, Integer.valueOf(i) });
+        if (QLog.isColorLevel()) {
+          QLog.d("ArMapHandler", 2, "handle0x95a SetWorldCupInfo fail result = " + i);
+        }
+      }
+      label545:
+      i = -1;
+      paramToServiceMsg = (ToServiceMsg)localObject;
     }
   }
   

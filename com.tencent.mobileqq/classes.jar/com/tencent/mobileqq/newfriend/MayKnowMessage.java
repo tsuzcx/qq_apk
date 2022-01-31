@@ -30,7 +30,7 @@ public class MayKnowMessage
     }
     for (;;)
     {
-      this.jdField_a_of_type_JavaLangString = String.format(BaseApplicationImpl.sApplication.getString(2131435499), new Object[] { paramQQAppInterface });
+      this.jdField_a_of_type_JavaLangString = String.format(BaseApplicationImpl.sApplication.getString(2131435516), new Object[] { paramQQAppInterface });
       return this.jdField_a_of_type_JavaLangString;
       label72:
       paramQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqDataPushRecommend.nick;
@@ -47,7 +47,7 @@ public class MayKnowMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.newfriend.MayKnowMessage
  * JD-Core Version:    0.7.0.1
  */

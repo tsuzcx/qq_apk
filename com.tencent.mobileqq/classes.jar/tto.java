@@ -1,39 +1,29 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
-import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.RoamSettingController;
-import java.util.List;
+import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 public class tto
-  implements View.OnClickListener
+  implements Runnable
 {
-  public tto(TroopAssistantActivity paramTroopAssistantActivity) {}
+  public tto(SplashActivity paramSplashActivity) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    int i = 0;
-    if ((this.a.jdField_a_of_type_JavaUtilList == null) || (this.a.jdField_a_of_type_JavaUtilList.size() == 0)) {}
-    for (;;)
-    {
-      return;
-      ReportController.b(this.a.app, "dc00899", "Grp_msg", "", "helper-guide", "Clk_confirm", 0, 0, "", "", "", "");
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsRoamSettingController = ((RoamSettingController)this.a.app.getManager(30));
-      this.a.b.setCompoundDrawablesWithIntrinsicBounds(2130838592, 0, 0, 0);
-      while (i < this.a.jdField_a_of_type_JavaUtilList.size())
-      {
-        paramView = String.valueOf(this.a.jdField_a_of_type_JavaUtilList.get(i));
-        this.a.a(paramView, 4);
-        i += 1;
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("SplashActivity", 2, "VideoRedbag, SplashActivity doOnResume, sendRealNameCheckReq");
+    }
+    AppRuntime localAppRuntime = BaseApplicationImpl.sApplication.getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      RedBagVideoManager.a((QQAppInterface)localAppRuntime);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     tto
  * JD-Core Version:    0.7.0.1
  */

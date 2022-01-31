@@ -1,36 +1,35 @@
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler.Callback;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
+import android.graphics.Color;
+import android.text.TextUtils;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
+import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder.Holder;
+import com.tencent.mobileqq.activity.aio.item.SignatureView;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SignatureManager;
+import com.tencent.mobileqq.richstatus.RichStatus;
+import com.tencent.mobileqq.vas.SignatureTemplateInfo;
+import mqq.app.MobileQQ;
 
 public class vew
-  implements TroopQZoneUploadAlbumHandler.Callback
+  implements URLDrawable.URLDrawableListener
 {
-  public vew(StructingMsgItemBuilder paramStructingMsgItemBuilder, MessageForStructing paramMessageForStructing, BaseChatItemLayout paramBaseChatItemLayout) {}
+  public vew(RichStatItemBuilder paramRichStatItemBuilder, RichStatItemBuilder.Holder paramHolder) {}
   
-  public void a(View paramView, long paramLong, int paramInt1, int paramInt2)
+  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
+  
+  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
+  
+  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
+  
+  public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq != paramLong) {}
-    do
-    {
-      return;
-      paramView = (StructMsgForGeneralShare)this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg;
-      if (paramInt1 != 1001) {
-        paramInt2 = 100;
-      }
-      paramView.setProgress(paramInt2);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.findViewById(2131361937);
-    } while (!(paramView instanceof ProgressBar));
-    ((ProgressBar)paramView).setProgress(paramInt2);
-    if (paramInt2 == 100) {}
-    for (paramInt1 = 8;; paramInt1 = 0)
-    {
-      paramView.setVisibility(paramInt1);
-      return;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder.a.a = SignatureManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources(), this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder, this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.jdField_a_of_type_ComTencentMobileqqRichstatusStatusManager, RichStatItemBuilder.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+    paramURLDrawable = ((SignatureManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(57)).a(Integer.toString(RichStatItemBuilder.a().tplId));
+    if (!TextUtils.isEmpty(paramURLDrawable.p)) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder.a.c = Color.parseColor(paramURLDrawable.p);
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemRichStatItemBuilder$Holder.a.invalidate();
   }
 }
 

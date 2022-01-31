@@ -1,26 +1,14 @@
-import android.view.SurfaceView;
-import com.tencent.mobileqq.activity.photo.PhotoPreviewActivity;
-import com.tencent.mobileqq.video.IMediaPlayer.OnPlayStateListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.phone.PhoneLaunchActivity;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
 
 public class wvd
-  implements IMediaPlayer.OnPlayStateListener
+  implements Runnable
 {
-  public wvd(PhotoPreviewActivity paramPhotoPreviewActivity) {}
+  public wvd(PhoneLaunchActivity paramPhoneLaunchActivity) {}
   
-  public void a(int paramInt)
+  public void run()
   {
-    if (paramInt == 1) {
-      this.a.a.setVisibility(0);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPreviewActivity", 2, "changePlayState, playState => " + this.a.a(paramInt));
-      }
-      return;
-      this.a.a.setVisibility(8);
-    }
+    this.a.a.g();
   }
 }
 

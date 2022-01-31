@@ -1,20 +1,20 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.vipgift.VipGiftDownloadInfo;
-import com.tencent.mobileqq.vipgift.VipGiftManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.aio.item.ScribbleItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.flashchat.FlashChatManager;
 
 public class vfd
-  implements Runnable
+  implements View.OnClickListener
 {
-  public vfd(StructingMsgItemBuilder paramStructingMsgItemBuilder, VipGiftDownloadInfo paramVipGiftDownloadInfo, VipGiftManager paramVipGiftManager) {}
+  public vfd(ScribbleItemBuilder paramScribbleItemBuilder) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.d == 1L) && (this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.b.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftManager.a(6L, this.jdField_a_of_type_ComTencentMobileqqVipgiftVipGiftDownloadInfo.a);
-      ((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext).runOnUiThread(new vfe(this));
+    MessageRecord localMessageRecord = (MessageRecord)paramView.getTag();
+    if (localMessageRecord != null) {
+      ((FlashChatManager)this.a.a.getManager(216)).a(paramView.getContext(), localMessageRecord);
     }
   }
 }

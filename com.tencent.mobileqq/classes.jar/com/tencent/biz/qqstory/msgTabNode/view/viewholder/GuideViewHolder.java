@@ -23,7 +23,7 @@ public class GuideViewHolder
     for (paramMsgTabNodeInfo = "日迹介绍";; paramMsgTabNodeInfo = paramMsgTabNodeInfo.c)
     {
       localTextView.setText(paramMsgTabNodeInfo);
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843450);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843571);
       return;
     }
   }

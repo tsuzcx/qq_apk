@@ -1,24 +1,38 @@
-import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
-import com.tencent.mobileqq.app.CardObserver;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.activity.NotifyPushSettingActivity;
+import com.tencent.mobileqq.widget.FormSwitchItem;
 
 public class tdx
-  extends CardObserver
+  extends Handler
 {
-  public tdx(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
+  public tdx(NotifyPushSettingActivity paramNotifyPushSettingActivity) {}
   
-  protected void g(boolean paramBoolean, Object paramObject)
+  public void handleMessage(Message paramMessage)
   {
-    if (paramBoolean)
-    {
-      this.a.setResult(-1);
-      this.a.b(2131434962);
-    }
     for (;;)
     {
-      this.a.a = false;
-      this.a.finish();
-      return;
-      this.a.b(2131434963);
+      try
+      {
+        int i = paramMessage.what;
+        switch (i)
+        {
+        default: 
+          return;
+        }
+      }
+      finally {}
+      boolean bool = ((Boolean)paramMessage.obj).booleanValue();
+      NotifyPushSettingActivity.g(this.a).setChecked(bool);
+      continue;
+      paramMessage = (String)paramMessage.obj;
+      NotifyPushSettingActivity.a(this.a, paramMessage);
+      continue;
+      paramMessage = (String)paramMessage.obj;
+      NotifyPushSettingActivity.b(this.a, paramMessage);
+      continue;
+      bool = ((Boolean)paramMessage.obj).booleanValue();
+      NotifyPushSettingActivity.h(this.a).setChecked(bool);
     }
   }
 }

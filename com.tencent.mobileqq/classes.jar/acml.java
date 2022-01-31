@@ -1,29 +1,24 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.MessageObserver.StatictisInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler.FileUploadInfo;
-import com.tencent.mobileqq.filemanager.app.FileTransferObserver;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.VideoControl;
-import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
 import com.tencent.qphone.base.util.QLog;
 
-public class acml
-  extends FileTransferObserver
+class acml
+  implements Runnable
 {
-  public acml(FileVideoManager.VideoControl paramVideoControl) {}
+  acml(acmj paramacmj, int paramInt1, boolean paramBoolean, int paramInt2, String paramString) {}
   
-  protected void b(boolean paramBoolean, FileTransferHandler.FileUploadInfo paramFileUploadInfo, MessageObserver.StatictisInfo paramStatictisInfo)
+  public void run()
   {
-    super.b(paramBoolean, paramFileUploadInfo, paramStatictisInfo);
-    paramStatictisInfo = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramBoolean) && ((paramFileUploadInfo.c == 2) || (paramFileUploadInfo.c == 0)) && (!this.a.a.bSend))
-    {
-      QLog.i("FileVideoManager<FileAssistant>", 1, "=_= v! [SetFileDownloadStatus Replay] onDownloadFileSuc isSuccess[" + paramBoolean + "],retCode[" + paramFileUploadInfo.jdField_a_of_type_Int + "],retMsg[" + paramFileUploadInfo.jdField_a_of_type_JavaLangString + "],retStat[" + paramFileUploadInfo.c + "]. need to send file receipt");
-      paramStatictisInfo.a().a(this.a.a.peerUin, this.a.a.fileName, this.a.a.Uuid, this.a.a.fileSize, 0L);
-      return;
+    if (this.jdField_a_of_type_Int == 0) {
+      this.jdField_a_of_type_Acmj.a.a(this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
     }
-    QLog.i("FileVideoManager<FileAssistant>", 1, "=_= v! [SetFileDownloadStatus Replay] onDownloadFileSuc isSuccess[" + paramBoolean + "],retCode[" + paramFileUploadInfo.jdField_a_of_type_Int + "],retMsg[" + paramFileUploadInfo.jdField_a_of_type_JavaLangString + "],retStat[" + paramFileUploadInfo.c + "]. don't need to send file receipt");
+    for (;;)
+    {
+      QLog.i("<FileAssistant>FilePreviewActivity", 1, "js call loadFinish  process Over");
+      return;
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_Acmj.a.b(this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangString);
+      }
+    }
   }
 }
 

@@ -1,71 +1,34 @@
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.qqstory.model.TroopNickNameManager;
+import com.tencent.biz.qqstory.model.TroopNickNameManager.TroopNickNameUpdateEvent;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
+import java.util.ArrayList;
 
 public class nde
-  extends QQStoryObserver
+  implements Runnable
 {
-  public nde(MsgTabStoryNodeConfigManager paramMsgTabStoryNodeConfigManager) {}
+  public nde(TroopNickNameManager paramTroopNickNameManager, String paramString, QQUserUIItem paramQQUserUIItem, boolean paramBoolean1, boolean paramBoolean2) {}
   
-  public void a()
+  public void run()
   {
-    StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
-    this.a.b = ((Boolean)localStoryConfigManager.b("key_story_msg_tab_show", Boolean.valueOf(false))).booleanValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "commonConfigReceived:" + this.a.b);
-    }
-    MsgTabStoryNodeConfigManager.a(this.a);
-    MsgTabStoryNodeConfigManager.a(this.a, true);
-    MsgTabStoryNodeConfigManager.a(this.a, true);
-    MsgTabStoryNodeConfigManager.b(this.a);
-  }
-  
-  public void a(byte paramByte)
-  {
-    boolean bool = true;
-    this.a.a = paramByte;
-    MsgTabStoryNodeConfigManager.c(this.a, true);
-    MsgTabStoryNodeConfigManager localMsgTabStoryNodeConfigManager;
-    if (paramByte != -1)
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelTroopNickNameManager.a.c(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq) != null)
     {
-      if (paramByte == 0) {
-        MsgTabStoryNodeConfigManager.b(this.a);
-      }
-      localMsgTabStoryNodeConfigManager = this.a;
-      if (paramByte != 2) {
-        break label88;
-      }
+      localTroopNickNameUpdateEvent = new TroopNickNameManager.TroopNickNameUpdateEvent();
+      localArrayList = new ArrayList();
+      localArrayList.add(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.qq);
+      localTroopNickNameUpdateEvent.jdField_a_of_type_JavaUtilList = localArrayList;
+      localTroopNickNameUpdateEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      Dispatchers.get().dispatch(localTroopNickNameUpdateEvent);
     }
-    for (;;)
+    while (this.jdField_a_of_type_Boolean)
     {
-      localMsgTabStoryNodeConfigManager.a(bool);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryOIDBReceived:" + this.a.c);
-      }
+      TroopNickNameManager.TroopNickNameUpdateEvent localTroopNickNameUpdateEvent;
+      ArrayList localArrayList;
       return;
-      label88:
-      bool = false;
     }
-  }
-  
-  public void f(boolean paramBoolean)
-  {
-    if (!MsgTabStoryNodeConfigManager.a(this.a))
-    {
-      if (paramBoolean)
-      {
-        this.a.c = this.a.a();
-        MsgTabStoryNodeConfigManager.a(this.a);
-        MsgTabStoryNodeConfigManager.a(this.a, true);
-      }
-      MsgTabStoryNodeConfigManager.b(this.a, true);
-      MsgTabStoryNodeConfigManager.b(this.a);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.msgTab.MsgTabStoryNodeConfigManager", 2, "onMsgTabStoryDPCCfgHasContentReceived:" + this.a.c);
-    }
+    this.jdField_a_of_type_ComTencentBizQqstoryModelTroopNickNameManager.a(this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem, this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

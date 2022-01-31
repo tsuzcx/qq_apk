@@ -1,45 +1,30 @@
-import com.tencent.mobileqq.conditionsearch.widget.IphonePickerView.PickerViewAdapter;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditTribePanel;
+import android.content.Intent;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.publish.PublishParam;
+import com.tencent.mobileqq.activity.PublicFragmentActivity;
+import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
+import com.tencent.mobileqq.nearby.now.send.PublishManager;
+import com.tencent.mobileqq.nearby.now.send.SmallVideoSendFragment;
+import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
 
 public class aeus
-  implements IphonePickerView.PickerViewAdapter
+  implements View.OnClickListener
 {
-  public aeus(NearbyProfileEditTribePanel paramNearbyProfileEditTribePanel) {}
+  public aeus(SmallVideoSendFragment paramSmallVideoSendFragment) {}
   
-  public int getColumnCount()
+  public void onClick(View paramView)
   {
-    return 1;
-  }
-  
-  public int getRowCount(int paramInt)
-  {
-    return 4;
-  }
-  
-  public String getText(int paramInt1, int paramInt2)
-  {
-    int i = 3;
-    if (paramInt2 < 0) {}
-    for (paramInt1 = 0;; paramInt1 = paramInt2)
+    paramView = new Intent();
+    if (SmallVideoSendFragment.a(this.a).h == 0) {}
+    for (int i = 1;; i = 2)
     {
-      if (paramInt1 > 3) {
-        paramInt1 = i;
-      }
-      for (;;)
-      {
-        switch (paramInt1)
-        {
-        default: 
-          return "";
-        case 0: 
-          return "保密";
-        case 1: 
-          return "单身";
-        case 2: 
-          return "恋爱中";
-        }
-        return "已婚";
-      }
+      paramView.putExtra("content_type", i);
+      paramView.putExtra("selected_location", this.a.a.a());
+      PublicFragmentActivity.a(this.a.getActivity(), paramView, SelectLocationFragment.class, 1001);
+      new NowVideoReporter().h("video_public").i("clk_poi").d(SmallVideoSendFragment.a(this.a)).a(i).b(this.a.getActivity().app);
+      return;
     }
   }
 }

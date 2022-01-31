@@ -1,18 +1,21 @@
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.VideoInviteFloatBarUICtr;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.av.ui.VideoLayerUI;
+import com.tencent.av.widget.RotateLayout;
 
-class kcc
-  implements Runnable
+public class kcc
+  implements Animation.AnimationListener
 {
-  kcc(kcb paramkcb, long paramLong) {}
+  private kcc(VideoLayerUI paramVideoLayerUI) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.jdField_a_of_type_Kcb.a.jdField_a_of_type_ComTencentAvAppSessionInfo.an = true;
-    if (this.jdField_a_of_type_Kcb.a.b == 1) {
-      this.jdField_a_of_type_Kcb.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_a_of_type_Long);
-    }
+    VideoLayerUI.a(this.a).setVisibility(4);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,25 +1,38 @@
-import android.app.Activity;
-import android.view.Window;
-import android.widget.FrameLayout;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyNewFeedsActivity;
-import com.tencent.biz.pubaccount.readinjoy.skin.GuideData;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoySkinGuideView;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoySettingActivity;
+import com.tencent.mobileqq.widget.QQProgressDialog.Callback;
+import com.tencent.widget.Switch;
 
 public class leg
-  implements Runnable
+  implements QQProgressDialog.Callback
 {
-  public leg(ReadInJoyNewFeedsActivity paramReadInJoyNewFeedsActivity, GuideData paramGuideData, String paramString, int paramInt) {}
+  public leg(ReadInJoySettingActivity paramReadInJoySettingActivity) {}
   
-  public void run()
+  public void a()
   {
-    FrameLayout localFrameLayout = (FrameLayout)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.getActivity().getWindow().getDecorView();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a = new ReadInJoySkinGuideView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.app, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData.id, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, new leh(this, localFrameLayout), new lei(this, localFrameLayout));
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a() == 0)
+    boolean bool2 = true;
+    Object localObject;
+    if (this.a.a)
     {
-      localFrameLayout.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity.a, -1, -1);
-      return;
+      localObject = this.a;
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label61;
+      }
+      bool1 = true;
+      ReadInJoySettingActivity.a((ReadInJoySettingActivity)localObject, bool1);
+      localObject = ReadInJoySettingActivity.a(this.a);
+      if (ReadInJoySettingActivity.a(this.a)) {
+        break label66;
+      }
     }
-    ReadInJoyNewFeedsActivity.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyNewFeedsActivity, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoySkinGuideData);
+    label61:
+    label66:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      ((Switch)localObject).setChecked(bool1);
+      return;
+      bool1 = false;
+      break;
+    }
   }
 }
 

@@ -1,27 +1,42 @@
-import android.view.animation.AlphaAnimation;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import mqq.observer.WtloginObserver;
+import oicq.wlogin_sdk.devicelock.DevlockInfo;
+import oicq.wlogin_sdk.request.WUserSigInfo;
+import oicq.wlogin_sdk.tools.ErrMsg;
 
-public class acch
-  implements Runnable
+class acch
+  extends WtloginObserver
 {
-  public acch(FilePreviewActivity paramFilePreviewActivity) {}
+  acch(acbg paramacbg, Bundle paramBundle, MessengerService paramMessengerService) {}
   
-  public void run()
+  public void OnCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if (this.a.b == null) {
-      this.a.b = new FilePreviewAnimQueue(this.a.a);
+    boolean bool2 = true;
+    paramWUserSigInfo = new Bundle();
+    if ((paramInt == 0) && (paramDevlockInfo != null))
+    {
+      if (paramDevlockInfo.DevSetup != 1) {
+        break label90;
+      }
+      bool1 = true;
+      paramWUserSigInfo.putBoolean("auth_dev_open", bool1);
+      if (paramDevlockInfo.AllowSet != 1) {
+        break label96;
+      }
     }
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
-    localAlphaAnimation.setFillAfter(true);
-    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
-    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
-    localFilePreviewAnim.jdField_a_of_type_Boolean = false;
-    localFilePreviewAnim.jdField_a_of_type_Int = FilePreviewAnimQueue.jdField_a_of_type_Int;
-    localFilePreviewAnim.b = 1500;
-    this.a.b.a(localFilePreviewAnim);
-    this.a.b.a();
+    label90:
+    label96:
+    for (boolean bool1 = bool2;; bool1 = false)
+    {
+      paramWUserSigInfo.putBoolean("allow_set", bool1);
+      paramWUserSigInfo.putString("phone_num", paramDevlockInfo.Mobile);
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramWUserSigInfo);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
+      return;
+      bool1 = false;
+      break;
+    }
   }
 }
 

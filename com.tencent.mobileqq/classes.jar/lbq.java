@@ -1,24 +1,13 @@
-import com.tencent.biz.pubaccount.readinjoy.ReadInJoyRainAnimationController;
-import com.tencent.biz.pubaccount.readinjoy.view.RainView.AnimationEndListener;
-import java.lang.ref.WeakReference;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyBaseDeliverActivity;
 
 public class lbq
-  implements RainView.AnimationEndListener
+  implements Runnable
 {
-  private WeakReference a;
+  public lbq(ReadInJoyBaseDeliverActivity paramReadInJoyBaseDeliverActivity) {}
   
-  public lbq(ReadInJoyRainAnimationController paramReadInJoyRainAnimationController)
+  public void run()
   {
-    this.a = new WeakReference(paramReadInJoyRainAnimationController);
-  }
-  
-  public void a()
-  {
-    ReadInJoyRainAnimationController localReadInJoyRainAnimationController = (ReadInJoyRainAnimationController)this.a.get();
-    if ((localReadInJoyRainAnimationController == null) || (!localReadInJoyRainAnimationController.b())) {
-      return;
-    }
-    ReadInJoyRainAnimationController.a(localReadInJoyRainAnimationController).sendEmptyMessage(1);
+    this.a.b(this.a.b);
   }
 }
 

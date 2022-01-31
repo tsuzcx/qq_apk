@@ -1,38 +1,19 @@
-import android.os.Build.VERSION;
-import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnTouchListener;
-import android.widget.ImageView;
-import com.tencent.biz.pubaccount.readinjoy.view.appinpush.DialogAppInPushNotification;
+import android.view.animation.Animation;
+import android.view.animation.ScaleAnimation;
+import com.tencent.util.AnimateUtils.AnimationAdapter;
 
-public class mkb
-  implements View.OnTouchListener
+class mkb
+  extends AnimateUtils.AnimationAdapter
 {
-  public mkb(DialogAppInPushNotification paramDialogAppInPushNotification, ImageView paramImageView) {}
+  mkb(mka parammka) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    int i;
-    if ((paramMotionEvent.getAction() == 1) || (paramMotionEvent.getAction() == 0))
-    {
-      if (paramMotionEvent.getAction() != 1) {
-        break label45;
-      }
-      i = 255;
-      if (Build.VERSION.SDK_INT < 16) {
-        break label51;
-      }
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(i);
-    }
-    for (;;)
-    {
-      return false;
-      label45:
-      i = 127;
-      break;
-      label51:
-      this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(i);
-    }
+    paramAnimation = new ScaleAnimation(0.95F, 1.0F, 0.95F, 1.0F, 1, 0.5F, 1, 0.5F);
+    paramAnimation.setDuration(60L);
+    paramAnimation.setAnimationListener(new mkc(this));
+    this.a.a.a.a.startAnimation(paramAnimation);
   }
 }
 

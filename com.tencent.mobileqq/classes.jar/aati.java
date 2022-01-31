@@ -1,18 +1,24 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
-import com.tencent.qphone.base.util.QLog;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.util.ArrayList;
 
 public class aati
-  implements Runnable
 {
-  public aati(ARMapActivity paramARMapActivity) {}
+  public long a;
+  public aath a;
+  public ByteArrayOutputStream a;
+  public File a;
+  public String a;
+  public final ArrayList a;
+  public byte[] a;
+  public String b;
+  public final ArrayList b = new ArrayList();
+  public String c;
   
-  public void run()
+  private aati()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ARMapActivity", 2, "doOnActivityResult nativeRequestPOIList");
-    }
-    ARMapEngine.nativeRequestPOIList();
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    this.jdField_a_of_type_Long = -1L;
   }
 }
 

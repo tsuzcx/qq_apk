@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ptt.preop;
 
-import agfp;
-import agfr;
+import agtr;
+import agtt;
 import android.os.Handler.Callback;
 import android.os.Message;
 import com.tencent.mobileqq.app.AppConstants;
@@ -23,20 +23,20 @@ import mqq.manager.Manager;
 public final class PTTPreDownloader
   implements Handler.Callback, Manager
 {
-  private final agfr jdField_a_of_type_Agfr = new agfr();
+  private final agtt jdField_a_of_type_Agtt = new agtt();
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private PTTPreDownloader.IPreDownloadStrategy jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloader$IPreDownloadStrategy;
   private final WeakReferenceHandler jdField_a_of_type_ComTencentUtilWeakReferenceHandler;
   private boolean jdField_a_of_type_Boolean;
-  private final agfr jdField_b_of_type_Agfr = new agfr();
+  private final agtt jdField_b_of_type_Agtt = new agtt();
   private boolean jdField_b_of_type_Boolean;
-  private final agfr c = new agfr();
+  private final agtt c = new agtt();
   
   public PTTPreDownloader(QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this);
-    a(new agfp(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler));
+    a(new agtr(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler));
   }
   
   public static int a(QQAppInterface paramQQAppInterface, MessageForPtt paramMessageForPtt)
@@ -54,17 +54,17 @@ public final class PTTPreDownloader
     return i;
   }
   
-  private agfr a(MessageForPtt paramMessageForPtt)
+  private agtt a(MessageForPtt paramMessageForPtt)
   {
-    agfr localagfr = null;
+    agtt localagtt = null;
     if (paramMessageForPtt.istroop == 0) {
-      localagfr = this.jdField_a_of_type_Agfr;
+      localagtt = this.jdField_a_of_type_Agtt;
     }
     do
     {
-      return localagfr;
+      return localagtt;
       if (paramMessageForPtt.istroop == 1) {
-        return this.jdField_b_of_type_Agfr;
+        return this.jdField_b_of_type_Agtt;
       }
     } while (paramMessageForPtt.istroop != 3000);
     return this.c;
@@ -75,15 +75,15 @@ public final class PTTPreDownloader
     return (PTTPreDownloader)paramQQAppInterface.getManager(126);
   }
   
-  private void a(agfr paramagfr)
+  private void a(agtt paramagtt)
   {
     if (QLog.isColorLevel()) {
       QLog.d("PTTPreDownloader", 2, "cancelCache");
     }
     int i = 0;
-    if (i < paramagfr.jdField_a_of_type_JavaUtilArrayList.size())
+    if (i < paramagtt.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      MessageForPtt localMessageForPtt = (MessageForPtt)paramagfr.jdField_a_of_type_JavaUtilArrayList.get(i);
+      MessageForPtt localMessageForPtt = (MessageForPtt)paramagtt.jdField_a_of_type_JavaUtilArrayList.get(i);
       if (this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloader$IPreDownloadStrategy.b(localMessageForPtt)) {
         if (localMessageForPtt.extFlag != -1L) {
           break label120;
@@ -109,8 +109,8 @@ public final class PTTPreDownloader
     this.jdField_b_of_type_Boolean = paramBoolean;
     if (this.jdField_b_of_type_Boolean)
     {
-      a(this.jdField_a_of_type_Agfr);
-      a(this.jdField_b_of_type_Agfr);
+      a(this.jdField_a_of_type_Agtt);
+      a(this.jdField_b_of_type_Agtt);
       a(this.c);
     }
   }
@@ -151,7 +151,7 @@ public final class PTTPreDownloader
     }
   }
   
-  private boolean a(agfr paramagfr)
+  private boolean a(agtt paramagtt)
   {
     if (QLog.isColorLevel()) {
       QLog.d("PTTPreDownloader", 2, "startDownloadCache");
@@ -159,9 +159,9 @@ public final class PTTPreDownloader
     boolean bool = false;
     for (;;)
     {
-      if ((paramagfr.jdField_a_of_type_Int < 3) && (paramagfr.jdField_a_of_type_JavaUtilArrayList.size() > 0))
+      if ((paramagtt.jdField_a_of_type_Int < 3) && (paramagtt.jdField_a_of_type_JavaUtilArrayList.size() > 0))
       {
-        MessageForPtt localMessageForPtt = (MessageForPtt)paramagfr.jdField_a_of_type_JavaUtilArrayList.get(0);
+        MessageForPtt localMessageForPtt = (MessageForPtt)paramagtt.jdField_a_of_type_JavaUtilArrayList.get(0);
         if (this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloader$IPreDownloadStrategy.a(localMessageForPtt))
         {
           long l;
@@ -187,8 +187,8 @@ public final class PTTPreDownloader
               label146:
               l = (0x3 ^ 0xFFFFFFFF) & localMessageForPtt.extFlag;
               break label102;
-              paramagfr.jdField_a_of_type_Int += 1;
-              paramagfr.jdField_a_of_type_JavaUtilArrayList.remove(0);
+              paramagtt.jdField_a_of_type_Int += 1;
+              paramagtt.jdField_a_of_type_JavaUtilArrayList.remove(0);
               bool = true;
             }
           }
@@ -206,7 +206,7 @@ public final class PTTPreDownloader
   {
     if ((paramMessageForPtt.istroop == 1) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.b(paramMessageForPtt.frienduin) != 1)) {}
     int i;
-    agfr localagfr;
+    agtt localagtt;
     label290:
     label355:
     do
@@ -222,14 +222,14 @@ public final class PTTPreDownloader
           }
           if ((i == 0) || (i == -1))
           {
-            localagfr = a(paramMessageForPtt);
-            if (localagfr != null)
+            localagtt = a(paramMessageForPtt);
+            if (localagtt != null)
             {
               if (!this.jdField_b_of_type_Boolean) {
                 break;
               }
               long l;
-              if ((localagfr.jdField_a_of_type_Int < 3) && (this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloader$IPreDownloadStrategy.a(paramMessageForPtt))) {
+              if ((localagtt.jdField_a_of_type_Int < 3) && (this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloader$IPreDownloadStrategy.a(paramMessageForPtt))) {
                 if (!g(paramMessageForPtt)) {
                   if (this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloader$IPreDownloadStrategy.b(paramMessageForPtt))
                   {
@@ -252,22 +252,22 @@ public final class PTTPreDownloader
                 return true;
                 l = (0x3 ^ 0xFFFFFFFF) & paramMessageForPtt.extFlag;
                 break;
-                localagfr.jdField_a_of_type_Int += 1;
+                localagtt.jdField_a_of_type_Int += 1;
                 continue;
-                i = localagfr.jdField_a_of_type_JavaUtilArrayList.size();
-                localagfr.getClass();
+                i = localagtt.jdField_a_of_type_JavaUtilArrayList.size();
+                localagtt.getClass();
                 if (i + 1 < 99) {
-                  localagfr.jdField_a_of_type_JavaUtilArrayList.add(paramMessageForPtt);
+                  localagtt.jdField_a_of_type_JavaUtilArrayList.add(paramMessageForPtt);
                 }
               }
             }
           }
         }
       }
-      i = localagfr.jdField_a_of_type_JavaUtilArrayList.size();
-      localagfr.getClass();
+      i = localagtt.jdField_a_of_type_JavaUtilArrayList.size();
+      localagtt.getClass();
     } while (i + 1 >= 99);
-    localagfr.jdField_a_of_type_JavaUtilArrayList.add(paramMessageForPtt);
+    localagtt.jdField_a_of_type_JavaUtilArrayList.add(paramMessageForPtt);
     return true;
   }
   
@@ -494,15 +494,15 @@ public final class PTTPreDownloader
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(2);
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(3);
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(4);
-    a(this.jdField_a_of_type_Agfr);
-    a(this.jdField_b_of_type_Agfr);
+    a(this.jdField_a_of_type_Agtt);
+    a(this.jdField_b_of_type_Agtt);
     a(this.c);
     this.jdField_a_of_type_ComTencentMobileqqPttPreopPTTPreDownloader$IPreDownloadStrategy.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.preop.PTTPreDownloader
  * JD-Core Version:    0.7.0.1
  */

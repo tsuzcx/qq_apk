@@ -1,33 +1,46 @@
-import android.app.Dialog;
-import android.content.Context;
-import android.graphics.drawable.ColorDrawable;
-import android.view.Window;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
-import com.tencent.biz.qqstory.playmode.VideoPlayModeBase.ProgressView;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qqstory.newshare.ui.ActionSheetShareUI;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
+import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItemViewHolder;
+import com.tencent.mobileqq.wxapi.WXShareHelper;
+import com.tencent.widget.ActionSheet;
 
 public class nhn
-  implements Runnable
+  implements AdapterView.OnItemClickListener
 {
-  public nhn(VideoPlayModeBase paramVideoPlayModeBase, Context paramContext, boolean paramBoolean, CharSequence paramCharSequence) {}
+  public nhn(ActionSheetShareUI paramActionSheetShareUI) {}
   
-  public void run()
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidAppDialog == null)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase$ProgressView = new VideoPlayModeBase.ProgressView(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidAppDialog = new Dialog(this.jdField_a_of_type_AndroidContentContext);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidAppDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidAppDialog.setContentView(this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase$ProgressView);
+    if (ActionSheetShareUI.a(this.a).a().isShowing()) {
+      ActionSheetShareUI.a(this.a).a().dismiss();
+    }
+    int i = ((ShareActionSheetBuilder.ActionSheetItemViewHolder)paramView.getTag()).a.c;
+    if ((i == 9) || (i == 10)) {
+      if (!WXShareHelper.a().a()) {
+        paramInt = 2131435319;
+      }
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidAppDialog.setCancelable(this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase$ProgressView.a(this.jdField_a_of_type_JavaLangCharSequence);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidAppDialog.show();
-      return;
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeVideoPlayModeBase.jdField_a_of_type_AndroidAppDialog.dismiss();
+      if (paramInt != -1)
+      {
+        QRUtils.a(1, paramInt);
+        return;
+        if (!WXShareHelper.a().b()) {
+          paramInt = 2131435320;
+        }
+      }
+      else
+      {
+        this.a.a(i);
+        return;
+      }
+      paramInt = -1;
     }
   }
 }

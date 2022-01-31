@@ -1,6 +1,6 @@
 package cooperation.qzone.model;
 
-import amev;
+import amuz;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -10,7 +10,7 @@ import java.util.Map;
 public class WeishiBasicInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amev();
+  public static final Parcelable.Creator CREATOR = new amuz();
   public String cover_url;
   public Map dc_report;
   public String nick_name;

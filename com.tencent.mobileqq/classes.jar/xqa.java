@@ -1,16 +1,21 @@
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.richmedia.QzDynamicVideoPreviewActivity;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import com.tencent.mobileqq.activity.richmedia.Size;
+import java.util.Comparator;
 
-class xqa
-  implements Runnable
+public class xqa
+  implements Comparator
 {
-  xqa(xpz paramxpz, int paramInt, String paramString) {}
+  public xqa(NewFlowCameraActivity paramNewFlowCameraActivity) {}
   
-  public void run()
+  public int a(Size paramSize1, Size paramSize2)
   {
-    QzDynamicVideoPreviewActivity.a(this.jdField_a_of_type_Xpz.a).setProgress(this.jdField_a_of_type_Int);
-    QzDynamicVideoPreviewActivity.c(this.jdField_a_of_type_Xpz.a).setText(this.jdField_a_of_type_JavaLangString);
+    if ((paramSize1.a < paramSize2.a) || ((paramSize1.a == paramSize2.a) && (paramSize1.b < paramSize2.b))) {
+      return -1;
+    }
+    if ((paramSize1.a != paramSize2.a) || (paramSize1.b != paramSize2.b)) {
+      return 1;
+    }
+    return 0;
   }
 }
 

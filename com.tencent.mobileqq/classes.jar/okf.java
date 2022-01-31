@@ -1,36 +1,40 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.base.ErrorMessage;
-import com.tencent.biz.qqstory.channel.CmdTaskManger.UIThreadCallback;
-import com.tencent.biz.qqstory.network.request.GetTagListRequest;
-import com.tencent.biz.qqstory.network.response.GetTagListResponse;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import com.tencent.biz.qqstory.takevideo.tag.EditVideoTagPresenter;
-import com.tencent.biz.qqstory.takevideo.tag.IEditVideoTagView;
-import com.tencent.mobileqq.app.ThreadManager;
-import java.util.List;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import com.tencent.biz.qqstory.support.report.VideoEditReport;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePackage;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.FacePanel;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.face.adapter.FacePanelBaseAdapter;
+import com.tencent.biz.qqstory.takevideo.doodle.ui.widget.FaceViewPager;
 
 public class okf
-  extends CmdTaskManger.UIThreadCallback
+  implements AdapterView.OnItemClickListener
 {
-  public okf(EditVideoTagPresenter paramEditVideoTagPresenter) {}
+  public okf(FacePanel paramFacePanel) {}
   
-  public void a(@NonNull GetTagListRequest paramGetTagListRequest, @Nullable GetTagListResponse paramGetTagListResponse, @NonNull ErrorMessage paramErrorMessage)
+  public void onItemClick(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    SLog.b("EditVideoTagPresenter", "loadMore onCmdRespond.");
-    if ((paramErrorMessage.isSuccess()) && (paramGetTagListResponse != null))
+    this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiWidgetFaceViewPager.setCurrentItem(paramInt);
+    if (DoodleLayout.a) {}
+    for (paramAdapterView = "2";; paramAdapterView = "1")
     {
-      SLog.a("EditVideoTagPresenter", "loadMore onCmdRespond, refresh success:[%s]", paramGetTagListResponse.toString());
-      EditVideoTagPresenter.a(this.a).addAll(paramGetTagListResponse.jdField_a_of_type_JavaUtilList);
-      EditVideoTagPresenter.a(this.a, paramGetTagListResponse.jdField_a_of_type_JavaLangString);
-      EditVideoTagPresenter.a(this.a, paramGetTagListResponse.b);
-      ThreadManager.executeOnSubThread(new okg(this));
-    }
-    for (;;)
-    {
-      EditVideoTagPresenter.a(this.a).b(paramErrorMessage.errorCode, EditVideoTagPresenter.a(this.a), this.a.a());
+      DoodleLayout.a("change_face", 0, 0, new String[] { paramAdapterView });
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter != null)
+      {
+        paramAdapterView = this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoDoodleUiFaceAdapterFacePanelBaseAdapter.a(paramInt);
+        if ((paramAdapterView != null) && ((paramAdapterView instanceof FacePackage)))
+        {
+          VideoEditReport.a("0X80076C7", "", "", ((FacePackage)paramAdapterView).a, "");
+          VideoEditReport.a("0X80075DC", ((FacePackage)paramAdapterView).a);
+        }
+      }
+      if (paramInt == 1)
+      {
+        VideoEditReport.a("0X80076CC");
+        VideoEditReport.b("0X80075E1");
+      }
       return;
-      SLog.e("EditVideoTagPresenter", "loadMore onCmdRespond, failed:[%s]", new Object[] { paramErrorMessage.toString() });
     }
   }
 }

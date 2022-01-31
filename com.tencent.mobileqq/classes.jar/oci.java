@@ -1,16 +1,19 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleEditView.DoodleEditViewListener;
-import com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.base.ErrorMessage;
+import com.tencent.biz.qqstory.channel.BaseResponse;
+import com.tencent.biz.qqstory.channel.CmdTaskManger.CommandCallback;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.support.report.MonitorValueRequest;
 
-public class oci
-  implements DoodleEditView.DoodleEditViewListener
+public final class oci
+  implements CmdTaskManger.CommandCallback
 {
-  public oci(EditVideoDoodle paramEditVideoDoodle) {}
-  
-  public void a(GestureHelper.ZoomItem paramZoomItem)
+  public void a(@NonNull MonitorValueRequest paramMonitorValueRequest, @Nullable BaseResponse paramBaseResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    this.a.a.a(6);
+    if (paramErrorMessage.isFail()) {
+      SLog.b("Q.qqstory.MonitorReport", "send monitor fail %s", paramErrorMessage);
+    }
   }
 }
 

@@ -1,24 +1,22 @@
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserLongClickHandler;
+import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.ActionSheet;
 
 class akaq
   implements Runnable
 {
-  akaq(akan paramakan) {}
+  akaq(akao paramakao, Exception paramException) {}
   
   public void run()
   {
+    this.jdField_a_of_type_Akao.a.dismiss();
     if (QLog.isColorLevel()) {
-      QLog.d("SwiftBrowserLongClickHandler", 2, "showQR Button");
+      QLog.d("Q.profilecard.FrdProfileCard", 2, "safetyReport exception1" + this.jdField_a_of_type_JavaLangException.getMessage());
     }
-    this.a.a.a.b(2131435857);
-    this.a.a.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akaq
  * JD-Core Version:    0.7.0.1
  */

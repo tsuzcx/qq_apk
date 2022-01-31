@@ -1,40 +1,21 @@
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.HBCustomizeStrategy;
-import com.tencent.mobileqq.activity.aio.CustomizeStrategyFactory.RedPacketInfo;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.BaseRedPkgElem;
-import com.tencent.mobileqq.activity.aio.qwallet.elem.ThemeRedPkgElem;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import com.tencent.mobileqq.activity.VisitorsActivity;
 
 public class uic
-  implements CustomizeStrategyFactory.HBCustomizeStrategy
+  implements Runnable
 {
-  private PreloadManager jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager;
-  private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+  public uic(VisitorsActivity paramVisitorsActivity, ScaleAnimation paramScaleAnimation, AlphaAnimation paramAlphaAnimation1, AlphaAnimation paramAlphaAnimation2, AnimationSet paramAnimationSet) {}
   
-  public uic(QQAppInterface paramQQAppInterface)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager = ((PreloadManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(150));
-    }
-  }
-  
-  public void a() {}
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo)
-  {
-    if (paramRedPacketInfo == null) {
-      return;
-    }
-    ThreadManager.post(new uid(this, paramRedPacketInfo), 5, null, true);
-  }
-  
-  public void a(CustomizeStrategyFactory.RedPacketInfo paramRedPacketInfo, BaseRedPkgElem paramBaseRedPkgElem)
-  {
-    if ((paramRedPacketInfo != null) && ((paramBaseRedPkgElem instanceof ThemeRedPkgElem))) {
-      paramRedPacketInfo.background = ((ThemeRedPkgElem)paramBaseRedPkgElem).a;
-    }
+    this.jdField_a_of_type_AndroidViewAnimationScaleAnimation.reset();
+    this.jdField_a_of_type_AndroidViewAnimationAlphaAnimation.reset();
+    this.b.reset();
+    this.jdField_a_of_type_AndroidViewAnimationAnimationSet.reset();
+    this.jdField_a_of_type_ComTencentMobileqqActivityVisitorsActivity.f.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimationSet);
   }
 }
 

@@ -1,13 +1,20 @@
-import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiService;
+import com.tencent.mobileqq.app.FriendListObserver;
 
-class owd
-  implements Runnable
+public class owd
+  extends FriendListObserver
 {
-  owd(owc paramowc) {}
+  public owd(TroopMemberApiService paramTroopMemberApiService) {}
   
-  public void run()
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
-    TroopNewGuidePopWindow.a(this.a.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow, this.a.jdField_a_of_type_OrgJsonJSONObject, this.a.jdField_a_of_type_Int);
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("type", 30);
+    localBundle.putBoolean("isSuccess", paramBoolean);
+    localBundle.putSerializable("data", new Object[] { paramString });
+    localBundle.putSerializable("observer_type", Integer.valueOf(2));
+    this.a.a(3, localBundle);
   }
 }
 

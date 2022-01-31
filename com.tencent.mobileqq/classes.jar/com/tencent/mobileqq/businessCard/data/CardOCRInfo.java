@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.businessCard.data;
 
-import abhh;
+import aboi;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -21,7 +21,7 @@ import tencent.mobileim.structmsg.youtu.NameCardOcrRsp;
 public class CardOCRInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new abhh();
+  public static final Parcelable.Creator CREATOR = new aboi();
   public float a;
   public int a;
   public String a;

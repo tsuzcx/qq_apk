@@ -1,13 +1,18 @@
-import com.tencent.mobileqq.armap.config.ARMapConfigManager;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.ServerCheckCallback;
+import com.tencent.mobileqq.ark.ArkRecommendLogic;
+import java.lang.ref.WeakReference;
+import java.util.ArrayList;
 
 public class aaxy
-  implements Runnable
+  implements ArkMessageServerLogic.ServerCheckCallback
 {
-  public aaxy(ARMapConfigManager paramARMapConfigManager) {}
+  public aaxy(ArkRecommendLogic paramArkRecommendLogic, WeakReference paramWeakReference) {}
   
-  public void run()
+  public void a(ArrayList paramArrayList)
   {
-    this.a.a();
+    if (paramArrayList != null) {
+      ArkRecommendLogic.a(this.jdField_a_of_type_ComTencentMobileqqArkArkRecommendLogic, paramArrayList, null, this.jdField_a_of_type_JavaLangRefWeakReference, 4);
+    }
   }
 }
 

@@ -1,21 +1,19 @@
-import com.tencent.av.gaudio.AVNotifyCenter;
-import com.tencent.av.utils.GVideoGrayConfig.GVideoGrayConfigListener;
-import com.tencent.av.utils.GVideoGrayConfig.Record;
-import com.tencent.mobileqq.app.QQGAudioMsgHandler;
+import android.content.SharedPreferences;
+import com.tencent.mobileqq.app.PhoneContactManagerImp;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
 
 public class zif
-  implements GVideoGrayConfig.GVideoGrayConfigListener
+  implements Runnable
 {
-  public zif(QQGAudioMsgHandler paramQQGAudioMsgHandler, long paramLong, int paramInt) {}
+  public zif(PhoneContactManagerImp paramPhoneContactManagerImp) {}
   
-  public void a(int paramInt1, GVideoGrayConfig.Record paramRecord, int paramInt2)
+  public void run()
   {
-    if (paramInt1 == 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.a.a(10, 1, this.jdField_a_of_type_Long, null, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.a.a(7, this.jdField_a_of_type_Long, 2, 21, this.jdField_a_of_type_Int);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQGAudioMsgHandler.a.a(21, 1, this.jdField_a_of_type_Long, 0L);
-    }
+    PhoneContactManagerImp.a(this.a, this.a.a());
+    PhoneContactManagerImp.a(this.a);
+    this.a.e = this.a.a.getLong("key_contacts_switches", 0L);
+    ContactSyncManager localContactSyncManager = (ContactSyncManager)PhoneContactManagerImp.a(this.a).getManager(40);
   }
 }
 

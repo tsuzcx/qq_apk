@@ -1,85 +1,38 @@
+import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.TroopLowCreditLevelNotifyActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.app.TroopObserver;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.TroopAssistantActivity;
+import com.tencent.mobileqq.app.BizTroopObserver;
+import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import tencent.im.oidb.cmd0xaf4.oidb_0xaf4.RspBody;
 
 public class tvx
-  extends TroopObserver
+  extends BizTroopObserver
 {
-  public tvx(TroopLowCreditLevelNotifyActivity paramTroopLowCreditLevelNotifyActivity) {}
+  public tvx(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  protected void a(oidb_0xaf4.RspBody paramRspBody, int paramInt)
+  protected void a(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    if (paramRspBody.group_id.has())
+    if (paramInt2 != 0)
     {
-      paramRspBody = String.valueOf(paramRspBody.group_id.get());
-      if (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramRspBody)) {
-        break label119;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onGetNewTroopAppList troopUin not match. rsp uin=" + paramRspBody + ", current uin=" + this.a.jdField_a_of_type_JavaLangString);
-      }
-    }
-    label119:
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.e("troop.credit.TroopLowCreditLevelNotifyActivity", 2, "onGetNewTroopAppList group_id lost. current uin=" + this.a.jdField_a_of_type_JavaLangString);
-      }
-      this.a.d();
-      paramRspBody = this.a.a(1101236949L);
-    } while (paramRspBody == null);
-    this.a.a(paramRspBody);
-  }
-  
-  protected void a(boolean paramBoolean, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("troop.credit.act", 2, "onGetTroopCreditLevelInfo:" + this.a.jdField_a_of_type_JavaLangString + "," + paramBoolean);
-    }
-    if (!this.a.jdField_a_of_type_JavaLangString.equals(paramLong + "")) {}
-    do
-    {
-      do
+      paramString1 = paramString2;
+      if (!this.a.isFinishing())
       {
-        do
+        paramString1 = paramString2;
+        if (this.a.isResume())
         {
-          do
-          {
-            return;
-            this.a.d();
-          } while (!paramBoolean);
-          localObject = (TroopManager)this.a.app.getManager(51);
-        } while (localObject == null);
-        localObject = ((TroopManager)localObject).a(this.a.jdField_a_of_type_JavaLangString);
-      } while (localObject == null);
-      paramLong = ((TroopInfo)localObject).troopCreditLevel;
-      if (QLog.isColorLevel()) {
-        QLog.i("troop.credit.act", 2, "onGetTroopCreditLevelInfo:" + this.a.jdField_a_of_type_JavaLangString + "," + paramLong);
+          paramString1 = paramString2;
+          if (TextUtils.isEmpty(paramString2)) {
+            paramString1 = this.a.getResources().getString(2131435580);
+          }
+          QQToast.a(this.a, 1, paramString1, 0).a();
+        }
       }
-    } while (paramLong == 2L);
-    if (paramLong == 1L)
-    {
-      localObject = DialogUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131434764)).setMessage("无法操作，此群已经完全停封");
-      ((QQCustomDialog)localObject).setPositiveButton(2131430676, new tvy(this));
-      ((QQCustomDialog)localObject).setNegativeButton("", null);
-      ((QQCustomDialog)localObject).setCancelable(false);
-      ((QQCustomDialog)localObject).show();
+      if (QLog.isColorLevel()) {
+        QLog.e("TroopAssistantActivity", 2, "onSetCommonUsedTroop error, retCode = " + paramInt2 + " , wording = " + paramString1);
+      }
       return;
     }
-    Object localObject = DialogUtil.a(this.a.jdField_a_of_type_AndroidContentContext, 230).setTitle(this.a.getString(2131434764)).setMessage("此群临时停封已经解除");
-    ((QQCustomDialog)localObject).setPositiveButton(2131430676, new tvz(this));
-    ((QQCustomDialog)localObject).setNegativeButton("", null);
-    ((QQCustomDialog)localObject).setCancelable(false);
-    ((QQCustomDialog)localObject).show();
+    this.a.c();
   }
 }
 

@@ -1,44 +1,62 @@
-import android.view.View;
-import com.tencent.biz.qqstory.model.StoryConfigManager;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.LocalVideoPushSegment;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.biz.qqstory.storyHome.model.FeedItem;
+import com.tencent.biz.qqstory.storyHome.model.HotRecommendFeedItem;
+import com.tencent.biz.qqstory.storyHome.model.HotRecommendHomeFeed;
+import com.tencent.biz.qqstory.storyHome.model.StoryHomeFeed;
+import com.tencent.biz.qqstory.storyHome.model.VideoListHomeFeed;
+import java.util.Comparator;
 
 public class nzb
-  extends ChildViewClickListener
+  implements Comparator
 {
-  public nzb(LocalVideoPushSegment paramLocalVideoPushSegment) {}
-  
-  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
+  public int a(StoryHomeFeed paramStoryHomeFeed1, StoryHomeFeed paramStoryHomeFeed2)
   {
-    if (paramView == paramBaseViewHolder.a())
+    int k = 1;
+    int i;
+    int j;
+    if (((paramStoryHomeFeed1 instanceof HotRecommendHomeFeed)) && (((HotRecommendFeedItem)((HotRecommendHomeFeed)paramStoryHomeFeed1).a()).mIsTopLocation))
     {
-      StoryReportor.a("home_page", "clk_album", 0, 0, new String[0]);
-      this.a.a.b("last_click_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-      LocalVideoPushSegment.a(this.a).a(NetConnInfoCenter.getServerTimeMillis());
-      LocalVideoPushSegment.a(this.a);
-      this.a.a_(null);
+      i = 1;
+      if ((!(paramStoryHomeFeed2 instanceof HotRecommendHomeFeed)) || (!((HotRecommendFeedItem)((HotRecommendHomeFeed)paramStoryHomeFeed2).a()).mIsTopLocation)) {
+        break label80;
+      }
+      j = 1;
+      label54:
+      if ((j ^ i) == 0) {
+        break label86;
+      }
+      j = k;
+      if (i != 0) {
+        j = -1;
+      }
     }
+    label80:
+    label86:
     do
     {
-      return;
-      if (paramView == paramBaseViewHolder.a(2131371681))
+      do
       {
-        StoryReportor.a("home_page", "close_album", 0, 0, new String[0]);
-        this.a.a.b("last_cancel_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-        this.a.a_(null);
-        this.a.c(true);
-        return;
-      }
-    } while (paramView != paramBaseViewHolder.a(2131371683));
-    StoryReportor.a("home_page", "clk_album", 0, 0, new String[0]);
-    this.a.a.b("last_click_time", Long.valueOf(NetConnInfoCenter.getServerTimeMillis()));
-    LocalVideoPushSegment.a(this.a).a(NetConnInfoCenter.getServerTimeMillis());
-    LocalVideoPushSegment.a(this.a);
-    this.a.a_(null);
+        return j;
+        i = 0;
+        break;
+        j = 0;
+        break label54;
+        if (paramStoryHomeFeed1.a.dateTimeMillis != paramStoryHomeFeed2.a.dateTimeMillis) {
+          break label146;
+        }
+        if (((paramStoryHomeFeed1 instanceof VideoListHomeFeed)) && (VideoListHomeFeed.a((VideoListHomeFeed)paramStoryHomeFeed1))) {
+          return -1;
+        }
+        if (!(paramStoryHomeFeed2 instanceof VideoListHomeFeed)) {
+          break label144;
+        }
+        j = k;
+      } while (VideoListHomeFeed.a((VideoListHomeFeed)paramStoryHomeFeed2));
+      return 0;
+      j = k;
+    } while (paramStoryHomeFeed1.a.dateTimeMillis <= paramStoryHomeFeed2.a.dateTimeMillis);
+    label144:
+    label146:
+    return -1;
   }
 }
 

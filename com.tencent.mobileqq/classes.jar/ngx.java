@@ -1,11 +1,13 @@
-class ngx
+import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
+
+public class ngx
   implements Runnable
 {
-  ngx(ngw paramngw, String paramString) {}
+  public ngx(ShareModeBase paramShareModeBase) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Ngw.a(this.jdField_a_of_type_JavaLangString);
+    ShareModeBase.a(this.a, ShareModeBase.a(this.a));
   }
 }
 

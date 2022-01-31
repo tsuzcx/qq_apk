@@ -1,25 +1,15 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.photo.PhotoListActivity;
-import com.tencent.mobileqq.utils.AlbumUtil;
-import java.util.Map;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.DialogBaseActivity;
 
 public class wum
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public wum(PhotoListActivity paramPhotoListActivity, String paramString) {}
+  public wum(DialogBaseActivity paramDialogBaseActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Message localMessage = Message.obtain();
-    localMessage.what = 3;
-    String str = PhotoListActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity, this.jdField_a_of_type_JavaLangString);
-    localMessage.obj = str;
-    LocalMediaInfo localLocalMediaInfo = new LocalMediaInfo();
-    AlbumUtil.a(localLocalMediaInfo, str);
-    PhotoListActivity.a().put(str, localLocalMediaInfo);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoPhotoListActivity.a.sendMessage(localMessage);
+    this.a.finish();
   }
 }
 

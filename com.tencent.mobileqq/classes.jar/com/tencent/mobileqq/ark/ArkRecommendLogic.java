@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.ark;
 
-import aaqu;
-import aaqy;
-import aara;
-import aarc;
-import aard;
+import aaxv;
+import aaxz;
+import aayb;
+import aayd;
+import aaye;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.text.TextUtils;
@@ -63,7 +63,7 @@ public class ArkRecommendLogic
         jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("ArkAnalyseThread", -1);
         jdField_a_of_type_AndroidOsHandlerThread.start();
         jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-        jdField_a_of_type_AndroidOsHandler.post(new aaqu());
+        jdField_a_of_type_AndroidOsHandler.post(new aaxv());
       }
       Handler localHandler = jdField_a_of_type_AndroidOsHandler;
       return localHandler;
@@ -364,7 +364,7 @@ public class ArkRecommendLogic
       localArkAiInfo.h = ((String)localObject1);
       localArkAiInfo.f = a((String)localObject1, localException, localArrayList);
       Object localObject3 = (ArkAppCenter)localQQAppInterface.getManager(120);
-      localObject1 = new aard(this, localArrayList, localArkAiInfo, paramRecommendCommonMessage, localQQAppInterface, (String)localObject1, localException, (ArkRecommendLogic.SemanticAnalysisResult)localObject2);
+      localObject1 = new aaye(this, localArrayList, localArkAiInfo, paramRecommendCommonMessage, localQQAppInterface, (String)localObject1, localException, (ArkRecommendLogic.SemanticAnalysisResult)localObject2);
       ((ArkAppCenter)localObject3).a().a(localException.appName, localException.context, 2, (ArkLocalAppMgr.IGetAppViewByIntentCallback)localObject1);
       ArkAppCenter.a("ArkBubbleState", String.format("ArkRecommendLogic.handleContext appname=%s,context=%s", new Object[] { localException.appName, localException.context }));
     }
@@ -420,7 +420,7 @@ public class ArkRecommendLogic
     }
     WeakReference localWeakReference = new WeakReference(this);
     paramSemanticAnalysisResult = new WeakReference(paramSemanticAnalysisResult);
-    ArkMessageServerLogic.a(a(paramRecommendCommonMessage), null, new aaqy(this, localWeakReference, paramSemanticAnalysisResult, paramRecommendCommonMessage));
+    ArkMessageServerLogic.a(a(paramRecommendCommonMessage), null, new aaxz(this, localWeakReference, paramSemanticAnalysisResult, paramRecommendCommonMessage));
   }
   
   public void a(String paramString, SessionInfo paramSessionInfo, ArkRecommendLogic.SemanticAnalysisResult paramSemanticAnalysisResult)
@@ -428,7 +428,7 @@ public class ArkRecommendLogic
     if (!ArkAiDictMgr.jdField_a_of_type_Boolean) {
       return;
     }
-    ArkMessageServerLogic.a(paramString, null, new aara(this, new WeakReference(this), new WeakReference(paramSemanticAnalysisResult), paramSessionInfo));
+    ArkMessageServerLogic.a(paramString, null, new aayb(this, new WeakReference(this), new WeakReference(paramSemanticAnalysisResult), paramSessionInfo));
   }
   
   /* Error */
@@ -455,7 +455,7 @@ public class ArkRecommendLogic
     //   37: ifeq +33 -> 70
     //   40: aload 10
     //   42: aconst_null
-    //   43: new 498	aaqv
+    //   43: new 498	aaxw
     //   46: dup
     //   47: aload_0
     //   48: new 340	java/lang/ref/WeakReference
@@ -466,7 +466,7 @@ public class ArkRecommendLogic
     //   59: dup
     //   60: aload_3
     //   61: invokespecial 466	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   64: invokespecial 501	aaqv:<init>	(Lcom/tencent/mobileqq/ark/ArkRecommendLogic;Ljava/lang/ref/WeakReference;Ljava/lang/ref/WeakReference;)V
+    //   64: invokespecial 501	aaxw:<init>	(Lcom/tencent/mobileqq/ark/ArkRecommendLogic;Ljava/lang/ref/WeakReference;Ljava/lang/ref/WeakReference;)V
     //   67: invokestatic 504	com/tencent/mobileqq/ark/ArkMessageServerLogic:a	(Ljava/lang/String;Ljava/lang/Object;Lcom/tencent/mobileqq/ark/ArkMessageServerLogic$IAnalyzeTextIntentByServerHandler;)V
     //   70: new 207	java/util/ArrayList
     //   73: dup
@@ -601,14 +601,14 @@ public class ArkRecommendLogic
     //   346: aload 9
     //   348: iconst_0
     //   349: lconst_0
-    //   350: new 557	aaqx
+    //   350: new 557	aaxy
     //   353: dup
     //   354: aload_0
     //   355: new 340	java/lang/ref/WeakReference
     //   358: dup
     //   359: aload_3
     //   360: invokespecial 466	java/lang/ref/WeakReference:<init>	(Ljava/lang/Object;)V
-    //   363: invokespecial 560	aaqx:<init>	(Lcom/tencent/mobileqq/ark/ArkRecommendLogic;Ljava/lang/ref/WeakReference;)V
+    //   363: invokespecial 560	aaxy:<init>	(Lcom/tencent/mobileqq/ark/ArkRecommendLogic;Ljava/lang/ref/WeakReference;)V
     //   366: invokestatic 563	com/tencent/mobileqq/ark/ArkMessageServerLogic:a	(Ljava/util/ArrayList;ZJLcom/tencent/mobileqq/ark/ArkMessageServerLogic$ServerCheckCallback;)V
     //   369: return
     //   370: astore 8
@@ -692,7 +692,7 @@ public class ArkRecommendLogic
       b = str1.equals(paramRecommendCommonMessage.selfuin);
       paramSemanticAnalysisResult = new WeakReference(paramSemanticAnalysisResult);
       c = false;
-      ArkMessageServerLogic.a(localArrayList1, true, l, new aarc(this, paramRecommendCommonMessage, paramSemanticAnalysisResult));
+      ArkMessageServerLogic.a(localArrayList1, true, l, new aayd(this, paramRecommendCommonMessage, paramSemanticAnalysisResult));
       return c;
     }
   }

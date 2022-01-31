@@ -1,33 +1,21 @@
-import android.view.View;
-import android.widget.ProgressBar;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener;
-import com.tencent.mobileqq.emoticonview.EmotionKeywordAdapter;
+import com.tencent.mobileqq.doutu.DoutuEmotionAdapter;
+import com.tencent.mobileqq.doutu.DoutuManager;
 
 public class abyk
-  implements URLDrawableDownListener
+  implements Runnable
 {
-  public abyk(EmotionKeywordAdapter paramEmotionKeywordAdapter) {}
+  public abyk(DoutuManager paramDoutuManager, long paramLong) {}
   
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException) {}
-  
-  public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
+  public void run()
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof ProgressBar))) {
-      ((ProgressBar)paramView).setVisibility(4);
+    if (this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuManager.a != null) {
+      this.jdField_a_of_type_ComTencentMobileqqDoutuDoutuManager.a.a(this.jdField_a_of_type_Long);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abyk
  * JD-Core Version:    0.7.0.1
  */

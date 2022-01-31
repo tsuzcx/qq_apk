@@ -1,42 +1,32 @@
-import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.transfile.INetEngine;
+import com.tencent.mobileqq.transfile.NetReq;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.Job;
+import com.tencent.weiyun.transmission.utils.thread.ThreadPool.JobContext;
+import cooperation.weiyun.sdk.download.DownloadJobContext;
+import cooperation.weiyun.sdk.download.WyDownloader;
+import java.util.HashMap;
 
 public class anhy
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements ThreadPool.Job
 {
-  private anhy(EditTextDialog paramEditTextDialog) {}
+  public anhy(WyDownloader paramWyDownloader, Long paramLong, NetReq paramNetReq) {}
   
-  public void onGlobalLayout()
+  public Void a(ThreadPool.JobContext paramJobContext)
   {
-    int i = this.a.jdField_a_of_type_AndroidViewView.getBottom();
-    if (this.a.b < 0)
+    paramJobContext = (DownloadJobContext)WyDownloader.a(this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader).get(this.jdField_a_of_type_JavaLangLong);
+    if ((paramJobContext == null) || (paramJobContext.d())) {
+      WyDownloader.a(this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader, this.jdField_a_of_type_JavaLangLong.longValue());
+    }
+    for (;;)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("EditTextDialog", 2, "onGlobalLayout first bottom:" + i);
-      }
-      this.a.b = i;
-      this.a.jdField_a_of_type_MqqOsMqqHandler.post(new anhz(this));
+      return null;
+      WyDownloader.b(this.jdField_a_of_type_CooperationWeiyunSdkDownloadWyDownloader).a(this.jdField_a_of_type_ComTencentMobileqqTransfileNetReq);
     }
-    while (this.a.b - i <= this.a.jdField_a_of_type_Int) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("EditTextDialog", 2, "onGlobalLayout second bottom:" + i);
-    }
-    this.a.jdField_a_of_type_AndroidViewViewGroup.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    this.a.b = i;
-    this.a.jdField_a_of_type_AndroidViewViewGroup.requestLayout();
-    this.a.jdField_a_of_type_MqqOsMqqHandler.post(new ania(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anhy
  * JD-Core Version:    0.7.0.1
  */

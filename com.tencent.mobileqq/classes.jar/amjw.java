@@ -1,12 +1,13 @@
-import cooperation.qzone.sim.DeviceInfoUtil;
-import cooperation.qzone.util.NetworkState.NetworkStateListener;
+import cooperation.comic.jsp.QQComicJsPlugin;
 
-public final class amjw
-  implements NetworkState.NetworkStateListener
+class amjw
+  implements Runnable
 {
-  public void onNetworkConnect(boolean paramBoolean)
+  amjw(amjv paramamjv) {}
+  
+  public void run()
   {
-    DeviceInfoUtil.a(null);
+    this.a.jdField_a_of_type_CooperationComicJspQQComicJsPlugin.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_OrgJsonJSONObject, this.a.b);
   }
 }
 

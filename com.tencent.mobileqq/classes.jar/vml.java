@@ -1,22 +1,19 @@
-import android.graphics.Rect;
-import android.view.TouchDelegate;
-import android.view.View;
-import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel.MyAdapter;
+import android.os.Bundle;
+import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter;
+import com.tencent.mobileqq.activity.aio.photo.AIOGalleryAdapter.GalleryImageStruct;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 
 public class vml
-  implements Runnable
+  implements TroopMemberApiClient.Callback
 {
-  public vml(PhotoListPanel.MyAdapter paramMyAdapter, View paramView1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, View paramView2) {}
+  public vml(AIOGalleryAdapter paramAIOGalleryAdapter, int paramInt, AIOGalleryAdapter.GalleryImageStruct paramGalleryImageStruct, AIOImageData paramAIOImageData) {}
   
-  public void run()
+  public void a(Bundle paramBundle)
   {
-    Rect localRect = new Rect();
-    this.jdField_a_of_type_AndroidViewView.getHitRect(localRect);
-    localRect.left -= this.jdField_a_of_type_Int;
-    localRect.top -= this.jdField_b_of_type_Int;
-    localRect.right += this.c;
-    localRect.bottom += this.d;
-    this.jdField_b_of_type_AndroidViewView.setTouchDelegate(new TouchDelegate(localRect, this.jdField_a_of_type_AndroidViewView));
+    paramBundle = paramBundle.getString("ThumbnailFile_Large");
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryAdapter.a.runOnUiThread(new vmm(this, paramBundle));
   }
 }
 

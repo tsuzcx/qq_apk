@@ -42,7 +42,7 @@ public final class mobile_get_qzone_public_msg_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aac.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     NS_MOBILE_EXTRA.mobile_get_qzone_public_msg_req
  * JD-Core Version:    0.7.0.1
  */

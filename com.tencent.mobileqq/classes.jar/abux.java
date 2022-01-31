@@ -1,24 +1,14 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.task.OnAddOrDeleGameListener;
-import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.data.MessageForInteractAndFollow;
+import com.tencent.mobileqq.data.MsgBoxInterFollowManager;
 
-class abux
-  implements OnAddOrDeleGameListener
+public class abux
+  implements Runnable
 {
-  abux(abuw paramabuw) {}
+  public abux(MsgBoxInterFollowManager paramMsgBoxInterFollowManager, MessageForInteractAndFollow paramMessageForInteractAndFollow) {}
   
-  public void a(long paramLong, String paramString)
+  public void run()
   {
-    Bundle localBundle = new Bundle();
-    if (paramLong == 0L) {}
-    for (int i = 0;; i = 1)
-    {
-      localBundle.putInt("result", i);
-      localBundle.putString("message", paramString);
-      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
-      return;
-    }
+    MsgBoxInterFollowManager.access$000(this.jdField_a_of_type_ComTencentMobileqqDataMsgBoxInterFollowManager, this.jdField_a_of_type_ComTencentMobileqqDataMessageForInteractAndFollow);
   }
 }
 

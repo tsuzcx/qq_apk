@@ -1,60 +1,51 @@
-import com.tencent.component.network.downloader.DownloadResult;
-import com.tencent.component.network.downloader.Downloader.DownloadListener;
-import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.util.AlbumLibDownloaderUtil;
-import java.io.File;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.ui.QQComicTabBarView;
+import cooperation.comic.utils.QQComicRedTouchManager;
+import cooperation.comic.utils.SimpleBiMap;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Set;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
+import mqq.os.MqqHandler;
 
 public class amkh
-  implements Downloader.DownloadListener
+  implements Runnable
 {
-  public amkh(AlbumLibDownloaderUtil paramAlbumLibDownloaderUtil, String paramString1, Downloader.DownloadListener paramDownloadListener, String paramString2) {}
+  public amkh(QQComicTabBarView paramQQComicTabBarView) {}
   
-  public void onDownloadCanceled(String paramString)
+  public void run()
   {
-    File localFile = new File(AlbumLibDownloaderUtil.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
+    if (QLog.isColorLevel()) {
+      QLog.d("WebViewTabBarView", 2, "start getRedAppInfo");
     }
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadCanceled(paramString);
+    Object localObject = (QQComicRedTouchManager)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null).getAppRuntime("modular_web")).getManager(212);
+    ArrayList localArrayList = new ArrayList();
+    if (((QQComicRedTouchManager)localObject).a(1113)) {
+      localArrayList.addAll(this.a.a.keySet());
     }
-    if (AlbumLibDownloaderUtil.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_CooperationQzoneUtilAlbumLibDownloaderUtil.jdField_a_of_type_ArrayOfBoolean[AlbumLibDownloaderUtil.a(this.jdField_a_of_type_CooperationQzoneUtilAlbumLibDownloaderUtil)] = false;
-    }
-  }
-  
-  public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
-  {
-    File localFile = new File(AlbumLibDownloaderUtil.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadFailed(paramString, paramDownloadResult);
-    }
-    if (AlbumLibDownloaderUtil.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_CooperationQzoneUtilAlbumLibDownloaderUtil.jdField_a_of_type_ArrayOfBoolean[AlbumLibDownloaderUtil.a(this.jdField_a_of_type_CooperationQzoneUtilAlbumLibDownloaderUtil)] = false;
-    }
-  }
-  
-  public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
-  
-  public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
-  {
-    File localFile = new File(AlbumLibDownloaderUtil.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    localFile = new File(AlbumLibDownloaderUtil.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/tmp" + this.jdField_a_of_type_JavaLangString);
-    if (localFile.exists()) {
-      localFile.renameTo(new File(AlbumLibDownloaderUtil.jdField_a_of_type_JavaIoFile.getAbsolutePath() + "/" + this.jdField_a_of_type_JavaLangString));
-    }
-    LocalMultiProcConfig.putBool(this.b, true);
-    if (this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener != null) {
-      this.jdField_a_of_type_ComTencentComponentNetworkDownloaderDownloader$DownloadListener.onDownloadSucceed(paramString, paramDownloadResult);
-    }
-    if (AlbumLibDownloaderUtil.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      this.jdField_a_of_type_CooperationQzoneUtilAlbumLibDownloaderUtil.jdField_a_of_type_ArrayOfBoolean[AlbumLibDownloaderUtil.a(this.jdField_a_of_type_CooperationQzoneUtilAlbumLibDownloaderUtil)] = false;
+    for (boolean bool = true;; bool = false)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WebViewTabBarView", 2, "isLebaItemOpen=" + bool + ", resId=" + 1113);
+      }
+      localObject = ((QQComicRedTouchManager)localObject).a(localArrayList);
+      if (QLog.isColorLevel()) {
+        QLog.d("WebViewTabBarView", 2, "end getRedAppInfo map is " + localObject);
+      }
+      if (localObject != null) {
+        ThreadManager.getUIHandler().post(new amki(this, localArrayList, bool, (Map)localObject));
+      }
+      return;
+      Iterator localIterator = this.a.a.keySet().iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        localArrayList.add(this.a.b.get(str));
+      }
     }
   }
 }

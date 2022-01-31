@@ -1,12 +1,12 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import anaw;
 import android.support.annotation.NonNull;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import anrb;
 import com.tencent.image.AbstractGifImage.DoAccumulativeRunnable;
 import com.tencent.image.NativeGifImage;
 import com.tencent.qphone.base.util.QLog;
@@ -60,16 +60,16 @@ public class EditGifSpeedControl
       QLog.d("EditGifSpeedControl", 2, "onCreate | defaultX:" + this.jdField_b_of_type_Int + " defaultY:" + this.c + " delayTime:" + this.e);
     }
     c();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131364394));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131371613));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)a(2131364418));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131371778));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131371614));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131371779));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)a(2131371617));
+    this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)a(2131371782));
     this.jdField_a_of_type_AndroidWidgetSeekBar.setVisibility(0);
     this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(this.jdField_b_of_type_Int);
     this.jdField_a_of_type_AndroidWidgetSeekBar.setMax(100);
-    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new anaw(this));
+    this.jdField_a_of_type_AndroidWidgetSeekBar.setOnSeekBarChangeListener(new anrb(this));
   }
   
   public void a(@NonNull GenerateContext paramGenerateContext)
@@ -183,7 +183,7 @@ public class EditGifSpeedControl
     switch (paramView.getId())
     {
     default: 
-    case 2131371614: 
+    case 2131371779: 
       do
       {
         return;

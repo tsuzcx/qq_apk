@@ -1,42 +1,46 @@
-import android.app.Activity;
-import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.logic.ReadInJoyAtlasManager.AtlasCallbackImpl;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
-import com.tencent.mobileqq.utils.DisplayUtils;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashSet;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.VideoInfo;
+import com.tencent.biz.pubaccount.VideoInfo.ChannelInfo;
+import com.tencent.biz.pubaccount.VideoReporter;
+import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyActivityHelper;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsAdapter;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsTopicViewGroup;
+import org.json.JSONObject;
 
 public class mep
-  extends ReadInJoyAtlasManager.AtlasCallbackImpl
+  implements View.OnClickListener
 {
-  public mep(VideoShareHelper paramVideoShareHelper) {}
+  public mep(VideoFeedsTopicViewGroup paramVideoFeedsTopicViewGroup, VideoInfo.ChannelInfo paramChannelInfo) {}
   
-  public void a(boolean paramBoolean, String paramString1, int paramInt, String paramString2)
+  public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.readinjoy.video.VideoShareHelper", 2, "handleDoFavoriteResult isSuccess = " + paramBoolean + ", operationType = " + paramInt + ", cid = " + paramString2);
-    }
-    if (TextUtils.isEmpty(paramString1)) {}
-    while (!VideoShareHelper.a(this.a).contains(paramString1)) {
-      return;
-    }
-    paramString2 = new QQToast(VideoShareHelper.a(this.a));
-    paramString2.d(2000);
-    if (paramBoolean)
+    if ((VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).a(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup))) && (this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo != null))
     {
-      paramString2.a(QQToast.a(2));
-      paramString2.c(2131431555);
-      paramString2.b(VideoShareHelper.a(this.a).getResources().getDimensionPixelSize(2131558448) - (int)DisplayUtils.a(VideoShareHelper.a(this.a), 5.0F));
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.c)) {
+        break label127;
+      }
+      ReadInJoyUtils.a(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.c);
     }
     for (;;)
     {
-      VideoShareHelper.a(this.a).remove(paramString1);
-      return;
-      paramString2.a(QQToast.a(1));
-      paramString2.c(2131431563);
-      paramString2.b(VideoShareHelper.a(this.a).getResources().getDimensionPixelSize(2131558448) - (int)DisplayUtils.a(VideoShareHelper.a(this.a), 5.0F));
+      paramView = new JSONObject();
+      try
+      {
+        paramView.put("topic_id", this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.jdField_a_of_type_Int);
+        label79:
+        PublicAccountReportUtils.a(null, "", "0X80092F9", "0X80092F9", 0, 0, "3", "", "", VideoReporter.a("", "", VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).jdField_a_of_type_JavaLangString, VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup).g, paramView), false);
+        return;
+        label127:
+        ReadInJoyActivityHelper.b(VideoFeedsTopicViewGroup.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsTopicViewGroup), this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$ChannelInfo.b, 8, null);
+      }
+      catch (Exception localException)
+      {
+        break label79;
+      }
     }
   }
 }

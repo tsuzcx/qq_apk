@@ -1,15 +1,27 @@
-import com.tencent.mobileqq.app.message.HCTopicMessageProcessor;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.automator.step.CheckFriendsLastLoginInfo;
 
 public class zqb
-  implements Comparator
+  extends FriendListObserver
 {
-  public zqb(HCTopicMessageProcessor paramHCTopicMessageProcessor) {}
+  private zqb(CheckFriendsLastLoginInfo paramCheckFriendsLastLoginInfo) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  protected void onUpdateLastLoginInfo(boolean paramBoolean1, boolean paramBoolean2)
   {
-    return (int)((paramMessageRecord1.shmsgseq - paramMessageRecord2.shmsgseq) % 2L);
+    int i = 0;
+    if (!paramBoolean1) {
+      this.a.a(6);
+    }
+    for (;;)
+    {
+      if (i != 0) {
+        this.a.a(7);
+      }
+      return;
+      if (paramBoolean2) {
+        i = 1;
+      }
+    }
   }
 }
 

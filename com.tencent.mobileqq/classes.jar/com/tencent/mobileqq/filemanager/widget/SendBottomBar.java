@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.filemanager.widget;
 
-import aczg;
-import aczh;
-import aczi;
-import aczl;
-import aczn;
-import aczr;
-import aczs;
-import aczt;
+import adjd;
+import adje;
+import adjf;
+import adji;
+import adjk;
+import adjo;
+import adjp;
+import adjq;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -45,7 +45,7 @@ public class SendBottomBar
   extends RelativeLayout
 {
   private Context jdField_a_of_type_AndroidContentContext;
-  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new aczg(this);
+  private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new adjd(this);
   private CheckBox jdField_a_of_type_AndroidWidgetCheckBox;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -55,18 +55,18 @@ public class SendBottomBar
   public QQCustomDialog a;
   public QQProgressDialog a;
   private boolean jdField_a_of_type_Boolean;
-  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new aczh(this);
+  private View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new adje(this);
   private TextView jdField_b_of_type_AndroidWidgetTextView;
-  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new aczi(this);
+  private View.OnClickListener jdField_c_of_type_AndroidViewView$OnClickListener = new adjf(this);
   private TextView jdField_c_of_type_AndroidWidgetTextView;
-  private View.OnClickListener jdField_d_of_type_AndroidViewView$OnClickListener = new aczn(this);
+  private View.OnClickListener jdField_d_of_type_AndroidViewView$OnClickListener = new adjk(this);
   private TextView jdField_d_of_type_AndroidWidgetTextView;
   
   public SendBottomBar(Context paramContext)
   {
     super(paramContext, null);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130970013, this);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130970027, this);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     e();
   }
@@ -75,7 +75,7 @@ public class SendBottomBar
   {
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130970013, this, true);
+    ((LayoutInflater)paramContext.getSystemService("layout_inflater")).inflate(2130970027, this, true);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     e();
   }
@@ -83,12 +83,12 @@ public class SendBottomBar
   private void e()
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity = ((BaseFileAssistantActivity)this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368747));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368748));
-    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131368746));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364083));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368814));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131368815));
+    this.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)findViewById(2131368813));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131364107));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_d_of_type_AndroidViewView$OnClickListener);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363493));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131363511));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     if (1 == this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.b()) {
       this.jdField_a_of_type_AndroidWidgetTextView.setText("确定");
@@ -99,8 +99,8 @@ public class SendBottomBar
   private void f()
   {
     FileManagerReporter.a("0x80087C5");
-    a(2131436129);
-    new Handler().postDelayed(new aczl(this), 100L);
+    a(2131436146);
+    new Handler().postDelayed(new adji(this), 100L);
   }
   
   private void g()
@@ -164,7 +164,7 @@ public class SendBottomBar
     boolean bool = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.d();
     if ((1 == i) && (!bool))
     {
-      FMDialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, 2131431828, 2131431829, new aczr(this));
+      FMDialogUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity, 2131431845, 2131431846, new adjo(this));
       return;
     }
     g();
@@ -183,7 +183,7 @@ public class SendBottomBar
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.c();
     if (localObject1 == null) {
       if (i == 5) {
-        localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131429692) + this.jdField_a_of_type_AndroidContentContext.getString(2131428244) + FMDataCache.a() + this.jdField_a_of_type_AndroidContentContext.getString(2131428245);
+        localObject1 = this.jdField_a_of_type_AndroidContentContext.getResources().getString(2131429698) + this.jdField_a_of_type_AndroidContentContext.getString(2131428244) + FMDataCache.a() + this.jdField_a_of_type_AndroidContentContext.getString(2131428245);
       }
     }
     for (;;)
@@ -261,7 +261,7 @@ public class SendBottomBar
         {
           this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(0);
           this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-          this.jdField_d_of_type_AndroidWidgetTextView.setText(2131431827);
+          this.jdField_d_of_type_AndroidWidgetTextView.setText(2131431844);
           localObject2 = (RelativeLayout.LayoutParams)this.jdField_d_of_type_AndroidWidgetTextView.getLayoutParams();
           ((RelativeLayout.LayoutParams)localObject2).addRule(9);
           this.jdField_d_of_type_AndroidWidgetTextView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
@@ -269,7 +269,7 @@ public class SendBottomBar
         }
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131431827);
+        this.jdField_c_of_type_AndroidWidgetTextView.setText(2131431844);
         break;
         this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
         this.jdField_d_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -306,7 +306,7 @@ public class SendBottomBar
   {
     if ((FileManagerUtil.a()) && (FMDataCache.b() > FMConfig.a()))
     {
-      FileManagerUtil.a(true, this.jdField_a_of_type_AndroidContentContext, new aczs(this));
+      FileManagerUtil.a(true, this.jdField_a_of_type_AndroidContentContext, new adjp(this));
       return;
     }
     c();
@@ -314,8 +314,8 @@ public class SendBottomBar
   
   public void c()
   {
-    a(2131436129);
-    new Handler().postDelayed(new aczt(this), 100L);
+    a(2131436146);
+    new Handler().postDelayed(new adjq(this), 100L);
   }
   
   public void d()

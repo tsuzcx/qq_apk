@@ -1,18 +1,13 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.mobileqq.ark.ArkAppCenter.OnGetAppIcon;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.ar.config.MainDownAni;
 
-class aajb
-  implements ArkAppCenter.OnGetAppIcon
+public class aajb
+  implements Runnable
 {
-  aajb(aaja paramaaja, QQCustomDialog paramQQCustomDialog) {}
+  public aajb(MainDownAni paramMainDownAni, aaji paramaaji) {}
   
-  public void a(String paramString, Bitmap paramBitmap)
+  public void run()
   {
-    if (paramBitmap != null) {
-      ((ImageView)this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.findViewById(2131364017)).setImageBitmap(paramBitmap);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqArConfigMainDownAni.b(this.jdField_a_of_type_Aaji);
   }
 }
 

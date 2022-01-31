@@ -1,61 +1,69 @@
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.emosm.web.MessengerService;
-import com.tencent.qphone.base.util.QLog;
-import java.io.Serializable;
-import java.lang.ref.WeakReference;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.data.IPSiteModel.Book;
+import com.tencent.mobileqq.data.IPSiteModel.Comic;
+import com.tencent.mobileqq.data.IPSiteModel.Game;
+import com.tencent.mobileqq.data.IPSiteModel.Goods;
+import com.tencent.mobileqq.data.IPSiteModel.Gxzb;
+import com.tencent.mobileqq.data.IPSiteModel.Video;
+import com.tencent.mobileqq.data.VipIPSiteInfo;
+import java.util.ArrayList;
+import java.util.List;
 
-public class abvk
-  extends Handler
+public final class abvk
+  implements Parcelable.Creator
 {
-  protected Bundle a;
-  private WeakReference a;
-  
-  public abvk(MessengerService paramMessengerService)
+  public VipIPSiteInfo a(Parcel paramParcel)
   {
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramMessengerService);
-  }
-  
-  public void handleMessage(Message paramMessage)
-  {
-    boolean bool = true;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
-      if (QLog.isColorLevel()) {
-        QLog.e("MessengerService$QWalletOpenMsgHandler", 2, "handleMessage, mServiceWeakRef null");
-      }
+    VipIPSiteInfo localVipIPSiteInfo = new VipIPSiteInfo();
+    localVipIPSiteInfo.ipID = paramParcel.readInt();
+    localVipIPSiteInfo.ipName = paramParcel.readString();
+    localVipIPSiteInfo.ipDesc = paramParcel.readString();
+    localVipIPSiteInfo.ipUrl = paramParcel.readString();
+    localVipIPSiteInfo.itemSize = paramParcel.readInt();
+    localVipIPSiteInfo.strType = paramParcel.readString();
+    localVipIPSiteInfo.extId = paramParcel.readInt();
+    localVipIPSiteInfo.extStr = paramParcel.readString();
+    localVipIPSiteInfo.ipLogo = paramParcel.readString();
+    localVipIPSiteInfo.ipContent = paramParcel.readString();
+    if (localVipIPSiteInfo.ipList == null) {
+      localVipIPSiteInfo.ipList = new ArrayList();
     }
-    MessengerService localMessengerService;
-    int i;
+    localVipIPSiteInfo.ipList.clear();
+    if ("gxzb".equals(localVipIPSiteInfo.strType)) {
+      paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Gxzb.class.getClassLoader());
+    }
     do
     {
-      do
+      return localVipIPSiteInfo;
+      if ("game".equals(localVipIPSiteInfo.strType))
       {
-        return;
-        localMessengerService = (MessengerService)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localMessengerService != null) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.e("MessengerService$QWalletOpenMsgHandler", 2, "handleMessage, service null");
-      return;
-      i = paramMessage.what;
-    } while (i != 4);
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("qwallet.type", i);
-    if (paramMessage.arg1 == 1) {}
-    for (;;)
-    {
-      localBundle.putBoolean("qwallet.isSuccess", bool);
-      localBundle.putSerializable("qwallet.data", (Serializable)paramMessage.obj);
-      if (this.jdField_a_of_type_AndroidOsBundle == null) {
-        break;
+        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Game.class.getClassLoader());
+        return localVipIPSiteInfo;
       }
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
-      localMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      bool = false;
-    }
+      if ("goods".equals(localVipIPSiteInfo.strType))
+      {
+        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Goods.class.getClassLoader());
+        return localVipIPSiteInfo;
+      }
+      if ("video".equals(localVipIPSiteInfo.strType))
+      {
+        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Video.class.getClassLoader());
+        return localVipIPSiteInfo;
+      }
+      if ("book".equals(localVipIPSiteInfo.strType))
+      {
+        paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Book.class.getClassLoader());
+        return localVipIPSiteInfo;
+      }
+    } while (!"comic".equals(localVipIPSiteInfo.strType));
+    paramParcel.readList(localVipIPSiteInfo.ipList, IPSiteModel.Comic.class.getClassLoader());
+    return localVipIPSiteInfo;
+  }
+  
+  public VipIPSiteInfo[] a(int paramInt)
+  {
+    return new VipIPSiteInfo[paramInt];
   }
 }
 

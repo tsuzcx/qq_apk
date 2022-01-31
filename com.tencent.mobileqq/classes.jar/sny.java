@@ -1,57 +1,37 @@
-import android.app.Activity;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.biz.widgets.ShareAioResultDialog;
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.forward.ForwardSdkShareOption;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.ForwardRecentActivity;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.forward.ForwardAbility.ForwardAbilityType;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.open.agent.report.ReportCenter;
 
 public class sny
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public sny(FriendProfileCardActivity paramFriendProfileCardActivity, Context paramContext) {}
+  public sny(ForwardRecentActivity paramForwardRecentActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.a.dismiss();
-      com.tencent.mobileqq.activity.AddFriendLogicActivity.b = false;
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog back");
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getIntExtra("source_id", 3999) == 3090) {}
-      try
-      {
-        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity.getIntent().getStringExtra("extra");
-        ForwardSdkShareOption.a(this.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileCardActivity, true, "action_game_make_friend", Long.valueOf(paramDialogInterface).longValue(), -1, "已是你的好友");
-        if ((this.jdField_a_of_type_AndroidContentContext == null) || (!(this.jdField_a_of_type_AndroidContentContext instanceof Activity))) {
-          continue;
-        }
-        ((Activity)this.jdField_a_of_type_AndroidContentContext).moveTaskToBack(true);
-      }
-      catch (Exception paramDialogInterface)
-      {
-        for (;;)
-        {
-          QLog.e("FriendProfileCardActivity", 1, "feedBackToGameSDK error = " + paramDialogInterface);
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendProfileCardActivity", 2, "qbShowShareResultDialog stay");
-      }
+    paramView = new Bundle();
+    paramView.putString("uin", String.valueOf(AppConstants.y));
+    paramView.putInt("uintype", -1);
+    paramView.putBoolean("forward_report_confirm", true);
+    paramView.putString("forward_report_confirm_action_name", "0X8005A13");
+    paramView.putString("forward_report_confirm_reverse2", "0");
+    this.a.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption.a(ForwardAbility.ForwardAbilityType.f.intValue(), paramView);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004051", "0X8004051", 0, 0, "", "", "", "");
+    if (this.a.jdField_a_of_type_Boolean) {
+      ReportCenter.a().a(this.a.app.getAccount(), "", this.a.b, "1000", "34", "0", false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     sny
  * JD-Core Version:    0.7.0.1
  */

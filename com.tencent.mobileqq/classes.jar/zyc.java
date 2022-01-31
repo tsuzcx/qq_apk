@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.ar.ArResourceManager;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
 
 public class zyc
   implements Runnable
 {
-  public zyc(ArResourceManager paramArResourceManager) {}
+  public zyc(ARVideoRecordButtonView paramARVideoRecordButtonView, float paramFloat) {}
   
   public void run()
   {
-    this.a.a();
-    this.a.a();
-    this.a.c();
+    this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView.clearAnimation();
+    ARVideoRecordButtonView.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView, ARVideoRecordButtonView.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView), this.jdField_a_of_type_Float);
+    ARVideoRecordButtonView.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordButtonView, this.jdField_a_of_type_Float);
   }
 }
 

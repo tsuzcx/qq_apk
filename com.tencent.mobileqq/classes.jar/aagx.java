@@ -1,23 +1,34 @@
-import com.tencent.ark.ark.VariantWrapper;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
-import com.tencent.mobileqq.ark.API.ArkAppEventObserverManager.OrientationCallback;
+import com.tencent.av.avgesture.AVGestureWrapper;
+import com.tencent.mobileqq.worldcup.ARWorldCupGameLogicManager;
+import com.tencent.qphone.base.util.QLog;
 
 class aagx
-  implements ArkAppEventObserverManager.OrientationCallback
+  implements Runnable
 {
-  aagx(aagv paramaagv, long paramLong) {}
+  aagx(aagw paramaagw) {}
   
-  public void a(long paramLong)
+  public void run()
   {
-    ark.VariantWrapper localVariantWrapper = this.jdField_a_of_type_Aagv.a.a(paramLong);
-    if (localVariantWrapper != null) {
-      localVariantWrapper.Reset();
+    try
+    {
+      AVGestureWrapper.clearCache();
+      ARWorldCupGameLogicManager.a().e();
+      return;
     }
-  }
-  
-  public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3)
-  {
-    ArkAppDeviceModule.a(this.jdField_a_of_type_Aagv.a, this.jdField_a_of_type_Long, paramBoolean, "Orientation", paramFloat1, paramFloat2, paramFloat3);
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      for (;;)
+      {
+        QLog.i("AREngine_AREngine", 2, "AVGestureWrapper.clearCache failed. UnsatisfiedLinkError. err = " + localUnsatisfiedLinkError.getMessage());
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        QLog.i("AREngine_AREngine", 2, "AVGestureWrapper.clearCache failed. err = " + localException.getMessage());
+      }
+    }
   }
 }
 

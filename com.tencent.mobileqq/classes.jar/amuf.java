@@ -1,20 +1,23 @@
-import dov.com.qq.im.capture.QIMCaptureController;
-import dov.com.qq.im.capture.poi.FacePoiSearchUI;
-import dov.com.qq.im.capture.poi.FacePoiSearchUI.FacePoiSearchUIListener;
+import cooperation.qzone.font.FontManager;
+import java.io.File;
+import java.io.FileFilter;
 
 public class amuf
-  implements FacePoiSearchUI.FacePoiSearchUIListener
+  implements FileFilter
 {
-  public amuf(QIMCaptureController paramQIMCaptureController) {}
+  public amuf(FontManager paramFontManager) {}
   
-  public void aB_()
+  public boolean accept(File paramFile)
   {
-    QIMCaptureController.a(this.a).e();
+    paramFile = paramFile.getName();
+    boolean bool1 = paramFile.endsWith(".ftf");
+    boolean bool2 = paramFile.endsWith(".ttf");
+    return (bool1) || (bool2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amuf
  * JD-Core Version:    0.7.0.1
  */

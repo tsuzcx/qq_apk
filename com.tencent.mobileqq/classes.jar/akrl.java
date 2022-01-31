@@ -1,27 +1,25 @@
-import android.os.Bundle;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.downloadnew.ApkGetCodeListener;
-import com.tencent.open.downloadnew.DownloadManager;
+import android.text.TextUtils;
+import com.tencent.mobileqq.webview.webso.WebSoService;
+import com.tencent.mobileqq.webview.webso.WebSoService.CallBack;
+import com.tencent.mobileqq.webview.webso.WebSoService.WebSoState;
 
 public class akrl
-  implements ApkGetCodeListener
+  implements WebSoService.CallBack
 {
-  public akrl(DownloadManager paramDownloadManager) {}
+  public akrl(WebSoService paramWebSoService, WebSoService.WebSoState paramWebSoState) {}
   
-  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, Bundle paramBundle)
+  public void a(String paramString)
   {
-    LogUtility.c(DownloadManager.a, "receive get code finished pkgName|" + paramString1 + " versionCode|" + paramInt + " code|" + paramString2 + " extraData|" + paramBundle);
-    paramBundle = new Bundle();
-    paramBundle.putString("PackageName", paramString1);
-    paramBundle.putString("Code", paramString2);
-    paramBundle.putInt("VersionCode", paramInt);
-    paramBundle.putBoolean("IsSuccess", paramBoolean);
-    DownloadManager.a(this.a, paramBundle);
+    if (TextUtils.isEmpty(paramString)) {
+      this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.a = 10004;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.b = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewWebsoWebSoService$WebSoState.e = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akrl
  * JD-Core Version:    0.7.0.1
  */

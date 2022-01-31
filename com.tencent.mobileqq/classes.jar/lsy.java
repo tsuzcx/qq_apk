@@ -1,31 +1,17 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.FeedItemCell.CellListener;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter.OnLastReadRefreshListener;
-import java.util.Map;
+import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
+import com.tencent.biz.pubaccount.readinjoy.proteus.listeners.OnTopicRecommendHeaderFollowClickListener;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class lsy
-  implements FeedItemCell.CellListener
+  implements UserOperationModule.Ox978RespCallBack
 {
-  public lsy(FeedItemCell paramFeedItemCell) {}
+  public lsy(OnTopicRecommendHeaderFollowClickListener paramOnTopicRecommendHeaderFollowClickListener) {}
   
-  public void a(View paramView, Map paramMap)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if (paramView.getId() == 2131366836) {
-      this.a.a(paramView);
+    if ((paramBoolean) && (paramInt == 1)) {
+      ThreadManager.post(new lsz(this), 5, null, true);
     }
-    do
-    {
-      return;
-      if (paramView != this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyRebuildCmpComponentLastRead) {
-        break;
-      }
-      paramView = this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseAdapter.a();
-    } while (paramView == null);
-    paramView.a();
-    return;
-    this.a.a(paramView, paramMap);
   }
 }
 

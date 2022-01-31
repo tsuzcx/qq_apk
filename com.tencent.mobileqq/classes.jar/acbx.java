@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.app.FMObserver;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.task.OnAddOrDeleGameListener;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
-public class acbx
-  extends FMObserver
+class acbx
+  implements OnAddOrDeleGameListener
 {
-  public acbx(BaseFileAssistantActivity paramBaseFileAssistantActivity) {}
+  acbx(acbw paramacbw) {}
   
-  protected void a(String paramString1, String paramString2, Integer paramInteger, String paramString3, boolean paramBoolean)
+  public void a(long paramLong, String paramString)
   {
-    super.a(paramString1, paramString2, paramInteger, paramString3, paramBoolean);
+    Bundle localBundle = new Bundle();
+    if (paramLong == 0L) {}
+    for (int i = 0;; i = 1)
+    {
+      localBundle.putInt("result", i);
+      localBundle.putString("message", paramString);
+      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
   }
 }
 

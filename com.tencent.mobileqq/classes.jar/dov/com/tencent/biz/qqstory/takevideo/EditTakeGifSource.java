@@ -1,13 +1,13 @@
 package dov.com.tencent.biz.qqstory.takevideo;
 
-import anbz;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
+import anse;
 
 public class EditTakeGifSource
   extends EditLocalGifSource
 {
-  public static final Parcelable.Creator CREATOR = new anbz();
+  public static final Parcelable.Creator CREATOR = new anse();
   
   public EditTakeGifSource(Parcel paramParcel)
   {

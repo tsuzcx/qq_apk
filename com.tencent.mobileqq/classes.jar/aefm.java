@@ -1,20 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.location.SelectLocationFragment;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
 
-public class aefm
-  implements View.OnClickListener
+public final class aefm
+  implements Runnable
 {
-  public aefm(SelectLocationFragment paramSelectLocationFragment) {}
+  public aefm(int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    SelectLocationFragment.c(this.a);
+    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localQQAppInterface == null) {
+      return;
+    }
+    ReportController.b(localQQAppInterface, "dc00898", "", "", "0X80088EA", "0X80088EA", this.a, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aefm
  * JD-Core Version:    0.7.0.1
  */

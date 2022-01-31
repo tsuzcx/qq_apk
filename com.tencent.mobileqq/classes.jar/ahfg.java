@@ -1,33 +1,36 @@
-import com.tencent.mobileqq.app.UniteSearchObserver;
-import com.tencent.mobileqq.search.fragment.HotWordsForSubBussFragment;
-import com.tencent.qphone.base.util.QLog;
-import java.util.List;
+import android.os.Bundle;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.ptt.PttBuffer;
+import com.tencent.mobileqq.receipt.ReceiptMsgManager;
+import com.tencent.mobileqq.utils.QQRecorder;
+import com.tencent.mobileqq.utils.QQRecorder.RecorderParam;
+import java.util.ArrayList;
 
 public class ahfg
-  extends UniteSearchObserver
+  implements Runnable
 {
-  public ahfg(HotWordsForSubBussFragment paramHotWordsForSubBussFragment) {}
+  public ahfg(ReceiptMsgManager paramReceiptMsgManager, int paramInt1, int paramInt2, QQRecorder.RecorderParam paramRecorderParam, String paramString, int paramInt3, boolean paramBoolean, QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo) {}
   
-  public void a(int paramInt, String paramString)
+  public void run()
   {
-    super.a(paramInt, paramString);
-    if (QLog.isColorLevel()) {
-      QLog.w(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleBusiHotWordError code=" + paramInt + " errorMsg;" + paramString);
-    }
-  }
-  
-  public void a(int paramInt, List paramList)
-  {
-    HotWordsForSubBussFragment.jdField_a_of_type_Int = paramInt;
-    HotWordsForSubBussFragment.a(this.a, paramList);
-    if (QLog.isColorLevel()) {
-      QLog.i(HotWordsForSubBussFragment.jdField_a_of_type_JavaLangString, 2, "handleTabSearchResult expireTime;" + HotWordsForSubBussFragment.jdField_a_of_type_Int);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager.a.voiceLength = QQRecorder.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager.a.voiceChangeFlag = this.b;
+    this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager.a.voiceType = this.jdField_a_of_type_ComTencentMobileqqUtilsQQRecorder$RecorderParam.c;
+    this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager.a.fullLocalPath = this.jdField_a_of_type_JavaLangString;
+    ArrayList localArrayList = new ArrayList(1);
+    localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager.a);
+    PttBuffer.b(this.jdField_a_of_type_JavaLangString);
+    Bundle localBundle = new Bundle();
+    localBundle.putString("ReceiptMsgManager.EXTRA_KEY_PTT_PATH", this.jdField_a_of_type_JavaLangString);
+    localBundle.putInt("ReceiptMsgManager.EXTRA_KEY_PTT_SEND_SOURCE", this.c);
+    localBundle.putBoolean("ReceiptMsgManager.EXTRA_KEY_PTT_COMPRESS_FINISHED", this.jdField_a_of_type_Boolean);
+    ReceiptMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b, ReceiptMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqReceiptReceiptMsgManager, 3), false, localArrayList, localBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahfg
  * JD-Core Version:    0.7.0.1
  */

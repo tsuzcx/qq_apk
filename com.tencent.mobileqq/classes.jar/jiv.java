@@ -1,26 +1,15 @@
-import android.annotation.SuppressLint;
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.av.gaudio.BaseGaInvite;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.av.guild.GuildMultiActivity;
 
-@SuppressLint({"HandlerLeak"})
 public class jiv
-  extends Handler
+  implements DialogInterface.OnClickListener
 {
-  public jiv(BaseGaInvite paramBaseGaInvite) {}
+  public jiv(GuildMultiActivity paramGuildMultiActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 0: 
-      this.a.b();
-      return;
-    }
-    this.a.a("Msg");
-    super.sendEmptyMessageDelayed(1, 2000L);
+    paramDialogInterface.dismiss();
   }
 }
 

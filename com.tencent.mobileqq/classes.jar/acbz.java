@@ -1,15 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import android.os.Bundle;
+import com.tencent.mobileqq.apollo.task.OnAddOrDeleGameListener;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
-public class acbz
-  implements View.OnClickListener
+class acbz
+  implements OnAddOrDeleGameListener
 {
-  public acbz(FMActivity paramFMActivity) {}
+  acbz(acby paramacby) {}
   
-  public void onClick(View paramView)
+  public void a(long paramLong, String paramString)
   {
-    FMActivity.c(this.a);
+    Bundle localBundle = new Bundle();
+    if (paramLong == 0L) {}
+    for (int i = 0;; i = 1)
+    {
+      localBundle.putInt("result", i);
+      localBundle.putString("message", paramString);
+      this.a.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.a.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.a.jdField_a_of_type_AndroidOsBundle);
+      return;
+    }
   }
 }
 

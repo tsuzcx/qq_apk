@@ -1,19 +1,22 @@
-import com.tencent.mobileqq.app.fms.FullMessageSearchManager;
-import com.tencent.mobileqq.search.searchengine.MessageSearchEngine;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.richmedia.capture.fragment.CameraCaptureFragment;
 
-public class ahib
-  implements Runnable
+class ahib
+  implements DialogInterface.OnClickListener
 {
-  public ahib(MessageSearchEngine paramMessageSearchEngine, String paramString) {}
+  ahib(ahia paramahia, Activity paramActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineMessageSearchEngine.a.a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidAppActivity.finish();
+    CameraCaptureFragment.b(this.jdField_a_of_type_Ahia.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahib
  * JD-Core Version:    0.7.0.1
  */

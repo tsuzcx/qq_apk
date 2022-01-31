@@ -21,7 +21,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 import mqq.os.MqqHandler;
-import ylf;
+import yol;
 
 public class ApolloAILogicProcessor
   implements IRenderCallback, IAILogicInterface, IAudioPlayerListener
@@ -33,7 +33,7 @@ public class ApolloAILogicProcessor
   private ApolloAudioPlayer jdField_a_of_type_ComTencentMobileqqApolloTaskApolloAudioPlayer;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private Object jdField_a_of_type_JavaLangObject;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ylf(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new yol(this);
   private List jdField_a_of_type_JavaUtilList;
   private AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   private boolean jdField_a_of_type_Boolean;

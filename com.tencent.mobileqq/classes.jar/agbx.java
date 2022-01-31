@@ -1,37 +1,35 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
-import com.tencent.mobileqq.vip.DownloadListener;
+import android.app.Activity;
+import android.content.Context;
+import android.view.WindowManager.BadTokenException;
+import com.tencent.mobileqq.ocr.SearchQuestionCameraFragment;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
-import java.util.List;
 
 public class agbx
   implements Runnable
 {
-  public agbx(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, int paramInt, String paramString) {}
+  public agbx(SearchQuestionCameraFragment paramSearchQuestionCameraFragment, String paramString) {}
   
   public void run()
   {
-    Object localObject = new agby(this);
-    int i = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a(this.jdField_a_of_type_JavaLangString, (DownloadListener)localObject);
-    if ((i == 19) || (i == 0))
-    {
-      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(20);
-      ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage((Message)localObject);
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("style download success , url : %s, position : %d ", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) }));
-      }
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.b.remove(this.jdField_a_of_type_JavaLangString);
-    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqOcrSearchQuestionCameraFragment.getActivity();
+    if (localObject == null) {}
     do
     {
       return;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.obtainMessage(21);
-      ((Message)localObject).arg1 = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_ComTencentMobileqqProfileVipProfileCardPreviewActivity.a.sendMessage((Message)localObject);
+      QLog.e("SearchQuestionFragment", 2, "onCameraStarted error = " + this.jdField_a_of_type_JavaLangString);
+      String str = ((Activity)localObject).getString(2131428347);
+      localObject = DialogUtil.a((Context)localObject, 230).setMessage(str).setPositiveButton(((Activity)localObject).getString(2131428346), new agby(this, (Activity)localObject));
+      try
+      {
+        ((QQCustomDialog)localObject).setCancelable(false);
+        ((QQCustomDialog)localObject).show();
+        return;
+      }
+      catch (WindowManager.BadTokenException localBadTokenException) {}
     } while (!QLog.isColorLevel());
-    QLog.d("ProfileCard.VipProfileCardPreviewActivity", 2, String.format("styles download fail , url : %s, position : %d ", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_Int) }));
+    QLog.i("SearchQuestionFragment", 2, "", localBadTokenException);
   }
 }
 

@@ -1,39 +1,92 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.nearby.gameroom.RecentInviteUser;
-import com.tencent.mobileqq.nearby.gameroom.WerewolvesDataManager;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
+import android.text.TextUtils;
+import com.tencent.mobileqq.log.VipWebViewReportLog;
+import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Set;
+import java.util.concurrent.atomic.AtomicInteger;
+import mqq.app.AppRuntime;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class aech
   implements Runnable
 {
-  public aech(WerewolvesDataManager paramWerewolvesDataManager, QQAppInterface paramQQAppInterface) {}
-  
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.a(RecentInviteUser.class);
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.jdField_a_of_type_JavaLangObject;
-    if (localObject2 != null) {
+    long l = System.currentTimeMillis();
+    QLog.d("WebCoreDump", 1, "-->start load config at " + l);
+    Object localObject1;
+    if (VipWebViewReportLog.a() == null)
+    {
+      localObject1 = "";
+      localObject1 = new File(VipWebViewReportLog.jdField_b_of_type_JavaLangString + (String)localObject1 + "config.json");
+      if (!((File)localObject1).exists()) {
+        break label391;
+      }
+      QLog.d("WebCoreDump", 1, "-->config file exist");
+      VipWebViewReportLog.jdField_a_of_type_Int = 0;
+      VipWebViewReportLog.a(VipWebViewReportLog.a());
+    }
+    for (;;)
+    {
       try
       {
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
+        localObject1 = FileUtils.a((File)localObject1);
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
-          RecentInviteUser localRecentInviteUser = (RecentInviteUser)((Iterator)localObject2).next();
-          this.jdField_a_of_type_ComTencentMobileqqNearbyGameroomWerewolvesDataManager.jdField_a_of_type_JavaUtilMap.put(localRecentInviteUser.uniKey, localRecentInviteUser);
+          localObject1 = new JSONObject((String)localObject1);
+          VipWebViewReportLog.jdField_a_of_type_Boolean = ((JSONObject)localObject1).optBoolean("js_report", true);
+          VipWebViewReportLog.jdField_b_of_type_Boolean = ((JSONObject)localObject1).optBoolean("url_check", true);
+          if (!((JSONObject)localObject1).has("url_list")) {
+            continue;
+          }
+          JSONArray localJSONArray = ((JSONObject)localObject1).getJSONArray("url_list");
+          int j = localJSONArray.length();
+          int i = 0;
+          if (i < j)
+          {
+            VipWebViewReportLog.jdField_a_of_type_JavaUtilSet.add(localJSONArray.getString(i));
+            i += 1;
+            continue;
+            localObject1 = VipWebViewReportLog.a().getAccount();
+            break;
+          }
+          QLog.d("WebCoreDump", 1, "-->url white list:" + VipWebViewReportLog.jdField_a_of_type_JavaUtilSet);
+          if ((VipWebViewReportLog.jdField_b_of_type_Boolean) && (!((JSONObject)localObject1).has("url_list"))) {
+            continue;
+          }
+          VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
         }
       }
-      finally {}
+      catch (Exception localException)
+      {
+        VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+        QLog.d("WebCoreDump", 1, "-->read config file err:" + localException.toString());
+        VipWebViewReportLog.b();
+        continue;
+        VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+        continue;
+      }
+      finally
+      {
+        VipWebViewReportLog.b();
+      }
+      QLog.d("WebCoreDump", 1, "parse config cost=" + (System.currentTimeMillis() - l));
+      return;
+      QLog.d("WebCoreDump", 1, "-->No url white list in config!" + ((JSONObject)localObject1).toString());
+      continue;
+      label391:
+      VipWebViewReportLog.a(VipWebViewReportLog.a());
+      VipWebViewReportLog.b();
+      QLog.d("WebCoreDump", 1, "-->config file not exist: " + localObject2.getPath());
+      VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aech
  * JD-Core Version:    0.7.0.1
  */

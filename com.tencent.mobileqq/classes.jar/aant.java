@@ -1,15 +1,14 @@
-import com.tencent.mobileqq.ark.ArkLocalAppMgr;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
-class aant
-  implements Runnable
+public final class aant
+  implements DialogInterface.OnClickListener
 {
-  aant(aans paramaans) {}
-  
-  public void run() {}
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aant
  * JD-Core Version:    0.7.0.1
  */

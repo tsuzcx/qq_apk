@@ -1,16 +1,13 @@
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 
-public class mhj
+class mhj
   implements Runnable
 {
-  public mhj(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  mhj(mhf parammhf) {}
   
   public void run()
   {
-    if (ReadInJoyListViewGroup.a(this.a) != null) {
-      ReadInJoyListViewGroup.a(this.a).setVisibility(8);
-    }
+    this.a.a.notifyDataSetChanged();
   }
 }
 

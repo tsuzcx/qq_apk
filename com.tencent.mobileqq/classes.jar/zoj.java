@@ -1,37 +1,25 @@
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyReportManyApps;
-import com.tencent.biz.pubaccount.readinjoy.logic.SMRM;
-import com.tencent.mobileqq.app.HotChatManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.TimerCheckMsgCount;
-import com.tencent.mobileqq.app.message.ConversationFacade;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.ark.ark;
+import com.tencent.mobileqq.statistics.QQCatchedExceptionReporter;
+import com.tencent.qphone.base.util.QLog;
+import org.json.JSONObject;
 
-public class zoj
+public final class zoj
   implements Runnable
 {
-  public zoj(TimerCheckMsgCount paramTimerCheckMsgCount) {}
+  public zoj(JSONObject paramJSONObject) {}
   
   public void run()
   {
-    TimerCheckMsgCount.a(this.a).b.a().l();
-    ((HotChatManager)TimerCheckMsgCount.b(this.a).b.getManager(59)).b();
-    TimerCheckMsgCount.c(this.a).b.a().c();
-    if (!ReadInJoyHelper.k(TimerCheckMsgCount.d(this.a).b)) {}
-    for (;;)
+    try
     {
-      SMRM.a().a(TimerCheckMsgCount.e(this.a).b);
+      ark.arkNotify("com.tencent.test.groupDragon", "UpdateDragonTitle", this.a.toString(), "json");
+      ark.arkNotify("com.tencent.groupDragon", "UpdateDragonTitle", this.a.toString(), "json");
       return;
-      try
-      {
-        TimerCheckMsgCount.a(this.a);
-        ReadInJoyReportManyApps.a();
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-      }
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      QLog.e(".troop.survey", 2, "Error: arkNotify com.tencent.groupDragon error, .so notloaded", localUnsatisfiedLinkError);
+      QQCatchedExceptionReporter.reportQQCatchedException(localUnsatisfiedLinkError, "TroopHandlerCatchedException", "Error: arkNotify com.tencent.groupDragon error, .so notloaded");
     }
   }
 }

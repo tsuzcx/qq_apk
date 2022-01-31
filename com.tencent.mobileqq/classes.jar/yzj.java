@@ -1,18 +1,19 @@
-import com.tencent.mobileqq.app.DataLineHandler;
+import com.tencent.mobileqq.apollo.view.ApolloPanel;
 
-public class yzj
+class yzj
   implements Runnable
 {
-  public yzj(DataLineHandler paramDataLineHandler, long paramLong, int paramInt) {}
+  yzj(yzi paramyzi) {}
   
   public void run()
   {
-    DataLineHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppDataLineHandler, this.jdField_a_of_type_Long, this.jdField_a_of_type_Int);
+    this.a.a.setTabSelect(this.a.a.b(ApolloPanel.a));
+    ApolloPanel.a(this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     yzj
  * JD-Core Version:    0.7.0.1
  */

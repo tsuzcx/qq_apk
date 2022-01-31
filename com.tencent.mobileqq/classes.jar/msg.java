@@ -1,17 +1,14 @@
-import com.tencent.biz.pubaccount.subscript.SubscriptRecommendController;
-import com.tencent.biz.pubaccount.util.PublicAccountUtil;
+import com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity;
+import com.tencent.mobileqq.app.MessageObserver;
 
 public class msg
-  implements Runnable
+  extends MessageObserver
 {
-  public msg(SubscriptRecommendController paramSubscriptRecommendController) {}
+  public msg(SubscriptFeedsActivity paramSubscriptFeedsActivity) {}
   
-  public void run()
+  protected void a(boolean paramBoolean, String paramString, long paramLong)
   {
-    this.a.jdField_a_of_type_Boolean = SubscriptRecommendController.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    if (PublicAccountUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      this.a.jdField_a_of_type_Boolean = true;
-    }
+    this.a.b();
   }
 }
 

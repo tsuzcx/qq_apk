@@ -1,55 +1,32 @@
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.qidian.QidianProfileCardActivity;
+import android.support.v4.view.AccessibilityDelegateCompat;
+import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import android.view.View;
+import com.tencent.mobileqq.widget.TabBarView;
 
 public class akxc
-  implements Runnable
+  extends AccessibilityDelegateCompat
 {
-  public akxc(QidianProfileCardActivity paramQidianProfileCardActivity, int paramInt) {}
+  public akxc(TabBarView paramTabBarView) {}
   
-  public void run()
+  public void onInitializeAccessibilityNodeInfo(View paramView, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    int i = 1;
-    int j = 0;
-    if (this.jdField_a_of_type_Int == 6) {
-      if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo != null) {}
-    }
-    for (;;)
+    super.onInitializeAccessibilityNodeInfo(paramView, paramAccessibilityNodeInfoCompat);
+    if (this.a.a(paramView) == this.a.h) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (i != 0)
-      {
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.b(this.jdField_a_of_type_Int);
-        this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.c(this.jdField_a_of_type_Int);
-      }
+      paramAccessibilityNodeInfoCompat.setSelected(bool);
       return;
-      i = 0;
-      continue;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentQidianDataQidianExternalInfo != null)
-        {
-          i = j;
-          if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a != null) {}
-        }
-        else
-        {
-          i = 1;
-        }
-      }
-      else if ((this.jdField_a_of_type_Int == 2) || (this.jdField_a_of_type_Int == 0))
-      {
-        if (this.jdField_a_of_type_ComTencentQidianQidianProfileCardActivity.jdField_a_of_type_ComTencentMobileqqDataBmqqUserSimpleInfo != null) {
-          i = 0;
-        }
-      }
-      else {
-        i = 0;
-      }
     }
+  }
+  
+  public void sendAccessibilityEvent(View paramView, int paramInt)
+  {
+    super.sendAccessibilityEvent(paramView, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akxc
  * JD-Core Version:    0.7.0.1
  */

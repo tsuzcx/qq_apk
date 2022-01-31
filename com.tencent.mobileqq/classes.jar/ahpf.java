@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.shortvideo.redbag.RedBagVideoManager;
+import com.tencent.mobileqq.richstatus.ActionUrlActivity;
+import com.tencent.smtt.sdk.WebChromeClient;
+import com.tencent.smtt.sdk.WebView;
 
 public class ahpf
-  implements Runnable
+  extends WebChromeClient
 {
-  public ahpf(RedBagVideoManager paramRedBagVideoManager) {}
+  private ahpf(ActionUrlActivity paramActionUrlActivity) {}
   
-  public void run()
+  public void onProgressChanged(WebView paramWebView, int paramInt)
   {
-    RedBagVideoManager.b(this.a);
+    super.onProgressChanged(paramWebView, paramInt);
+  }
+  
+  public void onReceivedTitle(WebView paramWebView, String paramString)
+  {
+    this.a.setTitle(paramString);
+    this.a.a();
   }
 }
 

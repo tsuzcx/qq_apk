@@ -1,20 +1,36 @@
-import com.tencent.av.gaudio.AVObserver;
-import com.tencent.mobileqq.search.activity.VADActivity;
+import android.view.View;
+import android.view.View.OnLongClickListener;
+import com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment;
+import com.tencent.widget.ActionSheet;
+import java.lang.ref.WeakReference;
 
 public class aheg
-  extends AVObserver
+  implements View.OnLongClickListener
 {
-  public aheg(VADActivity paramVADActivity) {}
+  private WeakReference a;
   
-  protected void a(int paramInt, String paramString1, String paramString2)
+  private aheg(ReceiptMessageDetailFragment paramReceiptMessageDetailFragment)
   {
-    this.a.finish();
-    super.a(paramInt, paramString1, paramString2);
+    this.a = new WeakReference(paramReceiptMessageDetailFragment);
+  }
+  
+  public boolean onLongClick(View paramView)
+  {
+    paramView = (ReceiptMessageDetailFragment)this.a.get();
+    if ((paramView == null) || (!paramView.isAdded())) {
+      return false;
+    }
+    ActionSheet localActionSheet = ActionSheet.a(paramView.getActivity());
+    localActionSheet.b(2131435082);
+    localActionSheet.c(2131433015);
+    localActionSheet.a(new aheh(this, paramView, localActionSheet));
+    localActionSheet.show();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aheg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,22 @@
-import SecurityAccountServer.RespondQueryQQBindingStat;
-import com.tencent.mobileqq.app.PhoneContactManagerImp;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.mybusiness.MyBusinessManager;
+import com.tencent.mobileqq.jsp.UiApiPlugin;
+import com.tencent.mobileqq.util.ScreenShotUtil;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import org.json.JSONObject;
 
 public class adyb
   implements Runnable
 {
-  public adyb(MyBusinessManager paramMyBusinessManager) {}
+  public adyb(UiApiPlugin paramUiApiPlugin, JSONObject paramJSONObject) {}
   
   public void run()
   {
-    RespondQueryQQBindingStat localRespondQueryQQBindingStat = ((PhoneContactManagerImp)this.a.a.getManager(10)).a();
-    String str = "";
-    int i = 0;
-    if (localRespondQueryQQBindingStat != null)
-    {
-      str = localRespondQueryQQBindingStat.mobileNo;
-      i = localRespondQueryQQBindingStat.type;
-    }
-    this.a.a(str, i, "");
+    this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.i = this.jdField_a_of_type_OrgJsonJSONObject.optString("callback");
+    ScreenShotUtil.a(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin.mRuntime.a(), new adyc(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adyb
  * JD-Core Version:    0.7.0.1
  */

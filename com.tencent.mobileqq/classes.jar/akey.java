@@ -1,19 +1,25 @@
-import com.tencent.mobileqq.widget.ContainerView;
-import com.tencent.widget.ScrollView;
+import android.content.Context;
+import android.view.inputmethod.InputMethodManager;
+import com.tencent.mobileqq.utils.QQCustomDialogWtihInput;
+import java.lang.ref.SoftReference;
+import java.util.TimerTask;
 
 public class akey
-  implements Runnable
+  extends TimerTask
 {
-  public akey(ContainerView paramContainerView, int paramInt) {}
+  public akey(QQCustomDialogWtihInput paramQQCustomDialogWtihInput) {}
   
   public void run()
   {
-    ContainerView.a(this.jdField_a_of_type_ComTencentMobileqqWidgetContainerView).smoothScrollTo(0, this.jdField_a_of_type_Int);
+    Context localContext = (Context)QQCustomDialogWtihInput.a(this.a).get();
+    if (localContext != null) {
+      ((InputMethodManager)localContext.getSystemService("input_method")).toggleSoftInput(0, 2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akey
  * JD-Core Version:    0.7.0.1
  */

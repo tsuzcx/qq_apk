@@ -1,59 +1,37 @@
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.qidian.QidianProfileCardActivity;
-import com.tencent.qidian.QidianProfileCardActivity.PaGroupStruct;
+import android.support.annotation.Nullable;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.mobileqq.widget.QQToast.IToastValidListener;
 import java.lang.ref.WeakReference;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class akwl
-  extends FriendListObserver
 {
-  public akwl(QidianProfileCardActivity paramQidianProfileCardActivity) {}
+  private QQToast jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   
-  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  public akwl(QQToast paramQQToast, QQToast.IToastValidListener paramIToastValidListener)
   {
-    super.onUpdateCustomHead(paramBoolean, paramString);
-    if (paramBoolean)
-    {
-      if (!paramString.equals(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString)) {
-        break label57;
-      }
-      this.a.jdField_a_of_type_AndroidGraphicsBitmap = this.a.app.a(paramString, false);
-      this.a.c();
-    }
-    label57:
-    do
-    {
-      return;
-      paramString = (QidianProfileCardActivity.PaGroupStruct)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-    } while (paramString == null);
-    this.a.a(paramString.jdField_a_of_type_Int, (URLImageView)paramString.jdField_a_of_type_JavaLangRefWeakReference.get(), paramString.jdField_a_of_type_JavaLangString, true);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast = paramQQToast;
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramIToastValidListener);
   }
   
-  protected void onUpdateDelFriend(boolean paramBoolean, Object paramObject)
+  private boolean a()
   {
-    if ((paramBoolean) && (this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString.equals(String.valueOf(paramObject)))) {
-      this.a.b();
-    }
+    QQToast.IToastValidListener localIToastValidListener = (QQToast.IToastValidListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    return (localIToastValidListener != null) && (localIToastValidListener.e());
   }
   
-  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  @Nullable
+  QQToast a()
   {
-    if ((paramBoolean1) && (paramBoolean2) && (this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString != null) && (!ProfileActivity.AllInOne.b(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a)) && (this.a.jdField_a_of_type_ComTencentMobileqqAppFriendsManager != null) && (this.a.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.b(this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString.equals(this.a.app.getCurrentAccountUin())))
-    {
-      this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_Int = 1;
-      QidianProfileCardActivity.b(this.a, this.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo.a.jdField_a_of_type_JavaLangString);
-      this.a.b();
+    if (a()) {
+      return this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast;
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akwl
  * JD-Core Version:    0.7.0.1
  */

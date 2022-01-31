@@ -1,33 +1,39 @@
-import android.widget.ImageButton;
-import com.tencent.av.ui.VideoInviteActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.av.ui.VideoInviteFloatBarUICtr;
 
 public class kbk
-  implements ActionSheet.OnDismissListener
+  extends BroadcastReceiver
 {
-  public kbk(VideoInviteActivity paramVideoInviteActivity, boolean paramBoolean) {}
+  public kbk(VideoInviteFloatBarUICtr paramVideoInviteFloatBarUICtr) {}
   
-  public void onDismiss()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_Boolean)
+    if (paramIntent != null)
     {
-      if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
-      for (str = "0X80043A4";; str = "0X80043B6")
+      paramContext = paramIntent.getAction();
+      if (!paramContext.equals("tencent.video.invite.accept")) {
+        break label26;
+      }
+      this.a.f();
+    }
+    label26:
+    do
+    {
+      return;
+      if (paramContext.equals("tencent.video.invite.refuse"))
       {
-        ReportController.b(null, "CliOper", "", "", str, str, 0, 0, Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.c), Integer.toString(this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.h), "", "");
-        if ((this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a != null) && (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton != null))
-        {
-          this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.a.setEnabled(true);
-          this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_AndroidWidgetImageButton.setEnabled(true);
-        }
+        this.a.g();
         return;
       }
-    }
-    if (this.jdField_a_of_type_ComTencentAvUiVideoInviteActivity.jdField_b_of_type_Boolean) {}
-    for (String str = "0X80043AA";; str = "0X80043B0") {
-      break;
-    }
+      if (paramContext.equals("tencent.video.invite.gaaccept"))
+      {
+        this.a.i();
+        return;
+      }
+    } while (!paramContext.equals("tencent.video.invite.gaignore"));
+    this.a.h();
   }
 }
 

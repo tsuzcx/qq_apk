@@ -1,65 +1,44 @@
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
 import com.tencent.av.VideoController;
 import com.tencent.av.app.SessionInfo;
-import com.tencent.av.smallscreen.SmallScreenVideoController;
-import com.tencent.av.smallscreen.SmallScreenVideoLayerUI;
+import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.smallscreen.SmallScreenActivityPlugin;
+import com.tencent.av.ui.AVActivity;
 import com.tencent.qphone.base.util.QLog;
 
-class jpq
-  implements Runnable
+public class jpq
+  implements View.OnClickListener
 {
-  jpq(jpp paramjpp, String paramString, boolean paramBoolean) {}
+  public jpq(AVActivity paramAVActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject2 = null;
-    Object localObject1 = this.jdField_a_of_type_Jpp.a.jdField_a_of_type_AndroidContentContext.getSharedPreferences("qav_SP", 0);
-    if (!((SharedPreferences)localObject1).getBoolean("kick_out_self", false))
-    {
-      if ((this.jdField_a_of_type_Jpp.a.c != 1) && (this.jdField_a_of_type_Jpp.a.c != 2)) {
-        break label173;
-      }
-      if ((this.jdField_a_of_type_Jpp.a.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_Jpp.a.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)))
-      {
-        this.jdField_a_of_type_Jpp.a.b = this.jdField_a_of_type_Boolean;
-        this.jdField_a_of_type_Jpp.a.d();
-      }
-      if (this.jdField_a_of_type_Jpp.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI != null)
-      {
-        localObject1 = ((SharedPreferences)localObject1).edit();
-        ((SharedPreferences.Editor)localObject1).putInt("video_position", this.jdField_a_of_type_Jpp.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.b());
-        ((SharedPreferences.Editor)localObject1).commit();
-      }
-    }
-    label173:
-    label306:
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController.a().u) {}
     for (;;)
     {
       return;
-      if ((this.jdField_a_of_type_Jpp.a.c == 3) || (this.jdField_a_of_type_Jpp.a.c == 4))
+      int i = this.a.jdField_a_of_type_ComTencentAvVideoController.a().d;
+      if ((i == 1) || (i == 2))
       {
-        if (this.jdField_a_of_type_Jpp.a.jdField_a_of_type_ComTencentAvVideoController == null)
-        {
-          localObject1 = null;
-          if (localObject1 != null) {
-            break label300;
-          }
+        if (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().g()) {
+          this.a.a(this.a.c, this.a.d, this.a.j);
         }
-        for (localObject1 = localObject2;; localObject1 = ((SessionInfo)localObject1).q)
+      }
+      else {
+        while (AVActivity.a(this.a) != null)
         {
-          if ((localObject1 == null) || (this.jdField_a_of_type_JavaLangString == null) || (!((String)localObject1).equals(this.jdField_a_of_type_JavaLangString))) {
-            break label306;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("SmallScreenVideoController", 2, "[random room owner] onDestroyUI finish");
-          }
-          this.jdField_a_of_type_Jpp.a.b = this.jdField_a_of_type_Boolean;
-          this.jdField_a_of_type_Jpp.a.d();
+          AVActivity.a(this.a).a();
           return;
-          localObject1 = this.jdField_a_of_type_Jpp.a.jdField_a_of_type_ComTencentAvVideoController.a();
-          break;
+          if ((i == 3) || (i == 4))
+          {
+            paramView = this.a.jdField_a_of_type_ComTencentAvVideoController.a().q;
+            String str = this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.a.d, paramView, null);
+            if (QLog.isColorLevel()) {
+              QLog.d(this.a.b, 2, "enterChatWin-->uin: " + paramView + ", uintype: " + this.a.d + ", name: " + str);
+            }
+            this.a.a(paramView, this.a.d, str);
+          }
         }
       }
     }

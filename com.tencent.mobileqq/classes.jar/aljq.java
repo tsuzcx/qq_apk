@@ -1,29 +1,19 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.msf.core.push.BadgeUtilImpl;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.open.wadl.WadlJsBridgeCall;
+import java.util.Map;
 
 public final class aljq
   implements Runnable
 {
+  public aljq(String paramString) {}
+  
   public void run()
   {
-    try
-    {
-      if (!BadgeUtilImpl.isEnabled(BaseApplicationImpl.sApplication)) {
-        BadgeUtilImpl.disableBadge(BaseApplicationImpl.sApplication);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("BadgeUtils", 2, "disableBadge mobileqq", localException);
-    }
+    WadlJsBridgeCall.a().put(this.a, new Boolean(false));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aljq
  * JD-Core Version:    0.7.0.1
  */

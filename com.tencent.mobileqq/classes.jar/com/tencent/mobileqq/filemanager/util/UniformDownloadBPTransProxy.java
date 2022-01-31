@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import acyd;
+import adia;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.proxy.BaseProxy;
@@ -254,7 +254,7 @@ public class UniformDownloadBPTransProxy
     QLog.i("UniformDownloadBPTransProxy<FileAssistant>", 1, "[UniformDL]. >>>addEntity. url[" + paramUniformDownloadBPTransEntity.mUrl + "]");
     c();
     b(paramUniformDownloadBPTransEntity);
-    ThreadManager.executeOnSubThread(new acyd(this, paramUniformDownloadBPTransEntity));
+    ThreadManager.executeOnSubThread(new adia(this, paramUniformDownloadBPTransEntity));
   }
   
   public void a(String paramString)

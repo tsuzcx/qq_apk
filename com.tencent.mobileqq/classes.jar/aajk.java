@@ -1,19 +1,26 @@
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppMusicModule;
-import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.ar.config.MainEntryAni;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 public class aajk
-  implements Runnable
+  implements aakm
 {
-  public aajk(ArkAppMusicModule paramArkAppMusicModule) {}
+  public aajk(MainEntryAni paramMainEntryAni, ArrayList paramArrayList1, ArrayList paramArrayList2, aajo paramaajo) {}
   
-  public void run()
+  public void a(boolean paramBoolean, ArrayList paramArrayList)
   {
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    if ((localBaseActivity instanceof FragmentActivity)) {
-      QQPlayerService.a(localBaseActivity);
+    paramArrayList = new StringBuilder().append("requestLoadBitmap, bsuc[").append(paramBoolean).append("], same[");
+    if (this.jdField_a_of_type_JavaUtilArrayList == this.b) {}
+    for (boolean bool = true;; bool = false)
+    {
+      QLog.w("WorldCupMgr", 1, bool + "]");
+      if (paramBoolean) {
+        break;
+      }
+      MainEntryAni.a(this.jdField_a_of_type_ComTencentMobileqqArConfigMainEntryAni, this.jdField_a_of_type_Aajo);
+      return;
     }
+    MainEntryAni.b(this.jdField_a_of_type_ComTencentMobileqqArConfigMainEntryAni, this.jdField_a_of_type_Aajo);
   }
 }
 

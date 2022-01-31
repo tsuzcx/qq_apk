@@ -1,9 +1,43 @@
-import com.tencent.mobileqq.shortvideo.filter.QQLowLightFilter;
+import com.tencent.mobileqq.richmedia.conn.LiteTcpConnection;
+import com.tencent.mobileqq.richmedia.conn.SubTitleProtocoDataCodec;
+import com.tencent.qphone.base.util.MsfSocketInputBuffer;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.atomic.AtomicBoolean;
 
-public final class ahng
+public class ahng
   implements Runnable
 {
-  public void run() {}
+  public ahng(LiteTcpConnection paramLiteTcpConnection) {}
+  
+  public void run()
+  {
+    while (LiteTcpConnection.a(this.a).get()) {
+      try
+      {
+        MsfSocketInputBuffer localMsfSocketInputBuffer = LiteTcpConnection.a(this.a);
+        if (localMsfSocketInputBuffer == null) {
+          return;
+        }
+        while (!localMsfSocketInputBuffer.isDataAvailable(10000)) {
+          if (!LiteTcpConnection.a(this.a).get()) {
+            return;
+          }
+        }
+        if (!LiteTcpConnection.a(this.a).get()) {
+          break;
+        }
+        LiteTcpConnection.a(this.a).a(localMsfSocketInputBuffer);
+        localMsfSocketInputBuffer.reset();
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("PeakAudioTransHandler LiteTcpConnection", 2, "read exception " + localException.getMessage() + ";");
+        }
+        LiteTcpConnection.a(this.a, 1);
+      }
+    }
+  }
 }
 
 

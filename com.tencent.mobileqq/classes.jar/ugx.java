@@ -1,24 +1,30 @@
-import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForPic;
-import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pic.PicPreDownloader;
-import com.tencent.mobileqq.transfile.AbsDownloader;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
-import java.io.File;
-import java.net.URL;
+import com.tencent.mobileqq.activity.VerifyPhoneNumActivity;
+import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.qphone.base.util.QLog;
 
 public class ugx
-  implements Runnable
+  extends ContactBindObserver
 {
-  public ugx(BaseBubbleBuilder paramBaseBubbleBuilder, MessageRecord paramMessageRecord) {}
+  public ugx(VerifyPhoneNumActivity paramVerifyPhoneNumActivity) {}
   
-  public void run()
+  protected void b(boolean paramBoolean1, boolean paramBoolean2)
   {
-    File localFile = AbsDownloader.a(URLDrawableHelper.a((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 1, null).toString());
-    if ((localFile == null) || (!localFile.exists())) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder.a.a().a((MessageForPic)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, 2);
+    if (QLog.isColorLevel()) {
+      QLog.d("VerifyPhoneNumActivity", 2, "VerifyPhoneNumActivity onReBindMblWTLogin isSuccess = " + paramBoolean1 + "; resultOk = " + paramBoolean2);
     }
+    this.a.a();
+    if (paramBoolean1)
+    {
+      if (paramBoolean2)
+      {
+        VerifyPhoneNumActivity.a(this.a, true);
+        VerifyPhoneNumActivity.c(this.a);
+        return;
+      }
+      VerifyPhoneNumActivity.c(this.a);
+      return;
+    }
+    VerifyPhoneNumActivity.c(this.a);
   }
 }
 

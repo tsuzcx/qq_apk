@@ -1,32 +1,23 @@
-import android.app.Activity;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.open.base.LogUtility;
-import com.tencent.open.base.TicketUtils;
-import com.tencent.open.base.TicketUtils.TicketCallback;
-import com.tencent.open.downloadnew.MyAppApi;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopObserver;
+import com.tencent.mobileqq.werewolves.WerewolvesHostInterface;
+import com.tencent.mobileqq.werewolves.WerewolvesPluginInterface;
+import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
 
 public class aksi
-  implements TicketUtils.TicketCallback
+  extends TroopObserver
 {
-  public aksi(MyAppApi paramMyAppApi, TicketUtils paramTicketUtils, long paramLong, Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener) {}
+  public aksi(WerewolvesHostInterface paramWerewolvesHostInterface, QQAppInterface paramQQAppInterface) {}
   
-  public void a()
+  protected void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    LogUtility.a("MyAppApi", "onGetA1Fail ---");
-    ThreadManager.getSubThreadHandler().post(new aksk(this));
-  }
-  
-  public void a(String paramString, byte[] paramArrayOfByte)
-  {
-    LogUtility.a("MyAppApi", "onGetA1 ---");
-    ThreadManager.getSubThreadHandler().post(new aksj(this, paramArrayOfByte, paramString));
+    this.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesHostInterface.manager.a().a(6, new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(paramBoolean2) });
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aksi
  * JD-Core Version:    0.7.0.1
  */

@@ -1,33 +1,44 @@
-import android.content.Context;
-import android.media.AudioManager;
-import android.media.AudioManager.OnAudioFocusChangeListener;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.annotation.TargetApi;
+import android.os.Handler;
+import android.view.Choreographer;
+import com.tencent.mobileqq.util.FPSCalculator;
+import com.tencent.qphone.base.util.QLog;
 
 public class ajzk
-  extends AudioManager
+  implements Runnable
 {
-  public ajzk(Context paramContext)
-  {
-    super(paramContext);
-  }
+  public ajzk(FPSCalculator paramFPSCalculator) {}
   
-  public int requestAudioFocus(AudioManager.OnAudioFocusChangeListener paramOnAudioFocusChangeListener, int paramInt1, int paramInt2)
+  @TargetApi(16)
+  public void run()
   {
-    try
+    for (;;)
     {
-      paramInt1 = super.requestAudioFocus(paramOnAudioFocusChangeListener, paramInt1, paramInt2);
-      return paramInt1;
+      try
+      {
+        if (FPSCalculator.a(this.a) == null) {
+          continue;
+        }
+        FPSCalculator.a(this.a).removeFrameCallback(FPSCalculator.a(this.a));
+        FPSCalculator.a(this.a).postFrameCallback(FPSCalculator.a(this.a));
+      }
+      catch (Exception localException)
+      {
+        if (!QLog.isColorLevel()) {
+          continue;
+        }
+        QLog.d("FPSCalculator", 2, "Choreographer.getInstance", localException);
+        continue;
+      }
+      FPSCalculator.a(this.a).removeCallbacks(FPSCalculator.a(this.a));
+      return;
+      FPSCalculator.a(this.a, Choreographer.getInstance());
     }
-    catch (NullPointerException paramOnAudioFocusChangeListener)
-    {
-      ReportController.b(null, "P_CliOper", "BizTechReport", "", "web", "audio_manager_npe", 0, 1, 0, "", "", "", "");
-    }
-    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajzk
  * JD-Core Version:    0.7.0.1
  */

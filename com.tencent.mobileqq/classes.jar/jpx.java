@@ -1,31 +1,14 @@
-import android.widget.TextView;
-import com.tencent.av.app.SessionInfo;
 import com.tencent.av.ui.AVActivity;
-import com.tencent.av.ui.funchat.record.QavRecordButtonView;
+import com.tencent.av.ui.ControlUIObserver;
 
 public class jpx
   implements Runnable
 {
-  public jpx(AVActivity paramAVActivity, SessionInfo paramSessionInfo) {}
+  public jpx(AVActivity paramAVActivity) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentAvUiAVActivity.a == null) || (this.jdField_a_of_type_ComTencentAvUiAVActivity.e) || (this.jdField_a_of_type_ComTencentAvUiAVActivity.c == null)) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentAvUiAVActivity.a.getVisibility() != 0)
-    {
-      this.jdField_a_of_type_ComTencentAvUiAVActivity.c.clearAnimation();
-      this.jdField_a_of_type_ComTencentAvUiAVActivity.c.setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvAppSessionInfo.aD = true;
-    if (this.jdField_a_of_type_ComTencentAvAppSessionInfo.U == 0)
-    {
-      this.jdField_a_of_type_ComTencentAvAppSessionInfo.V = Math.max(1, this.jdField_a_of_type_ComTencentAvAppSessionInfo.V + 1);
-      this.jdField_a_of_type_ComTencentAvUiAVActivity.a(this.jdField_a_of_type_ComTencentAvAppSessionInfo.V);
-    }
-    this.jdField_a_of_type_ComTencentAvUiAVActivity.a(600, -40);
+    this.a.a.a("self", String.valueOf(1));
   }
 }
 

@@ -173,7 +173,7 @@ public class FluorescenceTextItem
     if (this.jdField_a_of_type_AndroidGraphicsTypeface != null) {
       this.jdField_a_of_type_AndroidTextTextPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
     }
-    switch (amxu.a[paramPaintStyle.ordinal()])
+    switch (annz.a[paramPaintStyle.ordinal()])
     {
     default: 
       return;

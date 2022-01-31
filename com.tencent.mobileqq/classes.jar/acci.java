@@ -1,31 +1,38 @@
-import android.view.ViewGroup;
-import android.view.animation.TranslateAnimation;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.utils.QQUtils;
+import java.util.HashMap;
+import java.util.Map;
 
-public class acci
+class acci
   implements Runnable
 {
-  public acci(FilePreviewActivity paramFilePreviewActivity) {}
+  acci(acbg paramacbg, String paramString1, String paramString2, QQAppInterface paramQQAppInterface, String paramString3, String paramString4, Bundle paramBundle, MessengerService paramMessengerService) {}
   
   public void run()
   {
-    if (this.a.d) {
+    Bitmap localBitmap = QQUtils.a(this.jdField_a_of_type_JavaLangString, this.b, null, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false);
+    Bundle localBundle = new Bundle();
+    if (localBitmap != null)
+    {
+      Object localObject = new HashMap();
+      ((Map)localObject).put("starHomeUrl", this.c);
+      ((Map)localObject).put("nickname", this.d);
+      ((Map)localObject).put("starId", this.b);
+      localObject = QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "sid", (Map)localObject);
+      QQUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (Intent)localObject, this.d, localBitmap);
+      localBundle.putInt("ret", 0);
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", localBundle);
+      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
       return;
+      localBundle.putInt("ret", -4);
     }
-    TranslateAnimation localTranslateAnimation = new TranslateAnimation(0.0F, 0.0F, 0.0F, 0 - this.a.jdField_a_of_type_AndroidViewViewGroup.getHeight());
-    if (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue == null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue = new FilePreviewAnimQueue(this.a.jdField_a_of_type_AndroidViewViewGroup);
-    }
-    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
-    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localTranslateAnimation;
-    localFilePreviewAnim.jdField_a_of_type_Boolean = false;
-    localFilePreviewAnim.jdField_a_of_type_Int = FilePreviewAnimQueue.b;
-    localFilePreviewAnim.b = 250;
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a(localFilePreviewAnim);
-    this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a();
-    this.a.d = true;
   }
 }
 

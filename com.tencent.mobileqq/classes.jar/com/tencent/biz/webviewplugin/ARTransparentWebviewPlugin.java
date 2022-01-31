@@ -72,7 +72,7 @@ public class ARTransparentWebviewPlugin
       if (!(paramString instanceof ScanTorchActivity)) {
         break label64;
       }
-      ((ScanTorchActivity)paramString).i();
+      ((ScanTorchActivity)paramString).j();
       AREngine.b().p();
     }
     label64:

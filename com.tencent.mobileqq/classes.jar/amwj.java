@@ -1,19 +1,21 @@
-import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
-import java.io.File;
+import cooperation.qzone.music.QzoneWebMusicJsPlugin;
+import cooperation.qzone.remote.logic.RemoteHandleManager;
+import cooperation.qzone.remote.logic.RemoteRequestSender;
+import java.util.ArrayList;
 
 public class amwj
   implements Runnable
 {
-  public amwj(HummingActivity paramHummingActivity, String paramString) {}
+  public amwj(QzoneWebMusicJsPlugin paramQzoneWebMusicJsPlugin, int paramInt1, int paramInt2, ArrayList paramArrayList) {}
   
   public void run()
   {
-    new File(this.jdField_a_of_type_JavaLangString).delete();
+    RemoteHandleManager.a().a().a(QzoneWebMusicJsPlugin.access$200(this.jdField_a_of_type_CooperationQzoneMusicQzoneWebMusicJsPlugin), this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaUtilArrayList, 102);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amwj
  * JD-Core Version:    0.7.0.1
  */

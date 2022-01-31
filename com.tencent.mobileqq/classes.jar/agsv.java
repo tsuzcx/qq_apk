@@ -1,54 +1,59 @@
-import com.tencent.mobileqq.richmedia.capture.adapter.PtvTemplateAdapter;
-import com.tencent.mobileqq.richmedia.capture.view.PtvTemplateItemView;
-import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.GridView;
-import java.util.ArrayList;
+import com.tencent.mobileqq.app.FriendsManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profile.like.PraiseManager;
+import com.tencent.mobileqq.profile.vote.VoteHelper;
+import com.tencent.mobileqq.statistics.ReportController;
 
-class agsv
+public class agsv
   implements Runnable
 {
-  agsv(agst paramagst, PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo, int paramInt) {}
+  public agsv(VoteHelper paramVoteHelper, long paramLong, int paramInt, boolean paramBoolean) {}
   
   public void run()
   {
-    int j = this.jdField_a_of_type_Agst.a.jdField_a_of_type_ComTencentWidgetGridView.getFirstVisiblePosition();
-    int k = this.jdField_a_of_type_Agst.a.jdField_a_of_type_ComTencentWidgetGridView.getLastVisiblePosition();
-    int i = j;
-    Object localObject;
-    if (i <= k)
-    {
-      if (i < 0) {}
-      do
+    int j = 2;
+    boolean bool = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a.getManager(50)).b(Long.toString(this.jdField_a_of_type_Long));
+    int i;
+    if (this.jdField_a_of_type_Int == 2) {
+      if (bool)
       {
-        i += 1;
-        break;
-        localObject = (PtvTemplateManager.PtvTemplateInfo)this.jdField_a_of_type_Agst.a.jdField_a_of_type_JavaUtilArrayList.get(i);
-      } while ((localObject == null) || (!((PtvTemplateManager.PtvTemplateInfo)localObject).id.equals(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id)));
-      if (QLog.isColorLevel()) {
-        QLog.i("CapturePtvTemplateManager", 2, "onProgressUpdate index: " + i + " progress: " + this.jdField_a_of_type_Int);
-      }
-      ((PtvTemplateManager.PtvTemplateInfo)localObject).downloading = true;
-      localObject = this.jdField_a_of_type_Agst.a.jdField_a_of_type_ComTencentWidgetGridView.getChildAt(i - j);
-      if ((localObject instanceof PtvTemplateItemView))
-      {
-        localObject = (PtvTemplateItemView)localObject;
-        if (this.jdField_a_of_type_Int != 100) {
-          break label193;
+        i = 5;
+        if (PraiseManager.a(this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a) <= 0) {
+          break label134;
+        }
+        if (!this.jdField_a_of_type_Boolean) {
+          break label129;
         }
       }
     }
-    label193:
-    for (i = 99;; i = this.jdField_a_of_type_Int)
+    for (;;)
     {
-      ((PtvTemplateItemView)localObject).a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo, i);
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a, "CliOper", "", "", "P_prof", "Prof_good", i, 1, j, "0", "1", this.jdField_a_of_type_ComTencentMobileqqProfileVoteVoteHelper.a.getCurrentAccountUin(), Long.toString(this.jdField_a_of_type_Long));
       return;
+      i = 6;
+      break;
+      if (bool)
+      {
+        i = 7;
+        break;
+      }
+      i = 8;
+      break;
+      label129:
+      j = 3;
+      continue;
+      label134:
+      if (this.jdField_a_of_type_Boolean) {
+        j = 0;
+      } else {
+        j = 1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     agsv
  * JD-Core Version:    0.7.0.1
  */

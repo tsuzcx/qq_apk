@@ -1,29 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.QQMapActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheetHelper;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.ProfileLabelEditorActivity;
 
 public class thc
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public thc(QQMapActivity paramQQMapActivity) {}
+  public thc(ProfileLabelEditorActivity paramProfileLabelEditorActivity) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a == null)
-    {
-      this.a.a = ((ActionSheet)ActionSheetHelper.a(this.a, null));
-      this.a.a.b(2131431673);
-      this.a.a.b(2131431546);
-      this.a.a.c(2131432998);
-      this.a.a.a(new thd(this));
-    }
-    if (!this.a.a.isShowing()) {
-      this.a.a.show();
-    }
-    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "rec_locate", "click_menu", 0, 0, "", "", "", "");
+    this.a.finish();
   }
 }
 

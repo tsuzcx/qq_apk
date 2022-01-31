@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout android:orientation="vertical" android:background="@drawable/skin_searchbar_bg" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView android:layout_gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a194a" android:padding="9.0dip" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f02180d" />
-    <com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView android:layout_gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1422" android:padding="9.0dip" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_marginBottom="5.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0216a5" />
-    <com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView android:layout_gravity="bottom" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0d51" android:padding="9.0dip" android:layout_width="45.0dip" android:layout_height="45.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="7.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020058" />
-</merge>
+    <com.tencent.biz.qqstory.view.widget.QQStoryPullToRefreshListView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0958" android:scrollbars="none" android:layout_width="fill_parent" android:layout_height="fill_parent" android:listSelector="@color/APKTOOL_DUPLICATE_color_0x7f0c003c" android:cacheColorHint="@android:color/transparent" android:divider="@null" android:footerDividersEnabled="false" />
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a052c" android:background="@color/APKTOOL_DUPLICATE_color_0x7f0c0069" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <ImageView android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0217ac" />
+        <TextView android:textSize="16.0dip" android:textColor="#ff777777" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b12a6" />
+    </LinearLayout>
+</LinearLayout>

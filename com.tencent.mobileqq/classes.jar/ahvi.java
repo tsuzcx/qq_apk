@@ -1,28 +1,26 @@
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
-import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemLayoutNew2;
-import com.tencent.widget.SingleLineTextView;
+import com.tencent.mobileqq.search.model.GroupSearchModelFunction;
+import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import java.util.List;
 
 public class ahvi
+  extends GroupSearchEngine.SearchEngineEntity
 {
-  public ImageView a;
-  public LinearLayout a;
-  public RelativeLayout a;
-  public TextView a;
-  public URLImageView a;
-  public SingleLineTextView a;
-  public RelativeLayout b;
-  public TextView b;
-  public RelativeLayout c;
+  public ahvi(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
+  {
+    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
+  }
   
-  public ahvi(StructMsgItemLayoutNew2 paramStructMsgItemLayoutNew2) {}
+  public ISearchResultGroupModel a(List paramList, String paramString)
+  {
+    return new GroupSearchModelFunction(paramList, paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahvi
  * JD-Core Version:    0.7.0.1
  */

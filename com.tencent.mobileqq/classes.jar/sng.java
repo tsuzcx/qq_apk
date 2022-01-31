@@ -1,16 +1,33 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.view.ProfileBaseView;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.view.View;
+import com.tencent.mobileqq.activity.FontSettingActivity;
+import java.util.ArrayList;
 
-class sng
-  implements Runnable
+public class sng
+  extends PagerAdapter
 {
-  sng(snf paramsnf) {}
+  public sng(FontSettingActivity paramFontSettingActivity) {}
   
-  public void run()
+  public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
-    if ((this.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null) && ((this.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView instanceof ProfileBaseView))) {
-      ((ProfileBaseView)this.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView).b(this.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo, true);
-    }
+    ((ViewPager)paramView).removeView((View)this.a.a.get(paramInt));
+  }
+  
+  public int getCount()
+  {
+    return this.a.a.size();
+  }
+  
+  public Object instantiateItem(View paramView, int paramInt)
+  {
+    ((ViewPager)paramView).addView((View)this.a.a.get(paramInt), 0);
+    return this.a.a.get(paramInt);
+  }
+  
+  public boolean isViewFromObject(View paramView, Object paramObject)
+  {
+    return paramView == paramObject;
   }
 }
 

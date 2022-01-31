@@ -1,26 +1,30 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie;
+import com.tencent.mobileqq.werewolves.WereWolvesLoadingView;
+import com.tencent.mobileqq.werewolves.WerewolvesPluginManager;
+import com.tencent.qphone.base.util.QLog;
 
-public class vtw
-  implements Animation.AnimationListener
+class vtw
+  implements Runnable
 {
-  public vtw(PublicAccountChatPie paramPublicAccountChatPie) {}
+  vtw(vtv paramvtv) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.R = false;
-    this.a.jdField_o_of_type_Int = 0;
-    this.a.S = false;
-    this.a.ab = false;
-    this.a.aa = false;
-  }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation)
-  {
-    this.a.a(this.a.jdField_o_of_type_AndroidViewView, PublicAccountChatPie.a(this.a));
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.werewolf.GameRoomChatPie", 2, "initPlugin! hasDestory = " + GameRoomChatPie.a(this.a.a));
+    }
+    if ((!GameRoomChatPie.b(this.a.a)) && (this.a.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView != null))
+    {
+      this.a.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.c();
+      GameRoomChatPie.a(this.a.a).removeView(this.a.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView);
+      this.a.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setBackgroundDrawable(null);
+      this.a.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.b.setBackgroundDrawable(null);
+      this.a.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a((ViewGroup)this.a.a.o);
+      this.a.a.d(false, false);
+    }
   }
 }
 

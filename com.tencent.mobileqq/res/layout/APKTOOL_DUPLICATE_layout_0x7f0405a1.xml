@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b30" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center" android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020439" android:layout_width="fill_parent" android:layout_height="60.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:weightSum="1.0">
-        <RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b31" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
-        <TextView android:textSize="@dimen/APKTOOL_DUPLICATE_dimen_0x7f0d0088" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b32" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b02ff" android:drawablePadding="6.0dip" style="@style/APKTOOL_DUPLICATE_style_0x7f0e01de" />
-        <RelativeLayout android:layout_gravity="bottom" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b33" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0202c2" android:layout_width="fill_parent" android:layout_height="50.0dip" />
-    </LinearLayout>
-    <com.tencent.mobileqq.filemanager.widget.SendBottomBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b28" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-    <com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1aee" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-</RelativeLayout>
+    <com.tencent.mobileqq.filemanager.widget.AsyncImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b57" android:layout_width="40.0dip" android:layout_height="40.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" />
+    <TextView android:textSize="15.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0571" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b58" android:duplicateParentState="true" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    <ImageView android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a0f36" android:duplicateParentState="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/common_arrow_right_selector" />
+    <ImageView android:layout_gravity="center_vertical" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1b59" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginRight="10.0dip" android:src="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0204b9" />
+</LinearLayout>

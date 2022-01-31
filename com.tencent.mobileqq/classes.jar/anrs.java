@@ -1,23 +1,47 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnCompletionListener;
-import android.os.Handler;
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView;
-import dov.com.tencent.mobileqq.activity.richmedia.trimvideo.video.widget.FixedSizeVideoView.OnTrimVDPlayCompelteListener;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import dov.com.qq.im.capture.QIMManager;
+import dov.com.qq.im.capture.paster.PasterDataManager;
+import dov.com.tencent.biz.qqstory.takevideo.EditDoodleExport;
+import dov.com.tencent.biz.qqstory.takevideo.EditProviderPart;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager;
 
 public class anrs
-  implements MediaPlayer.OnCompletionListener
+  implements View.OnTouchListener
 {
-  public anrs(FixedSizeVideoView paramFixedSizeVideoView) {}
+  public anrs(EditProviderPart paramEditProviderPart) {}
   
-  public void onCompletion(MediaPlayer paramMediaPlayer)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (this.a.a != null)
-    {
-      if (FixedSizeVideoView.a(this.a) != null) {
-        FixedSizeVideoView.a(this.a).removeMessages(0);
-      }
-      this.a.a.a(paramMediaPlayer);
+    if (EditProviderPart.a(this.a) == null) {
+      EditProviderPart.a(this.a, this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.a());
     }
+    if (EditProviderPart.a(this.a).c()) {
+      switch (paramMotionEvent.getAction() & 0xFF)
+      {
+      }
+    }
+    while (((PasterDataManager)QIMManager.a(4)).a())
+    {
+      return false;
+      this.a.jdField_a_of_type_Float = paramMotionEvent.getX();
+      this.a.b = paramMotionEvent.getY();
+      continue;
+      float f1 = paramMotionEvent.getX();
+      float f2 = paramMotionEvent.getY();
+      if ((Math.abs(f1 - this.a.jdField_a_of_type_Float) < 10.0F) && (Math.abs(f2 - this.a.b) < 10.0F))
+      {
+        paramView = (EditDoodleExport)this.a.a(EditDoodleExport.class);
+        if (paramView != null) {
+          paramView.j_();
+        }
+      }
+    }
+    return EditProviderPart.a(this.a).a(paramMotionEvent);
   }
 }
 

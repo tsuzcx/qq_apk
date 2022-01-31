@@ -1,21 +1,24 @@
-import android.widget.LinearLayout;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.TroopRequestActivity;
-import com.tencent.mobileqq.data.AccountDetail;
-import com.tencent.mobileqq.troop.utils.TroopBindPubAccountProtocol.RequestPublicAccountObserver;
+import com.tencent.mobileqq.activity.TroopMemberListActivity;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
 
 public class uag
-  extends TroopBindPubAccountProtocol.RequestPublicAccountObserver
+  implements View.OnClickListener
 {
-  public uag(TroopRequestActivity paramTroopRequestActivity) {}
+  public uag(TroopMemberListActivity paramTroopMemberListActivity) {}
   
-  protected void a(boolean paramBoolean, long paramLong, AccountDetail paramAccountDetail)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramAccountDetail != null))
-    {
-      this.a.k.setText(paramAccountDetail.name);
-      this.a.b.setVisibility(0);
-      this.a.e();
+    this.a.c = false;
+    this.a.t = "";
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.a.b.setVisibility(0);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
     }
   }
 }

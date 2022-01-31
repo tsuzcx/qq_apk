@@ -4,12 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
 import android.text.TextUtils;
-import pif;
+import pjz;
 
 public class QzoneResumeTransfer$CacheFileAttribute
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new pif();
+  public static final Parcelable.Creator CREATOR = new pjz();
   public String a;
   public String b;
   

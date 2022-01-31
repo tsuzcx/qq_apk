@@ -1,19 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnKeyListener;
-import android.view.KeyEvent;
-import com.tencent.mobileqq.activity.UpgradeActivity;
+import com.tencent.mobileqq.activity.TroopRequestActivity;
+import com.tencent.mobileqq.data.Card;
 
-public class ucr
-  implements DialogInterface.OnKeyListener
+class ucr
+  implements Runnable
 {
-  public ucr(UpgradeActivity paramUpgradeActivity) {}
+  ucr(ucq paramucq, Card paramCard) {}
   
-  public boolean onKey(DialogInterface paramDialogInterface, int paramInt, KeyEvent paramKeyEvent)
+  public void run()
   {
-    if (paramInt == 4) {
-      this.a.a();
+    if (!this.jdField_a_of_type_Ucq.a.a.isFinishing()) {
+      TroopRequestActivity.a(this.jdField_a_of_type_Ucq.a.a, this.jdField_a_of_type_ComTencentMobileqqDataCard);
     }
-    return false;
   }
 }
 

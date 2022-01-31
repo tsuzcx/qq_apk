@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.shortvideo.filter;
 
-import ahnh;
-import ahni;
+import aibj;
+import aibk;
 import android.annotation.TargetApi;
 import android.graphics.SurfaceTexture;
 import android.opengl.GLES20;
@@ -25,7 +25,7 @@ public class QQMovieFilter
   extends QQBaseFilter
 {
   private float jdField_a_of_type_Float = 0.0F;
-  private ahni jdField_a_of_type_Ahni;
+  private aibk jdField_a_of_type_Aibk;
   private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
@@ -144,10 +144,10 @@ public class QQMovieFilter
     {
       this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("movieTouchThread");
       this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_AndroidOsHandler = new ahnh(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
+      this.jdField_a_of_type_AndroidOsHandler = new aibj(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
     }
-    if (this.jdField_a_of_type_Ahni != null) {
-      this.jdField_a_of_type_Ahni.a();
+    if (this.jdField_a_of_type_Aibk != null) {
+      this.jdField_a_of_type_Aibk.a();
     }
     this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = null;
     if (FileUtil.b(paramString1)) {}

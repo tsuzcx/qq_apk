@@ -1,78 +1,31 @@
-import android.content.Intent;
 import android.os.Message;
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.DiscussionInfoCardActivity;
-import com.tencent.mobileqq.troop.widget.FollowImageTextView;
-import com.tencent.mobileqq.widget.MyGridView;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import java.util.ArrayList;
-import mqq.os.MqqHandler;
+import com.tencent.av.gaudio.AVNotifyCenter;
+import com.tencent.mobileqq.activity.Conversation;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class shs
-  extends MqqHandler
+class shs
+  implements Runnable
 {
-  public shs(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
+  shs(shq paramshq, long paramLong) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    if (this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager != null)
     {
-    }
-    label412:
-    do
-    {
-      do
+      this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a();
+      if (this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().b(this.jdField_a_of_type_Long) == 2)
       {
-        do
-        {
-          return;
-          if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing())) {
-            DiscussionInfoCardActivity.a(this.a).dismiss();
-          }
-          paramMessage = new Intent();
-          paramMessage.putExtra("isNeedFinish", true);
-          this.a.setResult(-1, paramMessage);
-          this.a.finish();
-          return;
-        } while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing()));
-        DiscussionInfoCardActivity.a(this.a).dismiss();
-        return;
-        if (DiscussionInfoCardActivity.a(this.a) == 3000)
-        {
-          if (this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null) {
-            DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
-          }
-        }
-        else
-        {
-          paramMessage = (ArrayList)paramMessage.obj;
-          int i = paramMessage.size();
-          DiscussionInfoCardActivity.a(this.a).setText("共" + i + "人");
-          DiscussionInfoCardActivity.a(this.a).setPadding(DiscussionInfoCardActivity.b(this.a), DiscussionInfoCardActivity.c(this.a), DiscussionInfoCardActivity.d(this.a), DiscussionInfoCardActivity.e(this.a));
-          DiscussionInfoCardActivity.a(this.a, paramMessage);
-          if (DiscussionInfoCardActivity.a(this.a) != null) {
-            break label412;
-          }
-          DiscussionInfoCardActivity.a(this.a, new shu(this.a));
-          DiscussionInfoCardActivity.a(this.a).setAdapter(DiscussionInfoCardActivity.a(this.a));
-        }
-        for (;;)
-        {
-          removeMessages(0);
-          return;
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setText(this.a.getString(2131435935));
-          if (!AppSetting.b) {
-            break;
-          }
-          this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetFollowImageTextView.setContentDescription("群聊名称 " + this.a.getString(2131435935) + "， 编辑资料 按钮");
-          break;
-          DiscussionInfoCardActivity.a(this.a).notifyDataSetChanged();
-        }
-      } while (DiscussionInfoCardActivity.a(this.a) != 0);
-      paramMessage = (String)paramMessage.obj;
-    } while ((DiscussionInfoCardActivity.a(this.a) == null) || (paramMessage == null) || (!DiscussionInfoCardActivity.a(this.a).equals(paramMessage)));
-    this.a.finish();
+        Message localMessage = new Message();
+        localMessage.obj = Long.valueOf(this.jdField_a_of_type_Long);
+        this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(32, localMessage);
+      }
+    }
+    else
+    {
+      return;
+    }
+    this.jdField_a_of_type_Shq.a.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager.a(-1, null);
   }
 }
 

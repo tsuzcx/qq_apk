@@ -1,28 +1,16 @@
-import com.tencent.biz.qqstory.newshare.job.UrlDrawableDownloadJob;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.msgTabNode.util.MsgTabStoryUtil;
+import com.tencent.biz.qqstory.playmode.util.MsgTabVideoData;
+import java.util.Comparator;
 
-public class neu
-  implements URLDrawable.URLDrawableListener
+class neu
+  implements Comparator
 {
-  public neu(UrlDrawableDownloadJob paramUrlDrawableDownloadJob) {}
+  neu(net paramnet) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable)
+  public int a(MsgTabVideoData paramMsgTabVideoData1, MsgTabVideoData paramMsgTabVideoData2)
   {
-    UrlDrawableDownloadJob.c(this.a, false);
-  }
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
-  {
-    UrlDrawableDownloadJob.b(this.a, false);
-  }
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
-  {
-    this.a.a("UrlDrawableDownloadJob_dra", paramURLDrawable.getCurrDrawable());
-    UrlDrawableDownloadJob.a(this.a, true);
+    return MsgTabStoryUtil.a(paramMsgTabVideoData1.a.mCreateTime, paramMsgTabVideoData2.a.mCreateTime);
   }
 }
 

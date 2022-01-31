@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.emoticonview;
 
-import abzr;
+import acgt;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.drawable.ColorDrawable;
@@ -47,7 +47,7 @@ public class SmallEmoticonInfo
     {
       paramString = BaseApplication.getContext().getResources();
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130837572);
-      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130841313);
+      this.jdField_b_of_type_AndroidGraphicsDrawableDrawable = paramString.getDrawable(2130841350);
       return;
     }
     catch (Exception paramString)
@@ -105,7 +105,7 @@ public class SmallEmoticonInfo
     {
       int i = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.eId);
       int j = Integer.parseInt(this.jdField_a_of_type_ComTencentMobileqqDataEmoticon.epId);
-      ((EmoticonManager)paramQQAppInterface.getManager(13)).a(String.valueOf(j), new abzr(this, j, i, paramEditText, paramQQAppInterface));
+      ((EmoticonManager)paramQQAppInterface.getManager(13)).a(String.valueOf(j), new acgt(this, j, i, paramEditText, paramQQAppInterface));
       return;
     }
     catch (NumberFormatException paramQQAppInterface)

@@ -1,22 +1,20 @@
-import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
-import dov.com.qq.im.capture.QIMCaptureController;
-import dov.com.qq.im.capture.view.ProviderViewEditContainer;
+import cooperation.qzone.font.FontManager;
+import java.io.File;
+import java.io.FileFilter;
 
 public class amug
-  implements View.OnTouchListener
+  implements FileFilter
 {
-  public amug(QIMCaptureController paramQIMCaptureController) {}
+  public amug(FontManager paramFontManager) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean accept(File paramFile)
   {
-    return QIMCaptureController.a(this.a).a(paramMotionEvent);
+    return paramFile.getName().endsWith(".ftf");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amug
  * JD-Core Version:    0.7.0.1
  */

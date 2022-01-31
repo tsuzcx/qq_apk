@@ -50,6 +50,7 @@ public class StoryVideoEntry
   public String md5;
   public String ownerName;
   public String ownerUnionId;
+  public int playerScaleType = -1;
   public String pollJsonData;
   public String pollNumbers;
   public int pollResult;
@@ -59,6 +60,7 @@ public class StoryVideoEntry
   public String pollUserUrls;
   public int rateResult = -1;
   public byte[] rateUsersBytes;
+  public String recommendWording;
   public int retryUploadTimes;
   public String shareGroupId;
   public String sourceVid;
@@ -83,6 +85,7 @@ public class StoryVideoEntry
   public int videoWidth;
   public int viewCount;
   public long viewTotalTime;
+  public String wsSchema;
   
   public static String getLocalVideo()
   {

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ahkc;
-import ahkd;
-import ahke;
-import ahkf;
-import ahkh;
-import ahld;
+import ahye;
+import ahyf;
+import ahyg;
+import ahyh;
+import ahyj;
+import ahzf;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -29,7 +29,7 @@ import mqq.os.MqqHandler;
 import tencent.im.msg.im_msg_body.RichText;
 
 public abstract class BaseShortVideoOprerator
-  implements ahld, DownCallBack, UpCallBack, InfoBuilder
+  implements ahzf, DownCallBack, UpCallBack, InfoBuilder
 {
   public static int d = 3;
   protected Handler a;
@@ -46,13 +46,13 @@ public abstract class BaseShortVideoOprerator
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     if (this.jdField_a_of_type_AndroidOsHandler == null) {
-      this.jdField_a_of_type_AndroidOsHandler = new ahkc(this, Looper.getMainLooper());
+      this.jdField_a_of_type_AndroidOsHandler = new ahye(this, Looper.getMainLooper());
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, ShortVideoReq paramShortVideoReq)
   {
-    ThreadManager.post(new ahkd(paramQQAppInterface, paramShortVideoReq), 8, null, false);
+    ThreadManager.post(new ahyf(paramQQAppInterface, paramShortVideoReq), 8, null, false);
   }
   
   public MessageRecord a(im_msg_body.RichText paramRichText)
@@ -211,7 +211,7 @@ public abstract class BaseShortVideoOprerator
   {
     Logger.a(this.g, this.f, "forwardShortVideo", "start " + Thread.currentThread().getId());
     if (a(paramShortVideoForwardInfo)) {
-      ThreadManager.getSubThreadHandler().post(new ahke(this, paramShortVideoForwardInfo));
+      ThreadManager.getSubThreadHandler().post(new ahyg(this, paramShortVideoForwardInfo));
     }
     while (paramShortVideoForwardInfo == null) {
       return;
@@ -223,7 +223,7 @@ public abstract class BaseShortVideoOprerator
   {
     Logger.a(this.g, this.f, "sendShortVideo", "start " + Thread.currentThread().getId());
     if (a(paramShortVideoUploadInfo)) {
-      ThreadManager.getSubThreadHandler().post(new ahkh(this, paramShortVideoUploadInfo));
+      ThreadManager.getSubThreadHandler().post(new ahyj(this, paramShortVideoUploadInfo));
     }
     while (paramShortVideoUploadInfo == null) {
       return;
@@ -249,7 +249,7 @@ public abstract class BaseShortVideoOprerator
       a(3, -1, null);
       return;
     }
-    ThreadManager.getSubThreadHandler().post(new ahkf(this, paramArrayList));
+    ThreadManager.getSubThreadHandler().post(new ahyh(this, paramArrayList));
   }
   
   boolean a(ShortVideoDownloadInfo paramShortVideoDownloadInfo)

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.nearby.now.send.uploader;
 
-import aeiq;
-import aeit;
-import aeiu;
-import aeiv;
-import aeix;
+import aevw;
+import aevz;
+import aewa;
+import aewb;
+import aewd;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.soso.SosoInterface;
@@ -22,7 +22,7 @@ public class VideoFeedsManager
   public QQAppInterface a;
   public EditVideoUi a;
   private PublishManager jdField_a_of_type_ComTencentMobileqqNearbyNowSendPublishManager;
-  private VideoFeedsUploader.UploadListener jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadListener = new aeiq(this);
+  private VideoFeedsUploader.UploadListener jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadListener = new aevw(this);
   private VideoFeedsUploader jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader;
   public boolean a;
   
@@ -69,7 +69,7 @@ public class VideoFeedsManager
   
   private void a(VideoFeedsUploader.UploadInfo paramUploadInfo)
   {
-    SosoInterface.a(new aeiu(this, 3, true, true, 600000L, false, false, "NearbyNowliveTab", paramUploadInfo));
+    SosoInterface.a(new aewa(this, 3, true, true, 600000L, false, false, "NearbyNowliveTab", paramUploadInfo));
   }
   
   private void a(VideoFeedsUploader.UploadInfo paramUploadInfo, LocationInfo paramLocationInfo)
@@ -82,7 +82,7 @@ public class VideoFeedsManager
       if (QLog.isColorLevel()) {
         QLog.i("LocationInfo", 2, "startUploadStoryVideo --- city: " + paramUploadInfo.j + ", lat: " + paramUploadInfo.i + ", lnt: " + paramUploadInfo.jdField_h_of_type_JavaLangString);
       }
-      ThreadManager.post(new aeiv(this, paramUploadInfo), 5, null, false);
+      ThreadManager.post(new aewb(this, paramUploadInfo), 5, null, false);
       return;
     }
     QLog.w("VideoFeedsManager", 1, "tmpInfo == null, upload fail!");
@@ -99,7 +99,7 @@ public class VideoFeedsManager
   
   public void a(NowPublishParam paramNowPublishParam)
   {
-    ThreadManager.post(new aeit(this, paramNowPublishParam), 5, null, false);
+    ThreadManager.post(new aevz(this, paramNowPublishParam), 5, null, false);
   }
   
   public void a(NowPublishParam paramNowPublishParam, QQAppInterface paramQQAppInterface, String paramString)
@@ -113,7 +113,7 @@ public class VideoFeedsManager
     }
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderVideoFeedsUploader$UploadListener.a(new VideoFeedsUploader.UploadInfo());
-    WordsCheck.a(paramQQAppInterface, paramString, new aeix(this, paramNowPublishParam));
+    WordsCheck.a(paramQQAppInterface, paramString, new aewd(this, paramNowPublishParam));
   }
 }
 

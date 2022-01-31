@@ -1,18 +1,18 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.aio.rebuild.DeviceMsgChatPie;
-import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
+import com.tencent.qphone.base.util.QLog;
 
 public class voy
   implements DialogInterface.OnClickListener
 {
-  public voy(DeviceMsgChatPie paramDeviceMsgChatPie) {}
+  public voy(PhotoListPanel paramPhotoListPanel) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface.dismiss();
-    FileUtils.d(this.a.f);
-    this.a.f = "";
+    if (QLog.isColorLevel()) {
+      QLog.i("PhotoListPanel", 2, "cancel shortvideo_mobile_send_confirm dialog");
+    }
   }
 }
 

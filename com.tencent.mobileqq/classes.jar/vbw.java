@@ -1,24 +1,15 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.activity.aio.item.RichStatItemBuilder;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
+import com.tencent.mobileqq.activity.aio.item.MedalNewsItemBuilder;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.medalwall.MedalWallMng;
 
-class vbw
+public class vbw
   implements Runnable
 {
-  vbw(vbv paramvbv, int paramInt) {}
+  public vbw(MedalNewsItemBuilder paramMedalNewsItemBuilder) {}
   
   public void run()
   {
-    Object localObject = (ArrayList)this.jdField_a_of_type_Vbv.a.a.get(Integer.valueOf(this.jdField_a_of_type_Int));
-    if (localObject != null)
-    {
-      localObject = ((ArrayList)localObject).iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((URLDrawable)((Iterator)localObject).next()).restartDownload();
-      }
-    }
+    ((MedalWallMng)this.a.a.getManager(249)).a(2, null);
   }
 }
 

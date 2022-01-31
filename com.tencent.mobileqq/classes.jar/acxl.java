@@ -1,139 +1,30 @@
-import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.media.MediaMetadataRetriever;
-import android.os.Build.VERSION;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil.IGetVideoCallback;
+import com.tencent.mobileqq.filemanager.core.OnlineFileSessionWorker;
 import com.tencent.qphone.base.util.QLog;
 
-public final class acxl
-  implements Runnable
+public class acxl
+  extends acxm
 {
-  public acxl(String paramString, int paramInt1, boolean paramBoolean, FileManagerUtil.IGetVideoCallback paramIGetVideoCallback, int paramInt2, int paramInt3) {}
-  
-  public void run()
+  public acxl(OnlineFileSessionWorker paramOnlineFileSessionWorker)
   {
-    MediaMetadataRetriever localMediaMetadataRetriever;
-    if (Build.VERSION.SDK_INT >= 10) {
-      localMediaMetadataRetriever = new MediaMetadataRetriever();
-    }
-    for (;;)
+    super(paramOnlineFileSessionWorker);
+  }
+  
+  protected String a()
+  {
+    return "StateAcceptByPCWhenToOffFailed";
+  }
+  
+  protected void a()
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity == null)
     {
-      try
-      {
-        localMediaMetadataRetriever.setDataSource(this.jdField_a_of_type_JavaLangString);
-        long l = this.jdField_a_of_type_Int;
-        if (this.jdField_a_of_type_Int <= 0) {
-          l = 5000000L;
-        }
-        localBitmap1 = localMediaMetadataRetriever.getFrameAtTime(l, 2);
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        Bitmap localBitmap1;
-        localIllegalArgumentException = localIllegalArgumentException;
-        try
-        {
-          localException5.release();
-          localObject1 = null;
-        }
-        catch (Exception localException1)
-        {
-          localObject2 = null;
-        }
-        continue;
-      }
-      catch (RuntimeException localRuntimeException)
-      {
-        localRuntimeException = localRuntimeException;
-        try
-        {
-          localException5.release();
-          localObject3 = null;
-        }
-        catch (Exception localException2)
-        {
-          localObject4 = null;
-        }
-        continue;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        localOutOfMemoryError = localOutOfMemoryError;
-        try
-        {
-          localException5.release();
-          localObject5 = null;
-        }
-        catch (Exception localException3)
-        {
-          localObject6 = null;
-        }
-        continue;
-      }
-      finally {}
-      try
-      {
-        localMediaMetadataRetriever.release();
-        if (localBitmap1 == null) {
-          return;
-        }
-      }
-      catch (Exception localException5)
-      {
-        continue;
-      }
-      try
-      {
-        Object localObject1;
-        Object localObject2;
-        Object localObject3;
-        Object localObject4;
-        Object localObject5;
-        Object localObject6;
-        localException5.release();
-        label138:
-        throw localBitmap2;
-        if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$IGetVideoCallback != null))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$IGetVideoCallback.a(localBitmap2);
-          return;
-        }
-        float f;
-        label193:
-        Matrix localMatrix;
-        if (localBitmap2.getWidth() < localBitmap2.getHeight())
-        {
-          f = this.b / localBitmap2.getWidth();
-          localMatrix = new Matrix();
-          localMatrix.setScale(f, f);
-        }
-        for (;;)
-        {
-          try
-          {
-            localBitmap3 = FileManagerUtil.a(localMatrix, localBitmap2, this.b, this.c);
-            if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$IGetVideoCallback == null) {
-              break;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqFilemanagerUtilFileManagerUtil$IGetVideoCallback.a(localBitmap3);
-            return;
-          }
-          catch (Exception localException4)
-          {
-            Bitmap localBitmap3;
-            QLog.e("FileManagerUtil<FileAssistant>", 1, "transfrom bitmap fail, Exception:" + localException4.toString());
-          }
-          f = this.c / localBitmap3.getHeight();
-          break label193;
-          Object localObject7 = null;
-        }
-      }
-      catch (Exception localException6)
-      {
-        break label138;
-      }
+      QLog.e("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long + "]. recvOnLineFile entity is null");
+      return;
     }
+    OnlineFileSessionWorker.b(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 5);
+    OnlineFileSessionWorker.c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker, 11, 5);
+    QLog.i("OnlineFileSessionWorker<FileAssistant>", 1, "OLfilesession[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker.jdField_a_of_type_Long + "] state change :(" + this.jdField_a_of_type_Acxm.a() + "->StateAcceptByPC)");
+    this.jdField_a_of_type_Acxm = new acxj(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreOnlineFileSessionWorker);
   }
 }
 

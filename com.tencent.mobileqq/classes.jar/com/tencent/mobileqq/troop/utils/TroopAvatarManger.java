@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.utils;
 
-import ajac;
+import ajog;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.TroopHandler;
@@ -100,7 +100,7 @@ public class TroopAvatarManger
   
   public void a(Class paramClass, AppInterface paramAppInterface, ArrayList paramArrayList, String paramString1, String paramString2, String paramString3, HashMap paramHashMap)
   {
-    ThreadManager.executeOnNetWorkThread(new ajac(this, paramAppInterface, paramString1, paramString3, paramString2, (UploadingTask)jdField_a_of_type_JavaUtilMap.get(this.f), paramClass, paramArrayList, paramHashMap));
+    ThreadManager.executeOnNetWorkThread(new ajog(this, paramAppInterface, paramString1, paramString3, paramString2, (UploadingTask)jdField_a_of_type_JavaUtilMap.get(this.f), paramClass, paramArrayList, paramHashMap));
   }
   
   public void a(String paramString)
@@ -129,7 +129,7 @@ public class TroopAvatarManger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopAvatarManger
  * JD-Core Version:    0.7.0.1
  */

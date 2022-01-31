@@ -1,24 +1,37 @@
-import com.tencent.component.media.gif.AnimationListener;
-import com.tencent.component.media.gif.NewGifDrawable;
-import java.util.Iterator;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import android.hardware.Sensor;
+import android.hardware.SensorEvent;
+import android.hardware.SensorEventListener;
+import com.tencent.biz.widgets.ScannerView;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
-class pei
-  implements Runnable
+public class pei
+  implements SensorEventListener
 {
-  pei(peh parampeh) {}
+  private WeakReference a;
   
-  public void run()
+  public pei(ScannerView paramScannerView)
   {
-    Iterator localIterator = this.a.b.a.iterator();
-    while (localIterator.hasNext()) {
-      ((AnimationListener)localIterator.next()).onAnimationCompleted();
+    this.a = new WeakReference(paramScannerView);
+  }
+  
+  public void onAccuracyChanged(Sensor paramSensor, int paramInt) {}
+  
+  public void onSensorChanged(SensorEvent paramSensorEvent)
+  {
+    ScannerView localScannerView = (ScannerView)this.a.get();
+    if (localScannerView != null) {
+      localScannerView.a(paramSensorEvent);
     }
+    while (!QLog.isColorLevel()) {
+      return;
+    }
+    QLog.d("ScannerView", 2, "onSensorChanged but mRef got null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     pei
  * JD-Core Version:    0.7.0.1
  */

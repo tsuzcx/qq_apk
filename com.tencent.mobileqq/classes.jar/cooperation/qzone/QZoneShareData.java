@@ -1,6 +1,6 @@
 package cooperation.qzone;
 
-import amby;
+import amsc;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class QZoneShareData
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new amby();
+  public static final Parcelable.Creator CREATOR = new amsc();
   public int a;
   public long a;
   public String a;

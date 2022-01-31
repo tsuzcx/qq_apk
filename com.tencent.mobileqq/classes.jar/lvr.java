@@ -1,17 +1,14 @@
-import com.tencent.biz.pubaccount.readinjoy.model.UserOperationModule.Ox978RespCallBack;
-import com.tencent.biz.pubaccount.readinjoy.rebuild.cmp.ComponentHeaderTopicRecommend;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
+import com.tencent.biz.pubaccount.readinjoy.struct.TopicRecommendFeedsInfo.TopicRecommendInfo;
 
-public class lvr
-  implements UserOperationModule.Ox978RespCallBack
+class lvr
+  implements Runnable
 {
-  public lvr(ComponentHeaderTopicRecommend paramComponentHeaderTopicRecommend) {}
+  lvr(lvq paramlvq) {}
   
-  public void a(boolean paramBoolean, String paramString, int paramInt)
+  public void run()
   {
-    if ((paramBoolean) && (paramInt == 2)) {
-      ThreadManager.post(new lvs(this), 5, null, true);
-    }
+    ReadInJoyLogicEngine.a().b(this.a.a.a, 1);
   }
 }
 

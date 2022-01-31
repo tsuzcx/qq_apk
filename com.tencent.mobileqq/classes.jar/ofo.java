@@ -1,14 +1,19 @@
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.biz.qqstory.takevideo.HWEditLocalVideoPlayer;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import com.tribe.async.async.JobContext;
+import com.tribe.async.async.SimpleJob;
 
 public class ofo
-  implements Runnable
+  extends SimpleJob
 {
-  public ofo(HWEditLocalVideoPlayer paramHWEditLocalVideoPlayer) {}
+  public ofo(EditVideoPartManager paramEditVideoPartManager, String paramString, int paramInt1, int paramInt2, String[] paramArrayOfString) {}
   
-  public void run()
+  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
-    HWEditLocalVideoPlayer.a(this.a, this.a.a.getActivity(), "正在加载");
+    StoryReportor.a("video_edit", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_ArrayOfJavaLangString);
+    return null;
   }
 }
 

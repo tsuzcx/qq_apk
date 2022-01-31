@@ -1,22 +1,25 @@
-import com.tencent.av.switchface.SwitchFaceView;
-import com.tencent.av.ui.GLVideoView;
-import java.util.ArrayList;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.DoubleVideoCtrlUI;
 
-public class jpt
+class jpt
+  implements Runnable
 {
-  public int a;
-  public GLVideoView a;
-  public ArrayList a;
-  public byte[] a;
-  public int b;
-  public int c;
-  public int d;
-  public int e;
-  public int f;
+  jpt(jps paramjps) {}
   
-  jpt(SwitchFaceView paramSwitchFaceView)
+  public void run()
   {
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    if ((this.a.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.a.jdField_a_of_type_ComTencentAvVideoController.a().g != 4) && (this.a.a.b == 1) && (!this.a.a.jdField_a_of_type_Boolean))
+    {
+      this.a.a.b(false);
+      this.a.a.d(false);
+      if ((this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI != null) && ((this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI instanceof DoubleVideoCtrlUI)))
+      {
+        ((DoubleVideoCtrlUI)this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI).a();
+        ((DoubleVideoCtrlUI)this.a.a.jdField_a_of_type_ComTencentAvUiVideoControlUI).b(true);
+      }
+    }
   }
 }
 

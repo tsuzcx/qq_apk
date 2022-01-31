@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import aom;
+import ans;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.XBaseAdapter;
 import java.util.ArrayList;
@@ -101,12 +101,12 @@ public class LbsPackPoiListAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969046, null);
+      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969045, null);
       paramViewGroup = new LbsPackPoiListAdapter.ViewHolder();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131364300));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364827));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131364828));
-      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364337));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131364324));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364849));
+      paramViewGroup.b = ((TextView)paramView.findViewById(2131364850));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131364361));
       paramView.setTag(paramViewGroup);
     }
     for (;;)
@@ -121,7 +121,7 @@ public class LbsPackPoiListAdapter
         }
         paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localPoiInfo.jdField_a_of_type_JavaLangString);
         paramViewGroup.b.setText(localPoiInfo.b);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new aom(this, localPoiInfo));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(new ans(this, localPoiInfo));
       }
       return paramView;
       paramViewGroup = (LbsPackPoiListAdapter.ViewHolder)paramView.getTag();

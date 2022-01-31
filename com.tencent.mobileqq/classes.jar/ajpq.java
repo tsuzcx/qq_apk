@@ -1,34 +1,25 @@
-import android.text.Layout;
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.content.Context;
+import com.tencent.mobileqq.troop.utils.TroopGagMgr;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class ajpq
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements Runnable
 {
-  public ajpq(QQCustomDialog paramQQCustomDialog, int paramInt, String paramString) {}
+  public ajpq(TroopGagMgr paramTroopGagMgr, boolean paramBoolean, Context paramContext, String paramString, int paramInt) {}
   
-  public void onGlobalLayout()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.getViewTreeObserver().removeGlobalOnLayoutListener(this);
-    if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.getLineCount() > this.jdField_a_of_type_Int)
+    if (this.jdField_a_of_type_Boolean)
     {
-      int i = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.getLayout().getLineEnd(this.jdField_a_of_type_Int - 1);
-      boolean bool1 = QQText.a(this.jdField_a_of_type_JavaLangString);
-      boolean bool2 = QQText.b(this.jdField_a_of_type_JavaLangString);
-      if ((!bool1) && (!bool2))
-      {
-        String str = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.getText().subSequence(0, i - 3) + "...";
-        this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.text.setText(str);
-      }
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
+      return;
     }
+    QQToast.a(this.jdField_a_of_type_AndroidContentContext, 2130838752, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajpq
  * JD-Core Version:    0.7.0.1
  */

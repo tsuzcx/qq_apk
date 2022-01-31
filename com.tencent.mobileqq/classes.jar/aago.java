@@ -1,21 +1,18 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.arcard.ArCardSelectMemberActivity;
+import com.tencent.mobileqq.ar.arengine.AREngine;
 
 public class aago
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public aago(ArCardSelectMemberActivity paramArCardSelectMemberActivity) {}
+  public aago(AREngine paramAREngine) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    paramDialogInterface.dismiss();
-    ArCardSelectMemberActivity.a(this.a, null);
+    AREngine.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     aago
  * JD-Core Version:    0.7.0.1
  */

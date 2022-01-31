@@ -17,8 +17,8 @@ import com.tribe.async.dispatch.Dispatchers;
 import java.util.ArrayList;
 import java.util.List;
 import mqq.os.MqqHandler;
-import nvv;
-import nvw;
+import nxi;
+import nxj;
 
 public class ProfileFeedPresenter
   extends HomeFeedPresenter
@@ -55,10 +55,10 @@ public class ProfileFeedPresenter
     SLog.a("Q.qqstory.memories.ProfileFeedPresenter", "request year node list. single refresh : %s.", Boolean.valueOf(paramBoolean));
     GetProfileYearNodeListRequest localGetProfileYearNodeListRequest = new GetProfileYearNodeListRequest();
     localGetProfileYearNodeListRequest.jdField_a_of_type_JavaLangString = QQStoryContext.a().b();
-    CmdTaskManger.a().a(localGetProfileYearNodeListRequest, new nvv(this, paramBoolean));
+    CmdTaskManger.a().a(localGetProfileYearNodeListRequest, new nxi(this, paramBoolean));
   }
   
-  private void d()
+  private void e()
   {
     SLog.b("Q.qqstory.memories.ProfileFeedPresenter", "check result. remain requests's size is %d.", Integer.valueOf(this.jdField_b_of_type_JavaUtilList.size()));
     if (!this.jdField_b_of_type_JavaUtilList.isEmpty()) {
@@ -93,7 +93,7 @@ public class ProfileFeedPresenter
     for (boolean bool = true;; bool = false)
     {
       SLog.b("Q.qqstory.memories.ProfileFeedPresenter", "on feed item back. need check result %s.", Boolean.valueOf(bool));
-      ThreadManager.getUIHandler().post(new nvw(this, paramHomeFeedData));
+      ThreadManager.getUIHandler().post(new nxj(this, paramHomeFeedData));
       return;
     }
   }

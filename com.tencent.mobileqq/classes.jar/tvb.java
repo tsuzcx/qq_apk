@@ -1,69 +1,63 @@
-import com.tencent.mobileqq.activity.TroopInfoActivity;
-import com.tencent.mobileqq.app.BizTroopObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.TroopInfo;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troopinfo.TroopInfoData;
-import java.util.Iterator;
-import java.util.List;
+import android.os.Bundle;
+import android.text.TextUtils;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment;
+import com.tencent.mobileqq.emosm.Client.onRemoteRespObserver;
+import com.tencent.mobileqq.teamwork.TeamWorkFileImportCover;
+import com.tencent.qphone.base.util.QLog;
 
 public class tvb
-  extends BizTroopObserver
+  extends Client.onRemoteRespObserver
 {
-  public tvb(TroopInfoActivity paramTroopInfoActivity) {}
+  public tvb(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  protected void a(long paramLong1, long paramLong2, long paramLong3, String paramString)
+  public void onBindedToClient()
   {
-    if (paramLong1 != 0L) {}
-    this.a.jdField_a_of_type_Long = paramLong2;
-    this.a.jdField_b_of_type_Long = paramLong3;
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "-->onBindedToClient");
+    }
+    TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a);
   }
   
-  protected void a(boolean paramBoolean, long paramLong, String paramString)
+  public void onDisconnectWithService()
   {
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo != null) && (paramBoolean))
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "-->onDisconnectWithService");
+    }
+  }
+  
+  public void onPushMsg(Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "-->onPushMsg");
+    }
+  }
+  
+  public void onResponse(Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_WebViewFragment", 2, "-->onResponse");
+    }
+    if (paramBundle == null) {}
+    String str;
+    do
     {
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt == 2) {}
-      TroopManager localTroopManager;
-      TroopInfo localTroopInfo;
-      StringBuffer localStringBuffer;
-      for (this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopTypeExt = 3;; this.a.jdField_a_of_type_ComTencentMobileqqDataTroopInfo.troopTypeExt = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTypeExt)
+      do
       {
-        localTroopManager = (TroopManager)this.a.app.getManager(51);
-        localTroopInfo = localTroopManager.b(this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin);
-        if (localTroopInfo == null) {
-          break label359;
-        }
-        localTroopInfo.troopname = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopName;
-        localTroopInfo.dwGroupClassExt = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt;
-        localTroopInfo.mGroupClassExtText = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mTroopClassExtText;
-        localTroopInfo.mRichFingerMemo = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.mRichFingerMemo;
-        localTroopInfo.hasSetNewTroopName = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.hasSetNewTroopName;
-        localTroopInfo.strLocation = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopLocation;
-        localTroopInfo.troopLat = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopLat;
-        localTroopInfo.troopLon = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopLon;
-        if ((this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTags == null) || (this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTags.size() <= 0)) {
-          break label352;
-        }
-        localStringBuffer = new StringBuffer();
-        Iterator localIterator = this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopTags.iterator();
-        while (localIterator.hasNext())
-        {
-          String str = (String)localIterator.next();
-          localStringBuffer.append(str + "\n");
-        }
-      }
-      localStringBuffer.deleteCharAt(localStringBuffer.length() - 1);
-      localTroopInfo.mTags = localStringBuffer.toString();
-      label352:
-      localTroopManager.b(localTroopInfo);
+        return;
+      } while (paramBundle.getInt("respkey", 0) != TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).key);
+      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a, false);
+      str = paramBundle.getString("cmd");
+      paramBundle.getString("callbackid");
+      paramBundle = paramBundle.getBundle("response");
+    } while ((!"ipc_cmd_get_team_work_url".equals(str)) || (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a) == null));
+    paramBundle = paramBundle.getString("url");
+    if ((!TextUtils.isEmpty(paramBundle)) && (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a) != null) && (TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).a()))
+    {
+      this.a.a.loadUrl(paramBundle);
+      return;
     }
-    label359:
-    if ((this.a.jdField_a_of_type_Int == 0) || (1 == this.a.jdField_a_of_type_Int)) {
-      ReportController.b(this.a.app, "P_CliOper", "Grp_create", "", "edit_data", "ordinary_suc", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.troopUin, this.a.jdField_b_of_type_JavaLangString, "", "");
-    }
-    TroopInfoActivity.a(this.a, paramBoolean, paramLong, paramString, 0L, this.a.jdField_a_of_type_ComTencentMobileqqTroopinfoTroopInfoData.dwGroupClassExt);
+    TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.a(this.a).b();
   }
 }
 

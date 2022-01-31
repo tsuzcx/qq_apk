@@ -1,18 +1,14 @@
-import com.tencent.mobileqq.app.message.BaseMessageManagerForTroopAndDisc;
-import com.tencent.mobileqq.app.message.MsgProxyUtils;
-import com.tencent.mobileqq.app.message.QQMessageFacade;
-import java.util.Map;
+import com.tencent.mobileqq.app.TroopQZoneUploadAlbumHandler;
 
-class zpf
-  implements Runnable
+public class zpf
 {
-  zpf(zpe paramzpe) {}
+  public long a;
+  public String a;
   
-  public void run()
+  public zpf(TroopQZoneUploadAlbumHandler paramTroopQZoneUploadAlbumHandler, String paramString, long paramLong)
   {
-    if (this.a.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.b.containsKey(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int))) {
-      this.a.jdField_a_of_type_ComTencentMobileqqAppMessageBaseMessageManagerForTroopAndDisc.a.b.remove(MsgProxyUtils.a(this.a.jdField_a_of_type_JavaLangString, this.a.jdField_a_of_type_Int));
-    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

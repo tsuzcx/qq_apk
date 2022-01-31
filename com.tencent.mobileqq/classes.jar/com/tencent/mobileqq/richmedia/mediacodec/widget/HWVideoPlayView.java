@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.richmedia.mediacodec.widget;
 
-import ahau;
-import ahav;
+import ahow;
+import ahox;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.SurfaceTexture;
@@ -37,7 +37,7 @@ public class HWVideoPlayView
   protected int a;
   public long a;
   protected SurfaceTexture a;
-  private GLSurfaceView.EGLContextFactory jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory = new ahau(this);
+  private GLSurfaceView.EGLContextFactory jdField_a_of_type_AndroidOpenglGLSurfaceView$EGLContextFactory = new ahow(this);
   public final AudioDecoder.AudioDecodeConfig a;
   public AudioDecoder a;
   public final DecodeConfig a;
@@ -180,7 +180,7 @@ public class HWVideoPlayView
   
   public void j()
   {
-    queueEvent(new ahav(this));
+    queueEvent(new ahox(this));
   }
   
   public void k()

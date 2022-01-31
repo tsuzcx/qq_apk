@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troopgift;
 
-import ajgm;
-import ajgp;
-import ajgr;
+import ajuq;
+import ajut;
+import ajuv;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.AnimationDrawable;
@@ -24,7 +24,7 @@ import org.json.JSONObject;
 public class TroopGiftActionButton
   extends RelativeLayout
 {
-  private ajgr jdField_a_of_type_Ajgr;
+  private ajuv jdField_a_of_type_Ajuv;
   public AnimationDrawable a;
   public Handler a;
   public View.OnClickListener a;
@@ -42,12 +42,12 @@ public class TroopGiftActionButton
   
   protected void a()
   {
-    this.jdField_a_of_type_Ajgr = new ajgr(this, getContext());
+    this.jdField_a_of_type_Ajuv = new ajuv(this, getContext());
     Object localObject1 = new RelativeLayout.LayoutParams(DisplayUtil.a(getContext(), 68.0F), DisplayUtil.a(getContext(), 68.0F));
     ((RelativeLayout.LayoutParams)localObject1).addRule(10);
     ((RelativeLayout.LayoutParams)localObject1).addRule(14);
     ((RelativeLayout.LayoutParams)localObject1).topMargin = DisplayUtil.a(getContext(), 53.5F);
-    addView(this.jdField_a_of_type_Ajgr, (ViewGroup.LayoutParams)localObject1);
+    addView(this.jdField_a_of_type_Ajuv, (ViewGroup.LayoutParams)localObject1);
     Object localObject2 = new GradientDrawable();
     ((GradientDrawable)localObject2).setShape(1);
     ((GradientDrawable)localObject2).setCornerRadius(DisplayUtil.a(getContext(), 56.0F));
@@ -64,22 +64,22 @@ public class TroopGiftActionButton
     addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
     this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-    ((TextView)localObject1).setOnTouchListener(new ajgm(this, (TextView)localObject1));
+    ((TextView)localObject1).setOnTouchListener(new ajuq(this, (TextView)localObject1));
   }
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new ajgp(this, paramString));
+    this.jdField_a_of_type_AndroidOsHandler.post(new ajut(this, paramString));
   }
   
   public void setProgress(int paramInt)
   {
-    this.jdField_a_of_type_Ajgr.a(paramInt);
+    this.jdField_a_of_type_Ajuv.a(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troopgift.TroopGiftActionButton
  * JD-Core Version:    0.7.0.1
  */

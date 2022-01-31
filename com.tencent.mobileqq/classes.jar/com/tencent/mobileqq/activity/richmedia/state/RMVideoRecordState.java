@@ -13,9 +13,9 @@ import com.tencent.mobileqq.shortvideo.util.AudioDataCache;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
-import xrx;
-import xry;
-import xrz;
+import xvd;
+import xve;
+import xvf;
 
 public class RMVideoRecordState
   extends RMVideoState
@@ -75,14 +75,14 @@ public class RMVideoRecordState
       {
         this.jdField_a_of_type_Boolean = paramBoolean;
         if ((paramTCTimerCallback.h()) && (!paramTCTimerCallback.jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceAudioCapture.e) && (!paramTCTimerCallback.h)) {
-          paramTCTimerCallback.jdField_a_of_type_AndroidOsHandler.post(new xry(this));
+          paramTCTimerCallback.jdField_a_of_type_AndroidOsHandler.post(new xve(this));
         }
         if (QLog.isColorLevel()) {
           QLog.d("RMRecordState", 2, "[@] timeExpire: mIsRecordOver=" + this.jdField_a_of_type_Boolean + " mStateMgr.mTotalTime=" + paramTCTimerCallback.jdField_a_of_type_Double);
         }
         paramTCTimerCallback.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMViewSTInterface.a((int)(paramTCTimerCallback.jdField_a_of_type_Double + RecordManager.a().a().a()), this.jdField_a_of_type_Boolean);
         if (this.jdField_a_of_type_Boolean) {
-          paramTCTimerCallback.jdField_a_of_type_AndroidOsHandler.post(new xrz(this));
+          paramTCTimerCallback.jdField_a_of_type_AndroidOsHandler.post(new xvf(this));
         }
       }
       return;
@@ -129,7 +129,7 @@ public class RMVideoRecordState
         }
         localRMVideoStateMgr.g();
       }
-      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new xrx(this, localRMVideoStateMgr));
+      QzoneHandlerThreadFactory.getHandlerThread("Normal_HandlerThread", false).post(new xvd(this, localRMVideoStateMgr));
       AVCodec.get().stopCapture();
       long l2 = localRMVideoStateMgr.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMViewSTInterface.d();
       if (QLog.isColorLevel()) {

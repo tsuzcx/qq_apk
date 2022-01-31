@@ -1,27 +1,25 @@
-import com.tencent.biz.pubaccount.PublicAccountReportUtils;
-import com.tencent.biz.pubaccount.VideoReporter;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyListViewGroup;
-import cooperation.readinjoy.ReadInJoyHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoUIManager;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyBaseAdapter;
 
-public class mhm
+class mhm
   implements Runnable
 {
-  public mhm(ReadInJoyListViewGroup paramReadInJoyListViewGroup) {}
+  mhm(mhf parammhf) {}
   
   public void run()
   {
-    if (this.a.a == 40677) {
-      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X8009295", "0X8009295", 0, 0, ReadInJoyHelper.a(), "", "", ReadInJoyUtils.a(this.a.a), false);
-    }
-    for (;;)
+    this.a.a.notifyDataSetChanged();
+    if (this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a())
     {
-      if (this.a.a == 56) {
-        PublicAccountReportUtils.a(null, "", "0X8007413", "0X8007413", 0, 0, "", "0", "", VideoReporter.a(this.a.a, null), false);
-      }
-      return;
-      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80066F9", "0X80066F9", 0, 0, ReadInJoyHelper.a(), "", "", ReadInJoyUtils.a(this.a.a), false);
+      this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.e(true);
+      this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a().g();
     }
+    while ((this.a.a.jdField_a_of_type_Boolean) || (!this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.c())) {
+      return;
+    }
+    this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.d(true);
+    this.a.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoPlayManager.a().g();
   }
 }
 

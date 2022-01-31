@@ -1,14 +1,49 @@
-import com.tencent.mobileqq.app.ConfigObserver;
-import com.tencent.mobileqq.app.automator.step.CheckAuthCode;
+import com.tencent.mobileqq.addon.DiyPendantEntity;
+import com.tencent.mobileqq.addon.DiyPendantFetcher;
+import com.tencent.mobileqq.addon.DiyPendantSticker;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.concurrent.CopyOnWriteArraySet;
 
-public class zmt
-  extends ConfigObserver
+class zmt
+  implements BusinessObserver
 {
-  private zmt(CheckAuthCode paramCheckAuthCode) {}
+  zmt(zms paramzms, DiyPendantFetcher paramDiyPendantFetcher) {}
   
-  public void b(boolean paramBoolean1, boolean paramBoolean2)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    this.a.a(7);
+    try
+    {
+      if ((paramObject instanceof List))
+      {
+        paramObject = (List)paramObject;
+        if (paramObject.size() > 0)
+        {
+          paramObject = paramObject.iterator();
+          while (paramObject.hasNext())
+          {
+            Iterator localIterator = ((DiyPendantEntity)paramObject.next()).getStickerInfoList().iterator();
+            while (localIterator.hasNext())
+            {
+              Object localObject = (DiyPendantSticker)localIterator.next();
+              localObject = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.a((DiyPendantSticker)localObject);
+              this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.b.add(localObject);
+            }
+          }
+        }
+      }
+      return;
+    }
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("SVIPHandler", 2, paramObject.getMessage());
+      }
+    }
+    this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.b();
   }
 }
 

@@ -1,7 +1,7 @@
 package dov.com.qq.im.capture.poi;
 
-import amwz;
 import android.os.Bundle;
+import anne;
 import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.model.lbs.BasicLocation;
 import com.tencent.biz.qqstory.model.lbs.LbsManager;
@@ -235,7 +235,7 @@ public class FacePoiManager
   {
     SLog.b("FacePoiManager", "requestSosoPoi");
     this.jdField_a_of_type_DovComQqImCapturePoiFacePoiManager$FacePoiListener.a(2, new String[0]);
-    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new amwz(this, "NewStoryTakeVideoActivity", paramBoolean);
+    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new anne(this, "NewStoryTakeVideoActivity", paramBoolean);
     SosoInterface.a(this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener);
   }
   

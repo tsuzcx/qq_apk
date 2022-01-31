@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.shortvideo;
 
-import ahkj;
-import ahkk;
-import ahkl;
-import ahkm;
-import ahkn;
-import ahko;
-import ahkp;
-import ahkr;
-import ahks;
-import ahkt;
-import ahku;
-import ahkv;
-import ahkw;
-import ahky;
-import ahkz;
-import ahla;
-import ahlb;
+import ahyl;
+import ahym;
+import ahyn;
+import ahyo;
+import ahyp;
+import ahyq;
+import ahyr;
+import ahyt;
+import ahyu;
+import ahyv;
+import ahyw;
+import ahyx;
+import ahyy;
+import ahza;
+import ahzb;
+import ahzc;
+import ahzd;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.os.Build.VERSION;
@@ -398,7 +398,7 @@ public class PtvTemplateManager
   
   static void a(String paramString1, String paramString2)
   {
-    ThreadManager.getFileThreadHandler().post(new ahkt(paramString2, paramString1));
+    ThreadManager.getFileThreadHandler().post(new ahyv(paramString2, paramString1));
   }
   
   public static boolean a()
@@ -620,7 +620,7 @@ public class PtvTemplateManager
       }
       return;
     }
-    localObject = new ahkz(this, paramAppInterface, (File)localObject);
+    localObject = new ahzb(this, paramAppInterface, (File)localObject);
     if (QLog.isDevelopLevel()) {
       QLog.d("PtvTemplateManager", 4, String.format("initLocalTemplateConfigInfo async, runnable[%s]", new Object[] { Integer.valueOf(localObject.hashCode()) }));
     }
@@ -640,7 +640,7 @@ public class PtvTemplateManager
         QLog.d("Doodle_Strokes_PtvTemplateManager", 2, "initDoodleInfo has inited.");
       }
       if (paramBoolean) {
-        ThreadManager.postImmediately(new ahkl(this), null, false);
+        ThreadManager.postImmediately(new ahyn(this), null, false);
       }
     }
     File localFile;
@@ -654,7 +654,7 @@ public class PtvTemplateManager
     } while (!QLog.isColorLevel());
     QLog.d("Doodle_Strokes_PtvTemplateManager", 2, "initLocalDoodleInfo config file not exist.");
     return;
-    paramDoodleInfoLoadObserver = new ahkm(this, localFile, paramBoolean, paramDoodleInfoLoadObserver, paramAppInterface);
+    paramDoodleInfoLoadObserver = new ahyo(this, localFile, paramBoolean, paramDoodleInfoLoadObserver, paramAppInterface);
     if (QLog.isDevelopLevel()) {
       QLog.d("Doodle_Strokes_PtvTemplateManager", 4, String.format("initLocalDoodleInfo async, runnable[%s]", new Object[] { Integer.valueOf(paramDoodleInfoLoadObserver.hashCode()) }));
     }
@@ -674,7 +674,7 @@ public class PtvTemplateManager
       return;
       paramPtvTemplateInfo.startDownloadTime = System.currentTimeMillis();
       HttpNetReq localHttpNetReq = new HttpNetReq();
-      localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahlb(this, paramPtvTemplateInfo, paramIPtvTemplateDownloadListener);
+      localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahzd(this, paramPtvTemplateInfo, paramIPtvTemplateDownloadListener);
       localHttpNetReq.jdField_a_of_type_JavaLangString = paramPtvTemplateInfo.resurl;
       localHttpNetReq.jdField_a_of_type_Int = 0;
       localHttpNetReq.jdField_c_of_type_JavaLangString = new File(jdField_a_of_type_JavaIoFile, paramPtvTemplateInfo.name).getPath();
@@ -702,7 +702,7 @@ public class PtvTemplateManager
   
   void a(AppInterface paramAppInterface, ArrayList paramArrayList)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new ahkv(this, paramAppInterface, paramArrayList), jdField_a_of_type_JavaLangLong.longValue());
+    ThreadManager.getSubThreadHandler().postDelayed(new ahyx(this, paramAppInterface, paramArrayList), jdField_a_of_type_JavaLangLong.longValue());
   }
   
   public void a(QQAppInterface paramQQAppInterface)
@@ -720,7 +720,7 @@ public class PtvTemplateManager
         PtvTemplateManager.DoodleInfo localDoodleInfo = (PtvTemplateManager.DoodleInfo)localIterator.next();
         if ((localDoodleInfo != null) && (!TextUtils.isEmpty(localDoodleInfo.doodleUrl)) && (!localDoodleInfo.doodleUsable))
         {
-          Object localObject = new ahkp(this, localDoodleInfo, paramQQAppInterface);
+          Object localObject = new ahyr(this, localDoodleInfo, paramQQAppInterface);
           PreDownloadController localPreDownloadController = (PreDownloadController)paramQQAppInterface.getManager(192);
           if (localPreDownloadController.a())
           {
@@ -751,7 +751,7 @@ public class PtvTemplateManager
       }
       return;
     }
-    localObject = new ahky(this, (File)localObject, paramRunnable);
+    localObject = new ahza(this, (File)localObject, paramRunnable);
     if (QLog.isDevelopLevel()) {
       if (paramRunnable == null) {
         break label120;
@@ -792,7 +792,7 @@ public class PtvTemplateManager
         if (this.jdField_f_of_type_Boolean) {
           continue;
         }
-        ThreadManager.getFileThreadHandler().post(new ahks(this, localList));
+        ThreadManager.getFileThreadHandler().post(new ahyu(this, localList));
         a(paramAppInterface, this.jdField_e_of_type_JavaUtilArrayList);
         return;
       }
@@ -816,7 +816,7 @@ public class PtvTemplateManager
       if (this.jdField_d_of_type_Boolean) {
         break;
       }
-      ThreadManager.getFileThreadHandler().post(new ahku(this, localList));
+      ThreadManager.getFileThreadHandler().post(new ahyw(this, localList));
       a(paramAppInterface, localArrayList);
       return;
       str = "ptv_template_web.cfg";
@@ -829,11 +829,11 @@ public class PtvTemplateManager
     if (localPtvTemplateInfo == null) {
       return;
     }
-    ThreadManager.getFileThreadHandler().post(new ahkn(this, ???));
+    ThreadManager.getFileThreadHandler().post(new ahyp(this, ???));
     synchronized (this.jdField_d_of_type_JavaLangObject)
     {
       this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo = localPtvTemplateInfo;
-      ThreadManager.getFileThreadHandler().post(new ahko(this));
+      ThreadManager.getFileThreadHandler().post(new ahyq(this));
       a(paramQQAppInterface);
       return;
     }
@@ -874,7 +874,7 @@ public class PtvTemplateManager
   
   public void a(boolean paramBoolean)
   {
-    ThreadManager.postImmediately(new ahkj(this, paramBoolean), null, false);
+    ThreadManager.postImmediately(new ahyl(this, paramBoolean), null, false);
   }
   
   public boolean a(PtvTemplateManager.DoodleInfo paramDoodleInfo, boolean paramBoolean)
@@ -1108,7 +1108,7 @@ public class PtvTemplateManager
       }
       return;
     }
-    localObject = new ahla(this, paramAppInterface, (File)localObject);
+    localObject = new ahzc(this, paramAppInterface, (File)localObject);
     if (QLog.isDevelopLevel()) {
       QLog.d("PtvTemplateManager", 4, String.format("initLocalTemplateConfigInfo async, runnable[%s]", new Object[] { Integer.valueOf(localObject.hashCode()) }));
     }
@@ -1127,7 +1127,7 @@ public class PtvTemplateManager
     {
       return;
       HttpNetReq localHttpNetReq = new HttpNetReq();
-      localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahkk(this, paramPtvTemplateInfo, paramIPtvTemplateDownloadListener);
+      localHttpNetReq.jdField_a_of_type_ComTencentMobileqqTransfileINetEngine$INetEngineListener = new ahym(this, paramPtvTemplateInfo, paramIPtvTemplateDownloadListener);
       localHttpNetReq.jdField_a_of_type_JavaLangString = paramPtvTemplateInfo.resurl;
       localHttpNetReq.jdField_a_of_type_Int = 0;
       localHttpNetReq.jdField_c_of_type_JavaLangString = new File(jdField_a_of_type_JavaIoFile, paramPtvTemplateInfo.name).getPath();
@@ -1174,7 +1174,7 @@ public class PtvTemplateManager
       break label14;
       break;
       label63:
-      ThreadManager.getFileThreadHandler().post(new ahkw(this, localPtvTemplateInfo, paramAppInterface));
+      ThreadManager.getFileThreadHandler().post(new ahyy(this, localPtvTemplateInfo, paramAppInterface));
     }
   }
   
@@ -1209,7 +1209,7 @@ public class PtvTemplateManager
       a(true);
       return;
     }
-    localObject = new ahkr(this, paramAppInterface, (File)localObject);
+    localObject = new ahyt(this, paramAppInterface, (File)localObject);
     if (QLog.isDevelopLevel()) {
       QLog.d("PtvTemplateManager", 4, String.format("initBlessTemplateConfigInfo async, runnable[%s]", new Object[] { Integer.valueOf(localObject.hashCode()) }));
     }

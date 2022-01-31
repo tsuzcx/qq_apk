@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby;
 
-import adzs;
+import aemy;
 import com.tencent.mobileqq.app.NearbyHandler;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
@@ -28,7 +28,7 @@ public class NearbyReportManager
     NearbyHandler localNearbyHandler = (NearbyHandler)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.a(3);
     boolean bool = this.jdField_a_of_type_Boolean;
     this.jdField_a_of_type_ComTencentUtilLongSparseArray.a();
-    ThreadManager.post(new adzs(this, localLongSparseArray, localNearbyHandler, bool), 5, null, false);
+    ThreadManager.post(new aemy(this, localLongSparseArray, localNearbyHandler, bool), 5, null, false);
   }
   
   public void a(long paramLong, int paramInt1, int paramInt2, int paramInt3)

@@ -1,17 +1,24 @@
-import com.tencent.component.network.utils.http.pool.AbstractConnPool;
-import com.tencent.component.network.utils.http.pool.PoolEntry;
+import android.text.TextUtils;
 
 public class pjm
-  extends pjp
+  extends pjl
 {
-  public pjm(AbstractConnPool paramAbstractConnPool, Object paramObject1, Object paramObject2)
+  private pjm()
   {
-    super(paramObject1);
+    super(null);
   }
   
-  protected PoolEntry a(Object paramObject)
+  public String b(String paramString)
   {
-    return this.jdField_a_of_type_ComTencentComponentNetworkUtilsHttpPoolAbstractConnPool.a(this.jdField_a_of_type_JavaLangObject, paramObject);
+    paramString = super.b(paramString);
+    if (TextUtils.isEmpty(paramString)) {}
+    int i;
+    do
+    {
+      return paramString;
+      i = paramString.indexOf('#');
+    } while (i <= 0);
+    return paramString.substring(0, i);
   }
 }
 

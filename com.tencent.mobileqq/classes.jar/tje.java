@@ -1,16 +1,21 @@
-import com.tencent.mobileqq.activity.QQSettingMe;
-import com.tencent.mobileqq.apollo.utils.ApolloConstant;
-import com.tencent.mobileqq.apollo.view.FrameGifView;
-import com.tencent.mobileqq.apollo.view.QQFrameZipDecoder;
+import com.tencent.mobileqq.activity.QQLSActivity;
+import com.tencent.mobileqq.data.ChatMessage;
+import java.util.Comparator;
 
 public class tje
-  implements Runnable
+  implements Comparator
 {
-  public tje(QQSettingMe paramQQSettingMe) {}
+  public tje(QQLSActivity paramQQLSActivity) {}
   
-  public void run()
+  public int a(ChatMessage paramChatMessage1, ChatMessage paramChatMessage2)
   {
-    QQSettingMe.a(this.a).setGifData(100, null, ApolloConstant.ad, QQFrameZipDecoder.a(ApolloConstant.ad), true);
+    if (paramChatMessage1.shmsgseq == paramChatMessage2.shmsgseq) {
+      return 0;
+    }
+    if (paramChatMessage1.shmsgseq > paramChatMessage2.shmsgseq) {
+      return 1;
+    }
+    return -1;
   }
 }
 

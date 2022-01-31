@@ -1,17 +1,21 @@
-import java.lang.ref.WeakReference;
+import android.support.v4.app.FragmentActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.ChatActivityUtils;
+import com.tencent.mobileqq.activity.aio.item.MixedMsgItemBuilder;
+import com.tencent.mobileqq.widget.AnimationTextView.OnDoubleClick;
 
-class vbz
-  implements Runnable
+public class vbz
+  implements AnimationTextView.OnDoubleClick
 {
-  vbz(vby paramvby, int paramInt1, int paramInt2, String paramString) {}
+  public vbz(MixedMsgItemBuilder paramMixedMsgItemBuilder) {}
   
-  public void run()
+  public void a(View paramView)
   {
-    vbx localvbx = (vbx)this.jdField_a_of_type_Vby.a.get();
-    if (localvbx == null) {
+    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
+    if (MixedMsgItemBuilder.b(this.a)) {
       return;
     }
-    localvbx.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString);
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView, (FragmentActivity)this.a.jdField_a_of_type_AndroidContentContext);
   }
 }
 

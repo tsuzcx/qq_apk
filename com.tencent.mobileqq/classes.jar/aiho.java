@@ -1,29 +1,19 @@
-import android.view.View;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallEditActivity;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.structmsg.StructMsgForAudioShare;
 
 public class aiho
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  public aiho(TroopAvatarWallEditActivity paramTroopAvatarWallEditActivity, ActionSheet paramActionSheet) {}
+  public aiho(StructMsgForAudioShare paramStructMsgForAudioShare, URLImageView paramURLImageView) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      TroopAvatarWallEditActivity.b(this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity, this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopAvatarWallEditActivity.a);
-    }
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageResource(2130842744);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiho
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
-import com.tencent.biz.qqstory.newshare.job.DownloadPic2FileJob;
-import com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
+import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
+import com.tencent.widget.ListView;
 
 public class nff
-  extends DownloadPic2FileJob
+  implements Runnable
 {
-  public nff(ShareModeBase paramShareModeBase, ShareSinaData paramShareSinaData) {}
+  public nff(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager, int paramInt) {}
   
-  public boolean b()
+  public void run()
   {
-    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
-    return true;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.c == 0) {
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a.smoothScrollToPositionFromTop(this.jdField_a_of_type_Int, 0);
+    }
   }
 }
 

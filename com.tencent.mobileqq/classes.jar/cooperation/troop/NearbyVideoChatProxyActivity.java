@@ -1,11 +1,11 @@
 package cooperation.troop;
 
-import amoy;
 import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.text.TextUtils;
+import anfd;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.common.app.AppInterface;
@@ -153,7 +153,7 @@ public class NearbyVideoChatProxyActivity
       ((IPluginManager.PluginParams)localObject).f = null;
       paramIntent = null;
       if (paramInt == 123987) {
-        paramIntent = new amoy(paramActivity);
+        paramIntent = new anfd(paramActivity);
       }
       IPluginManager.a(paramActivity, (IPluginManager.PluginParams)localObject, paramIntent);
       ReportController.b(null, "dc00899", "grp_lbs", "", "video_chat", "num_entry", 0, 0, i + "", j + "", k + "", "");

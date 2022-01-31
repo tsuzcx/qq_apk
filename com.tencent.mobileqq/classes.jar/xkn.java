@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.biz.qqstory.network.handler.RecentTabHaloPresenter.Callback;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.widget.XListView;
 
-class xkn
-  implements Runnable
+public class xkn
+  implements RecentTabHaloPresenter.Callback
 {
-  xkn(xkm paramxkm) {}
+  public xkn(RecentAdapter paramRecentAdapter) {}
   
-  public void run()
+  public void a()
   {
-    EditLocalVideoActivity.b(this.a.a, false);
+    this.a.a.invalidateViews();
   }
 }
 

@@ -1,14 +1,18 @@
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.Leba;
+import android.media.SoundPool;
+import android.media.SoundPool.OnLoadCompleteListener;
+import com.tencent.mobileqq.activity.H5MagicPlayerActivity;
+import com.tencent.qphone.base.util.QLog;
 
 public class suy
-  implements Runnable
+  implements SoundPool.OnLoadCompleteListener
 {
-  public suy(Leba paramLeba, int paramInt, Drawable paramDrawable) {}
+  public suy(H5MagicPlayerActivity paramH5MagicPlayerActivity, String paramString) {}
   
-  public void run()
+  public void onLoadComplete(SoundPool paramSoundPool, int paramInt1, int paramInt2)
   {
-    Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba, Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba), this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_AndroidMediaSoundPool.play(paramInt1, 1.0F, 1.0F, 0, this.jdField_a_of_type_ComTencentMobileqqActivityH5MagicPlayerActivity.jdField_a_of_type_Int - 1, 1.0F) == 0) && (QLog.isColorLevel())) {
+      QLog.d("SoundPoolUtil", 2, "play failure filepath=" + this.jdField_a_of_type_JavaLangString);
+    }
   }
 }
 

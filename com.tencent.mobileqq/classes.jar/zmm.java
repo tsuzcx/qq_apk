@@ -1,48 +1,16 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SQLiteDatabase;
-import com.tencent.mobileqq.app.asyncdb.cache.RecentUserCache;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.ConcurrentHashMap;
+import com.tencent.litetransfersdk.Session;
+import com.tencent.mobileqq.app.RouterHandler;
+import java.util.HashMap;
 
 public class zmm
   implements Runnable
 {
-  public zmm(RecentUserCache paramRecentUserCache, SharedPreferences paramSharedPreferences) {}
+  public zmm(RouterHandler paramRouterHandler, Session paramSession) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgradeV2 | start");
-    }
-    try
-    {
-      SQLiteDatabase localSQLiteDatabase = RecentUserCache.c(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache).a();
-      String str = RecentUserCache.a(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache, AppConstants.C, 4000);
-      if (RecentUserCache.e(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache).containsKey(str)) {
-        RecentUserCache.f(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache).remove(str);
-      }
-      int i = localSQLiteDatabase.a("recent", "uin=?", new String[] { AppConstants.C });
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgradeV2 | RecentUser delCount = " + i);
-      }
-      return;
-    }
-    catch (Exception localException)
-    {
-      do
-      {
-        localException.printStackTrace();
-      } while (!QLog.isColorLevel());
-      QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgradeV2 | delete recommend error~");
-      return;
-    }
-    finally
-    {
-      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("check_newfriend_when_upgrade_V2", false).commit();
-    }
+    this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.e.put(Long.valueOf(this.jdField_a_of_type_ComTencentLitetransfersdkSession.uSessionID), this.jdField_a_of_type_ComTencentLitetransfersdkSession);
+    this.jdField_a_of_type_ComTencentMobileqqAppRouterHandler.a(3, this.jdField_a_of_type_ComTencentLitetransfersdkSession, 0.0D, 0);
   }
 }
 

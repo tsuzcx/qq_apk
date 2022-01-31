@@ -36,24 +36,24 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import jvy;
-import jvz;
-import jwa;
-import jwb;
-import jwc;
-import jwd;
-import jwe;
-import jwf;
+import jvj;
+import jvk;
+import jvl;
+import jvm;
+import jvn;
+import jvo;
+import jvp;
+import jvq;
 
 public class MultiIncomingCallsActivity
   extends BaseGaInvite
 {
   public static boolean e;
-  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jvy(this);
+  private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new jvj(this);
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap = null;
-  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jwe(this);
+  GAudioUIObserver jdField_a_of_type_ComTencentAvAppGAudioUIObserver = new jvp(this);
   SessionInfo jdField_a_of_type_ComTencentAvAppSessionInfo = null;
-  VideoObserver jdField_a_of_type_ComTencentAvAppVideoObserver = new jwf(this);
+  VideoObserver jdField_a_of_type_ComTencentAvAppVideoObserver = new jvq(this);
   AvCustomDialog jdField_a_of_type_ComTencentAvUtilsAvCustomDialog = null;
   QAVNotification jdField_a_of_type_ComTencentAvUtilsQAVNotification;
   public boolean a;
@@ -158,13 +158,13 @@ public class MultiIncomingCallsActivity
     if (paramTextView == null) {
       return;
     }
-    float f1 = super.getResources().getDimensionPixelSize(2131559956);
+    float f1 = super.getResources().getDimensionPixelSize(2131559974);
     String str2;
     int i;
     if (b())
     {
       str2 = String.valueOf(this.jdField_a_of_type_Long);
-      str1 = super.getApplicationContext().getString(2131428957);
+      str1 = super.getApplicationContext().getString(2131428963);
       int j = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.jdField_b_of_type_Int, str2);
       i = j;
       if (j == 0)
@@ -178,7 +178,7 @@ public class MultiIncomingCallsActivity
         if (i <= 999) {
           break label181;
         }
-        f1 = super.getResources().getDimensionPixelSize(2131559958);
+        f1 = super.getResources().getDimensionPixelSize(2131559976);
         label100:
         str2 = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getDisplayName(this.jdField_a_of_type_Int, str2, null);
         str2 = UITools.a(super.getApplicationContext(), str2, paramTextView, f1);
@@ -195,7 +195,7 @@ public class MultiIncomingCallsActivity
       if (i <= 99) {
         break label100;
       }
-      f1 = super.getResources().getDimensionPixelSize(2131559957);
+      f1 = super.getResources().getDimensionPixelSize(2131559975);
       break label100;
     }
   }
@@ -346,7 +346,7 @@ public class MultiIncomingCallsActivity
         continue;
       }
       VideoController localVideoController = this.jdField_a_of_type_ComTencentAvVideoController;
-      localVideoController.a(paramString, 1, false, new jwd(this, localVideoController, paramString, paramBoolean3));
+      localVideoController.a(paramString, 1, false, new jvo(this, localVideoController, paramString, paramBoolean3));
     }
   }
   
@@ -388,16 +388,16 @@ public class MultiIncomingCallsActivity
   {
     e();
     this.jdField_a_of_type_ComTencentAvUtilsAvCustomDialog = new AvCustomDialog(this);
-    Object localObject = LayoutInflater.from(this).inflate(2130969277, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131365900));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131365901));
+    Object localObject = LayoutInflater.from(this).inflate(2130969278, null);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)((View)localObject).findViewById(2131365927));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131365928));
     this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine();
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131365902));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131365903));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131365929));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)((View)localObject).findViewById(2131365930));
     if (VideoUtils.a())
     {
-      this.jdField_c_of_type_AndroidWidgetTextView.setText(2131429603);
-      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131493568));
+      this.jdField_c_of_type_AndroidWidgetTextView.setText(2131429609);
+      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131493574));
     }
     c();
     Button localButton;
@@ -405,23 +405,23 @@ public class MultiIncomingCallsActivity
     {
       a("showDialog");
       this.jdField_a_of_type_ComTencentAvUtilsAvCustomDialog.a((View)localObject, false);
-      localButton = (Button)((View)localObject).findViewById(2131365905);
-      localButton.setOnClickListener(new jvz(this));
-      this.jdField_a_of_type_ComTencentAvUtilsAvCustomDialog.setOnCancelListener(new jwa(this));
-      this.jdField_a_of_type_ComTencentAvUtilsAvCustomDialog.setOnDismissListener(new jwb(this));
+      localButton = (Button)((View)localObject).findViewById(2131365932);
+      localButton.setOnClickListener(new jvk(this));
+      this.jdField_a_of_type_ComTencentAvUtilsAvCustomDialog.setOnCancelListener(new jvl(this));
+      this.jdField_a_of_type_ComTencentAvUtilsAvCustomDialog.setOnDismissListener(new jvm(this));
       SessionInfo localSessionInfo = SessionMgr.a().a();
-      localObject = (Button)((View)localObject).findViewById(2131365906);
-      ((Button)localObject).setOnClickListener(new jwc(this, paramIntent, localSessionInfo));
+      localObject = (Button)((View)localObject).findViewById(2131365933);
+      ((Button)localObject).setOnClickListener(new jvn(this, paramIntent, localSessionInfo));
       if (!b()) {
         break label469;
       }
-      ((Button)localObject).setText(2131429443);
-      localButton.setText(2131429442);
+      ((Button)localObject).setText(2131429449);
+      localButton.setText(2131429448);
     }
     for (;;)
     {
       if ((!this.jdField_b_of_type_Boolean) && (!this.jdField_a_of_type_Boolean)) {
-        ((Button)localObject).setCompoundDrawablesWithIntrinsicBounds(super.getResources().getDrawable(2130840271), null, null, null);
+        ((Button)localObject).setCompoundDrawablesWithIntrinsicBounds(super.getResources().getDrawable(2130840277), null, null, null);
       }
       this.jdField_a_of_type_ComTencentAvUtilsAvCustomDialog.show();
       if (QLog.isColorLevel()) {
@@ -435,8 +435,8 @@ public class MultiIncomingCallsActivity
       a(this.jdField_b_of_type_AndroidWidgetTextView);
       break;
       label469:
-      ((Button)localObject).setText(2131429443);
-      localButton.setText(2131429441);
+      ((Button)localObject).setText(2131429449);
+      localButton.setText(2131429447);
     }
   }
   
@@ -455,14 +455,14 @@ public class MultiIncomingCallsActivity
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine();
     if (b())
     {
-      float f1 = super.getResources().getDimensionPixelSize(2131559959);
+      float f1 = super.getResources().getDimensionPixelSize(2131559977);
       localObject1 = "";
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         localObject1 = UITools.a(super.getApplicationContext(), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_AndroidWidgetTextView, f1);
       }
       Object localObject2 = super.getResources();
       if (this.jdField_b_of_type_Boolean) {}
-      for (i = 2131429449;; i = 2131429450)
+      for (i = 2131429455;; i = 2131429456)
       {
         localObject2 = ((Resources)localObject2).getString(i);
         this.jdField_a_of_type_AndroidWidgetTextView.setText((String)localObject1 + (String)localObject2);
@@ -471,12 +471,12 @@ public class MultiIncomingCallsActivity
     }
     if (VideoUtils.a(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131429448);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131429454);
       return;
     }
     Object localObject1 = this.jdField_a_of_type_AndroidWidgetTextView;
     if ((this.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_Boolean)) {}
-    for (int i = 2131429446;; i = 2131429447)
+    for (int i = 2131429452;; i = 2131429453)
     {
       ((TextView)localObject1).setText(i);
       return;
@@ -947,7 +947,7 @@ public class MultiIncomingCallsActivity
   {
     QLog.d(this.jdField_b_of_type_JavaLangString, 1, "onCreate");
     super.onCreate(paramBundle);
-    super.getWindow().setBackgroundDrawableResource(2130846313);
+    super.getWindow().setBackgroundDrawableResource(2130846443);
     super.getWindow().addFlags(128);
     VideoNodeManager.a(this.jdField_a_of_type_ComTencentAvVideoController.a(this.jdField_c_of_type_JavaLangString), 29);
     TraeHelper.a().a("MultiIncomingCallsActivity.onCreate");

@@ -1,22 +1,18 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.selectmember.PhoneContactTabView;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.richmedia.subtitles.SubtitleDataManager;
+import com.tencent.mobileqq.richmedia.capture.data.SubtitleItem;
+import java.util.Comparator;
 
 public class xwm
-  extends MqqHandler
+  implements Comparator
 {
-  public xwm(PhoneContactTabView paramPhoneContactTabView) {}
+  public xwm(SubtitleDataManager paramSubtitleDataManager) {}
   
-  public void handleMessage(Message paramMessage)
+  public int a(SubtitleItem paramSubtitleItem1, SubtitleItem paramSubtitleItem2)
   {
-    switch (paramMessage.what)
-    {
-    case 1: 
-    case 2: 
-    default: 
-      return;
+    if ((paramSubtitleItem1 != null) && (paramSubtitleItem2 != null)) {
+      return paramSubtitleItem1.b - paramSubtitleItem2.b;
     }
-    this.a.d();
+    return -1;
   }
 }
 

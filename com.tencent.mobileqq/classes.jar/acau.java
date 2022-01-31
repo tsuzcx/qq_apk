@@ -1,72 +1,32 @@
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import java.io.UnsupportedEncodingException;
+import android.os.Bundle;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.emosm.web.MessengerService;
 
 public class acau
-  implements TextWatcher
+  extends FriendListObserver
 {
-  public acau(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity) {}
+  public acau(MessengerService paramMessengerService) {}
   
-  private int a(String paramString)
+  protected void onGetSigZanInfo(boolean paramBoolean, Object paramObject)
   {
-    byte[] arrayOfByte = new byte[0];
-    try
+    if (this.a.b != null)
     {
-      paramString = paramString.getBytes("utf-8");
-      if (paramString.length % 3 == 0) {
-        return paramString.length / 3;
+      this.a.b.putString("cmd", "ipc_signature_setlike");
+      paramObject = new Bundle();
+      if (!paramBoolean) {
+        break label81;
       }
     }
-    catch (UnsupportedEncodingException paramString)
+    label81:
+    for (int i = 0;; i = 101)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = arrayOfByte;
-      }
-    }
-    return paramString.length / 3 + 1;
-  }
-  
-  private String a(String paramString)
-  {
-    while (a(paramString) > 32)
-    {
-      int i = paramString.length();
-      if ((i >= 2) && (Character.isHighSurrogate(paramString.charAt(i - 2)))) {
-        paramString = paramString.substring(0, i - 2);
-      } else {
-        paramString = paramString.substring(0, i - 1);
-      }
-    }
-    return paramString;
-  }
-  
-  public void afterTextChanged(Editable paramEditable)
-  {
-    paramEditable = this.a.a.getText().toString();
-    if (a(paramEditable) > 32)
-    {
-      int i = this.a.a.getSelectionStart();
-      paramEditable = a(paramEditable);
-      this.a.a.setText(paramEditable);
-      if (i >= paramEditable.length()) {
-        this.a.a.setSelection(paramEditable.length());
-      }
-    }
-    if (this.a.h)
-    {
-      ReportController.b(null, "CliOper", "", "", "0X80050F0", "0X80050F0", 0, 0, "", "", "", "");
-      this.a.h = false;
+      paramObject.putInt("result", i);
+      this.a.b.putBundle("response", paramObject);
+      this.a.a(this.a.b);
+      this.a.b = null;
+      return;
     }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

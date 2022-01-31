@@ -1,27 +1,20 @@
-import android.view.View;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.qq.im.capture.text.DynamicTextItem.Pair;
+import cooperation.qzone.plugin.PluginRecord;
+import cooperation.qzone.plugin.QZonePluginInstaller;
+import java.io.File;
 
 public class amxq
-  implements Runnable
+  implements amxu
 {
-  public amxq(DynamicTextItem paramDynamicTextItem, View paramView) {}
+  public amxq(QZonePluginInstaller paramQZonePluginInstaller) {}
   
-  public void run()
+  public boolean a(PluginRecord paramPluginRecord, File paramFile)
   {
-    DynamicTextItem.Pair localPair = DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem);
-    if (!((Boolean)DynamicTextItem.a(this.jdField_a_of_type_DovComQqImCaptureTextDynamicTextItem).b).booleanValue()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localPair.b = Boolean.valueOf(bool);
-      this.jdField_a_of_type_AndroidViewView.invalidate();
-      return;
-    }
+    return QZonePluginInstaller.a(this.a, paramPluginRecord);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amxq
  * JD-Core Version:    0.7.0.1
  */

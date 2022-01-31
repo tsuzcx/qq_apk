@@ -1,47 +1,24 @@
-import com.tencent.mobileqq.qmcf.QmcfManager;
-import com.tencent.sveffects.SLog;
-import java.util.ArrayList;
+import android.text.TextUtils;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-public class aghn
+class aghn
   implements Runnable
 {
-  public aghn(QmcfManager paramQmcfManager) {}
+  aghn(aghm paramaghm) {}
   
   public void run()
   {
-    String str;
-    synchronized (QmcfManager.a(this.a))
+    if (TextUtils.isEmpty(ScanTorchActivity.b(this.a.a.a)))
     {
-      if (QmcfManager.a(this.a).size() > 0)
-      {
-        str = (String)QmcfManager.a(this.a).get(QmcfManager.a(this.a).size() - 1);
-        QmcfManager.a(this.a).clear();
-      }
-    }
-    try
-    {
-      QmcfManager.a(this.a, str);
-      this.a.a();
+      ScanTorchActivity.s(this.a.a.a);
       return;
-      if (SLog.a()) {
-        SLog.d("QMCF_MGR", "ignore the old switch!");
-      }
-      return;
-      localObject = finally;
-      throw localObject;
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        SLog.c("QMCF_MGR", "switchModel excep!");
-      }
-    }
+    ScanTorchActivity.c(this.a.a.a, ScanTorchActivity.b(this.a.a.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aghn
  * JD-Core Version:    0.7.0.1
  */

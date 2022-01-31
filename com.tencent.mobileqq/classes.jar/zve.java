@@ -1,23 +1,22 @@
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordUIControllerImpl;
-import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordViewPresenter;
-import com.tencent.qphone.base.util.QLog;
+import com.dataline.util.WaitEvent;
+import com.tencent.mobileqq.app.proxy.DataLineMsgProxy;
+import com.tencent.mobileqq.data.DataLineMsgRecord;
 
 public class zve
   implements Runnable
 {
-  public zve(ARVideoRecordUIControllerImpl paramARVideoRecordUIControllerImpl, int paramInt1, int paramInt2) {}
+  public zve(DataLineMsgProxy paramDataLineMsgProxy, DataLineMsgRecord paramDataLineMsgRecord, WaitEvent paramWaitEvent) {}
   
   public void run()
   {
-    QLog.d("ARVideoRecordUIControllerImpl", 2, String.format("onRecordUpdate progress=%s", new Object[] { Integer.valueOf(1) }));
-    if (ARVideoRecordUIControllerImpl.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordUIControllerImpl)) {
-      ARVideoRecordUIControllerImpl.a(this.jdField_a_of_type_ComTencentMobileqqArARRecordARVideoRecordUIControllerImpl).a(this.jdField_a_of_type_Int, this.b);
-    }
+    DataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy, this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord);
+    this.jdField_a_of_type_ComTencentMobileqqAppProxyDataLineMsgProxy.a(this.jdField_a_of_type_ComTencentMobileqqDataDataLineMsgRecord, null);
+    this.jdField_a_of_type_ComDatalineUtilWaitEvent.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zve
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.qqprotect.qsec;
 
-import algz;
-import alha;
-import alhb;
+import alwp;
+import alwq;
+import alwr;
 import com.tencent.biz.ProtoUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import mqq.app.MobileQQ;
@@ -14,7 +14,7 @@ public class CSProcessorImpl
   
   private CSProcessorImpl()
   {
-    QSecFramework.a(4, new algz(this));
+    QSecFramework.a(4, new alwp(this));
   }
   
   public static CSProcessorImpl a()
@@ -37,10 +37,10 @@ public class CSProcessorImpl
       QQAppInterface localQQAppInterface = (QQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
       if (paramICSProcessorListener != null)
       {
-        ProtoUtils.a(localQQAppInterface, new alhb(paramArrayOfByte, paramICSProcessorListener), paramArrayOfByte, paramString);
+        ProtoUtils.a(localQQAppInterface, new alwr(paramArrayOfByte, paramICSProcessorListener), paramArrayOfByte, paramString);
         return;
       }
-      ProtoUtils.a(localQQAppInterface, new alha(this), paramArrayOfByte, paramString);
+      ProtoUtils.a(localQQAppInterface, new alwq(this), paramArrayOfByte, paramString);
       return;
     }
     catch (Throwable paramString)

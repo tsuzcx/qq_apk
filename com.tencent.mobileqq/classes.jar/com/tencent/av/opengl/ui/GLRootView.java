@@ -28,7 +28,7 @@ import java.util.concurrent.locks.ReentrantLock;
 import javax.microedition.khronos.egl.EGLConfig;
 import javax.microedition.khronos.opengles.GL10;
 import javax.microedition.khronos.opengles.GL11;
-import jkn;
+import jjy;
 
 public class GLRootView
   extends GLSurfaceView
@@ -39,7 +39,7 @@ public class GLRootView
   private GLCanvas jdField_a_of_type_ComTencentAvOpenglGlrendererGLCanvas;
   public GLView a;
   private SwitchFaceView jdField_a_of_type_ComTencentAvSwitchfaceSwitchFaceView;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new jkn(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new jjy(this);
   private final Condition jdField_a_of_type_JavaUtilConcurrentLocksCondition = this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock.newCondition();
   private final ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
   boolean jdField_a_of_type_Boolean = false;

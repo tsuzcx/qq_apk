@@ -1,27 +1,15 @@
-import android.content.IntentFilter;
-import com.tencent.av.ui.CallbackWaitingActivityExt;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.ConferenceFlyTicketActivity;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class jrq
   implements Runnable
 {
-  public jrq(CallbackWaitingActivityExt paramCallbackWaitingActivityExt) {}
+  public jrq(ConferenceFlyTicketActivity paramConferenceFlyTicketActivity, String paramString) {}
   
   public void run()
   {
-    try
-    {
-      this.a.a = new jsd(this.a);
-      IntentFilter localIntentFilter = new IntentFilter();
-      localIntentFilter.addAction("android.intent.action.CLOSE_SYSTEM_DIALOGS");
-      this.a.registerReceiver(this.a.a, localIntentFilter);
-      return;
-    }
-    catch (Exception localException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(CallbackWaitingActivityExt.a(), 2, "Exception", localException);
-    }
+    QQToast.a(this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity, this.jdField_a_of_type_JavaLangString, 0).b(this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.getTitleBarHeight());
+    this.jdField_a_of_type_ComTencentAvUiConferenceFlyTicketActivity.finish();
   }
 }
 

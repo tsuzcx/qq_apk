@@ -1,17 +1,12 @@
-import com.tencent.biz.pubaccount.util.GalleryShareHelper;
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.biz.pubaccount.subscript.SubscriptPicManager;
+import java.lang.ref.WeakReference;
 
-class mtg
-  implements Runnable
+public class mtg
 {
-  mtg(mte parammte) {}
+  public WeakReference a;
+  public WeakReference b;
   
-  public void run()
-  {
-    GalleryShareHelper.a(this.a.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).dismiss();
-    QQToast.a(this.a.jdField_a_of_type_AndroidAppActivity, 1, "分享失败，请稍后重试！", 0).a();
-  }
+  private mtg(SubscriptPicManager paramSubscriptPicManager) {}
 }
 
 

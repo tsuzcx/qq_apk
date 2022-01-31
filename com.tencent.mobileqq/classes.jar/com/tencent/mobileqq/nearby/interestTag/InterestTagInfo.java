@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.interestTag;
 
-import aedv;
+import aerb;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -18,7 +18,7 @@ public class InterestTagInfo
   extends Entity
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new aedv();
+  public static final Parcelable.Creator CREATOR = new aerb();
   public long bid;
   public String tagBgColor;
   public String tagIconUrl;

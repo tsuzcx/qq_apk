@@ -1,38 +1,21 @@
-import android.app.Activity;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.photo.PeakService;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
-import com.tencent.qphone.base.util.QLog;
+import android.text.Editable;
+import android.text.Editable.Factory;
+import com.tencent.mobileqq.text.QQTextBuilder;
 
 public final class aitk
-  implements Runnable
+  extends Editable.Factory
 {
-  public aitk(Activity paramActivity, QQAppInterface paramQQAppInterface) {}
-  
-  public void run()
+  public Editable newEditable(CharSequence paramCharSequence)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubmitHomeWorkFragment", 2, "start preload peak process");
+    if ((paramCharSequence instanceof QQTextBuilder)) {
+      return (Editable)paramCharSequence;
     }
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, PeakService.class);
-    if (VideoEnvironment.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      localIntent.putExtra("ServiceAction", 2);
-    }
-    try
-    {
-      this.jdField_a_of_type_AndroidAppActivity.startService(localIntent);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("SubmitHomeWorkFragment", 1, "onShow_otherThings startService ", localException);
-    }
+    return new QQTextBuilder(paramCharSequence, 3, 20);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aitk
  * JD-Core Version:    0.7.0.1
  */

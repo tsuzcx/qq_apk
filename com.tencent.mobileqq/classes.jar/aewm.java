@@ -1,22 +1,46 @@
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.nearby.now.utils.NowVideoReporter;
-import com.tencent.mobileqq.nearby.profilecard.moment.BaseMomentItemBuilder;
-import com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentManager.DeleteFeedCallback;
-import com.tencent.mobileqq.widget.QQToast;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.now.send.uploader.ImageUploader.OnResultListener;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader;
+import com.tencent.mobileqq.nearby.now.send.uploader.VideoFeedsUploader.UploadInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
-class aewm
-  implements NearbyMomentManager.DeleteFeedCallback
+public class aewm
+  implements ImageUploader.OnResultListener
 {
-  aewm(aewl paramaewl) {}
+  public aewm(VideoFeedsUploader paramVideoFeedsUploader) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void a(int paramInt, String paramString)
   {
-    if (!paramBoolean)
+    int i = 0;
+    if ((paramInt != 0) || (TextUtils.isEmpty(paramString)))
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 1, "删除失败", 0).a();
+      VideoFeedsUploader.a(this.a).a = paramInt;
+      VideoFeedsUploader.a(this.a).d = paramInt;
+      VideoFeedsUploader.a(this.a).a = paramInt;
+      VideoFeedsUploader.a(this.a).d = paramInt;
+      VideoFeedsUploader.a(this.a, VideoFeedsUploader.a(this.a));
       return;
     }
-    new NowVideoReporter().h("video_public").i("del_failfeed").d("2").c(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder) + "").a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder$MomentViewHolder)).e("1").b(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardMomentBaseMomentItemBuilder.a);
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoFeedsUploader", 2, String.format("upload logo image: result=%d, url=%s", new Object[] { Integer.valueOf(paramInt), paramString }));
+    }
+    VideoFeedsUploader.a(this.a).e = paramString;
+    try
+    {
+      long l = new File(VideoFeedsUploader.a(this.a).e).length();
+      i = (int)l;
+    }
+    catch (Exception paramString)
+    {
+      for (;;)
+      {
+        QLog.e("VideoFeedsUploader", 1, paramString, new Object[0]);
+      }
+    }
+    VideoFeedsUploader.a(this.a, 85, i);
+    VideoFeedsUploader.a(this.a).d = paramInt;
+    VideoFeedsUploader.b(this.a);
   }
 }
 

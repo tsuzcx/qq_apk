@@ -1,42 +1,20 @@
-import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoRecordState;
-import dov.com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import dov.com.tencent.mobileqq.shortvideo.mediadevice.AudioCapture;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditDoodleExport;
+import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
+import dov.com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
+import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfoLoadObserver;
 
 public class anri
-  implements Runnable
+  extends PtvTemplateManager.DoodleInfoLoadObserver
 {
-  public anri(RMVideoRecordState paramRMVideoRecordState) {}
+  public anri(EditPicActivity paramEditPicActivity) {}
   
-  public void run()
+  public void a()
   {
-    RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("RMRecordState", 2, "[@] EVENT_READ_MIC [error]麦克风读取数据错误...");
-    }
-    localRMVideoStateMgr.h = true;
-    localRMVideoStateMgr.e = false;
-    if (localRMVideoStateMgr.a != null)
-    {
-      if (localRMVideoStateMgr.a.i != -1) {
-        break label92;
-      }
-      localRMVideoStateMgr.b(0, "麦克风被禁用", false);
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("RMRecordState", 2, "[@] EVENT_READ_MIC [error]麦克风被禁用,音频录制失败 errorcode=" + localRMVideoStateMgr.a.i);
-      }
-      return;
-      label92:
-      if (localRMVideoStateMgr.a.i == -2) {
-        localRMVideoStateMgr.b(0, "麦克风可能被禁用", false);
-      } else if (localRMVideoStateMgr.a.i == -3) {
-        localRMVideoStateMgr.b(0, "麦克风可能被禁用", false);
-      } else {
-        localRMVideoStateMgr.b(0, "麦克风可能被禁用", false);
-      }
+    SLog.c("EditPicActivity", "DoodleInfoLoadObserver, onLoadSucc");
+    EditDoodleExport localEditDoodleExport = (EditDoodleExport)EditPicActivity.a(this.a).a(EditDoodleExport.class);
+    if (localEditDoodleExport != null) {
+      localEditDoodleExport.az_();
     }
   }
 }

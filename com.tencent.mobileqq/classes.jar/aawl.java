@@ -1,16 +1,19 @@
-import com.tencent.mobileqq.ar.ARTarget;
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.model.ArWebInfo;
-import com.tencent.mobileqq.armap.ShopScanActivity;
+import com.tencent.mobileqq.activity.aio.item.ArkAppLocationManager.ArkGetLocationCallback;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler;
 
-public class aawl
-  implements Runnable
+public final class aawl
+  implements ArkAppLocationManager.ArkGetLocationCallback
 {
-  public aawl(ShopScanActivity paramShopScanActivity, ARTarget paramARTarget) {}
+  public aawl(String paramString, Object paramObject, ArkMessageServerLogic.IAnalyzeTextIntentByServerHandler paramIAnalyzeTextIntentByServerHandler) {}
   
-  public void run()
+  public void a(String paramString, double paramDouble1, double paramDouble2)
   {
-    ShopScanActivity.a(this.jdField_a_of_type_ComTencentMobileqqArmapShopScanActivity, this.jdField_a_of_type_ComTencentMobileqqArARTarget.a.a.a);
+    aawy localaawy = new aawy(null);
+    localaawy.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    localaawy.jdField_a_of_type_JavaLangObject = this.jdField_a_of_type_JavaLangObject;
+    localaawy.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler = this.jdField_a_of_type_ComTencentMobileqqArkArkMessageServerLogic$IAnalyzeTextIntentByServerHandler;
+    ThreadManager.post(new aawm(this, localaawy, paramString), 5, null, true);
   }
 }
 

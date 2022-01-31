@@ -1,40 +1,36 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
-import com.tencent.mobileqq.filemanager.core.QfavFilePreviewController;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.activity.VerifyPwdView;
+import com.tencent.mobileqq.filemanager.app.FMObserver;
+import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 
-class acoy
-  implements Runnable
+public class acoy
+  extends FMObserver
 {
-  acoy(acox paramacox, Bundle paramBundle) {}
+  public acoy(VerifyPwdView paramVerifyPwdView) {}
   
-  public void run()
+  protected void a(int paramInt, String paramString)
   {
-    boolean bool = true;
-    QfavFilePreviewController.a(this.jdField_a_of_type_Acox.a, this.jdField_a_of_type_AndroidOsBundle.getInt("previewPort", 80));
-    QfavFilePreviewController.a(this.jdField_a_of_type_Acox.a, this.jdField_a_of_type_AndroidOsBundle.getLong("previewCode", 0L));
-    QfavFilePreviewController.a(this.jdField_a_of_type_Acox.a, this.jdField_a_of_type_AndroidOsBundle.getString("previewUid"));
-    QfavFilePreviewController.b(this.jdField_a_of_type_Acox.a, this.jdField_a_of_type_AndroidOsBundle.getString("previewHost"));
-    QfavFilePreviewController.c(this.jdField_a_of_type_Acox.a, this.jdField_a_of_type_AndroidOsBundle.getString("previewKey"));
-    if (QLog.isColorLevel()) {
-      QLog.i("QfavFilePreviewController", 2, "handleRemoteCmd: mHost=" + QfavFilePreviewController.a(this.jdField_a_of_type_Acox.a) + ", port=" + String.valueOf(QfavFilePreviewController.a(this.jdField_a_of_type_Acox.a)) + ", key=" + QfavFilePreviewController.b(this.jdField_a_of_type_Acox.a) + ", retCode =" + String.valueOf(QfavFilePreviewController.a(this.jdField_a_of_type_Acox.a)));
-    }
-    FilePreviewActivity.ControlerCallback localControlerCallback;
-    if (1 == QfavFilePreviewController.b(this.jdField_a_of_type_Acox.a))
+    FMToastUtil.a(paramString);
+  }
+  
+  protected void a(boolean paramBoolean)
+  {
+    if (!paramBoolean)
     {
-      localControlerCallback = this.jdField_a_of_type_Acox.a.a;
-      if (0L != QfavFilePreviewController.a(this.jdField_a_of_type_Acox.a)) {
-        break label320;
-      }
-    }
-    for (;;)
-    {
-      localControlerCallback.a(bool, QfavFilePreviewController.a(this.jdField_a_of_type_Acox.a), String.valueOf(QfavFilePreviewController.a(this.jdField_a_of_type_Acox.a)), QfavFilePreviewController.a(this.jdField_a_of_type_Acox.a), null, QfavFilePreviewController.b(this.jdField_a_of_type_Acox.a), null, QfavFilePreviewController.c(this.jdField_a_of_type_Acox.a));
-      QfavFilePreviewController.b(this.jdField_a_of_type_Acox.a, 3);
+      VerifyPwdView.a(this.a);
       return;
-      label320:
-      bool = false;
     }
+    VerifyPwdView.b(this.a);
+  }
+  
+  protected void b(int paramInt, String paramString)
+  {
+    FMToastUtil.a(paramString);
+    VerifyPwdView.c(this.a);
+  }
+  
+  protected void e()
+  {
+    VerifyPwdView.a(this.a);
   }
 }
 

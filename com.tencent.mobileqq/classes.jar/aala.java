@@ -1,45 +1,36 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.ArkAiDictMgr;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.utils.VasUtils;
-import com.tencent.wordsegment.WordSegment;
-import java.util.Locale;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.arcard.ARBlessWordFragment;
 
-public final class aala
-  implements Runnable
+public class aala
+  implements View.OnTouchListener
 {
-  public aala(QQAppInterface paramQQAppInterface) {}
+  public aala(ARBlessWordFragment paramARBlessWordFragment) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    try
-    {
-      if (ArkAiDictMgr.a(this.a))
-      {
-        WordSegment.uninit();
-        int i = WordSegment.init(ArkAppCenter.e() + '/');
-        if (i != 0)
-        {
-          ArkAppCenter.b("ArkApp.Dict", String.format(Locale.CHINA, "reloadWordData failed, ret=%d", new Object[] { Integer.valueOf(i) }));
-          return;
-        }
-        ArkAppCenter.b("ArkApp.Dict", String.format(Locale.CHINA, "reloadWordData success", new Object[0]));
-        ArkAiDictMgr.b = true;
-        VasUtils.a(this.a);
-        return;
+    if (!this.a.a) {
+      if (paramMotionEvent.getAction() == 0) {
+        ARBlessWordFragment.a(this.a).setAlpha(0.5F);
       }
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    for (;;)
     {
-      ArkAppCenter.b("ArkApp.Dict", "reloadWordData, UnsatisfiedLinkError, err:" + localUnsatisfiedLinkError.getMessage());
-      return;
+      return false;
+      if (paramMotionEvent.getAction() == 1)
+      {
+        ARBlessWordFragment.a(this.a).setAlpha(1.0F);
+        continue;
+        ARBlessWordFragment.a(this.a).setAlpha(1.0F);
+      }
     }
-    ArkAppCenter.b("ArkApp.Dict", String.format("reloadWordData, dict flag is off", new Object[0]));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aala
  * JD-Core Version:    0.7.0.1
  */

@@ -1,40 +1,21 @@
-import com.tencent.mobileqq.activity.aio.photo.IAIOImageProviderCallBack;
-import com.tencent.mobileqq.pic.PicInfoInterface.ErrInfo;
-import com.tencent.mobileqq.pic.PicResult;
-import com.tencent.mobileqq.pic.UiCallBack.DownAdapter;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipInfo;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager;
+import com.tencent.mobileqq.troop.data.TroopAioKeywordTipManager.Callback;
 
-public final class ajcs
-  extends UiCallBack.DownAdapter
+public class ajcs
+  implements Runnable
 {
-  public ajcs(WeakReference paramWeakReference, long paramLong1, int paramInt1, int paramInt2, long paramLong2, String paramString) {}
+  public ajcs(TroopAioKeywordTipManager paramTroopAioKeywordTipManager, TroopAioKeywordTipManager.Callback paramCallback, MessageRecord paramMessageRecord, TroopAioKeywordTipInfo paramTroopAioKeywordTipInfo) {}
   
-  public void a(int paramInt, PicResult paramPicResult)
+  public void run()
   {
-    IAIOImageProviderCallBack localIAIOImageProviderCallBack = (IAIOImageProviderCallBack)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localIAIOImageProviderCallBack != null)
-    {
-      if (paramPicResult.jdField_a_of_type_Int == 0) {
-        localIAIOImageProviderCallBack.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 1, this.jdField_a_of_type_JavaLangString, paramPicResult.jdField_a_of_type_Boolean);
-      }
-    }
-    else {
-      return;
-    }
-    localIAIOImageProviderCallBack.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 2, "step:" + paramPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.jdField_a_of_type_JavaLangString + ", desc:" + paramPicResult.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo.b, paramPicResult.jdField_a_of_type_Boolean);
-  }
-  
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    IAIOImageProviderCallBack localIAIOImageProviderCallBack = (IAIOImageProviderCallBack)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localIAIOImageProviderCallBack != null) {
-      localIAIOImageProviderCallBack.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, paramInt, this.jdField_b_of_type_Long, paramBoolean);
-    }
+    this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipManager$Callback.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioKeywordTipInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajcs
  * JD-Core Version:    0.7.0.1
  */

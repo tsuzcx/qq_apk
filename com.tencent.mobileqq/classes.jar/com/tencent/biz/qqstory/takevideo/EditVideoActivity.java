@@ -336,6 +336,7 @@ public class EditVideoActivity
       finish();
       return true;
     }
+    int i = getIntent().getIntExtra("uintype", -1);
     EditVideoParams localEditVideoParams = (EditVideoParams)getIntent().getParcelableExtra(EditVideoParams.class.getName());
     if ((getIntent().getBooleanExtra("extra_has_antishake", false)) && ((localEditVideoParams.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoParams$EditSource instanceof EditLocalGifSource)))
     {
@@ -376,58 +377,84 @@ public class EditVideoActivity
       VideoSourceHelper.nativeSetPlayStepFrameCount(1);
       VideoSourceHelper.nativeSetPlayGapFrameCount(1);
       getWindow().addFlags(1024);
-      setContentViewC(2130970821);
+      setContentViewC(2130970869);
       a(paramBundle);
-      StoryPublishParams.a("Q.qqstory.publish.edit.EditVideoActivity", localEditVideoParams.jdField_a_of_type_AndroidOsBundle);
-      this.a.a(this, localEditVideoParams);
-      this.a.j();
-      FileUtils.a(QQStoryConstant.c);
-      VideoEditReport.jdField_a_of_type_JavaLangString = (String)localObject;
-      VideoEditReport.jdField_b_of_type_JavaLangString = str1;
-      if ((!VideoEditReport.a()) || (VideoEnvironment.b() < 21)) {}
+      if (localEditVideoParams.jdField_a_of_type_AndroidOsBundle != null)
+      {
+        localEditVideoParams.jdField_a_of_type_AndroidOsBundle.putInt("uintype", i);
+        StoryPublishParams.a("Q.qqstory.publish.edit.EditVideoActivity", localEditVideoParams.jdField_a_of_type_AndroidOsBundle);
+        this.a.a(this, localEditVideoParams);
+        this.a.j();
+        FileUtils.a(QQStoryConstant.c);
+        VideoEditReport.jdField_a_of_type_JavaLangString = (String)localObject;
+        VideoEditReport.jdField_b_of_type_JavaLangString = str1;
+        if ((!VideoEditReport.a()) || (VideoEnvironment.b() < 21)) {}
+      }
     }
     catch (Throwable localThrowable)
     {
       try
       {
-        VideoSourceHelper.nativeSetMaxPhotoFrameCount(3);
-        SLog.b("Q.qqstory.publish.edit.EditVideoActivity", "EditVideoActivity set min frame!");
-        VideoEditReport.a("0X80076B5");
-        StoryReportor.a("aio_shoot", "exp_edit", 0, 0, new String[] { "1" });
-        LpReportInfo_pf00064.allReport(628, 1);
-        SLog.b("Q.qqstory.publish.edit.EditVideoActivity", "EditVideoActivity doOnCreate end");
-        if (localEditVideoParams.jdField_a_of_type_Int == 9) {
-          if (localEditVideoParams.b())
+        for (;;)
+        {
+          VideoSourceHelper.nativeSetMaxPhotoFrameCount(3);
+          SLog.b("Q.qqstory.publish.edit.EditVideoActivity", "EditVideoActivity set min frame!");
+          VideoEditReport.a("0X80076B5");
+          if (localEditVideoParams.jdField_a_of_type_Int == 2)
           {
-            i = 1;
-            new NowVideoReporter().h("video_edit").i("exp_edit").d(SmallVideoCameraCaptureFragment.jdField_a_of_type_JavaLangString).a(i).b(this.app);
-            paramBundle = (AddressDataProvider)((DataProviderManager)SuperManager.a(20)).a(1);
-            if (paramBundle.a() == null) {
-              paramBundle.b();
+            if (i != 1) {
+              break;
             }
-            c();
-            if (localEditVideoParams.jdField_a_of_type_Int == 10) {
-              ((RelativeLayout)findViewById(2131364381)).setBackgroundColor(-16777216);
-            }
-            return true;
-            localThrowable = localThrowable;
-            QLog.w("Q.qqstory.publish.edit.EditVideoActivity", 1, "VideoSourceHelper error:", localThrowable);
+            paramBundle = "3";
+            StoryReportor.a("aio_shoot", "exp_edit", 0, 0, new String[] { "1", paramBundle });
           }
+          LpReportInfo_pf00064.allReport(628, 1);
+          SLog.b("Q.qqstory.publish.edit.EditVideoActivity", "EditVideoActivity doOnCreate end");
+          if (localEditVideoParams.jdField_a_of_type_Int != 9) {
+            break label820;
+          }
+          if (!localEditVideoParams.b()) {
+            break label815;
+          }
+          i = 1;
+          new NowVideoReporter().h("video_edit").i("exp_edit").d(SmallVideoCameraCaptureFragment.jdField_a_of_type_JavaLangString).a(i).b(this.app);
+          paramBundle = (AddressDataProvider)((DataProviderManager)SuperManager.a(20)).a(1);
+          if (paramBundle.a() == null) {
+            paramBundle.b();
+          }
+          c();
+          if ((localEditVideoParams.jdField_a_of_type_Int == 10) || (localEditVideoParams.jdField_a_of_type_Int == 12)) {
+            ((RelativeLayout)findViewById(2131364405)).setBackgroundColor(-16777216);
+          }
+          return true;
+          localThrowable = localThrowable;
+          QLog.w("Q.qqstory.publish.edit.EditVideoActivity", 1, "VideoSourceHelper error:", localThrowable);
         }
+        SLog.e("Q.qqstory.publish.edit.EditVideoActivity", "video editVideoParams.mExtra is null!!");
       }
       catch (UnsatisfiedLinkError paramBundle)
       {
         for (;;)
         {
-          int i;
           if (QLog.isColorLevel())
           {
             QLog.d("Q.qqstory.publish.edit.EditVideoActivity", 2, "nativeSetMaxPhotoFrameCount:exp=", paramBundle);
             continue;
-            i = 2;
-            continue;
-            if (localEditVideoParams.jdField_a_of_type_Int == 10) {
-              ReportController.b(null, "dc00899", "Grp_tribe", "", "video_edit", "exp_edit", 0, 0, "", "", "", "");
+            if (i == 3000)
+            {
+              paramBundle = "2";
+            }
+            else
+            {
+              paramBundle = "1";
+              continue;
+              label815:
+              i = 2;
+              continue;
+              label820:
+              if (localEditVideoParams.jdField_a_of_type_Int == 10) {
+                ReportController.b(null, "dc00899", "Grp_tribe", "", "video_edit", "exp_edit", 0, 0, "", "", "", "");
+              }
             }
           }
         }

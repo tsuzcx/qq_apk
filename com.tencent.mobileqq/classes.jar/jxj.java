@@ -1,25 +1,24 @@
-import com.tencent.av.VideoController;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.ui.MultiVideoCtrlLayerUI4NewGroupChat;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.av.ui.MultiVideoCtrlLayerUIBase;
 
 public class jxj
   implements Runnable
 {
-  jxj(MultiVideoCtrlLayerUI4NewGroupChat paramMultiVideoCtrlLayerUI4NewGroupChat) {}
+  int jdField_a_of_type_Int;
+  long jdField_a_of_type_Long;
+  boolean jdField_a_of_type_Boolean;
+  int b;
+  
+  public jxj(MultiVideoCtrlLayerUIBase paramMultiVideoCtrlLayerUIBase, long paramLong, int paramInt1, boolean paramBoolean, int paramInt2)
+  {
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramInt2;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Int = paramInt1;
+  }
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.c, 2, "AutoCheckVideoRunnable");
-    }
-    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null) {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().an = true;
-    }
-    MultiVideoCtrlLayerUI4NewGroupChat.h(this.a);
-    if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null) {
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a.b);
-    }
+    this.jdField_a_of_type_ComTencentAvUiMultiVideoCtrlLayerUIBase.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, this.b);
   }
 }
 

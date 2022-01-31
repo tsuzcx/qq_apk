@@ -1,18 +1,25 @@
-import com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.widget.SendBottomBar;
 
 public class adjd
-  implements Runnable
+  implements View.OnClickListener
 {
-  public adjd(ImaxAdVideoPreloadManager paramImaxAdVideoPreloadManager, int paramInt) {}
+  public adjd(SendBottomBar paramSendBottomBar) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ImaxAdVideoPreloadManager.a(this.jdField_a_of_type_ComTencentMobileqqImaxadImaxAdVideoPreloadManager, this.jdField_a_of_type_Int);
+    if (SendBottomBar.a(this.a) != null) {
+      SendBottomBar.a(this.a).a();
+    }
+    FileManagerUtil.a(SendBottomBar.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adjd
  * JD-Core Version:    0.7.0.1
  */

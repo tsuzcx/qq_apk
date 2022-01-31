@@ -1,21 +1,19 @@
-import android.graphics.Xfermode;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.widget.DrawableContainer.ContainerState;
-import com.tencent.mobileqq.widget.XfermodeDrawable;
+import android.widget.ProgressBar;
+import com.tencent.mobileqq.vashealth.HealthBusinessPlugin;
 
 public class akje
-  extends DrawableContainer.ContainerState
+  implements Runnable
 {
-  public Xfermode a;
+  public akje(HealthBusinessPlugin paramHealthBusinessPlugin) {}
   
-  public Drawable newDrawable()
+  public void run()
   {
-    return new XfermodeDrawable(this, null, null);
+    this.a.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akje
  * JD-Core Version:    0.7.0.1
  */

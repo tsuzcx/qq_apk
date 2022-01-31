@@ -1,27 +1,20 @@
-import com.tencent.mobileqq.text.QzoneTextBuilder;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
+import java.util.List;
 
-public class ahzr
-  implements Comparator
+public final class ahzr
+  implements Runnable
 {
-  public ahzr(QzoneTextBuilder paramQzoneTextBuilder) {}
+  public ahzr(QQAppInterface paramQQAppInterface, List paramList) {}
   
-  public int compare(Object paramObject1, Object paramObject2)
+  public void run()
   {
-    int i = this.a.getSpanStart(paramObject1);
-    int j = this.a.getSpanStart(paramObject2);
-    if (i == j) {
-      return 0;
-    }
-    if (i > j) {
-      return 1;
-    }
-    return -1;
+    ShortVideoResourceManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaUtilList, new ahzs(this), "msf_quic_lib");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahzr
  * JD-Core Version:    0.7.0.1
  */

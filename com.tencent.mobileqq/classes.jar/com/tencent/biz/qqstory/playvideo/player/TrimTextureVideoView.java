@@ -9,9 +9,9 @@ import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer
 import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnSeekCompleteListener;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.takevideo.TakeVideoUtils;
-import nnu;
-import nnv;
-import nnw;
+import nph;
+import npi;
+import npj;
 
 public class TrimTextureVideoView
   extends TextureVideoView
@@ -41,8 +41,8 @@ public class TrimTextureVideoView
     super(paramContext);
     this.jdField_j_of_type_Boolean = true;
     this.jdField_k_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRunnable = new nnu(this);
-    this.jdField_b_of_type_JavaLangRunnable = new nnv(this);
+    this.jdField_a_of_type_JavaLangRunnable = new nph(this);
+    this.jdField_b_of_type_JavaLangRunnable = new npi(this);
     d();
   }
   
@@ -51,8 +51,8 @@ public class TrimTextureVideoView
     super(paramContext, paramAttributeSet);
     this.jdField_j_of_type_Boolean = true;
     this.jdField_k_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRunnable = new nnu(this);
-    this.jdField_b_of_type_JavaLangRunnable = new nnv(this);
+    this.jdField_a_of_type_JavaLangRunnable = new nph(this);
+    this.jdField_b_of_type_JavaLangRunnable = new npi(this);
     d();
   }
   
@@ -61,8 +61,8 @@ public class TrimTextureVideoView
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_j_of_type_Boolean = true;
     this.jdField_k_of_type_Boolean = true;
-    this.jdField_a_of_type_JavaLangRunnable = new nnu(this);
-    this.jdField_b_of_type_JavaLangRunnable = new nnv(this);
+    this.jdField_a_of_type_JavaLangRunnable = new nph(this);
+    this.jdField_b_of_type_JavaLangRunnable = new npi(this);
     d();
   }
   
@@ -71,7 +71,7 @@ public class TrimTextureVideoView
     int i1 = jdField_h_of_type_Int + 1;
     jdField_h_of_type_Int = i1;
     this.jdField_i_of_type_Int = i1;
-    setOnErrorListener(new nnw(this));
+    setOnErrorListener(new npj(this));
     super.setOnSeekCompleteListener(this);
   }
   

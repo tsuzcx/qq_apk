@@ -1,18 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.av.utils.PopupDialogQQSide;
+import android.telephony.PhoneStateListener;
+import android.telephony.SignalStrength;
+import com.tencent.av.utils.SignalStrengthReport;
 
 public class kha
-  implements DialogInterface.OnClickListener
+  extends PhoneStateListener
 {
-  public kha(PopupDialogQQSide paramPopupDialogQQSide, DialogInterface.OnClickListener paramOnClickListener) {}
+  public kha(SignalStrengthReport paramSignalStrengthReport) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onSignalStrengthsChanged(SignalStrength paramSignalStrength)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
-    }
-    paramDialogInterface.dismiss();
+    super.onSignalStrengthsChanged(paramSignalStrength);
+    this.a.c = this.a.a(paramSignalStrength);
+    this.a.d = this.a.b(paramSignalStrength);
   }
 }
 

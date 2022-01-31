@@ -1,54 +1,40 @@
-import android.os.Bundle;
-import android.os.Handler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.open.agent.BindGroupConfirmActivity;
-import com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoResponse;
-import mqq.observer.BusinessObserver;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.mobileqq.webprocess.WebProcessManager;
+import com.tencent.qphone.base.util.QLog;
 
 public class aklt
-  implements BusinessObserver
+  extends BroadcastReceiver
 {
-  public aklt(BindGroupConfirmActivity paramBindGroupConfirmActivity) {}
+  public aklt(WebProcessManager paramWebProcessManager) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    Object localObject = paramBundle.getString("ssoAccount");
-    if (!this.a.app.getCurrentAccountUin().equals(localObject)) {}
-    for (;;)
+    paramContext = paramIntent.getAction();
+    if (paramContext == null) {}
+    do
     {
-      return;
-      this.a.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.a.jdField_a_of_type_JavaLangRunnable);
-      if (paramBoolean)
+      do
       {
-        localObject = new GetAppInfoProto.GetAppinfoResponse();
-        try
-        {
-          paramBundle = paramBundle.getByteArray("data");
-          if (paramBundle != null)
-          {
-            ((GetAppInfoProto.GetAppinfoResponse)localObject).mergeFrom(paramBundle);
-            if ((((GetAppInfoProto.GetAppinfoResponse)localObject).has()) && (((GetAppInfoProto.GetAppinfoResponse)localObject).ret.get() == 0))
-            {
-              paramBundle = this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-              paramBundle.what = 3;
-              paramBundle.obj = localObject;
-              this.a.jdField_a_of_type_AndroidOsHandler.sendMessage(paramBundle);
-              return;
-            }
-          }
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("WebProcessManager", 2, "action=" + paramContext);
         }
-        catch (Exception paramBundle)
-        {
-          paramBundle.printStackTrace();
+        if (!paramContext.equals("com.tencent.mobileqq.webprocess.restart_web_process")) {
+          break;
         }
-      }
-    }
+        this.a.f();
+      } while (!paramIntent.getBooleanExtra("isPreloadWebProcess", false));
+      this.a.i();
+      return;
+    } while (!paramContext.equals("com.tencent.mobileqq.webprocess.report"));
+    this.a.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aklt
  * JD-Core Version:    0.7.0.1
  */

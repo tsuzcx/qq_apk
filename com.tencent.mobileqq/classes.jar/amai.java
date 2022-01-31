@@ -1,46 +1,24 @@
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qqpim.QQPimDefineList;
-import cooperation.qqpim.QQPimGetTipsInfoIPC;
-import cooperation.qqpim.QQPimPluginLoadRunnable.IPluginLoadListener;
-import cooperation.qqpim.QQPimPluginProxyService;
+import android.view.animation.TranslateAnimation;
+import android.widget.RelativeLayout;
+import com.tencent.widget.ActionSheet;
 
 public class amai
-  implements QQPimPluginLoadRunnable.IPluginLoadListener
+  implements Runnable
 {
-  public amai(QQPimGetTipsInfoIPC paramQQPimGetTipsInfoIPC) {}
+  public amai(ActionSheet paramActionSheet) {}
   
-  public void a()
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.hasInstalled() ");
-    }
-    QQPimPluginProxyService.a(QQPimGetTipsInfoIPC.a(this.a));
-  }
-  
-  public void a(float paramFloat)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.downloading() " + paramFloat);
-    }
-  }
-  
-  public void a(int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.downloadError() " + paramInt);
-    }
-  }
-  
-  public void b()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i(QQPimDefineList.a, 2, "QQPimGetTipsInfoIPC.downloadBegin()");
-    }
+    ActionSheet.a(this.a, new TranslateAnimation(0.0F, 0.0F, 0.0F, ActionSheet.a(this.a).getHeight()));
+    ActionSheet.a(this.a).setDuration(200L);
+    ActionSheet.a(this.a).setFillAfter(true);
+    ActionSheet.a(this.a).startAnimation(ActionSheet.a(this.a));
+    ActionSheet.a(this.a).setAnimationListener(new amaj(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     amai
  * JD-Core Version:    0.7.0.1
  */

@@ -92,7 +92,7 @@ public class StructMsgItemLayout6Adapter
       localTextView.setEllipsize(TextUtils.TruncateAt.END);
       localTextView.setIncludeFontPadding(false);
       if (paramBoolean) {
-        localTextView.setBackgroundResource(2130839688);
+        localTextView.setBackgroundResource(2130839694);
       }
       int i = AIOUtils.a(8.0F, localResources);
       int j = AIOUtils.a(12.0F, localResources);
@@ -118,7 +118,7 @@ public class StructMsgItemLayout6Adapter
       } while (!paramBoolean);
       paramView = localTextView;
     } while (localTextView.getBackground() != null);
-    localTextView.setBackgroundResource(2130839688);
+    localTextView.setBackgroundResource(2130839694);
     return localTextView;
   }
   
@@ -444,7 +444,7 @@ public class StructMsgItemLayout6Adapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout6Adapter
  * JD-Core Version:    0.7.0.1
  */

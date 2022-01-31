@@ -1,27 +1,33 @@
-import android.graphics.Bitmap;
-import android.widget.ImageView;
-import com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawable.URLDrawableListener;
-import com.tencent.mobileqq.utils.ImageUtil;
+import android.view.View;
+import com.tencent.biz.now.NowVideoController;
+import com.tencent.mobileqq.widget.PAVideoView;
+import com.tencent.widget.AbsListView;
 
 public class kob
-  implements URLDrawable.URLDrawableListener
+  implements Runnable
 {
-  public kob(LebaSearchPluginManagerActivity paramLebaSearchPluginManagerActivity) {}
+  public kob(NowVideoController paramNowVideoController, int paramInt1, int paramInt2) {}
   
-  public void onLoadCanceled(URLDrawable paramURLDrawable) {}
-  
-  public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable) {}
-  
-  public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt) {}
-  
-  public void onLoadSuccessed(URLDrawable paramURLDrawable)
+  public void run()
   {
-    paramURLDrawable = ImageUtil.a(paramURLDrawable);
-    Bitmap localBitmap = ImageUtil.c(paramURLDrawable, 110, 110);
-    this.a.c.setImageBitmap(localBitmap);
-    paramURLDrawable.recycle();
+    if (NowVideoController.a(this.jdField_a_of_type_ComTencentBizNowNowVideoController) == null) {}
+    for (;;)
+    {
+      return;
+      int i = this.jdField_a_of_type_Int;
+      while (i <= this.b)
+      {
+        Object localObject = NowVideoController.a(this.jdField_a_of_type_ComTencentBizNowNowVideoController).getChildAt(i - this.jdField_a_of_type_Int);
+        if (localObject != null)
+        {
+          localObject = (PAVideoView)((View)localObject).findViewById(2131362177);
+          if ((localObject != null) && (((PAVideoView)localObject).j == 4)) {
+            ((PAVideoView)localObject).c();
+          }
+        }
+        i += 1;
+      }
+    }
   }
 }
 

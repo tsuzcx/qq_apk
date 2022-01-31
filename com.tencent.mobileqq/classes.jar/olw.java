@@ -1,21 +1,34 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.qqstory.base.videoupload.StoryVideoUploadManager;
-import com.tencent.biz.qqstory.model.StoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.troop.memories.TroopStoryItemInfo;
+import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.widget.TextView;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager.SlideShowAdapter;
+import com.tencent.biz.qqstory.takevideo.slideshow.SlideShowPhotoListManager.SlideShowViewHolder;
+import com.tencent.biz.troopgift.GridListAdapter;
+import com.tencent.mobileqq.util.DisplayUtil;
 
-class olw
-  implements View.OnClickListener
+public class olw
+  implements Runnable
 {
-  olw(olv paramolv, TroopStoryItemInfo paramTroopStoryItemInfo) {}
+  public olw(SlideShowPhotoListManager.SlideShowAdapter paramSlideShowAdapter, SlideShowPhotoListManager.SlideShowViewHolder paramSlideShowViewHolder) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    paramView = ((StoryManager)SuperManager.a(5)).a(this.jdField_a_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryItemInfo.storyId);
-    if (paramView != null) {
-      ((StoryVideoUploadManager)SuperManager.a().b(3)).a(paramView);
+    int i = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowViewHolder.a.getWidth();
+    int j = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowViewHolder.a.getHeight();
+    if ((i == 0) || (j == 0)) {
+      return;
     }
+    if (SlideShowPhotoListManager.SlideShowAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowAdapter) == null)
+    {
+      int k = DisplayUtil.a(SlideShowPhotoListManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowAdapter.a), 1.0F);
+      new Paint().setTextSize(DisplayUtil.a(SlideShowPhotoListManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowAdapter.a), 11.0F));
+      int m = DisplayUtil.a(SlideShowPhotoListManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowAdapter.a), 1.0F);
+      SlideShowPhotoListManager.SlideShowAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowAdapter, GridListAdapter.a(i, j, k, 0.0F, m, Color.parseColor("#12B7F5")));
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowViewHolder.a.setBackgroundDrawable(new BitmapDrawable(SlideShowPhotoListManager.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowAdapter.a).getResources(), SlideShowPhotoListManager.SlideShowAdapter.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideShowPhotoListManager$SlideShowAdapter)));
   }
 }
 

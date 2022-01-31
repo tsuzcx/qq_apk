@@ -1,19 +1,29 @@
-import com.tencent.biz.pubaccount.Advertisement.view.AdProgressButton;
-import com.tencent.biz.pubaccount.NativeAd.fragment.ReadInJoyNativeAdFragment;
+import android.os.Bundle;
+import com.tencent.mobileqq.WebSsoBody.WebSsoResponseBody;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.qphone.base.util.QLog;
+import mqq.observer.BusinessObserver;
 
-public class kwz
-  implements Runnable
+public final class kwz
+  implements BusinessObserver
 {
-  public kwz(ReadInJoyNativeAdFragment paramReadInJoyNativeAdFragment) {}
-  
-  public void run()
+  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    ReadInJoyNativeAdFragment.a(this.a).setBackgroundResource(2130838504);
-    ReadInJoyNativeAdFragment.a(this.a).setText(this.a.getText(2131438675));
-    ReadInJoyNativeAdFragment.a(this.a).setTextColor(-1);
-    ReadInJoyNativeAdFragment.a(this.a).setProgress(0);
-    ReadInJoyNativeAdFragment.a(this.a).setClickable(true);
-    ReadInJoyNativeAdFragment.c(this.a, 0);
+    if (paramBoolean) {}
+    try
+    {
+      paramBundle = paramBundle.getByteArray("data");
+      if (paramBundle != null)
+      {
+        WebSsoBody.WebSsoResponseBody localWebSsoResponseBody = new WebSsoBody.WebSsoResponseBody();
+        localWebSsoResponseBody.mergeFrom(paramBundle);
+        if ((localWebSsoResponseBody.ret.get() == 0) && (QLog.isColorLevel())) {
+          QLog.d("NativeAdUtils", 2, "doAdReport success!");
+        }
+      }
+      return;
+    }
+    catch (Exception paramBundle) {}
   }
 }
 

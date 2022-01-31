@@ -1,19 +1,21 @@
-import com.tencent.biz.common.offline.HtmlOffline;
-import mqq.app.AppRuntime;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.forward.ForwardFileBaseOption;
 
-public final class adko
-  implements Runnable
+public class adko
+  implements DialogInterface.OnClickListener
 {
-  public adko(AppRuntime paramAppRuntime) {}
+  public adko(ForwardFileBaseOption paramForwardFileBaseOption) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    HtmlOffline.b("3136", this.a, true, new adkp(this));
+    this.a.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adko
  * JD-Core Version:    0.7.0.1
  */

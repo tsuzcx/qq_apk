@@ -1,36 +1,30 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity;
-import com.tencent.mobileqq.filemanager.data.FileCategoryAdapter.ItemHolder;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.MobileQQ;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.profile.like.PraiseManager;
+import com.tencent.mobileqq.profile.like.PraiseManager.OnPraiseSetCallback;
+import java.lang.ref.WeakReference;
 
-public class accf
-  implements View.OnClickListener
+class accf
+  implements PraiseManager.OnPraiseSetCallback
 {
-  public accf(FMLocalFileActivity paramFMLocalFileActivity) {}
+  accf(acbg paramacbg) {}
   
-  public void onClick(View paramView)
+  public void a(int paramInt1, int paramInt2, String paramString, Bundle paramBundle)
   {
-    if (!this.a.a()) {
-      if (QLog.isColorLevel()) {
-        QLog.i(FMLocalFileActivity.e, 2, "click too fast , wait a minute.");
+    MessengerService localMessengerService = (MessengerService)this.a.a.get();
+    if (localMessengerService != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("id", paramInt2);
+      localBundle.putInt("code", paramInt1);
+      localBundle.putString("url", paramString);
+      paramBundle.putBundle("response", localBundle);
+      localMessengerService.a(paramBundle);
+      if ((paramInt1 == 0) && (MessengerService.e(localMessengerService) != null) && ((MessengerService.f(localMessengerService) instanceof QQAppInterface))) {
+        ((PraiseManager)((QQAppInterface)MessengerService.g(localMessengerService)).getManager(208)).a(paramInt2, true, "from_praise_mall");
       }
     }
-    do
-    {
-      return;
-      this.a.e();
-      paramView = (FileCategoryAdapter.ItemHolder)paramView.getTag();
-    } while (paramView.a == 0);
-    int i = paramView.a;
-    paramView = this.a.app.getApplication().getSharedPreferences("aio_last_select_file", 0).edit();
-    paramView.putBoolean("last_select_All", true);
-    paramView.commit();
-    FMLocalFileActivity.a(this.a, i);
   }
 }
 

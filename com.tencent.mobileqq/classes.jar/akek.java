@@ -1,23 +1,24 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AntiphingToast;
-import java.util.TimerTask;
+import android.content.DialogInterface.OnClickListener;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.utils.QQCustomDialogThreeBtns;
 
 public class akek
-  extends TimerTask
+  implements View.OnClickListener
 {
-  public akek(AntiphingToast paramAntiphingToast) {}
+  public akek(QQCustomDialogThreeBtns paramQQCustomDialogThreeBtns, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Message localMessage = new Message();
-    localMessage.what = 1;
-    this.a.a.sendMessage(localMessage);
+    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
+      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns, 0);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialogThreeBtns.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     akek
  * JD-Core Version:    0.7.0.1
  */

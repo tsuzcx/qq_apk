@@ -1,27 +1,22 @@
-import com.tencent.mobileqq.shortvideo.ShortVideoBusiManager;
-import com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo;
-import com.tencent.mobileqq.shortvideo.ShortVideoPreDownloader;
-import com.tencent.mobileqq.shortvideo.ShortVideoReq;
-import java.util.Iterator;
-import java.util.concurrent.PriorityBlockingQueue;
+import android.graphics.Rect;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import com.tencent.mobileqq.richmedia.capture.view.CameraCaptureView;
+import com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
 
 public class ahlk
-  implements Runnable
+  implements Camera.AutoFocusCallback
 {
-  public ahlk(ShortVideoPreDownloader paramShortVideoPreDownloader) {}
+  public ahlk(CameraCaptureView paramCameraCaptureView, File paramFile, int paramInt, boolean paramBoolean) {}
   
-  public void run()
+  public void onAutoFocus(boolean paramBoolean, Camera paramCamera)
   {
-    Iterator localIterator = this.a.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.iterator();
-    while (localIterator.hasNext())
-    {
-      ShortVideoReq localShortVideoReq = (ShortVideoReq)localIterator.next();
-      ShortVideoBusiManager.a(localShortVideoReq, this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-      if (localShortVideoReq.a != null) {
-        ShortVideoPreDownloader.a("consumeAllThumbsInPendingQueue", "consume thumb, uniseq=" + localShortVideoReq.a.a);
-      }
+    if (QLog.isColorLevel()) {
+      QLog.d("CameraCaptureView", 2, "requestFocus when capture : " + paramBoolean);
     }
-    this.a.jdField_a_of_type_JavaUtilConcurrentPriorityBlockingQueue.clear();
+    CameraCaptureView.a().a(this.jdField_a_of_type_JavaIoFile, new Rect(0, 0, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView.b), this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCameraCaptureView, this.jdField_a_of_type_Int, this.jdField_a_of_type_Boolean, 1);
   }
 }
 

@@ -1,10 +1,19 @@
-import java.io.File;
+import android.content.Context;
+import android.widget.ScrollView;
+import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
 
-public abstract interface wbg
+public class wbg
+  extends ScrollView
 {
-  public abstract File a(String paramString);
+  public wbg(TroopChatPie paramTroopChatPie, Context paramContext)
+  {
+    super(paramContext);
+  }
   
-  public abstract String c();
+  public void setOverScrollMode(int paramInt)
+  {
+    super.setOverScrollMode(2);
+  }
 }
 
 

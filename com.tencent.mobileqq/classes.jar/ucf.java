@@ -1,13 +1,13 @@
-import com.tencent.mobileqq.activity.TroopTransferActivity.TroopMemberListAdapter;
+import com.tencent.mobileqq.activity.TroopMemberListActivity.ListAdapter;
 
-class ucf
+public class ucf
   implements Runnable
 {
-  ucf(uce paramuce) {}
+  public ucf(TroopMemberListActivity.ListAdapter paramListAdapter) {}
   
   public void run()
   {
-    this.a.a.notifyDataSetChanged();
+    this.a.notifyDataSetChanged();
   }
 }
 

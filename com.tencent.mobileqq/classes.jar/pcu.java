@@ -1,11 +1,17 @@
-class pcu
+import android.text.TextUtils;
+import com.tencent.biz.webviewplugin.ReadInJoyWebRenderPlugin;
+import com.tencent.mobileqq.webview.swift.utils.SwiftOfflineDataUtils;
+
+public class pcu
   implements Runnable
 {
-  pcu(pct parampct, int paramInt1, int paramInt2, int paramInt3, int paramInt4) {}
+  public pcu(ReadInJoyWebRenderPlugin paramReadInJoyWebRenderPlugin) {}
   
   public void run()
   {
-    this.jdField_a_of_type_Pct.invalidate(this.jdField_a_of_type_Int, this.b, this.c, this.d);
+    if (!TextUtils.isEmpty(ReadInJoyWebRenderPlugin.a(this.a))) {
+      SwiftOfflineDataUtils.a(ReadInJoyWebRenderPlugin.a(this.a));
+    }
   }
 }
 

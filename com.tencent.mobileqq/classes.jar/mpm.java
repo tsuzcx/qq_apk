@@ -1,20 +1,42 @@
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.IBitmapCallback;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.ImageRequest;
-import com.tencent.biz.pubaccount.readinjoy.view.imageloader.RunningJob;
-import java.lang.ref.WeakReference;
+import android.widget.SeekBar;
+import android.widget.SeekBar.OnSeekBarChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsPlayManager.VideoPlayParam;
 
 public class mpm
-  implements Runnable
+  implements SeekBar.OnSeekBarChangeListener
 {
-  public mpm(RunningJob paramRunningJob, WeakReference paramWeakReference, Throwable paramThrowable) {}
+  public mpm(FastWebVideoFeedsPlayManager paramFastWebVideoFeedsPlayManager) {}
   
-  public void run()
+  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.a.a) {}
-    while (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) {
+    if ((FastWebVideoFeedsPlayManager.a(this.a) == null) || (!paramBoolean)) {
       return;
     }
-    ((IBitmapCallback)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewImageloaderRunningJob.a, this.jdField_a_of_type_JavaLangThrowable);
+    FastWebVideoFeedsPlayManager.b(this.a, System.currentTimeMillis());
+    long l = FastWebVideoFeedsPlayManager.a(this.a).b();
+    double d = paramInt / 100.0D;
+    paramInt = (int)(l * d);
+    VideoFeedsHelper.a(FastWebVideoFeedsPlayManager.a(this.a).a, paramInt);
+  }
+  
+  public void onStartTrackingTouch(SeekBar paramSeekBar)
+  {
+    FastWebVideoFeedsPlayManager.d(this.a, true);
+  }
+  
+  public void onStopTrackingTouch(SeekBar paramSeekBar)
+  {
+    if (FastWebVideoFeedsPlayManager.a(this.a) == null) {
+      return;
+    }
+    FastWebVideoFeedsPlayManager.d(this.a, false);
+    int i = paramSeekBar.getProgress();
+    long l = FastWebVideoFeedsPlayManager.a(this.a).b();
+    i = (int)(i / 100.0D * l);
+    FastWebVideoFeedsPlayManager.a(this.a).a(i);
   }
 }
 

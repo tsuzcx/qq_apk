@@ -1,56 +1,39 @@
-import android.util.SparseIntArray;
-import com.tencent.mobileqq.emosm.view.DragSortListView;
-import java.util.ArrayList;
+import android.accounts.Account;
+import android.accounts.AccountManager;
+import com.tencent.mobileqq.contactsync.ContactSyncManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.locks.Lock;
 
 public class abtl
+  implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray;
-  private ArrayList jdField_a_of_type_JavaUtilArrayList;
+  public abtl(ContactSyncManager paramContactSyncManager, Account[] paramArrayOfAccount) {}
   
-  public abtl(DragSortListView paramDragSortListView, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_AndroidUtilSparseIntArray = new SparseIntArray(paramInt);
-    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(paramInt);
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public int a(int paramInt)
-  {
-    return this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt, -1);
-  }
-  
-  public void a()
-  {
-    this.jdField_a_of_type_AndroidUtilSparseIntArray.clear();
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    int i = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt1, -1);
-    if (i != paramInt2)
+    ContactSyncManager.a(this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager).lock();
+    int i = 1;
+    try
     {
-      if (i != -1) {
-        break label77;
+      while (i < this.jdField_a_of_type_ArrayOfAndroidAccountsAccount.length)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ContactSync.Manager", 2, "initSyncAccount | delAccount = " + this.jdField_a_of_type_ArrayOfAndroidAccountsAccount[i]);
+        }
+        ContactSyncManager.a(this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager).removeAccount(this.jdField_a_of_type_ArrayOfAndroidAccountsAccount[i], null, null);
+        i += 1;
       }
-      if (this.jdField_a_of_type_AndroidUtilSparseIntArray.size() == this.jdField_a_of_type_Int) {
-        this.jdField_a_of_type_AndroidUtilSparseIntArray.delete(((Integer)this.jdField_a_of_type_JavaUtilArrayList.remove(0)).intValue());
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidUtilSparseIntArray.put(paramInt1, paramInt2);
-      this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramInt1));
       return;
-      label77:
-      this.jdField_a_of_type_JavaUtilArrayList.remove(Integer.valueOf(paramInt1));
+    }
+    catch (Throwable localThrowable) {}finally
+    {
+      ContactSyncManager.a(this.jdField_a_of_type_ComTencentMobileqqContactsyncContactSyncManager).unlock();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     abtl
  * JD-Core Version:    0.7.0.1
  */

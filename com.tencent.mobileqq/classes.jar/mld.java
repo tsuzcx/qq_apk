@@ -1,27 +1,15 @@
-import android.widget.BaseAdapter;
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngine;
-import com.tencent.biz.pubaccount.readinjoy.model.FastWebModule;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.FastWebActivity;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.FastWebArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ItemDatasListUtils;
-import java.util.List;
+import com.tencent.biz.pubaccount.readinjoy.view.BaseTabbar.TabHolder;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadinjoyTabbar.Tab;
 
 public class mld
   implements Runnable
 {
-  public mld(FastWebActivity paramFastWebActivity) {}
+  public mld(ReadinjoyTabbar paramReadinjoyTabbar, int paramInt, ReadinjoyTabbar.Tab paramTab) {}
   
   public void run()
   {
-    Object localObject = FastWebActivity.a(this.a).getCommentList();
-    ItemDatasListUtils.a(FastWebActivity.a(this.a), (List)localObject, FastWebActivity.a(this.a), FastWebActivity.a(this.a));
-    localObject = ReadInJoyLogicEngine.a().a();
-    if (localObject != null) {
-      ((FastWebModule)localObject).a(FastWebActivity.a(this.a).j, FastWebActivity.a(this.a));
-    }
-    FastWebActivity.a(this.a).notifyDataSetChanged();
-    this.a.a(FastWebActivity.a(this.a));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabbar.a(this.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadinjoyTabbar$Tab.a.a);
   }
 }
 

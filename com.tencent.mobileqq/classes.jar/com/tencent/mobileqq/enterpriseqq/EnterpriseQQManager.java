@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.enterpriseqq;
 
-import acaa;
-import acab;
-import acac;
+import achc;
+import achd;
+import ache;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
@@ -44,8 +44,8 @@ public class EnterpriseQQManager
   
   private EnterpriseQQManager(QQAppInterface paramQQAppInterface)
   {
-    this.jdField_a_of_type_JavaLangRunnable = new acaa(this);
-    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new acab(this, 4, true, true, 0L, false, false, "EnterpriseQQManager");
+    this.jdField_a_of_type_JavaLangRunnable = new achc(this);
+    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new achd(this, 4, true, true, 0L, false, false, "EnterpriseQQManager");
     if (paramQQAppInterface != null) {
       a(paramQQAppInterface);
     }
@@ -77,7 +77,7 @@ public class EnterpriseQQManager
       localIntent.putExtra("url", paramButtonInfo.toString());
       localIntent.putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
       localIntent.putExtra("puin", paramString);
-      localIntent.putExtra("assignBackText", paramContext.getResources().getString(2131433681));
+      localIntent.putExtra("assignBackText", paramContext.getResources().getString(2131433698));
       if (paramString.equalsIgnoreCase("2632129500")) {
         localIntent.putExtra("hide_operation_bar", true);
       }
@@ -239,7 +239,7 @@ public class EnterpriseQQManager
           }
           this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
           this.jdField_a_of_type_AndroidContentContext = paramContext;
-          paramContext = new acac(this);
+          paramContext = new ache(this);
           paramContext.a = paramString2;
           paramContext.b = ???;
           synchronized (jdField_b_of_type_ArrayOfByte)
@@ -261,7 +261,7 @@ public class EnterpriseQQManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager
  * JD-Core Version:    0.7.0.1
  */

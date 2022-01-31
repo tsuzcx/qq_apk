@@ -1,6 +1,6 @@
 package cooperation.qzone.model;
 
-import ames;
+import amuw;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.Parcelable.Creator;
@@ -9,7 +9,7 @@ import java.util.Map;
 public class VideoInfo
   implements Parcelable
 {
-  public static final Parcelable.Creator CREATOR = new ames();
+  public static final Parcelable.Creator CREATOR = new amuw();
   public byte a;
   public int a;
   public long a;
@@ -43,6 +43,7 @@ public class VideoInfo
   public String e;
   public boolean e;
   public int f;
+  public long f;
   public String f;
   public boolean f;
   public int g;
@@ -123,13 +124,13 @@ public class VideoInfo
       paramParcel.writeLong(this.jdField_d_of_type_Long);
       paramParcel.writeString(this.jdField_f_of_type_JavaLangString);
       if (!this.jdField_i_of_type_Boolean) {
-        break label362;
+        break label370;
       }
       paramInt = 1;
       label252:
       paramParcel.writeInt(paramInt);
       if (!this.jdField_j_of_type_Boolean) {
-        break label367;
+        break label375;
       }
       paramInt = 1;
       label266:
@@ -142,29 +143,30 @@ public class VideoInfo
       paramParcel.writeLong(this.jdField_e_of_type_Long);
       paramParcel.writeInt(this.jdField_l_of_type_Int);
       if (!this.jdField_k_of_type_Boolean) {
-        break label372;
+        break label380;
       }
       paramInt = 1;
       label336:
       paramParcel.writeInt(paramInt);
       if (!this.jdField_l_of_type_Boolean) {
-        break label377;
+        break label385;
       }
     }
-    label362:
-    label367:
-    label372:
-    label377:
+    label385:
     for (paramInt = n;; paramInt = 0)
     {
       paramParcel.writeInt(paramInt);
+      paramParcel.writeLong(this.jdField_f_of_type_Long);
       return;
       m = 0;
       break;
+      label370:
       paramInt = 0;
       break label252;
+      label375:
       paramInt = 0;
       break label266;
+      label380:
       paramInt = 0;
       break label336;
     }

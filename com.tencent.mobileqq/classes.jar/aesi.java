@@ -1,16 +1,25 @@
-import com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity;
-import com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel;
+import android.app.Activity;
+import com.tencent.mobileqq.nearby.now.StoryPlayController;
+import com.tencent.mobileqq.nearby.now.view.widget.StoryNewGuideDialog;
 
 public class aesi
   implements Runnable
 {
-  public aesi(NearbyProfileDisplayTribePanel paramNearbyProfileDisplayTribePanel) {}
+  public aesi(StoryPlayController paramStoryPlayController) {}
   
   public void run()
   {
-    if (this.a.a.isResume()) {
-      this.a.a.d();
+    if ((StoryPlayController.a(this.a) != null) && (StoryPlayController.a(this.a).isShowing()))
+    {
+      if (((this.a.a instanceof Activity)) && ((StoryPlayController.b(this.a)) || (((Activity)this.a.a).isFinishing()))) {
+        StoryPlayController.a(this.a, null);
+      }
     }
+    else {
+      return;
+    }
+    StoryPlayController.a(this.a).dismiss();
+    StoryPlayController.a(this.a, null);
   }
 }
 

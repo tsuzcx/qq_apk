@@ -1,22 +1,66 @@
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.TextView;
-import com.tencent.mobileqq.activity.FriendProfileImageActivity;
+import android.util.Pair;
+import android.widget.Toast;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.data.Card;
+import com.tencent.util.WeakReferenceHandler;
 
 public class sos
-  implements Animation.AnimationListener
+  extends CardObserver
 {
-  public sos(FriendProfileImageActivity paramFriendProfileImageActivity, TextView paramTextView) {}
+  public sos(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void e(boolean paramBoolean, Object paramObject)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.clearAnimation();
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    for (;;)
+    {
+      try
+      {
+        if (this.a.isFinishing()) {
+          break;
+        }
+        this.a.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.removeCallbacks(this.a.jdField_b_of_type_JavaLangRunnable);
+        this.a.G();
+        if ((!paramBoolean) || (paramObject == null)) {
+          break;
+        }
+        if ((paramObject instanceof Card))
+        {
+          ThreadManager.post(new sot(this, (Card)paramObject), 5, null, true);
+          return;
+        }
+        if (!(paramObject instanceof Pair)) {
+          break;
+        }
+        paramObject = (Pair)paramObject;
+        if (((Integer)paramObject.first).intValue() == 101107)
+        {
+          this.a.f = 1;
+          this.a.J();
+          return;
+        }
+      }
+      catch (Exception paramObject)
+      {
+        paramObject.printStackTrace();
+        return;
+      }
+      if (((Integer)paramObject.first).intValue() == 101108)
+      {
+        this.a.f = 2;
+      }
+      else
+      {
+        if ((((Integer)paramObject.first).intValue() >= 400000) && (((Integer)paramObject.first).intValue() <= 499999))
+        {
+          Toast.makeText(this.a.getApplicationContext(), (CharSequence)paramObject.second, 0).show();
+          return;
+        }
+        Toast.makeText(this.a.getApplicationContext(), 2131436744, 0).show();
+      }
+    }
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.now.enter;
 
-import afmu;
-import afmv;
-import afmw;
-import afmx;
-import afmy;
-import afmz;
-import afna;
+import agaa;
+import agab;
+import agac;
+import agad;
+import agae;
+import agaf;
+import agag;
 import android.annotation.TargetApi;
 import android.content.res.Resources;
 import android.os.Handler.Callback;
@@ -53,7 +53,7 @@ public class ConversationNowController
   protected final int a;
   protected long a;
   private Resources jdField_a_of_type_AndroidContentResResources;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new afmu(this);
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new agaa(this);
   private View jdField_a_of_type_AndroidViewView;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private Interpolator jdField_a_of_type_AndroidViewAnimationInterpolator = new AccelerateDecelerateInterpolator();
@@ -66,7 +66,7 @@ public class ConversationNowController
   private BaseActivity jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
   private HongBao2018ListView jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView;
   public WeakReferenceHandler a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new afmy(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new agae(this);
   private String jdField_a_of_type_JavaLangString;
   protected boolean a;
   protected final int b;
@@ -103,8 +103,8 @@ public class ConversationNowController
     this.jdField_a_of_type_ComTencentMobileqqActivityConversation = paramConversation;
     this.jdField_a_of_type_AndroidViewViewGroup = paramViewGroup;
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a();
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363941));
-    this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView = ((HongBao2018ListView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363948));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363964));
+    this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView = ((HongBao2018ListView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131363972));
     this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(16908307);
     this.jdField_e_of_type_Int = DisplayUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, 10.0F);
     this.jdField_a_of_type_AndroidContentResResources = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getResources();
@@ -113,9 +113,9 @@ public class ConversationNowController
     for (int m = ImmersiveUtils.a(this.jdField_a_of_type_AndroidWidgetFrameLayout.getContext());; m = 0)
     {
       this.k = (m + n);
-      this.l = (this.k + (int)this.jdField_a_of_type_AndroidContentResResources.getDimension(2131559469));
-      this.h = ((int)this.jdField_a_of_type_AndroidContentResResources.getDimension(2131559470));
-      this.i = ((int)this.jdField_a_of_type_AndroidContentResResources.getDimension(2131559471));
+      this.l = (this.k + (int)this.jdField_a_of_type_AndroidContentResResources.getDimension(2131559471));
+      this.h = ((int)this.jdField_a_of_type_AndroidContentResResources.getDimension(2131559472));
+      this.i = ((int)this.jdField_a_of_type_AndroidContentResResources.getDimension(2131559473));
       this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
       this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.removeMessages(1003);
       this.jdField_b_of_type_ComTencentUtilWeakReferenceHandler.sendEmptyMessage(1003);
@@ -148,8 +148,8 @@ public class ConversationNowController
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 1000 });
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(300L);
       this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new afmv(this, paramView2, paramView1, paramView3));
-      this.jdField_b_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new afmw(this, paramView3);
+      this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new agab(this, paramView2, paramView1, paramView3));
+      this.jdField_b_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new agac(this, paramView3);
     }
     this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.removeAllListeners();
     this.jdField_b_of_type_ComNineoldandroidsAnimationValueAnimator.cancel();
@@ -172,8 +172,8 @@ public class ConversationNowController
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator = ValueAnimator.ofInt(new int[] { 0, 1000 });
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setDuration(300L);
       this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.setInterpolator(this.jdField_a_of_type_AndroidViewAnimationInterpolator);
-      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new afmz(this, paramView2, paramView1, paramView3));
-      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new afna(this, paramView3, paramView1);
+      this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.addUpdateListener(new agaf(this, paramView2, paramView1, paramView3));
+      this.jdField_a_of_type_ComNineoldandroidsAnimationAnimator$AnimatorListener = new agag(this, paramView3, paramView1);
     }
     this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.removeAllListeners();
     this.jdField_a_of_type_ComNineoldandroidsAnimationValueAnimator.cancel();
@@ -191,7 +191,7 @@ public class ConversationNowController
     }
     if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout.getParent() == null))
     {
-      m = (int)this.jdField_a_of_type_AndroidContentResResources.getDimension(2131559469);
+      m = (int)this.jdField_a_of_type_AndroidContentResResources.getDimension(2131559471);
       FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-1, m);
       localLayoutParams.topMargin = this.k;
       this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, localLayoutParams);
@@ -199,9 +199,9 @@ public class ConversationNowController
     }
     if (this.jdField_b_of_type_AndroidViewViewGroup == null)
     {
-      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130969144, null));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365334));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365335));
+      this.jdField_b_of_type_AndroidViewViewGroup = ((ViewGroup)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity).inflate(2130969143, null));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365356));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewViewGroup.findViewById(2131365357));
     }
     if (paramBoolean) {}
     for (int m = 2;; m = 1)
@@ -358,12 +358,12 @@ public class ConversationNowController
     View localView;
     if (this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != null)
     {
-      localView = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(2131364912);
+      localView = this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.findViewById(2131364934);
       if (localView == null) {}
     }
     try
     {
-      localView.setBackgroundResource(2130839539);
+      localView.setBackgroundResource(2130839544);
       this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.setHongbaoEventCallback(this);
       this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.c();
       e(false);
@@ -554,7 +554,7 @@ public class ConversationNowController
     if (QLog.isColorLevel()) {
       QLog.d("ConversationNowController", 2, "[showTitle]");
     }
-    a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b(), this.jdField_a_of_type_ComTencentMobileqqActivityConversation.c(), this.jdField_a_of_type_ComTencentMobileqqActivityConversation.d());
+    a(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b(), this.jdField_a_of_type_ComTencentMobileqqActivityConversation.c());
   }
   
   public void d()
@@ -574,14 +574,14 @@ public class ConversationNowController
     }
     if (!paramBoolean)
     {
-      b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b(), this.jdField_a_of_type_ComTencentMobileqqActivityConversation.c(), this.jdField_a_of_type_ComTencentMobileqqActivityConversation.d());
+      b(this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a(), this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b(), this.jdField_a_of_type_ComTencentMobileqqActivityConversation.c());
       return;
     }
-    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b();
+    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a();
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
     localLayoutParams.topMargin = (-this.j);
     localView.setLayoutParams(localLayoutParams);
-    localView = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.d();
+    localView = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.c();
     localView.setVisibility(8);
     if (this.jdField_d_of_type_Boolean) {
       localView.setAlpha(0.0F);
@@ -623,8 +623,8 @@ public class ConversationNowController
   @TargetApi(11)
   public void g()
   {
-    View localView1 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.b();
-    View localView2 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.d();
+    View localView1 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.a();
+    View localView2 = this.jdField_a_of_type_ComTencentMobileqqActivityConversation.c();
     if (localView1 != null)
     {
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView1.getLayoutParams();
@@ -677,7 +677,7 @@ public class ConversationNowController
       ((AlphaAnimation)localObject2).setDuration(l1);
       ((AlphaAnimation)localObject2).setFillAfter(true);
       this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.clearAnimation();
-      this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.postDelayed(new afmx(this), l1);
+      this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.postDelayed(new agad(this), l1);
       this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.a(false);
       this.jdField_a_of_type_ComTencentMobileqqNowEnterWidgetHongBao2018ListView.startAnimation((Animation)localObject1);
       if (this.jdField_a_of_type_AndroidViewView != null)
@@ -752,7 +752,7 @@ public class ConversationNowController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.now.enter.ConversationNowController
  * JD-Core Version:    0.7.0.1
  */

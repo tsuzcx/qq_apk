@@ -1,18 +1,13 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.fastweb.video.FastWebVideoFeedsListView;
 
-public final class mol
-  implements Parcelable.Creator
+public class mol
+  implements Runnable
 {
-  public FastWebVideoInfo a(Parcel paramParcel)
-  {
-    return new FastWebVideoInfo(paramParcel);
-  }
+  public mol(FastWebVideoFeedsListView paramFastWebVideoFeedsListView) {}
   
-  public FastWebVideoInfo[] a(int paramInt)
+  public void run()
   {
-    return new FastWebVideoInfo[paramInt];
+    this.a.a();
   }
 }
 

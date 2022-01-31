@@ -12,6 +12,7 @@ import com.tencent.biz.qqstory.network.pb.qqstory_struct.GeneralFeed;
 import com.tencent.biz.qqstory.utils.AssertUtils;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
+import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
@@ -23,6 +24,8 @@ public class GeneralRecommendFeedItem
   public QQUserUIItem mUserUIItem = new QQUserUIItem();
   public long recommendId = -1L;
   public String recommendTitle = "";
+  public String wsSchemaForMain = "default";
+  public String wsSchemaForMemories = "default";
   
   protected int assignType()
   {
@@ -51,34 +54,44 @@ public class GeneralRecommendFeedItem
   
   public boolean covertFrom(String paramString, qqstory_struct.GeneralFeed paramGeneralFeed)
   {
-    boolean bool2 = false;
     this.feedId = paramString;
     super.setDate(String.valueOf(paramGeneralFeed.date.get()));
     this.mVideoSeq = paramGeneralFeed.seq.get();
-    if (paramGeneralFeed.is_end.get() == 1) {}
-    for (boolean bool1 = true;; bool1 = false)
+    if (paramGeneralFeed.is_end.get() == 1)
     {
-      this.mIsVideoEnd = bool1;
-      bool1 = bool2;
-      if (paramGeneralFeed.share_to_discover.get() == 1) {
-        bool1 = true;
+      bool = true;
+      this.mIsVideoEnd = bool;
+      if (paramGeneralFeed.share_to_discover.get() != 1) {
+        break label195;
       }
-      this.mIsContribute = bool1;
+    }
+    label195:
+    for (boolean bool = true;; bool = false)
+    {
+      this.mIsContribute = bool;
       this.mVideoNextCookie = paramGeneralFeed.next_cookie.get().toStringUtf8();
       this.mVideoPullType = paramGeneralFeed.pull_type.get();
+      if (paramGeneralFeed.ws_schemas.size() == 2)
+      {
+        this.wsSchemaForMain = ((ByteStringMicro)paramGeneralFeed.ws_schemas.get(0)).toStringUtf8();
+        this.wsSchemaForMemories = ((ByteStringMicro)paramGeneralFeed.ws_schemas.get(1)).toStringUtf8();
+      }
       paramString = new QQUserUIItem();
       paramString.convertFrom(paramGeneralFeed.user);
       this.mUserUIItem = ((UserManager)SuperManager.a(2)).a(paramString);
       AssertUtils.a(this.mUserUIItem);
       this.ownerId = this.mUserUIItem.getUnionId();
       return true;
+      bool = false;
+      break;
     }
   }
   
   public byte[] covertToByte()
   {
     SerializationPB.GeneralRecommendFeed localGeneralRecommendFeed = new SerializationPB.GeneralRecommendFeed();
-    localGeneralRecommendFeed.video_list_feed.set(super.writeVideoListFeedLocalPB());
+    SerializationPB.VideoListFeed localVideoListFeed = super.writeVideoListFeedLocalPB();
+    localGeneralRecommendFeed.video_list_feed.set(localVideoListFeed);
     PBStringField localPBStringField = localGeneralRecommendFeed.blurb;
     if (TextUtils.isEmpty(this.blurb)) {}
     for (String str = "";; str = this.blurb)
@@ -87,6 +100,12 @@ public class GeneralRecommendFeedItem
       localGeneralRecommendFeed.recommend_id.set(this.recommendId);
       if (!TextUtils.isEmpty(this.recommendTitle)) {
         localGeneralRecommendFeed.title_wording.set(ByteStringMicro.copyFromUtf8(this.recommendTitle));
+      }
+      if (!TextUtils.isEmpty(this.wsSchemaForMain)) {
+        localVideoListFeed.ws_schema_main.set(ByteStringMicro.copyFromUtf8(this.wsSchemaForMain));
+      }
+      if (!TextUtils.isEmpty(this.wsSchemaForMemories)) {
+        localVideoListFeed.ws_schema_memories.set(ByteStringMicro.copyFromUtf8(this.wsSchemaForMemories));
       }
       return localGeneralRecommendFeed.toByteArray();
     }
@@ -146,6 +165,12 @@ public class GeneralRecommendFeedItem
     this.blurb = localGeneralRecommendFeed.blurb.get();
     this.recommendId = localGeneralRecommendFeed.recommend_id.get();
     this.recommendTitle = localGeneralRecommendFeed.title_wording.get().toStringUtf8();
+    if (localGeneralRecommendFeed.video_list_feed.ws_schema_main.has()) {
+      this.wsSchemaForMain = localGeneralRecommendFeed.video_list_feed.ws_schema_main.get().toStringUtf8();
+    }
+    if (localGeneralRecommendFeed.video_list_feed.ws_schema_memories.has()) {
+      this.wsSchemaForMemories = localGeneralRecommendFeed.video_list_feed.ws_schema_memories.get().toStringUtf8();
+    }
   }
   
   public String toString()

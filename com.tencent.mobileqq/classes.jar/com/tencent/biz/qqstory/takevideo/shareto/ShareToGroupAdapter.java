@@ -106,7 +106,7 @@ public class ShareToGroupAdapter
       localObject = (BaseViewHolder)paramView.getTag();
       paramViewGroup = paramView;
       paramView = (View)localObject;
-      localObject = (ImageView)paramView.a(2131368512);
+      localObject = (ImageView)paramView.a(2131368579);
       localDrawable = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(localTroopInfo.troopuin);
       if (localDrawable != null) {
         break label154;
@@ -115,14 +115,14 @@ public class ShareToGroupAdapter
     }
     for (;;)
     {
-      ((TextView)paramView.a(2131368513)).setText(localTroopInfo.getTroopName());
-      ((CheckBox)paramView.a(2131368510)).setChecked(localTroopInfoSelector.jdField_a_of_type_Boolean);
+      ((TextView)paramView.a(2131368580)).setText(localTroopInfo.getTroopName());
+      ((CheckBox)paramView.a(2131368577)).setChecked(localTroopInfoSelector.jdField_a_of_type_Boolean);
       if (getCount() > 1) {
         break label164;
       }
-      paramViewGroup.setBackgroundResource(2130838619);
+      paramViewGroup.setBackgroundResource(2130838623);
       return paramViewGroup;
-      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969940, null);
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130969954, null);
       paramView = new BaseViewHolder(paramViewGroup);
       paramViewGroup.setTag(paramView);
       break;
@@ -132,15 +132,15 @@ public class ShareToGroupAdapter
     label164:
     if (paramInt == 0)
     {
-      paramViewGroup.setBackgroundResource(2130838631);
+      paramViewGroup.setBackgroundResource(2130838635);
       return paramViewGroup;
     }
     if (paramInt == getCount() - 1)
     {
-      paramViewGroup.setBackgroundResource(2130838626);
+      paramViewGroup.setBackgroundResource(2130838630);
       return paramViewGroup;
     }
-    paramViewGroup.setBackgroundResource(2130838629);
+    paramViewGroup.setBackgroundResource(2130838633);
     return paramViewGroup;
   }
 }

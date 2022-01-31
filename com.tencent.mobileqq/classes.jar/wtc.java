@@ -1,8 +1,16 @@
-import com.tencent.image.URLImageView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.phone.BaseActivityView;
 
 public class wtc
+  implements DialogInterface.OnClickListener
 {
-  URLImageView a;
+  public wtc(BaseActivityView paramBaseActivityView) {}
+  
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  {
+    this.a.f();
+  }
 }
 
 

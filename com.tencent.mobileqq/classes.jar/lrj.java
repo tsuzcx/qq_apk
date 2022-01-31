@@ -1,14 +1,24 @@
 import com.tencent.biz.pubaccount.readinjoy.engine.ReadInJoyLogicEngineEventDispatcher;
-import com.tencent.biz.pubaccount.readinjoy.model.SelfInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.model.InterestLabelInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.struct.InterestLabelInfo;
+import java.util.Iterator;
+import java.util.List;
 
 public class lrj
   implements Runnable
 {
-  public lrj(SelfInfoModule paramSelfInfoModule, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean) {}
+  public lrj(InterestLabelInfoModule paramInterestLabelInfoModule, List paramList) {}
   
   public void run()
   {
-    ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_Int, this.b, this.c, this.jdField_a_of_type_Boolean);
+    InterestLabelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelInterestLabelInfoModule).clear();
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      InterestLabelInfo localInterestLabelInfo = (InterestLabelInfo)localIterator.next();
+      InterestLabelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelInterestLabelInfoModule).add(localInterestLabelInfo);
+    }
+    ReadInJoyLogicEngineEventDispatcher.a().a(InterestLabelInfoModule.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelInterestLabelInfoModule));
   }
 }
 

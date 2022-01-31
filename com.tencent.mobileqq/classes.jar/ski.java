@@ -1,33 +1,18 @@
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.view.View;
-import com.tencent.mobileqq.activity.FontSettingActivity;
-import java.util.ArrayList;
+import android.app.Activity;
+import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.troopshare.TroopShareUtility;
 
-public class ski
-  extends PagerAdapter
+public final class ski
+  implements Runnable
 {
-  public ski(FontSettingActivity paramFontSettingActivity) {}
+  public ski(String paramString1, Activity paramActivity, String paramString2, String paramString3, QQAppInterface paramQQAppInterface) {}
   
-  public void destroyItem(View paramView, int paramInt, Object paramObject)
+  public void run()
   {
-    ((ViewPager)paramView).removeView((View)this.a.a.get(paramInt));
-  }
-  
-  public int getCount()
-  {
-    return this.a.a.size();
-  }
-  
-  public Object instantiateItem(View paramView, int paramInt)
-  {
-    ((ViewPager)paramView).addView((View)this.a.a.get(paramInt), 0);
-    return this.a.a.get(paramInt);
-  }
-  
-  public boolean isViewFromObject(View paramView, Object paramObject)
-  {
-    return paramView == paramObject;
+    String str = "temp_discuss_link_share_" + this.jdField_a_of_type_JavaLangString + ".png";
+    str = QRUtils.a(this.jdField_a_of_type_AndroidAppActivity, str, TroopShareUtility.a(this.b, this.jdField_a_of_type_AndroidAppActivity.getResources()));
+    this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new skj(this, str));
   }
 }
 

@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.view.ProfileHeaderView;
+import com.tencent.mobileqq.activity.EditInfoActivity;
 
-class slq
+public class slq
   implements Runnable
 {
-  slq(slp paramslp) {}
+  public slq(EditInfoActivity paramEditInfoActivity) {}
   
   public void run()
   {
-    if (this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView != null) {
-      this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileViewProfileHeaderView.g(this.a.a.a.jdField_a_of_type_ComTencentMobileqqProfileProfileCardInfo);
-    }
-    this.a.a.a.a(2131435770, 1);
+    this.a.a();
   }
 }
 

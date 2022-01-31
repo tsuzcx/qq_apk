@@ -3,8 +3,8 @@ package dov.com.tencent.mobileqq.richmedia.mediacodec.utils;
 import android.annotation.TargetApi;
 import android.graphics.Bitmap;
 import android.media.MediaMetadataRetriever;
-import anxo;
-import anxp;
+import aont;
+import aonu;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.utils.FileUtils;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -54,7 +54,7 @@ public class MediaUtil
     MediaUtil.FrameWithoutBlackResult localFrameWithoutBlackResult = new MediaUtil.FrameWithoutBlackResult();
     MediaCodecThumbnailGenerator localMediaCodecThumbnailGenerator = new MediaCodecThumbnailGenerator();
     localMediaCodecThumbnailGenerator.a(ThreadManager.getSubThreadLooper());
-    localMediaCodecThumbnailGenerator.a(paramString, null, false, 480, paramInt, 10000, 1, true, new anxo(localObject), new anxp(localFrameWithoutBlackResult));
+    localMediaCodecThumbnailGenerator.a(paramString, null, false, 480, paramInt, 10000, 1, true, new aont(localObject), new aonu(localFrameWithoutBlackResult));
     try
     {
       localObject.wait(5000L);

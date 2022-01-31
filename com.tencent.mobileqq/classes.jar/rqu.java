@@ -1,23 +1,18 @@
 import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.ChatAdapter1;
-import com.tencent.mobileqq.data.ChatMessage;
-import java.util.List;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgAnimatorCtr;
+import com.tencent.mobileqq.data.MessageRecord;
 
 public class rqu
   implements Runnable
 {
-  public rqu(BaseChatPie paramBaseChatPie, List paramList) {}
+  public rqu(BaseChatPie paramBaseChatPie, long paramLong1, long paramLong2, MessageRecord paramMessageRecord) {}
   
   public void run()
   {
-    int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
-    while (i >= 0)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a((ChatMessage)this.jdField_a_of_type_JavaUtilList.get(i));
-      i -= 1;
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgAnimatorCtr != null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgAnimatorCtr.a(new Object[] { Long.valueOf(this.jdField_a_of_type_Long), Long.valueOf(this.b), this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int), Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.uniseq) });
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityBaseChatPie.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(17, 300L);
   }
 }
 

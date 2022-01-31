@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.fileviewer;
 
-import acsc;
+import adbz;
 import android.content.BroadcastReceiver;
 import android.media.AudioManager;
 import android.media.AudioManager.OnAudioFocusChangeListener;
@@ -153,7 +153,7 @@ public class FileViewMusicService
   
   public void a(String paramString, FileViewMusicService.IGetTotalTime paramIGetTotalTime)
   {
-    ThreadManager.executeOnSubThread(new acsc(this, paramString, paramIGetTotalTime));
+    ThreadManager.executeOnSubThread(new adbz(this, paramString, paramIGetTotalTime));
   }
   
   public boolean a()
@@ -255,10 +255,10 @@ public class FileViewMusicService
     //   161: aload 4
     //   163: astore_3
     //   164: aload_0
-    //   165: new 256	acse
+    //   165: new 256	adcb
     //   168: dup
     //   169: aload_0
-    //   170: invokespecial 259	acse:<init>	(Lcom/tencent/mobileqq/filemanager/fileviewer/FileViewMusicService;)V
+    //   170: invokespecial 259	adcb:<init>	(Lcom/tencent/mobileqq/filemanager/fileviewer/FileViewMusicService;)V
     //   173: putfield 172	com/tencent/mobileqq/filemanager/fileviewer/FileViewMusicService:jdField_a_of_type_AndroidContentBroadcastReceiver	Landroid/content/BroadcastReceiver;
     //   176: aload 4
     //   178: astore_3
@@ -698,7 +698,7 @@ public class FileViewMusicService
   {
     this.jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(0);
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewMusicEvent != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewMusicEvent.Z_();
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewMusicEvent.ab_();
     }
     if (this.jdField_a_of_type_AndroidContentBroadcastReceiver != null)
     {

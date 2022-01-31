@@ -11,8 +11,8 @@ import com.tencent.mobileqq.phonecontact.ContactBindObserver;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import wrx;
-import wry;
+import wvc;
+import wvd;
 
 public class PhoneLaunchActivity
   extends DialogBaseActivity
@@ -46,17 +46,17 @@ public class PhoneLaunchActivity
     }
     if (!NetworkUtil.d(this))
     {
-      b(2131434596);
+      b(2131434613);
       this.jdField_a_of_type_AndroidWidgetButton.setEnabled(true);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wrx(this);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new wvc(this);
       this.app.registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
     }
-    this.app.a(new wry(this));
-    a(2131434436, 1000L, true);
+    this.app.a(new wvd(this));
+    a(2131434453, 1000L, true);
   }
   
   protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
@@ -96,9 +96,9 @@ public class PhoneLaunchActivity
     }
     for (;;)
     {
-      setContentView(2130969168);
+      setContentView(2130969167);
       setTitle("启用通讯录");
-      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365459));
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131365481));
       this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
       if (getIntent().getBooleanExtra("k_start_number", false)) {
         b();

@@ -23,14 +23,16 @@ import android.widget.TextView;
 import com.tencent.biz.pubaccount.AccountDetailBounceScrollView;
 import com.tencent.mobileqq.activity.leba.LebaShowListManager;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.struct.LebaViewItem;
 import com.tencent.mobileqq.data.ResourcePluginInfo;
+import com.tencent.mobileqq.leba.header.LebaGridShowManager;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import java.util.Iterator;
 import java.util.List;
-import koc;
+import knn;
 
 public class LebaSearchPluginManagerActivity
   extends BaseActivity
@@ -43,7 +45,7 @@ public class LebaSearchPluginManagerActivity
   public float a;
   long jdField_a_of_type_Long = -1L;
   Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
-  Handler jdField_a_of_type_AndroidOsHandler = new koc(this);
+  Handler jdField_a_of_type_AndroidOsHandler = new knn(this);
   public View a;
   protected Button a;
   ImageView jdField_a_of_type_AndroidWidgetImageView;
@@ -91,17 +93,17 @@ public class LebaSearchPluginManagerActivity
     //   20: aload_0
     //   21: getfield 77	com/tencent/biz/lebasearch/LebaSearchPluginManagerActivity:jdField_a_of_type_AndroidViewView	Landroid/view/View;
     //   24: invokevirtual 83	android/view/View:getViewTreeObserver	()Landroid/view/ViewTreeObserver;
-    //   27: new 85	knw
+    //   27: new 85	knh
     //   30: dup
     //   31: aload_0
-    //   32: invokespecial 86	knw:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
+    //   32: invokespecial 86	knh:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
     //   35: invokevirtual 92	android/view/ViewTreeObserver:addOnGlobalLayoutListener	(Landroid/view/ViewTreeObserver$OnGlobalLayoutListener;)V
     //   38: aload_0
     //   39: getfield 74	com/tencent/biz/lebasearch/LebaSearchPluginManagerActivity:jdField_b_of_type_AndroidViewView	Landroid/view/View;
-    //   42: new 94	knx
+    //   42: new 94	kni
     //   45: dup
     //   46: aload_0
-    //   47: invokespecial 95	knx:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
+    //   47: invokespecial 95	kni:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
     //   50: invokevirtual 99	android/view/View:addOnLayoutChangeListener	(Landroid/view/View$OnLayoutChangeListener;)V
     //   53: aload_0
     //   54: aload_0
@@ -237,17 +239,17 @@ public class LebaSearchPluginManagerActivity
     //   321: putfield 189	android/widget/RelativeLayout$LayoutParams:topMargin	I
     //   324: aload_0
     //   325: getfield 175	com/tencent/biz/lebasearch/LebaSearchPluginManagerActivity:jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView	Lcom/tencent/biz/pubaccount/AccountDetailBounceScrollView;
-    //   328: new 191	kny
+    //   328: new 191	knj
     //   331: dup
     //   332: aload_0
-    //   333: invokespecial 192	kny:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
+    //   333: invokespecial 192	knj:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
     //   336: invokevirtual 196	com/tencent/biz/pubaccount/AccountDetailBounceScrollView:setOnTouchListener	(Landroid/view/View$OnTouchListener;)V
     //   339: aload_0
     //   340: getfield 175	com/tencent/biz/lebasearch/LebaSearchPluginManagerActivity:jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView	Lcom/tencent/biz/pubaccount/AccountDetailBounceScrollView;
-    //   343: new 198	koa
+    //   343: new 198	knl
     //   346: dup
     //   347: aload_0
-    //   348: invokespecial 199	koa:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
+    //   348: invokespecial 199	knl:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
     //   351: invokevirtual 203	com/tencent/biz/pubaccount/AccountDetailBounceScrollView:setOnScrollChangedListener	(Lcom/tencent/mobileqq/widget/BounceScrollView$OnScrollChangedListener;)V
     //   354: aload_0
     //   355: getfield 52	com/tencent/biz/lebasearch/LebaSearchPluginManagerActivity:jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem	Lcom/tencent/mobileqq/config/struct/LebaViewItem;
@@ -356,10 +358,10 @@ public class LebaSearchPluginManagerActivity
     //   579: astore_2
     //   580: goto -188 -> 392
     //   583: aload 4
-    //   585: new 292	kob
+    //   585: new 292	knm
     //   588: dup
     //   589: aload_0
-    //   590: invokespecial 293	kob:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
+    //   590: invokespecial 293	knm:<init>	(Lcom/tencent/biz/lebasearch/LebaSearchPluginManagerActivity;)V
     //   593: invokevirtual 297	com/tencent/image/URLDrawable:setURLDrawableListener	(Lcom/tencent/image/URLDrawable$URLDrawableListener;)V
     //   596: aload_0
     //   597: getfield 144	com/tencent/biz/lebasearch/LebaSearchPluginManagerActivity:jdField_c_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
@@ -425,25 +427,29 @@ public class LebaSearchPluginManagerActivity
     this.jdField_b_of_type_Int = (getResources().getDisplayMetrics().heightPixels - i);
     this.jdField_a_of_type_Float = super.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_Long = getIntent().getLongExtra("id", 0L);
-    this.jdField_a_of_type_JavaUtilList = LebaShowListManager.a().a();
-    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (((Iterator)localObject).hasNext())
+    if ((this.app != null) && (this.app.q)) {}
+    for (this.jdField_a_of_type_JavaUtilList = LebaGridShowManager.a().c(this.app);; this.jdField_a_of_type_JavaUtilList = LebaShowListManager.a().a())
     {
-      LebaViewItem localLebaViewItem = (LebaViewItem)((Iterator)localObject).next();
-      if ((localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo != null) && (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.uiResId == this.jdField_a_of_type_Long)) {
-        this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem = localLebaViewItem;
+      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        LebaViewItem localLebaViewItem = (LebaViewItem)((Iterator)localObject).next();
+        if ((localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo != null) && (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo.uiResId == this.jdField_a_of_type_Long)) {
+          this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem = localLebaViewItem;
+        }
       }
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem == null) || (this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo == null)) {
+      if ((this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem != null) && (this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.jdField_a_of_type_ComTencentMobileqqDataResourcePluginInfo != null)) {
+        break;
+      }
       return false;
     }
     this.jdField_a_of_type_Byte = this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.jdField_a_of_type_Byte;
     try
     {
-      localObject = BitmapFactory.decodeResource(getResources(), 2130840367);
+      localObject = BitmapFactory.decodeResource(getResources(), 2130840373);
       this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.c((Bitmap)localObject, 110, 110);
       ((Bitmap)localObject).recycle();
-      label192:
+      label226:
       if ((Build.BRAND.startsWith("samsung")) || (Build.BRAND.startsWith("Coolpad"))) {}
       for (this.jdField_a_of_type_Boolean = false;; this.jdField_a_of_type_Boolean = true)
       {
@@ -453,7 +459,7 @@ public class LebaSearchPluginManagerActivity
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      break label192;
+      break label226;
     }
   }
   
@@ -461,8 +467,8 @@ public class LebaSearchPluginManagerActivity
   {
     if (this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.jdField_a_of_type_Byte == 0)
     {
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838500);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131430517);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838504);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131430534);
       if (this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.jdField_a_of_type_Byte == this.jdField_a_of_type_Byte) {
         break label75;
       }
@@ -472,8 +478,8 @@ public class LebaSearchPluginManagerActivity
     {
       setResult(i);
       return;
-      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838487);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(2131430516);
+      this.jdField_a_of_type_AndroidWidgetButton.setBackgroundResource(2130838491);
+      this.jdField_a_of_type_AndroidWidgetButton.setText(2131430533);
       break;
     }
   }
@@ -612,7 +618,8 @@ public class LebaSearchPluginManagerActivity
   protected boolean doOnCreate(Bundle paramBundle)
   {
     this.mNeedStatusTrans = false;
-    setContentView(2130969392);
+    super.doOnCreate(paramBundle);
+    setContentView(2130969393);
     LebaShowListManager.jdField_a_of_type_Int |= 0x1;
     if (!a())
     {
@@ -623,7 +630,7 @@ public class LebaSearchPluginManagerActivity
     if (this.jdField_a_of_type_Long == 886L) {
       ReportController.b(this.app, "dc00899", "Grp_nearby", "", "dyn_set", "visit_nearby_intro", 0, 0, "", "", "", "");
     }
-    return super.doOnCreate(paramBundle);
+    return true;
   }
   
   protected void doOnDestroy()
@@ -640,7 +647,7 @@ public class LebaSearchPluginManagerActivity
     {
     default: 
       return;
-    case 2131366332: 
+    case 2131366359: 
       if (this.jdField_a_of_type_ComTencentMobileqqConfigStructLebaViewItem.jdField_a_of_type_Byte != 0) {}
       for (boolean bool = true;; bool = false)
       {

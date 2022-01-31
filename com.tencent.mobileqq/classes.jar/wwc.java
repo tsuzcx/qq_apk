@@ -1,17 +1,21 @@
-import android.widget.CompoundButton;
-import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.mobileqq.activity.qwallet.GoldMsgSettingActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.photo.CameraPreviewActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.AlbumUtil;
 
 public class wwc
-  implements CompoundButton.OnCheckedChangeListener
+  implements View.OnClickListener
 {
-  public wwc(GoldMsgSettingActivity paramGoldMsgSettingActivity) {}
+  public wwc(CameraPreviewActivity paramCameraPreviewActivity) {}
   
-  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
+  public void onClick(View paramView)
   {
-    if (paramBoolean != this.a.a) {
-      GoldMsgSettingActivity.a(this.a, paramBoolean, true);
+    if (this.a.b) {
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8004D94", "0X8004D94", 0, 0, "", "", "", "");
     }
+    this.a.finish();
+    AlbumUtil.a(this.a, true, false);
   }
 }
 

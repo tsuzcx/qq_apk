@@ -1,21 +1,16 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.mobileqq.search.presenter.ContactSearchResultMobilePresenter;
+import com.tencent.mobileqq.remind.RemindJavascriptInterface;
+import com.tencent.mobileqq.remind.widget.IosTimepicker.OnTimePickerSelectListener;
 
 public class ahgc
-  implements View.OnClickListener
+  implements IosTimepicker.OnTimePickerSelectListener
 {
-  public ahgc(ContactSearchResultMobilePresenter paramContactSearchResultMobilePresenter, ISearchResultModel paramISearchResultModel) {}
+  public ahgc(RemindJavascriptInterface paramRemindJavascriptInterface) {}
   
-  public void onClick(View paramView)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqSearchModelISearchResultModel.a(paramView);
-  }
+  public void a(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ahgc
  * JD-Core Version:    0.7.0.1
  */

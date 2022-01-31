@@ -1,27 +1,20 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.recent.data.RecentItemNearbyLiveTipData;
-import com.tencent.mobileqq.dating.MsgBoxListActivity;
-import com.tencent.mobileqq.dating.MsgBoxProtocol.ReqNowStateObserver;
-import java.util.Iterator;
-import java.util.List;
+import android.text.Editable;
+import android.text.TextWatcher;
+import com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity;
 
 public class abqh
-  extends MsgBoxProtocol.ReqNowStateObserver
+  implements TextWatcher
 {
-  public abqh(MsgBoxListActivity paramMsgBoxListActivity, List paramList) {}
+  public abqh(ConditionSearchFriendActivity paramConditionSearchFriendActivity) {}
   
-  public void a(boolean paramBoolean, List paramList, Bundle paramBundle)
+  public void afterTextChanged(Editable paramEditable)
   {
-    if (paramBoolean)
-    {
-      paramBundle = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (paramBundle.hasNext())
-      {
-        RecentItemNearbyLiveTipData localRecentItemNearbyLiveTipData = (RecentItemNearbyLiveTipData)paramBundle.next();
-        this.jdField_a_of_type_ComTencentMobileqqDatingMsgBoxListActivity.a(localRecentItemNearbyLiveTipData, paramList);
-      }
-    }
+    this.a.a = true;
   }
+  
+  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
+  
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 

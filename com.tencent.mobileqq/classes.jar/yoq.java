@@ -1,17 +1,13 @@
-import com.tencent.mobileqq.apollo.script.SpriteAioScript;
-import com.tencent.mobileqq.apollo.utils.ApolloGameBasicEventUtil.NotifyDressReady;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
 
 public class yoq
-  implements ApolloGameBasicEventUtil.NotifyDressReady
+  implements Runnable
 {
-  public yoq(SpriteAioScript paramSpriteAioScript, boolean paramBoolean) {}
+  public yoq(ApolloCmdChannel paramApolloCmdChannel, String paramString1, String paramString2, int paramInt, long paramLong) {}
   
-  public void a(long paramLong, QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt1, int[] paramArrayOfInt, int paramInt2)
+  public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteAioScript.a(paramQQAppInterface, paramString1, paramInt1, paramArrayOfInt, paramInt2);
-    }
+    ApolloCmdChannel.access$100(this.jdField_a_of_type_ComTencentMobileqqApolloAioChannelApolloCmdChannel, this.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Int, this.jdField_a_of_type_Long);
   }
 }
 

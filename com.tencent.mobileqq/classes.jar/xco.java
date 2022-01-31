@@ -1,48 +1,37 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.DownloadCallback;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
-import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import java.util.Map;
+import android.graphics.Rect;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView.Adapter;
+import android.support.v7.widget.RecyclerView.ItemDecoration;
+import android.support.v7.widget.RecyclerView.State;
+import android.view.View;
 
 public class xco
-  extends DownloadListener
+  extends RecyclerView.ItemDecoration
 {
-  public xco(PreloadManager paramPreloadManager, PreloadManager.DownloadCallback paramDownloadCallback) {}
+  private int a;
+  private int b;
   
-  public void onDoneFile(DownloadTask paramDownloadTask)
+  private xco(int paramInt1, int paramInt2)
   {
-    int i = -5;
-    super.onDoneFile(paramDownloadTask);
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadManager", 2, "downloadRes|done" + paramDownloadTask.jdField_a_of_type_JavaLangString + "|" + paramDownloadTask.jdField_a_of_type_Int);
-    }
-    Object localObject = paramDownloadTask.a();
-    PreloadModule localPreloadModule = (PreloadModule)((Bundle)localObject).getSerializable("module");
-    localObject = (PreloadResource)((Bundle)localObject).getSerializable("resource");
-    if (paramDownloadTask.jdField_a_of_type_Int == 0)
+    this.a = paramInt1;
+    this.b = paramInt2;
+  }
+  
+  public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  {
+    int i = paramRecyclerView.getChildPosition(paramView);
+    if (i == 0)
     {
-      i = 0;
-      if (localObject != null) {
-        break label146;
-      }
-    }
-    label146:
-    for (localObject = null;; localObject = ((PreloadResource)localObject).getResInfo(localPreloadModule, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$DownloadCallback.onDownloadResFinished(localPreloadModule.mid, i, ((File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.jdField_a_of_type_JavaLangString)).getAbsolutePath(), (ResourceInfo)localObject);
+      paramRect.left = this.a;
       return;
-      if (paramDownloadTask.jdField_a_of_type_Int == -5) {
-        break;
-      }
-      i = -6;
-      break;
     }
+    if (i == paramRecyclerView.getAdapter().getItemCount() - 1)
+    {
+      paramRect.left = this.b;
+      paramRect.right = this.a;
+      return;
+    }
+    paramRect.left = this.b;
   }
 }
 

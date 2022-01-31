@@ -1,33 +1,19 @@
-import com.tencent.mobileqq.activity.ContactBindedActivity;
-import com.tencent.mobileqq.activity.phone.PhoneMatchActivity;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.activity.pendant.AvatarPendantActivity;
+import com.tencent.mobileqq.adapter.AvatarPendantAdapter;
+import java.util.List;
 
 public class wsa
-  extends ContactBindObserver
+  implements Runnable
 {
-  public wsa(PhoneMatchActivity paramPhoneMatchActivity) {}
+  public wsa(AvatarPendantActivity paramAvatarPendantActivity, List paramList) {}
   
-  protected void b(boolean paramBoolean, int paramInt)
+  public void run()
   {
-    this.a.b();
-    if (paramBoolean)
+    if ((this.jdField_a_of_type_JavaUtilList.size() > 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a != null))
     {
-      this.a.finish();
-      return;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a.a(this.jdField_a_of_type_JavaUtilList);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPendantAvatarPendantActivity.a.b();
     }
-    this.a.b("更新失败，请稍后重试。");
-  }
-  
-  protected void e(boolean paramBoolean, int paramInt)
-  {
-    this.a.b();
-    if (paramBoolean)
-    {
-      ContactBindedActivity.a(this.a.app, 222);
-      this.a.finish();
-      return;
-    }
-    this.a.b("更新失败，请稍后重试。");
   }
 }
 

@@ -1,53 +1,65 @@
-import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
-import android.text.ClipboardManager;
-import android.view.View;
-import com.tencent.mobileqq.activity.AddFriendActivity;
-import com.tencent.mobileqq.text.QQText;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.shortvideo.ShortVideoResDownload;
+import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager.INet_ShortVideoResource;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 
-public final class ahzn
-  implements ActionSheet.OnButtonClickListener
+public class ahzn
+  implements ShortVideoResourceManager.INet_ShortVideoResource
 {
-  public ahzn(int paramInt, String paramString, Context paramContext, ActionSheet paramActionSheet) {}
+  ShortVideoResDownload jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResDownload;
+  private String jdField_a_of_type_JavaLangString;
+  public boolean a;
+  public boolean b = true;
+  public boolean c = true;
+  public boolean d = true;
   
-  public void OnClick(View paramView, int paramInt)
+  public ahzn(String paramString, ShortVideoResDownload paramShortVideoResDownload)
   {
-    switch (paramInt)
-    {
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResDownload = paramShortVideoResDownload;
+  }
+  
+  public void C_()
+  {
+    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onNetWorkNone...", null);
+  }
+  
+  public void a()
+  {
+    if ((this.jdField_a_of_type_Boolean) && (this.b) && (this.c) && (this.d)) {
+      ShortVideoResDownload.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoResDownload);
+    }
+  }
+  
+  public void a(String paramString1, int paramInt, String paramString2)
+  {
+    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "onDownloadFinish| name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
+    if (paramString1.startsWith("new_qq_android_native_short_video_")) {
+      this.jdField_a_of_type_Boolean = true;
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      a();
       return;
-      if (this.jdField_a_of_type_Int == 2)
-      {
-        paramView = new Intent("android.intent.action.SENDTO", Uri.parse("mailto:" + this.jdField_a_of_type_JavaLangString));
-        this.jdField_a_of_type_AndroidContentContext.startActivity(Intent.createChooser(paramView, this.jdField_a_of_type_AndroidContentContext.getString(2131435095)));
-      }
-      else
-      {
-        paramView = new Intent("android.intent.action.DIAL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
-        this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
-        QQText.a("1", "2");
-        continue;
-        ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
-        QQText.a("2", "1");
-        continue;
-        AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, false, this.jdField_a_of_type_JavaLangString, true);
-        QQText.a("3", "1");
-        continue;
-        AddFriendActivity.a(this.jdField_a_of_type_AndroidContentContext, true, this.jdField_a_of_type_JavaLangString, true);
-        QQText.a("4", "1");
+      if (paramString1.startsWith("new_qq_android_native_short_filter_")) {
+        this.b = true;
+      } else if (paramString1.startsWith("new_qq_android_native_art_filter_")) {
+        this.c = true;
+      } else if (paramString1.startsWith("new_qq_android_native_portrait_filter_")) {
+        this.d = true;
       }
     }
+  }
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
+  {
+    int i = (int)((float)paramLong1 * 100.0F / (float)paramLong2);
+    VideoEnvironment.a(this.jdField_a_of_type_JavaLangString, "name=" + paramString + ",totalLen=" + paramLong2 + ",curOffset=" + paramLong1 + ",localProgress=" + i, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahzn
  * JD-Core Version:    0.7.0.1
  */

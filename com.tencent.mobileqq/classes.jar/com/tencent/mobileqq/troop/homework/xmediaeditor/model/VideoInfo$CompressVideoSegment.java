@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.troop.homework.xmediaeditor.model;
 
-import aiwg;
+import ajkk;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
@@ -80,7 +80,7 @@ public class VideoInfo$CompressVideoSegment
           return;
         }
         localVideoInfo.jdField_g_of_type_JavaLangString = str;
-        ThreadManager.getUIHandler().post(new aiwg(this, localVideoInfo, localXMediaEditor));
+        ThreadManager.getUIHandler().post(new ajkk(this, localVideoInfo, localXMediaEditor));
         if (isCanceled()) {
           return;
         }
@@ -106,7 +106,7 @@ public class VideoInfo$CompressVideoSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo.CompressVideoSegment
  * JD-Core Version:    0.7.0.1
  */

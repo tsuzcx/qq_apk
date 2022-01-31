@@ -1,15 +1,25 @@
-import android.content.Context;
-import com.tencent.component.network.utils.FileUtils;
-import com.tencent.component.network.utils.FileUtils.AssetFileComparator;
-import java.io.File;
+import android.text.TextUtils;
+import com.squareup.okhttp.Response;
+import com.tencent.component.network.DownloaderFactory;
+import com.tencent.component.network.downloader.DownloadResult;
+import com.tencent.component.network.downloader.DownloadResult.Content;
+import com.tencent.component.network.downloader.handler.ContentHandler;
+import com.tencent.component.network.utils.StringUtil;
+import org.apache.http.HttpResponse;
 
-public final class pjf
-  implements FileUtils.AssetFileComparator
+public class pjf
+  implements ContentHandler
 {
-  public boolean a(Context paramContext, String paramString, File paramFile)
+  public pjf(DownloaderFactory paramDownloaderFactory) {}
+  
+  public boolean a(DownloadResult paramDownloadResult, HttpResponse paramHttpResponse, Response paramResponse)
   {
-    long l = FileUtils.getAssetLength(paramContext, paramString);
-    return (l != -1L) && (l == paramFile.length());
+    paramDownloadResult = paramDownloadResult.getContent().type;
+    if (TextUtils.isEmpty(paramDownloadResult)) {}
+    while (!StringUtil.a(paramDownloadResult, "image")) {
+      return false;
+    }
+    return true;
   }
 }
 

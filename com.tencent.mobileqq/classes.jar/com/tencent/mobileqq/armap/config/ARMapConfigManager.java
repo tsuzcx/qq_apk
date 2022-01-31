@@ -1,15 +1,15 @@
 package com.tencent.mobileqq.armap.config;
 
-import aaxy;
-import aaxz;
-import aayb;
-import aayc;
-import aayd;
-import aaye;
-import aayf;
-import aayg;
-import aayh;
-import aayi;
+import abez;
+import abfa;
+import abfc;
+import abfd;
+import abfe;
+import abff;
+import abfg;
+import abfh;
+import abfi;
+import abfj;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
@@ -61,14 +61,14 @@ public class ARMapConfigManager
 {
   public static long a;
   private double jdField_a_of_type_Double;
-  private aayi jdField_a_of_type_Aayi;
-  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new aaye(this);
+  private abfj jdField_a_of_type_Abfj;
+  private Handler.Callback jdField_a_of_type_AndroidOsHandler$Callback = new abff(this);
   private Handler jdField_a_of_type_AndroidOsHandler;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   public SosoInterface.OnLocationListener a;
   private ArMapHandler jdField_a_of_type_ComTencentMobileqqArmapArMapHandler;
-  private ArMapObserver jdField_a_of_type_ComTencentMobileqqArmapArMapObserver = new aayd(this);
-  private ResDownloadManager.IResDownloadListener jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener = new aaxz(this);
+  private ArMapObserver jdField_a_of_type_ComTencentMobileqqArmapArMapObserver = new abfe(this);
+  private ResDownloadManager.IResDownloadListener jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager$IResDownloadListener = new abfa(this);
   private ResDownloadManager jdField_a_of_type_ComTencentMobileqqArmapResDownloadManager;
   private ARMapConfig jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfig;
   private ARMapConfigManager.ARMapShower jdField_a_of_type_ComTencentMobileqqArmapConfigARMapConfigManager$ARMapShower;
@@ -81,12 +81,12 @@ public class ARMapConfigManager
   public boolean a;
   private double jdField_b_of_type_Double;
   public long b;
-  private Handler.Callback jdField_b_of_type_AndroidOsHandler$Callback = new aayf(this);
-  private SosoInterface.OnLocationListener jdField_b_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new aayc(this, 3, true, true, 120000L, false, false, "wealthgod_locate_check");
+  private Handler.Callback jdField_b_of_type_AndroidOsHandler$Callback = new abfg(this);
+  private SosoInterface.OnLocationListener jdField_b_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new abfd(this, 3, true, true, 120000L, false, false, "wealthgod_locate_check");
   private Object jdField_b_of_type_JavaLangObject = new Object();
   public boolean b;
   long jdField_c_of_type_Long;
-  private SosoInterface.OnLocationListener jdField_c_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new aayg(this, 3, true, true, 60000L, false, false, "ARMapDataPreload");
+  private SosoInterface.OnLocationListener jdField_c_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new abfh(this, 3, true, true, 60000L, false, false, "ARMapDataPreload");
   public boolean c;
   public long d;
   private SosoInterface.OnLocationListener d;
@@ -109,12 +109,12 @@ public class ARMapConfigManager
   public ARMapConfigManager(QQAppInterface paramQQAppInterface)
   {
     this.jdField_b_of_type_Long = 900000L;
-    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new aayb(this, 3, true, true, 60000L, false, false, "ARMapDataPreload");
-    this.jdField_d_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new aayh(this, 3, true, true, 60000L, false, false, "ARMapDataPreload");
+    this.jdField_a_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new abfc(this, 3, true, true, 60000L, false, false, "ARMapDataPreload");
+    this.jdField_d_of_type_ComTencentMobileqqAppSosoSosoInterface$OnLocationListener = new abfi(this, 3, true, true, 60000L, false, false, "ARMapDataPreload");
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     ArMapIPCProxy.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqArmapConfigConfigCheckHander = new ConfigCheckHander(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    ThreadManager.postImmediately(new aaxy(this), null, true);
+    ThreadManager.postImmediately(new abez(this), null, true);
     this.jdField_a_of_type_ComTencentMobileqqArmapArMapHandler = ((ArMapHandler)paramQQAppInterface.a(101));
     this.jdField_a_of_type_ComTencentUtilWeakReferenceHandler = new WeakReferenceHandler(ThreadManager.getSubThreadLooper(), this.jdField_a_of_type_AndroidOsHandler$Callback);
     this.jdField_a_of_type_AndroidOsHandler = new WeakReferenceHandler(Looper.getMainLooper(), this.jdField_b_of_type_AndroidOsHandler$Callback);
@@ -134,10 +134,10 @@ public class ARMapConfigManager
     if (??? != null)
     {
       str = ???.a + "_" + ???.jdField_c_of_type_Long;
-      if ((this.jdField_a_of_type_Aayi == null) || (!this.jdField_a_of_type_Aayi.jdField_a_of_type_JavaLangString.equalsIgnoreCase(str))) {
+      if ((this.jdField_a_of_type_Abfj == null) || (!this.jdField_a_of_type_Abfj.jdField_a_of_type_JavaLangString.equalsIgnoreCase(str))) {
         break label119;
       }
-      m = this.jdField_a_of_type_Aayi.jdField_a_of_type_Int;
+      m = this.jdField_a_of_type_Abfj.jdField_a_of_type_Int;
       n = m;
       if (QLog.isColorLevel())
       {
@@ -151,8 +151,8 @@ public class ARMapConfigManager
       label119:
       synchronized (this.jdField_b_of_type_JavaLangObject)
       {
-        this.jdField_a_of_type_Aayi = new aayi(null);
-        this.jdField_a_of_type_Aayi.jdField_a_of_type_JavaLangString = str;
+        this.jdField_a_of_type_Abfj = new abfj(null);
+        this.jdField_a_of_type_Abfj.jdField_a_of_type_JavaLangString = str;
         Object localObject2 = ArMapUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).getString("wealth_god_pendant_status", "");
         if (TextUtils.isEmpty((CharSequence)localObject2)) {
           break label278;
@@ -169,13 +169,13 @@ public class ARMapConfigManager
         if (localObject2[m].equalsIgnoreCase(str))
         {
           m = 1;
-          localObject2 = this.jdField_a_of_type_Aayi;
+          localObject2 = this.jdField_a_of_type_Abfj;
           n = i1;
           if (m != 0) {
             n = 2;
           }
-          ((aayi)localObject2).jdField_a_of_type_Int = n;
-          m = this.jdField_a_of_type_Aayi.jdField_a_of_type_Int;
+          ((abfj)localObject2).jdField_a_of_type_Int = n;
+          m = this.jdField_a_of_type_Abfj.jdField_a_of_type_Int;
           if (QLog.isColorLevel()) {
             QLog.d("ARMapConfigManager", 2, "create a new pendant!");
           }
@@ -929,10 +929,10 @@ public class ARMapConfigManager
     //   411: aload 5
     //   413: monitorexit
     //   414: invokestatic 903	com/tencent/mobileqq/app/ThreadManager:getFileThreadHandler	()Lmqq/os/MqqHandler;
-    //   417: new 905	aaya
+    //   417: new 905	abfb
     //   420: dup
     //   421: aload_0
-    //   422: invokespecial 906	aaya:<init>	(Lcom/tencent/mobileqq/armap/config/ARMapConfigManager;)V
+    //   422: invokespecial 906	abfb:<init>	(Lcom/tencent/mobileqq/armap/config/ARMapConfigManager;)V
     //   425: invokevirtual 912	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
     //   428: pop
     //   429: aload_0

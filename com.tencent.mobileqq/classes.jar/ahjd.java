@@ -1,23 +1,19 @@
-import android.os.Parcel;
-import android.os.Parcelable.Creator;
-import com.tencent.mobileqq.service.friendlist.remote.FriendListInfo;
+import com.tencent.mobileqq.richmedia.capture.fragment.EffectsCameraCaptureFragment;
+import com.tencent.mobileqq.richmedia.capture.view.GuideVideoView.OnCloseListener;
 
-public final class ahjd
-  implements Parcelable.Creator
+public class ahjd
+  implements GuideVideoView.OnCloseListener
 {
-  public FriendListInfo a(Parcel paramParcel)
-  {
-    return new FriendListInfo(paramParcel);
-  }
+  public ahjd(EffectsCameraCaptureFragment paramEffectsCameraCaptureFragment) {}
   
-  public FriendListInfo[] a(int paramInt)
+  public void a()
   {
-    return new FriendListInfo[paramInt];
+    EffectsCameraCaptureFragment.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahjd
  * JD-Core Version:    0.7.0.1
  */

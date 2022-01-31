@@ -1,15 +1,20 @@
 package com.tencent.mobileqq.confess;
 
-import abkz;
-import abla;
-import ablb;
-import ablc;
-import abld;
+import absa;
+import absb;
+import absc;
+import absd;
+import abse;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build.VERSION;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import android.os.ResultReceiver;
 import android.text.TextUtils;
 import android.widget.TextView;
 import com.tencent.biz.webviewplugin.Share;
@@ -25,6 +30,8 @@ import com.tencent.mobileqq.campuscircle.CampusCircleIpcClient;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.nearby.NearbySPUtil;
 import com.tencent.mobileqq.nearby.NearbyURLSafeUtil;
+import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.structmsg.StructMsgFactory;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -44,10 +51,12 @@ import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.QZoneHelper;
 import cooperation.qzone.QZoneHelper.UserInfo;
+import java.util.List;
 import java.util.Locale;
 import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ConfessPlugin
@@ -55,16 +64,24 @@ public class ConfessPlugin
 {
   private int jdField_a_of_type_Int = -2147483648;
   public NonMainAppHeadLoader a;
+  protected ConfessPlugin.ChooseFriendReceiver a;
   QQProgressDialog jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
   public WXShareHelper.WXShareListener a;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new ablc(this);
+  private Runnable jdField_a_of_type_JavaLangRunnable = new absd(this);
   String jdField_a_of_type_JavaLangString;
   public JSONObject a;
+  protected String b;
   
   public ConfessPlugin()
   {
     this.jdField_a_of_type_OrgJsonJSONObject = null;
     this.mPluginNameSpace = "sayHonest";
+  }
+  
+  private Context a()
+  {
+    for (Activity localActivity = this.mRuntime.a(); (localActivity != null) && ((localActivity instanceof BasePluginActivity)); localActivity = ((BasePluginActivity)localActivity).getOutActivity()) {}
+    return localActivity;
   }
   
   private void a()
@@ -86,7 +103,7 @@ public class ConfessPlugin
       if (QLog.isColorLevel()) {
         QLog.i("ConfessPlugin", 2, String.format("setRightBtnMaxLen %d", new Object[] { Integer.valueOf(paramInt) }));
       }
-      localTextView = (TextView)localActivity.findViewById(2131363410);
+      localTextView = (TextView)localActivity.findViewById(2131363428);
       if (this.jdField_a_of_type_Int == -2147483648) {
         if (Build.VERSION.SDK_INT < 16) {
           break label89;
@@ -103,7 +120,7 @@ public class ConfessPlugin
   
   private void a(int paramInt1, int paramInt2)
   {
-    ThreadManager.getUIHandler().post(new ablb(this, paramInt1, paramInt2));
+    ThreadManager.getUIHandler().post(new absc(this, paramInt1, paramInt2));
   }
   
   private void a(Activity paramActivity)
@@ -132,7 +149,14 @@ public class ConfessPlugin
     if ((paramAppInterface instanceof WebViewPluginContainer)) {
       i = ((WebViewPluginContainer)paramAppInterface).a(this, (byte)11);
     }
-    QZoneHelper.a(paramActivity, paramString2, paramString1, paramActivity.getString(2131429952), "", i);
+    QZoneHelper.a(paramActivity, paramString2, paramString1, paramActivity.getString(2131429969), "", i);
+  }
+  
+  private void a(String paramString1, String paramString2)
+  {
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
+      super.callJs(paramString1, new String[] { paramString2 });
+    }
   }
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, boolean paramBoolean)
@@ -158,7 +182,7 @@ public class ConfessPlugin
     paramString2.putExtra("req_share_id", -1L);
     paramString2.putExtra("pkg_name", "com.tencent.mobileqq");
     paramString2.putExtra("image_url_remote", paramString1);
-    paramString2.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131430100, new Object[] { str }));
+    paramString2.putExtra("brief_key", BaseApplicationImpl.getContext().getString(2131430117, new Object[] { str }));
     paramString2.putExtra("flag", 0);
     paramString2.putExtra("compatible_text", " [坦白说]请使用最新版本手机QQ体验新功能。");
     paramString2.putExtra("req_type", 1);
@@ -275,7 +299,7 @@ public class ConfessPlugin
     {
       this.jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader = new NonMainAppHeadLoader(this.mRuntime.a(), 1);
       this.jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader.a();
-      this.jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader.a(new abla(this));
+      this.jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader.a(new absb(this));
     }
     paramString = this.jdField_a_of_type_ComTencentMobileqqArmapNonMainAppHeadLoader.a(paramString, true);
     if (QLog.isColorLevel()) {
@@ -291,12 +315,12 @@ public class ConfessPlugin
       Object localObject = this.mRuntime.a();
       TextView localTextView = ((WebViewFragment)localObject).jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.a;
       localObject = ((WebViewFragment)localObject).jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftIphoneTitleBarUI.c;
-      abkz localabkz = new abkz(this);
+      absa localabsa = new absa(this);
       if (localTextView != null) {
-        localTextView.setOnTouchListener(localabkz);
+        localTextView.setOnTouchListener(localabsa);
       }
       if (localObject != null) {
-        ((TextView)localObject).setOnTouchListener(localabkz);
+        ((TextView)localObject).setOnTouchListener(localabsa);
       }
       return;
     }
@@ -326,7 +350,7 @@ public class ConfessPlugin
     }
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435466);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(2131435483);
       if (!this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.show();
       }
@@ -335,12 +359,12 @@ public class ConfessPlugin
     {
       a();
       a(false);
-      a(0, 2131435286);
+      a(0, 2131435303);
       return;
     }
     if ((i == 2) || (i == 3)) {
       if (!WXShareHelper.a().a()) {
-        i = 2131435302;
+        i = 2131435319;
       }
     }
     for (;;)
@@ -352,7 +376,7 @@ public class ConfessPlugin
         a(1, i);
         return;
         if (!WXShareHelper.a().b()) {
-          i = 2131435303;
+          i = 2131435320;
         }
       }
       else
@@ -399,7 +423,124 @@ public class ConfessPlugin
     String str4 = paramJSONObject.optString("sourceName");
     int m = paramJSONObject.optInt("serviceID");
     boolean bool = paramJSONObject.optBoolean("back");
-    ThreadManager.postImmediately(new abld(this, k, i, j, str1, str2, str3, localJSONArray, paramJSONObject.optString("sourceUrl"), paramJSONObject.optString("sourceIconUrl"), str4, m, bool), null, true);
+    ThreadManager.postImmediately(new abse(this, k, i, j, str1, str2, str3, localJSONArray, paramJSONObject.optString("sourceUrl"), paramJSONObject.optString("sourceIconUrl"), str4, m, bool), null, true);
+  }
+  
+  private void d(JSONObject paramJSONObject)
+  {
+    Object localObject = a();
+    if ((localObject == null) || (paramJSONObject == null) || (TextUtils.isEmpty(this.b)))
+    {
+      a(null, null);
+      return;
+    }
+    String str2 = paramJSONObject.optString("title", "选择我的好友");
+    paramJSONObject = paramJSONObject.optJSONObject("confirm");
+    String str1;
+    boolean bool;
+    if (paramJSONObject != null)
+    {
+      str1 = paramJSONObject.optString("title");
+      paramJSONObject = paramJSONObject.optString("content");
+      bool = true;
+    }
+    for (;;)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("ConfessPlugin", 2, "chooseFriends needConfirm: " + bool + " confirmTitle: " + str1 + " confirmContent: " + paramJSONObject);
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqConfessConfessPlugin$ChooseFriendReceiver == null) {
+        this.jdField_a_of_type_ComTencentMobileqqConfessConfessPlugin$ChooseFriendReceiver = new ConfessPlugin.ChooseFriendReceiver(this, new Handler());
+      }
+      Parcel localParcel = Parcel.obtain();
+      this.jdField_a_of_type_ComTencentMobileqqConfessConfessPlugin$ChooseFriendReceiver.writeToParcel(localParcel, 0);
+      localParcel.setDataPosition(0);
+      ResultReceiver localResultReceiver = (ResultReceiver)ResultReceiver.CREATOR.createFromParcel(localParcel);
+      localParcel.recycle();
+      localObject = new Intent((Context)localObject, ForwardRecentActivity.class);
+      ((Intent)localObject).putExtra("forward_type", 15);
+      ((Intent)localObject).putExtra("choose_friend_title", str2);
+      ((Intent)localObject).putExtra("choose_friend_is_qqfriends", true);
+      ((Intent)localObject).putExtra("choose_friend_callback", localResultReceiver);
+      ((Intent)localObject).putExtra("choose_friend_isForConfess", true);
+      if (bool)
+      {
+        ((Intent)localObject).putExtra("choose_friend_needConfirm", bool);
+        ((Intent)localObject).putExtra("choose_friend_confirmTitle", str1);
+        ((Intent)localObject).putExtra("choose_friend_confirmContent", paramJSONObject);
+      }
+      super.startActivityForResult((Intent)localObject, (byte)12);
+      return;
+      str1 = "";
+      bool = false;
+      paramJSONObject = "";
+    }
+  }
+  
+  protected void a(List paramList1, List paramList2)
+  {
+    for (;;)
+    {
+      int i;
+      try
+      {
+        JSONObject localJSONObject = new JSONObject();
+        if ((paramList1 == null) || (paramList2 == null)) {
+          break label272;
+        }
+        i = 0;
+        if ((i >= paramList1.size()) || (i >= paramList2.size())) {
+          break label272;
+        }
+        if (TextUtils.isEmpty((CharSequence)paramList1.get(i))) {
+          break label277;
+        }
+        String str2 = (String)paramList1.get(i);
+        if (!TextUtils.isEmpty((CharSequence)paramList2.get(i)))
+        {
+          paramList1 = (String)paramList2.get(i);
+          paramList2 = new JSONObject();
+          paramList2.put("uin", str2);
+          paramList2.put("name", paramList1);
+          String str1 = "";
+          paramList1 = str1;
+          if (this.mRuntime != null)
+          {
+            paramList1 = str1;
+            if (this.mRuntime.a() != null) {
+              paramList1 = this.mRuntime.a().getCurrentAccountUin();
+            }
+          }
+          ReportController.b(null, "dc00898", "", "", "0X80092F7", "0X80092F7", 0, 0, "", "", paramList1, str2);
+          paramList1 = paramList2;
+          if (paramList1 != null)
+          {
+            localJSONObject.put("retCode", 0);
+            localJSONObject.put("friend", paramList1);
+            if (QLog.isColorLevel()) {
+              QLog.i("ConfessPlugin", 2, localJSONObject.toString());
+            }
+            a(this.b, localJSONObject.toString());
+            this.b = null;
+            return;
+          }
+          localJSONObject.put("retCode", -1);
+          continue;
+        }
+        paramList1 = "";
+      }
+      catch (JSONException paramList1)
+      {
+        paramList1.printStackTrace();
+        return;
+      }
+      continue;
+      label272:
+      paramList1 = null;
+      continue;
+      label277:
+      i += 1;
+    }
   }
   
   protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
@@ -512,11 +653,28 @@ public class ConfessPlugin
         b();
         return false;
       }
+      if (!"getFriendInfo".equals(paramString3)) {
+        break label583;
+      }
+      try
+      {
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+        if (paramJsBridgeListener != null) {}
+        for (this.b = paramJsBridgeListener.optString("callback");; this.b = null)
+        {
+          d(paramJsBridgeListener);
+          return false;
+        }
+        return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+      }
+      catch (Exception paramJsBridgeListener)
+      {
+        a(null, null);
+        QLog.e("ConfessPlugin", 1, "METHOD_GET_FRIEND_INFO exception e = ", paramJsBridgeListener);
+        return false;
+      }
     }
-    else
-    {
-      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-    }
+    label583:
     return false;
   }
   
@@ -528,16 +686,20 @@ public class ConfessPlugin
     }
     a();
     if ((paramByte == 10) || (paramByte == 11)) {
-      if (paramInt != -1) {
-        break label93;
+      if (paramInt == -1)
+      {
+        bool = true;
+        a(bool);
       }
     }
-    label93:
-    for (boolean bool = true;; bool = false)
-    {
-      a(bool);
-      return;
+    while ((paramByte != 12) || (paramInt != 0) || (TextUtils.isEmpty(this.b))) {
+      for (;;)
+      {
+        return;
+        boolean bool = false;
+      }
     }
+    a(null, null);
   }
   
   protected void onCreate()
@@ -565,7 +727,7 @@ public class ConfessPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessPlugin
  * JD-Core Version:    0.7.0.1
  */

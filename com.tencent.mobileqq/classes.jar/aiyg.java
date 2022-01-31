@@ -1,29 +1,32 @@
-import android.text.Spannable;
-import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
-import java.util.Comparator;
+import com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.AbsListView.OnScrollListener;
+import java.util.ArrayList;
 
-public final class aiyg
-  implements Comparator
+public class aiyg
+  implements AbsListView.OnScrollListener
 {
-  public aiyg(Spannable paramSpannable) {}
+  int jdField_a_of_type_Int = 0;
   
-  public int a(AtTroopMemberSpan paramAtTroopMemberSpan1, AtTroopMemberSpan paramAtTroopMemberSpan2)
+  public aiyg(TroopBarPublishLocationSelectActivity paramTroopBarPublishLocationSelectActivity) {}
+  
+  public void a(AbsListView paramAbsListView, int paramInt)
   {
-    int i = 0;
-    int j = this.a.getSpanStart(paramAtTroopMemberSpan1);
-    int k = this.a.getSpanStart(paramAtTroopMemberSpan2);
-    if (j < k) {
-      i = -1;
+    if ((paramInt == 0) && (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a != null) && (this.jdField_a_of_type_Int == this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size() - 1))
+    {
+      paramInt = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a.size();
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopBarPublishLocationSelectActivity.a(paramInt, false);
     }
-    while (j <= k) {
-      return i;
-    }
-    return 1;
+  }
+  
+  public void a(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
+  {
+    this.jdField_a_of_type_Int = (paramInt1 + paramInt2 - 1 - 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiyg
  * JD-Core Version:    0.7.0.1
  */

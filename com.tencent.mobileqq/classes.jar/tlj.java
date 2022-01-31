@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.RecommendFriendActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.richstatus.RichStatus;
 
-public class tlj
-  implements View.OnClickListener
+class tlj
+  implements Runnable
 {
-  public tlj(RecommendFriendActivity paramRecommendFriendActivity) {}
+  tlj(tli paramtli, RichStatus paramRichStatus) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.finish();
+    this.jdField_a_of_type_Tli.a.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus);
   }
 }
 

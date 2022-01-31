@@ -1,52 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.managers.QQLSRecentManager;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.activity.ProfileActivity.CardContactInfo;
 
-public class tgl
-  extends BroadcastReceiver
+public final class tgl
+  implements Parcelable.Creator
 {
-  private String jdField_a_of_type_JavaLangString;
-  
-  private tgl(QQLSActivity paramQQLSActivity) {}
-  
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public ProfileActivity.CardContactInfo a(Parcel paramParcel)
   {
-    if (QQLSActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          this.jdField_a_of_type_JavaLangString = paramIntent.getAction();
-          if (!"android.intent.action.SCREEN_ON".equals(this.jdField_a_of_type_JavaLangString)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_ON");
-        return;
-        if (!"android.intent.action.SCREEN_OFF".equals(this.jdField_a_of_type_JavaLangString)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QQLSActivity", 2, "ScreenBroadcastReceiver ACTION_SCREEN_OFF");
-      return;
-    } while (!"android.intent.action.USER_PRESENT".equals(this.jdField_a_of_type_JavaLangString));
-    if (QLog.isColorLevel())
-    {
-      paramContext = new StringBuilder().append("ScreenBroadcastReceiver ACTION_USER_PRESENTmanager.isEnterAio");
-      paramIntent = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
-      QLog.d("QQLSActivity", 2, QQLSRecentManager.f);
-    }
-    paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.a;
-    if (!QQLSRecentManager.f) {
-      QQLSActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityQQLSActivity.finish();
+    ProfileActivity.CardContactInfo localCardContactInfo = new ProfileActivity.CardContactInfo(null);
+    localCardContactInfo.a = paramParcel.readString();
+    localCardContactInfo.c = paramParcel.readString();
+    localCardContactInfo.b = paramParcel.readString();
+    return localCardContactInfo;
+  }
+  
+  public ProfileActivity.CardContactInfo[] a(int paramInt)
+  {
+    return new ProfileActivity.CardContactInfo[paramInt];
   }
 }
 

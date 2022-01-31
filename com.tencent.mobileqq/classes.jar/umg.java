@@ -1,32 +1,17 @@
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.graphics.drawable.Drawable;
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgQueueView;
-import com.tencent.mobileqq.activity.aio.anim.goldmsg.GoldMsgQueueView.DrawItem;
-import java.util.List;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.ActionSheet.OnDismissListener;
 
-public class umg
-  extends AnimatorListenerAdapter
+public final class umg
+  implements ActionSheet.OnDismissListener
 {
-  public umg(GoldMsgQueueView paramGoldMsgQueueView, boolean paramBoolean1, GoldMsgQueueView.DrawItem paramDrawItem, boolean paramBoolean2) {}
+  public umg(QQAppInterface paramQQAppInterface, int[] paramArrayOfInt) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onDismiss()
   {
-    super.onAnimationEnd(paramAnimator);
-    if (this.b)
-    {
-      GoldMsgQueueView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgQueueView).remove(this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgQueueView$DrawItem);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgQueueView$DrawItem.drawable != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgQueueView$DrawItem.drawable.setCallback(null);
-      }
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    super.onAnimationStart(paramAnimator);
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimGoldmsgGoldMsgQueueView$DrawItem.isUseToShowNum = true;
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8004862", "0X8004862", 0, 0, "", "", "", "");
+    if (this.jdField_a_of_type_ArrayOfInt[3] == 3) {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005B05", "0X8005B05", 0, 0, "", "", "", "");
     }
   }
 }

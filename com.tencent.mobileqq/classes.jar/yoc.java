@@ -1,21 +1,19 @@
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.aioChannel.ApolloCmdChannel;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.qphone.base.util.QLog;
-import eipc.EIPCResult;
-import eipc.EIPCResultCallback;
+import com.tencent.mobileqq.activity.recent.RecentAdapter;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
 
-public final class yoc
-  implements EIPCResultCallback
+class yoc
+  implements Runnable
 {
-  public yoc(long paramLong, String paramString) {}
+  yoc(yob paramyob) {}
   
-  public void onCallback(EIPCResult paramEIPCResult)
+  public void run()
   {
-    paramEIPCResult = paramEIPCResult.data.getString("resData");
-    CmGameUtil.a().callbackFromRequest(this.jdField_a_of_type_Long, 0, this.jdField_a_of_type_JavaLangString, paramEIPCResult);
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.CmGameToolCmdChannel", 2, " GET_DRESS_PATH onCallback resJson:" + paramEIPCResult);
+    if (HotChatCenterFragment.a(this.a.a) != null)
+    {
+      HotChatCenterFragment.a(this.a.a).a(4);
+      HotChatCenterFragment.a(this.a.a).a(HotChatCenterFragment.a(this.a.a));
+      HotChatCenterFragment.a(this.a.a).notifyDataSetChanged();
+      this.a.a.b();
     }
   }
 }

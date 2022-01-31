@@ -1,31 +1,56 @@
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import java.util.ArrayList;
+import android.content.Context;
+import android.content.Intent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.AccountManageActivity;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.activity.SubAccountBindActivity;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.DBUtils;
 
 public class rhe
-  extends DiscussionObserver
+  implements View.OnClickListener
 {
-  public rhe(AddRequestActivity paramAddRequestActivity) {}
+  public rhe(AccountManageActivity paramAccountManageActivity) {}
   
-  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList paramArrayList)
+  public void onClick(View paramView)
   {
-    if ((paramBoolean) && (paramLong == this.a.b) && (this.a.b != 0L)) {
-      this.a.runOnUiThread(new rhh(this));
+    switch (paramView.getId())
+    {
+    case 2131362758: 
+    case 2131362759: 
+    default: 
+    case 2131362757: 
+      do
+      {
+        return;
+        localObject = null;
+        if ((paramView.getTag() instanceof String)) {
+          localObject = String.valueOf(paramView.getTag());
+        }
+        if ("0X8004001".equals(localObject))
+        {
+          ReportController.b(this.a.app, "CliOper", "", "", "0X8004002", "0X8004002", 0, 0, "", "", "", "");
+          paramView = new Intent(this.a, SubAccountUgActivity.class);
+          paramView.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+          this.a.startActivity(paramView);
+          return;
+        }
+      } while (!"0X8004456".equals(localObject));
+      ReportController.b(this.a.app, "CliOper", "", "", "0X8004457", "0X8004457", 0, 0, "", "", "", "");
+      paramView = new Intent(this.a, SubAccountBindActivity.class);
+      paramView.putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+      this.a.startActivity(paramView);
+      DBUtils.a().a(this.a.app.getCurrentAccountUin(), true);
+      return;
     }
-  }
-  
-  protected void a(boolean paramBoolean, Object paramObject)
-  {
-    if ((this.a.b != 0L) && (paramBoolean) && ((paramObject instanceof ArrayList)) && (((ArrayList)paramObject).contains(Long.valueOf(this.a.b)))) {
-      this.a.runOnUiThread(new rhg(this));
-    }
-  }
-  
-  protected void a(boolean paramBoolean, String paramString)
-  {
-    if ((paramBoolean) && (this.a.b != 0L) && (String.valueOf(this.a.b).equals(paramString))) {
-      this.a.runOnUiThread(new rhf(this));
-    }
+    Object localObject = new Intent();
+    ((Intent)localObject).setClass(paramView.getContext(), AssociatedAccountActivity.class);
+    ((Intent)localObject).putExtra("fromWhere", AccountManageActivity.class.getSimpleName());
+    paramView.getContext().startActivity((Intent)localObject);
+    ReportController.b(this.a.app, "CliOper", "", "", "0X8004039", "0X8004039", 0, 0, "", "", "", "");
   }
 }
 

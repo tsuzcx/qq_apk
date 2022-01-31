@@ -1,16 +1,16 @@
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsIPCClient;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsIPCClient.Observer;
-import com.tencent.biz.pubaccount.util.PublicAccountH5AbilityPlugin;
-import com.tencent.mobileqq.widget.QQProgressDialog.Callback;
+import com.tencent.biz.pubaccount.util.GalleryShareHelper;
+import com.tencent.mobileqq.widget.QQProgressDialog;
+import java.io.File;
 
-public class mum
-  implements QQProgressDialog.Callback
+class mum
+  implements Runnable
 {
-  public mum(PublicAccountH5AbilityPlugin paramPublicAccountH5AbilityPlugin, VideoFeedsIPCClient.Observer paramObserver) {}
+  mum(mul parammul, File paramFile) {}
   
-  public void a()
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountUtilPublicAccountH5AbilityPlugin.a.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoVideoFeedsIPCClient$Observer);
+    GalleryShareHelper.a(this.jdField_a_of_type_Mul.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper).dismiss();
+    this.jdField_a_of_type_Mul.jdField_a_of_type_ComTencentBizPubaccountUtilGalleryShareHelper.a(this.jdField_a_of_type_Mul.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaIoFile);
   }
 }
 

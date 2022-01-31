@@ -1,16 +1,12 @@
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.equipmentlock.DevlockPhoneStatus;
 
-public class acad
+class acad
   implements DialogInterface.OnClickListener
 {
-  public acad(DevlockPhoneStatus paramDevlockPhoneStatus) {}
+  acad(acac paramacac) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
-  {
-    paramDialogInterface.dismiss();
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

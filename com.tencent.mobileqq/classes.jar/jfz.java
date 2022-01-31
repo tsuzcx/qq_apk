@@ -1,14 +1,12 @@
-import com.tencent.av.business.manager.EffectOperateManager;
-import java.lang.ref.WeakReference;
+import com.tencent.av.business.manager.pendant.AVEffectPendantReport;
 
-public abstract class jfz
+public final class jfz
   implements Runnable
 {
-  WeakReference a;
-  
-  public jfz(EffectOperateManager paramEffectOperateManager)
+  public void run()
   {
-    this.a = new WeakReference(paramEffectOperateManager);
+    AVEffectPendantReport.e();
+    AVEffectPendantReport.a();
   }
 }
 

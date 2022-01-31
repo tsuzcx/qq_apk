@@ -1,23 +1,18 @@
-import com.tencent.mobileqq.nearby.NearbyProcessMonitor;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.leba.LebaGridManager;
 
-public final class adzf
+public class adzf
   implements Runnable
 {
-  public adzf(String paramString) {}
+  public adzf(LebaGridManager paramLebaGridManager) {}
   
   public void run()
   {
-    NearbyProcessMonitor.b(this.a);
-    NearbyProcessMonitor.a(this.a);
-    NearbyProcessMonitor.a += 1;
-    NearbySPUtil.a(this.a);
-    NearbyProcessMonitor.a();
+    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     adzf
  * JD-Core Version:    0.7.0.1
  */

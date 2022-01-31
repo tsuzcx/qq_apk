@@ -1,19 +1,56 @@
-import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.os.Message;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.open.agent.datamodel.ImageLoader.ImageLoadListener;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager.DownloadCallback;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadModule;
+import com.tencent.mobileqq.activity.qwallet.preload.PreloadResource;
+import com.tencent.mobileqq.activity.qwallet.preload.ResourceInfo;
+import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.vip.DownloadListener;
+import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.qphone.base.util.QLog;
+import java.io.File;
+import java.util.Map;
 
 public class xfu
-  implements ImageLoader.ImageLoadListener
+  extends DownloadListener
 {
-  public xfu(BannerManager paramBannerManager, Bundle paramBundle, Message paramMessage) {}
+  public xfu(PreloadManager paramPreloadManager, String paramString, PreloadManager.DownloadCallback paramDownloadCallback) {}
   
-  public void a(String paramString1, Bitmap paramBitmap, String paramString2)
+  public void onDoneFile(DownloadTask paramDownloadTask)
   {
-    this.jdField_a_of_type_AndroidOsBundle.putParcelable("iconURLBitmap", paramBitmap);
-    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).post(new xfv(this));
+    int i = -5;
+    super.onDoneFile(paramDownloadTask);
+    if (QLog.isColorLevel()) {
+      QLog.d("PreloadManager", 2, "downloadModule|done" + paramDownloadTask.jdField_a_of_type_JavaLangString);
+    }
+    Object localObject = paramDownloadTask.a();
+    PreloadModule localPreloadModule = (PreloadModule)((Bundle)localObject).getSerializable("module");
+    localObject = (PreloadResource)((Bundle)localObject).getSerializable("resource");
+    if (QWalletTools.c(localPreloadModule.mid, this.jdField_a_of_type_JavaLangString))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PreloadManager", 2, "downloadModule|done code" + paramDownloadTask.jdField_a_of_type_Int);
+      }
+      if (paramDownloadTask.jdField_a_of_type_Int != 0) {
+        break label168;
+      }
+      i = 0;
+      if (localObject != null) {
+        break label183;
+      }
+    }
+    label168:
+    label183:
+    for (localObject = null;; localObject = ((PreloadResource)localObject).getResInfo(localPreloadModule, this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityQwalletPreloadPreloadManager$DownloadCallback.onDownloadResFinished(localPreloadModule.mid, i, ((File)paramDownloadTask.jdField_a_of_type_JavaUtilMap.get(paramDownloadTask.jdField_a_of_type_JavaLangString)).getAbsolutePath(), (ResourceInfo)localObject);
+      return;
+      if (paramDownloadTask.jdField_a_of_type_Int == -5) {
+        break;
+      }
+      i = -6;
+      break;
+    }
   }
 }
 

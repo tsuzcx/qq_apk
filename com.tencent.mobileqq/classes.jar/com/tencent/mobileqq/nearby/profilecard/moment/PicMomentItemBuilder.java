@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
-import aeys;
+import afly;
 import android.content.Context;
 import android.content.res.Resources;
 import android.text.TextUtils;
@@ -35,7 +35,7 @@ public class PicMomentItemBuilder
   
   static
   {
-    jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$UploadListener = new aeys();
+    jdField_a_of_type_ComTencentMobileqqNearbyNowSendUploaderImageFeedsUploader$UploadListener = new afly();
   }
   
   public PicMomentItemBuilder(Context paramContext, QQAppInterface paramQQAppInterface)
@@ -51,9 +51,9 @@ public class PicMomentItemBuilder
   public View a(ViewGroup paramViewGroup, BaseMomentItemBuilder.MomentViewHolder paramMomentViewHolder)
   {
     paramMomentViewHolder = (PicMomentItemBuilder.PicViewHolder)paramMomentViewHolder;
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970436, paramViewGroup, false);
-    paramMomentViewHolder.j = ((TextView)paramViewGroup.findViewById(2131367080));
-    paramMomentViewHolder.f = ((ImageView)paramViewGroup.findViewById(2131370696));
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970477, paramViewGroup, false);
+    paramMomentViewHolder.j = ((TextView)paramViewGroup.findViewById(2131367129));
+    paramMomentViewHolder.f = ((ImageView)paramViewGroup.findViewById(2131370836));
     return paramViewGroup;
   }
   
@@ -151,8 +151,8 @@ public class PicMomentItemBuilder
             {
               label253:
               localObject = URLDrawable.URLDrawableOptions.obtain();
-              ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842715);
-              ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842715);
+              ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842814);
+              ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842814);
               if (bool) {}
               for (paramMomentViewHolder = URLDrawable.getDrawable(localFile, (URLDrawable.URLDrawableOptions)localObject);; paramMomentViewHolder = URLDrawable.getDrawable(paramMomentViewHolder, (URLDrawable.URLDrawableOptions)localObject))
               {
@@ -186,7 +186,7 @@ public class PicMomentItemBuilder
             }
             catch (Exception paramMomentViewHolder)
             {
-              localPicViewHolder.f.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842715));
+              localPicViewHolder.f.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130842814));
               QLog.i("PicMomentItemBuilder", 1, paramMomentViewHolder.toString());
               return;
             }

@@ -1,43 +1,21 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsHelper;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayManager.VideoPlayParam;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoPlayerWrapper;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.LinearLayout;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
 
 public class mdf
-  implements SeekBar.OnSeekBarChangeListener
+  implements Animation.AnimationListener
 {
-  public mdf(VideoFeedsPlayManager paramVideoFeedsPlayManager) {}
+  public mdf(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if ((VideoFeedsPlayManager.a(this.a) == null) || (!paramBoolean)) {
-      return;
-    }
-    VideoFeedsPlayManager.b(this.a, System.currentTimeMillis());
-    long l = VideoFeedsPlayManager.a(this.a).b();
-    double d = paramInt / 100.0D;
-    paramInt = (int)(l * d);
-    VideoFeedsHelper.a(VideoFeedsPlayManager.a(this.a).a, paramInt);
+    VideoFeedsPlayActivity.b(this.a).startAnimation(this.a.b);
   }
   
-  public void onStartTrackingTouch(SeekBar paramSeekBar)
-  {
-    VideoFeedsPlayManager.d(this.a, true);
-  }
+  public void onAnimationRepeat(Animation paramAnimation) {}
   
-  public void onStopTrackingTouch(SeekBar paramSeekBar)
-  {
-    if (VideoFeedsPlayManager.a(this.a) == null) {
-      return;
-    }
-    VideoFeedsPlayManager.d(this.a, false);
-    int i = paramSeekBar.getProgress();
-    long l = VideoFeedsPlayManager.a(this.a).b();
-    i = (int)(i / 100.0D * l);
-    VideoFeedsPlayManager.a(this.a).a(i);
-  }
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

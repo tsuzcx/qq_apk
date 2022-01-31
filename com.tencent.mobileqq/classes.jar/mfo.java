@@ -1,23 +1,23 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAtlasViewPager;
-import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyAtlasViewPager.PageItemScrollListener;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoShareHelper;
+import com.tencent.biz.widgets.ElasticHorScrView;
 
 public class mfo
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public mfo(ReadInJoyAtlasViewPager paramReadInJoyAtlasViewPager) {}
+  public mfo(VideoShareHelper paramVideoShareHelper, ElasticHorScrView paramElasticHorScrView1, int paramInt1, ElasticHorScrView paramElasticHorScrView2, int paramInt2) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    this.a.getChildAt(this.a.getCurrentItem()).setScrollY(((Float)paramValueAnimator.getAnimatedValue()).intValue());
-    if (ReadInJoyAtlasViewPager.a(this.a) != null) {
-      ReadInJoyAtlasViewPager.a(this.a).a(0.0F, this.a.getChildAt(this.a.getCurrentItem()).getScrollY(), null);
+    if (this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_a_of_type_Int) {
+      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
     }
-    if ((paramValueAnimator.getAnimatedFraction() == 1.0F) && (ReadInJoyAtlasViewPager.a(this.a) != null)) {
-      ReadInJoyAtlasViewPager.a(this.a).a();
+    while (this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.getWidth() < this.jdField_b_of_type_Int)
+    {
+      this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(true);
+      return;
+      this.jdField_a_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
     }
+    this.jdField_b_of_type_ComTencentBizWidgetsElasticHorScrView.setMove(false);
   }
 }
 

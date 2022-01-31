@@ -1,13 +1,21 @@
-import com.tencent.mobileqq.emoticonview.CommonUsedSystemEmojiManager;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.dating.HotChatFlashPicActivity;
 
-public class abwx
-  implements Runnable
+class abwx
+  implements View.OnClickListener
 {
-  public abwx(CommonUsedSystemEmojiManager paramCommonUsedSystemEmojiManager) {}
+  abwx(abww paramabww) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.b();
+    if ((HotChatFlashPicActivity.a(this.a.a) != null) && (!this.a.a.isFinishing()))
+    {
+      HotChatFlashPicActivity.a(this.a.a).dismiss();
+      HotChatFlashPicActivity.a(this.a.a, null);
+      this.a.a.finish();
+    }
   }
 }
 

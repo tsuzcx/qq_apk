@@ -1,22 +1,15 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.widget.LeftPopupMenuDialog;
-
-public class akgl
-  implements View.OnClickListener
+public final class akgl
+  implements akgp
 {
-  public akgl(LeftPopupMenuDialog paramLeftPopupMenuDialog) {}
-  
-  public void onClick(View paramView)
+  public Float a(float paramFloat, Number paramNumber1, Number paramNumber2)
   {
-    if (this.a.isShowing()) {
-      this.a.dismiss();
-    }
+    float f = paramNumber1.floatValue();
+    return Float.valueOf(f + (paramNumber2.floatValue() - f) * paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     akgl
  * JD-Core Version:    0.7.0.1
  */

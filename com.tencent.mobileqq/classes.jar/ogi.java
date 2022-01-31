@@ -1,20 +1,18 @@
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
+import android.widget.EditText;
+import com.tencent.biz.qqstory.takevideo.EditVideoPoiSearch;
+import com.tencent.util.InputMethodUtil;
 
-public final class ogi
-  implements Animation.AnimationListener
+public class ogi
+  implements Runnable
 {
-  public ogi(View paramView) {}
+  public ogi(EditVideoPoiSearch paramEditVideoPoiSearch) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void run()
   {
-    this.a.setAnimation(null);
+    this.a.a.setFocusableInTouchMode(true);
+    this.a.a.requestFocus();
+    InputMethodUtil.a(this.a.a);
   }
-  
-  public void onAnimationRepeat(Animation paramAnimation) {}
-  
-  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

@@ -1,69 +1,30 @@
-import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyAtlasViewPagerAdapter;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyAtlasViewPagerAdapter.OnChildGalleryEventListener;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment;
-import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoyAtlasFragment.ReportEventListener;
-import com.tencent.biz.pubaccount.readinjoy.model.AtlasModel;
-import com.tencent.biz.pubaccount.readinjoy.model.AtlasModelImage;
-import com.tencent.biz.pubaccount.readinjoy.view.VariableSizeTextView;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import tencent.im.oidb.gallery.gallery.PictureInfo;
+import android.content.Context;
+import android.content.res.Resources;
+import android.view.View;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
+import com.tencent.biz.pubaccount.PublicAccountReportUtils;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.biz.pubaccount.readinjoy.engine.KandianMergeManager;
+import com.tencent.biz.pubaccount.readinjoy.fragment.ReadInJoySelfFragment;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class lno
-  implements ReadInJoyAtlasViewPagerAdapter.OnChildGalleryEventListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  public lno(ReadInJoyAtlasFragment paramReadInJoyAtlasFragment) {}
+  public lno(ReadInJoySelfFragment paramReadInJoySelfFragment) {}
   
-  public void a(int paramInt, AtlasModelImage paramAtlasModelImage)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ReadInJoyAtlasFragment.a(this.a).a(3, null);
-    if (ReadInJoyAtlasFragment.a(this.a) == 1)
+    ReadInJoySelfFragment.a(this.a).b(paramBoolean);
+    if (paramBoolean)
     {
-      if (this.a.jdField_a_of_type_Boolean) {
-        this.a.g();
-      }
-    }
-    else {
+      QQToast.a(this.a.a.getContext(), this.a.a.getContext().getResources().getString(2131428461), 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131558448));
+      PublicAccountReportUtils.a(null, "CliOper", "", "", "0X80067D6", "0X80067D6", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
       return;
     }
-    this.a.f();
-  }
-  
-  public void a(int paramInt, AtlasModelImage paramAtlasModelImage, AtlasModel paramAtlasModel)
-  {
-    if (paramAtlasModel != null)
-    {
-      Bundle localBundle = new Bundle();
-      localBundle.putSerializable("lastShowImageModel", paramAtlasModel);
-      ReadInJoyAtlasFragment.a(this.a).a(-1, localBundle);
-    }
-    if (ReadInJoyAtlasFragment.a(this.a)) {
-      ReadInJoyAtlasFragment.b(this.a, false);
-    }
-    for (;;)
-    {
-      if (paramAtlasModelImage != null)
-      {
-        if (this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.getVisibility() != 0) {
-          this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setVisibility(0);
-        }
-        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setPage(paramInt, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommonReadInJoyAtlasViewPagerAdapter.a());
-        this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewVariableSizeTextView.setText(ReadInJoyAtlasFragment.a(this.a, paramAtlasModelImage));
-        ReadInJoyAtlasFragment.a(this.a, paramInt);
-        if ((paramAtlasModelImage.pictureInfo != null) && (paramAtlasModelImage.pictureInfo.bytes_pic_url.has())) {
-          ReadInJoyAtlasFragment.f(this.a, paramAtlasModelImage.pictureInfo.bytes_pic_url.get().toStringUtf8());
-        }
-      }
-      return;
-      ReadInJoyAtlasFragment.a(this.a).a(2, null);
-    }
-  }
-  
-  public void b(int paramInt, AtlasModelImage paramAtlasModelImage)
-  {
-    paramAtlasModelImage = paramAtlasModelImage.pictureInfo.bytes_pic_url.get().toStringUtf8();
-    ReadInJoyAtlasFragment.a(this.a, paramAtlasModelImage);
+    PublicAccountReportUtils.a(null, "CliOper", "", "", "0X800705C", "0X800705C", 0, 0, "", "", "", ReadInJoyUtils.c(), false);
   }
 }
 

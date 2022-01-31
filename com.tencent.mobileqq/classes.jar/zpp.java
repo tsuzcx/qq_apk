@@ -1,15 +1,15 @@
-import com.tencent.mobileqq.app.message.C2CMessageProcessor;
-import com.tencent.mobileqq.data.MessageRecord;
-import java.util.Comparator;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendsManager;
+import com.tencent.mobileqq.app.activateFriends.ActivateFriendsObserver;
 
 public class zpp
-  implements Comparator
+  implements Runnable
 {
-  public zpp(C2CMessageProcessor paramC2CMessageProcessor) {}
+  public zpp(ActivateFriendsManager paramActivateFriendsManager) {}
   
-  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
+  public void run()
   {
-    return (int)(paramMessageRecord1.time - paramMessageRecord2.time);
+    ActivateFriendsManager.a(this.a).notifyObservers(ActivateFriendsObserver.class, 115, true, null);
   }
 }
 

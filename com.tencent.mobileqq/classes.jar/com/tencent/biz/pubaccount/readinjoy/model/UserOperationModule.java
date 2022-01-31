@@ -44,8 +44,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.atomic.AtomicInteger;
-import lrs;
-import lrt;
+import lsb;
+import lsc;
 import mqq.app.AppRuntime;
 import tencent.im.oidb.cmd0x64e.oidb_cmd0x64e.FeedsReportData;
 import tencent.im.oidb.cmd0x64e.oidb_cmd0x64e.ReportInfo;
@@ -464,10 +464,10 @@ public class UserOperationModule
     int i = ReadInJoyOidbHelper.a(paramFromServiceMsg, paramObject, paramToServiceMsg);
     if (i == 0) {
       if (!paramToServiceMsg.uint64_uin.has()) {
-        break label431;
+        break label491;
       }
     }
-    label431:
+    label491:
     for (long l1 = paramToServiceMsg.uint64_uin.get();; l1 = 0L)
     {
       if ((paramToServiceMsg.rsp_kd_event_report_resp.has()) && (paramToServiceMsg.rsp_kd_event_report_resp.get() != null))
@@ -497,6 +497,15 @@ public class UserOperationModule
       }
       if ((paramToServiceMsg.uint64_main_video_tab_red.has()) && (paramToServiceMsg.uint64_main_video_tab_red.get() > 0L)) {
         ((KandianMergeManager)ReadInJoyUtils.a().getManager(161)).a(new KandianRedDotInfo("kandian_video_tab_reddot_info"));
+      }
+      if (paramToServiceMsg.uint64_scroll_interval_time.has()) {
+        com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.ScrollReportUtil.jdField_a_of_type_Long = paramToServiceMsg.uint64_scroll_interval_time.get();
+      }
+      if (paramToServiceMsg.uint64_scroll_all_time.has()) {
+        com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.ScrollReportUtil.jdField_b_of_type_Long = paramToServiceMsg.uint64_scroll_all_time.get();
+      }
+      if (paramToServiceMsg.uint64_chat_aio_time.has()) {
+        ReadinjoySPEventReport.jdField_b_of_type_Long = paramToServiceMsg.uint64_chat_aio_time.get();
       }
       if (QLog.isColorLevel()) {
         QLog.d("UserOperationModule", 2, "handle0x80aPushEffectEvent, result=" + i);
@@ -744,11 +753,11 @@ public class UserOperationModule
       paramObject = (oidb_cmd0x978.OneFollowOperationResult)paramFromServiceMsg.next();
       if (TextUtils.equals(String.valueOf(paramObject.uint64_dst_uin.get()), paramToServiceMsg))
       {
-        this.jdField_a_of_type_AndroidOsHandler.post(new lrs(this, localOx978RespCallBack, paramToServiceMsg, paramObject));
+        this.jdField_a_of_type_AndroidOsHandler.post(new lsb(this, localOx978RespCallBack, paramToServiceMsg, paramObject));
         return;
       }
     }
-    this.jdField_a_of_type_AndroidOsHandler.post(new lrt(this, localOx978RespCallBack, paramToServiceMsg, i));
+    this.jdField_a_of_type_AndroidOsHandler.post(new lsc(this, localOx978RespCallBack, paramToServiceMsg, i));
   }
   
   public void b(List paramList)

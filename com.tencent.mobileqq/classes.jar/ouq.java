@@ -1,34 +1,21 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiService;
-import com.tencent.mobileqq.app.HotchatSCHelper;
-import com.tencent.mobileqq.app.HotchatSCHelper.OnShowNoteListener;
-import com.tencent.mobileqq.app.HotchatSCMng;
-import com.tencent.mobileqq.app.HotchatSCMng.HotchatNote;
+import android.os.Handler.Callback;
+import android.os.Message;
+import com.tencent.biz.qrcode.activity.ScannerActivity;
 
-class ouq
-  implements HotchatSCHelper.OnShowNoteListener
+public class ouq
+  implements Handler.Callback
 {
-  ouq(ouo paramouo, Bundle paramBundle) {}
+  public ouq(ScannerActivity paramScannerActivity) {}
   
-  public boolean a(HotchatSCMng.HotchatNote paramHotchatNote)
+  public boolean handleMessage(Message paramMessage)
   {
-    Bundle localBundle = new Bundle();
-    HotchatSCMng.HotchatNote localHotchatNote = paramHotchatNote;
-    if (paramHotchatNote == null) {
-      localHotchatNote = this.jdField_a_of_type_Ouo.a.a.jdField_a_of_type_ComTencentMobileqqAppHotchatSCMng.a(this.jdField_a_of_type_Ouo.a.a.jdField_a_of_type_JavaLangString, 1, HotchatSCHelper.a());
-    }
-    if (localHotchatNote != null)
+    switch (paramMessage.what)
     {
-      localBundle.putString("url", localHotchatNote.b);
-      localBundle.putString("content", localHotchatNote.jdField_a_of_type_JavaLangString);
     }
     for (;;)
     {
-      localBundle.putInt("seq", this.jdField_a_of_type_AndroidOsBundle.getInt("seq", -1));
-      this.jdField_a_of_type_Ouo.a.a(102, localBundle);
-      return false;
-      localBundle.putString("url", "");
-      localBundle.putString("content", "");
+      return true;
+      this.a.c();
     }
   }
 }

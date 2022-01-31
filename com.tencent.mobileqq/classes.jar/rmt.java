@@ -1,16 +1,16 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.widget.SlideDetectListView;
 
 public class rmt
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public rmt(BaseChatPie paramBaseChatPie) {}
+  public rmt(AssociatedAccountActivity paramAssociatedAccountActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.a.b.dismiss();
+    if (this.a.a != null) {
+      this.a.a.springBackOverScrollHeaderView();
+    }
   }
 }
 

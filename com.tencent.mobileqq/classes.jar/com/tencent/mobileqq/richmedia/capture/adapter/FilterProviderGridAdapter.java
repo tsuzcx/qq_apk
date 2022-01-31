@@ -91,14 +91,14 @@ public class FilterProviderGridAdapter
     }
     View localView = paramView;
     if (paramView == null) {
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970262, paramViewGroup, false);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970278, paramViewGroup, false);
     }
-    TextView localTextView = (TextView)localView.findViewById(2131369855);
-    ImageView localImageView3 = (ImageView)localView.findViewById(2131369854);
-    ImageView localImageView1 = (ImageView)localView.findViewById(2131362701);
-    ImageView localImageView2 = (ImageView)localView.findViewById(2131363385);
-    URLImageView localURLImageView = (URLImageView)localView.findViewById(2131369856);
-    CaptureCommonLoadingView localCaptureCommonLoadingView = (CaptureCommonLoadingView)localView.findViewById(2131369000);
+    TextView localTextView = (TextView)localView.findViewById(2131369932);
+    ImageView localImageView3 = (ImageView)localView.findViewById(2131369931);
+    ImageView localImageView1 = (ImageView)localView.findViewById(2131362719);
+    ImageView localImageView2 = (ImageView)localView.findViewById(2131363403);
+    URLImageView localURLImageView = (URLImageView)localView.findViewById(2131369933);
+    CaptureCommonLoadingView localCaptureCommonLoadingView = (CaptureCommonLoadingView)localView.findViewById(2131369066);
     FilterCategoryItem localFilterCategoryItem = (FilterCategoryItem)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     paramView = CaptureVideoFilterManager.a().a();
     boolean bool = false;
@@ -123,17 +123,18 @@ public class FilterProviderGridAdapter
       paramView.height = this.jdField_b_of_type_Int;
       if (localFilterCategoryItem.a())
       {
-        localImageView1.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843087));
+        localImageView1.setImageDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843186));
         if (bool)
         {
           localImageView3.setVisibility(0);
           label297:
           localImageView2.setVisibility(8);
           localTextView.setText("无滤镜");
+          localImageView1.setContentDescription("无滤镜");
+          localTextView.setContentDescription("无滤镜");
         }
       }
-      label547:
-      label615:
+      label581:
       do
       {
         return localView;
@@ -144,22 +145,24 @@ public class FilterProviderGridAdapter
         if (bool)
         {
           localImageView3.setVisibility(0);
-          localTextView.setShadowLayer(0.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492975));
+          localTextView.setShadowLayer(0.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492976));
           paramView = URLDrawable.URLDrawableOptions.obtain();
-          paramView.mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843083);
-          paramView.mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843083);
+          paramView.mLoadingDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843182);
+          paramView.mFailedDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843182);
           localCaptureCommonLoadingView.setMax(10000);
           localCaptureCommonLoadingView.setVisibility(8);
           paramView = URLDrawable.getDrawable(localFilterCategoryItem.d, URLDrawable.URLDrawableOptions.obtain());
           paramView.startDownload();
           localImageView1.setImageDrawable(paramView);
           localTextView.setText(localFilterCategoryItem.jdField_b_of_type_JavaLangString);
+          localImageView1.setContentDescription(localFilterCategoryItem.jdField_b_of_type_JavaLangString);
+          localTextView.setContentDescription(localFilterCategoryItem.jdField_b_of_type_JavaLangString);
           if (!localFilterCategoryItem.jdField_a_of_type_Boolean) {
-            break label615;
+            break label649;
           }
           localImageView2.setVisibility(8);
           if (!StringUtil.a(localFilterCategoryItem.j)) {
-            break label547;
+            break label581;
           }
           localURLImageView.setVisibility(8);
         }
@@ -168,7 +171,7 @@ public class FilterProviderGridAdapter
           ReportController.b(null, "dc00898", "", "", "0X800859E", "0X800859E", 2, 0, "", "", localFilterCategoryItem.jdField_a_of_type_JavaLangString, "");
           return localView;
           localImageView3.setVisibility(8);
-          localTextView.setShadowLayer(3.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492975));
+          localTextView.setShadowLayer(3.0F, 0.0F, 0.0F, this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131492976));
           break;
           try
           {
@@ -187,13 +190,14 @@ public class FilterProviderGridAdapter
         }
         bool = CaptureVideoFilterManager.a().a(3, localFilterCategoryItem.jdField_b_of_type_Int, localFilterCategoryItem.jdField_a_of_type_JavaLangString);
         if (!bool) {
-          break label661;
+          break label695;
         }
         localImageView2.setVisibility(0);
       } while (!bool);
-      localImageView2.setImageResource(2130843091);
+      label649:
+      localImageView2.setImageResource(2130843190);
       return localView;
-      label661:
+      label695:
       localImageView2.setVisibility(8);
       return localView;
     }

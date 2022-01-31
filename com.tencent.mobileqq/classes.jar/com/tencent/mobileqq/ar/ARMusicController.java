@@ -8,11 +8,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.HashSet;
-import zuh;
-import zui;
-import zuj;
-import zuk;
-import zul;
+import zxn;
+import zxo;
+import zxp;
+import zxq;
+import zxr;
 
 public class ARMusicController
 {
@@ -40,9 +40,9 @@ public class ARMusicController
       this.jdField_a_of_type_JavaUtilHashSet = new HashSet();
       this.jdField_b_of_type_JavaUtilHashSet = new HashSet();
       this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(paramInt, 3, 0);
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new zuk(this));
+      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new zxq(this));
       this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new zul(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new zxr(this));
       if ((paramVarArgs != null) && (paramVarArgs.length > 0))
       {
         int j = paramVarArgs.length;
@@ -77,10 +77,10 @@ public class ARMusicController
       this.jdField_a_of_type_JavaLangString = paramString1;
       this.jdField_b_of_type_JavaLangString = paramString2;
       this.jdField_a_of_type_AndroidMediaSoundPool = new SoundPool(1, 3, 0);
-      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new zuh(this));
+      this.jdField_a_of_type_AndroidMediaSoundPool.setOnLoadCompleteListener(new zxn(this));
       this.jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new zui(this));
-      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new zuj(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(new zxo(this));
+      this.jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(new zxp(this));
       this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaSoundPool.load(paramString2, 1);
       try
       {

@@ -1,15 +1,17 @@
-import com.tencent.mobileqq.ar.FaceScanDownloadManager.DownloadCallback;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import com.tencent.mobileqq.ar.ARRecord.ARVideoRecordButtonView;
 
-public final class zye
-  implements Runnable
+public class zye
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  public zye(FaceScanDownloadManager.DownloadCallback paramDownloadCallback, int paramInt1, int paramInt2) {}
+  public zye(ARVideoRecordButtonView paramARVideoRecordButtonView) {}
   
-  public void run()
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArFaceScanDownloadManager$DownloadCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArFaceScanDownloadManager$DownloadCallback.a(this.jdField_a_of_type_Int, this.b);
-    }
+    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
+    ARVideoRecordButtonView.b(this.a, paramValueAnimator.floatValue());
+    ARVideoRecordButtonView.a(this.a);
   }
 }
 

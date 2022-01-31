@@ -1,58 +1,50 @@
-import android.text.TextUtils;
-import com.tencent.av.app.GAudioUIObserver;
-import com.tencent.av.ui.MultiIncomingCallsActivity;
+import android.content.Intent;
+import com.tencent.av.VideoController;
+import com.tencent.av.app.SessionInfo;
+import com.tencent.av.ui.AVActivity;
+import com.tencent.av.ui.MultiVideoCtrlLayerUI4Discussion;
+import com.tencent.av.ui.MultiVideoMembersListviewAvtivity;
+import com.tencent.av.utils.MultiVideoMembersClickListener;
 import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
 
 public class jwe
-  extends GAudioUIObserver
+  implements MultiVideoMembersClickListener
 {
-  public jwe(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
+  public jwe(MultiVideoCtrlLayerUI4Discussion paramMultiVideoCtrlLayerUI4Discussion) {}
   
-  protected void a(long paramLong, int paramInt)
+  private void b()
   {
-    QLog.w(this.a.jdField_b_of_type_JavaLangString, 1, "onDestroyInviteUI, groupId[" + paramLong + "], reason[" + paramInt + "], mIsDoubleVideoMeeting[" + this.a.jdField_a_of_type_Boolean + "], mPeerUin[" + this.a.c + "], mGroupId[" + this.a.jdField_a_of_type_Long + "]");
-    if (this.a.jdField_a_of_type_Boolean) {
-      if (TextUtils.equals(this.a.c, String.valueOf(paramLong)))
-      {
-        this.a.b("onDestroyInviteUI_DoubleVideoMeeting");
-        this.a.b(paramInt);
-      }
+    AVActivity localAVActivity = (AVActivity)this.a.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localAVActivity != null)
+    {
+      localIntent = new Intent(localAVActivity, MultiVideoMembersListviewAvtivity.class);
+      localIntent.putExtra("uinType", this.a.jdField_c_of_type_Int);
+      localIntent.putExtra("RelationUin", String.valueOf(this.a.b));
+      localAVActivity.startActivity(localIntent);
     }
-    while ((this.a.jdField_a_of_type_Long != paramLong) && (0L != paramLong)) {
+    while (!QLog.isColorLevel())
+    {
+      Intent localIntent;
       return;
     }
-    this.a.b("onDestroyInviteUI");
+    QLog.e(this.a.jdField_c_of_type_JavaLangString, 2, "startMembersListViewPage-->can not get activity");
   }
   
-  protected void a(long paramLong, String paramString)
+  public void a()
   {
-    if ((this.a.jdField_a_of_type_Long == paramLong) && (this.a.e.equals(paramString))) {
-      this.a.finish();
+    if ((this.a.jdField_a_of_type_ComTencentAvVideoController.a().d == 4) && (!this.a.jdField_a_of_type_ComTencentAvVideoController.a().k())) {
+      this.a.ad();
     }
   }
   
-  protected void b(long paramLong1, long paramLong2, String paramString)
+  public void a(long paramLong, int paramInt1, int paramInt2, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d(this.a.jdField_b_of_type_JavaLangString + ".troopgroup_vedio.invite", 2, "groupId:" + paramLong1 + ", memUin:" + paramLong2 + ",invitedId:" + paramString + ", mInviterUin:" + this.a.jdField_b_of_type_Long + ", mGroupId:" + this.a.jdField_a_of_type_Long);
+      QLog.d(this.a.jdField_c_of_type_JavaLangString, 2, "MultiVideoMembersClickListener , Uin = " + paramLong + " , videoScr = " + paramInt1 + " , isNeedRequest " + paramBoolean + " , positon = " + paramInt2);
     }
-    if ((paramLong2 == this.a.jdField_b_of_type_Long) && (paramLong1 == this.a.jdField_a_of_type_Long)) {
-      this.a.finish();
-    }
-  }
-  
-  protected void g(long paramLong)
-  {
-    this.a.b("notifyCloseAllGroupVideoInviteMsgBox");
-    this.a.finish();
-  }
-  
-  protected void h(long paramLong)
-  {
-    if (this.a.jdField_a_of_type_Long == paramLong)
-    {
-      this.a.b("notifyCloseGroupVideoInviteMsgBox");
-      this.a.finish();
+    if ((paramInt2 == 17) && (paramBoolean)) {
+      b();
     }
   }
 }

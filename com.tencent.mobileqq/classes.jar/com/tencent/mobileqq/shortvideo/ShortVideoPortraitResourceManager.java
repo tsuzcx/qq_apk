@@ -30,7 +30,7 @@ public class ShortVideoPortraitResourceManager
   
   public static boolean a()
   {
-    return SoLoader.f();
+    return SoLoader.g();
   }
   
   public static boolean a(AppInterface paramAppInterface, ShortVideoResourceManager.SVConfigItem paramSVConfigItem)

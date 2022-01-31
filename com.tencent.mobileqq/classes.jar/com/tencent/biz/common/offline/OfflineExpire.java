@@ -11,9 +11,9 @@ import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import kmc;
-import kmd;
-import kmf;
+import kln;
+import klo;
+import klq;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -132,7 +132,7 @@ public class OfflineExpire
           String str1 = ((JSONObject)localObject).optInt("bid") + "";
           String str2 = ((JSONObject)localObject).optString("url");
           int m = ((JSONObject)localObject).optInt("filesize", 0);
-          BidDownloader localBidDownloader = new BidDownloader(str1, paramQQAppInterface, new kmc(paramContext, str2, m, str1), true, k);
+          BidDownloader localBidDownloader = new BidDownloader(str1, paramQQAppInterface, new kln(paramContext, str2, m, str1), true, k);
           localBidDownloader.d = ((JSONObject)localObject).optInt("id");
           JSONObject localJSONObject = HtmlOffline.a(str1);
           if ((localJSONObject == null) || (localJSONObject.optInt("version", 0) < localBidDownloader.d))
@@ -145,7 +145,7 @@ public class OfflineExpire
               localBidDownloader.jdField_c_of_type_JavaLangString = str2;
               localBidDownloader.jdField_c_of_type_Int = m;
               localBidDownloader.a = true;
-              localObject = new kmf(paramQQAppInterface, str1, localBidDownloader);
+              localObject = new klq(paramQQAppInterface, str1, localBidDownloader);
               if (!localBidDownloader.f) {
                 break label388;
               }
@@ -158,7 +158,7 @@ public class OfflineExpire
         }
       }
       label399:
-      ThreadManager.getSubThreadHandler().postDelayed(new kmd(paramContext, localArrayList), paramInt);
+      ThreadManager.getSubThreadHandler().postDelayed(new klo(paramContext, localArrayList), paramInt);
       return;
     }
   }

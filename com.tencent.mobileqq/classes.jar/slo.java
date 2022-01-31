@@ -1,14 +1,18 @@
-import com.tencent.mobileqq.activity.FriendProfileCardActivity;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.EditActivity;
 
-class slo
-  implements Runnable
+public class slo
+  implements View.OnClickListener
 {
-  slo(sln paramsln) {}
+  public slo(EditActivity paramEditActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a(this.a.a.a.a, true);
+    if ((EditActivity.a(this.a) != null) && (EditActivity.a(this.a).isShowing()) && (EditActivity.a(this.a).getWindow() != null)) {
+      EditActivity.a(this.a).dismiss();
+    }
   }
 }
 

@@ -1,18 +1,20 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnDismissListener;
-import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverUGCActivity;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.biz.pubaccount.readinjoy.struct.KandianOx210MsgInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import cooperation.readinjoy.ReadInJoyHelper;
 
 public class lxr
-  implements DialogInterface.OnDismissListener
+  implements Runnable
 {
-  public lxr(ReadInJoyDeliverUGCActivity paramReadInJoyDeliverUGCActivity) {}
+  public lxr(KandianOx210MsgInfo paramKandianOx210MsgInfo, QQAppInterface paramQQAppInterface) {}
   
-  public void onDismiss(DialogInterface paramDialogInterface)
+  public void run()
   {
-    ReadInJoyDeliverUGCActivity.a(this.a, false);
-    ThreadManager.getUIHandler().postDelayed(new lxs(this), 300L);
+    SharedPreferences.Editor localEditor = ReadInJoyHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true, false).edit();
+    localEditor.putString("kandian_push_0x210_msg_for_follow", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.a());
+    localEditor.putLong("kandian_push_0x210_c5_msg_time", this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructKandianOx210MsgInfo.d);
+    ReadInJoyHelper.a(localEditor, true);
   }
 }
 

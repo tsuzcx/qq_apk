@@ -1,20 +1,38 @@
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.RadioGroup.OnCheckedChangeListener;
-import com.tencent.biz.qqstory.storyHome.VideoEncodeActivity;
-import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager.GetFeedIdVidListEvent;
+import com.tencent.biz.qqstory.shareGroup.model.ShareGroupManager.GetFeedVidListObserver;
+import com.tencent.biz.qqstory.storyHome.memory.model.VideoCollectionItem;
+import com.tencent.qphone.base.util.QLog;
+import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatchers;
+import java.util.ArrayList;
 
 public class nsq
-  implements RadioGroup.OnCheckedChangeListener
+  extends ShareGroupManager.GetFeedVidListObserver
 {
-  public nsq(VideoEncodeActivity paramVideoEncodeActivity) {}
+  public nsq(ShareGroupManager paramShareGroupManager, int paramInt1, String paramString, int paramInt2) {}
   
-  public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
+  public void a(VideoCollectionItem paramVideoCollectionItem, boolean paramBoolean)
   {
-    paramRadioGroup = (RadioButton)paramRadioGroup.findViewById(paramInt);
-    VideoEncodeActivity.a(this.a, (String)paramRadioGroup.getTag());
-    SLog.d("Q.qqstory:VideoEncodeActivity", "select fake vid %s", new Object[] { VideoEncodeActivity.a(this.a) });
-    VideoEncodeActivity.a(this.a);
+    if (this.jdField_a_of_type_Int == paramVideoCollectionItem.videoVidList.size())
+    {
+      boolean bool = true;
+      paramBoolean = bool;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("Q.qqstory.discover.ShareGroupManager", 2, "currentVidListSize == videoCollectionItem.videoVidList.size():" + paramVideoCollectionItem.toString());
+        paramBoolean = bool;
+      }
+    }
+    if (paramBoolean)
+    {
+      ShareGroupManager.GetFeedIdVidListEvent localGetFeedIdVidListEvent = new ShareGroupManager.GetFeedIdVidListEvent();
+      localGetFeedIdVidListEvent.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+      localGetFeedIdVidListEvent.jdField_a_of_type_JavaUtilArrayList = paramVideoCollectionItem.videoVidList;
+      Dispatchers.get().dispatch(localGetFeedIdVidListEvent);
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupManager.a(this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 

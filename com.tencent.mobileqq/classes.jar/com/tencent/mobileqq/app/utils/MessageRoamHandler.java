@@ -29,7 +29,7 @@ import java.util.HashSet;
 import java.util.Set;
 import mqq.os.MqqHandler;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
-import zts;
+import zwy;
 
 public class MessageRoamHandler
   extends BusinessHandler
@@ -392,8 +392,8 @@ public class MessageRoamHandler
     this.jdField_a_of_type_Int = paramInt;
     if (this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) == null)
     {
-      zts localzts = new zts(this, paramInt);
-      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localzts);
+      zwy localzwy = new zwy(this, paramInt);
+      this.jdField_a_of_type_AndroidUtilSparseArray.put(paramInt, localzwy);
     }
     return (MessageObserver)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
   }

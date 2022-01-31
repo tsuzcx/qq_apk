@@ -1,61 +1,66 @@
-import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.biz.TroopRedpoint.TroopRedTouchHandler;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+import com.tencent.biz.addContactTroopView.TroopCardXingquBuluo;
+import com.tencent.biz.addContactTroopView.TroopCardXingquBuluo.ViewHolder;
+import com.tencent.image.URLDrawable;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
+import com.tencent.mobileqq.pb.PBStringField;
 import java.util.List;
-import mqq.observer.BusinessObserver;
-import tencent.im.oidb.cmd0x791.oidb_0x791.RspBody;
-import tencent.im.oidb.cmd0x791.oidb_0x791.SetRedDotRes;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import tencent.im.troop_search_searchtab.searchtab.Item3;
 
 public class kku
-  implements BusinessObserver
+  extends BaseAdapter
 {
-  public kku(TroopRedTouchHandler paramTroopRedTouchHandler) {}
+  public kku(TroopCardXingquBuluo paramTroopCardXingquBuluo) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public int getCount()
   {
-    if (paramBoolean) {
-      try
-      {
-        Object localObject = paramBundle.getByteArray("data");
-        paramBundle = new oidb_sso.OIDBSSOPkg();
-        paramBundle.mergeFrom((byte[])localObject);
-        if ((paramBundle != null) && (paramBundle.uint32_result.has()) && (paramBundle.uint32_result.get() == 0) && (paramBundle.bytes_bodybuffer.has()))
-        {
-          if (paramBundle.bytes_bodybuffer.get() == null) {
-            return;
-          }
-          localObject = new oidb_0x791.RspBody();
-          ((oidb_0x791.RspBody)localObject).mergeFrom(paramBundle.bytes_bodybuffer.get().toByteArray());
-          localObject = (oidb_0x791.SetRedDotRes)((oidb_0x791.RspBody)localObject).msg_set_reddot_res.get();
-          if (localObject != null)
-          {
-            paramBundle = "";
-            localObject = ((oidb_0x791.SetRedDotRes)localObject).rpt_uint64_failed_uin.get().iterator();
-            while (((Iterator)localObject).hasNext())
-            {
-              long l = ((Long)((Iterator)localObject).next()).longValue();
-              paramBundle = paramBundle + String.valueOf(l) + ",";
-            }
-            if ((!TextUtils.isEmpty(paramBundle)) && (QLog.isColorLevel()))
-            {
-              QLog.d("SplashActivityQ.qqstory.redPoint", 2, "setRedDotInfo failed result is:" + paramBundle);
-              return;
-            }
-          }
-        }
+    if (this.a.a != null) {
+      return this.a.a.size();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return null;
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return 0L;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    Object localObject;
+    if (paramView == null)
+    {
+      localObject = new TroopCardXingquBuluo.ViewHolder();
+      paramView = LayoutInflater.from(this.a.getContext()).inflate(2130969417, paramViewGroup, false);
+      ((TroopCardXingquBuluo.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366419));
+      ((TroopCardXingquBuluo.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366421));
+      ((TroopCardXingquBuluo.ViewHolder)localObject).b = ((TextView)paramView.findViewById(2131366423));
+      ((TroopCardXingquBuluo.ViewHolder)localObject).c = ((TextView)paramView.findViewById(2131366424));
+      paramView.setTag(localObject);
+    }
+    for (paramViewGroup = (ViewGroup)localObject;; paramViewGroup = (TroopCardXingquBuluo.ViewHolder)paramView.getTag())
+    {
+      localObject = (searchtab.Item3)this.a.a.get(paramInt);
+      paramInt = AIOUtils.a(30.0F, this.a.getResources());
+      URLDrawable localURLDrawable = URLDrawable.getDrawable(((searchtab.Item3)localObject).str_img_url.get(), paramInt, paramInt);
+      paramViewGroup.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(localURLDrawable);
+      if ((localURLDrawable != null) && (1 != localURLDrawable.getStatus())) {
+        localURLDrawable.restartDownload();
       }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle.printStackTrace();
-      }
+      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(((searchtab.Item3)localObject).str_name.get());
+      paramViewGroup.b.setText(((searchtab.Item3)localObject).str_desc1.get());
+      paramViewGroup.c.setText(((searchtab.Item3)localObject).str_desc2.get());
+      return paramView;
     }
   }
 }

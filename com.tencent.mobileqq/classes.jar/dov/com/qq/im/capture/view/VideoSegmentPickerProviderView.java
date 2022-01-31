@@ -1,12 +1,12 @@
 package dov.com.qq.im.capture.view;
 
-import anaa;
-import anab;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import anqf;
+import anqg;
 import com.tencent.mobileqq.richmedia.capture.data.SegmentKeeper;
 import dov.com.tencent.biz.qqstory.takevideo.doodle.util.GestureHelper.ZoomItem;
 import dov.com.tencent.biz.qqstory.takevideo.multivideo.SegmentPicker;
@@ -38,7 +38,7 @@ public class VideoSegmentPickerProviderView
   
   protected int a()
   {
-    return 2130970130;
+    return 2130970144;
   }
   
   public void a(long paramLong)
@@ -56,12 +56,12 @@ public class VideoSegmentPickerProviderView
   {
     super.a(paramBundle);
     if (this.jdField_a_of_type_AndroidViewView == null) {
-      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970130, this, false);
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2130970144, this, false);
     }
     a(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker = ((SegmentPicker)this.jdField_a_of_type_AndroidViewView.findViewById(2131369143));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131369144).setOnClickListener(new anaa(this));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131369145).setOnClickListener(new anab(this));
+    this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoMultivideoSegmentPicker = ((SegmentPicker)this.jdField_a_of_type_AndroidViewView.findViewById(2131369209));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131369210).setOnClickListener(new anqf(this));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131369211).setOnClickListener(new anqg(this));
     if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
     {
       paramBundle = (VideoSegmentPickerProviderView.VideoSegmentPickerListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();

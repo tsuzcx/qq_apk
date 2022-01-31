@@ -85,9 +85,9 @@ public class AccountDetailXListView
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2130969518, this, false));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366783));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366784));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2130969525, this, false));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366826));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366827));
     addFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, null, false);
     setFooterDividersEnabled(false);
   }
@@ -101,7 +101,7 @@ public class AccountDetailXListView
       }
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131438544);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131438562);
       a(0);
       this.jdField_a_of_type_Int = 1;
       this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView$RefreshCallback.a(this);
@@ -147,7 +147,7 @@ public class AccountDetailXListView
         QLog.d("AccountDetailXListView", 2, "loadMoreFail");
       }
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131438546);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131438564);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       a(0);
       this.jdField_a_of_type_Int = 0;
@@ -164,7 +164,7 @@ public class AccountDetailXListView
       this.jdField_a_of_type_Int = 0;
       if (!paramBoolean)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131438545);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131438563);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
         this.jdField_a_of_type_Boolean = false;

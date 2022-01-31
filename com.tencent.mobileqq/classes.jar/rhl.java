@@ -1,77 +1,60 @@
+import android.content.Intent;
+import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.activity.AddRequestActivity;
-import com.tencent.mobileqq.app.MessageHandler;
+import android.widget.AutoCompleteTextView;
+import com.tencent.mobileqq.activity.AddAccountActivity;
+import com.tencent.mobileqq.activity.LoginPhoneNumActivity;
+import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.message.SystemMessageProcessor;
-import com.tencent.mobileqq.pb.PBBoolField;
-import com.tencent.mobileqq.pb.PBEnumField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.systemmsg.FriendSystemMsgController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
-import java.util.List;
-import tencent.mobileim.structmsg.structmsg.StructMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsg;
-import tencent.mobileim.structmsg.structmsg.SystemMsgAction;
-import tencent.mobileim.structmsg.structmsg.SystemMsgActionInfo;
+import java.util.Locale;
 
 public class rhl
   implements ActionSheet.OnButtonClickListener
 {
-  public rhl(AddRequestActivity paramAddRequestActivity, ActionSheet paramActionSheet) {}
+  public rhl(AddAccountActivity paramAddAccountActivity) {}
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+    if (AddAccountActivity.a(this.a)) {
       return;
     }
-    if (NetworkUtil.d(BaseApplication.getContext()))
+    if (paramInt == 0)
     {
-      long l1 = FriendSystemMsgController.a().b();
-      this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a = FriendSystemMsgController.a().a(Long.valueOf(l1));
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a != null)
-      {
-        paramInt = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg_type.get();
-        l1 = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg_seq.get();
-        long l2 = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.req_uin.get();
-        int i = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.sub_type.get();
-        int j = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.src_id.get();
-        int k = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.sub_src_id.get();
-        int m = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.group_msg_type.get();
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.a.msg.actions.get();
-        if ((paramView != null) && (1 < paramView.size()))
-        {
-          ((structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get()).blacklist.set(true);
-          AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, true);
-          this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app.a().a().a(paramInt, l1, l2, i, j, k, m, (structmsg.SystemMsgActionInfo)((structmsg.SystemMsgAction)paramView.get(1)).action_info.get(), 1, null, false);
-          AddRequestActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131434436, 1000L, false);
-        }
+      ReportController.a(this.a.app, "dc00898", "", "", "0X8007353", "0X8007353", 0, 0, "", "", "", "");
+      paramView = null;
+      if (this.a.a != null) {
+        paramView = this.a.a.getText().toString();
+      }
+      if (TextUtils.isEmpty(paramView)) {
+        break label292;
       }
     }
-    for (;;)
+    label292:
+    for (paramView = String.format(Locale.getDefault(), "%s&account=%s", new Object[] { "https://aq.qq.com/cn2/findpsw/mobile_web_find_input_account?source_id=2756", paramView });; paramView = "https://aq.qq.com/cn2/findpsw/mobile_web_find_input_account?source_id=2756")
     {
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.app, "CliOper", "", "", "Verification_msg", "Vfc_shield_clk", 0, 0, "", "", "", "");
-      break;
-      StringBuilder localStringBuilder = new StringBuilder().append("shield, ");
-      if (paramView != null) {}
-      for (paramInt = paramView.size();; paramInt = -1)
+      Intent localIntent = new Intent(this.a, QQBrowserActivity.class);
+      localIntent.putExtra("uin", this.a.app.getCurrentAccountUin());
+      localIntent.putExtra("reqType", 3);
+      localIntent.putExtra("url", paramView);
+      this.a.startActivity(localIntent);
+      for (;;)
       {
-        QLog.d("Q.systemmsg.AddRequestActivity", 1, paramInt);
-        break;
+        AddAccountActivity.b(this.a, true);
+        AddAccountActivity.a(this.a).dismiss();
+        return;
+        if (paramInt == 1)
+        {
+          ReportController.a(this.a.app, "dc00898", "", "", "0X8007354", "0X8007354", 0, 0, "", "", "", "");
+          ReportController.b(this.a.app, "CliOper", "", "", "Mobile_signup", "Clk_ems_login", 0, 0, "", "", "", "");
+          boolean bool = this.a.getIntent().getBooleanExtra("login_from_account_change", false);
+          paramView = new Intent(this.a, LoginPhoneNumActivity.class);
+          paramView.putExtra("login_from_account_change", bool);
+          this.a.startActivity(paramView);
+        }
       }
-      QLog.d("Q.systemmsg.AddRequestActivity", 1, "shield");
-      continue;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity, 2131434794, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityAddRequestActivity.getTitleBarHeight());
     }
   }
 }

@@ -1,33 +1,45 @@
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment;
-import com.tencent.mobileqq.pluginsdk.IPluginAdapterProxy;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentContext;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.data.EmoticonPackage;
+import com.tencent.mobileqq.emosm.EmosmUtils;
+import com.tencent.mobileqq.emoticonview.SmallEmoticonInfo;
+import com.tencent.mobileqq.model.EmoticonManager;
+import com.tencent.mobileqq.model.QueryTask.Query;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
-public class lcd
-  extends SwiftBrowserUIStyleHandler
+public final class lcd
+  implements QueryTask.Query
 {
-  lcd(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment paramReadInJoyArticleDetailFragment) {}
-  
-  public void a()
+  public char[] a(SmallEmoticonInfo paramSmallEmoticonInfo)
   {
-    super.a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserComponentsProvider$SwiftBrowserComponentContext.a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_ComTencentBizUiTouchWebView != null) && (this.jdField_a_of_type_AndroidViewViewGroup != null))
+    try
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView = new ImageView(ReadInJoyArticleDetailActivity.ReadInJoyArticleDetailFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment));
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839696);
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(13);
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      this.jdField_a_of_type_AndroidViewViewGroup.addView(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView);
-      if (IPluginAdapterProxy.getProxy().isNightMode())
+      int i = Integer.parseInt(paramSmallEmoticonInfo.a.eId);
+      int j = Integer.parseInt(paramSmallEmoticonInfo.a.epId);
+      Object localObject = EmosmUtils.a(j, i);
+      paramSmallEmoticonInfo = new char[5];
+      paramSmallEmoticonInfo[0] = 20;
+      paramSmallEmoticonInfo[1] = localObject[3];
+      paramSmallEmoticonInfo[2] = localObject[2];
+      paramSmallEmoticonInfo[3] = localObject[1];
+      paramSmallEmoticonInfo[4] = localObject[0];
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if ((localObject instanceof QQAppInterface))
       {
-        this.jdField_a_of_type_AndroidViewViewGroup.setBackgroundColor(-6710887);
-        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyActivityReadInJoyArticleDetailActivity$ReadInJoyArticleDetailFragment.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839697);
+        localObject = ((EmoticonManager)((AppRuntime)localObject).getManager(13)).a(String.valueOf(j));
+        if ((localObject != null) && (((EmoticonPackage)localObject).isAPNG == 2)) {
+          paramSmallEmoticonInfo[1] = 511;
+        }
       }
+      return paramSmallEmoticonInfo;
     }
+    catch (NumberFormatException paramSmallEmoticonInfo)
+    {
+      QLog.e("ReadInJoyBaseDeliverActivity", 1, "kandian fail to send small_emotion. id is not Int.");
+    }
+    return null;
   }
 }
 

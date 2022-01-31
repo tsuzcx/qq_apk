@@ -1,24 +1,29 @@
-import android.database.ContentObserver;
-import android.os.Handler;
-import com.tencent.biz.qqstory.storyHome.qqstorylist.LocalVideoPusher;
+import android.support.v4.app.FragmentActivity;
+import com.tencent.biz.qqstory.model.item.QQUserUIItem;
+import com.tencent.biz.qqstory.playvideo.StoryPlayVideoActivity;
+import com.tencent.biz.qqstory.storyHome.memory.StoryMemoriesFragment;
+import com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesVideoCollectionPresenter;
+import com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesVideoListSegment;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import java.util.ArrayList;
 
-public class nxt
-  extends ContentObserver
+class nxt
+  implements Runnable
 {
-  public nxt(LocalVideoPusher paramLocalVideoPusher, Handler paramHandler)
-  {
-    super(paramHandler);
-  }
+  nxt(nxs paramnxs, ArrayList paramArrayList1, int paramInt, ArrayList paramArrayList2, boolean paramBoolean, QQUserUIItem paramQQUserUIItem) {}
   
-  public void onChange(boolean paramBoolean)
+  public void run()
   {
-    super.onChange(paramBoolean);
-    if (!this.a.a)
+    StoryPlayVideoActivity.a((FragmentActivity)MemoriesVideoListSegment.a(this.jdField_a_of_type_Nxs.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment), MemoriesVideoListSegment.a(this.jdField_a_of_type_Nxs.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment).jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int, this.jdField_a_of_type_Nxs.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_Nxs.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_Boolean, StoryMemoriesFragment.a(this.jdField_a_of_type_Nxs.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment.jdField_a_of_type_Int));
+    int i = StoryMemoriesFragment.a(this.jdField_a_of_type_Nxs.jdField_a_of_type_ComTencentBizQqstoryStoryHomeMemoryViewSegmentMemoriesVideoListSegment.jdField_a_of_type_Int);
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.isMe()) {}
+    for (String str = "1";; str = "2")
     {
-      this.a.b();
+      StoryReportor.a("memory", "clk_video", i, 0, new String[] { str, "", "", this.jdField_a_of_type_Nxs.b });
+      SLog.b("Q.qqstory.memories.MemoriesVideoListSegment", "go to player , collection key = %s, feedIds = %s , vid = %s , keyIndex = %s , video pos = %d , keyList = %s", new Object[] { this.jdField_a_of_type_Nxs.jdField_a_of_type_JavaLangString, this.b, this.jdField_a_of_type_Nxs.b, Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.jdField_a_of_type_Nxs.jdField_a_of_type_Int), this.jdField_a_of_type_JavaUtilArrayList });
       return;
     }
-    this.a.b = true;
   }
 }
 

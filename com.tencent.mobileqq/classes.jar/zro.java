@@ -1,33 +1,24 @@
-import com.tencent.mobileqq.app.msgnotify.MsgNotifyPushDialog;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import com.tencent.mobileqq.app.automator.step.RegisterPush;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
-public final class zro
-  extends DownloadListener
+public class zro
+  extends AccountObserver
 {
-  public zro(String paramString) {}
+  private zro(RegisterPush paramRegisterPush) {}
   
-  public void onCancel(DownloadTask paramDownloadTask)
+  public void onlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, boolean paramBoolean2, long paramLong, boolean paramBoolean3)
   {
-    MsgNotifyPushDialog.jdField_a_of_type_ComTencentMobileqqVipDownloadTask = null;
-    QLog.d(MsgNotifyPushDialog.jdField_a_of_type_JavaLangString, 1, "downloadZipFile cancel");
-  }
-  
-  public void onDone(DownloadTask paramDownloadTask)
-  {
-    MsgNotifyPushDialog.jdField_a_of_type_ComTencentMobileqqVipDownloadTask = null;
-    if (paramDownloadTask.a() == 3)
+    if (QLog.isColorLevel()) {
+      QLog.d("QQInitHandler", 2, "onlineStatusChanged isSuccess=" + paramBoolean1 + ",curStatus=" + paramStatus.toString() + ",isFriendListChang=" + paramBoolean2 + ",timeStamp=" + paramLong + ",isGatherListChange=" + paramBoolean3);
+    }
+    if (paramBoolean1)
     {
-      QLog.d(MsgNotifyPushDialog.jdField_a_of_type_JavaLangString, 1, "download finished " + MsgNotifyPushDialog.f);
-      paramDownloadTask = new File(this.jdField_a_of_type_JavaLangString);
-      if ((paramDownloadTask.exists()) && (MsgNotifyPushDialog.a(paramDownloadTask))) {
-        QLog.d(MsgNotifyPushDialog.jdField_a_of_type_JavaLangString, 1, "downloadZipFile suc and zip succ");
-      }
+      this.a.a(7);
       return;
     }
-    QLog.d(MsgNotifyPushDialog.jdField_a_of_type_JavaLangString, 1, new Object[] { "downloadZipFile failed: ", paramDownloadTask.b, " code=", Integer.valueOf(paramDownloadTask.a) });
+    this.a.a(6);
   }
 }
 

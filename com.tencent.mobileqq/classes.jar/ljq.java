@@ -1,29 +1,28 @@
-import com.tencent.biz.pubaccount.readinjoy.comment.ArticleCommentModule.FetchCommentObserver;
+import com.tencent.biz.pubaccount.readinjoy.comment.CommentInfo;
 import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListAdapter;
-import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentUtils.CreateCommentInterface;
+import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qphone.base.util.BaseApplication;
 
 public class ljq
-  implements ArticleCommentModule.FetchCommentObserver
+  implements ReadInJoyCommentUtils.CreateCommentInterface
 {
-  public ljq(ReadInJoyCommentListAdapter paramReadInJoyCommentListAdapter) {}
+  public ljq(ReadInJoyCommentListFragment paramReadInJoyCommentListFragment, String paramString) {}
   
-  public void a(ArticleInfo paramArticleInfo)
+  public void a(String paramString1, int paramInt, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyCommentListView", 2, "first comment bottom refresh success");
-    }
-    ReadInJoyCommentListAdapter.a(this.a).a(true);
-    this.a.notifyDataSetChanged();
+    QQToast.a(BaseApplication.getContext(), 1, BaseApplication.getContext().getString(2131438878), 0).a();
   }
   
-  public void a(ArticleInfo paramArticleInfo, int paramInt, String paramString)
+  public void a(String paramString, CommentInfo paramCommentInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyCommentListView", 2, "first comment bottom refresh failed ,err code =" + paramInt + "err msg = " + paramString);
-    }
-    ReadInJoyCommentListAdapter.a(this.a).a();
+    ReadInJoyCommentUtils.a(ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment), this.jdField_a_of_type_JavaLangString);
+    QQToast.a(BaseApplication.getContext(), 0, BaseApplication.getContext().getString(2131438877), 0).a();
+    ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment);
+    ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment).notifyDataSetChanged();
+    ReadInJoyCommentListFragment.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment);
   }
 }
 

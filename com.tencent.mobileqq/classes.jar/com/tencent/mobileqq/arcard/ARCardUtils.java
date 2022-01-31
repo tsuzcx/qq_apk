@@ -222,9 +222,9 @@ public final class ARCardUtils
     localIntent.addFlags(65536);
     localIntent.putExtra("param_only_friends", true);
     localIntent.putExtra("param_donot_need_contacts", true);
-    localIntent.putExtra("param_title", paramActivity.getString(2131438235));
+    localIntent.putExtra("param_title", paramActivity.getString(2131438253));
     localIntent.putExtra("param_max", 20);
-    localIntent.putExtra("param_done_button_wording", paramActivity.getString(2131432400));
+    localIntent.putExtra("param_done_button_wording", paramActivity.getString(2131432417));
     localIntent.putExtra("param_exit_animation", 1);
     if (paramInt2 == 1)
     {
@@ -369,7 +369,7 @@ public final class ARCardUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.arcard.ARCardUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,14 @@
 package com.tencent.mobileqq.model;
 
+import cooperation.qzone.UndealCount.QZoneCountInfo;
 import mqq.manager.Manager;
 
 public abstract interface QZoneManager
   extends Manager
 {
   public abstract int a();
+  
+  public abstract QZoneCountInfo a(int paramInt);
   
   public abstract void a();
   
@@ -21,7 +24,7 @@ public abstract interface QZoneManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.model.QZoneManager
  * JD-Core Version:    0.7.0.1
  */

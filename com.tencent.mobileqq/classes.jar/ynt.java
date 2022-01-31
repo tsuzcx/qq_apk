@@ -1,17 +1,34 @@
-import com.tencent.TMG.sdk.AVContext;
-import com.tencent.TMG.sdk.AVVideoCtrl;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.process.chanel.CmGameAvHandler;
-import com.tencent.mobileqq.apollo.tmg_opensdk.AVManager;
+import com.tencent.mobileqq.apollo.activity.HotChatCenterFragment;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
 
 public class ynt
-  implements Runnable
+  extends FriendListObserver
 {
-  public ynt(CmGameAvHandler paramCmGameAvHandler, int paramInt, long paramLong) {}
+  public ynt(HotChatCenterFragment paramHotChatCenterFragment) {}
   
-  public void run()
+  void a(String paramString)
   {
-    AVManager.a(BaseApplicationImpl.getContext()).a().getVideoCtrl().switchCamera(this.jdField_a_of_type_Int, new ynu(this));
+    if (!paramString.equals(HotChatCenterFragment.a(this.a).getAccount())) {}
+  }
+  
+  protected void onSetComment(boolean paramBoolean, String paramString1, String paramString2, byte paramByte) {}
+  
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  {
+    if (!paramBoolean) {}
+    while ((HotChatCenterFragment.a(this.a).getCurrentAccountUin() == null) || (!HotChatCenterFragment.a(this.a).getCurrentAccountUin().equals(paramString))) {
+      return;
+    }
+    ThreadManager.post(new ynu(this, paramString), 8, null, true);
+  }
+  
+  protected void onUpdateOnlineFriend(boolean paramBoolean, String[] paramArrayOfString) {}
+  
+  protected void onUpdateRecentList()
+  {
+    this.a.c();
   }
 }
 

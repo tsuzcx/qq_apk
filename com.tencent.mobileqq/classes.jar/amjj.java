@@ -1,22 +1,46 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.ThreadManager;
-import cooperation.qzone.QZoneShareData;
-import cooperation.qzone.share.QZoneShareActivity;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.VipComicHelper;
+import cooperation.comic.utils.QQComicPluginBridge;
+import java.lang.ref.WeakReference;
 
-public class amjj
-  implements Runnable
+public final class amjj
+  extends amjo
 {
-  public amjj(QZoneShareActivity paramQZoneShareActivity) {}
+  public amjj(QQAppInterface paramQQAppInterface)
+  {
+    super(paramQQAppInterface);
+  }
   
   public void run()
   {
-    if ((this.a.app != null) && (QZoneShareActivity.a(this.a).a > 0L) && (!TextUtils.isEmpty(QZoneShareActivity.a(this.a).i)) && (!this.a.a(this.a.app, QZoneShareActivity.a(this.a).a, QZoneShareActivity.a(this.a).i))) {
+    QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
+    if (localQQAppInterface == null) {}
+    do
+    {
+      do
+      {
+        do
+        {
+          return;
+          if (!QQComicPluginBridge.a(localQQAppInterface)) {
+            break;
+          }
+        } while (!QLog.isColorLevel());
+        QLog.d("QQComicDebug", 2, "plugin is installed.");
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("QQComicDebug", 2, "wait for plugin installation...");
+        }
+        VipComicHelper.a(2, localQQAppInterface);
+        if (QQComicPluginBridge.a(localQQAppInterface, true, null)) {
+          break;
+        }
+      } while (!QLog.isColorLevel());
+      QLog.d("QQComicDebug", 2, "plugin install failed.");
       return;
-    }
-    int i = this.a.b();
-    int j = this.a.a();
-    ThreadManager.getUIHandler().post(new amjk(this, i, j));
+    } while (!QLog.isColorLevel());
+    QLog.d("QQComicDebug", 2, "plugin is installed now.");
   }
 }
 

@@ -25,10 +25,10 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import lbb;
-import lbc;
-import lbd;
-import lbg;
+import lam;
+import lan;
+import lao;
+import lar;
 import mqq.app.AppRuntime;
 
 public class KanDianViewController
@@ -42,7 +42,7 @@ public class KanDianViewController
   private ReadInJoyBaseListViewGroup jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup;
   private String jdField_a_of_type_JavaLangString;
   public Map a;
-  private lbg jdField_a_of_type_Lbg;
+  private lar jdField_a_of_type_Lar;
   private boolean jdField_a_of_type_Boolean;
   private Map jdField_b_of_type_JavaUtilMap = new HashMap();
   private boolean jdField_b_of_type_Boolean = true;
@@ -52,7 +52,7 @@ public class KanDianViewController
   {
     super(paramActivity);
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new lbd(this);
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver = new lao(this);
     this.jdField_a_of_type_AndroidContentContext = paramActivity;
   }
   
@@ -70,14 +70,14 @@ public class KanDianViewController
     }
   }
   
-  public void B_()
+  public void F_()
   {
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup != null) && ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup instanceof ReadInJoyListViewGroup)))
     {
       if (QLog.isColorLevel()) {
         QLog.d("KanDianViewController", 1, "onSkinChanged");
       }
-      this.jdField_a_of_type_Lbg.sendEmptyMessage(1);
+      this.jdField_a_of_type_Lar.sendEmptyMessage(1);
     }
   }
   
@@ -135,7 +135,7 @@ public class KanDianViewController
     ReadInJoyLogicEngineEventDispatcher.a().a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyEngineReadInJoyObserver);
     ReadInJoyLogicEngine.a().b();
     b();
-    this.jdField_a_of_type_Lbg = new lbg(this);
+    this.jdField_a_of_type_Lar = new lar(this);
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
@@ -233,7 +233,7 @@ public class KanDianViewController
     {
       AppInterface localAppInterface = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getAppInterface();
       if ((localAppInterface != null) && (((ReadInJoySkinManager)localAppInterface.getManager(260)).a() == 1) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyRainAnimationController != null)) {
-        ThreadManager.post(new lbb(this), 8, null, true);
+        ThreadManager.post(new lam(this), 8, null, true);
       }
     }
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup instanceof ReadInJoyListViewGroup)) {
@@ -264,7 +264,7 @@ public class KanDianViewController
     {
       AppInterface localAppInterface = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getAppInterface();
       if ((localAppInterface != null) && (((ReadInJoySkinManager)localAppInterface.getManager(260)).a() == 1) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyReadInJoyRainAnimationController != null)) {
-        ThreadManager.post(new lbc(this), 8, null, true);
+        ThreadManager.post(new lan(this), 8, null, true);
       }
     }
     if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyBaseListViewGroup instanceof ReadInJoyListViewGroup)) {
@@ -291,7 +291,7 @@ public class KanDianViewController
   
   public void n()
   {
-    B_();
+    F_();
   }
 }
 

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.msf.sdk.handler.INetEventHandler;
 import com.tencent.open.wadl.WLog;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import qhk;
+import qje;
 
 public class GameCenterBroadcastReceiver
   implements INetEventHandler
@@ -34,7 +34,7 @@ public class GameCenterBroadcastReceiver
       jdField_a_of_type_ComTencentGamecenterAppointmentGameCenterBroadcastReceiver = new GameCenterBroadcastReceiver();
     }
     if (jdField_a_of_type_AndroidContentBroadcastReceiver == null) {
-      jdField_a_of_type_AndroidContentBroadcastReceiver = new qhk();
+      jdField_a_of_type_AndroidContentBroadcastReceiver = new qje();
     }
     if (!jdField_a_of_type_Boolean)
     {

@@ -1,34 +1,28 @@
-import android.view.animation.AlphaAnimation;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
-import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
-import com.tencent.qphone.base.util.QLog;
+import android.os.Bundle;
+import com.tencent.mobileqq.emosm.web.MessengerService;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager;
+import com.tencent.mobileqq.vas.VasQuickUpdateManager.CallBacker;
 
-public class acck
-  implements Runnable
+class acck
+  extends VasQuickUpdateManager.CallBacker
 {
-  public acck(FilePreviewActivity paramFilePreviewActivity) {}
+  acck(acbg paramacbg, MessengerService paramMessengerService) {}
   
-  public void run()
+  public void callback(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, VasQuickUpdateManager paramVasQuickUpdateManager)
   {
-    if (this.a.jdField_c_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue == null) {
-      this.a.jdField_c_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue = new FilePreviewAnimQueue(this.a.jdField_a_of_type_AndroidWidgetLinearLayout);
-    }
-    this.a.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-    this.a.jdField_c_of_type_AndroidWidgetTextView.setText(2131435080);
-    AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.5F, 1.0F);
-    localAlphaAnimation.setFillAfter(true);
-    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
-    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
-    localFilePreviewAnim.jdField_a_of_type_Boolean = true;
-    localFilePreviewAnim.jdField_a_of_type_Int = FilePreviewAnimQueue.jdField_a_of_type_Int;
-    localFilePreviewAnim.b = 1000;
-    this.a.jdField_c_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a(localFilePreviewAnim);
-    this.a.jdField_c_of_type_ComTencentMobileqqFilemanagerUtilFilePreviewAnimQueue.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("<FileAssistant>FilePreviewActivity", 2, "showGetmore(1000)");
+    if ((paramLong == 15L) && ("cardWZ.zip".equals(paramString1)))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a != null)
+      {
+        paramString1 = new Bundle();
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a.putString("cmd", "card_download_wzry_template");
+        paramString1.putInt("result", paramInt1);
+        paramString1.putString("message", paramString3);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a.putBundle("response", paramString1);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a);
+        this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a = null;
+      }
+      paramVasQuickUpdateManager.b(this);
     }
   }
 }

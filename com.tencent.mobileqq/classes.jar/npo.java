@@ -1,19 +1,16 @@
-import com.tencent.biz.qqstory.base.QQStoryManager;
-import com.tencent.biz.qqstory.base.QQStoryObserver;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettingDelegate;
-import com.tencent.biz.qqstory.settings.QQStoryFriendSettings;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.playvideo.player.IVideoView.OnCompletionListener;
+import com.tencent.biz.qqstory.playvideo.player.VideoViewTVKImpl;
 
-public class npo
-  extends QQStoryObserver
+class npo
+  implements Runnable
 {
-  public npo(QQStoryFriendSettingDelegate paramQQStoryFriendSettingDelegate) {}
+  npo(npn paramnpn) {}
   
-  public void c(boolean paramBoolean)
+  public void run()
   {
-    QQStoryManager localQQStoryManager = (QQStoryManager)this.a.a.app.getManager(180);
-    this.a.a(2, localQQStoryManager.a());
-    this.a.a(3, localQQStoryManager.b());
+    if (this.a.a.a != null) {
+      this.a.a.a.a(this.a.a);
+    }
   }
 }
 

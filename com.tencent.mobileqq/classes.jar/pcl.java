@@ -1,28 +1,22 @@
-import android.hardware.Camera;
-import com.tencent.biz.widgets.ScannerView;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.view.animation.ScaleAnimation;
+import com.tencent.biz.webviewplugin.PubAccountUIPlugin;
+import com.tencent.image.URLImageView;
 
-class pcl
-  implements Runnable
+public class pcl
+  implements Animation.AnimationListener
 {
-  pcl(pck parampck) {}
+  public pcl(PubAccountUIPlugin paramPubAccountUIPlugin, URLImageView paramURLImageView, ScaleAnimation paramScaleAnimation) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.a.jdField_a_of_type_AndroidHardwareCamera == null) {
-      return;
-    }
-    try
-    {
-      this.a.jdField_a_of_type_AndroidHardwareCamera.cancelAutoFocus();
-      label21:
-      ScannerView.b(this.a.jdField_a_of_type_ComTencentBizWidgetsScannerView, true);
-      return;
-    }
-    catch (Exception localException)
-    {
-      break label21;
-    }
+    this.jdField_a_of_type_ComTencentImageURLImageView.startAnimation(this.jdField_a_of_type_AndroidViewAnimationScaleAnimation);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

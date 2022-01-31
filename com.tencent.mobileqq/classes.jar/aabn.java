@@ -1,35 +1,15 @@
-import com.tencent.mobileqq.ar.aidl.ArCloudConfigInfo;
-import com.tencent.mobileqq.ar.arengine.AREngine;
+import com.tencent.mobileqq.ar.ARRenderModel.ARBaseRender;
+import com.tencent.mobileqq.ar.ARRenderModel.MultiFragmentAnimRenderable;
 
 public class aabn
   implements Runnable
 {
-  public aabn(AREngine paramAREngine) {}
+  public aabn(MultiFragmentAnimRenderable paramMultiFragmentAnimRenderable, ARBaseRender paramARBaseRender) {}
   
   public void run()
   {
-    if ((AREngine.a(this.a) != null) && (!AREngine.a(this.a).c()))
-    {
-      if (AREngine.a(this.a).i()) {
-        AREngine.d(this.a);
-      }
-      if (AREngine.a(this.a) != 1L) {
-        break label78;
-      }
-      this.a.b(1L);
-      AREngine.c(this.a);
-    }
-    for (;;)
-    {
-      this.a.j();
-      return;
-      label78:
-      if (AREngine.a(this.a) == 2L) {
-        this.a.l();
-      } else if (AREngine.a(this.a) == 2048L) {
-        this.a.n();
-      }
-    }
+    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.a();
+    this.jdField_a_of_type_ComTencentMobileqqArARRenderModelARBaseRender.b();
   }
 }
 

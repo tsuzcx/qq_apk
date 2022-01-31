@@ -1,55 +1,52 @@
-import com.tencent.mobileqq.javahook.BitmapOOMHooker;
-import com.tencent.mobileqq.javahooksdk.HookMethodCallback;
-import com.tencent.mobileqq.javahooksdk.JavaHookBridge;
-import com.tencent.mobileqq.javahooksdk.MethodHookParam;
+import android.os.Bundle;
+import android.os.Handler;
+import com.tencent.mobileqq.forward.ForwardSdkBaseOption;
+import com.tencent.qphone.base.util.QLog;
+import java.lang.ref.WeakReference;
+import mqq.observer.SSOAccountObserver;
 
 public class adlr
-  implements HookMethodCallback
+  extends SSOAccountObserver
 {
-  private int a;
+  WeakReference a;
   
-  public adlr(int paramInt)
+  public adlr(ForwardSdkBaseOption paramForwardSdkBaseOption)
   {
-    this.a = paramInt;
+    this.a = new WeakReference(paramForwardSdkBaseOption);
   }
   
-  public void afterHookedMethod(MethodHookParam paramMethodHookParam)
+  public void onFailed(String paramString, int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if (paramMethodHookParam.throwable == null) {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardSdkBaseOption", 2, "-->onFailed--account = " + paramString + ", ret = " + paramInt2);
+    }
+    paramString = (ForwardSdkBaseOption)this.a.get();
+    if ((paramString != null) && (!paramString.k) && (ForwardSdkBaseOption.a(paramString) != null)) {
+      ForwardSdkBaseOption.a(paramString).sendEmptyMessage(0);
+    }
+  }
+  
+  public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardSdkBaseOption", 2, "-->onGetTicketNoPasswd--recv g_t_n_p, account = " + paramString);
+    }
+    if (paramInt == 4096) {}
+    for (paramString = new String(paramArrayOfByte);; paramString = null)
+    {
+      paramArrayOfByte = (ForwardSdkBaseOption)this.a.get();
+      if (paramArrayOfByte != null)
+      {
+        paramArrayOfByte.i = paramString;
+        paramArrayOfByte.k = true;
+      }
       return;
     }
-    Throwable localThrowable;
-    if (paramMethodHookParam.throwable.getCause() != null) {
-      localThrowable = paramMethodHookParam.throwable.getCause();
-    }
-    while ((localThrowable instanceof OutOfMemoryError))
-    {
-      BitmapOOMHooker.b();
-      try
-      {
-        paramMethodHookParam.result = JavaHookBridge.invokeOriginMethod(paramMethodHookParam.method, paramMethodHookParam.thisObject, paramMethodHookParam.args);
-        paramMethodHookParam.throwable = null;
-        BitmapOOMHooker.a(true, this.a);
-        return;
-      }
-      catch (Exception paramMethodHookParam)
-      {
-        BitmapOOMHooker.a(false, this.a);
-        return;
-        localThrowable = paramMethodHookParam.throwable;
-      }
-      catch (Error paramMethodHookParam)
-      {
-        BitmapOOMHooker.a(false, this.a);
-      }
-    }
   }
-  
-  public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     adlr
  * JD-Core Version:    0.7.0.1
  */

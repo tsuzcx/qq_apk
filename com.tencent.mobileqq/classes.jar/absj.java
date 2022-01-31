@@ -1,19 +1,28 @@
-import com.tencent.image.URLDrawable;
-import com.tencent.mobileqq.emosm.favroaming.EmoticonFromGroupManager;
+import android.graphics.Rect;
+import java.util.Comparator;
 
-class absj
-  implements Runnable
+public final class absj
+  implements Comparator
 {
-  absj(absi paramabsi, URLDrawable paramURLDrawable) {}
-  
-  public void run()
+  public int a(Rect paramRect1, Rect paramRect2)
   {
-    this.jdField_a_of_type_Absi.a.a(this.jdField_a_of_type_ComTencentImageURLDrawable);
+    if (paramRect1.height() * paramRect1.width() > paramRect2.height() * paramRect2.width()) {}
+    do
+    {
+      return -1;
+      if (paramRect1.height() * paramRect1.width() < paramRect2.height() * paramRect2.width()) {
+        return 1;
+      }
+    } while (paramRect1.width() > paramRect2.width());
+    if (paramRect1.width() < paramRect2.width()) {
+      return 1;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     absj
  * JD-Core Version:    0.7.0.1
  */

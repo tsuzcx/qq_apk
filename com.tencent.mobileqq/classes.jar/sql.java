@@ -1,36 +1,27 @@
-import android.os.Message;
-import com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.CardHandler;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.Card;
-import com.tencent.mobileqq.data.QZonePhotoWall;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.util.WeakReferenceHandler;
-import java.util.ArrayList;
-import java.util.List;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.FriendProfileCardActivity;
+import com.tencent.mobileqq.util.ProfileCardUtil;
+import com.tencent.mobileqq.utils.VipUtils;
 
 public class sql
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public sql(FriendProfileMoreInfoActivity paramFriendProfileMoreInfoActivity) {}
+  public sql(FriendProfileCardActivity paramFriendProfileCardActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    Object localObject1 = ((FriendsManager)this.a.app.getManager(50)).b(this.a.app.getCurrentAccountUin());
-    this.a.a((Card)localObject1);
-    this.a.app.runOnUiThread(new sqm(this, (Card)localObject1));
-    this.a.jdField_a_of_type_ComTencentMobileqqAppCardHandler.h();
-    Object localObject2 = (QZonePhotoWall)this.a.app.getEntityManagerFactory().createEntityManager().a(QZonePhotoWall.class, this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a);
-    localObject1 = new ArrayList();
-    if (localObject2 != null) {
-      this.a.a(((QZonePhotoWall)localObject2).totalPic, ((QZonePhotoWall)localObject2).hasMore, ((QZonePhotoWall)localObject2).attachInfo, ((QZonePhotoWall)localObject2).unpackPhotoWallData(), (List)localObject1);
+    if (this.a.f == 1) {
+      VipUtils.a(this.a, 1, ProfileCardUtil.a(3));
     }
-    localObject2 = this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.obtainMessage(1001);
-    ((Message)localObject2).obj = localObject1;
-    this.a.jdField_a_of_type_ComTencentUtilWeakReferenceHandler.sendMessage((Message)localObject2);
+    for (;;)
+    {
+      this.a.K();
+      return;
+      if (this.a.f == 2) {
+        VipUtils.b(this.a, 1, ProfileCardUtil.a(6));
+      }
+    }
   }
 }
 

@@ -1,73 +1,34 @@
-import android.text.TextUtils;
-import com.tencent.biz.AuthorizeConfig;
-import com.tencent.mobileqq.mp.mobileqq_mp.WebviewWhiteListResponse;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBStringField;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout.LayoutParams;
+import com.tencent.biz.PoiMapActivity;
+import com.tencent.mobileqq.widget.QQMapView;
 
-class kjg
-  implements Runnable
+public class kjg
+  implements Animation.AnimationListener
 {
-  kjg(kjf paramkjf, mobileqq_mp.WebviewWhiteListResponse paramWebviewWhiteListResponse) {}
+  public kjg(PoiMapActivity paramPoiMapActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$WebviewWhiteListResponse.version != null)
-    {
-      Object localObject2 = null;
-      Object localObject1 = localObject2;
-      if (this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$WebviewWhiteListResponse.gziped_data != null)
-      {
-        localObject1 = localObject2;
-        if (this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$WebviewWhiteListResponse.gziped_data.get().size() != 0)
-        {
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$WebviewWhiteListResponse.gziped_data.get().toByteArray();
-          localObject1 = localObject2;
-          if (QLog.isColorLevel())
-          {
-            QLog.i("AuthorizeConfig", 2, "now read compress data, size: " + localObject2.length);
-            localObject1 = localObject2;
-          }
-        }
-      }
-      if (localObject1 != null) {}
-      for (;;)
-      {
-        try
-        {
-          localObject2 = AuthorizeConfig.a(localObject1);
-          localObject1 = localObject2;
-          if (!TextUtils.isEmpty((CharSequence)localObject2))
-          {
-            localObject1 = localObject2;
-            if (QLog.isColorLevel())
-            {
-              QLog.i("AuthorizeConfig", 2, "use zip data to json: " + this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$WebviewWhiteListResponse.data.get());
-              localObject1 = localObject2;
-            }
-          }
-          if (TextUtils.isEmpty(localObject1)) {
-            return;
-          }
-          this.jdField_a_of_type_Kjf.a.a.a(localObject1, this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$WebviewWhiteListResponse.version.get(), "lastVersion");
-          return;
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-          QLog.e("AuthorizeConfig", 2, "", localException);
-        }
-        localObject2 = this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$WebviewWhiteListResponse.data.get();
-        localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.i("AuthorizeConfig", 2, "not use zip data to json: " + this.jdField_a_of_type_ComTencentMobileqqMpMobileqq_mp$WebviewWhiteListResponse.data.get());
-          localObject1 = localObject2;
-        }
-      }
+    paramAnimation = PoiMapActivity.i(this.a).getLayoutParams();
+    paramAnimation.height = this.a.o;
+    PoiMapActivity.j(this.a).setLayoutParams(paramAnimation);
+    paramAnimation = (RelativeLayout.LayoutParams)this.a.b.getLayoutParams();
+    paramAnimation.bottomMargin = 0;
+    this.a.b.setLayoutParams(paramAnimation);
+    this.a.a((this.a.o - PoiMapActivity.e(this.a)) / 2 + this.a.t, false);
+    if (this.a.e != null) {
+      this.a.e.setVisibility(8);
     }
+    PoiMapActivity.c(this.a).clearAnimation();
+    this.a.a = true;
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

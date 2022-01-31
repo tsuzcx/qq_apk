@@ -24,7 +24,7 @@ public class DetailEmptyInteractionSegment
     super(paramContext);
   }
   
-  public void E_()
+  public void J_()
   {
     SegmentView localSegmentView1 = a().a("DetailCommentSegment");
     SegmentView localSegmentView2 = a().a("DetailLikeListSegment");
@@ -62,7 +62,7 @@ public class DetailEmptyInteractionSegment
     {
       paramBaseViewHolder.a().getLayoutParams().height = paramInt;
       SLog.b("Q.qqstory.detail.DetailEmptyInteractionSegment", "view height is %d.", Integer.valueOf(paramBaseViewHolder.a().getLayoutParams().height));
-      paramViewGroup = (TextView)paramBaseViewHolder.a(2131371526);
+      paramViewGroup = (TextView)paramBaseViewHolder.a(2131371692);
       if (this.jdField_a_of_type_Int != 1) {
         break label244;
       }
@@ -80,7 +80,7 @@ public class DetailEmptyInteractionSegment
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970655, paramViewGroup, false));
+    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130970701, paramViewGroup, false));
   }
   
   public String a()

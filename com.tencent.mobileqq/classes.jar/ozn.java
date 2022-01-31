@@ -1,27 +1,25 @@
-import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.biz.webviewplugin.HotchatPlugin;
-import java.util.ArrayList;
-import java.util.HashMap;
+import android.content.SharedPreferences;
+import android.text.TextUtils;
+import com.tencent.biz.common.offline.AsyncBack;
+import com.tencent.biz.common.offline.HtmlOffline;
+import com.tencent.biz.troopplugin.PluginJumpManager;
 
 public class ozn
-  implements TroopMemberApiClient.Callback
+  implements AsyncBack
 {
-  public ozn(HotchatPlugin paramHotchatPlugin) {}
+  public ozn(PluginJumpManager paramPluginJumpManager) {}
   
-  public void a(Bundle paramBundle)
+  public void a(int paramInt) {}
+  
+  public void a(String paramString, int paramInt)
   {
-    if ((paramBundle != null) && (paramBundle.getBoolean("isSuccess")))
-    {
-      ArrayList localArrayList = paramBundle.getStringArrayList("uins");
-      paramBundle = paramBundle.getStringArrayList("tinyIds");
-      int i = 0;
-      while (i < localArrayList.size())
-      {
-        HotchatPlugin.a(this.a).put(paramBundle.get(i), localArrayList.get(i));
-        i += 1;
-      }
+    if (paramInt == 0) {
+      HtmlOffline.a("urlplugin.cfg", this.a.mContext, "1007", new ozo(this));
     }
+    while (!TextUtils.isEmpty(this.a.mPref.getString("config_file_version", ""))) {
+      return;
+    }
+    this.a.loadConfigFromFile();
   }
 }
 

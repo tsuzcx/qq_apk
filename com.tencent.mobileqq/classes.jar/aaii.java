@@ -1,69 +1,35 @@
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import com.tencent.ark.ark;
-import com.tencent.ark.ark.Container;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.mobileqq.activity.ChatFragment;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.item.ArkAppContainer;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.ModuleQQ;
-import com.tencent.mobileqq.ark.ArkTipsManager;
-import com.tencent.mobileqq.data.MessageForArkApp;
-import java.lang.ref.WeakReference;
+import com.tencent.mobileqq.ar.arengine.ARReport;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.qphone.base.util.BaseApplication;
+import java.util.HashMap;
 
 public class aaii
   implements Runnable
 {
-  public aaii(ArkAppModuleReg.ModuleQQ paramModuleQQ, long paramLong, String paramString) {}
+  public aaii(ARReport paramARReport, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, String paramString) {}
   
   public void run()
   {
-    Object localObject3 = ark.arkGetContainer(this.jdField_a_of_type_Long);
-    if (localObject3 == null) {}
-    label12:
-    Object localObject1;
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              break label12;
-              break label12;
-              break label12;
-              do
-              {
-                return;
-              } while (!(BaseActivity.sTopActivity instanceof FragmentActivity));
-              localObject1 = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
-            } while (localObject1 == null);
-            localObject2 = ((ChatFragment)localObject1).a();
-            if (localObject2 == null) {
-              break;
-            }
-            localObject1 = ((BaseChatPie)localObject2).a();
-          } while (localObject1 == null);
-          localObject3 = ArkAppContainer.a((ark.Container)localObject3);
-        } while (localObject3 == null);
-        localObject3 = (ArkAppContainer)((WeakReference)localObject3).get();
-        Object localObject2 = ((BaseChatPie)localObject2).a((ArkAppContainer)localObject3);
-        if (localObject2 != null)
-        {
-          ArkTipsManager.a().a(((MessageForArkApp)localObject2).arkContainer, (SessionInfo)localObject1, (MessageForArkApp)localObject2, this.jdField_a_of_type_JavaLangString, ArkAppModuleReg.a());
-          return;
-        }
-      } while ((!ArkTipsManager.a().a()) || (localObject3 == null));
-      ArkTipsManager.a().a((ArkAppContainer)localObject3, (SessionInfo)localObject1, this.jdField_a_of_type_JavaLangString);
-      return;
-      localObject1 = ArkAppContainer.a((ark.Container)localObject3);
-    } while (localObject1 == null);
-    ArkTipsManager.a().a((ArkAppContainer)((WeakReference)localObject1).get(), null, this.jdField_a_of_type_JavaLangString);
+    HashMap localHashMap = new HashMap();
+    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.jdField_a_of_type_Long)) {
+      localHashMap.put("local_load_feature_time", String.valueOf(this.jdField_a_of_type_Long));
+    }
+    if (this.b > 0L) {
+      localHashMap.put("local_load_feature_count", String.valueOf(this.b));
+    }
+    if (ARReport.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARReport, this.c)) {
+      localHashMap.put("local_recognize_time", String.valueOf(this.c));
+    }
+    if (this.d > 0L) {
+      localHashMap.put("local_recognize_times", String.valueOf(this.d));
+    }
+    if (this.e > 0L) {
+      localHashMap.put("local_recognize_quality", String.valueOf(this.e));
+    }
+    if (!this.jdField_a_of_type_JavaLangString.equals("")) {
+      localHashMap.put("local_recognize_featureid", this.jdField_a_of_type_JavaLangString);
+    }
+    StatisticCollector.a(BaseApplication.getContext()).a("", "AndroidactARLocal", true, 0L, 0L, localHashMap, "", true);
   }
 }
 

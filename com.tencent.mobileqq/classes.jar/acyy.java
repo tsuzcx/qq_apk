@@ -1,26 +1,20 @@
-import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
-import com.tencent.mobileqq.filemanager.widget.QfileEditBottomBar;
+import com.tencent.mobileqq.filemanager.core.ThumbDownloadManager;
 
-class acyy
+public class acyy
   implements Runnable
 {
-  acyy(acyx paramacyx) {}
+  public acyy(ThumbDownloadManager paramThumbDownloadManager, long paramLong, String paramString1, String paramString2) {}
   
   public void run()
   {
-    QfileEditBottomBar.a(this.a.a.a).h();
-    QfileEditBottomBar.a(this.a.a.a).b(FMDataCache.c());
-    QfileEditBottomBar.a(this.a.a.a).c(FMDataCache.b());
-    QfileEditBottomBar.a(this.a.a.a).d(FMDataCache.e());
-    FMDataCache.b();
-    QfileEditBottomBar.a(this.a.a.a).e(false);
-    QfileEditBottomBar.a(this.a.a.a).b();
+    if (ThumbDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbDownloadManager, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.b)) {
+      ThumbDownloadManager.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreThumbDownloadManager);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     acyy
  * JD-Core Version:    0.7.0.1
  */

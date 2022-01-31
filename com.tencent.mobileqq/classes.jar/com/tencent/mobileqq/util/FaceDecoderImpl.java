@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.util;
 
-import ajlk;
-import ajll;
-import ajlm;
-import ajln;
-import ajlo;
+import ajzp;
+import ajzq;
+import ajzr;
+import ajzs;
+import ajzt;
 import android.graphics.Bitmap;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
@@ -23,9 +23,9 @@ public class FaceDecoderImpl
   extends FaceDecoderBase
   implements FaceDecodeTask.DecodeCompletionListener
 {
-  private ajlm jdField_a_of_type_Ajlm;
-  private ajln jdField_a_of_type_Ajln;
-  private ajlo jdField_a_of_type_Ajlo;
+  private ajzr jdField_a_of_type_Ajzr;
+  private ajzs jdField_a_of_type_Ajzs;
+  private ajzt jdField_a_of_type_Ajzt;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private ConcurrentHashMap jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
   
@@ -67,10 +67,10 @@ public class FaceDecoderImpl
             if ((localObject2 != null) && (((DiscussionHandler)localObject2).a() != null)) {
               ((DiscussionHandler)localObject2).a().f(paramString);
             }
-            if (this.jdField_a_of_type_Ajlm == null)
+            if (this.jdField_a_of_type_Ajzr == null)
             {
-              this.jdField_a_of_type_Ajlm = new ajlm(this, null);
-              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajlm);
+              this.jdField_a_of_type_Ajzr = new ajzr(this, null);
+              this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajzr);
             }
           }
           do
@@ -85,7 +85,7 @@ public class FaceDecoderImpl
           if (paramInt1 == 1) {}
           for (byte b = 0;; b = 1)
           {
-            new ajll(this, new FaceInfo(paramInt1, paramString, true, b, paramByte, false, paramInt2)).b();
+            new ajzq(this, new FaceInfo(paramInt1, paramString, true, b, paramByte, false, paramInt2)).b();
             break;
           }
         }
@@ -110,10 +110,10 @@ public class FaceDecoderImpl
         if (this.jdField_b_of_type_JavaUtilHashtable.get(str) == null) {
           this.jdField_b_of_type_JavaUtilHashtable.put(str, localFaceInfo);
         }
-        if (this.jdField_a_of_type_Ajln == null)
+        if (this.jdField_a_of_type_Ajzs == null)
         {
-          this.jdField_a_of_type_Ajln = new ajln(this, null);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajln);
+          this.jdField_a_of_type_Ajzs = new ajzs(this, null);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajzs);
         }
         if (paramInt1 != 32) {
           break;
@@ -149,10 +149,10 @@ public class FaceDecoderImpl
       paramAppInterface = (FaceInfo)this.jdField_a_of_type_JavaUtilHashtable.get(paramFaceInfo.b());
       if (paramAppInterface != null)
       {
-        if (this.jdField_a_of_type_Ajln == null)
+        if (this.jdField_a_of_type_Ajzs == null)
         {
-          this.jdField_a_of_type_Ajln = new ajln(this, null);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajln);
+          this.jdField_a_of_type_Ajzs = new ajzs(this, null);
+          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajzs);
         }
         FaceDecoder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramAppInterface);
       }
@@ -185,10 +185,10 @@ public class FaceDecoderImpl
     for (int i = FaceInfo.f;; i = FaceInfo.g)
     {
       localFaceInfo.a(j, i);
-      if ((this.jdField_a_of_type_Ajlk == null) || (paramBitmap == null)) {
+      if ((this.jdField_a_of_type_Ajzp == null) || (paramBitmap == null)) {
         break;
       }
-      this.jdField_a_of_type_Ajlk.onDecodeTaskCompleted(this.jdField_b_of_type_Int + this.jdField_a_of_type_JavaUtilLinkedList.size(), paramFaceInfo.jdField_a_of_type_Int, paramFaceInfo.jdField_a_of_type_JavaLangString, paramBitmap);
+      this.jdField_a_of_type_Ajzp.onDecodeTaskCompleted(this.jdField_b_of_type_Int + this.jdField_a_of_type_JavaUtilLinkedList.size(), paramFaceInfo.jdField_a_of_type_Int, paramFaceInfo.jdField_a_of_type_JavaLangString, paramBitmap);
       return;
     }
   }
@@ -222,8 +222,8 @@ public class FaceDecoderImpl
           if (localObject != null) {
             ((FaceInfo)localObject).a(FaceInfo.r, FaceInfo.f);
           }
-        } while (this.jdField_a_of_type_Ajlk == null);
-        this.jdField_a_of_type_Ajlk.onDecodeTaskCompleted(this.jdField_b_of_type_Int + this.jdField_a_of_type_JavaUtilLinkedList.size(), paramInt1, paramString, localBitmap);
+        } while (this.jdField_a_of_type_Ajzp == null);
+        this.jdField_a_of_type_Ajzp.onDecodeTaskCompleted(this.jdField_b_of_type_Int + this.jdField_a_of_type_JavaUtilLinkedList.size(), paramInt1, paramString, localBitmap);
         return;
         paramString = (FaceInfo)this.jdField_a_of_type_JavaUtilHashtable.get(localObject);
         if (paramString != null)
@@ -294,23 +294,23 @@ public class FaceDecoderImpl
   public void d()
   {
     QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    ajlm localajlm = this.jdField_a_of_type_Ajlm;
-    ajln localajln = this.jdField_a_of_type_Ajln;
-    ajlo localajlo = this.jdField_a_of_type_Ajlo;
+    ajzr localajzr = this.jdField_a_of_type_Ajzr;
+    ajzs localajzs = this.jdField_a_of_type_Ajzs;
+    ajzt localajzt = this.jdField_a_of_type_Ajzt;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
-    this.jdField_a_of_type_Ajlm = null;
-    this.jdField_a_of_type_Ajlo = null;
-    this.jdField_a_of_type_Ajln = null;
+    this.jdField_a_of_type_Ajzr = null;
+    this.jdField_a_of_type_Ajzt = null;
+    this.jdField_a_of_type_Ajzs = null;
     if (localQQAppInterface != null)
     {
-      if (localajlm != null) {
-        localQQAppInterface.removeObserver(localajlm);
+      if (localajzr != null) {
+        localQQAppInterface.removeObserver(localajzr);
       }
-      if (localajln != null) {
-        localQQAppInterface.removeObserver(localajln);
+      if (localajzs != null) {
+        localQQAppInterface.removeObserver(localajzs);
       }
-      if (localajlo != null) {
-        localQQAppInterface.removeObserver(localajlo);
+      if (localajzt != null) {
+        localQQAppInterface.removeObserver(localajzt);
       }
     }
     super.d();
@@ -335,17 +335,17 @@ public class FaceDecoderImpl
           if (QLog.isColorLevel()) {
             QLog.i("Q.qqhead.FaceDecoderImpl", 2, " runNextTask, faceinfo=" + localFaceInfo.toString());
           }
-          if (((localFaceInfo.jdField_a_of_type_Int == 101) || (localFaceInfo.jdField_a_of_type_Int == 1001)) && (this.jdField_a_of_type_Ajlm == null))
+          if (((localFaceInfo.jdField_a_of_type_Int == 101) || (localFaceInfo.jdField_a_of_type_Int == 1001)) && (this.jdField_a_of_type_Ajzr == null))
           {
-            this.jdField_a_of_type_Ajlm = new ajlm(this, null);
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajlm);
+            this.jdField_a_of_type_Ajzr = new ajzr(this, null);
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajzr);
           }
           if (((localFaceInfo.jdField_a_of_type_Int == 4) || (localFaceInfo.jdField_a_of_type_Int == 113)) && (!TroopUtils.a(localFaceInfo.jdField_a_of_type_JavaLangString)))
           {
-            if (this.jdField_a_of_type_Ajlo == null) {
-              this.jdField_a_of_type_Ajlo = new ajlo(this, null);
+            if (this.jdField_a_of_type_Ajzt == null) {
+              this.jdField_a_of_type_Ajzt = new ajzt(this, null);
             }
-            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajlo);
+            this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_Ajzt);
           }
           this.jdField_b_of_type_Int += 1;
           FaceDecodeTask.a(FaceDecodeTask.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFaceInfo, this));

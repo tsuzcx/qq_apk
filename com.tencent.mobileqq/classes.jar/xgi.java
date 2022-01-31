@@ -1,39 +1,16 @@
-import com.tencent.mobileqq.activity.Conversation;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.qwallet.config.QWalletConfigManager;
+import com.tencent.mobileqq.activity.qwallet.preload.QWalletIPCModule;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.Config;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Locale;
-import mqq.os.MqqHandler;
+import mqq.app.AppRuntime;
 
 public class xgi
   implements Runnable
 {
-  public xgi(BannerManager paramBannerManager) {}
+  public xgi(QWalletIPCModule paramQWalletIPCModule, AppRuntime paramAppRuntime) {}
   
   public void run()
   {
-    try
-    {
-      Object localObject = BannerManager.a(this.a).app;
-      Config localConfig = ((QQAppInterface)localObject).a(((QQAppInterface)localObject).getCurrentAccountUin(), true);
-      if (QLog.isColorLevel()) {
-        QLog.i("PushBannerConfig", 2, String.format(Locale.getDefault(), "initConfig config: %s", new Object[] { localConfig }));
-      }
-      if (localConfig != null)
-      {
-        localObject = ((QQAppInterface)localObject).getHandler(Conversation.class);
-        if (localObject != null) {
-          ((MqqHandler)localObject).sendEmptyMessage(1010);
-        }
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    ((QWalletConfigManager)((QQAppInterface)this.jdField_a_of_type_MqqAppAppRuntime).getManager(244)).a(1L, new xgj(this), null);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profile.view;
 
-import aged;
-import agee;
+import agsf;
+import agsg;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
@@ -27,7 +27,7 @@ public class ShakeImageView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Sensor jdField_a_of_type_AndroidHardwareSensor;
   private SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
-  Runnable jdField_a_of_type_JavaLangRunnable = new aged(this);
+  Runnable jdField_a_of_type_JavaLangRunnable = new agsf(this);
   float[] jdField_a_of_type_ArrayOfFloat = { 0.0F, 0.0F, 0.0F };
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -81,7 +81,7 @@ public class ShakeImageView
     super.onDetachedFromWindow();
     ThreadManager.getFileThreadHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     if (this.jdField_a_of_type_AndroidHardwareSensorManager != null) {
-      ThreadManager.executeOnFileThread(new agee(this));
+      ThreadManager.executeOnFileThread(new agsg(this));
     }
   }
   

@@ -1,16 +1,27 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager;
-import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
+import android.view.animation.AlphaAnimation;
+import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue;
+import com.tencent.mobileqq.filemanager.util.FilePreviewAnimQueue.FilePreviewAnim;
 
 public class acme
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  public acme(FileVideoManager paramFileVideoManager, FileVideoManager.FileVideoManagerInitCallback paramFileVideoManagerInitCallback) {}
+  public acme(FilePreviewActivity paramFilePreviewActivity) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreFileVideoManager$FileVideoManagerInitCallback.a();
+    if (this.a.b == null) {
+      this.a.b = new FilePreviewAnimQueue(this.a.a);
+    }
+    AlphaAnimation localAlphaAnimation = new AlphaAnimation(1.0F, 0.0F);
+    localAlphaAnimation.setFillAfter(true);
+    FilePreviewAnimQueue.FilePreviewAnim localFilePreviewAnim = new FilePreviewAnimQueue.FilePreviewAnim();
+    localFilePreviewAnim.jdField_a_of_type_JavaLangObject = localAlphaAnimation;
+    localFilePreviewAnim.jdField_a_of_type_Boolean = false;
+    localFilePreviewAnim.jdField_a_of_type_Int = FilePreviewAnimQueue.jdField_a_of_type_Int;
+    localFilePreviewAnim.b = 1500;
+    this.a.b.a(localFilePreviewAnim);
+    this.a.b.a();
   }
 }
 

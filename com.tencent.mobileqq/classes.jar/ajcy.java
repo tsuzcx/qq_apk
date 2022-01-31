@@ -1,17 +1,18 @@
-import com.tencent.mobileqq.troop.utils.TroopTopicMgr.WriteCommentCallback;
-import org.json.JSONObject;
+import com.tencent.mobileqq.troop.data.TroopAioMsgNavigateBar;
 
-public final class ajcy
-  implements TroopTopicMgr.WriteCommentCallback
+public class ajcy
+  implements Runnable
 {
-  public void a(int paramInt, JSONObject paramJSONObject)
+  public ajcy(TroopAioMsgNavigateBar paramTroopAioMsgNavigateBar) {}
+  
+  public void run()
   {
-    if (paramInt == 0) {}
+    TroopAioMsgNavigateBar.a(this.a, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajcy
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,21 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import android.widget.ImageButton;
+import com.tencent.mobileqq.activity.activateFriend.SendBirthdayWishesActivity;
 
-public final class uji
-  implements ActionSheet.OnDismissListener
+public class uji
+  implements Runnable
 {
-  public uji(QQAppInterface paramQQAppInterface) {}
+  public uji(SendBirthdayWishesActivity paramSendBirthdayWishesActivity, int paramInt) {}
   
-  public void onDismiss()
+  public void run()
   {
-    ReportController.b(this.a, "CliOper", "", "", "0X8004864", "0X8004864", 0, 0, "", "", "", "");
+    if (this.jdField_a_of_type_Int == 2)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setImageResource(2130837627);
+      this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setContentDescription("键盘");
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setImageResource(2130844545);
+    this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendSendBirthdayWishesActivity.a.setContentDescription("表情功能面板");
   }
 }
 

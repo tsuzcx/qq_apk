@@ -81,9 +81,9 @@ public class ArkAtBabyQSpan
     Canvas localCanvas = new Canvas(localBitmap);
     Resources localResources = this.jdField_a_of_type_AndroidContentContext.getResources();
     int j = paramPaint.getColor();
-    paramPaint.setColor(localResources.getColor(2131493051));
+    paramPaint.setColor(localResources.getColor(2131493052));
     localCanvas.drawRoundRect((RectF)localObject, i / 2, i / 2, paramPaint);
-    paramPaint.setColor(localResources.getColor(2131493355));
+    paramPaint.setColor(localResources.getColor(2131493358));
     localCanvas.drawText(this.jdField_a_of_type_JavaLangString, 0.0F, f, paramPaint);
     paramPaint.setColor(j);
     localCanvas.save(31);

@@ -1,19 +1,8 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.troop.model.VidToGroupInfoPuller;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import android.widget.ImageView;
 
 public class omh
-  extends SimpleJob
 {
-  public omh(VidToGroupInfoPuller paramVidToGroupInfoPuller) {}
-  
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
-  {
-    this.a.b();
-    return null;
-  }
+  public ImageView a;
 }
 
 

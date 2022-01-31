@@ -17,16 +17,16 @@ import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import kop;
-import koq;
-import kor;
+import koa;
+import kob;
+import koc;
 
 public class NowVideoController
 {
   private static Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   private static NowVideoController jdField_a_of_type_ComTencentBizNowNowVideoController;
   private Context jdField_a_of_type_AndroidContentContext;
-  Handler jdField_a_of_type_AndroidOsHandler = new kop(this, Looper.getMainLooper());
+  Handler jdField_a_of_type_AndroidOsHandler = new koa(this, Looper.getMainLooper());
   private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private AbsListView jdField_a_of_type_ComTencentWidgetAbsListView;
@@ -124,7 +124,7 @@ public class NowVideoController
     }
     int i = this.jdField_a_of_type_ComTencentWidgetAbsListView.getFirstVisiblePosition();
     int j = this.jdField_a_of_type_ComTencentWidgetAbsListView.getLastVisiblePosition();
-    this.jdField_a_of_type_ComTencentWidgetAbsListView.postDelayed(new kor(this, i, j), paramLong);
+    this.jdField_a_of_type_ComTencentWidgetAbsListView.postDelayed(new koc(this, i, j), paramLong);
   }
   
   public void a(NowVideoView paramNowVideoView)
@@ -197,7 +197,7 @@ public class NowVideoController
     }
     int i = this.jdField_a_of_type_ComTencentWidgetAbsListView.getFirstVisiblePosition();
     int j = this.jdField_a_of_type_ComTencentWidgetAbsListView.getLastVisiblePosition();
-    BaseActivity.sTopActivity.runOnUiThread(new koq(this, i, j));
+    BaseActivity.sTopActivity.runOnUiThread(new kob(this, i, j));
   }
 }
 

@@ -1,12 +1,17 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.content.Context;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.intervideo.now.NowProxy;
+import com.tencent.mobileqq.nearby.NearbyProxy;
 
-class aems
-  implements DialogInterface.OnClickListener
+public class aems
+  implements Runnable
 {
-  aems(aemp paramaemp) {}
+  public aems(NearbyProxy paramNearbyProxy, Context paramContext) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
+  public void run()
+  {
+    ((NowProxy)this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyProxy.a.getManager(181)).b(this.jdField_a_of_type_AndroidContentContext);
+  }
 }
 
 

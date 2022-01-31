@@ -28,6 +28,16 @@ public class ErrorMessage
     this.errorMsg = paramString;
   }
   
+  public ErrorMessage(ErrorMessage paramErrorMessage)
+  {
+    if (paramErrorMessage == null) {
+      throw new IllegalArgumentException("errorMessage should not be null");
+    }
+    this.errorCode = paramErrorMessage.errorCode;
+    this.errorMsg = paramErrorMessage.errorMsg;
+    this.extraMsg = paramErrorMessage.extraMsg;
+  }
+  
   public String getErrorMessage()
   {
     return String.format("%s(%d)", new Object[] { this.errorMsg, Integer.valueOf(this.errorCode) });

@@ -1,17 +1,47 @@
-import com.tencent.mobileqq.filemanager.fileviewer.model.MPcFileModel;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.filemanager.activity.FMActivity;
+import com.tencent.mobileqq.filemanager.activity.recentfile.QfileRecentPicFileTabView;
+import com.tencent.mobileqq.filemanager.util.IClickListener_Ver51;
+import com.tencent.mobileqq.filemanager.util.IReport_Ver51;
 
-class acto
-  implements FMDialogUtil.FMDialogInterface
+public class acto
+  extends IClickListener_Ver51
 {
-  acto(actn paramactn) {}
+  public acto(QfileRecentPicFileTabView paramQfileRecentPicFileTabView) {}
   
   public void a()
   {
-    this.a.a.r();
+    this.a.a.a().b();
   }
   
-  public void b() {}
+  public void b()
+  {
+    this.a.a.a().p();
+  }
+  
+  public void c()
+  {
+    this.a.a.a().q();
+  }
+  
+  public void d()
+  {
+    this.a.a.a().r();
+  }
+  
+  public void e()
+  {
+    this.a.a.a().s();
+  }
+  
+  public void f()
+  {
+    this.a.a.a().t();
+  }
+  
+  public void g()
+  {
+    this.a.a.a().G();
+  }
 }
 
 

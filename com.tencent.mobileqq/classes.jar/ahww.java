@@ -1,21 +1,21 @@
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder;
-import com.tencent.mobileqq.surfaceviewaction.builder.SceneBuilder.OnBuiltListener;
-import com.tencent.mobileqq.surfaceviewaction.gl.Layer;
+import android.view.MotionEvent;
+import android.view.View;
+import android.view.View.OnTouchListener;
+import com.tencent.mobileqq.search.view.SearchResultGroupTitleView;
 
-class ahww
-  implements Runnable
+public class ahww
+  implements View.OnTouchListener
 {
-  ahww(ahwv paramahwv, String paramString) {}
+  public ahww(SearchResultGroupTitleView paramSearchResultGroupTitleView) {}
   
-  public void run()
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Layer localLayer = SceneBuilder.a(this.jdField_a_of_type_Ahwv.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder, this.jdField_a_of_type_Ahwv.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionGlSpriteGLView, this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_Ahwv.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionBuilderSceneBuilder$OnBuiltListener.a(localLayer);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahww
  * JD-Core Version:    0.7.0.1
  */

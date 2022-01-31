@@ -1,47 +1,15 @@
-import android.content.Intent;
-import android.content.IntentFilter;
-import com.tencent.ark.ark.VariantWrapper;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.ark.API.ArkAppDeviceModule;
+import com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager;
+import com.tencent.mobileqq.widget.QQToast;
 
 public class aahp
-  implements aagu
+  implements Runnable
 {
-  private aahp(ArkAppDeviceModule paramArkAppDeviceModule) {}
+  public aahp(ARMarkerResourceManager paramARMarkerResourceManager) {}
   
-  public boolean a(String paramString, ark.VariantWrapper[] paramArrayOfVariantWrapper, ark.VariantWrapper paramVariantWrapper)
+  public void run()
   {
-    if ((!"ScanCode".equals(paramString)) || (paramArrayOfVariantWrapper == null) || (paramArrayOfVariantWrapper.length < 1) || (!paramArrayOfVariantWrapper[0].IsFunction())) {}
-    for (;;)
-    {
-      return false;
-      long l = this.a.a(paramArrayOfVariantWrapper[0].Copy());
-      paramString = new Intent();
-      paramString.setClassName("com.tencent.mobileqq", "com.tencent.biz.qrcode.activity.ScannerActivity");
-      paramString.putExtra("from", ArkAppDeviceModule.class.getName());
-      paramString.putExtra("finishAfterSucc", true);
-      if (ArkAppDeviceModule.a(this.a) != null) {}
-      try
-      {
-        BaseApplicationImpl.getApplication().unregisterReceiver(ArkAppDeviceModule.a(this.a));
-        label105:
-        ArkAppDeviceModule.a(this.a, null);
-        ArkAppDeviceModule.a(this.a, new aahq(this, l));
-        paramArrayOfVariantWrapper = new IntentFilter("com.tencent.mobileqq.ark.API.scanResultAction");
-        BaseApplicationImpl.getApplication().registerReceiver(ArkAppDeviceModule.a(this.a), paramArrayOfVariantWrapper, "com.tencent.msg.permission.pushnotify", null);
-        paramArrayOfVariantWrapper = BaseActivity.sTopActivity;
-        if (paramArrayOfVariantWrapper == null) {
-          continue;
-        }
-        paramArrayOfVariantWrapper.startActivity(paramString);
-        return false;
-      }
-      catch (Exception paramArrayOfVariantWrapper)
-      {
-        break label105;
-      }
-    }
+    QQToast.a(BaseApplicationImpl.getContext(), 1, "场景识别不支持特征追踪！", 1).a();
   }
 }
 

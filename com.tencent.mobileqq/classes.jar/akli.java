@@ -1,28 +1,31 @@
-import com.tencent.mobileqq.widget.QQProgressDialog;
-import com.tencent.open.agent.BindGroupActivity;
-import com.tencent.qphone.base.util.QLog;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.os.Handler;
+import android.os.Message;
+import com.tencent.mobileqq.util.BitmapManager;
+import com.tencent.mobileqq.vipav.VipFunCallManager;
+import com.tencent.mobileqq.vipav.VipFunCallPreviewActivity;
 
 public class akli
   implements Runnable
 {
-  public akli(BindGroupActivity paramBindGroupActivity) {}
+  public akli(VipFunCallPreviewActivity paramVipFunCallPreviewActivity, int paramInt) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BindGroupActivity", 2, "-->onGetOpenId timeout.");
+    BitmapDrawable localBitmapDrawable = null;
+    Bitmap localBitmap = BitmapManager.a(VipFunCallManager.a(this.jdField_a_of_type_ComTencentMobileqqVipavVipFunCallPreviewActivity.app, this.jdField_a_of_type_ComTencentMobileqqVipavVipFunCallPreviewActivity.jdField_a_of_type_Int, 9, null));
+    if (localBitmap != null) {
+      localBitmapDrawable = new BitmapDrawable(localBitmap);
     }
-    if (this.a.isFinishing()) {
-      return;
+    if (localBitmapDrawable != null) {
+      this.jdField_a_of_type_ComTencentMobileqqVipavVipFunCallPreviewActivity.jdField_a_of_type_AndroidOsHandler.sendMessage(Message.obtain(this.jdField_a_of_type_ComTencentMobileqqVipavVipFunCallPreviewActivity.jdField_a_of_type_AndroidOsHandler, 51, this.jdField_a_of_type_Int, 0, localBitmapDrawable));
     }
-    this.a.c = true;
-    this.a.b.hide();
-    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akli
  * JD-Core Version:    0.7.0.1
  */

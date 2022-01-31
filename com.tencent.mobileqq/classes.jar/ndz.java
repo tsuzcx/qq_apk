@@ -1,19 +1,21 @@
-import com.tencent.biz.qqstory.msgTabNode.view.viewholder.FriendViewHolder;
-import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.biz.qqstory.base.download.DownloadProgressListener;
+import com.tencent.biz.qqstory.model.pendant.FileDownloadTask;
+import com.tencent.biz.qqstory.model.pendant.FileDownloadTask.Input;
+import com.tencent.biz.qqstory.model.pendant.FileDownloadTask.Progress;
 
 public class ndz
-  implements Runnable
+  implements DownloadProgressListener
 {
-  public ndz(FriendViewHolder paramFriendViewHolder, QQAppInterface paramQQAppInterface, String paramString) {}
+  public ndz(FileDownloadTask paramFileDownloadTask, FileDownloadTask.Input paramInput) {}
   
-  public void run()
+  public void a(String paramString, int paramInt) {}
+  
+  public void a(String paramString, long paramLong1, long paramLong2)
   {
-    if (((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(50)).c(this.jdField_a_of_type_JavaLangString) == null) {
-      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(1)).b(this.jdField_a_of_type_JavaLangString);
-    }
+    FileDownloadTask.a(this.jdField_a_of_type_ComTencentBizQqstoryModelPendantFileDownloadTask, new FileDownloadTask.Progress[] { new FileDownloadTask.Progress(this.jdField_a_of_type_ComTencentBizQqstoryModelPendantFileDownloadTask$Input, paramLong1, paramLong2) });
   }
+  
+  public void a(String paramString1, String paramString2) {}
 }
 
 

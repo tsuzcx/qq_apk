@@ -1,15 +1,4 @@
-import com.tencent.biz.pubaccount.readinjoy.capture.ReadInJoyCameraProgressView;
-
-public class lhy
-  implements Runnable
-{
-  public lhy(ReadInJoyCameraProgressView paramReadInJoyCameraProgressView) {}
-  
-  public void run()
-  {
-    this.a.invalidate();
-  }
-}
+public class lhy {}
 
 
 /* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar

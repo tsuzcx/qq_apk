@@ -1,36 +1,42 @@
-import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.subaccount.AssociatedAccountOptPopBar;
-import com.tencent.qphone.base.util.QLog;
-import java.util.Observable;
-import java.util.Observer;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.search.searchengine.ISearchListener;
+import com.tencent.mobileqq.search.searchengine.NetSearchEngine;
+import java.util.ArrayList;
 
-public class ahwi
-  implements Observer
+class ahwi
+  extends FriendListObserver
 {
-  public ahwi(AssociatedAccountOptPopBar paramAssociatedAccountOptPopBar) {}
+  ahwi(ahwh paramahwh) {}
   
-  public void update(Observable paramObservable, Object paramObject)
+  protected void onSearchFriendResult(boolean paramBoolean1, int paramInt1, Object paramObject, int paramInt2, String paramString, boolean paramBoolean2, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountOptPopBar", 2, "update()");
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver != null) {
+      NetSearchEngine.a(this.a.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine).removeObserver(this.a.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     }
-    if ((paramObject instanceof String[]))
+    if (ahwh.a(this.a)) {}
+    do
     {
-      paramObservable = (String[])paramObject;
-      if ((paramObservable.length == 2) && (AppConstants.w.equals(paramObservable[0])) && (this.a.a != null) && (this.a.a.app != null) && (!this.a.a.isFinishing()))
+      do
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("AssociatedAccountOptPopBar", 2, "update() -> before update");
+        do
+        {
+          return;
+        } while ((paramInt1 != 88) || (paramBoolean2));
+        if (!paramBoolean1) {
+          break;
         }
-        this.a.a.runOnUiThread(new ahwj(this));
-      }
-    }
+      } while (!(paramObject instanceof ArrayList));
+      ThreadManager.post(new ahwj(this.a.jdField_a_of_type_ComTencentMobileqqSearchSearchengineNetSearchEngine, ahwh.a(this.a), (ArrayList)paramObject, ahwh.a(this.a)), 10, null, true);
+      return;
+    } while (ahwh.a(this.a) == null);
+    ahwh.a(this.a).a(null, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahwi
  * JD-Core Version:    0.7.0.1
  */

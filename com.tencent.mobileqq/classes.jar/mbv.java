@@ -1,21 +1,27 @@
-import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCommentManager.CommentEventListener;
-import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity;
+import android.view.View.OnSystemUiVisibilityChangeListener;
+import com.tencent.biz.pubaccount.readinjoy.comment.ReadInJoyCommentListFragment;
+import com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsCommentManager;
 
 public class mbv
-  implements VideoFeedsCommentManager.CommentEventListener
+  implements View.OnSystemUiVisibilityChangeListener
 {
-  public mbv(VideoFeedsPlayActivity paramVideoFeedsPlayActivity) {}
+  public mbv(VideoFeedsCommentManager paramVideoFeedsCommentManager) {}
   
-  public void a(boolean paramBoolean)
+  public void onSystemUiVisibilityChange(int paramInt)
   {
-    if ((!paramBoolean) && (VideoFeedsPlayActivity.h(this.a)))
+    ReadInJoyCommentListFragment localReadInJoyCommentListFragment;
+    if (VideoFeedsCommentManager.a(this.a) != null)
     {
-      VideoFeedsPlayActivity.a(this.a).postDelayed(new mbw(this), 1000L);
-      VideoFeedsPlayActivity.d(this.a, false);
+      localReadInJoyCommentListFragment = VideoFeedsCommentManager.a(this.a);
+      if ((paramInt & 0x2) != 0) {
+        break label32;
+      }
     }
-    if (!paramBoolean) {
-      this.a.d();
+    label32:
+    for (boolean bool = true;; bool = false)
+    {
+      localReadInJoyCommentListFragment.e_(bool);
+      return;
     }
   }
 }

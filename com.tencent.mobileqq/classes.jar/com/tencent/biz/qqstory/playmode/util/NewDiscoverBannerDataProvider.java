@@ -14,7 +14,7 @@ import com.tribe.async.dispatch.IEventReceiver;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-import nlh;
+import nmr;
 
 public class NewDiscoverBannerDataProvider
   extends MultiGroupVideoDataProvider
@@ -58,7 +58,7 @@ public class NewDiscoverBannerDataProvider
       return;
     }
     paramList = new BatchGetVideoInfo(paramList);
-    paramList.a(new nlh(this, paramList));
+    paramList.a(new nmr(this, paramList));
     if (QLog.isColorLevel()) {
       QLog.d("NewDiscoverBannerDataProvider", 2, "start get video info");
     }

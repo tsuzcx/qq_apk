@@ -1,24 +1,18 @@
-import android.view.View;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.biz.qqstory.takevideo.EditTakeVideoSource;
 
-public class odu
-  implements ActionSheet.OnButtonClickListener
+public final class odu
+  implements Parcelable.Creator
 {
-  public odu(EditVideoPartManager paramEditVideoPartManager, ActionSheet paramActionSheet) {}
-  
-  public void OnClick(View paramView, int paramInt)
+  public EditTakeVideoSource a(Parcel paramParcel)
   {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.c();
-    }
+    return new EditTakeVideoSource(paramParcel);
+  }
+  
+  public EditTakeVideoSource[] a(int paramInt)
+  {
+    return new EditTakeVideoSource[paramInt];
   }
 }
 

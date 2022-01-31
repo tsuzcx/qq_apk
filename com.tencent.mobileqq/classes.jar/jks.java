@@ -1,48 +1,35 @@
-import android.os.Handler;
-import com.tencent.av.app.VideoAppInterface;
-import com.tencent.av.random.RandomController;
 import com.tencent.av.random.RandomWebProtocol;
-import com.tencent.av.utils.NearbyPeopleProfileHelper.INearbyPeopleProfileCallBack;
-import com.tencent.av.utils.NearbyPeopleProfileHelper.NearbyProfileData;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicInteger;
+import org.json.JSONObject;
 
 public class jks
-  implements NearbyPeopleProfileHelper.INearbyPeopleProfileCallBack
+  extends jkq
 {
-  public jks(RandomController paramRandomController) {}
+  boolean jdField_b_of_type_Boolean;
+  int c;
   
-  public void a(String paramString, NearbyPeopleProfileHelper.NearbyProfileData paramNearbyProfileData)
+  public jks(RandomWebProtocol paramRandomWebProtocol, jkq paramjkq, String paramString, boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RandomController", 2, "onGetNearbyPeopleProfile uin :" + paramString + ", nickname:" + paramNearbyProfileData.b + ", gender:" + paramNearbyProfileData.a);
-    }
-    if (paramString.equals(RandomController.a(this.a).getAccount()))
+    super(paramRandomWebProtocol, paramjkq);
+    this.a = 2;
+    this.c = paramString;
+    this.jdField_b_of_type_Boolean = paramBoolean;
+    this.c = paramInt;
+    this.d = "[m] RequestMulti";
+  }
+  
+  String a()
+  {
+    this.a = null;
+    try
     {
-      if (paramNearbyProfileData.a != -1) {
-        RandomController.a(this.a).a(paramNearbyProfileData.a);
-      }
-      if (RandomController.a(this.a).a())
-      {
-        if (!RandomController.a(this.a)) {
-          break label209;
-        }
-        RandomController.b(this.a, false);
-        RandomController.a(this.a).set(0);
-        RandomController.a(this.a).a(RandomController.b(this.a), RandomController.c(this.a), 1, new String[0]);
-        RandomController.a(this.a).a().removeCallbacks(RandomController.b(this.a));
-      }
+      this.a = new JSONObject().put("session_type", this.c);
+      return super.a();
     }
-    for (;;)
+    catch (Exception localException)
     {
-      RandomController.a(this.a).a().post(new jkt(this));
-      return;
-      label209:
-      if (RandomController.b(this.a))
+      for (;;)
       {
-        RandomController.c(this.a, false);
-        RandomController.a(this.a).a(this.a.b, RandomController.b(this.a));
-        RandomController.a(this.a).a().removeCallbacks(RandomController.b(this.a));
+        localException.printStackTrace();
       }
     }
   }

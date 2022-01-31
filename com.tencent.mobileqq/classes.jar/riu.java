@@ -1,50 +1,42 @@
-import android.os.Handler;
-import android.os.Message;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.widget.FormSwitchItem;
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.text.TextUtils;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
+import com.tencent.qidian.controller.QidianBusinessObserver;
+import com.tencent.qidian.data.QidianExternalInfo;
+import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 
 public class riu
-  extends Handler
+  extends QidianBusinessObserver
 {
-  public riu(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public riu(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, HashMap paramHashMap)
   {
-    super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    if ((paramBoolean) && (paramHashMap != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
     {
-    default: 
-    case 0: 
-    case 1: 
+      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
+      if (AddFriendVerifyActivity.a(this.a).equals(paramHashMap.uin)) {
+        if (AddFriendVerifyActivity.b(this.a) != null)
+        {
+          str = AddFriendVerifyActivity.b(this.a).getText().toString();
+          if ((TextUtils.isEmpty(str)) || (str.equals(AddFriendVerifyActivity.a(this.a)))) {
+            AddFriendVerifyActivity.b(this.a).setText(paramHashMap.nickname);
+          }
+        }
+      }
+    }
+    while (!QLog.isColorLevel())
+    {
+      String str;
       do
       {
         return;
-        if (!this.a.isFinishing())
-        {
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131434029));
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.d(2130845395);
-          this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(false);
-        }
-        this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 1000L);
-        return;
-      } while ((this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog == null) || (!this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.isShowing()));
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.cancel();
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(this.a.getString(2131434028));
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.c(true);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.a(false);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.b(true);
+      } while (!QLog.isColorLevel());
+      QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo not current uin");
       return;
     }
-    AssistantSettingActivity.a(this.a).setOnCheckedChangeListener(null);
-    FormSwitchItem localFormSwitchItem = AssistantSettingActivity.a(this.a);
-    if (!((Boolean)paramMessage.obj).booleanValue()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localFormSwitchItem.setChecked(bool);
-      AssistantSettingActivity.a(this.a).setOnCheckedChangeListener(this.a);
-      return;
-    }
+    QLog.d("AddFriendVerifyActivity", 2, "onGetQidianMasterInfo fail");
   }
 }
 

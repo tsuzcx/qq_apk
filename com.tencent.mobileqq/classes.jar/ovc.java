@@ -1,41 +1,27 @@
-import com.tencent.biz.troop.VideoCombineHelper.Callback;
-import com.tencent.biz.troop.VideoCombineHelper.CombineParams;
-import com.tencent.biz.troop.VideoCombineHelper.Task;
-import com.tencent.biz.troop.VideoCombineHelper.TaskListener;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.tribe.TribeVideoPlugin;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnVideoPreparedListener;
 
-class ovc
-  extends VideoCombineHelper.TaskListener
+public class ovc
+  implements TVK_IMediaPlayer.OnVideoPreparedListener
 {
-  ovc(ovb paramovb)
-  {
-    super(paramovb.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper);
-  }
+  public ovc(TribeVideoPlugin paramTribeVideoPlugin, ovo paramovo) {}
   
-  public void a(VideoCombineHelper.Task paramTask)
+  public void onVideoPrepared(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    if ((paramTask instanceof ovs)) {
-      this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "download failed! msg = " + paramTask.d);
+    if (paramTVK_IMediaPlayer.getCurrentPostion() == 0L) {
+      ReportController.b(null, "dc00899", "BizTechReport", ((BaseActivity)TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin)).getCurrentAccountUin(), "tribe_video", "video_prepared_time", 0, 0, Long.toString(System.currentTimeMillis() - ovo.a(this.jdField_a_of_type_Ovo)), Integer.toString(NetworkUtil.b(TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin))), "", "");
     }
-    do
+    if (TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin) != null)
     {
-      return;
-      if ((paramTask instanceof ovk))
-      {
-        this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "combine failed! msg = " + paramTask.d);
-        return;
-      }
-    } while (!(paramTask instanceof ovv));
-    this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "sending failed! msg = " + paramTask.d);
-  }
-  
-  public void b(VideoCombineHelper.Task paramTask)
-  {
-    if ((paramTask instanceof ovv))
-    {
-      paramTask = paramTask.a();
-      this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(paramTask.e, true, "seding success");
-      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).removeMessages(5, ovo.a(this.jdField_a_of_type_Ovo));
+      paramTVK_IMediaPlayer = TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).obtainMessage();
+      paramTVK_IMediaPlayer.obj = ovo.a(this.jdField_a_of_type_Ovo);
+      paramTVK_IMediaPlayer.what = 5;
+      TribeVideoPlugin.a(this.jdField_a_of_type_ComTencentBizTribeTribeVideoPlugin).sendMessage(paramTVK_IMediaPlayer);
     }
   }
 }

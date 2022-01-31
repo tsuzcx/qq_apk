@@ -1,18 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.SecondDemoView;
-import java.util.ArrayList;
+import dov.com.qq.im.capture.data.CaptureSet;
 
 public class anll
-  implements ValueAnimator.AnimatorUpdateListener
+  implements Runnable
 {
-  public anll(SecondDemoView paramSecondDemoView) {}
+  public anll(CaptureSet paramCaptureSet) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    paramValueAnimator = (ArrayList)paramValueAnimator.getAnimatedValue();
-    this.a.a = paramValueAnimator;
-    this.a.invalidate();
+    this.a.c();
   }
 }
 

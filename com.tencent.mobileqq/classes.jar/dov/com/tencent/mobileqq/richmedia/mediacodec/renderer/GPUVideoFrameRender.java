@@ -7,7 +7,7 @@ import android.opengl.GLES20;
 import android.os.Build.VERSION;
 import android.util.Log;
 import android.view.Surface;
-import anxc;
+import aonh;
 import com.tencent.mobileqq.richmedia.mediacodec.encoder.EglCore;
 import com.tencent.mobileqq.richmedia.mediacodec.encoder.EglSurfaceBase;
 import com.tencent.qphone.base.util.QLog;
@@ -23,7 +23,7 @@ public class GPUVideoFrameRender
   private long jdField_a_of_type_Long = -1L;
   private SurfaceTexture jdField_a_of_type_AndroidGraphicsSurfaceTexture;
   private Surface jdField_a_of_type_AndroidViewSurface;
-  private anxc jdField_a_of_type_Anxc;
+  private aonh jdField_a_of_type_Aonh;
   private EglCore jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglCore;
   private EglSurfaceBase jdField_a_of_type_ComTencentMobileqqRichmediaMediacodecEncoderEglSurfaceBase;
   private SimpleStickerTrackerOrigin jdField_a_of_type_DovComTencentMobileqqRichmediaMediacodecTrackerSimpleStickerTrackerOrigin;
@@ -44,10 +44,10 @@ public class GPUVideoFrameRender
   
   private void b()
   {
-    this.jdField_a_of_type_Anxc = new anxc();
-    this.jdField_a_of_type_Anxc.a();
-    this.jdField_a_of_type_Anxc.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Anxc.a());
+    this.jdField_a_of_type_Aonh = new aonh();
+    this.jdField_a_of_type_Aonh.a();
+    this.jdField_a_of_type_Aonh.a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsSurfaceTexture = new SurfaceTexture(this.jdField_a_of_type_Aonh.a());
     this.jdField_a_of_type_AndroidGraphicsSurfaceTexture.setOnFrameAvailableListener(this);
     this.jdField_a_of_type_AndroidViewSurface = new Surface(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
     this.jdField_a_of_type_JavaNioByteBuffer = ByteBuffer.allocateDirect(this.jdField_b_of_type_Int * this.jdField_c_of_type_Int * 4);
@@ -149,7 +149,7 @@ public class GPUVideoFrameRender
   public void b(boolean paramBoolean)
   {
     Log.d(jdField_a_of_type_JavaLangString, "drawImage");
-    this.jdField_a_of_type_Anxc.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture, paramBoolean);
+    this.jdField_a_of_type_Aonh.a(this.jdField_a_of_type_AndroidGraphicsSurfaceTexture, paramBoolean);
   }
   
   public void onFrameAvailable(SurfaceTexture arg1)

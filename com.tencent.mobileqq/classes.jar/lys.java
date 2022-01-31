@@ -1,31 +1,28 @@
-import android.view.OrientationEventListener;
-import com.tencent.biz.pubaccount.readinjoy.video.OrientationDetector;
+import com.tencent.biz.pubaccount.readinjoy.ugc.ReadInJoyDeliverVideoActivity;
+import com.tencent.biz.pubaccount.readinjoy.view.imageloader.CloseableBitmap;
+import com.tencent.biz.publicAccountImageCollection.PublicAccountImageDownListener;
+import com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity;
+import com.tencent.qphone.base.util.QLog;
+import java.net.URL;
 
 public class lys
-  implements Runnable
+  implements PublicAccountImageDownListener
 {
-  public lys(OrientationDetector paramOrientationDetector, boolean paramBoolean) {}
+  public lys(ReadInJoyDeliverVideoActivity paramReadInJoyDeliverVideoActivity) {}
   
-  public void run()
+  public void a(URL paramURL, CloseableBitmap paramCloseableBitmap)
   {
-    for (;;)
-    {
-      synchronized (OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector))
-      {
-        if (OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector) == null) {
-          return;
-        }
-        if (this.jdField_a_of_type_Boolean)
-        {
-          if (OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector).canDetectOrientation()) {
-            OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector).enable();
-          }
-          return;
-        }
-      }
-      OrientationDetector.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoOrientationDetector).disable();
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment cover download success");
     }
+    ReadInJoyDeliverVideoActivity.c(this.a, ShortVideoPreviewActivity.a(paramCloseableBitmap.a()));
+    if (QLog.isColorLevel()) {
+      QLog.d("ReadInJoyDeliverVideoActivity", 2, "king moment local cover is " + ReadInJoyDeliverVideoActivity.c(this.a));
+    }
+    this.a.setRightViewTextDisable(1);
   }
+  
+  public void a(URL paramURL, Throwable paramThrowable) {}
 }
 
 

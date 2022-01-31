@@ -1,21 +1,25 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import com.tencent.mobileqq.troop.widget.RedDotAnimateView;
+import com.tencent.mobileqq.app.ThreadExcutor.IThreadListener;
+import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.troop.data.TroopFileInfo;
+import com.tencent.mobileqq.troop.data.TroopFileItemOperation;
+import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import mqq.os.MqqHandler;
 
 public class ajes
-  implements ValueAnimator.AnimatorUpdateListener
+  implements ThreadExcutor.IThreadListener
 {
-  public ajes(RedDotAnimateView paramRedDotAnimateView) {}
+  public ajes(TroopFileItemOperation paramTroopFileItemOperation, TroopFileTransferManager paramTroopFileTransferManager, TroopFileInfo paramTroopFileInfo) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void a() {}
+  
+  public void b()
   {
-    this.a.b = (((Float)paramValueAnimator.getAnimatedValue()).floatValue() * this.a.a / 2.0F);
-    this.a.invalidate();
+    ThreadManager.getUIHandler().post(new ajet(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajes
  * JD-Core Version:    0.7.0.1
  */

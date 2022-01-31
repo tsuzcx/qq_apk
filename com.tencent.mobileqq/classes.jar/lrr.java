@@ -1,24 +1,28 @@
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.biz.pubaccount.readinjoy.model.SubscriptionInfoModule;
+import com.tencent.biz.pubaccount.readinjoy.model.ReadInJoyUserInfoRepository;
+import com.tencent.biz.pubaccount.readinjoy.struct.ReadInJoyUserInfo;
+import com.tencent.mobileqq.persistence.EntityManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.Iterator;
+import java.util.List;
 
 public class lrr
-  extends Handler
+  implements Runnable
 {
-  public lrr(SubscriptionInfoModule paramSubscriptionInfoModule, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  public lrr(ReadInJoyUserInfoRepository paramReadInJoyUserInfoRepository, int paramInt) {}
   
-  public void handleMessage(Message paramMessage)
+  public void run()
   {
-    switch (paramMessage.what)
+    Object localObject = ReadInJoyUserInfoRepository.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoRepository).a(ReadInJoyUserInfo.class, true, null, null, null, null, null, String.valueOf(this.jdField_a_of_type_Int));
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-    default: 
-      return;
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        ReadInJoyUserInfo localReadInJoyUserInfo = (ReadInJoyUserInfo)((Iterator)localObject).next();
+        QLog.d("ReadInJoyUserInfoRepository", 2, new Object[] { "loadReadInJoyUserInfoFromDB, userInfo = ", localReadInJoyUserInfo, Character.valueOf('\n') });
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyModelReadInJoyUserInfoRepository.a("", localReadInJoyUserInfo.md5Uin, localReadInJoyUserInfo, false);
+      }
     }
-    this.a.f();
   }
 }
 

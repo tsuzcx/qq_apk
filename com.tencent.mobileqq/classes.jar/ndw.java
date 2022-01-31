@@ -1,16 +1,42 @@
-import com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInfo;
-import com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager;
-import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.widget.ActionSheet.OnDismissListener;
+import com.tencent.biz.qqstory.model.lbs.BasicLocation;
+import com.tencent.biz.qqstory.model.lbs.LbsManager;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
+import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
 
 public class ndw
-  implements ActionSheet.OnDismissListener
+  extends SosoInterface.OnLocationListener
 {
-  public ndw(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager, MsgTabNodeInfo paramMsgTabNodeInfo) {}
-  
-  public void onDismiss()
+  public ndw(LbsManager paramLbsManager, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
   {
-    StoryReportor.a("msg_tab", "clk_press", 0, 0, new String[] { this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_Int + "", "8", "", this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabNodeInfo.jdField_a_of_type_JavaLangString });
+    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
+  }
+  
+  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  {
+    SLog.b("LbsManager", "onLocationFinish.");
+    boolean bool;
+    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null))
+    {
+      bool = true;
+      if (!bool) {
+        break label114;
+      }
+      this.a.b = BasicLocation.a(paramSosoLbsInfo.a);
+      SLog.a("LbsManager", "onLocationFinish success, [longitude=%s, latitude=%s]", Integer.valueOf(this.a.b.b), Integer.valueOf(this.a.b.a));
+    }
+    for (;;)
+    {
+      if (!LbsManager.a(this.a)) {
+        this.a.a(bool, this.a.b);
+      }
+      this.a.a = false;
+      return;
+      bool = false;
+      break;
+      label114:
+      SLog.d("LbsManager", "onLocationFinish errorCode = %d", new Object[] { Integer.valueOf(paramInt) });
+    }
   }
 }
 

@@ -1,13 +1,12 @@
-import com.tencent.mobileqq.ar.ArConfigService;
-
 public class zxu
-  implements Runnable
 {
-  public zxu(ArConfigService paramArConfigService) {}
+  public int a;
+  public long a;
   
-  public void run()
+  public zxu(long paramLong, int paramInt)
   {
-    ArConfigService.e(this.a);
+    this.jdField_a_of_type_Int = paramInt;
+    this.jdField_a_of_type_Long = paramLong;
   }
 }
 

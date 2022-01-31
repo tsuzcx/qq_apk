@@ -42,9 +42,9 @@ public class PKVideoSharer
     //   6: aconst_null
     //   7: astore 10
     //   9: aconst_null
-    //   10: astore 12
+    //   10: astore 11
     //   12: aconst_null
-    //   13: astore 11
+    //   13: astore 12
     //   15: new 53	android/graphics/BitmapFactory$Options
     //   18: dup
     //   19: invokespecial 54	android/graphics/BitmapFactory$Options:<init>	()V
@@ -148,10 +148,10 @@ public class PKVideoSharer
     //   208: sipush 132
     //   211: getstatic 85	android/graphics/Bitmap$Config:ARGB_8888	Landroid/graphics/Bitmap$Config;
     //   214: invokestatic 89	android/graphics/Bitmap:createBitmap	(IILandroid/graphics/Bitmap$Config;)Landroid/graphics/Bitmap;
-    //   217: astore 16
+    //   217: astore 14
     //   219: new 105	android/graphics/Canvas
     //   222: dup
-    //   223: aload 16
+    //   223: aload 14
     //   225: invokespecial 108	android/graphics/Canvas:<init>	(Landroid/graphics/Bitmap;)V
     //   228: astore_2
     //   229: aload_2
@@ -164,21 +164,21 @@ public class PKVideoSharer
     //   240: ldc 125
     //   242: ldc 125
     //   244: invokespecial 128	android/graphics/RectF:<init>	(FFFF)V
-    //   247: astore 15
+    //   247: astore 16
     //   249: new 130	android/graphics/Paint
     //   252: dup
     //   253: invokespecial 131	android/graphics/Paint:<init>	()V
-    //   256: astore 14
-    //   258: aload 14
+    //   256: astore 15
+    //   258: aload 15
     //   260: iconst_1
     //   261: invokevirtual 135	android/graphics/Paint:setAntiAlias	(Z)V
     //   264: aload_2
-    //   265: aload 15
+    //   265: aload 16
     //   267: ldc 136
     //   269: ldc 136
-    //   271: aload 14
+    //   271: aload 15
     //   273: invokevirtual 140	android/graphics/Canvas:drawRoundRect	(Landroid/graphics/RectF;FFLandroid/graphics/Paint;)V
-    //   276: aload 14
+    //   276: aload 15
     //   278: new 142	android/graphics/PorterDuffXfermode
     //   281: dup
     //   282: getstatic 148	android/graphics/PorterDuff$Mode:SRC_IN	Landroid/graphics/PorterDuff$Mode;
@@ -188,8 +188,8 @@ public class PKVideoSharer
     //   292: aload_2
     //   293: aload 10
     //   295: aconst_null
-    //   296: aload 15
-    //   298: aload 14
+    //   296: aload 16
+    //   298: aload 15
     //   300: invokevirtual 158	android/graphics/Canvas:drawBitmap	(Landroid/graphics/Bitmap;Landroid/graphics/Rect;Landroid/graphics/RectF;Landroid/graphics/Paint;)V
     //   303: aload_2
     //   304: invokevirtual 161	android/graphics/Canvas:save	()I
@@ -197,7 +197,7 @@ public class PKVideoSharer
     //   308: aload_2
     //   309: invokevirtual 164	android/graphics/Canvas:restore	()V
     //   312: aload 13
-    //   314: aload 16
+    //   314: aload 14
     //   316: aconst_null
     //   317: new 124	android/graphics/RectF
     //   320: dup
@@ -517,7 +517,7 @@ public class PKVideoSharer
     //   878: astore_3
     //   879: aload 10
     //   881: astore 4
-    //   883: aload 11
+    //   883: aload 12
     //   885: astore 5
     //   887: aload_2
     //   888: invokevirtual 103	java/lang/Exception:printStackTrace	()V
@@ -550,7 +550,7 @@ public class PKVideoSharer
     //   943: astore 6
     //   945: aconst_null
     //   946: astore_3
-    //   947: aload 12
+    //   947: aload 11
     //   949: astore 5
     //   951: aload 5
     //   953: ifnull +8 -> 961
@@ -579,17 +579,17 @@ public class PKVideoSharer
     //   1000: astore 6
     //   1002: aconst_null
     //   1003: astore_3
-    //   1004: aload 12
+    //   1004: aload 11
     //   1006: astore 5
     //   1008: goto -57 -> 951
     //   1011: astore_2
     //   1012: aconst_null
     //   1013: astore_3
-    //   1014: aload 12
+    //   1014: aload 11
     //   1016: astore 5
     //   1018: goto -67 -> 951
     //   1021: astore_2
-    //   1022: aload 12
+    //   1022: aload 11
     //   1024: astore 5
     //   1026: aload 10
     //   1028: astore_3
@@ -605,7 +605,7 @@ public class PKVideoSharer
     //   1045: astore_3
     //   1046: goto -95 -> 951
     //   1049: astore_2
-    //   1050: aload 11
+    //   1050: aload 12
     //   1052: astore 5
     //   1054: aload 10
     //   1056: astore 4
@@ -615,7 +615,7 @@ public class PKVideoSharer
     //   1064: astore_2
     //   1065: aload 6
     //   1067: astore_3
-    //   1068: aload 11
+    //   1068: aload 12
     //   1070: astore 5
     //   1072: aload 10
     //   1074: astore 4
@@ -625,7 +625,7 @@ public class PKVideoSharer
     //   1082: astore 4
     //   1084: aload 6
     //   1086: astore_3
-    //   1087: aload 11
+    //   1087: aload 12
     //   1089: astore 5
     //   1091: goto -204 -> 887
     //   1094: astore_2
@@ -650,12 +650,12 @@ public class PKVideoSharer
     //   627	105	8	f2	float
     //   613	128	9	f3	float
     //   7	1089	10	str	String
-    //   13	1075	11	localObject1	Object
-    //   10	1013	12	localObject2	Object
+    //   10	1013	11	localObject1	Object
+    //   13	1075	12	localObject2	Object
     //   4	1055	13	localCanvas	android.graphics.Canvas
     //   1	873	14	localObject3	Object
-    //   22	275	15	localObject4	Object
-    //   217	98	16	localBitmap	android.graphics.Bitmap
+    //   22	277	15	localObject4	Object
+    //   247	50	16	localRectF	android.graphics.RectF
     // Exception table:
     //   from	to	target	type
     //   34	46	128	java/lang/OutOfMemoryError

@@ -1,24 +1,19 @@
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.Transformation;
-import com.qq.im.poi.LbsPackListAdapter;
-import com.tencent.mobileqq.businessCard.helpers.ViewHelper;
+import android.view.View.OnClickListener;
+import com.qq.im.poi.LbsPackPoiListAdapter;
+import com.qq.im.poi.LbsPackPoiListAdapter.onClickListener;
+import com.qq.im.poi.PoiInfo;
 
 public class ans
-  extends Animation
+  implements View.OnClickListener
 {
-  public ans(LbsPackListAdapter paramLbsPackListAdapter, int paramInt1, int paramInt2, View paramView) {}
+  public ans(LbsPackPoiListAdapter paramLbsPackPoiListAdapter, PoiInfo paramPoiInfo) {}
   
-  protected void applyTransformation(float paramFloat, Transformation paramTransformation)
+  public void onClick(View paramView)
   {
-    float f1 = this.jdField_a_of_type_Int;
-    float f2 = this.b;
-    ViewHelper.f(this.jdField_a_of_type_AndroidViewView, f1 * f2 * paramFloat);
-  }
-  
-  public boolean willChangeBounds()
-  {
-    return true;
+    if (this.jdField_a_of_type_ComQqImPoiLbsPackPoiListAdapter.a != null) {
+      this.jdField_a_of_type_ComQqImPoiLbsPackPoiListAdapter.a.a(this.jdField_a_of_type_ComQqImPoiPoiInfo);
+    }
   }
 }
 

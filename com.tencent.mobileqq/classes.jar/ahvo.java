@@ -1,49 +1,26 @@
-import android.view.View;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLDrawableDownListener.Adapter;
-import com.tencent.mobileqq.structmsg.view.StructMsgItemPAVideo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.filemanager.data.search.GroupSearchModelFileEntity;
+import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine;
+import com.tencent.mobileqq.search.searchengine.GroupSearchEngine.SearchEngineEntity;
+import com.tencent.mobileqq.search.searchengine.ISearchEngine;
+import java.util.List;
 
 public class ahvo
-  extends URLDrawableDownListener.Adapter
+  extends GroupSearchEngine.SearchEngineEntity
 {
-  public ahvo(StructMsgItemPAVideo paramStructMsgItemPAVideo) {}
-  
-  public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
+  public ahvo(GroupSearchEngine paramGroupSearchEngine, ISearchEngine paramISearchEngine, String paramString, int paramInt)
   {
-    super.onLoadCancelled(paramView, paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadCancelled");
-    }
+    super(paramGroupSearchEngine, paramISearchEngine, paramString, paramInt);
   }
   
-  public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
+  public ISearchResultGroupModel a(List paramList, String paramString)
   {
-    super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadFailed ,cause = " + paramThrowable);
-    }
-  }
-  
-  public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
-  {
-    super.onLoadInterrupted(paramView, paramURLDrawable, paramInterruptedException);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadInterrupted");
-    }
-  }
-  
-  public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
-  {
-    paramView.setBackgroundDrawable(paramURLDrawable);
-    if (QLog.isColorLevel()) {
-      QLog.d("structmsg.StructMsgItemVideoForPA", 2, "onLoadSuccessed");
-    }
+    return new GroupSearchModelFileEntity(paramList, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ahvo
  * JD-Core Version:    0.7.0.1
  */

@@ -161,7 +161,7 @@ public class GLProgressBar
     return bool1;
   }
   
-  protected void ak_()
+  protected void am_()
   {
     this.f = this.jdField_a_of_type_ComTencentMobileqqShortvideoDancemachineGLImage.a();
     k();

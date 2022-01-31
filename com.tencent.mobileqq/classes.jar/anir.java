@@ -1,16 +1,15 @@
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import dov.com.qq.im.QIMCameraCaptureUnit;
 
 public class anir
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  public anir(DoodleLayout paramDoodleLayout) {}
+  public anir(QIMCameraCaptureUnit paramQIMCameraCaptureUnit) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.a.a != null) {
-      this.a.a.invalidate();
-    }
+    this.a.g(false);
   }
 }
 

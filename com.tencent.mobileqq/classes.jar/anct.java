@@ -1,21 +1,29 @@
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoDoodle;
-import dov.com.tencent.mobileqq.shortvideo.PtvTemplateManager.DoodleInfoLoadObserver;
+import android.text.TextUtils;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.font.FontInterface.TrueTypeResult;
+import cooperation.qzone.webviewplugin.QzonePersonalizeJsPlugin;
 
 public class anct
-  extends PtvTemplateManager.DoodleInfoLoadObserver
+  implements FontInterface.TrueTypeResult
 {
-  public anct(EditVideoDoodle paramEditVideoDoodle) {}
+  public anct(QzonePersonalizeJsPlugin paramQzonePersonalizeJsPlugin) {}
   
-  public void a()
+  public void a(int paramInt, String paramString1, String paramString2)
   {
-    SLog.c("Q.qqstory.publish.edit.StoryDoodle", "DoodleInfoLoadObserver, onLoadSucc");
-    this.a.ax_();
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QzonePersonalizeJsPlugin", 4, "FontInterface.TrueTypeResult font:" + paramInt + ", fontPath:" + paramString1);
+    }
+    if (TextUtils.isEmpty(paramString1))
+    {
+      QzonePersonalizeJsPlugin.a(this.a, paramString2, -2, "font download failed.");
+      return;
+    }
+    QzonePersonalizeJsPlugin.a(this.a, paramString2, 0, "success");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     anct
  * JD-Core Version:    0.7.0.1
  */

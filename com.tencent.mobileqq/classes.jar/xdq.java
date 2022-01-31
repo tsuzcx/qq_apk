@@ -1,28 +1,15 @@
-import Wallet.GetSkinListRsp;
-import com.qq.taf.jce.JceOutputStream;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.qwallet.fragment.QzoneHbFragment;
+import com.tencent.mobileqq.activity.qwallet.fragment.SendHbLogic.QwTextAdapter;
 
-class xdq
-  implements Runnable
+public class xdq
+  extends SendHbLogic.QwTextAdapter
 {
-  xdq(xdp paramxdp, GetSkinListRsp paramGetSkinListRsp) {}
+  public xdq(QzoneHbFragment paramQzoneHbFragment) {}
   
-  public void run()
+  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
-    try
-    {
-      JceOutputStream localJceOutputStream = new JceOutputStream();
-      localJceOutputStream.setServerEncoding("utf-8");
-      this.jdField_a_of_type_WalletGetSkinListRsp.writeTo(localJceOutputStream);
-      FileUtils.a(localJceOutputStream.toByteArray(), BaseApplicationImpl.getApplication().getFilesDir() + "skins" + this.jdField_a_of_type_Xdp.a.getCurrentAccountUin());
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-    }
+    QzoneHbFragment.a(this.a).setEnabled(QzoneHbFragment.a(this.a));
   }
 }
 

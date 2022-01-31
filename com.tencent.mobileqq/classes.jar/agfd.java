@@ -1,22 +1,19 @@
-import com.tencent.mobileqq.activity.aio.audiopanel.VolumeIndicateSquareView;
-import com.tencent.mobileqq.ptt.LSRecordPanel;
-import com.tencent.mobileqq.ptt.LSRecordTextView;
+import android.widget.TextView;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
 class agfd
   implements Runnable
 {
-  agfd(agfc paramagfc) {}
+  agfd(agfb paramagfb) {}
   
   public void run()
   {
-    this.a.a.d = null;
-    LSRecordPanel.a(this.a.a).setVisibility(4);
-    LSRecordPanel.a(this.a.a).setVisibility(4);
+    ScanTorchActivity.a(this.a.a).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     agfd
  * JD-Core Version:    0.7.0.1
  */

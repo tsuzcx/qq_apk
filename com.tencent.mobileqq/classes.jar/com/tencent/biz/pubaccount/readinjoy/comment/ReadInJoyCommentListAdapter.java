@@ -24,6 +24,8 @@ import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
 import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo;
 import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.UGCFeedsInfo;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyHeadImageView;
+import com.tencent.biz.pubaccount.readinjoy.view.ReadInJoyNickNameTextView;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.search.util.SearchUtils;
 import com.tencent.mobileqq.service.message.MessageUtils;
@@ -31,14 +33,13 @@ import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.util.FaceDecoder;
 import com.tencent.mobileqq.util.FaceDecoder.DecodeTaskCompletionListener;
 import com.tencent.widget.ActionSheet;
-import com.tencent.widget.FixSizeImageView;
 import com.tencent.widget.ListView;
 import cooperation.readinjoy.ReadInJoyHelper;
 import java.util.List;
-import ljo;
-import ljq;
-import ljr;
-import ljs;
+import ljj;
+import ljl;
+import ljm;
+import ljn;
 
 public class ReadInJoyCommentListAdapter
   extends BaseAdapter
@@ -47,7 +48,7 @@ public class ReadInJoyCommentListAdapter
   public int a;
   FragmentActivity jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
   private LayoutInflater jdField_a_of_type_AndroidViewLayoutInflater;
-  private ArticleCommentModule.FetchCommentObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$FetchCommentObserver = new ljr(this);
+  private ArticleCommentModule.FetchCommentObserver jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule$FetchCommentObserver = new ljm(this);
   public ArticleCommentModule a;
   ReadInJoyCommentListFragment jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListFragment;
   private ReadInJoyCommentListView jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView;
@@ -77,7 +78,7 @@ public class ReadInJoyCommentListAdapter
     this.c = 2;
   }
   
-  private void a(ljs paramljs, int paramInt)
+  private void a(ljn paramljn, int paramInt)
   {
     CommentInfo localCommentInfo;
     if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule != null)
@@ -93,107 +94,107 @@ public class ReadInJoyCommentListAdapter
     if (!TextUtils.isEmpty(localCommentInfo.commentContent))
     {
       localObject = new QQText(MessageUtils.b(localCommentInfo.commentContent), 7, 16);
-      paramljs.d.setText((CharSequence)localObject);
+      paramljn.c.setText((CharSequence)localObject);
       label68:
-      paramljs.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageDrawable(SearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, localCommentInfo.authorUin, 1));
+      paramljn.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setHeadImgByUin(localCommentInfo.authorUin);
       if (TextUtils.isEmpty(localCommentInfo.authorNickName)) {
-        break label594;
+        break label586;
       }
-      paramljs.jdField_a_of_type_AndroidWidgetTextView.setText(ReadInJoyUtils.d(localCommentInfo.authorNickName));
-      label111:
-      paramljs.jdField_a_of_type_AndroidWidgetTextView.setTag(localCommentInfo);
-      paramljs.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setTag(localCommentInfo);
+      paramljn.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setText(ReadInJoyUtils.e(localCommentInfo.authorNickName));
+      label103:
+      paramljn.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setTag(localCommentInfo);
+      paramljn.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setTag(localCommentInfo);
       if (TextUtils.isEmpty(localCommentInfo.authorComment)) {
-        break label611;
+        break label601;
       }
       localObject = new SpannableStringBuilder();
       ((SpannableStringBuilder)localObject).append("作者回复：");
       ((SpannableStringBuilder)localObject).setSpan(new ForegroundColorSpan(Color.parseColor("#FF8444")), 0, ((SpannableStringBuilder)localObject).length(), 33);
       ((SpannableStringBuilder)localObject).append(new QQText(MessageUtils.b(localCommentInfo.authorComment), 7, 16));
-      paramljs.e.setText((CharSequence)localObject);
-      paramljs.e.setVisibility(0);
-      label220:
+      paramljn.d.setText((CharSequence)localObject);
+      paramljn.d.setVisibility(0);
+      label212:
       if (localCommentInfo.mCommentItemLists.size() > 0)
       {
-        paramljs.f.setVisibility(8);
-        paramljs.g.setVisibility(8);
+        paramljn.e.setVisibility(8);
+        paramljn.f.setVisibility(8);
         paramInt = 0;
-        label252:
+        label244:
         if ((paramInt < localCommentInfo.mCommentItemLists.size()) && (paramInt < 2)) {
-          break label623;
+          break label613;
         }
       }
       if ((!TextUtils.isEmpty(localCommentInfo.authorComment)) || (localCommentInfo.mCommentItemLists.size() != 0)) {
-        break label843;
+        break label833;
       }
-      paramljs.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      label301:
+      paramljn.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      label293:
       if (localCommentInfo.sub_comments_total <= 0) {
-        break label887;
+        break label877;
       }
       if (localCommentInfo.sub_comments_total <= 999) {
-        break label854;
+        break label844;
       }
-      paramljs.i.setText("999+回复");
-      label327:
-      paramljs.i.setTag(localCommentInfo);
-      if (ReadInJoyHelper.v(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getAppRuntime()) != 0) {
-        break label900;
+      paramljn.h.setText("999+回复");
+      label319:
+      paramljn.h.setTag(localCommentInfo);
+      if (ReadInJoyHelper.w(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getAppRuntime()) != 0) {
+        break label890;
       }
-      paramljs.j.setVisibility(0);
-      paramljs.j.setOnClickListener(this);
-      paramljs.j.setTag(localCommentInfo);
-      label372:
+      paramljn.i.setVisibility(0);
+      paramljn.i.setOnClickListener(this);
+      paramljn.i.setTag(localCommentInfo);
+      label364:
       if (!localCommentInfo.liked) {
-        break label912;
+        break label902;
       }
-      paramljs.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840726);
-      paramljs.c.setTextColor(Color.parseColor("#07D0B0"));
-      label401:
+      paramljn.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840749);
+      paramljn.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#07D0B0"));
+      label393:
       if (localCommentInfo.likeCount <= 999) {
-        break label938;
+        break label928;
       }
-      paramljs.c.setText("999+");
-      label421:
-      paramljs.c.setTag(2131362471, localCommentInfo);
-      paramljs.c.setTag(2131362472, paramljs);
-      paramljs.jdField_b_of_type_AndroidWidgetImageView.setTag(2131362471, localCommentInfo);
-      paramljs.jdField_b_of_type_AndroidWidgetImageView.setTag(2131362472, paramljs);
-      paramljs.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(2131362471, localCommentInfo);
-      paramljs.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(2131362472, paramljs);
-      paramljs.h.setText(ReadInJoyTimeUtils.a(localCommentInfo.commentTime, true));
+      paramljn.jdField_b_of_type_AndroidWidgetTextView.setText("999+");
+      label413:
+      paramljn.jdField_b_of_type_AndroidWidgetTextView.setTag(2131362475, localCommentInfo);
+      paramljn.jdField_b_of_type_AndroidWidgetTextView.setTag(2131362476, paramljn);
+      paramljn.jdField_b_of_type_AndroidWidgetImageView.setTag(2131362475, localCommentInfo);
+      paramljn.jdField_b_of_type_AndroidWidgetImageView.setTag(2131362476, paramljn);
+      paramljn.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(2131362475, localCommentInfo);
+      paramljn.jdField_a_of_type_AndroidWidgetRelativeLayout.setTag(2131362476, paramljn);
+      paramljn.g.setText(ReadInJoyTimeUtils.a(localCommentInfo.commentTime, true));
       if (!localCommentInfo.commentByMyself) {
-        break label975;
+        break label965;
       }
-      paramljs.k.setVisibility(0);
-      paramljs.i.setVisibility(8);
-      paramljs.k.setOnClickListener(this);
-      paramljs.k.setTag(localCommentInfo);
-      label542:
+      paramljn.j.setVisibility(0);
+      paramljn.h.setVisibility(8);
+      paramljn.j.setOnClickListener(this);
+      paramljn.j.setTag(localCommentInfo);
+      label534:
       if (localCommentInfo.rank != 0) {
-        break label995;
+        break label985;
       }
-      paramljs.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      paramljn.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     }
     for (;;)
     {
       if (localCommentInfo.author_selection != 1) {
-        break label1007;
+        break label997;
       }
-      paramljs.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramljn.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       return;
       if (localCommentInfo.gift_list != null) {
         break label68;
       }
-      paramljs.d.setText("发布了图片");
+      paramljn.c.setText("发布了图片");
       break label68;
-      label594:
-      paramljs.jdField_a_of_type_AndroidWidgetTextView.setText(ReadInJoyUtils.d(localCommentInfo.authorUin));
-      break label111;
-      label611:
-      paramljs.e.setVisibility(8);
-      break label220;
-      label623:
+      label586:
+      paramljn.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setNickNameByUin(localCommentInfo.authorUin, true);
+      break label103;
+      label601:
+      paramljn.d.setVisibility(8);
+      break label212;
+      label613:
       localObject = (CommentInfo)localCommentInfo.mCommentItemLists.get(paramInt);
       if (localObject == null) {
         break;
@@ -216,49 +217,49 @@ public class ReadInJoyCommentListAdapter
       }
       if (paramInt == 0)
       {
-        paramljs.f.setText(localSpannableStringBuilder);
-        paramljs.f.setVisibility(0);
+        paramljn.e.setText(localSpannableStringBuilder);
+        paramljn.e.setVisibility(0);
       }
       if (paramInt == 1)
       {
-        paramljs.g.setText(localSpannableStringBuilder);
-        paramljs.g.setVisibility(0);
+        paramljn.f.setText(localSpannableStringBuilder);
+        paramljn.f.setVisibility(0);
       }
       paramInt += 1;
-      break label252;
-      label843:
-      paramljs.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      break label301;
-      label854:
-      paramljs.i.setText(localCommentInfo.sub_comments_total + "回复");
-      break label327;
-      label887:
-      paramljs.i.setText("回复");
-      break label327;
-      label900:
-      paramljs.j.setVisibility(8);
-      break label372;
-      label912:
-      paramljs.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840725);
-      paramljs.c.setTextColor(Color.parseColor("#9D9D9D"));
-      break label401;
-      label938:
+      break label244;
+      label833:
+      paramljn.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      break label293;
+      label844:
+      paramljn.h.setText(localCommentInfo.sub_comments_total + "回复");
+      break label319;
+      label877:
+      paramljn.h.setText("回复");
+      break label319;
+      label890:
+      paramljn.i.setVisibility(8);
+      break label364;
+      label902:
+      paramljn.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130840748);
+      paramljn.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#9D9D9D"));
+      break label393;
+      label928:
       if (localCommentInfo.likeCount < 0)
       {
-        paramljs.c.setText("0");
-        break label421;
+        paramljn.jdField_b_of_type_AndroidWidgetTextView.setText("0");
+        break label413;
       }
-      paramljs.c.setText(String.valueOf(localCommentInfo.likeCount));
-      break label421;
-      label975:
-      paramljs.k.setVisibility(8);
-      paramljs.i.setVisibility(0);
-      break label542;
-      label995:
-      paramljs.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+      paramljn.jdField_b_of_type_AndroidWidgetTextView.setText(String.valueOf(localCommentInfo.likeCount));
+      break label413;
+      label965:
+      paramljn.j.setVisibility(8);
+      paramljn.h.setVisibility(0);
+      break label534;
+      label985:
+      paramljn.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
     }
-    label1007:
-    paramljs.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    label997:
+    paramljn.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
   public void a()
@@ -309,7 +310,7 @@ public class ReadInJoyCommentListAdapter
       return;
     }
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule.fetchNextCommentInfo(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.c);
-    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule.setCommentObsrver(new ljq(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule.setCommentObsrver(new ljl(this));
   }
   
   public int getCount()
@@ -354,16 +355,16 @@ public class ReadInJoyCommentListAdapter
       if (paramViewGroup != null)
       {
         paramView.setOnClickListener(this);
-        paramView.setTag(2131362473, Integer.valueOf(paramInt));
-        paramViewGroup.i.setOnClickListener(this);
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
-        paramViewGroup.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setOnClickListener(this);
+        paramView.setTag(2131362477, Integer.valueOf(paramInt));
+        paramViewGroup.h.setOnClickListener(this);
+        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView.setOnClickListener(this);
+        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setOnClickListener(this);
         paramViewGroup.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this);
-        paramViewGroup.c.setOnClickListener(this);
+        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this);
         paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this);
       }
       return paramView;
-      paramViewGroup = (ljs)paramView.getTag();
+      paramViewGroup = (ljn)paramView.getTag();
       continue;
       switch (i)
       {
@@ -371,26 +372,26 @@ public class ReadInJoyCommentListAdapter
         paramViewGroup = localObject;
         break;
       case 1: 
-        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969556, paramViewGroup, false);
-        paramViewGroup = new ljs(this);
-        paramViewGroup.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)paramView.findViewById(2131366949));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366951));
-        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366952));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366953));
-        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView.setBackgroundColor(Color.parseColor("#28FF8444"));
-        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366956));
-        paramViewGroup.c = ((TextView)paramView.findViewById(2131366955));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366954));
-        paramViewGroup.d = ((TextView)paramView.findViewById(2131366957));
-        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366958));
+        paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2130969563, paramViewGroup, false);
+        paramViewGroup = new ljn(this);
+        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView = ((ReadInJoyHeadImageView)paramView.findViewById(2131366991));
+        paramViewGroup.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyNickNameTextView = ((ReadInJoyNickNameTextView)paramView.findViewById(2131366993));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366994));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366995));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setBackgroundColor(Color.parseColor("#28FF8444"));
+        paramViewGroup.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131366998));
+        paramViewGroup.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131366997));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131366996));
+        paramViewGroup.c = ((TextView)paramView.findViewById(2131366999));
+        paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367000));
         paramViewGroup.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-        paramViewGroup.e = ((TextView)paramView.findViewById(2131366959));
-        paramViewGroup.f = ((TextView)paramView.findViewById(2131366960));
-        paramViewGroup.g = ((TextView)paramView.findViewById(2131366961));
-        paramViewGroup.h = ((TextView)paramView.findViewById(2131366963));
-        paramViewGroup.i = ((TextView)paramView.findViewById(2131366964));
-        paramViewGroup.j = ((TextView)paramView.findViewById(2131366965));
-        paramViewGroup.k = ((TextView)paramView.findViewById(2131366966));
+        paramViewGroup.d = ((TextView)paramView.findViewById(2131367001));
+        paramViewGroup.e = ((TextView)paramView.findViewById(2131367002));
+        paramViewGroup.f = ((TextView)paramView.findViewById(2131367003));
+        paramViewGroup.g = ((TextView)paramView.findViewById(2131367005));
+        paramViewGroup.h = ((TextView)paramView.findViewById(2131367006));
+        paramViewGroup.i = ((TextView)paramView.findViewById(2131367007));
+        paramViewGroup.j = ((TextView)paramView.findViewById(2131367008));
         paramView.setTag(paramViewGroup);
       }
     }
@@ -400,20 +401,20 @@ public class ReadInJoyCommentListAdapter
   {
     switch (paramView.getId())
     {
-    case 2131366950: 
-    case 2131366952: 
-    case 2131366953: 
-    case 2131366957: 
-    case 2131366958: 
-    case 2131366959: 
-    case 2131366960: 
-    case 2131366961: 
-    case 2131366962: 
-    case 2131366963: 
+    case 2131366992: 
+    case 2131366994: 
+    case 2131366995: 
+    case 2131366999: 
+    case 2131367000: 
+    case 2131367001: 
+    case 2131367002: 
+    case 2131367003: 
+    case 2131367004: 
+    case 2131367005: 
     default: 
       if (paramView.getTag() != null)
       {
-        i = ((Integer)paramView.getTag(2131362473)).intValue();
+        i = ((Integer)paramView.getTag(2131362477)).intValue();
         paramView = (CommentInfo)this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule.getCommentList().get(i);
         if ((paramView != null) && (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo != null)) {
           break label1254;
@@ -476,7 +477,7 @@ public class ReadInJoyCommentListAdapter
                           break label575;
                         }
                         paramView = "";
-                        paramView = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131438899) + paramView;
+                        paramView = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getString(2131438927) + paramView;
                         localObject2 = this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
                         localObject3 = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo;
                         if (this.jdField_a_of_type_Boolean) {
@@ -521,13 +522,13 @@ public class ReadInJoyCommentListAdapter
                     paramView = (CommentInfo)paramView.getTag();
                   } while (paramView == null);
                   localObject1 = ActionSheet.a(this.jdField_a_of_type_AndroidSupportV4AppFragmentActivity);
-                  ((ActionSheet)localObject1).a(2131438857);
-                  ((ActionSheet)localObject1).a(2131438856, 3);
-                  ((ActionSheet)localObject1).c(2131432998);
+                  ((ActionSheet)localObject1).a(2131438875);
+                  ((ActionSheet)localObject1).a(2131438874, 3);
+                  ((ActionSheet)localObject1).c(2131433015);
                   if (!((ActionSheet)localObject1).isShowing()) {
                     ((ActionSheet)localObject1).show();
                   }
-                  ((ActionSheet)localObject1).a(new ljo(this, paramView, (ActionSheet)localObject1));
+                  ((ActionSheet)localObject1).a(new ljj(this, paramView, (ActionSheet)localObject1));
                   return;
                 } while ((paramView.getTag() == null) || (!(paramView.getTag() instanceof CommentInfo)));
                 paramView = (CommentInfo)paramView.getTag();
@@ -593,15 +594,15 @@ public class ReadInJoyCommentListAdapter
           j = 20;
           break;
         }
-      } while (paramView.getTag(2131362471) == null);
-      localObject1 = (CommentInfo)paramView.getTag(2131362471);
-      paramView = (ljs)paramView.getTag(2131362472);
+      } while (paramView.getTag(2131362475) == null);
+      localObject1 = (CommentInfo)paramView.getTag(2131362475);
+      paramView = (ljn)paramView.getTag(2131362476);
     } while ((localObject1 == null) || (paramView == null) || (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo == null));
     label411:
     label575:
     label584:
     label590:
-    ReadInJoyCommentUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule, (CommentInfo)localObject1, paramView.jdField_b_of_type_AndroidWidgetImageView, paramView.c, 1, null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Boolean, ((CommentInfo)localObject1).authorUin, this.c, null);
+    ReadInJoyCommentUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentArticleCommentModule, (CommentInfo)localObject1, paramView.jdField_b_of_type_AndroidWidgetImageView, paramView.jdField_b_of_type_AndroidWidgetTextView, 1, null, this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructArticleInfo, this.jdField_a_of_type_Boolean, ((CommentInfo)localObject1).authorUin, this.c, null);
     label1158:
     return;
     label1254:
@@ -630,17 +631,17 @@ public class ReadInJoyCommentListAdapter
     while (paramInt1 < paramInt2)
     {
       paramString = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyCommentReadInJoyCommentListView.getChildAt(paramInt1);
-      if ((paramString != null) && (paramString.getTag() != null) && ((paramString.getTag() instanceof ljs)))
+      if ((paramString != null) && (paramString.getTag() != null) && ((paramString.getTag() instanceof ljn)))
       {
-        paramString = (ljs)paramString.getTag();
+        paramString = (ljn)paramString.getTag();
         if (paramString == null) {}
       }
       try
       {
-        if ((paramString.jdField_a_of_type_ComTencentWidgetFixSizeImageView.getTag() != null) && ((paramString.jdField_a_of_type_ComTencentWidgetFixSizeImageView.getTag() instanceof CommentInfo)))
+        if ((paramString.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.getTag() != null) && ((paramString.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.getTag() instanceof CommentInfo)))
         {
-          paramBitmap = (CommentInfo)paramString.jdField_a_of_type_ComTencentWidgetFixSizeImageView.getTag();
-          paramString.jdField_a_of_type_ComTencentWidgetFixSizeImageView.setImageDrawable(SearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, paramBitmap.authorUin, 1));
+          paramBitmap = (CommentInfo)paramString.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.getTag();
+          paramString.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewReadInJoyHeadImageView.setImageDrawable(SearchUtils.a(this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder, paramBitmap.authorUin, 1));
         }
         paramInt1 += 1;
       }

@@ -1,16 +1,28 @@
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer;
-import com.tencent.biz.qqstory.playvideo.player.mediaplayer.wrapper.IMediaPlayer.OnCompletionListener;
-import com.tencent.mobileqq.nearby.now.view.player.IVideoView.OnCompletionListener;
-import com.tencent.mobileqq.nearby.now.view.player.VideoViewTextureImpl;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.ObjectAnimator;
+import android.view.animation.DecelerateInterpolator;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter;
+import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter.ViewHolder;
 
 public class aelx
-  implements IMediaPlayer.OnCompletionListener
+  extends AnimatorListenerAdapter
 {
-  public aelx(VideoViewTextureImpl paramVideoViewTextureImpl, IVideoView.OnCompletionListener paramOnCompletionListener) {}
+  public aelx(NearbyFragmentEnterAdapter paramNearbyFragmentEnterAdapter, NearbyFragmentEnterAdapter.ViewHolder paramViewHolder, URLDrawable paramURLDrawable) {}
   
-  public void a(IMediaPlayer paramIMediaPlayer)
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerIVideoView$OnCompletionListener.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewPlayerVideoViewTextureImpl);
+    if (this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter.a() != null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter$ViewHolder.b.setImageDrawable(this.jdField_a_of_type_ComTencentImageURLDrawable);
+      paramAnimator = ObjectAnimator.ofFloat(this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter$ViewHolder.b, "alpha", new float[] { 0.2F, 1.0F });
+      paramAnimator.setInterpolator(new DecelerateInterpolator());
+      paramAnimator.setDuration(300L).start();
+      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter$ViewHolder.b.setAlpha(1.0F);
   }
 }
 

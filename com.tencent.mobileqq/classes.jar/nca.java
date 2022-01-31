@@ -1,21 +1,29 @@
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.biz.qqstory.model.MemoryManager;
-import com.tencent.biz.qqstory.model.SuperManager;
-import com.tencent.biz.qqstory.model.VidToVideoInfoPuller;
-import com.tribe.async.async.JobContext;
-import com.tribe.async.async.SimpleJob;
+import com.tencent.biz.qqstory.comment.FeedCommentLikeLego;
+import com.tencent.biz.qqstory.newshare.callback.OnSimpleShareListener;
+import com.tencent.biz.qqstory.storyHome.model.CommentLikeFeedItem;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
-public class nca
-  extends SimpleJob
+class nca
+  extends OnSimpleShareListener
 {
-  public nca(VidToVideoInfoPuller paramVidToVideoInfoPuller) {}
+  nca(nbx paramnbx) {}
   
-  protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
+  public void a()
   {
-    paramJobContext = ((MemoryManager)SuperManager.a(19)).a(this.a.a);
-    this.a.a(paramJobContext);
-    return null;
+    super.a();
+    FeedCommentLikeLego.a(this.a.a, null);
+  }
+  
+  public void a(int paramInt)
+  {
+    super.a(paramInt);
+    StoryReportor.a("home_page", "suc_share", 1, paramInt, new String[] { StoryReportor.b(this.a.a.a) + "", StoryReportor.a(this.a.a.a) + "", this.a.a.a.feedId });
+  }
+  
+  public void b(int paramInt)
+  {
+    super.b(paramInt);
+    StoryReportor.a("home_page", "share_chanel", 1, paramInt, new String[] { StoryReportor.b(this.a.a.a) + "", StoryReportor.a(this.a.a.a) + "", this.a.a.a.feedId });
   }
 }
 

@@ -1,22 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.AssistantSettingActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import cooperation.qzone.QZoneHelper;
-import cooperation.qzone.QZoneHelper.UserInfo;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.AddFriendVerifyActivity;
 
 public class riz
-  implements View.OnClickListener
+  implements DialogInterface.OnClickListener
 {
-  public riz(AssistantSettingActivity paramAssistantSettingActivity) {}
+  public riz(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void onClick(View paramView)
-  {
-    paramView = QZoneHelper.UserInfo.a();
-    paramView.a = this.a.app.getCurrentAccountUin();
-    paramView.b = this.a.app.getCurrentNickname();
-    QZoneHelper.a(this.a, paramView);
-  }
+  public void onClick(DialogInterface paramDialogInterface, int paramInt) {}
 }
 
 

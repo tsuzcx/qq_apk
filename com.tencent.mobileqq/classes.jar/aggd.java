@@ -1,18 +1,18 @@
-import com.tencent.mobileqq.qcall.QCallDetailActivity;
+import com.tencent.mobileqq.olympic.activity.ScanTorchActivity;
 
-class aggd
+public class aggd
   implements Runnable
 {
-  aggd(aggb paramaggb) {}
+  public aggd(ScanTorchActivity paramScanTorchActivity) {}
   
   public void run()
   {
-    QCallDetailActivity.b(this.a.a);
+    this.a.l();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     aggd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.nearby.smooth;
 
-import aeyy;
-import aeyz;
-import aeza;
-import aezb;
+import afme;
+import afmf;
+import afmg;
+import afmh;
 import android.os.Handler;
 import android.os.SystemClock;
 import android.view.View;
@@ -32,19 +32,19 @@ public abstract class ItemLoader
     return 1;
   }
   
-  aeza a(View paramView)
+  afmg a(View paramView)
   {
-    aeza localaeza2 = (aeza)this.jdField_a_of_type_JavaUtilMap.get(paramView);
-    aeza localaeza1 = localaeza2;
-    if (localaeza2 == null)
+    afmg localafmg2 = (afmg)this.jdField_a_of_type_JavaUtilMap.get(paramView);
+    afmg localafmg1 = localafmg2;
+    if (localafmg2 == null)
     {
-      localaeza1 = new aeza();
-      localaeza1.jdField_a_of_type_JavaLangObject = null;
-      localaeza1.jdField_a_of_type_Boolean = false;
-      localaeza1.jdField_a_of_type_Int = -1;
-      this.jdField_a_of_type_JavaUtilMap.put(paramView, localaeza1);
+      localafmg1 = new afmg();
+      localafmg1.jdField_a_of_type_JavaLangObject = null;
+      localafmg1.jdField_a_of_type_Boolean = false;
+      localafmg1.jdField_a_of_type_Int = -1;
+      this.jdField_a_of_type_JavaUtilMap.put(paramView, localafmg1);
     }
-    return localaeza1;
+    return localafmg1;
   }
   
   public abstract Object a(Adapter paramAdapter, int paramInt);
@@ -54,14 +54,14 @@ public abstract class ItemLoader
   void a(int paramInt1, int paramInt2)
   {
     String str = a(paramInt1, paramInt2);
-    aeyz localaeyz = (aeyz)this.b.get(str);
-    if (localaeyz == null) {}
+    afmf localafmf = (afmf)this.b.get(str);
+    if (localafmf == null) {}
     do
     {
       return;
       this.b.remove(str);
-    } while (localaeyz.jdField_a_of_type_JavaUtilConcurrentFuture == null);
-    localaeyz.jdField_a_of_type_JavaUtilConcurrentFuture.cancel(true);
+    } while (localafmf.jdField_a_of_type_JavaUtilConcurrentFuture == null);
+    localafmf.jdField_a_of_type_JavaUtilConcurrentFuture.cancel(true);
   }
   
   void a(View paramView)
@@ -72,44 +72,44 @@ public abstract class ItemLoader
     Iterator localIterator = this.b.values().iterator();
     while (localIterator.hasNext())
     {
-      aeyz localaeyz = (aeyz)localIterator.next();
-      if ((View)localaeyz.jdField_a_of_type_JavaLangRefSoftReference.get() == paramView)
+      afmf localafmf = (afmf)localIterator.next();
+      if ((View)localafmf.jdField_a_of_type_JavaLangRefSoftReference.get() == paramView)
       {
-        if (localaeyz.jdField_a_of_type_JavaUtilConcurrentFuture != null) {
-          localaeyz.jdField_a_of_type_JavaUtilConcurrentFuture.cancel(true);
+        if (localafmf.jdField_a_of_type_JavaUtilConcurrentFuture != null) {
+          localafmf.jdField_a_of_type_JavaUtilConcurrentFuture.cancel(true);
         }
         localIterator.remove();
       }
     }
   }
   
-  void a(View paramView1, View paramView2, aeza paramaeza, int paramInt, long paramLong)
+  void a(View paramView1, View paramView2, afmg paramafmg, int paramInt, long paramLong)
   {
-    int i = paramaeza.jdField_a_of_type_Int;
-    Object localObject = paramaeza.jdField_a_of_type_JavaLangObject;
+    int i = paramafmg.jdField_a_of_type_Int;
+    Object localObject = paramafmg.jdField_a_of_type_JavaLangObject;
     String str = a(i, paramInt);
-    aeyz localaeyz = (aeyz)this.b.get(str);
-    if (localaeyz == null)
+    afmf localafmf = (afmf)this.b.get(str);
+    if (localafmf == null)
     {
-      paramView1 = new aeyz(str, paramView1, paramView2, localObject, i, paramInt, paramLong);
+      paramView1 = new afmf(str, paramView1, paramView2, localObject, i, paramInt, paramLong);
       this.b.put(str, paramView1);
     }
     for (;;)
     {
-      paramaeza.jdField_a_of_type_Boolean = false;
+      paramafmg.jdField_a_of_type_Boolean = false;
       paramView2 = b(localObject, paramInt);
       if (paramView2 == null) {
         break;
       }
       a(i, paramInt);
       paramView1.c = new SoftReference(paramView2);
-      this.jdField_a_of_type_AndroidOsHandler.post(new aeyy(this, paramView1, true));
+      this.jdField_a_of_type_AndroidOsHandler.post(new afme(this, paramView1, true));
       return;
-      localaeyz.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
-      localaeyz.b = new SoftReference(paramView2);
-      paramView1 = localaeyz;
+      localafmf.jdField_a_of_type_JavaLangLong = Long.valueOf(paramLong);
+      localafmf.b = new SoftReference(paramView2);
+      paramView1 = localafmf;
     }
-    paramView1.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(new aezb(this, paramView1));
+    paramView1.jdField_a_of_type_JavaUtilConcurrentFuture = this.jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor.submit(new afmh(this, paramView1));
   }
   
   void a(View paramView1, View paramView2, Adapter paramAdapter, int paramInt, boolean paramBoolean)
@@ -119,16 +119,16 @@ public abstract class ItemLoader
     for (;;)
     {
       return;
-      aeza localaeza = a(paramView2);
-      localaeza.jdField_a_of_type_JavaLangObject = localObject;
-      localaeza.jdField_a_of_type_Int = paramInt;
-      localaeza.jdField_a_of_type_Boolean = true;
+      afmg localafmg = a(paramView2);
+      localafmg.jdField_a_of_type_JavaLangObject = localObject;
+      localafmg.jdField_a_of_type_Int = paramInt;
+      localafmg.jdField_a_of_type_Boolean = true;
       int i = a(paramAdapter, paramInt);
       paramInt = 0;
       while (paramInt < i)
       {
         if ((paramBoolean) || (a(localObject, paramInt))) {
-          a(paramView1, paramView2, localaeza, paramInt, SystemClock.uptimeMillis());
+          a(paramView1, paramView2, localafmg, paramInt, SystemClock.uptimeMillis());
         }
         paramInt += 1;
       }
@@ -137,17 +137,17 @@ public abstract class ItemLoader
   
   public abstract void a(View paramView, Object paramObject, int paramInt, boolean paramBoolean);
   
-  public boolean a(aeyz paramaeyz)
+  public boolean a(afmf paramafmf)
   {
-    if (paramaeyz.b == null) {
+    if (paramafmf.b == null) {
       return false;
     }
-    View localView = (View)paramaeyz.b.get();
+    View localView = (View)paramafmf.b.get();
     if (localView == null) {
       return true;
     }
     int i = a(localView).jdField_a_of_type_Int;
-    return (i == -1) || (paramaeyz.jdField_a_of_type_Int != i);
+    return (i == -1) || (paramafmf.jdField_a_of_type_Int != i);
   }
   
   boolean a(Object paramObject, int paramInt)

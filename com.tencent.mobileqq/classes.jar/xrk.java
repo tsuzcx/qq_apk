@@ -1,21 +1,19 @@
-import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader;
-import com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader.P2VEffectDownloadListener;
-import cooperation.qzone.util.QZLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
 
-public class xrk
-  implements P2VEffectLoader.P2VEffectDownloadListener
+class xrk
+  implements DialogInterface.OnClickListener
 {
-  public xrk(P2VEffectLoader paramP2VEffectLoader, P2VEffectLoader.P2VEffectDownloadListener paramP2VEffectDownloadListener) {}
+  xrk(xrj paramxrj) {}
   
-  public void a(boolean paramBoolean)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader.c(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader$P2VEffectDownloadListener);
-      return;
-    }
-    QZLog.e("P2VEffectLoader", 1, new Object[] { "downLoadP2VJarAndMaterialModule - downLoadP2VJarModule failed" });
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader$P2VEffectDownloadListener.a(false);
+    paramDialogInterface = this.a.a.getIntent();
+    paramDialogInterface.putExtra("flow_back", 0);
+    this.a.a.setResult(1001, paramDialogInterface);
+    this.a.a.finish();
   }
 }
 

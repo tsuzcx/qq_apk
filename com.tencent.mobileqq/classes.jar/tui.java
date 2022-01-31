@@ -1,18 +1,34 @@
-import android.os.Handler;
-import com.tencent.mobileqq.activity.TroopGagActivity;
+import android.view.View;
+import com.tencent.mobileqq.activity.SubAccountUgActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.utils.TroopGagMgr;
-import java.util.ArrayList;
+import com.tencent.mobileqq.subaccount.SubAccountProtocManager;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
-class tui
-  implements Runnable
+public class tui
+  implements ActionSheet.OnButtonClickListener
 {
-  tui(tuh paramtuh, Handler paramHandler) {}
+  public tui(SubAccountUgActivity paramSubAccountUgActivity, ActionSheet paramActionSheet) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    ArrayList localArrayList = ((TroopGagMgr)this.jdField_a_of_type_Tuh.a.app.getManager(47)).a(this.jdField_a_of_type_Tuh.a.a, false);
-    this.jdField_a_of_type_AndroidOsHandler.post(new tuj(this, localArrayList));
+    switch (paramInt)
+    {
+    }
+    for (;;)
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+      do
+      {
+        return;
+      } while (!this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.b());
+      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a(2131436395);
+      this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.b = true;
+      paramView = (SubAccountProtocManager)this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.app.getManager(27);
+      if (paramView != null) {
+        paramView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySubAccountUgActivity.a);
+      }
+    }
   }
 }
 

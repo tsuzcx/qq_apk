@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a04ab" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<LinearLayout android:gravity="center_horizontal" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15a8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="20.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.widget.CircleProgress android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a06dd" android:layout_width="125.0dip" android:layout_height="125.0dip" android:scaleType="center" android:layout_centerInParent="true" />
-    <TextView android:textSize="14.0sp" android:textColor="#7fffffff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="正在上传..." android:layout_centerInParent="true" />
-    <TextView android:textSize="16.0sp" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0068" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a1586" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="15.0dip" android:text="@string/APKTOOL_DUPLICATE_string_0x7f0b2d22" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a06dd" android:layout_centerInParent="true" />
-</RelativeLayout>
+    <Button android:textSize="16.0sp" android:textColor="#ff12b7f5" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15a9" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ce1" android:paddingLeft="33.0dip" android:paddingRight="33.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="44.0dip" android:text="时尚达人" android:layout_alignParentBottom="true" />
+    <Button android:textSize="16.0sp" android:textColor="#ff12b7f5" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a15aa" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f020ce1" android:paddingLeft="33.0dip" android:paddingRight="33.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="44.0dip" android:layout_marginLeft="15.0dip" android:text="互联网" android:layout_alignParentBottom="true" />
+</LinearLayout>

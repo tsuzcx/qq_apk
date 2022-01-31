@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.QQSettingMsgHistoryActivity;
 
 public class tmx
-  implements Runnable
+  implements View.OnClickListener
 {
-  public tmx(RegisterPhoneNumActivity paramRegisterPhoneNumActivity) {}
+  public tmx(QQSettingMsgHistoryActivity paramQQSettingMsgHistoryActivity) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    RegisterPhoneNumActivity.a(this.a, true);
+    this.a.d();
   }
 }
 

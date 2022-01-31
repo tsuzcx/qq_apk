@@ -1,21 +1,19 @@
-import android.text.Editable;
-import android.text.Editable.Factory;
-import com.tencent.mobileqq.text.QzoneTextBuilder;
+import com.tencent.mobileqq.shortvideo.VideoEnvironment;
+import com.tencent.mobileqq.widget.QQToast;
 
 public final class ahzq
-  extends Editable.Factory
+  implements Runnable
 {
-  public Editable newEditable(CharSequence paramCharSequence)
+  public ahzq(String paramString) {}
+  
+  public void run()
   {
-    if ((paramCharSequence instanceof QzoneTextBuilder)) {
-      return (Editable)paramCharSequence;
-    }
-    return new QzoneTextBuilder(paramCharSequence, 3, 20);
+    QQToast.a(VideoEnvironment.a(), "" + this.a, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     ahzq
  * JD-Core Version:    0.7.0.1
  */

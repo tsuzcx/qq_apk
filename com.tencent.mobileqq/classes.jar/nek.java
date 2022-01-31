@@ -1,41 +1,14 @@
-import com.tencent.biz.qqstory.newshare.StoryShare;
-import com.tencent.biz.qqstory.newshare.callback.OnShareListener;
-import com.tencent.biz.qqstory.newshare.callback.StoryShareCallback;
-import com.tencent.biz.qqstory.newshare.model.ShareData;
+import android.support.annotation.NonNull;
+import android.text.TextUtils;
+import com.tencent.biz.qqstory.model.item.StoryVideoItem;
+import com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfo.VideoLocalCacheFilter;
 
 public class nek
-  implements StoryShareCallback
+  implements BatchGetVideoInfo.VideoLocalCacheFilter
 {
-  public nek(StoryShare paramStoryShare) {}
-  
-  public void a(ShareData paramShareData)
+  public boolean a(@NonNull StoryVideoItem paramStoryVideoItem)
   {
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).a(paramShareData.a);
-    }
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).a();
-    }
-  }
-  
-  public void b(ShareData paramShareData)
-  {
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).c(paramShareData.a);
-    }
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).a();
-    }
-  }
-  
-  public void c(ShareData paramShareData)
-  {
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).d(paramShareData.a);
-    }
-    if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).a();
-    }
+    return (!StoryVideoItem.isPlayable(paramStoryVideoItem.mVid, true)) || (TextUtils.isEmpty(paramStoryVideoItem.mOwnerUid)) || (paramStoryVideoItem.mVideoIndex <= 0L);
   }
 }
 

@@ -1,19 +1,30 @@
-import com.tencent.biz.pubaccount.PublicAccountJavascriptInterface;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.biz.pubaccount.PublicAccountManager;
 
 public class kyo
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public kyo(PublicAccountJavascriptInterface paramPublicAccountJavascriptInterface) {}
+  public kyo(PublicAccountManager paramPublicAccountManager, String paramString, boolean paramBoolean) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    long l = PublicAccountJavascriptInterface.a();
+    double d1 = Double.parseDouble(paramIntent.getStringExtra("latitude"));
+    double d2 = Double.parseDouble(paramIntent.getStringExtra("longitude"));
+    paramIntent = paramIntent.getStringExtra("name");
+    this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.a(d1, d2, paramIntent, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Boolean);
     try
     {
-      PublicAccountJavascriptInterface.a(l);
+      paramContext.unregisterReceiver(this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.c);
+      label58:
+      this.jdField_a_of_type_ComTencentBizPubaccountPublicAccountManager.c = null;
       return;
     }
-    finally {}
+    catch (Exception paramContext)
+    {
+      break label58;
+    }
   }
 }
 

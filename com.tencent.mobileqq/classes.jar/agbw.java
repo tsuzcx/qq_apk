@@ -1,14 +1,21 @@
-import android.graphics.drawable.TransitionDrawable;
-import com.tencent.mobileqq.profile.VipProfileCardPreviewActivity;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.statistics.StatisticCollector;
+import java.util.HashMap;
 
-public class agbw
+class agbw
   implements Runnable
 {
-  public agbw(VipProfileCardPreviewActivity paramVipProfileCardPreviewActivity, TransitionDrawable paramTransitionDrawable) {}
+  agbw(agbt paramagbt, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5) {}
   
   public void run()
   {
-    this.jdField_a_of_type_AndroidGraphicsDrawableTransitionDrawable.reverseTransition(1500);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("jd_sso_code", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("jd_code", String.valueOf(this.b));
+    localHashMap.put("ocr_sso_code", String.valueOf(this.c));
+    localHashMap.put("ocr_code", String.valueOf(this.d));
+    localHashMap.put("ret_code", String.valueOf(this.e));
+    StatisticCollector.a(BaseApplicationImpl.getContext()).a("", "ocr_server_fail", true, 0L, 0L, localHashMap, "", false);
   }
 }
 

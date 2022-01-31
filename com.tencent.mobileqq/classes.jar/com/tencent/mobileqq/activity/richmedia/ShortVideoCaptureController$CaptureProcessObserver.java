@@ -4,7 +4,7 @@ public abstract interface ShortVideoCaptureController$CaptureProcessObserver
 {
   public abstract void b(int paramInt);
   
-  public abstract void d(String paramString);
+  public abstract void c(String paramString);
   
   public abstract void g();
 }

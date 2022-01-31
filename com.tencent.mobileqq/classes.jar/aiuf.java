@@ -1,23 +1,33 @@
-import com.tencent.image.URLDrawable.DownloadListener;
-import com.tencent.mobileqq.troop.homework.recite.ui.ReciteEvaluateViewHolder;
+import android.view.View;
+import android.widget.TextView;
+import com.tencent.mobileqq.troop.activity.MediaPreviewActivity;
+import com.tencent.mobileqq.troop.widget.MediaPreviewAdapter;
+import com.tencent.widget.AdapterView;
+import com.tencent.widget.AdapterView.OnItemSelectedListener;
 
 public class aiuf
-  implements URLDrawable.DownloadListener
+  implements AdapterView.OnItemSelectedListener
 {
-  public aiuf(ReciteEvaluateViewHolder paramReciteEvaluateViewHolder) {}
+  public aiuf(MediaPreviewActivity paramMediaPreviewActivity) {}
   
-  public void onFileDownloadFailed(int paramInt) {}
+  public void a(AdapterView paramAdapterView) {}
   
-  public void onFileDownloadStarted() {}
-  
-  public void onFileDownloadSucceed(long paramLong)
+  public void b(AdapterView paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    ReciteEvaluateViewHolder.a(this.a);
+    if (paramView == null) {
+      return;
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopWidgetMediaPreviewAdapter.a(false, paramInt);
+    }
+    this.a.jdField_a_of_type_Int = paramInt;
+    paramAdapterView = this.a.jdField_a_of_type_Int + 1 + "/" + this.a.b;
+    this.a.jdField_a_of_type_AndroidWidgetTextView.setText(paramAdapterView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiuf
  * JD-Core Version:    0.7.0.1
  */

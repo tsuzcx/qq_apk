@@ -1,31 +1,32 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraConstant;
-import com.tencent.mobileqq.shortvideo.mediadevice.CameraControl;
-import dov.com.tencent.mobileqq.activity.richmedia.NewFlowCameraReporter;
+import com.tencent.biz.qqstory.support.logging.SLog;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoPlayer;
+import dov.com.tencent.biz.qqstory.takevideo.EditLocalVideoPlayer.PlayerContext;
+import dov.com.tencent.biz.qqstory.takevideo.localmedia.baoutils.common.Callbacks.Callback;
+import dov.com.tencent.biz.qqstory.takevideo.localmedia.demos.MediaCodecThumbnailGenerator.ThumbnailProgress;
 
-class anrf
-  implements Runnable
+public class anrf
+  implements Callbacks.Callback
 {
-  anrf(anqz paramanqz) {}
+  public anrf(EditLocalVideoPlayer paramEditLocalVideoPlayer) {}
   
-  public void run()
+  public Void a(Boolean paramBoolean, MediaCodecThumbnailGenerator.ThumbnailProgress paramThumbnailProgress)
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("mobileQQ", 4);
-    boolean bool1 = localSharedPreferences.getBoolean("sv_has_reported_front_camera_compatibility", false);
-    boolean bool2 = localSharedPreferences.getBoolean("sv_has_reported_back_camera_compatibility", false);
-    CameraControl localCameraControl = CameraControl.a();
-    if ((!bool1) && (FlowCameraConstant.a == 1))
+    if ((!paramBoolean.booleanValue()) || (paramThumbnailProgress == null) || (paramThumbnailProgress.jdField_a_of_type_AndroidGraphicsBitmap == null))
     {
-      NewFlowCameraReporter.a(localCameraControl.a(), "front");
-      localSharedPreferences.edit().putBoolean("sv_has_reported_front_camera_compatibility", true).commit();
+      SLog.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail error! thumbnail = (null)");
+      return null;
     }
-    while ((bool2) || (FlowCameraConstant.a != 2)) {
-      return;
+    SLog.b("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d", Integer.valueOf(paramThumbnailProgress.jdField_a_of_type_Int));
+    if (paramThumbnailProgress.jdField_a_of_type_Int >= this.a.a.length)
+    {
+      SLog.e("Q.qqstory.record.EditLocalVideoPlayer", "Generate thumbnail index = %d OutOfArrayBounds", new Object[] { Integer.valueOf(paramThumbnailProgress.jdField_a_of_type_Int) });
+      return null;
     }
-    NewFlowCameraReporter.a(localCameraControl.a(), "back");
-    localSharedPreferences.edit().putBoolean("sv_has_reported_back_camera_compatibility", true).commit();
+    SLog.b("Q.qqstory.record.EditLocalVideoPlayer.Flow", "thumbnailProgress index: %d thumbnail done!", Integer.valueOf(paramThumbnailProgress.jdField_a_of_type_Int));
+    this.a.a[paramThumbnailProgress.jdField_a_of_type_Int] = EditLocalVideoPlayer.PlayerContext.a(this.a.a[paramThumbnailProgress.jdField_a_of_type_Int], paramThumbnailProgress.jdField_a_of_type_AndroidGraphicsBitmap);
+    this.a.a[paramThumbnailProgress.jdField_a_of_type_Int].jdField_a_of_type_JavaLangString = paramThumbnailProgress.jdField_a_of_type_JavaLangString;
+    this.a.k();
+    return null;
   }
 }
 

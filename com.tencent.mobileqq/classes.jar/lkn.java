@@ -1,17 +1,24 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeArticleCommentSummaryView;
-import com.tencent.biz.pubaccount.readinjoy.struct.ArticleInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
+import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.qphone.base.util.QLog;
 
-class lkn
-  implements View.OnClickListener
+public final class lkn
+  implements Runnable
 {
-  lkn(lkl paramlkl) {}
+  public lkn(QQAppInterface paramQQAppInterface) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    NativeArticleCommentSummaryView.a((ArticleInfo)this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructBaseArticleInfo, this.a.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewProteusVirtualviewCoreVafContext.a());
+    if ((this.a == null) || (!this.a.isLogin())) {}
+    do
+    {
+      do
+      {
+        return;
+      } while (!ReadInJoyUtils.i());
+      ReadInJoyUtils.e(this.a);
+    } while (!QLog.isColorLevel());
+    QLog.d("ReadInJoyUtils", 2, "handNet2Wifi is show conversation");
   }
 }
 

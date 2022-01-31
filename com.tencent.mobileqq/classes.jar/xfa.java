@@ -1,26 +1,13 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.activity.recent.BannerManager;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.qwallet.goldmsg.GoldMsgPayManager;
 
 public class xfa
-  implements View.OnClickListener
+  implements Runnable
 {
-  public xfa(BannerManager paramBannerManager) {}
+  public xfa(GoldMsgPayManager paramGoldMsgPayManager) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    try
-    {
-      DialogUtil.b(BannerManager.a(this.a), 0, null, "确认关闭游戏？", 2131432998, 2131432999, new xfb(this), new xfc(this)).show();
-      return;
-    }
-    catch (Throwable paramView)
-    {
-      QLog.e("Q.recent.banner", 1, "show dialog err, errInfo->" + paramView.getMessage());
-    }
+    this.a.a();
   }
 }
 

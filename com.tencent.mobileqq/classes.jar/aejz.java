@@ -1,33 +1,34 @@
-import android.view.View;
-import android.widget.ListView;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.music.QQPlayerService;
+import com.tencent.mobileqq.music.SongInfo;
+import com.tencent.qphone.base.util.QLog;
+import common.config.service.QzoneConfig;
 
 public class aejz
   implements Runnable
 {
-  public aejz(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public aejz(QQPlayerService paramQQPlayerService) {}
   
   public void run()
   {
-    if ((ShortVideoCommentsView.a(this.a) != null) && (ShortVideoCommentsView.a(this.a).getChildCount() > 0))
+    if (QQPlayerService.h() == 5) {}
+    for (boolean bool = true;; bool = false)
     {
-      if (ShortVideoCommentsView.a(this.a).getChildAt(0).getTop() != 0)
-      {
-        ShortVideoCommentsView.a(this.a).setSelection(0);
-        ThreadManager.getUIHandler().postDelayed(this, 10L);
+      if (QLog.isColorLevel()) {
+        QLog.e("QQPlayerService", 2, "===========> timeout retry to check playState:" + QQPlayerService.b(QQPlayerService.h()) + ",needRetryPlay:" + bool);
       }
-    }
-    else {
+      int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "QmusicHlsMaxRetryTimes", 3);
+      if ((bool) && (QQPlayerService.b() != null) && (QQPlayerService.i() < i))
+      {
+        QQPlayerService.j();
+        QQPlayerService.a(this.a, QQPlayerService.b().a);
+      }
       return;
     }
-    ThreadManager.getUIHandler().removeCallbacks(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aejz
  * JD-Core Version:    0.7.0.1
  */

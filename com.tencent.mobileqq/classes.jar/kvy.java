@@ -1,36 +1,17 @@
-import com.tencent.biz.pubaccount.Advertisement.data.AdvertisementItem;
-import com.tencent.biz.pubaccount.Advertisement.data.VideoDownloadItem;
-import com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementStatistics;
-import com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView;
-import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.qphone.base.util.QLog;
 
 public class kvy
-  implements FMDialogUtil.FMDialogInterface
+  implements Runnable
 {
-  public kvy(VideoCoverView paramVideoCoverView) {}
+  public kvy(CustomWebView paramCustomWebView) {}
   
-  public void a()
+  public void run()
   {
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = true;
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
-    if (this.a.jdField_a_of_type_Int == 5) {
-      this.a.d();
+    if (QLog.isColorLevel()) {
+      QLog.d("CustomWebView", 2, "webview real destroy now");
     }
-    for (;;)
-    {
-      AdvertisementStatistics.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, true);
-      return;
-      this.a.b(VideoCoverView.a(this.a));
-    }
-  }
-  
-  public void b()
-  {
-    this.a.jdField_a_of_type_Int = 6;
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = false;
-    com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
-    this.a.g();
-    AdvertisementStatistics.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, false);
+    this.a.b();
   }
 }
 

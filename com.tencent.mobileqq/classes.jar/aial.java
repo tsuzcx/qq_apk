@@ -1,68 +1,56 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.highway.api.ITransactionCallback;
-import com.tencent.mobileqq.transfile.BDHCommonUploadProcessor;
-import com.tencent.mobileqq.transfile.BaseTransProcessor.StepInfo;
-import com.tencent.mobileqq.transfile.FileMsg;
-import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
+import android.graphics.RectF;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoy;
+import com.tencent.mobileqq.shortvideo.dancemachine.GLLittleBoyManager;
+import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager;
+import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.DancePosture;
+import com.tencent.mobileqq.shortvideo.dancemachine.ResourceManager.Posture;
+import java.util.ArrayList;
 
 public class aial
-  implements ITransactionCallback
+  implements Animation.AnimationListener
 {
-  public aial(BDHCommonUploadProcessor paramBDHCommonUploadProcessor, long paramLong) {}
+  public aial(GLLittleBoyManager paramGLLittleBoyManager) {}
   
-  public void onFailed(int paramInt, byte[] paramArrayOfByte, HashMap paramHashMap)
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    long l = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.a(paramHashMap);
-    if (QLog.isColorLevel()) {
-      QLog.d("BDHCommonUploadProcessor", 2, "<BDH_LOG> Transaction End : Failed. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.a(paramInt, "OnFailed.", "", this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.b);
-    this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.d();
-  }
-  
-  public void onSuccess(byte[] paramArrayOfByte, HashMap paramHashMap)
-  {
-    long l = SystemClock.uptimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.a(paramHashMap);
-    if (QLog.isColorLevel()) {
-      QLog.d("BDHCommonUploadProcessor", 2, "<BDH_LOG> Transaction End : Success. New : SendTotalCost:" + (l - this.jdField_a_of_type_Long) + "ms ,fileSize:" + this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.a.jdField_a_of_type_Long);
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.b.b();
-    this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.b.a = 1;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.s = this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.q;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.a.jdField_a_of_type_ArrayOfByte = paramArrayOfByte;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.e();
-    this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.a.b();
-  }
-  
-  public void onSwitch2BackupChannel() {}
-  
-  public void onTransStart()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("BDHCommonUploadProcessor", 2, "<BDH_LOG> onTransStart()");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.b.a();
-  }
-  
-  public void onUpdateProgress(int paramInt)
-  {
-    BDHCommonUploadProcessor localBDHCommonUploadProcessor = this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor;
-    FileMsg localFileMsg = this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.a;
-    long l = paramInt;
-    localFileMsg.e = l;
-    localBDHCommonUploadProcessor.s = l;
-    if ((paramInt < this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.q) && (!this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.o) && (!this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.k)) {
-      this.jdField_a_of_type_ComTencentMobileqqTransfileBDHCommonUploadProcessor.g();
+    int i = 0;
+    for (;;)
+    {
+      if (i < GLLittleBoyManager.a(this.a).size())
+      {
+        GLLittleBoy localGLLittleBoy = (GLLittleBoy)GLLittleBoyManager.a(this.a).get(i);
+        if (localGLLittleBoy.a() == paramAnimation)
+        {
+          localGLLittleBoy.a(ResourceManager.a().a(localGLLittleBoy.a().a).b, true, true);
+          paramAnimation = localGLLittleBoy.c();
+          if (GLLittleBoyManager.a(this.a) == 0.0F) {
+            GLLittleBoyManager.a(this.a, paramAnimation.width() / 2.2F);
+          }
+          float f1 = paramAnimation.centerX();
+          float f2 = paramAnimation.centerY();
+          GLLittleBoyManager.a(this.a).set(f1 - GLLittleBoyManager.a(this.a), f2 - GLLittleBoyManager.a(this.a), f1 + GLLittleBoyManager.a(this.a), f2 + GLLittleBoyManager.a(this.a));
+          localGLLittleBoy.c(GLLittleBoyManager.a(this.a));
+          localGLLittleBoy.e();
+          localGLLittleBoy.a(this.a.b());
+        }
+      }
+      else
+      {
+        return;
+      }
+      i += 1;
     }
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aial
  * JD-Core Version:    0.7.0.1
  */

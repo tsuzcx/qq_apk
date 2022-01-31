@@ -1,13 +1,15 @@
-import com.tencent.mobileqq.activity.Leba;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.HongbaoShowerActivity;
 
 public class svg
   implements Runnable
 {
-  public svg(Leba paramLeba, boolean paramBoolean) {}
+  public svg(HongbaoShowerActivity paramHongbaoShowerActivity) {}
   
   public void run()
   {
-    Leba.a(this.jdField_a_of_type_ComTencentMobileqqActivityLeba, this.jdField_a_of_type_Boolean);
+    HongbaoShowerActivity.a(this.a).setVisibility(0);
+    HongbaoShowerActivity.a(this.a).startAnimation(HongbaoShowerActivity.a(this.a));
   }
 }
 

@@ -1,31 +1,28 @@
-import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import com.tencent.biz.qqstory.takevideo2.StoryMultiFragmentPart;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.takevideo.permission.ComplexPart;
+import com.tencent.biz.qqstory.takevideo.permission.ComplexPart.Group;
+import com.tencent.biz.qqstory.takevideo.permission.PermissionPart.PartCallback;
 
-class ole
-  implements Animator.AnimatorListener
+public class ole
+  implements View.OnClickListener
 {
-  ole(olc paramolc) {}
+  public ole(ComplexPart paramComplexPart, ComplexPart.Group paramGroup) {}
   
-  public void onAnimationCancel(Animator paramAnimator) {}
-  
-  public void onAnimationEnd(Animator paramAnimator)
+  public void onClick(View paramView)
   {
-    if ((StoryMultiFragmentPart.a(this.a.a) != null) && (StoryMultiFragmentPart.b(this.a.a) != null) && (StoryMultiFragmentPart.a(this.a.a) != null))
+    if (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group.a()) {
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group.b();
+    }
+    for (;;)
     {
-      StoryMultiFragmentPart.a(this.a.a).setVisibility(8);
-      StoryMultiFragmentPart.b(this.a.a).setImageBitmap(this.a.b);
-      StoryMultiFragmentPart.b(this.a.a).setVisibility(0);
-      StoryMultiFragmentPart.a(this.a.a).setText(StoryMultiFragmentPart.a(this.a.a) + "");
-      StoryMultiFragmentPart.a(this.a.a).setVisibility(0);
+      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart.a != null) {
+        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart.a.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart);
+      }
+      return;
+      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoPermissionComplexPart$Group.c();
     }
   }
-  
-  public void onAnimationRepeat(Animator paramAnimator) {}
-  
-  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 

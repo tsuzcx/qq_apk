@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import akbp;
-import akbq;
+import akpw;
+import akpx;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.ActivityNotFoundException;
@@ -441,7 +441,7 @@ public class SwiftBrowserShareMenuHandler
       if (paramInt == 1)
       {
         ((ClipboardManager)this.jdField_a_of_type_AndroidAppActivity.getSystemService("clipboard")).setText((CharSequence)localObject4);
-        QRUtils.a(2, 2131429988);
+        QRUtils.a(2, 2131430005);
         if ((this.i) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.l))) {
           this.jdField_a_of_type_ComTencentBizWebviewpluginShare.e();
         }
@@ -548,7 +548,7 @@ public class SwiftBrowserShareMenuHandler
             {
               for (;;)
               {
-                QRUtils.a(1, 2131430011);
+                QRUtils.a(1, 2131430028);
               }
             }
           }
@@ -629,7 +629,7 @@ public class SwiftBrowserShareMenuHandler
                   if (WXShareHelper.a().a()) {
                     break label1645;
                   }
-                  j = 2131435302;
+                  j = 2131435319;
                 }
                 for (;;)
                 {
@@ -645,7 +645,7 @@ public class SwiftBrowserShareMenuHandler
                   PublicAccountUtil.a(1004, (String)localObject1, this.jdField_e_of_type_Int);
                   break label1573;
                   if (!WXShareHelper.a().b()) {
-                    j = 2131435303;
+                    j = 2131435320;
                   }
                 }
                 if (paramInt == 9)
@@ -701,10 +701,10 @@ public class SwiftBrowserShareMenuHandler
                 }
                 if (!NetworkUtil.d(BaseApplicationImpl.getContext()))
                 {
-                  QQToast.a(BaseApplicationImpl.getContext(), 2, 2131433175, 0).b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
+                  QQToast.a(BaseApplicationImpl.getContext(), 2, 2131433192, 0).b(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.b());
                   return;
                 }
-                a().a(k, new akbp(this));
+                a().a(k, new akpw(this));
                 ReportController.b(null, "P_CliOper", "Grp_open", "", "third_app", "add_menu", 0, 1, 0, "" + j, "" + k, "", "");
                 continue;
               }
@@ -1094,7 +1094,7 @@ public class SwiftBrowserShareMenuHandler
                   this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(paramShare);
                   break label284;
                 }
-                this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(BaseApplicationImpl.getApplication().getString(2131433083));
+                this.jdField_a_of_type_ComTencentMobileqqUtilsShareActionSheetBuilder.a(BaseApplicationImpl.getApplication().getString(2131433100));
               }
             }
           }
@@ -1201,26 +1201,26 @@ public class SwiftBrowserShareMenuHandler
     if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null) && (localObject1 != null) && (((SwiftBrowserStatistics)localObject1).i))
     {
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430767);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841228;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430784);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841265;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_c_of_type_Int = 15;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
       localArrayList.add(localObject1);
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430768);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841230;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430785);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841267;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_c_of_type_Int = 16;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
       localArrayList.add(localObject1);
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430769);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841233;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430786);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841270;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_c_of_type_Int = 17;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
       localArrayList.add(localObject1);
       localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430770);
-      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841232;
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430787);
+      ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841269;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_c_of_type_Int = 18;
       ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
       localArrayList.add(localObject1);
@@ -1232,8 +1232,8 @@ public class SwiftBrowserShareMenuHandler
       if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (this.h) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:diandian")) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentBizWebviewpluginShare.l)))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430121);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130840651;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430138);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130840673;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 34;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
@@ -1242,8 +1242,8 @@ public class SwiftBrowserShareMenuHandler
       if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:qq")) && ((this.jdField_a_of_type_Long & 0x8) == 0L))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430091);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838332;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430108);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838336;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 2;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
@@ -1252,8 +1252,8 @@ public class SwiftBrowserShareMenuHandler
       if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:QZone")) && ((this.jdField_a_of_type_Long & 0x10) == 0L))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430097);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838333;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430114);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838337;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 3;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
@@ -1266,8 +1266,8 @@ public class SwiftBrowserShareMenuHandler
         if ((localObject2 != null) && (((SharedPreferences)localObject2).getBoolean("share_to_news", false)))
         {
           localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-          ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430111);
-          ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838331;
+          ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430128);
+          ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838335;
           ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
           ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 13;
           ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
@@ -1277,8 +1277,8 @@ public class SwiftBrowserShareMenuHandler
       if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:appMessage")) && ((this.jdField_a_of_type_Long & 0x4000) == 0L))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430109);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838336;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430126);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838340;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 9;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
         localArrayList.add(localObject2);
@@ -1286,8 +1286,8 @@ public class SwiftBrowserShareMenuHandler
       if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:timeline")) && ((this.jdField_a_of_type_Long & 0x8000) == 0L))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430110);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838330;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430127);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838334;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 10;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
         localArrayList.add(localObject2);
@@ -1295,9 +1295,9 @@ public class SwiftBrowserShareMenuHandler
       if ((this.g) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:sinaWeibo")))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430115);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430132);
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838335;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130838339;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 12;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
         localArrayList.add(localObject2);
@@ -1305,8 +1305,8 @@ public class SwiftBrowserShareMenuHandler
       if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:openWithQQBrowser")) && ((this.jdField_a_of_type_Long & 0x200) == 0L))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430096);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130840653;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430113);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130840675;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 5;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
         localArrayList.add(localObject2);
@@ -1314,9 +1314,9 @@ public class SwiftBrowserShareMenuHandler
       if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:openWithSafari")) && ((this.jdField_a_of_type_Long & 0x100) == 0L))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430095);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430112);
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130840650;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130840672;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 4;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
         localArrayList.add(localObject2);
@@ -1328,9 +1328,9 @@ public class SwiftBrowserShareMenuHandler
       if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:share:qiYeQQ")) && ((this.jdField_a_of_type_Long & 0x20) == 0L) && (new Intent().setPackage("com.tencent.eim").setData(Uri.parse("eimapi://")).resolveActivity((PackageManager)localObject2) != null))
       {
         localObject2 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430114);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430131);
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_a_of_type_Boolean = true;
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130841679;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_Int = 2130841716;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_c_of_type_Int = 20;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject2).jdField_b_of_type_JavaLangString = "";
         localArrayList.add(localObject2);
@@ -1351,9 +1351,9 @@ public class SwiftBrowserShareMenuHandler
             break;
           case 1: 
             if (TextUtils.isEmpty(((PublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString)) {}
-            for (localActionSheetItem.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131429999);; localActionSheetItem.jdField_a_of_type_JavaLangString = ((PublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString)
+            for (localActionSheetItem.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430016);; localActionSheetItem.jdField_a_of_type_JavaLangString = ((PublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString)
             {
-              localActionSheetItem.jdField_b_of_type_Int = 2130840655;
+              localActionSheetItem.jdField_b_of_type_Int = 2130840677;
               localActionSheetItem.jdField_a_of_type_Boolean = true;
               localActionSheetItem.jdField_c_of_type_Int = 30;
               localActionSheetItem.jdField_b_of_type_JavaLangString = "";
@@ -1362,8 +1362,8 @@ public class SwiftBrowserShareMenuHandler
             }
           case 2: 
             localObject4 = new ShareActionSheetBuilder.ActionSheetItem();
-            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430036);
-            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_b_of_type_Int = 2130840649;
+            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430053);
+            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_b_of_type_Int = 2130840671;
             ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_a_of_type_Boolean = true;
             ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_c_of_type_Int = 31;
             ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_b_of_type_JavaLangString = "";
@@ -1385,9 +1385,9 @@ public class SwiftBrowserShareMenuHandler
             break;
           case 1: 
             if (TextUtils.isEmpty(((PublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString)) {}
-            for (localActionSheetItem.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131429999);; localActionSheetItem.jdField_a_of_type_JavaLangString = ((PublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString)
+            for (localActionSheetItem.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430016);; localActionSheetItem.jdField_a_of_type_JavaLangString = ((PublicAccountJavascriptInterface.ActionItem)localObject4).jdField_a_of_type_JavaLangString)
             {
-              localActionSheetItem.jdField_b_of_type_Int = 2130840655;
+              localActionSheetItem.jdField_b_of_type_Int = 2130840677;
               localActionSheetItem.jdField_a_of_type_Boolean = true;
               localActionSheetItem.jdField_c_of_type_Int = 37;
               localActionSheetItem.jdField_b_of_type_JavaLangString = "";
@@ -1396,8 +1396,8 @@ public class SwiftBrowserShareMenuHandler
             }
           case 3: 
             localObject4 = new ShareActionSheetBuilder.ActionSheetItem();
-            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430122);
-            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_b_of_type_Int = 2130840656;
+            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430139);
+            ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_b_of_type_Int = 2130840678;
             ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_a_of_type_Boolean = true;
             ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_c_of_type_Int = 35;
             ((ShareActionSheetBuilder.ActionSheetItem)localObject4).jdField_b_of_type_JavaLangString = "";
@@ -1409,9 +1409,9 @@ public class SwiftBrowserShareMenuHandler
       if ((localObject3 != null) && (((SwiftBrowserScreenShotHandler)localObject3).a()) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:screenShotShare")))
       {
         localObject3 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430116);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430133);
         ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_a_of_type_Boolean = true;
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_b_of_type_Int = 2130840654;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_b_of_type_Int = 2130840676;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_c_of_type_Int = 21;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject3).jdField_b_of_type_JavaLangString = "";
         ((ArrayList)localObject2).add(localObject3);
@@ -1419,9 +1419,9 @@ public class SwiftBrowserShareMenuHandler
       if ((localObject1 != null) && (!TextUtils.isEmpty(((AppRuntime)localObject1).getAccount())) && (!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:favorite")) && ((this.jdField_a_of_type_Long & 0x2000) == 0L))
       {
         localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430107);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430124);
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_Boolean = true;
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841536;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130841573;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_c_of_type_Int = 6;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
         ((ArrayList)localObject2).add(localObject1);
@@ -1429,8 +1429,8 @@ public class SwiftBrowserShareMenuHandler
       if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:setFont")) && (!this.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_Boolean))
       {
         localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430092);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130840652;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430109);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130840674;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_Boolean = true;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_c_of_type_Int = 7;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
@@ -1439,8 +1439,8 @@ public class SwiftBrowserShareMenuHandler
       if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:copyUrl")) && ((this.jdField_a_of_type_Long & 0x20) == 0L))
       {
         localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430093);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130838328;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430110);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130838332;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_Boolean = true;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_c_of_type_Int = 1;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
@@ -1449,8 +1449,8 @@ public class SwiftBrowserShareMenuHandler
       if ((!PublicAccountH5AbilityPlugin.a(this.jdField_a_of_type_JavaUtilArrayList, "menuItem:exposeArticle")) && (this.jdField_b_of_type_Boolean))
       {
         localObject1 = new ShareActionSheetBuilder.ActionSheetItem();
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430094);
-        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130840641;
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getString(2131430111);
+        ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_Int = 2130840663;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_a_of_type_Boolean = true;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_c_of_type_Int = 11;
         ((ShareActionSheetBuilder.ActionSheetItem)localObject1).jdField_b_of_type_JavaLangString = "";
@@ -1539,7 +1539,7 @@ public class SwiftBrowserShareMenuHandler
     this.jdField_a_of_type_AndroidWidgetPopupWindow = new PopupWindow((View)localObject, -1, -2);
     this.jdField_a_of_type_AndroidWidgetPopupWindow.setBackgroundDrawable(new BitmapDrawable());
     this.jdField_a_of_type_AndroidWidgetPopupWindow.setOutsideTouchable(true);
-    localObject = (RangeButtonView)((View)localObject).findViewById(2131364560);
+    localObject = (RangeButtonView)((View)localObject).findViewById(2131364584);
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(new RangeButtonView.Title("小", TypedValue.applyDimension(1, 15.0F, FontSettingManager.a)));
     localArrayList.add(new RangeButtonView.Title("标准", TypedValue.applyDimension(1, 16.0F, FontSettingManager.a)));
@@ -1573,7 +1573,7 @@ public class SwiftBrowserShareMenuHandler
   {
     if (a())
     {
-      a().e(new akbq(this));
+      a().e(new akpx(this));
       return;
     }
     b(1);
@@ -1627,7 +1627,7 @@ public class SwiftBrowserShareMenuHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp2\com34.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\b.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserShareMenuHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,35 +1,48 @@
-import com.tencent.mobileqq.app.message.C2CMessageProcessor;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.mobileqq.statistics.StatisticCollector;
-import java.util.HashMap;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.SQLiteDatabase;
+import com.tencent.mobileqq.app.asyncdb.cache.RecentUserCache;
+import com.tencent.qphone.base.util.QLog;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class zps
   implements Runnable
 {
-  public zps(C2CMessageProcessor paramC2CMessageProcessor, String paramString1, String paramString2, String paramString3, long paramLong1, long paramLong2, String paramString4) {}
+  public zps(RecentUserCache paramRecentUserCache, SharedPreferences paramSharedPreferences) {}
   
   public void run()
   {
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("fromUin", this.jdField_a_of_type_JavaLangString);
-    localHashMap.put("toUin", this.jdField_b_of_type_JavaLangString);
-    localHashMap.put("msgId", this.c);
-    localHashMap.put("createTime", String.valueOf(this.jdField_a_of_type_Long));
-    localHashMap.put("recvTime", String.valueOf(this.jdField_b_of_type_Long));
-    localHashMap.put("sendFlag", this.d);
-    localHashMap.put("nodeNo", String.valueOf(3000));
-    long l2 = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
-    long l1;
-    if (l2 > 0L)
-    {
-      l1 = l2;
-      if (l2 <= 86400L) {}
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgradeV2 | start");
     }
-    else
+    try
     {
-      l1 = 0L;
+      SQLiteDatabase localSQLiteDatabase = RecentUserCache.c(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache).a();
+      String str = RecentUserCache.a(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache, AppConstants.C, 4000);
+      if (RecentUserCache.e(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache).containsKey(str)) {
+        RecentUserCache.f(this.jdField_a_of_type_ComTencentMobileqqAppAsyncdbCacheRecentUserCache).remove(str);
+      }
+      int i = localSQLiteDatabase.a("recent", "uin=?", new String[] { AppConstants.C });
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgradeV2 | RecentUser delCount = " + i);
+      }
+      return;
     }
-    StatisticCollector.a(BaseApplication.getContext()).a(null, "actPubAccMsgReceipt", true, l1, 0L, localHashMap, null);
+    catch (Exception localException)
+    {
+      do
+      {
+        localException.printStackTrace();
+      } while (!QLog.isColorLevel());
+      QLog.d("Q.db.Cache.RecentUserCache", 2, "checkNewFriendUpgradeV2 | delete recommend error~");
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean("check_newfriend_when_upgrade_V2", false).commit();
+    }
   }
 }
 

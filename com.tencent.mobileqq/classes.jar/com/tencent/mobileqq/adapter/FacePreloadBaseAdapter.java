@@ -48,7 +48,7 @@ public abstract class FacePreloadBaseAdapter
     this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.a(this);
   }
   
-  public void V_()
+  public void X_()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder != null) {
       this.jdField_a_of_type_ComTencentMobileqqUtilFaceDecoder.d();
@@ -66,7 +66,7 @@ public abstract class FacePreloadBaseAdapter
     if (AppConstants.V.equals(paramString)) {}
     try
     {
-      paramString = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130844084);
+      paramString = BitmapFactory.decodeResource(BaseApplicationImpl.getApplication().getResources(), 2130844208);
       return paramString;
     }
     catch (OutOfMemoryError paramString) {}
@@ -103,22 +103,22 @@ public abstract class FacePreloadBaseAdapter
           return;
           if (AppConstants.y.equals(paramViewTag.jdField_a_of_type_JavaLangString))
           {
-            paramViewTag.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841551);
+            paramViewTag.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841588);
             return;
           }
           if (AppConstants.z.equals(paramViewTag.jdField_a_of_type_JavaLangString))
           {
-            paramViewTag.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841549);
+            paramViewTag.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841586);
             return;
           }
           if (AppConstants.A.equals(paramViewTag.jdField_a_of_type_JavaLangString))
           {
-            paramViewTag.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841554);
+            paramViewTag.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130841591);
             return;
           }
           if (AppConstants.x.equals(paramViewTag.jdField_a_of_type_JavaLangString))
           {
-            paramViewTag.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838728);
+            paramViewTag.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(2130838732);
             return;
           }
           if ((!AppConstants.W.equals(paramViewTag.jdField_a_of_type_JavaLangString)) || (!(paramViewTag instanceof BuddyListFriends.BuddyChildTag))) {

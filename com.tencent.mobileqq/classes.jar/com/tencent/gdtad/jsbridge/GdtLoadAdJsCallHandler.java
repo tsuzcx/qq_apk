@@ -11,13 +11,13 @@ import java.util.HashMap;
 import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
-import qjd;
+import qkv;
 import tencent.gdt.qq_ad_get.QQAdGet;
 
 public class GdtLoadAdJsCallHandler
   implements GdtJsCallHandler
 {
-  private GdtAdLoader.Listener jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Listener = new qjd(this);
+  private GdtAdLoader.Listener jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Listener = new qkv(this);
   private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
   private Map jdField_a_of_type_JavaUtilMap = new HashMap();
   
@@ -48,7 +48,7 @@ public class GdtLoadAdJsCallHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\c222.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtLoadAdJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

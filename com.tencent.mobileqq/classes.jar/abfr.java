@@ -1,15 +1,18 @@
-import com.tencent.mobileqq.businessCard.activity.BusinessCardEditActivity;
-import com.tencent.mobileqq.businessCard.data.BusinessCard;
+import android.os.Parcel;
+import android.os.Parcelable.Creator;
+import com.tencent.mobileqq.armap.config.ShopScanCheckHandler.Info;
 
-class abfr
-  implements Runnable
+public final class abfr
+  implements Parcelable.Creator
 {
-  abfr(abfq paramabfq) {}
-  
-  public void run()
+  public ShopScanCheckHandler.Info a(Parcel paramParcel)
   {
-    this.a.a.jdField_a_of_type_JavaLangString = this.a.a.jdField_a_of_type_ComTencentMobileqqBusinessCardDataBusinessCard.cardId;
-    BusinessCardEditActivity.a(this.a.a, this.a.a.jdField_a_of_type_Boolean, true, true);
+    return new ShopScanCheckHandler.Info(paramParcel);
+  }
+  
+  public ShopScanCheckHandler.Info[] a(int paramInt)
+  {
+    return new ShopScanCheckHandler.Info[paramInt];
   }
 }
 

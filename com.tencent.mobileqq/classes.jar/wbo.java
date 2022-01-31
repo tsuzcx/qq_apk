@@ -1,29 +1,13 @@
-import android.media.MediaPlayer;
-import android.media.MediaPlayer.OnPreparedListener;
-import android.os.Handler;
-import com.tencent.mobileqq.activity.bless.BlessActivity;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQVideoView;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.troop.utils.TroopFileError.TroopFileErrorFilter;
 
 public class wbo
-  implements MediaPlayer.OnPreparedListener
+  implements TroopFileError.TroopFileErrorFilter
 {
-  public wbo(BlessActivity paramBlessActivity) {}
+  public String a;
   
-  public void onPrepared(MediaPlayer paramMediaPlayer)
+  public wbo(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
-    }
-    if (BlessActivity.a(this.a) != null) {
-      BlessActivity.a(this.a).start();
-    }
-    BlessActivity.a(this.a).postDelayed(new wbp(this), 800L);
-    if (QLog.isColorLevel()) {
-      QLog.d(BlessActivity.a(this.a), 2, "videoview onPrepared");
-    }
-    ReportController.b(this.a.app, "CliOper", "", "", "0X800632D", "0X800632D", 0, 0, "", "", "", "");
+    this.a = paramString;
   }
 }
 

@@ -4,7 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import com.tencent.mobileqq.app.BaseActivity;
-import kar;
+import kac;
 
 public class SysCallTransparentActivity
   extends BaseActivity
@@ -27,7 +27,7 @@ public class SysCallTransparentActivity
     this.b = getIntent().getStringExtra("pstn_guide_content");
     this.c = getIntent().getStringExtra("pstn_guide_confirm");
     this.jdField_a_of_type_Int = getIntent().getIntExtra("pstn_dialog_type", 3);
-    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new kar(this), 300L);
+    this.jdField_a_of_type_AndroidOsHandler.postDelayed(new kac(this), 300L);
     return bool;
   }
   

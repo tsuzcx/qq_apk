@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.activity.qwallet.PriceSettingDialog;
-import com.tencent.mobileqq.activity.qwallet.PriceSettingDialog.OnPriceSelectedListener;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity;
+import com.tencent.mobileqq.activity.photo.PhotoListActivity.QueryPhotoTask;
 
 public class wxi
-  implements PriceSettingDialog.OnPriceSelectedListener
+  implements Runnable
 {
-  public wxi(PriceSettingDialog paramPriceSettingDialog) {}
+  public wxi(PhotoListActivity paramPhotoListActivity) {}
   
-  public void a(long paramLong)
+  public void run()
   {
-    PriceSettingDialog.a(this.a, paramLong);
+    new PhotoListActivity.QueryPhotoTask(this.a).execute(new Object[0]);
   }
 }
 

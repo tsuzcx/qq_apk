@@ -1,24 +1,14 @@
-import android.os.Handler;
-import com.tencent.biz.qqstory.model.AddressDataProvider.AddressInfo;
-import com.tencent.biz.qqstory.model.DataProvider.DataUpdateListener;
-import com.tencent.biz.qqstory.support.logging.SLog;
-import dov.com.tencent.biz.qqstory.takevideo.music.EditVideoMusicDialog;
+import dov.com.qq.im.capture.music.humrecognition.HummingActivity;
+import java.io.File;
 
 public class anmo
-  implements DataProvider.DataUpdateListener
+  implements Runnable
 {
-  public anmo(EditVideoMusicDialog paramEditVideoMusicDialog) {}
+  public anmo(HummingActivity paramHummingActivity, String paramString) {}
   
-  public void a(boolean paramBoolean, AddressDataProvider.AddressInfo paramAddressInfo)
+  public void run()
   {
-    SLog.b("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate.");
-    if ((paramBoolean) && (paramAddressInfo != null))
-    {
-      SLog.a("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate success, address=%s", paramAddressInfo);
-      this.a.a.post(new anmp(this, paramAddressInfo));
-      return;
-    }
-    SLog.e("Q.qqstory.publish.edit.EditVideoMusicDialog", "onAddressUpdate failed.");
+    new File(this.jdField_a_of_type_JavaLangString).delete();
   }
 }
 

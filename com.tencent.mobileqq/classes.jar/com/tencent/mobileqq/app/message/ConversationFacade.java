@@ -43,7 +43,7 @@ import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.MobileQQ;
 import mqq.manager.Manager;
-import zpt;
+import zsz;
 
 public class ConversationFacade
   extends Observable
@@ -204,7 +204,7 @@ public class ConversationFacade
     {
       ConcurrentHashMap localConcurrentHashMap = MsgPool.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).a();
       if ((localConcurrentHashMap.get(MsgProxyUtils.a(AppConstants.G, 1001)) != null) || (localConcurrentHashMap.get(MsgProxyUtils.a(AppConstants.v, 1009)) != null) || (localConcurrentHashMap.get(MsgProxyUtils.a(AppConstants.X, 1010)) != null) || (localConcurrentHashMap.get(MsgProxyUtils.a(AppConstants.aE, 1032)) != null)) {
-        ThreadManager.post(new zpt(this), 8, null, false);
+        ThreadManager.post(new zsz(this), 8, null, false);
       }
       return;
     }
@@ -625,7 +625,7 @@ public class ConversationFacade
     String str1 = paramString2;
     if (paramInt2 == 0)
     {
-      String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131437880);
+      String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getResources().getString(2131437897);
       str1 = paramString2;
       if (paramString2.indexOf(str2) == 0) {
         str1 = paramString2.substring(str2.length());

@@ -13,7 +13,7 @@ import com.tencent.biz.qqstory.utils.FileUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.transfile.TransFileController;
 import com.tencent.mobileqq.transfile.TransferRequest;
-import mzp;
+import nba;
 
 @TargetApi(14)
 public class StoryVideoFileObject
@@ -33,7 +33,7 @@ public class StoryVideoFileObject
   private void c()
   {
     TransferRequest localTransferRequest = new TransferRequest();
-    localTransferRequest.jdField_a_of_type_ComTencentMobileqqPicUpCallBack = new mzp(this);
+    localTransferRequest.jdField_a_of_type_ComTencentMobileqqPicUpCallBack = new nba(this);
     localTransferRequest.i = this.jdField_b_of_type_JavaLangString;
     localTransferRequest.jdField_a_of_type_Boolean = true;
     localTransferRequest.jdField_b_of_type_Int = 196609;

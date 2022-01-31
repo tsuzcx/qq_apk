@@ -1,29 +1,20 @@
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.biz.pubaccount.AccountDetail.handler.AccountDetailBaseItemClickHandler;
-import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailCustomModuleBaseWrapper;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer;
+import com.tencent.mobileqq.app.BaseActivity;
+import java.lang.ref.WeakReference;
 
 public class krh
   implements View.OnClickListener
 {
-  public krh(AccountDetailCustomModuleBaseWrapper paramAccountDetailCustomModuleBaseWrapper) {}
+  public krh(AccountDetailGroupListContainer paramAccountDetailGroupListContainer, String paramString) {}
   
   public void onClick(View paramView)
   {
-    paramView = paramView.getTag();
-    if ((paramView != null) && ((paramView instanceof PaConfigAttr.PaConfigInfo)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailCustomModuleBaseWrapper", 2, "click!");
-      }
-      paramView = (PaConfigAttr.PaConfigInfo)paramView;
-      if (this.a.a != null) {
-        this.a.a.a(paramView);
-      }
-      this.a.a(paramView);
-    }
+    paramView = new Intent("android.intent.action.CALL", Uri.parse("tel:" + this.jdField_a_of_type_JavaLangString));
+    ((BaseActivity)this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailGroupListContainer.a.get()).startActivity(paramView);
   }
 }
 

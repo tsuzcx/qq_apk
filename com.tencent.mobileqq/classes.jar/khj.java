@@ -1,92 +1,104 @@
-import android.app.KeyguardManager;
-import android.content.BroadcastReceiver;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Build.VERSION;
-import android.os.PowerManager;
-import android.view.Display;
-import android.view.WindowManager;
-import com.tencent.av.VideoController;
-import com.tencent.av.utils.SensorHelper;
-import com.tencent.qphone.base.util.QLog;
-import mqq.util.WeakReference;
+import android.support.annotation.NonNull;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import com.tencent.av.utils.TraeHelper.SoundOutputRes;
+import com.tencent.av.utils.TraeHelper.SoundOutputRes.IconAndName;
 
 public class khj
-  extends BroadcastReceiver
+  extends BaseAdapter
 {
-  public khj(SensorHelper paramSensorHelper) {}
+  private int jdField_a_of_type_Int;
+  private Context jdField_a_of_type_AndroidContentContext;
+  TraeHelper.SoundOutputRes jdField_a_of_type_ComTencentAvUtilsTraeHelper$SoundOutputRes;
+  private String[] jdField_a_of_type_ArrayOfJavaLangString;
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public khj(Context paramContext, @NonNull TraeHelper.SoundOutputRes paramSoundOutputRes)
   {
-    String str = paramIntent.getAction();
-    boolean bool3;
-    boolean bool1;
-    int i;
-    if (str.equals("android.intent.action.SCREEN_ON"))
-    {
-      bool3 = ((KeyguardManager)paramContext.getSystemService("keyguard")).inKeyguardRestrictedInputMode();
-      if (Build.VERSION.SDK_INT < 20) {
-        break label445;
-      }
-      bool1 = ((PowerManager)((Context)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).getSystemService("power")).isInteractive();
-      paramContext = ((WindowManager)((Context)this.a.jdField_a_of_type_MqqUtilWeakReference.get()).getSystemService("window")).getDefaultDisplay();
-      if (paramContext == null) {
-        break label440;
-      }
-      i = paramContext.getState();
+    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_ComTencentAvUtilsTraeHelper$SoundOutputRes = paramSoundOutputRes;
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramSoundOutputRes.a();
+  }
+  
+  public void a(int paramInt)
+  {
+    this.jdField_a_of_type_Int = paramInt;
+    notifyDataSetChanged();
+  }
+  
+  public void a(Context paramContext, @NonNull TraeHelper.SoundOutputRes paramSoundOutputRes)
+  {
+    if (paramContext != null) {
+      this.jdField_a_of_type_AndroidContentContext = paramContext;
     }
+    this.jdField_a_of_type_ArrayOfJavaLangString = paramSoundOutputRes.a();
+    this.jdField_a_of_type_ComTencentAvUtilsTraeHelper$SoundOutputRes = paramSoundOutputRes;
+    notifyDataSetInvalidated();
+  }
+  
+  public void a(String paramString)
+  {
+    int j = getCount();
+    int i = 0;
     for (;;)
     {
-      paramContext = this.a.jdField_a_of_type_JavaLangString;
-      paramIntent = new StringBuilder().append("ACTION_SCREEN_ON, mVideoController[");
-      boolean bool2;
-      if (this.a.jdField_a_of_type_ComTencentAvVideoController != null)
+      if (i < j)
       {
-        bool2 = true;
-        QLog.d(paramContext, 1, bool2 + "], isInteractive[" + bool1 + "], nState[" + i + "], inKeyguardRestrictedInputMode[" + bool3 + "], mIsStarted[" + this.a.d + "]");
-        if (this.a.d)
-        {
-          this.a.jdField_a_of_type_Int = 1;
-          SensorHelper.a(this.a, SensorHelper.a(this.a));
+        TraeHelper.SoundOutputRes.IconAndName localIconAndName = (TraeHelper.SoundOutputRes.IconAndName)getItem(i);
+        if ((localIconAndName != null) && (localIconAndName.jdField_a_of_type_JavaLangString != null) && (localIconAndName.jdField_a_of_type_JavaLangString.equals(paramString))) {
+          a(i);
         }
       }
-      label321:
-      do
+      else
       {
-        do
-        {
-          do
-          {
-            return;
-            bool2 = false;
-            break;
-            if (!str.equals("android.intent.action.SCREEN_OFF")) {
-              break label321;
-            }
-            i = paramIntent.getIntExtra("why", 0);
-            QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "ACTION_SCREEN_OFF, why[" + i + "]");
-          } while (this.a.jdField_a_of_type_ComTencentAvVideoController == null);
-          this.a.jdField_a_of_type_ComTencentAvVideoController.a("backgroundReason", "4");
-          com.tencent.av.VideoConstants.ProcessInfo.jdField_a_of_type_JavaLangString = "4";
-          return;
-          if (str.equals("android.intent.action.USER_PRESENT"))
-          {
-            QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "ACTION_USER_PRESENT");
-            return;
-          }
-        } while (!str.equals("android.intent.action.CLOSE_SYSTEM_DIALOGS"));
-        paramContext = paramIntent.getStringExtra("reason");
-        QLog.d(this.a.jdField_a_of_type_JavaLangString, 1, "ACTION_CLOSE_SYSTEM_DIALOGS, reason[" + paramContext + "]");
-      } while ((!"homekey".equalsIgnoreCase(paramContext)) || (!this.a.d));
-      this.a.jdField_a_of_type_Int = 1;
-      SensorHelper.a(this.a, SensorHelper.a(this.a));
-      return;
-      label440:
-      i = 2;
-      continue;
-      label445:
-      i = 2;
-      bool1 = true;
+        return;
+      }
+      i += 1;
+    }
+  }
+  
+  public int getCount()
+  {
+    if (this.jdField_a_of_type_ComTencentAvUtilsTraeHelper$SoundOutputRes != null) {
+      return this.jdField_a_of_type_ComTencentAvUtilsTraeHelper$SoundOutputRes.a();
+    }
+    return 0;
+  }
+  
+  public Object getItem(int paramInt)
+  {
+    return this.jdField_a_of_type_ComTencentAvUtilsTraeHelper$SoundOutputRes.a(this.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+  }
+  
+  public long getItemId(int paramInt)
+  {
+    return paramInt;
+  }
+  
+  public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = (TraeHelper.SoundOutputRes.IconAndName)getItem(paramInt);
+    if (paramViewGroup != null) {
+      if (paramView == null)
+      {
+        paramView = new khk(this.jdField_a_of_type_AndroidContentContext, paramViewGroup.jdField_a_of_type_Int, paramViewGroup.b);
+        paramViewGroup = (khk)paramView;
+        if (paramInt != this.jdField_a_of_type_Int) {
+          break label94;
+        }
+      }
+    }
+    label94:
+    for (boolean bool = true;; bool = false)
+    {
+      paramViewGroup.a(bool);
+      return paramView;
+      ((khk)paramView).a(paramViewGroup.b);
+      paramView.setContentDescription(paramViewGroup.b);
+      ((khk)paramView).a(paramViewGroup.jdField_a_of_type_Int);
+      break;
     }
   }
 }

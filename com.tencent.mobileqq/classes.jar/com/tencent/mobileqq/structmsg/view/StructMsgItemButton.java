@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.structmsg.view;
 
-import ahuh;
-import ahui;
-import ahuj;
+import aiik;
+import aiil;
+import aiim;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -38,7 +38,7 @@ public class StructMsgItemButton
   {
     this.jdField_e_of_type_Int = 999;
     this.jdField_c_of_type_Long = -1L;
-    this.jdField_a_of_type_AndroidViewView$OnClickListener = new ahuj(this);
+    this.jdField_a_of_type_AndroidViewView$OnClickListener = new aiim(this);
     this.jdField_a_of_type_JavaLangString = "button";
   }
   
@@ -83,11 +83,11 @@ public class StructMsgItemButton
     int i = paramBundle.getInt("Layout3ButtonCount", 0);
     int j = paramBundle.getInt("Layout3ButtonIndex", -1);
     paramContext = (TextView)super.a(paramContext, paramView, paramBundle);
-    paramContext.setBackgroundResource(2130837914);
+    paramContext.setBackgroundResource(2130837917);
     if (i > 1) {
       if (j == 0)
       {
-        paramContext.setBackgroundResource(2130837907);
+        paramContext.setBackgroundResource(2130837910);
         i = 0;
       }
     }
@@ -101,17 +101,17 @@ public class StructMsgItemButton
       {
         paramContext.setClickable(true);
         paramContext.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        paramContext.setOnLongClickListener(new ahuh(this));
-        paramContext.setOnTouchListener(new ahui(this));
+        paramContext.setOnLongClickListener(new aiik(this));
+        paramContext.setOnTouchListener(new aiil(this));
         return paramContext;
         if (j == i - 1)
         {
-          paramContext.setBackgroundResource(2130837911);
+          paramContext.setBackgroundResource(2130837914);
           i = 2;
         }
         else
         {
-          paramContext.setBackgroundResource(2130837909);
+          paramContext.setBackgroundResource(2130837912);
           i = 1;
         }
       }
@@ -387,7 +387,7 @@ public class StructMsgItemButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemButton
  * JD-Core Version:    0.7.0.1
  */

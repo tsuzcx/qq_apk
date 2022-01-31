@@ -1,6 +1,6 @@
 package cooperation.qzone.patch;
 
-import amgo;
+import amwt;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Build.VERSION;
@@ -119,7 +119,7 @@ public class QZonePatchService
   
   private static void a(int paramInt)
   {
-    LocalMultiProcConfig.putInt("V 7.6.0.3525p_ver", paramInt);
+    LocalMultiProcConfig.putInt("V 7.6.3.3560p_ver", paramInt);
   }
   
   private static void a(long paramLong)
@@ -706,7 +706,7 @@ public class QZonePatchService
     if (QzoneConfig.getInstance().getConfig("QZoneSetting", "isPatchEnable", 1) == 0) {
       return;
     }
-    ThreadManager.postDownLoadTask(new amgo(this, paramString1, paramString2), 8, null, false);
+    ThreadManager.postDownLoadTask(new amwt(this, paramString1, paramString2), 8, null, false);
   }
 }
 

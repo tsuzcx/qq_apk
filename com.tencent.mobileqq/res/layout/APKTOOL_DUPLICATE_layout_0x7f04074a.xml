@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021498" android:layout_width="wrap_content" android:layout_height="17.0dip"
+<RelativeLayout android:paddingTop="25.0dip" android:paddingBottom="30.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="12.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0568" android:gravity="center_vertical" android:id="@id/txt" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="wrap_content" android:layout_height="17.0dip" android:includeFontPadding="false" android:drawablePadding="6.0dip" />
-</LinearLayout>
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a223a" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true">
+        <ImageView android:background="#ffcecece" android:layout_width="32.0dip" android:layout_height="1.0dip" android:layout_marginRight="14.0dip" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/APKTOOL_DUPLICATE_color_0x7f0c0571" android:gravity="center_horizontal" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a223b" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+        <ImageView android:background="#ffcecece" android:layout_width="32.0dip" android:layout_height="1.0dip" android:layout_marginLeft="14.0dip" />
+    </LinearLayout>
+    <TextView android:textSize="14.0dip" android:textColor="#ff12b7f5" android:gravity="center" android:id="@id/APKTOOL_DUPLICATE_id_0x7f0a223c" android:background="@drawable/APKTOOL_DUPLICATE_drawable_0x7f021490" android:paddingLeft="15.0dip" android:paddingRight="15.0dip" android:layout_width="wrap_content" android:layout_height="40.0dip" android:layout_marginTop="25.0dip" android:text="下载兴趣部落APP，查看全部访客" android:drawableLeft="@drawable/APKTOOL_DUPLICATE_drawable_0x7f0207dd" android:drawablePadding="5.0dip" android:layout_below="@id/APKTOOL_DUPLICATE_id_0x7f0a223a" android:layout_centerHorizontal="true" />
+</RelativeLayout>

@@ -1,33 +1,23 @@
-import android.os.SystemClock;
-import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
+import android.view.View;
+import com.tencent.mobileqq.troop.browser.TroopWebviewPlugin;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
 public class ajau
-  implements Runnable
+  implements ActionSheet.OnButtonClickListener
 {
-  public ajau(TroopFileTransferManager paramTroopFileTransferManager) {}
+  public ajau(TroopWebviewPlugin paramTroopWebviewPlugin) {}
   
-  public void run()
+  public void OnClick(View paramView, int paramInt)
   {
-    for (;;)
-    {
-      synchronized (this.a)
-      {
-        if (this.a.e == 0L) {
-          return;
-        }
-        if (SystemClock.uptimeMillis() > this.a.e + 10000L)
-        {
-          this.a.e = 0L;
-          this.a.a();
-          return;
-        }
-      }
+    TroopWebviewPlugin.a(this.a);
+    if (paramInt == 0) {
+      TroopWebviewPlugin.a(this.a, "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     ajau
  * JD-Core Version:    0.7.0.1
  */

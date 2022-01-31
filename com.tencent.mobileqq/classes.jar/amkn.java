@@ -1,22 +1,21 @@
-import android.text.TextUtils;
-import com.tencent.mobileqq.mqsafeedit.BaseApplication;
-import com.tencent.mobileqq.statistics.MTAReportController;
-import cooperation.qzone.util.PanoramaUtil;
-import java.util.Properties;
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.comic.utils.QQComicRedTouchManager;
 
 public class amkn
-  implements Runnable
+  extends BroadcastReceiver
 {
-  public amkn(PanoramaUtil paramPanoramaUtil, String paramString1, String paramString2, int paramInt) {}
+  public amkn(QQComicRedTouchManager paramQQComicRedTouchManager) {}
   
-  public void run()
+  public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((this.jdField_a_of_type_JavaLangString != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
-    {
-      Properties localProperties = new Properties();
-      localProperties.put(this.b, this.jdField_a_of_type_JavaLangString);
-      MTAReportController.a(BaseApplication.getContext()).reportTimeKVEvent("qzone_panorama", localProperties, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel()) {
+      QLog.d("PluginRedTouchManager", 2, "Received red touch push");
     }
+    QQComicRedTouchManager.a(this.a);
+    QQComicRedTouchManager.b(this.a);
   }
 }
 

@@ -1,13 +1,14 @@
-import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
+import com.tencent.mobileqq.activity.QQSettingMe;
+import com.tencent.mobileqq.apollo.view.FrameGifView;
 
 public class tmf
   implements Runnable
 {
-  public tmf(RegisterByNicknameAndPwdActivity paramRegisterByNicknameAndPwdActivity) {}
+  public tmf(QQSettingMe paramQQSettingMe) {}
   
   public void run()
   {
-    this.a.onBackEvent();
+    QQSettingMe.a(this.a).b();
   }
 }
 

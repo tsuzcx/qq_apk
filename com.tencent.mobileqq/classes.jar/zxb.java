@@ -1,26 +1,31 @@
-import android.opengl.GLES20;
-import com.tencent.mobileqq.ar.ARVideoUtil;
-import com.tencent.mobileqq.ar.keying.KeyingBase.UserInterface;
+import com.tencent.mobileqq.app.utils.QQConfMeetingLogReportHelper;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper;
+import com.tencent.mobileqq.testassister.ShareAppLogHelper.OnGetLocalLogListener;
+import com.tencent.qphone.base.util.QLog;
 
-class zxb
-  implements KeyingBase.UserInterface
+public class zxb
+  implements ShareAppLogHelper.OnGetLocalLogListener
 {
-  zxb(zxa paramzxa) {}
-  
-  public void a()
-  {
-    GLES20.glUniform1i(zxa.a(this.a), zxa.b(this.a));
-  }
+  public zxb(QQConfMeetingLogReportHelper paramQQConfMeetingLogReportHelper) {}
   
   public void a(int paramInt)
   {
-    zxa.a(this.a, GLES20.glGetUniformLocation(paramInt, "uDisplayType"));
-    ARVideoUtil.a("glGetUniformLocation uDisplayType");
+    QLog.e("QQConfMeetingLogReportHelper", 1, "doReportLocalLog OnGetLocalLogListener onError, code=" + paramInt);
+  }
+  
+  public void a(String paramString)
+  {
+    QQConfMeetingLogReportHelper.a(this.a, paramString);
+  }
+  
+  public void b(int paramInt)
+  {
+    this.a.a.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     zxb
  * JD-Core Version:    0.7.0.1
  */

@@ -560,7 +560,7 @@ public class PstnHandler
     MobileQQService.jdField_a_of_type_Int = i + 1;
     ((PBUInt64Field)localObject2).set(i);
     ((hd_video_voip_2.VoipHead)localObject1).uint32_cmd.set(1);
-    ((hd_video_voip_2.VoipHead)localObject1).bytes_build_ver.set(ByteStringMicro.copyFromUtf8("7.6.0"));
+    ((hd_video_voip_2.VoipHead)localObject1).bytes_build_ver.set(ByteStringMicro.copyFromUtf8("7.6.3"));
     ((hd_video_voip_2.VoipHead)localObject1).uint32_term_type.set(4);
     ((hd_video_voip_2.VoipHead)localObject1).int32_sub_service_type.set(7000);
     if (QLog.isColorLevel()) {
@@ -646,7 +646,7 @@ public class PstnHandler
     MobileQQService.jdField_a_of_type_Int = i + 1;
     paramString4.set(i);
     paramString3.uint32_cmd.set(5);
-    paramString3.bytes_build_ver.set(ByteStringMicro.copyFromUtf8("7.6.0"));
+    paramString3.bytes_build_ver.set(ByteStringMicro.copyFromUtf8("7.6.3"));
     paramString3.uint32_term_type.set(4);
     paramString4 = new hd_video_voip_2.TelInfo();
     Object localObject = PhoneNumberUtil.a(paramString1);

@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.servlet;
 
-import ahju;
-import ahjw;
-import ahjx;
-import ahjy;
+import ahxw;
+import ahxy;
+import ahxz;
+import ahya;
 import android.annotation.TargetApi;
 import android.content.ContentResolver;
 import android.content.ContentValues;
@@ -24,7 +24,6 @@ import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.LocalMultiProcConfig;
 import cooperation.qzone.UndealCount.QZoneCountInfo;
 import cooperation.qzone.UndealCount.QZoneCountUserInfo;
-import cooperation.qzone.util.QZoneLogTags;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -53,12 +52,12 @@ public class QZoneManagerImp
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     if (this.jdField_a_of_type_AndroidDatabaseContentObserver == null) {
-      this.jdField_a_of_type_AndroidDatabaseContentObserver = new ahju(this, null);
+      this.jdField_a_of_type_AndroidDatabaseContentObserver = new ahxw(this, null);
     }
     try
     {
       paramQQAppInterface.getApplication().getContentResolver().registerContentObserver(QZoneConfigConst.h, true, this.jdField_a_of_type_AndroidDatabaseContentObserver);
-      ThreadManager.post(new ahjw(this), 8, null, true);
+      ThreadManager.post(new ahxy(this), 8, null, true);
       return;
     }
     catch (Exception paramQQAppInterface)
@@ -92,7 +91,7 @@ public class QZoneManagerImp
     if ((paramQZoneCountInfo == null) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)) {
       return;
     }
-    ThreadManager.post(new ahjx(this, new QZoneCountInfo(paramQZoneCountInfo), paramInt), 5, null, false);
+    ThreadManager.post(new ahxz(this, new QZoneCountInfo(paramQZoneCountInfo), paramInt), 5, null, false);
   }
   
   private boolean a(QQAppInterface paramQQAppInterface)
@@ -100,7 +99,7 @@ public class QZoneManagerImp
     if (paramQQAppInterface == null) {
       return false;
     }
-    return LocalMultiProcConfig.getBool(paramQQAppInterface.getApp().getApplicationContext().getString(2131434190) + paramQQAppInterface.getAccount(), true);
+    return LocalMultiProcConfig.getBool(paramQQAppInterface.getApp().getApplicationContext().getString(2131434207) + paramQQAppInterface.getAccount(), true);
   }
   
   /* Error */
@@ -305,6 +304,17 @@ public class QZoneManagerImp
     return 0;
   }
   
+  public QZoneCountInfo a(int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneManagerImp.", 2, "QZoneManagerImp getFeedCount type :" + paramInt);
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      return (QZoneCountInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt));
+    }
+    return null;
+  }
+  
   public ArrayList a()
   {
     ArrayList localArrayList = new ArrayList();
@@ -323,11 +333,10 @@ public class QZoneManagerImp
           }
           else
           {
-            String str = QZoneLogTags.LOG_TAG_UNDEALCOUNT + "QZoneManagerImp.";
             if (localObject == null) {}
             for (localObject = "userInfo==null";; localObject = "userInfo,uin<10000,不是合法qq号")
             {
-              QLog.w(str, 1, (String)localObject);
+              QLog.w("UndealCount.QZoneManagerImp.", 1, (String)localObject);
               break;
             }
           }
@@ -384,7 +393,7 @@ public class QZoneManagerImp
       }
       if (paramInt == 3)
       {
-        ThreadManager.post(new ahjy(this, paramInt), 8, null, true);
+        ThreadManager.post(new ahya(this, paramInt), 8, null, true);
         return;
       }
     } while ((paramInt != 5) && (paramInt != 6) && (paramInt != 7) && (paramInt != 8));
@@ -495,14 +504,14 @@ public class QZoneManagerImp
         if (this.c)
         {
           if (QLog.isDevelopLevel()) {
-            QLog.d(QZoneLogTags.LOG_TAG_ZEBRAALBUM + "QZoneManagerImp.", 4, "setFeedCount.user enter qzone.dismiss data.");
+            QLog.d("ZebraAlbum.QZoneManagerImp.", 4, "setFeedCount.user enter qzone.dismiss data.");
           }
         }
         else if ((paramHashMap != null) && (paramHashMap.size() != 0) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null))
         {
           paramHashMap = paramHashMap.entrySet().toArray();
           if (paramHashMap == null) {
-            break label364;
+            break label329;
           }
           int m = paramHashMap.length;
           j = 0;
@@ -519,24 +528,24 @@ public class QZoneManagerImp
               if (!a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
               {
                 if (QLog.isColorLevel()) {
-                  QLog.d(QZoneLogTags.LOG_TAG_FEEDALERT, 2, "QZoneManagerImp.checkShowQZonePush" + Long.toBinaryString(this.jdField_a_of_type_Long) + ",count" + ((QZoneCountInfo)localObject).jdField_a_of_type_Long);
+                  QLog.d("FeedAlert.", 2, "QZoneManagerImp.checkShowQZonePush" + Long.toBinaryString(this.jdField_a_of_type_Long) + ",count" + ((QZoneCountInfo)localObject).jdField_a_of_type_Long);
                 }
                 if (localInteger.intValue() == 17) {
-                  break label338;
+                  break label303;
                 }
               }
-              bool = a(localInteger.intValue(), ((QZoneCountInfo)localObject).jdField_a_of_type_Long, ((QZoneCountInfo)localObject).jdField_a_of_type_JavaUtilArrayList, "", ((QZoneCountInfo)localObject).b);
+              bool = a(localInteger.intValue(), (QZoneCountInfo)localObject);
               if ((!bool) || (!QLog.isColorLevel())) {
-                break label345;
+                break label310;
               }
-              QLog.d(QZoneLogTags.LOG_TAG_FEEDALERT, 2, "QZoneManagerImp.set feedcout map type:" + Long.toBinaryString(this.jdField_a_of_type_Long) + "count change ,key=" + localInteger);
-              break label345;
+              QLog.d("FeedAlert.", 2, "QZoneManagerImp.set feedcout map type:" + Long.toBinaryString(this.jdField_a_of_type_Long) + "count change ,key=" + localInteger);
+              break label310;
             }
           }
           else
           {
             if (k == 0) {
-              break label337;
+              break label302;
             }
             c();
             return;
@@ -551,21 +560,21 @@ public class QZoneManagerImp
           return;
         }
       }
-      label337:
+      label302:
       return;
       for (;;)
       {
-        label338:
+        label303:
         j += 1;
         break;
-        label345:
+        label310:
         if ((i != 0) || (bool)) {
           i = 1;
         } else {
           i = 0;
         }
       }
-      label364:
+      label329:
       int k = 0;
     }
   }
@@ -581,40 +590,6 @@ public class QZoneManagerImp
   public boolean a()
   {
     return this.b;
-  }
-  
-  public boolean a(int paramInt, long paramLong, ArrayList paramArrayList, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("QZoneManagerImp.", 2, "setFeedCountAll.feedtype=" + paramInt + ",count=" + paramLong + ",uin");
-    }
-    boolean bool2;
-    if ((paramInt < 1) || (paramInt > 100))
-    {
-      bool2 = false;
-      return bool2;
-    }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
-    }
-    paramString1 = paramArrayList;
-    if (paramArrayList == null) {
-      paramString1 = new ArrayList();
-    }
-    paramArrayList = new QZoneCountInfo();
-    paramArrayList.jdField_a_of_type_Long = paramLong;
-    paramArrayList.jdField_a_of_type_JavaUtilArrayList = paramString1;
-    paramArrayList.b = paramString2;
-    if (!paramArrayList.a((QZoneCountInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt)))) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      bool2 = bool1;
-      if (!bool1) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), paramArrayList);
-      return bool1;
-    }
   }
   
   public boolean a(int paramInt, long paramLong, ArrayList paramArrayList, String paramString1, boolean paramBoolean1, boolean paramBoolean2, String paramString2)
@@ -673,6 +648,32 @@ public class QZoneManagerImp
     return paramBoolean1;
   }
   
+  public boolean a(int paramInt, QZoneCountInfo paramQZoneCountInfo)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("QZoneManagerImp.", 2, "setFeedCountAll.feedtype=" + paramInt + ",count=" + String.valueOf(paramQZoneCountInfo) + ",uin");
+    }
+    boolean bool2;
+    if ((paramInt < 1) || (paramInt > 100))
+    {
+      bool2 = false;
+      return bool2;
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+    }
+    if (!paramQZoneCountInfo.a((QZoneCountInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(paramInt)))) {}
+    for (boolean bool1 = true;; bool1 = false)
+    {
+      bool2 = bool1;
+      if (!bool1) {
+        break;
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), paramQZoneCountInfo);
+      return bool1;
+    }
+  }
+  
   @TargetApi(9)
   public void b(int paramInt)
   {
@@ -697,6 +698,27 @@ public class QZoneManagerImp
     }
   }
   
+  public void c(int paramInt)
+  {
+    if (QLog.isDevelopLevel()) {
+      QLog.d("QZoneManagerImp.", 4, "QZoneManagerImp clearUnReadCount cache arrays.type = " + paramInt);
+    }
+    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Integer.valueOf(paramInt));
+    }
+    StringBuilder localStringBuilder = new StringBuilder("own_uin").append("=? AND ").append("type").append("=?");
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getContentResolver().delete(QZoneConfigConst.h, localStringBuilder.toString(), new String[] { str, String.valueOf(paramInt) });
+      return;
+    }
+    catch (Exception localException)
+    {
+      a(localException);
+    }
+  }
+  
   public void onDestroy()
   {
     this.jdField_a_of_type_Boolean = true;
@@ -714,7 +736,7 @@ public class QZoneManagerImp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\com33.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\a.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneManagerImp
  * JD-Core Version:    0.7.0.1
  */

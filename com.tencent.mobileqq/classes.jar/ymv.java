@@ -1,71 +1,42 @@
-import com.tencent.mobileqq.apollo.ApolloGameManager;
-import com.tencent.mobileqq.apollo.ApolloManager;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.CmGameServerQIPCModule;
-import com.tencent.mobileqq.apollo.utils.ApolloDaoManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.utils.ApolloContentUpdateHandler;
-import com.tencent.mobileqq.data.ApolloGameData;
-import com.tencent.mobileqq.utils.VipUtils;
+import android.text.TextUtils;
+import com.tencent.mobileqq.apollo.ApolloSurfaceView;
+import com.tencent.mobileqq.apollo.OnApolloViewListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.concurrent.ConcurrentHashMap;
+import java.lang.ref.WeakReference;
 
 public class ymv
   implements Runnable
 {
-  public ymv(CmGameServerQIPCModule paramCmGameServerQIPCModule, QQAppInterface paramQQAppInterface, CmGameStartChecker.StartCheckParam paramStartCheckParam) {}
+  private int jdField_a_of_type_Int;
+  
+  public ymv(ApolloSurfaceView paramApolloSurfaceView) {}
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Int = ApolloSurfaceView.access$601(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView);
+  }
   
   public void run()
   {
-    Object localObject = (ApolloDaoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(154);
-    ((ApolloDaoManager)localObject).a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId);
-    ApolloManager localApolloManager = (ApolloManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(152);
-    if ((((ApolloDaoManager)localObject).a != null) && (((ApolloDaoManager)localObject).a.containsKey(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId))))
+    if (ApolloSurfaceView.access$100(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView) == null) {}
+    OnApolloViewListener localOnApolloViewListener;
+    do
     {
-      localObject = (String)((ApolloDaoManager)localObject).a.get(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId));
-      localApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId, (String)localObject);
-    }
-    try
-    {
-      localObject = new ArrayList();
-      ((ArrayList)localObject).add(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId));
-      ((ApolloGameManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(210)).a("android.playgame", "apollo_aio_game.add_games_to_user_gamepanel", (ArrayList)localObject);
-      if (!this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.isPatch)
+      do
       {
-        int k = this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.enter;
-        if ((k == 2) || (k == 1))
+        do
         {
-          i = 1;
-          int j;
-          if ((k != 2) && (k != 5))
-          {
-            j = k;
-            if (k != 3) {}
-          }
-          else
-          {
-            j = 1;
-          }
-          VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "cmshow", "Apollo", "game_renew_succeed", i, j, new String[] { this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId + "", localApolloManager.a(this.jdField_a_of_type_ComTencentMobileqqApolloCmgameCmGameStartChecker$StartCheckParam.game.gameId) });
+          return;
+          localOnApolloViewListener = (OnApolloViewListener)ApolloSurfaceView.access$100(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView).get();
+        } while (localOnApolloViewListener == null);
+        if (QLog.isColorLevel()) {
+          QLog.d("ApolloSurfaceView", 2, "CheckForLongPress onLongClick");
         }
-      }
-      else
-      {
-        ApolloContentUpdateHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 2);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        localException.printStackTrace();
-        QLog.e("cmgame_process.CmGameServerQIPCModule", 1, "errInfo->" + localException.getMessage());
-        continue;
-        int i = 0;
-      }
-    }
+      } while (this.jdField_a_of_type_Int != ApolloSurfaceView.access$201(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView));
+      ApolloSurfaceView.access$302(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView, true);
+      ApolloSurfaceView.access$401(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView, 2);
+    } while ((TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.mApolloId)) || (ApolloSurfaceView.access$500(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView) < 0) || (localOnApolloViewListener == null));
+    localOnApolloViewListener.onNotifyLongTouch(this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.mApolloId);
   }
 }
 

@@ -1,28 +1,51 @@
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import com.tencent.mobileqq.app.DiscussionObserver;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.UpdateDiscuss;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.TroopHandler;
+import com.tencent.mobileqq.app.TroopHandler.Oidb_0xb36;
+import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Map;
+import tencent.im.oidb.cmd0xb36.oidb_cmd0xb36.RspBody;
+import tencent.im.oidb.cmd0xb36.oidb_cmd0xb36.ToastInfo;
 
 public class zol
-  extends DiscussionObserver
+  implements Runnable
 {
-  private zol(UpdateDiscuss paramUpdateDiscuss) {}
+  public zol(TroopManager paramTroopManager) {}
   
-  protected void a(boolean paramBoolean)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "updateDiscussionList: " + paramBoolean);
-    }
-    if (!paramBoolean)
+    Object localObject = this.a.jdField_a_of_type_JavaUtilMap.values();
+    long l = NetConnInfoCenter.getServerTime();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
     {
-      this.a.a(6);
+      QLog.e(".troop.survey", 1, "Error: check survey list expire, app is null!");
       return;
     }
-    UpdateDiscuss.a(this.a).a.edit().putBoolean("isDiscussionlistok", true).commit();
-    UpdateDiscuss.b(this.a).a(3, true, Integer.valueOf(3));
-    this.a.a(7);
+    TroopHandler localTroopHandler = (TroopHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(20);
+    if (localTroopHandler == null)
+    {
+      QLog.e(".troop.survey", 1, "Error: check survey list expire, troop handler is null!");
+      return;
+    }
+    localObject = ((Collection)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      oidb_cmd0xb36.RspBody localRspBody = (oidb_cmd0xb36.RspBody)((Iterator)localObject).next();
+      if ((localRspBody.toast.expired.has()) && (localRspBody.toast.expired.get() < l))
+      {
+        String str = String.valueOf(localRspBody.group_id.get());
+        if (QLog.isColorLevel()) {
+          QLog.d(".troop.survey", 2, new Object[] { "group id ", str, "request survey toast, expiredTime: ", Integer.valueOf(localRspBody.toast.expired.get()) });
+        }
+        TroopHandler.Oidb_0xb36.a(localTroopHandler, str, 0);
+      }
+    }
+    this.a.a();
   }
 }
 

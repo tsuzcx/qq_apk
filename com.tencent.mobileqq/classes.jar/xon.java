@@ -1,13 +1,28 @@
-import com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity;
+import android.view.View;
+import android.widget.Button;
+import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
+import com.tencent.mobileqq.shortvideo.widget.TCProgressBar;
 
-class xon
+public class xon
   implements Runnable
 {
-  xon(xom paramxom) {}
+  public xon(FlowCameraActivity2 paramFlowCameraActivity2) {}
   
   public void run()
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaNewFlowCameraActivity.e(this.a.jdField_a_of_type_Int);
+    if ((this.a.b != null) && (!this.a.b.isEnabled()))
+    {
+      this.a.b.setEnabled(true);
+      this.a.b.setText(2131438162);
+      this.a.b.setTextColor(-15550475);
+    }
+    int i = 0;
+    if (this.a.a != null) {
+      i = this.a.a.c();
+    }
+    if ((!this.a.i.isEnabled()) && (i > 0)) {
+      this.a.i.setEnabled(true);
+    }
   }
 }
 

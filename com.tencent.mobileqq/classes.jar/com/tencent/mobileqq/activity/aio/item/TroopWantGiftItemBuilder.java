@@ -32,8 +32,8 @@ import com.tencent.mobileqq.data.MessageForWantGiftMsg;
 import com.tencent.mobileqq.statistics.ReportTask;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
-import vhu;
-import vhv;
+import vkw;
+import vkx;
 
 public class TroopWantGiftItemBuilder
   extends BaseBubbleBuilder
@@ -114,8 +114,8 @@ public class TroopWantGiftItemBuilder
       localObject1 = new RelativeLayout(this.jdField_a_of_type_AndroidContentContext);
       localTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
       localTextView.setMaxWidth(BaseChatItemLayout.d);
-      localTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494220));
-      localTextView.setLinkTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494217));
+      localTextView.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494227));
+      localTextView.setLinkTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColorStateList(2131494224));
       localTextView.setTextSize(0, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b);
       localTextView.setId(2131362150);
       ((RelativeLayout)localObject1).setId(2131362151);
@@ -126,7 +126,7 @@ public class TroopWantGiftItemBuilder
       paramView.setEllipsize(TextUtils.TruncateAt.END);
       paramView.setTextColor(-1);
       paramView.setTextSize(1, 13.0F);
-      paramView.setBackgroundResource(2130840623);
+      paramView.setBackgroundResource(2130840645);
       paramView.setId(2131362152);
       paramView.setText("送礼物");
       paramBaseChatItemLayout.addView((View)localObject1);
@@ -139,7 +139,7 @@ public class TroopWantGiftItemBuilder
       ((TextView)localObject1).setPadding((int)(5.0F * this.jdField_a_of_type_Float), 0, (int)(5.0F * this.jdField_a_of_type_Float), 0);
       ((TextView)localObject1).getLayoutParams().height = ((int)(20.0F * this.jdField_a_of_type_Float));
       paramView = (MessageForWantGiftMsg)paramChatMessage;
-      ((TextView)localObject1).setOnClickListener(new vhu(this, paramChatMessage, paramView));
+      ((TextView)localObject1).setOnClickListener(new vkw(this, paramChatMessage, paramView));
       int j = BaseChatItemLayout.n;
       int i = BaseChatItemLayout.o;
       if (paramChatMessage.isSend())
@@ -149,7 +149,7 @@ public class TroopWantGiftItemBuilder
       }
       localTextView.setPadding(j, BaseChatItemLayout.l, i, BaseChatItemLayout.m);
       localTextView.setText(paramView.msg);
-      localTextView.setBackgroundResource(2130837948);
+      localTextView.setBackgroundResource(2130837951);
       a(paramChatMessage, this.jdField_a_of_type_AndroidContentContext, paramViewHolder, paramBaseChatItemLayout.findViewById(2131362151));
       if (paramView.wantGiftSenderUin == this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin()) {
         break label459;
@@ -159,7 +159,7 @@ public class TroopWantGiftItemBuilder
     for (;;)
     {
       ((View)localObject2).setOnLongClickListener(paramOnLongClickAndTouchListener);
-      ((View)localObject2).setOnTouchListener(new vhv(this, paramOnLongClickAndTouchListener));
+      ((View)localObject2).setOnTouchListener(new vkx(this, paramOnLongClickAndTouchListener));
       return localObject2;
       paramBaseChatItemLayout = (RelativeLayout)paramView;
       localTextView = (TextView)paramBaseChatItemLayout.findViewById(2131362150);
@@ -188,7 +188,7 @@ public class TroopWantGiftItemBuilder
     {
     default: 
       return;
-    case 2131375353: 
+    case 2131375584: 
       super.a(paramInt, paramContext, paramChatMessage);
       return;
     }

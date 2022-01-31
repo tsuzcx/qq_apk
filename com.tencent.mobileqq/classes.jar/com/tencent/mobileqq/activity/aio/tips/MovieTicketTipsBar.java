@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import org.json.JSONException;
 import org.json.JSONObject;
-import vzx;
+import wdc;
 
 public class MovieTicketTipsBar
   implements TipsBarTask
@@ -34,10 +34,10 @@ public class MovieTicketTipsBar
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
       this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2130968667, null);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363082));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363080));
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844021);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new vzx(this));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363100));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363098));
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130844145);
+      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new wdc(this));
     }
     if ((paramVarArgs != null) && (paramVarArgs.length > 0) && ((paramVarArgs[0] instanceof String))) {
       paramVarArgs = new String(Base64.decode((String)paramVarArgs[0], 0));

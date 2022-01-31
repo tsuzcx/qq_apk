@@ -27,8 +27,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import nrx;
-import nry;
+import ntk;
+import ntl;
 
 public abstract class QQStoryBaseFragment
   extends IphoneTitleBarFragment
@@ -71,7 +71,7 @@ public abstract class QQStoryBaseFragment
     this.c = true;
     QQStoryContext.a();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = QQStoryContext.a();
-    Bosses.get().postLightWeightJob(new nrx(this), 10);
+    Bosses.get().postLightWeightJob(new ntk(this), 10);
   }
   
   public void a(String paramString, View.OnClickListener paramOnClickListener)
@@ -99,7 +99,7 @@ public abstract class QQStoryBaseFragment
     if (this.jdField_a_of_type_AndroidAppDialog != null)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-      this.jdField_a_of_type_AndroidOsHandler.post(new nry(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new ntl(this));
     }
   }
   

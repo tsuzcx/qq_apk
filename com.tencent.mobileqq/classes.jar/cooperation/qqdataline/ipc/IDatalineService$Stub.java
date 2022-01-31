@@ -1,6 +1,6 @@
 package cooperation.qqdataline.ipc;
 
-import alyr;
+import amov;
 import android.os.Binder;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -26,7 +26,7 @@ public abstract class IDatalineService$Stub
     if ((localIInterface != null) && ((localIInterface instanceof IDatalineService))) {
       return (IDatalineService)localIInterface;
     }
-    return new alyr(paramIBinder);
+    return new amov(paramIBinder);
   }
   
   public IBinder asBinder()

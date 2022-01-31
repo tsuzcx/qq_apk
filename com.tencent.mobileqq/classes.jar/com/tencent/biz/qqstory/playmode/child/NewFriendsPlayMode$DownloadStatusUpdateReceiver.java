@@ -7,13 +7,9 @@ import com.tencent.biz.qqstory.model.item.StoryVideoItem;
 import com.tencent.biz.qqstory.playmode.VideoPlayModeBase;
 import com.tencent.biz.qqstory.playmode.util.PlayModeUtils;
 import com.tencent.biz.qqstory.playmode.util.PlayModeUtils.DownloadStatusChangeEvent;
-import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
-import com.tencent.biz.qqstory.videoplayer.StoryVideoPlayer;
 import com.tencent.biz.qqstory.videoplayer.VideoPlayerPagerAdapter;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tribe.async.dispatch.Dispatcher;
-import com.tribe.async.dispatch.Dispatchers;
 import com.tribe.async.dispatch.QQUIEventReceiver;
 import java.util.ArrayList;
 
@@ -27,19 +23,9 @@ public class NewFriendsPlayMode$DownloadStatusUpdateReceiver
   
   public void a(@NonNull VideoPlayModeBase paramVideoPlayModeBase, @NonNull PlayModeUtils.DownloadStatusChangeEvent paramDownloadStatusChangeEvent)
   {
-    if ((paramDownloadStatusChangeEvent.jdField_a_of_type_Int != 0) && ((paramVideoPlayModeBase instanceof NewFriendsPlayMode)))
-    {
-      NewFriendsPlayMode localNewFriendsPlayMode = (NewFriendsPlayMode)paramVideoPlayModeBase;
-      if (localNewFriendsPlayMode.o) {
-        Dispatchers.get().unRegisterSubscriber(localNewFriendsPlayMode.jdField_a_of_type_ComTencentBizQqstoryPlaymodeChildNewFriendsPlayMode$DownloadStatusUpdateReceiver);
-      }
-    }
-    if (TextUtils.equals(paramDownloadStatusChangeEvent.jdField_a_of_type_JavaLangString, "forShare"))
-    {
+    if (TextUtils.equals(String.valueOf(paramVideoPlayModeBase.hashCode()), paramDownloadStatusChangeEvent.jdField_a_of_type_JavaLangString)) {
       b(paramVideoPlayModeBase, paramDownloadStatusChangeEvent);
-      return;
     }
-    c(paramVideoPlayModeBase, paramDownloadStatusChangeEvent);
   }
   
   public Class acceptEventClass()
@@ -48,20 +34,6 @@ public class NewFriendsPlayMode$DownloadStatusUpdateReceiver
   }
   
   public void b(VideoPlayModeBase paramVideoPlayModeBase, PlayModeUtils.DownloadStatusChangeEvent paramDownloadStatusChangeEvent)
-  {
-    paramVideoPlayModeBase = (NewFriendsPlayMode)paramVideoPlayModeBase;
-    switch (paramDownloadStatusChangeEvent.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    }
-    SLog.a(this.TAG, "download video or picture finish. videoLocalPath = %s.", paramDownloadStatusChangeEvent.b);
-    NewFriendsPlayMode.a(paramVideoPlayModeBase).b(paramDownloadStatusChangeEvent.b);
-    NewFriendsPlayMode.a(paramVideoPlayModeBase, paramVideoPlayModeBase.jdField_a_of_type_ComTencentBizQqstoryVideoplayerStoryVideoPlayer.getContext(), NewFriendsPlayMode.a(paramVideoPlayModeBase));
-    NewFriendsPlayMode.a(paramVideoPlayModeBase).a();
-  }
-  
-  public void c(VideoPlayModeBase paramVideoPlayModeBase, PlayModeUtils.DownloadStatusChangeEvent paramDownloadStatusChangeEvent)
   {
     if ((paramVideoPlayModeBase.a.a == null) || (paramVideoPlayModeBase.a.a.size() <= paramVideoPlayModeBase.b)) {
       return;
@@ -83,7 +55,7 @@ public class NewFriendsPlayMode$DownloadStatusUpdateReceiver
       for (str = "2";; str = "1")
       {
         StoryReportor.a("play_video", "down_suc", 0, 0, new String[] { str, "", "", paramDownloadStatusChangeEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid });
-        QQToast.a(VideoPlayModeBase.a(), 2, StoryApi.a(2131432083), 0).a();
+        QQToast.a(VideoPlayModeBase.a(), 2, StoryApi.a(2131432100), 0).a();
         break;
       }
     }

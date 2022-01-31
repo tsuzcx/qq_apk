@@ -1,24 +1,53 @@
-import android.graphics.Color;
-import android.graphics.drawable.ClipDrawable;
-import android.graphics.drawable.ColorDrawable;
-import android.widget.ProgressBar;
-import com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity;
+import com.tencent.mobileqq.activity.recent.RecentOptPopBar;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.widget.PopupMenuDialog.MenuItem;
+import com.tencent.widget.PopupMenuDialog.OnClickActionListener;
 
-class xks
-  implements Runnable
+public class xks
+  implements PopupMenuDialog.OnClickActionListener
 {
-  xks(xkm paramxkm) {}
+  public xks(RecentOptPopBar paramRecentOptPopBar) {}
   
-  public void run()
+  public void a(PopupMenuDialog.MenuItem paramMenuItem)
   {
-    if (EditLocalVideoActivity.a(this.a.a) == null)
+    switch (paramMenuItem.a)
     {
-      EditLocalVideoActivity.a(this.a.a, (ProgressBar)this.a.a.a(2131370256));
-      EditLocalVideoActivity.a(this.a.a).setProgressDrawable(new ClipDrawable(new ColorDrawable(Color.parseColor("#1ab5ee")), 3, 1));
-      EditLocalVideoActivity.a(this.a.a).setBackgroundDrawable(new ColorDrawable(Color.parseColor("#4e000000")));
+    default: 
+      return;
+    case 2131438738: 
+      this.a.g();
+      return;
+    case 2131439189: 
+      this.a.h();
+      return;
+    case 2131436232: 
+      this.a.d();
+      return;
+    case 2131436229: 
+      this.a.c();
+      return;
+    case 2131436236: 
+      this.a.i();
+      return;
+    case 2131436233: 
+      this.a.l();
+      return;
+    case 2131436242: 
+      RecentOptPopBar.a(this.a);
+      return;
+    case 2131436237: 
+      this.a.a(8);
+      ReportController.b(this.a.a.app, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "jiahao.fukuan.click", 0, 0, "", "", "", "");
+      return;
+    case 2131436227: 
+      this.a.k();
+      return;
+    case 2131438740: 
+      this.a.e();
+      return;
     }
-    EditLocalVideoActivity.a(this.a.a).setVisibility(0);
-    EditLocalVideoActivity.a(this.a.a).setProgress(0);
+    this.a.j();
   }
 }
 

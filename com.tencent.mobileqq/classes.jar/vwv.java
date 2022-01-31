@@ -1,14 +1,24 @@
-import com.tencent.mobileqq.activity.aio.rebuild.TroopChatPie;
+import android.os.Handler;
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import android.widget.RelativeLayout;
+import com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie;
 
-class vwv
-  implements Runnable
+public class vwv
+  implements Animation.AnimationListener
 {
-  vwv(vwt paramvwt) {}
+  public vwv(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.a.a.ar();
+    this.a.p = 5;
+    PublicAccountChatPie.c(this.a).post(new vww(this));
+    this.a.a.sendEmptyMessage(1);
   }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation) {}
 }
 
 

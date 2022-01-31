@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.activity.qwallet.preload.PreloadManager;
-import java.lang.ref.WeakReference;
+import android.widget.PopupWindow;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList;
+import com.tencent.mobileqq.activity.qwallet.TroopUnAccalimedRedPacketList.HbItemClickListener;
 
-public class xcn
-  implements Runnable
+class xcn
+  extends TroopUnAccalimedRedPacketList.HbItemClickListener
 {
-  public xcn(PreloadManager paramPreloadManager, WeakReference paramWeakReference) {}
+  xcn(xcm paramxcm) {}
   
-  public void run()
+  public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      PreloadManager localPreloadManager = (PreloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localPreloadManager != null) && (!localPreloadManager.a)) {
-        localPreloadManager.a(false);
-      }
+    if ((paramInt == 1) && (TroopUnAccalimedRedPacketList.a() != null)) {
+      TroopUnAccalimedRedPacketList.a().dismiss();
     }
   }
 }

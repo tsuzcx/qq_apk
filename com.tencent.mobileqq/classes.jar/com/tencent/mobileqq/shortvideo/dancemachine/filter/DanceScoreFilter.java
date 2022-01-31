@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.shortvideo.dancemachine.filter;
 
-import ahmy;
-import ahmz;
-import ahna;
+import aiba;
+import aibb;
+import aibc;
 import android.graphics.Rect;
 import android.graphics.RectF;
 import android.os.SystemClock;
@@ -66,7 +66,7 @@ public class DanceScoreFilter
     ScaleAnimation localScaleAnimation = new ScaleAnimation(0.0F, 1.0F, 0.0F, 1.0F, 1, 0.5F, 1, 0.5F);
     localScaleAnimation.setDuration(300L);
     localAnimationSet.addAnimation(localScaleAnimation);
-    localAnimationSet.setAnimationListener(new ahmy(this));
+    localAnimationSet.setAnimationListener(new aiba(this));
     return localAnimationSet;
   }
   
@@ -78,7 +78,7 @@ public class DanceScoreFilter
     localTranslateAnimation.setDuration(1000L);
     localTranslateAnimation.setInterpolator(new BounceInterpolator());
     localAnimationSet.addAnimation(localTranslateAnimation);
-    localAnimationSet.setAnimationListener(new ahmz(this));
+    localAnimationSet.setAnimationListener(new aibb(this));
     localAnimationSet.setStartOffset(300L);
     return localAnimationSet;
   }
@@ -114,7 +114,7 @@ public class DanceScoreFilter
     localObject = new AlphaAnimation(0.0F, 1.0F);
     ((Animation)localObject).setDuration(600L);
     localAnimationSet.addAnimation((Animation)localObject);
-    localAnimationSet.setAnimationListener(new ahna(this));
+    localAnimationSet.setAnimationListener(new aibc(this));
     return localAnimationSet;
   }
   

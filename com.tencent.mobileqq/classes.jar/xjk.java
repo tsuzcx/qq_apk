@@ -1,18 +1,28 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.registerGuideLogin.LoginView;
-import com.tencent.mobileqq.app.ThreadManager;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.phone.GuideBindPhoneActivity;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
+import mqq.os.MqqHandler;
 
 public class xjk
-  implements DialogInterface.OnClickListener
+  implements View.OnClickListener
 {
-  public xjk(LoginView paramLoginView, String paramString1, String paramString2, String paramString3) {}
+  public xjk(BannerManager paramBannerManager) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onClick(View paramView)
   {
-    ReportController.a(this.jdField_a_of_type_ComTencentMobileqqActivityRegisterGuideLoginLoginView.a, "dc00898", "", "", "0X8006796", "0X8006796", 0, 0, "", "", "", "");
-    ThreadManager.postImmediately(new xjl(this), null, false);
+    paramView = new Intent(BannerManager.a(this.a), GuideBindPhoneActivity.class);
+    BannerManager.a(this.a).startActivity(paramView);
+    BannerManager.a(this.a).getSharedPreferences("contact_bind_info" + BannerManager.a(this.a).app.getAccount(), 0).edit().putBoolean("key_show_contact_banner", false).commit();
+    this.a.a(13, 0);
+    BannerManager.a(this.a).removeMessages(11);
+    ReportController.b(BannerManager.a(this.a).app, "CliOper", "", "", "0X80053D9", "0X80053D9", 0, 0, "", "", "", "");
   }
 }
 

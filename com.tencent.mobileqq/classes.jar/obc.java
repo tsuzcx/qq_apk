@@ -1,37 +1,27 @@
-import android.widget.SeekBar;
-import android.widget.SeekBar.OnSeekBarChangeListener;
-import com.tencent.biz.qqstory.takevideo.EditGifImage;
-import com.tencent.biz.qqstory.takevideo.EditGifSpeedControl;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.image.NativeGifImage;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.widget.FastAnimationDrawable;
+import android.view.View;
+import com.tencent.biz.qqstory.app.QQStoryContext;
+import com.tencent.biz.qqstory.boundaries.StoryApi;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.common.ChildViewClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.NewMyStorySegment;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
+import com.tencent.biz.qqstory.utils.UIUtils;
 
 public class obc
-  implements SeekBar.OnSeekBarChangeListener
+  extends ChildViewClickListener
 {
-  public obc(EditGifSpeedControl paramEditGifSpeedControl) {}
+  public obc(NewMyStorySegment paramNewMyStorySegment) {}
   
-  public void onProgressChanged(SeekBar paramSeekBar, int paramInt, boolean paramBoolean)
+  public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
   {
-    if (paramBoolean)
-    {
-      NativeGifImage.QZONE_DELAY = (int)(this.a.jdField_a_of_type_Double * paramInt + this.a.g);
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a != null) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a.a.a(NativeGifImage.QZONE_DELAY);
-      }
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.e = NativeGifImage.QZONE_DELAY;
-      this.a.d = paramInt;
-      if (QLog.isColorLevel()) {
-        QLog.d("EditGifSpeedControl", 2, "onProgressChanged | delayTime:" + this.a.e + " barPosition:" + this.a.d);
-      }
+    if (UIUtils.b()) {}
+    while (paramView.getId() != 2131371786) {
+      return;
     }
+    StoryReportor.a("mystory", "clk_all_story", 0, 0, new String[0]);
+    paramView = QQStoryContext.a().b();
+    StoryApi.a(NewMyStorySegment.c(this.a), 1, paramView);
   }
-  
-  public void onStartTrackingTouch(SeekBar paramSeekBar) {}
-  
-  public void onStopTrackingTouch(SeekBar paramSeekBar) {}
 }
 
 

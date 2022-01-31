@@ -1,33 +1,29 @@
-import android.content.Context;
-import android.view.WindowManager.BadTokenException;
-import com.tencent.mobileqq.activity.richmedia.CameraPreviewNew;
-import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQCustomDialog;
+import android.os.Message;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.recent.BannerManager;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.upgrade.UpgradeTIMWrapper;
+import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
 public class xjt
-  implements Runnable
+  implements View.OnClickListener
 {
-  public xjt(CameraPreviewNew paramCameraPreviewNew, String paramString, int paramInt, Context paramContext) {}
+  public xjt(BannerManager paramBannerManager, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangString;
-    if (this.jdField_a_of_type_Int == 2002) {
-      localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131428347);
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent.banner", 2, "UpgradeTIMWrapper close banner");
     }
-    localObject = DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230).setMessage((CharSequence)localObject).setPositiveButton(this.jdField_a_of_type_AndroidContentContext.getString(2131428346), new xju(this));
-    try
-    {
-      ((QQCustomDialog)localObject).setCancelable(false);
-      ((QQCustomDialog)localObject).show();
-      return;
-    }
-    catch (WindowManager.BadTokenException localBadTokenException)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("CameraPreviewNew", 2, "", localBadTokenException);
-    }
+    paramView = (QQAppInterface)BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).getAppRuntime();
+    this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper.a();
+    UpgradeTIMWrapper.a(paramView, this.jdField_a_of_type_ComTencentMobileqqAppUpgradeUpgradeTIMWrapper);
+    BannerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerManager).obtainMessage(20).sendToTarget();
+    ReportController.b(paramView, "CliOper", "", "", "0X800865A", "0X800865A", 0, 0, "", "", "", "");
   }
 }
 

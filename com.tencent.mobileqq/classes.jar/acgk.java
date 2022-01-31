@@ -1,23 +1,21 @@
-import com.tencent.mobileqq.filemanager.activity.delDownloadFile.QfileLocalFileDelAppTabView;
-import com.tencent.mobileqq.filemanager.settings.FMSettings;
-import com.tencent.mobileqq.filemanager.util.FileCategoryUtil;
-import java.util.HashMap;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
+import com.tencent.mobileqq.data.Emoticon;
+import com.tencent.mobileqq.emoticonview.PicEmoticonInfo;
+import com.tencent.mobileqq.magicface.view.MagicfaceViewController.OnMagicPlayEnd;
+import com.tencent.qphone.base.util.QLog;
 
-public class acgk
-  implements Runnable
+class acgk
+  implements MagicfaceViewController.OnMagicPlayEnd
 {
-  public acgk(QfileLocalFileDelAppTabView paramQfileLocalFileDelAppTabView) {}
+  acgk(acgj paramacgj, String paramString) {}
   
-  public void run()
+  public void a()
   {
-    HashMap localHashMap = new HashMap();
-    FileCategoryUtil.a(false, FMSettings.a().b(), ".apk", "", localHashMap, this.a);
-    String str = FMSettings.a().a();
-    if (str != null) {
-      FileCategoryUtil.a(false, str, ".apk", "", localHashMap, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("PicEmoticonInfo", 2, "forward, [play back] ready to send msg,magicvalue:" + this.jdField_a_of_type_Acgj.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.magicValue);
     }
-    FileCategoryUtil.a(localHashMap);
-    QfileLocalFileDelAppTabView.a(this.a, new acgl(this));
+    this.jdField_a_of_type_Acgj.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a.magicValue = this.jdField_a_of_type_JavaLangString;
+    ChatActivityFacade.a(this.jdField_a_of_type_Acgj.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Acgj.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_Acgj.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_Acgj.jdField_a_of_type_ComTencentMobileqqEmoticonviewPicEmoticonInfo.a);
   }
 }
 

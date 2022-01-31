@@ -1,19 +1,23 @@
-import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
-import com.tencent.mobileqq.filemanager.data.FMTransC2CMsgInfo;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity;
+import com.tencent.mobileqq.facetoface.Face2FaceFriendDetailView;
+import com.tencent.mobileqq.facetoface.Face2FaceUserData;
+import com.tencent.mobileqq.util.ProfileCardUtil;
 
-class ackk
-  implements Runnable
+public class ackk
+  implements View.OnClickListener
 {
-  ackk(acki paramacki, byte[] paramArrayOfByte, FMTransC2CMsgInfo paramFMTransC2CMsgInfo) {}
+  public ackk(Face2FaceAddFriendActivity paramFace2FaceAddFriendActivity, Face2FaceUserData paramFace2FaceUserData) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.jdField_a_of_type_Acki.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler.a(this.jdField_a_of_type_Acki.jdField_a_of_type_JavaLangString, 529, 4, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo);
+    ProfileCardUtil.a(this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity, this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceAddFriendActivity.a.a(), this.jdField_a_of_type_ComTencentMobileqqFacetofaceFace2FaceUserData.e, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ackk
  * JD-Core Version:    0.7.0.1
  */

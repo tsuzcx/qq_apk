@@ -1,15 +1,22 @@
-import com.tencent.mobileqq.armap.ARMapActivity;
-import com.tencent.mobileqq.armap.map.ARMapEngine;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.ark.ArkAiBubbleView;
+import com.tencent.qphone.base.util.QLog;
 
-class aary
-  implements Runnable
+public class aary
+  implements View.OnClickListener
 {
-  aary(aarv paramaarv, double paramDouble1, double paramDouble2) {}
+  public aary(ArkAiBubbleView paramArkAiBubbleView, View.OnClickListener paramOnClickListener) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    ARMapEngine localARMapEngine = this.jdField_a_of_type_Aarv.a.a;
-    ARMapEngine.rotateToLngLat(this.jdField_a_of_type_Double, this.b);
+    this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView.a.removeCallbacks(ArkAiBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView));
+    this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView.a.clearAnimation();
+    ArkAiBubbleView.a(this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView).run();
+    if (QLog.isColorLevel()) {
+      QLog.i("ark.ai", 2, String.format("ArkRecommendLogic.activate: %h", new Object[] { this.jdField_a_of_type_ComTencentMobileqqArkArkAiBubbleView }));
+    }
+    this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(paramView);
   }
 }
 

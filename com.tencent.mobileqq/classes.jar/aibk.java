@@ -1,68 +1,38 @@
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.transfile.ForwardSdkShareProcessor;
-import com.tencent.mobileqq.transfile.TransferRequest.AppInfo;
-import com.tencent.open.agent.AgentActivity;
-import com.tencent.qphone.base.util.QLog;
-import java.util.concurrent.atomic.AtomicBoolean;
-import mqq.observer.BusinessObserver;
+import android.graphics.SurfaceTexture;
+import android.graphics.SurfaceTexture.OnFrameAvailableListener;
+import com.tencent.mobileqq.shortvideo.filter.QQMovieFilter;
+import java.lang.ref.WeakReference;
 
 public class aibk
-  extends aibi
+  implements SurfaceTexture.OnFrameAvailableListener
 {
-  private int jdField_a_of_type_Int;
-  private BusinessObserver jdField_a_of_type_MqqObserverBusinessObserver = new aibl(this);
-  private AtomicBoolean c = new AtomicBoolean(false);
+  private WeakReference jdField_a_of_type_JavaLangRefWeakReference;
+  private boolean jdField_a_of_type_Boolean = true;
   
-  public aibk(ForwardSdkShareProcessor paramForwardSdkShareProcessor)
+  public aibk(QQMovieFilter paramQQMovieFilter)
   {
-    super(paramForwardSdkShareProcessor);
-    this.jdField_a_of_type_JavaLangString = "GetAppInfoStep";
-    AtomicBoolean localAtomicBoolean = this.c;
-    if (ForwardSdkShareProcessor.a(paramForwardSdkShareProcessor).jdField_a_of_type_Int == 1) {}
-    for (;;)
-    {
-      localAtomicBoolean.set(bool);
-      return;
-      bool = false;
-    }
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQMovieFilter);
   }
   
-  protected boolean a()
+  public void a()
   {
-    return this.c.get();
+    this.jdField_a_of_type_Boolean = false;
   }
   
-  protected void d()
+  public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|process|appId=" + ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) + ",pkgName=" + ForwardSdkShareProcessor.g(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) + ",retry=" + this.jdField_a_of_type_Int);
-    }
-    if (this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
+    if (this.jdField_a_of_type_Boolean)
     {
-      f();
-      return;
+      QQMovieFilter localQQMovieFilter = (QQMovieFilter)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localQQMovieFilter != null) {
+        localQQMovieFilter.a(paramSurfaceTexture);
+      }
     }
-    ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor, System.currentTimeMillis());
-    switch (ForwardSdkShareProcessor.b(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor))
-    {
-    default: 
-      return;
-    case 2: 
-      Share.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor), this.jdField_a_of_type_MqqObserverBusinessObserver);
-      return;
-    }
-    long l = ForwardSdkShareProcessor.b(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor) / 1000L;
-    String str = AgentActivity.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_AndroidContentContext, ForwardSdkShareProcessor.g(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor), l + "");
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.share.ForwardSdkShareProcessor", 2, "GetAppInfoStep|process|sign: " + str);
-    }
-    Share.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ForwardSdkShareProcessor.a(this.jdField_b_of_type_ComTencentMobileqqTransfileForwardSdkShareProcessor), str, l, this.jdField_a_of_type_MqqObserverBusinessObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     aibk
  * JD-Core Version:    0.7.0.1
  */

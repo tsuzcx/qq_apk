@@ -1,29 +1,25 @@
-import com.tencent.ark.ark;
-import com.tencent.mobileqq.gameparty.GamePartyManager;
-import com.tencent.qphone.base.util.QLog;
+import android.app.Activity;
+import com.tencent.mobileqq.filemanager.core.FileVideoManager.FileVideoManagerInitCallback;
+import com.tencent.mobileqq.filemanager.fileviewer.presenter.VideoFilePresenter;
 
 public class ader
-  implements Runnable
+  implements FileVideoManager.FileVideoManagerInitCallback
 {
-  public ader(GamePartyManager paramGamePartyManager, String paramString) {}
+  public ader(VideoFilePresenter paramVideoFilePresenter) {}
   
-  public void run()
+  public void a()
   {
-    try
-    {
-      ark.arkNotify("com.tencent.qqopen.teamup", "update_team_info", this.jdField_a_of_type_JavaLangString, "json");
-      return;
-    }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("GamePartyManager", 2, "arkNotify failed, .so not loaded");
-    }
+    this.a.a.finish();
+  }
+  
+  public void b()
+  {
+    this.a.a.runOnUiThread(new ades(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     ader
  * JD-Core Version:    0.7.0.1
  */

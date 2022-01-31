@@ -6,7 +6,7 @@ import com.tencent.biz.qqstory.model.StoryConfigManager;
 import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
-import myx;
+import nai;
 
 @TargetApi(14)
 public class CacheCleaner
@@ -37,7 +37,7 @@ public class CacheCleaner
   
   protected void a()
   {
-    ThreadManager.post(new myx(this), 2, null, false);
+    ThreadManager.post(new nai(this), 2, null, false);
   }
   
   public void a(boolean paramBoolean)

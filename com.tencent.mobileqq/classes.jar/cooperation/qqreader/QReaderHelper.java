@@ -1,6 +1,6 @@
 package cooperation.qqreader;
 
-import amav;
+import amqz;
 import android.text.TextUtils;
 import com.qq.jce.wup.BasicClassTypeUtil;
 import com.tencent.biz.common.offline.HtmlOffline;
@@ -114,7 +114,7 @@ public class QReaderHelper
           QLog.e("QReaderHelper", 1, "entry " + paramInt + " offline preload enabled,update offline package now!");
         }
         HtmlOffline.a();
-        ThreadManager.post(new amav(paramQQAppInterface), 5, null, true);
+        ThreadManager.post(new amqz(paramQQAppInterface), 5, null, true);
         return;
       }
     } while (!QLog.isColorLevel());

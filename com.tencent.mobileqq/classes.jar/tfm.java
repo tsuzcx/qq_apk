@@ -1,19 +1,16 @@
-import com.tencent.mobileqq.activity.QQLSActivity;
-import com.tencent.mobileqq.app.MessageObserver;
-import com.tencent.qphone.base.util.QLog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 
-public class tfm
-  extends MessageObserver
+class tfm
+  implements DialogInterface.OnClickListener
 {
-  public tfm(QQLSActivity paramQQLSActivity) {}
+  tfm(tfl paramtfl) {}
   
-  protected void a(boolean paramBoolean, Object paramObject)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    super.a(paramBoolean, paramObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLSActivity", 2, "PC has read onPushReadedNotify finish" + Thread.currentThread().getId());
-    }
-    QQLSActivity.a(this.a);
+    this.a.a.setResult(4003);
+    this.a.a.finish();
   }
 }
 

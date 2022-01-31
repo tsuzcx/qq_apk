@@ -1,13 +1,37 @@
-import com.tencent.mobileqq.app.TroopManager;
+import com.tencent.mobileqq.app.FriendListObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import com.tencent.mobileqq.app.msgnotify.MsgNotifyManager;
+import com.tencent.qphone.base.util.QLog;
+import java.util.List;
+import java.util.Set;
 
 public class zlh
-  implements Runnable
+  extends FriendListObserver
 {
-  public zlh(TroopManager paramTroopManager, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5) {}
+  public zlh(QQAppInterface paramQQAppInterface) {}
   
-  public void run()
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Int, this.d, this.e);
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAppInterface_friendListObserver", 2, "onUpdateFriendInfo uin:" + paramString + ",isSuccess:" + paramBoolean);
+    }
+    if (this.a.jdField_a_of_type_JavaUtilSet.contains(paramString))
+    {
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a.a() == 1) && (paramString != null) && (paramString.equals(((QQMessageFacade.Message)this.a.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a.a().get(0)).frienduin)) && (this.a.isBackground_Pause) && (this.a.f()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QQAppInterface_friendListObserver", 2, "update notifcation");
+        }
+        QQAppInterface.a(this.a, (QQMessageFacade.Message)this.a.jdField_a_of_type_ComTencentMobileqqAppMessageQQMessageFacade.a.a().get(0), false);
+      }
+      this.a.jdField_a_of_type_JavaUtilSet.remove(paramString);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QQAppInterface_friendListObserver", 2, "removeObserver");
+    }
+    this.a.removeObserver(this);
   }
 }
 

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.armap;
 
-import aavh;
-import aavi;
+import abci;
+import abcj;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.hardware.Camera;
@@ -24,8 +24,8 @@ public class CameraSurfaceView
   implements SurfaceHolder.Callback
 {
   public int a;
-  aavh jdField_a_of_type_Aavh = new aavh(this);
-  aavi jdField_a_of_type_Aavi = new aavi(this);
+  abci jdField_a_of_type_Abci = new abci(this);
+  abcj jdField_a_of_type_Abcj = new abcj(this);
   Camera.PreviewCallback jdField_a_of_type_AndroidHardwareCamera$PreviewCallback = null;
   Camera jdField_a_of_type_AndroidHardwareCamera = null;
   Display jdField_a_of_type_AndroidViewDisplay = null;
@@ -180,7 +180,7 @@ public class CameraSurfaceView
     if (QLog.isColorLevel()) {
       QLog.i("CameraSurfaceView", 2, "openCamera");
     }
-    ThreadManager.post(this.jdField_a_of_type_Aavi, 8, null, false);
+    ThreadManager.post(this.jdField_a_of_type_Abcj, 8, null, false);
   }
   
   public void c()
@@ -188,7 +188,7 @@ public class CameraSurfaceView
     if (QLog.isColorLevel()) {
       QLog.i("CameraSurfaceView", 2, "closeCamera");
     }
-    ThreadManager.post(this.jdField_a_of_type_Aavh, 8, null, false);
+    ThreadManager.post(this.jdField_a_of_type_Abci, 8, null, false);
   }
   
   @TargetApi(9)

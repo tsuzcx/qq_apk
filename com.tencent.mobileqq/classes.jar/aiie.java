@@ -1,23 +1,24 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.structmsg.StructMsgClickHandler;
+import com.tencent.mobileqq.structmsg.StructMsgForHypertext;
 
 public class aiie
-  extends BroadcastReceiver
+  implements View.OnClickListener
 {
-  public aiie(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
+  public aiie(StructMsgForHypertext paramStructMsgForHypertext) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(View paramView)
   {
-    if ((paramIntent != null) && (paramIntent.getAction().equals("cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.handleQunDetailDelete"))) {
-      this.a.finish();
-    }
+    new StructMsgClickHandler(null, paramView, this.a.message).a("web", this.a.mSourceUrl, null, null);
+    ReportController.b(null, "CliOper", "", "", "0X800567C", "0X800567C", 0, 0, this.a.mMsgServiceID + "", "", "", "");
+    ReportController.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aiie
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,17 @@
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagDBManager;
-import com.tencent.mobileqq.activity.qwallet.PasswdRedBagManager;
+import com.tencent.mobileqq.activity.photo.MediaFileFilter;
+import com.tencent.mobileqq.activity.photo.MimeHelper;
 
-class wwm
-  implements Runnable
+public final class wwm
+  extends MediaFileFilter
 {
-  wwm(wwl paramwwl, int paramInt) {}
-  
-  public void run()
+  public boolean a()
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      PasswdRedBagManager.a(this.jdField_a_of_type_Wwl.a).a(this.jdField_a_of_type_Wwl.a.b);
-    }
-    while (this.jdField_a_of_type_Int != 0) {
-      return;
-    }
-    PasswdRedBagManager.a(this.jdField_a_of_type_Wwl.a).a(this.jdField_a_of_type_Wwl.a.a);
+    return false;
+  }
+  
+  public boolean a(String paramString)
+  {
+    return !MimeHelper.b(paramString);
   }
 }
 

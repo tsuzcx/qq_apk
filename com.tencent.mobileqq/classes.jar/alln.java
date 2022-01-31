@@ -1,26 +1,18 @@
-import android.view.ViewTreeObserver;
-import com.tencent.widget.DynamicGridView;
+import com.tencent.qidian.QidianManager;
 
 public class alln
-  implements alls
+  implements Runnable
 {
-  private int jdField_a_of_type_Int;
-  private int b;
+  public alln(QidianManager paramQidianManager) {}
   
-  public alln(DynamicGridView paramDynamicGridView, int paramInt1, int paramInt2)
+  public void run()
   {
-    this.b = paramInt1;
-    this.jdField_a_of_type_Int = paramInt2;
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentWidgetDynamicGridView.getViewTreeObserver().addOnPreDrawListener(new allo(this, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView), paramInt1, paramInt2));
+    QidianManager.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     alln
  * JD-Core Version:    0.7.0.1
  */

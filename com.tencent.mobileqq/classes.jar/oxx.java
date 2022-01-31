@@ -1,24 +1,13 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.view.View;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout.LayoutParams;
-import com.tencent.biz.ui.CustomAnimationAdapter;
+import com.tencent.biz.troop.feeds.TroopNewGuidePopWindow;
 
-public class oxx
-  implements ValueAnimator.AnimatorUpdateListener
+class oxx
+  implements Runnable
 {
-  public oxx(CustomAnimationAdapter paramCustomAnimationAdapter, View paramView) {}
+  oxx(oxw paramoxw) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void run()
   {
-    paramValueAnimator = (Integer)paramValueAnimator.getAnimatedValue();
-    ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    if ((localLayoutParams instanceof LinearLayout.LayoutParams))
-    {
-      ((LinearLayout.LayoutParams)localLayoutParams).topMargin = paramValueAnimator.intValue();
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-    }
+    TroopNewGuidePopWindow.a(this.a.jdField_a_of_type_ComTencentBizTroopFeedsTroopNewGuidePopWindow, this.a.jdField_a_of_type_OrgJsonJSONObject, this.a.jdField_a_of_type_Int);
   }
 }
 

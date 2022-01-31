@@ -1,23 +1,28 @@
-import dov.com.tencent.biz.qqstory.takevideo.EditVideoGuide;
-import java.util.concurrent.atomic.AtomicBoolean;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.CustomWebView;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
+import cooperation.qzone.QZoneHelper.QZoneCoverConstants;
+import cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin;
 
 public class andt
-  implements Runnable
+  implements View.OnClickListener
 {
-  private andt(EditVideoGuide paramEditVideoGuide) {}
+  public andt(QZoneCoverStoreJsPlugin paramQZoneCoverStoreJsPlugin) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    if (this.a.a.compareAndSet(true, false))
+    if ((this.a.mRuntime.a() != null) && (this.a.mRuntime.a() != null))
     {
-      this.a.a(false);
-      this.a.c();
+      paramView = QZoneHelper.QZoneCoverConstants.a("qzone", String.valueOf(1), this.a.mRuntime.a().getAccount(), this.a.mRuntime.a().getAccount());
+      this.a.mRuntime.a().loadUrl(paramView);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     andt
  * JD-Core Version:    0.7.0.1
  */

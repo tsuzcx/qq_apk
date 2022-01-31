@@ -1,20 +1,17 @@
-import com.tencent.biz.qqstory.takevideo.EditPicSave;
-import com.tencent.biz.qqstory.takevideo.EditVideoPartManager;
-import com.tencent.biz.qqstory.takevideo.EditVideoUi;
-import com.tencent.mobileqq.widget.QQToast;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.qqstory.storyHome.qqstorylist.view.widget.GuideInfoDialog;
+import com.tencent.biz.qqstory.support.report.StoryReportor;
 
-class obt
-  implements Runnable
+public class obt
+  implements View.OnClickListener
 {
-  obt(obs paramobs) {}
+  public obt(GuideInfoDialog paramGuideInfoDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoPartManager.a(0);
-    this.a.a.jdField_a_of_type_Boolean = true;
-    this.a.a.a(100);
-    this.a.a.h();
-    QQToast.a(this.a.a.jdField_a_of_type_ComTencentBizQqstoryTakevideoEditVideoUi.a(), 2, "已保存到系统相册", 0).a();
+    StoryReportor.a("home_page", "guide_close", 0, 0, new String[0]);
+    this.a.dismiss();
   }
 }
 

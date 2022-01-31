@@ -1,14 +1,29 @@
-import com.tencent.mobileqq.activity.PublicAccountListActivity;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
+import android.app.Dialog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.activity.PayBridgeActivity;
+import com.tencent.mobileqq.activity.qwallet.QWalletPushManager;
 
 public class tep
-  implements Runnable
+  implements View.OnClickListener
 {
-  public tep(PublicAccountListActivity paramPublicAccountListActivity) {}
+  public tep(PayBridgeActivity paramPayBridgeActivity, Dialog paramDialog) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    this.a.a.a();
+    switch (paramView.getId())
+    {
+    default: 
+      return;
+    case 2131364038: 
+      this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      paramView = QWalletPushManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity.a);
+      PayBridgeActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity, paramView);
+      return;
+    }
+    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+    QWalletPushManager.b();
+    this.jdField_a_of_type_ComTencentMobileqqActivityPayBridgeActivity.finish();
   }
 }
 

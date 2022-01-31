@@ -1,14 +1,14 @@
-import com.tencent.mobileqq.armap.config.BaseCheckHandler.ItemConfig;
-import com.tencent.mobileqq.armap.config.OpenBoxCheckHander;
+import android.view.ViewTreeObserver.OnGlobalLayoutListener;
+import com.tencent.mobileqq.ark.ArkViewAdjustFromKeyboard;
 
 public class aayl
-  implements Runnable
+  implements ViewTreeObserver.OnGlobalLayoutListener
 {
-  public aayl(OpenBoxCheckHander paramOpenBoxCheckHander, BaseCheckHandler.ItemConfig paramItemConfig) {}
+  public aayl(ArkViewAdjustFromKeyboard paramArkViewAdjustFromKeyboard) {}
   
-  public void run()
+  public void onGlobalLayout()
   {
-    this.jdField_a_of_type_ComTencentMobileqqArmapConfigOpenBoxCheckHander.a(this.jdField_a_of_type_ComTencentMobileqqArmapConfigBaseCheckHandler$ItemConfig);
+    ArkViewAdjustFromKeyboard.a(this.a);
   }
 }
 

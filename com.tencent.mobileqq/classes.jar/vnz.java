@@ -1,19 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.LinearLayout;
-import com.tencent.biz.ui.CustomMenuBar;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
+import android.app.Activity;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
 
-public class vnz
-  implements View.OnClickListener
+class vnz
+  implements DialogInterface.OnClickListener
 {
-  public vnz(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
+  vnz(vny paramvny) {}
   
-  public void onClick(View paramView)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    com.tencent.mobileqq.activity.aio.AIOUtils.m = true;
-    this.a.a.setVisibility(8);
-    this.a.b.setVisibility(0);
+    paramDialogInterface.dismiss();
+    AIOImageListScene.j(this.a.a).setResult(8001);
   }
 }
 

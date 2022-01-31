@@ -1,36 +1,45 @@
-import android.animation.Animator;
-import android.view.View;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraActivity2;
-import com.tencent.mobileqq.activity.richmedia.FlowPlusPanel;
-import com.tencent.mobileqq.activity.richmedia.state.RMVideoStateMgr;
-import com.tencent.mobileqq.activity.richmedia.state.RMViewSTInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
+import com.tencent.biz.pubaccount.troopbarassit.TroopBarData;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.message.QQMessageFacade;
+import com.tencent.mobileqq.app.message.QQMessageFacade.Message;
+import java.util.List;
 
-public class xlj
-  extends xjs
+public final class xlj
+  implements Runnable
 {
-  public xlj(FlowCameraActivity2 paramFlowCameraActivity2) {}
+  public xlj(QQAppInterface paramQQAppInterface) {}
   
-  public void onAnimationEnd(Animator paramAnimator)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationEnd <<===");
+    List localList = TroopBarAssistantManager.a().a(this.a);
+    int i;
+    int j;
+    label19:
+    Object localObject;
+    if (localList == null)
+    {
+      i = 0;
+      j = 0;
+      if (j >= i) {
+        return;
+      }
+      localObject = (TroopBarData)localList.get(j);
+      if (localObject != null) {
+        break label58;
+      }
     }
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowPlusPanel != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaFlowPlusPanel.a();
-    }
-    this.a.k();
-    this.a.e.setVisibility(4);
-    this.a.e.setPadding(0, 0, 0, 0);
-    if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a != null)) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityRichmediaStateRMVideoStateMgr.a.y();
-    }
-  }
-  
-  public void onAnimationStart(Animator paramAnimator)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("FlowCameraActivity", 2, "startExitPtvModeAnimation: onAnimationStart ===>>");
+    for (;;)
+    {
+      j += 1;
+      break label19;
+      i = localList.size();
+      break;
+      label58:
+      localObject = this.a.a().a(((TroopBarData)localObject).mUin, 1008);
+      if (localObject != null) {
+        TroopBarAssistantManager.a().a(this.a, ((QQMessageFacade.Message)localObject).time);
+      }
     }
   }
 }

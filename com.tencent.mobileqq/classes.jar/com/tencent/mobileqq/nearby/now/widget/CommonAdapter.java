@@ -9,7 +9,7 @@ import java.util.List;
 public abstract class CommonAdapter
   extends RecyclerView.Adapter
 {
-  private int jdField_a_of_type_Int = 2130969127;
+  private int jdField_a_of_type_Int = 2130969126;
   public Context a;
   @Nullable
   public CommonViewHolder.ItemClickListener a;
@@ -17,7 +17,7 @@ public abstract class CommonAdapter
   private boolean jdField_a_of_type_Boolean = true;
   public int b;
   private boolean b;
-  private int c = 2130969130;
+  private int c = 2130969129;
   
   public CommonAdapter(Context paramContext, int paramInt, List paramList)
   {

@@ -1,29 +1,23 @@
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.app.automator.step.GetNearbyRecommender;
-import com.tencent.mobileqq.data.Card;
+import android.os.Looper;
 import com.tencent.qphone.base.util.QLog;
+import mqq.os.MqqHandler;
 
-public class zns
-  extends CardObserver
+public final class zns
+  extends MqqHandler
 {
-  public zns(GetNearbyRecommender paramGetNearbyRecommender) {}
-  
-  protected void c(boolean paramBoolean, String paramString, Card paramCard)
+  public zns(Looper paramLooper)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "GetNearbyRecommender onGetDetailInfo|uin=" + paramString);
-    }
-    if (!GetNearbyRecommender.a(this.a).b.getCurrentAccountUin().equals(paramString)) {
-      return;
-    }
-    if (!paramBoolean)
+    super(paramLooper);
+  }
+  
+  public void removeCallbacksAndMessages(Object paramObject)
+  {
+    if (paramObject == null)
     {
-      this.a.a(7);
+      QLog.e("ThreadManager", 1, "global SubHandler cannot excute removeCallbacksAndMessages");
       return;
     }
-    this.a.a(6);
+    super.removeCallbacksAndMessages(paramObject);
   }
 }
 

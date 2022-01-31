@@ -1,15 +1,14 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.nearby.now.view.viewmodel.PlayOperationViewModel;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.avatar.dynamicavatar.DynamicUtils;
 
-public class aeng
-  implements View.OnClickListener
+public final class aeng
+  implements Runnable
 {
-  public aeng(PlayOperationViewModel paramPlayOperationViewModel) {}
+  public aeng(QQAppInterface paramQQAppInterface, String paramString, int paramInt) {}
   
-  public void onClick(View paramView)
+  public void run()
   {
-    this.a.d(paramView);
+    DynamicUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, 39, this.jdField_a_of_type_Int, 640);
   }
 }
 

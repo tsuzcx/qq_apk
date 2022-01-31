@@ -1,39 +1,19 @@
-import android.text.Editable;
-import android.text.Selection;
-import android.text.TextWatcher;
-import android.widget.EditText;
-import com.tencent.mobileqq.nearby.now.utils.CommentsUtil;
-import com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView;
+import com.tencent.mobileqq.musicgene.MusicGeneWebViewPlugin;
+import java.util.TimerTask;
 
 public class aekn
-  implements TextWatcher
+  extends TimerTask
 {
-  public aekn(ShortVideoCommentsView paramShortVideoCommentsView) {}
+  public aekn(MusicGeneWebViewPlugin paramMusicGeneWebViewPlugin) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void run()
   {
-    if (ShortVideoCommentsView.a(this.a) == null) {}
-    while (CommentsUtil.a(paramEditable.toString()) <= 140) {
-      return;
-    }
-    int j = Selection.getSelectionEnd(paramEditable);
-    paramEditable = CommentsUtil.a(paramEditable.toString(), 0, 140).toString();
-    ShortVideoCommentsView.a(this.a).setText(paramEditable);
-    paramEditable = ShortVideoCommentsView.a(this.a).getText();
-    int i = j;
-    if (j > paramEditable.length()) {
-      i = paramEditable.length();
-    }
-    Selection.setSelection(paramEditable, i);
+    MusicGeneWebViewPlugin.a(this.a);
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     aekn
  * JD-Core Version:    0.7.0.1
  */

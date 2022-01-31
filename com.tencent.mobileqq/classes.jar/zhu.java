@@ -1,18 +1,15 @@
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.app.NearbyGrayTipsManager;
+import com.tencent.mobileqq.app.NearbyGrayTipsManager.GreetWording;
 
 public class zhu
   implements Runnable
 {
-  public zhu(QQAppInterface paramQQAppInterface, StringBuilder paramStringBuilder) {}
+  public zhu(NearbyGrayTipsManager.GreetWording paramGreetWording1, NearbyGrayTipsManager.GreetWording paramGreetWording2) {}
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQAppInterface", 2, "isCallTabShow needupdate,result=" + this.jdField_a_of_type_JavaLangStringBuilder);
-    }
-    SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), null, "qqsetting_calltab_show_key", this.jdField_a_of_type_JavaLangStringBuilder.toString());
+    String str = NearbyGrayTipsManager.GreetWording.getPath(this.a.id);
+    NearbyGrayTipsManager.a(this.a, str);
   }
 }
 

@@ -1,38 +1,16 @@
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie;
-import com.tencent.mobileqq.app.EnterpriseQQHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.soso.SosoInterface.OnLocationListener;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLbsInfo;
-import com.tencent.mobileqq.app.soso.SosoInterface.SosoLocation;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.galleryactivity.AbstractImageAdapter;
+import com.tencent.mobileqq.activity.aio.photo.AIOImageListScene;
+import com.tencent.mobileqq.activity.aio.photo.AIOPhotoListAdapter;
 
 public class vof
-  extends SosoInterface.OnLocationListener
+  implements Runnable
 {
-  public vof(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie, int paramInt, boolean paramBoolean1, boolean paramBoolean2, long paramLong, boolean paramBoolean3, boolean paramBoolean4, String paramString)
-  {
-    super(paramInt, paramBoolean1, paramBoolean2, paramLong, paramBoolean3, paramBoolean4, paramString);
-  }
+  public vof(AIOImageListScene paramAIOImageListScene) {}
   
-  public void a(int paramInt, SosoInterface.SosoLbsInfo paramSosoLbsInfo)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "onLocationFinish(): BEGIN errCode=" + paramInt);
-    }
-    if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.a != null)) {
-      if (paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString == null) {
-        break label169;
-      }
-    }
-    label169:
-    for (String str = paramSosoLbsInfo.a.jdField_b_of_type_JavaLangString;; str = "")
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("BusinessChatPie", 2, "onLocationFinish() latitude=" + paramSosoLbsInfo.a.a + ", longitude=" + paramSosoLbsInfo.a.a + ", address=" + str);
-      }
-      ((EnterpriseQQHandler)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a(21)).a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, paramSosoLbsInfo.a.a, paramSosoLbsInfo.a.jdField_b_of_type_Double, str);
-      return;
+    if ((this.a.a != null) && (!((AIOPhotoListAdapter)this.a.a).a(false))) {
+      this.a.a.notifyDataSetChanged();
     }
   }
 }

@@ -1,30 +1,21 @@
-import com.tencent.open.appcommon.CallBackEvent;
-import com.tencent.open.appcommon.now.download.js.DownloadCallbackWebImpl;
-import com.tencent.open.base.LogUtility;
-import com.tencent.smtt.sdk.WebView;
+import android.os.Environment;
+import com.tencent.mobileqq.filemanager.util.FileUtil;
+import com.tencent.mobileqq.webview.swift.component.SwiftBrowserMiscHandler;
+import java.io.File;
 
 public class akpd
   implements Runnable
 {
-  public akpd(DownloadCallbackWebImpl paramDownloadCallbackWebImpl, WebView paramWebView, String paramString) {}
+  public akpd(SwiftBrowserMiscHandler paramSwiftBrowserMiscHandler) {}
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentSmttSdkWebView != null) && (this.jdField_a_of_type_JavaLangString != null) && (CallBackEvent.a().a())) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl(this.jdField_a_of_type_JavaLangString);
-      return;
-    }
-    catch (Exception localException)
-    {
-      LogUtility.a("DownloadCallbackWebImpl", "doJsCallBack >>> ", localException);
-    }
+    FileUtil.a(new File(Environment.getExternalStorageDirectory(), "/tencent/MobileQQ/ShareScreenShots"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     akpd
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,33 @@
-import android.view.animation.AlphaAnimation;
-import android.widget.ImageView;
-import com.tencent.mobileqq.activity.aio.anim.friendship.FriendShipViewManager;
+import android.content.Context;
+import android.net.Uri;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.app.FileManagerEngine;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.forward.ForwardFileBaseOption;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-public class ulk
-  implements Runnable
+public final class ulk
+  implements FMDialogUtil.FMDialogInterface
 {
-  public ulk(FriendShipViewManager paramFriendShipViewManager) {}
+  public ulk(ArrayList paramArrayList, Context paramContext, int paramInt, QQAppInterface paramQQAppInterface, String paramString1, String paramString2) {}
   
-  public void run()
+  public void a()
   {
-    if (this.a.a != null)
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+    while (localIterator.hasNext())
     {
-      this.a.a.setBackgroundColor(-1442840576);
-      AlphaAnimation localAlphaAnimation = new AlphaAnimation(0.0F, 1.0F);
-      localAlphaAnimation.setDuration(300L);
-      this.a.a.startAnimation(localAlphaAnimation);
+      Object localObject = (Uri)localIterator.next();
+      localObject = ForwardFileBaseOption.a(this.jdField_a_of_type_AndroidContentContext, (Uri)localObject);
+      if (this.jdField_a_of_type_Int == 1) {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.jdField_a_of_type_JavaLangString);
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.a().a((String)localObject, this.b, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true);
+      }
     }
   }
+  
+  public void b() {}
 }
 
 

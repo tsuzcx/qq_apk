@@ -1,25 +1,31 @@
-import android.os.Handler;
-import com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher;
+import android.app.Activity;
+import android.content.Intent;
+import com.dataline.core.DirectForwarder;
+import com.tencent.mobileqq.filemanager.util.FMDialogUtil.FMDialogInterface;
+import com.tencent.mobileqq.forward.ForwardBaseOption;
 
-public class adkj
-  implements Runnable
+class adkj
+  implements FMDialogUtil.FMDialogInterface
 {
-  private int jdField_a_of_type_Int;
+  adkj(adki paramadki) {}
   
-  public adkj(HuayangPluginLauncher paramHuayangPluginLauncher) {}
-  
-  public void run()
+  public void a()
   {
-    HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher, this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_Int += 20;
-    if (this.jdField_a_of_type_Int < 80) {
-      HuayangPluginLauncher.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoHuayangHuayangPluginLauncher).postDelayed(this, 300L);
-    }
+    DirectForwarder.b(this.a.a.jdField_a_of_type_AndroidAppActivity, 0);
+    this.a.a.jdField_a_of_type_AndroidContentIntent.putExtra("NOCANCEL4DATALIN", true);
+    this.a.a.jdField_a_of_type_AndroidAppActivity.setResult(0, this.a.a.jdField_a_of_type_AndroidContentIntent);
+    this.a.a.jdField_a_of_type_AndroidAppActivity.finish();
+  }
+  
+  public void b()
+  {
+    this.a.a.jdField_a_of_type_AndroidAppActivity.setResult(0, this.a.a.jdField_a_of_type_AndroidContentIntent);
+    this.a.a.jdField_a_of_type_AndroidAppActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\aaa.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     adkj
  * JD-Core Version:    0.7.0.1
  */

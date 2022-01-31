@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.pic;
 
-import afxi;
-import afxj;
-import afxk;
+import aglk;
+import agll;
+import aglm;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -25,7 +25,7 @@ import java.util.Iterator;
 public class PresendPicMgr
 {
   private static PresendPicMgr jdField_a_of_type_ComTencentMobileqqPicPresendPicMgr;
-  public afxi a;
+  public aglk a;
   private HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
   public Messenger a;
   private final IPresendPicMgr jdField_a_of_type_ComTencentMobileqqPicIPresendPicMgr;
@@ -44,7 +44,7 @@ public class PresendPicMgr
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("presend_worker_thread");
     this.jdField_a_of_type_AndroidOsHandlerThread.start();
-    this.jdField_a_of_type_Afxi = new afxi(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
+    this.jdField_a_of_type_Aglk = new aglk(this.jdField_a_of_type_AndroidOsHandlerThread.getLooper(), this);
     try
     {
       paramIPresendPicMgr = this.jdField_a_of_type_ComTencentMobileqqPicIPresendPicMgr.a();
@@ -100,7 +100,7 @@ public class PresendPicMgr
     }
   }
   
-  private afxj a(String paramString)
+  private agll a(String paramString)
   {
     Logger.a("PresendPicMgr", "findRequestByPath", "path = " + paramString);
     if (this.jdField_a_of_type_JavaUtilArrayList == null)
@@ -116,9 +116,9 @@ public class PresendPicMgr
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     while (localIterator.hasNext())
     {
-      afxj localafxj = (afxj)localIterator.next();
-      if (localafxj.a.c.equals(paramString)) {
-        return localafxj;
+      agll localagll = (agll)localIterator.next();
+      if (localagll.a.c.equals(paramString)) {
+        return localagll;
       }
     }
     return null;
@@ -214,7 +214,7 @@ public class PresendPicMgr
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
-      ((afxj)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramInt);
+      ((agll)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramInt);
       i += 1;
     }
     this.jdField_a_of_type_JavaUtilArrayList.clear();
@@ -243,7 +243,7 @@ public class PresendPicMgr
       Logger.a("PresendPicMgr", "getCompossedIntent", "Presend is OFF!");
       return;
     }
-    paramIntent.putExtra("presend_handler", new BinderWarpper(new Messenger(this.jdField_a_of_type_Afxi).getBinder()));
+    paramIntent.putExtra("presend_handler", new BinderWarpper(new Messenger(this.jdField_a_of_type_Aglk).getBinder()));
   }
   
   public void a(String paramString, int paramInt)
@@ -272,9 +272,9 @@ public class PresendPicMgr
       paramString.j = i;
       paramString.g = true;
       Logger.a("PresendPicMgr", "presendPic", "uinType = " + i);
-      paramString = new afxj(this, paramString, paramInt1, paramInt2);
+      paramString = new agll(this, paramString, paramInt1, paramInt2);
       this.jdField_a_of_type_JavaUtilArrayList.add(paramString);
-      this.jdField_a_of_type_Afxi.post(new afxk(this, paramString));
+      this.jdField_a_of_type_Aglk.post(new aglm(this, paramString));
       return;
     }
     catch (RemoteException localRemoteException)
@@ -307,14 +307,14 @@ public class PresendPicMgr
       return;
     }
     Logger.a("PresendPicMgr", "cancelPresendPic", "path = " + paramString);
-    afxj localafxj = a(paramString);
-    if (localafxj == null)
+    agll localagll = a(paramString);
+    if (localagll == null)
     {
       Logger.a("PresendPicMgr", "cancelPresendPic", "cannot find PresendReq,path = " + paramString);
       return;
     }
-    this.jdField_a_of_type_JavaUtilArrayList.remove(localafxj);
-    localafxj.a(paramInt);
+    this.jdField_a_of_type_JavaUtilArrayList.remove(localagll);
+    localagll.a(paramInt);
   }
 }
 

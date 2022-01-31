@@ -1,50 +1,18 @@
-import android.os.SystemClock;
-import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.text.DynamicTextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.LayerListener;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.layer.TextLayer.TextItem;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.EditTextDialog;
-import dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleLayout;
+import android.widget.ImageView;
+import dov.com.qq.im.QIMEffectCameraCaptureUnit;
 
 public class anjn
-  implements TextLayer.LayerListener
+  implements Runnable
 {
-  private anjn(DoodleLayout paramDoodleLayout) {}
+  public anjn(QIMEffectCameraCaptureUnit paramQIMEffectCameraCaptureUnit) {}
   
-  public void a(float paramFloat)
+  public void run()
   {
-    if (paramFloat >= 0.95F)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoodleLayout", 2, "onAnimate:" + paramFloat);
-      }
-      if ((this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiEditTextDialog != null) && (this.a.a() != null) && (this.a.a().a() != null)) {
-        this.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoDoodleUiEditTextDialog.a(this.a.a().a(), this.a.a().a().b());
-      }
-    }
-  }
-  
-  public void a(DynamicTextItem paramDynamicTextItem)
-  {
-    if (DoodleLayout.a(this.a)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("DoodleLayout", 2, "onClickInside mIsRecording");
-      }
-    }
-    long l;
-    do
-    {
-      return;
-      l = SystemClock.uptimeMillis();
-    } while (l - this.a.jdField_a_of_type_Long <= 500L);
-    this.a.jdField_a_of_type_Long = l;
-    this.a.a(paramDynamicTextItem, paramDynamicTextItem.b(), 1, true);
-  }
-  
-  public boolean a(TextLayer.TextItem paramTextItem)
-  {
-    return this.a.a(paramTextItem, true);
+    this.a.d = false;
+    this.a.s();
+    QIMEffectCameraCaptureUnit.f(this.a, true);
+    QIMEffectCameraCaptureUnit.b(this.a).setVisibility(0);
+    QIMEffectCameraCaptureUnit.b(this.a).setEnabled(true);
   }
 }
 

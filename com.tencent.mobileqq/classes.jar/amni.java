@@ -1,34 +1,22 @@
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-import com.tencent.mobileqq.webview.swift.WebViewPlugin;
-import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QzoneWanbaJsPlugin;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.biz.qrcode.ipc.QrHandleResultCallBack;
+import cooperation.qlink.QQProxyForQlink;
 
 public class amni
-  extends BroadcastReceiver
+  implements DialogInterface.OnClickListener
 {
-  public amni(QzoneWanbaJsPlugin paramQzoneWanbaJsPlugin) {}
+  public amni(QQProxyForQlink paramQQProxyForQlink, QrHandleResultCallBack paramQrHandleResultCallBack) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      paramContext = paramIntent.getStringExtra("callback");
-      int i = paramIntent.getIntExtra("ret", 1);
-      QZLog.i("QzoneWanbaJsPlugin", "收到广播消息 callback=" + paramContext + ",ret=" + i);
-      this.a.a.callJs(paramContext, new String[] { "{'ret':" + i + "}" });
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      QZLog.e("QzoneWanbaJsPlugin", "callback error", paramContext);
-    }
+    this.jdField_a_of_type_ComTencentBizQrcodeIpcQrHandleResultCallBack.a();
+    paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     amni
  * JD-Core Version:    0.7.0.1
  */

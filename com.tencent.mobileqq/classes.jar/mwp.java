@@ -1,17 +1,17 @@
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.biz.publicAccountImageCollection.PublicAccountImageCollectionMainActivity;
-import com.tencent.widget.ActionSheet;
+import android.app.Activity;
+import com.tencent.biz.pubaccount.util.ProfileParams;
+import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.app.QQAppInterface;
 
-public class mwp
-  implements View.OnClickListener
+public final class mwp
+  implements BusinessObserver
 {
-  public mwp(PublicAccountImageCollectionMainActivity paramPublicAccountImageCollectionMainActivity) {}
+  public mwp(Activity paramActivity, QQAppInterface paramQQAppInterface, ProfileParams paramProfileParams) {}
   
-  public void onClick(View paramView)
+  public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (this.a.a.isShowing()) {
-      this.a.a.dismiss();
+    if (paramBoolean) {
+      this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new mwq(this, paramObject));
     }
   }
 }

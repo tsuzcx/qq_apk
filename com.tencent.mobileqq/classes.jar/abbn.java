@@ -1,19 +1,16 @@
-import android.animation.ValueAnimator;
-import android.animation.ValueAnimator.AnimatorUpdateListener;
-import android.widget.ImageView;
-import com.tencent.mobileqq.armap.wealthgod.ARMapSplashBgView;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
+import com.tencent.mobileqq.armap.ARMapActivity;
 
 public class abbn
-  implements ValueAnimator.AnimatorUpdateListener
+  implements DialogInterface.OnClickListener
 {
-  public abbn(ARMapSplashBgView paramARMapSplashBgView) {}
+  public abbn(ARMapActivity paramARMapActivity) {}
   
-  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramValueAnimator = (Float)paramValueAnimator.getAnimatedValue();
-    if (ARMapSplashBgView.b(this.a) != null) {
-      ARMapSplashBgView.b(this.a).setTranslationY(paramValueAnimator.floatValue() * ARMapSplashBgView.c(this.a));
-    }
+    this.a.startActivity(new Intent("android.settings.WIFI_SETTINGS"));
   }
 }
 

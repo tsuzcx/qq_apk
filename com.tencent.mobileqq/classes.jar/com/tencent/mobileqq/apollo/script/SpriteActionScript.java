@@ -520,7 +520,7 @@ public class SpriteActionScript
           localJSONObject.put("height", paramInt2);
           localJSONObject.put("screenW", DeviceInfoUtil.j());
           localJSONObject.put("screenH", DeviceInfoUtil.k());
-          localJSONObject.put("qqVer", "7.6.0");
+          localJSONObject.put("qqVer", "7.6.3");
           localJSONObject.put("uin", this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.b);
           localJSONObject.put("density", DeviceInfoUtil.a);
           localJSONObject.put("wait", "def/basic/action/1/action/action");

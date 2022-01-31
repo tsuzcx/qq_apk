@@ -1,51 +1,38 @@
-import com.tencent.mobileqq.pluginsdk.OnPluginInstallListener.Stub;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.QLog;
-import cooperation.plugin.IPluginManager;
-import cooperation.qqindividuality.QQIndividualityBridgeActivity;
+import android.annotation.TargetApi;
+import android.view.VelocityTracker;
+import com.tencent.util.VersionUtils;
+import com.tencent.widget.AbsListView;
+import com.tencent.widget.OverScroller;
 
-public class alzv
-  extends OnPluginInstallListener.Stub
+class alzv
+  implements Runnable
 {
-  public alzv(QQIndividualityBridgeActivity paramQQIndividualityBridgeActivity) {}
+  alzv(alzu paramalzu) {}
   
-  public void onInstallBegin(String paramString) {}
-  
-  public void onInstallDownloadProgress(String paramString, int paramInt1, int paramInt2) {}
-  
-  public void onInstallError(String paramString, int paramInt)
+  @TargetApi(8)
+  public void run()
   {
-    String str = String.valueOf(paramInt);
-    paramString = "个性化插件";
-    if (this.a.b == QQIndividualityBridgeActivity.c) {
-      paramString = "斗图";
-    }
-    for (;;)
-    {
-      IPluginManager.a(str, paramString);
-      int i = NetworkUtil.a(this.a);
-      QLog.e("QQIndividuality", 2, "install plugin fail: " + paramInt + " and netType = " + i);
-      this.a.setResult(1001);
-      QQIndividualityBridgeActivity.c(this.a);
-      ReportController.b(null, "CliOper", "", "", "ep_mall", "0X8006A98", 0, 0, str, String.valueOf(i), "", "");
+    int i = AbsListView.access$1200(this.a.a);
+    VelocityTracker localVelocityTracker = AbsListView.access$1300(this.a.a);
+    OverScroller localOverScroller = alzu.a(this.a);
+    if ((localVelocityTracker == null) || (i == -1)) {
       return;
-      if (this.a.b == QQIndividualityBridgeActivity.d) {
-        paramString = "个签";
-      } else if (this.a.b == QQIndividualityBridgeActivity.e) {
-        paramString = "历史签名";
-      }
     }
-  }
-  
-  public void onInstallFinish(String paramString)
-  {
-    this.a.b();
+    localVelocityTracker.computeCurrentVelocity(1000, AbsListView.access$1400(this.a.a));
+    if (VersionUtils.b()) {}
+    for (float f = -localVelocityTracker.getYVelocity(i); (Math.abs(f) >= AbsListView.access$1500(this.a.a)) && (localOverScroller.a(0.0F, f)); f = -localVelocityTracker.getYVelocity())
+    {
+      this.a.a.postDelayed(this, 40L);
+      return;
+    }
+    this.a.a();
+    this.a.a.mTouchMode = 3;
+    this.a.a.reportScrollStateChange(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     alzv
  * JD-Core Version:    0.7.0.1
  */

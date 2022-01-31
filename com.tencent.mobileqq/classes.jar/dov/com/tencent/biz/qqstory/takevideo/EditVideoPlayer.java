@@ -11,13 +11,13 @@ import android.os.SystemClock;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.widget.ImageView;
-import anek;
-import anem;
-import anen;
-import aneo;
-import anep;
-import aneq;
-import aner;
+import anup;
+import anur;
+import anus;
+import anut;
+import anuu;
+import anuv;
+import anuw;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.database.PublishVideoEntry;
 import com.tencent.biz.qqstory.support.logging.SLog;
@@ -106,7 +106,7 @@ public class EditVideoPlayer
       this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.b();
       EditMusicExport localEditMusicExport = (EditMusicExport)a(EditMusicExport.class);
       if (localEditMusicExport != null) {
-        localEditMusicExport.ar_();
+        localEditMusicExport.at_();
       }
       return;
     }
@@ -120,7 +120,7 @@ public class EditVideoPlayer
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a(Message.obtain(null, 8));
       return;
     }
-    this.jdField_b_of_type_AndroidOsHandler.post(new anen(this));
+    this.jdField_b_of_type_AndroidOsHandler.post(new anus(this));
   }
   
   public int a()
@@ -158,7 +158,7 @@ public class EditVideoPlayer
     }
     Object localObject = new Bitmap[1];
     CountDownLatch localCountDownLatch = new CountDownLatch(1);
-    this.jdField_a_of_type_AndroidOsHandler.post(new aneo(this, paramInt, (Bitmap[])localObject, localCountDownLatch));
+    this.jdField_a_of_type_AndroidOsHandler.post(new anut(this, paramInt, (Bitmap[])localObject, localCountDownLatch));
     try
     {
       SLog.b("Q.qqstory.record.EditVideoPlayer", "generateVideoFrameBitmap waiting ...");
@@ -267,9 +267,9 @@ public class EditVideoPlayer
         break label459;
       }
       this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditRecordVideoSource = ((EditRecordVideoSource)this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.a.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoParams$EditSource);
-      this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer = ((ImageViewVideoPlayer)a(2131364382));
+      this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer = ((ImageViewVideoPlayer)a(2131364406));
       this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364386));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131364410));
       this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.setCyclePlay(true);
       this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.setIMPlayerEndListener(this);
       this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer.setIMPFrameListener(this);
@@ -454,7 +454,7 @@ public class EditVideoPlayer
   
   public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new anep(this, paramInt, paramArrayOfByte));
+    this.jdField_a_of_type_AndroidOsHandler.post(new anuu(this, paramInt, paramArrayOfByte));
   }
   
   public void a(long paramLong, boolean paramBoolean) {}
@@ -520,15 +520,15 @@ public class EditVideoPlayer
       int i = paramMessage.arg2;
       int j = paramMessage.arg1;
       if ((this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer instanceof MultiBlockVideoPlayer)) {
-        this.jdField_a_of_type_AndroidOsHandler.post(new anek(this, i, j));
+        this.jdField_a_of_type_AndroidOsHandler.post(new anup(this, i, j));
       }
     }
     return false;
   }
   
-  public void aC_()
+  public void aE_()
   {
-    super.aC_();
+    super.aE_();
     NativeVideoImage.resumeAll();
     switch (this.jdField_a_of_type_DovComTencentBizQqstoryTakevideoEditVideoPartManager.b)
     {
@@ -543,9 +543,9 @@ public class EditVideoPlayer
     }
   }
   
-  public void aD_()
+  public void aF_()
   {
-    super.aD_();
+    super.aF_();
     SLog.d("Q.qqstory.record.EditVideoPlayer", "onPause stop play");
     b(false);
     NativeVideoImage.pauseAll();
@@ -563,12 +563,12 @@ public class EditVideoPlayer
     b(true);
   }
   
-  public void as_()
+  public void au_()
   {
     SLog.e("Q.qqstory.record.EditVideoPlayer", "onPlayerEnd");
   }
   
-  public void at_()
+  public void av_()
   {
     EditMusicExport localEditMusicExport = (EditMusicExport)a(EditMusicExport.class);
     if (localEditMusicExport != null)
@@ -576,20 +576,20 @@ public class EditVideoPlayer
       if (QLog.isColorLevel()) {
         QLog.d("zivonchen", 2, "onPlayerRecyle2()");
       }
-      localEditMusicExport.aq_();
+      localEditMusicExport.as_();
     }
   }
   
-  public void av_()
+  public void ax_()
   {
-    super.av_();
+    super.ax_();
     SLog.d("Q.qqstory.record.EditVideoPlayer", "onStop stop play");
     b(false);
   }
   
   public void b(int paramInt)
   {
-    this.jdField_a_of_type_AndroidOsHandler.post(new aneq(this, paramInt));
+    this.jdField_a_of_type_AndroidOsHandler.post(new anuv(this, paramInt));
   }
   
   public void b(long paramLong, boolean paramBoolean) {}
@@ -597,7 +597,7 @@ public class EditVideoPlayer
   public void c()
   {
     if ((this.jdField_a_of_type_Boolean) && (MultiBlockVideoPlayer.class.isInstance(this.jdField_a_of_type_DovComTencentMobileqqShortvideoWidgetImageViewVideoPlayer))) {
-      this.jdField_a_of_type_AndroidOsHandler.post(new aner(this));
+      this.jdField_a_of_type_AndroidOsHandler.post(new anuw(this));
     }
   }
   
@@ -623,7 +623,7 @@ public class EditVideoPlayer
     {
       this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap1);
       if (this.jdField_b_of_type_Boolean) {
-        Stream.of(localBitmap1).map(new ThreadOffFunction(2)).map(new BitmapAdjustJobSegment(0.2F, false)).map(new BlurJobSegment(10)).map(new UIThreadOffFunction(this)).subscribe(new anem(this));
+        Stream.of(localBitmap1).map(new ThreadOffFunction(2)).map(new BitmapAdjustJobSegment(0.2F, false)).map(new BlurJobSegment(10)).map(new UIThreadOffFunction(this)).subscribe(new anur(this));
       }
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);

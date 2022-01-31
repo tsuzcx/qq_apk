@@ -1,25 +1,71 @@
-import android.support.annotation.NonNull;
-import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import dov.com.qq.im.capture.text.JourneyTextItem;
+import android.content.ComponentName;
+import android.content.ServiceConnection;
+import android.os.IBinder;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.qzone.plugin.QZonePluginMangerHelper;
+import cooperation.qzone.plugin.QZonePluginMangerHelper.OnQzonePluginClientReadyListner;
+import cooperation.qzone.plugin.QZoneRemotePluginManager.Stub;
+import java.lang.ref.WeakReference;
 
-public class amxy
-  implements amxs
+public final class amxy
+  implements ServiceConnection
 {
-  public amxy(JourneyTextItem paramJourneyTextItem) {}
-  
-  @NonNull
-  public String a(int paramInt, @NonNull String paramString)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    String str = paramString;
-    if (paramInt == 0) {
-      str = TroopFileUtils.b(paramString);
+    if (QLog.isColorLevel()) {
+      QLog.i("QZonePluginManger", 2, "onServiceConnected");
     }
-    return str;
+    if (QZonePluginMangerHelper.a() == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "return WeakReference<OnPluginInterfaceReadyListener> is null");
+      }
+      QZonePluginMangerHelper.a();
+      return;
+    }
+    paramComponentName = (QZonePluginMangerHelper.OnQzonePluginClientReadyListner)QZonePluginMangerHelper.a().get();
+    if (paramComponentName == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "return OnPluginManagerLoadedListener is null");
+      }
+      QZonePluginMangerHelper.a();
+      return;
+    }
+    if ((paramIBinder != null) && (paramIBinder.isBinderAlive()) && (paramIBinder.pingBinder()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "binder alive");
+      }
+      QZonePluginMangerHelper.a = new amxg(QZoneRemotePluginManager.Stub.a(paramIBinder));
+      paramComponentName.a(QZonePluginMangerHelper.a);
+    }
+    for (;;)
+    {
+      QZonePluginMangerHelper.a();
+      return;
+      if (QLog.isColorLevel()) {
+        QLog.i("QZonePluginManger", 2, "binder not alive");
+      }
+      paramComponentName.a(null);
+    }
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.i("plugin_tag", 2, "onServiceDisconnected");
+    }
+    if (QZonePluginMangerHelper.a != null)
+    {
+      QZonePluginMangerHelper.a.b();
+      QZonePluginMangerHelper.a = null;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amxy
  * JD-Core Version:    0.7.0.1
  */

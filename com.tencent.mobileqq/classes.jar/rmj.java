@@ -1,26 +1,34 @@
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.activity.BaseChatPie;
-import com.tencent.widget.XEditTextEx;
+import android.view.View;
+import com.tencent.mobileqq.activity.AssociatedAccountActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.data.SubAccountInfo;
+import com.tencent.mobileqq.subaccount.datamanager.SubAccountManager;
+import com.tencent.widget.ActionSheet;
+import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-class rmj
-  implements DialogInterface.OnClickListener
+public class rmj
+  implements ActionSheet.OnButtonClickListener
 {
-  rmj(rmh paramrmh) {}
+  public rmj(AssociatedAccountActivity paramAssociatedAccountActivity, ActionSheet paramActionSheet) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void OnClick(View paramView, int paramInt)
   {
-    try
+    switch (paramInt)
     {
-      this.a.a.a.a.setText("");
-      BaseChatPie.a(this.a.a.a).delete(0, BaseChatPie.a(this.a.a.a).length());
-      paramDialogInterface.dismiss();
+    default: 
       return;
     }
-    catch (Exception paramDialogInterface)
-    {
-      paramDialogInterface.printStackTrace();
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+    paramView = (SubAccountManager)this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.app.getManager(60);
+    Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.a.iterator();
+    while (localIterator.hasNext()) {
+      paramView.c(((SubAccountInfo)localIterator.next()).subuin);
     }
+    AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity, true);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity.getString(2131434046));
+    AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity);
   }
 }
 

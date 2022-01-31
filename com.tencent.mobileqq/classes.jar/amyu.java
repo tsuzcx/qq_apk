@@ -1,37 +1,23 @@
-import android.os.Message;
-import com.tencent.util.WeakReferenceHandler;
-import dov.com.qq.im.capture.music.QIMMusicConfigManager.GetSingleMusicInfoCallback;
-import dov.com.qq.im.capture.view.MusicFragmentProviderView;
+import cooperation.qzone.report.lp.LpReport_PicInfo_dc02153;
+import cooperation.qzone.report.lp.MachinelearningReport;
 
 public class amyu
-  implements QIMMusicConfigManager.GetSingleMusicInfoCallback
+  implements Runnable
 {
-  public amyu(MusicFragmentProviderView paramMusicFragmentProviderView) {}
+  public amyu(MachinelearningReport paramMachinelearningReport, LpReport_PicInfo_dc02153 paramLpReport_PicInfo_dc02153) {}
   
-  public void a(boolean paramBoolean, Object paramObject)
+  public void run()
   {
-    Message localMessage;
-    if (this.a.a != null)
+    if (this.jdField_a_of_type_CooperationQzoneReportLpLpReport_PicInfo_dc02153 != null)
     {
-      localMessage = this.a.a.obtainMessage();
-      if (!paramBoolean) {
-        break label61;
-      }
-    }
-    label61:
-    for (int i = 1;; i = 0)
-    {
-      localMessage.arg1 = i;
-      localMessage.obj = paramObject;
-      localMessage.what = 7;
-      this.a.a.sendMessage(localMessage);
-      return;
+      this.jdField_a_of_type_CooperationQzoneReportLpLpReport_PicInfo_dc02153.recheckIfNeed();
+      MachinelearningReport.access$000(this.jdField_a_of_type_CooperationQzoneReportLpMachinelearningReport, 16, this.jdField_a_of_type_CooperationQzoneReportLpLpReport_PicInfo_dc02153);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     amyu
  * JD-Core Version:    0.7.0.1
  */

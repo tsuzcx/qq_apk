@@ -1,16 +1,24 @@
-import com.tencent.av.redpacket.AVRedPacketManager;
-import com.tencent.av.redpacket.AVRedPacketMusicPlayer;
+import android.view.View;
+import com.tencent.av.redpacket.ui.RedPacketRollNumberView;
+import com.tencent.av.redpacket.ui.RedPacketRollTextView;
 
 public class jlt
   implements Runnable
 {
-  public jlt(AVRedPacketManager paramAVRedPacketManager) {}
+  public jlt(RedPacketRollNumberView paramRedPacketRollNumberView) {}
   
   public void run()
   {
-    AVRedPacketManager.a(this.a, this.a.g);
-    long l = System.currentTimeMillis();
-    this.a.a.a(new jlu(this, l));
+    RedPacketRollNumberView.a(this.a, this.a.getChildCount());
+    int i = 0;
+    while (i < RedPacketRollNumberView.a(this.a))
+    {
+      View localView = this.a.getChildAt(i);
+      if ((localView != null) && ((localView instanceof RedPacketRollTextView))) {
+        ((RedPacketRollTextView)localView).b();
+      }
+      i += 1;
+    }
   }
 }
 
